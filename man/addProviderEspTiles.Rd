@@ -3,7 +3,7 @@
 \name{addProviderEspTiles}
 \alias{addProviderEspTiles}
 \alias{providerEspTileOptions}
-\title{Example}
+\title{Leaflet plugin - Spanish providers}
 \source{
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 leaflet plugin, \strong{v1.2.0}.
