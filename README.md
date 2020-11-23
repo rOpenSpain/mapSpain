@@ -2,7 +2,9 @@
 # mapSpain <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-
+![R-CMD-check](https://github.com/dieghernan/mapSpain/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/dieghernan/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/mapSpain)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 **[mapSpain](https://dieghernan.github.io/mapSpain/)** is a package that
