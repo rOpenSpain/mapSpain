@@ -90,7 +90,7 @@ You can combine `POLYGONS` with static tiles
 library(mapSpain)
 library(sf)
 
-census <- pobmun19
+census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
 
 census$municode <- paste0(census$cpro, census$cmun)
