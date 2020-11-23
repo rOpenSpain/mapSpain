@@ -89,29 +89,6 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
     unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
   data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
   data.sf <- data.sf[, c(colnames(df), "nuts1.code", "nuts1.name")]
-  
-  # Extract geom column
-  names <- names(data.sf)
-
-  which.geom <-
-    which(vapply(data.sf, function(f)
-      inherits(f, "sfc"), TRUE))
-
-  nm <- names(which.geom)
-  
-  df <- unique(sf::st_drop_geometry(data.sf))
-  
-  g <- sf::st_geometry(data.sf)
-  
-  # Generate sf object
-    new <- sf::st_as_sf(df, g)
-    # Rename geometry to original value
-    newnames <- names(new)
-    newnames[newnames == "g"] <- nm
-    colnames(new) <- newnames
-    new <- sf::st_set_geometry(new, nm)
-    
-    data.sf <- new
 
   # Order
   data.sf <- data.sf[order(data.sf$codauto), ]
