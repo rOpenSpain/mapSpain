@@ -10,3 +10,4 @@
 ^mapSpain\.Rcheck$
 ^mapSpain.*\.tar\.gz$
 ^mapSpain.*\.tgz$
+^.*\.yml$

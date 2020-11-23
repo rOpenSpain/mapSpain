@@ -1,0 +1,33 @@
+url: https://dieghernan.github.io/mapSpain
+
+
+figures:
+  dev: grDevices::png
+  fig.ext: png
+  fig.width: 7.3
+  fig.retina: 2
+  fig.asp:
+
+
+template:
+  params:
+    bootswatch: flatly
+  opengraph:
+    twitter:
+      creator: "@dhernangomez"
+      card: summary_large_image
+
+home:
+  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and Municipalities
+  description: Administrative Boundaries of Spain based on the GISCO (Geographic Information System of the Commission) Eurostat database. It also provides a leaflet plugin and the ability of downloading and processing static tiles.
+
+deploy:
+  install_metadata: true
+
+navbar:
+  structure:
+    right: [github, blog]
+  components:
+    blog:
+     icon: "fas fa-blog fa-lg"
+     href: "https://dieghernan.github.io/"
