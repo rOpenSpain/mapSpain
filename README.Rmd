@@ -47,7 +47,7 @@ This script highlights some features of `mapSpain`:
 library(mapSpain)
 library(sf)
 
-census <- pobmun19
+census <- mapSpain::pobmun19
 
 # Paste CCAA
 census <-
