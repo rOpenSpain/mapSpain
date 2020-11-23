@@ -2,6 +2,7 @@
 # mapSpain <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
+
 ![R-CMD-check](https://github.com/dieghernan/mapSpain/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/dieghernan/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/mapSpain)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -32,9 +33,9 @@ This script highlights some features of `mapSpain`:
 ``` r
 library(mapSpain)
 library(sf)
-#> Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3
+#> Linking to GEOS 3.8.1, GDAL 3.1.1, PROJ 6.3.1
 
-census <- pobmun19
+census <- mapSpain::pobmun19
 
 # Paste CCAA
 census <-
@@ -96,6 +97,50 @@ tile <-
     type = "IGNBase.Todo",
     zoom = 8
   )
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj
+#> = prefer_proj): Discarded ellps WGS 84 in CRS definition: +proj=merc +a=6378137
+#> +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null
+#> +wktext +no_defs +type=crs
+#> Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =
+#> prefer_proj): Discarded datum World Geodetic System 1984 in CRS definition
+#> Warning in raster::projectRaster(from = rout, crs = sf::st_crs(x)$proj4string):
+#> input and ouput crs are the same
 
 
 # Plot
@@ -160,7 +205,15 @@ PuertadelSol <-
 PuertadelSol
 ```
 
-![](man/figures/README-leaflet-1.png)<!-- -->
+<!--html_preserve-->
+
+<div id="htmlwidget-e304ad2563922aac1034" class="leaflet html-widget" style="width:672px;height:480px;">
+
+</div>
+
+<script type="application/json" data-for="htmlwidget-e304ad2563922aac1034">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4166,-3.70384],18,[]],"calls":[{"method":"addTiles","args":["https://www.ign.es/wmts/ign-base?service=WMTS&request=GetTile&version=1.0.0&Format=image/jpeg&layer=IGNBase-gris&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false,"attribution":{"value":["CC BY 4.0 scne.es. Sistema Geogr&aacute;fico Nacional <a href='http://www.ign.es'>IGN<\/a>"]}}]},{"method":"addWMSTiles","args":[{"value":["https://servicios.idee.es/wms-inspire/transportes"]},null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false,"transparent":"true","format":"image/png","attribution":{"value":["Sistema Geogr&aacute;fico Nacional <a href='http://www.scne.es'>SCNE<\/a>"]},"layers":{"value":["TN.RoadTransportNetwork.RoadLink"]}}]}]},"evals":[],"jsHooks":[]}</script>
+
+<!--/html_preserve-->
 
 ### A note on caching
 
