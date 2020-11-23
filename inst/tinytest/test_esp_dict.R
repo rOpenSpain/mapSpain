@@ -15,7 +15,7 @@ expect_silent(esp_dict_region_code(vals, destination = "iso2"))
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 
-#expect_silent(esp_dict_region_code(iso2vals, origin = "iso2"))
+expect_silent(esp_dict_region_code(iso2vals, origin = "iso2"))
 
 
 # Test all ISO2 prov
