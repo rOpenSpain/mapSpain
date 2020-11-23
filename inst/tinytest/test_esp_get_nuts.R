@@ -1,6 +1,6 @@
 library(tinytest)
 library(sf)
-
+if (interactive()){
 expect_silent(esp_get_nuts())
 expect_silent(esp_get_nuts(resolution = 1))
 expect_silent(esp_get_nuts(nuts_level = 2, moveCAN = FALSE))
@@ -50,3 +50,4 @@ expect_silent(esp_get_nuts(region = esp_codelist$nuts3.name))
 
 
 expect_silent(esp_get_nuts(resolution = "20"))
+}
