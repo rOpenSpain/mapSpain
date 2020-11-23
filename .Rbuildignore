@@ -4,6 +4,8 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^dev$
+^docs$
+^pkgdown$
 ^.github$
 ^mapSpain\.Rcheck$
 ^mapSpain.*\.tar\.gz$

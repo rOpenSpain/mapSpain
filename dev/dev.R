@@ -1,7 +1,7 @@
 roxygen2::roxygenise()
 
 
-
+pkgdown::build_site()
 
 usethis::use_readme_rmd()
 devtools::build_readme()
