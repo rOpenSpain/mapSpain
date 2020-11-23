@@ -8,7 +8,7 @@
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @seealso \link{esp_nuts.sf}, \link{esp_dict_region_code},
-#' \link{esp_codelist}.
+#' \link{esp_codelist}, \link[giscoR]{gisco_get}.
 #' @export
 #'
 #'

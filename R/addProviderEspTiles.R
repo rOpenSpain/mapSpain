@@ -1,4 +1,4 @@
-#' @title Example
+#' @title Leaflet plugin - Spanish providers
 #' @name addProviderEspTiles
 #' @description Add tiles of
 #' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
