@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -45,11 +45,16 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 
 <meta property="og:title" content="Get boundaries of Spain — esp_get_country" />
 <meta property="og:description" content="Loads a single sf object containing the
 boundaries of Spain." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://dieghernan.github.io/mapSpain/logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@dhernangomez" />
+<meta name="twitter:site" content="@dhernangomez" />
 
 
 
@@ -107,6 +112,12 @@ boundaries of Spain." />
      
   </a>
 </li>
+<li>
+  <a href="https://dieghernan.github.io/">
+    <span class="fas fa fas fa-blog fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -159,11 +170,11 @@ boundaries of Spain.</p>
 <span class='va'>OriginalCan</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_country</span><span class='op'>(</span>moveCAN <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>OriginalCan</span><span class='op'>$</span><span class='va'>geometry</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_country-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='esp_get_country-1.png' alt='' width='701' height='433' /></div><div class='input'>
 <span class='va'>MovedCan</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_country</span><span class='op'>(</span>moveCAN <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>MovedCan</span><span class='op'>$</span><span class='va'>geometry</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_country-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='esp_get_country-2.png' alt='' width='701' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

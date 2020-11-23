@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -45,11 +45,16 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 
 <meta property="og:title" content="Get Provinces boundaries of Spain — esp_get_prov" />
 <meta property="og:description" content="Loads a simple feature (sf) object containing the
 province boundaries of Spain." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://dieghernan.github.io/mapSpain/logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@dhernangomez" />
+<meta name="twitter:site" content="@dhernangomez" />
 
 
 
@@ -104,6 +109,12 @@ province boundaries of Spain." />
         <li>
   <a href="https://github.com/dieghernan/mapSpain/">
     <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://dieghernan.github.io/">
+    <span class="fas fa fas fa-blog fa-lg"></span>
      
   </a>
 </li>
@@ -178,7 +189,7 @@ or <code>NULL</code> to get all the provinces. See Details.</p></td>
                         <span class='st'>"ES521"</span>,
                         <span class='st'>"01"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>Random</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_prov-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='esp_get_prov-1.png' alt='' width='701' height='433' /></div><div class='input'>
 <span class='co'># All Provinces of a Zone plus an addition</span>
 
 <span class='va'>Mix</span> <span class='op'>&lt;-</span>
@@ -192,7 +203,7 @@ or <code>NULL</code> to get all the provinces. See Details.</p></td>
   main <span class='op'>=</span> <span class='cn'>NULL</span>,
   border <span class='op'>=</span> <span class='st'>"white"</span>
 <span class='op'>)</span>
-</div><div class='img'><img src='esp_get_prov-2.png' alt='' width='700' height='433' /></div></pre>
+</div><div class='img'><img src='esp_get_prov-2.png' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
