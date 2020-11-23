@@ -6,13 +6,7 @@ expect_silent(esp_get_ccaa(ccaa = c("Galicia", "ES7", "Centro")))
 expect_warning(esp_get_ccaa(ccaa = "Zamora"))
 expect_warning(esp_get_ccaa(ccaa = "ES6x"))
 expect_warning(esp_get_ccaa(ccaa = "Barcelona"))
-expect_silent(esp_get_ccaa(ccaa = c(
-  "Euskadi",
-  "Catalunya",
-  "ES-EX",
-  "ES52",
-  "01"
-)))
+
 
 # Test all
 
