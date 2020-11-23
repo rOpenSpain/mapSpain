@@ -12,7 +12,7 @@ Authors@R:
              role = "cph",
              comment = "for the administrative boundaries.")
              )
-Description: This package provides Administrative Boundaries of Spain based on
+Description: Administrative Boundaries of Spain based on
     the GISCO (Geographic Information System of the Commission) Eurostat database
     <https://ec.europa.eu/eurostat/web/gisco>. It also provides a leaflet plugin
     and the ability of downloading and processing static tiles.
