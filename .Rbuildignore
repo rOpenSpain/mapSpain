@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^LICENSE\.md$
+^README\.Rmd$
+^dev$
+^.github$
+^mapSpain\.Rcheck$
+^mapSpain.*\.tar\.gz$
+^mapSpain.*\.tgz$

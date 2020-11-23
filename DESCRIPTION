@@ -1,0 +1,38 @@
+Package: mapSpain
+Type: Package
+Title: Administrative Boundaries of Spain Including CCAA, Provinces and Municipalities
+Version: 0.0.0-9000
+Authors@R: 
+    c(person(given = "Diego",
+             family = "Hernangómez",
+             role = c("aut", "cre", "cph"),
+             email = "diego.hernangomezherrero@gmail.com",
+             comment = c(ORCID = "0000-0001-8457-4658")),
+      person(given = "EuroGraphics",
+             role = "cph",
+             comment = "for the administrative boundaries.")
+             )
+Description: This package provides Administrative Boundaries of Spain based on
+    the GISCO (Geographic Information System of the Commission) Eurostat database
+    <https://ec.europa.eu/eurostat/web/gisco>. It also provides a leaflet plugin
+    and the ability of downloading and processing static tiles.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+BugReports: https://github.com/dieghernan/mapSpain/issues
+URL: https://dieghernan.github.io/mapSpain/, https://github.com/dieghernan/mapSpain
+Depends: 
+    R (>= 3.6.0)
+Imports: 
+    sf (>= 0.9),
+    countrycode (>= 1.2.0),
+    giscoR (>= 0.2.0),
+    raster (>= 3.0),
+    png (>= 0.1-5),
+    slippymath (>= 0.3.1),
+    leaflet (>= 2.0.0)
+Suggests:
+    cartography (>= 2.4),
+    rgdal,
+    tinytest

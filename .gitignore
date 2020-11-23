@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+mapSpain.Rcheck/
+mapSpain*.tar.gz
+mapSpain*.tgz

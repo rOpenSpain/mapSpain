@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>leaflet-providersESP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Load Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<!-- Install leaflet-providersESP -->
+	<script src="https://cdn.jsdelivr.net/gh/dieghernan/leaflet-providersESP@v1.2.0/dist/leaflet-providersESP.min.js"></script>
+	<link rel="stylesheet" href="https://dieghernan.github.io/leaflet-providersESP/assets/css/main.css" />
+    <!-- Highlighter -->
+	<link id="csshigh" rel="stylesheet" href="https://dieghernan.github.io/leaflet-providersESP/assets/css/highlighter.css" />
+	
+	<!-- Display map full page -->
+	<style>
+	html {
+		height: 100%
+	}
+	
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	
+	td,
+	th {
+		border: solid;
+		border-width: thin;
+	}
+	
+	#mapid {
+		height: 100%;
+		width: 100%
+	}
+	</style>
+</head>
+
+<body>
+	<script src="https://dieghernan.github.io/leaflet-providersESP/js/shared.js"></script>
+	<script src="https://dieghernan.github.io/leaflet-providersESP/js/preview.js"></script>
+	<p id="version"></p>
+	<script>
+	// Add it to the page
+	nprovs = document.getElementById('version');
+	nprovs.innerHTML = 'Current Version: <code>' + providersESPversion + '</code>';
+	</script>
+	<table>
+		<thead>
+			<tr>
+				<th>provider</th>
+				<th>field</th>
+				<th>value</th>
+			</tr>
+		</thead>
+		<tbody id="listprov"> </tbody>
+	</table>
+	<script>
+	var allprovs = [];
+	for(var provider in providersESP) {
+		allprovs.push(provider);
+		if(providersESP[provider].variants) {
+			for(var variant in providersESP[provider].variants) {
+				allprovs.push(provider + '.' + variant);
+			}
+		}
+	}
+	for(var provider in allprovs) {
+		name = allprovs[provider];
+		var prov = providerOpts(name);
+		var layerName = name;
+		var url = prov.url;
+		var type = "WMS"
+		if(url.includes("{x}")) {
+			type = "WMTS"
+		}
+		var options = L.extend({}, prov.options || {});
+		delete options.providerName;
+		// replace {variant} in urls with the selected variant, since
+		// keeping it in the options map doesn't make sense for one layer
+		if(options.variant) {
+			url = url.replace('{variant}', options.variant);
+			delete options.variant;
+		}
+		row = document.createElement('tr');
+		row.innerHTML = '<td><code>' + name + '</code></td><td>type</td><td>' + type + '</td>';
+		document.getElementById('listprov').appendChild(row);
+		row = document.createElement('tr');
+		row.innerHTML = '<td><code>' + name + '</code></td><td>url</td><td>' + url + '</td>';
+		document.getElementById('listprov').appendChild(row);
+		for(var optionfinal in options) {
+			opt = optionfinal;
+			if(opt == "attribution") {
+				row = document.createElement('tr');
+				row.innerHTML = '<td><code>' + name + '</code></td><td>' + optionfinal + '</td><td>' + renderValue(options[optionfinal]).slice(1, -1); + '</td>';
+				document.getElementById('listprov').appendChild(row);
+			} else {
+				row = document.createElement('tr');
+				row.innerHTML = '<td><code>' + name + '</code></td><td>' + optionfinal + '</td><td>' + options[optionfinal] + '</td>';
+				document.getElementById('listprov').appendChild(row);
+			}
+		}
+		var url2 = url;
+		var completeWMS = '?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT={format}' + 
+		'&TRANSPARENT={transparent}&LAYERS={layers}&SRS=EPSG:3857&WIDTH=512&HEIGHT=512&BBOX={bbox}';
+		var completeWMSADIF = '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT={format}' + 
+		'&TRANSPARENT=false&STYLES=&LAYERS={layers}&CRS=EPSG:3857&WIDTH=512&HEIGHT=512&BBOX={bbox}';
+		
+
+		if(type == "WMS") {
+			if(name.includes("ADIF")){
+			url2 = url + completeWMSADIF;
+			} else {
+			url2 = url + completeWMS;
+			}
+			
+			if (name.includes("LimitesMaritimos")){
+			url2 = url2 + '&STYLES=';
+			}
+			
+
+			
+		
+			
+
+			url2 = url2.replace("??", "?");
+		}
+		
+		//Special for adif
+		
+		for(var option in options) {
+			var templ = '{' + option + '}';
+			if(url2.includes(templ)) {
+				url2 = url2.replace(templ, options[option]);
+				delete options[option];
+			}
+		}
+		row = document.createElement('tr');
+		row.innerHTML = '<td><code>' + name + '</code></td><td>url_static</td><td>' + url2 + '</td>';
+		document.getElementById('listprov').appendChild(row);
+		row = document.createElement('tr');
+		row.innerHTML = '<td><code>' + name + '</code></td><td>attribution_static</td><td>' + options["attribution"].replace(/(<([^>]+)>)/gi, "") + '</td>';
+		document.getElementById('listprov').appendChild(row);
+	}
+	</script>
+</body>
