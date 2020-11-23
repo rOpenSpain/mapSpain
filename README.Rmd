@@ -86,7 +86,7 @@ choroLayer(
 
 You can combine `POLYGONS` with static tiles
 
-```{r tile, fig.asp=0.7}
+```{r tile, warning=FALSE, fig.asp=0.7}
 library(mapSpain)
 library(sf)
 
@@ -149,26 +149,6 @@ legendChoro(
 )
 
 ```
-
-Using leaflet:
-
-```{r leaflet}
-
-
-library(leaflet)
-
-PuertadelSol <-
-  leaflet() %>% setView(lat = 40.4166,
-                        lng = -3.7038400,
-                        zoom = 18) %>%
-  addProviderEspTiles(provider = "IGNBase.Gris") %>%
-  addProviderEspTiles(provider = "RedTransporte.Carreteras")
-
-
-PuertadelSol
-
-```
-
 
 ### A note on caching
 
