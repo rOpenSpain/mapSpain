@@ -41,26 +41,6 @@
 #'
 #' Tiles are cached under the path \code{cache_dir/[type]}
 #'
-#' @examples
-#'
-#' library(sf)
-#'
-#'
-#' munic <-
-#'   esp_get_munic(region = "Madrid",
-#'                 munic = c("^Madrid$"))
-#'
-#' munic <- st_transform(munic, 3857)
-#' tile <- esp_getTiles(munic,  zoom = 11)
-#'
-#' library(cartography)
-#' opar <- par(no.readonly = TRUE)
-#' par(mar = c(0, 0, 0, 0))
-#' tilesLayer(tile)
-#' plot(st_geometry(munic),
-#'      col = hcl.colors(n = 1, alpha = 0.2),
-#'      add = TRUE)
-#' par(opar)
 esp_getTiles <- function(x,
                          type = "IDErioja",
                          zoom = NULL,

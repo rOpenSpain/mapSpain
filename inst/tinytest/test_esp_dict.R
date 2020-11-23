@@ -1,4 +1,5 @@
 library(tinytest)
+library(sf)
 
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 

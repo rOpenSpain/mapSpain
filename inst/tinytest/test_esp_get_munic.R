@@ -1,4 +1,5 @@
 library(tinytest)
+library(sf)
 
 expect_silent(esp_get_munic())
 expect_silent(esp_get_munic(moveCAN = FALSE))
