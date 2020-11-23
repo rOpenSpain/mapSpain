@@ -19,7 +19,10 @@ if (gisco_check_access()) {
   ))
 
   # Single point
-  point <- esp_get_ccaa("Madrid", spatialtype = "LB")
+  point <- esp_get_ccaa("Madrid")
+  point <- st_transform(point, 3857)
+  point <- st_centroid(point, of_largest_polygon = TRUE)
+  
 
   expect_message(esp_getTiles(point, type = "RedTransporte.Carreteras",
                              verbose = TRUE))
