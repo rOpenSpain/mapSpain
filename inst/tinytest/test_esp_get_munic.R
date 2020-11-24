@@ -9,3 +9,9 @@ expect_error(esp_get_munic(munic = "XX"))
 expect_silent(esp_get_munic(munic = "Nieva"))
 expect_silent(esp_get_munic(region = "Alava"))
 expect_message(esp_get_munic(region = "Canarias", verbose = TRUE))
+
+a <- mapSpain::esp_codelist
+n <- a$nuts1.name
+
+s <- esp_get_munic(region = n)
+expect_equal(length(unique(s$cpro)), 52)

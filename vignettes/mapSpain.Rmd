@@ -1,0 +1,171 @@
+---
+title: "Get Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE,
+                      comment = "#>")
+
+knitr::knit_hooks$set(
+  margin = function(before, options, envir) {
+    if (before) {
+      par(mar = c(0.1, 0.1, 1.3, 0.1))
+    }
+  }
+)
+
+
+```
+
+
+# Introduction
+
+[**`mapSpain`**](https://dieghernan.github.io/mapSpain/) is a package designed to provide geographical information of Spain at different levels.
+
+
+**`mapSpain`** provides shapefiles of municipalities, provinces, autonomous communities
+and NUTS levels of Spain. It also provides hexbin shapefiles and other complementary shapes, as the usual lines around the Canary Islands.
+
+**`mapSpain`** provides access to map tiles of public organisms of Spain, that can be
+represented on static maps via `mapSpain::esp_getTiles()` or on a **R** leaflet map using `mapSpain::addProviderEspTiles()`.
+
+On top of that, **`mapSpain`** also has a powerful dictionary that translate provinces and other regions to English, Spanish, Catalan, Basque language or Galician, and also convers those names to different coding standards, as NUTS, ISO2 or the coding system used by the INE, that is the official statistic agency of Spain.
+
+
+# Caching
+
+`mapSpain` provides a dataset and tile caching capability, that could be set as:
+
+```r
+options(mapSpain_cache_dir = "~/path/to/dir")
+
+OR 
+
+options(gisco_cache_dir = "~/path/to/dir")
+```
+
+`mapSpain` relies on `giscoR` for downloading some files, and both packages are well synchronized, so if you already use `giscoR` and you have set your caching options for that package it would be recognized too by `mapSpain`.
+
+# Installation
+
+
+For installing the development version on ([Github](https://github.com/dieghernan/mapSpain/)):
+
+```r
+library(remotes)
+install_github("dieghernan/mapSpain")
+```
+
+
+# Basic example
+
+Some examples of what `mapSpain`can do:
+
+```{r basic, fig.width=7, fig.asp=1}
+library(mapSpain)
+library(sf)
+
+country <- esp_get_country()
+lines <- esp_get_can_box()
+
+plot(st_geometry(country), axes = TRUE, col = "brown")
+plot(lines, add = TRUE)
+
+
+# Plot provinces
+
+Andalucia <- esp_get_prov("Andalucia")
+plot(
+  st_geometry(Andalucia),
+  col = "darkgreen",
+  border = "white",
+  axes = TRUE
+)
+
+# Plot municipalities
+
+
+
+Bizkaia <- esp_get_munic(region = "Euskadi")
+plot(
+  Bizkaia[, "cpro"],
+  pal = c("red2", "darkgreen", "ivory2"),
+  axes = TRUE,
+  key.pos = NULL,
+  border = "grey50",
+  main = "Municipalities of the Basque Country"
+)
+
+```
+
+
+# Thematic maps
+
+This is an example on how `mapSpain` can be used to create thematic maps. For plotting purposes we would use the [`cartography` package](https://riatelab.github.io/cartography/docs/index.html), however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). 
+
+```{r thematic}
+
+# Population density of East of Spain
+
+pop <- mapSpain::pobmun19
+
+munic <- esp_get_munic()
+
+# Get area (km2)
+municarea <- as.double(st_area(st_transform(munic, 3857)) / 1000000)
+munic$area <- municarea
+
+munic.pop <- merge(munic, pop, all.x = TRUE)
+
+munic.pop$dens <- munic.pop$pob19 / munic.pop$area
+
+
+
+library(cartography)
+
+br <-
+  c(0,
+    10,
+    25,
+    100,
+    200,
+    500,
+    1000,
+    5000,
+    10000,
+    Inf)
+
+choroLayer(
+  munic.pop,
+  var = "dens",
+  breaks = br,
+  legend.pos = "n",
+  col =
+    hcl.colors(length(br) - 1, pal = "inferno", alpha = 0.7),
+  colNA = "grey50",
+  border = NA
+)
+
+
+
+brlabs <- prettyNum(br, big.mark = ",")
+brlabs[c(1, length(brlabs))] <- ""
+legendChoro(
+  pos = "topleft",
+  breaks = brlabs,
+  col =
+    hcl.colors(length(br) - 1, pal = "inferno", alpha = 0.7),
+  title.txt = "Density Pop.\nkm2",
+  nodata = FALSE
+)
+
+plot(esp_get_can_box(), add = TRUE)
+
+
+```
+

@@ -134,7 +134,11 @@ esp_get_munic <- function(year = "2019",
 
   if (!is.null(region)) {
     tonuts <- esp_hlp_all2prov(region)
-    toprov <- esp_dict_region_code(tonuts, "nuts", "cpro")
+
+    #toprov
+    df <- unique(mapSpain::esp_codelist[,c("nuts3.code","cpro")])
+    df <- df[df$nuts3.code %in% tonuts, "cpro"]
+    toprov <- unique(df)
 
     data.sf <- data.sf[data.sf$cpro %in% toprov, ]
   }
@@ -143,7 +147,6 @@ esp_get_munic <- function(year = "2019",
     stop("The combination of region and/or munic does ",
          "not return any result")
   }
-
 
 
 
