@@ -1,5 +1,8 @@
 roxygen2::roxygenise()
 
+options(mapSpain_cache_dir="~/R/mapslib/GISCO")
+
+tinytest::test_all()
 
 devtools::check_win_release()
 devtools::check_win_devel()
@@ -7,6 +10,8 @@ devtools::check_win_oldrelease()
 devtools::check_rhub()
 
 devtools::build_manual(path = "./dev")
+pkgdown::build_reference(lazy = FALSE)
+pkgdown::build_reference()
 
 pkgdown::build_site()
 
