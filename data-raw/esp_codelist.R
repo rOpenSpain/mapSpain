@@ -13,7 +13,7 @@ NUTS1 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>% esp_hlp_utf8() %>% as.data.frame()
 
 CCAA <-
   read.csv(
@@ -21,7 +21,7 @@ CCAA <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>% esp_hlp_utf8() %>% as.data.frame()
 
 PROV <-
   read.csv(
@@ -29,7 +29,7 @@ PROV <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>% esp_hlp_utf8() %>% as.data.frame()
 
 NUTS3 <-
   read.csv(
@@ -37,7 +37,7 @@ NUTS3 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>% esp_hlp_utf8() %>% as.data.frame()
 
 
 # Create full table

@@ -232,6 +232,14 @@ countrycode::countrycode(c("ES-AN"),
                          custom_dict = code2code,
                          nomatch = "XX")
 
+
+dict_ccaa <- dict_ccaa %>% as.data.frame()
+dict_prov <- dict_prov %>% as.data.frame()
+code2code <- code2code %>% as.data.frame()
+names2nuts <- names2nuts %>% as.data.frame()
+names_full <- names_full %>% as.data.frame()
+
+
 usethis::use_data(
   # dict_nuts1,
   dict_ccaa,

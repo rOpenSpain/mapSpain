@@ -31,7 +31,7 @@ addProviderEspTiles <- function(map,
                                 group = NULL,
                                 options = providerEspTileOptions()) {
   # A. Check providers
-  leafletProvidersESP <- mapSpain::leaflet.providersESP.df
+  leafletProvidersESP <- as.data.frame(mapSpain::leaflet.providersESP.df)
   provs <-
     leafletProvidersESP[leafletProvidersESP$provider == provider, ]
 
@@ -112,6 +112,8 @@ addProviderEspTiles <- function(map,
 
 
   if (isWMTS) {
+    options <- do.call(leaflet::tileOptions, options)
+  
     leaflet::addTiles(
       map,
       urlTemplate = templurl,
@@ -121,6 +123,9 @@ addProviderEspTiles <- function(map,
       options = optionend
     )
   } else {
+  
+  options <- do.call(leaflet::WMSTileOptions, options)
+  
     leaflet::addWMSTiles(
       map,
       baseUrl = templurl,

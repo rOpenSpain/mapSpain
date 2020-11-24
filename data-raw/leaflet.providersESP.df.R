@@ -6,7 +6,7 @@ library(dplyr)
 library(readxl)
 
 leaflet.providersESP.df <-
-  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") %>% esp_hlp_utf8()
+  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") %>% esp_hlp_utf8() %>% as.data.frame()
 
 
 
