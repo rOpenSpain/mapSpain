@@ -92,5 +92,6 @@ Providers available to be passed to \code{type} are:
 }
 }
 \seealso{
-\link{esp_getTiles}
+\link{esp_getTiles},
+\link{addProviderEspTiles}.
 }

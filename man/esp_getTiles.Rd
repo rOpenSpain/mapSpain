@@ -68,7 +68,8 @@ looks deformed, try projecting first \code{x}:
 Tiles are cached under the path \code{cache_dir/[type]}
 }
 \seealso{
-\link{leaflet.providersESP.df}, \link[cartography]{getTiles},
+\link{leaflet.providersESP.df}, \link{addProviderEspTiles},
+\link[cartography]{getTiles},
  \link[cartography]{tilesLayer}.
 }
 \author{
