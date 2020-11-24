@@ -91,9 +91,9 @@ plot(
 
 
 
-Bizkaia <- esp_get_munic(region = "Euskadi")
+Euskadi <- esp_get_munic(region = "Euskadi")
 plot(
-  Bizkaia[, "cpro"],
+  Euskadi[, "cpro"],
   pal = c("red2", "darkgreen", "ivory2"),
   axes = TRUE,
   key.pos = NULL,

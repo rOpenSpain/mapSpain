@@ -31,6 +31,8 @@ knitr::knit_hooks$set(
 
 **mapSpain** also provides a leaflet plugin to be used with the [`leaflet` package](https://rstudio.github.io/leaflet/), that loads several basemap of public institutions of Spain, and the ability of downloading and processing static tiles.
 
+Full site with examples and vignettes on <https://dieghernan.github.io/mapSpain/>
+
 ## Installation
 
 You can install the developing version of `mapSpain` with:

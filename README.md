@@ -17,6 +17,8 @@ including CCAA, provinces and municipalities.
 several basemap of public institutions of Spain, and the ability of
 downloading and processing static tiles.
 
+Full site with examples and vignettes on <https://dieghernan.github.io/mapSpain/>
+
 ## Installation
 
 You can install the developing version of `mapSpain` with:
