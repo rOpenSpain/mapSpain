@@ -8,12 +8,13 @@ library(ggplot2)
 
 
 sysfonts::font_add_google("Open Sans")
-#sysfonts::font_families_google()
+
 
 
 map <- esp_get_munic()
 map2 <- esp_get_prov()
-
+l <- esp_get_can_box()
+p <- esp_get_can_provinces()
 
 
 
@@ -26,9 +27,13 @@ a <- ggplot(map) + geom_sf(fill = "#FABD00",
     fill = NA,
     lwd = 0.1
   ) +
+  geom_sf(data =l, color="#FABD00", lwd=0.1) +
+  geom_sf(data=p,color="#FABD00", lwd=0.1) +
   theme_void()
 
-#a
+
+
+
 
 library(hexSticker)
 

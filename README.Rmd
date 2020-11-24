@@ -82,6 +82,12 @@ choroLayer(
   legend.title.txt = "% women"
 )
 
+# Add lines
+
+CCAAbox <- esp_get_can_box()
+
+plot(CCAAbox, add = TRUE)
+
 ```
 
 You can combine `POLYGONS` with static tiles
