@@ -17,7 +17,8 @@ including CCAA, provinces and municipalities.
 several basemap of public institutions of Spain, and the ability of
 downloading and processing static tiles.
 
-Full site with examples and vignettes on <https://dieghernan.github.io/mapSpain/>
+Full site with examples and vignettes on
+<https://dieghernan.github.io/mapSpain/>
 
 ## Installation
 
@@ -58,15 +59,19 @@ CCAA.sf <- merge(CCAA.sf, census_ccaa)
 # Choropleth map
 
 library(cartography)
-
 br <- getBreaks(CCAA.sf$porc_women, method = "pretty")
 choroLayer(
   CCAA.sf,
   var = "porc_women",
   breaks = br,
-  legend.values.rnd = 2,
+  legend.values.rnd = 3,
   legend.pos = "bottomright",
-  col = hcl.colors(length(br) - 1),
+  col = hcl.colors(
+    length(br) - 1,
+    palette = "Blues 3",
+    rev = TRUE,
+    alpha = 0.8
+  ),
   border = NA,
   legend.title.txt = "% women"
 )

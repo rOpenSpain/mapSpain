@@ -49,7 +49,7 @@ OR
 options(gisco_cache_dir = "~/path/to/dir")
 ```
 
-`mapSpain` relies on `giscoR` for downloading some files, and both packages are well synchronized, so if you already use `giscoR` and you have set your caching options for that package it would be recognized too by `mapSpain`.
+`mapSpain` relies on [`giscoR`](https://dieghernan.github.io/giscoR/) for downloading some files, and both packages are well synchronized, so if you already use `giscoR` and you have set your caching options for that package it would be recognized too by `mapSpain`.
 
 # Installation
 

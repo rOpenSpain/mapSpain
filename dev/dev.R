@@ -1,8 +1,15 @@
 roxygen2::roxygenise()
 
+help(giscoR)
+
+
 options(mapSpain_cache_dir="~/R/mapslib/GISCO")
 
+devtools::revdep("mapSpain")
+
 tinytest::test_all()
+
+hcl.pals("sequential")
 
 devtools::check_win_release()
 devtools::check_win_devel()
@@ -10,10 +17,10 @@ devtools::check_win_oldrelease()
 devtools::check_rhub()
 
 devtools::build_manual(path = "./dev")
-pkgdown::build_reference(lazy = FALSE)
-pkgdown::build_reference()
+pkgdown::build_favicons(overwrite = TRUE)
 
-pkgdown::build_site()
+pkgdown::build_site(lazy = FALSE)
+pkgdown::build_articles(lazy = FALSE)
 
 pkgdown::build_reference_index()
 

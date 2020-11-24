@@ -43,6 +43,7 @@ library(hexSticker)
 
 
 
+
 sticker(
   a,
   package = "mapSpain",

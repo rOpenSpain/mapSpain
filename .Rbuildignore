@@ -9,9 +9,9 @@
 ^docs$
 ^pkgdown$
 ^LICENSE
-^giscoR\.Rcheck$
-^giscoR.*\.tar\.gz$
-^giscoR.*\.tgz$
+^mapSpain\.Rcheck$
+^mapSpain.*\.tar\.gz$
+^mapSpain.*\.tgz$
 ^\.github$
 ^LICENSE\.md$
 ^README-.*\.png$

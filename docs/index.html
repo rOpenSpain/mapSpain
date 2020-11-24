@@ -139,15 +139,19 @@
 <span class="co"># Choropleth map</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
-
 <span class="va">br</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/getBreaks.html">getBreaks</a></span><span class="op">(</span><span class="va">CCAA.sf</span><span class="op">$</span><span class="va">porc_women</span>, method <span class="op">=</span> <span class="st">"pretty"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span>
   <span class="va">CCAA.sf</span>,
   var <span class="op">=</span> <span class="st">"porc_women"</span>,
   breaks <span class="op">=</span> <span class="va">br</span>,
-  legend.values.rnd <span class="op">=</span> <span class="fl">2</span>,
+  legend.values.rnd <span class="op">=</span> <span class="fl">3</span>,
   legend.pos <span class="op">=</span> <span class="st">"bottomright"</span>,
-  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">br</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,
+  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">br</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,
+    palette <span class="op">=</span> <span class="st">"Blues 3"</span>,
+    rev <span class="op">=</span> <span class="cn">TRUE</span>,
+    alpha <span class="op">=</span> <span class="fl">0.8</span>
+  <span class="op">)</span>,
   border <span class="op">=</span> <span class="cn">NA</span>,
   legend.title.txt <span class="op">=</span> <span class="st">"% women"</span>
 <span class="op">)</span>
