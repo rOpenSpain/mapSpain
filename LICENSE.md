@@ -552,7 +552,7 @@ to the start of each source file to most effectively state the exclusion of warr
 and each file should have at least the “copyright” line and a pointer to
 where the full notice is found.
 
-    <one line to give the program's name and a brief idea of what it does.>
+    Administrative Boundaries of Spain Including CCAA, Provinces and Municipalities
     Copyright (C) 2020 Diego Hernangómez
 
     This program is free software: you can redistribute it and/or modify

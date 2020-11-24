@@ -33,7 +33,7 @@ This script highlights some features of `mapSpain`:
 ``` r
 library(mapSpain)
 library(sf)
-#> Linking to GEOS 3.8.1, GDAL 3.1.1, PROJ 6.3.1
+#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
 
 census <- mapSpain::pobmun19
 
@@ -68,6 +68,12 @@ choroLayer(
   border = NA,
   legend.title.txt = "% women"
 )
+
+# Add lines
+
+CCAAbox <- esp_get_can_box()
+
+plot(CCAAbox, add = TRUE)
 ```
 
 ![](man/figures/README-static-1.png)<!-- -->

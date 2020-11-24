@@ -1,7 +1,18 @@
 roxygen2::roxygenise()
 
 
+devtools::check_win_release()
+devtools::check_win_devel()
+devtools::check_win_oldrelease()
+devtools::check_rhub()
+
+devtools::build_manual(path = "./dev")
+
 pkgdown::build_site()
+
+pkgdown::build_reference_index()
+
+pkgdown::build_favicons(overwrite = TRUE)
 
 usethis::use_readme_rmd()
 devtools::build_readme()
@@ -131,10 +142,7 @@ addWMSTiles(
 )
 
 
-
-
-
-
+devtools::build_manual("./dev")
 
 library(goodpractice)
 
