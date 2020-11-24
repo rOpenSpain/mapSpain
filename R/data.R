@@ -164,7 +164,8 @@ NULL
 #' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 #' leaflet plugin, \strong{v1.2.0}.
 #' @encoding UTF-8
-#' @seealso \link{esp_getTiles}
+#' @seealso \link{esp_getTiles},
+#' \link{addProviderEspTiles}.
 #'
 #' @format A data frame object with a list of the required parameters
 #' for calling the service:

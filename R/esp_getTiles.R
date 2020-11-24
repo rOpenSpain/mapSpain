@@ -11,7 +11,8 @@
 #' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 #' leaflet plugin, \strong{v1.2.0}.
 #' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{leaflet.providersESP.df}, \link[cartography]{getTiles},
+#' @seealso \link{leaflet.providersESP.df}, \link{addProviderEspTiles},
+#' \link[cartography]{getTiles},
 #'  \link[cartography]{tilesLayer}.
 #' @export
 #'
