@@ -69,7 +69,8 @@ See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
 
 \item{moveCAN}{A logical \code{TRUE,FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Island close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates.
+See Note.}
 }
 \value{
 A \code{POLYGON/POINT} object.
@@ -92,6 +93,12 @@ the data setting \code{update_cache = TRUE}.
 \note{
 Please check the download and usage provisions on
 \code{\link[giscoR]{gisco_attributions}}.
+
+While \code{moveCAN} is useful for visualization, it would alter the
+actual geographical position of the Canary Islands. When using the output
+for spatial analysis or using tiles (\link{esp_getTiles},
+\link{addProviderEspTiles}) this option should be set to \code{FALSE} in
+order to get the actual coordinates.
 }
 \examples{
 
