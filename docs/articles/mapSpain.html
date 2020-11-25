@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapSpain</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0-9001</span>
       </span>
     </div>
 
@@ -59,6 +59,18 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/Imagery.html">Working with  imagery</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -116,28 +128,28 @@
 <h1 class="hasAnchor">
 <a href="#caching" class="anchor"></a>Caching</h1>
 <p><code>mapSpain</code> provides a dataset and tile caching capability, that could be set as:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>mapSpain_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>mapSpain_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span>
 
 <span class="va">OR</span> 
 
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span></code></pre></div>
 <p><code>mapSpain</code> relies on <a href="https://dieghernan.github.io/giscoR/"><code>giscoR</code></a> for downloading some files, and both packages are well synchronized, so if you already use <code>giscoR</code> and you have set your caching options for that package it would be recognized too by <code>mapSpain</code>.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>For installing the development version on (<a href="https://github.com/dieghernan/mapSpain/">Github</a>):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
-<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/mapSpain"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/mapSpain"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="basic-example" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basic-example" class="anchor"></a>Basic example</h1>
 <p>Some examples of what <code>mapSpain</code>can do:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 <span class="co">#&gt; Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span>
 
@@ -145,10 +157,10 @@
 <span class="va">lines</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_can_box.html">esp_get_can_box</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"brown"</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">lines</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">lines</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="mapSpain_files/figure-html/basic-1.png" width="672"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 
 <span class="co"># Plot provinces</span>
 
@@ -158,10 +170,10 @@
   col <span class="op">=</span> <span class="st">"darkgreen"</span>,
   border <span class="op">=</span> <span class="st">"white"</span>,
   axes <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p><img src="mapSpain_files/figure-html/basic-2.png" width="672"></p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># Plot municipalities</span>
 
 
@@ -174,15 +186,15 @@
   key.pos <span class="op">=</span> <span class="cn">NULL</span>,
   border <span class="op">=</span> <span class="st">"grey50"</span>,
   main <span class="op">=</span> <span class="st">"Municipalities of the Basque Country"</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p><img src="mapSpain_files/figure-html/basic-3.png" width="672"></p>
 </div>
 <div id="thematic-maps" class="section level1">
 <h1 class="hasAnchor">
 <a href="#thematic-maps" class="anchor"></a>Thematic maps</h1>
 <p>This is an example on how <code>mapSpain</code> can be used to create thematic maps. For plotting purposes we would use the <a href="https://riatelab.github.io/cartography/docs/index.html"><code>cartography</code> package</a>, however any package that handles <code>sf</code> objects (e.g. <code>ggplot2</code>, <code>tmap</code>, <code>leaflet</code>, etc. could be used).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># Population density of East of Spain</span>
 
 <span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/pobmun19.html">pobmun19</a></span>
@@ -237,7 +249,7 @@
   nodata <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/esp_get_can_box.html">esp_get_can_box</a></span><span class="op">(</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/esp_get_can_box.html">esp_get_can_box</a></span><span class="op">(</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="mapSpain_files/figure-html/thematic-1.png" width="700.8"></p>
 </div>
   </div>

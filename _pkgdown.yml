@@ -39,8 +39,6 @@ figures:
   fig.ext: png
   fig.width: 7.3
   fig.retina: 2
-  fig.asp:
-
 
 template:
   params:

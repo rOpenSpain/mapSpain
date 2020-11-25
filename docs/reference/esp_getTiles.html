@@ -90,7 +90,7 @@ v1.2.0" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapSpain</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0-9001</span>
       </span>
     </div>
 
@@ -107,6 +107,18 @@ v1.2.0" />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Imagery.html">Working with  imagery</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -161,6 +173,7 @@ fetched from various open map servers.</p>
   zoom <span class='op'>=</span> <span class='cn'>NULL</span>,
   crop <span class='op'>=</span> <span class='cn'>TRUE</span>,
   res <span class='op'>=</span> <span class='fl'>512</span>,
+  bbox_expand <span class='op'>=</span> <span class='fl'>0.05</span>,
   transparent <span class='op'>=</span> <span class='cn'>TRUE</span>,
   mask <span class='op'>=</span> <span class='cn'>FALSE</span>,
   update_cache <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -192,6 +205,11 @@ FALSE otherwise. If x is an sf object with one POINT, crop is set to FALSE.</p><
     <tr>
       <th>res</th>
       <td><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></td>
+    </tr>
+    <tr>
+      <th>bbox_expand</th>
+      <td><p>A numeric value that indicates the expansion percentage
+of the bounding box of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>transparent</th>

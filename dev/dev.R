@@ -1,11 +1,23 @@
 roxygen2::roxygenise()
 
+devtools::build_readme()
+
+
 help(giscoR)
 
+??mapSpain
 
 options(mapSpain_cache_dir="~/R/mapslib/GISCO")
 
 devtools::revdep("mapSpain")
+
+pkgdown::build_article("Imagery")
+
+pkgdown::build_articles_index()
+
+pkgdown::build_site()
+
+pkgdown::clean_site()
 
 tinytest::test_all()
 
