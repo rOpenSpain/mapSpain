@@ -27,6 +27,9 @@ if (giscoR::gisco_check_access()) {
   expect_message(esp_getTiles(poly,
                               type = "RedTransporte.Carreteras",
                               verbose = TRUE, mask = TRUE))
+  expect_message(esp_getTiles(poly,
+                              type = "RedTransporte.Carreteras",
+                              verbose = TRUE, mask = TRUE))
 
 
 }
