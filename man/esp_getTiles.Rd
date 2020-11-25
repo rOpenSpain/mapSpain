@@ -14,6 +14,7 @@ esp_getTiles(
   zoom = NULL,
   crop = TRUE,
   res = 512,
+  bbox_expand = 0.05,
   transparent = TRUE,
   mask = FALSE,
   update_cache = FALSE,
@@ -33,6 +34,9 @@ esp_getTiles(
 FALSE otherwise. If x is an sf object with one POINT, crop is set to FALSE.}
 
 \item{res}{Resolution (in pixels) of the final tile. Only valid for WMS.}
+
+\item{bbox_expand}{A numeric value that indicates the expansion percentage
+of the bounding box of \code{x}.}
 
 \item{transparent}{Logical. Provides transparent background, if supported.
 Depends on the selected provider on \code{type}.}

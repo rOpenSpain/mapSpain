@@ -6,12 +6,15 @@ getWMS <- function(x,
                    cache_dir,
                    verbose,
                    res,
-                   transparent) {
+                   transparent,
+                   bbox_expand) {
+  bbox_expand <- max(1 + bbox_expand, 1.1)
+
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
-  maxdist <- max(dimx, dimy) * 1.1 # Add some extra margin
+  maxdist <- max(dimx, dimy) * bbox_expand # Expand bbox
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
   bboxsquare <- c(center[1] - maxdist / 2,
@@ -79,10 +82,10 @@ getWMS <- function(x,
     nrow <- dim(img)[1]
 
     for (i in seq_len(nrow)) {
-      row <- img[i, , ]
+      row <- img[i, ,]
       alpha <- row[, 4] == 0
-      row[alpha, ] <- NA
-      img[i, , ] <- row
+      row[alpha,] <- NA
+      img[i, ,] <- row
     }
   }
 
@@ -192,10 +195,10 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
         nrow <- dim(img)[1]
 
         for (j in seq_len(nrow)) {
-          row <- img[j, , ]
+          row <- img[j, ,]
           alpha <- row[, 4] == 0
-          row[alpha, ] <- NA
-          img[j, , ] <- row
+          row[alpha,] <- NA
+          img[j, ,] <- row
         }
       }
     }

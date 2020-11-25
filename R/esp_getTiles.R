@@ -23,6 +23,8 @@
 #' @param crop TRUE if results should be cropped to the specified x extent,
 #' FALSE otherwise. If x is an sf object with one POINT, crop is set to FALSE.
 #' @param res Resolution (in pixels) of the final tile. Only valid for WMS.
+#' @param bbox_expand A numeric value that indicates the expansion percentage
+#' of the bounding box of \code{x}.
 #' @param transparent Logical. Provides transparent background, if supported.
 #' Depends on the selected provider on \code{type}.
 #' @param mask \code{TRUE} if the result should be masked to \code{x}.
@@ -47,6 +49,7 @@ esp_getTiles <- function(x,
                          zoom = NULL,
                          crop = TRUE,
                          res = 512,
+                         bbox_expand = 0.05,
                          transparent = TRUE,
                          mask = FALSE,
                          update_cache = FALSE,
@@ -55,7 +58,7 @@ esp_getTiles <- function(x,
   # A. Check providers
   leafletProvidersESP <- mapSpain::leaflet.providersESP.df
   provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == type, ]
+    leafletProvidersESP[leafletProvidersESP$provider == type,]
 
   if (nrow(provs) == 0) {
     stop(
@@ -91,7 +94,14 @@ esp_getTiles <- function(x,
 
   if (provs[provs$field == "type", "value"] == "WMS") {
     rout <-
-      getWMS(x, provs, update_cache, cache_dir, verbose, res, transparent)
+      getWMS(x,
+             provs,
+             update_cache,
+             cache_dir,
+             verbose,
+             res,
+             transparent,
+             bbox_expand)
   } else {
     rout <-
       getWMTS(x,
@@ -128,8 +138,10 @@ esp_getTiles <- function(x,
   # crop management
   if (crop == TRUE) {
     cb <- sf::st_bbox(x)
-    k <- min(c(0.052 * (cb[4] - cb[2]), 0.052 * (cb[3] - cb[1])))
-    cb <- cb + c(-k, -k, k, k)
+
+    k <-
+      min(c(bbox_expand * (cb[4] - cb[2]), bbox_expand * (cb[3] - cb[1])))
+    cb <- cb + c(-k,-k, k, k)
     rout <- raster::crop(rout, cb[c(1, 3, 2, 4)])
   }
 
