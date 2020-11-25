@@ -21,19 +21,15 @@ if (gisco_check_access()) {
   # Single point
   point <- esp_get_ccaa("Madrid")
   point <- st_transform(point, 3857)
-  point <- st_sample(point,1)
+  point <- st_sample(point, 1)
 
 
 
   expect_message(esp_getTiles(point, type = "RedTransporte.Carreteras",
-                             verbose = TRUE))
+                              verbose = TRUE))
   expect_message(esp_getTiles(st_geometry(point),
-                             type = "RedTransporte.Carreteras",
-                             verbose = TRUE))
-
-  expect_silent(esp_getTiles(poly,"IGNBase.Gris", mask = TRUE))
+                              type = "RedTransporte.Carreteras",
+                              verbose = TRUE, mask = TRUE))
 
 
 }
-
-

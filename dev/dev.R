@@ -2,8 +2,13 @@ roxygen2::roxygenise()
 
 devtools::build_readme()
 
+tinytest::test_all()
 
 help(giscoR)
+
+usethis::use_cran_comments()
+
+devtools::spell_check()
 
 ??mapSpain
 
