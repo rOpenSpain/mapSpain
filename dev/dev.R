@@ -10,6 +10,7 @@ help(giscoR)
 options(mapSpain_cache_dir="~/R/mapslib/GISCO")
 
 devtools::revdep("mapSpain")
+pkgdown::build_articles()
 
 pkgdown::build_article("Imagery")
 

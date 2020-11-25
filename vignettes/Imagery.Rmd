@@ -1,8 +1,8 @@
 ---
-title: "Working with  imagery"
+title: "Working with imagery"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Working with  imagery}
+  %\VignetteIndexEntry{Working with imagery}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -69,7 +69,8 @@ Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 BG <- esp_getTiles(Madrid, "IGNBase.Gris")
 ADIF.opaque <-
-  esp_getTiles(Madrid, "RedTransporte.Ferroviario", transparent = FALSE)
+  esp_getTiles(Madrid, "RedTransporte.Ferroviario",
+               transparent = FALSE)
 
 tilesLayer(BG)
 plot(
@@ -82,7 +83,8 @@ tilesLayer(ADIF.opaque, add = TRUE)
 
 # Example with transparency
 
-ADIF.alpha <- esp_getTiles(Madrid, "RedTransporte.Ferroviario")
+ADIF.alpha <- esp_getTiles(Madrid,
+                           "RedTransporte.Ferroviario")
 
 tilesLayer(BG)
 plot(
@@ -129,12 +131,13 @@ Tenerife.leaf <-
 
 
 bbox <-
-  as.double(round(st_bbox(Tenerife.leaf) + c(-1,-1, 1, 1), 2))
+  as.double(round(st_bbox(Tenerife.leaf) + c(-1, -1, 1, 1), 2))
 
 # Start leaflet
 m <- leaflet(Tenerife.leaf,
              width = "100%",
-             options = leafletOptions(minZoom = 9, maxZoom = 18))
+             options = leafletOptions(minZoom = 9,
+                                      maxZoom = 18))
 
 # Add layers
 m <- m %>%
@@ -142,7 +145,8 @@ m <- m %>%
   addPolygons(color = NA,
               fillColor = "red",
               group = "Polygon") %>%
-  addProviderEspTiles("Geofisica.Terremotos365dias", group = "Earthquakes")
+  addProviderEspTiles("Geofisica.Terremotos365dias",
+                      group = "Earthquakes")
 
 # Add additional options
 m  %>%
@@ -159,12 +163,13 @@ m  %>%
 
 Madrid.leaflet <- esp_get_ccaa("Madrid", epsg = 4326)
 
-m2 <- leaflet(Madrid.leaflet) %>%
+m2 <- leaflet(Madrid.leaflet, width = "100%") %>%
   addProviderEspTiles("IGNBase.Gris") %>%
   addPolygons(color = NA,
               fillColor = "red",
               group = "Polygon") %>%
-  addProviderEspTiles("RedTransporte.Ferroviario", group = "Railway") %>%
+  addProviderEspTiles("RedTransporte.Ferroviario",
+                      group = "Railway") %>%
   addLayersControl(overlayGroups = c("Polygon", "Railway"))
 
 # Add layer control
