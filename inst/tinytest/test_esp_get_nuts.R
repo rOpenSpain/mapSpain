@@ -1,5 +1,4 @@
 library(tinytest)
-library(sf)
 
 expect_silent(esp_get_nuts())
 expect_silent(esp_get_nuts(resolution = 1))

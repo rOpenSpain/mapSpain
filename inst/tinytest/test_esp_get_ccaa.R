@@ -1,5 +1,4 @@
 library(tinytest)
-library(sf)
 
 expect_error(esp_get_ccaa("FFF"))
 expect_silent(esp_get_ccaa())

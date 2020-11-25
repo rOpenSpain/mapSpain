@@ -1,5 +1,4 @@
 library(tinytest)
-library(sf)
 
 expect_silent(esp_get_hex_ccaa())
 expect_silent(esp_get_hex_prov())

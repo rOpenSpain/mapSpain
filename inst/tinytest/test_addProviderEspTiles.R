@@ -1,6 +1,5 @@
 library(leaflet)
 library(tinytest)
-library(sf)
 
 expect_silent(providerEspTileOptions())
 

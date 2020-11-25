@@ -1,4 +1,3 @@
-library(sf)
 library(tinytest)
 
 
