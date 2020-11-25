@@ -55,8 +55,7 @@ library(leaflet)
 \seealso{
 \link{leaflet.providersESP.df}, \link{esp_getTiles}
 
-\link[leaflet]{tileOptions},\link[leaflet]{WMSTileOptions},
-\link[leaflet]{providerTileOptions}
+\link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

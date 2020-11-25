@@ -34,7 +34,7 @@ addProviderEspTiles <- function(map,
   leafletProvidersESP <-
     as.data.frame(mapSpain::leaflet.providersESP.df)
   provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == provider,]
+    leafletProvidersESP[leafletProvidersESP$provider == provider, ]
 
   if (nrow(provs) == 0) {
     stop(
@@ -56,7 +56,7 @@ addProviderEspTiles <- function(map,
 
   # Work with options
   if (isFALSE(isWMTS)) {
-    layers = provs[provs$field == "layers", "value"]
+    layers <- provs[provs$field == "layers", "value"]
   }
 
   opts <-
@@ -75,7 +75,7 @@ addProviderEspTiles <- function(map,
 
 
   # Clean if the option was already set
-  opts <- opts[!(opts$field %in% names(options)), ]
+  opts <- opts[!(opts$field %in% names(options)),]
 
   # Pass to list
 
@@ -142,8 +142,7 @@ addProviderEspTiles <- function(map,
 #' @details \code{providerEspTileOptions} is a wrapper of
 #' \code{leaflet::providerTileOptions}
 #' @param ...  Additional options. See \link[leaflet]{providerTileOptions}.
-#' @seealso \link[leaflet]{tileOptions},\link[leaflet]{WMSTileOptions},
-#' \link[leaflet]{providerTileOptions}
+#' @seealso \link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
 #' @export
 providerEspTileOptions <- function(...) {
   ops <- leaflet::providerTileOptions(...)

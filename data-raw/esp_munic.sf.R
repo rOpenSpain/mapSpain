@@ -10,6 +10,10 @@ df <- esp_get_munic(verbose = TRUE, moveCAN = FALSE, epsg = 4258)
 plot(df$geometry)
 
 
+
+sf::st_g
+
+
 e <- st_crs(esp_get_ccaa())
 esp_munic.sf <- st_transform(df, st_crs(df))
 esp_munic.sf <- sf::st_make_valid(esp_munic.sf)
