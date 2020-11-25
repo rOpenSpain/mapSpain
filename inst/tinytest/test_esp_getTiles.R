@@ -21,8 +21,9 @@ if (gisco_check_access()) {
   # Single point
   point <- esp_get_ccaa("Madrid")
   point <- st_transform(point, 3857)
-  point <- st_centroid(point, of_largest_polygon = TRUE)
-  
+  point <- st_sample(point,1)
+
+
 
   expect_message(esp_getTiles(point, type = "RedTransporte.Carreteras",
                              verbose = TRUE))
@@ -30,5 +31,9 @@ if (gisco_check_access()) {
                              type = "RedTransporte.Carreteras",
                              verbose = TRUE))
 
+  expect_silent(esp_getTiles(poly,"IGNBase.Gris", mask = TRUE))
+
 
 }
+
+
