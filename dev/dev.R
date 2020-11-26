@@ -12,6 +12,12 @@ devtools::spell_check()
 
 ??mapSpain
 
+devtools::release(check = TRUE)
+
+devtools::check()
+
+tinytest::test_all()
+
 options(mapSpain_cache_dir="~/R/mapslib/GISCO")
 
 devtools::revdep("mapSpain")
@@ -26,6 +32,8 @@ pkgdown::build_site(lazy = TRUE)
 devtools::spell_check()
 
 pkgdown::clean_site()
+
+sessionInfo()
 
 tinytest::test_all()
 
