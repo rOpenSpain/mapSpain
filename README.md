@@ -56,22 +56,23 @@ CCAA.sf <- esp_get_ccaa()
 CCAA.sf <- merge(CCAA.sf, census_ccaa)
 
 
+
 # Choropleth map
 
 library(cartography)
 br <- getBreaks(CCAA.sf$porc_women, method = "pretty")
+pal <- hcl.colors(length(br) - 1,
+  palette = "Blues 3",
+  rev = TRUE,
+  alpha = 0.8
+)
 choroLayer(
   CCAA.sf,
   var = "porc_women",
   breaks = br,
   legend.values.rnd = 3,
   legend.pos = "bottomright",
-  col = hcl.colors(
-    length(br) - 1,
-    palette = "Blues 3",
-    rev = TRUE,
-    alpha = 0.8
-  ),
+  col = pal,
   border = NA,
   legend.title.txt = "% women"
 )
@@ -80,10 +81,10 @@ choroLayer(
 
 CCAAbox <- esp_get_can_box()
 
-plot(CCAAbox, add = TRUE)
+plot(CCAAbox, add = TRUE, col = pal[length(pal)])
 ```
 
-![](man/figures/README-static-1.png)<!-- -->
+![](https://github.com/dieghernan/mapSpain/blob/master/README-static-1.png)<!-- -->
 
 You can combine `POLYGONS` with static tiles
 
@@ -101,7 +102,7 @@ Asturias.sf <- esp_get_munic(region = "Asturias")
 Asturias.pop <-
   merge(Asturias.sf, census, by.x = "LAU_CODE", by.y = "municode")
 
-# Get tiles with hillshade
+# Get tiles
 
 Asturias.pop <- st_transform(Asturias.pop, 3857)
 
@@ -151,7 +152,7 @@ legendChoro(
 )
 ```
 
-![](man/figures/README-tile-1.png)<!-- -->
+![](https://github.com/dieghernan/mapSpain/blob/master/README-tile-1.png)<!-- -->
 
 ### A note on caching
 
@@ -208,4 +209,4 @@ translation of the copyright notice in the language of the publication
 shall be used.
 
 If you intend to use the data commercially, please contact
-EuroGeographics for information regarding their licence agreements.
+EuroGeographics for information regarding their license agreements.

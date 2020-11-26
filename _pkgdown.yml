@@ -43,6 +43,7 @@ figures:
 template:
   params:
     bootswatch: flatly
+    ganalytics: 'G-PWKD479RCT'
   opengraph:
     twitter:
       creator: "@dhernangomez"
@@ -54,6 +55,9 @@ home:
 
 deploy:
   install_metadata: true
+
+development:
+  version_tooltip: "Soon on CRAN"
 
 navbar:
   structure:

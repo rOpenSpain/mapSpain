@@ -16,8 +16,8 @@ options(mapSpain_cache_dir="~/R/mapslib/GISCO")
 
 devtools::revdep("mapSpain")
 pkgdown::build_articles()
-
-pkgdown::build_article("Imagery")
+pkgdown::clean_site()
+pkgdown::build_article("mapSpain")
 
 pkgdown::build_articles_index()
 
@@ -40,14 +40,16 @@ pkgdown::build_favicons(overwrite = TRUE)
 pkgdown::build_site(lazy = FALSE)
 pkgdown::build_articles(lazy = FALSE)
 
+pkgdown::build_site()
 pkgdown::build_reference_index()
 
 pkgdown::build_favicons(overwrite = TRUE)
 
 usethis::use_readme_rmd()
 devtools::build_readme()
+pkgdown::build_()
 
-
+pkgdown::clean_site()
 devtools::document()
 interactive()
 
@@ -55,6 +57,20 @@ leaflet.providersESP.df
 
 leafle
 tinytest::test_all()
+
+
+
+# Checks release
+
+
+devtools::spell_check()
+devtools::check_rhub()
+devtools::check_win_release()
+devtools::check_win_devel()
+devtools::check_win_oldrelease()
+
+devtools::release()
+
 
 leaflet::addP
 

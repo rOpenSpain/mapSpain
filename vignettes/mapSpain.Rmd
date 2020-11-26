@@ -34,7 +34,7 @@ and NUTS levels of Spain. It also provides hexbin shapefiles and other complemen
 **`mapSpain`** provides access to map tiles of public organisms of Spain, that can be
 represented on static maps via `mapSpain::esp_getTiles()` or on a **R** leaflet map using `mapSpain::addProviderEspTiles()`.
 
-On top of that, **`mapSpain`** also has a powerful dictionary that translate provinces and other regions to English, Spanish, Catalan, Basque language or Galician, and also convers those names to different coding standards, as NUTS, ISO2 or the coding system used by the INE, that is the official statistic agency of Spain.
+On top of that, **`mapSpain`** also has a powerful dictionary that translate provinces and other regions to English, Spanish, Catalan, Basque language or Galician, and also converts those names to different coding standards, as NUTS, ISO2 or the coding system used by the INE, that is the official statistic agency of Spain.
 
 
 # Caching
@@ -89,13 +89,20 @@ plot(
 
 # Plot municipalities
 
-
-
+Euskadi_CCAA <- esp_get_ccaa("Euskadi")
 Euskadi <- esp_get_munic(region = "Euskadi")
+
+# Add layers
+plot(
+  st_geometry(Euskadi_CCAA),
+  col = "grey50",
+  axes = TRUE
+)
+
 plot(
   Euskadi[, "cpro"],
   pal = c("red2", "darkgreen", "ivory2"),
-  axes = TRUE,
+  add = TRUE,
   key.pos = NULL,
   border = "grey50",
   main = "Municipalities of the Basque Country"
@@ -110,10 +117,10 @@ This is an example on how `mapSpain` can be used to create thematic maps. For pl
 
 ```{r thematic}
 
-# Population density of East of Spain
+# Population density of Spain - Center
 
 pop <- mapSpain::pobmun19
-
+Spain <- esp_get_country()
 munic <- esp_get_munic()
 
 # Get area (km2)
@@ -140,17 +147,25 @@ br <-
     10000,
     Inf)
 
+pal <- hcl.colors(length(br) - 1, pal = "inferno", alpha = 0.7)
+
+# Add layers
+
+
+plot(st_geometry(Spain), col = pal[1], border = NA)
+
 choroLayer(
   munic.pop,
   var = "dens",
   breaks = br,
   legend.pos = "n",
-  col =
-    hcl.colors(length(br) - 1, pal = "inferno", alpha = 0.7),
-  colNA = "grey50",
-  border = NA
+  col = pal,
+  colNA = pal[1],
+  border = NA,
+  add = TRUE
 )
 
+plot(esp_get_can_box(), add = TRUE)
 
 
 brlabs <- prettyNum(br, big.mark = ",")
@@ -158,13 +173,12 @@ brlabs[c(1, length(brlabs))] <- ""
 legendChoro(
   pos = "topleft",
   breaks = brlabs,
-  col =
-    hcl.colors(length(br) - 1, pal = "inferno", alpha = 0.7),
+  col = pal,
   title.txt = "Density Pop.\nkm2",
   nodata = FALSE
 )
 
-plot(esp_get_can_box(), add = TRUE)
+
 
 
 ```

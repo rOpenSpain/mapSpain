@@ -33,7 +33,7 @@ The services are implemented via the leaflet plugin [leaflet-providersESP](diegh
 
 ## Static tiles
 
-An example of how you can include several tiles to create a static map. We focus here on the eartquakes of the last 365 days in the island of Tenerife. Note that the tile is actively maintained so the final plot based on a static file would vary depending on the date.
+An example of how you can include several tiles to create a static map. We focus here on the earthquakes of the last 365 days in the island of Tenerife. Note that the tile is actively maintained so the final plot based on a static file would vary depending on the date.
 
 In this example, it is important to set `moveCAN = FALSE`, otherwise Tenerife would be
 geographically displaced while the imagery won't.
