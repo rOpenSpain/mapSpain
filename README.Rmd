@@ -49,7 +49,7 @@ install_github("dieghernan/mapSpain")
 
 This script highlights some features of `mapSpain`:
 
-```{r static}
+```{r static, dev='svg'}
 library(mapSpain)
 library(sf)
 
@@ -101,7 +101,7 @@ plot(CCAAbox, add = TRUE, col = pal[length(pal)] )
 
 You can combine `POLYGONS` with static tiles
 
-```{r tile, warning=FALSE, fig.asp=0.7}
+```{r tile, warning=FALSE, fig.asp=0.7, dev='svg'}
 library(mapSpain)
 library(sf)
 

@@ -29,15 +29,23 @@ of its size, what introduces a bias. Here with hexbin, each region is
 represented equally dismissing the bias.
 }
 \examples{
-
-library(sf)
-
+library(mapSpain)
 
 ccaa <- esp_get_hex_ccaa()
-plot(st_geometry(ccaa), col = hcl.colors(4))
+plot(
+  ccaa[, "nuts1.code"],
+  pal = hcl.colors(7, palette = "Dark 2"),
+  key.pos = NULL,
+  main = NA
+)
 
 prov <- esp_get_hex_prov()
-plot(st_geometry(prov), col = hcl.colors(15))
+plot(
+  prov[, "codauto"],
+  pal = hcl.colors(19, palette = "Dark 2"),
+  key.pos = NULL,
+  main = NA
+)
 }
 \seealso{
 \link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},

@@ -122,7 +122,7 @@ boundaries of the provinces or autonomous communities of Spain." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/imagery.html">Working with imagery</a>
+      <a href="../articles/Imagery.html">Working with imagery</a>
     </li>
   </ul>
 </li>
@@ -204,16 +204,24 @@ represented equally dismissing the bias.</p>
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
-
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dieghernan.github.io/mapSpain/'>mapSpain</a></span><span class='op'>)</span>
 
 <span class='va'>ccaa</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_hex_ccaa</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>ccaa</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_hex-1.png' alt='' width='701' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span>
+  <span class='va'>ccaa</span><span class='op'>[</span>, <span class='st'>"nuts1.code"</span><span class='op'>]</span>,
+  pal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>7</span>, palette <span class='op'>=</span> <span class='st'>"Dark 2"</span><span class='op'>)</span>,
+  key.pos <span class='op'>=</span> <span class='cn'>NULL</span>,
+  main <span class='op'>=</span> <span class='cn'>NA</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='esp_get_hex-1.svg' alt='' width='701' height='433' /></div><div class='input'>
 <span class='va'>prov</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_hex_prov</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>prov</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_hex-2.png' alt='' width='701' height='433' /></div></pre>
+<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span>
+  <span class='va'>prov</span><span class='op'>[</span>, <span class='st'>"codauto"</span><span class='op'>]</span>,
+  pal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>19</span>, palette <span class='op'>=</span> <span class='st'>"Dark 2"</span><span class='op'>)</span>,
+  key.pos <span class='op'>=</span> <span class='cn'>NULL</span>,
+  main <span class='op'>=</span> <span class='cn'>NA</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='esp_get_hex-2.svg' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

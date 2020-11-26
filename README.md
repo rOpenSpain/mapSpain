@@ -36,7 +36,7 @@ This script highlights some features of `mapSpain`:
 ``` r
 library(mapSpain)
 library(sf)
-#> Linking to GEOS 3.8.1, GDAL 3.1.1, PROJ 6.3.1
+#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
 
 census <- mapSpain::pobmun19
 
@@ -84,7 +84,7 @@ CCAAbox <- esp_get_can_box()
 plot(CCAAbox, add = TRUE, col = pal[length(pal)])
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/mapSpain/master/README-static-1.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/mapSpain/master/README-static-1.svg)<!-- -->
 
 You can combine `POLYGONS` with static tiles
 
@@ -152,7 +152,7 @@ legendChoro(
 )
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/mapSpain/master/README-tile-1.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/mapSpain/master/README-tile-1.svg)<!-- -->
 
 ### A note on caching
 
@@ -171,11 +171,11 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)  
-  - [`cartography`](http://riatelab.github.io/cartography/docs/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)  
+-   [`cartography`](http://riatelab.github.io/cartography/docs/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -189,7 +189,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 When data downloaded from this page is used in any printed or electronic
