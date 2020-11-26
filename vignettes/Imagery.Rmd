@@ -169,8 +169,7 @@ m2 <- leaflet(Madrid.leaflet, width = "100%") %>%
               fillColor = "red",
               group = "Polygon") %>%
   addProviderEspTiles("RedTransporte.Ferroviario",
-                      group = "Railway") %>%
-  addLayersControl(overlayGroups = c("Polygon", "Railway"))
+                      group = "Railway")
 
 # Add layer control
 
