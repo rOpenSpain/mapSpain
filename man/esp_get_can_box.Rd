@@ -11,7 +11,7 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 }
 \arguments{
 \item{style}{Style of line around Canary Islands. Three options available:
-\code{'left','right'} or \code{'box'}.}
+\code{'left', 'right'} or \code{'box'}.}
 
 \item{moveCAN, epsg}{See \link{esp_get_nuts}}
 }

@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @param style Style of line around Canary Islands. Three options available:
-#' \code{'left','right'} or \code{'box'}.
+#' \code{'left', 'right'} or \code{'box'}.
 #' @param moveCAN,epsg See \link{esp_get_nuts}
 #' @examples
 #' library(sf)

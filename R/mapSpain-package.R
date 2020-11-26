@@ -52,7 +52,7 @@
 #'
 #' If you intend to use the data commercially,
 #' please contact EuroGeographics for
-#' information regarding their licence agreements.
+#' information regarding their license agreements.
 NULL
 
 # import stuffs

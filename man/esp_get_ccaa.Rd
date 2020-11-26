@@ -17,7 +17,7 @@ A \code{POLYGON/POINT} object.
 }
 \description{
 Loads a simple feature (\code{sf}) object containing the
-autonomous commmunities boundaries of Spain.
+autonomous communities boundaries of Spain.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes

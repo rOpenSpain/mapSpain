@@ -59,7 +59,7 @@ match the second subdivision level of Spain (Provinces). NUTS3 provides a
 dedicated code for major islands whereas the Provinces doesn't.
 
 Ceuta and Melilla has an specific status (Autonomous Cities) but are
-considered as communities with a single provice (as Madrid, Asturias
+considered as communities with a single province (as Madrid, Asturias
 or Murcia) on this dataset.
 }
 \examples{

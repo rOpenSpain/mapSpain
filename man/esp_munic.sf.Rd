@@ -13,7 +13,7 @@ object:
   \item{ine.ccaa.name}{INE name of each autonomous community.}
   \item{cpro}{INE code of each province.}
   \item{ine.prov.name}{INE name of each province.}
-  \item{cmun}{INE code of each municipalty.}
+  \item{cmun}{INE code of each municipality.}
   \item{name}{Name of the municipality}
   \item{LAU_CODE}{LAU Code (GISCO) of the municipality}
   \item{geometry}{geometry field}

@@ -5,7 +5,7 @@ always_allow_html: true
 
 ```{r, include = FALSE}
 knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://github.com/dieghernan/mapSpain/blob/master/")
+                     base.url = "https://raw.githubusercontent.com/dieghernan/mapSpain/master/")
 
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",

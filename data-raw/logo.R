@@ -7,7 +7,7 @@ library(dplyr)
 library(ggplot2)
 
 
-sysfonts::font_add_google("Open Sans")
+#sysfonts::font_add_google("Open Sans")
 
 
 
@@ -30,8 +30,6 @@ a <- ggplot(map) + geom_sf(fill = "#FABD00",
   geom_sf(data =l, color="#FABD00", lwd=0.1) +
   geom_sf(data=p,color="#FABD00", lwd=0.1) +
   theme_void()
-
-
 
 
 

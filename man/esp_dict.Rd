@@ -15,7 +15,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 \item{origin, destination}{One of \code{'text', 'nuts', 'iso2', 'codauto'}
 and \code{'cpro'}.}
 
-\item{lang}{Language of translatation. Available languages are:
+\item{lang}{Language of translation. Available languages are:
 \itemize{
   \item{\code{es}: }{Spanish}
   \item{\code{en}: }{English}

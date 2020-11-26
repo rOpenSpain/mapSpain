@@ -1,7 +1,7 @@
 #' @title Get Autonomous Communities boundaries of Spain
 #' @name esp_get_ccaa
 #' @description Loads a simple feature (\code{sf}) object containing the
-#' autonomous commmunities boundaries of Spain.
+#' autonomous communities boundaries of Spain.
 #' @return A \code{POLYGON/POINT} object.
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @seealso \link{esp_get_hex_ccaa}, \link{esp_get_nuts}, \link{esp_get_prov},

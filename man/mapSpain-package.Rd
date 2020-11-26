@@ -48,7 +48,7 @@ in the language of the publication shall be used.
 
 If you intend to use the data commercially,
 please contact EuroGeographics for
-information regarding their licence agreements.
+information regarding their license agreements.
 }
 \references{
 See \code{citation("mapSpain")}

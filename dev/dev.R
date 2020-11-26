@@ -21,7 +21,9 @@ pkgdown::build_article("mapSpain")
 
 pkgdown::build_articles_index()
 
-pkgdown::build_site()
+pkgdown::build_site(lazy = TRUE)
+
+devtools::spell_check()
 
 pkgdown::clean_site()
 
@@ -37,7 +39,7 @@ devtools::check_rhub()
 devtools::build_manual(path = "./dev")
 pkgdown::build_favicons(overwrite = TRUE)
 
-pkgdown::build_site(lazy = FALSE)
+pkgdown::build_site(lazy = TRUE)
 pkgdown::build_articles(lazy = FALSE)
 
 pkgdown::build_site()

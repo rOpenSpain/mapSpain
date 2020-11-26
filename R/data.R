@@ -50,7 +50,7 @@
 #' dedicated code for major islands whereas the Provinces doesn't.
 #'
 #' Ceuta and Melilla has an specific status (Autonomous Cities) but are
-#' considered as communities with a single provice (as Madrid, Asturias
+#' considered as communities with a single province (as Madrid, Asturias
 #' or Murcia) on this dataset.
 #' @examples
 #' data(esp_codelist)
@@ -112,7 +112,7 @@ NULL
 #'   \item{ine.ccaa.name}{INE name of each autonomous community.}
 #'   \item{cpro}{INE code of each province.}
 #'   \item{ine.prov.name}{INE name of each province.}
-#'   \item{cmun}{INE code of each municipalty.}
+#'   \item{cmun}{INE code of each municipality.}
 #'   \item{name}{Name of the municipality}
 #'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality}
 #'   \item{geometry}{geometry field}

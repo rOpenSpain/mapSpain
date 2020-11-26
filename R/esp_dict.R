@@ -203,7 +203,7 @@ esp_dict_region_code <- function(sourcevar,
 #' language \code{lang}.
 #' @export
 #'
-#' @param lang Language of translatation. Available languages are:
+#' @param lang Language of translation. Available languages are:
 #' \itemize{
 #'   \item{\code{es}: }{Spanish}
 #'   \item{\code{en}: }{English}
