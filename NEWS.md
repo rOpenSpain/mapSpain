@@ -1,7 +1,7 @@
 # mapSpain 0.1.1
 
 * Fix CRAN submission.
-* Added esp_get_grid_prov() and esp_get_grid_ccaa().
+* Added mapSpain::esp_get_grid_prov() and mapSpain::esp_get_grid_ccaa().
 
 
 

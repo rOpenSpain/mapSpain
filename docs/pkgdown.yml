@@ -2,9 +2,9 @@ pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  imagery: imagery.html
   mapSpain: mapSpain.html
-last_built: 2020-11-27T13:59Z
+  working_imagery: working_imagery.html
+last_built: 2020-11-27T14:14Z
 urls:
   reference: https://dieghernan.github.io/mapSpain/reference
   article: https://dieghernan.github.io/mapSpain/articles
