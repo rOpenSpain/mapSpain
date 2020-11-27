@@ -11,7 +11,7 @@ reference:
       - esp_get_ccaa
       - esp_get_nuts
       - esp_get_country
-      - esp_get_hex
+      - esp_get_gridmap
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:
@@ -44,6 +44,9 @@ template:
   params:
     bootswatch: flatly
     ganalytics: 'G-PWKD479RCT'
+    docsearch:
+      api_key: '2621bfcaa3de971834f4026466317ee7'
+      index_name: 'mapSpain'
   opengraph:
     twitter:
       creator: "@dhernangomez"
