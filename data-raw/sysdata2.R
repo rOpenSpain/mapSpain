@@ -4,10 +4,11 @@ load("./R/sysdata.rda")
 list <- ls()
 
 
+
+
 library(sf)
 data.sf <-
   st_read("./data-raw/input/esp_prov_hexgrid.gpkg", stringsAsFactors  = FALSE)
-
 
 
 data.sf <- data.sf[,"ISO3"]
@@ -43,6 +44,9 @@ data.sf <-
 data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
 
 esp_hexbin_prov <- data.sf
+esp_hexbin_prov <-
+  st_transform(esp_hexbin_prov, st_crs(esp_get_ccaa()))
+
 
 # CCAA
 
@@ -71,6 +75,9 @@ data.sf <- data.sf[, c(colnames(df), "nuts1.code", "nuts1.name")]
 data.sf <- data.sf[order(data.sf$codauto),]
 
 esp_hexbin_ccaa <- data.sf
+
+esp_hexbin_ccaa <-
+  st_transform(esp_hexbin_ccaa, st_crs(esp_get_ccaa()))
 
 usethis::use_data(
   code2code,

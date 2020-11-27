@@ -1,4 +1,4 @@
-# mapSpain v0.1.0
+# mapSpain v0.1.1
 
 ## Test environments
 
@@ -22,4 +22,10 @@
     Eurostat (17:65)
     GISCO (17:9)
 
-* This is a new release.
+* This is a resubmission due to comments on CRAN incoming checks:
+  * Bump version
+  * On DESCRIPTION: 
+    * Reduce lenght ot title (<65 characters).
+    * Enclose 'leaflet' in single quotes.
+  * Fix a bug on a malformed internal dataset and added a test on this.
+  

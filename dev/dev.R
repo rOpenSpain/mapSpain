@@ -1,5 +1,24 @@
 roxygen2::roxygenise()
 
+tinytest::test_all()
+
+f <- esp_get_hex_ccaa()
+plot(st_geometry(f))
+
+f <- esp_get_hex_ccaa()
+f <- st_make_valid(f)
+st_is_valid(f)
+
+st_crs(f)
+
+library(mapSpain)
+
+s <- esp_get_hex_prov()
+s <- st_transform(s,3857)
+st_is_valid(s)
+par(mar=c(0,0,0,0))
+plot(st_geometry(s))
+
 devtools::build_readme()
 
 tinytest::test_all()
@@ -39,6 +58,7 @@ tinytest::test_all()
 
 hcl.pals("sequential")
 
+devtools::check()
 devtools::check_win_release()
 devtools::check_win_devel()
 devtools::check_win_oldrelease()
