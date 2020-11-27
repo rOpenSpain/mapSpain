@@ -28,4 +28,5 @@
     * Reduce lenght ot title (<65 characters).
     * Enclose 'leaflet' in single quotes.
   * Fix a bug on a malformed internal dataset and added a test on this.
+  * Add a new version of a function.
   
