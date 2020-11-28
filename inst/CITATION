@@ -1,6 +1,6 @@
 citHeader("To cite the 'mapSpain' package in publications use:")
 
-year = sub('.*(2[[:digit:]]{3})-.*', '\\1', meta$Date, perl = TRUE)
+year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
 auth = Filter(function(p) 'aut' %in% p$role, as.person(meta$Author))
 citEntry(
@@ -10,5 +10,5 @@ citEntry(
   year = year,
   note = vers,
   url = 'https://dieghernan.github.io/mapSpain/',
-  textVersion = paste('Hernangomez, D. (', year, '). mapSpain: ', meta$Title, '. ', vers, '.', sep = '')
+  textVersion = paste('Hernangomez, D. (', year, '). mapSpain: ', meta$Title, '. ', vers, '. https://dieghernan.github.io/mapSpain/', sep = '')
 )
