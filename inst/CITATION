@@ -2,7 +2,7 @@ citHeader("To cite the 'mapSpain' package in publications use:")
 
 year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
-auth = Filter(function(p) 'aut' %in% p$role, as.person(meta$Author))
+auth = "Diego Hernangómez"
 citEntry(
   entry = 'manual',
   title = paste('mapSpain:', meta$Title),
