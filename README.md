@@ -3,6 +3,10 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+[![CRAN
+results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
 ![R-CMD-check](https://github.com/dieghernan/mapSpain/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/dieghernan/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/mapSpain)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -21,6 +25,13 @@ Full site with examples and vignettes on
 <https://dieghernan.github.io/mapSpain/>
 
 ## Installation
+
+Install `mapSpain` from
+[**CRAN**](https://CRAN.R-project.org/package=mapSpain):
+
+``` r
+install.packages("mapSpain")
+```
 
 You can install the developing version of `mapSpain` with:
 

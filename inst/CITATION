@@ -2,13 +2,13 @@ citHeader("To cite the 'mapSpain' package in publications use:")
 
 year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
-auth = "Diego Hernangómez"
+url = 'https://CRAN.R-project.org/package=mapSpain'
 citEntry(
   entry = 'manual',
   title = paste('mapSpain:', meta$Title),
-  author = auth,
+  author = "Diego Hernangómez",
   year = year,
   note = vers,
-  url = 'https://dieghernan.github.io/mapSpain/',
-  textVersion = paste('Hernangomez, D. (', year, '). mapSpain: ', meta$Title, '. ', vers, '. https://dieghernan.github.io/mapSpain/', sep = '')
+  url = url,
+  textVersion = paste0('Hernangomez, D. (', year, '). mapSpain: ', meta$Title, '. ', vers, '. Package url: ', url)
 )
