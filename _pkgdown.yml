@@ -59,9 +59,6 @@ home:
 deploy:
   install_metadata: true
 
-development:
-  version_tooltip: "Soon on CRAN"
-
 navbar:
   structure:
     left:  [home, intro, reference, articles, news, authors]

@@ -2,6 +2,11 @@ roxygen2::roxygenise()
 
 tinytest::test_all()
 
+devtools::check()
+
+
+a <- esp_get_ccaa()
+
 f <- esp_get_hex_ccaa()
 plot(st_geometry(f))
 
