@@ -6,13 +6,14 @@
 #'
 #' \code{esp_get_can_box} is used to draw lines around the displaced
 #' Canary Islands.
-#' @return A \code{LINESTRING} object.
+#' @return A \code{LINESTRING} or \code{POLYGON} object if
+#' \code{style = 'poly'}.
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @seealso \link{esp_get_nuts}, \link{esp_get_ccaa}.
 #' @export
 #'
-#' @param style Style of line around Canary Islands. Three options available:
-#' \code{'left', 'right'} or \code{'box'}.
+#' @param style Style of line around Canary Islands. Four options available:
+#' \code{'left', 'right', 'box'} or \code{'poly'}.
 #' @param moveCAN,epsg See \link{esp_get_nuts}
 #' @examples
 #' library(sf)
@@ -38,11 +39,37 @@
 #' plot(st_geometry(Provs_D), col = hcl.colors(4, palette = "Grays"))
 #' plot(Box_D, add = TRUE)
 #' plot(Line_D, add = TRUE)
+#'
+#' # Example with poly option
+#'
+#' library(giscoR)
+#'
+#' Countries <-
+#'   gisco_get_countries(res = "20",
+#'                       epsg = "4326",
+#'                       region = c("Europe", "Africa"))
+#' CANbox <-
+#'   esp_get_can_box(style = "poly",
+#'                   epsg = "4326",
+#'                   moveCAN = c(12.5, 0))
+#' CCAA <- esp_get_ccaa(res = "20",
+#'                      epsg = "4326",
+#'                      moveCAN = c(12.5, 0))
+#'
+#'
+#' plot_sf(CCAA, axes = TRUE, bgc = "skyblue1")
+#' plot(st_geometry(Countries), col = "grey80", add = TRUE)
+#' plot(st_geometry(CANbox),
+#'      border = "black",
+#'      col = "skyblue",
+#'      add = TRUE)
+#' plot(st_geometry(CCAA), add = TRUE, col = "beige")
+#' box()
 esp_get_can_box <- function(style = "right",
                             moveCAN = TRUE,
                             epsg = "4258") {
   # checks
-  if (!style %in% c("left", "right", "box")) {
+  if (!style %in% c("left", "right", "box", "poly")) {
     stop("style should be one of 'right','left','box'")
   }
 
@@ -59,11 +86,13 @@ esp_get_can_box <- function(style = "right",
   bbox <- sf::st_bbox(CAN)
 
 
-  if (style == "box") {
-    bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
+  if (style == "box" | style == "poly") {
+    bbox <- bbox + c(-0.5,-0.3, 0.5, 0.3)
 
     lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(CAN))
-    lall <- sf::st_cast(lall, "LINESTRING")
+    if (style == "box") {
+      lall <- sf::st_cast(lall, "LINESTRING")
+    }
 
   } else if (style == "right") {
     bbox <- bbox + c(0, 0, 0.5, 0.3)
@@ -122,6 +151,7 @@ esp_get_can_box <- function(style = "right",
 #' @rdname esp_get_can_box
 #' @description \code{esp_get_can_provinces} is used to draw a separator
 #' line between the two provinces of the Canary Islands.
+#' @return \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 #' @export
 esp_get_can_provinces <- function(moveCAN = TRUE,
                                   epsg = "4258") {

@@ -10,13 +10,16 @@ esp_get_can_box(style = "right", moveCAN = TRUE, epsg = "4258")
 esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 }
 \arguments{
-\item{style}{Style of line around Canary Islands. Three options available:
-\code{'left', 'right'} or \code{'box'}.}
+\item{style}{Style of line around Canary Islands. Four options available:
+\code{'left', 'right', 'box'} or \code{'poly'}.}
 
 \item{moveCAN, epsg}{See \link{esp_get_nuts}}
 }
 \value{
-A \code{LINESTRING} object.
+A \code{LINESTRING} or \code{POLYGON} object if
+\code{style = 'poly'}.
+
+\code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }
 \description{
 When plotting Spain, it is usual to represent the Canary
@@ -53,6 +56,32 @@ Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
 plot(st_geometry(Provs_D), col = hcl.colors(4, palette = "Grays"))
 plot(Box_D, add = TRUE)
 plot(Line_D, add = TRUE)
+
+# Example with poly option
+
+library(giscoR)
+
+Countries <-
+  gisco_get_countries(res = "20",
+                      epsg = "4326",
+                      region = c("Europe", "Africa"))
+CANbox <-
+  esp_get_can_box(style = "poly",
+                  epsg = "4326",
+                  moveCAN = c(12.5, 0))
+CCAA <- esp_get_ccaa(res = "20",
+                     epsg = "4326",
+                     moveCAN = c(12.5, 0))
+
+
+plot_sf(CCAA, axes = TRUE, bgc = "skyblue1")
+plot(st_geometry(Countries), col = "grey80", add = TRUE)
+plot(st_geometry(CANbox),
+     border = "black",
+     col = "skyblue",
+     add = TRUE)
+plot(st_geometry(CCAA), add = TRUE, col = "beige")
+box()
 }
 \seealso{
 \link{esp_get_nuts}, \link{esp_get_ccaa}.
