@@ -53,6 +53,12 @@ options(gisco_cache_dir = "~/path/to/dir")
 
 # Installation
 
+Install `mapSpain` from
+[**CRAN**](https://CRAN.R-project.org/package=mapSpain):
+
+``` r
+install.packages(“mapSpain”)
+```
 
 For installing the development version on ([Github](https://github.com/dieghernan/mapSpain/)):
 
