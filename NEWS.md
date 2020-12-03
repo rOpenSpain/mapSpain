@@ -2,7 +2,7 @@
 
 * Fix annoying warning if `sf` was not loaded first.
 * Include new `poly` option on `mapSpain::esp_get_can_box()`.
-
+* New grids created with `geogrid::calculate_grid()`
 
 # mapSpain 0.1.1
 
