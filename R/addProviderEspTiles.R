@@ -113,7 +113,7 @@ addProviderEspTiles <- function(map,
 
 
   if (isWMTS) {
-    options <- do.call(leaflet::tileOptions, options)
+    optionend <- do.call(leaflet::tileOptions, optionend)
 
     leaflet::addTiles(
       map,
@@ -124,7 +124,7 @@ addProviderEspTiles <- function(map,
       options = optionend
     )
   } else {
-    options <- do.call(leaflet::WMSTileOptions, options)
+    optionend <- do.call(leaflet::WMSTileOptions, optionend)
 
     leaflet::addWMSTiles(
       map,
