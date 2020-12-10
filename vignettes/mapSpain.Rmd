@@ -129,8 +129,8 @@ pop <- mapSpain::pobmun19
 Spain <- esp_get_country()
 munic <- esp_get_munic()
 
-# Get area (km2)
-municarea <- as.double(st_area(st_transform(munic, 3857)) / 1000000)
+# Get area (km2) - Use LAEA projection
+municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)
 munic$area <- municarea
 
 munic.pop <- merge(munic, pop, all.x = TRUE)
