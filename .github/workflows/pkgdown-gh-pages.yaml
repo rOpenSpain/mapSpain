@@ -1,18 +1,23 @@
 on:
   push:
-    branches: master
-
-name: Roxygen2
+    branches:
+      - main
+      - master
+      
+name: pkgdown-gh-pages
 
 jobs:
-  render:
-    name: Roxygenise package
+  pkgdown-gh-pages:
     runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -21,22 +26,23 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache R packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-      - name: Install packages
+
+      - name: Install dependencies
         run: |
-          install.packages("roxygen2")
-          
-          remotes::install_local(".", dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE)
+          install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
-      - name: Roxygenise
-        run: Rscript -e 'roxygen2::roxygenise()'
-      - name: Commit results
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit . -m 'Update man' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'

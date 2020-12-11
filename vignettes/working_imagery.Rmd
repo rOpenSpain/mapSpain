@@ -18,8 +18,6 @@ knitr::knit_hooks$set(
   }
 )
 
-options(mapSpain_cache_dir = "~/R/mapslib/GISCO")
-
 ```
 
 `mapSpain` provides a powerful interface for working with imagery. `mapSpain` can 
