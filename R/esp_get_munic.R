@@ -9,7 +9,8 @@
 #'
 #'
 #' @param year,epsg,cache,update_cache,cache_dir,verbose,moveCAN
-#' See \link{esp_get_nuts}. Years from 2016 to 2019 available.
+#' See \link{esp_get_nuts}. Years available: 2001, 2004, 2006,
+#' 2008, 2010, 2013 and any year between 2016 and 2019.
 #' @param region A vector of names and/or codes for provinces
 #'  or \code{NULL} to get all the municipalities. See Details.
 #' @param munic A name or regex expression with the names of the required
@@ -51,6 +52,25 @@ esp_get_munic <- function(year = "2019",
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
+  yearsav <-
+    c("2001",
+      "2004",
+      "2006",
+      "2008",
+      "2010",
+      "2013",
+      "2016",
+      "2017",
+      "2018",
+      "2019")
+
+  if (!year %in% yearsav) {
+    stop("year ",
+         year,
+         " not available, try ",
+         paste0("'", yearsav, "'", collapse = ", "))
+  }
+
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
   if (init_epsg == "4258") {
@@ -74,27 +94,62 @@ esp_get_munic <- function(year = "2019",
   # nocov start
 
   if (dwnload) {
-    data.sf <- giscoR::gisco_get_lau(
-      year = year,
-      epsg = epsg,
-      cache = cache,
-      update_cache = update_cache,
-      cache_dir = cache_dir,
-      verbose = verbose,
-      country = "ES"
-    )
+    if (year >= "2016") {
+      data.sf <- giscoR::gisco_get_lau(
+        year = year,
+        epsg = epsg,
+        cache = cache,
+        update_cache = update_cache,
+        cache_dir = cache_dir,
+        verbose = verbose,
+        country = "ES"
+      )
+    } else {
+      data.sf <- giscoR::gisco_get_communes(
+        year = year,
+        epsg = epsg,
+        cache = cache,
+        update_cache = update_cache,
+        cache_dir = cache_dir,
+        verbose = verbose,
+        country = "ES",
+        spatialtype = "RG"
+      )
+    }
 
     # Create dataframe
 
     df <- data.sf
 
+    # Names management
+
     if ("LAU_ID" %in% colnames(df)) {
       df$LAU_CODE <- df$LAU_ID
     }
 
+    if ("NSI_CODE" %in% colnames(df)) {
+      df$LAU_CODE <- df$NSI_CODE
+    }
+
+    if ("LAU_NAME" %in% colnames(df)) {
+      df$name <- df$LAU_NAME
+    }
+
+    if ("COMM_NAME" %in% colnames(df)) {
+      df$name <- df$COMM_NAME
+    }
+
+    if ("SABE_NAME" %in% colnames(df)) {
+      df$name <- df$SABE_NAME
+    }
+
+    df <- df[, c("LAU_CODE", "name")]
+
+
+    df$LAU_CODE <- gsub("ES", "", df$LAU_CODE)
+
     df$cpro <- substr(df$LAU_CODE, 1, 2)
     df$cmun <- substr(df$LAU_CODE, 3, 8)
-    df$name <- df$LAU_NAME
 
     df <- df[, c("cpro", "cmun", "name", "LAU_CODE")]
 
@@ -127,7 +182,7 @@ esp_get_munic <- function(year = "2019",
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
-    data.sf <- data.sf[grep(munic, data.sf$name), ]
+    data.sf <- data.sf[grep(munic, data.sf$name),]
   }
 
 
@@ -136,11 +191,11 @@ esp_get_munic <- function(year = "2019",
     tonuts <- esp_hlp_all2prov(region)
 
     #toprov
-    df <- unique(mapSpain::esp_codelist[,c("nuts3.code","cpro")])
+    df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
 
-    data.sf <- data.sf[data.sf$cpro %in% toprov, ]
+    data.sf <- data.sf[data.sf$cpro %in% toprov,]
   }
 
   if (nrow(data.sf) == 0) {
@@ -171,8 +226,8 @@ esp_get_munic <- function(year = "2019",
       }
 
       data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("05", data.sf$codauto), ]
-      CAN <- data.sf[grep("05", data.sf$codauto), ]
+      PENIN <- data.sf[-grep("05", data.sf$codauto),]
+      CAN <- data.sf[grep("05", data.sf$codauto),]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -192,7 +247,7 @@ esp_get_munic <- function(year = "2019",
 
   data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
   data.sf <-
-    data.sf[order(data.sf$codauto, data.sf$cpro, data.sf$cmun), ]
+    data.sf[order(data.sf$codauto, data.sf$cpro, data.sf$cmun),]
 
   return(data.sf)
 }

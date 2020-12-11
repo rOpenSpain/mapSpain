@@ -20,7 +20,8 @@ esp_get_munic(
 )
 }
 \arguments{
-\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. Years from 2016 to 2019 available.}
+\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. Years available: 2001, 2004, 2006,
+2008, 2010, 2013 and any year between 2016 and 2019.}
 
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See Details.}
