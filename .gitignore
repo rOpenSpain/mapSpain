@@ -5,3 +5,6 @@
 mapSpain.Rcheck/
 mapSpain*.tar.gz
 mapSpain*.tgz
+Meta
+CRAN-RELEASE
+cran-comments.md
