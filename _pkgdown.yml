@@ -53,9 +53,6 @@ template:
 home:
   title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and Municipalities
   description: Administrative Boundaries of Spain based on the GISCO (Geographic Information System of the Commission) Eurostat database. It also provides a leaflet plugin and the ability of downloading and processing static tiles.
-
-deploy:
-  install_metadata: true
   
 authors:
   Diego Hernangómez:
