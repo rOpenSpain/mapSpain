@@ -74,7 +74,7 @@ CCAA <- esp_get_ccaa(res = "20",
                      moveCAN = c(12.5, 0))
 
 
-plot_sf(CCAA, axes = TRUE, bgc = "skyblue1")
+plot_sf(CCAA, axes = TRUE)
 plot(st_geometry(Countries), col = "grey80", add = TRUE)
 plot(st_geometry(CANbox),
      border = "black",
