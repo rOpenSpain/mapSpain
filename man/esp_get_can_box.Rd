@@ -78,7 +78,7 @@ plot_sf(CCAA, axes = TRUE)
 plot(st_geometry(Countries), col = "grey80", add = TRUE)
 plot(st_geometry(CANbox),
      border = "black",
-     col = "skyblue",
+     col = "white",
      add = TRUE)
 plot(st_geometry(CCAA), add = TRUE, col = "beige")
 box()
