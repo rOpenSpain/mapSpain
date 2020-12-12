@@ -25,3 +25,4 @@
 ^mapSpain\.Rcheck$
 ^mapSpain.*\.tar\.gz$
 ^mapSpain.*\.tgz$
+^.gitattributes
