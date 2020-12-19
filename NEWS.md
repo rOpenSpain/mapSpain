@@ -1,9 +1,10 @@
-# mapSpain 0.1.2-dev
+# mapSpain 0.1.2
 
 * Fix annoying warning if `sf` was not loaded first.
 * Include new `poly` option on `mapSpain::esp_get_can_box()`.
 * New grids created with `geogrid::calculate_grid()`
 * Add more years on `mapSpain::esp_get_munic()`
+* Move to rOpenSpain organization.
 
 # mapSpain 0.1.1
 
