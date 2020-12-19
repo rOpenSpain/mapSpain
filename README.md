@@ -94,7 +94,7 @@ CCAAbox <- esp_get_can_box()
 plot(CCAAbox, add = TRUE, col = pal[length(pal)] )
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/img/README-static-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-static-1.svg)<!-- -->
 
 You can combine `POLYGONS` with static tiles
 
@@ -161,7 +161,7 @@ legendChoro(
 )
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/img/README-tile-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-tile-1.svg)<!-- -->
 
 ### A note on caching
 
