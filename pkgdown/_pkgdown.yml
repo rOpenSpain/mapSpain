@@ -39,6 +39,7 @@ figures:
   fig.retina: 2
 
 template:
+  package: rostemplate
   params:
     ganalytics: 'G-PWKD479RCT'
     docsearch:
