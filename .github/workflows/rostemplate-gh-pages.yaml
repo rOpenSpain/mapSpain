@@ -4,10 +4,10 @@ on:
       - main
       - master
       
-name: pkgdown-gh-pages
+name: rostemplate-gh-pages
 
 jobs:
-  pkgdown-gh-pages:
+  rostemplate-gh-pages:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -36,6 +36,7 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
+          remotes::install_github("dieghernan/rostemplate")
         shell: Rscript {0}
 
       - name: Install package
