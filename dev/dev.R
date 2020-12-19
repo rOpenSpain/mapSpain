@@ -4,8 +4,7 @@ remotes::install_github("rOpenSpain/mapSpain")
 
 tinytest::test_all()
 
-devtools::check()
-devtools::check_win_devel()
+
 
 a <- esp_get_ccaa()
 
@@ -101,6 +100,7 @@ tinytest::test_all()
 
 
 devtools::spell_check()
+devtools::check()
 devtools::check_rhub()
 devtools::check_win_release()
 devtools::check_win_devel()
@@ -108,6 +108,9 @@ devtools::check_win_oldrelease()
 
 devtools::release()
 
+install.packages("devtools",dependencies = TRUE)
+
+rhub::validate_email()
 
 leaflet::addP
 
