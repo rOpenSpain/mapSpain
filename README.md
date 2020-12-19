@@ -37,7 +37,7 @@ You can install the developing version of `mapSpain` with:
 
 ``` r
 library(remotes)
-install_github("ropenspain/mapSpain")
+install_github("rOpenSpain/mapSpain")
 ```
 
 ## Usage
@@ -57,7 +57,7 @@ census <-
 
 # Summarize
 census_ccaa <-
-  aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
+  aggregate(cbind(pob19, men, women)  ~ codauto, data = census, sum)
 
 census_ccaa$porc_women <- census_ccaa$women / census_ccaa$pob19
 
@@ -73,17 +73,16 @@ CCAA.sf <- merge(CCAA.sf, census_ccaa)
 library(cartography)
 br <- getBreaks(CCAA.sf$porc_women, method = "pretty")
 pal <- hcl.colors(length(br) - 1,
-  palette = "Blues 3",
-  rev = TRUE,
-  alpha = 0.8
-)
+                  palette = "Blues 3",
+                  rev = TRUE,
+                  alpha = 0.8)
 choroLayer(
   CCAA.sf,
   var = "porc_women",
   breaks = br,
   legend.values.rnd = 3,
   legend.pos = "bottomright",
-  col = pal,
+  col = pal ,
   border = NA,
   legend.title.txt = "% women"
 )
@@ -92,10 +91,10 @@ choroLayer(
 
 CCAAbox <- esp_get_can_box()
 
-plot(CCAAbox, add = TRUE, col = pal[length(pal)])
+plot(CCAAbox, add = TRUE, col = pal[length(pal)] )
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/README-static-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/img/README-static-1.svg)<!-- -->
 
 You can combine `POLYGONS` with static tiles
 
@@ -119,9 +118,8 @@ Asturias.pop <- st_transform(Asturias.pop, 3857)
 
 tile <-
   esp_getTiles(Asturias.pop,
-    type = "IGNBase.Todo",
-    zoom = 8
-  )
+               type = "IGNBase.Todo",
+               zoom = 8)
 
 
 # Plot
@@ -163,7 +161,7 @@ legendChoro(
 )
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/README-tile-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/img/README-tile-1.svg)<!-- -->
 
 ### A note on caching
 

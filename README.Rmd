@@ -5,12 +5,12 @@ always_allow_html: true
 
 ```{r, include = FALSE}
 knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/master/")
+                     base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/")
 
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",
                       comment = "#>",
-                      fig.path = "README-")
+                      fig.path = "img/README-")
 
 
 knitr::knit_hooks$set(
@@ -50,7 +50,7 @@ You can install the developing version of `mapSpain` with:
 
 ``` r
 library(remotes)
-install_github("ropenspain/mapSpain")
+install_github("rOpenSpain/mapSpain")
 ```
 
 ## Usage

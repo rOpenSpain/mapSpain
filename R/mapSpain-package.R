@@ -24,9 +24,9 @@
 #' @seealso
 #' Useful links:
 #'  \itemize{
-#'  \item \url{https://dieghernan.github.io/mapSpain/}
-#'  \item \url{https://github.com/dieghernan/mapSpain}
-#'  \item Report bugs at \url{https://github.com/dieghernan/mapSpain/issues}
+#'  \item \url{https://ropenspain.github.io/mapSpain/}
+#'  \item \url{https://github.com/rOpenSpain/mapSpain}
+#'  \item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
 #'  }
 #' @keywords package
 #' @note COPYRIGHT NOTICE

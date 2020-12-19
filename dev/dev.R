@@ -1,9 +1,11 @@
 roxygen2::roxygenise()
 
+remotes::install_github("rOpenSpain/mapSpain")
+
 tinytest::test_all()
 
 devtools::check()
-
+devtools::check_win_devel()
 
 a <- esp_get_ccaa()
 

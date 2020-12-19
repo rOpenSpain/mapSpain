@@ -25,7 +25,7 @@ knitr::knit_hooks$set(
 
 # Introduction
 
-[**`mapSpain`**](https://dieghernan.github.io/mapSpain/) is a package designed to provide geographical information of Spain at different levels.
+[**`mapSpain`**](https://ropenspain.github.io/mapSpain/) is a package designed to provide geographical information of Spain at different levels.
 
 
 **`mapSpain`** provides shapefiles of municipalities, provinces, autonomous communities
@@ -60,11 +60,11 @@ Install `mapSpain` from
 install.packages(“mapSpain”)
 ```
 
-For installing the development version on ([Github](https://github.com/dieghernan/mapSpain/)):
+For installing the development version on ([Github](https://github.com/rOpenSpain/mapSpain/)):
 
 ```r
 library(remotes)
-install_github("dieghernan/mapSpain")
+install_github("rOpenSpain/mapSpain")
 ```
 
 

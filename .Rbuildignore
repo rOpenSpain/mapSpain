@@ -26,3 +26,4 @@
 ^mapSpain.*\.tar\.gz$
 ^mapSpain.*\.tgz$
 ^.gitattributes
+^img$
