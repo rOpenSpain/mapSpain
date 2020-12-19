@@ -5,7 +5,7 @@ always_allow_html: true
 
 ```{r, include = FALSE}
 knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://raw.githubusercontent.com/dieghernan/mapSpain/master/")
+                     base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/master/")
 
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",
@@ -27,17 +27,16 @@ knitr::knit_hooks$set(
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![CRAN results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
-![R-CMD-check](https://github.com/dieghernan/mapSpain/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/dieghernan/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/mapSpain)
+![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4318025.svg)](https://doi.org/10.5281/zenodo.4318025)
 <!-- badges: end -->
 
-**[mapSpain](https://dieghernan.github.io/mapSpain/)** is a package that provides spatial `sf` objects of the administrative boundaries of Spain, including CCAA, provinces and municipalities. 
+**[mapSpain](https://ropenspain.github.io/mapSpain/)** is a package that provides spatial `sf` objects of the administrative boundaries of Spain, including CCAA, provinces and municipalities. 
 
 **mapSpain** also provides a leaflet plugin to be used with the [`leaflet` package](https://rstudio.github.io/leaflet/), that loads several basemap of public institutions of Spain, and the ability of downloading and processing static tiles.
 
-Full site with examples and vignettes on <https://dieghernan.github.io/mapSpain/>
+Full site with examples and vignettes on <https://ropenspain.github.io/mapSpain/>
 
 ## Installation
 
@@ -51,7 +50,7 @@ You can install the developing version of `mapSpain` with:
 
 ``` r
 library(remotes)
-install_github("dieghernan/mapSpain")
+install_github("ropenspain/mapSpain")
 ```
 
 ## Usage
@@ -195,7 +194,7 @@ Some packages recommended for visualization are:
 
 ## Contribute
 
-Check the Github page for [source code](https://github.com/dieghernan/mapSpain/).
+Check the Github page for [source code](https://github.com/ropenspain/mapSpain/).
 
 
 ## Copyright notice
