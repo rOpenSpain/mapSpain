@@ -38,6 +38,7 @@ figures:
   fig.width: 7.3
   fig.retina: 2
 
+
 template:
   package: rostemplate
   params:
