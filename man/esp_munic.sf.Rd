@@ -20,7 +20,7 @@ object:
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/LAU_RG_01M_2019_4326.geojson}{GISCO .geojson source}
+\href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/lau}{GISCO}
 }
 \description{
 A \code{sf} object including all

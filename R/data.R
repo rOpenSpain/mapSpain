@@ -102,7 +102,7 @@ NULL
 #' municipalities of Spain as provided by GISCO (2019 version).
 #' @docType data
 #' @source
-#' \href{https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/LAU_RG_01M_2019_4326.geojson}{GISCO .geojson source}
+#' \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/lau}{GISCO}
 #' @encoding UTF-8
 #' @seealso \link{esp_get_munic}
 #' @format A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)

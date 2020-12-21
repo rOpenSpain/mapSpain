@@ -25,3 +25,4 @@
 ^.gitattributes
 ^img$
 ^_pkgdown\.yml$
+^codemeta\.json$

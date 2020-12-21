@@ -70,6 +70,9 @@ devtools::check_win_devel()
 devtools::check_win_oldrelease()
 devtools::check_rhub()
 
+codemetar::write_codemeta(write_minimeta = TRUE)
+
+
 devtools::build_manual(path = "./dev")
 pkgdown::build_favicons(overwrite = TRUE)
 
