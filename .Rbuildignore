@@ -22,8 +22,6 @@
 ^Meta$
 ^CRAN-RELEASE$
 ^vignettes$
-^mapSpain\.Rcheck$
-^mapSpain.*\.tar\.gz$
-^mapSpain.*\.tgz$
 ^.gitattributes
 ^img$
+^_pkgdown\.yml$
