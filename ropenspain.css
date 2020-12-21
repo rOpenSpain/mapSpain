@@ -1,231 +1,177 @@
 @charset "utf-8";
-
+/* rostemplate v0.0.2 */
 /* Highlighter */
-
-pre {
-  color: #505050;
+ pre {
+     color: #505050;
 }
-
-pre a {
-  color: inherit;
-  font-weight: inherit
+ pre a {
+     color: inherit;
+     font-weight: inherit
 }
-
-
 /* Keyword */
-
-.kw {
-  font-weight: bold
+ .kw {
+     font-weight: bold
 }
-
-
 /* String */
-
-.st,
-.an,
-.ch,
-.cn {
-  color: #800080;
+ .st, .an, .ch, .cn {
+     color: #800080;
 }
-
-.cn {
-  font-weight: bold
+ .cn {
+     font-weight: bold
 }
-
-
 /* Function */
-
-.fu {
-  color: #008b45;
-  font-weight: bold
+ .fu {
+     color: #008b45;
+     font-weight: bold
 }
-
-
 /* Float */
-
-.fl {
-  color: #B452CD;
+ .fl {
+     color: #B452CD;
 }
-
-
 /* comment */
-
-.co {
-  color: #888888;
+ .co {
+     color: #888888;
 }
-
-
 /* Modify default classes */
-
-pre,
-code {
-  font-family: 'Roboto Mono', monospace;
+ pre, code {
+     font-family: 'Roboto Mono', monospace;
 }
-
-.version {
-  font-weight: bold;
-  font-size: 12px;
+ .version {
+     font-weight: bold;
+     font-size: 12px;
 }
-
-.label-default {
-  background-color: #986dbd;
+ .label-default {
+     background-color: #986dbd;
 }
-
-.label-info {
-  background-color: #5a9ddb;
+ .label-info {
+     background-color: #5a9ddb;
 }
-
-.label-warning {
-  background-color: #ff9800;
+ .label-warning {
+     background-color: #ff9800;
 }
-
-.label-danger {
-  background-color: #9C27B0;
+ .label-danger {
+     background-color: #9C27B0;
 }
-
-
+ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+     background-color: transparent;
+}
 /* Add custom classes */
-
-.ROS-light {
-  font-weight: 300;
+ .ROS-light {
+     font-weight: 300;
 }
-
-.ROS-black {
-  color: black;
+ .ROS-black {
+     color: black;
 }
-
-.ROSh1 {
-  background: url('texture-bw.png') center center repeat;
-  padding: 20px 0;
-  color: #333333;
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-align: center;
+ .ROSh1 {
+     background: url('texture-bw.png') center center repeat;
+     padding: 20px 0;
+     color: #333333;
+     text-transform: uppercase;
+     font-size: 30px;
+     font-weight: 700;
+     letter-spacing: 0.08em;
+     text-align: center;
 }
-
-.ROSh1 img {
-  display: none;
+ .ROSh1 img {
+     display: none;
 }
-
-
 /* Id for specific items */
-
-#ROS-search {
-  margin-right: 10px;
+ #ROS-search {
+     margin-right: 10px;
 }
-
-#ROS-navbar-brand {
-  padding-top: 24px;
-  padding-bottom: 20px;
-  font-size: 24px;
-  font-weight: 300;
+ #ROS-navbar-brand {
+     padding-top: 24px;
+     padding-bottom: 20px;
+     font-size: 24px;
+     font-weight: 300;
 }
-
-#ROS-navbar-logo {
-  margin-top: -4px;
-  height: 32px;
-  margin-right: 3px;
+ #ROS-navbar-logo {
+     margin-top: -4px;
+     height: 32px;
+     margin-right: 3px;
 }
-
-#ROS-heading-breadcrumbs {
-  background: url('texture-bw.png') center center repeat;
-  padding-top: 10px;
-  padding-bottom: 1px;
+ #ROS-heading-breadcrumbs {
+     background: url('texture-bw.png') center center repeat;
+     padding-top: 10px;
+     padding-bottom: 1px;
 }
-
-#ROS-partof {
-  font-weight: 300;
-  color: black;
+ #ROS-partof {
+     font-weight: 300;
+     color: black;
 }
-
-
-/* Position hack to get full width footer even though pkgdown puts it inside a container
- * See: https://css-tricks.com/full-width-containers-limited-width-parents/
- */
-
-#footer {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+/* Position hack to get full width footer even though pkgdown puts it inside a container * See: https://css-tricks.com/full-width-containers-limited-width-parents/ */
+ #footer {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
 }
-
-#copyright {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+ #copyright {
+     width: 100vw;
+     position: relative;
+     left: 50%;
+     right: 50%;
+     margin-left: -50vw;
+     margin-right: -50vw;
 }
-
-
 /* Hack to collapse navbar up to md https://stackoverflow.com/questions/18192082/bootstrap-3-navbar-collapse */
-
-@media (max-width: 991px) {
-  .navbar-header {
-    float: none;
-  }
-  .navbar-toggle {
-    display: block;
-  }
-  .navbar-collapse {
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  .navbar-collapse.collapse {
-    display: none!important;
-  }
-  .navbar-nav {
-    float: none!important;
-    margin: 7.5px -15px;
-  }
-  .navbar-nav>li {
-    float: none;
-  }
-  .navbar-nav>li>a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .navbar-text {
-    float: none;
-    margin: 15px 0;
-  }
-  /* since 3.1.0 */
-  .navbar-collapse.collapse.in {
-    display: block!important;
-  }
-  .collapsing {
-    overflow: hidden!important;
-  }
-  /* Dropdowns */
-  .navbar-nav .open .dropdown-menu {
-    position: static;
-    float: none;
-    width: auto;
-    margin-top: 0;
-    background-color: transparent;
-    border: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
+ @media (max-width: 991px) {
+     .navbar-header {
+         float: none;
+    }
+     .navbar-toggle {
+         display: block;
+    }
+     .navbar-collapse {
+         border-top: 1px solid transparent;
+         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+     .navbar-collapse.collapse {
+         display: none!important;
+    }
+     .navbar-nav {
+         float: none!important;
+         margin: 7.5px -15px;
+    }
+     .navbar-nav>li {
+         float: none;
+    }
+     .navbar-nav>li>a {
+         padding-top: 10px;
+         padding-bottom: 10px;
+    }
+     .navbar-text {
+         float: none;
+         margin: 15px 0;
+    }
+    /* since 3.1.0 */
+     .navbar-collapse.collapse.in {
+         display: block!important;
+    }
+     .collapsing {
+         overflow: hidden!important;
+    }
+    /* Dropdowns */
+     .navbar-nav .open .dropdown-menu {
+         position: static;
+         float: none;
+         width: auto;
+         margin-top: 0;
+         background-color: transparent;
+         border: 0;
+         -webkit-box-shadow: none;
+         box-shadow: none;
+    }
 }
-
-.navbar-nav .open .dropdown-menu > li > a {
-  line-height: 20px;
+ .navbar-nav .open .dropdown-menu>li>a {
+     line-height: 20px;
 }
-
-.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
-.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
-  color: #ffffff;
-  background-color: #986dbd;
+ .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+     color: #ffffff;
+     background-color: #986dbd;
 }
-
-.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-  color: #986dbd;
+ .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+     color: #986dbd;
 }
