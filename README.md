@@ -8,6 +8,7 @@ status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.o
 [![CRAN
 results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
 ![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4318025.svg)](https://doi.org/10.5281/zenodo.4318025)
 <!-- badges: end -->
