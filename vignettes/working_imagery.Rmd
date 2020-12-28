@@ -180,11 +180,14 @@ m2 %>% addLayersControl(
 
 ## Available providers 
 
-The data frame `leaflet.providersESP.df` includes the data of the available providers you can use on functions described above:
+The data frame `leaflet.providersESP.df` includes the data of the available providers 
+you can use on functions described above. This data frame includes all the
+parameters needed to replicate the API request. In this summary only the
+parameter `url_static` is shown:
 
 ```{r providers}
 
-knitr::kable(leaflet.providersESP.df)
+knitr::kable(leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ])
 
 ```
 
