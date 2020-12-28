@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* rostemplate v0.0.2 */
+/* rostemplate v0.0.3-9000 */
 /* Highlighter */
  pre {
      color: #505050;
@@ -40,17 +40,26 @@
      font-weight: bold;
      font-size: 12px;
 }
+ .label{
+   margin: 0;
+   padding: 0 3px;
+ }
+ 
  .label-default {
-     background-color: #986dbd;
+     color: #986dbd;
+     background-color: transparent;
 }
  .label-info {
-     background-color: #5a9ddb;
+     color: #5a9ddb;
+     background-color: transparent;
 }
  .label-warning {
-     background-color: #ff9800;
+     color: #ff9800;
+     background-color: transparent;
 }
  .label-danger {
-     background-color: #9C27B0;
+     color: #9C27B0;
+     background-color: transparent;
 }
  h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
      background-color: transparent;
@@ -88,7 +97,7 @@
  #ROS-navbar-logo {
      margin-top: -4px;
      height: 32px;
-     margin-right: 3px;
+     margin-right: 10px;
 }
  #ROS-heading-breadcrumbs {
      background: url('texture-bw.png') center center repeat;
