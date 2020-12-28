@@ -187,7 +187,9 @@ parameter `url_static` is shown:
 
 ```{r providers}
 
-knitr::kable(leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ])
+knitr::kable(leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ],
+             row.names = FALSE
+             )
 
 ```
 
