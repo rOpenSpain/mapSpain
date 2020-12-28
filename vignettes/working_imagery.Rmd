@@ -176,8 +176,15 @@ m2 %>% addLayersControl(
   options = layersControlOptions(collapsed = FALSE)
 )
 
-
-
 ```
 
+## Available providers 
+
+The data frame `leaflet.providersESP.df` includes the data of the available providers you can use on functions described above:
+
+```{r providers}
+
+knitr::kable(leaflet.providersESP.df)
+
+```
 
