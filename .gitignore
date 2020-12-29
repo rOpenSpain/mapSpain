@@ -26,9 +26,9 @@ vignettes/*.pdf
 *.knit.md
 # R Environment Variables
 .Renviron
-giscoR.Rcheck/
-giscoR*.tar.gz
-giscoR*.tgz
+mapSpain.Rcheck/
+mapSpain*.tar.gz
+mapSpain*.tgz
 inst/doc
 doc
 Meta
