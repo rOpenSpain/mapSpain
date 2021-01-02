@@ -18,7 +18,7 @@
         },
         {
           "type": "Organization",
-          "name": "EuroGraphics"
+          "name": "EuroGeographics"
         }
       ],
       "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco>. It also provides a 'leaflet' \n    plugin and the ability of downloading and processing static tiles.",

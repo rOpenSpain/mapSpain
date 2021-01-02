@@ -34,10 +34,11 @@ help(giscoR)
 usethis::use_cran_comments()
 
 devtools::spell_check()
+codemetar::write_codemeta(write_minimeta = TRUE)
 
 ??mapSpain
 
-devtools::release(check = TRUE)
+devtools::release()
 
 devtools::check()
 
@@ -69,6 +70,8 @@ devtools::check_win_release()
 devtools::check_win_devel()
 devtools::check_win_oldrelease()
 devtools::check_rhub()
+
+dev
 
 codemetar::write_codemeta(write_minimeta = TRUE)
 

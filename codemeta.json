@@ -47,7 +47,7 @@
     },
     {
       "@type": "Organization",
-      "name": "EuroGraphics"
+      "name": "EuroGeographics"
     }
   ],
   "funder": {},
@@ -200,7 +200,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
-  "fileSize": "7400.256KB",
+  "fileSize": "7403.178KB",
   "contIntegration": "https://codecov.io/gh/rOpenSpain/mapSpain",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#experimental",
   "keywords": [
@@ -208,12 +208,16 @@
     "maps",
     "spain",
     "cran",
-    "ccaa"
+    "ccaa",
+    "administrative-boundaries",
+    "municipalities",
+    "provinces",
+    "ropenspain"
   ],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2020",
+      "datePublished": "2021",
       "author": [
         {
           "@type": "Person",
