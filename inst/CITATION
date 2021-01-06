@@ -4,7 +4,6 @@ year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
 url = 'https://CRAN.R-project.org/package=mapSpain'
 citEntry(
-  header = 'diego_hernangomez_2020_4318025',
   entry = 'manual',
   title = paste('mapSpain:', meta$Title),
   author = "Diego Hernangómez",
