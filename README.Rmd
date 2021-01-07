@@ -1,0 +1,187 @@
+---
+title: "mapSpain CDN for SIANE data"
+output:
+  github_document:
+    html_preview: false
+params:
+  last_year: 2020
+---
+
+
+
+
+```{r config, message=FALSE, warning=FALSE, include=FALSE}
+
+knitr::opts_chunk$set(collapse = TRUE,
+                      tidy = "styler",
+                      comment = "#>",
+                      fig.path = "img/README-")
+
+```
+
+
+![Data](https://img.shields.io/badge/last%20data%20available-`r params$last_year`-green)
+![Last Update](https://img.shields.io/badge/updated-`r gsub("-","--",Sys.Date())`-blue)
+
+
+This branch is used as CDN to distribute CartoBase ANE data to `mapSpain`.
+
+Due to poor API, data is not easily reachable, so this branch would be used as 
+API endpoint.
+
+Last update : **`r Sys.Date()`**, containing 
+**data up to `r params$last_year`**.
+
+## Structure
+
+Raw data is available under data-raw/YYYY. Both zipped and unzipped versions are 
+provided.
+
+## Distribution
+
+The `dist` folder contains a distribution of 
+[**CartoBase ANE**](https://www.ign.es/web/ane-area-ane) on [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
+
+Updates are made running the `R/create_dist.R` script after proper
+download of new information on `data-raw`.
+
+
+
+### Files included
+
+The files provided on `dist` come from the folder `todo` from each 
+distribution. These
+file contains the whole history on each dataset, with two relevant fields, 
+allowing to track historical changes between data sets:
+
+* `fecha_alta`: Start validity date
+* `fecha_baja`: End validity date
+
+
+It is necessary to apply some filtering depending on the date requested:
+
+```{r message=FALSE, warning=FALSE}
+library(sf)
+library(dplyr)
+
+munic <- st_read("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>% 
+  filter(rotulo == "Arenas del Rey")
+
+# Grey area = Initial
+# Green line = Second row
+# Blue line = Third row
+
+plot(
+  st_geometry(munic),
+  col = c("grey50", NA, NA),
+  border = c(NA, "green", "blue"),
+  lty = c(1, 1, 5)
+)
+
+
+keepcols <- c("fecha_alta","fecha_baja","rotulo")
+
+knitr::kable(st_drop_geometry(munic[,keepcols]))
+
+```
+
+
+
+An example of filtering:
+
+
+```{r message=FALSE, warning=FALSE}
+
+# 2010 shape
+year <- 2010
+year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
+
+shp2010 <- munic %>%
+  # If fecha_baja is NA means it is the current valid shape
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
+
+plot(st_geometry(shp2010), main = year)
+
+# 2017 shape
+year <- 2017
+year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
+
+shp2017 <- munic %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
+
+plot(st_geometry(shp2017), main = year)
+
+# Current value
+
+shpcurrent <- munic %>% filter(is.na(fecha_baja))
+
+
+plot(st_geometry(shpcurrent), main = "Current")
+
+```
+
+
+### Table of files
+
+Full reference of each dataset in the 
+[data-raw](`r paste0("data-raw/",params$last_year)`) folder.
+
+```{r echo=FALSE}
+
+library(dplyr)
+
+files <-
+  list.files("dist/", ".gpkg")
+
+
+df <- data.frame(file = files,
+                 res = NA,
+                 stringsAsFactors = FALSE)
+
+
+if (length(grep("3", df$file)) > 0)
+  df[grep("3", df$file), ]$res <- 3
+if (length(grep("6m5", df$file) > 0))
+  df[grep("6m5", df$file), ]$res <- 6.5
+if (length(grep("10", df$file)) > 0)
+  df[grep("10", df$file), ]$res <- 10
+if (length(grep("14", df$file)) > 0)
+  df[grep("14", df$file), ]$res <- 14
+if (length(grep("60", df$file)) > 0)
+  df[grep("60", df$file), ]$res <- 60
+
+df <- df %>% arrange(res, file)
+
+df$scope <- ifelse(df$res <= 10, "Spain", "Europe")
+df$scope <- ifelse(df$re == 60, "World", df$scope)
+
+knitr::kable(df)
+
+```
+
+
+## Preview
+
+```{r preview, echo=FALSE, fig.keep="all", message=FALSE, warning=FALSE, out.width="33%"}
+
+par(mar = c(2, 2, 2, 2))
+for (i in seq_len(nrow(df))) {
+  path <- file.path("dist", df[i, "file"])
+  
+  input <-  st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
+  
+  plot(st_geometry(input), axes = TRUE, main = df[i, "file"])
+  
+}
+
+
+
+```
+
+
+
+
+
+
