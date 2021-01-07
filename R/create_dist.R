@@ -12,13 +12,9 @@ lastdist <- 2020
 # Clean output dirs
 
 folderfiles <- list.files("dist/")
-file.remove(folderfiles)
+all <- file.path("dist", folderfiles)
+file.remove(all)
 
-# pngs
-
-folderfiles <- list.files("img/")
-png <- file.path("img", folderfiles)
-file.remove(png)
 
 # 3. CartoBase 3M----
 
@@ -198,8 +194,9 @@ for (i in seq_len(length(shp))) {
 # https://stackoverflow.com/questions/23668395/creating-zip-file-from-folders-in-r
 
 files2zip <- dir('dist', full.names = TRUE)
-zip(zipfile = 'dist/CartoBase.zip', files = files2zip)
+zipr(zipfile = 'dist/CartoBase.zip', files = files2zip)
 
+print(zip_list("dist/CartoBase.zip")$filename)
 
 # 9 Update README----
 
