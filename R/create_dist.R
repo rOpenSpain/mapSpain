@@ -90,42 +90,41 @@ for (i in seq_len(length(shp))) {
 
 
 
-# # 5. CartoBase 10M----
-#
-# basedir <-
-#   file.path("data-raw", lastdist, "SIANE_CARTO_BASE_S_10M",
-#             "todo")
-#
-#
-# # List files
-# shp <- list.files(basedir)
-# shp <- shp[grep(".shp", shp)]
-#
-#
-#
-#
-# # Create geopackages
-#
-# for (i in seq_len(length(shp))) {
-#   path <- file.path(basedir, shp[i])
-#   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
-#
-#   if (file.exists(outpath)) {
-#     print(paste0("Skipping ", outpath ,", already in dist"))
-#     next()
-#   }
-#
-#   input <-
-#     st_read(path, stringsAsFactors = FALSE) %>% st_make_valid()
-#
-#   write_sf(input,
-#            outpath,
-#            factorsAsCharacter = FALSE,
-#            overwrite = TRUE)
-#
-#   dev.off()
-# }
-#
+# 5. CartoBase 10M----
+
+basedir <-
+  file.path("data-raw", lastdist, "SIANE_CARTO_BASE_S_10M", "todo")
+
+
+# List files
+shp <- list.files(basedir)
+shp <- shp[grep(".shp", shp)]
+
+
+
+
+# Create geopackages
+
+for (i in seq_len(length(shp))) {
+  path <- file.path(basedir, shp[i])
+  outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
+
+  if (file.exists(outpath)) {
+    print(paste0("Skipping ", outpath ,", already in dist"))
+    next()
+  }
+
+  input <-
+    st_read(path, stringsAsFactors = FALSE) %>% st_make_valid()
+
+  write_sf(input,
+           outpath,
+           factorsAsCharacter = FALSE,
+           overwrite = TRUE)
+
+}
+
+
 # # 6. CartoBase 14M----
 #
 # basedir <-
