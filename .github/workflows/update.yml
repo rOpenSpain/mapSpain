@@ -7,7 +7,7 @@ name: update
 jobs:
   render:
     name: update
-    runs-on: macOS-latest
+    runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -18,7 +18,7 @@ jobs:
         run: |
           install.packages("remotes")
           remotes::install_cran("rmarkdown")
-          install.packages(c("sf","dplyr","styler"))
+          install.packages(c("sf", "dplyr","styler", "lwgeom"))
         shell: Rscript {0}
       - name: Update script
         run: Rscript -e 'source("R/create_dist.R")'
