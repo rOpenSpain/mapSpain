@@ -1,6 +1,7 @@
 mapSpain CDN for CartoBase ANE
 ================
 
+  - [Source data](#source-data)
   - [Structure](#structure)
   - [Distribution](#distribution)
   - [Files included](#files-included)
@@ -17,6 +18,14 @@ Due to poor API, data is not easily reachable, so this branch would be
 used as API endpoint.
 
 Last update : **2021-01-07**, containing **data up to 2020**.
+
+## Source data
+
+Atlas Nacional de España (ANE) [CC
+BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+[ign.es](http://www.ign.es).
+
+<http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE>
 
 ## Structure
 
