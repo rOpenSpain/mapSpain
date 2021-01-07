@@ -14,8 +14,8 @@ Last update : **2021-01-07**, containing **data up to 2020**.
 
 ## Structure
 
-Raw data is available under data-raw/YYYY. Both zipped and unzipped
-versions are provided.
+Raw data is available under data-raw/YYYY. Zipped version and unzipped
+(selected files) are provided.
 
 ## Distribution
 
@@ -122,80 +122,88 @@ plot(st_geometry(shpcurrent), main = "Current")
 
 Full reference of each dataset in the [data-raw](data-raw/2020) folder.
 
-| file                                 |  res | scope |
-| :----------------------------------- | ---: | :---- |
-| se89\_3\_admin\_ccaa\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_admin\_ccaa\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_admin\_muni\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_admin\_muni\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_admin\_prov\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_admin\_prov\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_hidro\_demc\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_hidro\_demc\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_hidro\_demt\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_hidro\_demt\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_hidro\_rio\_a\_x.gpkg       |  3.0 | Spain |
-| se89\_3\_hidro\_rio\_l\_x.gpkg       |  3.0 | Spain |
-| se89\_3\_hidro\_rio\_l\_y.gpkg       |  3.0 | Spain |
-| se89\_3\_orog\_hipso\_a\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_orog\_hipso\_a\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_orog\_hipso\_l\_x.gpkg      |  3.0 | Spain |
-| se89\_3\_orog\_hipso\_l\_y.gpkg      |  3.0 | Spain |
-| se89\_3\_urban\_capimuni\_a\_x.gpkg  |  3.0 | Spain |
-| se89\_3\_urban\_capimuni\_a\_y.gpkg  |  3.0 | Spain |
-| se89\_3\_urban\_capimuni\_p\_x.gpkg  |  3.0 | Spain |
-| se89\_3\_urban\_capimuni\_p\_y.gpkg  |  3.0 | Spain |
-| se89\_3\_vias\_ctra\_l\_x.gpkg       |  3.0 | Spain |
-| se89\_3\_vias\_ctra\_l\_y.gpkg       |  3.0 | Spain |
-| se89\_3\_vias\_ffcc\_l\_x.gpkg       |  3.0 | Spain |
-| se89\_3\_vias\_ffcc\_p\_x.gpkg       |  3.0 | Spain |
-| se89\_6m5\_admin\_ccaa\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_ccaa\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_cela\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_cela\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_muni\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_muni\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_prov\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_admin\_prov\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_hidro\_demc\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_hidro\_demc\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_hidro\_demt\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_hidro\_demt\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_hidro\_rio\_a\_x.gpkg     |  6.5 | Spain |
-| se89\_6m5\_hidro\_rio\_l\_x.gpkg     |  6.5 | Spain |
-| se89\_6m5\_orog\_hipso\_a\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_orog\_hipso\_a\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_orog\_hipso\_l\_x.gpkg    |  6.5 | Spain |
-| se89\_6m5\_orog\_hipso\_l\_y.gpkg    |  6.5 | Spain |
-| se89\_6m5\_vias\_ffcc\_e\_x.gpkg     |  6.5 | Spain |
-| se89\_10\_admin\_ccaa\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_ccaa\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_cela\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_cela\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_cels\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_cels\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_muni\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_muni\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_prov\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_admin\_prov\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_hidro\_demc\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_hidro\_demc\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_hidro\_demt\_a\_x.gpkg     | 10.0 | Spain |
-| se89\_10\_hidro\_demt\_a\_y.gpkg     | 10.0 | Spain |
-| se89\_10\_hidro\_rio\_a\_x.gpkg      | 10.0 | Spain |
-| se89\_10\_hidro\_rio\_l\_x.gpkg      | 10.0 | Spain |
-| se89\_10\_urban\_capiccaa\_p\_x.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capilasp\_p\_y.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capimuni\_p\_x.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capimuni\_p\_y.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capiprov\_p\_x.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capiprov\_p\_y.gpkg | 10.0 | Spain |
-| se89\_10\_urban\_capitene\_p\_y.gpkg | 10.0 | Spain |
-| se89\_10\_vias\_ffcc\_e\_x.gpkg      | 10.0 | Spain |
-| se89\_10\_vias\_ffcc\_l\_x.gpkg      | 10.0 | Spain |
-| se89\_10\_vias\_ffcc\_p\_x.gpkg      | 10.0 | Spain |
-| se89\_mult\_admin\_provcan\_l.gpkg   |   NA | NA    |
+There are 77 files available:
+
+| file                                 |  res | scope  |
+| :----------------------------------- | ---: | :----- |
+| se89\_3\_admin\_ccaa\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_admin\_ccaa\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_admin\_muni\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_admin\_muni\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_admin\_prov\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_admin\_prov\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_hidro\_demc\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_hidro\_demc\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_hidro\_demt\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_hidro\_demt\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_hidro\_rio\_a\_x.gpkg       |  3.0 | Spain  |
+| se89\_3\_hidro\_rio\_l\_x.gpkg       |  3.0 | Spain  |
+| se89\_3\_hidro\_rio\_l\_y.gpkg       |  3.0 | Spain  |
+| se89\_3\_orog\_hipso\_a\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_orog\_hipso\_a\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_orog\_hipso\_l\_x.gpkg      |  3.0 | Spain  |
+| se89\_3\_orog\_hipso\_l\_y.gpkg      |  3.0 | Spain  |
+| se89\_3\_urban\_capimuni\_a\_x.gpkg  |  3.0 | Spain  |
+| se89\_3\_urban\_capimuni\_a\_y.gpkg  |  3.0 | Spain  |
+| se89\_3\_urban\_capimuni\_p\_x.gpkg  |  3.0 | Spain  |
+| se89\_3\_urban\_capimuni\_p\_y.gpkg  |  3.0 | Spain  |
+| se89\_3\_vias\_ctra\_l\_x.gpkg       |  3.0 | Spain  |
+| se89\_3\_vias\_ctra\_l\_y.gpkg       |  3.0 | Spain  |
+| se89\_3\_vias\_ffcc\_l\_x.gpkg       |  3.0 | Spain  |
+| se89\_3\_vias\_ffcc\_p\_x.gpkg       |  3.0 | Spain  |
+| se89\_6m5\_admin\_ccaa\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_ccaa\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_cela\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_cela\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_muni\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_muni\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_prov\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_admin\_prov\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_hidro\_demc\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_hidro\_demc\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_hidro\_demt\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_hidro\_demt\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_hidro\_rio\_a\_x.gpkg     |  6.5 | Spain  |
+| se89\_6m5\_hidro\_rio\_l\_x.gpkg     |  6.5 | Spain  |
+| se89\_6m5\_orog\_hipso\_a\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_orog\_hipso\_a\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_orog\_hipso\_l\_x.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_orog\_hipso\_l\_y.gpkg    |  6.5 | Spain  |
+| se89\_6m5\_vias\_ffcc\_e\_x.gpkg     |  6.5 | Spain  |
+| se89\_10\_admin\_ccaa\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_ccaa\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_cela\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_cela\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_cels\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_cels\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_muni\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_muni\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_prov\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_admin\_prov\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_hidro\_demc\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_hidro\_demc\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_hidro\_demt\_a\_x.gpkg     | 10.0 | Spain  |
+| se89\_10\_hidro\_demt\_a\_y.gpkg     | 10.0 | Spain  |
+| se89\_10\_hidro\_rio\_a\_x.gpkg      | 10.0 | Spain  |
+| se89\_10\_hidro\_rio\_l\_x.gpkg      | 10.0 | Spain  |
+| se89\_10\_urban\_capiccaa\_p\_x.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capilasp\_p\_y.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capimuni\_p\_x.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capimuni\_p\_y.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capiprov\_p\_x.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capiprov\_p\_y.gpkg | 10.0 | Spain  |
+| se89\_10\_urban\_capitene\_p\_y.gpkg | 10.0 | Spain  |
+| se89\_10\_vias\_ffcc\_e\_x.gpkg      | 10.0 | Spain  |
+| se89\_10\_vias\_ffcc\_l\_x.gpkg      | 10.0 | Spain  |
+| se89\_10\_vias\_ffcc\_p\_x.gpkg      | 10.0 | Spain  |
+| ee89\_14\_admin\_pais\_a.gpkg        | 14.0 | Europe |
+| ee89\_14\_urban\_capital\_p.gpkg     | 14.0 | Europe |
+| ww84\_60\_admin\_pais\_a.gpkg        | 60.0 | World  |
+| ww84\_60\_admin\_paismar\_a.gpkg     | 60.0 | World  |
+| ww84\_60\_hidro\_pesc\_a.gpkg        | 60.0 | World  |
+| ww84\_60\_urban\_capital\_p.gpkg     | 60.0 | World  |
+| se89\_mult\_admin\_provcan\_l.gpkg   |   NA | NA     |
 
 ## Preview
 
-<img src="img/README-preview-1.png" width="33%" /><img src="img/README-preview-2.png" width="33%" /><img src="img/README-preview-3.png" width="33%" /><img src="img/README-preview-4.png" width="33%" /><img src="img/README-preview-5.png" width="33%" /><img src="img/README-preview-6.png" width="33%" /><img src="img/README-preview-7.png" width="33%" /><img src="img/README-preview-8.png" width="33%" /><img src="img/README-preview-9.png" width="33%" /><img src="img/README-preview-10.png" width="33%" /><img src="img/README-preview-11.png" width="33%" /><img src="img/README-preview-12.png" width="33%" /><img src="img/README-preview-13.png" width="33%" /><img src="img/README-preview-14.png" width="33%" /><img src="img/README-preview-15.png" width="33%" /><img src="img/README-preview-16.png" width="33%" /><img src="img/README-preview-17.png" width="33%" /><img src="img/README-preview-18.png" width="33%" /><img src="img/README-preview-19.png" width="33%" /><img src="img/README-preview-20.png" width="33%" /><img src="img/README-preview-21.png" width="33%" /><img src="img/README-preview-22.png" width="33%" /><img src="img/README-preview-23.png" width="33%" /><img src="img/README-preview-24.png" width="33%" /><img src="img/README-preview-25.png" width="33%" /><img src="img/README-preview-26.png" width="33%" /><img src="img/README-preview-27.png" width="33%" /><img src="img/README-preview-28.png" width="33%" /><img src="img/README-preview-29.png" width="33%" /><img src="img/README-preview-30.png" width="33%" /><img src="img/README-preview-31.png" width="33%" /><img src="img/README-preview-32.png" width="33%" /><img src="img/README-preview-33.png" width="33%" /><img src="img/README-preview-34.png" width="33%" /><img src="img/README-preview-35.png" width="33%" /><img src="img/README-preview-36.png" width="33%" /><img src="img/README-preview-37.png" width="33%" /><img src="img/README-preview-38.png" width="33%" /><img src="img/README-preview-39.png" width="33%" /><img src="img/README-preview-40.png" width="33%" /><img src="img/README-preview-41.png" width="33%" /><img src="img/README-preview-42.png" width="33%" /><img src="img/README-preview-43.png" width="33%" /><img src="img/README-preview-44.png" width="33%" /><img src="img/README-preview-45.png" width="33%" /><img src="img/README-preview-46.png" width="33%" /><img src="img/README-preview-47.png" width="33%" /><img src="img/README-preview-48.png" width="33%" /><img src="img/README-preview-49.png" width="33%" /><img src="img/README-preview-50.png" width="33%" /><img src="img/README-preview-51.png" width="33%" /><img src="img/README-preview-52.png" width="33%" /><img src="img/README-preview-53.png" width="33%" /><img src="img/README-preview-54.png" width="33%" /><img src="img/README-preview-55.png" width="33%" /><img src="img/README-preview-56.png" width="33%" /><img src="img/README-preview-57.png" width="33%" /><img src="img/README-preview-58.png" width="33%" /><img src="img/README-preview-59.png" width="33%" /><img src="img/README-preview-60.png" width="33%" /><img src="img/README-preview-61.png" width="33%" /><img src="img/README-preview-62.png" width="33%" /><img src="img/README-preview-63.png" width="33%" /><img src="img/README-preview-64.png" width="33%" /><img src="img/README-preview-65.png" width="33%" /><img src="img/README-preview-66.png" width="33%" /><img src="img/README-preview-67.png" width="33%" /><img src="img/README-preview-68.png" width="33%" /><img src="img/README-preview-69.png" width="33%" /><img src="img/README-preview-70.png" width="33%" /><img src="img/README-preview-71.png" width="33%" />
+<img src="img/README-preview-1.png" width="33%" /><img src="img/README-preview-2.png" width="33%" /><img src="img/README-preview-3.png" width="33%" /><img src="img/README-preview-4.png" width="33%" /><img src="img/README-preview-5.png" width="33%" /><img src="img/README-preview-6.png" width="33%" /><img src="img/README-preview-7.png" width="33%" /><img src="img/README-preview-8.png" width="33%" /><img src="img/README-preview-9.png" width="33%" /><img src="img/README-preview-10.png" width="33%" /><img src="img/README-preview-11.png" width="33%" /><img src="img/README-preview-12.png" width="33%" /><img src="img/README-preview-13.png" width="33%" /><img src="img/README-preview-14.png" width="33%" /><img src="img/README-preview-15.png" width="33%" /><img src="img/README-preview-16.png" width="33%" /><img src="img/README-preview-17.png" width="33%" /><img src="img/README-preview-18.png" width="33%" /><img src="img/README-preview-19.png" width="33%" /><img src="img/README-preview-20.png" width="33%" /><img src="img/README-preview-21.png" width="33%" /><img src="img/README-preview-22.png" width="33%" /><img src="img/README-preview-23.png" width="33%" /><img src="img/README-preview-24.png" width="33%" /><img src="img/README-preview-25.png" width="33%" /><img src="img/README-preview-26.png" width="33%" /><img src="img/README-preview-27.png" width="33%" /><img src="img/README-preview-28.png" width="33%" /><img src="img/README-preview-29.png" width="33%" /><img src="img/README-preview-30.png" width="33%" /><img src="img/README-preview-31.png" width="33%" /><img src="img/README-preview-32.png" width="33%" /><img src="img/README-preview-33.png" width="33%" /><img src="img/README-preview-34.png" width="33%" /><img src="img/README-preview-35.png" width="33%" /><img src="img/README-preview-36.png" width="33%" /><img src="img/README-preview-37.png" width="33%" /><img src="img/README-preview-38.png" width="33%" /><img src="img/README-preview-39.png" width="33%" /><img src="img/README-preview-40.png" width="33%" /><img src="img/README-preview-41.png" width="33%" /><img src="img/README-preview-42.png" width="33%" /><img src="img/README-preview-43.png" width="33%" /><img src="img/README-preview-44.png" width="33%" /><img src="img/README-preview-45.png" width="33%" /><img src="img/README-preview-46.png" width="33%" /><img src="img/README-preview-47.png" width="33%" /><img src="img/README-preview-48.png" width="33%" /><img src="img/README-preview-49.png" width="33%" /><img src="img/README-preview-50.png" width="33%" /><img src="img/README-preview-51.png" width="33%" /><img src="img/README-preview-52.png" width="33%" /><img src="img/README-preview-53.png" width="33%" /><img src="img/README-preview-54.png" width="33%" /><img src="img/README-preview-55.png" width="33%" /><img src="img/README-preview-56.png" width="33%" /><img src="img/README-preview-57.png" width="33%" /><img src="img/README-preview-58.png" width="33%" /><img src="img/README-preview-59.png" width="33%" /><img src="img/README-preview-60.png" width="33%" /><img src="img/README-preview-61.png" width="33%" /><img src="img/README-preview-62.png" width="33%" /><img src="img/README-preview-63.png" width="33%" /><img src="img/README-preview-64.png" width="33%" /><img src="img/README-preview-65.png" width="33%" /><img src="img/README-preview-66.png" width="33%" /><img src="img/README-preview-67.png" width="33%" /><img src="img/README-preview-68.png" width="33%" /><img src="img/README-preview-69.png" width="33%" /><img src="img/README-preview-70.png" width="33%" /><img src="img/README-preview-71.png" width="33%" /><img src="img/README-preview-72.png" width="33%" /><img src="img/README-preview-73.png" width="33%" /><img src="img/README-preview-74.png" width="33%" /><img src="img/README-preview-75.png" width="33%" /><img src="img/README-preview-76.png" width="33%" /><img src="img/README-preview-77.png" width="33%" />
