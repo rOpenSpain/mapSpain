@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Atlas Nacional de España</title>
+<style>
+.titulo1 {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  font: normal 18px/1 Verdana, Geneva, sans-serif;
+  color: black;
+  text-align: left;
+  padding: 5px;
+}
+.titulo2 {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  font: normal 16px/1 Verdana, Geneva, sans-serif;
+  color: rgba(68,68,196,1);
+  text-align: left;
+  padding: 5px;
+}
+.titulo3 {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  font: normal 14px/1 Verdana, Geneva, sans-serif;
+  color: rgba(68,68,196,1);
+  text-align: left;
+  padding: 5px;
+}
+.texto {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  font: normal 14px/1 Verdana, Geneva, sans-serif;
+  color: rgba(0,0,0,1);
+  text-align: left;
+  line-height: 1.5em;
+  padding: 5px;
+}
+.texto2 {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 0 12px 12px 0;
+  font: normal 14px/1 Verdana, Geneva, sans-serif;
+  color: rgba(0,0,0,1);
+  text-align: left;
+  line-height: 1.5em;
+  padding-left: 30px;
+}
+.enlace a {
+  padding: 20px;
+  border: 1px solid;
+  border-left-width: 4px;
+  border-radius: 0 12px 12px 0;
+  font: normal 16px/1 Verdana, Geneva, sans-serif;
+  text-align: left;
+  text-decoration: none;
+  background: linear-gradient(270deg, rgba(255,255,255,1) 0, rgba(168,236,247,1) 100%);
+  display:block;
+}
+.enlace:hover a {
+  padding: 20px;
+  border: 1px solid;
+  border-left-width: 4px;
+  border-radius: 0 12px 12px 0;
+  font: normal 16px/1 Verdana, Geneva, sans-serif;
+  text-align: left;
+  text-decoration: none;
+  background: linear-gradient(270deg, rgba(255,255,255,1) 0, rgba(191,255,176,1) 100%);
+  display:block;
+}
+.texto-pie {
+  font-family: Verdana,Arial,Helvetica,sans-serif;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000;
+  text-align: left;
+  vertical-align: top;
+  padding: 5px;
+}
+.parpadea {
+  animation-name: parpadeo;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+</style>
+</head>
+<body>
+<div class="titulo1">Documentación de la Cartografía del Sistema de información del Atlas Nacional de España (CARTOSIANE)</div>
+<!-- <div class="titulo2">Instituto Geográfico Nacional (IGN)</div> -->
+<!-- <div class="titulo3">Atlas Nacional de España (ANE)</div> -->
+<br/>
+<div class="texto">
+	<strong>Productos</strong>
+	<p>CARTOSIANE es una base de datos geográfica de la que derivan los productos:</p>
+		<ul>
+			<li><strong>CartoBase ANE</strong> (<a href="http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE" target="_blank">http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE</a>)</li>
+			<li><strong>Mapas temáticos del ANE</strong> (<a href="http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=RTANE" target="_blank">http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=RTANE</a>)</li>
+		</ul>
+	<p>La documentación completa (aplicable a ambos productos) se encuentra en el fichero <strong>InformacionCartografiaSIANE.zip</strong> (<a href="http://centrodedescargas.cnig.es/CentroDescargas/documentos/InformacionCartografiaSIANE.zip">http://centrodedescargas.cnig.es/CentroDescargas/documentos/InformacionCartografiaSIANE.zip</a>), o bien, en la carpeta <strong>documentacion_cartosiane</strong> de cada paquete "SIANE_CARTO..." a descarga en <em>CartoBase ANE</em>.</p>
+	<p>Documentación principal:</p>
+		<ul>
+			<li><strong>cartosiane.pdf</strong>: <em>descripción técnica </em> de CARTOSIANE y <em>novedades entre versiones.</em></li>
+			<li><strong>catalogo_base.pdf</strong>: <em>lista de tablas, relaciones, etc.</em></li>
+		</ul>
+	
+	<br/>
+	
+	<strong>Breve introducción a <em>CartoBase ANE</em> (resumen de cartosiane.pdf)</strong>
+	<p>Contiene las bases cartográficas (comunidades autónomas, provincias, circunscripciones electorales, países, etc.) empleadas en el ANE para elaborar los mapas del producto 'Mapas temáticos del ANE'.</p>
+	<p>Es compatible con los códigos de municipios, provincias y comunidadades autónomas del Instituto Nacional de Estadística (<a href="http://www.ine.es/" target="_blank">http://www.ine.es</a>).</p>
+	<p>Ficheros <strong>Excel y vectoriales</strong>:</p>
+	<div class="texto2">
+		<p>- Agrupados en paquetes ZIP <strong>por áreas geográficas y escalas</strong></p>
+		<p>- Código del área geográfica: <strong>S</strong>=España, <strong>E</strong>=Europa, <strong>W</strong>=Mundo</p>
+		<p>- Formato: Shapefile (SHP) y Excel (XLS)</p>
+		<p>- Resolución de los datos: cada SHP indica el denominador de escala en unidades de millón. Ejemplos: <strong>3</strong>: 1:3.000.000, <strong>6m5</strong>: 1:6.500.000. Nota: en el nombre del paquete siempre se indica la letra M, en las capas SHP sólo si es necesario, como separador decimal.</p>
+		<p>- Ejemplo: <strong>SIANE_CARTO_BASE_S_3M.zip</strong>: contiene las capas base de España (S), a escala 1:3.000.000 (3M)</p>
+	</div>
+	<p>Ficheros <strong>raster</strong> (sólo se ofrecen los ficheros de mayor resolución empleados para crear los mapas):</p>
+	<div class="texto2">
+		<p>- Agrupados en paquetes ZIP <strong>por áreas geográficas</strong></p>
+		<p>- Código del área geográfica: <strong>S</strong>=España, <strong>E</strong>=Europa, <strong>W</strong>=Mundo</p>
+		<p>- Formato: GeoTIFF (TIF)</p>
+		<p>- Resolución de los datos: cada fichero TIF indica el paso de malla directamente en metros o en miles de metros (la letra hace de separador decimal). Ejemplos: <strong>2k</strong>: 2000 m, <strong>10k5</strong>: 10500 m, <strong>3000</strong>: 3000 m</p>
+		<p>- Ejemplo, <strong>SIANE_CARTO_BASE_S_RASTER.zip</strong>: contiene las capas base empleadas para crear los mapas de España (S)</p>
+	</div>
+
+</div>
+
+<div class="texto">
+	<strong>Enlaces</strong>
+	<div class="texto">
+		<!--<div class="enlace"><a href="https://www.youtube.com/playlist?list=PLLemwiHg3Tam5IstBfPYti3kCdC1nJQho">Video-tutoriales</a></div>-->
+		<!-- <div class="enlace"><a href="http://www.ign.es/web/ign/portal/ane-area-ane">Actividades del Atlas Nacional de España</a></div> -->
+		<div>Actividades que se realizan en el Atlas Nacional de España (<a href="http://www.ign.es/web/ign/portal/ane-area-ane">http://www.ign.es/web/ign/portal/ane-area-ane</a>)</div>
+	</div>
+</div>
+
+<div class="texto">
+	<strong>Licencia</strong>
+	<div class="texto">
+	    <p>Atlas Nacional de España (ANE) CC BY 4.0 <a href="http://www.ign.es">ign.es</a></p>
+	</div>
+</div>
+
+</body>
+</html>

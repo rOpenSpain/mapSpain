@@ -34,7 +34,7 @@ Last update : **`r Sys.Date()`**, containing
 
 ## Structure
 
-Raw data is available under data-raw/YYYY. Both zipped and unzipped versions are 
+Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected files) are 
 provided.
 
 ## Distribution
@@ -127,6 +127,8 @@ plot(st_geometry(shpcurrent), main = "Current")
 
 Full reference of each dataset in the 
 [data-raw](`r paste0("data-raw/",params$last_year)`) folder.
+
+There are `r length(list.files("dist/", ".gpkg"))` files available:
 
 ```{r echo=FALSE}
 
