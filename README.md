@@ -1,5 +1,11 @@
-mapSpain CDN for SIANE data
+mapSpain CDN for CartoBase ANE
 ================
+
+  - [Structure](#structure)
+  - [Distribution](#distribution)
+  - [Files included](#files-included)
+      - [Table of files](#table-of-files)
+  - [Preview](#preview)
 
 ![Data](https://img.shields.io/badge/last%20data%20available-2020-green)
 ![Last Update](https://img.shields.io/badge/updated-2021--01--07-blue)
@@ -23,10 +29,13 @@ The `dist` folder contains a distribution of [**CartoBase
 ANE**](https://www.ign.es/web/ane-area-ane) on
 [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
 
+A `zip` file (dist/CartoBase.zip) is also provided, including all the
+data on `dist`.
+
 Updates are made running the `R/create_dist.R` script after proper
 download of new information on `data-raw`.
 
-### Files included
+## Files included
 
 The files provided on `dist` come from the folder `todo` from each
 distribution. These file contains the whole history on each dataset,
