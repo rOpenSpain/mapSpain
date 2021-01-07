@@ -2,11 +2,11 @@ on:
   push:
    branches:
       - sianedata
-name: update
+name: update-dist
 
 jobs:
   render:
-    name: update
+    name: update-dist
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

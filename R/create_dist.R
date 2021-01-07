@@ -12,9 +12,7 @@ lastdist <- 2020
 # Clean output dirs
 
 folderfiles <- list.files("dist/")
-gpkg <- folderfiles[grep(".gpkg", folderfiles)]
-gpkg <- file.path("dist", gpkg)
-file.remove(gpkg)
+file.remove(folderfiles)
 
 # pngs
 
@@ -196,8 +194,14 @@ for (i in seq_len(length(shp))) {
 
 }
 
+# 8. Create zip----
+# https://stackoverflow.com/questions/23668395/creating-zip-file-from-folders-in-r
 
-# 8 Update README----
+files2zip <- dir('dist', full.names = TRUE)
+zip(zipfile = 'dist/CartoBase.zip', files = files2zip)
+
+
+# 9 Update README----
 
 rmarkdown::render(
   "README.Rmd",

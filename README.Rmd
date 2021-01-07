@@ -1,8 +1,10 @@
 ---
-title: "mapSpain CDN for SIANE data"
+title: "mapSpain CDN for CartoBase ANE"
 output:
   github_document:
     html_preview: false
+    toc: true
+    toc_depth: 3
 params:
   last_year: 2020
 ---
@@ -42,12 +44,14 @@ provided.
 The `dist` folder contains a distribution of 
 [**CartoBase ANE**](https://www.ign.es/web/ane-area-ane) on [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
 
+A `zip` file (dist/CartoBase.zip) is also provided, including all the data on `dist`.
+
 Updates are made running the `R/create_dist.R` script after proper
 download of new information on `data-raw`.
 
 
 
-### Files included
+## Files included
 
 The files provided on `dist` come from the folder `todo` from each 
 distribution. These
