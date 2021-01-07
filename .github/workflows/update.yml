@@ -21,7 +21,7 @@ jobs:
           install.packages(c("sf", "dplyr","styler", "lwgeom"))
         shell: Rscript {0}
       - name: Update script
-        run: Rscript -e 'source("R/create_dist.R")'
+        run: Rscript -e "source('./R/create_dist.R')"
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
