@@ -19,6 +19,7 @@ jobs:
           install.packages("remotes")
           remotes::install_cran("rmarkdown")
           install.packages(c("sf", "dplyr","styler", "lwgeom"))
+          install.packages("zip")
         shell: Rscript {0}
       - name: Update script
         run: Rscript -e "source('./R/create_dist.R')"

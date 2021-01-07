@@ -193,6 +193,9 @@ for (i in seq_len(length(shp))) {
 # 8. Create zip----
 # https://stackoverflow.com/questions/23668395/creating-zip-file-from-folders-in-r
 
+library(zip)
+
+
 files2zip <- dir('dist', full.names = TRUE)
 zipr(zipfile = 'dist/CartoBase.zip', files = files2zip)
 
