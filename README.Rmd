@@ -34,6 +34,13 @@ API endpoint.
 Last update : **`r Sys.Date()`**, containing 
 **data up to `r params$last_year`**.
 
+## Source data
+
+Atlas Nacional de España (ANE) [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) [ign.es](http://www.ign.es).
+
+<http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE>
+
+
 ## Structure
 
 Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected files) are 
