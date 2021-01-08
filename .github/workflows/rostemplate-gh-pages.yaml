@@ -8,7 +8,7 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: macOS-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -35,13 +35,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE)
           remotes::install_github("ropenspain/rostemplate", dependencies = TRUE, force = TRUE)
 
         shell: Rscript {0}
 
       - name: Install package
-        run: R CMD INSTALL .
+        run: |
+          devtools::install()
+        
+        shell: Rscript {0}
 
       - name: Deploy package
         run: |
