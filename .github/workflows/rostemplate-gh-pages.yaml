@@ -8,7 +8,7 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -41,10 +41,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Install package
-        run: |
-          devtools::install()
-        
-        shell: Rscript {0}
+        run: R CMD INSTALL .
 
       - name: Deploy package
         run: |
