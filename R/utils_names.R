@@ -119,7 +119,7 @@ esp_hlp_all2ccaa <- function(region) {
 
   if (any(lev1)) {
     nutslev1 <-
-      dfall[dfall$nuts1.code %in% nuts_init[lev1],]$nuts2.code
+      dfall[dfall$nuts1.code %in% nuts_init[lev1], ]$nuts2.code
     nuts_init <- nuts_init[lev1 == FALSE]
     nuts_init <- unique(c(nuts_init, nutslev1))
   }

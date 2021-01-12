@@ -2,9 +2,13 @@
 % Please edit documentation in R/esp_get_munic.R
 \name{esp_get_munic}
 \alias{esp_get_munic}
+\alias{esp_get_munic_siane}
 \title{Get municipalities boundaries of Spain}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
+
+IGN data via a custom CDN (see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_munic(
@@ -18,16 +22,35 @@ esp_get_munic(
   munic = NULL,
   moveCAN = TRUE
 )
+
+esp_get_munic_siane(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = 3,
+  region = NULL,
+  munic = NULL,
+  moveCAN = TRUE,
+  rawcols = FALSE
+)
 }
 \arguments{
-\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. Years available: 2001, 2004, 2006,
-2008, 2010, 2013 and any year between 2016 and 2019.}
+\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. See Details for years available.}
 
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See Details.}
 
 \item{munic}{A name or regex expression with the names of the required
 municipalities. \code{NULL} would not produce any filtering.}
+
+\item{resolution}{Resolution of the polygon. Values available are
+\code{"3", "6.5"} or  \code{"10"}.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
+columns of the dataset provided by IGN.}
 }
 \value{
 A \code{POLYGON} object.
@@ -35,6 +58,13 @@ A \code{POLYGON} object.
 \description{
 Loads a simple feature (\code{sf}) object containing the
 municipalities boundaries of Spain.
+
+\code{esp_get_munic} uses GISCO (Eurostat) as source.
+
+\code{esp_get_munic_siane} use CartoBase ANE as source,
+provided by Instituto Geografico Nacional (IGN),
+\href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
+2005 up to today.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes
@@ -43,9 +73,15 @@ When using \code{region} you can use and mix names and NUTS codes
 
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
 all the municipalities of that level would be added.
+
+On \code{esp_get_munic} years available are: 2001, 2004, 2006,
+2008, 2010, 2013 and any year between 2016 and 2019.
+
+On \code{esp_get_munic_siane}, \code{year} could be passed as a single
+year ("YYYY" format, as end of year) or as a specific
+date ("YYYY-MM-DD" format). Historical information starts as of 2005.
 }
 \examples{
-
 
 library(sf)
 

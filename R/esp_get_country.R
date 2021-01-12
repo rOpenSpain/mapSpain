@@ -39,7 +39,11 @@ esp_get_country <- function(...) {
   nm <- names(which.geom)
 
   # Join all
+  init <- sf::st_crs(data.sf)
+  data.sf <- sf::st_transform(data.sf, 3035)
   g <- sf::st_union(data.sf)
+  g <- sf::st_transform(g, init)
+
 
   # Get df
   df <- sf::st_drop_geometry(esp_get_nuts(nuts_level = 0))

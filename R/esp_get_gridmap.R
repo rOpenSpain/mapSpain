@@ -15,7 +15,7 @@
 #' of its size, what introduces a bias. Here with hexbin, each region is
 #' represented equally dismissing the bias.
 #'
-#' Results are provided in \strong{EPSG:4258}, use \link[sf]{st_transform} 
+#' Results are provided in \strong{EPSG:4258}, use \link[sf]{st_transform}
 #' to change the projection.
 #' @examples
 #' library(sf)
@@ -189,4 +189,3 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
 
   return(data.sf)
 }
-

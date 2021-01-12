@@ -82,10 +82,10 @@ getWMS <- function(x,
     nrow <- dim(img)[1]
 
     for (i in seq_len(nrow)) {
-      row <- img[i, ,]
+      row <- img[i, , ]
       alpha <- row[, 4] == 0
-      row[alpha,] <- NA
-      img[i, ,] <- row
+      row[alpha, ] <- NA
+      img[i, , ] <- row
     }
   }
 
@@ -195,10 +195,10 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
         nrow <- dim(img)[1]
 
         for (j in seq_len(nrow)) {
-          row <- img[j, ,]
+          row <- img[j, , ]
           alpha <- row[, 4] == 0
-          row[alpha,] <- NA
-          img[j, ,] <- row
+          row[alpha, ] <- NA
+          img[j, , ] <- row
         }
       }
     }

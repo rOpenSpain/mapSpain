@@ -58,7 +58,7 @@ esp_getTiles <- function(x,
   # A. Check providers
   leafletProvidersESP <- mapSpain::leaflet.providersESP.df
   provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == type,]
+    leafletProvidersESP[leafletProvidersESP$provider == type, ]
 
   if (nrow(provs) == 0) {
     stop(
@@ -141,7 +141,7 @@ esp_getTiles <- function(x,
 
     k <-
       min(c(bbox_expand * (cb[4] - cb[2]), bbox_expand * (cb[3] - cb[1])))
-    cb <- cb + c(-k,-k, k, k)
+    cb <- cb + c(-k, -k, k, k)
     rout <- raster::crop(rout, cb[c(1, 3, 2, 4)])
   }
 
