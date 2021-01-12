@@ -10,7 +10,7 @@ results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4318024.svg)](https://doi.org/10.5281/zenodo.4318024)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4318024-blue)](https://doi.org/10.5281/zenodo.4318024)
 <!-- badges: end -->
 
 **[mapSpain](https://ropenspain.github.io/mapSpain/)** is a package that
@@ -201,6 +201,8 @@ Geográfico Nacional:
 > Atlas Nacional de España (ANE) [CC
 > BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
 > [ign.es](https://www.ign.es/)
+
+See <https://github.com/dieghernan/mapSpain-1/tree/sianedata>
 
 This package uses data from **GISCO**. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial
