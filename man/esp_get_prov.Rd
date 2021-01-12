@@ -2,15 +2,41 @@
 % Please edit documentation in R/esp_get_prov.R
 \name{esp_get_prov}
 \alias{esp_get_prov}
+\alias{esp_get_prov_siane}
 \title{Get Provinces boundaries of Spain}
+\source{
+IGN data via a custom CDN (see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+}
 \usage{
 esp_get_prov(prov = NULL, ...)
+
+esp_get_prov_siane(
+  prov = NULL,
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  moveCAN = TRUE,
+  rawcols = FALSE
+)
 }
 \arguments{
 \item{prov}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the provinces. See Details.}
 
 \item{...}{Additional parameters from \link{esp_get_nuts}.}
+
+\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \code{\link{esp_get_nuts}}. See Details for \code{year}.}
+
+\item{resolution}{Resolution of the polygon. Values available are
+\code{"3", "6.5"} or  \code{"10"}.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
+columns of the dataset provided by IGN.}
 }
 \value{
 A \code{POLYGON/POINT} object.
@@ -18,6 +44,13 @@ A \code{POLYGON/POINT} object.
 \description{
 Loads a simple feature (\code{sf}) object containing the
 province boundaries of Spain.
+
+\code{esp_get_prov} uses GISCO (Eurostat) as source
+
+\code{esp_get_prov_siane} use CartoBase ANE as source,
+provided by Instituto Geografico Nacional (IGN),
+\href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
+2005 up to today.
 }
 \details{
 When using \code{prov} you can use and mix names and NUTS codes
@@ -26,8 +59,12 @@ When using \code{prov} you can use and mix names and NUTS codes
 
 Ceuta and Melilla are considered as provinces on this dataset.
 
-When calling a superior level (Autonomous Community or NUTS1) , all the
- provinces of that level would be added.
+When calling a superior level (Autonomous Community or NUTS1) ,
+all the provinces of that level would be added.
+
+On \code{esp_get_prov_siane}, \code{year} could be passed as a single
+year ("YYYY" format, as end of year) or as a specific
+date ("YYYY-MM-DD" format). Historical information starts as of 2005.
 }
 \examples{
 

@@ -87,7 +87,7 @@ esp_get_can_box <- function(style = "right",
 
 
   if (style == "box" | style == "poly") {
-    bbox <- bbox + c(-0.5,-0.3, 0.5, 0.3)
+    bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 
     lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(CAN))
     if (style == "box") {
@@ -152,6 +152,8 @@ esp_get_can_box <- function(style = "right",
 #' @description \code{esp_get_can_provinces} is used to draw a separator
 #' line between the two provinces of the Canary Islands.
 #' @return \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
+#' @source \code{esp_get_can_provinces} extracted from CartoBase ANE,
+#' \code{se89_mult_admin_provcan_l.shp} file.
 #' @export
 esp_get_can_provinces <- function(moveCAN = TRUE,
                                   epsg = "4258") {
@@ -161,9 +163,9 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
     stop("epsg should be one of '4258','4326','3035', '3857'")
   }
 
-
-  m <- c(sf::st_point(c(-15.25274, 29.20)),
-         sf::st_point(c(-16.4, 27.639)))
+  # From CartoBase ANE: se89_mult_admin_provcan_l
+  m <- c(sf::st_point(c(-16.29902, 27.71454)),
+         sf::st_point(c(-15.69362, 28.78078)))
 
   lall <- sf::st_linestring(sf::st_coordinates(m))
   lall <- sf::st_sfc(lall, crs = sf::st_crs(4326))

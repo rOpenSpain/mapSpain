@@ -12,4 +12,3 @@ expect_silent(esp_get_can_box(moveCAN = c(10, 10)))
 expect_error(esp_get_can_provinces(epsg = "ee"))
 expect_silent(esp_get_can_provinces(moveCAN = FALSE))
 expect_silent(esp_get_can_provinces(moveCAN = c(10, 10)))
-

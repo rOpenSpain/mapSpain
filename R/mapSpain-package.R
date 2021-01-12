@@ -15,7 +15,8 @@
 #' @description \if{html}{\figure{logo.png}{options: width=120 alt="mapSpain logo" align='right'}}
 #' This package provides Administrative Boundaries of Spain based on
 #' the GISCO (Geographic Information System of the Commission) Eurostat
-#' database.
+#' database and CartoBase SIANE from
+#' Instituto Geográfico Nacional.
 #'
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{GISCO webpage}

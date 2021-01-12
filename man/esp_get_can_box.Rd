@@ -4,6 +4,10 @@
 \alias{esp_get_can_box}
 \alias{esp_get_can_provinces}
 \title{Get complementary lines when plotting Canary Islands.}
+\source{
+\code{esp_get_can_provinces} extracted from CartoBase ANE,
+\code{se89_mult_admin_provcan_l.shp} file.
+}
 \usage{
 esp_get_can_box(style = "right", moveCAN = TRUE, epsg = "4258")
 

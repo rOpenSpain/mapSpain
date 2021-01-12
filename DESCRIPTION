@@ -1,7 +1,7 @@
 Package: mapSpain
 Type: Package
 Title: Administrative Boundaries of Spain
-Version: 0.1.2
+Version: 0.1.3-9000
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -10,12 +10,17 @@ Authors@R:
              comment = c(ORCID = "0000-0001-8457-4658")),
       person(given = "EuroGeographics",
              role = "cph",
+             comment = "for the administrative boundaries."),
+      person(given = "Instituto Geográfico Nacional",
+             role = "cph",
              comment = "for the administrative boundaries.")
              )
 Description: Administrative Boundaries of Spain at several levels (CCAA, 
     Provinces, Municipalities) based on the GISCO Eurostat database
-    <https://ec.europa.eu/eurostat/web/gisco>. It also provides a 'leaflet' 
-    plugin and the ability of downloading and processing static tiles.
+    <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE 
+    from Instituto Geográfico Nacional <https://www.ign.es/>. 
+    It also provides a 'leaflet' plugin and the ability of 
+    downloading and processing static tiles.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

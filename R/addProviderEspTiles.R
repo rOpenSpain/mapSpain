@@ -75,7 +75,7 @@ addProviderEspTiles <- function(map,
 
 
   # Clean if the option was already set
-  opts <- opts[!(opts$field %in% names(options)),]
+  opts <- opts[!(opts$field %in% names(options)), ]
 
   # Pass to list
 
