@@ -185,11 +185,23 @@ you can use on functions described above. This data frame includes all the
 parameters needed to replicate the API request. In this summary only the
 parameter `url_static` is shown:
 
-```{r providers}
+```{r providers, echo=FALSE}
 
-knitr::kable(leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ],
-             row.names = FALSE
-             )
+if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
+  install.packages("reactable")
+}
+
+library(reactable)
+
+df <- leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ]
+
+reactable(df,
+          filterable = TRUE,
+          searchable = TRUE,
+          showPageSizeOptions = TRUE,
+          striped = TRUE,
+          paginationType = "jump"
+          )
 
 ```
 
