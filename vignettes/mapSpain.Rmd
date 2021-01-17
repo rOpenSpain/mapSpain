@@ -23,7 +23,7 @@ knitr::knit_hooks$set(
 ```
 
 
-# Introduction
+## Introduction
 
 [**`mapSpain`**](https://ropenspain.github.io/mapSpain/) is a package designed to provide geographical information of Spain at different levels.
 
@@ -37,7 +37,7 @@ represented on static maps via `mapSpain::esp_getTiles()` or on a **R** leaflet 
 On top of that, **`mapSpain`** also has a powerful dictionary that translate provinces and other regions to English, Spanish, Catalan, Basque language or Galician, and also converts those names to different coding standards, as NUTS, ISO2 or the coding system used by the INE, that is the official statistic agency of Spain.
 
 
-# Caching
+## Caching
 
 `mapSpain` provides a dataset and tile caching capability, that could be set as:
 
@@ -51,7 +51,7 @@ options(gisco_cache_dir = "~/path/to/dir")
 
 `mapSpain` relies on [`giscoR`](https://dieghernan.github.io/giscoR/) for downloading some files, and both packages are well synchronized, so if you already use `giscoR` and you have set your caching options for that package it would be recognized too by `mapSpain`.
 
-# Installation
+## Installation
 
 Install `mapSpain` from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
@@ -68,7 +68,7 @@ install_github("rOpenSpain/mapSpain")
 ```
 
 
-# Basic example
+## Basic example
 
 Some examples of what `mapSpain`can do:
 
@@ -117,7 +117,7 @@ plot(
 ```
 
 
-# Thematic maps
+## Thematic maps
 
 This is an example on how `mapSpain` can be used to create thematic maps. For plotting purposes we would use the [`cartography` package](https://riatelab.github.io/cartography/docs/index.html), however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). 
 
@@ -188,4 +188,15 @@ legendChoro(
 
 
 ```
+
+## Session Info
+
+<details>
+  <summary><strong>Details</strong></summary>
+```{r session_info, echo=FALSE}
+sessionInfo()
+
+```
+</details>
+
 
