@@ -187,8 +187,8 @@ parameter `url_static` is shown:
 
 ```{r providers, echo=FALSE}
 
-if (isFALSE(requireNamespace(“reactable”, quietly = TRUE))) {
-  install.packages(“reactable”)
+if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
+  install.packages("reactable")
 }
 
 library(reactable)
