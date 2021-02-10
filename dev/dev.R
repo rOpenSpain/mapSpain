@@ -1,10 +1,11 @@
 roxygen2::roxygenise()
-
-remotes::install_github("rOpenSpain/mapSpain")
-
 tinytest::test_all()
+devtools::check()
+install.packages("devtools")
 
+covr::package_coverage()
 
+install.packages("covr", dependencies = TRUE)
 
 a <- esp_get_ccaa()
 

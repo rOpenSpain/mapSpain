@@ -30,6 +30,12 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "ccaa") {
     filename <-
       paste0("se89_", resolution, "_admin_ccaa_a_", sub, ".gpkg")
+  } else if (type == "orogarea") {
+    filename <-
+      paste0("se89_", resolution, "_orog_hipso_a_", sub, ".gpkg")
+  } else if (type == "orogline") {
+    filename <-
+      paste0("se89_", resolution, "_orog_hipso_l_", sub, ".gpkg")
   }
 
   url <- file.path(api_entry, filename)
