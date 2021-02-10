@@ -16,7 +16,6 @@
 #' \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.
 #' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
 #' @examples
-#'
 #' library(sf)
 #' library(cartography)
 #'
@@ -25,32 +24,33 @@
 #' # Tints from Wikipedia
 #' # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions
 #'
-#' bath_tints <-
-#'   colorRampPalette(c("#71ABD8", "#8DC1EA", "#ACDBFB", "#C7E7FB"))
+#' bath_tints <- colorRampPalette(
+#'   rev(
+#'     c("#D8F2FE", "#C6ECFF", "#B9E3FF",
+#'       "#ACDBFB", "#A1D2F7", "#96C9F0",
+#'       "#8DC1EA", "#84B9E3", "#79B2DE",
+#'       "#71ABD8")
+#'   )
+#' )
 #'
-#' hyps_tints <-
-#'   colorRampPalette(c(
-#'     # Greens
-#'     "#ACD0A5",
-#'     "#BDCC96",
-#'     # Yellows
-#'     "#EFEBC0",
-#'     "#D3CA9D",
-#'     # Browns
-#'     "#B9985A",
-#'     "#BAAE9A",
-#'     #Top White
-#'     "#F5F4F2"
-#'   ))
+#' hyps_tints <- colorRampPalette(
+#'   rev(
+#'     c("#F5F4F2", "#E0DED8", "#CAC3B8", "#BAAE9A",
+#'       "#AC9A7C", "#AA8753", "#B9985A", "#C3A76B",
+#'       "#CAB982", "#D3CA9D", "#DED6A3", "#E8E1B6",
+#'       "#EFEBC0", "#E1E4B5", "#D1D7AB", "#BDCC96",
+#'       "#A8C68F", "#94BF8B", "#ACD0A5")
+#'   )
+#' )
 #'
-#'
-#' # Check elevation levels
-#' levels <- sort(unique(hypsobath$val_inf))
-#' n_sealevels <- length(levels[levels < 0])
-#' n_terrainlevels <- length(levels) - n_sealevels
 #'
 #' # Create palette
-#' pal <- c(bath_tints(n_sealevels), hyps_tints(n_terrainlevels))
+#' br_bath <- seq(-6250, -250, 250)
+#' br_terrain <- seq(0, 3100, 100)
+#'
+#'
+#' finalbreaks <- sort(unique(c(br_bath, br_terrain)))
+#' pal <- c(bath_tints(length(br_bath)), hyps_tints(length(br_terrain)))
 #'
 #' opar <- par(no.readonly = TRUE)
 #'
@@ -64,10 +64,10 @@
 #' choroLayer(
 #'   hypsobath,
 #'   var = "val_inf",
-#'   breaks = levels,
+#'   breaks = finalbreaks,
 #'   col = pal,
-#'   border = NA,
 #'   legend.pos = "n",
+#'   border = NA,
 #'   add = TRUE
 #' )
 #'
@@ -80,14 +80,15 @@
 #' choroLayer(
 #'   hypsobath,
 #'   var = "val_inf",
-#'   breaks = levels,
+#'   breaks = finalbreaks,
 #'   col = pal,
-#'   border = NA,
 #'   legend.pos = "n",
+#'   border = NA,
 #'   add = TRUE
 #' )
 #'
 #' par(opar)
+
 
 esp_get_hypsobath <- function(epsg = "4258",
                               cache = TRUE,
