@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmd:MD_Metadata xmlns:gco="http://www.isotc211.org/2005/gco/"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd/"
+    xmlns:gml="http://www.opengis.net/gml/"
+    xmlns:gts="http://www.isotc211.org/schemas/2005/gts/"
+    xmlns:srv="http://www.isotc211.org/2005/srv/"
+    xmlns:xlink="http://www.w3.org/1999/xlink/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <gmd:fileIdentifier>
+        <gco:CharacterString>se89_10_admin_muni_a_x</gco:CharacterString>
+    </gmd:fileIdentifier>
+    <gmd:language>
+        <gmd:LanguageCode
+            codeList="./resources/codeList.xml#LanguageCode" codeListValue="spa">spa</gmd:LanguageCode>
+    </gmd:language>
+    <gmd:characterSet>
+        <gmd:MD_CharacterSetCode
+            codeList="./resources/codeList.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+    </gmd:characterSet>
+    <gmd:parentIdentifier gco:nilReason="inapplicable"/>
+    <gmd:hierarchyLevel gco:nilReason="missing"/>
+    <gmd:hierarchyLevelName gco:nilReason="missing"/>
+    <gmd:contact>
+        <gmd:CI_ResponsibleParty>
+            <gmd:individualName gco:nilReason="missing"/>
+            <gmd:organisationName>
+                <gco:CharacterString>Instituto Geográfico Nacional (IGN)</gco:CharacterString>
+            </gmd:organisationName>
+            <gmd:positionName gco:nilReason="missing"/>
+            <gmd:role>
+                <gmd:CI_RoleCode
+                    codeList="./resources/codeList.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+            </gmd:role>
+        </gmd:CI_ResponsibleParty>
+    </gmd:contact>
+    <gmd:dateStamp gco:nilReason="missing"/>
+    <gmd:metadataStandardName>
+        <gco:CharacterString>ISO 19115</gco:CharacterString>
+    </gmd:metadataStandardName>
+    <gmd:metadataStandardVersion>
+        <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+    </gmd:metadataStandardVersion>
+    <gmd:identificationInfo>
+        <gmd:MD_DataIdentification>
+            <gmd:citation>
+                <gmd:CI_Citation>
+                    <gmd:title>
+                        <gco:CharacterString>se89_10_admin_muni_a_x</gco:CharacterString>
+                    </gmd:title>
+                    <gmd:date gco:nilReason="missing"/>
+                </gmd:CI_Citation>
+            </gmd:citation>
+            <gmd:abstract>
+                <gco:CharacterString>En el catálogo de capas de información geográfica (tipos de objetos geográficos) se hace una descripción más detallada de cada capa (atributos, asociaciones, etc.). Acceso al catálogo: http://centrodedescargas.cnig.es/CentroDescargas/documentos/InformacionCartografiaSIANE.zip Acceso al producto Cartografía base del Atlas Nacional de España (CartoBase ANE): http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE</gco:CharacterString>
+            </gmd:abstract>
+            <gmd:language gco:nilReason="missing"/>
+            <gmd:characterSet gco:nilReason="missing"/>
+            <gmd:topicCategory gco:nilReason="missing"/>
+            <gmd:extent gco:nilReason="missing"/>
+        </gmd:MD_DataIdentification>
+    </gmd:identificationInfo>
+    <gmd:dataQualityInfo>
+        <gmd:DQ_DataQuality>
+            <gmd:scope>
+                <gmd:DQ_Scope>
+                    <gmd:level>
+                        <gmd:MD_ScopeCode
+                            codeList="./resources/codeList.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+                    </gmd:level>
+                    <gmd:levelDescription gco:nilReason="missing"/>
+                </gmd:DQ_Scope>
+            </gmd:scope>
+            <gmd:report gco:nilReason="missing"/>
+            <gmd:lineage>
+                <gmd:LI_Lineage>
+                    <gmd:statement>
+                        <gco:CharacterString>Las líneas límite proceden en origen del proyecto SABE (Seamless Administrative Boundaries of Europe) del año 2004. Estos datos se actualizaron a 2006 con ayuda de la Base de Datos de los Límites Jurisdiccionales de España (BDLJE) del Registro Central de Cartografía del Instituto Geográfico Nacional (IGN). Los nombres de los objetos geográficos y las coordenadas de las capitales se actualizaron conforme al Nomenclátor Geográfico de Municipios y Entidades de Población (NGMEP) del año 2006. Los nombres también se comprobaron con respecto al Registro de Entidades Locales (REL). Los códigos se comprobaron con respecto a la "Relación de municipios, provincias, comunidades y ciudades autónomas y sus códigos", del Instituto Nacional de Estadística del año 2006 y con respecto a la información de Euro Global Map (EGM) disponible, en el caso de los códigos de las Comunidades Autónomas. Con los datos a 1 de enero de 2006, se generalizaron a la escala de trabajo y, desde entonces, se mantienen en el Atlas Nacional de España conforme a la versión actualizada de las mismas fuentes; salvo en el caso de las coordenadas de las capitales, para las cuales se emplean los servicios web "Mapa base de España" y "Ortofotos PNOA máxima actualidad" del IGN. Las coordenadas de los centroides visuales (x_cvi, y_cvi) se calculan en el proyecto SIANE.
+    Esta capa de municipios a escala 1:10.000.000, es una representación especial que únicamente persigue el objetivo de poder representar mapas estadísticos de tendencias en informes (tamaño A4), aunque es sabido que muchos municipios (en torno al 20%) no tienen representación a esa escala. De modo que presenta las siguientes limitaciones:
+    * No presenta generalización cartográfica, para tratar de evitar que desaparezcan municipios. Pero debido a la escala tan reducida, los siguientes municipios no se han representan a escala 1:10.000.000, al aparecer en límites provinciales para los que la simplificación cartográfica previa hace que dichos territorios no se representen: 48074, 39101, 34242. A escala 1:3.000.000 (3) y a escala 1:6.500.000 (6m5) si se representan todos los municipios.
+						</gco:CharacterString>
+                    </gmd:statement>
+                    <gmd:processStep gco:nilReason="missing"/>
+                    <gmd:source gco:nilReason="missing"/>
+                </gmd:LI_Lineage>
+            </gmd:lineage>
+        </gmd:DQ_DataQuality>
+    </gmd:dataQualityInfo>
+</gmd:MD_Metadata>
+<!--Metadata generated with CatMDEdit version 5.0-->
