@@ -16,6 +16,7 @@ reference:
     desc: These functions return sf objets with natural features
     contents:
       - esp_get_hypsobath
+      - esp_get_rivers
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:

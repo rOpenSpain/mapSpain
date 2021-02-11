@@ -22,8 +22,8 @@ esp_get_hypsobath(
 \item{epsg, cache, update_cache, cache_dir, verbose}{See
 \code{\link{esp_get_nuts}}.}
 
-\item{resolution}{Resolution of the shape. Values available are "3"
-and.}
+\item{resolution}{Resolution of the shape. Values available are
+\code{"3"} or \code{"6.5"}.}
 
 \item{spatialtype}{Spatial type of the output. Use \code{"area"} for
 \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.}

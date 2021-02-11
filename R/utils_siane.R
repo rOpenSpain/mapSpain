@@ -36,17 +36,25 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "orogline") {
     filename <-
       paste0("se89_", resolution, "_orog_hipso_l_", sub, ".gpkg")
-  } else if (type == "rioline") {
+  } else if (type == "riverline") {
     filename <-
       paste0("se89_", resolution, "_hidro_rio_l_", sub, ".gpkg")
-  } else if (type == "rioarea") {
+  } else if (type == "riverarea") {
     filename <-
       paste0("se89_", resolution, "_hidro_rio_a_", sub, ".gpkg")
+  } else if (type == "rivernames") {
+    filename <- "rivernames.rda"
+    api_entry <-
+      "https://github.com/rOpenSpain/mapSpain/raw/sianedata/data-raw"
   }
 
   url <- file.path(api_entry, filename)
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
+
+  if (verbose) {
+    message("Cache dir is ", cache_dir)
+  }
 
   # Create filepath
   filepath <- file.path(cache_dir, filename)
@@ -107,6 +115,11 @@ esp_hlp_download_siane <- function(type,
       class(size) <- "object_size"
       message(format(size, units = "auto"))
     }
+    if (type == "rivernames") {
+      data <- readRDS(filepath)
+      return(data)
+
+    }
     err_onload <- tryCatch(
       data.sf <- sf::st_read(
         filepath,
@@ -149,14 +162,22 @@ esp_hlp_get_siane <- function(type,
                               update_cache,
                               verbose,
                               year) {
+  # Rivers names
+  if (type == "rivernames") {
+    df <-
+      esp_hlp_download_siane(type, 3, cache, cache_dir, update_cache,
+                             verbose, "x")
+    return(df)
+  }
+
   # Mainland
   data.sf1 <-
     esp_hlp_download_siane(type, resolution, cache, cache_dir, update_cache,
                            verbose, "x")
   # Canary Islands
-  if (type == "rioline" & as.character(resolution) != "3") {
+  if (type == "riverline" & as.character(resolution) != "3") {
     # Nothing
-  } else if (type == "rioarea") {
+  } else if (type == "riverarea") {
     # Nothing
   } else {
     data.sf2 <-

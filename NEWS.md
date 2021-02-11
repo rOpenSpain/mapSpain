@@ -6,6 +6,7 @@
   * `mapSpain::esp_get_prov_siane()`
   * `mapSpain::esp_get_ccaa_siane()`
   * `mapSpain::esp_get_hypsobath()`
+  * `mapSpain::esp_get_rivers()`
 
 # mapSpain 0.1.2
 

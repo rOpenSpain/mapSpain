@@ -10,8 +10,8 @@
 #'
 #' @param epsg,cache,update_cache,cache_dir,verbose See
 #' \code{\link{esp_get_nuts}}.
-#' @param resolution Resolution of the shape. Values available are "3"
-#' and.
+#' @param resolution Resolution of the shape. Values available are
+#' \code{"3"} or \code{"6.5"}.
 #' @param spatialtype Spatial type of the output. Use \code{"area"} for
 #' \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.
 #' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
