@@ -333,4 +333,3 @@ esp_get_prov_siane <- function(prov = NULL,
 
   return(data.sf)
 }
-

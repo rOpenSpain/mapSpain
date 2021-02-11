@@ -36,6 +36,12 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "orogline") {
     filename <-
       paste0("se89_", resolution, "_orog_hipso_l_", sub, ".gpkg")
+  } else if (type == "rioline") {
+    filename <-
+      paste0("se89_", resolution, "_hidro_rio_l_", sub, ".gpkg")
+  } else if (type == "rioarea") {
+    filename <-
+      paste0("se89_", resolution, "_hidro_rio_a_", sub, ".gpkg")
   }
 
   url <- file.path(api_entry, filename)
@@ -148,10 +154,20 @@ esp_hlp_get_siane <- function(type,
     esp_hlp_download_siane(type, resolution, cache, cache_dir, update_cache,
                            verbose, "x")
   # Canary Islands
-  data.sf2 <-
-    esp_hlp_download_siane(type, resolution, cache, cache_dir, update_cache,
-                           verbose, "y")
-
+  if (type == "rioline" & as.character(resolution) != "3") {
+    # Nothing
+  } else if (type == "rioarea") {
+    # Nothing
+  } else {
+    data.sf2 <-
+      esp_hlp_download_siane(type,
+                             resolution,
+                             cache,
+                             cache_dir,
+                             update_cache,
+                             verbose,
+                             "y")
+  }
   # CCAA
   if (type == "ccaa") {
     data.sf1$x_cap2 <- NA
@@ -159,11 +175,16 @@ esp_hlp_get_siane <- function(type,
     data.sf1 <- data.sf1[, colnames(data.sf2)]
   }
 
-  # Transform and bind
-  data.sf2 <- sf::st_transform(data.sf2, sf::st_crs(data.sf1))
+  if (exists("data.sf2")) {
+    # Transform and bind
+    data.sf2 <- sf::st_transform(data.sf2, sf::st_crs(data.sf1))
 
-  data.sf <- rbind(data.sf1, data.sf2)
-
+    data.sf <- rbind(data.sf1, data.sf2)
+  } else {
+    if (verbose)
+      message("Shape not provided for Canary Islands")
+    data.sf <- data.sf1
+  }
   # Date management
   minDate <- min(data.sf$fecha_alta)
   maxDate <- Sys.Date()

@@ -46,7 +46,4 @@ expect_warning(esp_get_nuts(region = b))
 expect_silent(esp_get_nuts(region = esp_codelist$nuts1.name))
 expect_silent(esp_get_nuts(region = esp_codelist$nuts2.name))
 expect_silent(esp_get_nuts(region = esp_codelist$nuts3.name))
-
-
 expect_silent(esp_get_nuts(resolution = "20"))
-
