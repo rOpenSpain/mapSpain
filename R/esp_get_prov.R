@@ -77,39 +77,39 @@ esp_get_prov <- function(prov = NULL, ...) {
   params$nuts_level <- 3
 
 
-  data.sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
 
   # Avoid warning on union
-  initcrs <- sf::st_crs(data.sf)
-  data.sf <- sf::st_transform(data.sf, 3035)
+  initcrs <- sf::st_crs(data_sf)
+  data_sf <- sf::st_transform(data_sf, 3035)
 
 
-  data.sf$nuts3.code <- data.sf$NUTS_ID
-  data.sf <- data.sf[, "nuts3.code"]
+  data_sf$nuts3.code <- data_sf$NUTS_ID
+  data_sf <- data_sf[, "nuts3.code"]
 
   # Get cpro
 
   df <- mapSpain::esp_codelist
   df <- unique(df[, c("nuts3.code", "cpro")])
-  data.sf <- merge(data.sf, df, all.x = TRUE)
-  data.sf <- data.sf[, "cpro"]
+  data_sf <- merge(data_sf, df, all.x = TRUE)
+  data_sf <- data_sf[, "cpro"]
 
   # Merge Islands
 
   # Extract geom column
-  names <- names(data.sf)
+  names <- names(data_sf)
 
   which.geom <-
-    which(vapply(data.sf, function(f)
+    which(vapply(data_sf, function(f)
       inherits(f, "sfc"), TRUE))
 
   nm <- names(which.geom)
 
   # Baleares
 
-  if (any(data.sf$cpro %in% "07")) {
-    clean <- data.sf[data.sf$cpro != "07", ]
-    island <- data.sf[data.sf$cpro == "07", ]
+  if (any(data_sf$cpro %in% "07")) {
+    clean <- data_sf[data_sf$cpro != "07", ]
+    island <- data_sf[data_sf$cpro == "07", ]
     g <- sf::st_union(island)
     df <- unique(sf::st_drop_geometry(island))
     # Generate sf object
@@ -119,14 +119,14 @@ esp_get_prov <- function(prov = NULL, ...) {
     newnames[newnames == "g"] <- nm
     colnames(new) <- newnames
     new <- sf::st_set_geometry(new, nm)
-    data.sf <- rbind(clean, new)
+    data_sf <- rbind(clean, new)
   }
 
   # Las Palmas
 
-  if (any(data.sf$cpro %in% "35")) {
-    clean <- data.sf[data.sf$cpro != "35", ]
-    island <- data.sf[data.sf$cpro == "35", ]
+  if (any(data_sf$cpro %in% "35")) {
+    clean <- data_sf[data_sf$cpro != "35", ]
+    island <- data_sf[data_sf$cpro == "35", ]
     g <- sf::st_union(island)
     df <- unique(sf::st_drop_geometry(island))
     # Generate sf object
@@ -136,13 +136,13 @@ esp_get_prov <- function(prov = NULL, ...) {
     newnames[newnames == "g"] <- nm
     colnames(new) <- newnames
     new <- sf::st_set_geometry(new, nm)
-    data.sf <- rbind(clean, new)
+    data_sf <- rbind(clean, new)
   }
 
   # Sta Cruz Tfe
-  if (any(data.sf$cpro %in% "38")) {
-    clean <- data.sf[data.sf$cpro != "38", ]
-    island <- data.sf[data.sf$cpro == "38", ]
+  if (any(data_sf$cpro %in% "38")) {
+    clean <- data_sf[data_sf$cpro != "38", ]
+    island <- data_sf[data_sf$cpro == "38", ]
     g <- sf::st_union(island)
     df <- unique(sf::st_drop_geometry(island))
     # Generate sf object
@@ -152,7 +152,7 @@ esp_get_prov <- function(prov = NULL, ...) {
     newnames[newnames == "g"] <- nm
     colnames(new) <- newnames
     new <- sf::st_set_geometry(new, nm)
-    data.sf <- rbind(clean, new)
+    data_sf <- rbind(clean, new)
   }
 
 
@@ -161,7 +161,7 @@ esp_get_prov <- function(prov = NULL, ...) {
   df <- dict_prov
   df <- df[, names(df) != "key"]
 
-  data.sf <- merge(data.sf, df, all.x = TRUE)
+  data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
@@ -171,22 +171,22 @@ esp_get_prov <- function(prov = NULL, ...) {
                       "nuts2.name",
                       "nuts1.code",
                       "nuts1.name")])
-  data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
-  data.sf <-
-    data.sf[, c(colnames(df),
+  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
+  data_sf <-
+    data_sf[, c(colnames(df),
                 "nuts2.code",
                 "nuts2.name",
                 "nuts1.code",
                 "nuts1.name")]
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
+  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
   # Transform
 
-  data.sf <- sf::st_transform(data.sf, initcrs)
+  data_sf <- sf::st_transform(data_sf, initcrs)
 
-  return(data.sf)
+  return(data_sf)
 }
 
 
@@ -231,7 +231,7 @@ esp_get_prov_siane <- function(prov = NULL,
   }
 
   # Get Data from SIANE
-  data.sf <- esp_hlp_get_siane("prov",
+  data_sf <- esp_hlp_get_siane("prov",
                                resolution,
                                cache,
                                cache_dir,
@@ -240,10 +240,10 @@ esp_get_prov_siane <- function(prov = NULL,
                                year)
 
 
-  colnames_init <- colnames(sf::st_drop_geometry(data.sf))
+  colnames_init <- colnames(sf::st_drop_geometry(data_sf))
 
 
-  data.sf$cpro <- data.sf$id_prov
+  data_sf$cpro <- data_sf$id_prov
 
   if (!is.null(prov)) {
     tonuts <- esp_hlp_all2prov(prov)
@@ -251,10 +251,10 @@ esp_get_prov_siane <- function(prov = NULL,
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
-    data.sf <- data.sf[data.sf$cpro %in% toprov, ]
+    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-  if (nrow(data.sf) == 0) {
+  if (nrow(data_sf) == 0) {
     stop("provs '",
          paste0(prov, collapse = "', "),
          "' does not return any result")
@@ -264,7 +264,7 @@ esp_get_prov_siane <- function(prov = NULL,
   df <- dict_prov
   df <- df[, names(df) != "key"]
 
-  data.sf <- merge(data.sf, df, all.x = TRUE)
+  data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
@@ -274,7 +274,7 @@ esp_get_prov_siane <- function(prov = NULL,
                       "nuts2.name",
                       "nuts1.code",
                       "nuts1.name")])
-  data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
 
   # Move CAN
@@ -284,7 +284,7 @@ esp_get_prov_siane <- function(prov = NULL,
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    if (length(grep("05", data.sf$codauto)) > 0) {
+    if (length(grep("05", data_sf$codauto)) > 0) {
       offset <- c(550000, 920000)
 
       if (length(moveCAN) > 1) {
@@ -295,9 +295,9 @@ esp_get_prov_siane <- function(prov = NULL,
         offset <- offset + as.double(coords)
       }
 
-      data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("05", data.sf$codauto), ]
-      CAN <- data.sf[grep("05", data.sf$codauto), ]
+      data_sf <- sf::st_transform(data_sf, 3857)
+      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
+      CAN <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -308,28 +308,28 @@ esp_get_prov_siane <- function(prov = NULL,
 
       #Regenerate
       if (nrow(PENIN) > 0) {
-        data.sf <- rbind(PENIN, CAN)
+        data_sf <- rbind(PENIN, CAN)
       } else {
-        data.sf <- CAN
+        data_sf <- CAN
       }
     }
   }
 
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
+  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
   namesend <- unique(c(colnames_init,
                        colnames(esp_get_prov())))
 
-  data.sf <- data.sf[, namesend]
+  data_sf <- data_sf[, namesend]
 
 
   if (isFALSE(rawcols)) {
-    data.sf <- data.sf[, colnames(esp_get_prov())]
+    data_sf <- data_sf[, colnames(esp_get_prov())]
   }
 
-  return(data.sf)
+  return(data_sf)
 }

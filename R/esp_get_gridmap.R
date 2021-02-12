@@ -76,7 +76,7 @@
 #' labelLayer(gridprov, txt = "label")
 esp_get_hex_prov <- function(prov = NULL) {
   region <- prov
-  data.sf <- esp_hexbin_prov
+  data_sf <- esp_hexbin_prov
 
   region <- unique(region)
 
@@ -94,13 +94,13 @@ esp_get_hex_prov <- function(prov = NULL) {
     cprocodes <-
       unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
 
-    data.sf <- data.sf[data.sf$cpro %in% cprocodes, ]
+    data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
   }
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
+  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname esp_get_gridmap
@@ -108,7 +108,7 @@ esp_get_hex_prov <- function(prov = NULL) {
 esp_get_hex_ccaa <- function(ccaa = NULL) {
   region <- ccaa
 
-  data.sf <- esp_hexbin_ccaa
+  data_sf <- esp_hexbin_ccaa
 
   region <- unique(region)
 
@@ -122,20 +122,20 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
            paste0("'", region, "'", collapse = ", "),
            " is not a valid name")
 
-    data.sf <- data.sf[data.sf$nuts2.code %in% nuts_id, ]
+    data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
   }
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto), ]
+  data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname esp_get_gridmap
 #' @export
 esp_get_grid_prov <- function(prov = NULL) {
   region <- prov
-  data.sf <- esp_grid_prov
+  data_sf <- esp_grid_prov
 
   region <- unique(region)
 
@@ -153,13 +153,13 @@ esp_get_grid_prov <- function(prov = NULL) {
     cprocodes <-
       unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
 
-    data.sf <- data.sf[data.sf$cpro %in% cprocodes, ]
+    data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
   }
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
+  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname esp_get_gridmap
@@ -167,7 +167,7 @@ esp_get_grid_prov <- function(prov = NULL) {
 esp_get_grid_ccaa <- function(ccaa = NULL) {
   region <- ccaa
 
-  data.sf <- esp_grid_ccaa
+  data_sf <- esp_grid_ccaa
 
   region <- unique(region)
 
@@ -181,11 +181,11 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
            paste0("'", region, "'", collapse = ", "),
            " is not a valid name")
 
-    data.sf <- data.sf[data.sf$nuts2.code %in% nuts_id, ]
+    data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
   }
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto), ]
+  data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data.sf)
+  return(data_sf)
 }

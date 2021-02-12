@@ -170,9 +170,9 @@ esp_get_nuts <- function(year = "2016",
       spatialtype == "RG" & isFALSE(update_cache)) {
     if (verbose)
       message("Reading from esp_nuts.sf")
-    data.sf <- mapSpain::esp_nuts.sf
+    data_sf <- mapSpain::esp_nuts.sf
     if (nuts_level != "all") {
-      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level, ]
+      data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
     }
     dwnload <- FALSE
   }
@@ -180,12 +180,12 @@ esp_get_nuts <- function(year = "2016",
   if (isFALSE(dwnload)) {
     # Filter
     if (!is.null(nuts_id)) {
-      data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id, ]
+      data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
     }
   }
 
   if (dwnload) {
-    data.sf <- giscoR::gisco_get_nuts(
+    data_sf <- giscoR::gisco_get_nuts(
       resolution = resolution,
       year = year,
       epsg = epsg,
@@ -204,10 +204,10 @@ esp_get_nuts <- function(year = "2016",
 
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-  moving <- isTRUE(moving) & "NUTS_ID" %in% colnames(data.sf)
+  moving <- isTRUE(moving) & "NUTS_ID" %in% colnames(data_sf)
 
   if (moving) {
-    if (length(grep("ES7", data.sf$NUTS_ID)) > 0) {
+    if (length(grep("ES7", data_sf$NUTS_ID)) > 0) {
       offset <- c(550000, 920000)
 
       if (length(moveCAN) > 1) {
@@ -218,9 +218,9 @@ esp_get_nuts <- function(year = "2016",
         offset <- offset + as.double(coords)
       }
 
-      data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("ES7", data.sf$NUTS_ID), ]
-      CAN <- data.sf[grep("ES7", data.sf$NUTS_ID), ]
+      data_sf <- sf::st_transform(data_sf, 3857)
+      PENIN <- data_sf[-grep("ES7", data_sf$NUTS_ID), ]
+      CAN <- data_sf[grep("ES7", data_sf$NUTS_ID), ]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -231,13 +231,13 @@ esp_get_nuts <- function(year = "2016",
 
       #Regenerate
       if (nrow(PENIN) > 0) {
-        data.sf <- rbind(PENIN, CAN)
+        data_sf <- rbind(PENIN, CAN)
       } else {
-        data.sf <- CAN
+        data_sf <- CAN
       }
 
     }
   }
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
-  return(data.sf)
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  return(data_sf)
 }

@@ -90,7 +90,7 @@ esp_get_munic <- function(year = "2019",
       isFALSE(update_cache)) {
     if (verbose)
       message("Reading from esp_munic.sf")
-    data.sf <- mapSpain::esp_munic.sf
+    data_sf <- mapSpain::esp_munic.sf
 
 
     dwnload <- FALSE
@@ -100,7 +100,7 @@ esp_get_munic <- function(year = "2019",
 
   if (dwnload) {
     if (year >= "2016") {
-      data.sf <- giscoR::gisco_get_lau(
+      data_sf <- giscoR::gisco_get_lau(
         year = year,
         epsg = epsg,
         cache = cache,
@@ -110,7 +110,7 @@ esp_get_munic <- function(year = "2019",
         country = "ES"
       )
     } else {
-      data.sf <- giscoR::gisco_get_communes(
+      data_sf <- giscoR::gisco_get_communes(
         year = year,
         epsg = epsg,
         cache = cache,
@@ -124,7 +124,7 @@ esp_get_munic <- function(year = "2019",
 
     # Create dataframe
 
-    df <- data.sf
+    df <- data_sf
 
     # Names management
 
@@ -180,14 +180,14 @@ esp_get_munic <- function(year = "2019",
               "LAU_CODE")]
 
 
-    data.sf <- df2
+    data_sf <- df2
   }
 
   # nocov end
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
-    data.sf <- data.sf[grep(munic, data.sf$name), ]
+    data_sf <- data_sf[grep(munic, data_sf$name), ]
   }
 
 
@@ -200,10 +200,10 @@ esp_get_munic <- function(year = "2019",
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
 
-    data.sf <- data.sf[data.sf$cpro %in% toprov, ]
+    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-  if (nrow(data.sf) == 0) {
+  if (nrow(data_sf) == 0) {
     stop("The combination of region and/or munic does ",
          "not return any result")
   }
@@ -219,7 +219,7 @@ esp_get_munic <- function(year = "2019",
 
 
   if (moving) {
-    if (length(grep("05", data.sf$codauto)) > 0) {
+    if (length(grep("05", data_sf$codauto)) > 0) {
       offset <- c(550000, 920000)
 
       if (length(moveCAN) > 1) {
@@ -230,9 +230,9 @@ esp_get_munic <- function(year = "2019",
         offset <- offset + as.double(coords)
       }
 
-      data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("05", data.sf$codauto), ]
-      CAN <- data.sf[grep("05", data.sf$codauto), ]
+      data_sf <- sf::st_transform(data_sf, 3857)
+      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
+      CAN <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -243,18 +243,18 @@ esp_get_munic <- function(year = "2019",
 
       #Regenerate
       if (nrow(PENIN) > 0) {
-        data.sf <- rbind(PENIN, CAN)
+        data_sf <- rbind(PENIN, CAN)
       } else {
-        data.sf <- CAN
+        data_sf <- CAN
       }
     }
   }
 
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
-  data.sf <-
-    data.sf[order(data.sf$codauto, data.sf$cpro, data.sf$cmun), ]
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <-
+    data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
 
-  return(data.sf)
+  return(data_sf)
 }
 
 
@@ -297,7 +297,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   }
 
   # Get Data from SIANE
-  data.sf <- esp_hlp_get_siane("munic",
+  data_sf <- esp_hlp_get_siane("munic",
                                resolution,
                                cache,
                                cache_dir,
@@ -305,8 +305,8 @@ esp_get_munic_siane <- function(year = Sys.Date(),
                                verbose,
                                year)
 
-  colnames_init <- colnames(sf::st_drop_geometry(data.sf))
-  df <- data.sf
+  colnames_init <- colnames(sf::st_drop_geometry(data_sf))
+  df <- data_sf
 
   # Name management
   df$LAU_CODE <- df$id_ine
@@ -329,11 +329,11 @@ esp_get_munic_siane <- function(year = Sys.Date(),
                all.x = TRUE,
                no.dups = TRUE)
 
-  data.sf <- df2
+  data_sf <- df2
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
-    data.sf <- data.sf[grep(munic, data.sf$name), ]
+    data_sf <- data_sf[grep(munic, data_sf$name), ]
   }
 
   if (!is.null(region)) {
@@ -342,10 +342,10 @@ esp_get_munic_siane <- function(year = Sys.Date(),
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
-    data.sf <- data.sf[data.sf$cpro %in% toprov, ]
+    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-  if (nrow(data.sf) == 0) {
+  if (nrow(data_sf) == 0) {
     stop("The combination of region and/or munic does ",
          "not return any result")
   }
@@ -356,7 +356,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    if (length(grep("05", data.sf$codauto)) > 0) {
+    if (length(grep("05", data_sf$codauto)) > 0) {
       offset <- c(550000, 920000)
 
       if (length(moveCAN) > 1) {
@@ -367,9 +367,9 @@ esp_get_munic_siane <- function(year = Sys.Date(),
         offset <- offset + as.double(coords)
       }
 
-      data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("05", data.sf$codauto), ]
-      CAN <- data.sf[grep("05", data.sf$codauto), ]
+      data_sf <- sf::st_transform(data_sf, 3857)
+      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
+      CAN <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -380,16 +380,16 @@ esp_get_munic_siane <- function(year = Sys.Date(),
 
       #Regenerate
       if (nrow(PENIN) > 0) {
-        data.sf <- rbind(PENIN, CAN)
+        data_sf <- rbind(PENIN, CAN)
       } else {
-        data.sf <- CAN
+        data_sf <- CAN
       }
     }
   }
 
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
-  data.sf <-
-    data.sf[order(data.sf$codauto, data.sf$cpro, data.sf$cmun), ]
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <-
+    data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
 
   namesend <- unique(c(
     colnames_init,
@@ -402,13 +402,13 @@ esp_get_munic_siane <- function(year = Sys.Date(),
       "name",
       "LAU_CODE"
     ),
-    colnames(data.sf)
+    colnames(data_sf)
   ))
 
-  data.sf <- data.sf[, namesend]
+  data_sf <- data_sf[, namesend]
 
   if (isFALSE(rawcols)) {
-    data.sf <- data.sf[, c("codauto",
+    data_sf <- data_sf[, c("codauto",
                            "ine.ccaa.name",
                            "cpro",
                            "ine.prov.name",
@@ -417,5 +417,5 @@ esp_get_munic_siane <- function(year = Sys.Date(),
                            "LAU_CODE")]
 
   }
-  return(data.sf)
+  return(data_sf)
 }

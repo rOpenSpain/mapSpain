@@ -46,6 +46,12 @@ esp_hlp_download_siane <- function(type,
     filename <- "rivernames.rda"
     api_entry <-
       "https://github.com/rOpenSpain/mapSpain/raw/sianedata/data-raw"
+  } else if (type == "basinland") {
+    filename <-
+      paste0("se89_", resolution, "_hidro_demt_a_", sub, ".gpkg")
+  } else if (type == "basinlandsea") {
+    filename <-
+      paste0("se89_", resolution, "_hidro_demc_a_", sub, ".gpkg")
   }
 
   url <- file.path(api_entry, filename)
@@ -171,7 +177,7 @@ esp_hlp_get_siane <- function(type,
   }
 
   # Mainland
-  data.sf1 <-
+  data_sf1 <-
     esp_hlp_download_siane(type, resolution, cache, cache_dir, update_cache,
                            verbose, "x")
   # Canary Islands
@@ -180,7 +186,7 @@ esp_hlp_get_siane <- function(type,
   } else if (type == "riverarea") {
     # Nothing
   } else {
-    data.sf2 <-
+    data_sf2 <-
       esp_hlp_download_siane(type,
                              resolution,
                              cache,
@@ -191,20 +197,20 @@ esp_hlp_get_siane <- function(type,
   }
   # CCAA
   if (type == "ccaa") {
-    data.sf1$x_cap2 <- NA
-    data.sf1$y_cap2 <- NA
-    data.sf1 <- data.sf1[, colnames(data.sf2)]
+    data_sf1$x_cap2 <- NA
+    data_sf1$y_cap2 <- NA
+    data_sf1 <- data_sf1[, colnames(data_sf2)]
   }
 
-  if (exists("data.sf2")) {
+  if (exists("data_sf2")) {
     # Transform and bind
-    data.sf2 <- sf::st_transform(data.sf2, sf::st_crs(data.sf1))
+    data_sf2 <- sf::st_transform(data_sf2, sf::st_crs(data_sf1))
 
-    data.sf <- rbind(data.sf1, data.sf2)
+    data.sf <- rbind(data_sf1, data_sf2)
   } else {
     if (verbose)
       message("Shape not provided for Canary Islands")
-    data.sf <- data.sf1
+    data.sf <- data_sf1
   }
   # Date management
   minDate <- min(data.sf$fecha_alta)

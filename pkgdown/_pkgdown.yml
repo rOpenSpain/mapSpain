@@ -17,6 +17,7 @@ reference:
     contents:
       - esp_get_hypsobath
       - esp_get_rivers
+      - esp_get_hydrobasin
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:

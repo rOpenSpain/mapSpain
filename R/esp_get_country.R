@@ -27,21 +27,21 @@ esp_get_country <- function(...) {
   params <- list(...)
   params$nuts_level <- 1
   params$region <- NULL
-  data.sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
 
   # Extract geom column
-  names <- names(data.sf)
+  names <- names(data_sf)
 
   which.geom <-
-    which(vapply(data.sf, function(f)
+    which(vapply(data_sf, function(f)
       inherits(f, "sfc"), TRUE))
 
   nm <- names(which.geom)
 
   # Join all
-  init <- sf::st_crs(data.sf)
-  data.sf <- sf::st_transform(data.sf, 3035)
-  g <- sf::st_union(data.sf)
+  init <- sf::st_crs(data_sf)
+  data_sf <- sf::st_transform(data_sf, 3035)
+  g <- sf::st_union(data_sf)
   g <- sf::st_transform(g, init)
 
 
@@ -49,13 +49,13 @@ esp_get_country <- function(...) {
   df <- sf::st_drop_geometry(esp_get_nuts(nuts_level = 0))
 
   # Generate sf object
-  data.sf <- sf::st_as_sf(df, g)
+  data_sf <- sf::st_as_sf(df, g)
   # Rename geometry to original value
-  newnames <- names(data.sf)
+  newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
-  colnames(data.sf) <- newnames
-  data.sf <- sf::st_set_geometry(data.sf, nm)
+  colnames(data_sf) <- newnames
+  data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  return(data.sf)
+  return(data_sf)
 
 }

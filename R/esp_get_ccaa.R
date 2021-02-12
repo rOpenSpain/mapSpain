@@ -75,10 +75,10 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
   params$nuts_level <- 2
 
 
-  data.sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
 
-  data.sf$nuts2.code <- data.sf$NUTS_ID
-  data.sf <- data.sf[, "nuts2.code"]
+  data_sf$nuts2.code <- data_sf$NUTS_ID
+  data_sf <- data_sf[, "nuts2.code"]
 
 
 
@@ -86,21 +86,21 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
   df <- dict_ccaa
   df <- df[, names(df) != "key"]
 
-  data.sf <- merge(data.sf, df, all.x = TRUE)
+  data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts1
   dfnuts <- mapSpain::esp_codelist
   dfnuts <-
     unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
 
-  data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  data.sf <- data.sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
+  data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto), ]
+  data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data.sf)
+  return(data_sf)
 }
 
 
@@ -146,7 +146,7 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   }
 
   # Get Data from SIANE
-  data.sf <- esp_hlp_get_siane("ccaa",
+  data_sf <- esp_hlp_get_siane("ccaa",
                                resolution,
                                cache,
                                cache_dir,
@@ -154,15 +154,15 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
                                verbose,
                                year)
 
-  initcols <- colnames(sf::st_drop_geometry(data.sf))
+  initcols <- colnames(sf::st_drop_geometry(data_sf))
 
   # Add codauto
-  data.sf$lab <- data.sf$nombres_f
+  data_sf$lab <- data_sf$nombres_f
 
-  data.sf$lab <- gsub("Ciudad de ", "", data.sf$lab, fixed = TRUE)
-  data.sf$lab <- gsub("/Catalunya", "", data.sf$lab)
-  data.sf$lab <- gsub("/Euskadi", "", data.sf$lab)
-  data.sf$codauto <- esp_dict_region_code(data.sf$lab,
+  data_sf$lab <- gsub("Ciudad de ", "", data_sf$lab, fixed = TRUE)
+  data_sf$lab <- gsub("/Catalunya", "", data_sf$lab)
+  data_sf$lab <- gsub("/Euskadi", "", data_sf$lab)
+  data_sf$codauto <- esp_dict_region_code(data_sf$lab,
                                           destination = "codauto")
 
   # Filter CCAA
@@ -187,7 +187,7 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
     finalcodauto <- c(dfl2, dfl3)
 
     # Filter
-    data.sf <- data.sf[data.sf$codauto %in% finalcodauto, ]
+    data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
   }
 
 
@@ -196,13 +196,13 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   df <- df[, names(df) != "key"]
 
   # Merge
-  data.sf <- merge(data.sf, df, all.x = TRUE)
+  data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts1
   dfnuts <- mapSpain::esp_codelist
   dfnuts <-
     unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
-  data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
   # Move CAN
 
@@ -211,7 +211,7 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    if (length(grep("05", data.sf$codauto)) > 0) {
+    if (length(grep("05", data_sf$codauto)) > 0) {
       offset <- c(550000, 920000)
 
       if (length(moveCAN) > 1) {
@@ -222,9 +222,9 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
         offset <- offset + as.double(coords)
       }
 
-      data.sf <- sf::st_transform(data.sf, 3857)
-      PENIN <- data.sf[-grep("05", data.sf$codauto), ]
-      CAN <- data.sf[grep("05", data.sf$codauto), ]
+      data_sf <- sf::st_transform(data_sf, 3857)
+      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
+      CAN <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
       CAN <- sf::st_sf(
@@ -235,30 +235,30 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
 
       #Regenerate
       if (nrow(PENIN) > 0) {
-        data.sf <- rbind(PENIN, CAN)
+        data_sf <- rbind(PENIN, CAN)
       } else {
-        data.sf <- CAN
+        data_sf <- CAN
       }
     }
   }
 
   # Transform
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
 
   # Order
-  data.sf <- data.sf[order(data.sf$codauto), ]
+  data_sf <- data_sf[order(data_sf$codauto), ]
 
   # Select columns
   if (rawcols) {
-    data.sf <-
-      data.sf[, unique(c(initcols, colnames(df), "nuts1.code", "nuts1.name"))]
+    data_sf <-
+      data_sf[, unique(c(initcols, colnames(df), "nuts1.code", "nuts1.name"))]
 
   } else {
-    data.sf <-
-      data.sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
+    data_sf <-
+      data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
 
   }
 
-  return(data.sf)
+  return(data_sf)
 }

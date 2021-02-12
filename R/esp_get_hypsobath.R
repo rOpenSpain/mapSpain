@@ -122,12 +122,12 @@ esp_get_hypsobath <- function(epsg = "4258",
 
   type <- paste0("orog", spatialtype)
 
-  data.sf <- esp_hlp_get_siane(type,
+  data_sf <- esp_hlp_get_siane(type,
                                resolution,
                                cache,
                                cache_dir,
                                update_cache,
                                verbose,
                                year = Sys.Date())
-  data.sf <- sf::st_transform(data.sf, as.double(init_epsg))
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 }
