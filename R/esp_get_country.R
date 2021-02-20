@@ -1,4 +1,5 @@
 #' @title Get boundaries of Spain
+#' @concept mappolitical
 #' @name esp_get_country
 #' @description Loads a single \code{sf} object containing the
 #' boundaries of Spain.

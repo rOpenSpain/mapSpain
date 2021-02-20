@@ -1,4 +1,5 @@
 #' @title Get municipalities boundaries of Spain
+#' @concept mappolitical
 #' @name esp_get_munic
 #' @description Loads a simple feature (\code{sf}) object containing the
 #' municipalities boundaries of Spain.

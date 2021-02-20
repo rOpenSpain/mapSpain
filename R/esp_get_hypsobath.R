@@ -1,4 +1,5 @@
 #' @title Get hypsometry and bathymetry of Spain
+#' @concept mapnatural
 #' @name esp_get_hypsobath
 #' @description Loads a simple feature (\code{sf}) object containing lines or
 #' areas with the hypsometry and bathymetry of Spain.

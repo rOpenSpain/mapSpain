@@ -1,4 +1,5 @@
 #' @title Get rivers, channels, reservoirs and other wetlands of Spain
+#' @concept mapnatural
 #' @name esp_get_rivers
 #' @description Loads a simple feature (\code{sf}) object containing lines or
 #' areas with the required hydrograpic elements of Spain.

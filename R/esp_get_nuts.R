@@ -1,4 +1,5 @@
 #' @title Get NUTS boundaries of Spain
+#' @concept mappolitical
 #' @name esp_get_nuts
 #' @description Loads a simple feature (\code{sf}) object containing the
 #' NUTS boundaries of Spain.
