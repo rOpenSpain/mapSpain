@@ -46,3 +46,4 @@ plot(
 \seealso{
 \link{esp_get_nuts}
 }
+\concept{mapSpaindata}

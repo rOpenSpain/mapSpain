@@ -11,3 +11,4 @@
 A data frame with 8131 rows containing the population
 data by municipality in Spain (2019).
 }
+\concept{mapSpaindata}

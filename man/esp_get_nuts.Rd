@@ -133,3 +133,4 @@ plot(st_geometry(MixingCodes), col = pal)
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{mappolitical}
