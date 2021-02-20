@@ -1,4 +1,5 @@
 #' @title Get Tiles from Public Administrations of Spanish.
+#' @concept maptiles
 #' @name esp_getTiles
 #' @description Get static map tiles based on a spatial object.
 #' Maps can be

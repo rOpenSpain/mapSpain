@@ -1,4 +1,5 @@
 #' @title Get the drainage basin demarcations of Spain
+#' @concept mapnatural
 #' @name esp_get_hydrobasin
 #' @description Loads a simple feature (\code{sf}) object containing areas
 #' with the required hydrograpic elements of Spain.

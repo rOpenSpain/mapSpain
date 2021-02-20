@@ -1,4 +1,5 @@
 #' @title Get Provinces boundaries of Spain
+#' @concept mappolitical
 #' @name esp_get_prov
 #' @description Loads a simple feature (\code{sf}) object containing the
 #' province boundaries of Spain.

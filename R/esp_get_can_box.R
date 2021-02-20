@@ -1,4 +1,5 @@
 #' @title Get complementary lines when plotting Canary Islands.
+#' @concept mappolitical
 #' @name esp_get_can_box
 #' @description When plotting Spain, it is usual to represent the Canary
 #' Islands as an inset (see \code{moveCAN} on \link{esp_get_nuts}). These

@@ -95,3 +95,4 @@ Providers available to be passed to \code{type} are:
 \link{esp_getTiles},
 \link{addProviderEspTiles}.
 }
+\concept{mapSpaindata}

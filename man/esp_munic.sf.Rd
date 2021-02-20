@@ -53,3 +53,4 @@ title(main = "Municipalities of Teruel",  line = 1)
 \seealso{
 \link{esp_get_munic}
 }
+\concept{mapSpaindata}

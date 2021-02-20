@@ -36,3 +36,4 @@ plot(MovedCan$geometry, col = hcl.colors(5))
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{mappolitical}

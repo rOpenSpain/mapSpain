@@ -5,36 +5,28 @@ reference:
   - title: "Political"
     desc: These functions return sf objets with political boundaries
     contents:
-      - esp_get_can_box
-      - esp_get_munic
-      - esp_get_prov
-      - esp_get_ccaa
-      - esp_get_nuts
-      - esp_get_country
-      - esp_get_gridmap
+      - has_concept("mappolitical")
+      
   - title: "Natural"
     desc: These functions return sf objets with natural features
     contents:
-      - esp_get_hypsobath
-      - esp_get_rivers
-      - esp_get_hydrobasin
+      - has_concept("mapnatural")
+      
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:
-      - esp_getTiles
-      - addProviderEspTiles
+      - has_concept("maptiles")
+      
   - title: "Dictionary"
     desc: Translation across languages and coding systems
     contents:
       - esp_dict_region_code
+      
   - title: "Datasets"
     desc: These objects are datasets already included in the package.
     contents:
-      - esp_munic.sf
-      - esp_nuts.sf
-      - esp_codelist
-      - leaflet.providersESP.df
-      - pobmun19
+      - has_concept("mapSpaindata")
+      
   - title: "About the package"
     contents:
       - mapSpain-package

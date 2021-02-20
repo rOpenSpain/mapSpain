@@ -1,4 +1,5 @@
 #' @title Get an hexbin or a map of squares of Spain
+#' @concept mappolitical
 #' @name esp_get_gridmap
 #' @description Loads a hexbin map (\code{sf} object) or a map of squares
 #' with the boundaries of the provinces or autonomous communities of Spain.

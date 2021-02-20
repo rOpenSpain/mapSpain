@@ -1,4 +1,5 @@
 #' @title Get Autonomous Communities boundaries of Spain
+#' @concept mappolitical
 #' @name esp_get_ccaa
 #' @description Loads a simple feature (\code{sf}) object containing the
 #' autonomous communities boundaries of Spain.

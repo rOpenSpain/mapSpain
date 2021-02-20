@@ -79,3 +79,4 @@ Tiles are cached under the path \code{cache_dir/[type]}
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{maptiles}

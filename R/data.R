@@ -1,4 +1,5 @@
 #' @title Spanish Code Translation Data Frame
+#' @concept mapSpaindata
 #' @name esp_codelist
 #' @docType data
 #' @description A data frame used internally for translating codes and
@@ -58,6 +59,7 @@ NULL
 
 
 #' @title All NUTS \code{POLYGON} object of Spain
+#' @concept mapSpaindata
 #' @name esp_nuts.sf
 #' @docType data
 #' @description A \code{sf} object including all
@@ -97,6 +99,7 @@ NULL
 NULL
 
 #' @title All Municipalities \code{POLYGON} object of Spain
+#' @concept mapSpaindata
 #' @name esp_munic.sf
 #' @description A \code{sf} object including all
 #' municipalities of Spain as provided by GISCO (2019 version).
@@ -144,6 +147,7 @@ NULL
 
 
 #' @title Population by municipality (2019)
+#' @concept mapSpaindata
 #' @name pobmun19
 #' @docType data
 #' @description A data frame with 8131 rows containing the population
@@ -153,6 +157,7 @@ NULL
 
 
 #' @title Public WMS and WMTS of Spain
+#' @concept mapSpaindata
 #' @name leaflet.providersESP.df
 #' @description A data frame containing information of different public
 #' WMS and WMTS providers of Spain
