@@ -21,8 +21,7 @@ reference:
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:
-      - esp_getTiles
-      - addProviderEspTiles
+      - has_concept("maptiles")
   - title: "Dictionary"
     desc: Translation across languages and coding systems
     contents:

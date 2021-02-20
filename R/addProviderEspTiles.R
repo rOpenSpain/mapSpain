@@ -1,4 +1,5 @@
 #' @title Leaflet plugin - Spanish providers
+#' @concept maptiles
 #' @name addProviderEspTiles
 #' @description Add tiles of
 #' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
