@@ -79,6 +79,10 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1,
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
 all the municipalities of that level would be added.
 }
+\note{
+While \code{moveCAN} is useful for visualization, it would alter the
+actual geographical position of the Canary Islands.
+}
 \examples{
 \donttest{
 # This code compares centroid of municipalities against esp_get_capimun

@@ -9,6 +9,7 @@
   * `mapSpain::esp_get_rivers()`
   * `mapSpain::esp_get_hydrobasin()`
   * `mapSpain::esp_get_capimun()`
+  * `mapSpain::esp_get_roads()`
 
 # mapSpain 0.1.2
 

@@ -57,6 +57,9 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "capimun") {
     filename <-
       paste0("se89_3_urban_capimuni_p_", sub, ".gpkg")
+  } else if (type == "roads") {
+    filename <-
+      paste0("se89_3_vias_ctra_l_", sub, ".gpkg")
   }
 
   url <- file.path(api_entry, filename)

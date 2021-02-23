@@ -6,27 +6,32 @@ reference:
     desc: These functions return sf objets with political boundaries
     contents:
       - has_concept("mappolitical")
-      
+
   - title: "Natural"
     desc: These functions return sf objets with natural features
     contents:
       - has_concept("mapnatural")
-      
+
+  - title: "Infrastructures"
+    desc: These functions return sf objets with man-made features
+    contents:
+      - has_concept("manmade")
+
   - title: Tiles
     desc: Return static tiles or create a leaflet map
     contents:
       - has_concept("maptiles")
-      
+
   - title: "Dictionary"
     desc: Translation across languages and coding systems
     contents:
       - esp_dict_region_code
-      
+
   - title: "Datasets"
     desc: These objects are datasets already included in the package.
     contents:
       - has_concept("mapSpaindata")
-      
+
   - title: "About the package"
     contents:
       - mapSpain-package
