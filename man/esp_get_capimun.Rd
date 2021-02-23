@@ -82,26 +82,31 @@ all the municipalities of that level would be added.
 \examples{
 \donttest{
 # This code compares centroid of municipalities against esp_get_capimun
-
 library(sf)
 
-area <- esp_get_munic_siane(munic = "Cáceres", epsg = 3857)
-# Get Cáceres city
-area <- area[area$name == "Cáceres", ]
+# Get shape
+area <- esp_get_munic_siane(munic = "Peguerinos", epsg = 3857)
+
+# Area in km2
+print(paste0(round(as.double(st_area(area)) / 1000000, 2), " km2"))
 
 # Extract centroid
 centroid <- st_centroid(st_geometry(area))
 
 # Compare with capimun
-capimun <- esp_get_capimun(munic = "Cáceres", epsg = 3857)
-capimun <- capimun[capimun$name == "Cáceres", ]
+capimun <- esp_get_capimun(munic = "Peguerinos", epsg = 3857)
+
+# Buffer points
+bbox <- st_union(st_buffer(
+  c(centroid, st_geometry(capimun)),
+  dist = 2000
+))
 
 # Get a tile to check
-tile <- esp_getTiles(area)
+tile <- esp_getTiles(bbox, type = "IGNBase.Gris")
 
 # Check on plot
 raster::plotRGB(tile)
-plot(st_geometry(area), add = TRUE)
 plot(centroid, add = TRUE, pch = 19, col = "red") # Centroid
 plot(st_geometry(capimun), add = TRUE, pch = 19, col = "blue") # Capimun
 
