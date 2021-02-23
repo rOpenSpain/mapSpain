@@ -1,28 +1,40 @@
-#' @title Get Autonomous Communities boundaries of Spain
+#' Get Autonomous Communities boundaries of Spain
+#'
 #' @concept mappolitical
-#' @name esp_get_ccaa
-#' @description Loads a simple feature (\code{sf}) object containing the
-#' autonomous communities boundaries of Spain.
 #'
-#' \code{esp_get_ccaa} uses GISCO (Eurostat) as source
+#' @rdname esp_get_ccaa
 #'
-#' @return A \code{POLYGON/POINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_hex_ccaa}, \link{esp_get_nuts}, \link{esp_get_prov},
-#' \link{esp_get_munic}, \link{esp_codelist}
+#' @description
+#' Loads a simple feature (`sf`) object containing the autonomous communities
+#' boundaries of Spain.
+#'
+#' `esp_get_ccaa` uses GISCO (Eurostat) as source
+#'
+#' @return A `POLYGON/POINT` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso
+#' [esp_get_hex_ccaa()], [esp_get_nuts()], [esp_get_prov()],
+#' [esp_get_munic()], [esp_codelist]
+#'
 #' @export
 #'
 #'
 #'
 #' @param ccaa A vector of names and/or codes for autonomous communities
-#'  or \code{NULL} to get all the autonomous communities. See Details.
-#' @param ... Additional parameters from \link{esp_get_nuts}.
-#' @details When using \code{ccaa} you can use and mix names and NUTS codes
-#' (levels 1 or 2), ISO codes (corresponding to level 2) or \code{codauto}.
-#' Ceuta and Melilla are considered as Autonomous Communities on this dataset.
+#'   or `NULL` to get all the autonomous communities. See Details.
+#'
+#' @param ... Additional parameters from [esp_get_nuts()].
+#'
+#' @details
+#' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
+#' ISO codes (corresponding to level 2) or `codauto`. Ceuta and Melilla are
+#' considered as Autonomous Communities on this dataset.
 #'
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' would be added.
+#'
 #' @examples
 #'
 #' library(sf)
@@ -113,26 +125,34 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 
 
 #' @rdname esp_get_ccaa
-#' @description \code{esp_get_ccaa_siane} use CartoBase ANE as source,
-#' provided by Instituto Geografico Nacional (IGN),
-#' \href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
-#' 2005 up to today.
-#' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#'
+#' @description
+#' `esp_get_ccaa_siane` uses CartoBase ANE as source, provided by
+#' Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
+#'
+#' Years available are 2005 up to today.
+#'
+#' @source
+#' IGN data via a custom CDN (see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#'
 #' @export
 #'
+#' @param year Release year. See [esp_get_nuts()] for `esp_get_ccaa` and
+#'   Details for `esp_get_ccaa_siane`
 #'
 #' @param resolution Resolution of the polygon. Values available are
-#' \code{"3", "6.5"} or  \code{"10"}.
-#' @param rawcols Logical. Setting this to \code{TRUE} would add the raw
-#' columns of the dataset provided by IGN.
-#' @param year,epsg,cache,update_cache,cache_dir,verbose,moveCAN
-#' See \code{\link{esp_get_nuts}}. See Details for \code{year}.
+#'   "3", "6.5" or "10".
+#'
+#' @param rawcols Logical. Setting this to `TRUE` would add the raw columns of
+#'   the dataset provided by IGN.
+#'
+#' @inheritParams esp_get_nuts
 #'
 #' @details
-#' On \code{esp_get_ccaa_siane}, \code{year} could be passed as a single
-#' year ("YYYY" format, as end of year) or as a specific
-#' date ("YYYY-MM-DD" format). Historical information starts as of 2005.
+#' On `esp_get_ccaa_siane`, `year` could be passed as a single year ("YYYY"
+#' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+#' Historical information starts as of 2005.
 
 esp_get_ccaa_siane <- function(ccaa = NULL,
                                year = Sys.Date(),

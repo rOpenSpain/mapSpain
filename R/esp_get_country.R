@@ -1,16 +1,19 @@
-#' @title Get boundaries of Spain
+#' Get boundaries of Spain
+#'
+#' Loads a single `sf` object containing the boundaries of Spain.
+#'
 #' @concept mappolitical
-#' @name esp_get_country
-#' @description Loads a single \code{sf} object containing the
-#' boundaries of Spain.
-#' @return A \code{MULTIPOLYGON/MULTIPOINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},
-#' \link{esp_get_munic}, \link{esp_codelist}
+#'
+#' @return A `MULTIPOLYGON/MULTIPOINT` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso [esp_get_nuts()]
+#'
 #' @export
 #'
+#' @param ... Additional parameters from [esp_get_nuts()].
 #'
-#' @param ... Additional parameters from \link{esp_get_nuts}.
 #' @examples
 #'
 #' library(sf)

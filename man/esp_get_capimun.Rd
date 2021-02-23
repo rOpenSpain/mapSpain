@@ -24,20 +24,20 @@ esp_get_capimun(
 \arguments{
 \item{year}{Release year. See Details for years available.}
 
-\item{epsg}{projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
 \itemize{
-\item \code{"4258"} - \href{https://epsg.io/4258}{ETRS89}
-\item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
-\item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-\item \code{"3857"} - \href{https://epsg.io/3857}{Pseudo-Mercator}
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
 
-\item{update_cache}{A logical whether to update cache.
-Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh
-download of the source \code{.geojson} file.}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. See Details.}
 
@@ -45,15 +45,14 @@ download of the source \code{.geojson} file.}
 default is \code{FALSE}.}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
-(see \link{esp_dict_region_code}).}
+(see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.}
 
 \item{munic}{A name or regex expression with the names of the required
 municipalities. \code{NULL} would not produce any filtering.}
 
-\item{moveCAN}{A logical \code{TRUE,FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Island close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.
-See Note.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
 columns of the dataset provided by IGN.}

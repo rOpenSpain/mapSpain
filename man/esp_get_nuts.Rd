@@ -22,23 +22,23 @@ esp_get_nuts(
 )
 }
 \arguments{
-\item{year}{Release year. One of \code{"2003", "2006",}
-\code{"2010", "2013", "2016"} or \code{"2021"}}
+\item{year}{Release year. One of "2003", "2006",`"2010", "2013", "2016" or
+"2021".}
 
-\item{epsg}{projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
 \itemize{
-\item \code{"4258"} - \href{https://epsg.io/4258}{ETRS89}
-\item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
-\item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-\item \code{"3857"} - \href{https://epsg.io/3857}{Pseudo-Mercator}
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
 
-\item{update_cache}{A logical whether to update cache.
-Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh
-download of the source \code{.geojson} file.}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. See Details.}
 
@@ -47,58 +47,53 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item \code{"60"} (1:60million),
-\item \code{"20"} (1:20million)
-\item \code{"10"} (1:10million)
-\item \code{"03"} (1:3million) or
-\item \code{"01"} (1:1million).
+\item "60": 1:60million
+\item "20": 1:20million
+\item "10": 1:10million
+\item "03": 1:3million
+\item "01": 1:1million
 }}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item \code{"LB"}: Labels - \code{POINT} object.
+\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item "LB": Labels - \code{POINT} object.
 }}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
-(see \link{esp_dict_region_code}).}
+(see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.}
 
-\item{nuts_level}{NUTS level. One of \code{"0"} (Country-level),
-\code{"1", "2"} or \code{"3"}.
+\item{nuts_level}{NUTS level. One of "0" (Country-level), "1", "2" or "3".
 See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
 
-\item{moveCAN}{A logical \code{TRUE,FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Island close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.
-See Note.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.}
 }
 \value{
 A \code{POLYGON/POINT} object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-NUTS boundaries of Spain.
+Loads a simple feature (\code{sf}) object containing the NUTS boundaries of Spain.
 }
 \details{
-\code{cache_dir = NULL} (default) uses and creates
-\code{/mapSpain} directory in the temporary directory from
-\code{\link{tempdir}}. The directory can also be set with
-\code{options(mapSpain = "path/to/dir")} or
-\code{options(gisco_cache_dir = "path/to/dir")}
-(see \code{\link[giscoR]{gisco_get}})
+\code{cache_dir = NULL} (default) uses and creates \verb{/mapSpain} directory in the
+temporary directory \code{\link[=tempdir]{tempdir()}}. The directory can also be set via options
+with \code{options(mapSpain = "path/to/dir")} or
+\code{options(gisco_cache_dir = "path/to/dir")} (See \link[giscoR:gisco_get]{giscoR::gisco_get})
 
 Sometimes cached files may be corrupt. On that case, try redownloading
-the data setting \code{update_cache = TRUE}.
+the data using \code{update_cache = TRUE}.
 }
 \note{
 Please check the download and usage provisions on
-\code{\link[giscoR]{gisco_attributions}}.
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 
-While \code{moveCAN} is useful for visualization, it would alter the
-actual geographical position of the Canary Islands. When using the output
-for spatial analysis or using tiles (\link{esp_getTiles},
-\link{addProviderEspTiles}) this option should be set to \code{FALSE} in
-order to get the actual coordinates.
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographical position of the Canary Islands. When using the output for
+spatial analysis or using tiles (\code{\link[=esp_getTiles]{esp_getTiles()}},\link{addProviderEspTiles})
+this option should be set to \code{FALSE} in#' order to get the actual
+coordinates.
 }
 \examples{
 
@@ -126,8 +121,8 @@ MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 plot(st_geometry(MixingCodes), col = pal)
 }
 \seealso{
-\link{esp_nuts.sf}, \link{esp_dict_region_code},
-\link{esp_codelist}, \link[giscoR]{gisco_get}.
+\link{esp_nuts.sf}, \link{esp_dict_region_code}, \link{esp_codelist},
+\link[giscoR:gisco_get]{giscoR::gisco_get}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

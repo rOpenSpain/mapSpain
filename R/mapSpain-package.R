@@ -1,39 +1,47 @@
 #' mapSpain package
 #'
-#' \tabular{ll}{
-#' Package: \tab mapSpain \cr
-#' Type: \tab Package\cr
-#' Version: \tab See sessionInfo() or DESCRIPTION file\cr
-#' Date: \tab 2020\cr
-#' License: \tab GPL-3\cr
-#' LazyLoad: \tab yes\cr
-#' }
-#'
 #' @name mapSpain-package
+#'
 #' @aliases mapSpain
+#'
 #' @docType package
+#'
+#' @details
+#'
+#' |              |          |
+#' | :---         | :--      |
+#' | **Package**  | mapSpain |
+#' | **Type**     | Package  |
+#' | **Version**  | See sessionInfo() or DESCRIPTION file |
+#' | **Date**     | 2021     |
+#' | **License**  | GPL-3    |
+#' | **LazyLoad** | yes      |
+#
+
 #' @description \if{html}{\figure{logo.png}{options: width=120 alt="mapSpain logo" align='right'}}
 #' This package provides Administrative Boundaries of Spain based on
 #' the GISCO (Geographic Information System of the Commission) Eurostat
 #' database and CartoBase SIANE from
 #' Instituto Geográfico Nacional.
 #'
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{GISCO webpage}
-#' @references
-#' See \code{citation("mapSpain")}
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @source
+#' [GISCO webpage](https://ec.europa.eu/eurostat/web/gisco/geodata)
+#'
+#' @references See `citation("mapSpain")`.
+#'
 #' @seealso
 #' Useful links:
-#'  \itemize{
-#'  \item \url{https://ropenspain.github.io/mapSpain/}
-#'  \item \url{https://github.com/rOpenSpain/mapSpain}
-#'  \item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
-#'  }
+#'  * <https://ropenspain.github.io/mapSpain/>
+#'  * <https://github.com/rOpenSpain/mapSpain>
+#'  * <Report bugs at https://github.com/rOpenSpain/mapSpain/issues>
+#'
 #' @keywords package
+#'
 #' @note COPYRIGHT NOTICE
 #'
-#' When data downloaded from
-#' \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
+#' When data downloaded from GISCO
 #' is used in any printed or electronic publication,
 #' in addition to any other provisions
 #' applicable to the whole Eurostat website,
@@ -41,11 +49,10 @@
 #' in the legend of the map and
 #' in the introductory page of the publication
 #' with the following copyright notice:
-#' \itemize{
-#' 	\item EN: (C) EuroGeographics for the administrative boundaries
-#' 	\item FR: (C) EuroGeographics pour les limites administratives
-#' 	\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
-#' }
+#'   * EN: (C) EuroGeographics for the administrative boundaries
+#'   * FR: (C) EuroGeographics pour les limites administratives
+#'   * DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
+#'
 #' For publications in languages other than
 #' English, French or German,
 #' the translation of the copyright notice

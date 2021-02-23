@@ -12,16 +12,16 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 \arguments{
 \item{sourcevar}{Vector which contains the subdivision names to be converted.}
 
-\item{origin, destination}{One of \code{'text', 'nuts', 'iso2', 'codauto'}
-and \code{'cpro'}.}
+\item{origin, destination}{One of "text", "nuts", "iso2",
+"codauto" and "cpro".}
 
 \item{lang}{Language of translation. Available languages are:
 \itemize{
-\item{\code{es}: }{Spanish}
-\item{\code{en}: }{English}
-\item{\code{ca}: }{Catalan}
-\item{\code{ga}: }{Galician}
-\item{\code{eu}: }{Basque}
+\item "es": Spanish
+\item "en": English
+\item "ca": Catalan
+\item "ga": Galician
+\item "eu": Basque
 }}
 
 \item{all}{Logical. Should the function return all names or not?
@@ -30,20 +30,18 @@ On \code{FALSE} it returns a character vector. See Value}
 \value{
 \code{esp_dict_region_code} returns a vector of characters.
 
-\code{esp_dict_translate} returns a character vector or a named list
-with each of the possible names of each \code{sourcevar} on the required
-language \code{lang}.
+\code{ esp_dict_translate} returns a character vector or a named list with each
+of the possible names of each \code{sourcevar} on the required language \code{lang}.
 }
 \description{
-Converts long subdivision names into different coding schemes
-and languages.
+Converts long subdivision names into different coding schemes and languages.
 }
 \details{
-If no match is found for any value, the function displays a warning
-and returns \code{NA} for those values.
+If no match is found for any value, the function displays a warning and
+returns \code{NA} for those values.
 
-Note that mixing names of different administrative levels (e.g. Catalonia
-and Barcelona) may return empty values, depending on the \code{destination}
+Note that mixing names of different administrative levels (e.g. "Catalonia"
+and "Barcelona") may return empty values, depending on the \code{destination}
 values.
 }
 \examples{
@@ -94,3 +92,4 @@ esp_dict_translate(vals, lang = "ga", all = TRUE)
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{esp_dict}

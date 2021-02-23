@@ -1,81 +1,79 @@
-#' @title Get NUTS boundaries of Spain
-#' @concept mappolitical
-#' @name esp_get_nuts
-#' @description Loads a simple feature (\code{sf}) object containing the
-#' NUTS boundaries of Spain.
-#' @return A \code{POLYGON/POINT} object.
-#' @note Please check the download and usage provisions on
-#' \code{\link[giscoR]{gisco_attributions}}.
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_nuts.sf}, \link{esp_dict_region_code},
-#' \link{esp_codelist}, \link[giscoR]{gisco_get}.
+#' Get NUTS boundaries of Spain
+#'
 #' @export
 #'
+#' @concept mappolitical
 #'
-#' @param year Release year. One of \code{"2003", "2006",}
-#' \code{"2010", "2013", "2016"} or \code{"2021"}
-#' @param resolution Resolution of the geospatial data. One of
-#' \itemize{
-#'    \item \code{"60"} (1:60million),
-#'    \item \code{"20"} (1:20million)
-#'    \item \code{"10"} (1:10million)
-#'    \item \code{"03"} (1:3million) or
-#'    \item \code{"01"} (1:1million).
-#'    }
-#' @param epsg projection of the map: 4-digit
-#' \href{https://epsg.io/}{EPSG code}. One of:
-#' \itemize{
-#' \item \code{"4258"} - \href{https://epsg.io/4258}{ETRS89}
-#' \item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
-#' \item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-#' \item \code{"3857"} - \href{https://epsg.io/3857}{Pseudo-Mercator}
-#' }
-#' @param cache A logical whether to do caching. Default is \code{TRUE}.
-#' @param update_cache A logical whether to update cache.
-#' Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh
-#' download of the source \code{.geojson} file.
+#' @description
+#' Loads a simple feature (`sf`) object containing the NUTS boundaries of Spain.
+#'
+#' @return A `POLYGON/POINT` object.
+#'
+#' @note
+#' Please check the download and usage provisions on
+#' [giscoR::gisco_attributions()]
+#'
+#' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
+#' @author dieghernan, <https://github.com/dieghernan/>
+#' @seealso [esp_nuts.sf], [esp_dict_region_code], [esp_codelist],
+#'   [giscoR::gisco_get].
+#'
+#' @param year Release year. One of "2003", "2006",`"2010", "2013", "2016" or
+#'   "2021".
+#'
+#' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
+#'    One of:
+#'    * "4258": ETRS89
+#'    * "4326": WGS84
+#'    * "3035": ETRS89 / ETRS-LAEA
+#'    * "3857": Pseudo-Mercator
+#'
+#' @param cache A logical whether to do caching. Default is `TRUE`.
+#'
+#' @param update_cache A logical whether to update cache. Default is `FALSE`.
+#'   When set to `TRUE` it would force a fresh download of the source
+#'   `.geojson` file.
+#'
 #' @param cache_dir A path to a cache directory. See Details.
-#' @param verbose Display information. Useful for debugging,
-#' default is \code{FALSE}.
-#' @param resolution Resolution of the geospatial data. One of
-#' \itemize{
-#'    \item \code{"60"} (1:60million),
-#'    \item \code{"20"} (1:20million)
-#'    \item \code{"10"} (1:10million)
-#'    \item \code{"03"} (1:3million) or
-#'    \item \code{"01"} (1:1million).
-#'    }
-#' @param spatialtype Type of geometry to be returned:
-#' \itemize{
-#'  \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-#'  \item \code{"LB"}: Labels - \code{POINT} object.
-#' }
-#' @param region Optional. A vector of region names, NUTS or ISO codes
-#' (see \link{esp_dict_region_code}).
-#' @param nuts_level NUTS level. One of \code{"0"} (Country-level),
-#' \code{"1", "2"} or \code{"3"}.
-#' See \url{https://ec.europa.eu/eurostat/web/nuts/background}.
-#' @param moveCAN A logical \code{TRUE,FALSE} or a vector of coordinates
-#' \code{c(lat, lon)}. It places the Canary Island close to Spain's mainland.
-#' Initial position can be adjusted using the vector of coordinates.
-#' See Note.
 #'
-#' @details  \code{cache_dir = NULL} (default) uses and creates
-#' \code{/mapSpain} directory in the temporary directory from
-#' \code{\link{tempdir}}. The directory can also be set with
-#' \code{options(mapSpain = "path/to/dir")} or
-#' \code{options(gisco_cache_dir = "path/to/dir")}
-#' (see \code{\link[giscoR]{gisco_get}})
+#' @param verbose Display information. Useful for debugging,
+#'   default is `FALSE`.
+#'
+#' @param resolution Resolution of the geospatial data. One of
+#'  * "60": 1:60million
+#'  * "20": 1:20million
+#'  * "10": 1:10million
+#'  * "03": 1:3million
+#'  * "01": 1:1million
+#' @param spatialtype Type of geometry to be returned:
+#'   * "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+#'   * "LB": Labels - `POINT` object.
+#'
+#' @param region Optional. A vector of region names, NUTS or ISO codes
+#'   (see [esp_dict_region_code()].
+#'
+#' @param nuts_level NUTS level. One of "0" (Country-level), "1", "2" or "3".
+#'   See <https://ec.europa.eu/eurostat/web/nuts/background>.
+#'
+#' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
+#'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
+#'   Initial position can be adjusted using the vector of coordinates.
+#'
+#' @details
+#' `cache_dir = NULL` (default) uses and creates `/mapSpain` directory in the
+#' temporary directory [tempdir()]. The directory can also be set via options
+#' with `options(mapSpain = "path/to/dir")` or
+#' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get])
 #'
 #' Sometimes cached files may be corrupt. On that case, try redownloading
-#' the data setting \code{update_cache = TRUE}.
+#' the data using `update_cache = TRUE`.
 #'
-#' @note While \code{moveCAN} is useful for visualization, it would alter the
-#' actual geographical position of the Canary Islands. When using the output
-#' for spatial analysis or using tiles (\link{esp_getTiles},
-#' \link{addProviderEspTiles}) this option should be set to \code{FALSE} in
-#' order to get the actual coordinates.
+#' @note
+#' While `moveCAN` is useful for visualization, it would alter the actual
+#' geographical position of the Canary Islands. When using the output for
+#' spatial analysis or using tiles ([esp_getTiles()],[addProviderEspTiles])
+#' this option should be set to `FALSE` in#' order to get the actual
+#' coordinates.
 #'
 #' @examples
 #'

@@ -1,21 +1,29 @@
-#' @title Convert and translate Subdivision Names
+#' Convert and translate Subdivision Names
+#'
+#' Converts long subdivision names into different coding schemes and languages.
+#'
+#' @family esp_dict
+#'
 #' @rdname esp_dict
-#' @description Converts long subdivision names into different coding schemes
-#' and languages.
-#' @return \code{esp_dict_region_code} returns a vector of characters.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
+#'
+#' @return `esp_dict_region_code` returns a vector of characters.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
 #' @export
 #'
 #'
 #' @param sourcevar Vector which contains the subdivision names to be converted.
-#' @param origin,destination One of \code{'text', 'nuts', 'iso2', 'codauto'}
-#' and \code{'cpro'}.
 #'
-#' @details If no match is found for any value, the function displays a warning
-#' and returns \code{NA} for those values.
+#' @param origin,destination One of "text", "nuts", "iso2",
+#'   "codauto" and "cpro".
 #'
-#' Note that mixing names of different administrative levels (e.g. Catalonia
-#' and Barcelona) may return empty values, depending on the \code{destination}
+#' @details
+#' If no match is found for any value, the function displays a warning and
+#' returns `NA` for those values.
+#'
+#' Note that mixing names of different administrative levels (e.g. "Catalonia"
+#' and "Barcelona") may return empty values, depending on the `destination`
 #' values.
 #'
 #' @examples
@@ -207,23 +215,24 @@ esp_dict_region_code <- function(sourcevar,
   return(out)
 }
 
+#' @family esp_dict
+#'
 #' @rdname esp_dict
-#' @return \code{esp_dict_translate} returns a character vector or a named list
-#' with each of the possible names of each \code{sourcevar} on the required
-#' language \code{lang}.
+#' @return `
+#' esp_dict_translate` returns a character vector or a named list with each
+#' of the possible names of each `sourcevar` on the required language `lang`.
+#'
 #' @export
 #'
 #' @param lang Language of translation. Available languages are:
-#' \itemize{
-#'   \item{\code{es}: }{Spanish}
-#'   \item{\code{en}: }{English}
-#'   \item{\code{ca}: }{Catalan}
-#'   \item{\code{ga}: }{Galician}
-#'   \item{\code{eu}: }{Basque}
-#' }
-#' @param all Logical. Should the function return all names or not?
-#' On \code{FALSE} it returns a character vector. See Value
+#'   * "es": Spanish
+#'   * "en": English
+#'   * "ca": Catalan
+#'   * "ga": Galician
+#'   * "eu": Basque
 #'
+#' @param all Logical. Should the function return all names or not?
+#'   On `FALSE` it returns a character vector. See Value
 #'
 #' @examples
 #'

@@ -7,14 +7,13 @@
 esp_get_country(...)
 }
 \arguments{
-\item{...}{Additional parameters from \link{esp_get_nuts}.}
+\item{...}{Additional parameters from \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 }
 \value{
 A \code{MULTIPOLYGON/MULTIPOINT} object.
 }
 \description{
-Loads a single \code{sf} object containing the
-boundaries of Spain.
+Loads a single \code{sf} object containing the boundaries of Spain.
 }
 \examples{
 
@@ -29,8 +28,7 @@ MovedCan <- esp_get_country(moveCAN = TRUE)
 plot(MovedCan$geometry, col = hcl.colors(5))
 }
 \seealso{
-\link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},
-\link{esp_get_munic}, \link{esp_codelist}
+\code{\link[=esp_get_nuts]{esp_get_nuts()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
