@@ -61,11 +61,10 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Spanish Code Translation Data Frame — esp_codelist" />
-<meta property="og:description" content="A data frame used internally for translating codes and
-names of the different subdivisions of Spain. The data frame provides
-the hierarchy of the subdivisions including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-level. See Note." />
+<meta property="og:description" content="A data frame used internally for translating codes and names of the
+different subdivisions of Spain. The data frame provides the hierarchy of
+the subdivisions including NUTS1 level, Autonomous Communities
+(equivalent to NUTS2), Provinces and NUTS3 level. See Note." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -175,11 +174,10 @@ level. See Note." />
     </div>
 
     <div class="ref-description">
-    <p>A data frame used internally for translating codes and
-names of the different subdivisions of Spain. The data frame provides
-the hierarchy of the subdivisions including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-level. See Note.</p>
+    <p>A data frame used internally for translating codes and names of the
+different subdivisions of Spain. The data frame provides the hierarchy of
+the subdivisions including NUTS1 level, Autonomous Communities
+(equivalent to NUTS2), Provinces and NUTS3 level. See Note.</p>
     </div>
 
 
@@ -190,18 +188,18 @@ level. See Note.</p>
 <li><p><strong>nuts*.code</strong>: NUTS code of each subdivision.</p></li>
 <li><p><strong>nuts*.code</strong>: NUTS name of each subdivision.</p></li>
 <li><p><strong>codauto</strong>: INE code of each autonomous community.</p></li>
-<li><p><strong>iso2.<em>.code</em>: </strong>ISO2 code of each autonomous
-community and province.
-<strong>ine.</strong>.name: INE name of each autonomous community
+<li><p><strong>iso2.*.code</strong>: ISO2 code of each autonomous
+community and province.</p></li>
+<li><p><strong>ine.*.name</strong>: INE name of each autonomous community
 and province.</p></li>
 <li><p><strong>iso2.<em>.name.</em></strong>: ISO2 name of each autonomous community
 and province. Several languages available.</p></li>
 <li><p><strong>cldr.<em>.name.</em></strong>: CLDR name of each autonomous community and
 province. Several languages available.</p></li>
-<li><p><strong>ccaa.short.<em></em>: </strong>Short (common) name of each autonomous
-community. Several languages available.
-<strong>cpro</strong>: INE code of each province.
-<strong>prov.shortname.</strong>: Short (common) name of each province.
+<li><p><strong>ccaa.short.*</strong>: Short (common) name of each autonomous
+community. Several languages available.</p></li>
+<li><p><strong>cpro</strong>: INE code of each province.</p></li>
+<li><p><strong>prov.shortname.*</strong>: Short (common) name of each province.
 Several languages available.</p></li>
 </ul>
 
@@ -210,21 +208,19 @@ Several languages available.</p></li>
     
 <ul>
 <li><p>INE: Instituto Nacional de Estadistica: <a href='https://www.ine.es/'>https://www.ine.es/</a></p></li>
-<li><p>Eurostat (NUTS): 
-<a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a></p></li>
+<li><p>Eurostat (NUTS): <a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a></p></li>
 <li><p>ISO: <a href='https://www.iso.org/obp/ui/#iso:code:3166:ES'>https://www.iso.org/obp/ui/#iso:code:3166:ES</a></p></li>
-<li><p>CLDR: 
-<a href='https://unicode-org.github.io/cldr-staging/charts/38/index.html'>https://unicode-org.github.io/cldr-staging/charts/38/index.html</a></p></li>
+<li><p>CLDR: <a href='https://unicode-org.github.io/cldr-staging/charts/38/index.html'>https://unicode-org.github.io/cldr-staging/charts/38/index.html</a></p></li>
 </ul>
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Languages available are:</p><ul>
-<li><p><code>en</code>: English</p></li>
-<li><p><code>es</code>: Spanish</p></li>
-<li><p><code>ca</code>: Catalan</p></li>
-<li><p><code>ga</code>: Galician</p></li>
-<li><p><code>eu</code>: Basque</p></li>
+<li><p>"en": English</p></li>
+<li><p>"es": Spanish</p></li>
+<li><p>"ca": Catalan</p></li>
+<li><p>"ga": Galician</p></li>
+<li><p>"eu": Basque</p></li>
 </ul>
 
 <p>Although NUTS2 matches the first subdivision level of Spain

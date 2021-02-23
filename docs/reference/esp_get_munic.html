@@ -64,10 +64,9 @@
 <meta property="og:description" content="Loads a simple feature (sf) object containing the
 municipalities boundaries of Spain.
 esp_get_munic uses GISCO (Eurostat) as source.
-esp_get_munic_siane use CartoBase ANE as source,
-provided by Instituto Geografico Nacional (IGN),
-ign.es. Years available are
-2005 up to today." />
+esp_get_munic_siane uses CartoBase ANE as source, provided by Instituto
+Geografico Nacional (IGN), http://www.ign.es/web/ign/portal. Years
+available are 2005 up to today." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -180,10 +179,9 @@ ign.es. Years available are
     <p>Loads a simple feature (<code>sf</code>) object containing the
 municipalities boundaries of Spain.</p>
 <p><code>esp_get_munic</code> uses GISCO (Eurostat) as source.</p>
-<p><code>esp_get_munic_siane</code> use CartoBase ANE as source,
-provided by Instituto Geografico Nacional (IGN),
-<a href='http://www.ign.es/web/ign/portal'>ign.es</a>. Years available are
-2005 up to today.</p>
+<p><code>esp_get_munic_siane</code> uses CartoBase ANE as source, provided by Instituto
+Geografico Nacional (IGN), <a href='http://www.ign.es/web/ign/portal'>http://www.ign.es/web/ign/portal</a>. Years
+available are 2005 up to today.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_get_munic</span><span class='op'>(</span>
@@ -216,8 +214,37 @@ provided by Instituto Geografico Nacional (IGN),
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>year, epsg, cache, update_cache, cache_dir, verbose, moveCAN</th>
-      <td><p>See <a href='esp_get_nuts.html'>esp_get_nuts</a>. See Details for years available.</p></td>
+      <th>year</th>
+      <td><p>Release year. See Details for years available.</p></td>
+    </tr>
+    <tr>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>region</th>
@@ -230,14 +257,20 @@ or <code>NULL</code> to get all the municipalities. See Details.</p></td>
 municipalities. <code>NULL</code> would not produce any filtering.</p></td>
     </tr>
     <tr>
+      <th>moveCAN</th>
+      <td><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
+<code><a href='https://rdrr.io/r/base/c.html'>c(lat, lon)</a></code>. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.</p></td>
+    </tr>
+    <tr>
       <th>resolution</th>
       <td><p>Resolution of the polygon. Values available are
-<code>"3", "6.5"</code> or  <code>"10"</code>.</p></td>
+"3", "6.5" or  "10".</p></td>
     </tr>
     <tr>
       <th>rawcols</th>
-      <td><p>Logical. Setting this to <code>TRUE</code> would add the raw
-columns of the dataset provided by IGN.</p></td>
+      <td><p>Logical. Setting this to <code>TRUE</code> would add the raw columns of
+the dataset provided by IGN.</p></td>
     </tr>
     </table>
 
@@ -245,7 +278,7 @@ columns of the dataset provided by IGN.</p></td>
 
     <p><a href='https://gisco-services.ec.europa.eu/distribution/v2/'>GISCO API</a></p>
 <p>IGN data via a custom CDN (see
-<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>).</p>
+<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>POLYGON</code> object.</p>
@@ -263,7 +296,7 @@ year ("YYYY" format, as end of year) or as a specific
 date ("YYYY-MM-DD" format). Historical information starts as of 2005.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='esp_get_nuts.html'>esp_get_nuts</a>,<a href='esp_munic.sf.html'>esp_munic.sf</a>, <a href='esp_codelist.html'>esp_codelist</a></p></div>
+    <div class='dont-index'><p><code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code>, <a href='esp_munic.sf.html'>esp_munic.sf</a>, <a href='esp_codelist.html'>esp_codelist</a>.</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>

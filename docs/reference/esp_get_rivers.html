@@ -182,7 +182,7 @@ areas with the required hydrograpic elements of Spain.</p>
   update_cache <span class='op'>=</span> <span class='cn'>FALSE</span>,
   cache_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  resolution <span class='op'>=</span> <span class='fl'>3</span>,
+  resolution <span class='op'>=</span> <span class='st'>"3"</span>,
   spatialtype <span class='op'>=</span> <span class='st'>"line"</span>,
   name <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -191,19 +191,43 @@ areas with the required hydrograpic elements of Spain.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>epsg, cache, update_cache, cache_dir, verbose</th>
-      <td><p>See
-<code><a href='esp_get_nuts.html'>esp_get_nuts</a></code>.</p></td>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>resolution</th>
-      <td><p>Resolution of the polygon. Values available are
-<code>"3", "6.5"</code> or  <code>"10"</code>.</p></td>
+      <td><p>Resolution of the polygon. Values available are "3", "6.5"
+or "10".</p></td>
     </tr>
     <tr>
       <th>spatialtype</th>
-      <td><p>Spatial type of the output. Use <code>"area"</code> for
-<code>POLYGONS</code> or <code>"line"</code> for <code>LINESTRING</code>.</p></td>
+      <td><p>Spatial type of the output. Use "area" for <code>POLYGONS</code> or
+"line" for <code>LINESTRING</code>.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -215,15 +239,16 @@ element to be extracted. See Details</p></td>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>IGN data via a custom CDN (see
-<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>).</p>
+<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>POLYGON</code> of <code>LINESTRING</code> object.</p>
+    <p>A <code>POLYGON</code> or <code>LINESTRING</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Metadata available on <a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane'>https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane</a>.</p>
-<p><code>name</code> admits regex expresions. See <code><a href='https://rdrr.io/r/base/regex.html'>regex</a></code> for more
-information.</p>
+    <p>Metadata available on
+<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata/'>https://github.com/rOpenSpain/mapSpain/tree/sianedata/</a>.</p>
+<p><code>name</code> admits regex expressions. See <code><a href='https://rdrr.io/r/base/regex.html'>help("regex", package = "base")</a></code>
+for more information.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>

@@ -61,8 +61,8 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="All Municipalities POLYGON object of Spain — esp_munic.sf" />
-<meta property="og:description" content="A sf object including all
-municipalities of Spain as provided by GISCO (2019 version)." />
+<meta property="og:description" content="A sf object including all municipalities of Spain as provided by GISCO
+(2019 version)." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -172,33 +172,32 @@ municipalities of Spain as provided by GISCO (2019 version)." />
     </div>
 
     <div class="ref-description">
-    <p>A <code>sf</code> object including all
-municipalities of Spain as provided by GISCO (2019 version).</p>
+    <p>A <code>sf</code> object including all municipalities of Spain as provided by GISCO
+(2019 version).</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A <code>POLYGON</code> data frame (resolution: 1:1million, EPSG:4258)
-object:</p><dl>
-<dt>codauto</dt><dd><p>INE code of each autonomous community.</p></dd>
-<dt>ine.ccaa.name</dt><dd><p>INE name of each autonomous community.</p></dd>
-<dt>cpro</dt><dd><p>INE code of each province.</p></dd>
-<dt>ine.prov.name</dt><dd><p>INE name of each province.</p></dd>
-<dt>cmun</dt><dd><p>INE code of each municipality.</p></dd>
-<dt>name</dt><dd><p>Name of the municipality</p></dd>
-<dt>LAU_CODE</dt><dd><p>LAU Code (GISCO) of the municipality</p></dd>
-<dt>geometry</dt><dd><p>geometry field</p></dd>
-
-</dl>
+    <p>A <code>POLYGON</code> data frame (resolution: 1:1million, EPSG:4258) object:</p><ul>
+<li><p>codauto: INE code of each autonomous community.</p></li>
+<li><p>ine.ccaa.name: INE name of each autonomous community.</p></li>
+<li><p>cpro: INE code of each province.</p></li>
+<li><p>ine.prov.name: INE name of each province.</p></li>
+<li><p>cmun: INE code of each municipality.</p></li>
+<li><p>name: Name of the municipality.</p></li>
+<li><p>LAU_CODE: LAU Code (GISCO) of the municipality.</p></li>
+<li><p>geometry: geometry field.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/lau'>GISCO</a></p>
+    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/'>https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/</a>, LAU 2019
+data.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='esp_get_munic.html'>esp_get_munic</a></p></div>
+    <div class='dont-index'><p><code><a href='esp_get_munic.html'>esp_get_munic()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
