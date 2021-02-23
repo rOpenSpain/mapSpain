@@ -79,6 +79,36 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1,
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
 all the municipalities of that level would be added.
 }
+\examples{
+\donttest{
+# This code compares centroid of municipalities against esp_get_capimun
+
+library(sf)
+
+area <- esp_get_munic_siane(munic = "Cáceres", epsg = 3857)
+# Get Cáceres city
+area <- area[area$name == "Cáceres", ]
+
+# Extract centroid
+centroid <- st_centroid(st_geometry(area))
+
+# Compare with capimun
+capimun <- esp_get_capimun(munic = "Cáceres", epsg = 3857)
+capimun <- capimun[capimun$name == "Cáceres", ]
+
+# Get a tile to check
+tile <- esp_getTiles(area)
+
+# Check on plot
+raster::plotRGB(tile)
+plot(st_geometry(area), add = TRUE)
+plot(centroid, add = TRUE, pch = 19, col = "red") # Centroid
+plot(st_geometry(capimun), add = TRUE, pch = 19, col = "blue") # Capimun
+
+# Blue dot is located onto the actual city while red dot is located
+# in the centroid of the boundaries
+}
+}
 \seealso{
 \code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_munic.sf}, \link{esp_codelist}
 }

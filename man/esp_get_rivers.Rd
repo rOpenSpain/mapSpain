@@ -46,6 +46,8 @@ Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata
 information.
 }
 \examples{
+\donttest{
+# This code would produce a nice plot - It will take a few seconds to run
 library(sf)
 
 # Use of regex
@@ -75,6 +77,7 @@ plot(st_geometry(Wetlands), col = "skyblue", border = NA)
 plot(st_geometry(shapeEsp), col = NA, add = TRUE)
 
 par(opar)
+}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

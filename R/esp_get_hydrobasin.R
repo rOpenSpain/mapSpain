@@ -19,6 +19,8 @@
 #' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
 #'
 #' @examples
+#' \donttest{
+#' # This code would produce a nice plot - It will take a few seconds to run
 #' library(sf)
 #' all <- esp_get_prov()
 #' mainland <-
@@ -54,6 +56,7 @@
 #' )
 #'
 #' par(opar)
+#' }
 esp_get_hydrobasin <- function(epsg = "4258",
                                cache = TRUE,
                                update_cache = FALSE,

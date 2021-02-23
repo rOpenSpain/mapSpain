@@ -40,6 +40,8 @@ with the required hydrograpic elements of Spain.
 Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
 }
 \examples{
+\donttest{
+# This code would produce a nice plot - It will take a few seconds to run
 library(sf)
 all <- esp_get_prov()
 mainland <-
@@ -75,6 +77,7 @@ plot(
 )
 
 par(opar)
+}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

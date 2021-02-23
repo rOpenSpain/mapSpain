@@ -22,6 +22,8 @@
 #' \code{name} admits regex expresions. See \code{\link[base]{regex}} for more
 #' information.
 #' @examples
+#' \donttest{
+#' # This code would produce a nice plot - It will take a few seconds to run
 #' library(sf)
 #'
 #' # Use of regex
@@ -51,6 +53,7 @@
 #' plot(st_geometry(shapeEsp), col = NA, add = TRUE)
 #'
 #' par(opar)
+#' }
 esp_get_rivers <- function(epsg = "4258",
                            cache = TRUE,
                            update_cache = FALSE,
