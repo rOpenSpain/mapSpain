@@ -28,43 +28,66 @@ esp_get_prov_siane(
 \item{prov}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the provinces. See Details.}
 
-\item{...}{Additional parameters from \link{esp_get_nuts}.}
+\item{...}{Additional parameters from \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
-\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \code{\link{esp_get_nuts}}. See Details for \code{year}.}
+\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{esp_get_prov} and
+Details for \code{esp_get_prov_siane}}
+
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
-\code{"3", "6.5"} or  \code{"10"}.}
+"3", "6.5" or "10".}
 
-\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
-columns of the dataset provided by IGN.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the dataset provided by IGN.}
 }
 \value{
 A \code{POLYGON/POINT} object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-province boundaries of Spain.
+Loads a simple feature (\code{sf}) object containing the province boundaries of
+Spain.
 
 \code{esp_get_prov} uses GISCO (Eurostat) as source
 
-\code{esp_get_prov_siane} use CartoBase ANE as source,
-provided by Instituto Geografico Nacional (IGN),
-\href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
-2005 up to today.
+\code{esp_get_prov_siane} use CartoBase ANE as source, provided by Instituto
+Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}. Years
+available are 2005 up to today.
 }
 \details{
-When using \code{prov} you can use and mix names and NUTS codes
-(levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-\code{cpro}.
+When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
+3), ISO codes (corresponding to level 2 or 3) or \code{cpro}.
 
 Ceuta and Melilla are considered as provinces on this dataset.
 
 When calling a superior level (Autonomous Community or NUTS1) ,
 all the provinces of that level would be added.
 
-On \code{esp_get_prov_siane}, \code{year} could be passed as a single
-year ("YYYY" format, as end of year) or as a specific
-date ("YYYY-MM-DD" format). Historical information starts as of 2005.
+On \code{esp_get_prov_siane}, \code{year} could be passed as a single year ("YYYY"
+format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+Historical information starts as of 2005.
 }
 \examples{
 
@@ -101,8 +124,8 @@ plot(
 )
 }
 \seealso{
-\link{esp_get_hex_prov}, \link{esp_get_nuts}, \link{esp_get_ccaa},
-\link{esp_get_munic}, \link{esp_codelist}
+\code{\link[=esp_get_hex_prov]{esp_get_hex_prov()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link[=esp_codelist]{esp_codelist()}}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

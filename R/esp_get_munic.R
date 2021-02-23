@@ -1,32 +1,43 @@
-#' @title Get municipalities boundaries of Spain
+#' Get municipalities boundaries of Spain
+#'
 #' @concept mappolitical
-#' @name esp_get_munic
-#' @description Loads a simple feature (\code{sf}) object containing the
+#'
+#' @description
+#' Loads a simple feature (`sf`) object containing the
 #' municipalities boundaries of Spain.
 #'
-#' \code{esp_get_munic} uses GISCO (Eurostat) as source.
+#' `esp_get_munic` uses GISCO (Eurostat) as source.
 #'
-#' @return A \code{POLYGON} object.
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_nuts},\link{esp_munic.sf}, \link{esp_codelist}
+#' @return A `POLYGON` object.
+#'
+#' @export
+#'
+#' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso [esp_get_nuts()], [esp_munic.sf], [esp_codelist].
 #'
 #'
-#' @param year,epsg,cache,update_cache,cache_dir,verbose,moveCAN
-#' See \link{esp_get_nuts}. See Details for years available.
+#' @param year Release year. See Details for years available.
+
 #' @param region A vector of names and/or codes for provinces
-#'  or \code{NULL} to get all the municipalities. See Details.
-#' @param munic A name or regex expression with the names of the required
-#'  municipalities. \code{NULL} would not produce any filtering.
+#'  or `NULL` to get all the municipalities. See Details.
 #'
-#' @details When using \code{region} you can use and mix names and NUTS codes
+#' @param munic A name or regex expression with the names of the required
+#'  municipalities. `NULL` would not produce any filtering.
+#'
+#' @inheritParams esp_get_nuts
+#'
+#' @details
+#' When using `region` you can use and mix names and NUTS codes
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' \code{cpro}.
+#' `cpro`.
 #'
 #' When calling a superior level (Province, Autonomous Community or NUTS1) ,
 #' all the municipalities of that level would be added.
 #'
-#' On \code{esp_get_munic} years available are: 2001, 2004, 2006,
+#' On `esp_get_munic` years available are: 2001, 2004, 2006,
 #' 2008, 2010, 2013 and any year between 2016 and 2019.
 #'
 #' @examples
@@ -46,7 +57,6 @@
 #'   border = NA,
 #'   add = TRUE
 #' )
-#' @export
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
                           cache = TRUE,
@@ -273,20 +283,23 @@ esp_get_munic <- function(year = "2019",
 
 
 #' @rdname esp_get_munic
-#' @description \code{esp_get_munic_siane} use CartoBase ANE as source,
-#' provided by Instituto Geografico Nacional (IGN),
-#' \href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
-#' 2005 up to today.
-#' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#'
+#' @description
+#' `esp_get_munic_siane` uses CartoBase ANE as source, provided by Instituto
+#' Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+#' available are 2005 up to today.
+#'
+#' @source
+#' IGN data via a custom CDN (see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 #'
 #' @param resolution Resolution of the polygon. Values available are
-#' \code{"3", "6.5"} or  \code{"10"}.
-#' @param rawcols Logical. Setting this to \code{TRUE} would add the raw
-#' columns of the dataset provided by IGN.
+#' "3", "6.5" or  "10".
+#'
+#' @inheritParams esp_get_ccaa_siane
 #'
 #' @details
-#' On \code{esp_get_munic_siane}, \code{year} could be passed as a single
+#' On `esp_get_munic_siane`, `year` could be passed as a single
 #' year ("YYYY" format, as end of year) or as a specific
 #' date ("YYYY-MM-DD" format). Historical information starts as of 2005.
 #'

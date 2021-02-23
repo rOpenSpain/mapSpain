@@ -1,26 +1,35 @@
-#' @title Get rivers, channels, reservoirs and other wetlands of Spain
-#' @concept mapnatural
-#' @name esp_get_rivers
-#' @description Loads a simple feature (\code{sf}) object containing lines or
+#' Get rivers, channels, reservoirs and other wetlands of Spain
+#'
+#' @description
+#' Loads a simple feature (`sf`) object containing lines or
 #' areas with the required hydrograpic elements of Spain.
-#' @return A \code{POLYGON} of \code{LINESTRING} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
+#'
+#' @concept mapnatural
+#'
+#' @return A `POLYGON` or `LINESTRING` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
 #' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#'
 #' @export
 #'
-#' @param epsg,cache,update_cache,cache_dir,verbose See
-#' \code{\link{esp_get_nuts}}.
-#' @param resolution Resolution of the polygon. Values available are
-#' \code{"3", "6.5"} or  \code{"10"}.
-#' @param spatialtype Spatial type of the output. Use \code{"area"} for
-#' \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.
-#' @param name Optional. A character or regex expresion with the name of the
-#' element to be extracted. See Details
-#' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
+#' @param resolution Resolution of the polygon. Values available are "3", "6.5"
+#'   or "10".
 #'
-#' \code{name} admits regex expresions. See \code{\link[base]{regex}} for more
-#' information.
+#' @inheritParams esp_get_hypsobath
+#'
+#' @param name Optional. A character or regex expresion with the name of the
+#'   element to be extracted. See Details
+#'
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#'
+#' `name` admits regex expressions. See `help("regex", package = "base")`
+#' for more information.
+#'
 #' @examples
 #' \donttest{
 #' # This code would produce a nice plot - It will take a few seconds to run
@@ -59,7 +68,7 @@ esp_get_rivers <- function(epsg = "4258",
                            update_cache = FALSE,
                            cache_dir = NULL,
                            verbose = FALSE,
-                           resolution = 3,
+                           resolution = "3",
                            spatialtype = "line",
                            name = NULL) {
   # Check epsg

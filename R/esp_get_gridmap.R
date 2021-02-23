@@ -1,24 +1,41 @@
-#' @title Get an hexbin or a map of squares of Spain
+#' Get an hexbin or a map of squares of Spain
+#'
+#' @description
+#' Loads a hexbin map (`sf` object) or a map of squares with the boundaries of
+#' the provinces or autonomous communities of Spain.
+#'
+#' @rdname esp_get_gridmap
+#'
 #' @concept mappolitical
-#' @name esp_get_gridmap
-#' @description Loads a hexbin map (\code{sf} object) or a map of squares
-#' with the boundaries of the provinces or autonomous communities of Spain.
-#' @return A \code{POLYGON} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},
-#' \link{esp_get_munic}, \link{esp_codelist}
+#'
+#' @return A `POLYGON` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso
+#' [esp_get_nuts()], [esp_get_ccaa()], [esp_get_prov()], [esp_get_munic()],
+#' [esp_codelist]
+#'
 #' @export
 #'
-#' @param prov See \link{esp_get_prov}
-#' @param ccaa See \link{esp_get_ccaa}
-#' @details Hexbin or grid map has an advantage over usual choropleth maps.
+#' @inheritParams esp_get_prov
+#'
+#' @inheritParams esp_get_ccaa
+#'
+#' @details
+#'
+#' Hexbin or grid map has an advantage over usual choropleth maps.
 #' In choropleths, a large polygon data looks more emphasized just because
 #' of its size, what introduces a bias. Here with hexbin, each region is
 #' represented equally dismissing the bias.
 #'
-#' Results are provided in \strong{EPSG:4258}, use \link[sf]{st_transform}
+#' Results are provided in **EPSG:4258**, use [sf::st_transform()]
 #' to change the projection.
+#'
+#' See  [esp_get_ccaa()], [esp_get_prov()] for Details.
+#'
 #' @examples
+#'
 #' library(sf)
 #' library(cartography)
 #'

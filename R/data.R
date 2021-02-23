@@ -1,49 +1,51 @@
-#' @title Spanish Code Translation Data Frame
+#' Spanish Code Translation Data Frame
+#'
 #' @concept mapSpaindata
+#'
 #' @name esp_codelist
+#'
 #' @docType data
-#' @description A data frame used internally for translating codes and
-#' names of the different subdivisions of Spain. The data frame provides
-#' the hierarchy of the subdivisions including NUTS1 level,
-#' Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-#' level. See Note.
+#'
+#' @description
+#' A data frame used internally for translating codes and names of the
+#' different subdivisions of Spain. The data frame provides the hierarchy of
+#' the subdivisions including NUTS1 level, Autonomous Communities
+#' (equivalent to NUTS2), Provinces and NUTS3 level. See Note.
+#'
 #' @source
-#' \itemize{
-#'  \item{INE: Instituto Nacional de Estadistica: }{\url{https://www.ine.es/}}
-#'  \item{Eurostat (NUTS): }
-#'  {\url{https://ec.europa.eu/eurostat/web/nuts/background}}
-#'  \item{ISO: }{\url{https://www.iso.org/obp/ui/#iso:code:3166:ES}}
-#'  \item{CLDR: }
-#'  {\url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}}
-#' }
+#' * INE: Instituto Nacional de Estadistica: <https://www.ine.es/>
+#' * Eurostat (NUTS): <https://ec.europa.eu/eurostat/web/nuts/background>
+#' * ISO: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
+#' * CLDR: <https://unicode-org.github.io/cldr-staging/charts/38/index.html>
+#'
 #' @encoding UTF-8
-#' @format data frame with codes as columns
-#' \itemize{
-#'   \item{\strong{nuts*.code}: }{NUTS code of each subdivision.}
-#'   \item{\strong{nuts*.code}: }{NUTS name of each subdivision.}
-#'   \item{\strong{codauto}: }{INE code of each autonomous community.}
-#'   \item{\strong{iso2.*.code}: }{ISO2 code of each autonomous
-#'   community and province.}
-#'   \item{\strong{ine.*.name}: }{INE name of each autonomous community
-#'   and province.}
-#'   \item{\strong{iso2.*.name.*}: }{ISO2 name of each autonomous community
-#'   and province. Several languages available.}
-#'   \item{\strong{cldr.*.name.*}: }{CLDR name of each autonomous community and
-#'   province. Several languages available.}
-#'   \item{\strong{ccaa.short.*}: }{Short (common) name of each autonomous
-#'   community. Several languages available.}
-#'   \item{\strong{cpro}: }{INE code of each province.}
-#'   \item{\strong{prov.shortname.*}: }{Short (common) name of each province.
-#'   Several languages available.}
-#' }
-#' @note Languages available are:
-#' \itemize{
-#'   \item{\code{en}: }{English}
-#'   \item{\code{es}: }{Spanish}
-#'   \item{\code{ca}: }{Catalan}
-#'   \item{\code{ga}: }{Galician}
-#'   \item{\code{eu}: }{Basque}
-#' }
+#'
+#' @format
+#' data frame with codes as columns
+#'   * \strong{nuts*.code}: NUTS code of each subdivision.
+#'   * \strong{nuts*.code}: NUTS name of each subdivision.
+#'   * \strong{codauto}: INE code of each autonomous community.
+#'   * \strong{iso2.*.code}: ISO2 code of each autonomous
+#'   community and province.
+#'   * \strong{ine.*.name}: INE name of each autonomous community
+#'   and province.
+#'   * \strong{iso2.*.name.*}: ISO2 name of each autonomous community
+#'   and province. Several languages available.
+#'   * \strong{cldr.*.name.*}: CLDR name of each autonomous community and
+#'   province. Several languages available.
+#'   * \strong{ccaa.short.*}: Short (common) name of each autonomous
+#'   community. Several languages available.
+#'   * \strong{cpro}: INE code of each province.
+#'   * \strong{prov.shortname.*}: Short (common) name of each province.
+#'   Several languages available.
+#'
+#' @note
+#' Languages available are:
+#'   * "en": English
+#'   * "es": Spanish
+#'   * "ca": Catalan
+#'   * "ga": Galician
+#'   * "eu": Basque
 #'
 #' Although NUTS2 matches the first subdivision level of Spain
 #' (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
@@ -53,35 +55,46 @@
 #' Ceuta and Melilla has an specific status (Autonomous Cities) but are
 #' considered as communities with a single province (as Madrid, Asturias
 #' or Murcia) on this dataset.
+#'
 #' @examples
 #' data(esp_codelist)
 NULL
 
 
-#' @title All NUTS \code{POLYGON} object of Spain
+#' All NUTS `POLYGON` object of Spain
+#'
 #' @concept mapSpaindata
+#'
 #' @name esp_nuts.sf
+#'
 #' @docType data
-#' @description A \code{sf} object including all
-#' NUTS levels of Spain as provided by GISCO (2016 version).
+#'
+#' @description
+#' A `sf` object including all NUTS levels of Spain as provided by
+#' GISCO (2016 version).
+#'
 #' @source
-#' \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/>, file
+#' `NUTS_RG_20M_2016_4326.geojson`.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_get_nuts}
-#' @format A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-#' object with 86 rows and fields:
-#' \describe{
-#'   \item{COAST_TYPE}{COAST_TYPE}
-#'   \item{FID}{FID}
-#'   \item{NUTS_NAME}{NUTS name on local alphabet}
-#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
-#'   \item{NAME_LATN}{Name on Latin characters}
-#'   \item{CNTR_CODE}{Eurostat Country code}
-#'   \item{URBN_TYPE}{URBN_TYPE}
-#'   \item{NUTS_ID}{NUTS identifier}
-#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-#'   \item{geometry}{geometry field}
-#' }
+#'
+#' @seealso [esp_get_nuts()]
+#'
+#' @format
+#' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with 86
+#' rows and fields:
+#'   * COAST_TYPE: COAST_TYPE
+#'   * FID: FID
+#'   * NUTS_NAME: NUTS name on local alphabet
+#'   * MOUNT_TYPE: MOUNT_TYPE
+#'   * NAME_LATN: Name on Latin characters
+#'   * CNTR_CODE: Eurostat Country code
+#'   * URBN_TYPE: URBN_TYPE
+#'   * NUTS_ID: NUTS identifier
+#'   * LEVL_CODE: NUTS level code (0,1,2,3)
+#'   * geometry: geometry field
+#'
 #' @examples
 #' library(sf)
 #'
@@ -98,28 +111,36 @@ NULL
 #' )
 NULL
 
-#' @title All Municipalities \code{POLYGON} object of Spain
+#' All Municipalities `POLYGON` object of Spain
+#'
 #' @concept mapSpaindata
+#'
 #' @name esp_munic.sf
-#' @description A \code{sf} object including all
-#' municipalities of Spain as provided by GISCO (2019 version).
+#'
+#' @description
+#' A `sf` object including all municipalities of Spain as provided by GISCO
+#' (2019 version).
+#'
 #' @docType data
+#'
 #' @source
-#' \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/lau}{GISCO}
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/>, LAU 2019
+#' data.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_get_munic}
-#' @format A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-#' object:
-#' \describe{
-#'   \item{codauto}{INE code of each autonomous community.}
-#'   \item{ine.ccaa.name}{INE name of each autonomous community.}
-#'   \item{cpro}{INE code of each province.}
-#'   \item{ine.prov.name}{INE name of each province.}
-#'   \item{cmun}{INE code of each municipality.}
-#'   \item{name}{Name of the municipality}
-#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality}
-#'   \item{geometry}{geometry field}
-#' }
+#'
+#' @seealso [esp_get_munic()]
+#' @format
+#' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object:
+#'   * codauto: INE code of each autonomous community.
+#'   * ine.ccaa.name: INE name of each autonomous community.
+#'   * cpro: INE code of each province.
+#'   * ine.prov.name: INE name of each province.
+#'   * cmun: INE code of each municipality.
+#'   * name: Name of the municipality.
+#'   * LAU_CODE: LAU Code (GISCO) of the municipality.
+#'   * geometry: geometry field.
+#'
 #' @examples
 #' library(sf)
 #'
@@ -148,101 +169,96 @@ NULL
 
 
 #' @title Population by municipality (2019)
+#'
 #' @concept mapSpaindata
+#'
 #' @name pobmun19
+#'
 #' @docType data
-#' @description A data frame with 8131 rows containing the population
-#' data by municipality in Spain (2019).
-#' @source \href{https://www.ine.es/}{INE: Instituto Nacional de Estadistica}
+#'
+#' @description
+#' A data frame with 8131 rows containing the population data by municipality
+#' in Spain (2019).
+#'
+#' @source INE: Instituto Nacional de Estadistica <https://www.ine.es/>
 NULL
 
 
 #' @title Public WMS and WMTS of Spain
+#'
 #' @concept mapSpaindata
+#'
 #' @name leaflet.providersESP.df
-#' @description A data frame containing information of different public
-#' WMS and WMTS providers of Spain
+#'
+#' @description
+#' A data frame containing information of different public WMS and WMTS
+#' providers of Spain
 #'
 #' This function is a implementation of the javascript plugin
-#' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' \strong{v1.2.0}
+#' <https://dieghernan.github.io/leaflet-providersESP/> **v1.2.0**.
+#'
 #' @docType data
-#' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' leaflet plugin, \strong{v1.2.0}.
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#' **v1.2.0**.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_getTiles},
-#' \link{addProviderEspTiles}.
 #'
-#' @format A data frame object with a list of the required parameters
-#' for calling the service:
-#' \describe{
-#'   \item{provider}{Provider name}
-#'   \item{field}{Description of \code{value}}
-#'   \item{value}{INE code of each province.}
-#' }
+#' @seealso [esp_getTiles()], [addProviderEspTiles()].
 #'
-#' @details Providers available to be passed to \code{type} are:
-#' \itemize{
-#'  \item{\bold{IDErioja}: }{\code{IDErioja}}
-#'  \item{\bold{IGNBase}: }{\code{IGNBase.Todo}, \code{IGNBase.Gris},
-#'  \code{IGNBase.TodoNoFondo}, \code{IGNBase.Orto}}
-#'  \item{\bold{MDT}: }{\code{MDT.Elevaciones}, \code{MDT.Relieve},
-#'  \code{MDT.CurvasNivel}}
-#'  \item{\bold{PNOA}: }{\code{PNOA.MaximaActualidad}, \code{PNOA.Mosaico}}
-#'  \item{\bold{OcupacionSuelo}: }{\code{OcupacionSuelo.Ocupacion},
-#'  \code{OcupacionSuelo.Usos}}
-#'  \item{\bold{LiDAR}: }{\code{LiDAR}}
-#'  \item{\bold{MTN}: }{\code{MTN}}
-#'  \item{\bold{Geofisica}: }{\code{Geofisica.Terremotos10dias},
-#'  \code{Geofisica.Terremotos30dias}, \code{Geofisica.Terremotos365dias},
-#'  \code{Geofisica.VigilanciaVolcanica}}
-#'  \item{\bold{CaminoDeSantiago}: }{\code{CaminoDeSantiago.CaminoFrances},
-#'  \code{CaminoDeSantiago.CaminosTuronensis},
-#'  \code{CaminoDeSantiago.CaminosGalicia},
-#'  \code{CaminoDeSantiago.CaminosDelNorte},
-#'  \code{CaminoDeSantiago.CaminosAndaluces},
-#'  \code{CaminoDeSantiago.CaminosCentro},
-#'  \code{CaminoDeSantiago.CaminosEste},
-#'  \code{CaminoDeSantiago.CaminosCatalanes},
-#'  \code{CaminoDeSantiago.CaminosSureste},
-#'  \code{CaminoDeSantiago.CaminosInsulares},
-#'  \code{CaminoDeSantiago.CaminosPiemonts},
-#'  \code{CaminoDeSantiago.CaminosTolosana},
-#'  \code{CaminoDeSantiago.CaminosPortugueses}}
-#'  \item{\bold{Catastro}: }{\code{Catastro.Catastro},
-#'  \code{Catastro.Parcela}, \code{Catastro.CadastralParcel},
-#'  \code{Catastro.CadastralZoning}, \code{Catastro.Address},
-#'  \code{Catastro.Building}}
-#'  \item{\bold{RedTransporte}: }{\code{RedTransporte.Carreteras},
-#'  \code{RedTransporte.Ferroviario}, \code{RedTransporte.Aerodromo},
-#'  \code{RedTransporte.AreaServicio},
-#'  \code{RedTransporte.EstacionesFerroviario},
-#'  \code{RedTransporte.Puertos}}
-#'  \item{\bold{Cartociudad}: }{\code{Cartociudad.CodigosPostales},
-#'  \code{Cartociudad.Direcciones}}
-#'  \item{\bold{NombresGeograficos}: }{\code{NombresGeograficos}}
-#'  \item{\bold{UnidadesAdm}: }{\code{UnidadesAdm.Limites},
-#'  \code{UnidadesAdm.Unidades}}
-#'  \item{\bold{Hidrografia}: }{\code{Hidrografia.MasaAgua},
-#'  \code{Hidrografia.Cuencas}, \code{Hidrografia.Subcuencas},
-#'  \code{Hidrografia.POI}, \code{Hidrografia.ManMade},
-#'  \code{Hidrografia.LineaCosta}, \code{Hidrografia.Rios},
-#'  \code{Hidrografia.Humedales}}
-#'  \item{\bold{Militar}: }{\code{Militar.CEGET1M},
-#'  \code{Militar.CEGETM7814}, \code{Militar.CEGETM7815},
-#'  \code{Militar.CEGETM682}, \code{Militar.CECAF1M}}
-#'  \item{\bold{ADIF}: }{\code{ADIF.Vias}, \code{ADIF.Nodos},
-#'  \code{ADIF.Estaciones}}
-#'  \item{\bold{LimitesMaritimos}: }{\code{LimitesMaritimos.LimitesMaritimos},
-#'  \code{LimitesMaritimos.LineasBase}}
-#'  \item{\bold{Copernicus}: }{\code{Copernicus.LandCover},
-#'  \code{Copernicus.Forest}, \code{Copernicus.ForestLeaf},
-#'  \code{Copernicus.WaterWet}, \code{Copernicus.SoilSeal},
-#'  \code{Copernicus.GrassLand}, \code{Copernicus.Local},
-#'  \code{Copernicus.RiparianGreen}, \code{Copernicus.RiparianLandCover},
-#'  \code{Copernicus.Natura2k}, \code{Copernicus.UrbanAtlas}}
-#'  \item{\bold{ParquesNaturales}: }{\code{ParquesNaturales.Limites},
-#'  \code{ParquesNaturales.ZonasPerifericas}}
-#' }
+#' @format
+#' A data frame object with a list of the required parameters for calling
+#' the service:
+#'   * provider: Provider name.
+#'   * field: Description of `value`.
+#'   * value: INE code of each province.
+#'
+#'
+#' @details
+#' Providers available to be passed to `type` are:
+#'   * **IDErioja:** "IDErioja"
+#'   * **IGNBase:** "IGNBase.Todo", "IGNBase.Gris", "IGNBase.TodoNoFondo,
+#'     IGNBase.Orto"
+#'   * **MDT:** "MDT.Elevaciones", "MDT.Relieve", "MDT.CurvasNivel"
+#'   * **PNOA:** "PNOA.MaximaActualidad", "PNOA.Mosaico"
+#'   * **OcupacionSuelo:** "OcupacionSuelo.Ocupacion", "OcupacionSuelo.Usos"
+#'   * **LiDAR:** "LiDAR"
+#'   * **MTN:** "MTN"
+#'   * **Geofisica:** "Geofisica.Terremotos10dias",
+#'     "Geofisica.Terremotos30dias", "Geofisica.Terremotos365dias",
+#'     "Geofisica.VigilanciaVolcanica"
+#'   * **CaminoDeSantiago:** "CaminoDeSantiago.CaminoFrances",
+#'     "CaminoDeSantiago.CaminosTuronensis", "CaminoDeSantiago.CaminosGalicia",
+#'     "CaminoDeSantiago.CaminosDelNorte", "CaminoDeSantiago.CaminosAndaluces",
+#'     "CaminoDeSantiago.CaminosCentro", "CaminoDeSantiago.CaminosEste",
+#'     "CaminoDeSantiago.CaminosCatalanes", "CaminoDeSantiago.CaminosSureste",
+#'     "CaminoDeSantiago.CaminosInsulares", "CaminoDeSantiago.CaminosPiemonts",
+#'     "CaminoDeSantiago.CaminosTolosana", "CaminoDeSantiago.CaminosPortugueses"
+#'   * **Catastro:** "Catastro.Catastro", "Catastro.Parcela",
+#'     "Catastro.CadastralParcel", "Catastro.CadastralZoning",
+#'     "Catastro.Address", "Catastro.Building"
+#'   * **RedTransporte:** "RedTransporte.Carreteras",
+#'     "RedTransporte.Ferroviario", "RedTransporte.Aerodromo",
+#'     "RedTransporte.AreaServicio", "RedTransporte.EstacionesFerroviario",
+#'     "RedTransporte.Puertos"
+#'   * **Cartociudad:** "Cartociudad.CodigosPostales", "Cartociudad.Direcciones"
+#'   * **NombresGeograficos:** "NombresGeograficos"
+#'   * **UnidadesAdm:** "UnidadesAdm.Limites", "UnidadesAdm.Unidades"
+#'   * **Hidrografia:** "Hidrografia.MasaAgua", "Hidrografia.Cuencas",
+#'     "Hidrografia.Subcuencas", "Hidrografia.POI", "Hidrografia.ManMade",
+#'     "Hidrografia.LineaCosta", "Hidrografia.Rios", "Hidrografia.Humedales"
+#'   * **Militar:** "Militar.CEGET1M", "Militar.CEGETM7814",
+#'      "Militar.CEGETM7815", "Militar.CEGETM682", "Militar.CECAF1M"
+#'   * **ADIF:** "ADIF.Vias", "ADIF.Nodos", "ADIF.Estaciones"
+#'   * **LimitesMaritimos:** "LimitesMaritimos.LimitesMaritimos",
+#'     "LimitesMaritimos.LineasBase"
+#'   * **Copernicus:** "Copernicus.LandCover", "Copernicus.Forest",
+#'       "Copernicus.ForestLeaf", "Copernicus.WaterWet", "Copernicus.SoilSeal",
+#'       "Copernicus.GrassLand", "Copernicus.Local", "Copernicus.RiparianGreen",
+#'    "Copernicus.RiparianLandCover", "Copernicus.Natura2k",
+#'    "Copernicus.UrbanAtlas"
+#'   * **ParquesNaturales:** "ParquesNaturales.Limites",
+#'     "ParquesNaturales.ZonasPerifericas"
 #'
 NULL

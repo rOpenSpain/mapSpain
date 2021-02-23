@@ -6,93 +6,74 @@
 \alias{leaflet.providersESP.df}
 \title{Public WMS and WMTS of Spain}
 \format{
-A data frame object with a list of the required parameters
-for calling the service:
-\describe{
-\item{provider}{Provider name}
-\item{field}{Description of \code{value}}
-\item{value}{INE code of each province.}
+A data frame object with a list of the required parameters for calling
+the service:
+\itemize{
+\item provider: Provider name.
+\item field: Description of \code{value}.
+\item value: INE code of each province.
 }
 }
 \source{
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-leaflet plugin, \strong{v1.2.0}.
+\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
+\strong{v1.2.0}.
 }
 \description{
-A data frame containing information of different public
-WMS and WMTS providers of Spain
+A data frame containing information of different public WMS and WMTS
+providers of Spain
 
 This function is a implementation of the javascript plugin
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.2.0}
+\url{https://dieghernan.github.io/leaflet-providersESP/} \strong{v1.2.0}.
 }
 \details{
 Providers available to be passed to \code{type} are:
 \itemize{
-\item{\bold{IDErioja}: }{\code{IDErioja}}
-\item{\bold{IGNBase}: }{\code{IGNBase.Todo}, \code{IGNBase.Gris},
-\code{IGNBase.TodoNoFondo}, \code{IGNBase.Orto}}
-\item{\bold{MDT}: }{\code{MDT.Elevaciones}, \code{MDT.Relieve},
-\code{MDT.CurvasNivel}}
-\item{\bold{PNOA}: }{\code{PNOA.MaximaActualidad}, \code{PNOA.Mosaico}}
-\item{\bold{OcupacionSuelo}: }{\code{OcupacionSuelo.Ocupacion},
-\code{OcupacionSuelo.Usos}}
-\item{\bold{LiDAR}: }{\code{LiDAR}}
-\item{\bold{MTN}: }{\code{MTN}}
-\item{\bold{Geofisica}: }{\code{Geofisica.Terremotos10dias},
-\code{Geofisica.Terremotos30dias}, \code{Geofisica.Terremotos365dias},
-\code{Geofisica.VigilanciaVolcanica}}
-\item{\bold{CaminoDeSantiago}: }{\code{CaminoDeSantiago.CaminoFrances},
-\code{CaminoDeSantiago.CaminosTuronensis},
-\code{CaminoDeSantiago.CaminosGalicia},
-\code{CaminoDeSantiago.CaminosDelNorte},
-\code{CaminoDeSantiago.CaminosAndaluces},
-\code{CaminoDeSantiago.CaminosCentro},
-\code{CaminoDeSantiago.CaminosEste},
-\code{CaminoDeSantiago.CaminosCatalanes},
-\code{CaminoDeSantiago.CaminosSureste},
-\code{CaminoDeSantiago.CaminosInsulares},
-\code{CaminoDeSantiago.CaminosPiemonts},
-\code{CaminoDeSantiago.CaminosTolosana},
-\code{CaminoDeSantiago.CaminosPortugueses}}
-\item{\bold{Catastro}: }{\code{Catastro.Catastro},
-\code{Catastro.Parcela}, \code{Catastro.CadastralParcel},
-\code{Catastro.CadastralZoning}, \code{Catastro.Address},
-\code{Catastro.Building}}
-\item{\bold{RedTransporte}: }{\code{RedTransporte.Carreteras},
-\code{RedTransporte.Ferroviario}, \code{RedTransporte.Aerodromo},
-\code{RedTransporte.AreaServicio},
-\code{RedTransporte.EstacionesFerroviario},
-\code{RedTransporte.Puertos}}
-\item{\bold{Cartociudad}: }{\code{Cartociudad.CodigosPostales},
-\code{Cartociudad.Direcciones}}
-\item{\bold{NombresGeograficos}: }{\code{NombresGeograficos}}
-\item{\bold{UnidadesAdm}: }{\code{UnidadesAdm.Limites},
-\code{UnidadesAdm.Unidades}}
-\item{\bold{Hidrografia}: }{\code{Hidrografia.MasaAgua},
-\code{Hidrografia.Cuencas}, \code{Hidrografia.Subcuencas},
-\code{Hidrografia.POI}, \code{Hidrografia.ManMade},
-\code{Hidrografia.LineaCosta}, \code{Hidrografia.Rios},
-\code{Hidrografia.Humedales}}
-\item{\bold{Militar}: }{\code{Militar.CEGET1M},
-\code{Militar.CEGETM7814}, \code{Militar.CEGETM7815},
-\code{Militar.CEGETM682}, \code{Militar.CECAF1M}}
-\item{\bold{ADIF}: }{\code{ADIF.Vias}, \code{ADIF.Nodos},
-\code{ADIF.Estaciones}}
-\item{\bold{LimitesMaritimos}: }{\code{LimitesMaritimos.LimitesMaritimos},
-\code{LimitesMaritimos.LineasBase}}
-\item{\bold{Copernicus}: }{\code{Copernicus.LandCover},
-\code{Copernicus.Forest}, \code{Copernicus.ForestLeaf},
-\code{Copernicus.WaterWet}, \code{Copernicus.SoilSeal},
-\code{Copernicus.GrassLand}, \code{Copernicus.Local},
-\code{Copernicus.RiparianGreen}, \code{Copernicus.RiparianLandCover},
-\code{Copernicus.Natura2k}, \code{Copernicus.UrbanAtlas}}
-\item{\bold{ParquesNaturales}: }{\code{ParquesNaturales.Limites},
-\code{ParquesNaturales.ZonasPerifericas}}
+\item \strong{IDErioja:} "IDErioja"
+\item \strong{IGNBase:} "IGNBase.Todo", "IGNBase.Gris", "IGNBase.TodoNoFondo,
+IGNBase.Orto"
+\item \strong{MDT:} "MDT.Elevaciones", "MDT.Relieve", "MDT.CurvasNivel"
+\item \strong{PNOA:} "PNOA.MaximaActualidad", "PNOA.Mosaico"
+\item \strong{OcupacionSuelo:} "OcupacionSuelo.Ocupacion", "OcupacionSuelo.Usos"
+\item \strong{LiDAR:} "LiDAR"
+\item \strong{MTN:} "MTN"
+\item \strong{Geofisica:} "Geofisica.Terremotos10dias",
+"Geofisica.Terremotos30dias", "Geofisica.Terremotos365dias",
+"Geofisica.VigilanciaVolcanica"
+\item \strong{CaminoDeSantiago:} "CaminoDeSantiago.CaminoFrances",
+"CaminoDeSantiago.CaminosTuronensis", "CaminoDeSantiago.CaminosGalicia",
+"CaminoDeSantiago.CaminosDelNorte", "CaminoDeSantiago.CaminosAndaluces",
+"CaminoDeSantiago.CaminosCentro", "CaminoDeSantiago.CaminosEste",
+"CaminoDeSantiago.CaminosCatalanes", "CaminoDeSantiago.CaminosSureste",
+"CaminoDeSantiago.CaminosInsulares", "CaminoDeSantiago.CaminosPiemonts",
+"CaminoDeSantiago.CaminosTolosana", "CaminoDeSantiago.CaminosPortugueses"
+\item \strong{Catastro:} "Catastro.Catastro", "Catastro.Parcela",
+"Catastro.CadastralParcel", "Catastro.CadastralZoning",
+"Catastro.Address", "Catastro.Building"
+\item \strong{RedTransporte:} "RedTransporte.Carreteras",
+"RedTransporte.Ferroviario", "RedTransporte.Aerodromo",
+"RedTransporte.AreaServicio", "RedTransporte.EstacionesFerroviario",
+"RedTransporte.Puertos"
+\item \strong{Cartociudad:} "Cartociudad.CodigosPostales", "Cartociudad.Direcciones"
+\item \strong{NombresGeograficos:} "NombresGeograficos"
+\item \strong{UnidadesAdm:} "UnidadesAdm.Limites", "UnidadesAdm.Unidades"
+\item \strong{Hidrografia:} "Hidrografia.MasaAgua", "Hidrografia.Cuencas",
+"Hidrografia.Subcuencas", "Hidrografia.POI", "Hidrografia.ManMade",
+"Hidrografia.LineaCosta", "Hidrografia.Rios", "Hidrografia.Humedales"
+\item \strong{Militar:} "Militar.CEGET1M", "Militar.CEGETM7814",
+"Militar.CEGETM7815", "Militar.CEGETM682", "Militar.CECAF1M"
+\item \strong{ADIF:} "ADIF.Vias", "ADIF.Nodos", "ADIF.Estaciones"
+\item \strong{LimitesMaritimos:} "LimitesMaritimos.LimitesMaritimos",
+"LimitesMaritimos.LineasBase"
+\item \strong{Copernicus:} "Copernicus.LandCover", "Copernicus.Forest",
+"Copernicus.ForestLeaf", "Copernicus.WaterWet", "Copernicus.SoilSeal",
+"Copernicus.GrassLand", "Copernicus.Local", "Copernicus.RiparianGreen",
+"Copernicus.RiparianLandCover", "Copernicus.Natura2k",
+"Copernicus.UrbanAtlas"
+\item \strong{ParquesNaturales:} "ParquesNaturales.Limites",
+"ParquesNaturales.ZonasPerifericas"
 }
 }
 \seealso{
-\link{esp_getTiles},
-\link{addProviderEspTiles}.
+\code{\link[=esp_getTiles]{esp_getTiles()}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 \concept{mapSpaindata}

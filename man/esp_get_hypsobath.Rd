@@ -5,7 +5,7 @@
 \title{Get hypsometry and bathymetry of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{
 esp_get_hypsobath(
@@ -14,31 +14,49 @@ esp_get_hypsobath(
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = 3,
+  resolution = "3",
   spatialtype = "area"
 )
 }
 \arguments{
-\item{epsg, cache, update_cache, cache_dir, verbose}{See
-\code{\link{esp_get_nuts}}.}
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
 
-\item{resolution}{Resolution of the shape. Values available are
-\code{"3"} or \code{"6.5"}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
 
-\item{spatialtype}{Spatial type of the output. Use \code{"area"} for
-\code{POLYGONS} or \code{"line"} for \code{LINESTRING}.}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{resolution}{Resolution of the shape. Values available are "3" or "6.5".}
+
+\item{spatialtype}{Spatial type of the output. Use "area" for \code{POLYGONS} or
+"line" for \code{LINESTRING}.}
 }
 \value{
-A \code{POLYGON} of \code{LINESTRING} object.
+A \code{POLYGON} or \code{LINESTRING} object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing lines or
-areas with the hypsometry and bathymetry of Spain.
+Loads a simple feature (\code{sf}) object containing lines or areas with the
+hypsometry and bathymetry of Spain.
 }
 \details{
-Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
+Metadata available on
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
 \examples{
+
 \donttest{
 # This code would produce a nice plot - It will take a few seconds to run
 library(sf)

@@ -1,30 +1,39 @@
-#' @title Get Provinces boundaries of Spain
+#' Get Provinces boundaries of Spain
+#'
 #' @concept mappolitical
-#' @name esp_get_prov
-#' @description Loads a simple feature (\code{sf}) object containing the
-#' province boundaries of Spain.
 #'
-#' \code{esp_get_prov} uses GISCO (Eurostat) as source
+#' @rdname esp_get_prov
 #'
-#' @return A \code{POLYGON/POINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_hex_prov}, \link{esp_get_nuts}, \link{esp_get_ccaa},
-#' \link{esp_get_munic}, \link{esp_codelist}
+#' @description
+#' Loads a simple feature (`sf`) object containing the province boundaries of
+#' Spain.
+#'
+#' `esp_get_prov` uses GISCO (Eurostat) as source
+#'
+#' @return A `POLYGON/POINT` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso
+#' [esp_get_hex_prov()], [esp_get_nuts()], [esp_get_ccaa()],
+#' [esp_get_munic()], [esp_codelist()].
+#'
 #' @export
 #'
-#'
-#'
 #' @param prov A vector of names and/or codes for provinces
-#'  or \code{NULL} to get all the provinces. See Details.
-#' @param ... Additional parameters from \link{esp_get_nuts}.
-#' @details When using \code{prov} you can use and mix names and NUTS codes
-#' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' \code{cpro}.
+#'   or `NULL` to get all the provinces. See Details.
+#'
+#' @param ... Additional parameters from [esp_get_nuts()].
+#'
+#' @details
+#' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or
+#' 3), ISO codes (corresponding to level 2 or 3) or `cpro`.
 #'
 #' Ceuta and Melilla are considered as provinces on this dataset.
 #'
 #' When calling a superior level (Autonomous Community or NUTS1) ,
 #' all the provinces of that level would be added.
+#'
 #' @examples
 #'
 #' library(sf)
@@ -205,27 +214,27 @@ esp_get_prov <- function(prov = NULL, ...) {
 
 
 #' @rdname esp_get_prov
-#' @description \code{esp_get_prov_siane} use CartoBase ANE as source,
-#' provided by Instituto Geografico Nacional (IGN),
-#' \href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
-#' 2005 up to today.
-#' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#'
+#' @description
+#' `esp_get_prov_siane` use CartoBase ANE as source, provided by Instituto
+#' Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+#' available are 2005 up to today.
+#'
+#' @source
+#' IGN data via a custom CDN (see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+#'
 #' @export
 #'
+#' @param year Release year. See [esp_get_nuts()] for `esp_get_prov` and
+#'   Details for `esp_get_prov_siane`
 #'
-#' @param resolution Resolution of the polygon. Values available are
-#' \code{"3", "6.5"} or  \code{"10"}.
-#' @param rawcols Logical. Setting this to \code{TRUE} would add the raw
-#' columns of the dataset provided by IGN.
-#' @param year,epsg,cache,update_cache,cache_dir,verbose,moveCAN
-#' See \code{\link{esp_get_nuts}}. See Details for \code{year}.
+#' @inheritParams esp_get_ccaa
 #'
 #' @details
-#' On \code{esp_get_prov_siane}, \code{year} could be passed as a single
-#' year ("YYYY" format, as end of year) or as a specific
-#' date ("YYYY-MM-DD" format). Historical information starts as of 2005.
-
+#' On `esp_get_prov_siane`, `year` could be passed as a single year ("YYYY"
+#' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+#' Historical information starts as of 2005.
 esp_get_prov_siane <- function(prov = NULL,
                                year = Sys.Date(),
                                epsg = "4258",

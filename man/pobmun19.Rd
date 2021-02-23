@@ -5,10 +5,10 @@
 \alias{pobmun19}
 \title{Population by municipality (2019)}
 \source{
-\href{https://www.ine.es/}{INE: Instituto Nacional de Estadistica}
+INE: Instituto Nacional de Estadistica \url{https://www.ine.es/}
 }
 \description{
-A data frame with 8131 rows containing the population
-data by municipality in Spain (2019).
+A data frame with 8131 rows containing the population data by municipality
+in Spain (2019).
 }
 \concept{mapSpaindata}

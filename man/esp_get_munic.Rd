@@ -8,7 +8,7 @@
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{
 esp_get_munic(
@@ -38,7 +38,27 @@ esp_get_munic_siane(
 )
 }
 \arguments{
-\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. See Details for years available.}
+\item{year}{Release year. See Details for years available.}
+
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
 
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See Details.}
@@ -46,11 +66,15 @@ or \code{NULL} to get all the municipalities. See Details.}
 \item{munic}{A name or regex expression with the names of the required
 municipalities. \code{NULL} would not produce any filtering.}
 
-\item{resolution}{Resolution of the polygon. Values available are
-\code{"3", "6.5"} or  \code{"10"}.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.}
 
-\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
-columns of the dataset provided by IGN.}
+\item{resolution}{Resolution of the polygon. Values available are
+"3", "6.5" or  "10".}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the dataset provided by IGN.}
 }
 \value{
 A \code{POLYGON} object.
@@ -61,10 +85,9 @@ municipalities boundaries of Spain.
 
 \code{esp_get_munic} uses GISCO (Eurostat) as source.
 
-\code{esp_get_munic_siane} use CartoBase ANE as source,
-provided by Instituto Geografico Nacional (IGN),
-\href{http://www.ign.es/web/ign/portal}{ign.es}. Years available are
-2005 up to today.
+\code{esp_get_munic_siane} uses CartoBase ANE as source, provided by Instituto
+Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}. Years
+available are 2005 up to today.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes
@@ -100,7 +123,7 @@ plot(st_geometry(SAN),
 )
 }
 \seealso{
-\link{esp_get_nuts},\link{esp_munic.sf}, \link{esp_codelist}
+\code{\link[=esp_get_nuts]{esp_get_nuts()}}, \link{esp_munic.sf}, \link{esp_codelist}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

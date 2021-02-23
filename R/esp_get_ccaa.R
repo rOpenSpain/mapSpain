@@ -20,8 +20,6 @@
 #'
 #' @export
 #'
-#'
-#'
 #' @param ccaa A vector of names and/or codes for autonomous communities
 #'   or `NULL` to get all the autonomous communities. See Details.
 #'

@@ -1,22 +1,33 @@
-#' @title Get hypsometry and bathymetry of Spain
+#' Get hypsometry and bathymetry of Spain
+#'
+#' @description
+#' Loads a simple feature (`sf`) object containing lines or areas with the
+#' hypsometry and bathymetry of Spain.
+#'
 #' @concept mapnatural
-#' @name esp_get_hypsobath
-#' @description Loads a simple feature (\code{sf}) object containing lines or
-#' areas with the hypsometry and bathymetry of Spain.
-#' @return A \code{POLYGON} of \code{LINESTRING} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
+#'
+#' @return A `POLYGON` or `LINESTRING` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
 #' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#'
 #' @export
 #'
-#' @param epsg,cache,update_cache,cache_dir,verbose See
-#' \code{\link{esp_get_nuts}}.
-#' @param resolution Resolution of the shape. Values available are
-#' \code{"3"} or \code{"6.5"}.
-#' @param spatialtype Spatial type of the output. Use \code{"area"} for
-#' \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.
-#' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
+#' @param resolution Resolution of the shape. Values available are "3" or "6.5".
+#'
+#' @param spatialtype Spatial type of the output. Use "area" for `POLYGONS` or
+#'   "line" for `LINESTRING`.
+#'
+#' @inheritParams esp_get_nuts
+#'
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#'
 #' @examples
+#'
 #' \donttest{
 #' # This code would produce a nice plot - It will take a few seconds to run
 #' library(sf)
@@ -103,7 +114,7 @@ esp_get_hypsobath <- function(epsg = "4258",
                               update_cache = FALSE,
                               cache_dir = NULL,
                               verbose = FALSE,
-                              resolution = 3,
+                              resolution = "3",
                               spatialtype = "area") {
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {

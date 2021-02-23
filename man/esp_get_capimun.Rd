@@ -54,8 +54,8 @@ municipalities. \code{NULL} would not produce any filtering.}
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates.}
 
-\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw
-columns of the dataset provided by IGN.}
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the dataset provided by IGN.}
 }
 \value{
 A \code{POINT} object.

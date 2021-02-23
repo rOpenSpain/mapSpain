@@ -5,7 +5,7 @@
 \title{Get the drainage basin demarcations of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{
 esp_get_hydrobasin(
@@ -14,30 +14,48 @@ esp_get_hydrobasin(
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = 3,
+  resolution = "3",
   domain = "land"
 )
 }
 \arguments{
-\item{epsg, cache, update_cache, cache_dir, verbose}{See
-\code{\link{esp_get_nuts}}.}
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
 
-\item{resolution}{Resolution of the polygon. Values available are
-\code{"3", "6.5"} or  \code{"10"}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
 
-\item{domain}{Possible values are \code{"land"} or \code{"landsea"}, that
-includes only the ground part or the ground and the related sea waters
-related with the basin}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{resolution}{Resolution of the polygon. Values available are "3", "6.5"
+or "10".}
+
+\item{domain}{Possible values are "land", that includes only
+the ground part or the ground or "landsea", that includes both the ground
+and the related sea waters of the basin}
 }
 \value{
 A \code{POLYGON} object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing areas
-with the required hydrograpic elements of Spain.
+Loads a simple feature (\code{sf}) object containing areas with the required
+hydrograpic elements of Spain.
 }
 \details{
-Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
+Metadata available on
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
 \examples{
 \donttest{

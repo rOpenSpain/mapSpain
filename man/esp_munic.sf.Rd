@@ -6,25 +6,25 @@
 \alias{esp_munic.sf}
 \title{All Municipalities \code{POLYGON} object of Spain}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-object:
-\describe{
-\item{codauto}{INE code of each autonomous community.}
-\item{ine.ccaa.name}{INE name of each autonomous community.}
-\item{cpro}{INE code of each province.}
-\item{ine.prov.name}{INE name of each province.}
-\item{cmun}{INE code of each municipality.}
-\item{name}{Name of the municipality}
-\item{LAU_CODE}{LAU Code (GISCO) of the municipality}
-\item{geometry}{geometry field}
+A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object:
+\itemize{
+\item codauto: INE code of each autonomous community.
+\item ine.ccaa.name: INE name of each autonomous community.
+\item cpro: INE code of each province.
+\item ine.prov.name: INE name of each province.
+\item cmun: INE code of each municipality.
+\item name: Name of the municipality.
+\item LAU_CODE: LAU Code (GISCO) of the municipality.
+\item geometry: geometry field.
 }
 }
 \source{
-\href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/lau}{GISCO}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/}, LAU 2019
+data.
 }
 \description{
-A \code{sf} object including all
-municipalities of Spain as provided by GISCO (2019 version).
+A \code{sf} object including all municipalities of Spain as provided by GISCO
+(2019 version).
 }
 \examples{
 library(sf)
@@ -52,6 +52,6 @@ plot(st_geometry(NUTS), col = "wheat", add = TRUE)
 title(main = "Municipalities of Teruel", line = 1)
 }
 \seealso{
-\link{esp_get_munic}
+\code{\link[=esp_get_munic]{esp_get_munic()}}
 }
 \concept{mapSpaindata}

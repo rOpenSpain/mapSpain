@@ -1,22 +1,29 @@
-#' @title Get the drainage basin demarcations of Spain
+#' Get the drainage basin demarcations of Spain
+#'
+#' @description
+#' Loads a simple feature (`sf`) object containing areas with the required
+#' hydrograpic elements of Spain.
+#'
 #' @concept mapnatural
-#' @name esp_get_hydrobasin
-#' @description Loads a simple feature (\code{sf}) object containing areas
-#' with the required hydrograpic elements of Spain.
-#' @return A \code{POLYGON} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
+#'
+#' @return A `POLYGON` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
 #' @source IGN data via a custom CDN (see
-#' \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#'
 #' @export
 #'
-#' @param epsg,cache,update_cache,cache_dir,verbose See
-#' \code{\link{esp_get_nuts}}.
-#' @param resolution Resolution of the polygon. Values available are
-#' \code{"3", "6.5"} or  \code{"10"}.
-#' @param domain Possible values are \code{"land"} or \code{"landsea"}, that
-#' includes only the ground part or the ground and the related sea waters
-#' related with the basin
-#' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
+#' @param domain Possible values are "land", that includes only
+#' the ground part or the ground or "landsea", that includes both the ground
+#' and the related sea waters of the basin
+#'
+#' @inheritParams esp_get_rivers
+#'
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @examples
 #' \donttest{
@@ -62,7 +69,7 @@ esp_get_hydrobasin <- function(epsg = "4258",
                                update_cache = FALSE,
                                cache_dir = NULL,
                                verbose = FALSE,
-                               resolution = 3,
+                               resolution = "3",
                                domain = "land") {
   # Check epsg
   init_epsg <- as.character(epsg)

@@ -8,49 +8,46 @@
 \format{
 data frame with codes as columns
 \itemize{
-\item{\strong{nuts*.code}: }{NUTS code of each subdivision.}
-\item{\strong{nuts*.code}: }{NUTS name of each subdivision.}
-\item{\strong{codauto}: }{INE code of each autonomous community.}
-\item{\strong{iso2.\emph{.code}: }{ISO2 code of each autonomous
-community and province.}
-\item{\strong{ine.}.name}: }{INE name of each autonomous community
-and province.}
-\item{\strong{iso2.\emph{.name.}}: }{ISO2 name of each autonomous community
-and province. Several languages available.}
-\item{\strong{cldr.\emph{.name.}}: }{CLDR name of each autonomous community and
-province. Several languages available.}
-\item{\strong{ccaa.short.\emph{}: }{Short (common) name of each autonomous
-community. Several languages available.}
-\item{\strong{cpro}: }{INE code of each province.}
-\item{\strong{prov.shortname.}}: }{Short (common) name of each province.
-Several languages available.}
+\item \strong{nuts*.code}: NUTS code of each subdivision.
+\item \strong{nuts*.code}: NUTS name of each subdivision.
+\item \strong{codauto}: INE code of each autonomous community.
+\item \strong{iso2.*.code}: ISO2 code of each autonomous
+community and province.
+\item \strong{ine.*.name}: INE name of each autonomous community
+and province.
+\item \strong{iso2.\emph{.name.}}: ISO2 name of each autonomous community
+and province. Several languages available.
+\item \strong{cldr.\emph{.name.}}: CLDR name of each autonomous community and
+province. Several languages available.
+\item \strong{ccaa.short.*}: Short (common) name of each autonomous
+community. Several languages available.
+\item \strong{cpro}: INE code of each province.
+\item \strong{prov.shortname.*}: Short (common) name of each province.
+Several languages available.
 }
 }
 \source{
 \itemize{
-\item{INE: Instituto Nacional de Estadistica: }{\url{https://www.ine.es/}}
-\item{Eurostat (NUTS): }
-{\url{https://ec.europa.eu/eurostat/web/nuts/background}}
-\item{ISO: }{\url{https://www.iso.org/obp/ui/#iso:code:3166:ES}}
-\item{CLDR: }
-{\url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}}
+\item INE: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
+\item Eurostat (NUTS): \url{https://ec.europa.eu/eurostat/web/nuts/background}
+\item ISO: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
+\item CLDR: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
 }
 }
 \description{
-A data frame used internally for translating codes and
-names of the different subdivisions of Spain. The data frame provides
-the hierarchy of the subdivisions including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-level. See Note.
+A data frame used internally for translating codes and names of the
+different subdivisions of Spain. The data frame provides the hierarchy of
+the subdivisions including NUTS1 level, Autonomous Communities
+(equivalent to NUTS2), Provinces and NUTS3 level. See Note.
 }
 \note{
 Languages available are:
 \itemize{
-\item{\code{en}: }{English}
-\item{\code{es}: }{Spanish}
-\item{\code{ca}: }{Catalan}
-\item{\code{ga}: }{Galician}
-\item{\code{eu}: }{Basque}
+\item "en": English
+\item "es": Spanish
+\item "ca": Catalan
+\item "ga": Galician
+\item "eu": Basque
 }
 
 Although NUTS2 matches the first subdivision level of Spain

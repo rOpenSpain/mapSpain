@@ -14,7 +14,9 @@
 #' [giscoR::gisco_attributions()]
 #'
 #' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
+#'
 #' @author dieghernan, <https://github.com/dieghernan/>
+#'
 #' @seealso [esp_nuts.sf], [esp_dict_region_code], [esp_codelist],
 #'   [giscoR::gisco_get].
 #'
