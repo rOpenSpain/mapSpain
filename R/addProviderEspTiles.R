@@ -15,17 +15,17 @@
 #' @param map,layerId,group,options See \link[leaflet]{addTiles}
 #' @examples
 #' library(leaflet)
-#'   PuertadelSol <-
-#'     leaflet() %>% setView(lat = 40.4166,
-#'                           lng = -3.7038400,
-#'                           zoom = 18) %>%
-#'     addProviderEspTiles(provider = "IGNBase.Gris") %>%
-#'     addProviderEspTiles(provider = "RedTransporte.Carreteras")
+#' PuertadelSol <-
+#'   leaflet() %>%
+#'   setView(
+#'     lat = 40.4166,
+#'     lng = -3.7038400,
+#'     zoom = 18
+#'   ) %>%
+#'   addProviderEspTiles(provider = "IGNBase.Gris") %>%
+#'   addProviderEspTiles(provider = "RedTransporte.Carreteras")
 #'
-#'     PuertadelSol
-#'
-#'
-#'
+#' PuertadelSol
 addProviderEspTiles <- function(map,
                                 provider,
                                 layerId = NULL,
@@ -43,8 +43,9 @@ addProviderEspTiles <- function(map,
       provider,
       "' found. Available providers are:\n\n",
       paste0("'",
-             unique(leafletProvidersESP$provider), "'",
-             collapse = ", ")
+        unique(leafletProvidersESP$provider), "'",
+        collapse = ", "
+      )
     )
   }
 
@@ -87,7 +88,6 @@ addProviderEspTiles <- function(map,
     value <- paste(opts[j, 2])
 
     opinit[[name]] <- value
-
   }
 
   options <- c(options, opinit)

@@ -73,19 +73,25 @@ library(sf)
 # Random Provinces
 
 Random <-
-  esp_get_prov(prov = c("Zamora",
-                        "Palencia",
-                        "ES-GR",
-                        "ES521",
-                        "01"))
+  esp_get_prov(prov = c(
+    "Zamora",
+    "Palencia",
+    "ES-GR",
+    "ES521",
+    "01"
+  ))
 plot(st_geometry(Random), col = hcl.colors(6))
 
 # All Provinces of a Zone plus an addition
 
 Mix <-
-  esp_get_prov(prov = c("Noroeste",
-                        "Castilla y Leon", "La Rioja"),
-               resolution = "20")
+  esp_get_prov(
+    prov = c(
+      "Noroeste",
+      "Castilla y Leon", "La Rioja"
+    ),
+    resolution = "20"
+  )
 plot(
   Mix[, "nuts1.code"],
   pal = hcl.colors(3),

@@ -32,19 +32,25 @@
 #' # Random Provinces
 #'
 #' Random <-
-#'   esp_get_prov(prov = c("Zamora",
-#'                         "Palencia",
-#'                         "ES-GR",
-#'                         "ES521",
-#'                         "01"))
+#'   esp_get_prov(prov = c(
+#'     "Zamora",
+#'     "Palencia",
+#'     "ES-GR",
+#'     "ES521",
+#'     "01"
+#'   ))
 #' plot(st_geometry(Random), col = hcl.colors(6))
 #'
 #' # All Provinces of a Zone plus an addition
 #'
 #' Mix <-
-#'   esp_get_prov(prov = c("Noroeste",
-#'                         "Castilla y Leon", "La Rioja"),
-#'                resolution = "20")
+#'   esp_get_prov(
+#'     prov = c(
+#'       "Noroeste",
+#'       "Castilla y Leon", "La Rioja"
+#'     ),
+#'     resolution = "20"
+#'   )
 #' plot(
 #'   Mix[, "nuts1.code"],
 #'   pal = hcl.colors(3),
@@ -52,7 +58,6 @@
 #'   main = NULL,
 #'   border = "white"
 #' )
-
 esp_get_prov <- function(prov = NULL, ...) {
   params <- list(...)
 
@@ -68,17 +73,20 @@ esp_get_prov <- function(prov = NULL, ...) {
     nuts_id <- esp_hlp_all2prov(region)
 
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(nuts_id) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
   }
 
   params$region <- nuts_id
   params$nuts_level <- 3
 
 
-  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   # Avoid warning on union
   initcrs <- sf::st_crs(data_sf)
@@ -101,8 +109,9 @@ esp_get_prov <- function(prov = NULL, ...) {
   names <- names(data_sf)
 
   which.geom <-
-    which(vapply(data_sf, function(f)
-      inherits(f, "sfc"), TRUE))
+    which(vapply(data_sf, function(f) {
+      inherits(f, "sfc")
+    }, TRUE))
 
   nm <- names(which.geom)
 
@@ -167,18 +176,22 @@ esp_get_prov <- function(prov = NULL, ...) {
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
   dfnuts <-
-    unique(dfnuts[, c("cpro",
-                      "nuts2.code",
-                      "nuts2.name",
-                      "nuts1.code",
-                      "nuts1.name")])
+    unique(dfnuts[, c(
+      "cpro",
+      "nuts2.code",
+      "nuts2.name",
+      "nuts1.code",
+      "nuts1.name"
+    )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
   data_sf <-
-    data_sf[, c(colnames(df),
-                "nuts2.code",
-                "nuts2.name",
-                "nuts1.code",
-                "nuts1.name")]
+    data_sf[, c(
+      colnames(df),
+      "nuts2.code",
+      "nuts2.name",
+      "nuts1.code",
+      "nuts1.name"
+    )]
 
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
@@ -232,13 +245,15 @@ esp_get_prov_siane <- function(prov = NULL,
   }
 
   # Get Data from SIANE
-  data_sf <- esp_hlp_get_siane("prov",
-                               resolution,
-                               cache,
-                               cache_dir,
-                               update_cache,
-                               verbose,
-                               year)
+  data_sf <- esp_hlp_get_siane(
+    "prov",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
+  )
 
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
@@ -248,7 +263,7 @@ esp_get_prov_siane <- function(prov = NULL,
 
   if (!is.null(prov)) {
     tonuts <- esp_hlp_all2prov(prov)
-    #toprov
+    # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
@@ -256,9 +271,11 @@ esp_get_prov_siane <- function(prov = NULL,
   }
 
   if (nrow(data_sf) == 0) {
-    stop("provs '",
-         paste0(prov, collapse = "', "),
-         "' does not return any result")
+    stop(
+      "provs '",
+      paste0(prov, collapse = "', "),
+      "' does not return any result"
+    )
   }
 
   # Get df
@@ -270,11 +287,13 @@ esp_get_prov_siane <- function(prov = NULL,
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
   dfnuts <-
-    unique(dfnuts[, c("cpro",
-                      "nuts2.code",
-                      "nuts2.name",
-                      "nuts1.code",
-                      "nuts1.name")])
+    unique(dfnuts[, c(
+      "cpro",
+      "nuts2.code",
+      "nuts2.name",
+      "nuts1.code",
+      "nuts1.name"
+    )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
 
@@ -307,7 +326,7 @@ esp_get_prov_siane <- function(prov = NULL,
         crs = sf::st_crs(CAN)
       )
 
-      #Regenerate
+      # Regenerate
       if (nrow(PENIN) > 0) {
         data_sf <- rbind(PENIN, CAN)
       } else {
@@ -322,8 +341,10 @@ esp_get_prov_siane <- function(prov = NULL,
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
-  namesend <- unique(c(colnames_init,
-                       colnames(esp_get_prov())))
+  namesend <- unique(c(
+    colnames_init,
+    colnames(esp_get_prov())
+  ))
 
   data_sf <- data_sf[, namesend]
 

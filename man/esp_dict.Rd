@@ -17,11 +17,11 @@ and \code{'cpro'}.}
 
 \item{lang}{Language of translation. Available languages are:
 \itemize{
-  \item{\code{es}: }{Spanish}
-  \item{\code{en}: }{English}
-  \item{\code{ca}: }{Catalan}
-  \item{\code{ga}: }{Galician}
-  \item{\code{eu}: }{Basque}
+\item{\code{es}: }{Spanish}
+\item{\code{en}: }{English}
+\item{\code{ca}: }{Catalan}
+\item{\code{ga}: }{Galician}
+\item{\code{eu}: }{Basque}
 }}
 
 \item{all}{Logical. Should the function return all names or not?
@@ -58,15 +58,18 @@ esp_dict_region_code(vals, destination = "iso2")
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")
-esp_dict_region_code(iso2vals, origin = "iso2",
-                     destination = "nuts")
-esp_dict_region_code(iso2vals, origin = "iso2",
-                     destination = "cpro")
+esp_dict_region_code(iso2vals,
+  origin = "iso2",
+  destination = "nuts"
+)
+esp_dict_region_code(iso2vals,
+  origin = "iso2",
+  destination = "cpro"
+)
 
 # Mixing levels
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
-
 \dontrun{
 
 # Warning
@@ -75,8 +78,11 @@ esp_dict_region_code(valsmix, destination = "codauto")
 esp_dict_region_code(valsmix, destination = "iso2")
 }
 
-vals <-  c("La Rioja", "Sevilla", "Madrid",
-           "Jaen", "Orense", "Baleares")
+
+vals <- c(
+  "La Rioja", "Sevilla", "Madrid",
+  "Jaen", "Orense", "Baleares"
+)
 esp_dict_translate(vals)
 esp_dict_translate(vals, lang = "es")
 esp_dict_translate(vals, lang = "ca")

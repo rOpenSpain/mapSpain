@@ -40,17 +40,17 @@ to a \strong{R} \link[leaflet]{leaflet} map.
 }
 \examples{
 library(leaflet)
-  PuertadelSol <-
-    leaflet() \%>\% setView(lat = 40.4166,
-                          lng = -3.7038400,
-                          zoom = 18) \%>\%
-    addProviderEspTiles(provider = "IGNBase.Gris") \%>\%
-    addProviderEspTiles(provider = "RedTransporte.Carreteras")
+PuertadelSol <-
+  leaflet() \%>\%
+  setView(
+    lat = 40.4166,
+    lng = -3.7038400,
+    zoom = 18
+  ) \%>\%
+  addProviderEspTiles(provider = "IGNBase.Gris") \%>\%
+  addProviderEspTiles(provider = "RedTransporte.Carreteras")
 
-    PuertadelSol
-
-
-
+PuertadelSol
 }
 \seealso{
 \link{leaflet.providersESP.df}, \link{esp_getTiles}

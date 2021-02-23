@@ -47,17 +47,17 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-   \item \code{"60"} (1:60million),
-   \item \code{"20"} (1:20million)
-   \item \code{"10"} (1:10million)
-   \item \code{"03"} (1:3million) or
-   \item \code{"01"} (1:1million).
-   }}
+\item \code{"60"} (1:60million),
+\item \code{"20"} (1:20million)
+\item \code{"10"} (1:10million)
+\item \code{"03"} (1:3million) or
+\item \code{"01"} (1:1million).
+}}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
- \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
- \item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
 }}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
@@ -124,7 +124,6 @@ plot(st_geometry(RandomRegions), col = pal)
 
 MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 plot(st_geometry(MixingCodes), col = pal)
-
 }
 \seealso{
 \link{esp_nuts.sf}, \link{esp_dict_region_code},

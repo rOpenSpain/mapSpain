@@ -12,9 +12,11 @@ esp_hlp_download_siane <- function(type,
   validres <- c("3", "6.5", "10")
 
   if (!resolution %in% validres) {
-    stop("resolution should be one of '",
-         paste0(validres, collapse = "', "),
-         "'")
+    stop(
+      "resolution should be one of '",
+      paste0(validres, collapse = "', "),
+      "'"
+    )
   }
   resolution <- gsub("6.5", "6m5", resolution)
   # Create url
@@ -52,6 +54,9 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "basinlandsea") {
     filename <-
       paste0("se89_", resolution, "_hidro_demc_a_", sub, ".gpkg")
+  } else if (type == "capimun") {
+    filename <-
+      paste0("se89_3_urban_capimuni_p_", sub, ".gpkg")
   }
 
   url <- file.path(api_entry, filename)
@@ -66,27 +71,31 @@ esp_hlp_download_siane <- function(type,
   filepath <- file.path(cache_dir, filename)
   localfile <- file.exists(filepath)
 
-  #nocov start
+  # nocov start
 
   if (isFALSE(cache)) {
     dwnload <- FALSE
     filepath <- url
-    if (verbose)
+    if (verbose) {
       message("Try loading from ", filepath)
+    }
   } else if (update_cache | isFALSE(localfile)) {
     dwnload <- TRUE
-    if (verbose)
+    if (verbose) {
       message(
         "Downloading file from ",
         url,
         "\n\nSee https://github.com/rOpenSpain/mapSpain/tree/sianedata/ for more info"
       )
-    if (verbose & update_cache)
+    }
+    if (verbose & update_cache) {
       message("\nUpdating cache")
+    }
   } else if (localfile) {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache))
+    if (verbose & isFALSE(update_cache)) {
       message("File already available on ", filepath)
+    }
   }
 
   # Downloading
@@ -124,7 +133,6 @@ esp_hlp_download_siane <- function(type,
     if (type == "rivernames") {
       data <- readRDS(filepath)
       return(data)
-
     }
     err_onload <- tryCatch(
       data.sf <- sf::st_read(
@@ -133,9 +141,11 @@ esp_hlp_download_siane <- function(type,
         stringsAsFactors = FALSE
       ),
       warning = function(e) {
-        message("\n\nFile couldn't be loaded from \n\n",
-                filepath,
-                "\n\n Please try cache = TRUE")
+        message(
+          "\n\nFile couldn't be loaded from \n\n",
+          filepath,
+          "\n\n Please try cache = TRUE"
+        )
         return(TRUE)
       },
       error = function(e) {
@@ -147,8 +157,9 @@ esp_hlp_download_siane <- function(type,
       loaded <- FALSE
     } else {
       loaded <- TRUE
-      if (verbose)
+      if (verbose) {
         message("File loaded")
+      }
     }
   }
   if (loaded) {
@@ -156,7 +167,7 @@ esp_hlp_download_siane <- function(type,
   } else {
     stop("\nExecution halted")
   }
-  #nocov end
+  # nocov end
 }
 
 #' @name esp_hlp_download_siane
@@ -171,15 +182,19 @@ esp_hlp_get_siane <- function(type,
   # Rivers names
   if (type == "rivernames") {
     df <-
-      esp_hlp_download_siane(type, 3, cache, cache_dir, update_cache,
-                             verbose, "x")
+      esp_hlp_download_siane(
+        type, 3, cache, cache_dir, update_cache,
+        verbose, "x"
+      )
     return(df)
   }
 
   # Mainland
   data_sf1 <-
-    esp_hlp_download_siane(type, resolution, cache, cache_dir, update_cache,
-                           verbose, "x")
+    esp_hlp_download_siane(
+      type, resolution, cache, cache_dir, update_cache,
+      verbose, "x"
+    )
   # Canary Islands
   if (type == "riverline" & as.character(resolution) != "3") {
     # Nothing
@@ -187,13 +202,15 @@ esp_hlp_get_siane <- function(type,
     # Nothing
   } else {
     data_sf2 <-
-      esp_hlp_download_siane(type,
-                             resolution,
-                             cache,
-                             cache_dir,
-                             update_cache,
-                             verbose,
-                             "y")
+      esp_hlp_download_siane(
+        type,
+        resolution,
+        cache,
+        cache_dir,
+        update_cache,
+        verbose,
+        "y"
+      )
   }
   # CCAA
   if (type == "ccaa") {
@@ -208,8 +225,9 @@ esp_hlp_get_siane <- function(type,
 
     data.sf <- rbind(data_sf1, data_sf2)
   } else {
-    if (verbose)
+    if (verbose) {
       message("Shape not provided for Canary Islands")
+    }
     data.sf <- data_sf1
   }
   # Date management
@@ -224,22 +242,26 @@ esp_hlp_get_siane <- function(type,
   }
 
   if (nchar(selDate) != 10) {
-    stop("Date '",
-         selDate,
-         "' doesn't seem to be valid, use YYYY or YYYY-MM-DD format")
+    stop(
+      "Date '",
+      selDate,
+      "' doesn't seem to be valid, use YYYY or YYYY-MM-DD format"
+    )
   }
 
   selDate <- as.Date(selDate)
 
   # Check range
-  checkDateRange <-  minDate <= selDate &  selDate <= maxDate
+  checkDateRange <- minDate <= selDate & selDate <= maxDate
 
   if (isFALSE(checkDateRange)) {
-    stop("year not available. Select a year/date between '",
-         minDate,
-         "' and '",
-         maxDate,
-         "'")
+    stop(
+      "year not available. Select a year/date between '",
+      minDate,
+      "' and '",
+      maxDate,
+      "'"
+    )
   }
 
   # Filter
@@ -254,8 +276,7 @@ esp_hlp_get_siane <- function(type,
     ))
   df <-
     df[df$fecha_alta <= selDate &
-         selDate <= df$fecha_bajamod, colnames(data.sf)]
+      selDate <= df$fecha_bajamod, colnames(data.sf)]
 
   return(df)
-
 }

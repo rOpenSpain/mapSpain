@@ -94,9 +94,10 @@ SAN <-
 
 plot(st_geometry(Base), col = "cornsilk", border = "grey80")
 plot(st_geometry(SAN),
-     col = "firebrick3",
-     border = NA,
-     add = TRUE)
+  col = "firebrick3",
+  border = NA,
+  add = TRUE
+)
 }
 \seealso{
 \link{esp_get_nuts},\link{esp_munic.sf}, \link{esp_codelist}

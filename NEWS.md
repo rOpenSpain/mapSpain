@@ -8,6 +8,7 @@
   * `mapSpain::esp_get_hypsobath()`
   * `mapSpain::esp_get_rivers()`
   * `mapSpain::esp_get_hydrobasin()`
+  * `mapSpain::esp_get_capimun()`
 
 # mapSpain 0.1.2
 

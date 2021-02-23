@@ -27,7 +27,6 @@ plot(OriginalCan$geometry, col = hcl.colors(5))
 MovedCan <- esp_get_country(moveCAN = TRUE)
 
 plot(MovedCan$geometry, col = hcl.colors(5))
-
 }
 \seealso{
 \link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},

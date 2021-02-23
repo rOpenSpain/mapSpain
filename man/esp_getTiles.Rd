@@ -63,7 +63,6 @@ Results of \code{esp_getTiles} could be plotted using
 
 For a complete list of providers see \link{leaflet.providersESP.df}.
 
-
 Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
 looks deformed, try projecting first \code{x}:
 
@@ -74,7 +73,7 @@ Tiles are cached under the path \code{cache_dir/[type]}
 \seealso{
 \link{leaflet.providersESP.df}, \link{addProviderEspTiles},
 \link[cartography]{getTiles},
- \link[cartography]{tilesLayer}.
+\link[cartography]{tilesLayer}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

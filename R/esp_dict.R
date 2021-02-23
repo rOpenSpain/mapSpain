@@ -30,15 +30,18 @@
 #'
 #' iso2vals <- c("ES-M", "ES-S", "ES-SG")
 #' esp_dict_region_code(iso2vals, origin = "iso2")
-#' esp_dict_region_code(iso2vals, origin = "iso2",
-#'                      destination = "nuts")
-#' esp_dict_region_code(iso2vals, origin = "iso2",
-#'                      destination = "cpro")
+#' esp_dict_region_code(iso2vals,
+#'   origin = "iso2",
+#'   destination = "nuts"
+#' )
+#' esp_dict_region_code(iso2vals,
+#'   origin = "iso2",
+#'   destination = "cpro"
+#' )
 #'
 #' # Mixing levels
 #' valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 #' esp_dict_region_code(valsmix, destination = "nuts")
-#'
 #' \dontrun{
 #'
 #' # Warning
@@ -46,7 +49,7 @@
 #' esp_dict_region_code(valsmix, destination = "codauto")
 #' esp_dict_region_code(valsmix, destination = "iso2")
 #' }
-
+#'
 esp_dict_region_code <- function(sourcevar,
                                  origin = "text",
                                  destination = "text") {
@@ -55,13 +58,17 @@ esp_dict_region_code <- function(sourcevar,
   validvars <- c("text", "nuts", "iso2", "codauto", "cpro")
 
   if (!(origin %in% validvars)) {
-    stop("origin should be ",
-         paste0("'", validvars, "'", collapse = ", "))
+    stop(
+      "origin should be ",
+      paste0("'", validvars, "'", collapse = ", ")
+    )
   }
 
   if (!(destination %in% validvars)) {
-    stop("destination should be ",
-         paste0("'", validvars, "'", collapse = ", "))
+    stop(
+      "destination should be ",
+      paste0("'", validvars, "'", collapse = ", ")
+    )
   }
 
   if (origin == destination & origin == "text") {
@@ -73,8 +80,10 @@ esp_dict_region_code <- function(sourcevar,
   dict <- names_full
 
   names_dict <-
-    unique(names_full[grep("name", dict$variable),
-                      c("key", "value")])
+    unique(names_full[
+      grep("name", dict$variable),
+      c("key", "value")
+    ])
 
   # If text convert to nuts
 
@@ -118,9 +127,8 @@ esp_dict_region_code <- function(sourcevar,
 
     if (destination == "cpro") {
       nchar <- nchar(sourcevar)
-      sourcevar[nchar == 4] <-  paste0(sourcevar[nchar == 4], "0")
+      sourcevar[nchar == 4] <- paste0(sourcevar[nchar == 4], "0")
     }
-
   }
 
 
@@ -129,20 +137,21 @@ esp_dict_region_code <- function(sourcevar,
   if (destination == "text") {
     sourcevar <-
       countrycode::countrycode(sourcevar,
-                               origin,
-                               "nuts",
-                               custom_dict = code2code,
-                               nomatch = "NOMATCH")
+        origin,
+        "nuts",
+        custom_dict = code2code,
+        nomatch = "NOMATCH"
+      )
 
     dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts.sf)
 
     out <-
       countrycode::countrycode(sourcevar,
-                               "NUTS_ID",
-                               "NUTS_NAME",
-                               custom_dict = dict_nutsall,
-                               nomatch = "NOMATCH")
-
+        "NUTS_ID",
+        "NUTS_NAME",
+        custom_dict = dict_nutsall,
+        nomatch = "NOMATCH"
+      )
   } else {
     # Solve problems
     if (origin == "nuts") {
@@ -165,10 +174,11 @@ esp_dict_region_code <- function(sourcevar,
 
     out <-
       countrycode::countrycode(sourcevar,
-                               origin,
-                               destination,
-                               custom_dict = code2code,
-                               nomatch = "NOMATCH")
+        origin,
+        destination,
+        custom_dict = code2code,
+        nomatch = "NOMATCH"
+      )
 
     # Baleares
     if (destination == "cpro") {
@@ -179,17 +189,17 @@ esp_dict_region_code <- function(sourcevar,
       out[sourcevar == "ES-CE"] <- "18"
       out[sourcevar == "ES-ML"] <- "19"
     }
-
-
   }
   out[out %in% c("XXXXX", "YYYYY")] <- "NOMATCH"
 
   # Sanitize
   if (length(out[!(out == "NOMATCH")]) != length(sourcevar)) {
-    warning("No match on ",
-            destination,
-            " found for ",
-            paste0(initsourcevar[out == "NOMATCH"], collapse = ", "))
+    warning(
+      "No match on ",
+      destination,
+      " found for ",
+      paste0(initsourcevar[out == "NOMATCH"], collapse = ", ")
+    )
   }
   out[out == "NOMATCH"] <- NA
 
@@ -217,8 +227,10 @@ esp_dict_region_code <- function(sourcevar,
 #'
 #' @examples
 #'
-#' vals <-  c("La Rioja", "Sevilla", "Madrid",
-#'            "Jaen", "Orense", "Baleares")
+#' vals <- c(
+#'   "La Rioja", "Sevilla", "Madrid",
+#'   "Jaen", "Orense", "Baleares"
+#' )
 #' esp_dict_translate(vals)
 #' esp_dict_translate(vals, lang = "es")
 #' esp_dict_translate(vals, lang = "ca")
@@ -226,7 +238,6 @@ esp_dict_region_code <- function(sourcevar,
 #' esp_dict_translate(vals, lang = "ga")
 #'
 #' esp_dict_translate(vals, lang = "ga", all = TRUE)
-
 esp_dict_translate <-
   function(sourcevar,
            lang = "en",
@@ -234,7 +245,9 @@ esp_dict_translate <-
     avlang <- c("es", "en", "ca", "ga", "eu")
     if (!(lang %in% avlang)) {
       stop("lang sould be one of ", paste0("'", avlang,
-                                           "'", collapse = ", "))
+        "'",
+        collapse = ", "
+      ))
     }
 
     # Create dict
@@ -253,8 +266,10 @@ esp_dict_translate <-
 
     # Create lang dict
     dict_tolang <-
-      unique(dict[grep(paste0("name.", lang),
-                       dict$variable), ])
+      unique(dict[grep(
+        paste0("name.", lang),
+        dict$variable
+      ), ])
 
     # Order using short
 
@@ -284,8 +299,10 @@ esp_dict_translate <-
     }
 
     if (any(tokeys == "NOMATCH")) {
-      warning("No match found for ",
-              paste0(sourcevar[tokeys == "NOMATCH"], collapse = ", "))
+      warning(
+        "No match found for ",
+        paste0(sourcevar[tokeys == "NOMATCH"], collapse = ", ")
+      )
     }
 
     return(namestrans)

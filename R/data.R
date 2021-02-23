@@ -128,21 +128,22 @@ NULL
 #'
 #' Teruel.cpro <- esp_dict_region_code("Teruel", destination = "cpro")
 #' Teruel.NUTS <- esp_dict_region_code(Teruel.cpro,
-#'    origin = "cpro",
-#'    destination = "nuts")
+#'   origin = "cpro",
+#'   destination = "nuts"
+#' )
 #'
 #' Teruel.sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel.cpro, ]
 #' Teruel.city <- Teruel.sf[Teruel.sf$name == "Teruel", ]
 #'
 #' NUTS <-
 #'   esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3 &
-#'              esp_nuts.sf$NUTS_ID != Teruel.NUTS,]
+#'     esp_nuts.sf$NUTS_ID != Teruel.NUTS, ]
 #'
 #'
 #' plot(st_geometry(Teruel.sf), col = "cornsilk")
 #' plot(st_geometry(Teruel.city), col = "firebrick3", add = TRUE)
 #' plot(st_geometry(NUTS), col = "wheat", add = TRUE)
-#' title(main = "Municipalities of Teruel",  line = 1)
+#' title(main = "Municipalities of Teruel", line = 1)
 NULL
 
 

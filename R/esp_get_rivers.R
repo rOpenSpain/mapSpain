@@ -51,7 +51,6 @@
 #' plot(st_geometry(shapeEsp), col = NA, add = TRUE)
 #'
 #' par(opar)
-
 esp_get_rivers <- function(epsg = "4258",
                            cache = TRUE,
                            update_cache = FALSE,
@@ -70,32 +69,38 @@ esp_get_rivers <- function(epsg = "4258",
   validspatialtype <- c("area", "line")
 
   if (!spatialtype %in% validspatialtype) {
-    stop("spatialtype should be one of '",
-         paste0(validspatialtype, collapse = "', "),
-         "'")
+    stop(
+      "spatialtype should be one of '",
+      paste0(validspatialtype, collapse = "', "),
+      "'"
+    )
   }
 
   type <- paste0("river", spatialtype)
 
   # Get shape
   rivers_sf <-
-    esp_hlp_get_siane(type,
-                      resolution,
-                      cache,
-                      cache_dir,
-                      update_cache,
-                      verbose,
-                      Sys.Date())
+    esp_hlp_get_siane(
+      type,
+      resolution,
+      cache,
+      cache_dir,
+      update_cache,
+      verbose,
+      Sys.Date()
+    )
 
   # Get river names
   rivernames <-
-    esp_hlp_get_siane("rivernames",
-                      resolution,
-                      cache,
-                      cache_dir,
-                      update_cache,
-                      verbose,
-                      Sys.Date())
+    esp_hlp_get_siane(
+      "rivernames",
+      resolution,
+      cache,
+      cache_dir,
+      update_cache,
+      verbose,
+      Sys.Date()
+    )
 
 
 
@@ -104,8 +109,9 @@ esp_get_rivers <- function(epsg = "4258",
   rivernames <- rivernames[, c("id_rio", "NOM_RIO")]
 
   rivers_sf_merge <- merge(rivers_sf,
-                           rivernames,
-                           all.x = TRUE)
+    rivernames,
+    all.x = TRUE
+  )
 
   if (!is.null(name)) {
     getrows1 <- grep(name, rivers_sf_merge$rotulo)

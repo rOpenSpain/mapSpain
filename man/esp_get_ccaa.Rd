@@ -71,19 +71,23 @@ library(sf)
 # Random CCAA
 
 Random <-
-  esp_get_ccaa(ccaa = c("Euskadi",
-                        "Catalunya",
-                        "ES-EX",
-                        "Canarias",
-                        "ES52",
-                        "01"))
+  esp_get_ccaa(ccaa = c(
+    "Euskadi",
+    "Catalunya",
+    "ES-EX",
+    "Canarias",
+    "ES52",
+    "01"
+  ))
 plot(st_geometry(Random), col = hcl.colors(6))
 
 # All CCAA of a Zone plus an addition
 
 Mix <-
-  esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"),
-               resolution = "20")
+  esp_get_ccaa(
+    ccaa = c("La Rioja", "Noroeste"),
+    resolution = "20"
+  )
 plot(
   Mix[, "nuts1.code"],
   pal = hcl.colors(2),

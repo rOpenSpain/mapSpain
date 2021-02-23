@@ -47,11 +47,19 @@ NUTS3 <-
 
 # Create individual dictionaries
 dict_nuts1 <-
-  NUTS1 %>% mutate(key = nuts1.shortname.es) %>% distinct()
-dict_ccaa <- CCAA %>% mutate(key = ccaa.shortname.es) %>% distinct()
-dict_prov <- PROV %>% mutate(key = prov.shortname.es) %>% distinct()
+  NUTS1 %>%
+  mutate(key = nuts1.shortname.es) %>%
+  distinct()
+dict_ccaa <- CCAA %>%
+  mutate(key = ccaa.shortname.es) %>%
+  distinct()
+dict_prov <- PROV %>%
+  mutate(key = prov.shortname.es) %>%
+  distinct()
 dict_nuts3 <-
-  NUTS3 %>% mutate(key = nuts3.shortname.es) %>% distinct()
+  NUTS3 %>%
+  mutate(key = nuts3.shortname.es) %>%
+  distinct()
 
 
 # Create full translator
@@ -87,7 +95,9 @@ dict_nuts3all <- melt(
 
 
 names_full <-
-  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) %>% unique() %>% mutate(variable = as.character(variable))
+  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) %>%
+  unique() %>%
+  mutate(variable = as.character(variable))
 
 # Add versions without accents, etc.
 
@@ -102,15 +112,21 @@ names_full <- rbind(names_full, names_alt) %>% distinct()
 
 # Version UPCASE and lowercase
 
-upcase <- names_full %>% mutate(value = toupper(value),
-                                variable =
-                                  paste0("upcase.", variable))
-locase <- names_full %>% mutate(value = tolower(value),
-                                variable =
-                                  paste0("locase.", variable))
+upcase <- names_full %>% mutate(
+  value = toupper(value),
+  variable =
+    paste0("upcase.", variable)
+)
+locase <- names_full %>% mutate(
+  value = tolower(value),
+  variable =
+    paste0("locase.", variable)
+)
 
 names_full <-
-  rbind(names_full, upcase) %>% rbind(locase) %>% distinct()
+  rbind(names_full, upcase) %>%
+  rbind(locase) %>%
+  distinct()
 
 # Tests names_full
 
@@ -147,28 +163,32 @@ unique(toen[grep("name.ca", toen$variable), "value"])
 # Translate all
 
 countrycode::countrycode(ret,
-                         "key",
-                         "nuts1.code",
-                         custom_dict = dict_nuts1,
-                         nomatch = "XXX")
+  "key",
+  "nuts1.code",
+  custom_dict = dict_nuts1,
+  nomatch = "XXX"
+)
 
 countrycode::countrycode(ret,
-                         "key",
-                         "nuts2.code",
-                         custom_dict = dict_ccaa,
-                         nomatch = "XX")
+  "key",
+  "nuts2.code",
+  custom_dict = dict_ccaa,
+  nomatch = "XX"
+)
 
 countrycode::countrycode(ret,
-                         "key",
-                         "nuts.prov.code",
-                         custom_dict = dict_prov,
-                         nomatch = "XX")
+  "key",
+  "nuts.prov.code",
+  custom_dict = dict_prov,
+  nomatch = "XX"
+)
 
 countrycode::countrycode(ret,
-                         "key",
-                         "nuts3.code",
-                         custom_dict = dict_nuts3,
-                         nomatch = "XX")
+  "key",
+  "nuts3.code",
+  custom_dict = dict_nuts3,
+  nomatch = "XX"
+)
 
 
 # names2nuts----
@@ -190,16 +210,18 @@ var <-
   )
 
 f <- countrycode::countrycode(var,
-                              "key",
-                              "nuts",
-                              custom_dict = names2nuts,
-                              nomatch = "XX")
+  "key",
+  "nuts",
+  custom_dict = names2nuts,
+  nomatch = "XX"
+)
 f
 countrycode::countrycode(f,
-                         "nuts",
-                         "key",
-                         custom_dict = names2nuts,
-                         nomatch = "XX")
+  "nuts",
+  "key",
+  custom_dict = names2nuts,
+  nomatch = "XX"
+)
 
 
 # code2code----
@@ -210,27 +232,31 @@ code2code <- esp_hlp_code2code()
 # Test
 
 countrycode::countrycode(f,
-                         "nuts",
-                         "iso2",
-                         custom_dict = code2code,
-                         nomatch = "XX")
+  "nuts",
+  "iso2",
+  custom_dict = code2code,
+  nomatch = "XX"
+)
 countrycode::countrycode(f,
-                         "nuts",
-                         "codauto",
-                         custom_dict = code2code,
-                         nomatch = "XX")
+  "nuts",
+  "codauto",
+  custom_dict = code2code,
+  nomatch = "XX"
+)
 
 countrycode::countrycode(f,
-                         "nuts",
-                         "cpro",
-                         custom_dict = code2code,
-                         nomatch = "XX")
+  "nuts",
+  "cpro",
+  custom_dict = code2code,
+  nomatch = "XX"
+)
 
 countrycode::countrycode(c("ES-AN"),
-                         "iso2",
-                         "nuts",
-                         custom_dict = code2code,
-                         nomatch = "XX")
+  "iso2",
+  "nuts",
+  custom_dict = code2code,
+  nomatch = "XX"
+)
 
 
 dict_ccaa <- dict_ccaa %>% as.data.frame()
@@ -254,4 +280,3 @@ usethis::use_data(
 )
 
 tools::checkRdaFiles("./R")
-

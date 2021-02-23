@@ -47,12 +47,14 @@ hexccaa <- st_transform(esp_get_hex_ccaa(), 3857)
 
 plot_sf(hexccaa)
 plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
+  col = "grey80",
+  border = NA,
+  add = TRUE
+)
 plot(st_geometry(hexccaa),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
+  col = hcl.colors(19, alpha = 0.5),
+  add = TRUE
+)
 labelLayer(hexccaa, txt = "label")
 
 
@@ -61,12 +63,14 @@ hexprov <- st_transform(esp_get_hex_prov(), 3857)
 
 plot_sf(hexprov)
 plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
+  col = "grey80",
+  border = NA,
+  add = TRUE
+)
 plot(st_geometry(hexprov),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
+  col = hcl.colors(19, alpha = 0.5),
+  add = TRUE
+)
 labelLayer(hexprov, txt = "label")
 
 
@@ -75,24 +79,28 @@ gridccaa <- st_transform(esp_get_grid_ccaa(), 3857)
 
 plot_sf(gridccaa)
 plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
+  col = "grey80",
+  border = NA,
+  add = TRUE
+)
 plot(st_geometry(gridccaa),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
+  col = hcl.colors(19, alpha = 0.5),
+  add = TRUE
+)
 labelLayer(gridccaa, txt = "label")
 
 gridprov <- st_transform(esp_get_grid_prov(), 3857)
 
 plot_sf(gridprov)
 plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
+  col = "grey80",
+  border = NA,
+  add = TRUE
+)
 plot(st_geometry(gridprov),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
+  col = hcl.colors(19, alpha = 0.5),
+  add = TRUE
+)
 labelLayer(gridprov, txt = "label")
 }
 \seealso{

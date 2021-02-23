@@ -17,10 +17,12 @@ getWMS <- function(x,
   maxdist <- max(dimx, dimy) * bbox_expand # Expand bbox
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
-  bboxsquare <- c(center[1] - maxdist / 2,
-                  center[2] - maxdist / 2,
-                  center[1] + maxdist / 2,
-                  center[2] + maxdist / 2)
+  bboxsquare <- c(
+    center[1] - maxdist / 2,
+    center[2] - maxdist / 2,
+    center[1] + maxdist / 2,
+    center[2] + maxdist / 2
+  )
 
 
   class(bboxsquare) <- "bbox"
@@ -43,13 +45,15 @@ getWMS <- function(x,
   }
 
   filename <-
-    paste0(src,
-           "_bbox3857_res",
-           res,
-           "_",
-           paste0(bboxsquare, collapse = "_"),
-           ".",
-           ext)
+    paste0(
+      src,
+      "_bbox3857_res",
+      res,
+      "_",
+      paste0(bboxsquare, collapse = "_"),
+      ".",
+      ext
+    )
 
   filename <- file.path(cache_dir, filename)
 
@@ -65,7 +69,6 @@ getWMS <- function(x,
       mode = "wb",
       quiet = !verbose
     )
-
   } else {
     if (verbose) {
       message("Requested tile already cached on \n", cache_dir)
@@ -97,7 +100,7 @@ getWMS <- function(x,
   raster::extent(rout) <-
     raster::extent(bboxsquare[c(1, 3, 2, 4)])
 
-  #End WMS
+  # End WMS
 
   return(rout)
 }
@@ -135,9 +138,11 @@ getWMTS <- function(x,
     if (zoom < minZoom) {
       zoom <- max(zoom, minZoom)
       if (verbose) {
-        message("\nSwicthing. Minimum zoom for this provider is ",
-                zoom,
-                "\n")
+        message(
+          "\nSwicthing. Minimum zoom for this provider is ",
+          zoom,
+          "\n"
+        )
       }
     }
   }
@@ -184,8 +189,10 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
   bricks <- vector("list", nrow(tile_grid$tiles))
   for (i in seq_along(bricks)) {
     bbox <-
-      slippymath::tile_bbox(tile_grid$tiles$x[i], tile_grid$tiles$y[i],
-                            tile_grid$zoom)
+      slippymath::tile_bbox(
+        tile_grid$tiles$x[i], tile_grid$tiles$y[i],
+        tile_grid$zoom
+      )
     img <- images[i]
     # special for png tiles
     if (ext == "png") {
@@ -207,8 +214,10 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
     r_img <-
       raster::brick(img, crs = sf::st_crs(3857)$proj4string)
     raster::extent(r_img) <-
-      raster::extent(bbox[c("xmin", "xmax",
-                            "ymin", "ymax")])
+      raster::extent(bbox[c(
+        "xmin", "xmax",
+        "ymin", "ymax"
+      )])
     bricks[[i]] <- r_img
   }
   # if only one tile is needed
@@ -236,7 +245,7 @@ dl_t <-
       paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
 
     if (!file.exists(outfile) |
-        isTRUE(update_cache)) {
+      isTRUE(update_cache)) {
       q <-
         gsub(
           pattern = "{x}",

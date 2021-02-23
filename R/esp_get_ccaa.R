@@ -30,19 +30,23 @@
 #' # Random CCAA
 #'
 #' Random <-
-#'   esp_get_ccaa(ccaa = c("Euskadi",
-#'                         "Catalunya",
-#'                         "ES-EX",
-#'                         "Canarias",
-#'                         "ES52",
-#'                         "01"))
+#'   esp_get_ccaa(ccaa = c(
+#'     "Euskadi",
+#'     "Catalunya",
+#'     "ES-EX",
+#'     "Canarias",
+#'     "ES52",
+#'     "01"
+#'   ))
 #' plot(st_geometry(Random), col = hcl.colors(6))
 #'
 #' # All CCAA of a Zone plus an addition
 #'
 #' Mix <-
-#'   esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"),
-#'                resolution = "20")
+#'   esp_get_ccaa(
+#'     ccaa = c("La Rioja", "Noroeste"),
+#'     resolution = "20"
+#'   )
 #' plot(
 #'   Mix[, "nuts1.code"],
 #'   pal = hcl.colors(2),
@@ -50,7 +54,6 @@
 #'   main = NULL,
 #'   border = "white"
 #' )
-
 esp_get_ccaa <- function(ccaa = NULL, ...) {
   params <- list(...)
 
@@ -66,17 +69,20 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(nuts_id) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
   }
 
   params$region <- nuts_id
   params$nuts_level <- 2
 
 
-  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   data_sf$nuts2.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts2.code"]
@@ -147,13 +153,15 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   }
 
   # Get Data from SIANE
-  data_sf <- esp_hlp_get_siane("ccaa",
-                               resolution,
-                               cache,
-                               cache_dir,
-                               update_cache,
-                               verbose,
-                               year)
+  data_sf <- esp_hlp_get_siane(
+    "ccaa",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
+  )
 
   initcols <- colnames(sf::st_drop_geometry(data_sf))
 
@@ -164,7 +172,8 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   data_sf$lab <- gsub("/Catalunya", "", data_sf$lab)
   data_sf$lab <- gsub("/Euskadi", "", data_sf$lab)
   data_sf$codauto <- esp_dict_region_code(data_sf$lab,
-                                          destination = "codauto")
+    destination = "codauto"
+  )
 
   # Filter CCAA
 
@@ -175,9 +184,11 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
     nuts_id <- esp_hlp_all2ccaa(region)
     nuts_id <- unique(nuts_id)
     if (length(nuts_id) == 0) {
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
     }
 
     # Get df
@@ -234,7 +245,7 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
         crs = sf::st_crs(CAN)
       )
 
-      #Regenerate
+      # Regenerate
       if (nrow(PENIN) > 0) {
         data_sf <- rbind(PENIN, CAN)
       } else {
@@ -254,11 +265,9 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   if (rawcols) {
     data_sf <-
       data_sf[, unique(c(initcols, colnames(df), "nuts1.code", "nuts1.name"))]
-
   } else {
     data_sf <-
       data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
-
   }
 
   return(data_sf)

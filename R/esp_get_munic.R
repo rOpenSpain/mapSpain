@@ -42,9 +42,10 @@
 #'
 #' plot(st_geometry(Base), col = "cornsilk", border = "grey80")
 #' plot(st_geometry(SAN),
-#'      col = "firebrick3",
-#'      border = NA,
-#'      add = TRUE)
+#'   col = "firebrick3",
+#'   border = NA,
+#'   add = TRUE
+#' )
 #' @export
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
@@ -59,7 +60,8 @@ esp_get_munic <- function(year = "2019",
   year <- as.character(year)
 
   yearsav <-
-    c("2001",
+    c(
+      "2001",
       "2004",
       "2006",
       "2008",
@@ -68,13 +70,16 @@ esp_get_munic <- function(year = "2019",
       "2016",
       "2017",
       "2018",
-      "2019")
+      "2019"
+    )
 
   if (!year %in% yearsav) {
-    stop("year ",
-         year,
-         " not available, try ",
-         paste0("'", yearsav, "'", collapse = ", "))
+    stop(
+      "year ",
+      year,
+      " not available, try ",
+      paste0("'", yearsav, "'", collapse = ", ")
+    )
   }
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
@@ -87,10 +92,11 @@ esp_get_munic <- function(year = "2019",
 
 
   if (year == "2019" &
-      epsg == "4326" &
-      isFALSE(update_cache)) {
-    if (verbose)
+    epsg == "4326" &
+    isFALSE(update_cache)) {
+    if (verbose) {
       message("Reading from esp_munic.sf")
+    }
     data_sf <- mapSpain::esp_munic.sf
 
 
@@ -160,25 +166,30 @@ esp_get_munic <- function(year = "2019",
     df <- df[, c("cpro", "cmun", "name", "LAU_CODE")]
 
     cod <-
-      unique(mapSpain::esp_codelist[, c("codauto",
-                                        "ine.ccaa.name",
-                                        "cpro", "ine.prov.name")])
+      unique(mapSpain::esp_codelist[, c(
+        "codauto",
+        "ine.ccaa.name",
+        "cpro", "ine.prov.name"
+      )])
 
     df2 <- merge(df,
-                 cod,
-                 by = "cpro",
-                 all.x = TRUE,
-                 no.dups = TRUE)
+      cod,
+      by = "cpro",
+      all.x = TRUE,
+      no.dups = TRUE
+    )
 
 
     df2 <-
-      df2[, c("codauto",
-              "ine.ccaa.name",
-              "cpro",
-              "ine.prov.name",
-              "cmun",
-              "name",
-              "LAU_CODE")]
+      df2[, c(
+        "codauto",
+        "ine.ccaa.name",
+        "cpro",
+        "ine.prov.name",
+        "cmun",
+        "name",
+        "LAU_CODE"
+      )]
 
 
     data_sf <- df2
@@ -196,7 +207,7 @@ esp_get_munic <- function(year = "2019",
   if (!is.null(region)) {
     tonuts <- esp_hlp_all2prov(region)
 
-    #toprov
+    # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
@@ -205,8 +216,10 @@ esp_get_munic <- function(year = "2019",
   }
 
   if (nrow(data_sf) == 0) {
-    stop("The combination of region and/or munic does ",
-         "not return any result")
+    stop(
+      "The combination of region and/or munic does ",
+      "not return any result"
+    )
   }
 
 
@@ -242,7 +255,7 @@ esp_get_munic <- function(year = "2019",
         crs = sf::st_crs(CAN)
       )
 
-      #Regenerate
+      # Regenerate
       if (nrow(PENIN) > 0) {
         data_sf <- rbind(PENIN, CAN)
       } else {
@@ -289,7 +302,6 @@ esp_get_munic_siane <- function(year = Sys.Date(),
                                 munic = NULL,
                                 moveCAN = TRUE,
                                 rawcols = FALSE) {
-
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -298,13 +310,15 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   }
 
   # Get Data from SIANE
-  data_sf <- esp_hlp_get_siane("munic",
-                               resolution,
-                               cache,
-                               cache_dir,
-                               update_cache,
-                               verbose,
-                               year)
+  data_sf <- esp_hlp_get_siane(
+    "munic",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
+  )
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
   df <- data_sf
@@ -316,19 +330,23 @@ esp_get_munic_siane <- function(year = Sys.Date(),
 
   idprov <- sort(unique(mapSpain::esp_codelist$cpro))
   df$cmun <- ifelse(substr(df$LAU_CODE, 1, 2) %in% idprov,
-                    substr(df$LAU_CODE, 3, 8),
-                    NA)
+    substr(df$LAU_CODE, 3, 8),
+    NA
+  )
 
   cod <-
-    unique(mapSpain::esp_codelist[, c("codauto",
-                                      "ine.ccaa.name",
-                                      "cpro", "ine.prov.name")])
+    unique(mapSpain::esp_codelist[, c(
+      "codauto",
+      "ine.ccaa.name",
+      "cpro", "ine.prov.name"
+    )])
 
   df2 <- merge(df,
-               cod,
-               by = "cpro",
-               all.x = TRUE,
-               no.dups = TRUE)
+    cod,
+    by = "cpro",
+    all.x = TRUE,
+    no.dups = TRUE
+  )
 
   data_sf <- df2
 
@@ -339,7 +357,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
 
   if (!is.null(region)) {
     tonuts <- esp_hlp_all2prov(region)
-    #toprov
+    # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df)
@@ -347,8 +365,10 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   }
 
   if (nrow(data_sf) == 0) {
-    stop("The combination of region and/or munic does ",
-         "not return any result")
+    stop(
+      "The combination of region and/or munic does ",
+      "not return any result"
+    )
   }
   # Move CAN
 
@@ -379,7 +399,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
         crs = sf::st_crs(CAN)
       )
 
-      #Regenerate
+      # Regenerate
       if (nrow(PENIN) > 0) {
         data_sf <- rbind(PENIN, CAN)
       } else {
@@ -409,14 +429,15 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   data_sf <- data_sf[, namesend]
 
   if (isFALSE(rawcols)) {
-    data_sf <- data_sf[, c("codauto",
-                           "ine.ccaa.name",
-                           "cpro",
-                           "ine.prov.name",
-                           "cmun",
-                           "name",
-                           "LAU_CODE")]
-
+    data_sf <- data_sf[, c(
+      "codauto",
+      "ine.ccaa.name",
+      "cpro",
+      "ine.prov.name",
+      "cmun",
+      "name",
+      "LAU_CODE"
+    )]
   }
   return(data_sf)
 }

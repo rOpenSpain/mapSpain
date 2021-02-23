@@ -22,20 +22,19 @@
 #' MovedCan <- esp_get_country(moveCAN = TRUE)
 #'
 #' plot(MovedCan$geometry, col = hcl.colors(5))
-#'
-
 esp_get_country <- function(...) {
   params <- list(...)
   params$nuts_level <- 1
   params$region <- NULL
-  data_sf <- do.call(mapSpain::esp_get_nuts,  params)
+  data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   # Extract geom column
   names <- names(data_sf)
 
   which.geom <-
-    which(vapply(data_sf, function(f)
-      inherits(f, "sfc"), TRUE))
+    which(vapply(data_sf, function(f) {
+      inherits(f, "sfc")
+    }, TRUE))
 
   nm <- names(which.geom)
 
@@ -58,5 +57,4 @@ esp_get_country <- function(...) {
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
   return(data_sf)
-
 }

@@ -28,12 +28,14 @@
 #'
 #' plot_sf(hexccaa)
 #' plot(st_geometry(esp),
-#'      col = "grey80",
-#'      border = NA,
-#'      add = TRUE)
+#'   col = "grey80",
+#'   border = NA,
+#'   add = TRUE
+#' )
 #' plot(st_geometry(hexccaa),
-#'      col = hcl.colors(19, alpha = 0.5),
-#'      add = TRUE)
+#'   col = hcl.colors(19, alpha = 0.5),
+#'   add = TRUE
+#' )
 #' labelLayer(hexccaa, txt = "label")
 #'
 #'
@@ -42,12 +44,14 @@
 #'
 #' plot_sf(hexprov)
 #' plot(st_geometry(esp),
-#'      col = "grey80",
-#'      border = NA,
-#'      add = TRUE)
+#'   col = "grey80",
+#'   border = NA,
+#'   add = TRUE
+#' )
 #' plot(st_geometry(hexprov),
-#'      col = hcl.colors(19, alpha = 0.5),
-#'      add = TRUE)
+#'   col = hcl.colors(19, alpha = 0.5),
+#'   add = TRUE
+#' )
 #' labelLayer(hexprov, txt = "label")
 #'
 #'
@@ -56,24 +60,28 @@
 #'
 #' plot_sf(gridccaa)
 #' plot(st_geometry(esp),
-#'      col = "grey80",
-#'      border = NA,
-#'      add = TRUE)
+#'   col = "grey80",
+#'   border = NA,
+#'   add = TRUE
+#' )
 #' plot(st_geometry(gridccaa),
-#'      col = hcl.colors(19, alpha = 0.5),
-#'      add = TRUE)
+#'   col = hcl.colors(19, alpha = 0.5),
+#'   add = TRUE
+#' )
 #' labelLayer(gridccaa, txt = "label")
 #'
 #' gridprov <- st_transform(esp_get_grid_prov(), 3857)
 #'
 #' plot_sf(gridprov)
 #' plot(st_geometry(esp),
-#'      col = "grey80",
-#'      border = NA,
-#'      add = TRUE)
+#'   col = "grey80",
+#'   border = NA,
+#'   add = TRUE
+#' )
 #' plot(st_geometry(gridprov),
-#'      col = hcl.colors(19, alpha = 0.5),
-#'      add = TRUE)
+#'   col = hcl.colors(19, alpha = 0.5),
+#'   add = TRUE
+#' )
 #' labelLayer(gridprov, txt = "label")
 esp_get_hex_prov <- function(prov = NULL) {
   region <- prov
@@ -85,10 +93,13 @@ esp_get_hex_prov <- function(prov = NULL) {
     region <- esp_hlp_all2prov(region)
 
     region <- unique(region)
-    if (length(region) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(region) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
 
     dfcpro <- mapSpain::esp_codelist
     dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
@@ -118,10 +129,13 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(nuts_id) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
 
     data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
   }
@@ -144,10 +158,13 @@ esp_get_grid_prov <- function(prov = NULL) {
     region <- esp_hlp_all2prov(region)
 
     region <- unique(region)
-    if (length(region) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(region) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
 
     dfcpro <- mapSpain::esp_codelist
     dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
@@ -177,10 +194,13 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0)
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+    if (length(nuts_id) == 0) {
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
+    }
 
     data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
   }

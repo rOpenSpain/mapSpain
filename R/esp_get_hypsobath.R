@@ -17,6 +17,8 @@
 #' \code{POLYGONS} or \code{"line"} for \code{LINESTRING}.
 #' @details Metadata available on \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/data-raw/documentacion_cartosiane}.
 #' @examples
+#' \donttest{
+#' # This code would produce a nice plot - It will take a few seconds to run
 #' library(sf)
 #' library(cartography)
 #'
@@ -27,20 +29,24 @@
 #'
 #' bath_tints <- colorRampPalette(
 #'   rev(
-#'     c("#D8F2FE", "#C6ECFF", "#B9E3FF",
+#'     c(
+#'       "#D8F2FE", "#C6ECFF", "#B9E3FF",
 #'       "#ACDBFB", "#A1D2F7", "#96C9F0",
 #'       "#8DC1EA", "#84B9E3", "#79B2DE",
-#'       "#71ABD8")
+#'       "#71ABD8"
+#'     )
 #'   )
 #' )
 #'
 #' hyps_tints <- colorRampPalette(
 #'   rev(
-#'     c("#F5F4F2", "#E0DED8", "#CAC3B8", "#BAAE9A",
+#'     c(
+#'       "#F5F4F2", "#E0DED8", "#CAC3B8", "#BAAE9A",
 #'       "#AC9A7C", "#AA8753", "#B9985A", "#C3A76B",
 #'       "#CAB982", "#D3CA9D", "#DED6A3", "#E8E1B6",
 #'       "#EFEBC0", "#E1E4B5", "#D1D7AB", "#BDCC96",
-#'       "#A8C68F", "#94BF8B", "#ACD0A5")
+#'       "#A8C68F", "#94BF8B", "#ACD0A5"
+#'     )
 #'   )
 #' )
 #'
@@ -60,8 +66,9 @@
 #' opar <- par(no.readonly = TRUE)
 #' par(mar = c(0, 0, 0, 0))
 #' plot_sf(hypsobath,
-#'         xlim = c(-18.6, -13.5),
-#'         ylim = c(27.6, 29.5))
+#'   xlim = c(-18.6, -13.5),
+#'   ylim = c(27.6, 29.5)
+#' )
 #' choroLayer(
 #'   hypsobath,
 #'   var = "val_inf",
@@ -76,8 +83,9 @@
 #' opar <- par(no.readonly = TRUE)
 #' par(mar = c(0, 0, 0, 0))
 #' plot_sf(hypsobath,
-#'         xlim = c(-9, 4.4),
-#'         ylim = c(35.8, 44))
+#'   xlim = c(-9, 4.4),
+#'   ylim = c(35.8, 44)
+#' )
 #' choroLayer(
 #'   hypsobath,
 #'   var = "val_inf",
@@ -89,8 +97,7 @@
 #' )
 #'
 #' par(opar)
-
-
+#' }
 esp_get_hypsobath <- function(epsg = "4258",
                               cache = TRUE,
                               update_cache = FALSE,
@@ -107,28 +114,33 @@ esp_get_hypsobath <- function(epsg = "4258",
   validres <- c("3", "6.5")
 
   if (!resolution %in% validres) {
-    stop("resolution should be one of '",
-         paste0(validres, collapse = "', "),
-         "'")
+    stop(
+      "resolution should be one of '",
+      paste0(validres, collapse = "', "),
+      "'"
+    )
   }
 
   # Valid spatialtype
   validspatialtype <- c("area", "line")
 
   if (!spatialtype %in% validspatialtype) {
-    stop("spatialtype should be one of '",
-         paste0(validspatialtype, collapse = "', "),
-         "'")
+    stop(
+      "spatialtype should be one of '",
+      paste0(validspatialtype, collapse = "', "),
+      "'"
+    )
   }
 
   type <- paste0("orog", spatialtype)
 
   data_sf <- esp_hlp_get_siane(type,
-                               resolution,
-                               cache,
-                               cache_dir,
-                               update_cache,
-                               verbose,
-                               year = Sys.Date())
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year = Sys.Date()
+  )
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 }

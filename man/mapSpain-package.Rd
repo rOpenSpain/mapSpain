@@ -38,9 +38,9 @@ in the legend of the map and
 in the introductory page of the publication
 with the following copyright notice:
 \itemize{
-	\item EN: (C) EuroGeographics for the administrative boundaries
-	\item FR: (C) EuroGeographics pour les limites administratives
-	\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
+\item EN: (C) EuroGeographics for the administrative boundaries
+\item FR: (C) EuroGeographics pour les limites administratives
+\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
 }
 For publications in languages other than
 English, French or German,
@@ -56,11 +56,11 @@ See \code{citation("mapSpain")}
 }
 \seealso{
 Useful links:
- \itemize{
- \item \url{https://ropenspain.github.io/mapSpain/}
- \item \url{https://github.com/rOpenSpain/mapSpain}
- \item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
- }
+\itemize{
+\item \url{https://ropenspain.github.io/mapSpain/}
+\item \url{https://github.com/rOpenSpain/mapSpain}
+\item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
+}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

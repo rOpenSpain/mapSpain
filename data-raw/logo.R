@@ -1,5 +1,5 @@
 rm(list = ls())
-#options(gisco_cache_dir = "~/R/mapslib/GISCO/")
+# options(gisco_cache_dir = "~/R/mapslib/GISCO/")
 
 library(mapSpain)
 library(sf)
@@ -7,7 +7,7 @@ library(dplyr)
 library(ggplot2)
 
 
-#sysfonts::font_add_google("Open Sans")
+# sysfonts::font_add_google("Open Sans")
 
 
 
@@ -18,17 +18,20 @@ p <- esp_get_can_provinces()
 
 
 
-a <- ggplot(map) + geom_sf(fill = "#FABD00",
-                           colour = "#AD1519",
-                           size = 0.05) +
+a <- ggplot(map) +
+  geom_sf(
+    fill = "#FABD00",
+    colour = "#AD1519",
+    size = 0.05
+  ) +
   geom_sf(
     data = map2,
     color = "#FABD00",
     fill = NA,
     lwd = 0.1
   ) +
-  geom_sf(data =l, color="#FABD00", lwd=0.1) +
-  geom_sf(data=p,color="#FABD00", lwd=0.1) +
+  geom_sf(data = l, color = "#FABD00", lwd = 0.1) +
+  geom_sf(data = p, color = "#FABD00", lwd = 0.1) +
   theme_void()
 
 
@@ -53,11 +56,11 @@ sticker(
   h_color = "#FABD00",
   h_fill = "#AD1519",
   p_y = 0.45,
-   p_family = "Open Sans",
+  p_family = "Open Sans",
   p_color = "#FABD00",
   white_around_sticker = FALSE,
-  #p_size = 15,
- # p_family = "serif",
+  # p_size = 15,
+  # p_family = "serif",
   p_size = 15
 )
 

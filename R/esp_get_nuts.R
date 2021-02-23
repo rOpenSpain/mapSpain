@@ -101,7 +101,6 @@
 #'
 #' MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 #' plot(st_geometry(MixingCodes), col = pal)
-#'
 esp_get_nuts <- function(year = "2016",
                          epsg = "4258",
                          cache = TRUE,
@@ -153,24 +152,24 @@ esp_get_nuts <- function(year = "2016",
     nuts_id <- unique(nuts_id)
 
     if (length(nuts_id) == 0) {
-      stop("region ",
-           paste0("'", region, "'", collapse = ", "),
-           " is not a valid name")
+      stop(
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
+        " is not a valid name"
+      )
     }
-
-
-
   }
 
 
   dwnload <- TRUE
 
   if (year == "2016" &
-      resolution == "01" &
-      epsg == "4326" &
-      spatialtype == "RG" & isFALSE(update_cache)) {
-    if (verbose)
+    resolution == "01" &
+    epsg == "4326" &
+    spatialtype == "RG" & isFALSE(update_cache)) {
+    if (verbose) {
       message("Reading from esp_nuts.sf")
+    }
     data_sf <- mapSpain::esp_nuts.sf
     if (nuts_level != "all") {
       data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
@@ -230,13 +229,12 @@ esp_get_nuts <- function(year = "2016",
         crs = sf::st_crs(CAN)
       )
 
-      #Regenerate
+      # Regenerate
       if (nrow(PENIN) > 0) {
         data_sf <- rbind(PENIN, CAN)
       } else {
         data_sf <- CAN
       }
-
     }
   }
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))

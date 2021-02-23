@@ -9,9 +9,9 @@
 A data frame object with a list of the required parameters
 for calling the service:
 \describe{
-  \item{provider}{Provider name}
-  \item{field}{Description of \code{value}}
-  \item{value}{INE code of each province.}
+\item{provider}{Provider name}
+\item{field}{Description of \code{value}}
+\item{value}{INE code of each province.}
 }
 }
 \source{
@@ -29,66 +29,66 @@ This function is a implementation of the javascript plugin
 \details{
 Providers available to be passed to \code{type} are:
 \itemize{
- \item{\bold{IDErioja}: }{\code{IDErioja}}
- \item{\bold{IGNBase}: }{\code{IGNBase.Todo}, \code{IGNBase.Gris},
- \code{IGNBase.TodoNoFondo}, \code{IGNBase.Orto}}
- \item{\bold{MDT}: }{\code{MDT.Elevaciones}, \code{MDT.Relieve},
- \code{MDT.CurvasNivel}}
- \item{\bold{PNOA}: }{\code{PNOA.MaximaActualidad}, \code{PNOA.Mosaico}}
- \item{\bold{OcupacionSuelo}: }{\code{OcupacionSuelo.Ocupacion},
- \code{OcupacionSuelo.Usos}}
- \item{\bold{LiDAR}: }{\code{LiDAR}}
- \item{\bold{MTN}: }{\code{MTN}}
- \item{\bold{Geofisica}: }{\code{Geofisica.Terremotos10dias},
- \code{Geofisica.Terremotos30dias}, \code{Geofisica.Terremotos365dias},
- \code{Geofisica.VigilanciaVolcanica}}
- \item{\bold{CaminoDeSantiago}: }{\code{CaminoDeSantiago.CaminoFrances},
- \code{CaminoDeSantiago.CaminosTuronensis},
- \code{CaminoDeSantiago.CaminosGalicia},
- \code{CaminoDeSantiago.CaminosDelNorte},
- \code{CaminoDeSantiago.CaminosAndaluces},
- \code{CaminoDeSantiago.CaminosCentro},
- \code{CaminoDeSantiago.CaminosEste},
- \code{CaminoDeSantiago.CaminosCatalanes},
- \code{CaminoDeSantiago.CaminosSureste},
- \code{CaminoDeSantiago.CaminosInsulares},
- \code{CaminoDeSantiago.CaminosPiemonts},
- \code{CaminoDeSantiago.CaminosTolosana},
- \code{CaminoDeSantiago.CaminosPortugueses}}
- \item{\bold{Catastro}: }{\code{Catastro.Catastro},
- \code{Catastro.Parcela}, \code{Catastro.CadastralParcel},
- \code{Catastro.CadastralZoning}, \code{Catastro.Address},
- \code{Catastro.Building}}
- \item{\bold{RedTransporte}: }{\code{RedTransporte.Carreteras},
- \code{RedTransporte.Ferroviario}, \code{RedTransporte.Aerodromo},
- \code{RedTransporte.AreaServicio},
- \code{RedTransporte.EstacionesFerroviario},
- \code{RedTransporte.Puertos}}
- \item{\bold{Cartociudad}: }{\code{Cartociudad.CodigosPostales},
- \code{Cartociudad.Direcciones}}
- \item{\bold{NombresGeograficos}: }{\code{NombresGeograficos}}
- \item{\bold{UnidadesAdm}: }{\code{UnidadesAdm.Limites},
- \code{UnidadesAdm.Unidades}}
- \item{\bold{Hidrografia}: }{\code{Hidrografia.MasaAgua},
- \code{Hidrografia.Cuencas}, \code{Hidrografia.Subcuencas},
- \code{Hidrografia.POI}, \code{Hidrografia.ManMade},
- \code{Hidrografia.LineaCosta}, \code{Hidrografia.Rios},
- \code{Hidrografia.Humedales}}
- \item{\bold{Militar}: }{\code{Militar.CEGET1M},
- \code{Militar.CEGETM7814}, \code{Militar.CEGETM7815},
- \code{Militar.CEGETM682}, \code{Militar.CECAF1M}}
- \item{\bold{ADIF}: }{\code{ADIF.Vias}, \code{ADIF.Nodos},
- \code{ADIF.Estaciones}}
- \item{\bold{LimitesMaritimos}: }{\code{LimitesMaritimos.LimitesMaritimos},
- \code{LimitesMaritimos.LineasBase}}
- \item{\bold{Copernicus}: }{\code{Copernicus.LandCover},
- \code{Copernicus.Forest}, \code{Copernicus.ForestLeaf},
- \code{Copernicus.WaterWet}, \code{Copernicus.SoilSeal},
- \code{Copernicus.GrassLand}, \code{Copernicus.Local},
- \code{Copernicus.RiparianGreen}, \code{Copernicus.RiparianLandCover},
- \code{Copernicus.Natura2k}, \code{Copernicus.UrbanAtlas}}
- \item{\bold{ParquesNaturales}: }{\code{ParquesNaturales.Limites},
- \code{ParquesNaturales.ZonasPerifericas}}
+\item{\bold{IDErioja}: }{\code{IDErioja}}
+\item{\bold{IGNBase}: }{\code{IGNBase.Todo}, \code{IGNBase.Gris},
+\code{IGNBase.TodoNoFondo}, \code{IGNBase.Orto}}
+\item{\bold{MDT}: }{\code{MDT.Elevaciones}, \code{MDT.Relieve},
+\code{MDT.CurvasNivel}}
+\item{\bold{PNOA}: }{\code{PNOA.MaximaActualidad}, \code{PNOA.Mosaico}}
+\item{\bold{OcupacionSuelo}: }{\code{OcupacionSuelo.Ocupacion},
+\code{OcupacionSuelo.Usos}}
+\item{\bold{LiDAR}: }{\code{LiDAR}}
+\item{\bold{MTN}: }{\code{MTN}}
+\item{\bold{Geofisica}: }{\code{Geofisica.Terremotos10dias},
+\code{Geofisica.Terremotos30dias}, \code{Geofisica.Terremotos365dias},
+\code{Geofisica.VigilanciaVolcanica}}
+\item{\bold{CaminoDeSantiago}: }{\code{CaminoDeSantiago.CaminoFrances},
+\code{CaminoDeSantiago.CaminosTuronensis},
+\code{CaminoDeSantiago.CaminosGalicia},
+\code{CaminoDeSantiago.CaminosDelNorte},
+\code{CaminoDeSantiago.CaminosAndaluces},
+\code{CaminoDeSantiago.CaminosCentro},
+\code{CaminoDeSantiago.CaminosEste},
+\code{CaminoDeSantiago.CaminosCatalanes},
+\code{CaminoDeSantiago.CaminosSureste},
+\code{CaminoDeSantiago.CaminosInsulares},
+\code{CaminoDeSantiago.CaminosPiemonts},
+\code{CaminoDeSantiago.CaminosTolosana},
+\code{CaminoDeSantiago.CaminosPortugueses}}
+\item{\bold{Catastro}: }{\code{Catastro.Catastro},
+\code{Catastro.Parcela}, \code{Catastro.CadastralParcel},
+\code{Catastro.CadastralZoning}, \code{Catastro.Address},
+\code{Catastro.Building}}
+\item{\bold{RedTransporte}: }{\code{RedTransporte.Carreteras},
+\code{RedTransporte.Ferroviario}, \code{RedTransporte.Aerodromo},
+\code{RedTransporte.AreaServicio},
+\code{RedTransporte.EstacionesFerroviario},
+\code{RedTransporte.Puertos}}
+\item{\bold{Cartociudad}: }{\code{Cartociudad.CodigosPostales},
+\code{Cartociudad.Direcciones}}
+\item{\bold{NombresGeograficos}: }{\code{NombresGeograficos}}
+\item{\bold{UnidadesAdm}: }{\code{UnidadesAdm.Limites},
+\code{UnidadesAdm.Unidades}}
+\item{\bold{Hidrografia}: }{\code{Hidrografia.MasaAgua},
+\code{Hidrografia.Cuencas}, \code{Hidrografia.Subcuencas},
+\code{Hidrografia.POI}, \code{Hidrografia.ManMade},
+\code{Hidrografia.LineaCosta}, \code{Hidrografia.Rios},
+\code{Hidrografia.Humedales}}
+\item{\bold{Militar}: }{\code{Militar.CEGET1M},
+\code{Militar.CEGETM7814}, \code{Militar.CEGETM7815},
+\code{Militar.CEGETM682}, \code{Militar.CECAF1M}}
+\item{\bold{ADIF}: }{\code{ADIF.Vias}, \code{ADIF.Nodos},
+\code{ADIF.Estaciones}}
+\item{\bold{LimitesMaritimos}: }{\code{LimitesMaritimos.LimitesMaritimos},
+\code{LimitesMaritimos.LineasBase}}
+\item{\bold{Copernicus}: }{\code{Copernicus.LandCover},
+\code{Copernicus.Forest}, \code{Copernicus.ForestLeaf},
+\code{Copernicus.WaterWet}, \code{Copernicus.SoilSeal},
+\code{Copernicus.GrassLand}, \code{Copernicus.Local},
+\code{Copernicus.RiparianGreen}, \code{Copernicus.RiparianLandCover},
+\code{Copernicus.Natura2k}, \code{Copernicus.UrbanAtlas}}
+\item{\bold{ParquesNaturales}: }{\code{ParquesNaturales.Limites},
+\code{ParquesNaturales.ZonasPerifericas}}
 }
 }
 \seealso{

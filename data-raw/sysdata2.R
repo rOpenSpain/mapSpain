@@ -8,11 +8,11 @@ list <- ls()
 
 library(sf)
 data.sf <-
-  st_read("./data-raw/input/esp_prov_hexgrid.gpkg", stringsAsFactors  = FALSE)
+  st_read("./data-raw/input/esp_prov_hexgrid.gpkg", stringsAsFactors = FALSE)
 
 
-data.sf <- data.sf[,"ISO3"]
-names(data.sf) <- c("iso2.prov.code","geometry")
+data.sf <- data.sf[, "ISO3"]
+names(data.sf) <- c("iso2.prov.code", "geometry")
 
 st_geometry(data.sf) <- "geometry"
 
@@ -27,18 +27,22 @@ data.sf <- merge(data.sf, df, all.x = TRUE)
 # Paste nuts2
 dfnuts <- mapSpain::esp_codelist
 dfnuts <-
-  unique(dfnuts[, c("cpro",
-                    "nuts2.code",
-                    "nuts2.name",
-                    "nuts1.code",
-                    "nuts1.name")])
+  unique(dfnuts[, c(
+    "cpro",
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
+  )])
 data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
 data.sf <-
-  data.sf[, c(colnames(df),
-              "nuts2.code",
-              "nuts2.name",
-              "nuts1.code",
-              "nuts1.name")]
+  data.sf[, c(
+    colnames(df),
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
+  )]
 
 # Order
 data.sf <- data.sf[order(data.sf$codauto, data.sf$cpro), ]
@@ -51,10 +55,10 @@ esp_hexbin_prov <-
 # CCAA
 
 data.sf <-
-  st_read("./data-raw/input/esp_ccaa_hexgrid.gpkg", stringsAsFactors  = FALSE)
+  st_read("./data-raw/input/esp_ccaa_hexgrid.gpkg", stringsAsFactors = FALSE)
 
-data.sf <- data.sf[,"ISO2"]
-names(data.sf) <- c("iso2.ccaa.code","geometry")
+data.sf <- data.sf[, "ISO2"]
+names(data.sf) <- c("iso2.ccaa.code", "geometry")
 
 st_geometry(data.sf) <- "geometry"
 
@@ -72,7 +76,7 @@ data.sf <- merge(data.sf, dfnuts, all.x = TRUE)
 data.sf <- data.sf[, c(colnames(df), "nuts1.code", "nuts1.name")]
 
 # Order
-data.sf <- data.sf[order(data.sf$codauto),]
+data.sf <- data.sf[order(data.sf$codauto), ]
 
 esp_hexbin_ccaa <- data.sf
 
@@ -95,4 +99,3 @@ usethis::use_data(
 tools::checkRdaFiles("./R")
 
 rm(list = ls())
-

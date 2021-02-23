@@ -19,7 +19,7 @@
 #' @examples
 #' library(sf)
 #'
-#' Provs <-  esp_get_prov()
+#' Provs <- esp_get_prov()
 #' Box <- esp_get_can_box()
 #' Line <- esp_get_can_provinces()
 #'
@@ -31,7 +31,7 @@
 #'
 #' # Displacing Canary
 #'
-#' Provs_D <-  esp_get_prov(moveCAN = c(15, 0))
+#' Provs_D <- esp_get_prov(moveCAN = c(15, 0))
 #' Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
 #' Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
 #'
@@ -46,24 +46,31 @@
 #' library(giscoR)
 #'
 #' Countries <-
-#'   gisco_get_countries(res = "20",
-#'                       epsg = "4326",
-#'                       region = c("Europe", "Africa"))
+#'   gisco_get_countries(
+#'     res = "20",
+#'     epsg = "4326",
+#'     region = c("Europe", "Africa")
+#'   )
 #' CANbox <-
-#'   esp_get_can_box(style = "poly",
-#'                   epsg = "4326",
-#'                   moveCAN = c(12.5, 0))
-#' CCAA <- esp_get_ccaa(res = "20",
-#'                      epsg = "4326",
-#'                      moveCAN = c(12.5, 0))
+#'   esp_get_can_box(
+#'     style = "poly",
+#'     epsg = "4326",
+#'     moveCAN = c(12.5, 0)
+#'   )
+#' CCAA <- esp_get_ccaa(
+#'   res = "20",
+#'   epsg = "4326",
+#'   moveCAN = c(12.5, 0)
+#' )
 #'
 #'
 #' plot_sf(CCAA, axes = TRUE)
 #' plot(st_geometry(Countries), col = "grey80", add = TRUE)
 #' plot(st_geometry(CANbox),
-#'      border = "black",
-#'      col = "white",
-#'      add = TRUE)
+#'   border = "black",
+#'   col = "white",
+#'   add = TRUE
+#' )
 #' plot(st_geometry(CCAA), add = TRUE, col = "beige")
 #' box()
 esp_get_can_box <- function(style = "right",
@@ -94,7 +101,6 @@ esp_get_can_box <- function(style = "right",
     if (style == "box") {
       lall <- sf::st_cast(lall, "LINESTRING")
     }
-
   } else if (style == "right") {
     bbox <- bbox + c(0, 0, 0.5, 0.3)
 
@@ -118,7 +124,6 @@ esp_get_can_box <- function(style = "right",
     pall <- c(p1, p2, p3, p4)
     lall <- sf::st_linestring(sf::st_coordinates(pall))
     lall <- sf::st_sfc(lall, crs = sf::st_crs(CAN))
-
   }
 
   moving <- FALSE
@@ -146,7 +151,6 @@ esp_get_can_box <- function(style = "right",
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
   return(lall)
-
 }
 
 #' @rdname esp_get_can_box
@@ -165,8 +169,10 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
   }
 
   # From CartoBase ANE: se89_mult_admin_provcan_l
-  m <- c(sf::st_point(c(-16.29902, 27.71454)),
-         sf::st_point(c(-15.69362, 28.78078)))
+  m <- c(
+    sf::st_point(c(-16.29902, 27.71454)),
+    sf::st_point(c(-15.69362, 28.78078))
+  )
 
   lall <- sf::st_linestring(sf::st_coordinates(m))
   lall <- sf::st_sfc(lall, crs = sf::st_crs(4326))
@@ -196,5 +202,4 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
   return(lall)
-
 }

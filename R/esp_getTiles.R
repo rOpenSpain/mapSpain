@@ -95,25 +95,29 @@ esp_getTiles <- function(x,
 
   if (provs[provs$field == "type", "value"] == "WMS") {
     rout <-
-      getWMS(x,
-             provs,
-             update_cache,
-             cache_dir,
-             verbose,
-             res,
-             transparent,
-             bbox_expand)
+      getWMS(
+        x,
+        provs,
+        update_cache,
+        cache_dir,
+        verbose,
+        res,
+        transparent,
+        bbox_expand
+      )
   } else {
     rout <-
-      getWMTS(x,
-              provs,
-              update_cache,
-              cache_dir,
-              verbose,
-              res,
-              zoom,
-              type,
-              transparent)
+      getWMTS(
+        x,
+        provs,
+        update_cache,
+        cache_dir,
+        verbose,
+        res,
+        zoom,
+        type,
+        transparent
+      )
   }
 
 
@@ -121,8 +125,10 @@ esp_getTiles <- function(x,
   # Display attributions
 
   if (verbose) {
-    message("\nData and map tiles sources:\n",
-            provs[provs$field == "attribution_static", "value"])
+    message(
+      "\nData and map tiles sources:\n",
+      provs[provs$field == "attribution_static", "value"]
+    )
   }
 
   x <- xinit
@@ -131,9 +137,10 @@ esp_getTiles <- function(x,
   rout <-
     raster::projectRaster(from = rout, crs = sf::st_crs(x)$proj4string)
   rout <- raster::clamp(rout,
-                        lower = 0,
-                        upper = 255,
-                        useValues = TRUE)
+    lower = 0,
+    upper = 255,
+    useValues = TRUE
+  )
 
 
   # crop management

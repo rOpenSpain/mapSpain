@@ -54,8 +54,6 @@
 #' )
 #'
 #' par(opar)
-
-
 esp_get_hydrobasin <- function(epsg = "4258",
                                cache = TRUE,
                                update_cache = FALSE,
@@ -73,20 +71,24 @@ esp_get_hydrobasin <- function(epsg = "4258",
   validdomain <- c("land", "landsea")
 
   if (!domain %in% validdomain) {
-    stop("domain should be one of '",
-         paste0(validdomain, collapse = "', "),
-         "'")
+    stop(
+      "domain should be one of '",
+      paste0(validdomain, collapse = "', "),
+      "'"
+    )
   }
 
   type <- paste0("basin", domain)
   basin_sf <-
-    esp_hlp_get_siane(type,
-                      resolution,
-                      cache,
-                      cache_dir,
-                      update_cache,
-                      verbose,
-                      Sys.Date())
+    esp_hlp_get_siane(
+      type,
+      resolution,
+      cache,
+      cache_dir,
+      update_cache,
+      verbose,
+      Sys.Date()
+    )
 
   basin_sf <-
     sf::st_transform(basin_sf, as.double(init_epsg))
