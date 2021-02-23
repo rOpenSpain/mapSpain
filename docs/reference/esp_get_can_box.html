@@ -61,13 +61,12 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Get complementary lines when plotting Canary Islands. — esp_get_can_box" />
-<meta property="og:description" content="When plotting Spain, it is usual to represent the Canary
-Islands as an inset (see moveCAN on esp_get_nuts). These
-functions provides complementary borders when Canary Islands are displaces.
-esp_get_can_box is used to draw lines around the displaced
-Canary Islands.
-esp_get_can_provinces is used to draw a separator
-line between the two provinces of the Canary Islands." />
+<meta property="og:description" content="When plotting Spain, it is usual to represent the Canary Islands as an inset
+(see moveCAN on esp_get_nuts(). These functions provides complementary
+borders when Canary Islands are displaced.
+esp_get_can_box is used to draw lines around the displaced Canary Islands.
+esp_get_can_provinces is used to draw a separator line between the two
+provinces of the Canary Islands." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -177,13 +176,12 @@ line between the two provinces of the Canary Islands." />
     </div>
 
     <div class="ref-description">
-    <p>When plotting Spain, it is usual to represent the Canary
-Islands as an inset (see <code>moveCAN</code> on <a href='esp_get_nuts.html'>esp_get_nuts</a>). These
-functions provides complementary borders when Canary Islands are displaces.</p>
-<p><code>esp_get_can_box</code> is used to draw lines around the displaced
-Canary Islands.</p>
-<p><code>esp_get_can_provinces</code> is used to draw a separator
-line between the two provinces of the Canary Islands.</p>
+    <p>When plotting Spain, it is usual to represent the Canary Islands as an inset
+(see <code>moveCAN</code> on <code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code>. These functions provides complementary
+borders when Canary Islands are displaced.</p>
+<p><code>esp_get_can_box</code> is used to draw lines around the displaced Canary Islands.</p>
+<p><code>esp_get_can_provinces</code> is used to draw a separator line between the two
+provinces of the Canary Islands.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_get_can_box</span><span class='op'>(</span>style <span class='op'>=</span> <span class='st'>"right"</span>, moveCAN <span class='op'>=</span> <span class='cn'>TRUE</span>, epsg <span class='op'>=</span> <span class='st'>"4258"</span><span class='op'>)</span>
@@ -196,11 +194,23 @@ line between the two provinces of the Canary Islands.</p>
     <tr>
       <th>style</th>
       <td><p>Style of line around Canary Islands. Four options available:
-<code>'left', 'right', 'box'</code> or <code>'poly'</code>.</p></td>
+"left", "right", "box" or "poly".</p></td>
     </tr>
     <tr>
-      <th>moveCAN, epsg</th>
-      <td><p>See <a href='esp_get_nuts.html'>esp_get_nuts</a></p></td>
+      <th>moveCAN</th>
+      <td><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
+<code><a href='https://rdrr.io/r/base/c.html'>c(lat, lon)</a></code>. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.</p></td>
+    </tr>
+    <tr>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
     </tr>
     </table>
 
@@ -210,12 +220,11 @@ line between the two provinces of the Canary Islands.</p>
 <code>se89_mult_admin_provcan_l.shp</code> file.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>LINESTRING</code> or <code>POLYGON</code> object if
-<code>style = 'poly'</code>.</p>
+    <p>A <code>LINESTRING</code> or <code>POLYGON</code> object if <code>style = "poly"</code>.</p>
 <p><code>esp_get_can_provinces</code> returns a <code>LINESTRING</code> object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='esp_get_nuts.html'>esp_get_nuts</a>, <a href='esp_get_ccaa.html'>esp_get_ccaa</a>.</p></div>
+    <div class='dont-index'><p><code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code>, <code><a href='esp_get_ccaa.html'>esp_get_ccaa()</a></code>.</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • mapSpain</title>
+<title>Get the roads of Spain — esp_get_roads • mapSpain</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -60,7 +60,8 @@
 <!-- rOpenSpain -->
 <link href="../ropenspain.css" rel="stylesheet">
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get the roads of Spain — esp_get_roads" />
+<meta property="og:description" content="Get roads of Spain" />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -93,7 +94,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -162,240 +163,114 @@
       </header>
 
       <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get the roads of Spain</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rOpenSpain/mapSpain/blob/master/R/esp_get_roads.R'><code>R/esp_get_roads.R</code></a></small>
+    <div class="hidden name"><code>esp_get_roads.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Get roads of Spain</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>esp_get_roads</span><span class='op'>(</span>
+  year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  epsg <span class='op'>=</span> <span class='st'>"4258"</span>,
+  cache <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  update_cache <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  cache_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  moveCAN <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-political" class="hasAnchor"><a href="#section-political" class="anchor"></a>Political</h2>
-          <p class="section-desc"><p>These functions return sf objets with political boundaries</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="esp_get_can_box.html">esp_get_can_box()</a></code> <code><a href="esp_get_can_box.html">esp_get_can_provinces()</a></code> </p>
-        </td>
-        <td><p>Get complementary lines when plotting Canary Islands.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_capimun.html">esp_get_capimun()</a></code> </p>
-        </td>
-        <td><p>Get the location of municipalities of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code> <code><a href="esp_get_ccaa.html">esp_get_ccaa_siane()</a></code> </p>
-        </td>
-        <td><p>Get Autonomous Communities boundaries of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_country.html">esp_get_country()</a></code> </p>
-        </td>
-        <td><p>Get boundaries of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_gridmap.html">esp_get_hex_prov()</a></code> <code><a href="esp_get_gridmap.html">esp_get_hex_ccaa()</a></code> <code><a href="esp_get_gridmap.html">esp_get_grid_prov()</a></code> <code><a href="esp_get_gridmap.html">esp_get_grid_ccaa()</a></code> </p>
-        </td>
-        <td><p>Get an hexbin or a map of squares of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_munic.html">esp_get_munic()</a></code> <code><a href="esp_get_munic.html">esp_get_munic_siane()</a></code> </p>
-        </td>
-        <td><p>Get municipalities boundaries of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_nuts.html">esp_get_nuts()</a></code> </p>
-        </td>
-        <td><p>Get NUTS boundaries of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_prov.html">esp_get_prov()</a></code> <code><a href="esp_get_prov.html">esp_get_prov_siane()</a></code> </p>
-        </td>
-        <td><p>Get Provinces boundaries of Spain</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-natural" class="hasAnchor"><a href="#section-natural" class="anchor"></a>Natural</h2>
-          <p class="section-desc"><p>These functions return sf objets with natural features</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code> </p>
-        </td>
-        <td><p>Get the drainage basin demarcations of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code> </p>
-        </td>
-        <td><p>Get hypsometry and bathymetry of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_get_rivers.html">esp_get_rivers()</a></code> </p>
-        </td>
-        <td><p>Get rivers, channels, reservoirs and other wetlands of Spain</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-infrastructures" class="hasAnchor"><a href="#section-infrastructures" class="anchor"></a>Infrastructures</h2>
-          <p class="section-desc"><p>These functions return sf objets with man-made features</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="esp_get_roads.html">esp_get_roads()</a></code> </p>
-        </td>
-        <td><p>Get the roads of Spain</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-tiles" class="hasAnchor"><a href="#section-tiles" class="anchor"></a>Tiles</h2>
-          <p class="section-desc"><p>Return static tiles or create a leaflet map</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code> <code><a href="addProviderEspTiles.html">providerEspTileOptions()</a></code> </p>
-        </td>
-        <td><p>Leaflet plugin - Spanish providers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_getTiles.html">esp_getTiles()</a></code> </p>
-        </td>
-        <td><p>Get Tiles from Public Administrations of Spanish.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-dictionary" class="hasAnchor"><a href="#section-dictionary" class="anchor"></a>Dictionary</h2>
-          <p class="section-desc"><p>Translation across languages and coding systems</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="esp_dict.html">esp_dict_region_code()</a></code> <code><a href="esp_dict.html">esp_dict_translate()</a></code> </p>
-        </td>
-        <td><p>Convert and translate Subdivision Names</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
-          <p class="section-desc"><p>These objects are datasets already included in the package.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="esp_codelist.html">esp_codelist</a></code> </p>
-        </td>
-        <td><p>Spanish Code Translation Data Frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_munic.sf.html">esp_munic.sf</a></code> </p>
-        </td>
-        <td><p>All Municipalities <code>POLYGON</code> object of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="esp_nuts.sf.html">esp_nuts.sf</a></code> </p>
-        </td>
-        <td><p>All NUTS <code>POLYGON</code> object of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="leaflet.providersESP.df.html">leaflet.providersESP.df</a></code> </p>
-        </td>
-        <td><p>Public WMS and WMTS of Spain</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pobmun19.html">pobmun19</a></code> </p>
-        </td>
-        <td><p>Population by municipality (2019)</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-about-the-package" class="hasAnchor"><a href="#section-about-the-package" class="anchor"></a>About the package</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="mapSpain-package.html">mapSpain-package</a></code> </p>
-        </td>
-        <td><p>mapSpain package</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>year</th>
+      <td><p>Release year. See Details for years available.</p></td>
+    </tr>
+    <tr>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>moveCAN</th>
+      <td><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
+<code><a href='https://rdrr.io/r/base/c.html'>c(lat, lon)</a></code>. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>IGN data via a custom CDN (see
+<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>LINESTRING\MULTILINESTRING</code> object.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>year</code> could be passed as a single year ("YYYY" format, as end of year) or
+as a specific date ("YYYY-MM-DD" format).</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>While <code>moveCAN</code> is useful for visualization, it would alter the
+actual geographical position of the Canary Islands.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='esp_get_munic.html'>esp_get_munic()</a></code>, <a href='esp_munic.sf.html'>esp_munic.sf</a>, <a href='esp_codelist.html'>esp_codelist</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a>.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/riatelab/cartography/'>cartography</a></span><span class='op'>)</span>
+
+<span class='va'>CyL</span> <span class='op'>&lt;-</span> <span class='fu'><a href='esp_get_prov.html'>esp_get_prov</a></span><span class='op'>(</span><span class='st'>"Castilla y Leon"</span><span class='op'>)</span>
+<span class='va'>Roads</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_roads</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># Intersect roads</span>
+<span class='va'>CyL_Roads</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/geos_binary_ops.html'>st_intersection</a></span><span class='op'>(</span><span class='va'>CyL</span>, <span class='va'>Roads</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>although coordinates are longitude/latitude, st_intersection assumes that they are planar</span></div><div class='output co'>#&gt; <span class='warning'>Warning: attribute variables are assumed to be spatially constant throughout all geometries</span></div><div class='input'>
+<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>CyL</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"grey80"</span>, border <span class='op'>=</span> <span class='st'>"grey50"</span>, lwd <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/cartography/man/typoLayer.html'>typoLayer</a></span><span class='op'>(</span><span class='va'>CyL_Roads</span>,
+  var <span class='op'>=</span> <span class='st'>"tipo"</span>,
+  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#003399"</span>, <span class='st'>"#003399"</span>, <span class='st'>"#ff0000"</span>, <span class='st'>"#ffff00"</span><span class='op'>)</span>,
+  lwd <span class='op'>=</span> <span class='fl'>2</span>,
+  add <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  legend.pos <span class='op'>=</span> <span class='st'>"n"</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='esp_get_roads-1.png' alt='' width='701' height='433' /></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -61,8 +61,7 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Convert and translate Subdivision Names — esp_dict_region_code" />
-<meta property="og:description" content="Converts long subdivision names into different coding schemes
-and languages." />
+<meta property="og:description" content="Converts long subdivision names into different coding schemes and languages." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -172,8 +171,7 @@ and languages." />
     </div>
 
     <div class="ref-description">
-    <p>Converts long subdivision names into different coding schemes
-and languages.</p>
+    <p>Converts long subdivision names into different coding schemes and languages.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_dict_region_code</span><span class='op'>(</span><span class='va'>sourcevar</span>, origin <span class='op'>=</span> <span class='st'>"text"</span>, destination <span class='op'>=</span> <span class='st'>"text"</span><span class='op'>)</span>
@@ -189,17 +187,17 @@ and languages.</p>
     </tr>
     <tr>
       <th>origin, destination</th>
-      <td><p>One of <code>'text', 'nuts', 'iso2', 'codauto'</code>
-and <code>'cpro'</code>.</p></td>
+      <td><p>One of "text", "nuts", "iso2",
+"codauto" and "cpro".</p></td>
     </tr>
     <tr>
       <th>lang</th>
       <td><p>Language of translation. Available languages are:</p><ul>
-<li><p><code>es</code>: Spanish</p></li>
-<li><p><code>en</code>: English</p></li>
-<li><p><code>ca</code>: Catalan</p></li>
-<li><p><code>ga</code>: Galician</p></li>
-<li><p><code>eu</code>: Basque</p></li>
+<li><p>"es": Spanish</p></li>
+<li><p>"en": English</p></li>
+<li><p>"ca": Catalan</p></li>
+<li><p>"ga": Galician</p></li>
+<li><p>"eu": Basque</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -212,15 +210,14 @@ On <code>FALSE</code> it returns a character vector. See Value</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>esp_dict_region_code</code> returns a vector of characters.</p>
-<p><code>esp_dict_translate</code> returns a character vector or a named list
-with each of the possible names of each <code>sourcevar</code> on the required
-language <code>lang</code>.</p>
+<p><code> esp_dict_translate</code> returns a character vector or a named list with each
+of the possible names of each <code>sourcevar</code> on the required language <code>lang</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If no match is found for any value, the function displays a warning
-and returns <code>NA</code> for those values.</p>
-<p>Note that mixing names of different administrative levels (e.g. Catalonia
-and Barcelona) may return empty values, depending on the <code>destination</code>
+    <p>If no match is found for any value, the function displays a warning and
+returns <code>NA</code> for those values.</p>
+<p>Note that mixing names of different administrative levels (e.g. "Catalonia"
+and "Barcelona") may return empty values, depending on the <code>destination</code>
 values.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 

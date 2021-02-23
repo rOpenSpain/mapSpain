@@ -61,8 +61,7 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Get NUTS boundaries of Spain — esp_get_nuts" />
-<meta property="og:description" content="Loads a simple feature (sf) object containing the
-NUTS boundaries of Spain." />
+<meta property="og:description" content="Loads a simple feature (sf) object containing the NUTS boundaries of Spain." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -172,8 +171,7 @@ NUTS boundaries of Spain." />
     </div>
 
     <div class="ref-description">
-    <p>Loads a simple feature (<code>sf</code>) object containing the
-NUTS boundaries of Spain.</p>
+    <p>Loads a simple feature (<code>sf</code>) object containing the NUTS boundaries of Spain.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_get_nuts</span><span class='op'>(</span>
@@ -195,17 +193,17 @@ NUTS boundaries of Spain.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>year</th>
-      <td><p>Release year. One of <code>"2003", "2006",</code>
-<code>"2010", "2013", "2016"</code> or <code>"2021"</code></p></td>
+      <td><p>Release year. One of "2003", "2006",`"2010", "2013", "2016" or
+"2021".</p></td>
     </tr>
     <tr>
       <th>epsg</th>
-      <td><p>projection of the map: 4-digit
-<a href='https://epsg.io/'>EPSG code</a>. One of:</p><ul>
-<li><p><code>"4258"</code> - <a href='https://epsg.io/4258'>ETRS89</a></p></li>
-<li><p><code>"4326"</code> - <a href='https://epsg.io/4326'>WGS84</a></p></li>
-<li><p><code>"3035"</code> - <a href='https://epsg.io/3035'>ETRS89 / ETRS-LAEA</a></p></li>
-<li><p><code>"3857"</code> - <a href='https://epsg.io/3857'>Pseudo-Mercator</a></p></li>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
 </ul></td>
     </tr>
     <tr>
@@ -214,9 +212,9 @@ NUTS boundaries of Spain.</p>
     </tr>
     <tr>
       <th>update_cache</th>
-      <td><p>A logical whether to update cache.
-Default is <code>FALSE</code>. When set to <code>TRUE</code> it would force a fresh
-download of the source <code>.geojson</code> file.</p></td>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
     </tr>
     <tr>
       <th>cache_dir</th>
@@ -230,37 +228,35 @@ default is <code>FALSE</code>.</p></td>
     <tr>
       <th>resolution</th>
       <td><p>Resolution of the geospatial data. One of</p><ul>
-<li><p><code>"60"</code> (1:60million),</p></li>
-<li><p><code>"20"</code> (1:20million)</p></li>
-<li><p><code>"10"</code> (1:10million)</p></li>
-<li><p><code>"03"</code> (1:3million) or</p></li>
-<li><p><code>"01"</code> (1:1million).</p></li>
+<li><p>"60": 1:60million</p></li>
+<li><p>"20": 1:20million</p></li>
+<li><p>"10": 1:10million</p></li>
+<li><p>"03": 1:3million</p></li>
+<li><p>"01": 1:1million</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>spatialtype</th>
       <td><p>Type of geometry to be returned:</p><ul>
-<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
+<li><p>"RG": Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+<li><p>"LB": Labels - <code>POINT</code> object.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>region</th>
       <td><p>Optional. A vector of region names, NUTS or ISO codes
-(see <a href='esp_dict_region_code.html'>esp_dict_region_code</a>).</p></td>
+(see <code><a href='esp_dict_region_code.html'>esp_dict_region_code()</a></code>.</p></td>
     </tr>
     <tr>
       <th>nuts_level</th>
-      <td><p>NUTS level. One of <code>"0"</code> (Country-level),
-<code>"1", "2"</code> or <code>"3"</code>.
+      <td><p>NUTS level. One of "0" (Country-level), "1", "2" or "3".
 See <a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a>.</p></td>
     </tr>
     <tr>
       <th>moveCAN</th>
-      <td><p>A logical <code>TRUE,FALSE</code> or a vector of coordinates
-<code><a href='https://rdrr.io/r/base/c.html'>c(lat, lon)</a></code>. It places the Canary Island close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.
-See Note.</p></td>
+      <td><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
+<code><a href='https://rdrr.io/r/base/c.html'>c(lat, lon)</a></code>. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.</p></td>
     </tr>
     </table>
 
@@ -272,27 +268,25 @@ See Note.</p></td>
     <p>A <code>POLYGON/POINT</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>cache_dir = NULL</code> (default) uses and creates
-<code>/mapSpain</code> directory in the temporary directory from
-<code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>. The directory can also be set with
-<code><a href='https://rdrr.io/r/base/options.html'>options(mapSpain = "path/to/dir")</a></code> or
-<code><a href='https://rdrr.io/r/base/options.html'>options(gisco_cache_dir = "path/to/dir")</a></code>
-(see <code><a href='https://dieghernan.github.io/giscoR/reference/gisco_get.html'>gisco_get</a></code>)</p>
+    <p><code>cache_dir = NULL</code> (default) uses and creates <code>/mapSpain</code> directory in the
+temporary directory <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code>. The directory can also be set via options
+with <code><a href='https://rdrr.io/r/base/options.html'>options(mapSpain = "path/to/dir")</a></code> or
+<code><a href='https://rdrr.io/r/base/options.html'>options(gisco_cache_dir = "path/to/dir")</a></code> (See <a href='https://dieghernan.github.io/giscoR/reference/gisco_get.html'>giscoR::gisco_get</a>)</p>
 <p>Sometimes cached files may be corrupt. On that case, try redownloading
-the data setting <code>update_cache = TRUE</code>.</p>
+the data using <code>update_cache = TRUE</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Please check the download and usage provisions on
-<code><a href='https://dieghernan.github.io/giscoR/reference/gisco_attributions.html'>gisco_attributions</a></code>.</p>
-<p>While <code>moveCAN</code> is useful for visualization, it would alter the
-actual geographical position of the Canary Islands. When using the output
-for spatial analysis or using tiles (<a href='esp_getTiles.html'>esp_getTiles</a>,
-<a href='addProviderEspTiles.html'>addProviderEspTiles</a>) this option should be set to <code>FALSE</code> in
-order to get the actual coordinates.</p>
+<code><a href='https://dieghernan.github.io/giscoR/reference/gisco_attributions.html'>giscoR::gisco_attributions()</a></code></p>
+<p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
+geographical position of the Canary Islands. When using the output for
+spatial analysis or using tiles (<code><a href='esp_getTiles.html'>esp_getTiles()</a></code>,<a href='addProviderEspTiles.html'>addProviderEspTiles</a>)
+this option should be set to <code>FALSE</code> in#' order to get the actual
+coordinates.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='esp_nuts.sf.html'>esp_nuts.sf</a>, <a href='esp_dict_region_code.html'>esp_dict_region_code</a>,
-<a href='esp_codelist.html'>esp_codelist</a>, <a href='https://dieghernan.github.io/giscoR/reference/gisco_get.html'>gisco_get</a>.</p></div>
+    <div class='dont-index'><p><a href='esp_nuts.sf.html'>esp_nuts.sf</a>, <a href='esp_dict_region_code.html'>esp_dict_region_code</a>, <a href='esp_codelist.html'>esp_codelist</a>,
+<a href='https://dieghernan.github.io/giscoR/reference/gisco_get.html'>giscoR::gisco_get</a>.</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
