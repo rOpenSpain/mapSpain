@@ -182,11 +182,11 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)  
-  - [`cartography`](http://riatelab.github.io/cartography/docs/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)  
+-   [`cartography`](http://riatelab.github.io/cartography/docs/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -198,8 +198,8 @@ code](https://github.com/ropenspain/mapSpain/).
 This package used data from CartoBase SIANE, provided by Instituto
 Geográfico Nacional:
 
-> Atlas Nacional de España (ANE) [CC
-> BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+> Atlas Nacional de España (ANE) [CC BY
+> 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
 > [ign.es](https://www.ign.es/)
 
 See <https://github.com/dieghernan/mapSpain-1/tree/sianedata>
@@ -209,7 +209,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -217,13 +217,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

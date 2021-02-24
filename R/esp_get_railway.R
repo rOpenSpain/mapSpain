@@ -27,6 +27,7 @@
 #' @inheritParams esp_get_roads
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #'
 #' provs <- esp_get_prov()
@@ -61,6 +62,7 @@
 #'   col = "grey30",
 #'   add = TRUE
 #' )
+#' }
 esp_get_railway <- function(year = Sys.Date(),
                             epsg = "4258",
                             cache = TRUE,

@@ -54,6 +54,7 @@ Extract nodes and railways of mainland Spain and the Balearic Islands.
 Details on caching can be found on \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 }
 \examples{
+\donttest{
 library(sf)
 
 provs <- esp_get_prov()
@@ -88,6 +89,7 @@ plot(st_geometry(stations),
   col = "grey30",
   add = TRUE
 )
+}
 }
 \seealso{
 \code{\link[=esp_get_roads]{esp_get_roads()}}

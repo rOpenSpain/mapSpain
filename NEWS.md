@@ -1,4 +1,4 @@
-# mapSpain 0.2.0-9000
+# mapSpain 0.2.0
 
 * Fix DOI <https://doi.org/10.5281/zenodo.4318024>
 * Documentation ported to roxygen2/markdown
