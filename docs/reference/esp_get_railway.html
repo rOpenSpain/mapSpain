@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leaflet plugin - Spanish providers — addProviderEspTiles • mapSpain</title>
+<title>Get railways of Spain — esp_get_railway • mapSpain</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -60,9 +60,8 @@
 <!-- rOpenSpain -->
 <link href="../ropenspain.css" rel="stylesheet">
 
-<meta property="og:title" content="Leaflet plugin - Spanish providers — addProviderEspTiles" />
-<meta property="og:description" content="Add tiles of https://dieghernan.github.io/leaflet-providersESP/ to a
-R leaflet::leaflet() map." />
+<meta property="og:title" content="Get railways of Spain — esp_get_railway" />
+<meta property="og:description" content="Extract nodes and railways of mainland Spain and the Balearic Islands." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -166,106 +165,121 @@ R leaflet::leaflet() map." />
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Leaflet plugin - Spanish providers</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rOpenSpain/mapSpain/blob/master/R/addProviderEspTiles.R'><code>R/addProviderEspTiles.R</code></a></small>
-    <div class="hidden name"><code>addProviderEspTiles.Rd</code></div>
+    <h1>Get railways of Spain</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rOpenSpain/mapSpain/blob/master/R/esp_get_railway.R'><code>R/esp_get_railway.R</code></a></small>
+    <div class="hidden name"><code>esp_get_railway.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Add tiles of <a href='https://dieghernan.github.io/leaflet-providersESP/'>https://dieghernan.github.io/leaflet-providersESP/</a> to a
-<strong>R</strong> <code><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet::leaflet()</a></code> map.</p>
+    <p>Extract nodes and railways of mainland Spain and the Balearic Islands.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>addProviderEspTiles</span><span class='op'>(</span>
-  <span class='va'>map</span>,
-  <span class='va'>provider</span>,
-  layerId <span class='op'>=</span> <span class='cn'>NULL</span>,
-  group <span class='op'>=</span> <span class='cn'>NULL</span>,
-  options <span class='op'>=</span> <span class='fu'>providerEspTileOptions</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'>providerEspTileOptions</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>esp_get_railway</span><span class='op'>(</span>
+  year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  epsg <span class='op'>=</span> <span class='st'>"4258"</span>,
+  cache <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  update_cache <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  cache_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  spatialtype <span class='op'>=</span> <span class='st'>"line"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>map</th>
-      <td><p>a map widget object created from <code><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a>()</code></p></td>
+      <th>year</th>
+      <td><p>Release year.</p></td>
     </tr>
     <tr>
-      <th>provider</th>
-      <td><p>Name of the provider, see <a href='leaflet.providersESP.df.html'>leaflet.providersESP.df</a>.</p></td>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
     </tr>
     <tr>
-      <th>layerId</th>
-      <td><p>the layer id</p></td>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
-      <th>group</th>
-      <td><p>the name of the group the newly created layers should belong to
-(for <code><a href='https://rdrr.io/pkg/leaflet/man/remove.html'>clearGroup</a></code> and <code><a href='https://rdrr.io/pkg/leaflet/man/addLayersControl.html'>addLayersControl</a></code> purposes).
-Human-friendly group names are permitted--they need not be short,
-identifier-style names. Any number of layers and even different types of
-layers (e.g. markers and polygons) can share the same group name.</p></td>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
     </tr>
     <tr>
-      <th>options</th>
-      <td><p>a list of extra options for tile layers, popups, paths
-(circles, rectangles, polygons, ...), or other map elements</p></td>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>leaflet::providerTileOptions</a></code></p><dl>
-    <dt><code>errorTileUrl</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-    <dt><code>noWrap</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-    <dt><code>opacity</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-    <dt><code>zIndex</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-    <dt><code>updateWhenIdle</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-    <dt><code>detectRetina</code></dt><dd><p>the tile layer options; see
-<a href='https://leafletjs.com/reference-1.3.4.html#tilelayer'>https://leafletjs.com/reference-1.3.4.html#tilelayer</a></p></dd>
-  
-</dl></td>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>spatialtype</th>
+      <td><p>Spatial type of the output. Use "line" for extracting
+the railway and "point" for the stations.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://dieghernan.github.io/leaflet-providersESP/'>https://dieghernan.github.io/leaflet-providersESP/</a> leaflet plugin,
-<strong>v1.2.0</strong>.</p>
+    <p>IGN data via a custom CDN (see
+<a href='https://github.com/rOpenSpain/mapSpain/tree/sianedata'>https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified <code>map</code> object.</p>
+    <p>A <code>MULTILINESTRING</code> or <code>POINT</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Wrapper of <code><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>leaflet::providerTileOptions()</a></code></p>
+    <p>Details on caching can be found on <code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='leaflet.providersESP.df.html'>leaflet.providersESP.df</a>, <code><a href='esp_getTiles.html'>esp_getTiles()</a></code></p>
-<p><code><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>leaflet::providerTileOptions()</a></code>, <code><a href='https://rdrr.io/pkg/leaflet/man/map-options.html'>leaflet::tileOptions()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='esp_get_roads.html'>esp_get_roads()</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
+    <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rstudio.github.io/leaflet/'>leaflet</a></span><span class='op'>)</span>
-<span class='va'>PuertadelSol</span> <span class='op'>&lt;-</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-methods.html'>setView</a></span><span class='op'>(</span>
-    lat <span class='op'>=</span> <span class='fl'>40.4166</span>,
-    lng <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3.7038400</span>,
-    zoom <span class='op'>=</span> <span class='fl'>18</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>addProviderEspTiles</span><span class='op'>(</span>provider <span class='op'>=</span> <span class='st'>"IGNBase.Gris"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>addProviderEspTiles</span><span class='op'>(</span>provider <span class='op'>=</span> <span class='st'>"RedTransporte.Carreteras"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
 
-<span class='va'>PuertadelSol</span>
-</div></pre>
+<span class='va'>provs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='esp_get_prov.html'>esp_get_prov</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>ccaa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='esp_get_ccaa.html'>esp_get_ccaa</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># Railways</span>
+<span class='va'>rails</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_railway</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># Stations</span>
+<span class='va'>stations</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_railway</span><span class='op'>(</span>spatialtype <span class='op'>=</span> <span class='st'>"point"</span><span class='op'>)</span>
+
+<span class='co'># Map</span>
+
+<span class='va'>pal</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>rails</span><span class='op'>$</span><span class='va'>tipo</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+
+<span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>provs</span><span class='op'>)</span>,
+  col <span class='op'>=</span> <span class='st'>"grey95"</span>,
+  border <span class='op'>=</span> <span class='st'>"grey70"</span>,
+  xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>7.5</span>, <span class='op'>-</span><span class='fl'>2.5</span><span class='op'>)</span>,
+  ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>38</span>, <span class='fl'>40</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>ccaa</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>rails</span><span class='op'>[</span>, <span class='st'>"tipo"</span><span class='op'>]</span>,
+  pal <span class='op'>=</span> <span class='va'>pal</span>,
+  add <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  lwd <span class='op'>=</span> <span class='fl'>2</span>
+<span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>stations</span><span class='op'>)</span>,
+  pch <span class='op'>=</span> <span class='fl'>19</span>,
+  col <span class='op'>=</span> <span class='st'>"grey30"</span>,
+  add <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+</div><div class='img'><img src='esp_get_railway-1.png' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

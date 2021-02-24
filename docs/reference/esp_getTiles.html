@@ -61,12 +61,10 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Get Tiles from Public Administrations of Spanish. — esp_getTiles" />
-<meta property="og:description" content="Get static map tiles based on a spatial object.
-Maps can be
-fetched from various open map servers.
+<meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
+various open map servers.
 This function is a implementation of the javascript plugin
-leaflet-providersESP
-v1.2.0" />
+https://dieghernan.github.io/leaflet-providersESP/ v1.2.0." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -109,7 +107,7 @@ v1.2.0" />
       <i class="fa fa-align-justify"></i>
       </button>
       <span class="navbar-brand" id="ROS-navbar-brand">
-      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0-9000</span>
+      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -176,12 +174,10 @@ v1.2.0" />
     </div>
 
     <div class="ref-description">
-    <p>Get static map tiles based on a spatial object.
-Maps can be
-fetched from various open map servers.</p>
+    <p>Get static map tiles based on a spatial object. Maps can be fetched from
+various open map servers.</p>
 <p>This function is a implementation of the javascript plugin
-<a href='https://dieghernan.github.io/leaflet-providersESP/'>leaflet-providersESP</a>
-<strong>v1.2.0</strong></p>
+<a href='https://dieghernan.github.io/leaflet-providersESP/'>https://dieghernan.github.io/leaflet-providersESP/</a> <strong>v1.2.0</strong>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_getTiles</span><span class='op'>(</span>
@@ -211,13 +207,14 @@ fetched from various open map servers.</p>
     </tr>
     <tr>
       <th>zoom</th>
-      <td><p>the zoom level. If <code>NULL</code>, it is determined automatically
-(see <code><a href='https://rdrr.io/pkg/cartography/man/getTiles.html'>getTiles</a></code>). Only valid for WMTS.</p></td>
+      <td><p>Zoom level. If <code>NULL</code>, it is determined automatically.
+Only valid for WMTS.</p></td>
     </tr>
     <tr>
       <th>crop</th>
-      <td><p>TRUE if results should be cropped to the specified x extent,
-FALSE otherwise. If x is an sf object with one POINT, crop is set to FALSE.</p></td>
+      <td><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
+<code>FALSE</code> otherwise. If <code>x</code> is an <code>sf</code> object with one <code>POINT</code>, crop is set
+to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>res</th>
@@ -238,32 +235,46 @@ Depends on the selected provider on <code>type</code>.</p></td>
       <td><p><code>TRUE</code> if the result should be masked to <code>x</code>.</p></td>
     </tr>
     <tr>
-      <th>update_cache, cache_dir, verbose</th>
-      <td><p>See <a href='esp_get_nuts.html'>esp_get_nuts</a></p></td>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://dieghernan.github.io/leaflet-providersESP/'>leaflet-providersESP</a>
-leaflet plugin, <strong>v1.2.0</strong>.</p>
+    <p><a href='https://dieghernan.github.io/leaflet-providersESP/'>https://dieghernan.github.io/leaflet-providersESP/</a> leaflet plugin,
+<strong>v1.2.0</strong>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A RasterBrick is returned.</p>
+    <p>A <code>RasterBrick</code> is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
+the provider.
+.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Results of <code>esp_getTiles</code> could be plotted using
-<code><a href='https://rdrr.io/pkg/cartography/man/tilesLayer.html'>tilesLayer</a></code></p>
+    <p>Zoom levels are described on the OpenStreetMap wiki:
+<a href='https://wiki.openstreetmap.org/wiki/Zoom_levels'>https://wiki.openstreetmap.org/wiki/Zoom_levels</a>.</p>
+<p>Results of <code>esp_getTiles</code> could be plotted using <code><a href='https://rdrr.io/pkg/raster/man/plotRGB.html'>raster::plotRGB()</a></code> or
+<code><a href='https://rdrr.io/pkg/cartography/man/tilesLayer.html'>cartography::tilesLayer()</a></code></p>
 <p>For a complete list of providers see <a href='leaflet.providersESP.df.html'>leaflet.providersESP.df</a>.</p>
 <p>Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
 looks deformed, try projecting first <code>x</code>:</p>
 <p><code>x &lt;- sf::st_transform(x,3857)</code></p>
-<p>Tiles are cached under the path <code>cache_dir/[type]</code></p>
+<p>Tiles are cached under the path <code>cache_dir/[type]</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='leaflet.providersESP.df.html'>leaflet.providersESP.df</a>, <a href='addProviderEspTiles.html'>addProviderEspTiles</a>,
-<a href='https://rdrr.io/pkg/cartography/man/getTiles.html'>getTiles</a>,
-<a href='https://rdrr.io/pkg/cartography/man/tilesLayer.html'>tilesLayer</a>.</p></div>
+    <div class='dont-index'><p><a href='leaflet.providersESP.df.html'>leaflet.providersESP.df</a>, <code><a href='addProviderEspTiles.html'>addProviderEspTiles()</a></code>, <code><a href='https://rdrr.io/pkg/raster/man/plotRGB.html'>raster::plotRGB()</a></code>,
+<code><a href='https://rdrr.io/pkg/cartography/man/getTiles.html'>cartography::getTiles()</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
