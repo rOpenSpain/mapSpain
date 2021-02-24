@@ -202,7 +202,7 @@ Geográfico Nacional:
 > 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
 > [ign.es](https://www.ign.es/)
 
-See <https://github.com/dieghernan/mapSpain-1/tree/sianedata>
+See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
 This package uses data from **GISCO**. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial
