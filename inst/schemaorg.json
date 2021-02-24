@@ -25,7 +25,7 @@
           "name": "Instituto Geográfico Nacional"
         }
       ],
-      "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE \n    from Instituto Geográfico Nacional <https://www.ign.es/>. \n    It also provides a 'leaflet' plugin and the ability of \n    downloading and processing static tiles.",
+      "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' \n    from 'Instituto Geografico Nacional' <https://www.ign.es/>. \n    It also provides a 'leaflet' plugin and the ability of \n    downloading and processing static tiles.",
       "funder": {},
       "license": "https://spdx.org/licenses/GPL-3.0",
       "name": "mapSpain: Administrative Boundaries of Spain",

@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "mapSpain",
-  "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE \n    from Instituto Geográfico Nacional <https://www.ign.es/>. \n    It also provides a 'leaflet' plugin and the ability of \n    downloading and processing static tiles.",
+  "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' \n    from 'Instituto Geografico Nacional' <https://www.ign.es/>. \n    It also provides a 'leaflet' plugin and the ability of \n    downloading and processing static tiles.",
   "name": "mapSpain: Administrative Boundaries of Spain",
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "relatedLink": [
@@ -203,7 +203,7 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "fileSize": "7457.597KB",
+  "fileSize": "449686.597KB",
   "contIntegration": "https://codecov.io/gh/rOpenSpain/mapSpain",
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "keywords": [
