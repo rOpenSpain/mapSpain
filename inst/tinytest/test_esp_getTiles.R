@@ -5,6 +5,7 @@ expect_error(esp_getTiles(poly, type = "FFF"))
 
 
 if (giscoR::gisco_check_access()) {
+  expect_true("RasterBrick" %in% class(esp_getTiles(poly)))
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
   expect_message(esp_getTiles(sf::st_geometry(poly), verbose = TRUE))
   expect_message(esp_getTiles(poly, verbose = TRUE))

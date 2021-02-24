@@ -1,6 +1,35 @@
+options(mapSpain_cache_dir = "~/R/mapslib/GISCO")
+
+
 roxygen2::roxygenise()
 tinytest::test_all()
 devtools::check()
+
+# issue template
+devtools::build_readme()
+devtools::build_rmd("vignettes/mapSpain.Rmd")
+devtools::build_rmd("vignettes/working_imagery.Rmd")
+devtools::build_rmd("vignettes/x01_regioncodes.Rmd")
+
+urlchecker::url_check()
+
+devtools::check(remote = TRUE, manual = TRUE)
+
+devtools::spell_check()
+devtools::check_rhub()
+devtools::check_win_release()
+devtools::check_win_devel()
+devtools::check_win_oldrelease()
+
+
+revdepcheck::revdep_check(num_workers = 4)
+
+
+
+
+
+
+
 install.packages("devtools")
 
 covr::package_coverage()

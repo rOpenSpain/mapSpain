@@ -70,6 +70,16 @@ esp_getTiles <- function(x,
                          update_cache = FALSE,
                          cache_dir = NULL,
                          verbose = FALSE) {
+  # nocov start
+  if (isFALSE(requireNamespace("rgdal", quietly = TRUE))) {
+    stop("`rgdal` package required for esp_getTiles()")
+  }
+  # nocov end
+
+  # Disable warnings related with crs
+  oldw <- getOption("warn")
+  options(warn = -1)
+
   # A. Check providers
   leafletProvidersESP <- mapSpain::leaflet.providersESP.df
   provs <-
@@ -134,7 +144,6 @@ esp_getTiles <- function(x,
       )
   }
 
-
   # Regenerate
   # Display attributions
 
@@ -148,8 +157,10 @@ esp_getTiles <- function(x,
   x <- xinit
 
   # reproject rout
+
   rout <-
     raster::projectRaster(from = rout, crs = sf::st_crs(x)$proj4string)
+
   rout <- raster::clamp(rout,
     lower = 0,
     upper = 255,
@@ -172,5 +183,10 @@ esp_getTiles <- function(x,
     rout <- raster::mask(rout, x)
   }
 
+  # Restore warnings
+  options(warn = oldw)
+  on.exit(options(warn = oldw))
+
+  # Result
   return(rout)
 }

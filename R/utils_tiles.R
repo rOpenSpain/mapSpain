@@ -153,7 +153,7 @@ getWMTS <- function(x,
       zoom <- max(zoom, minZoom)
       if (verbose) {
         message(
-          "\nSwicthing. Minimum zoom for this provider is ",
+          "\nSwitching. Minimum zoom for this provider is ",
           zoom,
           "\n"
         )
@@ -290,7 +290,7 @@ dl_t <-
         mode = "wb"
       )
     } else if (verbose) {
-      message("Tile cached on", outfile)
+      message("Tile cached on ", outfile)
     }
     return(outfile)
   }
