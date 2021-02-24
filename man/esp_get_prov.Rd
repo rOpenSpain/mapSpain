@@ -125,9 +125,9 @@ plot(
 }
 \seealso{
 \code{\link[=esp_get_hex_prov]{esp_get_hex_prov()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link[=esp_codelist]{esp_codelist()}}.
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{mappolitical}
+\concept{political}

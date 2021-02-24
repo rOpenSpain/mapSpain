@@ -47,4 +47,4 @@ plot(
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 }
-\concept{mapSpaindata}
+\concept{datasets}

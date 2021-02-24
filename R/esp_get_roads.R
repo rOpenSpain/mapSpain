@@ -3,7 +3,7 @@
 #' @description
 #' Get roads of Spain
 #'
-#' @concept manmade
+#' @concept infrastructure
 #'
 #' @return A `LINESTRING\MULTILINESTRING` object.
 #'
@@ -22,11 +22,13 @@
 #' `year` could be passed as a single year ("YYYY" format, as end of year) or
 #' as a specific date ("YYYY-MM-DD" format).
 #'
-#' @note While \code{moveCAN} is useful for visualization, it would alter the
+#' Details on caching can be found on [esp_get_nuts()]
+#'
+#' @note While `moveCAN` is useful for visualization, it would alter the
 #' actual geographical position of the Canary Islands.
 #'
 #' @examples
-#'
+#' \donttest{
 #' library(sf)
 #' library(cartography)
 #'
@@ -44,6 +46,7 @@
 #'   add = TRUE,
 #'   legend.pos = "n"
 #' )
+#' }
 esp_get_roads <- function(year = Sys.Date(),
                           epsg = "4258",
                           cache = TRUE,

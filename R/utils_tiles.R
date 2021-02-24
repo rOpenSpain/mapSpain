@@ -1,4 +1,13 @@
-#' @name getWMS
+#' Get tiles from WMS
+#'
+#' @param transparent Transparency
+#'
+#' @param bbox_expand Expansion of the bbox
+#'
+#' @param provs Provider
+#'
+#' @inheritParams esp_getTiles
+#'
 #' @noRd
 getWMS <- function(x,
                    provs,
@@ -105,7 +114,12 @@ getWMS <- function(x,
   return(rout)
 }
 
-#' @name getWMTS
+#' Get tiles from WMTS
+#'
+#' @inheritParams esp_getTiles
+#'
+#' @inheritParams getWMS
+#'
 #' @noRd
 getWMTS <- function(x,
                     provs,

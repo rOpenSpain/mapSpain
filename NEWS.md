@@ -1,7 +1,8 @@
 # mapSpain 0.2.0-9000
 
 * Fix DOI <https://doi.org/10.5281/zenodo.4318024>
-* WIP: Include CartoBase ANE data <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
+* Documentation ported to roxygen2/markdown
+* Include CartoBase ANE data <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
   * `mapSpain::esp_get_munic_siane()`
   * `mapSpain::esp_get_prov_siane()`
   * `mapSpain::esp_get_ccaa_siane()`
@@ -10,6 +11,7 @@
   * `mapSpain::esp_get_hydrobasin()`
   * `mapSpain::esp_get_capimun()`
   * `mapSpain::esp_get_roads()`
+  * `mapSpain::esp_get_railway()`
 
 # mapSpain 0.1.2
 

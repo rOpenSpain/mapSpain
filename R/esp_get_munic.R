@@ -1,6 +1,6 @@
 #' Get municipalities boundaries of Spain
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @description
 #' Loads a simple feature (`sf`) object containing the
@@ -283,6 +283,8 @@ esp_get_munic <- function(year = "2019",
 
 
 #' @rdname esp_get_munic
+#'
+#' @concept political
 #'
 #' @description
 #' `esp_get_munic_siane` uses CartoBase ANE as source, provided by Instituto

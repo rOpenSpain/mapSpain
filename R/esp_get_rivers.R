@@ -4,7 +4,7 @@
 #' Loads a simple feature (`sf`) object containing lines or
 #' areas with the required hydrograpic elements of Spain.
 #'
-#' @concept mapnatural
+#' @concept natural
 #'
 #' @return A `POLYGON` or `LINESTRING` object.
 #'

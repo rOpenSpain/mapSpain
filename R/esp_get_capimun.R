@@ -7,7 +7,7 @@
 #' Note that this differs of the centroid of the boundaries of the
 #' municipallity, returned by [esp_get_munic()].
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @return A `POINT` object.
 #'
@@ -33,7 +33,7 @@
 #' all the municipalities of that level would be added.
 #' @export
 #'
-#' @note While \code{moveCAN} is useful for visualization, it would alter the
+#' @note While `moveCAN` is useful for visualization, it would alter the
 #' actual geographical position of the Canary Islands.
 #'
 #' @examples

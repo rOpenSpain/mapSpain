@@ -92,4 +92,4 @@ esp_dict_translate(vals, lang = "ga", all = TRUE)
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{esp_dict}
+\concept{dictionary}

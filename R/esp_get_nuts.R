@@ -2,7 +2,7 @@
 #'
 #' @export
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @description
 #' Loads a simple feature (`sf`) object containing the NUTS boundaries of Spain.
@@ -17,8 +17,8 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [esp_nuts.sf], [esp_dict_region_code], [esp_codelist],
-#'   [giscoR::gisco_get].
+#' @seealso [esp_nuts.sf], [esp_dict_region_code()], [esp_codelist],
+#'   [giscoR::gisco_get()].
 #'
 #' @param year Release year. One of "2003", "2006",`"2010", "2013", "2016" or
 #'   "2021".
@@ -65,7 +65,7 @@
 #' `cache_dir = NULL` (default) uses and creates `/mapSpain` directory in the
 #' temporary directory [tempdir()]. The directory can also be set via options
 #' with `options(mapSpain = "path/to/dir")` or
-#' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get])
+#' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get()])
 #'
 #' Sometimes cached files may be corrupt. On that case, try redownloading
 #' the data using `update_cache = TRUE`.
@@ -73,8 +73,8 @@
 #' @note
 #' While `moveCAN` is useful for visualization, it would alter the actual
 #' geographical position of the Canary Islands. When using the output for
-#' spatial analysis or using tiles ([esp_getTiles()],[addProviderEspTiles])
-#' this option should be set to `FALSE` in#' order to get the actual
+#' spatial analysis or using tiles ([esp_getTiles()], [addProviderEspTiles()])
+#' this option should be set to `FALSE` in order to get the actual
 #' coordinates.
 #'
 #' @examples

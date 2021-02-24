@@ -1,6 +1,6 @@
 #' Spanish Code Translation Data Frame
 #'
-#' @concept mapSpaindata
+#' @concept datasets
 #'
 #' @name esp_codelist
 #'
@@ -63,7 +63,7 @@ NULL
 
 #' All NUTS `POLYGON` object of Spain
 #'
-#' @concept mapSpaindata
+#' @concept datasets
 #'
 #' @name esp_nuts.sf
 #'
@@ -113,7 +113,7 @@ NULL
 
 #' All Municipalities `POLYGON` object of Spain
 #'
-#' @concept mapSpaindata
+#' @concept datasets
 #'
 #' @name esp_munic.sf
 #'
@@ -170,7 +170,7 @@ NULL
 
 #' @title Population by municipality (2019)
 #'
-#' @concept mapSpaindata
+#' @concept datasets
 #'
 #' @name pobmun19
 #'
@@ -186,7 +186,7 @@ NULL
 
 #' @title Public WMS and WMTS of Spain
 #'
-#' @concept mapSpaindata
+#' @concept datasets
 #'
 #' @name leaflet.providersESP.df
 #'

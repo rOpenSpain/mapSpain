@@ -142,4 +142,4 @@ par(opar)
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{mapnatural}
+\concept{natural}

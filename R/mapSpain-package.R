@@ -35,7 +35,7 @@
 #' Useful links:
 #'  * <https://ropenspain.github.io/mapSpain/>
 #'  * <https://github.com/rOpenSpain/mapSpain>
-#'  * <Report bugs at https://github.com/rOpenSpain/mapSpain/issues>
+#'  * Report bugs at <https://github.com/rOpenSpain/mapSpain/issues>
 #'
 #' @keywords package
 #'

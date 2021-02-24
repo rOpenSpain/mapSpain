@@ -80,7 +80,7 @@ Loads a simple feature (\code{sf}) object containing the NUTS boundaries of Spai
 \code{cache_dir = NULL} (default) uses and creates \verb{/mapSpain} directory in the
 temporary directory \code{\link[=tempdir]{tempdir()}}. The directory can also be set via options
 with \code{options(mapSpain = "path/to/dir")} or
-\code{options(gisco_cache_dir = "path/to/dir")} (See \link[giscoR:gisco_get]{giscoR::gisco_get})
+\code{options(gisco_cache_dir = "path/to/dir")} (See \code{\link[giscoR:gisco_get]{giscoR::gisco_get()}})
 
 Sometimes cached files may be corrupt. On that case, try redownloading
 the data using \code{update_cache = TRUE}.
@@ -91,8 +91,8 @@ Please check the download and usage provisions on
 
 While \code{moveCAN} is useful for visualization, it would alter the actual
 geographical position of the Canary Islands. When using the output for
-spatial analysis or using tiles (\code{\link[=esp_getTiles]{esp_getTiles()}},\link{addProviderEspTiles})
-this option should be set to \code{FALSE} in#' order to get the actual
+spatial analysis or using tiles (\code{\link[=esp_getTiles]{esp_getTiles()}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})
+this option should be set to \code{FALSE} in order to get the actual
 coordinates.
 }
 \examples{
@@ -121,10 +121,10 @@ MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 plot(st_geometry(MixingCodes), col = pal)
 }
 \seealso{
-\link{esp_nuts.sf}, \link{esp_dict_region_code}, \link{esp_codelist},
-\link[giscoR:gisco_get]{giscoR::gisco_get}.
+\link{esp_nuts.sf}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}, \link{esp_codelist},
+\code{\link[giscoR:gisco_get]{giscoR::gisco_get()}}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{mappolitical}
+\concept{political}

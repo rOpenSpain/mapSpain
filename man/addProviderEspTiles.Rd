@@ -5,8 +5,8 @@
 \alias{providerEspTileOptions}
 \title{Leaflet plugin - Spanish providers}
 \source{
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-leaflet plugin, \strong{v1.2.0}.
+\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
+\strong{v1.2.0}.
 }
 \usage{
 addProviderEspTiles(
@@ -20,23 +20,47 @@ addProviderEspTiles(
 providerEspTileOptions(...)
 }
 \arguments{
-\item{map, layerId, group, options}{See \link[leaflet]{addTiles}}
+\item{map}{a map widget object created from \code{\link[leaflet]{leaflet}()}}
 
 \item{provider}{Name of the provider, see \link{leaflet.providersESP.df}.}
 
-\item{...}{Additional options. See \link[leaflet]{providerTileOptions}.}
+\item{layerId}{the layer id}
+
+\item{group}{the name of the group the newly created layers should belong to
+(for \code{\link[leaflet]{clearGroup}} and \code{\link[leaflet]{addLayersControl}} purposes).
+Human-friendly group names are permitted--they need not be short,
+identifier-style names. Any number of layers and even different types of
+layers (e.g. markers and polygons) can share the same group name.}
+
+\item{options}{a list of extra options for tile layers, popups, paths
+(circles, rectangles, polygons, ...), or other map elements}
+
+\item{...}{
+  Arguments passed on to \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions}}
+  \describe{
+    \item{\code{errorTileUrl}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+    \item{\code{noWrap}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+    \item{\code{opacity}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+    \item{\code{zIndex}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+    \item{\code{updateWhenIdle}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+    \item{\code{detectRetina}}{the tile layer options; see
+\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
+  }}
 }
 \value{
 Modified \code{map} object.
 }
 \description{
-Add tiles of
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-to a \strong{R} \link[leaflet]{leaflet} map.
+Add tiles of \url{https://dieghernan.github.io/leaflet-providersESP/} to a
+\strong{R} \code{\link[leaflet:leaflet]{leaflet::leaflet()}} map.
 }
 \details{
-\code{providerEspTileOptions} is a wrapper of
-\code{leaflet::providerTileOptions}
+Wrapper of \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}
 }
 \examples{
 library(leaflet)
@@ -53,11 +77,11 @@ PuertadelSol <-
 PuertadelSol
 }
 \seealso{
-\link{leaflet.providersESP.df}, \link{esp_getTiles}
+\link{leaflet.providersESP.df}, \code{\link[=esp_getTiles]{esp_getTiles()}}
 
-\link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
+\code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{maptiles}
+\concept{imagery}

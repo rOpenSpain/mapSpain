@@ -2,7 +2,7 @@
 #'
 #' Loads a single `sf` object containing the boundaries of Spain.
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @return A `MULTIPOLYGON/MULTIPOINT` object.
 #'

@@ -128,4 +128,4 @@ plot(st_geometry(SAN),
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{mappolitical}
+\concept{political}

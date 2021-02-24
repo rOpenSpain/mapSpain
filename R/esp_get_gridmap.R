@@ -6,7 +6,7 @@
 #'
 #' @rdname esp_get_gridmap
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @return A `POLYGON` object.
 #'
@@ -133,6 +133,9 @@ esp_get_hex_prov <- function(prov = NULL) {
 }
 
 #' @rdname esp_get_gridmap
+#'
+#' @concept political
+#'
 #' @export
 esp_get_hex_ccaa <- function(ccaa = NULL) {
   region <- ccaa
@@ -164,6 +167,9 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
 }
 
 #' @rdname esp_get_gridmap
+#'
+#' @concept political
+#'
 #' @export
 esp_get_grid_prov <- function(prov = NULL) {
   region <- prov
@@ -198,6 +204,9 @@ esp_get_grid_prov <- function(prov = NULL) {
 }
 
 #' @rdname esp_get_gridmap
+#'
+#' @concept political
+#'
 #' @export
 esp_get_grid_ccaa <- function(ccaa = NULL) {
   region <- ccaa

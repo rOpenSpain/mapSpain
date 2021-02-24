@@ -60,7 +60,7 @@ Useful links:
 \itemize{
 \item \url{https://ropenspain.github.io/mapSpain/}
 \item \url{https://github.com/rOpenSpain/mapSpain}
-\item <Report bugs at https://github.com/rOpenSpain/mapSpain/issues>
+\item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
 }
 }
 \author{

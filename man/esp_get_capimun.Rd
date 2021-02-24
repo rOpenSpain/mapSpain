@@ -123,4 +123,4 @@ plot(st_geometry(capimun), add = TRUE, pch = 19, col = "blue") # Capimun
 \author{
 dieghernan, \url{https://github.com/dieghernan/}.
 }
-\concept{mappolitical}
+\concept{political}

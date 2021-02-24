@@ -2,7 +2,7 @@
 #'
 #' Converts long subdivision names into different coding schemes and languages.
 #'
-#' @family esp_dict
+#' @concept dictionary
 #'
 #' @rdname esp_dict
 #'
@@ -215,7 +215,7 @@ esp_dict_region_code <- function(sourcevar,
   return(out)
 }
 
-#' @family esp_dict
+#' @concept dictionary
 #'
 #' @rdname esp_dict
 #' @return `

@@ -1,18 +1,29 @@
-#' @title Leaflet plugin - Spanish providers
-#' @concept maptiles
-#' @name addProviderEspTiles
-#' @description Add tiles of
-#' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' to a \strong{R} \link[leaflet]{leaflet} map.
-#' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' leaflet plugin, \strong{v1.2.0}.
-#' @return Modified \code{map} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{leaflet.providersESP.df}, \link{esp_getTiles}
+#' Leaflet plugin - Spanish providers
+#'
+#' @concept imagery
+#'
+#' @rdname addProviderEspTiles
+#'
+#' @description
+#' Add tiles of <https://dieghernan.github.io/leaflet-providersESP/> to a
+#' **R** [leaflet::leaflet()] map.
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#'  **v1.2.0**.
+#'
+#' @return Modified `map` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @seealso [leaflet.providersESP.df], [esp_getTiles()]
+#'
 #' @export
 #'
-#' @param provider Name of the provider, see \link{leaflet.providersESP.df}.
-#' @param map,layerId,group,options See \link[leaflet]{addTiles}
+#' @param provider Name of the provider, see [leaflet.providersESP.df].
+#'
+#' @inheritParams leaflet::addTiles
+#'
 #' @examples
 #' library(leaflet)
 #' PuertadelSol <-
@@ -32,10 +43,10 @@ addProviderEspTiles <- function(map,
                                 group = NULL,
                                 options = providerEspTileOptions()) {
   # A. Check providers
-  leafletProvidersESP <-
+  providers_df <-
     as.data.frame(mapSpain::leaflet.providersESP.df)
   provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == provider, ]
+    providers_df[providers_df$provider == provider, ]
 
   if (nrow(provs) == 0) {
     stop(
@@ -43,7 +54,7 @@ addProviderEspTiles <- function(map,
       provider,
       "' found. Available providers are:\n\n",
       paste0("'",
-        unique(leafletProvidersESP$provider), "'",
+        unique(providers_df$provider), "'",
         collapse = ", "
       )
     )
@@ -91,7 +102,7 @@ addProviderEspTiles <- function(map,
   }
 
   options <- c(options, opinit)
-  rm(opts, provs, leafletProvidersESP, opinit)
+  rm(opts, provs, providers_df, opinit)
 
   # Replace on template
 
@@ -140,10 +151,15 @@ addProviderEspTiles <- function(map,
 }
 
 #' @rdname addProviderEspTiles
-#' @details \code{providerEspTileOptions} is a wrapper of
-#' \code{leaflet::providerTileOptions}
-#' @param ...  Additional options. See \link[leaflet]{providerTileOptions}.
-#' @seealso \link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
+#'
+#' @concept imagery
+#'
+#' @details Wrapper of [leaflet::providerTileOptions()]
+#'
+#' @inheritDotParams leaflet::providerTileOptions
+#'
+#' @seealso [leaflet::providerTileOptions()], [leaflet::tileOptions()]
+#'
 #' @export
 providerEspTileOptions <- function(...) {
   ops <- leaflet::providerTileOptions(...)

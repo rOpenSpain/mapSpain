@@ -1,4 +1,9 @@
-#' @name esp_hlp_download_siane
+#' Download data from SIANE
+#'
+#' @param sub Call to mainland Spain ("x") or Canary Island ("y")
+#'
+#' @inheritParams esp_hlp_get_siane
+#'
 #' @noRd
 esp_hlp_download_siane <- function(type,
                                    resolution,
@@ -60,6 +65,15 @@ esp_hlp_download_siane <- function(type,
   } else if (type == "roads") {
     filename <-
       paste0("se89_3_vias_ctra_l_", sub, ".gpkg")
+  } else if (type == "ffccline") {
+    filename <-
+      paste0("se89_3_vias_ffcc_l_", sub, ".gpkg")
+  } else if (type == "ffccpoint") {
+    filename <-
+      paste0("se89_3_vias_ffcc_p_", sub, ".gpkg")
+  } else {
+    # This should never be activated, as it is an internal function
+    stop("Type not recognized")
   }
 
   url <- file.path(api_entry, filename)
@@ -173,7 +187,14 @@ esp_hlp_download_siane <- function(type,
   # nocov end
 }
 
-#' @name esp_hlp_download_siane
+#' Return data from SIANE
+#'
+#' @param type Type of data to be requestes
+#'
+#' @inheritParams esp_get_capimun
+#'
+#' @inheritParams esp_get_ccaa_siane
+#'
 #' @noRd
 esp_hlp_get_siane <- function(type,
                               resolution,
@@ -202,6 +223,8 @@ esp_hlp_get_siane <- function(type,
   if (type == "riverline" & as.character(resolution) != "3") {
     # Nothing
   } else if (type == "riverarea") {
+    # Nothing
+  } else if (type %in% c("ffccline", "ffccpoint")) {
     # Nothing
   } else {
     data_sf2 <-

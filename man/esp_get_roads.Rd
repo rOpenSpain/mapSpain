@@ -54,13 +54,15 @@ Get roads of Spain
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or
 as a specific date ("YYYY-MM-DD" format).
+
+Details on caching can be found on \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 }
 \note{
 While \code{moveCAN} is useful for visualization, it would alter the
 actual geographical position of the Canary Islands.
 }
 \examples{
-
+\donttest{
 library(sf)
 library(cartography)
 
@@ -79,10 +81,11 @@ typoLayer(CyL_Roads,
   legend.pos = "n"
 )
 }
+}
 \seealso{
 \code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_munic.sf}, \link{esp_codelist}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}.
 }
-\concept{manmade}
+\concept{infrastructure}

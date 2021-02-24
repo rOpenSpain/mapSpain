@@ -1,6 +1,6 @@
 #' Get Autonomous Communities boundaries of Spain
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @rdname esp_get_ccaa
 #'
@@ -123,6 +123,8 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 
 
 #' @rdname esp_get_ccaa
+#'
+#' @concept political
 #'
 #' @description
 #' `esp_get_ccaa_siane` uses CartoBase ANE as source, provided by

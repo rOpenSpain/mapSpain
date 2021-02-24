@@ -1,6 +1,6 @@
 #' Get Provinces boundaries of Spain
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @rdname esp_get_prov
 #'
@@ -16,7 +16,7 @@
 #'
 #' @seealso
 #' [esp_get_hex_prov()], [esp_get_nuts()], [esp_get_ccaa()],
-#' [esp_get_munic()], [esp_codelist()].
+#' [esp_get_munic()], [esp_codelist].
 #'
 #' @export
 #'
@@ -214,6 +214,8 @@ esp_get_prov <- function(prov = NULL, ...) {
 
 
 #' @rdname esp_get_prov
+#'
+#' @concept political
 #'
 #' @description
 #' `esp_get_prov_siane` use CartoBase ANE as source, provided by Instituto

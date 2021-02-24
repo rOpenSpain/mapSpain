@@ -1,4 +1,7 @@
-#' @name esp_hlp_cachedir
+#' Creates `cache_dir`
+#'
+#' @inheritParams esp_get_nuts
+#'
 #' @noRd
 esp_hlp_cachedir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set
@@ -22,7 +25,10 @@ esp_hlp_cachedir <- function(cache_dir = NULL) {
   return(cache_dir)
 }
 
-#' @name esp_hlp_all2nuts
+#' Transform region to NUTS code
+#'
+#' @param region A name or code of a Spanish region
+#'
 #' @noRd
 esp_hlp_all2nuts <- function(region) {
   region <- unique(region[!is.na(region)])
@@ -73,7 +79,10 @@ esp_hlp_all2nuts <- function(region) {
 }
 
 
-#' @name esp_hlp_all2ccaa
+#' Transform region to CCAA
+#'
+#' @inheritParams esp_hlp_all2nuts
+#'
 #' @noRd
 esp_hlp_all2ccaa <- function(region) {
   dfall <- mapSpain::esp_codelist
@@ -129,7 +138,10 @@ esp_hlp_all2ccaa <- function(region) {
   return(nuts_init)
 }
 
-#' @name esp_hlp_all2prov
+#' Transform region to province
+#'
+#' @inheritParams esp_hlp_all2nuts
+#'
 #' @noRd
 esp_hlp_all2prov <- function(region) {
   cod2cod <- code2code

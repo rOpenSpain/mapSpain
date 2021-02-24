@@ -1,6 +1,6 @@
 #' Get complementary lines when plotting Canary Islands.
 #'
-#' @concept mappolitical
+#' @concept political
 #'
 #' @rdname esp_get_can_box
 #'
@@ -162,6 +162,8 @@ esp_get_can_box <- function(style = "right",
 }
 
 #' @rdname esp_get_can_box
+#'
+#' @concept political
 #'
 #' @description
 #' `esp_get_can_provinces` is used to draw a separator line between the two

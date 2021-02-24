@@ -4,8 +4,8 @@
 \alias{esp_getTiles}
 \title{Get Tiles from Public Administrations of Spanish.}
 \source{
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-leaflet plugin, \strong{v1.2.0}.
+\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
+\strong{v1.2.0}.
 }
 \usage{
 esp_getTiles(
@@ -27,11 +27,12 @@ esp_getTiles(
 
 \item{type}{Name of the provider. See \link{leaflet.providersESP.df}.}
 
-\item{zoom}{the zoom level. If \code{NULL}, it is determined automatically
-(see \code{\link[cartography]{getTiles}}). Only valid for WMTS.}
+\item{zoom}{Zoom level. If \code{NULL}, it is determined automatically.
+Only valid for WMTS.}
 
-\item{crop}{TRUE if results should be cropped to the specified x extent,
-FALSE otherwise. If x is an sf object with one POINT, crop is set to FALSE.}
+\item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
+\code{FALSE} otherwise. If \code{x} is an \code{sf} object with one \code{POINT}, crop is set
+to \code{FALSE}.}
 
 \item{res}{Resolution (in pixels) of the final tile. Only valid for WMS.}
 
@@ -43,23 +44,33 @@ Depends on the selected provider on \code{type}.}
 
 \item{mask}{\code{TRUE} if the result should be masked to \code{x}.}
 
-\item{update_cache, cache_dir, verbose}{See \link{esp_get_nuts}}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
 }
 \value{
-A RasterBrick is returned.
+A \code{RasterBrick} is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
+the provider.
+.
 }
 \description{
-Get static map tiles based on a spatial object.
-Maps can be
-fetched from various open map servers.
+Get static map tiles based on a spatial object. Maps can be fetched from
+various open map servers.
 
 This function is a implementation of the javascript plugin
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.2.0}
+\url{https://dieghernan.github.io/leaflet-providersESP/} \strong{v1.2.0}.
 }
 \details{
-Results of \code{esp_getTiles} could be plotted using
-\code{\link[cartography]{tilesLayer}}
+Zoom levels are described on the OpenStreetMap wiki:
+\url{https://wiki.openstreetmap.org/wiki/Zoom_levels}.
+
+Results of \code{esp_getTiles} could be plotted using \code{\link[raster:plotRGB]{raster::plotRGB()}} or
+\code{\link[cartography:tilesLayer]{cartography::tilesLayer()}}
 
 For a complete list of providers see \link{leaflet.providersESP.df}.
 
@@ -68,14 +79,13 @@ looks deformed, try projecting first \code{x}:
 
 \code{x <- sf::st_transform(x,3857)}
 
-Tiles are cached under the path \code{cache_dir/[type]}
+Tiles are cached under the path \verb{cache_dir/[type]}.
 }
 \seealso{
-\link{leaflet.providersESP.df}, \link{addProviderEspTiles},
-\link[cartography]{getTiles},
-\link[cartography]{tilesLayer}.
+\link{leaflet.providersESP.df}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}, \code{\link[raster:plotRGB]{raster::plotRGB()}},
+\code{\link[cartography:getTiles]{cartography::getTiles()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{maptiles}
+\concept{imagery}
