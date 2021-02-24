@@ -1,6 +1,5 @@
 options(mapSpain_cache_dir = "~/R/mapslib/GISCO")
 
-codemetar::write_codemeta(write_minimeta = TRUE)
 
 roxygen2::roxygenise()
 tinytest::test_all()
@@ -16,15 +15,20 @@ urlchecker::url_check()
 
 devtools::check(remote = TRUE, manual = TRUE)
 
+
+revdepcheck::revdep_check(num_workers = 4)
+
 devtools::spell_check()
 devtools::check_rhub()
 devtools::check_win_release()
 devtools::check_win_devel()
 devtools::check_win_oldrelease()
 
+codemetar::write_codemeta(write_minimeta = TRUE)
+
 devtools::release()
 
-revdepcheck::revdep_check(num_workers = 4)
+
 
 
 
