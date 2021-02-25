@@ -18,6 +18,11 @@ knitr::knit_hooks$set(
   }
 )
 
+# Install reactable if not already installed
+if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
+  install.packages("reactable")
+}
+
 ```
 
 `mapSpain` provides a powerful interface for working with imagery. `mapSpain` can 
@@ -186,10 +191,6 @@ parameters needed to replicate the API request. In this summary only the
 parameter `url_static` is shown:
 
 ```{r providers, echo=FALSE}
-
-if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
-  install.packages("reactable")
-}
 
 library(reactable)
 
