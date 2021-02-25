@@ -61,8 +61,7 @@
 <link href="../ropenspain.css" rel="stylesheet">
 
 <meta property="og:title" content="Get boundaries of Spain — esp_get_country" />
-<meta property="og:description" content="Loads a single sf object containing the
-boundaries of Spain." />
+<meta property="og:description" content="Loads a single sf object containing the boundaries of Spain." />
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -105,7 +104,7 @@ boundaries of Spain." />
       <i class="fa fa-align-justify"></i>
       </button>
       <span class="navbar-brand" id="ROS-navbar-brand">
-      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0-9000</span>
+      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -172,8 +171,7 @@ boundaries of Spain." />
     </div>
 
     <div class="ref-description">
-    <p>Loads a single <code>sf</code> object containing the
-boundaries of Spain.</p>
+    <p>Loads a single <code>sf</code> object containing the boundaries of Spain.</p>
     </div>
 
     <pre class="usage"><span class='fu'>esp_get_country</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
@@ -183,7 +181,7 @@ boundaries of Spain.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Additional parameters from <a href='esp_get_nuts.html'>esp_get_nuts</a>.</p></td>
+      <td><p>Additional parameters from <code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -192,8 +190,7 @@ boundaries of Spain.</p>
     <p>A <code>MULTIPOLYGON/MULTIPOINT</code> object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='esp_get_nuts.html'>esp_get_nuts</a>, <a href='esp_get_ccaa.html'>esp_get_ccaa</a>, <a href='esp_get_prov.html'>esp_get_prov</a>,
-<a href='esp_get_munic.html'>esp_get_munic</a>, <a href='esp_codelist.html'>esp_codelist</a></p></div>
+    <div class='dont-index'><p><code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
@@ -209,8 +206,7 @@ boundaries of Spain.</p>
 <span class='va'>MovedCan</span> <span class='op'>&lt;-</span> <span class='fu'>esp_get_country</span><span class='op'>(</span>moveCAN <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>MovedCan</span><span class='op'>$</span><span class='va'>geometry</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.colors</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='esp_get_country-2.png' alt='' width='701' height='433' /></div><div class='input'>
-</div></pre>
+</div><div class='img'><img src='esp_get_country-2.png' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
