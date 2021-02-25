@@ -3,17 +3,17 @@ url: https://ropenspain.github.io/mapSpain
 
 reference:
   - title: "Political"
-    desc: These functions return sf objets with political boundaries
+    desc: These functions return sf objects with political boundaries
     contents:
       - has_concept("political")
 
   - title: "Natural"
-    desc: These functions return sf objets with natural features
+    desc: These functions return sf objects with natural features
     contents:
       - has_concept("natural")
 
   - title: "Infrastructures"
-    desc: These functions return sf objets with man-made features
+    desc: These functions return sf objects with man-made features
     contents:
       - has_concept("infrastructure")
 
