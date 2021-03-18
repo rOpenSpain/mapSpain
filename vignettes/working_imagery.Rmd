@@ -108,7 +108,7 @@ Asturias <- esp_get_ccaa("Asturias", epsg = 3857)
 
 Basemap <- esp_getTiles(Asturias, "IDErioja", bbox_expand = 0.3)
 
-Mask <- esp_getTiles(Asturias, "PNOA", mask = TRUE)
+Mask <- esp_getTiles(Asturias, "LiDAR", mask = TRUE)
 
 
 tilesLayer(Basemap)
