@@ -104,7 +104,7 @@
       <i class="fa fa-align-justify"></i>
       </button>
       <span class="navbar-brand" id="ROS-navbar-brand">
-      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+      <a class="navbar-link ROS-black" href="../index.html"><img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo">mapSpain</a> <span class="version label label-default hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -213,7 +213,9 @@ When set to <code>TRUE</code> it would force a fresh download of the source
     </tr>
     <tr>
       <th>cache_dir</th>
-      <td><p>A path to a cache directory. See Details.</p></td>
+      <td><p>A path to a cache directory. The directory can also be
+set globally with <code><a href='https://rdrr.io/r/base/options.html'>options(mapSpain_cache_dir = "path/to/dir")</a></code>.
+See Details on <code><a href='esp_get_nuts.html'>esp_get_nuts()</a></code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
