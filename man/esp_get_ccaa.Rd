@@ -48,7 +48,9 @@ One of:
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
-\item{cache_dir}{A path to a cache directory. See Details.}
+\item{cache_dir}{A path to a cache directory. The directory can also be
+set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
 default is \code{FALSE}.}

@@ -36,7 +36,9 @@
 #'   When set to `TRUE` it would force a fresh download of the source
 #'   `.geojson` file.
 #'
-#' @param cache_dir A path to a cache directory. See Details.
+#' @param cache_dir A path to a cache directory. The directory can also be 
+#'   set globally with `options(mapSpain_cache_dir = "path/to/dir")`.
+#'   See Details on [esp_get_nuts()].
 #'
 #' @param verbose Display information. Useful for debugging,
 #'   default is `FALSE`.
