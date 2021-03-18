@@ -1,3 +1,7 @@
+# mapSpain 0.2.1
+
+- Fix a typo on documentation: `cache_dir` should be set as `options(mapSpain_cache_dir = "path/to/dir")`.
+
 # mapSpain 0.2.0
 
 -   Fix DOI <https://doi.org/10.5281/zenodo.4318024>

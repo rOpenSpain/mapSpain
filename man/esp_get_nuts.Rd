@@ -79,7 +79,7 @@ Loads a simple feature (\code{sf}) object containing the NUTS boundaries of Spai
 \details{
 \code{cache_dir = NULL} (default) uses and creates \verb{/mapSpain} directory in the
 temporary directory \code{\link[=tempdir]{tempdir()}}. The directory can also be set via options
-with \code{options(mapSpain = "path/to/dir")} or
+with \code{options(mapSpain_cache_dir = "path/to/dir")} or
 \code{options(gisco_cache_dir = "path/to/dir")} (See \code{\link[giscoR:gisco_get]{giscoR::gisco_get()}})
 
 Sometimes cached files may be corrupt. On that case, try redownloading

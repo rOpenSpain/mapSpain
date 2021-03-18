@@ -64,7 +64,7 @@
 #' @details
 #' `cache_dir = NULL` (default) uses and creates `/mapSpain` directory in the
 #' temporary directory [tempdir()]. The directory can also be set via options
-#' with `options(mapSpain = "path/to/dir")` or
+#' with `options(mapSpain_cache_dir = "path/to/dir")` or
 #' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get()])
 #'
 #' Sometimes cached files may be corrupt. On that case, try redownloading
