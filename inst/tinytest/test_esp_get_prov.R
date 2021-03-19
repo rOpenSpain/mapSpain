@@ -46,59 +46,64 @@ n <- esp_get_prov(prov = f$prov.shortname.es)
 expect_equal(nrow(n), 52)
 
 # SIANE
-
-expect_error(esp_get_prov_siane("FFF"))
-expect_error(esp_get_prov_siane(epsg = 39823))
-expect_silent(esp_get_prov_siane())
-expect_silent(esp_get_prov_siane(rawcols = TRUE))
-expect_silent(esp_get_prov_siane(moveCAN = c(1, 2)))
-expect_silent(esp_get_prov_siane(prov = c("Galicia", "ES7", "Centro")))
-expect_warning(esp_get_prov_siane(prov = "Menorca"))
-expect_warning(esp_get_prov_siane(prov = "ES6x"))
-
-
-expect_equal(sf::st_crs(esp_get_prov_siane(epsg = 3035)),
-             sf::st_crs(3035))
-
-expect_equal(sf::st_crs(esp_get_prov_siane(epsg = 3857)),
-             sf::st_crs(3857))
+if (giscoR::gisco_check_access()) {
+  expect_error(esp_get_prov_siane("FFF"))
+  expect_error(esp_get_prov_siane(epsg = 39823))
+  expect_silent(esp_get_prov_siane())
+  expect_silent(esp_get_prov_siane(rawcols = TRUE))
+  expect_silent(esp_get_prov_siane(moveCAN = c(1, 2)))
+  expect_silent(esp_get_prov_siane(prov = c("Galicia", "ES7", "Centro")))
+  expect_warning(esp_get_prov_siane(prov = "Menorca"))
+  expect_warning(esp_get_prov_siane(prov = "ES6x"))
 
 
-expect_silent(esp_get_prov_siane(prov = c(
-  "Euskadi",
-  "Catalunya",
-  "ES-EX",
-  "ES52",
-  "01"
-)))
+  expect_equal(
+    sf::st_crs(esp_get_prov_siane(epsg = 3035)),
+    sf::st_crs(3035)
+  )
 
-# Test all
+  expect_equal(
+    sf::st_crs(esp_get_prov_siane(epsg = 3857)),
+    sf::st_crs(3857)
+  )
 
-f <- mapSpain::esp_codelist
 
-n <- esp_get_prov_siane(prov = f$nuts1.code)
-expect_equal(nrow(n), 52)
+  expect_silent(esp_get_prov_siane(prov = c(
+    "Euskadi",
+    "Catalunya",
+    "ES-EX",
+    "ES52",
+    "01"
+  )))
 
-n <- esp_get_prov_siane(prov = c("Canarias"))
-expect_equal(nrow(n), 2)
+  # Test all
 
-n <- esp_get_prov_siane(prov = c("Baleares"))
-expect_equal(nrow(n), 1)
+  f <- mapSpain::esp_codelist
 
-n <- esp_get_prov_siane(prov = f$nuts1.name.alt)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = f$nuts1.code)
+  expect_equal(nrow(n), 52)
 
-n <- esp_get_prov_siane(prov = f$iso2.prov.code)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = c("Canarias"))
+  expect_equal(nrow(n), 2)
 
-n <- esp_get_prov_siane(prov = f$nuts2.code)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = c("Baleares"))
+  expect_equal(nrow(n), 1)
 
-n <- esp_get_prov_siane(prov = f$nuts2.name)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = f$nuts1.name.alt)
+  expect_equal(nrow(n), 52)
 
-n <- esp_get_prov_siane(prov = f$cpro)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = f$iso2.prov.code)
+  expect_equal(nrow(n), 52)
 
-n <- esp_get_prov_siane(prov = f$prov.shortname.es)
-expect_equal(nrow(n), 52)
+  n <- esp_get_prov_siane(prov = f$nuts2.code)
+  expect_equal(nrow(n), 52)
+
+  n <- esp_get_prov_siane(prov = f$nuts2.name)
+  expect_equal(nrow(n), 52)
+
+  n <- esp_get_prov_siane(prov = f$cpro)
+  expect_equal(nrow(n), 52)
+
+  n <- esp_get_prov_siane(prov = f$prov.shortname.es)
+  expect_equal(nrow(n), 52)
+}

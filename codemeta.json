@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -203,9 +203,8 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "fileSize": "449686.597KB",
+  "fileSize": "449687.965KB",
   "contIntegration": "https://codecov.io/gh/rOpenSpain/mapSpain",
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
   "keywords": [
     "r",
     "maps",
