@@ -1,3 +1,5 @@
+# mapSpain (development version)
+
 # mapSpain 0.2.1
 
 - **QUICKFIX**: Fix a typo on documentation: `cache_dir` should be set as `options(mapSpain_cache_dir = "path/to/dir")`.
