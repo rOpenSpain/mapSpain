@@ -1,6 +1,5 @@
 ## code to prepare `esp_munic.sf` dataset goes here
-
-install.packages("giscoR")
+options(gisco_cache_dir = "~/R/mapslib/GISCO")
 
 library(mapSpain)
 library(sf)
@@ -10,9 +9,11 @@ df <- esp_get_munic(
   verbose = TRUE, moveCAN = FALSE, epsg = 4258,
   update_cache = TRUE
 )
-plot(df$geometry)
 
 
+unique(st_geometry_type(df))
+df <- st_cast(df, "MULTIPOLYGON")
+unique(st_geometry_type(df))
 
 esp_munic.sf <- df
 
