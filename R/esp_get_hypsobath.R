@@ -27,7 +27,6 @@
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @examples
-#'
 #' \donttest{
 #' # This code would produce a nice plot - It will take a few seconds to run
 #' library(sf)
