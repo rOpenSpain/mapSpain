@@ -150,5 +150,8 @@ esp_get_rivers <- function(epsg = "4258",
 
   rivers_sf_merge <-
     sf::st_transform(rivers_sf_merge, as.double(init_epsg))
+
+  rivers_sf_merge <- esp_hlp_fix_multigeoms(rivers_sf_merge, verbose)
+
   return(rivers_sf_merge)
 }

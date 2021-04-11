@@ -217,5 +217,8 @@ esp_get_capimun <- function(year = Sys.Date(),
       "LAU_CODE"
     )]
   }
+
+  data_sf <- esp_hlp_fix_multigeoms(data_sf, verbose)
+
   return(data_sf)
 }

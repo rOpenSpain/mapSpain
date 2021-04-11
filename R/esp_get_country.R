@@ -59,5 +59,7 @@ esp_get_country <- function(...) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
+  data_sf <- esp_hlp_fix_multigeoms(data_sf)
+
   return(data_sf)
 }

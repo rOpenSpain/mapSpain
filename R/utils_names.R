@@ -20,10 +20,40 @@ esp_hlp_cachedir <- function(cache_dir = NULL) {
 
   # Create cache dir if needed
   if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir)
+    dir.create(cache_dir, recursive = TRUE)
   }
   return(cache_dir)
 }
+
+
+#' Fix geomtypes
+#'
+#' @param  sf_obj Object to fix
+#' @inheritParams esp_get_nuts
+#'
+#' @noRd
+esp_hlp_fix_multigeoms <- function(sf_obj, verbose = FALSE) {
+
+  # Geom types
+  geom_types <- as.character(unique(sf::st_geometry_type(sf_obj)))
+
+  # If not only 2 are detected
+  if (length(geom_types) != 2) {
+    return(sf_obj)
+  }
+
+  # Check if MULTI
+  multi <- grep("MULTI", geom_types)
+
+  if (isTRUE(multi > 0)) {
+    if (verbose) message("Parsing to ", geom_types[multi])
+
+    sf_obj <- sf::st_cast(sf_obj, geom_types[multi])
+  }
+
+  return(sf_obj)
+}
+
 
 #' Transform region to NUTS code
 #'

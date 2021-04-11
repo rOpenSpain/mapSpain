@@ -278,6 +278,8 @@ esp_get_munic <- function(year = "2019",
   data_sf <-
     data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
 
+  data_sf <- esp_hlp_fix_multigeoms(data_sf)
+
   return(data_sf)
 }
 

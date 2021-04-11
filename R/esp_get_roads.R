@@ -131,5 +131,7 @@ esp_get_roads <- function(year = Sys.Date(),
 
   data_sf <- data_sf[, colnames_init]
 
+  data_sf <- esp_hlp_fix_multigeoms(data_sf, verbose)
+
   return(data_sf)
 }

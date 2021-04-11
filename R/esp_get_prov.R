@@ -209,6 +209,8 @@ esp_get_prov <- function(prov = NULL, ...) {
 
   data_sf <- sf::st_transform(data_sf, initcrs)
 
+  data_sf <- esp_hlp_fix_multigeoms(data_sf)
+
   return(data_sf)
 }
 

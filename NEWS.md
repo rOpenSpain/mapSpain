@@ -1,8 +1,13 @@
 # mapSpain (development version)
 
+-   Fix issue [#32](https://github.com/rOpenSpain/mapSpain/issues/32) detected 
+by [@congosto](https://github.com/congosto): On tmap labels were duplicated due 
+to mixed geometry types on some results. Now the `MULTI` version of the 
+geometry is returned on mixed geoms.
+
 # mapSpain 0.2.1
 
-- **QUICKFIX**: Fix a typo on documentation: `cache_dir` should be set as `options(mapSpain_cache_dir = "path/to/dir")`.
+-   **QUICKFIX**: Fix a typo on documentation: `cache_dir` should be set as `options(mapSpain_cache_dir = "path/to/dir")`.
 
 # mapSpain 0.2.0
 

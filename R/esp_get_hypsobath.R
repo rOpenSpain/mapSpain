@@ -153,4 +153,6 @@ esp_get_hypsobath <- function(epsg = "4258",
     year = Sys.Date()
   )
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+
+  data_sf <- esp_hlp_fix_multigeoms(data_sf, verbose)
 }

@@ -114,7 +114,7 @@ esp_getTiles <- function(x,
 
   # Create cache dir
   cache_dir <- esp_hlp_cachedir(cache_dir)
-  cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
+  cache_dir <- esp_hlp_cachedir(file.path(cache_dir, type))
 
 
   if (provs[provs$field == "type", "value"] == "WMS") {

@@ -103,5 +103,7 @@ esp_get_hydrobasin <- function(epsg = "4258",
   basin_sf <-
     sf::st_transform(basin_sf, as.double(init_epsg))
 
+  basin_sf <- esp_hlp_fix_multigeoms(basin_sf, verbose)
+
   return(basin_sf)
 }
