@@ -9,7 +9,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE,
-                      comment = "#>")
+                      comment = "#>",
+                      warning = FALSE)
 
 knitr::knit_hooks$set(
   margin = function(before, options, envir) {
