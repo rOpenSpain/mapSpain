@@ -30,6 +30,8 @@
 #' @examples
 #' \donttest{
 #'
+#' library(sf)
+#'
 #' CyL <- esp_get_prov("Castilla y Leon")
 #' Roads <- esp_get_roads()
 #'

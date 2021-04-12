@@ -31,6 +31,8 @@
 #' hydroland <- esp_get_hydrobasin(domain = "land")
 #' hydrolandsea <- esp_get_hydrobasin(domain = "landsea")
 #'
+#' library(tmap)
+#'
 #' tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
 #'   tm_fill("skyblue3") +
 #'   tm_shape(all) +
