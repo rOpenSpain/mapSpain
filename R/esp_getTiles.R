@@ -7,7 +7,8 @@
 #' various open map servers.
 #'
 #' This function is a implementation of the javascript plugin
-#' <https://dieghernan.github.io/leaflet-providersESP/> **v1.2.0**.
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **v1.2.0**.
 #'
 #' @return
 #' A `RasterBrick` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
@@ -60,6 +61,9 @@
 #' Tiles are cached under the path `cache_dir/[type]`.
 #' @examples
 #' \donttest{
+#'
+#' library(sf)
+#'
 #' Murcia <- esp_get_ccaa("Murcia")
 #' Murcia <- st_transform(Murcia, 3857)
 #'

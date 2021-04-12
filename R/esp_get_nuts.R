@@ -37,7 +37,10 @@
 #'   `.geojson` file.
 #'
 #' @param cache_dir A path to a cache directory. The directory can also be
-#'   set globally with `options(mapSpain_cache_dir = "path/to/dir")`.
+#'   set globally with:
+#'
+#'    -  `options(mapSpain_cache_dir = "path/to/dir")`.
+#'
 #'   See Details on [esp_get_nuts()].
 #'
 #' @param verbose Display information. Useful for debugging,
@@ -75,9 +78,9 @@
 #' @note
 #' While `moveCAN` is useful for visualization, it would alter the actual
 #' geographical position of the Canary Islands. When using the output for
-#' spatial analysis or using tiles ([esp_getTiles()], [addProviderEspTiles()])
-#' this option should be set to `FALSE` in order to get the actual
-#' coordinates.
+#' spatial analysis or using tiles ([esp_getTiles()] or
+#' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
+#' get the actual coordinates.
 #'
 #' @examples
 #'

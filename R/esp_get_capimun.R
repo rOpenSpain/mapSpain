@@ -55,7 +55,7 @@
 #'
 #'
 #' # Get a tile to check
-#' tile <- esp_getTiles(area, zoom = 11)
+#' tile <- esp_getTiles(area)
 #'
 #' # Check on plot
 #' library(tmap)

@@ -41,7 +41,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -93,9 +97,9 @@ Please check the download and usage provisions on
 
 While \code{moveCAN} is useful for visualization, it would alter the actual
 geographical position of the Canary Islands. When using the output for
-spatial analysis or using tiles (\code{\link[=esp_getTiles]{esp_getTiles()}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})
-this option should be set to \code{FALSE} in order to get the actual
-coordinates.
+spatial analysis or using tiles (\code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates.
 }
 \examples{
 

@@ -162,7 +162,8 @@ NULL
 #' providers of Spain
 #'
 #' This function is a implementation of the javascript plugin
-#' <https://dieghernan.github.io/leaflet-providersESP/> **v1.2.0**.
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **v1.2.0**.
 #'
 #' @docType data
 #'

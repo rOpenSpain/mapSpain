@@ -49,7 +49,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -65,7 +69,8 @@ Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 
 This function is a implementation of the javascript plugin
-\url{https://dieghernan.github.io/leaflet-providersESP/} \strong{v1.2.0}.
+\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
+\strong{v1.2.0}.
 }
 \details{
 Zoom levels are described on the OpenStreetMap wiki:
@@ -85,6 +90,9 @@ Tiles are cached under the path \verb{cache_dir/[type]}.
 }
 \examples{
 \donttest{
+
+library(sf)
+
 Murcia <- esp_get_ccaa("Murcia")
 Murcia <- st_transform(Murcia, 3857)
 
