@@ -61,42 +61,17 @@ Metadata available on
 }
 \examples{
 \donttest{
-# This code would produce a nice plot - It will take a few seconds to run
-library(sf)
-all <- esp_get_prov()
-mainland <-
-  all[all$codauto != esp_dict_region_code("Canarias", destination = "codauto"), ]
+all <- esp_get_prov(moveCAN = FALSE)
 hydroland <- esp_get_hydrobasin(domain = "land")
 hydrolandsea <- esp_get_hydrobasin(domain = "landsea")
 
-# Plot
-opar <- par(no.readonly = TRUE)
-
-par(mar = c(0, 0, 0, 0))
-
-# Background
-plot(st_as_sfc(st_bbox(mainland)), col = "grey90", border = NA)
-
-plot(
-  st_geometry(hydrolandsea),
-  col = "skyblue3",
-  border = NA,
-  add = TRUE
-)
-plot(
-  st_geometry(mainland),
-  col = "grey70",
-  border = "grey50",
-  add = TRUE
-)
-plot(
-  st_geometry(hydroland),
-  col = adjustcolor("skyblue", alpha.f = 0.5),
-  add = TRUE,
-  border = "lightblue"
-)
-
-par(opar)
+tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
+  tm_fill("skyblue3") +
+  tm_shape(all) +
+  tm_polygons("grey90") +
+  tm_shape(hydroland) +
+  tm_polygons("skyblue", alpha = 0.7, border.col = "blue") +
+  tm_layout(bg.color = "grey90")
 }
 }
 \author{

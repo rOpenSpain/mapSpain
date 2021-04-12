@@ -16,7 +16,7 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [esp_get_nuts()], [esp_munic.sf], [esp_codelist].
+#' @seealso [esp_get_nuts()], [`esp_munic.sf`], [`esp_codelist`].
 #'
 #'
 #' @param year Release year. See Details for years available.
@@ -42,8 +42,6 @@
 #'
 #' @examples
 #'
-#' library(sf)
-#'
 #' Base <- esp_get_munic(region = c("Castilla y Leon"))
 #' SAN <-
 #'   esp_get_munic(
@@ -51,12 +49,18 @@
 #'     munic = c("^San ", "^Santa ")
 #'   )
 #'
-#' plot(st_geometry(Base), col = "cornsilk", border = "grey80")
-#' plot(st_geometry(SAN),
-#'   col = "firebrick3",
-#'   border = NA,
-#'   add = TRUE
-#' )
+#' library(tmap)
+#' tm_shape(Base) +
+#'   tm_polygons("#FDFBEA", border.col = "#656565", border.alpha = 0.3) +
+#'   tm_shape(SAN) +
+#'   tm_polygons("#C12838", border.col = "#656565") +
+#'   tm_layout(
+#'     main.title = paste0(
+#'       "Municipalities named under Saints (San, Santa)",
+#'       "\nCastilla y Leon, Spain"
+#'     ),
+#'     main.title.size = .8
+#'   )
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
                           cache = TRUE,

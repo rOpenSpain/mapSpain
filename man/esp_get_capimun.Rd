@@ -90,37 +90,40 @@ actual geographical position of the Canary Islands.
 library(sf)
 
 # Get shape
-area <- esp_get_munic_siane(munic = "Peguerinos", epsg = 3857)
+area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 
 # Area in km2
 print(paste0(round(as.double(st_area(area)) / 1000000, 2), " km2"))
 
 # Extract centroid
-centroid <- st_centroid(st_geometry(area))
+centroid <- st_centroid(area)
 
 # Compare with capimun
-capimun <- esp_get_capimun(munic = "Peguerinos", epsg = 3857)
+capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 
-# Buffer points
-bbox <- st_union(st_buffer(
-  c(centroid, st_geometry(capimun)),
-  dist = 2000
-))
 
 # Get a tile to check
-tile <- esp_getTiles(bbox, type = "IGNBase.Gris")
+tile <- esp_getTiles(area, zoom = 11)
 
 # Check on plot
-raster::plotRGB(tile)
-plot(centroid, add = TRUE, pch = 19, col = "red") # Centroid
-plot(st_geometry(capimun), add = TRUE, pch = 19, col = "blue") # Capimun
+library(tmap)
+
+tm_shape(tile, raster.downsample = FALSE) +
+  tm_rgb() +
+  tm_shape(area) +
+  tm_borders(col = "grey40") +
+  tm_shape(centroid) +
+  tm_symbols(col = "red", alpha = 0.4, shape = 19) +
+  tm_shape(capimun) +
+  tm_symbols(col = "blue", alpha = 0.4, shape = 19)
+
 
 # Blue dot is located onto the actual city while red dot is located
 # in the centroid of the boundaries
 }
 }
 \seealso{
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_munic.sf}, \link{esp_codelist}
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link{esp_munic.sf}}, \code{\link{esp_codelist}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}.

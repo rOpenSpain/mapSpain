@@ -16,7 +16,7 @@
 #'
 #' @seealso
 #' [esp_get_hex_prov()], [esp_get_nuts()], [esp_get_ccaa()],
-#' [esp_get_munic()], [esp_codelist].
+#' [esp_get_munic()], [`esp_codelist`].
 #'
 #' @export
 #'
@@ -51,6 +51,7 @@
 #' plot(st_geometry(Random), col = hcl.colors(6))
 #'
 #' # All Provinces of a Zone plus an addition
+#' # Low resolution (20M)
 #'
 #' Mix <-
 #'   esp_get_prov(
@@ -67,6 +68,19 @@
 #'   main = NULL,
 #'   border = "white"
 #' )
+#' # ISO codes available
+#'
+#' allprovs <- esp_get_prov()
+#'
+#' library(tmap)
+#'
+#' tmap_style("cobalt")
+#'
+#' tm_shape(allprovs, point.per = "feature") +
+#'   tm_polygons() +
+#'   tm_text("iso2.prov.code", remove.overlap = TRUE)
+#'
+#' tmap_options_reset()
 esp_get_prov <- function(prov = NULL, ...) {
   params <- list(...)
 

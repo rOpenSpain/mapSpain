@@ -25,16 +25,22 @@
 #' @inheritParams esp_get_nuts
 #'
 #' @examples
-#' library(sf)
-#'
 #' Provs <- esp_get_prov()
 #' Box <- esp_get_can_box()
 #' Line <- esp_get_can_provinces()
 #'
+#' # Plot
 #'
-#' plot(st_geometry(Provs), col = hcl.colors(4, palette = "Grays"))
-#' plot(Box, add = TRUE)
-#' plot(Line, add = TRUE)
+#' library(tmap)
+#'
+#'
+#' tm_shape(Provs) +
+#'   tm_polygons() +
+#'   tm_shape(Box) +
+#'   tm_lines() +
+#'   tm_shape(Line) +
+#'   tm_lines()
+#'
 #'
 #'
 #' # Displacing Canary
@@ -43,21 +49,25 @@
 #' Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
 #' Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
 #'
+#' tm_shape(Provs_D) +
+#'   tm_polygons() +
+#'   tm_shape(Box_D) +
+#'   tm_lines() +
+#'   tm_shape(Line_D) +
+#'   tm_lines()
 #'
-#'
-#' plot(st_geometry(Provs_D), col = hcl.colors(4, palette = "Grays"))
-#' plot(Box_D, add = TRUE)
-#' plot(Line_D, add = TRUE)
 #'
 #' # Example with poly option
 #'
+#' # Get countries with giscoR
+#' \donttest{
 #' library(giscoR)
 #'
 #' Countries <-
 #'   gisco_get_countries(
-#'     res = "20",
+#'     res = "01",
 #'     epsg = "4326",
-#'     region = c("Europe", "Africa")
+#'     country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
 #'   )
 #' CANbox <-
 #'   esp_get_can_box(
@@ -65,22 +75,26 @@
 #'     epsg = "4326",
 #'     moveCAN = c(12.5, 0)
 #'   )
+#'
 #' CCAA <- esp_get_ccaa(
-#'   res = "20",
+#'   res = "01",
 #'   epsg = "4326",
-#'   moveCAN = c(12.5, 0)
+#'   moveCAN = c(12.5, 0) #' Same displacement factor)
 #' )
 #'
+#' # Plot
 #'
-#' plot_sf(CCAA, axes = TRUE)
-#' plot(st_geometry(Countries), col = "grey80", add = TRUE)
-#' plot(st_geometry(CANbox),
-#'   border = "black",
-#'   col = "white",
-#'   add = TRUE
-#' )
-#' plot(st_geometry(CCAA), add = TRUE, col = "beige")
-#' box()
+#' tm_shape(Countries, bbox = c(-10, 34.6, 4.3, 44)) +
+#'   tm_polygons(col = "#DFDFDF") +
+#'   tm_shape(CANbox) +
+#'   tm_polygons(col = "#C7E7FB") +
+#'   tm_shape(CANbox) +
+#'   tm_borders(lwd = 2) +
+#'   tm_shape(CCAA) +
+#'   tm_polygons("#FDFBEA") +
+#'   tm_graticules(lines = FALSE) +
+#'   tm_layout(bg.color = "#C7E7FB", frame.double.line = TRUE)
+#' }
 esp_get_can_box <- function(style = "right",
                             moveCAN = TRUE,
                             epsg = "4258") {

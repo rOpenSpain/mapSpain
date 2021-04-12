@@ -123,7 +123,7 @@ MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 plot(st_geometry(MixingCodes), col = pal)
 }
 \seealso{
-\link{esp_nuts.sf}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}, \link{esp_codelist},
+\code{\link{esp_nuts.sf}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}, \code{\link{esp_codelist}},
 \code{\link[giscoR:gisco_get]{giscoR::gisco_get()}}.
 }
 \author{

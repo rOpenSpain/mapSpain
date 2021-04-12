@@ -60,13 +60,12 @@ Metadata available on
 \examples{
 \donttest{
 # This code would produce a nice plot - It will take a few seconds to run
-library(sf)
-library(cartography)
+library(tmap)
 
 hypsobath <- esp_get_hypsobath()
 
 # Tints from Wikipedia
-# https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions
+# https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/Topographic_maps
 
 bath_tints <- colorRampPalette(
   rev(
@@ -91,53 +90,42 @@ hyps_tints <- colorRampPalette(
   )
 )
 
+levels <- sort(unique(hypsobath$val_inf))
 
 # Create palette
-br_bath <- seq(-6250, -250, 250)
-br_terrain <- seq(0, 3100, 100)
+br_bath <- length(levels[levels < 0])
+br_terrain <- length(levels) - br_bath
+
+bath_tints(br_bath)
+
+pal <- c(bath_tints((br_bath)), hyps_tints((br_terrain)))
 
 
-finalbreaks <- sort(unique(c(br_bath, br_terrain)))
-pal <- c(bath_tints(length(br_bath)), hyps_tints(length(br_terrain)))
+# Plot Canary Islands
+tm_shape(hypsobath, bbox = c(-18.6, 27, -13, 29.5)) +
+  tm_fill("val_inf",
+    style = "cat",
+    palette = pal,
+    title = "Elevation",
+    legend.is.portrait = FALSE
+  ) +
+  tm_layout(
+    legend.outside = TRUE,
+    legend.outside.position = "bottom",
+    legend.position = c("center", "bottom"),
+    legend.text.size = 0.43
+  )
 
-opar <- par(no.readonly = TRUE)
-
-
-# Plot Canarias
-opar <- par(no.readonly = TRUE)
-par(mar = c(0, 0, 0, 0))
-plot_sf(hypsobath,
-  xlim = c(-18.6, -13.5),
-  ylim = c(27.6, 29.5)
-)
-choroLayer(
-  hypsobath,
-  var = "val_inf",
-  breaks = finalbreaks,
-  col = pal,
-  legend.pos = "n",
-  border = NA,
-  add = TRUE
-)
 
 # Plot Mainland
-opar <- par(no.readonly = TRUE)
-par(mar = c(0, 0, 0, 0))
-plot_sf(hypsobath,
-  xlim = c(-9, 4.4),
-  ylim = c(35.8, 44)
-)
-choroLayer(
-  hypsobath,
-  var = "val_inf",
-  breaks = finalbreaks,
-  col = pal,
-  legend.pos = "n",
-  border = NA,
-  add = TRUE
-)
-
-par(opar)
+tm_shape(hypsobath, bbox = c(-9.5, 35.8, 4.4, 44)) +
+  tm_fill("val_inf",
+    style = "cat",
+    palette = pal,
+    title = "Elevation",
+    legend.reverse = TRUE
+  ) +
+  tm_layout(legend.outside = TRUE)
 }
 }
 \author{

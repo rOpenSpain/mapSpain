@@ -29,8 +29,6 @@
 #'
 #' @examples
 #' \donttest{
-#' library(sf)
-#' library(cartography)
 #'
 #' CyL <- esp_get_prov("Castilla y Leon")
 #' Roads <- esp_get_roads()
@@ -38,14 +36,15 @@
 #' # Intersect roads
 #' CyL_Roads <- st_intersection(CyL, Roads)
 #'
-#' plot(st_geometry(CyL), col = "grey80", border = "grey50", lwd = 0.4)
-#' typoLayer(CyL_Roads,
-#'   var = "tipo",
-#'   col = c("#003399", "#003399", "#ff0000", "#ffff00"),
-#'   lwd = 2,
-#'   add = TRUE,
-#'   legend.pos = "n"
-#' )
+#' library(tmap)
+#'
+#' tm_shape(CyL) +
+#'   tm_polygons(col = "grey80", border.col = "grey50", lwd = 0.4) +
+#'   tm_shape(CyL_Roads) +
+#'   tm_lines("tipo",
+#'     palette = c("#003399", "#003399", "#ff0000", "#ffff00")
+#'   ) +
+#'   tm_layout(legend.outside = TRUE, legend.outside.position = "bottom")
 #' }
 esp_get_roads <- function(year = Sys.Date(),
                           epsg = "4258",

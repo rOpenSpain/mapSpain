@@ -21,11 +21,11 @@ library(sf)
 
 OriginalCan <- esp_get_country(moveCAN = FALSE)
 
-plot(OriginalCan$geometry, col = hcl.colors(5))
+plot(OriginalCan$geometry, col = "grey70")
 
 MovedCan <- esp_get_country(moveCAN = TRUE)
 
-plot(MovedCan$geometry, col = hcl.colors(5))
+plot(MovedCan$geometry, col = "grey70")
 }
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}

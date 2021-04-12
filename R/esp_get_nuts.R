@@ -17,7 +17,7 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [esp_nuts.sf], [esp_dict_region_code()], [esp_codelist],
+#' @seealso [`esp_nuts.sf`], [esp_dict_region_code()], [`esp_codelist`],
 #'   [giscoR::gisco_get()].
 #'
 #' @param year Release year. One of "2003", "2006",`"2010", "2013", "2016" or

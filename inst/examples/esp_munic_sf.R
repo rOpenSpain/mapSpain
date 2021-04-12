@@ -18,9 +18,9 @@ CCAA <- esp_get_prov()
 library(tmap)
 
 tm_shape(CCAA, bbox = Teruel.sf) +
-  tm_polygons("wheat") +
+  tm_polygons("#DFDFDF") +
   tm_shape(Teruel.sf) +
-  tm_polygons("cornsilk") +
+  tm_polygons("#FDFBEA") +
   tm_shape(Teruel.city) +
-  tm_fill("firebrick") +
+  tm_fill("#C12838") +
   tm_layout(main.title = "Municipalities of Teruel")
