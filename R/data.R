@@ -29,9 +29,9 @@
 #'   community and province.
 #'   * \strong{ine.*.name}: INE name of each autonomous community
 #'   and province.
-#'   * \strong{iso2.*.name.*}: ISO2 name of each autonomous community
+#'   * \strong{iso2.*.name.(lang)}: ISO2 name of each autonomous community
 #'   and province. Several languages available.
-#'   * \strong{cldr.*.name.*}: CLDR name of each autonomous community and
+#'   * \strong{cldr.*.name.(lang)}: CLDR name of each autonomous community and
 #'   province. Several languages available.
 #'   * \strong{ccaa.short.*}: Short (common) name of each autonomous
 #'   community. Several languages available.
@@ -57,7 +57,10 @@
 #' or Murcia) on this dataset.
 #'
 #' @examples
-#' data(esp_codelist)
+#'
+#' library(tibble)
+#'
+#' glimpse(as_tibble(esp_codelist))
 NULL
 
 
@@ -95,20 +98,7 @@ NULL
 #'   * LEVL_CODE: NUTS level code (0,1,2,3)
 #'   * geometry: geometry field
 #'
-#' @examples
-#' library(sf)
-#'
-#' nuts <- esp_nuts.sf
-#' nuts3 <- subset(nuts, LEVL_CODE == 3)
-#'
-#' unique(nuts3$MOUNT_TYPE)
-#'
-#' plot(
-#'   nuts3[, "URBN_TYPE"],
-#'   pal = hcl.colors(3, palette = "Viridis"),
-#'   main = "Urban type -  NUTS3 levels of Spain",
-#'   key.pos = NULL
-#' )
+#' @example inst/examples/esp_nuts_sf.R
 NULL
 
 #' All Municipalities `POLYGON` object of Spain
@@ -141,30 +131,7 @@ NULL
 #'   * LAU_CODE: LAU Code (GISCO) of the municipality.
 #'   * geometry: geometry field.
 #'
-#' @examples
-#' library(sf)
-#'
-#' data("esp_munic.sf")
-#' data("esp_nuts.sf")
-#'
-#' Teruel.cpro <- esp_dict_region_code("Teruel", destination = "cpro")
-#' Teruel.NUTS <- esp_dict_region_code(Teruel.cpro,
-#'   origin = "cpro",
-#'   destination = "nuts"
-#' )
-#'
-#' Teruel.sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel.cpro, ]
-#' Teruel.city <- Teruel.sf[Teruel.sf$name == "Teruel", ]
-#'
-#' NUTS <-
-#'   esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3 &
-#'     esp_nuts.sf$NUTS_ID != Teruel.NUTS, ]
-#'
-#'
-#' plot(st_geometry(Teruel.sf), col = "cornsilk")
-#' plot(st_geometry(Teruel.city), col = "firebrick3", add = TRUE)
-#' plot(st_geometry(NUTS), col = "wheat", add = TRUE)
-#' title(main = "Municipalities of Teruel", line = 1)
+#' @example inst/examples/esp_munic_sf.R
 NULL
 
 

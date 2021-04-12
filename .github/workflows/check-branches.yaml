@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sianedev
+      - tmap_migration
 
 name: R-CMD-check-branch
 

@@ -39,6 +39,8 @@ Imports:
     slippymath (>= 0.3.1),
     leaflet (>= 2.0.0)
 Suggests:
+    tmap (>= 3.0.0),
     cartography (>= 2.4),
     rgdal,
-    tinytest
+    tinytest,
+    tibble

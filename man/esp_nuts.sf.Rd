@@ -30,19 +30,31 @@ A \code{sf} object including all NUTS levels of Spain as provided by
 GISCO (2016 version).
 }
 \examples{
-library(sf)
-
 nuts <- esp_nuts.sf
-nuts3 <- subset(nuts, LEVL_CODE == 3)
 
-unique(nuts3$MOUNT_TYPE)
+# Select NUTS 3
+nuts3 <- esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3, ]
 
-plot(
-  nuts3[, "URBN_TYPE"],
-  pal = hcl.colors(3, palette = "Viridis"),
-  main = "Urban type -  NUTS3 levels of Spain",
-  key.pos = NULL
-)
+# Combine with full shape
+
+spain <- esp_get_country(moveCAN = FALSE)
+
+library(tmap)
+
+tm_shape(nuts3) +
+  tm_fill(
+    "URBN_TYPE",
+    style = "cat",
+    title = "Urban Type",
+    palette = hcl.colors(3, "Teal")
+  ) +
+  tm_shape(spain) +
+  tm_borders(col = "black") +
+  tm_graticules(lines = FALSE) +
+  tm_layout(
+    main.title = "NUTS3 levels of Spain",
+    legend.outside = TRUE
+  )
 }
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
