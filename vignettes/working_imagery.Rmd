@@ -123,7 +123,7 @@ tm_shape(Basemap, raster.downsample = FALSE) +
 
 
 `mapSpain` provides a plugin to be used with the `leaflet` package. Here you 
-can some examples:
+can find some quick examples:
 
 
 ```{r leaflet1}
