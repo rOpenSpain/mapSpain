@@ -9,4 +9,6 @@ Meta
 CRAN-RELEASE
 cran-comments.md
 revdep
+doc
 docs
+inst/doc

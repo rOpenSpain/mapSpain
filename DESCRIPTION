@@ -40,7 +40,9 @@ Imports:
     leaflet (>= 2.0.0)
 Suggests:
     tmap (>= 3.0.0),
-    cartography (>= 2.4),
     rgdal,
     tinytest,
-    tibble
+    tibble,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

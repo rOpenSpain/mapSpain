@@ -21,7 +21,8 @@
 ^doc$
 ^Meta$
 ^CRAN-RELEASE$
-^vignettes$
+^vignettes/working_imagery.Rmd$
+^vignettes/x01_regioncodes.Rmd$
 ^.gitattributes
 ^img$
 ^_pkgdown\.yml$
