@@ -235,7 +235,7 @@ tm_shape(munic.pop) +
     colorNA = "#000004"
   ) +
   tm_layout(
-    main.title = "Population Density in Spain (2010)",
+    main.title = "Population Density in Spain (2019)",
     main.title.size = 0.8,
     frame = FALSE,
     bg.color = "#000004",
