@@ -49,7 +49,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -108,6 +112,7 @@ Random <-
 plot(st_geometry(Random), col = hcl.colors(6))
 
 # All Provinces of a Zone plus an addition
+# Low resolution (20M)
 
 Mix <-
   esp_get_prov(
@@ -124,10 +129,23 @@ plot(
   main = NULL,
   border = "white"
 )
+# ISO codes available
+
+allprovs <- esp_get_prov()
+
+library(tmap)
+
+tmap_style("cobalt")
+
+tm_shape(allprovs, point.per = "feature") +
+  tm_polygons() +
+  tm_text("iso2.prov.code", remove.overlap = TRUE)
+
+tmap_options_reset()
 }
 \seealso{
 \code{\link[=esp_get_hex_prov]{esp_get_hex_prov()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}.
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link{esp_codelist}}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

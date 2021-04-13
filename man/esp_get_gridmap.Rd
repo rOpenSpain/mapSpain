@@ -41,75 +41,53 @@ to change the projection.
 See  \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}} for Details.
 }
 \examples{
+library(tmap)
 
-library(sf)
-library(cartography)
+esp <- esp_get_country()
+hexccaa <- esp_get_hex_ccaa()
 
-esp <- st_transform(esp_get_country(), 3857)
 
-hexccaa <- st_transform(esp_get_hex_ccaa(), 3857)
-
-plot_sf(hexccaa)
-plot(st_geometry(esp),
-  col = "grey80",
-  border = NA,
-  add = TRUE
-)
-plot(st_geometry(hexccaa),
-  col = hcl.colors(19, alpha = 0.5),
-  add = TRUE
-)
-labelLayer(hexccaa, txt = "label")
+tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
+  tm_polygons() +
+  tm_shape(hexccaa) +
+  tm_polygons("codauto", alpha = 0.6, legend.show = FALSE) +
+  tm_shape(hexccaa) +
+  tm_text("label")
 
 
 
-hexprov <- st_transform(esp_get_hex_prov(), 3857)
+hexprov <- esp_get_hex_prov()
 
-plot_sf(hexprov)
-plot(st_geometry(esp),
-  col = "grey80",
-  border = NA,
-  add = TRUE
-)
-plot(st_geometry(hexprov),
-  col = hcl.colors(19, alpha = 0.5),
-  add = TRUE
-)
-labelLayer(hexprov, txt = "label")
+tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
+  tm_polygons() +
+  tm_shape(hexprov) +
+  tm_polygons("cpro", alpha = 0.6, legend.show = FALSE) +
+  tm_shape(hexprov) +
+  tm_text("label")
 
 
 
-gridccaa <- st_transform(esp_get_grid_ccaa(), 3857)
+gridccaa <- esp_get_grid_ccaa()
 
-plot_sf(gridccaa)
-plot(st_geometry(esp),
-  col = "grey80",
-  border = NA,
-  add = TRUE
-)
-plot(st_geometry(gridccaa),
-  col = hcl.colors(19, alpha = 0.5),
-  add = TRUE
-)
-labelLayer(gridccaa, txt = "label")
+tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
+  tm_polygons() +
+  tm_shape(gridccaa) +
+  tm_polygons("codauto", alpha = 0.6, legend.show = FALSE) +
+  tm_shape(gridccaa) +
+  tm_text("label")
 
-gridprov <- st_transform(esp_get_grid_prov(), 3857)
+gridprov <- esp_get_grid_prov()
 
-plot_sf(gridprov)
-plot(st_geometry(esp),
-  col = "grey80",
-  border = NA,
-  add = TRUE
-)
-plot(st_geometry(gridprov),
-  col = hcl.colors(19, alpha = 0.5),
-  add = TRUE
-)
-labelLayer(gridprov, txt = "label")
+tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
+  tm_polygons() +
+  tm_shape(gridprov) +
+  tm_polygons("cpro", alpha = 0.6, legend.show = FALSE) +
+  tm_shape(gridprov) +
+  tm_text("label")
 }
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}}, \code{\link[=esp_get_munic]{esp_get_munic()}},
-\link{esp_codelist}
+\code{\link{esp_codelist}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

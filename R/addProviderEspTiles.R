@@ -6,7 +6,7 @@
 #'
 #' @description
 #' Add tiles of <https://dieghernan.github.io/leaflet-providersESP/> to a
-#' **R** [leaflet::leaflet()] map.
+#' **R** [`leaflet::leaflet()`] map.
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
@@ -16,11 +16,11 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [leaflet.providersESP.df], [esp_getTiles()]
+#' @seealso [`leaflet.providersESP.df`], [esp_getTiles()]
 #'
 #' @export
 #'
-#' @param provider Name of the provider, see [leaflet.providersESP.df].
+#' @param provider Name of the provider, see [`leaflet.providersESP.df`].
 #'
 #' @inheritParams leaflet::addTiles
 #'

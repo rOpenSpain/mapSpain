@@ -28,7 +28,15 @@ esp_get_ccaa_siane(
 \item{ccaa}{A vector of names and/or codes for autonomous communities
 or \code{NULL} to get all the autonomous communities. See Details.}
 
-\item{...}{Additional parameters from \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
+\item{...}{
+  Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
+  \describe{
+    \item{\code{spatialtype}}{Type of geometry to be returned:
+\itemize{
+\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item "LB": Labels - \code{POINT} object.
+}}
+  }}
 
 \item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{esp_get_ccaa} and
 Details for \code{esp_get_ccaa_siane}}
@@ -49,7 +57,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -92,21 +104,26 @@ format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 Historical information starts as of 2005.
 }
 \examples{
-
-library(sf)
-
 # Random CCAA
+Random <- esp_get_ccaa(ccaa = c(
+  "Euskadi",
+  "Catalunya",
+  "ES-EX",
+  "Canarias",
+  "ES52",
+  "01"
+))
 
-Random <-
-  esp_get_ccaa(ccaa = c(
-    "Euskadi",
-    "Catalunya",
-    "ES-EX",
-    "Canarias",
-    "ES52",
-    "01"
-  ))
-plot(st_geometry(Random), col = hcl.colors(6))
+library(tmap)
+
+tm_shape(Random) +
+  tm_polygons(col = "codauto", legend.show = FALSE) +
+  tm_shape(Random, point.per = "feature") +
+  tm_text("codauto",
+    auto.placement = TRUE,
+    shadow = TRUE
+  )
+
 
 # All CCAA of a Zone plus an addition
 
@@ -115,6 +132,8 @@ Mix <-
     ccaa = c("La Rioja", "Noroeste"),
     resolution = "20"
   )
+
+# Base plot
 plot(
   Mix[, "nuts1.code"],
   pal = hcl.colors(2),
@@ -122,10 +141,31 @@ plot(
   main = NULL,
   border = "white"
 )
+
+# Combine with giscoR to get countries
+\donttest{
+library(giscoR)
+library(sf)
+
+res <- 20 # Set same resoluion
+
+europe <- gisco_get_countries(resolution = res)
+ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
+
+# Transform to same CRS
+europe <- st_transform(europe, 3035)
+ccaa <- st_transform(ccaa, 3035)
+
+tm_shape(europe, bbox = c(23, 14, 74, 55) * 10e4) +
+  tm_polygons("#DFDFDF", border.col = "#656565") +
+  tm_shape(ccaa) +
+  tm_polygons("#FDFBEA", border.col = "#656565") +
+  tm_layout(bg.color = "#C7E7FB")
+}
 }
 \seealso{
 \code{\link[=esp_get_hex_ccaa]{esp_get_hex_ccaa()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_prov]{esp_get_prov()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link{esp_codelist}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

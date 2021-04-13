@@ -7,7 +7,8 @@
 #' various open map servers.
 #'
 #' This function is a implementation of the javascript plugin
-#' <https://dieghernan.github.io/leaflet-providersESP/> **v1.2.0**.
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **v1.2.0**.
 #'
 #' @return
 #' A `RasterBrick` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
@@ -20,14 +21,14 @@
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @seealso
-#' [leaflet.providersESP.df], [addProviderEspTiles()], [raster::plotRGB()],
-#' [cartography::getTiles()]
+#' [`leaflet.providersESP.df`], [addProviderEspTiles()], [raster::plotRGB()],
+#' [`tmap::tm_rgb()`]
 #'
 #' @export
 #'
 #' @param x An `sf` object.
 #'
-#' @param type Name of the provider. See [leaflet.providersESP.df].
+#' @param type Name of the provider. See [`leaflet.providersESP.df`].
 #' @param zoom Zoom level. If `NULL`, it is determined automatically.
 #'   Only valid for WMTS.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
@@ -46,10 +47,10 @@
 #' Zoom levels are described on the OpenStreetMap wiki:
 #' <https://wiki.openstreetmap.org/wiki/Zoom_levels>.
 #'
-#' Results of `esp_getTiles` could be plotted using [raster::plotRGB()] or
-#' [cartography::tilesLayer()]
+#' Results of `esp_getTiles` could be plotted using [raster::plotRGB()],
+#' [`tmap::tm_rgb()`], etc.
 #'
-#' For a complete list of providers see [leaflet.providersESP.df].
+#' For a complete list of providers see [`leaflet.providersESP.df`].
 #'
 #'
 #' Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
@@ -58,7 +59,23 @@
 #' `x <- sf::st_transform(x,3857)`
 #'
 #' Tiles are cached under the path `cache_dir/[type]`.
+#' @examples
+#' \donttest{
 #'
+#' library(sf)
+#'
+#' Murcia <- esp_get_ccaa("Murcia")
+#' Murcia <- st_transform(Murcia, 3857)
+#'
+#' Tile <- esp_getTiles(Murcia)
+#'
+#' library(tmap)
+#'
+#' tm_shape(Tile, raster.downsample = FALSE) +
+#'   tm_rgb(interpolate = FALSE) +
+#'   tm_shape(Murcia) +
+#'   tm_borders()
+#' }
 esp_getTiles <- function(x,
                          type = "IDErioja",
                          zoom = NULL,

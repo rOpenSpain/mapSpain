@@ -15,9 +15,9 @@ data frame with codes as columns
 community and province.
 \item \strong{ine.*.name}: INE name of each autonomous community
 and province.
-\item \strong{iso2.\emph{.name.}}: ISO2 name of each autonomous community
+\item \strong{iso2.*.name.(lang)}: ISO2 name of each autonomous community
 and province. Several languages available.
-\item \strong{cldr.\emph{.name.}}: CLDR name of each autonomous community and
+\item \strong{cldr.*.name.(lang)}: CLDR name of each autonomous community and
 province. Several languages available.
 \item \strong{ccaa.short.*}: Short (common) name of each autonomous
 community. Several languages available.
@@ -60,6 +60,9 @@ considered as communities with a single province (as Madrid, Asturias
 or Murcia) on this dataset.
 }
 \examples{
-data(esp_codelist)
+
+library(tibble)
+
+glimpse(as_tibble(esp_codelist))
 }
 \concept{datasets}

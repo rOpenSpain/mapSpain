@@ -23,7 +23,8 @@ A data frame containing information of different public WMS and WMTS
 providers of Spain
 
 This function is a implementation of the javascript plugin
-\url{https://dieghernan.github.io/leaflet-providersESP/} \strong{v1.2.0}.
+\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
+\strong{v1.2.0}.
 }
 \details{
 Providers available to be passed to \code{type} are:

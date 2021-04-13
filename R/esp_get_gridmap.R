@@ -14,7 +14,7 @@
 #'
 #' @seealso
 #' [esp_get_nuts()], [esp_get_ccaa()], [esp_get_prov()], [esp_get_munic()],
-#' [esp_codelist]
+#' [`esp_codelist`]
 #'
 #' @export
 #'
@@ -34,72 +34,8 @@
 #'
 #' See  [esp_get_ccaa()], [esp_get_prov()] for Details.
 #'
-#' @examples
+#' @example inst/examples/esp_get_gridmap.R
 #'
-#' library(sf)
-#' library(cartography)
-#'
-#' esp <- st_transform(esp_get_country(), 3857)
-#'
-#' hexccaa <- st_transform(esp_get_hex_ccaa(), 3857)
-#'
-#' plot_sf(hexccaa)
-#' plot(st_geometry(esp),
-#'   col = "grey80",
-#'   border = NA,
-#'   add = TRUE
-#' )
-#' plot(st_geometry(hexccaa),
-#'   col = hcl.colors(19, alpha = 0.5),
-#'   add = TRUE
-#' )
-#' labelLayer(hexccaa, txt = "label")
-#'
-#'
-#'
-#' hexprov <- st_transform(esp_get_hex_prov(), 3857)
-#'
-#' plot_sf(hexprov)
-#' plot(st_geometry(esp),
-#'   col = "grey80",
-#'   border = NA,
-#'   add = TRUE
-#' )
-#' plot(st_geometry(hexprov),
-#'   col = hcl.colors(19, alpha = 0.5),
-#'   add = TRUE
-#' )
-#' labelLayer(hexprov, txt = "label")
-#'
-#'
-#'
-#' gridccaa <- st_transform(esp_get_grid_ccaa(), 3857)
-#'
-#' plot_sf(gridccaa)
-#' plot(st_geometry(esp),
-#'   col = "grey80",
-#'   border = NA,
-#'   add = TRUE
-#' )
-#' plot(st_geometry(gridccaa),
-#'   col = hcl.colors(19, alpha = 0.5),
-#'   add = TRUE
-#' )
-#' labelLayer(gridccaa, txt = "label")
-#'
-#' gridprov <- st_transform(esp_get_grid_prov(), 3857)
-#'
-#' plot_sf(gridprov)
-#' plot(st_geometry(esp),
-#'   col = "grey80",
-#'   border = NA,
-#'   add = TRUE
-#' )
-#' plot(st_geometry(gridprov),
-#'   col = hcl.colors(19, alpha = 0.5),
-#'   add = TRUE
-#' )
-#' labelLayer(gridprov, txt = "label")
 esp_get_hex_prov <- function(prov = NULL) {
   region <- prov
   data_sf <- esp_hexbin_prov

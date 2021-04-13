@@ -25,7 +25,7 @@ esp_getTiles(
 \arguments{
 \item{x}{An \code{sf} object.}
 
-\item{type}{Name of the provider. See \link{leaflet.providersESP.df}.}
+\item{type}{Name of the provider. See \code{\link{leaflet.providersESP.df}}.}
 
 \item{zoom}{Zoom level. If \code{NULL}, it is determined automatically.
 Only valid for WMTS.}
@@ -49,7 +49,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -65,16 +69,17 @@ Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 
 This function is a implementation of the javascript plugin
-\url{https://dieghernan.github.io/leaflet-providersESP/} \strong{v1.2.0}.
+\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
+\strong{v1.2.0}.
 }
 \details{
 Zoom levels are described on the OpenStreetMap wiki:
 \url{https://wiki.openstreetmap.org/wiki/Zoom_levels}.
 
-Results of \code{esp_getTiles} could be plotted using \code{\link[raster:plotRGB]{raster::plotRGB()}} or
-\code{\link[cartography:tilesLayer]{cartography::tilesLayer()}}
+Results of \code{esp_getTiles} could be plotted using \code{\link[raster:plotRGB]{raster::plotRGB()}},
+\code{\link[tmap:tm_raster]{tmap::tm_rgb()}}, etc.
 
-For a complete list of providers see \link{leaflet.providersESP.df}.
+For a complete list of providers see \code{\link{leaflet.providersESP.df}}.
 
 Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
 looks deformed, try projecting first \code{x}:
@@ -83,9 +88,27 @@ looks deformed, try projecting first \code{x}:
 
 Tiles are cached under the path \verb{cache_dir/[type]}.
 }
+\examples{
+\donttest{
+
+library(sf)
+
+Murcia <- esp_get_ccaa("Murcia")
+Murcia <- st_transform(Murcia, 3857)
+
+Tile <- esp_getTiles(Murcia)
+
+library(tmap)
+
+tm_shape(Tile, raster.downsample = FALSE) +
+  tm_rgb(interpolate = FALSE) +
+  tm_shape(Murcia) +
+  tm_borders()
+}
+}
 \seealso{
-\link{leaflet.providersESP.df}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}, \code{\link[raster:plotRGB]{raster::plotRGB()}},
-\code{\link[cartography:getTiles]{cartography::getTiles()}}
+\code{\link{leaflet.providersESP.df}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}, \code{\link[raster:plotRGB]{raster::plotRGB()}},
+\code{\link[tmap:tm_raster]{tmap::tm_rgb()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

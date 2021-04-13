@@ -22,7 +22,7 @@ providerEspTileOptions(...)
 \arguments{
 \item{map}{a map widget object created from \code{\link[leaflet]{leaflet}()}}
 
-\item{provider}{Name of the provider, see \link{leaflet.providersESP.df}.}
+\item{provider}{Name of the provider, see \code{\link{leaflet.providersESP.df}}.}
 
 \item{layerId}{the layer id}
 
@@ -77,7 +77,7 @@ PuertadelSol <-
 PuertadelSol
 }
 \seealso{
-\link{leaflet.providersESP.df}, \code{\link[=esp_getTiles]{esp_getTiles()}}
+\code{\link{leaflet.providersESP.df}}, \code{\link[=esp_getTiles]{esp_getTiles()}}
 
 \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
 }

@@ -37,7 +37,11 @@ When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with \code{options(mapSpain_cache_dir = "path/to/dir")}.
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
 See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
 
 \item{verbose}{Display information. Useful for debugging,
@@ -57,7 +61,6 @@ Details on caching can be found on \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 }
 \examples{
 \donttest{
-library(sf)
 
 provs <- esp_get_prov()
 ccaa <- esp_get_ccaa()
@@ -70,27 +73,19 @@ stations <- esp_get_railway(spatialtype = "point")
 
 # Map
 
-pal <- hcl.colors(length(unique(rails$tipo)))
+library(tmap)
 
-
-plot(
-  st_geometry(provs),
-  col = "grey95",
-  border = "grey70",
-  xlim = c(-7.5, -2.5),
-  ylim = c(38, 40)
-)
-plot(st_geometry(ccaa), add = TRUE)
-plot(rails[, "tipo"],
-  pal = pal,
-  add = TRUE,
-  lwd = 2
-)
-plot(st_geometry(stations),
-  pch = 19,
-  col = "grey30",
-  add = TRUE
-)
+tm_shape(provs, bbox = c(-7.5, 38, -2.5, 41)) +
+  tm_polygons(col = "grey90", border.col = "grey50") +
+  tm_shape(ccaa) +
+  tm_borders("black") +
+  tm_shape(rails) +
+  tm_lines("tipo",
+    legend.col.show = FALSE, lwd = 2,
+    palette = "Dark2"
+  ) +
+  tm_shape(stations) +
+  tm_symbols("red", size = .3)
 }
 }
 \seealso{
