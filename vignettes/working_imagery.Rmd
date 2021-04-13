@@ -60,6 +60,7 @@ tile_LGN <- esp_getTiles(LGN, "IDErioja", bbox_expand = 0.5)
 
 tm_shape(tile_LGN, raster.downsample = FALSE) +
   tm_rgb() +
+  # Mix with a sf polygon
   tm_shape(LGN) +
   tm_borders(lwd = 2, lty = "dotted")
 
@@ -93,9 +94,9 @@ ADIF.alpha <- esp_getTiles(Madrid,
 
 # Same code than above for plotting
 
-tm_shape(BG) +
+tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
-  tm_shape(ADIF.alpha) +
+  tm_shape(ADIF.alpha, raster.downsample = FALSE) +
   tm_rgb()
 
 ```
