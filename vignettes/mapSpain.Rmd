@@ -3,8 +3,11 @@ title: "Get Started"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get Started}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 80
 ---
 
 ```{r, include = FALSE}
@@ -22,32 +25,31 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-**Full site with more examples and vignettes on 
-https://ropenspain.github.io/mapSpain/**
+**Full site with more examples and vignettes on
+<https://ropenspain.github.io/mapSpain/>**
 
-[**`mapSpain`**](https://ropenspain.github.io/mapSpain/) is a package designed 
+[**`mapSpain`**](https://ropenspain.github.io/mapSpain/) is a package designed
 to provide geographical information of Spain at different levels.
 
-
-**`mapSpain`** provides shapefiles of municipalities, provinces, autonomous 
-communities and NUTS levels of Spain. It also provides hexbin shapefiles and 
+**`mapSpain`** provides shapefiles of municipalities, provinces, autonomous
+communities and NUTS levels of Spain. It also provides hexbin shapefiles and
 other complementary shapes, as the usual lines around the Canary Islands.
 
-**`mapSpain`** provides access to map tiles of public organisms of Spain, that 
-can be represented on static maps via `mapSpain::esp_getTiles()` or on a 
-**R** leaflet map using `mapSpain::addProviderEspTiles()`.
+**`mapSpain`** provides access to map tiles of public organisms of Spain, that
+can be represented on static maps via `mapSpain::esp_getTiles()` or on a **R**
+leaflet map using `mapSpain::addProviderEspTiles()`.
 
-On top of that, **`mapSpain`** also has a powerful dictionary that translate 
-provinces and other regions to English, Spanish, Catalan, Basque language or 
-Galician, and also converts those names to different coding standards, as 
-NUTS, ISO2 or the coding system used by the INE, that is the official 
-statistic agency of Spain.
+On top of that, **`mapSpain`** also has a powerful dictionary that translate
+provinces and other regions to English, Spanish, Catalan, Basque language or
+Galician, and also converts those names to different coding standards, as NUTS,
+ISO2 or the coding system used by the INE, that is the official statistic agency
+of Spain.
 
 ## Caching
 
 `mapSpain` provides a dataset and tile caching capability, that could be set as:
 
-```r
+``` {.r}
 options(mapSpain_cache_dir = "~/path/to/dir")
 
 OR 
@@ -55,29 +57,26 @@ OR
 options(gisco_cache_dir = "~/path/to/dir")
 ```
 
-`mapSpain` relies on [`giscoR`](https://dieghernan.github.io/giscoR/) for 
-downloading some files, and both packages are well synchronized, so if 
-you already use `giscoR` and you have set your caching options for that package 
-it would be recognized too by `mapSpain`.
+`mapSpain` relies on [`giscoR`](https://dieghernan.github.io/giscoR/) for
+downloading some files, and both packages are well synchronized, so if you
+already use `giscoR` and you have set your caching options for that package it
+would be recognized too by `mapSpain`.
 
 ## Installation
 
-Install `mapSpain` from
-[**CRAN**](https://CRAN.R-project.org/package=mapSpain):
+Install `mapSpain` from [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
-``` r
+``` {.r}
 install.packages("mapSpain")
 ```
 
-For installing the development version on 
+For installing the development version on
 ([Github](https://github.com/rOpenSpain/mapSpain/)):
 
-```r
+``` {.r}
 library(remotes)
 install_github("rOpenSpain/mapSpain")
 ```
-
-
 
 ## Basic example
 
@@ -136,10 +135,9 @@ tm_shape(Euskadi_CCAA) +
 
 ```
 
-
 ## Choropleth and label maps
 
-Let's analyse the distribution of women in each autonomous community with 
+Let's analyze the distribution of women in each autonomous community with
 `tmap`:
 
 ```{r choro}
@@ -189,14 +187,12 @@ tm_shape(CCAA_sf) +
   tm_layout(legend.position = c("LEFT", "center"))
 ```
 
-
-
 ## Thematic maps
 
-This is an example on how `mapSpain` can be used to beautiful thematic maps. For 
-plotting purposes we would use the 
-[`tmap`](https://mtennekes.github.io/tmap/) package, however any package that 
-handles `sf` objects (e.g. `ggplot2`, `mapsf`, `leaflet`, etc. could be used). 
+This is an example on how `mapSpain` can be used to beautiful thematic maps. For
+plotting purposes we would use the [`tmap`](https://mtennekes.github.io/tmap/)
+package, however any package that handles `sf` objects (e.g. `ggplot2`, `mapsf`,
+`leaflet`, etc. could be used).
 
 ```{r thematic, fig.asp=0.6}
 
@@ -256,11 +252,55 @@ tm_shape(munic.pop) +
 
 ```
 
+## mapSpain and giscoR
+
+If you need to plot Spain along with another countries, consider using 
+[`giscoR`](https://dieghernan.github.io/giscoR/) package, that is installed
+as a dependency when you installed `mapSpain`. A basic example:
+
+```{r giscoR}
+
+library(giscoR)
+
+# Set the same resolution for a perfect fit
+
+res <- "20"
+
+all_countries <- gisco_get_countries(resolution = res)
+eu_countries <- gisco_get_countries(resolution = res, region = "EU")
+ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
+
+# Project to same CRS
+
+all_countries <- st_transform(all_countries, 3035)
+eu_countries <- st_transform(eu_countries, 3035)
+ccaa <- st_transform(ccaa, 3035)
+
+# Plot
+
+tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
+  tm_graticules(col = "#DFDFDF", alpha = 0.7) +
+  tm_fill("#DFDFDF") +
+  tm_shape(eu_countries) +
+  tm_polygons("#FDFBEA", border.col = "#656565") +
+  tm_shape(ccaa) +
+  tm_polygons("#C12838", border.col = "white")
+
+```
+
+
 ## Session Info
 
 <details>
-  <summary><strong>Details</strong></summary>
+
+<summary>
+
+<strong>Details</strong>
+
+</summary>
+
 ```{r session_info, echo=FALSE}
 sessionInfo()
 ```
+
 </details>

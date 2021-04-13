@@ -9,6 +9,9 @@ Meta
 CRAN-RELEASE
 cran-comments.md
 revdep
+dev
 doc
 docs
 inst/doc
+/doc/
+/Meta/
