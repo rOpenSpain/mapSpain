@@ -10,6 +10,12 @@ expect_silent(esp_dict_region_code(vals, destination = "nuts"))
 expect_silent(esp_dict_region_code(vals, destination = "cpro"))
 expect_silent(esp_dict_region_code(vals, destination = "iso2"))
 
+# test different casing of strings
+expect_silent(esp_dict_region_code(c(
+  "AlBaceTe",
+  "albacete",
+  "ALBACETE"
+), destination = "cpro"))
 # From ISO2 to another codes
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")

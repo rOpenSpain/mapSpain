@@ -97,7 +97,7 @@ esp_dict_region_code <- function(sourcevar,
 
   if (origin == "text") {
     sourcevar <- countrycode::countrycode(
-      sourcevar,
+      tolower(sourcevar),
       origin = "value",
       destination = "key",
       custom_dict = names_dict,
