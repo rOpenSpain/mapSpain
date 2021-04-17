@@ -192,7 +192,7 @@ library(giscoR)
 
 # Set the same resolution for a perfect fit
 
-res <- "20"
+res <- "03"
 
 all_countries <- gisco_get_countries(resolution = res)
 eu_countries <- gisco_get_countries(resolution = res, region = "EU")
@@ -213,7 +213,7 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_shape(eu_countries) +
   tm_polygons("#FDFBEA", border.col = "#656565") +
   tm_shape(ccaa) +
-  tm_polygons("#C12838", border.col = "white")
+  tm_polygons("#C12838", border.col = "grey80", border.alpha = 0.5)
 
 ```
 
