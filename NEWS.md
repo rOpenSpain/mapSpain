@@ -1,6 +1,6 @@
-# mapSpain (development version)
+# mapSpain 0.2.2
 
--   Migrate examples to `tmap`
+-   Migrate examples, vignettes and README to `tmap`
 -   `esp_dict_region_code()` works with mixed casings (e.g: `esp_dict_region_code("aLbacEte", destination = "cpro")`).
 
 # mapSpain 0.2.1
