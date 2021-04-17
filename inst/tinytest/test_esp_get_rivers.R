@@ -1,7 +1,5 @@
-library(tinytest)
-
 expect_error(esp_get_rivers(epsg = 3367))
-expect_error(esp_get_rivers(spatialtype =  "f"))
+expect_error(esp_get_rivers(spatialtype = "f"))
 
 
 
@@ -12,9 +10,11 @@ if (giscoR::gisco_check_access()) {
     epsg = 3857
   ))
 
-  l <- esp_get_rivers(spatialtype = "line",
-                      resolution = "10",
-                      epsg = 3857)
+  l <- esp_get_rivers(
+    spatialtype = "line",
+    resolution = "10",
+    epsg = 3857
+  )
 
   expect_true(sf::st_crs(l) == sf::st_crs(3857))
   expect_silent(esp_get_rivers(spatialtype = "area", resolution = "10"))

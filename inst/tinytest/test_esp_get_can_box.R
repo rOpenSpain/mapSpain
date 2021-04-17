@@ -1,6 +1,3 @@
-library(tinytest)
-
-
 expect_error(esp_get_can_box(style = "ee"))
 expect_error(esp_get_can_box(epsg = "ee"))
 expect_silent(esp_get_can_box())

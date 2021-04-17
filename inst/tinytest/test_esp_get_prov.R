@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(esp_get_prov("FFF"))
 expect_silent(esp_get_prov())
 expect_silent(esp_get_prov(prov = c("Galicia", "ES7", "Centro")))

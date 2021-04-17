@@ -1,5 +1,3 @@
-library(tinytest)
-
 poly <- esp_get_ccaa("La Rioja")
 expect_error(esp_getTiles(poly, type = "FFF"))
 
@@ -23,14 +21,16 @@ if (giscoR::gisco_check_access()) {
 
 
 
-  expect_message(esp_getTiles(point, type = "RedTransporte.Carreteras",
-                              verbose = TRUE))
+  expect_message(esp_getTiles(point,
+    type = "RedTransporte.Carreteras",
+    verbose = TRUE
+  ))
   expect_message(esp_getTiles(poly,
-                              type = "RedTransporte.Carreteras",
-                              verbose = TRUE, mask = TRUE))
+    type = "RedTransporte.Carreteras",
+    verbose = TRUE, mask = TRUE
+  ))
   expect_message(esp_getTiles(poly,
-                              type = "RedTransporte.Carreteras",
-                              verbose = TRUE, mask = TRUE))
-
-
+    type = "RedTransporte.Carreteras",
+    verbose = TRUE, mask = TRUE
+  ))
 }

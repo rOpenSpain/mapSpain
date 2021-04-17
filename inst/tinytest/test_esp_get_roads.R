@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(esp_get_roads(epsg = 3367))
 
 

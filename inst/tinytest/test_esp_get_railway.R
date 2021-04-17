@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(esp_get_railway(epsg = 3367))
 expect_error(esp_get_railway(spatialtype = "aaff"))
 

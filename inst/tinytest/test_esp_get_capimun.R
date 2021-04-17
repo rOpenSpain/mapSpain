@@ -1,5 +1,3 @@
-library(tinytest)
-
 
 # SIANE
 if (giscoR::gisco_check_access()) {

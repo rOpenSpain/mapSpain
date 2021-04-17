@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_silent(esp_get_nuts())
 expect_silent(esp_get_nuts(resolution = 1))
 expect_silent(esp_get_nuts(nuts_level = 2, moveCAN = FALSE))
@@ -37,8 +35,10 @@ expect_equal(length(l1), nrow(ff))
 
 
 # Check all iso codes
-b <- unique(c(esp_codelist$iso2.ccaa.code,
-              esp_codelist$iso2.prov.code))
+b <- unique(c(
+  esp_codelist$iso2.ccaa.code,
+  esp_codelist$iso2.prov.code
+))
 expect_warning(esp_get_nuts(region = b))
 
 # Check names

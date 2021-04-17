@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(esp_get_ccaa("FFF"))
 expect_silent(esp_get_ccaa())
 expect_silent(esp_get_ccaa(ccaa = c("Galicia", "ES7", "Centro")))

@@ -1,5 +1,3 @@
-library(tinytest)
-
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 expect_error(esp_dict_region_code(vals, "aa"))
@@ -51,8 +49,7 @@ expect_warning(esp_dict_region_code(valsmix, destination = "iso2"))
 
 ## End(Not run)
 
-vals <-
-  c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
+vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 expect_error(esp_dict_translate(vals, "xx"))
 expect_silent(esp_dict_translate(vals))
 expect_true(class(esp_dict_translate(vals, all = TRUE)) == "list")
