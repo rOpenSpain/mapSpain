@@ -1,7 +1,7 @@
 Package: mapSpain
 Type: Package
 Title: Administrative Boundaries of Spain
-Version: 0.2.2
+Version: 0.2.2.9000
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -33,7 +33,7 @@ Depends:
 Imports: 
     sf (>= 0.9),
     countrycode (>= 1.2.0),
-    giscoR (>= 0.2.0),
+    giscoR (>= 0.2.4),
     raster (>= 3.0),
     png (>= 0.1-5),
     slippymath (>= 0.3.1),

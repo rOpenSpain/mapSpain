@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Move minimum version of `giscoR` to v0.2.4
+
 # mapSpain 0.2.2
 
 -   Migrate examples, vignettes and README to `tmap`.
