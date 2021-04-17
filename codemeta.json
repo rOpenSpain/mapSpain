@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.1.9001",
+  "version": "0.2.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -239,7 +239,7 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "fileSize": "466495.158KB",
+  "fileSize": "466498.443KB",
   "contIntegration": "https://codecov.io/gh/rOpenSpain/mapSpain",
   "keywords": [
     "r",
