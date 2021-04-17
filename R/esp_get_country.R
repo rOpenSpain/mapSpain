@@ -12,7 +12,7 @@
 #'
 #' @export
 #'
-#' @param ... Additional parameters from [esp_get_nuts()].
+#' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @examples
 #'

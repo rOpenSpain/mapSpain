@@ -227,7 +227,7 @@ code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
-This package used data from CartoBase SIANE, provided by Instituto
+This package uses data from CartoBase SIANE, provided by Instituto
 Geográfico Nacional:
 
 > Atlas Nacional de España (ANE) [CC BY

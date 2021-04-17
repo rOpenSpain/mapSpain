@@ -39,7 +39,18 @@
 #'
 #' @keywords package
 #'
-#' @note COPYRIGHT NOTICE
+#' @details
+#'
+#' # COPYRIGHT NOTICE (IGN)
+#'
+#' This package uses data from CartoBase SIANE, provided by Instituto
+#' Geografico Nacional (IGN):
+#'
+#' Atlas Nacional de España (ANE)
+#' [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+#' [ign.es](https://www.ign.es/)
+#'
+#' # COPYRIGHT NOTICE (GISCO)
 #'
 #' When data downloaded from GISCO
 #' is used in any printed or electronic publication,

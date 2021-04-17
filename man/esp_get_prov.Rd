@@ -28,7 +28,15 @@ esp_get_prov_siane(
 \item{prov}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the provinces. See Details.}
 
-\item{...}{Additional parameters from \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
+\item{...}{
+  Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
+  \describe{
+    \item{\code{spatialtype}}{Type of geometry to be returned:
+\itemize{
+\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item "LB": Labels - \code{POINT} object.
+}}
+  }}
 
 \item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{esp_get_prov} and
 Details for \code{esp_get_prov_siane}}

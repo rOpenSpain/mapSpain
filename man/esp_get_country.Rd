@@ -7,7 +7,49 @@
 esp_get_country(...)
 }
 \arguments{
-\item{...}{Additional parameters from \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
+\item{...}{
+  Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
+  \describe{
+    \item{\code{year}}{Release year. One of "2003", "2006",`"2010", "2013", "2016" or
+"2021".}
+    \item{\code{epsg}}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
+    \item{\code{cache}}{A logical whether to do caching. Default is \code{TRUE}.}
+    \item{\code{update_cache}}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+    \item{\code{cache_dir}}{A path to a cache directory. The directory can also be
+set globally with:
+\itemize{
+\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
+}
+
+See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
+    \item{\code{verbose}}{Display information. Useful for debugging,
+default is \code{FALSE}.}
+    \item{\code{resolution}}{Resolution of the geospatial data. One of
+\itemize{
+\item "60": 1:60million
+\item "20": 1:20million
+\item "10": 1:10million
+\item "03": 1:3million
+\item "01": 1:1million
+}}
+    \item{\code{spatialtype}}{Type of geometry to be returned:
+\itemize{
+\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item "LB": Labels - \code{POINT} object.
+}}
+    \item{\code{moveCAN}}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.}
+  }}
 }
 \value{
 A \code{MULTIPOLYGON/MULTIPOINT} object.

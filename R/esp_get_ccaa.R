@@ -23,7 +23,7 @@
 #' @param ccaa A vector of names and/or codes for autonomous communities
 #'   or `NULL` to get all the autonomous communities. See Details.
 #'
-#' @inheritDotParams esp_get_nuts spatialtype
+#' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),

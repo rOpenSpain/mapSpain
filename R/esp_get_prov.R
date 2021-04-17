@@ -23,7 +23,7 @@
 #' @param prov A vector of names and/or codes for provinces
 #'   or `NULL` to get all the provinces. See Details.
 #'
-#' @param ... Additional parameters from [esp_get_nuts()].
+#' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @details
 #' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or

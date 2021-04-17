@@ -26,9 +26,16 @@ Instituto Geográfico Nacional.
    \strong{LazyLoad} \tab yes \cr
 }
 }
-\note{
-COPYRIGHT NOTICE
+\section{COPYRIGHT NOTICE (IGN)}{
+This package uses data from CartoBase SIANE, provided by Instituto
+Geografico Nacional (IGN):
 
+Atlas Nacional de España (ANE)
+\href{https://creativecommons.org/licenses/by/4.0/deed.en}{CC BY 4.0}
+\href{https://www.ign.es/}{ign.es}
+}
+
+\section{COPYRIGHT NOTICE (GISCO)}{
 When data downloaded from GISCO
 is used in any printed or electronic publication,
 in addition to any other provisions
@@ -52,6 +59,7 @@ If you intend to use the data commercially,
 please contact EuroGeographics for
 information regarding their license agreements.
 }
+
 \references{
 See \code{citation("mapSpain")}.
 }
