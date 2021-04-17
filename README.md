@@ -96,7 +96,7 @@ tm_shape(CCAA_sf) +
   tm_layout(legend.position = c("LEFT", "center"))
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-static-1.svg" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-static-1.png" width="100%" />
 
 You can combine `POLYGONS` with static tiles
 
@@ -109,19 +109,21 @@ census$porc_women <- census$women / census$pob19
 
 census$municode <- paste0(census$cpro, census$cmun)
 
-Asturias.sf <- esp_get_munic(region = "Asturias")
+shape <- esp_get_munic(region = "Teruel")
+provs <- esp_get_prov()
 
-Asturias.pop <-
-  merge(Asturias.sf, census, by.x = "LAU_CODE", by.y = "municode")
+shape_pop <-
+  merge(shape, census, by.x = "LAU_CODE", by.y = "municode")
 
 # Get tiles
 
-Asturias.pop <- st_transform(Asturias.pop, 3857)
+shape_pop <- st_transform(shape_pop, 3857)
+provs <- st_transform(provs, 3857)
 
 tile <-
-  esp_getTiles(Asturias.pop,
+  esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 8
+    zoom = 9 # Increase to get more quality
   )
 
 # Plot
@@ -130,21 +132,32 @@ library(tmap)
 
 tm_shape(tile, raster.downsample = FALSE) +
   tm_rgb() +
-  tm_shape(Asturias.pop) +
+  tm_shape(shape_pop) +
   tm_fill("porc_women",
     palette = "-inferno",
-    title = "% women",
+    title = "",
     alpha = 0.6,
     legend.format = list(
       fun = function(x) {
         sprintf("%1.0f%%", 100 * x)
-      }
+      },
+      text.to.columns = TRUE
     )
   ) +
-  tm_layout(legend.outside = TRUE)
+  tm_shape(provs) +
+  tm_borders() +
+  tm_layout(
+    main.title = "Share of women in Teruel by town (2019)",
+    main.title.fontface = "bold",
+    main.title.size = 1.2,
+    legend.text.size = 1,
+    legend.bg.color = "white",
+    legend.frame = TRUE,
+    legend.position = c("right", "bottom")
+  )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-tile-1.svg" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-tile-1.png" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -182,7 +195,7 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_polygons("#C12838", border.col = "white")
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-giscoR-1.svg" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-giscoR-1.png" width="100%" />
 
 ## A note on caching
 
