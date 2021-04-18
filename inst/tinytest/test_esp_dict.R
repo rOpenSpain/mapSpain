@@ -40,17 +40,22 @@ expect_silent(esp_dict_region_code(f, "iso2", "codauto"))
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 expect_silent(esp_dict_region_code(valsmix, destination = "nuts"))
 
-## Not run:
-
-# Warning
 
 expect_warning(esp_dict_region_code(valsmix, destination = "codauto"))
 expect_warning(esp_dict_region_code(valsmix, destination = "iso2"))
 
-## End(Not run)
+
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 expect_error(esp_dict_translate(vals, "xx"))
 expect_silent(esp_dict_translate(vals))
 expect_true(class(esp_dict_translate(vals, all = TRUE)) == "list")
 expect_warning(esp_dict_translate(c(vals, "pepe")))
+
+# Check results
+
+vals <- unique(esp_codelist$prov.shortname.es)
+test <- unique(esp_codelist$cldr.prov.name.en)
+
+expect_false(all(vals == test))
+expect_true(all(vals == esp_dict_translate(test, "es")))

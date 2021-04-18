@@ -63,9 +63,12 @@
 #' \donttest{
 #' library(giscoR)
 #'
+#' # Low resolution map
+#' res <- "20"
+#'
 #' Countries <-
 #'   gisco_get_countries(
-#'     res = "01",
+#'     res = res,
 #'     epsg = "4326",
 #'     country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
 #'   )
@@ -77,9 +80,9 @@
 #'   )
 #'
 #' CCAA <- esp_get_ccaa(
-#'   res = "01",
+#'   res = res,
 #'   epsg = "4326",
-#'   moveCAN = c(12.5, 0) #' Same displacement factor)
+#'   moveCAN = c(12.5, 0) # Same displacement factor)
 #' )
 #'
 #' # Plot

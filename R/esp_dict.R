@@ -262,6 +262,14 @@ esp_dict_translate <-
     # Create dict
     dict <- names_full
 
+    # Arrange prelation for results:
+    # - First: prov (a_prov)
+    # - Second: ccaa (b_ccaa)
+    # - Last: nuts (c_nuts)
+    dict$variable <- gsub("prov", "a_prov", dict$variable) # Upgrade provs
+    dict$variable <- gsub("ccaa", "b_ccaa", dict$variable) # Upgrade nuts
+    dict$variable <- gsub("nuts", "c_nuts", dict$variable) # Upgrade nuts
+
     names_dict <-
       unique(names_full[grep("name", dict$variable), c("key", "value")])
 
