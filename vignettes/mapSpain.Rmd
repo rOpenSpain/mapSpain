@@ -289,18 +289,3 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
 ```
 
 
-## Session Info
-
-<details>
-
-<summary>
-
-<strong>Details</strong>
-
-</summary>
-
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-
-</details>

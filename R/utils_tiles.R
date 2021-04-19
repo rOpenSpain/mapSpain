@@ -16,7 +16,8 @@ getWMS <- function(x,
                    verbose,
                    res,
                    transparent,
-                   bbox_expand) {
+                   bbox_expand) { # nocov start
+
   bbox_expand <- max(1 + bbox_expand, 1.1)
 
   # Get squared bbox
@@ -112,6 +113,7 @@ getWMS <- function(x,
   # End WMS
 
   return(rout)
+  # nocov end
 }
 
 #' Get tiles from WMTS
@@ -130,6 +132,7 @@ getWMTS <- function(x,
                     zoom,
                     type,
                     transparent) {
+  # nocov start
   # New fun
 
   x <- sf::st_transform(x, 4326)
@@ -194,12 +197,14 @@ getWMTS <- function(x,
 
   rout <- compose_tile_grid(tile_grid, ext, images, transparent)
   return(rout)
+  # nocov end
 }
 
 
 #' @name compose_tile_grid
 #' @noRd
 compose_tile_grid <- function(tile_grid, ext, images, transparent) {
+  # nocov start
   bricks <- vector("list", nrow(tile_grid$tiles))
   for (i in seq_along(bricks)) {
     bbox <-
@@ -241,6 +246,7 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
   # all tiles together
   rout <- do.call(raster::merge, bricks)
   return(rout)
+  # nocov end
 }
 
 
@@ -255,6 +261,7 @@ dl_t <-
            verbose,
            cache_dir,
            update_cache) {
+    # nocov start
     outfile <-
       paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
 
@@ -293,4 +300,5 @@ dl_t <-
       message("Tile cached on ", outfile)
     }
     return(outfile)
+    # nocov end
   }

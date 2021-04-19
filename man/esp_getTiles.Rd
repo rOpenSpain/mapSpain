@@ -89,7 +89,9 @@ looks deformed, try projecting first \code{x}:
 Tiles are cached under the path \verb{cache_dir/[type]}.
 }
 \examples{
-\donttest{
+\dontrun{
+# This script downloads tiles to your local machine
+# Run only if you are online
 
 library(sf)
 

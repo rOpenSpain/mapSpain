@@ -1,10 +1,10 @@
 ---
 title: "Working with imagery"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Working with imagery}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+resource_files:
+   - vignettes/articles/static1-1.png
+editor_options: 
+  markdown: 
+    wrap: 80
 ---
 
 ```{r, include = FALSE}
@@ -22,28 +22,34 @@ if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
   install.packages("reactable")
 }
 
+library(mapSpain)
+library(sf)
+library(tmap)
+
 ```
 
-`mapSpain` provides a powerful interface for working with imagery. `mapSpain` 
-can download static files as `.png` or`jpeg` files (depending on the Web Map 
+`mapSpain` provides a powerful interface for working with imagery. `mapSpain`
+can download static files as `.png` or`jpeg` files (depending on the Web Map
 Service) and use them along your shapefiles.
 
-`mapSpain` also includes a plugin for **R** 
-[leaflet](https://rstudio.github.io/leaflet/) package, that allows you to 
+`mapSpain` also includes a plugin for **R**
+[leaflet](https://rstudio.github.io/leaflet/) package, that allows you to
 include several basemaps on your interactive maps.
 
-The services are implemented via the leaflet plugin [leaflet-providersESP](dieghernan.github.io/leaflet-providersESP/). You can 
+The services are implemented via the leaflet plugin
+[leaflet-providersESP](dieghernan.github.io/leaflet-providersESP/). You can
 check a display of each provider on the previous link.
 
 ## Static tiles
 
-An example of how you can include several tiles to create a static map. We 
-focus here on layer provided by La Rioja's [Infraestructura de Datos Espaciales (IDERioja)]https://www.iderioja.larioja.org/
+An example of how you can include several tiles to create a static map. We focus
+here on layer provided by La Rioja's [Infraestructura de Datos Espaciales
+(IDERioja)](https://www.iderioja.larioja.org/).
 
-**When working with imagery, it is important to set `moveCAN = FALSE`, 
-otherwise the images for the Canary Islands won't be accurate.**
+**When working with imagery, it is important to set `moveCAN = FALSE`, otherwise
+the images for the Canary Islands won't be accurate.**
 
-```{r static1, fig.asp=1}
+```{r static1, eval=FALSE}
 
 library(mapSpain)
 library(sf)
@@ -67,10 +73,15 @@ tm_shape(tile_LGN, raster.downsample = FALSE) +
 
 ```
 
-Some tiles could be loaded with or without an alpha value, that controls the 
+```{r echo=FALSE}
+# From cache
+knitr::include_graphics("static1-1.png")
+```
+
+Some tiles could be loaded with or without an alpha value, that controls the
 transparency of the object:
 
-```{r static2, fig.asp=1}
+```{r static2, eval=FALSE}
 
 Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
@@ -85,7 +96,16 @@ tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(ADIF.opaque, raster.downsample = FALSE) +
   tm_rgb()
+```
 
+```{r echo=FALSE}
+# From cache
+knitr::include_graphics("static2-1.png")
+```
+
+Now let's check the same code using the `tranparent = TRUE` option:
+
+```{r static_transp, eval=FALSE}
 # Example with transparency
 
 ADIF.alpha <- esp_getTiles(Madrid,
@@ -101,17 +121,21 @@ tm_shape(BG, raster.downsample = FALSE) +
 
 ```
 
-Another nice feature is the ability of masking the tiles, so more advanced maps can be plotted:
+```{r echo=FALSE}
+# From cache
+knitr::include_graphics("static2-2.png")
+```
 
-```{r static3}
+Another nice feature is the ability of masking the tiles, so more advanced maps
+can be plotted:
 
-Marbella <- esp_get_munic(munic = "Marbella")
-Marbella <- st_transform(Marbella, 3857)
+```{r static3, eval=FALSE}
 
-Basemap <- esp_getTiles(Marbella, "PNOA", bbox_expand = 0.1, )
+LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-Mask <- esp_getTiles(Marbella, "IGNBase.Gris", mask = TRUE)
+Basemap <- esp_getTiles(LaRioja, bbox_expand = 0.1, zoom = 10)
 
+Mask <- esp_getTiles(LaRioja, "PNOA", mask = TRUE, , zoom = 10)
 
 tm_shape(Basemap, raster.downsample = FALSE) +
   tm_rgb() +
@@ -120,12 +144,15 @@ tm_shape(Basemap, raster.downsample = FALSE) +
 
 ```
 
+```{r echo=FALSE}
+# From cache
+knitr::include_graphics("static3-1.png")
+```
+
 ## Dynamic maps with Leaflet
 
-
-`mapSpain` provides a plugin to be used with the `leaflet` package. Here you 
-can find some quick examples:
-
+`mapSpain` provides a plugin to be used with the `leaflet` package. Here you can
+find some quick examples:
 
 ```{r leaflet1}
 
@@ -165,7 +192,6 @@ m  %>%
 
 ```
 
-
 ```{r leaflet2}
 
 Madrid.leaflet <- esp_get_ccaa("Madrid", epsg = 4326)
@@ -187,11 +213,11 @@ m2 %>% addLayersControl(
 
 ```
 
-## Available providers 
+## Available providers
 
-The data frame `leaflet.providersESP.df` includes the data of the available providers 
-you can use on functions described above. This data frame includes all the
-parameters needed to replicate the API request. In this summary only the
+The data frame `leaflet.providersESP.df` includes the data of the available
+providers you can use on functions described above. This data frame includes all
+the parameters needed to replicate the API request. In this summary only the
 parameter `url_static` is shown:
 
 ```{r providers, echo=FALSE}
@@ -213,10 +239,16 @@ reactable(df,
 ## Session Info
 
 <details>
-  <summary><strong>Details</strong></summary>
+
+<summary>
+
+<strong>Details</strong>
+
+</summary>
+
 ```{r session_info, echo=FALSE}
 sessionInfo()
 
 ```
-</details>
 
+</details>

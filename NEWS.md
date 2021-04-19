@@ -2,6 +2,7 @@
 
 -   Move minimum version of `giscoR` to v0.2.4
 -   Fix typos on `esp_dict_translate()` [\#36](https://github.com/rOpenSpain/mapSpain/issues/36)
+-   Not run examples on tiles, as the server sometimes doesn't respond.
 
 # mapSpain 0.2.2
 

@@ -60,7 +60,9 @@
 #'
 #' Tiles are cached under the path `cache_dir/[type]`.
 #' @examples
-#' \donttest{
+#' \dontrun{
+#' # This script downloads tiles to your local machine
+#' # Run only if you are online
 #'
 #' library(sf)
 #'
@@ -91,7 +93,7 @@ esp_getTiles <- function(x,
   if (isFALSE(requireNamespace("rgdal", quietly = TRUE))) {
     stop("`rgdal` package required for esp_getTiles()")
   }
-  # nocov end
+
 
   # Disable warnings related with crs
   oldw <- getOption("warn")
@@ -206,4 +208,5 @@ esp_getTiles <- function(x,
 
   # Result
   return(rout)
+  # nocov end
 }

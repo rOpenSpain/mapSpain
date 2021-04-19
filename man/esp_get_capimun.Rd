@@ -89,8 +89,10 @@ While \code{moveCAN} is useful for visualization, it would alter the
 actual geographical position of the Canary Islands.
 }
 \examples{
-\donttest{
+\dontrun{
 # This code compares centroid of municipalities against esp_get_capimun
+# It also download tiles, make sure you are online
+
 library(sf)
 
 # Get shape
