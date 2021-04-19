@@ -154,6 +154,8 @@ knitr::include_graphics("static3-1.png")
 `mapSpain` provides a plugin to be used with the `leaflet` package. Here you can
 find some quick examples:
 
+### Earthquakes in Tenerife (last year)
+
 ```{r leaflet1}
 
 library(leaflet)
@@ -192,24 +194,100 @@ m  %>%
 
 ```
 
+
+### Population density in Spain
+
 ```{r leaflet2}
 
-Madrid.leaflet <- esp_get_ccaa("Madrid", epsg = 4326)
-
-m2 <- leaflet(Madrid.leaflet, width = "100%") %>%
-  addProviderEspTiles("IGNBase.Gris") %>%
-  addPolygons(color = NA,
-              fillColor = "red",
-              group = "Polygon") %>%
-  addProviderEspTiles("RedTransporte.Ferroviario",
-                      group = "Railway")
-
-# Add layer control
-
-m2 %>% addLayersControl(
-  overlayGroups = c("Polygon", "Railway"),
-  options = layersControlOptions(collapsed = FALSE)
+munic <- esp_get_munic_siane(
+  year = 2019,
+  epsg = 4326,
+  moveCAN = FALSE,
+  rawcols = TRUE
 )
+
+# Get area in km2 from siane munic
+# Already on the shapefile
+
+munic$area_km2 <- munic$st_area_sh * 10000
+
+# Get population
+
+pop <- mapSpain::pobmun19
+
+# Paste
+munic_pop <-
+  merge(munic, pop[, c("cmun", "cpro", "pob19")],
+    by = c("cmun", "cpro"),
+    all.x = TRUE
+  )
+
+munic_pop$dens <- munic_pop$pob19 / munic_pop$area_km2
+munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
+  big.mark = ".",
+  decimal.mark = ","
+)
+
+# Create leaflet
+
+bins <-
+  c(
+    0,
+    10,
+    25,
+    100,
+    200,
+    500,
+    1000,
+    5000,
+    10000,
+    Inf
+  )
+
+
+pal <-
+  colorBin("inferno",
+    domain = munic_pop$dens,
+    bins = bins,
+    reverse = TRUE
+  )
+
+labels <- sprintf(
+  "<strong>%s</strong><br/>%s pers. / km<sup>2</sup>",
+  munic_pop$rotulo,
+  munic_pop$dens_label
+) %>% lapply(htmltools::HTML)
+
+
+
+leaflet() %>%
+  setView(
+    lng = -3.684444,
+    lat = 40.308611,
+    zoom = 6
+  ) %>%
+  addProviderEspTiles("IGNBase.Gris") %>%
+  addPolygons(
+    data = munic_pop,
+    fillColor = ~ pal(dens),
+    fillOpacity = 0.6,
+    color = "#44444",
+    weight = 0.5,
+    smoothFactor = .1,
+    opacity = 1,
+    highlightOptions = highlightOptions(
+      color = "white",
+      weight = 1,
+      bringToFront = TRUE
+    ),
+    popup = labels
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = bins,
+    opacity = 0.7, title = "<small>Pop. Density km<sup>2</sup></small><br><small>(2019)</small>",
+    position = "bottomright"
+  )
 
 ```
 
