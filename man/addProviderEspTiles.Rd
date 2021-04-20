@@ -26,11 +26,8 @@ providerEspTileOptions(...)
 
 \item{layerId}{the layer id}
 
-\item{group}{the name of the group the newly created layers should belong to
-(for \code{\link[leaflet]{clearGroup}} and \code{\link[leaflet]{addLayersControl}} purposes).
-Human-friendly group names are permitted--they need not be short,
-identifier-style names. Any number of layers and even different types of
-layers (e.g. markers and polygons) can share the same group name.}
+\item{group}{The name of the group the newly created layers should belong
+to. See \code{\link[leaflet:map-layers]{leaflet::addTiles()}}}
 
 \item{options}{a list of extra options for tile layers, popups, paths
 (circles, rectangles, polygons, ...), or other map elements}
@@ -77,7 +74,8 @@ PuertadelSol <-
 PuertadelSol
 }
 \seealso{
-\code{\link{leaflet.providersESP.df}}, \code{\link[=esp_getTiles]{esp_getTiles()}}
+\code{\link{leaflet.providersESP.df}}, \code{\link[=esp_getTiles]{esp_getTiles()}},
+\code{\link[leaflet:map-layers]{leaflet::addTiles()}}
 
 \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
 }

@@ -16,12 +16,15 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [`leaflet.providersESP.df`], [esp_getTiles()]
+#' @seealso [`leaflet.providersESP.df`], [esp_getTiles()],
+#' [`leaflet::addTiles()`]
 #'
 #' @export
 #'
 #' @param provider Name of the provider, see [`leaflet.providersESP.df`].
-#'
+#' @param group The name of the group the newly created layers should belong
+#' to. See [`leaflet::addTiles()`]
+
 #' @inheritParams leaflet::addTiles
 #'
 #' @examples
