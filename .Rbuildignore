@@ -25,4 +25,4 @@
 ^img$
 ^_pkgdown\.yml$
 ^codemeta\.json$
-^vignettes/articles$
+^vignettes$

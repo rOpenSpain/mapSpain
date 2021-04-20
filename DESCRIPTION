@@ -42,7 +42,4 @@ Suggests:
     tmap (>= 3.0.0),
     rgdal,
     tinytest,
-    tibble,
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    tibble
