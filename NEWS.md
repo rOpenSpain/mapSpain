@@ -6,6 +6,8 @@
 
 -   Not run examples on tiles, as the server sometimes doesn't respond.
 
+-   Refactor `sysdata.rda`.
+
 -   CRAN fixes:
 
     -   Removed broken link on `addProviderEspTiles()`.

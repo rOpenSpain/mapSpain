@@ -265,6 +265,29 @@ code2code <- code2code %>% as.data.frame()
 names2nuts <- names2nuts %>% as.data.frame()
 names_full <- names_full %>% as.data.frame()
 
+# Add grid files
+
+library(sf)
+esp_hexbin_prov <-
+  st_read("./data-raw/esp_hexbin_prov.gpkg",
+          stringsAsFactors = FALSE) %>%
+  st_make_valid()
+
+esp_hexbin_ccaa <-
+  st_read("./data-raw/esp_hexbin_ccaa.gpkg",
+          stringsAsFactors = FALSE) %>%
+  st_make_valid()
+
+
+esp_grid_prov <-
+  st_read("./data-raw/esp_grid_prov.gpkg",
+          stringsAsFactors = FALSE) %>%
+  st_make_valid()
+
+esp_grid_ccaa <-
+  st_read("./data-raw/esp_grid_ccaa.gpkg",
+          stringsAsFactors = FALSE) %>%
+  st_make_valid()
 
 usethis::use_data(
   # dict_nuts1,
@@ -274,6 +297,10 @@ usethis::use_data(
   code2code,
   names2nuts,
   names_full,
+  esp_hexbin_ccaa,
+  esp_hexbin_prov,
+  esp_grid_ccaa,
+  esp_grid_prov,
   overwrite = TRUE,
   compress = "xz",
   internal = TRUE
