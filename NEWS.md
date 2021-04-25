@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.2.3
 
 -   Move minimum version of `giscoR` to v0.2.4
 
@@ -13,6 +13,8 @@
     -   Removed broken link on `addProviderEspTiles()`.
 
     -   Vignette removed (CRAN warning).
+
+-   Now the `cache` directory is created recursively.
 
 # mapSpain 0.2.2
 

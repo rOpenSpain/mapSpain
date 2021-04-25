@@ -270,23 +270,27 @@ names_full <- names_full %>% as.data.frame()
 library(sf)
 esp_hexbin_prov <-
   st_read("./data-raw/esp_hexbin_prov.gpkg",
-          stringsAsFactors = FALSE) %>%
+    stringsAsFactors = FALSE
+  ) %>%
   st_make_valid()
 
 esp_hexbin_ccaa <-
   st_read("./data-raw/esp_hexbin_ccaa.gpkg",
-          stringsAsFactors = FALSE) %>%
+    stringsAsFactors = FALSE
+  ) %>%
   st_make_valid()
 
 
 esp_grid_prov <-
   st_read("./data-raw/esp_grid_prov.gpkg",
-          stringsAsFactors = FALSE) %>%
+    stringsAsFactors = FALSE
+  ) %>%
   st_make_valid()
 
 esp_grid_ccaa <-
   st_read("./data-raw/esp_grid_ccaa.gpkg",
-          stringsAsFactors = FALSE) %>%
+    stringsAsFactors = FALSE
+  ) %>%
   st_make_valid()
 
 usethis::use_data(
