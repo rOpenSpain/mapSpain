@@ -20,7 +20,7 @@ esp_hlp_cachedir <- function(cache_dir = NULL) {
 
   # Create cache dir if needed
   if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir)
+    dir.create(cache_dir, recursive = TRUE)
   }
   return(cache_dir)
 }
