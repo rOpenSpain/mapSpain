@@ -1,3 +1,5 @@
+# mapSpain (development version)
+
 # mapSpain 0.2.3
 
 -   Move minimum version of `giscoR` to v0.2.4
