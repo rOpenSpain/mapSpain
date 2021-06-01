@@ -131,8 +131,6 @@ tm_shape(Euskadi_CCAA) +
     main.title.size = 0.8,
     main.title.fontface = "bold"
   )
-
-
 ```
 
 ## Choropleth and label maps
@@ -207,7 +205,7 @@ munic <- esp_get_munic()
 municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)
 munic$area <- municarea
 
-munic.pop <- merge(munic, pop, all.x = TRUE)
+munic.pop <- merge(munic, pop, all.x = TRUE, by = c("cpro", "cmun"))
 munic.pop$dens <- munic.pop$pob19 / munic.pop$area
 
 br <-
@@ -247,9 +245,6 @@ tm_shape(munic.pop) +
     legend.text.fontface = "bold",
     legend.title.fontface = "bold"
   )
-
-
-
 ```
 
 ## mapSpain and giscoR
@@ -285,7 +280,4 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_polygons("#FDFBEA", border.col = "#656565") +
   tm_shape(ccaa) +
   tm_polygons("#C12838", border.col = "white")
-
 ```
-
-
