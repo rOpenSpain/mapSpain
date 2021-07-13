@@ -10,7 +10,18 @@ editor_options:
     wrap: 80
 ---
 
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 6,
+  fig.height = 4,
+  out.width = "100%",
+  out.height = "60%"
+)
+```
 
 ## Introduction
 
@@ -71,8 +82,7 @@ install_github("rOpenSpain/mapSpain")
 
 Some examples of what `mapSpain`can do:
 
-
-```r
+```{r basic}
 
 library(mapSpain)
 library(tmap)
@@ -87,11 +97,6 @@ tm_shape(country) +
   tm_graticules(lines = FALSE) +
   tm_style("classic") +
   tm_layout(main.title = "Map of Spain")
-```
-
-<img src="basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
-
-```r
 
 # Plot provinces
 
@@ -100,11 +105,6 @@ Andalucia <- esp_get_prov("Andalucia")
 tm_shape(Andalucia) +
   tm_polygons(col = "darkgreen", border.col = "white") +
   tm_graticules(lines = FALSE)
-```
-
-<img src="basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
-
-```r
 
 # Plot municipalities
 
@@ -133,15 +133,12 @@ tm_shape(Euskadi_CCAA) +
   )
 ```
 
-<img src="basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
-
 ## Choropleth and label maps
 
 Let's analyze the distribution of women in each autonomous community with
 `tmap`:
 
-
-```r
+```{r choro}
 
 census <- mapSpain::pobmun19
 
@@ -188,8 +185,6 @@ tm_shape(CCAA_sf) +
   tm_layout(legend.position = c("LEFT", "center"))
 ```
 
-<img src="choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" height="60%" />
-
 ## Thematic maps
 
 This is an example on how `mapSpain` can be used to beautiful thematic maps. For
@@ -197,8 +192,7 @@ plotting purposes we would use the [`tmap`](https://mtennekes.github.io/tmap/)
 package, however any package that handles `sf` objects (e.g. `ggplot2`, `mapsf`,
 `leaflet`, etc. could be used).
 
-
-```r
+```{r thematic, fig.asp=0.6}
 
 # Population density of Spain
 
@@ -253,16 +247,13 @@ tm_shape(munic.pop) +
   )
 ```
 
-<img src="thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" height="60%" />
-
 ## mapSpain and giscoR
 
 If you need to plot Spain along with another countries, consider using 
 [`giscoR`](https://dieghernan.github.io/giscoR/) package, that is installed
 as a dependency when you installed `mapSpain`. A basic example:
 
-
-```r
+```{r giscoR}
 
 library(giscoR)
 
@@ -290,5 +281,3 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_shape(ccaa) +
   tm_polygons("#C12838", border.col = "white")
 ```
-
-<img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" height="60%" />

@@ -7,19 +7,22 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/master/")
+knitr::opts_knit$set(
+  progress = TRUE,
+  base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/master/"
+)
 
-knitr::opts_chunk$set(collapse = TRUE,
-                      tidy = "styler",
-                      comment = "#>",
-                      fig.path = "img/README-",
-                      warning = FALSE,
-                      message = FALSE,
-                      dev = "ragg_png",
-                      dpi=300,
-                      out.width = "100%")
-
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "img/README-",
+  warning = FALSE,
+  message = FALSE,
+  dev = "ragg_png",
+  dpi = 300,
+  out.width = "100%"
+)
 ```
 
 # mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
@@ -62,6 +65,20 @@ You can install the developing version of `mapSpain` with:
 ``` r
 library(remotes)
 install_github("rOpenSpain/mapSpain")
+```
+
+
+Alternatively, you can install the developing version of `mapSpain` using
+the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    ropenspain = 'https://ropenspain.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+# Install tidyBdE
+install.packages('mapSpain')
 ```
 
 ## Usage
@@ -117,7 +134,6 @@ tm_shape(CCAA_sf) +
   tm_shape(Can) +
   tm_lines(col = "grey70") +
   tm_layout(legend.position = c("LEFT", "center"))
-
 ```
 
 You can combine `POLYGONS` with static tiles
@@ -157,27 +173,27 @@ tm_shape(tile, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(shape_pop) +
   tm_fill("porc_women",
-          palette = "-inferno",
-          title = "",
-          alpha = 0.6,
-          legend.format = list(
-            fun = function(x) {
-              sprintf("%1.0f%%", 100 * x)
-            },
-            text.to.columns = TRUE
-          )
+    palette = "-inferno",
+    title = "",
+    alpha = 0.6,
+    legend.format = list(
+      fun = function(x) {
+        sprintf("%1.0f%%", 100 * x)
+      },
+      text.to.columns = TRUE
+    )
   ) +
   tm_shape(provs) +
   tm_borders() +
-  tm_layout(main.title = "Share of women in Teruel by town (2019)",
-            main.title.fontface = "bold",
-            main.title.size = 1.2,
-            legend.text.size = 1,
-            legend.bg.color = "white",
-            legend.frame = TRUE,
-            legend.position = c("right","bottom"))
-
-
+  tm_layout(
+    main.title = "Share of women in Teruel by town (2019)",
+    main.title.fontface = "bold",
+    main.title.size = 1.2,
+    legend.text.size = 1,
+    legend.bg.color = "white",
+    legend.frame = TRUE,
+    legend.position = c("right", "bottom")
+  )
 ```
 
 ## mapSpain and giscoR
@@ -214,7 +230,6 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_polygons("#FDFBEA", border.col = "#656565") +
   tm_shape(ccaa) +
   tm_polygons("#C12838", border.col = "grey80", border.alpha = 0.5)
-
 ```
 
 ## A note on caching
