@@ -1,5 +1,5 @@
-Package: mapSpain
 Type: Package
+Package: mapSpain
 Title: Administrative Boundaries of Spain
 Version: 0.2.3.9000
 Authors@R: 
@@ -13,36 +13,33 @@ Authors@R:
              comment = "for the administrative boundaries."),
       person(given = "Instituto Geográfico Nacional",
              role = "cph",
-             comment = "for the administrative boundaries.")
-             )
-Description: Administrative Boundaries of Spain at several levels (CCAA, 
+             comment = "for the administrative boundaries."))
+Description: Administrative Boundaries of Spain at several levels (CCAA,
     Provinces, Municipalities) based on the GISCO Eurostat database
-    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' 
-    from 'Instituto Geografico Nacional' <https://www.ign.es/>. 
-    It also provides a 'leaflet' plugin and the ability of 
-    downloading and processing static tiles.
+    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from
+    'Instituto Geografico Nacional' <https://www.ign.es/>.  It also
+    provides a 'leaflet' plugin and the ability of downloading and
+    processing static tiles.
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
-Roxygen: list(markdown = TRUE)
+URL: https://ropenspain.github.io/mapSpain/,
+    https://github.com/rOpenSpain/mapSpain
 BugReports: https://github.com/rOpenSpain/mapSpain/issues
-URL: https://ropenspain.github.io/mapSpain/, https://github.com/rOpenSpain/mapSpain
 Depends: 
     R (>= 3.6.0)
 Imports: 
-    sf (>= 0.9),
     countrycode (>= 1.2.0),
     giscoR (>= 0.2.4),
-    raster (>= 3.0),
+    leaflet (>= 2.0.0),
     png (>= 0.1-5),
-    slippymath (>= 0.3.1),
-    leaflet (>= 2.0.0)
+    raster (>= 3.0),
+    sf (>= 0.9),
+    slippymath (>= 0.3.1)
 Suggests:
-    tmap (>= 3.0.0),
     rgdal,
-    tinytest,
     tibble,
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    tinytest,
+    tmap (>= 3.0.0)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

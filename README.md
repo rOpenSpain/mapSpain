@@ -8,6 +8,7 @@
 status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![CRAN
 results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
+[![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4318024-blue)](https://doi.org/10.5281/zenodo.4318024)
@@ -40,6 +41,18 @@ You can install the developing version of `mapSpain` with:
 ``` r
 library(remotes)
 install_github("rOpenSpain/mapSpain")
+```
+
+Alternatively, you can install the developing version of `mapSpain`
+using the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    ropenspain = 'https://ropenspain.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+install.packages('mapSpain')
 ```
 
 ## Usage

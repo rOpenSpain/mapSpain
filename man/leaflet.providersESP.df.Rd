@@ -27,51 +27,103 @@ This function is a implementation of the javascript plugin
 \strong{v1.2.0}.
 }
 \details{
-Providers available to be passed to \code{type} are:
-\itemize{
-\item \strong{IDErioja:} "IDErioja"
-\item \strong{IGNBase:} "IGNBase.Todo", "IGNBase.Gris", "IGNBase.TodoNoFondo,
-IGNBase.Orto"
-\item \strong{MDT:} "MDT.Elevaciones", "MDT.Relieve", "MDT.CurvasNivel"
-\item \strong{PNOA:} "PNOA.MaximaActualidad", "PNOA.Mosaico"
-\item \strong{OcupacionSuelo:} "OcupacionSuelo.Ocupacion", "OcupacionSuelo.Usos"
-\item \strong{LiDAR:} "LiDAR"
-\item \strong{MTN:} "MTN"
-\item \strong{Geofisica:} "Geofisica.Terremotos10dias",
-"Geofisica.Terremotos30dias", "Geofisica.Terremotos365dias",
-"Geofisica.VigilanciaVolcanica"
-\item \strong{CaminoDeSantiago:} "CaminoDeSantiago.CaminoFrances",
-"CaminoDeSantiago.CaminosTuronensis", "CaminoDeSantiago.CaminosGalicia",
-"CaminoDeSantiago.CaminosDelNorte", "CaminoDeSantiago.CaminosAndaluces",
-"CaminoDeSantiago.CaminosCentro", "CaminoDeSantiago.CaminosEste",
-"CaminoDeSantiago.CaminosCatalanes", "CaminoDeSantiago.CaminosSureste",
-"CaminoDeSantiago.CaminosInsulares", "CaminoDeSantiago.CaminosPiemonts",
-"CaminoDeSantiago.CaminosTolosana", "CaminoDeSantiago.CaminosPortugueses"
-\item \strong{Catastro:} "Catastro.Catastro", "Catastro.Parcela",
-"Catastro.CadastralParcel", "Catastro.CadastralZoning",
-"Catastro.Address", "Catastro.Building"
-\item \strong{RedTransporte:} "RedTransporte.Carreteras",
-"RedTransporte.Ferroviario", "RedTransporte.Aerodromo",
-"RedTransporte.AreaServicio", "RedTransporte.EstacionesFerroviario",
-"RedTransporte.Puertos"
-\item \strong{Cartociudad:} "Cartociudad.CodigosPostales", "Cartociudad.Direcciones"
-\item \strong{NombresGeograficos:} "NombresGeograficos"
-\item \strong{UnidadesAdm:} "UnidadesAdm.Limites", "UnidadesAdm.Unidades"
-\item \strong{Hidrografia:} "Hidrografia.MasaAgua", "Hidrografia.Cuencas",
-"Hidrografia.Subcuencas", "Hidrografia.POI", "Hidrografia.ManMade",
-"Hidrografia.LineaCosta", "Hidrografia.Rios", "Hidrografia.Humedales"
-\item \strong{Militar:} "Militar.CEGET1M", "Militar.CEGETM7814",
-"Militar.CEGETM7815", "Militar.CEGETM682", "Militar.CECAF1M"
-\item \strong{ADIF:} "ADIF.Vias", "ADIF.Nodos", "ADIF.Estaciones"
-\item \strong{LimitesMaritimos:} "LimitesMaritimos.LimitesMaritimos",
-"LimitesMaritimos.LineasBase"
-\item \strong{Copernicus:} "Copernicus.LandCover", "Copernicus.Forest",
-"Copernicus.ForestLeaf", "Copernicus.WaterWet", "Copernicus.SoilSeal",
-"Copernicus.GrassLand", "Copernicus.Local", "Copernicus.RiparianGreen",
-"Copernicus.RiparianLandCover", "Copernicus.Natura2k",
-"Copernicus.UrbanAtlas"
-\item \strong{ParquesNaturales:} "ParquesNaturales.Limites",
-"ParquesNaturales.ZonasPerifericas"
+Providers available to be passed to \code{type} are:\tabular{l}{
+   provider \cr
+   IDErioja \cr
+   IGNBase \cr
+   IGNBase.Todo \cr
+   IGNBase.Gris \cr
+   IGNBase.TodoNoFondo \cr
+   IGNBase.Orto \cr
+   MDT \cr
+   MDT.Elevaciones \cr
+   MDT.Relieve \cr
+   MDT.CurvasNivel \cr
+   PNOA \cr
+   PNOA.MaximaActualidad \cr
+   PNOA.Mosaico \cr
+   OcupacionSuelo \cr
+   OcupacionSuelo.Ocupacion \cr
+   OcupacionSuelo.Usos \cr
+   LiDAR \cr
+   MTN \cr
+   Geofisica \cr
+   Geofisica.Terremotos10dias \cr
+   Geofisica.Terremotos30dias \cr
+   Geofisica.Terremotos365dias \cr
+   Geofisica.VigilanciaVolcanica \cr
+   CaminoDeSantiago \cr
+   CaminoDeSantiago.CaminoFrances \cr
+   CaminoDeSantiago.CaminosTuronensis \cr
+   CaminoDeSantiago.CaminosGalicia \cr
+   CaminoDeSantiago.CaminosDelNorte \cr
+   CaminoDeSantiago.CaminosAndaluces \cr
+   CaminoDeSantiago.CaminosCentro \cr
+   CaminoDeSantiago.CaminosEste \cr
+   CaminoDeSantiago.CaminosCatalanes \cr
+   CaminoDeSantiago.CaminosSureste \cr
+   CaminoDeSantiago.CaminosInsulares \cr
+   CaminoDeSantiago.CaminosPiemonts \cr
+   CaminoDeSantiago.CaminosTolosana \cr
+   CaminoDeSantiago.CaminosPortugueses \cr
+   Catastro \cr
+   Catastro.Catastro \cr
+   Catastro.Parcela \cr
+   Catastro.CadastralParcel \cr
+   Catastro.CadastralZoning \cr
+   Catastro.Address \cr
+   Catastro.Building \cr
+   RedTransporte \cr
+   RedTransporte.Carreteras \cr
+   RedTransporte.Ferroviario \cr
+   RedTransporte.Aerodromo \cr
+   RedTransporte.AreaServicio \cr
+   RedTransporte.EstacionesFerroviario \cr
+   RedTransporte.Puertos \cr
+   Cartociudad \cr
+   Cartociudad.CodigosPostales \cr
+   Cartociudad.Direcciones \cr
+   NombresGeograficos \cr
+   UnidadesAdm \cr
+   UnidadesAdm.Limites \cr
+   UnidadesAdm.Unidades \cr
+   Hidrografia \cr
+   Hidrografia.MasaAgua \cr
+   Hidrografia.Cuencas \cr
+   Hidrografia.Subcuencas \cr
+   Hidrografia.POI \cr
+   Hidrografia.ManMade \cr
+   Hidrografia.LineaCosta \cr
+   Hidrografia.Rios \cr
+   Hidrografia.Humedales \cr
+   Militar \cr
+   Militar.CEGET1M \cr
+   Militar.CEGETM7814 \cr
+   Militar.CEGETM7815 \cr
+   Militar.CEGETM682 \cr
+   Militar.CECAF1M \cr
+   ADIF \cr
+   ADIF.Vias \cr
+   ADIF.Nodos \cr
+   ADIF.Estaciones \cr
+   LimitesMaritimos \cr
+   LimitesMaritimos.LimitesMaritimos \cr
+   LimitesMaritimos.LineasBase \cr
+   Copernicus \cr
+   Copernicus.LandCover \cr
+   Copernicus.Forest \cr
+   Copernicus.ForestLeaf \cr
+   Copernicus.WaterWet \cr
+   Copernicus.SoilSeal \cr
+   Copernicus.GrassLand \cr
+   Copernicus.Local \cr
+   Copernicus.RiparianGreen \cr
+   Copernicus.RiparianLandCover \cr
+   Copernicus.Natura2k \cr
+   Copernicus.UrbanAtlas \cr
+   ParquesNaturales \cr
+   ParquesNaturales.Limites \cr
+   ParquesNaturales.ZonasPerifericas \cr
 }
 }
 \seealso{

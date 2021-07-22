@@ -67,6 +67,18 @@ library(remotes)
 install_github("rOpenSpain/mapSpain")
 ```
 
+Alternatively, you can install `mapSpain` using the
+[r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    ropenspain = 'https://ropenspain.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+install.packages('mapSpain')
+```
+
 ## Basic example
 
 Some examples of what `mapSpain`can do:

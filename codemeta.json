@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "mapSpain",
-  "description": "Administrative Boundaries of Spain at several levels (CCAA, \n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' \n    from 'Instituto Geografico Nacional' <https://www.ign.es/>. \n    It also provides a 'leaflet' plugin and the ability of \n    downloading and processing static tiles.",
+  "description": "Administrative Boundaries of Spain at several levels (CCAA,\n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from\n    'Instituto Geografico Nacional' <https://www.ign.es/>.  It also\n    provides a 'leaflet' plugin and the ability of downloading and\n    processing static tiles.",
   "name": "mapSpain: Administrative Boundaries of Spain",
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "relatedLink": [
@@ -67,19 +67,6 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "tmap",
-      "name": "tmap",
-      "version": ">= 3.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tmap"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "rgdal",
       "name": "rgdal",
       "provider": {
@@ -89,6 +76,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rgdal"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
     {
       "@type": "SoftwareApplication",
@@ -104,15 +103,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "tibble",
-      "name": "tibble",
+      "identifier": "tmap",
+      "name": "tmap",
+      "version": ">= 3.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=tibble"
+      "sameAs": "https://CRAN.R-project.org/package=tmap"
     }
   ],
   "softwareRequirements": [
@@ -121,19 +121,6 @@
       "identifier": "R",
       "name": "R",
       "version": ">= 3.6.0"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "sf",
-      "name": "sf",
-      "version": ">= 0.9",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sf"
     },
     {
       "@type": "SoftwareApplication",
@@ -163,16 +150,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "raster",
-      "name": "raster",
-      "version": ">= 3.0",
+      "identifier": "leaflet",
+      "name": "leaflet",
+      "version": ">= 2.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=raster"
+      "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
     {
       "@type": "SoftwareApplication",
@@ -189,6 +176,32 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "raster",
+      "name": "raster",
+      "version": ">= 3.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=raster"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "version": ">= 0.9",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "slippymath",
       "name": "slippymath",
       "version": ">= 0.3.1",
@@ -199,19 +212,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=slippymath"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "leaflet",
-      "name": "leaflet",
-      "version": ">= 2.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=leaflet"
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",

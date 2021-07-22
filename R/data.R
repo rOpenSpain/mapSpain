@@ -185,48 +185,16 @@ NULL
 #'
 #' @details
 #' Providers available to be passed to `type` are:
-#'   * **IDErioja:** "IDErioja"
-#'   * **IGNBase:** "IGNBase.Todo", "IGNBase.Gris", "IGNBase.TodoNoFondo,
-#'     IGNBase.Orto"
-#'   * **MDT:** "MDT.Elevaciones", "MDT.Relieve", "MDT.CurvasNivel"
-#'   * **PNOA:** "PNOA.MaximaActualidad", "PNOA.Mosaico"
-#'   * **OcupacionSuelo:** "OcupacionSuelo.Ocupacion", "OcupacionSuelo.Usos"
-#'   * **LiDAR:** "LiDAR"
-#'   * **MTN:** "MTN"
-#'   * **Geofisica:** "Geofisica.Terremotos10dias",
-#'     "Geofisica.Terremotos30dias", "Geofisica.Terremotos365dias",
-#'     "Geofisica.VigilanciaVolcanica"
-#'   * **CaminoDeSantiago:** "CaminoDeSantiago.CaminoFrances",
-#'     "CaminoDeSantiago.CaminosTuronensis", "CaminoDeSantiago.CaminosGalicia",
-#'     "CaminoDeSantiago.CaminosDelNorte", "CaminoDeSantiago.CaminosAndaluces",
-#'     "CaminoDeSantiago.CaminosCentro", "CaminoDeSantiago.CaminosEste",
-#'     "CaminoDeSantiago.CaminosCatalanes", "CaminoDeSantiago.CaminosSureste",
-#'     "CaminoDeSantiago.CaminosInsulares", "CaminoDeSantiago.CaminosPiemonts",
-#'     "CaminoDeSantiago.CaminosTolosana", "CaminoDeSantiago.CaminosPortugueses"
-#'   * **Catastro:** "Catastro.Catastro", "Catastro.Parcela",
-#'     "Catastro.CadastralParcel", "Catastro.CadastralZoning",
-#'     "Catastro.Address", "Catastro.Building"
-#'   * **RedTransporte:** "RedTransporte.Carreteras",
-#'     "RedTransporte.Ferroviario", "RedTransporte.Aerodromo",
-#'     "RedTransporte.AreaServicio", "RedTransporte.EstacionesFerroviario",
-#'     "RedTransporte.Puertos"
-#'   * **Cartociudad:** "Cartociudad.CodigosPostales", "Cartociudad.Direcciones"
-#'   * **NombresGeograficos:** "NombresGeograficos"
-#'   * **UnidadesAdm:** "UnidadesAdm.Limites", "UnidadesAdm.Unidades"
-#'   * **Hidrografia:** "Hidrografia.MasaAgua", "Hidrografia.Cuencas",
-#'     "Hidrografia.Subcuencas", "Hidrografia.POI", "Hidrografia.ManMade",
-#'     "Hidrografia.LineaCosta", "Hidrografia.Rios", "Hidrografia.Humedales"
-#'   * **Militar:** "Militar.CEGET1M", "Militar.CEGETM7814",
-#'      "Militar.CEGETM7815", "Militar.CEGETM682", "Militar.CECAF1M"
-#'   * **ADIF:** "ADIF.Vias", "ADIF.Nodos", "ADIF.Estaciones"
-#'   * **LimitesMaritimos:** "LimitesMaritimos.LimitesMaritimos",
-#'     "LimitesMaritimos.LineasBase"
-#'   * **Copernicus:** "Copernicus.LandCover", "Copernicus.Forest",
-#'       "Copernicus.ForestLeaf", "Copernicus.WaterWet", "Copernicus.SoilSeal",
-#'       "Copernicus.GrassLand", "Copernicus.Local", "Copernicus.RiparianGreen",
-#'    "Copernicus.RiparianLandCover", "Copernicus.Natura2k",
-#'    "Copernicus.UrbanAtlas"
-#'   * **ParquesNaturales:** "ParquesNaturales.Limites",
-#'     "ParquesNaturales.ZonasPerifericas"
+#'
+#' ```{r, echo=FALSE}
+#'
+#' t <- mapSpain::leaflet.providersESP.df
+#' t <- unique(t$provider)
+#' t <- data.frame(provider=t)
+#'
+#' knitr::kable(t)
+#'
+#'
+#' ```
 #'
 NULL
