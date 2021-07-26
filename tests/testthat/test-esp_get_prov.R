@@ -1,8 +1,8 @@
 expect_error(esp_get_prov("FFF"))
 expect_silent(esp_get_prov())
 expect_silent(esp_get_prov(prov = c("Galicia", "ES7", "Centro")))
-expect_warning(esp_get_prov(prov = "Menorca"))
-expect_warning(esp_get_prov(prov = "ES6x"))
+expect_error(esp_get_prov(prov = "Menorca"))
+expect_error(esp_get_prov(prov = "ES6x"))
 
 expect_silent(esp_get_prov(prov = c(
   "Euskadi",
@@ -43,16 +43,20 @@ expect_equal(nrow(n), 52)
 n <- esp_get_prov(prov = f$prov.shortname.es)
 expect_equal(nrow(n), 52)
 
-# SIANE
-if (giscoR::gisco_check_access()) {
+test_that("prov online", {
+  skip_if_not(
+    giscoR::gisco_check_access(),
+    "Skipping... GISCO not reachable."
+  )
+
   expect_error(esp_get_prov_siane("FFF"))
   expect_error(esp_get_prov_siane(epsg = 39823))
   expect_silent(esp_get_prov_siane())
   expect_silent(esp_get_prov_siane(rawcols = TRUE))
   expect_silent(esp_get_prov_siane(moveCAN = c(1, 2)))
   expect_silent(esp_get_prov_siane(prov = c("Galicia", "ES7", "Centro")))
-  expect_warning(esp_get_prov_siane(prov = "Menorca"))
-  expect_warning(esp_get_prov_siane(prov = "ES6x"))
+  expect_error(esp_get_prov_siane(prov = "Menorca"))
+  expect_error(esp_get_prov_siane(prov = "ES6x"))
 
 
   expect_equal(
@@ -104,4 +108,4 @@ if (giscoR::gisco_check_access()) {
 
   n <- esp_get_prov_siane(prov = f$prov.shortname.es)
   expect_equal(nrow(n), 52)
-}
+})

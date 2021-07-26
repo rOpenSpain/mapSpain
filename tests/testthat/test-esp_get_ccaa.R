@@ -1,43 +1,49 @@
-expect_error(esp_get_ccaa("FFF"))
-expect_silent(esp_get_ccaa())
-expect_silent(esp_get_ccaa(ccaa = c("Galicia", "ES7", "Centro")))
-expect_warning(esp_get_ccaa(ccaa = "Zamora"))
-expect_warning(esp_get_ccaa(ccaa = "ES6x"))
-expect_warning(esp_get_ccaa(ccaa = "Barcelona"))
+test_that("CCAA", {
+  expect_error(esp_get_ccaa("FFF"))
+  expect_silent(esp_get_ccaa())
+  expect_silent(esp_get_ccaa(ccaa = c("Galicia", "ES7", "Centro")))
+  expect_warning(esp_get_ccaa(ccaa = "Zamora"))
+  expect_error(esp_get_ccaa(ccaa = "ES6x"))
+  expect_warning(esp_get_ccaa(ccaa = "Barcelona"))
 
+  # Test all
 
-# Test all
+  f <- mapSpain::esp_codelist
 
-f <- mapSpain::esp_codelist
+  n <- esp_get_ccaa(ccaa = f$nuts1.code)
+  expect_equal(nrow(n), 19)
 
-n <- esp_get_ccaa(ccaa = f$nuts1.code)
-expect_equal(nrow(n), 19)
+  n <- esp_get_ccaa(ccaa = c("Melilla"))
+  expect_equal(nrow(n), 1)
 
-n <- esp_get_ccaa(ccaa = c("Melilla"))
-expect_equal(nrow(n), 1)
+  n <- esp_get_ccaa(ccaa = f$nuts1.name.alt)
+  expect_equal(nrow(n), 19)
 
-n <- esp_get_ccaa(ccaa = f$nuts1.name.alt)
-expect_equal(nrow(n), 19)
+  n <- esp_get_ccaa(ccaa = f$iso2.ccaa.code)
+  expect_equal(nrow(n), 19)
 
-n <- esp_get_ccaa(ccaa = f$iso2.ccaa.code)
-expect_equal(nrow(n), 19)
+  n <- esp_get_ccaa(ccaa = f$nuts2.code)
+  expect_equal(nrow(n), 19)
 
-n <- esp_get_ccaa(ccaa = f$nuts2.code)
-expect_equal(nrow(n), 19)
+  n <- esp_get_ccaa(ccaa = f$nuts2.name)
+  expect_equal(nrow(n), 19)
 
-n <- esp_get_ccaa(ccaa = f$nuts2.name)
-expect_equal(nrow(n), 19)
-
-n <- esp_get_ccaa(ccaa = f$codauto)
-expect_equal(nrow(n), 19)
-
+  n <- esp_get_ccaa(ccaa = f$codauto)
+  expect_equal(nrow(n), 19)
+})
 
 # Test siane
+test_that("ccaa online", {
+  expect_error(esp_get_ccaa_siane("FFF"))
+  expect_error(esp_get_ccaa_siane(epsg = "FFF"))
 
-expect_error(esp_get_ccaa_siane("FFF"))
-expect_error(esp_get_ccaa_siane(epsg = "FFF"))
+  skip_if_not(
+    giscoR::gisco_check_access(),
+    "Skipping... GISCO not reachable."
+  )
 
-if (giscoR::gisco_check_access()) {
+
+
   expect_silent(esp_get_ccaa_siane())
   expect_silent(esp_get_ccaa_siane("Canarias"))
   expect_silent(esp_get_ccaa_siane(rawcols = TRUE))
@@ -47,7 +53,7 @@ if (giscoR::gisco_check_access()) {
   expect_silent(esp_get_ccaa_siane(moveCAN = c(1, 2)))
   expect_silent(esp_get_ccaa_siane(ccaa = c("Galicia", "ES7", "Centro")))
   expect_warning(esp_get_ccaa_siane(ccaa = "Menorca"))
-  expect_warning(esp_get_ccaa_siane(ccaa = "ES6x"))
+  expect_error(esp_get_ccaa_siane(ccaa = "ES6x"))
 
 
   expect_equal(
@@ -86,4 +92,4 @@ if (giscoR::gisco_check_access()) {
 
   n <- esp_get_ccaa_siane(ccaa = f$codauto)
   expect_equal(nrow(n), 19)
-}
+})

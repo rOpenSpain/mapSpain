@@ -3,8 +3,7 @@
 on:
   push:
     branches:
-      - sianedev
-      - tmap_migration
+      - remotedev
 
 name: R-CMD-check-branch
 

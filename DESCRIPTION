@@ -33,16 +33,18 @@ Imports:
     png (>= 0.1-5),
     raster (>= 3.0),
     sf (>= 0.9),
-    slippymath (>= 0.3.1)
+    slippymath (>= 0.3.1),
+    utils
 Suggests:
     knitr,
     rgdal,
     rmarkdown,
+    testthat (>= 3.0.0),
     tibble,
-    tinytest,
     tmap (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
