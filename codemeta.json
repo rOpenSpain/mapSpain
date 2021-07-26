@@ -261,7 +261,9 @@
     "tiles",
     "static-tiles",
     "spatial",
-    "rstats"
+    "rstats",
+    "ign",
+    "gisco"
   ],
   "citation": [
     {
