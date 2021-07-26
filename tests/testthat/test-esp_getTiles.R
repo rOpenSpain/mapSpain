@@ -1,8 +1,15 @@
 poly <- esp_get_ccaa("La Rioja")
 expect_error(esp_getTiles(poly, type = "FFF"))
 
-# Skip test as tiles sometimes are not available
-if (FALSE) {
+test_that("tiles online", {
+  skip_if_not(
+    giscoR::gisco_check_access(),
+    "Skipping... GISCO not reachable."
+  )
+
+
+  # Skip test as tiles sometimes are not available
+
   expect_true("RasterBrick" %in% class(esp_getTiles(poly)))
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
   expect_message(esp_getTiles(sf::st_geometry(poly), verbose = TRUE))
@@ -33,4 +40,4 @@ if (FALSE) {
     type = "RedTransporte.Carreteras",
     verbose = TRUE, mask = TRUE
   ))
-}
+})

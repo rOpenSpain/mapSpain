@@ -17,7 +17,12 @@ expect_equal(length(unique(s$cpro)), 52)
 
 
 # SIANE
-if (giscoR::gisco_check_access()) {
+test_that("munic online", {
+  skip_if_not(
+    giscoR::gisco_check_access(),
+    "Skipping... GISCO not reachable."
+  )
+
   expect_silent(esp_get_munic_siane())
   expect_silent(esp_get_munic_siane(rawcols = TRUE))
 
@@ -45,4 +50,4 @@ if (giscoR::gisco_check_access()) {
 
   s <- esp_get_munic_siane(region = n)
   expect_equal(length(unique(s$cpro)), 52)
-}
+})
