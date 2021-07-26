@@ -245,8 +245,9 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "fileSize": "0KB",
-  "contIntegration": "https://codecov.io/gh/rOpenSpain/mapSpain",
+  "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
+  "fileSize": "2156.943KB",
+  "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://codecov.io/gh/rOpenSpain/mapSpain"],
   "keywords": [
     "r",
     "maps",
@@ -261,7 +262,9 @@
     "tiles",
     "static-tiles",
     "spatial",
-    "rstats"
+    "rstats",
+    "ign",
+    "gisco"
   ],
   "citation": [
     {
@@ -281,6 +284,5 @@
       "@id": "https://doi.org/10.5281/zenodo.4318024",
       "sameAs": "https://doi.org/10.5281/zenodo.4318024"
     }
-  ],
-  "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md"
+  ]
 }
