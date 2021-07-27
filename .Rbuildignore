@@ -27,3 +27,4 @@
 ^codemeta\.json$
 ^vignettes/articles$
 ^vignettes/mapSpain\.Rmd\.orig$
+^_pkgdown\.yaml$
