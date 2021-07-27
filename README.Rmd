@@ -57,13 +57,13 @@ Full site with examples and vignettes on
 
 Install `mapSpain` from [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
-``` r
+```{r, eval = FALSE}
 install.packages("mapSpain")
 ```
 
 You can install the developing version of `mapSpain` with:
 
-``` r
+```{r, eval = FALSE}
 library(remotes)
 install_github("rOpenSpain/mapSpain")
 ```
@@ -71,13 +71,14 @@ install_github("rOpenSpain/mapSpain")
 Alternatively, you can install the developing version of `mapSpain` using
 the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
-``` r
+```{r, eval = FALSE}
 # Enable this universe
 options(repos = c(
-    ropenspain = 'https://ropenspain.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+  ropenspain = "https://ropenspain.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
 
-install.packages('mapSpain')
+install.packages("mapSpain")
 ```
 
 ## Usage
@@ -237,7 +238,7 @@ Some data sets and tiles may have a size larger than 50MB. You can use
 `mapSpain` to create your own local repository at a given local directory
 passing the following option:
 
-``` r
+```{r, eval = FALSE}
 options(mapSpain_cache_dir = "./path/to/location")
 ```
 
