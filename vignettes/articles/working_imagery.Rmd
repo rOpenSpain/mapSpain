@@ -25,7 +25,6 @@ if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
 library(mapSpain)
 library(sf)
 library(tmap)
-
 ```
 
 `mapSpain` provides a powerful interface for working with imagery. `mapSpain`
@@ -69,8 +68,6 @@ tm_shape(tile_LGN, raster.downsample = FALSE) +
   # Mix with a sf polygon
   tm_shape(LGN) +
   tm_borders(lwd = 2, lty = "dotted")
-
-
 ```
 
 ```{r echo=FALSE}
@@ -90,7 +87,8 @@ Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 BG <- esp_getTiles(Madrid, "IGNBase.Gris")
 ADIF.opaque <-
   esp_getTiles(Madrid, "RedTransporte.Ferroviario",
-               transparent = FALSE)
+    transparent = FALSE
+  )
 
 tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
@@ -109,8 +107,9 @@ Now let's check the same code using the `tranparent = TRUE` option:
 # Example with transparency
 
 ADIF.alpha <- esp_getTiles(Madrid,
-                           "RedTransporte.Ferroviario",
-                           transparent = TRUE)
+  "RedTransporte.Ferroviario",
+  transparent = TRUE
+)
 
 # Same code than above for plotting
 
@@ -118,7 +117,6 @@ tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(ADIF.alpha, raster.downsample = FALSE) +
   tm_rgb()
-
 ```
 
 ```{r echo=FALSE}
@@ -141,7 +139,6 @@ tm_shape(Basemap, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(Mask, raster.downsample = FALSE) +
   tm_rgb()
-
 ```
 
 ```{r echo=FALSE}
@@ -161,9 +158,11 @@ find some quick examples:
 library(leaflet)
 
 Tenerife.leaf <-
-  esp_get_nuts(region = "Tenerife",
-               epsg = 4326,
-               moveCAN = FALSE)
+  esp_get_nuts(
+    region = "Tenerife",
+    epsg = 4326,
+    moveCAN = FALSE
+  )
 
 
 bbox <-
@@ -171,27 +170,32 @@ bbox <-
 
 # Start leaflet
 m <- leaflet(Tenerife.leaf,
-             width = "100%",
-             options = leafletOptions(minZoom = 9,
-                                      maxZoom = 18))
+  width = "100%",
+  options = leafletOptions(
+    minZoom = 9,
+    maxZoom = 18
+  )
+)
 
 # Add layers
 m <- m %>%
   addProviderEspTiles("MDT.Relieve") %>%
-  addPolygons(color = NA,
-              fillColor = "red",
-              group = "Polygon") %>%
+  addPolygons(
+    color = NA,
+    fillColor = "red",
+    group = "Polygon"
+  ) %>%
   addProviderEspTiles("Geofisica.Terremotos365dias",
-                      group = "Earthquakes")
+    group = "Earthquakes"
+  )
 
 # Add additional options
-m  %>%
+m %>%
   addLayersControl(
     overlayGroups = c("Polygon", "Earthquakes"),
     options = layersControlOptions(collapsed = FALSE)
-  ) %>% setMaxBounds(bbox[1], bbox[2], bbox[3], bbox[4])
-
-
+  ) %>%
+  setMaxBounds(bbox[1], bbox[2], bbox[3], bbox[4])
 ```
 
 
@@ -288,7 +292,6 @@ leaflet() %>%
     opacity = 0.7, title = "<small>Pop. Density km<sup>2</sup></small><br><small>(2019)</small>",
     position = "bottomright"
   )
-
 ```
 
 ## Available providers
@@ -305,13 +308,12 @@ library(reactable)
 df <- leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ]
 
 reactable(df,
-          filterable = TRUE,
-          searchable = TRUE,
-          showPageSizeOptions = TRUE,
-          striped = TRUE,
-          paginationType = "jump"
-          )
-
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump"
+)
 ```
 
 ## Session Info
@@ -321,7 +323,6 @@ reactable(df,
 
 ```{r session_info, echo=FALSE}
 sessionInfo()
-
 ```
 
 </details>
