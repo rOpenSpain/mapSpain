@@ -5,8 +5,8 @@ vignette: >
   %\VignetteIndexEntry{Get Started}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 80
 ---
 
@@ -38,10 +38,11 @@ of Spain.
 
 `mapSpain` provides a dataset and tile caching capability, that could be set as:
 
-``` {.r}
+
+```r
 options(mapSpain_cache_dir = "~/path/to/dir")
 
-OR 
+# OR
 
 options(gisco_cache_dir = "~/path/to/dir")
 ```
@@ -51,33 +52,6 @@ downloading some files, and both packages are well synchronized, so if you
 already use `giscoR` and you have set your caching options for that package it
 would be recognized too by `mapSpain`.
 
-## Installation
-
-Install `mapSpain` from [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
-
-``` {.r}
-install.packages("mapSpain")
-```
-
-For installing the development version on
-([Github](https://github.com/rOpenSpain/mapSpain/)):
-
-``` {.r}
-library(remotes)
-install_github("rOpenSpain/mapSpain")
-```
-
-Alternatively, you can install `mapSpain` using the
-[r-universe](https://ropenspain.r-universe.dev/ui#builds):
-
-``` r
-# Enable this universe
-options(repos = c(
-    ropenspain = 'https://ropenspain.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-
-install.packages('mapSpain')
-```
 
 ## Basic example
 
@@ -101,7 +75,7 @@ tm_shape(country) +
   tm_layout(main.title = "Map of Spain")
 ```
 
-<img src="basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
+<img src="basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -114,7 +88,7 @@ tm_shape(Andalucia) +
   tm_graticules(lines = FALSE)
 ```
 
-<img src="basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
+<img src="basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -145,7 +119,7 @@ tm_shape(Euskadi_CCAA) +
   )
 ```
 
-<img src="basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" height="60%" />
+<img src="basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ## Choropleth and label maps
 
@@ -200,7 +174,7 @@ tm_shape(CCAA_sf) +
   tm_layout(legend.position = c("LEFT", "center"))
 ```
 
-<img src="choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" height="60%" />
+<img src="choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" />
 
 ## Thematic maps
 
@@ -265,11 +239,11 @@ tm_shape(munic.pop) +
   )
 ```
 
-<img src="thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" height="60%" />
+<img src="thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" />
 
 ## mapSpain and giscoR
 
-If you need to plot Spain along with another countries, consider using 
+If you need to plot Spain along with another countries, consider using
 [`giscoR`](https://dieghernan.github.io/giscoR/) package, that is installed
 as a dependency when you installed `mapSpain`. A basic example:
 
@@ -303,4 +277,4 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_polygons("#C12838", border.col = "white")
 ```
 
-<img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" height="60%" />
+<img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />

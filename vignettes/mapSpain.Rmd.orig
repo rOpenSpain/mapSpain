@@ -5,8 +5,8 @@ vignette: >
   %\VignetteIndexEntry{Get Started}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 80
 ---
 
@@ -16,10 +16,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  fig.width = 6,
-  fig.height = 4,
-  out.width = "100%",
-  out.height = "60%"
+  tidy = "styler",
+  out.width = "100%"
 )
 ```
 
@@ -49,10 +47,10 @@ of Spain.
 
 `mapSpain` provides a dataset and tile caching capability, that could be set as:
 
-``` {.r}
+```{r, eval=FALSE}
 options(mapSpain_cache_dir = "~/path/to/dir")
 
-OR 
+# OR
 
 options(gisco_cache_dir = "~/path/to/dir")
 ```
@@ -62,21 +60,6 @@ downloading some files, and both packages are well synchronized, so if you
 already use `giscoR` and you have set your caching options for that package it
 would be recognized too by `mapSpain`.
 
-## Installation
-
-Install `mapSpain` from [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
-
-``` {.r}
-install.packages("mapSpain")
-```
-
-For installing the development version on
-([Github](https://github.com/rOpenSpain/mapSpain/)):
-
-``` {.r}
-library(remotes)
-install_github("rOpenSpain/mapSpain")
-```
 
 ## Basic example
 
@@ -249,7 +232,7 @@ tm_shape(munic.pop) +
 
 ## mapSpain and giscoR
 
-If you need to plot Spain along with another countries, consider using 
+If you need to plot Spain along with another countries, consider using
 [`giscoR`](https://dieghernan.github.io/giscoR/) package, that is installed
 as a dependency when you installed `mapSpain`. A basic example:
 

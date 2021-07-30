@@ -246,7 +246,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
-  "fileSize": "2151.442KB",
+  "fileSize": "2169.284KB",
   "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://codecov.io/gh/rOpenSpain/mapSpain"],
   "keywords": [
     "r",
@@ -284,5 +284,6 @@
       "@id": "https://doi.org/10.5281/zenodo.4318024",
       "sameAs": "https://doi.org/10.5281/zenodo.4318024"
     }
-  ]
+  ],
+  "developmentStatus": "https://www.repostatus.org/#active"
 }

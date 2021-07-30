@@ -22,21 +22,21 @@
 #'
 #' @format
 #' data frame with codes as columns
-#'   * \strong{nuts*.code}: NUTS code of each subdivision.
-#'   * \strong{nuts*.code}: NUTS name of each subdivision.
-#'   * \strong{codauto}: INE code of each autonomous community.
-#'   * \strong{iso2.*.code}: ISO2 code of each autonomous
+#'   * **nuts+.code**: NUTS code of each subdivision.
+#'   * **nuts+.code**: NUTS name of each subdivision.
+#'   * **codauto**: INE code of each autonomous community.
+#'   * **iso2.+.code**: ISO2 code of each autonomous
 #'   community and province.
-#'   * \strong{ine.*.name}: INE name of each autonomous community
+#'   * **ine.+.name**: INE name of each autonomous community
 #'   and province.
-#'   * \strong{iso2.*.name.(lang)}: ISO2 name of each autonomous community
+#'   * **iso2.+.name.(lang)**: ISO2 name of each autonomous community
 #'   and province. Several languages available.
-#'   * \strong{cldr.*.name.(lang)}: CLDR name of each autonomous community and
+#'   * **cldr.+.name.(lang)**: CLDR name of each autonomous community and
 #'   province. Several languages available.
-#'   * \strong{ccaa.short.*}: Short (common) name of each autonomous
+#'   * **ccaa.short.+**: Short (common) name of each autonomous
 #'   community. Several languages available.
-#'   * \strong{cpro}: INE code of each province.
-#'   * \strong{prov.shortname.*}: Short (common) name of each province.
+#'   * **cpro**: INE code of each province.
+#'   * **prov.shortname.+**: Short (common) name of each province.
 #'   Several languages available.
 #'
 #' @note

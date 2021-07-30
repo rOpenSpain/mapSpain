@@ -8,10 +8,14 @@
 status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![CRAN
 results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
+[![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4318024-blue)](https://doi.org/10.5281/zenodo.4318024)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 
@@ -61,7 +65,6 @@ install.packages("mapSpain")
 This script highlights some features of `mapSpain`:
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -116,7 +119,6 @@ tm_shape(CCAA_sf) +
 You can combine `POLYGONS` with static tiles
 
 ``` r
-
 library(mapSpain)
 library(sf)
 
@@ -183,7 +185,6 @@ installed as a dependency when you installed `mapSpain`. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -231,15 +232,15 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)
-  - [`mapsf`](https://riatelab.github.io/mapsf/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
-Check the Github page for [source
+Check the GitHub page for [source
 code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
@@ -258,7 +259,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -266,13 +267,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.
