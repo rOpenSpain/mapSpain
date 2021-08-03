@@ -170,6 +170,7 @@ bbox <-
 
 # Start leaflet
 m <- leaflet(Tenerife.leaf,
+  elementId = "tenerife-earthquakes",
   width = "100%",
   options = leafletOptions(
     minZoom = 9,
@@ -264,7 +265,7 @@ labels <- sprintf(
 
 
 
-leaflet() %>%
+leaflet(elementId = "SpainDemo") %>%
   setView(
     lng = -3.684444,
     lat = 40.308611,
