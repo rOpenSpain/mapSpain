@@ -46,6 +46,7 @@ borders when Canary Islands are displaced.
 provinces of the Canary Islands.
 }
 \examples{
+
 Provs <- esp_get_prov()
 Box <- esp_get_can_box()
 Line <- esp_get_can_provinces()
@@ -61,9 +62,7 @@ tm_shape(Provs) +
   tm_lines() +
   tm_shape(Line) +
   tm_lines()
-
-
-
+\donttest{
 # Displacing Canary
 
 Provs_D <- esp_get_prov(moveCAN = c(15, 0))
@@ -81,7 +80,7 @@ tm_shape(Provs_D) +
 # Example with poly option
 
 # Get countries with giscoR
-\donttest{
+
 library(giscoR)
 
 # Low resolution map

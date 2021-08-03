@@ -86,7 +86,7 @@ Loads a simple feature (\code{sf}) object containing the NUTS boundaries of Spai
 \code{cache_dir = NULL} (default) uses and creates \verb{/mapSpain} directory in the
 temporary directory \code{\link[=tempdir]{tempdir()}}. The directory can also be set via options
 with \code{options(mapSpain_cache_dir = "path/to/dir")} or
-\code{options(gisco_cache_dir = "path/to/dir")} (See \code{\link[giscoR:gisco_get]{giscoR::gisco_get()}})
+\code{options(gisco_cache_dir = "path/to/dir")} (See \code{\link[giscoR:gisco_get]{giscoR::gisco_get_nuts()}})
 
 Sometimes cached files may be corrupt. On that case, try redownloading
 the data using \code{update_cache = TRUE}.
@@ -128,7 +128,7 @@ plot(st_geometry(MixingCodes), col = pal)
 }
 \seealso{
 \code{\link{esp_nuts.sf}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}, \code{\link{esp_codelist}},
-\code{\link[giscoR:gisco_get]{giscoR::gisco_get()}}.
+\code{\link[giscoR:gisco_get]{giscoR::gisco_get_nuts()}}.
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

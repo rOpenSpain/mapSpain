@@ -18,7 +18,7 @@
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @seealso [`esp_nuts.sf`], [esp_dict_region_code()], [`esp_codelist`],
-#'   [giscoR::gisco_get()].
+#'   [giscoR::gisco_get_nuts()].
 #'
 #' @param year Release year. One of "2003", "2006",`"2010", "2013", "2016" or
 #'   "2021".
@@ -70,7 +70,7 @@
 #' `cache_dir = NULL` (default) uses and creates `/mapSpain` directory in the
 #' temporary directory [tempdir()]. The directory can also be set via options
 #' with `options(mapSpain_cache_dir = "path/to/dir")` or
-#' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get()])
+#' `options(gisco_cache_dir = "path/to/dir")` (See [giscoR::gisco_get_nuts()])
 #'
 #' Sometimes cached files may be corrupt. On that case, try redownloading
 #' the data using `update_cache = TRUE`.

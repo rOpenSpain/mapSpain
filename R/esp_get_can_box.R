@@ -25,6 +25,7 @@
 #' @inheritParams esp_get_nuts
 #'
 #' @examples
+#'
 #' Provs <- esp_get_prov()
 #' Box <- esp_get_can_box()
 #' Line <- esp_get_can_provinces()
@@ -40,9 +41,7 @@
 #'   tm_lines() +
 #'   tm_shape(Line) +
 #'   tm_lines()
-#'
-#'
-#'
+#' \donttest{
 #' # Displacing Canary
 #'
 #' Provs_D <- esp_get_prov(moveCAN = c(15, 0))
@@ -60,7 +59,7 @@
 #' # Example with poly option
 #'
 #' # Get countries with giscoR
-#' \donttest{
+#'
 #' library(giscoR)
 #'
 #' # Low resolution map
