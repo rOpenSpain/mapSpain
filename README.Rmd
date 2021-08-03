@@ -257,6 +257,17 @@ Some packages recommended for visualization are:
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
 -   [`leaflet`](https://rstudio.github.io/leaflet/)
 
+
+## Citation 
+
+## Citation 
+
+Please use the following when citing `mapSpain`: 
+
+```{r}
+citation("mapSpain")
+```
+
 ## Contribute
 
 Check the GitHub page for [source
