@@ -36,7 +36,8 @@ reactable(esp_codelist,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   striped = TRUE,
-  paginationType = "jump"
+  paginationType = "jump",
+  elementId = "esp_codelist"
 )
 ```
 
