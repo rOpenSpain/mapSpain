@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   tidy = "styler",
+  fig.path = "./",
   out.width = "100%"
 )
 ```
