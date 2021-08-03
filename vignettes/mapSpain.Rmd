@@ -55,7 +55,7 @@ would be recognized too by `mapSpain`.
 
 ## Basic example
 
-Some examples of what `mapSpain`can do:
+Some examples of what `mapSpain` can do:
 
 
 ```r
