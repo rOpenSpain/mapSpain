@@ -20,7 +20,7 @@ jobs:
           install.packages('remotes')
           remotes::install_cran('devtools')
           remotes::install_github("ropenspain/rostemplate", dependencies = TRUE, force = TRUE)
-          
+
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -49,4 +49,4 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::build_favicons(overwrite = TRUE)'
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE, run_dont_run = TRUE)'
