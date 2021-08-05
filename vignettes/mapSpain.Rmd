@@ -17,45 +17,41 @@ editor_options:
 **Full site with more examples and vignettes on
 <https://ropenspain.github.io/mapSpain/>**
 
-[**`mapSpain`**](https://ropenspain.github.io/mapSpain/) is a package designed
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package designed
 to provide geographical information of Spain at different levels.
 
-**`mapSpain`** provides shapefiles of municipalities, provinces, autonomous
+**mapSpain** provides shapefiles of municipalities, provinces, autonomous
 communities and NUTS levels of Spain. It also provides hexbin shapefiles and
 other complementary shapes, as the usual lines around the Canary Islands.
 
-**`mapSpain`** provides access to map tiles of public organisms of Spain, that
+**mapSpain** provides access to map tiles of public organisms of Spain, that
 can be represented on static maps via `mapSpain::esp_getTiles()` or on a **R**
-leaflet map using `mapSpain::addProviderEspTiles()`.
+`leaflet` map using `mapSpain::addProviderEspTiles()`.
 
-On top of that, **`mapSpain`** also has a powerful dictionary that translate
+On top of that, **mapSpain** also has a powerful dictionary that translate
 provinces and other regions to English, Spanish, Catalan, Basque language or
 Galician, and also converts those names to different coding standards, as NUTS,
-ISO2 or the coding system used by the INE, that is the official statistic agency
-of Spain.
+ISO2 or the coding system used by the INE, that is the official statistic
+agency of Spain.
 
 ## Caching
 
-`mapSpain` provides a dataset and tile caching capability, that could be set as:
+**mapSpain** provides a dataset and tile caching capability, that could be set as:
 
 
 ```r
-options(mapSpain_cache_dir = "~/path/to/dir")
 
-# OR
-
-options(gisco_cache_dir = "~/path/to/dir")
+esp_set_cache_dir("./path/to/location")
 ```
 
-`mapSpain` relies on [`giscoR`](https://dieghernan.github.io/giscoR/) for
-downloading some files, and both packages are well synchronized, so if you
-already use `giscoR` and you have set your caching options for that package it
-would be recognized too by `mapSpain`.
+**mapSpain** relies on [**giscoR**](https://dieghernan.github.io/giscoR/) for
+downloading some files, and both packages are well synchronized. Setting the
+same caching directory on both would speed up the data load on your session.
 
 
 ## Basic example
 
-Some examples of what `mapSpain` can do:
+Some examples of what **mapSpain** can do:
 
 
 ```r
@@ -136,7 +132,9 @@ census <- mapSpain::pobmun19
 codelist <- mapSpain::esp_codelist
 
 census <-
-  unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
+  unique(merge(census, codelist[, c("cpro", "codauto")],
+    all.x = TRUE
+  ))
 
 # Summarize by CCAA
 census_ccaa <-
@@ -168,18 +166,22 @@ tm_shape(CCAA_sf) +
     )
   ) +
   tm_shape(CCAA_sf, point.per = "feature") +
-  tm_text("porc_women_lab", auto.placement = TRUE) +
+  tm_text("porc_women_lab", remove.overlap = TRUE, shadow = TRUE) +
   tm_shape(Can) +
   tm_lines(col = "grey70") +
-  tm_layout(legend.position = c("LEFT", "center"))
+  tm_layout(
+    legend.position = c("LEFT", "center"),
+    frame = FALSE
+  )
 ```
 
 <img src="choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" />
 
 ## Thematic maps
 
-This is an example on how `mapSpain` can be used to beautiful thematic maps. For
-plotting purposes we would use the [`tmap`](https://mtennekes.github.io/tmap/)
+This is an example on how **mapSpain** can be used to beautiful thematic maps.
+For plotting purposes we would use the
+[**tmap**](https://mtennekes.github.io/tmap/)
 package, however any package that handles `sf` objects (e.g. `ggplot2`, `mapsf`,
 `leaflet`, etc. could be used).
 
@@ -202,7 +204,7 @@ munic.pop$dens <- munic.pop$pob19 / munic.pop$area
 
 br <-
   c(
-    0,
+    -Inf,
     10,
     25,
     100,
@@ -218,24 +220,22 @@ br <-
 tm_shape(munic.pop) +
   tm_fill("dens",
     breaks = br,
-    alpha = 0.8,
+    alpha = 0.9,
     title = "Pop. per km2",
-    palette = "inferno",
+    palette = hcl.colors(100, "Spectral"),
     showNA = FALSE,
     colorNA = "#000004"
   ) +
   tm_layout(
-    main.title = "Population Density in Spain (2019)",
-    main.title.size = 0.8,
-    frame = FALSE,
-    bg.color = "#000004",
-    legend.outside = TRUE,
-    legend.text.color = "white",
-    legend.title.color = "white",
+    bg.color = "black",
+    main.title = "Population density in Spain (2019)",
     main.title.color = "white",
     main.title.fontface = "bold",
+    outer.bg.color = "black",
+    legend.text.color = "white",
     legend.text.fontface = "bold",
-    legend.title.fontface = "bold"
+    legend.text.size = 1,
+    legend.position = c("LEFT", "center")
   )
 ```
 
@@ -244,8 +244,8 @@ tm_shape(munic.pop) +
 ## mapSpain and giscoR
 
 If you need to plot Spain along with another countries, consider using
-[`giscoR`](https://dieghernan.github.io/giscoR/) package, that is installed
-as a dependency when you installed `mapSpain`. A basic example:
+[**giscoR**](https://dieghernan.github.io/giscoR/) package, that is installed
+as a dependency when you installed **mapSpain**. A basic example:
 
 
 ```r
@@ -254,19 +254,26 @@ library(giscoR)
 
 # Set the same resolution for a perfect fit
 
-res <- "01"
+res <- "03"
 
-all_countries <- gisco_get_countries(resolution = res)
-eu_countries <- gisco_get_countries(resolution = res, region = "EU")
-ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
+# Same crs
+target_crs <- 3035
 
-# Project to same CRS
-
-all_countries <- st_transform(all_countries, 3035)
-eu_countries <- st_transform(eu_countries, 3035)
-ccaa <- st_transform(ccaa, 3035)
+all_countries <- gisco_get_countries(
+  resolution = res,
+  epsg = target_crs
+)
+eu_countries <- gisco_get_countries(
+  resolution = res, region = "EU",
+  epsg = target_crs
+)
+ccaa <- esp_get_ccaa(
+  moveCAN = FALSE, resolution = res,
+  epsg = target_crs
+)
 
 # Plot
+library(tmap)
 
 tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_graticules(col = "#DFDFDF", alpha = 0.7) +
@@ -274,7 +281,7 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_shape(eu_countries) +
   tm_polygons("#FDFBEA", border.col = "#656565") +
   tm_shape(ccaa) +
-  tm_polygons("#C12838", border.col = "white")
+  tm_polygons("#C12838", border.col = "grey80", lwd = 0.1)
 ```
 
 <img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />
