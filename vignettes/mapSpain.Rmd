@@ -285,3 +285,46 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
 ```
 
 <img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />
+
+## Working with tiles
+
+**mapSpain** provides a powerful interface for working with imagery.
+**mapSpain** can download static files as `.png` or`jpeg` files (depending on
+the Web Map Service) and use them along your shapefiles.
+
+**mapSpain** also includes a plugin for **R**
+[leaflet](https://rstudio.github.io/leaflet/) package, that allows you to
+include several basemaps on your interactive maps.
+
+The services are implemented via the leaflet plugin
+[leaflet-providersESP](dieghernan.github.io/leaflet-providersESP/). You can
+check a display of each provider on the previous link.
+
+**Note that** When working with imagery, it is important to set 
+`moveCAN = FALSE` on the `esp_get_*` functions. See 
+**Displacing the Canary Islands** on 
+`help("esp_get_ccaa", package = "mapSpain")`.
+
+An example of how you can include tiles and shapes to create a static map:
+
+
+```r
+
+# Get Amposta - Municipality
+amposta <- esp_get_munic(munic = "Amposta")
+
+# Base PNOA - Satellite imagery
+PNOA <- esp_getTiles(amposta,
+  type = "PNOA",
+  zoom = 11,
+  bbox_expand = 1.5
+)
+
+tm_shape(PNOA) +
+  tm_rgb() +
+  # Mix with shape
+  tm_shape(amposta) +
+  tm_fill("green3", alpha = 0.5)
+```
+
+<img src="tile-1.png" title="plot of chunk tile" alt="plot of chunk tile" width="100%" />
