@@ -4,18 +4,14 @@
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
-[![CRAN
-results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
+[![CRAN-status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+[![CRAN-results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4318024-blue)](https://doi.org/10.5281/zenodo.4318024)
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Project-Status:Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 
@@ -33,22 +29,15 @@ Full site with examples and vignettes on
 
 ## Installation
 
-Install `mapSpain` from
+Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
 ``` r
 install.packages("mapSpain")
 ```
 
-You can install the developing version of `mapSpain` with:
-
-``` r
-library(remotes)
-install_github("rOpenSpain/mapSpain")
-```
-
-Alternatively, you can install the developing version of `mapSpain`
-using the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+You can install the developing version of **mapSpain** using the
+[r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
 # Enable this universe
@@ -60,9 +49,17 @@ options(repos = c(
 install.packages("mapSpain")
 ```
 
+Alternatively, you can install the developing version of **mapSpain**
+with:
+
+``` r
+library(remotes)
+install_github("rOpenSpain/mapSpain")
+```
+
 ## Usage
 
-This script highlights some features of `mapSpain`:
+This script highlights some features of **mapSpain** :
 
 ``` r
 library(mapSpain)
@@ -108,7 +105,7 @@ tm_shape(CCAA_sf) +
     )
   ) +
   tm_shape(CCAA_sf, point.per = "feature") +
-  tm_text("porc_women_lab", auto.placement = TRUE) +
+  tm_text("porc_women_lab", remove.overlap = TRUE, shadow = TRUE) +
   tm_shape(Can) +
   tm_lines(col = "grey70") +
   tm_layout(legend.position = c("LEFT", "center"))
@@ -116,35 +113,33 @@ tm_shape(CCAA_sf) +
 
 <img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-static-1.png" width="100%" />
 
-You can combine `POLYGONS` with static tiles
+You can combine `sf` objects with static tiles
 
 ``` r
-library(mapSpain)
-library(sf)
-
+# Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
 
-census$municode <- paste0(census$cpro, census$cmun)
+# Get shapes
+shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
+provs <- esp_get_prov_siane(epsg = 3857)
 
-shape <- esp_get_munic(region = "Teruel")
-provs <- esp_get_prov()
+shape_pop <- merge(shape,
+  census,
+  by = c("cpro", "cmun"),
+  all.x = TRUE
+)
 
-shape_pop <-
-  merge(shape, census, by.x = "LAU_CODE", by.y = "municode")
-
-# Get tiles
-
-shape_pop <- st_transform(shape_pop, 3857)
-provs <- st_transform(provs, 3857)
 
 tile <-
   esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 9 # Increase to get more quality
+    zoom = 10,
+    bbox_expand = 0.1
   )
 
 # Plot
+
 
 library(tmap)
 
@@ -152,26 +147,32 @@ tm_shape(tile, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(shape_pop) +
   tm_fill("porc_women",
-    palette = "-inferno",
+    palette = "RdYlBu",
     title = "",
+    n = 8,
     alpha = 0.6,
+    showNA = FALSE,
     legend.format = list(
       fun = function(x) {
         sprintf("%1.0f%%", 100 * x)
       },
-      text.to.columns = TRUE
+      text.separator = "-"
     )
   ) +
   tm_shape(provs) +
-  tm_borders() +
+  tm_credits("Source: INE",
+    fontface = "bold",
+    position = c("left", "bottom")
+  ) +
+  tm_borders(alpha = 0.5) +
   tm_layout(
-    main.title = "Share of women in Teruel by town (2019)",
+    frame = FALSE,
+    main.title = "Share of women in Segovia by town (2019)",
     main.title.fontface = "bold",
-    main.title.size = 1.2,
-    legend.text.size = 1,
+    main.title.size = 0.8,
+    legend.position = c("right", "bottom"),
     legend.bg.color = "white",
-    legend.frame = TRUE,
-    legend.position = c("right", "bottom")
+    legend.bg.alpha = 0.7
   )
 ```
 
@@ -180,8 +181,8 @@ tm_shape(tile, raster.downsample = FALSE) +
 ## mapSpain and giscoR
 
 If you need to plot Spain along with another countries, consider using
-[`giscoR`](https://dieghernan.github.io/giscoR/) package, that is
-installed as a dependency when you installed `mapSpain`. A basic
+[**giscoR**](https://dieghernan.github.io/giscoR/) package, that is
+installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
@@ -191,15 +192,21 @@ library(giscoR)
 
 res <- "03"
 
-all_countries <- gisco_get_countries(resolution = res)
-eu_countries <- gisco_get_countries(resolution = res, region = "EU")
-ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
+# Same crs
+target_crs <- 3035
 
-# Project to same CRS
-
-all_countries <- st_transform(all_countries, 3035)
-eu_countries <- st_transform(eu_countries, 3035)
-ccaa <- st_transform(ccaa, 3035)
+all_countries <- gisco_get_countries(
+  resolution = res,
+  epsg = target_crs
+)
+eu_countries <- gisco_get_countries(
+  resolution = res, region = "EU",
+  epsg = target_crs
+)
+ccaa <- esp_get_ccaa(
+  moveCAN = FALSE, resolution = res,
+  epsg = target_crs
+)
 
 # Plot
 library(tmap)
@@ -210,7 +217,7 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_shape(eu_countries) +
   tm_polygons("#FDFBEA", border.col = "#656565") +
   tm_shape(ccaa) +
-  tm_polygons("#C12838", border.col = "grey80", border.alpha = 0.5)
+  tm_polygons("#C12838", border.col = "grey80", lwd = 0.1)
 ```
 
 <img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-giscoR-1.png" width="100%" />
@@ -218,31 +225,29 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
 ## A note on caching
 
 Some data sets and tiles may have a size larger than 50MB. You can use
-`mapSpain` to create your own local repository at a given local
+**mapSpain** to create your own local repository at a given local
 directory passing the following option:
 
 ``` r
-options(mapSpain_cache_dir = "./path/to/location")
+esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, `mapSpain` would look for the cached file and
+When this option is set, **mapSpain** would look for the cached file and
 it will load it, speeding up the process.
 
 ## Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
--   [`tmap`](https://mtennekes.github.io/tmap/)
--   [`mapsf`](https://riatelab.github.io/mapsf/)
--   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
-    [`ggspatial`](https://github.com/paleolimbot/ggspatial)
--   [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [**tmap**](https://mtennekes.github.io/tmap/)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+    [**ggspatial**](https://github.com/paleolimbot/ggspatial)
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
-## Citation
-
-Please use the following when citing `mapSpain`:
+Please use the following when citing **mapSpain**:
 
 ``` r
 citation("mapSpain")
