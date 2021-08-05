@@ -311,11 +311,11 @@ An example of how you can include tiles and shapes to create a static map:
 
 ```r
 
-# Get Amposta - Municipality
-amposta <- esp_get_munic(munic = "Amposta")
+# Get Deltebre - Municipality
+delt <- esp_get_munic(munic = "Deltebre")
 
 # Base PNOA - Satellite imagery
-PNOA <- esp_getTiles(amposta,
+PNOA <- esp_getTiles(delt,
   type = "PNOA",
   zoom = 11,
   bbox_expand = 1.5
@@ -324,7 +324,7 @@ PNOA <- esp_getTiles(amposta,
 tm_shape(PNOA) +
   tm_rgb() +
   # Mix with shape
-  tm_shape(amposta) +
+  tm_shape(delt) +
   tm_fill("green3", alpha = 0.5)
 ```
 
