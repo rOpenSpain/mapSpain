@@ -61,7 +61,8 @@ Include tiles of public Spanish organisms to a
 \code{\link[leaflet:leaflet]{leaflet::leaflet()}} map.
 }
 \details{
-Wrapper of \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}
+\code{\link[=providerEspTileOptions]{providerEspTileOptions()}} is a wrapper of
+\code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}.
 }
 \examples{
 library(leaflet)

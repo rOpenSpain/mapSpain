@@ -163,8 +163,8 @@ addProviderEspTiles <- function(map,
 #'
 #' @concept imagery
 #'
-#' @details 
-#' [providerEspTileOptions()] is a wrapper of 
+#' @details
+#' [providerEspTileOptions()] is a wrapper of
 #' [leaflet::providerTileOptions()].
 #'
 #' @inheritDotParams leaflet::providerTileOptions

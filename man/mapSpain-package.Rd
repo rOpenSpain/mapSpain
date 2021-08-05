@@ -20,7 +20,7 @@ Instituto Geográfico Nacional.
     \tab  \cr
    \strong{Package} \tab mapSpain \cr
    \strong{Type} \tab Package \cr
-   \strong{Version} \tab See sessionInfo() or DESCRIPTION file \cr
+   \strong{Version} \tab 0.2.3.9040 \cr
    \strong{Date} \tab 2021 \cr
    \strong{License} \tab GPL-3 \cr
    \strong{LazyLoad} \tab yes \cr
@@ -70,8 +70,5 @@ Useful links:
 \item \url{https://github.com/rOpenSpain/mapSpain}
 \item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
 }
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
 }
 \keyword{package}

@@ -17,7 +17,7 @@
 #'
 #' @param year Release year.
 #'
-#' @param spatialtype Spatial type of the output. Use `"line"` 
+#' @param spatialtype Spatial type of the output. Use `"line"`
 #'   for extracting the railway as lines and `"point"for extracting for the stations.
 #'
 #' @inheritParams esp_get_roads

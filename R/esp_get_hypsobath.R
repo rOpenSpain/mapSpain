@@ -18,7 +18,7 @@
 #'
 #' @export
 #'
-#' @param resolution Resolution of the shape. Values available 
+#' @param resolution Resolution of the shape. Values available
 #'   are `"3"` or `"6.5"`.
 #'
 #' @param spatialtype Spatial type of the output. Use `"area"` for polygons or
