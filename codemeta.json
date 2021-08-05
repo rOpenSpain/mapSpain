@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.3.9030",
+  "version": "0.2.3.9040",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -201,6 +201,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "rappdirs",
+      "name": "rappdirs",
+      "version": ">= 0.3.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rappdirs"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "raster",
       "name": "raster",
       "version": ">= 3.0",
@@ -246,7 +259,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
-  "fileSize": "2165.864KB",
+  "fileSize": "2165.694KB",
   "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://codecov.io/gh/rOpenSpain/mapSpain"],
   "keywords": [
     "r",

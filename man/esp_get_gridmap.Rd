@@ -41,10 +41,12 @@ to change the projection.
 See  \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}} for Details.
 }
 \examples{
-library(tmap)
+
 
 esp <- esp_get_country()
 hexccaa <- esp_get_hex_ccaa()
+
+library(tmap)
 
 
 tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
@@ -52,7 +54,8 @@ tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
   tm_shape(hexccaa) +
   tm_polygons("codauto", alpha = 0.6, legend.show = FALSE) +
   tm_shape(hexccaa) +
-  tm_text("label")
+  tm_text("label") +
+  tm_layout(main.title = "Hexbin: CCAA")
 
 
 
@@ -63,7 +66,8 @@ tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
   tm_shape(hexprov) +
   tm_polygons("cpro", alpha = 0.6, legend.show = FALSE) +
   tm_shape(hexprov) +
-  tm_text("label")
+  tm_text("label") +
+  tm_layout(main.title = "Hexbin: Provinces")
 
 
 
@@ -74,7 +78,8 @@ tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
   tm_shape(gridccaa) +
   tm_polygons("codauto", alpha = 0.6, legend.show = FALSE) +
   tm_shape(gridccaa) +
-  tm_text("label")
+  tm_text("label") +
+  tm_layout(main.title = "Grid: CCAA")
 
 gridprov <- esp_get_grid_prov()
 
@@ -83,7 +88,8 @@ tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
   tm_shape(gridprov) +
   tm_polygons("cpro", alpha = 0.6, legend.show = FALSE) +
   tm_shape(gridprov) +
-  tm_text("label")
+  tm_text("label") +
+  tm_layout(main.title = "Grid: Provinces")
 }
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}}, \code{\link[=esp_get_munic]{esp_get_munic()}},

@@ -65,7 +65,6 @@ install.packages("mapSpain")
 This script highlights some features of `mapSpain`:
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -120,7 +119,6 @@ tm_shape(CCAA_sf) +
 You can combine `POLYGONS` with static tiles
 
 ``` r
-
 library(mapSpain)
 library(sf)
 
@@ -187,7 +185,6 @@ installed as a dependency when you installed `mapSpain`. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -235,11 +232,11 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)
-  - [`mapsf`](https://riatelab.github.io/mapsf/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
@@ -253,7 +250,7 @@ citation("mapSpain")
 #> To cite the 'mapSpain' package in publications use:
 #> 
 #>   Hernangómez, D (2021). mapSpain: Administrative Boundaries of Spain.
-#>   R package version 0.2.3.9030. http://doi.org/10.5281/zenodo.4318024.
+#>   R package version 0.2.3.9040. http://doi.org/10.5281/zenodo.4318024.
 #>   Package url: https://CRAN.R-project.org/package=mapSpain
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -262,7 +259,7 @@ citation("mapSpain")
 #>     title = {mapSpain: Administrative Boundaries of Spain},
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
-#>     note = {R package version 0.2.3.9030},
+#>     note = {R package version 0.2.3.9040},
 #>     url = {https://CRAN.R-project.org/package=mapSpain},
 #>     doi = {10.5281/zenodo.4318024},
 #>   }
@@ -289,7 +286,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -297,13 +294,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.
