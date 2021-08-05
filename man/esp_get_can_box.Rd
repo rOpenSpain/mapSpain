@@ -15,7 +15,7 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 }
 \arguments{
 \item{style}{Style of line around Canary Islands. Four options available:
-"left", "right", "box" or "poly".}
+\code{"left"}, \code{"right"}, \code{"box"} or \code{"poly"}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -25,10 +25,10 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 }
 \value{
@@ -38,7 +38,7 @@ A \code{sf} polygon or line depending of \code{style} parameter.
 }
 \description{
 When plotting Spain, it is usual to represent the Canary Islands as an inset
-(see \code{moveCAN} on \code{\link[=esp_get_nuts]{esp_get_nuts()}}. These functions provides complementary
+(see \code{moveCAN} on \code{\link[=esp_get_nuts]{esp_get_nuts()}}). These functions provides complementary
 lines and polygons to be used when the Canary Islands are displayed
 as an inset.
 \itemize{

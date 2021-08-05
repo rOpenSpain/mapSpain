@@ -14,7 +14,7 @@
 #'
 #' @export
 #'
-#' @param resolution Resolution of the polygon. Values available are 
+#' @param resolution Resolution of the polygon. Values available are
 #'   `"3"`, `"6.5"` or `"10"`.
 #'
 #' @inheritParams esp_get_hypsobath

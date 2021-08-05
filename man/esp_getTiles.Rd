@@ -34,7 +34,7 @@ applies a buffer to the point and on \code{zoom = NULL} the function set a zoom
 level of 18. See \strong{Details}.}
 
 \item{zoommin}{Delta on default \code{zoom}. The default value is designed to
-download fewer tiles than you probably want. Use "1" or "2" to
+download fewer tiles than you probably want. Use \code{1} or \code{2} to
 increase the resolution.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,

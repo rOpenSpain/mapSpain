@@ -33,8 +33,8 @@ or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
   \describe{
     \item{\code{spatialtype}}{Type of geometry to be returned:
 \itemize{
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - point object.
+\item \code{"RG"}: Regions - polygon object.
 }}
   }}
 
@@ -44,10 +44,10 @@ or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See

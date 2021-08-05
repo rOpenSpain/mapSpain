@@ -26,15 +26,15 @@ esp_get_prov_siane(
 }
 \arguments{
 \item{prov}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the provinces. See Details.}
+or \code{NULL} to get all the provinces. See \strong{Details}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
   \describe{
     \item{\code{spatialtype}}{Type of geometry to be returned:
 \itemize{
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - point object.
+\item \code{"RG"}: Regions - polygon object.
 }}
   }}
 
@@ -44,10 +44,10 @@ or \code{NULL} to get all the provinces. See Details.}
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See

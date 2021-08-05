@@ -15,7 +15,7 @@ esp_set_cache_dir(
 \item{cache_dir}{A path to a cache directory.}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
-MAPSPAIN_CACHE_DIR that you already have in local machine.}
+\code{MAPSPAIN_CACHE_DIR} that you already have in local machine.}
 
 \item{install}{if \code{TRUE}, will install the key in your local machine for
 use in future sessions.  Defaults to \code{FALSE.}}

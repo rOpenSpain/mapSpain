@@ -18,7 +18,7 @@ esp_get_grid_ccaa(ccaa = NULL)
 }
 \arguments{
 \item{prov}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the provinces. See Details.}
+or \code{NULL} to get all the provinces. See \strong{Details}.}
 
 \item{ccaa}{A vector of names and/or codes for autonomous communities
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
