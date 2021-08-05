@@ -221,6 +221,7 @@ tm_shape(munic.pop) +
            main.title.color = "white",
            main.title.fontface = "bold",
            outer.bg.color = "black",
+           legend.title.color = "white",
            legend.text.color = "white",
            legend.text.fontface = "bold",
            legend.text.size = 1,
