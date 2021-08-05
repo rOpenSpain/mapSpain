@@ -31,7 +31,9 @@
 #'
 #' @param type Name of the provider. See [leaflet.providersESP.df].
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
-#'   it overrides `zoommin`. Only valid for WMTS tiles.
+#'   it overrides `zoommin`. Only valid for WMTS tiles. On a single point it 
+#'   applies a buffer to the point and on `zoom = NULL` the function set a zoom
+#'   level of 18. See **Details**.
 #' @param zoommin Delta on default `zoom`. The default value is designed to
 #'   download fewer tiles than you probably want. Use "1" or "2" to
 #'   increase the resolution.
@@ -147,6 +149,11 @@ esp_getTiles <- function(x,
   if (length(x) & "POINT" %in% sf::st_geometry_type(x)) {
     x <- sf::st_buffer(sf::st_geometry(x), 50)
     crop <- FALSE
+    # Auto zoom = 18 if not set
+     if (is.null(zoom)) {
+      zoom <- 18
+      if (verbose) message("Auto zoom on point set to 18")
+    }
   }
 
 
