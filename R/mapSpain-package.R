@@ -12,8 +12,8 @@
 #' | :---         | :--      |
 #' | **Package**  | mapSpain |
 #' | **Type**     | Package  |
-#' | **Version**  | See sessionInfo() or DESCRIPTION file |
-#' | **Date**     | 2021     |
+#' | **Version**  | `r packageVersion("mapSpain")` |
+#' | **Date**     | `r format(Sys.Date(), "%Y")`     |
 #' | **License**  | GPL-3    |
 #' | **LazyLoad** | yes      |
 #
@@ -24,7 +24,6 @@
 #' database and CartoBase SIANE from
 #' Instituto Geográfico Nacional.
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @source
 #' [GISCO webpage](https://ec.europa.eu/eurostat/web/gisco/geodata)

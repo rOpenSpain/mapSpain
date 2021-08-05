@@ -8,15 +8,15 @@
 #'
 #' @name esp_dict_region_code
 #'
-#' @return `esp_dict_region_code` returns a vector of characters.
+#' @return [esp_dict_region_code()] returns a vector of characters.
 #'
 #' @export
 #'
 #'
 #' @param sourcevar Vector which contains the subdivision names to be converted.
 #'
-#' @param origin,destination One of "text", "nuts", "iso2",
-#'   "codauto" and "cpro".
+#' @param origin,destination One of `"text"`, `"nuts"`, `"iso2"`,
+#'   `"codauto"` and `"cpro"`.
 #'
 #' @details
 #' If no match is found for any value, the function displays a warning and
@@ -221,18 +221,18 @@ esp_dict_region_code <- function(sourcevar,
 #'
 #' @name esp_dict_translate
 #'
-#' @return `esp_dict_translate` returns a character vector or a named
+#' @return [esp_dict_translate()] returns a character vector or a named
 #'   list with each of the possible names of each `sourcevar` on the required
 #'   language `lang`.
 #'
 #' @export
 #'
 #' @param lang Language of translation. Available languages are:
-#'   * **"es"**: Spanish
-#'   * **"en"**: English
-#'   * **"ca"**: Catalan
-#'   * **"ga"**: Galician
-#'   * **"eu"**: Basque
+#'   * `"es"`: Spanish
+#'   * `"en"`: English
+#'   * `"ca"`: Catalan
+#'   * `"ga"`: Galician
+#'   * `"eu"`: Basque
 #'
 #' @param all Logical. Should the function return all names or not?
 #'   On `FALSE` it returns a character vector. See Value.

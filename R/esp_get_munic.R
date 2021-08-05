@@ -46,7 +46,7 @@
 #'
 #' When using `region` you can use and mix names and NUTS codes
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' `cpro`.
+#' "cpro" (see [esp_codelist]).
 #'
 #' When calling a superior level (Province, Autonomous Community or NUTS1) ,
 #' all the municipalities of that level would be added.
@@ -329,7 +329,7 @@ esp_get_munic <- function(year = "2019",
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @param resolution Resolution of the polygon. Values available are
-#'   "3", "6.5" or  "10".
+#'   `"3"`, `"6.5"` or  `"10"`.
 #'
 #' @inheritParams esp_get_ccaa_siane
 #'

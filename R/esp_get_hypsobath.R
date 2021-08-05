@@ -4,9 +4,9 @@
 #' Loads a `sf` polygon or line object representing the hypsometry and
 #' bathymetry of Spain.
 #'
-#' * Hypsometry represents the  the elevation and depth of features of the
+#' * **Hypsometry** represents the  the elevation and depth of features of the
 #'   Earth's surface relative to mean sea level.
-#' * Bathymetry is the measurement of the depth of water in oceans, rivers,
+#' * **Bathymetry** is the measurement of the depth of water in oceans, rivers,
 #'   or lakes.
 #'
 #' @concept natural
@@ -18,10 +18,11 @@
 #'
 #' @export
 #'
-#' @param resolution Resolution of the shape. Values available are "3" or "6.5".
+#' @param resolution Resolution of the shape. Values available 
+#'   are `"3"` or `"6.5"`.
 #'
-#' @param spatialtype Spatial type of the output. Use "area" for polygons or
-#'   "line" for lines.
+#' @param spatialtype Spatial type of the output. Use `"area"` for polygons or
+#'   `"line"` for lines.
 #'
 #' @inheritParams esp_get_nuts
 #'

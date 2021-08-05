@@ -35,7 +35,7 @@
 #'   applies a buffer to the point and on `zoom = NULL` the function set a zoom
 #'   level of 18. See **Details**.
 #' @param zoommin Delta on default `zoom`. The default value is designed to
-#'   download fewer tiles than you probably want. Use "1" or "2" to
+#'   download fewer tiles than you probably want. Use `1` or `2` to
 #'   increase the resolution.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
 #'   `FALSE` otherwise. If `x` is an `sf` object with one `POINT`, crop is set

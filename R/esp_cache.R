@@ -23,7 +23,7 @@
 #' @param install if `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.`
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
-#'   MAPSPAIN_CACHE_DIR that you already have in local machine.
+#'   `MAPSPAIN_CACHE_DIR` that you already have in local machine.
 #'
 #' @seealso [rappdirs::user_cache_dir()]
 #'

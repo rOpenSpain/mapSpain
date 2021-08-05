@@ -24,7 +24,7 @@
 #' @export
 #'
 #' @param prov A vector of names and/or codes for provinces
-#'   or `NULL` to get all the provinces. See Details.
+#'   or `NULL` to get all the provinces. See **Details**.
 #'
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
