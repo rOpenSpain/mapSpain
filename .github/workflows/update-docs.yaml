@@ -9,7 +9,7 @@ name: update-docs
 
 jobs:
   update-docs:
-    runs-on: macOS-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -22,9 +22,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          install.packages('devtools')
-          remotes::install_cran("rcmdcheck")
-          install.packages("pkgdown", dependencies = TRUE)
+          remotes::install_cran(c("devtools", "rcmdcheck", "pkgdown"), , type="binary")
 
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
@@ -41,7 +39,10 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           devtools::install_github('dieghernan/pkgdev', dependencies = TRUE)
+          
+          devtools::install_github('ropenspain/rostemplate', dependencies = TRUE)
         shell: Rscript {0}
+        
 
       - name: Install package
         run: |
@@ -51,6 +52,7 @@ jobs:
 
       - name: Update docs
         run: |
+
           pkgdev::update_docs()
 
         shell: Rscript {0}
@@ -78,16 +80,9 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
 
-      - name: Install rostemplate
-        run: |
-          devtools::install_github('ropenspain/rostemplate', dependencies = TRUE)
-        shell: Rscript {0}
-
       - name: Deploy package
         run: |
           Rscript -e 'pkgdown::build_favicons(overwrite = TRUE)'
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE)'
-
-

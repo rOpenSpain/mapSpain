@@ -19,8 +19,6 @@ jobs:
         run: |
           install.packages('remotes')
           remotes::install_cran('devtools')
-          remotes::install_github("ropenspain/rostemplate", dependencies = TRUE, force = TRUE)
-
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -34,8 +32,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE, , type="binary")
           remotes::install_cran("pkgdown", dependencies = TRUE)
+          
+          devtools::install_github('ropenspain/rostemplate', dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Install package
