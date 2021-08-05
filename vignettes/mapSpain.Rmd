@@ -316,8 +316,8 @@ amposta <- esp_get_munic(munic = "Amposta")
 # Base PNOA - Satellite imagery
 PNOA <- esp_getTiles(amposta,
   type = "PNOA",
-  zoom = 10,
-  bbox_expand = 0.5
+  zoom = 11,
+  bbox_expand = 1.5
 )
 
 tm_shape(PNOA) +

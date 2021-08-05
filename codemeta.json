@@ -259,7 +259,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
-  "fileSize": "2797.342KB",
+  "fileSize": "3040.629KB",
   "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://codecov.io/gh/rOpenSpain/mapSpain"],
   "keywords": [
     "r",
