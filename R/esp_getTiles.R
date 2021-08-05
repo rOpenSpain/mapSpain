@@ -4,12 +4,11 @@
 #' Get static map tiles based on a spatial object. Maps can be fetched from
 #' various open map servers.
 #'
-#' @concept imagery
-#'
-#'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **v1.2.0**.
+#'
+#' @concept imagery
 #'
 #' @return
 #' A `RasterBrick` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on

@@ -65,6 +65,10 @@ the provider. See \code{\link[raster:brick]{raster::brick()}}.
 \description{
 Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
+
+This function is a implementation of the javascript plugin
+\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
+\strong{v1.2.0}.
 }
 \details{
 Zoom levels are described on the
@@ -122,9 +126,4 @@ tm_shape(Tile, raster.downsample = FALSE) +
 
 For plotting, you can use \code{\link[raster:plotRGB]{raster::plotRGB()}}, \code{\link[tmap:tm_raster]{tmap::tm_rgb()}}.
 }
-\concept{imagery
-
-
-This function is a implementation of the javascript plugin
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-**v1.2.0**.}
+\concept{imagery}
