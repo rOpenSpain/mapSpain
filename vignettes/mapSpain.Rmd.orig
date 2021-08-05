@@ -212,9 +212,9 @@ tm_shape(munic.pop) +
     breaks = br,
     alpha = 0.9,
     title = "Pop. per km2",
-    palette = hcl.colors(100,"Spectral"),
+    palette = c("black", hcl.colors(100,"Spectral")),
     showNA = FALSE,
-    colorNA = "#000004"
+    colorNA = "black"
   ) +
  tm_layout(bg.color = "black",
            main.title = "Population density in Spain (2019)",
@@ -300,8 +300,8 @@ amposta <- esp_get_munic(munic = "Amposta")
 # Base PNOA - Satellite imagery
 PNOA <- esp_getTiles(amposta,
   type = "PNOA",
-  zoom = 11,
-  bbox_expand = 1.5
+  zoom = 10,
+  bbox_expand = 0.5
 )
 
 tm_shape(PNOA) +
