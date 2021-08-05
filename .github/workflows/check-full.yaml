@@ -10,7 +10,7 @@ on:
       - master
       - main
   schedule:
-      - cron:  '30 12 * * 3,6'
+      - cron:  '0 7 * * 2,5'
 
 
 name: R-CMD-check
@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          #- {os: windows-latest, r: 'devel'}
+          - {os: windows-latest, r: 'devel'}
           - {os: windows-latest, r: 'release'}
           - {os: windows-latest, r: 'oldrel'}
           #- {os: macOS-latest, r: 'devel'}
@@ -66,7 +66,7 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          
+
       - name: Install sf libraries on macOs
         if: runner.os == 'macOS'
         run: | 
@@ -74,11 +74,22 @@ jobs:
           brew install geos
           brew install gdal
 
+
       - name: Install dependencies
+        if: runner.os == 'Linux'
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
+
+      - name: Install binary dependencies
+        if: runner.os != 'Linux'
+        run: |
+          remotes::install_deps(dependencies = TRUE, type="binary")
+          remotes::install_cran("rcmdcheck", type="binary")
+          
+        shell: Rscript {0}
+        
 
       - name: Check
         env:
