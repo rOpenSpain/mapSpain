@@ -32,15 +32,15 @@
 #'  [esp_dict_region_code()], [esp_codelist]
 #'   .
 #'
-#' @param year Release year of the file. One of "2003", "2006,
-#'   "2010", "2013", "2016" or "2021".
+#' @param year Release year of the file. One of `"2003"`, `"2006"`,
+#'   `"2010"`, `"2013"`, `"2016"`  or `"2021"`.
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
-#'  * "4258": ETRS89
-#'  * "4326": WGS84
-#'  * "3035": ETRS89 / ETRS-LAEA
-#'  * "3857": Pseudo-Mercator
+#'  * `"4258"`: ETRS89
+#'  * `"4326"`: WGS84
+#'  * `"3035"`: ETRS89 / ETRS-LAEA
+#'  * `"3857"`: Pseudo-Mercator
 #'
 #' @param cache A logical whether to do caching. Default is `TRUE`. See
 #'   **About caching**.
@@ -61,8 +61,8 @@
 #'  * "01": 1:1million
 #'
 #' @param spatialtype Type of geometry to be returned:
-#'  * **"LB"**: Labels - `POINT` object.
-#'  * **"RG"**: Regions - `MULTIPOLYGON/POLYGON` object.
+#'  * `"LB"`: Labels - point object.
+#'  * `"RG"`: Regions - polygon object.
 #'
 #' @param region Optional. A vector of region names, NUTS or ISO codes
 #'   (see [esp_dict_region_code()]).

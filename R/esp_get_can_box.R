@@ -2,7 +2,7 @@
 #'
 #' @description
 #' When plotting Spain, it is usual to represent the Canary Islands as an inset
-#' (see `moveCAN` on [esp_get_nuts()]. These functions provides complementary
+#' (see `moveCAN` on [esp_get_nuts()]). These functions provides complementary
 #' lines and polygons to be used when the Canary Islands are displayed
 #' as an inset.
 #'
@@ -21,7 +21,7 @@
 #' @export
 #'
 #' @param style Style of line around Canary Islands. Four options available:
-#'   "left", "right", "box" or "poly".
+#'   `"left"`, `"right"`, `"box"` or `"poly"`.
 #'
 #' @inheritParams esp_get_nuts
 #'

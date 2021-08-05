@@ -13,8 +13,8 @@
 #'
 #' @export
 #'
-#' @param domain Possible values are "land", that includes only
-#' the ground part or the ground or "landsea", that includes both the ground
+#' @param domain Possible values are `"land"`, that includes only
+#' the ground part or the ground or `"landsea"`, that includes both the ground
 #' and the related sea waters of the basin
 #'
 #' @inheritParams esp_get_rivers
