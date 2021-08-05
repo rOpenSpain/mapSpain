@@ -1,30 +1,35 @@
-#' Leaflet plugin - Spanish providers
+#' Include base tiles of Spanish public administrations on a `leaflet` map
+#'
+#' @description
+#' Include tiles of public Spanish organisms to a
+#' [leaflet::leaflet()] map.
 #'
 #' @concept imagery
 #'
 #' @rdname addProviderEspTiles
-#'
-#' @description
-#' Add tiles of <https://dieghernan.github.io/leaflet-providersESP/> to a
-#' **R** [`leaflet::leaflet()`] map.
+#' @name addProviderEspTiles
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
 #'  **v1.2.0**.
 #'
-#' @return Modified `map` object.
+#' @return A map object generated with [leaflet::leaflet()].
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [`leaflet.providersESP.df`], [esp_getTiles()],
-#' [`leaflet::addTiles()`]
+#' @seealso [leaflet.providersESP.df], [esp_getTiles()],
+#' [leaflet::leaflet()], [leaflet::addTiles()]
 #'
 #' @export
 #'
-#' @param provider Name of the provider, see [`leaflet.providersESP.df`].
-#' @param group The name of the group the newly created layers should belong
-#' to. See [`leaflet::addTiles()`]
-
+#' @param map A map widget created from [leaflet::leaflet()].
+#' @param group The name of the group the newly created layers should belong to
+#'   Human-friendly group names are permitted–they need not be short,
+#'   identifier-style names. Any number of layers and even different types of
+#'   layers (e.g. markers and polygons) can share the same group name. See
+#'   [leaflet::addTiles()].
+#' @param provider Name of the provider, see [leaflet.providersESP.df] for
+#'   values available.
+#'
 #' @inheritParams leaflet::addTiles
 #'
 #' @examples
@@ -154,6 +159,7 @@ addProviderEspTiles <- function(map,
 }
 
 #' @rdname addProviderEspTiles
+#' @name providerEspTileOptions
 #'
 #' @concept imagery
 #'

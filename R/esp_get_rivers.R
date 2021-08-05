@@ -1,17 +1,16 @@
-#' Get rivers, channels, reservoirs and other wetlands of Spain
+#' Get `sf` polygon and lines of rivers, channels and other wetlands of Spain
 #'
 #' @description
-#' Loads a simple feature (`sf`) object containing lines or
-#' areas with the required hydrograpic elements of Spain.
+#' Loads a `sf` polygon or line object representing rivers, channels,
+#' reservoirs and other wetlands of Spain
 #'
 #' @concept natural
 #'
-#' @return A `POLYGON` or `LINESTRING` object.
+#' @return A `sf` polygon or line object.
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
 #'
@@ -20,28 +19,25 @@
 #'
 #' @inheritParams esp_get_hypsobath
 #'
-#' @param name Optional. A character or regex expresion with the name of the
-#'   element to be extracted. See Details
+#' @param name Optional. A character or  [`regex`][base::grep()] expression
+#' with the name of the element(s) to be extracted.
 #'
 #' @details
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
-#' `name` admits regex expressions. See `help("regex", package = "base")`
-#' for more information.
-#'
 #' @examples
 #' \donttest{
-#' # This code would produce a nice plot - It will take a few seconds to run
-#' library(sf)
-#'
 #' # Use of regex
 #'
 #' regex1 <- esp_get_rivers(name = "Tajo|Segura")
 #' unique(regex1$rotulo)
 #'
+#'
 #' regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 #' unique(regex2$rotulo)
+#'
+#' # See the diference
 #'
 #' # Rivers in Spain
 #' shapeEsp <- esp_get_country(moveCAN = FALSE)
@@ -49,19 +45,24 @@
 #' MainRivers <-
 #'   esp_get_rivers(name = "Tajo$|Ebro$|Ebre$|Duero|Guadiana$|Guadalquivir")
 #'
-#' opar <- par(no.readonly = TRUE)
-#' par(mar = c(0, 0, 0, 0))
 #'
-#' plot(st_geometry(MainRivers), col = "skyblue", lwd = 1.5)
-#' plot(st_geometry(shapeEsp), col = NA, add = TRUE)
+#' library(tmap)
 #'
-#' # All wetlands
+#' tm_shape(shapeEsp, bbox = MainRivers) +
+#'   tm_borders() +
+#'   tm_shape(MainRivers) +
+#'   tm_lines(col = "skyblue", lwd = 3)
 #'
+#'
+#' # Wetlands in South-West Andalucia
+#' and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))
 #' Wetlands <- esp_get_rivers(spatialtype = "area")
-#' plot(st_geometry(Wetlands), col = "skyblue", border = NA)
-#' plot(st_geometry(shapeEsp), col = NA, add = TRUE)
 #'
-#' par(opar)
+#'
+#' tm_shape(and) +
+#'   tm_polygons() +
+#'   tm_shape(Wetlands) +
+#'   tm_polygons(col = "skyblue", alpha = 0.5, border.col = "skyblue", lwd = 2)
 #' }
 esp_get_rivers <- function(epsg = "4258",
                            cache = TRUE,

@@ -8,7 +8,14 @@
 INE: Instituto Nacional de Estadistica \url{https://www.ine.es/}
 }
 \description{
-A data frame with 8131 rows containing the population data by municipality
-in Spain (2019).
+A data frame with 8,131
+rows containing the population data by municipality in Spain (2019).
+}
+\examples{
+data("pobmun19")
+
+library(tibble)
+
+as_tibble(pobmun19)
 }
 \concept{datasets}

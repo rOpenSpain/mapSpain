@@ -2,10 +2,10 @@
 % Please edit documentation in R/esp_get_capimun.R
 \name{esp_get_capimun}
 \alias{esp_get_capimun}
-\title{Get the location of municipalities of Spain}
+\title{Get \code{sf} points of the municipalities of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_capimun(
@@ -22,7 +22,7 @@ esp_get_capimun(
 )
 }
 \arguments{
-\item{year}{Release year. See Details for years available.}
+\item{year}{Release year. See \strong{Details} for years available.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -33,64 +33,75 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{region}{Optional. A vector of region names, NUTS or ISO codes
-(see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.}
+\item{region}{A vector of names and/or codes for provinces
+or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
-\item{munic}{A name or regex expression with the names of the required
-municipalities. \code{NULL} would not produce any filtering.}
+\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of the
+required municipalities. \code{NULL} would not produce any filtering.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
 the dataset provided by IGN.}
 }
 \value{
-A \code{POINT} object.
+A \code{sf} point object.
 }
 \description{
-Get the location of the political powers for each municipality (possibly
-the center of the municipality).
+Get a \code{sf} point with the location of the political powers for
+each municipality (possibly the center of the municipality).
 
 Note that this differs of the centroid of the boundaries of the
-municipallity, returned by \code{\link[=esp_get_munic]{esp_get_munic()}}.
+municipality, returned by \code{\link[=esp_get_munic]{esp_get_munic()}}.
 }
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or
-as a specific date ("YYYY-MM-DD" format).
-Historical information starts as of 2005.
+as a specific date ("YYYY-MM-DD" format). Historical information starts as
+of 2005.
 
 When using \code{region} you can use and mix names and NUTS codes (levels 1,
-2 or 3), ISO codes (corresponding to level 2 or 3) or \code{cpro}.
+2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro". See
+\link{esp_codelist}
 
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
 all the municipalities of that level would be added.
 }
-\note{
-While \code{moveCAN} is useful for visualization, it would alter the
-actual geographical position of the Canary Islands.
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 }
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones.
+}
+
 \examples{
 \dontrun{
-# This code compares centroid of municipalities against esp_get_capimun
+# This code compares centroids of municipalities against esp_get_capimun
 # It also download tiles, make sure you are online
 
 library(sf)
@@ -99,17 +110,24 @@ library(sf)
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 
 # Area in km2
-print(paste0(round(as.double(st_area(area)) / 1000000, 2), " km2"))
+print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
 
 # Extract centroid
-centroid <- st_centroid(area)
+centroid <- sf::st_centroid(area)
+centroid$type <- "Centroid"
 
 # Compare with capimun
 capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
-
+capimun$type <- "Capimun"
 
 # Get a tile to check
-tile <- esp_getTiles(area)
+tile <- esp_getTiles(area, zoommin = 2)
+
+# Join both point geometries
+points <- rbind(
+  centroid[, "type"],
+  capimun[, "type"]
+)
 
 # Check on plot
 library(tmap)
@@ -118,20 +136,17 @@ tm_shape(tile, raster.downsample = FALSE) +
   tm_rgb() +
   tm_shape(area) +
   tm_borders(col = "grey40") +
-  tm_shape(centroid) +
-  tm_symbols(col = "red", alpha = 0.4, shape = 19) +
-  tm_shape(capimun) +
-  tm_symbols(col = "blue", alpha = 0.4, shape = 19)
-
-
-# Blue dot is located onto the actual city while red dot is located
-# in the centroid of the boundaries
+  tm_shape(points) +
+  tm_symbols(col = "type", alpha = 0.8, pal = "RdBu") +
+  tm_layout(
+    main.title = "Centroid vs. capimun",
+    legend.outside = TRUE,
+    legend.outside.size = 0.3,
+    legend.text.size = 1
+  )
 }
 }
 \seealso{
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link{esp_munic.sf}}, \code{\link{esp_codelist}}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}.
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_munic.sf}, \link{esp_codelist}
 }
 \concept{political}

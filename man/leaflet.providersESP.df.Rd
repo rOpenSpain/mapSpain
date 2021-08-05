@@ -9,9 +9,9 @@
 A data frame object with a list of the required parameters for calling
 the service:
 \itemize{
-\item provider: Provider name.
-\item field: Description of \code{value}.
-\item value: INE code of each province.
+\item \strong{provider}: Provider name.
+\item \strong{field}: Description of \code{value}.
+\item \strong{value}: INE code of each province.
 }
 }
 \source{
@@ -27,104 +27,111 @@ This function is a implementation of the javascript plugin
 \strong{v1.2.0}.
 }
 \details{
-Providers available to be passed to \code{type} are:\tabular{l}{
+Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:\tabular{l}{
    provider \cr
-   IDErioja \cr
-   IGNBase \cr
-   IGNBase.Todo \cr
-   IGNBase.Gris \cr
-   IGNBase.TodoNoFondo \cr
-   IGNBase.Orto \cr
-   MDT \cr
-   MDT.Elevaciones \cr
-   MDT.Relieve \cr
-   MDT.CurvasNivel \cr
-   PNOA \cr
-   PNOA.MaximaActualidad \cr
-   PNOA.Mosaico \cr
-   OcupacionSuelo \cr
-   OcupacionSuelo.Ocupacion \cr
-   OcupacionSuelo.Usos \cr
-   LiDAR \cr
-   MTN \cr
-   Geofisica \cr
-   Geofisica.Terremotos10dias \cr
-   Geofisica.Terremotos30dias \cr
-   Geofisica.Terremotos365dias \cr
-   Geofisica.VigilanciaVolcanica \cr
-   CaminoDeSantiago \cr
-   CaminoDeSantiago.CaminoFrances \cr
-   CaminoDeSantiago.CaminosTuronensis \cr
-   CaminoDeSantiago.CaminosGalicia \cr
-   CaminoDeSantiago.CaminosDelNorte \cr
-   CaminoDeSantiago.CaminosAndaluces \cr
-   CaminoDeSantiago.CaminosCentro \cr
-   CaminoDeSantiago.CaminosEste \cr
-   CaminoDeSantiago.CaminosCatalanes \cr
-   CaminoDeSantiago.CaminosSureste \cr
-   CaminoDeSantiago.CaminosInsulares \cr
-   CaminoDeSantiago.CaminosPiemonts \cr
-   CaminoDeSantiago.CaminosTolosana \cr
-   CaminoDeSantiago.CaminosPortugueses \cr
-   Catastro \cr
-   Catastro.Catastro \cr
-   Catastro.Parcela \cr
-   Catastro.CadastralParcel \cr
-   Catastro.CadastralZoning \cr
-   Catastro.Address \cr
-   Catastro.Building \cr
-   RedTransporte \cr
-   RedTransporte.Carreteras \cr
-   RedTransporte.Ferroviario \cr
-   RedTransporte.Aerodromo \cr
-   RedTransporte.AreaServicio \cr
-   RedTransporte.EstacionesFerroviario \cr
-   RedTransporte.Puertos \cr
-   Cartociudad \cr
-   Cartociudad.CodigosPostales \cr
-   Cartociudad.Direcciones \cr
-   NombresGeograficos \cr
-   UnidadesAdm \cr
-   UnidadesAdm.Limites \cr
-   UnidadesAdm.Unidades \cr
-   Hidrografia \cr
-   Hidrografia.MasaAgua \cr
-   Hidrografia.Cuencas \cr
-   Hidrografia.Subcuencas \cr
-   Hidrografia.POI \cr
-   Hidrografia.ManMade \cr
-   Hidrografia.LineaCosta \cr
-   Hidrografia.Rios \cr
-   Hidrografia.Humedales \cr
-   Militar \cr
-   Militar.CEGET1M \cr
-   Militar.CEGETM7814 \cr
-   Militar.CEGETM7815 \cr
-   Militar.CEGETM682 \cr
-   Militar.CECAF1M \cr
-   ADIF \cr
-   ADIF.Vias \cr
-   ADIF.Nodos \cr
-   ADIF.Estaciones \cr
-   LimitesMaritimos \cr
-   LimitesMaritimos.LimitesMaritimos \cr
-   LimitesMaritimos.LineasBase \cr
-   Copernicus \cr
-   Copernicus.LandCover \cr
-   Copernicus.Forest \cr
-   Copernicus.ForestLeaf \cr
-   Copernicus.WaterWet \cr
-   Copernicus.SoilSeal \cr
-   Copernicus.GrassLand \cr
-   Copernicus.Local \cr
-   Copernicus.RiparianGreen \cr
-   Copernicus.RiparianLandCover \cr
-   Copernicus.Natura2k \cr
-   Copernicus.UrbanAtlas \cr
-   ParquesNaturales \cr
-   ParquesNaturales.Limites \cr
-   ParquesNaturales.ZonasPerifericas \cr
+   'IDErioja' \cr
+   'IGNBase' \cr
+   'IGNBase.Todo' \cr
+   'IGNBase.Gris' \cr
+   'IGNBase.TodoNoFondo' \cr
+   'IGNBase.Orto' \cr
+   'MDT' \cr
+   'MDT.Elevaciones' \cr
+   'MDT.Relieve' \cr
+   'MDT.CurvasNivel' \cr
+   'PNOA' \cr
+   'PNOA.MaximaActualidad' \cr
+   'PNOA.Mosaico' \cr
+   'OcupacionSuelo' \cr
+   'OcupacionSuelo.Ocupacion' \cr
+   'OcupacionSuelo.Usos' \cr
+   'LiDAR' \cr
+   'MTN' \cr
+   'Geofisica' \cr
+   'Geofisica.Terremotos10dias' \cr
+   'Geofisica.Terremotos30dias' \cr
+   'Geofisica.Terremotos365dias' \cr
+   'Geofisica.VigilanciaVolcanica' \cr
+   'CaminoDeSantiago' \cr
+   'CaminoDeSantiago.CaminoFrances' \cr
+   'CaminoDeSantiago.CaminosTuronensis' \cr
+   'CaminoDeSantiago.CaminosGalicia' \cr
+   'CaminoDeSantiago.CaminosDelNorte' \cr
+   'CaminoDeSantiago.CaminosAndaluces' \cr
+   'CaminoDeSantiago.CaminosCentro' \cr
+   'CaminoDeSantiago.CaminosEste' \cr
+   'CaminoDeSantiago.CaminosCatalanes' \cr
+   'CaminoDeSantiago.CaminosSureste' \cr
+   'CaminoDeSantiago.CaminosInsulares' \cr
+   'CaminoDeSantiago.CaminosPiemonts' \cr
+   'CaminoDeSantiago.CaminosTolosana' \cr
+   'CaminoDeSantiago.CaminosPortugueses' \cr
+   'Catastro' \cr
+   'Catastro.Catastro' \cr
+   'Catastro.Parcela' \cr
+   'Catastro.CadastralParcel' \cr
+   'Catastro.CadastralZoning' \cr
+   'Catastro.Address' \cr
+   'Catastro.Building' \cr
+   'RedTransporte' \cr
+   'RedTransporte.Carreteras' \cr
+   'RedTransporte.Ferroviario' \cr
+   'RedTransporte.Aerodromo' \cr
+   'RedTransporte.AreaServicio' \cr
+   'RedTransporte.EstacionesFerroviario' \cr
+   'RedTransporte.Puertos' \cr
+   'Cartociudad' \cr
+   'Cartociudad.CodigosPostales' \cr
+   'Cartociudad.Direcciones' \cr
+   'NombresGeograficos' \cr
+   'UnidadesAdm' \cr
+   'UnidadesAdm.Limites' \cr
+   'UnidadesAdm.Unidades' \cr
+   'Hidrografia' \cr
+   'Hidrografia.MasaAgua' \cr
+   'Hidrografia.Cuencas' \cr
+   'Hidrografia.Subcuencas' \cr
+   'Hidrografia.POI' \cr
+   'Hidrografia.ManMade' \cr
+   'Hidrografia.LineaCosta' \cr
+   'Hidrografia.Rios' \cr
+   'Hidrografia.Humedales' \cr
+   'Militar' \cr
+   'Militar.CEGET1M' \cr
+   'Militar.CEGETM7814' \cr
+   'Militar.CEGETM7815' \cr
+   'Militar.CEGETM682' \cr
+   'Militar.CECAF1M' \cr
+   'ADIF' \cr
+   'ADIF.Vias' \cr
+   'ADIF.Nodos' \cr
+   'ADIF.Estaciones' \cr
+   'LimitesMaritimos' \cr
+   'LimitesMaritimos.LimitesMaritimos' \cr
+   'LimitesMaritimos.LineasBase' \cr
+   'Copernicus' \cr
+   'Copernicus.LandCover' \cr
+   'Copernicus.Forest' \cr
+   'Copernicus.ForestLeaf' \cr
+   'Copernicus.WaterWet' \cr
+   'Copernicus.SoilSeal' \cr
+   'Copernicus.GrassLand' \cr
+   'Copernicus.Local' \cr
+   'Copernicus.RiparianGreen' \cr
+   'Copernicus.RiparianLandCover' \cr
+   'Copernicus.Natura2k' \cr
+   'Copernicus.UrbanAtlas' \cr
+   'ParquesNaturales' \cr
+   'ParquesNaturales.Limites' \cr
+   'ParquesNaturales.ZonasPerifericas' \cr
 }
+}
+\examples{
+data("leaflet.providersESP.df")
+
+library(tibble)
+
+as_tibble(leaflet.providersESP.df)
 }
 \seealso{
 \code{\link[=esp_getTiles]{esp_getTiles()}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.

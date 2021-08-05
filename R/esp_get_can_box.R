@@ -1,21 +1,22 @@
-#' Get complementary lines when plotting Canary Islands.
+#' Get `sf` lines and polygons for insetting the Canary Islands
+#'
+#' @description
+#' When plotting Spain, it is usual to represent the Canary Islands as an inset
+#' (see `moveCAN` on [esp_get_nuts()]. These functions provides complementary
+#' lines and polygons to be used when the Canary Islands are displayed
+#' as an inset.
+#'
+#' * [esp_get_can_box()] is used to draw lines around the displaced Canary Islands.
 #'
 #' @concept political
 #'
 #' @rdname esp_get_can_box
 #'
-#' @description
-#' When plotting Spain, it is usual to represent the Canary Islands as an inset
-#' (see `moveCAN` on [esp_get_nuts()]. These functions provides complementary
-#' borders when Canary Islands are displaced.
+#' @name esp_get_can_box
 #'
-#' `esp_get_can_box` is used to draw lines around the displaced Canary Islands.
+#' @return A `sf` polygon or line depending of `style` parameter.
 #'
-#' @return A `LINESTRING` or `POLYGON` object if `style = "poly"`.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
-#'
-#' @seealso [esp_get_nuts()], [esp_get_ccaa()].
+#' @seealso [esp_get_nuts()], [esp_get_ccaa()], [esp_get_prov()]
 #'
 #' @export
 #'
@@ -23,6 +24,8 @@
 #'   "left", "right", "box" or "poly".
 #'
 #' @inheritParams esp_get_nuts
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #'
@@ -45,7 +48,9 @@
 #' # Displacing Canary
 #'
 #' Provs_D <- esp_get_prov(moveCAN = c(15, 0))
+#'
 #' Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
+#'
 #' Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
 #'
 #' tm_shape(Provs_D) +
@@ -95,7 +100,10 @@
 #'   tm_shape(CCAA) +
 #'   tm_polygons("#FDFBEA") +
 #'   tm_graticules(lines = FALSE) +
-#'   tm_layout(bg.color = "#C7E7FB", frame.double.line = TRUE)
+#'   tm_layout(
+#'     bg.color = "#C7E7FB",
+#'     frame.double.line = TRUE
+#'   )
 #' }
 esp_get_can_box <- function(style = "right",
                             moveCAN = TRUE,
@@ -182,7 +190,7 @@ esp_get_can_box <- function(style = "right",
 #' @concept political
 #'
 #' @description
-#' `esp_get_can_provinces` is used to draw a separator line between the two
+#' * [esp_get_can_provinces()] is used to draw a separator line between the two
 #' provinces of the Canary Islands.
 #'
 #' @return `esp_get_can_provinces` returns a `LINESTRING` object.

@@ -1,26 +1,27 @@
-#' Get an hexbin or a map of squares of Spain
+#' Get a `sf` hexbin or squared polygon of Spain
 #'
 #' @description
 #' Loads a hexbin map (`sf` object) or a map of squares with the boundaries of
 #' the provinces or autonomous communities of Spain.
 #'
 #' @rdname esp_get_gridmap
+#' @name  esp_get_gridmap
 #'
 #' @concept political
 #'
-#' @return A `POLYGON` object.
+#' @return A `sf` POLYGON object.
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
-#'
-#' @seealso
-#' [esp_get_nuts()], [esp_get_ccaa()], [esp_get_prov()], [esp_get_munic()],
-#' [`esp_codelist`]
+#' @seealso [esp_get_ccaa()], [esp_get_prov()], [esp_codelist]
 #'
 #' @export
 #'
 #' @inheritParams esp_get_prov
 #'
 #' @inheritParams esp_get_ccaa
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @details
 #'
@@ -29,10 +30,17 @@
 #' of its size, what introduces a bias. Here with hexbin, each region is
 #' represented equally dismissing the bias.
 #'
+#' You can use and mix names, ISO codes, "codauto"/"cpro" codes (see
+#' [esp_codelist]) and NUTS codes of different levels.
+#'
+#' When using a code corresponding of a higher level (e.g.
+#' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
+#' provided (in this case , all the provinces of Andalucia).
+#'
+#'
 #' Results are provided in **EPSG:4258**, use [sf::st_transform()]
 #' to change the projection.
 #'
-#' See  [esp_get_ccaa()], [esp_get_prov()] for Details.
 #'
 #' @example inst/examples/esp_get_gridmap.R
 #'

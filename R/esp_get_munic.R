@@ -1,35 +1,49 @@
-#' Get municipalities boundaries of Spain
+#' Get municipalities of Spain as `sf` polygons
+#'
+#' @description
+#' Returns municipalities of Spain as polygons at a specified scale.
+#'
+#' * [esp_get_munic()] uses GISCO (Eurostat) as source. Please use
+#'   [giscoR::gisco_attributions()]
 #'
 #' @concept political
 #'
-#' @description
-#' Loads a simple feature (`sf`) object containing the
-#' municipalities boundaries of Spain.
-#'
-#' `esp_get_munic` uses GISCO (Eurostat) as source.
-#'
-#' @return A `POLYGON` object.
+#' @return A `sf` polygon
 #'
 #' @export
 #'
 #' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @seealso [esp_get_nuts()], [`esp_munic.sf`], [`esp_codelist`].
+#' @seealso [esp_get_nuts()], [esp_munic.sf], [giscoR::gisco_get_lau()],
+#'   [esp_codelist], [base::regex()]
 #'
 #'
-#' @param year Release year. See Details for years available.
+#' @param year Release year. See **Details** for years available.
 
 #' @param region A vector of names and/or codes for provinces
-#'  or `NULL` to get all the municipalities. See Details.
+#'  or `NULL` to get all the municipalities. See **Details**.
 #'
-#' @param munic A name or regex expression with the names of the required
-#'  municipalities. `NULL` would not produce any filtering.
+#' @param munic A name or [`regex`][base::grep()] expression with the names of the
+#'   required municipalities. `NULL` would not produce any filtering.
 #'
 #' @inheritParams esp_get_nuts
 #'
+#' @inheritSection  esp_get_nuts About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
+#'
 #' @details
+#'
+#' The years available are:
+#' * [esp_get_munic()]:  `year` could be one of "2001", "2004", "2006", "2008",
+#'    "2010", "2013" and any year between 2016 and 2019.
+#'    See [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
+#'
+#' * [esp_get_munic_siane()]: `year` could be passed as a single year ("YYYY"
+#'   format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+#'   Historical information starts as of 2005.
+#'
 #' When using `region` you can use and mix names and NUTS codes
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 #' `cpro`.
@@ -37,29 +51,44 @@
 #' When calling a superior level (Province, Autonomous Community or NUTS1) ,
 #' all the municipalities of that level would be added.
 #'
-#' On `esp_get_munic` years available are: 2001, 2004, 2006,
-#' 2008, 2010, 2013 and any year between 2016 and 2019.
-#'
 #' @examples
+#' # Get munics
+#' Base <- esp_get_munic(year = "2019", region = "Castilla y Leon")
 #'
-#' Base <- esp_get_munic(region = c("Castilla y Leon"))
-#' SAN <-
-#'   esp_get_munic(
-#'     region = c("Castilla y Leon"),
-#'     munic = c("^San ", "^Santa ")
-#'   )
+#' # Provs for delimiting
+#' provs <- esp_get_prov(prov = "Castilla y Leon")
 #'
+#' # Load population data
+#' data("pobmun19")
+#'
+#' # Arrange and create breaks
+#'
+#' Base_pop <- merge(Base, pobmun19,
+#'   by = c("cpro", "cmun"),
+#'   all.x = TRUE
+#' )
+#'
+#' br <- sort(c(
+#'   0, 50, 100, 200, 500,
+#'   1000, 5000, 50000, 100000,
+#'   max(Base_pop$pob19)
+#' ))
+#'
+#' # Plot
 #' library(tmap)
-#' tm_shape(Base) +
-#'   tm_polygons("#FDFBEA", border.col = "#656565", border.alpha = 0.3) +
-#'   tm_shape(SAN) +
-#'   tm_polygons("#C12838", border.col = "#656565") +
+#' tm_shape(Base_pop) +
+#'   tm_fill(
+#'     col = "pob19", palette = "cividis",
+#'     breaks = br,
+#'     title = "Persons"
+#'   ) +
+#'   tm_shape(provs) +
+#'   tm_borders(col = "white", alpha = 0.25) +
 #'   tm_layout(
-#'     main.title = paste0(
-#'       "Municipalities named under Saints (San, Santa)",
-#'       "\nCastilla y Leon, Spain"
-#'     ),
-#'     main.title.size = .8
+#'     legend.outside = TRUE,
+#'     legend.position = c("right", "center"),
+#'     main.title = "Population in Castilla y Leon (2019)",
+#'     frame = FALSE
 #'   )
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
@@ -291,23 +320,19 @@ esp_get_munic <- function(year = "2019",
 #' @concept political
 #'
 #' @description
-#' `esp_get_munic_siane` uses CartoBase ANE as source, provided by Instituto
-#' Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
-#' available are 2005 up to today.
+#' * [esp_get_munic_siane()] uses CartoBase ANE as source, provided by
+#'   Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
+#'   Years available are 2005 up to today.
 #'
 #' @source
 #' IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @param resolution Resolution of the polygon. Values available are
-#' "3", "6.5" or  "10".
+#'   "3", "6.5" or  "10".
 #'
 #' @inheritParams esp_get_ccaa_siane
 #'
-#' @details
-#' On `esp_get_munic_siane`, `year` could be passed as a single
-#' year ("YYYY" format, as end of year) or as a specific
-#' date ("YYYY-MM-DD" format). Historical information starts as of 2005.
 #'
 #' @export
 esp_get_munic_siane <- function(year = Sys.Date(),

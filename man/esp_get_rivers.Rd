@@ -2,10 +2,10 @@
 % Please edit documentation in R/esp_get_rivers.R
 \name{esp_get_rivers}
 \alias{esp_get_rivers}
-\title{Get rivers, channels, reservoirs and other wetlands of Spain}
+\title{Get \code{sf} polygon and lines of rivers, channels and other wetlands of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_rivers(
@@ -29,58 +29,49 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are "3", "6.5"
 or "10".}
 
-\item{spatialtype}{Spatial type of the output. Use "area" for \code{POLYGONS} or
-"line" for \code{LINESTRING}.}
+\item{spatialtype}{Spatial type of the output. Use "area" for polygons or
+"line" for lines.}
 
-\item{name}{Optional. A character or regex expresion with the name of the
-element to be extracted. See Details}
+\item{name}{Optional. A character or  \code{\link[base:grep]{regex}} expression
+with the name of the element(s) to be extracted.}
 }
 \value{
-A \code{POLYGON} or \code{LINESTRING} object.
+A \code{sf} polygon or line object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing lines or
-areas with the required hydrograpic elements of Spain.
+Loads a \code{sf} polygon or line object representing rivers, channels,
+reservoirs and other wetlands of Spain
 }
 \details{
 Metadata available on
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
-
-\code{name} admits regex expressions. See \code{help("regex", package = "base")}
-for more information.
 }
 \examples{
 \donttest{
-# This code would produce a nice plot - It will take a few seconds to run
-library(sf)
-
 # Use of regex
 
 regex1 <- esp_get_rivers(name = "Tajo|Segura")
 unique(regex1$rotulo)
 
+
 regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 unique(regex2$rotulo)
+
+# See the diference
 
 # Rivers in Spain
 shapeEsp <- esp_get_country(moveCAN = FALSE)
@@ -88,22 +79,24 @@ shapeEsp <- esp_get_country(moveCAN = FALSE)
 MainRivers <-
   esp_get_rivers(name = "Tajo$|Ebro$|Ebre$|Duero|Guadiana$|Guadalquivir")
 
-opar <- par(no.readonly = TRUE)
-par(mar = c(0, 0, 0, 0))
 
-plot(st_geometry(MainRivers), col = "skyblue", lwd = 1.5)
-plot(st_geometry(shapeEsp), col = NA, add = TRUE)
+library(tmap)
 
-# All wetlands
+tm_shape(shapeEsp, bbox = MainRivers) +
+  tm_borders() +
+  tm_shape(MainRivers) +
+  tm_lines(col = "skyblue", lwd = 3)
 
+
+# Wetlands in South-West Andalucia
+and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))
 Wetlands <- esp_get_rivers(spatialtype = "area")
-plot(st_geometry(Wetlands), col = "skyblue", border = NA)
-plot(st_geometry(shapeEsp), col = NA, add = TRUE)
 
-par(opar)
+
+tm_shape(and) +
+  tm_polygons() +
+  tm_shape(Wetlands) +
+  tm_polygons(col = "skyblue", alpha = 0.5, border.col = "skyblue", lwd = 2)
 }
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
 }
 \concept{natural}

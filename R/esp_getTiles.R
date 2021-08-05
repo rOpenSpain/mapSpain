@@ -1,10 +1,11 @@
-#' Get Tiles from Public Administrations of Spanish.
-#'
-#' @concept imagery
+#' Get static tiles from public administrations of Spanish.
 #'
 #' @description
 #' Get static map tiles based on a spatial object. Maps can be fetched from
 #' various open map servers.
+#'
+#' @concept imagery
+#'
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -12,25 +13,29 @@
 #'
 #' @return
 #' A `RasterBrick` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
-#' the provider.
+#' the provider. See [raster::brick()].
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
 #'  **v1.2.0**.
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @seealso
-#' [`leaflet.providersESP.df`], [addProviderEspTiles()], [raster::plotRGB()],
-#' [`tmap::tm_rgb()`]
+#' [leaflet.providersESP.df], [raster::brick()]
+#' [addProviderEspTiles()].
+#'
+#' For plotting, you can use [raster::plotRGB()], [tmap::tm_rgb()].
 #'
 #' @export
 #'
 #' @param x An `sf` object.
 #'
-#' @param type Name of the provider. See [`leaflet.providersESP.df`].
-#' @param zoom Zoom level. If `NULL`, it is determined automatically.
-#'   Only valid for WMTS.
+#' @param type Name of the provider. See [leaflet.providersESP.df].
+#' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
+#'   it overrides `zoommin`. Only valid for WMTS tiles.
+#' @param zoommin Delta on default `zoom`. The default value is designed to
+#'   download fewer tiles than you probably want. Use "1" or "2" to
+#'   increase the resolution.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
 #'   `FALSE` otherwise. If `x` is an `sf` object with one `POINT`, crop is set
 #'   to `FALSE`.
@@ -43,32 +48,46 @@
 #'
 #' @inheritParams esp_get_nuts
 #'
+#' @inheritSection esp_get_nuts About caching
+#'
 #' @details
-#' Zoom levels are described on the OpenStreetMap wiki:
-#' <https://wiki.openstreetmap.org/wiki/Zoom_levels>.
+#' Zoom levels are described on the
+#' [OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
 #'
-#' Results of `esp_getTiles` could be plotted using [raster::plotRGB()],
-#' [`tmap::tm_rgb()`], etc.
+#' ```{r, echo=FALSE}
 #'
-#' For a complete list of providers see [`leaflet.providersESP.df`].
+#' t <- tibble::tribble(
+#'  ~zoom, ~"area to represent",
+#'  0, "whole world",
+#'  3, "large country",
+#'  5, "state",
+#'  8, "county",
+#'  10, "metropolitan area",
+#'  11, "city",
+#'  13, "village or suburb",
+#'  16, "streets",
+#'  18, "some buildings, trees"
+#'  )
+#'
+#' knitr::kable(t)
 #'
 #'
-#' Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
+#' ```
+#'
+#' For a complete list of providers see [leaflet.providersESP.df].
+#'
+#'
+#' Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
 #' looks deformed, try projecting first `x`:
 #'
-#' `x <- sf::st_transform(x,3857)`
+#' `x <- sf::st_transform(x, 3857)`
 #'
-#' Tiles are cached under the path `cache_dir/[type]`.
 #' @examples
 #' \dontrun{
 #' # This script downloads tiles to your local machine
 #' # Run only if you are online
 #'
-#' library(sf)
-#'
-#' Murcia <- esp_get_ccaa("Murcia")
-#' Murcia <- st_transform(Murcia, 3857)
-#'
+#' Murcia <- esp_get_ccaa_siane("Murcia", epsg = 3857)
 #' Tile <- esp_getTiles(Murcia)
 #'
 #' library(tmap)
@@ -81,6 +100,7 @@
 esp_getTiles <- function(x,
                          type = "IDErioja",
                          zoom = NULL,
+                         zoommin = 0,
                          crop = TRUE,
                          res = 512,
                          bbox_expand = 0.05,
@@ -158,6 +178,7 @@ esp_getTiles <- function(x,
         verbose,
         res,
         zoom,
+        zoommin,
         type,
         transparent
       )

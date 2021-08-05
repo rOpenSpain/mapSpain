@@ -130,6 +130,7 @@ getWMTS <- function(x,
                     verbose,
                     res,
                     zoom,
+                    zoommin,
                     type,
                     transparent) {
   # nocov start
@@ -141,7 +142,7 @@ getWMTS <- function(x,
   # select a default zoom level
   if (is.null(zoom)) {
     gz <- slippymath::bbox_tile_query(bbx)
-    zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"])
+    zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"]) + zoommin
 
     if (verbose) {
       message("Auto zoom level: ", zoom)

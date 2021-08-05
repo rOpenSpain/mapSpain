@@ -1,30 +1,28 @@
-#' Get railways of Spain
+#' Get `sf` lines and points with the railways of Spain
 #'
-#' Extract nodes and railways of mainland Spain and the Balearic Islands.
+#' @description
+#' Loads a `sf` lines or point object representing the nodes and railway
+#' lines of Spain.
 #'
 #' @concept infrastructure
 #'
-#' @return A `MULTILINESTRING` or `POINT` object.
+#' @return A `sf` line or point object.
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @seealso [esp_get_roads()]
 #'
 #' @export
 #'
-#' @details
-#'
-#' Details on caching can be found on [esp_get_nuts()]
-#'
 #' @param year Release year.
 #'
 #' @param spatialtype Spatial type of the output. Use "line" for extracting
-#' the railway and "point" for the stations.
+#' the railway as lines and "point" for the stations.
 #'
 #' @inheritParams esp_get_roads
+#'
+#' @inheritSection  esp_get_nuts  About caching
 #'
 #' @examples
 #' \donttest{
@@ -43,16 +41,16 @@
 #' library(tmap)
 #'
 #' tm_shape(provs, bbox = c(-7.5, 38, -2.5, 41)) +
-#'   tm_polygons(col = "grey90", border.col = "grey50") +
+#'   tm_polygons(col = "grey99", border.col = "grey50") +
 #'   tm_shape(ccaa) +
 #'   tm_borders("black") +
 #'   tm_shape(rails) +
 #'   tm_lines("tipo",
-#'     legend.col.show = FALSE, lwd = 2,
-#'     palette = "Dark2"
+#'     legend.col.show = FALSE, lwd = 3,
+#'     palette = "viridis"
 #'   ) +
 #'   tm_shape(stations) +
-#'   tm_symbols("red", size = .3)
+#'   tm_symbols("red", size = .3, alpha = 0.5, shape = 19)
 #' }
 esp_get_railway <- function(year = Sys.Date(),
                             epsg = "4258",

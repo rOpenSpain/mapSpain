@@ -3,7 +3,7 @@
 \name{esp_get_can_box}
 \alias{esp_get_can_box}
 \alias{esp_get_can_provinces}
-\title{Get complementary lines when plotting Canary Islands.}
+\title{Get \code{sf} lines and polygons for insetting the Canary Islands}
 \source{
 \code{esp_get_can_provinces} extracted from CartoBase ANE,
 \code{se89_mult_admin_provcan_l.shp} file.
@@ -19,7 +19,8 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -31,20 +32,32 @@ One of:
 }}
 }
 \value{
-A \code{LINESTRING} or \code{POLYGON} object if \code{style = "poly"}.
+A \code{sf} polygon or line depending of \code{style} parameter.
 
 \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }
 \description{
 When plotting Spain, it is usual to represent the Canary Islands as an inset
 (see \code{moveCAN} on \code{\link[=esp_get_nuts]{esp_get_nuts()}}. These functions provides complementary
-borders when Canary Islands are displaced.
+lines and polygons to be used when the Canary Islands are displayed
+as an inset.
+\itemize{
+\item \code{\link[=esp_get_can_box]{esp_get_can_box()}} is used to draw lines around the displaced Canary Islands.
+}
 
-\code{esp_get_can_box} is used to draw lines around the displaced Canary Islands.
-
-\code{esp_get_can_provinces} is used to draw a separator line between the two
+\itemize{
+\item \code{\link[=esp_get_can_provinces]{esp_get_can_provinces()}} is used to draw a separator line between the two
 provinces of the Canary Islands.
 }
+}
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones.
+}
+
 \examples{
 
 Provs <- esp_get_prov()
@@ -66,7 +79,9 @@ tm_shape(Provs) +
 # Displacing Canary
 
 Provs_D <- esp_get_prov(moveCAN = c(15, 0))
+
 Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
+
 Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
 
 tm_shape(Provs_D) +
@@ -116,13 +131,13 @@ tm_shape(Countries, bbox = c(-10, 34.6, 4.3, 44)) +
   tm_shape(CCAA) +
   tm_polygons("#FDFBEA") +
   tm_graticules(lines = FALSE) +
-  tm_layout(bg.color = "#C7E7FB", frame.double.line = TRUE)
+  tm_layout(
+    bg.color = "#C7E7FB",
+    frame.double.line = TRUE
+  )
 }
 }
 \seealso{
-\code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}.
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
+\code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}}
 }
 \concept{political}

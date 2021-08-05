@@ -317,13 +317,4 @@ reactable(df,
 )
 ```
 
-## Session Info
 
-<details>
-  <summary><strong>Details</strong></summary>
-
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-
-</details>

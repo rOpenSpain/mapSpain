@@ -6,8 +6,8 @@
 \alias{esp_nuts.sf}
 \title{All NUTS \code{POLYGON} object of Spain}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with 86
-rows and fields:
+A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
+86 rows and fields:
 \itemize{
 \item COAST_TYPE: COAST_TYPE
 \item FID: FID

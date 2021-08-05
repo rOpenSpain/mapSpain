@@ -3,7 +3,7 @@
 \name{esp_get_prov}
 \alias{esp_get_prov}
 \alias{esp_get_prov_siane}
-\title{Get Provinces boundaries of Spain}
+\title{Get Provinces of Spain as \code{sf} polygons and points}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -33,13 +33,13 @@ or \code{NULL} to get all the provinces. See Details.}
   \describe{
     \item{\code{spatialtype}}{Type of geometry to be returned:
 \itemize{
-\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item "LB": Labels - \code{POINT} object.
+\item \strong{"LB"}: Labels - \code{POINT} object.
+\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 }}
   }}
 
-\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{esp_get_prov} and
-Details for \code{esp_get_prov_siane}}
+\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_prov]{esp_get_prov()}} and
+\strong{Details} for \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -50,21 +50,15 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
@@ -72,41 +66,64 @@ default is \code{FALSE}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
 the dataset provided by IGN.}
 }
 \value{
-A \code{POLYGON/POINT} object.
+A \code{sf} object specified by \code{spatialtype}.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the province boundaries of
-Spain.
+Returns
+\href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
+as polygons and points at a specified scale.
+\itemize{
+\item \code{\link[=esp_get_prov]{esp_get_prov()}} uses GISCO (Eurostat) as source. Please use
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
+}
 
-\code{esp_get_prov} uses GISCO (Eurostat) as source
-
-\code{esp_get_prov_siane} use CartoBase ANE as source, provided by Instituto
+\itemize{
+\item \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}} uses CartoBase ANE as source, provided by Instituto
 Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}. Years
 available are 2005 up to today.
 }
+}
 \details{
 When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
-3), ISO codes (corresponding to level 2 or 3) or \code{cpro}.
+3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+\link{esp_codelist}).
 
 Ceuta and Melilla are considered as provinces on this dataset.
 
 When calling a superior level (Autonomous Community or NUTS1) ,
 all the provinces of that level would be added.
 
-On \code{esp_get_prov_siane}, \code{year} could be passed as a single year ("YYYY"
+On \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}, \code{year} could be passed as a single year ("YYYY"
 format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 Historical information starts as of 2005.
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones.
+}
+
 \examples{
-
-library(sf)
-
 # Random Provinces
 
 Random <-
@@ -117,45 +134,36 @@ Random <-
     "ES521",
     "01"
   ))
-plot(st_geometry(Random), col = hcl.colors(6))
+
+library(tmap)
+tm_shape(Random) +
+  tm_polygons(col = "codauto", legend.show = FALSE, palette = "Spectral")
+
+
 
 # All Provinces of a Zone plus an addition
-# Low resolution (20M)
 
-Mix <-
-  esp_get_prov(
-    prov = c(
-      "Noroeste",
-      "Castilla y Leon", "La Rioja"
-    ),
-    resolution = "20"
-  )
-plot(
-  Mix[, "nuts1.code"],
-  pal = hcl.colors(3),
-  key.pos = NULL,
-  main = NULL,
-  border = "white"
-)
+Mix <- esp_get_prov(prov = c(
+  "Noroeste",
+  "Castilla y Leon", "La Rioja"
+))
+
+qtm(Mix)
+
 # ISO codes available
 
 allprovs <- esp_get_prov()
 
-library(tmap)
-
-tmap_style("cobalt")
 
 tm_shape(allprovs, point.per = "feature") +
   tm_polygons() +
-  tm_text("iso2.prov.code", remove.overlap = TRUE)
-
-tmap_options_reset()
+  tm_text("iso2.prov.code",
+    remove.overlap = TRUE,
+    shadow = TRUE
+  )
 }
 \seealso{
 \code{\link[=esp_get_hex_prov]{esp_get_hex_prov()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \code{\link{esp_codelist}}.
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
+\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}
 }
 \concept{political}

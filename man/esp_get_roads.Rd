@@ -2,10 +2,10 @@
 % Please edit documentation in R/esp_get_roads.R
 \name{esp_get_roads}
 \alias{esp_get_roads}
-\title{Get the roads of Spain}
+\title{Get \code{sf} lines of the roads of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_roads(
@@ -19,7 +19,7 @@ esp_get_roads(
 )
 }
 \arguments{
-\item{year}{Release year. See Details for years available.}
+\item{year}{Release year. See \strong{Details} for years available.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -30,69 +30,73 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 }
 \value{
-A \verb{LINESTRING\\MULTILINESTRING} object.
+A \code{sf} line object.
 }
 \description{
-Get roads of Spain
+Loads a \code{sf} line object representing the main roads of Spain.
 }
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or
 as a specific date ("YYYY-MM-DD" format).
+}
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
 
-Details on caching can be found on \code{\link[=esp_get_nuts]{esp_get_nuts()}}
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 }
-\note{
-While \code{moveCAN} is useful for visualization, it would alter the
-actual geographical position of the Canary Islands.
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones.
 }
+
 \examples{
 \donttest{
-
-library(sf)
-
-CyL <- esp_get_prov("Castilla y Leon")
+#'
+country <- esp_get_country()
 Roads <- esp_get_roads()
 
-# Intersect roads
-CyL_Roads <- st_intersection(CyL, Roads)
 
 library(tmap)
 
-tm_shape(CyL) +
-  tm_polygons(col = "grey80", border.col = "grey50", lwd = 0.4) +
-  tm_shape(CyL_Roads) +
+tm_shape(country) +
+  tm_fill(col = "grey90") +
+  tm_shape(Roads) +
   tm_lines("tipo",
     palette = c("#003399", "#003399", "#ff0000", "#ffff00")
   ) +
-  tm_layout(legend.outside = TRUE, legend.outside.position = "bottom")
+  tm_layout(
+    legend.outside = TRUE,
+    legend.outside.position = "bottom"
+  )
 }
 }
 \seealso{
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_munic.sf}, \link{esp_codelist}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}.
+\code{\link[=esp_get_railway]{esp_get_railway()}}
 }
 \concept{infrastructure}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_country.R
 \name{esp_get_country}
 \alias{esp_get_country}
-\title{Get boundaries of Spain}
+\title{Get the borders of Spain as a \code{sf} polygon}
 \usage{
 esp_get_country(...)
 }
@@ -10,8 +10,8 @@ esp_get_country(...)
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
   \describe{
-    \item{\code{year}}{Release year. One of "2003", "2006",`"2010", "2013", "2016" or
-"2021".}
+    \item{\code{year}}{Release year of the file. One of "2003", "2006,
+"2010", "2013", "2016" or "2021".}
     \item{\code{epsg}}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
@@ -20,18 +20,12 @@ One of:
 \item "3035": ETRS89 / ETRS-LAEA
 \item "3857": Pseudo-Mercator
 }}
-    \item{\code{cache}}{A logical whether to do caching. Default is \code{TRUE}.}
+    \item{\code{cache}}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
     \item{\code{update_cache}}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
-    \item{\code{cache_dir}}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
-
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-    \item{\code{verbose}}{Display information. Useful for debugging,
+When set to \code{TRUE} it would force a fresh download of the source file.}
+    \item{\code{cache_dir}}{A path to a cache directory. See \strong{About caching}.}
+    \item{\code{verbose}}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
     \item{\code{resolution}}{Resolution of the geospatial data. One of
 \itemize{
@@ -41,38 +35,56 @@ default is \code{FALSE}.}
 \item "03": 1:3million
 \item "01": 1:1million
 }}
-    \item{\code{spatialtype}}{Type of geometry to be returned:
-\itemize{
-\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item "LB": Labels - \code{POINT} object.
-}}
     \item{\code{moveCAN}}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
   }}
 }
 \value{
-A \code{MULTIPOLYGON/MULTIPOINT} object.
+A \code{sf} polygon object.
 }
 \description{
-Loads a single \code{sf} object containing the boundaries of Spain.
+Returns the boundaries of Spain as a single \code{sf} polygon at a
+specified scale.
 }
-\examples{
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
 
-library(sf)
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones.
+}
+
+\examples{
 
 OriginalCan <- esp_get_country(moveCAN = FALSE)
 
-plot(OriginalCan$geometry, col = "grey70")
+# One row only
 
-MovedCan <- esp_get_country(moveCAN = TRUE)
+nrow(OriginalCan)
 
-plot(MovedCan$geometry, col = "grey70")
+library(tmap)
+qtm(OriginalCan, fill = "grey70")
+
+# Less resolution
+
+MovedCan <- esp_get_country(moveCAN = TRUE, resolution = "20")
+
+qtm(MovedCan, fill = "grey70")
 }
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
 }
 \concept{political}
