@@ -2,10 +2,10 @@
 % Please edit documentation in R/esp_get_railway.R
 \name{esp_get_railway}
 \alias{esp_get_railway}
-\title{Get railways of Spain}
+\title{Get \code{sf} lines and points with the railways of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_railway(
@@ -30,35 +30,38 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{spatialtype}{Spatial type of the output. Use "line" for extracting
-the railway and "point" for the stations.}
+the railway as lines and "point" for the stations.}
 }
 \value{
-A \code{MULTILINESTRING} or \code{POINT} object.
+A \code{sf} line or point object.
 }
 \description{
-Extract nodes and railways of mainland Spain and the Balearic Islands.
+Loads a \code{sf} lines or point object representing the nodes and railway
+lines of Spain.
 }
-\details{
-Details on caching can be found on \code{\link[=esp_get_nuts]{esp_get_nuts()}}
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 }
+
 \examples{
 \donttest{
 
@@ -76,22 +79,19 @@ stations <- esp_get_railway(spatialtype = "point")
 library(tmap)
 
 tm_shape(provs, bbox = c(-7.5, 38, -2.5, 41)) +
-  tm_polygons(col = "grey90", border.col = "grey50") +
+  tm_polygons(col = "grey99", border.col = "grey50") +
   tm_shape(ccaa) +
   tm_borders("black") +
   tm_shape(rails) +
   tm_lines("tipo",
-    legend.col.show = FALSE, lwd = 2,
-    palette = "Dark2"
+    legend.col.show = FALSE, lwd = 3,
+    palette = "viridis"
   ) +
   tm_shape(stations) +
-  tm_symbols("red", size = .3)
+  tm_symbols("red", size = .3, alpha = 0.5, shape = 19)
 }
 }
 \seealso{
 \code{\link[=esp_get_roads]{esp_get_roads()}}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}.
 }
 \concept{infrastructure}

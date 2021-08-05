@@ -1,26 +1,33 @@
-#' Get hypsometry and bathymetry of Spain
+#' Get `sf` polygons and lines with the hypsometry and bathymetry of Spain
 #'
 #' @description
-#' Loads a simple feature (`sf`) object containing lines or areas with the
-#' hypsometry and bathymetry of Spain.
+#' Loads a `sf` polygon or line object representing the hypsometry and
+#' bathymetry of Spain.
+#'
+#' * Hypsometry represents the  the elevation and depth of features of the
+#'   Earth's surface relative to mean sea level.
+#' * Bathymetry is the measurement of the depth of water in oceans, rivers,
+#'   or lakes.
 #'
 #' @concept natural
 #'
-#' @return A `POLYGON` or `LINESTRING` object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return A `sf` polygon or line object.
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
 #'
 #' @param resolution Resolution of the shape. Values available are "3" or "6.5".
 #'
-#' @param spatialtype Spatial type of the output. Use "area" for `POLYGONS` or
-#'   "line" for `LINESTRING`.
+#' @param spatialtype Spatial type of the output. Use "area" for polygons or
+#'   "line" for lines.
 #'
 #' @inheritParams esp_get_nuts
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @seealso [esp_get_hydrobasin()], [esp_get_rivers()]
 #'
 #' @details
 #' Metadata available on
@@ -76,13 +83,10 @@
 #'     style = "cat",
 #'     palette = pal,
 #'     title = "Elevation",
-#'     legend.is.portrait = FALSE
+#'     legend.reverse = TRUE
 #'   ) +
 #'   tm_layout(
-#'     legend.outside = TRUE,
-#'     legend.outside.position = "bottom",
-#'     legend.position = c("center", "bottom"),
-#'     legend.text.size = 0.43
+#'     legend.outside = TRUE
 #'   )
 #'
 #'

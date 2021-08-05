@@ -6,9 +6,9 @@
 #'
 #' @rdname esp_dict
 #'
-#' @return `esp_dict_region_code` returns a vector of characters.
+#' @name esp_dict_region_code
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return `esp_dict_region_code` returns a vector of characters.
 #'
 #' @export
 #'
@@ -218,21 +218,24 @@ esp_dict_region_code <- function(sourcevar,
 #' @concept dictionary
 #'
 #' @rdname esp_dict
-#' @return `
-#' esp_dict_translate` returns a character vector or a named list with each
-#' of the possible names of each `sourcevar` on the required language `lang`.
+#'
+#' @name esp_dict_translate
+#'
+#' @return `esp_dict_translate` returns a character vector or a named
+#'   list with each of the possible names of each `sourcevar` on the required
+#'   language `lang`.
 #'
 #' @export
 #'
 #' @param lang Language of translation. Available languages are:
-#'   * "es": Spanish
-#'   * "en": English
-#'   * "ca": Catalan
-#'   * "ga": Galician
-#'   * "eu": Basque
+#'   * **"es"**: Spanish
+#'   * **"en"**: English
+#'   * **"ca"**: Catalan
+#'   * **"ga"**: Galician
+#'   * **"eu"**: Basque
 #'
 #' @param all Logical. Should the function return all names or not?
-#'   On `FALSE` it returns a character vector. See Value
+#'   On `FALSE` it returns a character vector. See Value.
 #'
 #' @examples
 #'

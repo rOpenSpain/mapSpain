@@ -2,10 +2,10 @@
 % Please edit documentation in R/esp_get_hydrobasin.R
 \name{esp_get_hydrobasin}
 \alias{esp_get_hydrobasin}
-\title{Get the drainage basin demarcations of Spain}
+\title{Get \code{sf} polygons of the drainage basin demarcations of Spain}
 \source{
 IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_hydrobasin(
@@ -28,21 +28,15 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are "3", "6.5"
@@ -53,16 +47,27 @@ the ground part or the ground or "landsea", that includes both the ground
 and the related sea waters of the basin}
 }
 \value{
-A \code{POLYGON} object.
+A \code{sf} polygon object.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing areas with the required
-hydrograpic elements of Spain.
+Loads a \code{sf} polygon object containing areas with the required
+hydrographic elements of Spain.
 }
 \details{
 Metadata available on
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
 \examples{
 \donttest{
 all <- esp_get_prov(moveCAN = FALSE)
@@ -72,15 +77,19 @@ hydrolandsea <- esp_get_hydrobasin(domain = "landsea")
 library(tmap)
 
 tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
-  tm_fill("skyblue3") +
+  tm_fill("skyblue4") +
   tm_shape(all) +
   tm_polygons("grey90") +
   tm_shape(hydroland) +
-  tm_polygons("skyblue", alpha = 0.7, border.col = "blue") +
-  tm_layout(bg.color = "grey90")
+  tm_polygons("skyblue", alpha = 0.5, border.col = "blue") +
+  tm_text(
+    text = "rotulo",
+    remove.overlap = TRUE,
+    size = 0.5,
+    fontface = "bold",
+    shadow = TRUE
+  ) +
+  tm_layout(bg.color = "grey95")
 }
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
 }
 \concept{natural}

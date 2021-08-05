@@ -4,18 +4,20 @@
 \encoding{UTF-8}
 \name{esp_munic.sf}
 \alias{esp_munic.sf}
-\title{All Municipalities \code{POLYGON} object of Spain}
+\title{All Municipalities \code{POLYGON} object of Spain (2019)}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object:
+A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
+8,131 rows and fields:
 \itemize{
-\item codauto: INE code of each autonomous community.
-\item ine.ccaa.name: INE name of each autonomous community.
-\item cpro: INE code of each province.
-\item ine.prov.name: INE name of each province.
-\item cmun: INE code of each municipality.
-\item name: Name of the municipality.
-\item LAU_CODE: LAU Code (GISCO) of the municipality.
-\item geometry: geometry field.
+\item \strong{codauto}: INE code of each autonomous community.
+\item \strong{ine.ccaa.name}: INE name of each autonomous community.
+\item \strong{cpro}: INE code of each province.
+\item \strong{ine.prov.name}: INE name of each province.
+\item \strong{cmun}: INE code of each municipality.
+\item \strong{name}: Name of the municipality.
+\item \strong{LAU_CODE}: LAU Code (GISCO) of the municipality. This is a
+combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.
+\item \strong{geometry}: geometry field.
 }
 }
 \source{
@@ -28,31 +30,36 @@ A \code{sf} object including all municipalities of Spain as provided by GISCO
 }
 \examples{
 data("esp_munic.sf")
-data("esp_nuts.sf")
 
-Teruel.cpro <- esp_dict_region_code("Teruel", destination = "cpro")
-Teruel.NUTS <- esp_dict_region_code(Teruel.cpro,
-  origin = "cpro",
-  destination = "nuts"
-)
+Teruel_cpro <- esp_dict_region_code("Teruel", destination = "cpro")
 
-Teruel.sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel.cpro, ]
-Teruel.city <- Teruel.sf[Teruel.sf$name == "Teruel", ]
+Teruel_sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel_cpro, ]
+Teruel_city <- Teruel_sf[Teruel_sf$name == "Teruel", ]
 
-# Extract CCAA
-
-CCAA <- esp_get_prov()
-
+# Plot
 
 library(tmap)
 
-tm_shape(CCAA, bbox = Teruel.sf) +
-  tm_polygons("#DFDFDF") +
-  tm_shape(Teruel.sf) +
+tm_shape(Teruel_sf) +
   tm_polygons("#FDFBEA") +
-  tm_shape(Teruel.city) +
-  tm_fill("#C12838") +
-  tm_layout(main.title = "Municipalities of Teruel")
+  tm_shape(Teruel_city) +
+  tm_fill(
+    col = "name",
+    palette = "#C12838",
+    labels = "City of Teruel",
+    title = ""
+  ) +
+  tm_graticules(lines = FALSE) +
+  tm_layout(
+    main.title = "Municipalities of Teruel",
+    legend.position = c("left", "top")
+  ) +
+  tm_scale_bar() +
+  tm_compass(
+    type = "rose",
+    size = 3,
+    position = c("left", "bottom")
+  )
 }
 \seealso{
 \code{\link[=esp_get_munic]{esp_get_munic()}}

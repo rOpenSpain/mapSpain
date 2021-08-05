@@ -1,17 +1,15 @@
-#' Get the drainage basin demarcations of Spain
+#' Get `sf` polygons of the drainage basin demarcations of Spain
 #'
 #' @description
-#' Loads a simple feature (`sf`) object containing areas with the required
-#' hydrograpic elements of Spain.
+#' Loads a `sf` polygon object containing areas with the required
+#' hydrographic elements of Spain.
 #'
 #' @concept natural
 #'
-#' @return A `POLYGON` object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return A `sf` polygon object.
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
 #'
@@ -20,6 +18,11 @@
 #' and the related sea waters of the basin
 #'
 #' @inheritParams esp_get_rivers
+#'
+#' @inheritParams esp_get_nuts
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
 #'
 #' @details
 #' Metadata available on
@@ -34,12 +37,19 @@
 #' library(tmap)
 #'
 #' tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
-#'   tm_fill("skyblue3") +
+#'   tm_fill("skyblue4") +
 #'   tm_shape(all) +
 #'   tm_polygons("grey90") +
 #'   tm_shape(hydroland) +
-#'   tm_polygons("skyblue", alpha = 0.7, border.col = "blue") +
-#'   tm_layout(bg.color = "grey90")
+#'   tm_polygons("skyblue", alpha = 0.5, border.col = "blue") +
+#'   tm_text(
+#'     text = "rotulo",
+#'     remove.overlap = TRUE,
+#'     size = 0.5,
+#'     fontface = "bold",
+#'     shadow = TRUE
+#'   ) +
+#'   tm_layout(bg.color = "grey95")
 #' }
 esp_get_hydrobasin <- function(epsg = "4258",
                                cache = TRUE,

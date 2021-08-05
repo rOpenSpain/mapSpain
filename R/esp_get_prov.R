@@ -1,22 +1,25 @@
-#' Get Provinces boundaries of Spain
+#' Get Provinces of Spain as `sf` polygons and points
+#'
+#' @description
+#' Returns
+#' [provinces of Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain)
+#' as polygons and points at a specified scale.
+#'
+#' * [esp_get_prov()] uses GISCO (Eurostat) as source. Please use
+#'   [giscoR::gisco_attributions()]
+#'
 #'
 #' @concept political
 #'
 #' @rdname esp_get_prov
+#' @name esp_get_prov
+
 #'
-#' @description
-#' Loads a simple feature (`sf`) object containing the province boundaries of
-#' Spain.
-#'
-#' `esp_get_prov` uses GISCO (Eurostat) as source
-#'
-#' @return A `POLYGON/POINT` object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return A `sf` object specified by `spatialtype`.
 #'
 #' @seealso
 #' [esp_get_hex_prov()], [esp_get_nuts()], [esp_get_ccaa()],
-#' [esp_get_munic()], [`esp_codelist`].
+#' [esp_get_munic()], [esp_codelist]
 #'
 #' @export
 #'
@@ -27,17 +30,19 @@
 #'
 #' @details
 #' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or
-#' 3), ISO codes (corresponding to level 2 or 3) or `cpro`.
+#' 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+#' [esp_codelist]).
 #'
 #' Ceuta and Melilla are considered as provinces on this dataset.
 #'
 #' When calling a superior level (Autonomous Community or NUTS1) ,
 #' all the provinces of that level would be added.
 #'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
+#'
 #' @examples
-#'
-#' library(sf)
-#'
 #' # Random Provinces
 #'
 #' Random <-
@@ -48,39 +53,33 @@
 #'     "ES521",
 #'     "01"
 #'   ))
-#' plot(st_geometry(Random), col = hcl.colors(6))
+#'
+#' library(tmap)
+#' tm_shape(Random) +
+#'   tm_polygons(col = "codauto", legend.show = FALSE, palette = "Spectral")
+#'
+#'
 #'
 #' # All Provinces of a Zone plus an addition
-#' # Low resolution (20M)
 #'
-#' Mix <-
-#'   esp_get_prov(
-#'     prov = c(
-#'       "Noroeste",
-#'       "Castilla y Leon", "La Rioja"
-#'     ),
-#'     resolution = "20"
-#'   )
-#' plot(
-#'   Mix[, "nuts1.code"],
-#'   pal = hcl.colors(3),
-#'   key.pos = NULL,
-#'   main = NULL,
-#'   border = "white"
-#' )
+#' Mix <- esp_get_prov(prov = c(
+#'   "Noroeste",
+#'   "Castilla y Leon", "La Rioja"
+#' ))
+#'
+#' qtm(Mix)
+#'
 #' # ISO codes available
 #'
 #' allprovs <- esp_get_prov()
 #'
-#' library(tmap)
-#'
-#' tmap_style("cobalt")
 #'
 #' tm_shape(allprovs, point.per = "feature") +
 #'   tm_polygons() +
-#'   tm_text("iso2.prov.code", remove.overlap = TRUE)
-#'
-#' tmap_options_reset()
+#'   tm_text("iso2.prov.code",
+#'     remove.overlap = TRUE,
+#'     shadow = TRUE
+#'   )
 esp_get_prov <- function(prov = NULL, ...) {
   params <- list(...)
 
@@ -228,11 +227,12 @@ esp_get_prov <- function(prov = NULL, ...) {
 
 
 #' @rdname esp_get_prov
+#' @name esp_get_prov_siane
 #'
 #' @concept political
 #'
 #' @description
-#' `esp_get_prov_siane` use CartoBase ANE as source, provided by Instituto
+#' * [esp_get_prov_siane()] uses CartoBase ANE as source, provided by Instituto
 #' Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
 #' available are 2005 up to today.
 #'
@@ -242,13 +242,13 @@ esp_get_prov <- function(prov = NULL, ...) {
 #'
 #' @export
 #'
-#' @param year Release year. See [esp_get_nuts()] for `esp_get_prov` and
-#'   Details for `esp_get_prov_siane`
+#' @param year Release year. See [esp_get_nuts()] for [esp_get_prov()] and
+#'   **Details** for [esp_get_prov_siane()]
 #'
 #' @inheritParams esp_get_ccaa
 #'
 #' @details
-#' On `esp_get_prov_siane`, `year` could be passed as a single year ("YYYY"
+#' On [esp_get_prov_siane()], `year` could be passed as a single year ("YYYY"
 #' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 #' Historical information starts as of 2005.
 esp_get_prov_siane <- function(prov = NULL,

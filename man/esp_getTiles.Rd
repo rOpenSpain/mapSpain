@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_getTiles.R
 \name{esp_getTiles}
 \alias{esp_getTiles}
-\title{Get Tiles from Public Administrations of Spanish.}
+\title{Get static tiles from public administrations of Spanish.}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
 \strong{v1.2.0}.
@@ -12,6 +12,7 @@ esp_getTiles(
   x,
   type = "IDErioja",
   zoom = NULL,
+  zoommin = 0,
   crop = TRUE,
   res = 512,
   bbox_expand = 0.05,
@@ -25,10 +26,14 @@ esp_getTiles(
 \arguments{
 \item{x}{An \code{sf} object.}
 
-\item{type}{Name of the provider. See \code{\link{leaflet.providersESP.df}}.}
+\item{type}{Name of the provider. See \link{leaflet.providersESP.df}.}
 
-\item{zoom}{Zoom level. If \code{NULL}, it is determined automatically.
-Only valid for WMTS.}
+\item{zoom}{Zoom level. If \code{NULL}, it is determined automatically. If set,
+it overrides \code{zoommin}. Only valid for WMTS tiles.}
+
+\item{zoommin}{Delta on default \code{zoom}. The default value is designed to
+download fewer tiles than you probably want. Use "1" or "2" to
+increase the resolution.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
 \code{FALSE} otherwise. If \code{x} is an \code{sf} object with one \code{POINT}, crop is set
@@ -45,23 +50,16 @@ Depends on the selected provider on \code{type}.}
 \item{mask}{\code{TRUE} if the result should be masked to \code{x}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. The directory can also be
-set globally with:
-\itemize{
-\item \code{options(mapSpain_cache_dir = "path/to/dir")}.
-}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-See Details on \code{\link[=esp_get_nuts]{esp_get_nuts()}}.}
-
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
 \value{
 A \code{RasterBrick} is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
-the provider.
+the provider. See \code{\link[raster:brick]{raster::brick()}}.
 .
 }
 \description{
@@ -73,31 +71,45 @@ This function is a implementation of the javascript plugin
 \strong{v1.2.0}.
 }
 \details{
-Zoom levels are described on the OpenStreetMap wiki:
-\url{https://wiki.openstreetmap.org/wiki/Zoom_levels}.
+Zoom levels are described on the
+\href{https://wiki.openstreetmap.org/wiki/Zoom_levels}{OpenStreetMap wiki}:\tabular{rl}{
+   zoom \tab area to represent \cr
+   0 \tab whole world \cr
+   3 \tab large country \cr
+   5 \tab state \cr
+   8 \tab county \cr
+   10 \tab metropolitan area \cr
+   11 \tab city \cr
+   13 \tab village or suburb \cr
+   16 \tab streets \cr
+   18 \tab some buildings, trees \cr
+}
 
-Results of \code{esp_getTiles} could be plotted using \code{\link[raster:plotRGB]{raster::plotRGB()}},
-\code{\link[tmap:tm_raster]{tmap::tm_rgb()}}, etc.
 
-For a complete list of providers see \code{\link{leaflet.providersESP.df}}.
+For a complete list of providers see \link{leaflet.providersESP.df}.
 
-Most WMS/WMTS providers provide tiles on EPSG:3857. In case that the tile
+Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
 looks deformed, try projecting first \code{x}:
 
-\code{x <- sf::st_transform(x,3857)}
-
-Tiles are cached under the path \verb{cache_dir/[type]}.
+\code{x <- sf::st_transform(x, 3857)}
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
 \examples{
 \dontrun{
 # This script downloads tiles to your local machine
 # Run only if you are online
 
-library(sf)
-
-Murcia <- esp_get_ccaa("Murcia")
-Murcia <- st_transform(Murcia, 3857)
-
+Murcia <- esp_get_ccaa_siane("Murcia", epsg = 3857)
 Tile <- esp_getTiles(Murcia)
 
 library(tmap)
@@ -109,10 +121,9 @@ tm_shape(Tile, raster.downsample = FALSE) +
 }
 }
 \seealso{
-\code{\link{leaflet.providersESP.df}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}, \code{\link[raster:plotRGB]{raster::plotRGB()}},
-\code{\link[tmap:tm_raster]{tmap::tm_rgb()}}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
+\link{leaflet.providersESP.df}, \code{\link[raster:brick]{raster::brick()}}
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+
+For plotting, you can use \code{\link[raster:plotRGB]{raster::plotRGB()}}, \code{\link[tmap:tm_raster]{tmap::tm_rgb()}}.
 }
 \concept{imagery}

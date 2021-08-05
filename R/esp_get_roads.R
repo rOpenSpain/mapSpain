@@ -1,52 +1,49 @@
-#' Get the roads of Spain
+#' Get `sf` lines of the roads of Spain
 #'
 #' @description
-#' Get roads of Spain
+#' Loads a `sf` line object representing the main roads of Spain.
 #'
 #' @concept infrastructure
 #'
-#' @return A `LINESTRING\MULTILINESTRING` object.
+#' @return A `sf` line object.
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>.
-#' @seealso [esp_get_munic()], [esp_munic.sf], [esp_codelist]
+#' @seealso [esp_get_railway()]
 #'
-#' @param year Release year. See Details for years available.
+#' @param year Release year. See **Details** for years available.
 #' @inheritParams esp_get_nuts
-#' @inheritParams esp_get_munic
+#'
+#' @inheritSection esp_get_nuts About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @export
 #' @details
 #' `year` could be passed as a single year ("YYYY" format, as end of year) or
 #' as a specific date ("YYYY-MM-DD" format).
 #'
-#' Details on caching can be found on [esp_get_nuts()]
-#'
-#' @note While `moveCAN` is useful for visualization, it would alter the
-#' actual geographical position of the Canary Islands.
 #'
 #' @examples
 #' \donttest{
-#'
-#' library(sf)
-#'
-#' CyL <- esp_get_prov("Castilla y Leon")
+#' #'
+#' country <- esp_get_country()
 #' Roads <- esp_get_roads()
 #'
-#' # Intersect roads
-#' CyL_Roads <- st_intersection(CyL, Roads)
 #'
 #' library(tmap)
 #'
-#' tm_shape(CyL) +
-#'   tm_polygons(col = "grey80", border.col = "grey50", lwd = 0.4) +
-#'   tm_shape(CyL_Roads) +
+#' tm_shape(country) +
+#'   tm_fill(col = "grey90") +
+#'   tm_shape(Roads) +
 #'   tm_lines("tipo",
 #'     palette = c("#003399", "#003399", "#ff0000", "#ffff00")
 #'   ) +
-#'   tm_layout(legend.outside = TRUE, legend.outside.position = "bottom")
+#'   tm_layout(
+#'     legend.outside = TRUE,
+#'     legend.outside.position = "bottom"
+#'   )
 #' }
 esp_get_roads <- function(year = Sys.Date(),
                           epsg = "4258",

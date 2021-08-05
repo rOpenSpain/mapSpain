@@ -6,7 +6,8 @@
 \alias{esp_codelist}
 \title{Spanish Code Translation Data Frame}
 \format{
-data frame with codes as columns
+A data frame with 59 rows
+codes as columns
 \itemize{
 \item \strong{nuts+.code}: NUTS code of each subdivision.
 \item \strong{nuts+.code}: NUTS name of each subdivision.
@@ -28,10 +29,10 @@ Several languages available.
 }
 \source{
 \itemize{
-\item INE: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
-\item Eurostat (NUTS): \url{https://ec.europa.eu/eurostat/web/nuts/background}
-\item ISO: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
-\item CLDR: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
+\item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
+\item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/background}
+\item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
+\item \strong{CLDR}: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
 }
 }
 \description{
@@ -43,11 +44,11 @@ the subdivisions including NUTS1 level, Autonomous Communities
 \note{
 Languages available are:
 \itemize{
-\item "en": English
-\item "es": Spanish
-\item "ca": Catalan
-\item "ga": Galician
-\item "eu": Basque
+\item \strong{"en"}: English
+\item \strong{"es"}: Spanish
+\item \strong{"ca"}: Catalan
+\item \strong{"ga"}: Galician
+\item \strong{"eu"}: Basque
 }
 
 Although NUTS2 matches the first subdivision level of Spain
@@ -60,6 +61,8 @@ considered as communities with a single province (as Madrid, Asturias
 or Murcia) on this dataset.
 }
 \examples{
+
+data("esp_codelist")
 
 library(tibble)
 

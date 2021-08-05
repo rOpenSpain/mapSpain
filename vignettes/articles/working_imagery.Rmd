@@ -1,7 +1,5 @@
 ---
 title: "Working with imagery"
-resource_files:
-   - vignettes/articles/static1-1.png
 editor_options: 
   markdown: 
     wrap: 80
@@ -14,24 +12,21 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
+  dpi = 300,
+  tidy = "styler",
   out.width = "100%"
 )
 
-# Install reactable if not already installed
 if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
   install.packages("reactable")
 }
-
-library(mapSpain)
-library(sf)
-library(tmap)
 ```
 
-`mapSpain` provides a powerful interface for working with imagery. `mapSpain`
-can download static files as `.png` or`jpeg` files (depending on the Web Map
-Service) and use them along your shapefiles.
+**mapSpain** provides a powerful interface for working with imagery.
+**mapSpain** can download static files as `.png` or `.jpeg` files (depending on
+the Web Map Service) and use them along your shapefiles.
 
-`mapSpain` also includes a plugin for **R**
+**mapSpain** also includes a plugin for **R**
 [leaflet](https://rstudio.github.io/leaflet/) package, that allows you to
 include several basemaps on your interactive maps.
 
@@ -48,7 +43,7 @@ here on layer provided by La Rioja's [Infraestructura de Datos Espaciales
 **When working with imagery, it is important to set `moveCAN = FALSE`, otherwise
 the images for the Canary Islands won't be accurate.**
 
-```{r static1, eval=FALSE}
+```{r static1}
 
 library(mapSpain)
 library(sf)
@@ -70,44 +65,37 @@ tm_shape(tile_LGN, raster.downsample = FALSE) +
   tm_borders(lwd = 2, lty = "dotted")
 ```
 
-```{r echo=FALSE}
-# From cache
-knitr::include_graphics("static1-1.png")
-```
+
+### Alpha value on tiles
 
 Some tiles could be loaded with or without an alpha value, that controls the
 transparency of the object:
 
-```{r static2, eval=FALSE}
+```{r static2, fig.asp=1}
 
 Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-BG <- esp_getTiles(Madrid, "IGNBase.Gris")
-ADIF.opaque <-
-  esp_getTiles(Madrid, "RedTransporte.Ferroviario",
+BG <- esp_getTiles(Madrid, "IGNBase.Gris", zoom = 9)
+UA.opaque <-
+  esp_getTiles(Madrid, "UnidadesAdm.Limites",
     transparent = FALSE
   )
 
 tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
-  tm_shape(ADIF.opaque, raster.downsample = FALSE) +
+  tm_shape(UA.opaque, raster.downsample = FALSE) +
   tm_rgb()
-```
-
-```{r echo=FALSE}
-# From cache
-knitr::include_graphics("static2-1.png")
 ```
 
 Now let's check the same code using the `tranparent = TRUE` option:
 
-```{r static_transp, eval=FALSE}
+```{r static_transp, fig.asp=1}
 # Example with transparency
 
-ADIF.alpha <- esp_getTiles(Madrid,
-  "RedTransporte.Ferroviario",
+UA.alpha <- esp_getTiles(Madrid,
+  "UnidadesAdm.Limites",
   transparent = TRUE
 )
 
@@ -115,25 +103,25 @@ ADIF.alpha <- esp_getTiles(Madrid,
 
 tm_shape(BG, raster.downsample = FALSE) +
   tm_rgb() +
-  tm_shape(ADIF.alpha, raster.downsample = FALSE) +
+  tm_shape(UA.alpha, raster.downsample = FALSE) +
   tm_rgb()
 ```
 
-```{r echo=FALSE}
-# From cache
-knitr::include_graphics("static2-2.png")
-```
+
+Now the two tiles overlaps with the desired alpha value.
+
+### Masking tiles
 
 Another nice feature is the ability of masking the tiles, so more advanced maps
 can be plotted:
 
-```{r static3, eval=FALSE}
+```{r static3}
 
 LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 Basemap <- esp_getTiles(LaRioja, bbox_expand = 0.1, zoom = 10)
 
-Mask <- esp_getTiles(LaRioja, "PNOA", mask = TRUE, , zoom = 10)
+Mask <- esp_getTiles(LaRioja, "PNOA", mask = TRUE, zoom = 10)
 
 tm_shape(Basemap, raster.downsample = FALSE) +
   tm_rgb() +
@@ -141,15 +129,10 @@ tm_shape(Basemap, raster.downsample = FALSE) +
   tm_rgb()
 ```
 
-```{r echo=FALSE}
-# From cache
-knitr::include_graphics("static3-1.png")
-```
-
 ## Dynamic maps with Leaflet
 
-`mapSpain` provides a plugin to be used with the `leaflet` package. Here you can
-find some quick examples:
+**mapSpain** provides a plugin to be used with the `leaflet` package. Here you 
+can find some quick examples:
 
 ### Earthquakes in Tenerife (last year)
 
@@ -165,8 +148,9 @@ Tenerife.leaf <-
   )
 
 
-bbox <-
-  as.double(round(st_bbox(Tenerife.leaf) + c(-1, -1, 1, 1), 2))
+bbox <- as.double(round(
+  st_bbox(Tenerife.leaf) + c(-1, -1, 1, 1), 2
+))
 
 # Start leaflet
 m <- leaflet(Tenerife.leaf,
@@ -199,8 +183,9 @@ m %>%
   setMaxBounds(bbox[1], bbox[2], bbox[3], bbox[4])
 ```
 
-
 ### Population density in Spain
+
+A map showing the population density of Spain as of 2019:
 
 ```{r leaflet2}
 
@@ -258,8 +243,9 @@ pal <-
   )
 
 labels <- sprintf(
-  "<strong>%s</strong><br/>%s pers. / km<sup>2</sup>",
+  "<strong>%s</strong><br/><em>%s</em><br/>%s pers. / km<sup>2</sup>",
   munic_pop$rotulo,
+  munic_pop$ine.prov.name,
   munic_pop$dens_label
 ) %>% lapply(htmltools::HTML)
 
@@ -295,12 +281,12 @@ leaflet(elementId = "SpainDemo") %>%
   )
 ```
 
-## Available providers
+## Providers available
 
 The data frame `leaflet.providersESP.df` includes the data of the available
-providers you can use on functions described above. This data frame includes all
-the parameters needed to replicate the API request. In this summary only the
-parameter `url_static` is shown:
+providers you can use on functions described above. This data frame includes 
+all the parameters needed to replicate the API request. In this summary only 
+the parameter `url_static` is shown:
 
 ```{r providers, echo=FALSE}
 
@@ -313,17 +299,7 @@ reactable(df,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   striped = TRUE,
-  paginationType = "jump"
+  paginationType = "jump",
+  elementId = "leaflet-prov-summ"
 )
 ```
-
-## Session Info
-
-<details>
-  <summary><strong>Details</strong></summary>
-
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-
-</details>

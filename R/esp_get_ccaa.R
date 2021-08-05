@@ -1,37 +1,43 @@
-#' Get Autonomous Communities boundaries of Spain
+#' Get Autonomous Communities of Spain as `sf` polygons and points
+#'
+#' @description
+#' Returns
+#' [Autonomous Communities of Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain)
+#' as polygons and points at a specified scale.
+#'
+#' * [esp_get_ccaa()] uses GISCO (Eurostat) as source. Please use
+#'   [giscoR::gisco_attributions()]
 #'
 #' @concept political
 #'
 #' @rdname esp_get_ccaa
 #'
-#' @description
-#' Loads a simple feature (`sf`) object containing the autonomous communities
-#' boundaries of Spain.
+#' @name esp_get_ccaa
 #'
-#' `esp_get_ccaa` uses GISCO (Eurostat) as source
-#'
-#' @return A `POLYGON/POINT` object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return A `sf` object specified by `spatialtype`.
 #'
 #' @seealso
 #' [esp_get_hex_ccaa()], [esp_get_nuts()], [esp_get_prov()],
-#' [esp_get_munic()], [`esp_codelist`]
+#' [esp_get_munic()], [esp_codelist]
 #'
 #' @export
 #'
 #' @param ccaa A vector of names and/or codes for autonomous communities
-#'   or `NULL` to get all the autonomous communities. See Details.
+#'   or `NULL` to get all the autonomous communities. See **Details**.
 #'
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
-#' ISO codes (corresponding to level 2) or `codauto`. Ceuta and Melilla are
-#' considered as Autonomous Communities on this dataset.
+#' ISO codes (corresponding to level 2) or "codauto" (see [esp_codelist]).
+#' Ceuta and Melilla are considered as Autonomous Communities on this function.
 #'
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' would be added.
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #' # Random CCAA
@@ -58,22 +64,13 @@
 #' # All CCAA of a Zone plus an addition
 #'
 #' Mix <-
-#'   esp_get_ccaa(
-#'     ccaa = c("La Rioja", "Noroeste"),
-#'     resolution = "20"
-#'   )
+#'   esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 #'
-#' # Base plot
-#' plot(
-#'   Mix[, "nuts1.code"],
-#'   pal = hcl.colors(2),
-#'   key.pos = NULL,
-#'   main = NULL,
-#'   border = "white"
-#' )
+#' qtm(Mix)
 #'
 #' # Combine with giscoR to get countries
 #' \donttest{
+#'
 #' library(giscoR)
 #' library(sf)
 #'
@@ -87,6 +84,7 @@
 #' ccaa <- st_transform(ccaa, 3035)
 #'
 #' tm_shape(europe, bbox = c(23, 14, 74, 55) * 10e4) +
+#'   tm_graticules() +
 #'   tm_polygons("#DFDFDF", border.col = "#656565") +
 #'   tm_shape(ccaa) +
 #'   tm_polygons("#FDFBEA", border.col = "#656565") +
@@ -151,23 +149,23 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 
 
 #' @rdname esp_get_ccaa
+#' @name esp_get_ccaa_siane
 #'
 #' @concept political
 #'
 #' @description
-#' `esp_get_ccaa_siane` uses CartoBase ANE as source, provided by
-#' Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
-#'
-#' Years available are 2005 up to today.
+#' * [esp_get_ccaa_siane()] uses CartoBase ANE as source, provided by
+#'   Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
+#'   Years available are 2005 up to today.
 #'
 #' @source
 #' IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
 #'
-#' @param year Release year. See [esp_get_nuts()] for `esp_get_ccaa` and
-#'   Details for `esp_get_ccaa_siane`
+#' @param year Release year. See [esp_get_nuts()] for [esp_get_ccaa()] and
+#'   **Details** for [esp_get_ccaa_siane()]
 #'
 #' @param resolution Resolution of the polygon. Values available are
 #'   "3", "6.5" or "10".
@@ -178,7 +176,7 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 #' @inheritParams esp_get_nuts
 #'
 #' @details
-#' On `esp_get_ccaa_siane`, `year` could be passed as a single year ("YYYY"
+#' On [esp_get_ccaa_siane()], `year` could be passed as a single year ("YYYY"
 #' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 #' Historical information starts as of 2005.
 

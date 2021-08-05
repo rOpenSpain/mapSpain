@@ -1,44 +1,49 @@
-#' Get the location of municipalities of Spain
+#' Get `sf` points of the municipalities of Spain
 #'
 #' @description
-#' Get the location of the political powers for each municipality (possibly
-#' the center of the municipality).
+#' Get a `sf` point with the location of the political powers for
+#' each municipality (possibly the center of the municipality).
 #'
 #' Note that this differs of the centroid of the boundaries of the
-#' municipallity, returned by [esp_get_munic()].
+#' municipality, returned by [esp_get_munic()].
 #'
 #' @concept political
 #'
-#' @return A `POINT` object.
+#' @return A `sf` point object.
 #'
 #' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>.
-#' @seealso [esp_get_munic()], [`esp_munic.sf`], [`esp_codelist`]
+#' @seealso [esp_get_munic()], [esp_munic.sf], [esp_codelist]
 #'
-#' @param year Release year. See Details for years available.
-#' @inheritParams esp_get_nuts
+#' @param year Release year. See **Details** for years available.
+#'
 #' @inheritParams esp_get_munic
+#'
+#' @inheritParams esp_get_nuts
+#'
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @details
 #' `year` could be passed as a single year ("YYYY" format, as end of year) or
-#' as a specific date ("YYYY-MM-DD" format).
-#' Historical information starts as of 2005.
+#' as a specific date ("YYYY-MM-DD" format). Historical information starts as
+#' of 2005.
 #'
 #' When using `region` you can use and mix names and NUTS codes (levels 1,
-#' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`.
+#' 2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro". See
+#' [esp_codelist]
 #'
 #' When calling a superior level (Province, Autonomous Community or NUTS1) ,
 #' all the municipalities of that level would be added.
-#' @export
 #'
-#' @note While `moveCAN` is useful for visualization, it would alter the
-#' actual geographical position of the Canary Islands.
+#' @export
 #'
 #' @examples
 #' \dontrun{
-#' # This code compares centroid of municipalities against esp_get_capimun
+#' # This code compares centroids of municipalities against esp_get_capimun
 #' # It also download tiles, make sure you are online
 #'
 #' library(sf)
@@ -47,17 +52,24 @@
 #' area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 #'
 #' # Area in km2
-#' print(paste0(round(as.double(st_area(area)) / 1000000, 2), " km2"))
+#' print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
 #'
 #' # Extract centroid
-#' centroid <- st_centroid(area)
+#' centroid <- sf::st_centroid(area)
+#' centroid$type <- "Centroid"
 #'
 #' # Compare with capimun
 #' capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
-#'
+#' capimun$type <- "Capimun"
 #'
 #' # Get a tile to check
-#' tile <- esp_getTiles(area)
+#' tile <- esp_getTiles(area, zoommin = 2)
+#'
+#' # Join both point geometries
+#' points <- rbind(
+#'   centroid[, "type"],
+#'   capimun[, "type"]
+#' )
 #'
 #' # Check on plot
 #' library(tmap)
@@ -66,14 +78,14 @@
 #'   tm_rgb() +
 #'   tm_shape(area) +
 #'   tm_borders(col = "grey40") +
-#'   tm_shape(centroid) +
-#'   tm_symbols(col = "red", alpha = 0.4, shape = 19) +
-#'   tm_shape(capimun) +
-#'   tm_symbols(col = "blue", alpha = 0.4, shape = 19)
-#'
-#'
-#' # Blue dot is located onto the actual city while red dot is located
-#' # in the centroid of the boundaries
+#'   tm_shape(points) +
+#'   tm_symbols(col = "type", alpha = 0.8, pal = "RdBu") +
+#'   tm_layout(
+#'     main.title = "Centroid vs. capimun",
+#'     legend.outside = TRUE,
+#'     legend.outside.size = 0.3,
+#'     legend.text.size = 1
+#'   )
 #' }
 esp_get_capimun <- function(year = Sys.Date(),
                             epsg = "4258",

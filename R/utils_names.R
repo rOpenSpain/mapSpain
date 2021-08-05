@@ -1,30 +1,3 @@
-#' Creates `cache_dir`
-#'
-#' @inheritParams esp_get_nuts
-#'
-#' @noRd
-esp_hlp_cachedir <- function(cache_dir = NULL) {
-  # Check cache dir from options if not set
-  if (is.null(cache_dir)) {
-    cache_dir <- getOption("mapSpain_cache_dir", NULL)
-  }
-
-  # Check cache dir from options if not set
-  if (is.null(cache_dir)) {
-    cache_dir <- getOption("gisco_cache_dir", NULL)
-  }
-  # Reevaluate
-  if (is.null(cache_dir)) {
-    cache_dir <- file.path(tempdir(), "mapSpain")
-  }
-
-  # Create cache dir if needed
-  if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir, recursive = TRUE)
-  }
-  return(cache_dir)
-}
-
 #' Transform region to NUTS code
 #'
 #' @param region A name or code of a Spanish region

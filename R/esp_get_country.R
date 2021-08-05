@@ -1,30 +1,39 @@
-#' Get boundaries of Spain
+#' Get the borders of Spain as a `sf` polygon
 #'
-#' Loads a single `sf` object containing the boundaries of Spain.
+#' @description
+#' Returns the boundaries of Spain as a single `sf` polygon at a
+#' specified scale.
 #'
 #' @concept political
 #'
-#' @return A `MULTIPOLYGON/MULTIPOINT` object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @return A `sf` polygon object.
 #'
 #' @seealso [esp_get_nuts()]
 #'
 #' @export
 #'
-#' @inheritDotParams esp_get_nuts -nuts_level -region
+#' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
+#'
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #'
-#' library(sf)
-#'
 #' OriginalCan <- esp_get_country(moveCAN = FALSE)
 #'
-#' plot(OriginalCan$geometry, col = "grey70")
+#' # One row only
 #'
-#' MovedCan <- esp_get_country(moveCAN = TRUE)
+#' nrow(OriginalCan)
 #'
-#' plot(MovedCan$geometry, col = "grey70")
+#' library(tmap)
+#' qtm(OriginalCan, fill = "grey70")
+#'
+#' # Less resolution
+#'
+#' MovedCan <- esp_get_country(moveCAN = TRUE, resolution = "20")
+#'
+#' qtm(MovedCan, fill = "grey70")
 esp_get_country <- function(...) {
   params <- list(...)
   params$nuts_level <- 1
