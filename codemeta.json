@@ -1,17 +1,11 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "mapSpain",
   "description": "Administrative Boundaries of Spain at several levels (CCAA,\n    Provinces, Municipalities) based on the GISCO Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from\n    'Instituto Geografico Nacional' <https://www.ign.es/>.  It also\n    provides a 'leaflet' plugin and the ability of downloading and\n    processing static tiles.",
   "name": "mapSpain: Administrative Boundaries of Spain",
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
-  "relatedLink": [
-    "https://ropenspain.github.io/mapSpain/",
-    "https://CRAN.R-project.org/package=mapSpain"
-  ],
+  "relatedLink": "https://ropenspain.github.io/mapSpain/",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.2.3.9040",
@@ -36,7 +30,6 @@
       "@id": "https://orcid.org/0000-0001-8457-4658"
     }
   ],
-  "contributor": {},
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -54,7 +47,6 @@
       "name": "Instituto Geográfico Nacional"
     }
   ],
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -140,14 +132,14 @@
       "sameAs": "https://CRAN.R-project.org/package=tmap"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.6.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "countrycode",
       "name": "countrycode",
@@ -160,7 +152,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=countrycode"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "giscoR",
       "name": "giscoR",
@@ -173,7 +165,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=giscoR"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "leaflet",
       "name": "leaflet",
@@ -186,7 +178,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
@@ -199,7 +191,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -212,7 +204,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "raster",
       "name": "raster",
@@ -225,7 +217,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=raster"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -238,7 +230,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "slippymath",
       "name": "slippymath",
@@ -251,34 +243,15 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=slippymath"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
-    }
-  ],
-  "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "readme": "https://github.com/rOpenSpain/mapSpain/blob/master/README.md",
-  "fileSize": "3054.125KB",
-  "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://codecov.io/gh/rOpenSpain/mapSpain"],
-  "keywords": [
-    "r",
-    "maps",
-    "spain",
-    "cran",
-    "ccaa",
-    "administrative-boundaries",
-    "municipalities",
-    "provinces",
-    "ropenspain",
-    "r-package",
-    "tiles",
-    "static-tiles",
-    "spatial",
-    "rstats",
-    "ign",
-    "gisco"
-  ],
+    },
+    "SystemRequirements": null
+  },
+  "isPartOf": "https://ropenspain.es/",
+  "fileSize": "13052.876KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -297,7 +270,5 @@
       "@id": "https://doi.org/10.5281/zenodo.4318024",
       "sameAs": "https://doi.org/10.5281/zenodo.4318024"
     }
-  ],
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "isPartOf": "https://ropenspain.es/"
+  ]
 }
