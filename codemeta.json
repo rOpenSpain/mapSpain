@@ -251,7 +251,7 @@
     "SystemRequirements": null
   },
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "13049.937KB",
+  "fileSize": "13049.832KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -266,7 +266,6 @@
       "name": "mapSpain: ",
       "identifier": "10.5281/zenodo.4318024",
       "url": "https://CRAN.R-project.org/package=mapSpain",
-      "description": "R package version ",
       "@id": "https://doi.org/10.5281/zenodo.4318024",
       "sameAs": "https://doi.org/10.5281/zenodo.4318024"
     }
