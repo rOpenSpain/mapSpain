@@ -124,6 +124,12 @@ get the actual coordinates, instead of the modified ones.
 }
 
 \examples{
+prov <- esp_get_prov()
+
+library(tmap)
+
+qtm(prov)
+
 # Random Provinces
 
 Random <-
@@ -135,7 +141,6 @@ Random <-
     "01"
   ))
 
-library(tmap)
 tm_shape(Random) +
   tm_polygons(col = "codauto", legend.show = FALSE, palette = "Spectral")
 
