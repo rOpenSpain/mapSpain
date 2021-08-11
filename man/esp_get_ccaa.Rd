@@ -122,6 +122,12 @@ get the actual coordinates, instead of the modified ones.
 }
 
 \examples{
+ccaa <- esp_get_ccaa()
+
+library(tmap)
+
+qtm(ccaa)
+
 # Random CCAA
 Random <- esp_get_ccaa(ccaa = c(
   "Euskadi",
@@ -132,7 +138,6 @@ Random <- esp_get_ccaa(ccaa = c(
   "01"
 ))
 
-library(tmap)
 
 tm_shape(Random) +
   tm_polygons(col = "codauto", legend.show = FALSE) +

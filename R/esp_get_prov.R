@@ -43,6 +43,12 @@
 #' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
+#' prov <- esp_get_prov()
+#'
+#' library(tmap)
+#'
+#' qtm(prov)
+#'
 #' # Random Provinces
 #'
 #' Random <-
@@ -54,7 +60,6 @@
 #'     "01"
 #'   ))
 #'
-#' library(tmap)
 #' tm_shape(Random) +
 #'   tm_polygons(col = "codauto", legend.show = FALSE, palette = "Spectral")
 #'
