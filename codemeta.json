@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -251,7 +251,7 @@
     "SystemRequirements": null
   },
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "13049.832KB",
+  "fileSize": "13052.96KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
