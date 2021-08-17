@@ -1,5 +1,6 @@
 ---
 title: "Working with imagery"
+author: "Diego Hernangómez"
 editor_options: 
   markdown: 
     wrap: 80
