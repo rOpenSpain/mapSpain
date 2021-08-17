@@ -1,5 +1,6 @@
 ---
 title: "Get Started"
+author: "Diego Hernangómez"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get Started}
