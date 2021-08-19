@@ -258,9 +258,8 @@ citation("mapSpain")
 #> 
 #> To cite the 'mapSpain' package in publications use:
 #> 
-#>   Hernangómez, D (2021). mapSpain: Administrative Boundaries of Spain.
-#>   http://doi.org/10.5281/zenodo.4318024. Package url:
-#>   https://CRAN.R-project.org/package=mapSpain
+#>   Hernangómez, D. (2021). mapSpain: Administrative Boundaries of Spain.
+#>   R package. http://doi.org/10.5281/zenodo.4318024
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -268,7 +267,7 @@ citation("mapSpain")
 #>     title = {mapSpain: Administrative Boundaries of Spain},
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
-#>     url = {https://CRAN.R-project.org/package=mapSpain},
+#>     url = {https://ropenspain.github.io/mapSpain/},
 #>     doi = {10.5281/zenodo.4318024},
 #>   }
 ```
