@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "To cite package 'mapSpain' in publications use:"
+authors:
+- family-names: "Hernangómez"
+  given-names: "Diego"
+  orcid: "https://orcid.org/0000-0001-8457-4658"
+title: "mapSpain"
+doi: 10.5281/zenodo.4318024
+repository-code: "https://github.com/rOpenSpain/mapSpain"
+url: https://ropenspain.github.io/mapSpain/
+license: GPL-3.0
+abstract: "Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities) based on the GISCO Eurostat database and CartoBase SIANE from Instituto Geografico Nacional. It also provides a leaflet plugin and the ability of downloading and processing static tiles"
