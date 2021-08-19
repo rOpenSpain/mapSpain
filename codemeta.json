@@ -250,8 +250,9 @@
     },
     "SystemRequirements": null
   },
+  "applicationCategory": "Cartography",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "13053.238KB",
+  "fileSize": "13053.924KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -263,9 +264,9 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "mapSpain: ",
+      "name": "mapSpain: Administrative Boundaries of Spain",
       "identifier": "10.5281/zenodo.4318024",
-      "url": "https://CRAN.R-project.org/package=mapSpain",
+      "url": "https://ropenspain.github.io/mapSpain/",
       "@id": "https://doi.org/10.5281/zenodo.4318024",
       "sameAs": "https://doi.org/10.5281/zenodo.4318024"
     }

@@ -28,3 +28,4 @@
 ^vignettes/articles$
 ^vignettes/mapSpain\.Rmd\.orig$
 ^_pkgdown\.yaml$
+^CITATION\.cff$
