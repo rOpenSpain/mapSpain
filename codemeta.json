@@ -8,7 +8,7 @@
   "relatedLink": "https://ropenspain.github.io/mapSpain/",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.3.9040",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -252,7 +252,7 @@
   },
   "applicationCategory": "Cartography",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "13053.994KB",
+  "fileSize": "3054.637KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

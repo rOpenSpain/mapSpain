@@ -299,12 +299,12 @@ the Web Map Service) and use them along your shapefiles.
 include several basemaps on your interactive maps.
 
 The services are implemented via the leaflet plugin
-[leaflet-providersESP](dieghernan.github.io/leaflet-providersESP/). You can
+[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/). You can
 check a display of each provider on the previous link.
 
-**Note that** When working with imagery, it is important to set 
-`moveCAN = FALSE` on the `esp_get_*` functions. See 
-**Displacing the Canary Islands** on 
+**Note that** When working with imagery, it is important to set
+`moveCAN = FALSE` on the `esp_get_*` functions. See
+**Displacing the Canary Islands** on
 `help("esp_get_ccaa", package = "mapSpain")`.
 
 An example of how you can include tiles and shapes to create a static map:

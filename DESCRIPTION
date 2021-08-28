@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.2.3.9040
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",

@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.3.0
 
 -   Caching improvements: new function `esp_set_cache_dir()` based on 
     `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is 
