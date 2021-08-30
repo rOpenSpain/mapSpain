@@ -30,4 +30,4 @@ jobs:
         run: |
           git config --local user.name "dieghernan"
           git config --local user.email "dieghernan@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE, run_dont_run = TRUE)'
