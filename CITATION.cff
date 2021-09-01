@@ -4,6 +4,7 @@ authors:
 - family-names: "Hernangómez"
   given-names: "Diego"
   orcid: "https://orcid.org/0000-0001-8457-4658"
+  affiliation: "rOpenSpain"
 title: "mapSpain"
 doi: 10.5281/zenodo.4318024
 repository-code: "https://github.com/rOpenSpain/mapSpain"
