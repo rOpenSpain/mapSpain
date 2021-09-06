@@ -45,7 +45,7 @@ esp_clear_cache <- function(config = TRUE,
   }
 
   if (cached_data && dir.exists(data_dir)) {
-    unlink(data_dir, recursive = TRUE, force = TRUE, expand = TRUE)
+    unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) message("mapSpain cached data deleted: ", data_dir)
   }
 
