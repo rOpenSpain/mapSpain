@@ -142,15 +142,15 @@ esp_hlp_all2prov <- function(region) {
     key2names <- esp_dict_translate(region[key], "es")
 
     # See if Canary Islands are here
-    nGC <- key[key2names == "Las Palmas"]
-    nTF <- key[key2names == "Santa Cruz de Tenerife"]
+    ngc <- key[key2names == "Las Palmas"]
+    ntf <- key[key2names == "Santa Cruz de Tenerife"]
 
-    if (length(nGC) > 0) {
-      region[nGC] <- "35"
+    if (length(ngc) > 0) {
+      region[ngc] <- "35"
     }
 
-    if (length(nTF) > 0) {
-      region[nTF] <- "38"
+    if (length(ntf) > 0) {
+      region[ntf] <- "38"
     }
   }
 

@@ -152,7 +152,7 @@ esp_hlp_download_siane <- function(type,
       return(data)
     }
     err_onload <- tryCatch(
-      data.sf <- sf::st_read(
+      data_sf <- sf::st_read(
         filepath,
         quiet = isFALSE(verbose),
         stringsAsFactors = FALSE
@@ -180,7 +180,7 @@ esp_hlp_download_siane <- function(type,
     }
   }
   if (loaded) {
-    return(data.sf)
+    return(data_sf)
   } else {
     stop("\nExecution halted")
   }
@@ -249,16 +249,16 @@ esp_hlp_get_siane <- function(type,
     # Transform and bind
     data_sf2 <- sf::st_transform(data_sf2, sf::st_crs(data_sf1))
 
-    data.sf <- rbind(data_sf1, data_sf2)
+    data_sf <- rbind(data_sf1, data_sf2)
   } else {
     if (verbose) {
       message("Shape not provided for Canary Islands")
     }
-    data.sf <- data_sf1
+    data_sf <- data_sf1
   }
   # Date management
-  minDate <- min(data.sf$fecha_alta)
-  maxDate <- Sys.Date()
+  mindate <- min(data_sf$fecha_alta)
+  maxdate <- Sys.Date()
   year <- as.character(year)
 
   if (nchar(year) != 10) {
@@ -278,20 +278,20 @@ esp_hlp_get_siane <- function(type,
   selDate <- as.Date(selDate)
 
   # Check range
-  checkDateRange <- minDate <= selDate & selDate <= maxDate
+  checkDateRange <- mindate <= selDate & selDate <= maxdate
 
   if (isFALSE(checkDateRange)) {
     stop(
       "year not available. Select a year/date between '",
-      minDate,
+      mindate,
       "' and '",
-      maxDate,
+      maxdate,
       "'"
     )
   }
 
   # Filter
-  df <- data.sf
+  df <- data_sf
   # By date
   df$fecha_bajamod <- as.character(df$fecha_baja)
   df$fecha_bajamod <-
@@ -302,7 +302,7 @@ esp_hlp_get_siane <- function(type,
     ))
   df <-
     df[df$fecha_alta <= selDate &
-      selDate <= df$fecha_bajamod, colnames(data.sf)]
+      selDate <= df$fecha_bajamod, colnames(data_sf)]
 
   return(df)
 }

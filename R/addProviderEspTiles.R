@@ -72,10 +72,10 @@ addProviderEspTiles <- function(map,
   templurl <- provs[provs$field == "url", "value"]
   attribution <- provs[provs$field == "attribution", "value"]
 
-  isWMTS <- provs[provs$field == "type", "value"] == "WMTS"
+  iswmts <- provs[provs$field == "type", "value"] == "WMTS"
 
   # Work with options
-  if (isFALSE(isWMTS)) {
+  if (isFALSE(iswmts)) {
     layers <- provs[provs$field == "layers", "value"]
   }
 
@@ -131,7 +131,7 @@ addProviderEspTiles <- function(map,
 
 
 
-  if (isWMTS) {
+  if (iswmts) {
     optionend <- do.call(leaflet::tileOptions, optionend)
 
     leaflet::addTiles(

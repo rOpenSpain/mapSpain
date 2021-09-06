@@ -9,7 +9,7 @@
 #' @inheritParams esp_getTiles
 #'
 #' @noRd
-getWMS <- function(x,
+getwms <- function(x,
                    provs,
                    update_cache,
                    cache_dir,
@@ -123,7 +123,7 @@ getWMS <- function(x,
 #' @inheritParams getWMS
 #'
 #' @noRd
-getWMTS <- function(x,
+getwmts <- function(x,
                     provs,
                     update_cache,
                     cache_dir,

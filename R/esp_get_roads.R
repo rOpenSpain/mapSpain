@@ -84,7 +84,7 @@ esp_get_roads <- function(year = Sys.Date(),
 
 
 
-  # Move CAN
+  # Move can
   # Checks
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
@@ -102,25 +102,25 @@ esp_get_roads <- function(year = Sys.Date(),
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
-      CAN <- data_sf[grep("05", data_sf$codauto), ]
+      penin <- data_sf[-grep("05", data_sf$codauto), ]
+      can <- data_sf[grep("05", data_sf$codauto), ]
 
-      # Change geometry name on PENIN
-      PENIN <- sf::st_sf(
-        sf::st_drop_geometry(PENIN),
-        geometry = sf::st_geometry(PENIN),
-        crs = sf::st_crs(PENIN)
+      # Change geometry name on penin
+      penin <- sf::st_sf(
+        sf::st_drop_geometry(penin),
+        geometry = sf::st_geometry(penin),
+        crs = sf::st_crs(penin)
       )
 
-      # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      # Move can
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      data_sf <- rbind(PENIN, CAN)
+      data_sf <- rbind(penin, can)
     }
   }
 

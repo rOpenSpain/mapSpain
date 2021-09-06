@@ -108,8 +108,8 @@ esp_set_cache_dir <- function(cache_dir,
   } else {
     if (verbose && !is_temp) {
       message(
-        "To install your cache_dir path for use in future sessions, \nrun this ",
-        "function with `install = TRUE`."
+        "To install your cache_dir path for use in future sessions,",
+        "\nrun this function with `install = TRUE`."
       )
     }
   }

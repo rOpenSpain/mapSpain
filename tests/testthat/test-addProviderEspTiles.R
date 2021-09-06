@@ -4,7 +4,7 @@ test_that("Testing leaflet", {
   expect_silent(providerEspTileOptions())
 
   expect_error(
-    PuertadelSol <- leaflet() %>%
+    puertadelsol <- leaflet() %>%
       setView(
         lat = 40.4166,
         lng = -3.7038400,
@@ -14,7 +14,7 @@ test_that("Testing leaflet", {
   )
 
   expect_silent(
-    PuertadelSol <- leaflet() %>%
+    puertadelsol <- leaflet() %>%
       setView(
         lat = 40.4166,
         lng = -3.7038400,

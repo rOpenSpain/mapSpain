@@ -162,7 +162,7 @@ esp_getTiles <- function(x,
 
   if (provs[provs$field == "type", "value"] == "WMS") {
     rout <-
-      getWMS(
+      getwms(
         x,
         provs,
         update_cache,
@@ -174,7 +174,7 @@ esp_getTiles <- function(x,
       )
   } else {
     rout <-
-      getWMTS(
+      getwmts(
         x,
         provs,
         update_cache,
