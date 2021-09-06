@@ -6,7 +6,9 @@
 #' * [esp_get_munic()] uses GISCO (Eurostat) as source. Please use
 #'   [giscoR::gisco_attributions()]
 #'
-#' @concept political
+#' @family political
+#' @family municipalities
+#' @seealso [giscoR::gisco_get_lau()], [base::regex()].
 #'
 #' @return A `sf` polygon
 #'
@@ -15,8 +17,6 @@
 #' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
 #'
 #'
-#' @seealso [esp_get_nuts()], [esp_munic.sf], [giscoR::gisco_get_lau()],
-#'   [esp_codelist], [base::regex()]
 #'
 #'
 #' @param year Release year. See **Details** for years available.
@@ -288,21 +288,21 @@ esp_get_munic <- function(year = "2019",
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
-      CAN <- data_sf[grep("05", data_sf$codauto), ]
+      penin <- data_sf[-grep("05", data_sf$codauto), ]
+      can <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      if (nrow(PENIN) > 0) {
-        data_sf <- rbind(PENIN, CAN)
+      if (nrow(penin) > 0) {
+        data_sf <- rbind(penin, can)
       } else {
-        data_sf <- CAN
+        data_sf <- can
       }
     }
   }
@@ -317,7 +317,6 @@ esp_get_munic <- function(year = "2019",
 
 #' @rdname esp_get_munic
 #'
-#' @concept political
 #'
 #' @description
 #' * [esp_get_munic_siane()] uses CartoBase ANE as source, provided by
@@ -433,21 +432,21 @@ esp_get_munic_siane <- function(year = Sys.Date(),
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
-      CAN <- data_sf[grep("05", data_sf$codauto), ]
+      penin <- data_sf[-grep("05", data_sf$codauto), ]
+      can <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      if (nrow(PENIN) > 0) {
-        data_sf <- rbind(PENIN, CAN)
+      if (nrow(penin) > 0) {
+        data_sf <- rbind(penin, can)
       } else {
-        data_sf <- CAN
+        data_sf <- can
       }
     }
   }

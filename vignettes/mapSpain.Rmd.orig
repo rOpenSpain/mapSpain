@@ -173,7 +173,7 @@ tm_shape(CCAA_sf) +
 
 This is an example on how **mapSpain** can be used to beautiful thematic maps.
 For plotting purposes we would use the
-[**tmap**](https://mtennekes.github.io/tmap/)
+[**tmap**](https://github.com/r-tmap/tmap)
 package, however any package that handles `sf` objects (e.g. `ggplot2`, `mapsf`,
 `leaflet`, etc. could be used).
 

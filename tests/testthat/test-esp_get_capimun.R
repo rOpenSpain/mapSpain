@@ -14,10 +14,10 @@ test_that("capimun online", {
 
   expect_error(esp_get_capimun(year = "2019-15-23"))
   expect_error(esp_get_capimun(year = "2019-15"))
-  expect_error(esp_get_capimun(region = "XX"))
+  expect_warning(expect_error(expect_warning(esp_get_capimun(region = "XX"))))
   expect_error(esp_get_capimun(epsg = "5689"))
   expect_error(esp_get_capimun(year = "2040"))
-  expect_error(esp_get_capimun(munic = "XX"))
+  expect_error(expect_warning(esp_get_capimun(munic = "XX")))
 
   expect_silent(esp_get_capimun(moveCAN = FALSE))
   expect_silent(esp_get_capimun(moveCAN = c(0, 10)))

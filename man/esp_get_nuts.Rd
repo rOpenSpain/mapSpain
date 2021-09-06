@@ -181,8 +181,20 @@ MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 qtm(MixingCodes, main.title = "Mixing codes")
 }
 \seealso{
-\link{esp_nuts.sf}, \code{\link[=esp_get_country]{esp_get_country()}}, \code{\link[giscoR:gisco_get]{giscoR::gisco_get_nuts()}},
-\code{\link[=esp_dict_region_code]{esp_dict_region_code()}}, \link{esp_codelist}
-.
+\code{\link[giscoR:gisco_get]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
+
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_prov}()}
+
+Other nuts: 
+\code{\link{esp_nuts.sf}}
 }
+\concept{nuts}
 \concept{political}

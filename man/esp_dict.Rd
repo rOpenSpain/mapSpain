@@ -25,7 +25,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 }}
 
 \item{all}{Logical. Should the function return all names or not?
-On \code{FALSE} it returns a character vector. See Value.}
+On \code{FALSE} it returns a character vector. See \strong{Value}.}
 }
 \value{
 \code{\link[=esp_dict_region_code]{esp_dict_region_code()}} returns a vector of characters.
@@ -89,5 +89,12 @@ esp_dict_translate(vals, lang = "eu")
 esp_dict_translate(vals, lang = "ga")
 
 esp_dict_translate(vals, lang = "ga", all = TRUE)
+}
+\seealso{
+Other dictionary: 
+\code{\link{esp_codelist}}
+
+Other dictionary: 
+\code{\link{esp_codelist}}
 }
 \concept{dictionary}

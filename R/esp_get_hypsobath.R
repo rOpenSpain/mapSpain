@@ -9,7 +9,7 @@
 #' * **Bathymetry** is the measurement of the depth of water in oceans, rivers,
 #'   or lakes.
 #'
-#' @concept natural
+#' @family natural
 #'
 #' @return A `sf` polygon or line object.
 #'
@@ -27,8 +27,6 @@
 #' @inheritParams esp_get_nuts
 #'
 #' @inheritSection  esp_get_nuts  About caching
-#'
-#' @seealso [esp_get_hydrobasin()], [esp_get_rivers()]
 #'
 #' @details
 #' Metadata available on

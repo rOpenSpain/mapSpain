@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -50,5 +50,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-X-schema.org-applicationCategory: Cartography
+X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: https://ropenspain.es/
+X-schema.org-keywords: rOpenSpain, tiles, r, maps, spatial, rstats,
+    r-package, municipalities, Spain, gisco, provinces, ign,
+    administrative-boundaries, ccaa, static-tiles

@@ -6,9 +6,10 @@
 #' lines and polygons to be used when the Canary Islands are displayed
 #' as an inset.
 #'
-#' * [esp_get_can_box()] is used to draw lines around the displaced Canary Islands.
+#' * [esp_get_can_box()] is used to draw lines around the displaced Canary
+#'   Islands.
 #'
-#' @concept political
+#' @family political
 #'
 #' @rdname esp_get_can_box
 #'
@@ -16,7 +17,6 @@
 #'
 #' @return A `sf` polygon or line depending of `style` parameter.
 #'
-#' @seealso [esp_get_nuts()], [esp_get_ccaa()], [esp_get_prov()]
 #'
 #' @export
 #'
@@ -121,15 +121,15 @@ esp_get_can_box <- function(style = "right",
   }
 
 
-  CAN <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
+  can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
 
-  bbox <- sf::st_bbox(CAN)
+  bbox <- sf::st_bbox(can)
 
 
   if (style == "box" | style == "poly") {
     bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 
-    lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(CAN))
+    lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(can))
     if (style == "box") {
       lall <- sf::st_cast(lall, "LINESTRING")
     }
@@ -144,7 +144,7 @@ esp_get_can_box <- function(style = "right",
 
     pall <- c(p1, p2, p3, p4)
     lall <- sf::st_linestring(sf::st_coordinates(pall))
-    lall <- sf::st_sfc(lall, crs = sf::st_crs(CAN))
+    lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   } else if (style == "left") {
     bbox <- bbox + c(-0.5, 0, 0, 0.3)
 
@@ -155,7 +155,7 @@ esp_get_can_box <- function(style = "right",
 
     pall <- c(p1, p2, p3, p4)
     lall <- sf::st_linestring(sf::st_coordinates(pall))
-    lall <- sf::st_sfc(lall, crs = sf::st_crs(CAN))
+    lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   }
 
   moving <- FALSE
@@ -172,10 +172,10 @@ esp_get_can_box <- function(style = "right",
       offset <- offset + as.double(coords)
     }
 
-    CAN <- sf::st_transform(lall, 3857) + offset
-    CAN <- sf::st_sfc(CAN, crs = 3857)
-    CAN <- sf::st_transform(CAN, sf::st_crs(lall))
-    lall <- CAN
+    can <- sf::st_transform(lall, 3857) + offset
+    can <- sf::st_sfc(can, crs = 3857)
+    can <- sf::st_transform(can, sf::st_crs(lall))
+    lall <- can
   }
 
   # Transform
@@ -187,7 +187,6 @@ esp_get_can_box <- function(style = "right",
 
 #' @rdname esp_get_can_box
 #'
-#' @concept political
 #'
 #' @description
 #' * [esp_get_can_provinces()] is used to draw a separator line between the two
@@ -231,10 +230,10 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
       offset <- offset + as.double(coords)
     }
 
-    CAN <- sf::st_transform(lall, 3857) + offset
-    CAN <- sf::st_sfc(CAN, crs = 3857)
-    CAN <- sf::st_transform(CAN, sf::st_crs(lall))
-    lall <- CAN
+    can <- sf::st_transform(lall, 3857) + offset
+    can <- sf::st_sfc(can, crs = 3857)
+    can <- sf::st_transform(can, sf::st_crs(lall))
+    lall <- can
   }
 
   # Transform

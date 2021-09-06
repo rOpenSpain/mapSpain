@@ -168,7 +168,14 @@ tm_shape(allprovs, point.per = "feature") +
   )
 }
 \seealso{
-\code{\link[=esp_get_hex_prov]{esp_get_hex_prov()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()}
 }
 \concept{political}

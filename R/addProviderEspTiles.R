@@ -4,7 +4,8 @@
 #' Include tiles of public Spanish organisms to a
 #' [leaflet::leaflet()] map.
 #'
-#' @concept imagery
+#' @family imagery utilities
+#' @seealso [leaflet::leaflet()], [leaflet::addTiles()]
 #'
 #' @rdname addProviderEspTiles
 #' @name addProviderEspTiles
@@ -16,8 +17,6 @@
 #' @return A map object generated with [leaflet::leaflet()].
 #'
 #'
-#' @seealso [leaflet.providersESP.df], [esp_getTiles()],
-#' [leaflet::leaflet()], [leaflet::addTiles()]
 #'
 #' @export
 #'
@@ -160,8 +159,6 @@ addProviderEspTiles <- function(map,
 
 #' @rdname addProviderEspTiles
 #' @name providerEspTileOptions
-#'
-#' @concept imagery
 #'
 #' @details
 #' [providerEspTileOptions()] is a wrapper of

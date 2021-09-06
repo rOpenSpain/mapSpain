@@ -4,11 +4,10 @@
 #' Returns the boundaries of Spain as a single `sf` polygon at a
 #' specified scale.
 #'
-#' @concept political
+#' @family political
 #'
 #' @return A `sf` polygon object.
 #'
-#' @seealso [esp_get_nuts()]
 #'
 #' @export
 #'

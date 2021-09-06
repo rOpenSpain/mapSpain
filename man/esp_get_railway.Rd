@@ -92,6 +92,7 @@ tm_shape(provs, bbox = c(-7.5, 38, -2.5, 41)) +
 }
 }
 \seealso{
-\code{\link[=esp_get_roads]{esp_get_roads()}}
+Other infrastructure: 
+\code{\link{esp_get_roads}()}
 }
 \concept{infrastructure}

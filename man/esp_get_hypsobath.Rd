@@ -142,6 +142,8 @@ tm_shape(hypsobath, bbox = c(-9.5, 35.8, 4.4, 44)) +
 }
 }
 \seealso{
-\code{\link[=esp_get_hydrobasin]{esp_get_hydrobasin()}}, \code{\link[=esp_get_rivers]{esp_get_rivers()}}
+Other natural: 
+\code{\link{esp_get_hydrobasin}()},
+\code{\link{esp_get_rivers}()}
 }
 \concept{natural}

@@ -171,7 +171,21 @@ tm_shape(Base_pop) +
   )
 }
 \seealso{
-\code{\link[=esp_get_nuts]{esp_get_nuts()}}, \link{esp_munic.sf}, \code{\link[giscoR:gisco_get]{giscoR::gisco_get_lau()}},
-\link{esp_codelist}, \code{\link[base:regex]{base::regex()}}
+\code{\link[giscoR:gisco_get]{giscoR::gisco_get_lau()}}, \code{\link[base:regex]{base::regex()}}.
+
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
+
+Other municipalities: 
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_munic.sf}}
 }
+\concept{municipalities}
 \concept{political}

@@ -4,7 +4,7 @@
 #' Loads a `sf` polygon object containing areas with the required
 #' hydrographic elements of Spain.
 #'
-#' @concept natural
+#' @family natural
 #'
 #' @return A `sf` polygon object.
 #'

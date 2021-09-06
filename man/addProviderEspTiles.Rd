@@ -79,9 +79,12 @@ PuertadelSol <-
 PuertadelSol
 }
 \seealso{
-\link{leaflet.providersESP.df}, \code{\link[=esp_getTiles]{esp_getTiles()}},
 \code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:map-layers]{leaflet::addTiles()}}
 
 \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
+
+Other imagery utilities: 
+\code{\link{esp_getTiles}()},
+\code{\link{leaflet.providersESP.df}}
 }
-\concept{imagery}
+\concept{imagery utilities}

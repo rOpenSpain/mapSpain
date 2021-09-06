@@ -201,10 +201,10 @@ esp_hlp_all2prov <- function(region) {
 
 
   if (length(arenuts) > 0) {
-    NUTSEND <- nuts_init[grep("^ES[[:digit:]]", nuts_init)]
-    CPROEND <- nuts_init[-grep("^ES[[:digit:]]", nuts_init)]
+    nutsend <- nuts_init[grep("^ES[[:digit:]]", nuts_init)]
+    cproend <- nuts_init[-grep("^ES[[:digit:]]", nuts_init)]
 
-    ORIGINALNAMES <- region[grep("^ES[[:digit:]]", nuts_init)]
+    originalnames <- region[grep("^ES[[:digit:]]", nuts_init)]
 
     # Modify NUTS
 
@@ -214,41 +214,41 @@ esp_hlp_all2prov <- function(region) {
         grep("ES7", dfall$nuts3.code)
       ), ]$nuts3.code
 
-    novalid <- NUTSEND %in% noprovs
+    novalid <- nutsend %in% noprovs
 
 
     if (any(novalid)) {
       warning(
-        paste0(ORIGINALNAMES[novalid], collapse = ", "),
+        paste0(originalnames[novalid], collapse = ", "),
         " does not return a province"
       )
     }
 
-    NUTSEND <- NUTSEND[!novalid]
+    nutsend <- nutsend[!novalid]
 
     # Get NUTS3 from NUTS1
-    lev1 <- nchar(NUTSEND) == 3
+    lev1 <- nchar(nutsend) == 3
 
 
     if (any(lev1)) {
       nutslev1 <-
-        dfall[dfall$nuts1.code %in% NUTSEND[lev1], ]$nuts3.code
-      NUTSEND <- NUTSEND[lev1 == FALSE]
-      NUTSEND <- unique(c(NUTSEND, nutslev1))
+        dfall[dfall$nuts1.code %in% nutsend[lev1], ]$nuts3.code
+      nutsend <- nutsend[lev1 == FALSE]
+      nutsend <- unique(c(nutsend, nutslev1))
     }
 
     # Get NUTS3 from NUTS2
-    lev2 <- nchar(NUTSEND) == 4
+    lev2 <- nchar(nutsend) == 4
 
 
     if (any(lev2)) {
       nutslev2 <-
-        dfall[dfall$nuts2.code %in% NUTSEND[lev2], ]$nuts3.code
-      NUTSEND <- NUTSEND[lev2 == FALSE]
-      NUTSEND <- unique(c(NUTSEND, nutslev2))
+        dfall[dfall$nuts2.code %in% nutsend[lev2], ]$nuts3.code
+      nutsend <- nutsend[lev2 == FALSE]
+      nutsend <- unique(c(nutsend, nutslev2))
     }
 
-    final <- unique(c(NUTSEND, CPROEND))
+    final <- unique(c(nutsend, cproend))
   } else {
     final <- nuts_init
   }

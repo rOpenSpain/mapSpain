@@ -7,14 +7,14 @@
 #' Note that this differs of the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic()].
 #'
-#' @concept political
+#' @family political
+#' @family municipalities
 #'
 #' @return A `sf` point object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
-#' @seealso [esp_get_munic()], [esp_munic.sf], [esp_codelist]
 #'
 #' @param year Release year. See **Details** for years available.
 #'
@@ -184,21 +184,21 @@ esp_get_capimun <- function(year = Sys.Date(),
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
-      CAN <- data_sf[grep("05", data_sf$codauto), ]
+      penin <- data_sf[-grep("05", data_sf$codauto), ]
+      can <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      if (nrow(PENIN) > 0) {
-        data_sf <- rbind(PENIN, CAN)
+      if (nrow(penin) > 0) {
+        data_sf <- rbind(penin, can)
       } else {
-        data_sf <- CAN
+        data_sf <- can
       }
     }
   }

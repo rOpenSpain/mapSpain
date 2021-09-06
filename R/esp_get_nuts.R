@@ -16,8 +16,9 @@
 #'
 #' @export
 #'
-#' @concept political
-#'
+#' @family political
+#' @family nuts
+#' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
 #' @return A `sf` object specified by `spatialtype`.
 #'
@@ -27,10 +28,6 @@
 #'
 #' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
 #'
-#'
-#' @seealso [esp_nuts.sf], [esp_get_country()], [giscoR::gisco_get_nuts()],
-#'  [esp_dict_region_code()], [esp_codelist]
-#'   .
 #'
 #' @param year Release year of the file. One of `"2003"`, `"2006"`,
 #'   `"2010"`, `"2013"`, `"2016"`  or `"2021"`.
@@ -280,21 +277,21 @@ esp_get_nuts <- function(year = "2016",
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("ES7", data_sf$NUTS_ID), ]
-      CAN <- data_sf[grep("ES7", data_sf$NUTS_ID), ]
+      penin <- data_sf[-grep("ES7", data_sf$NUTS_ID), ]
+      can <- data_sf[grep("ES7", data_sf$NUTS_ID), ]
 
-      # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      # Move can
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      if (nrow(PENIN) > 0) {
-        data_sf <- rbind(PENIN, CAN)
+      if (nrow(penin) > 0) {
+        data_sf <- rbind(penin, can)
       } else {
-        data_sf <- CAN
+        data_sf <- can
       }
     }
   }

@@ -42,7 +42,8 @@ When plotting Spain, it is usual to represent the Canary Islands as an inset
 lines and polygons to be used when the Canary Islands are displayed
 as an inset.
 \itemize{
-\item \code{\link[=esp_get_can_box]{esp_get_can_box()}} is used to draw lines around the displaced Canary Islands.
+\item \code{\link[=esp_get_can_box]{esp_get_can_box()}} is used to draw lines around the displaced Canary
+Islands.
 }
 
 \itemize{
@@ -138,6 +139,14 @@ tm_shape(Countries, bbox = c(-10, 34.6, 4.3, 44)) +
 }
 }
 \seealso{
-\code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{political}

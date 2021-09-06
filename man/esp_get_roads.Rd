@@ -97,6 +97,7 @@ tm_shape(country) +
 }
 }
 \seealso{
-\code{\link[=esp_get_railway]{esp_get_railway()}}
+Other infrastructure: 
+\code{\link{esp_get_railway}()}
 }
 \concept{infrastructure}

@@ -1,6 +1,8 @@
 #' Spanish Code Translation Data Frame
 #'
-#' @concept datasets
+#' @family datasets
+#' @family political
+#' @family dictionary
 #'
 #' @name esp_codelist
 #'
@@ -69,7 +71,8 @@ NULL
 
 #' All NUTS `POLYGON` object of Spain
 #'
-#' @concept datasets
+#' @family datasets
+#' @family nuts
 #'
 #' @name esp_nuts.sf
 #'
@@ -85,7 +88,6 @@ NULL
 #'
 #' @encoding UTF-8
 #'
-#' @seealso [esp_get_nuts()]
 #'
 #' @format
 #' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
@@ -106,7 +108,8 @@ NULL
 
 #' All Municipalities `POLYGON` object of Spain (2019)
 #'
-#' @concept datasets
+#' @family datasets
+#' @family municipalities
 #'
 #' @name esp_munic.sf
 #'
@@ -122,7 +125,7 @@ NULL
 #'
 #' @encoding UTF-8
 #'
-#' @seealso [esp_get_munic()]
+#' @seealso [esp_get_munic()].
 #' @format
 #' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
 #' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and fields:
@@ -142,7 +145,7 @@ NULL
 
 #' @title Population by municipality (2019)
 #'
-#' @concept datasets
+#' @family datasets
 #'
 #' @name pobmun19
 #'
@@ -165,7 +168,8 @@ NULL
 
 #' @title Public WMS and WMTS of Spain
 #'
-#' @concept datasets
+#' @family datasets
+#' @family imagery utilities
 #'
 #' @name leaflet.providersESP.df
 #'
@@ -184,8 +188,6 @@ NULL
 #' **v1.2.0**.
 #'
 #' @encoding UTF-8
-#'
-#' @seealso [esp_getTiles()], [addProviderEspTiles()].
 #'
 #' @format
 #' A data frame object with a list of the required parameters for calling

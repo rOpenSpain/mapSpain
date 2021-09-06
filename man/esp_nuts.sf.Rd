@@ -63,6 +63,14 @@ tm_shape(nuts3) +
   )
 }
 \seealso{
-\code{\link[=esp_get_nuts]{esp_get_nuts()}}
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_munic.sf}},
+\code{\link{leaflet.providersESP.df}},
+\code{\link{pobmun19}}
+
+Other nuts: 
+\code{\link{esp_get_nuts}()}
 }
 \concept{datasets}
+\concept{nuts}

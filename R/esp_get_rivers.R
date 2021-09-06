@@ -4,7 +4,7 @@
 #' Loads a `sf` polygon or line object representing rivers, channels,
 #' reservoirs and other wetlands of Spain
 #'
-#' @concept natural
+#' @family natural
 #'
 #' @return A `sf` polygon or line object.
 #'

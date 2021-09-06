@@ -38,9 +38,9 @@ options:
 run this command on each session (Similar to \code{install = FALSE}).
 \item Set \code{options(mapSpain_cache_dir = "cache_dir")}. Similar to the previous
 option.
-\item Write this line on your .Renviron file: \code{MAPSPAIN_CACHE_DIR = "cache_dir"}
-(same behavior than \code{install = TRUE}). This would store your \code{cache_dir}
-permanently.
+\item Write this line on your .Renviron file:
+\code{MAPSPAIN_CACHE_DIR = "cache_dir"} (same behavior than
+\code{install = TRUE}). This would store your \code{cache_dir} permanently.
 }
 }
 \examples{
@@ -53,6 +53,6 @@ esp_set_cache_dir(verbose = TRUE)
 Sys.getenv("MAPSPAIN_CACHE_DIR")
 }
 \seealso{
-\code{\link[rappdirs:user_cache_dir]{rappdirs::user_cache_dir()}}
+\code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
 }
-\concept{helper}
+\concept{cache utilities}

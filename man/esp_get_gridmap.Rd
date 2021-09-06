@@ -117,6 +117,14 @@ tm_shape(esp, bbox = c(-13.5, 32, 7, 45)) +
   tm_layout(main.title = "Grid: Provinces")
 }
 \seealso{
-\code{\link[=esp_get_ccaa]{esp_get_ccaa()}}, \code{\link[=esp_get_prov]{esp_get_prov()}}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{political}

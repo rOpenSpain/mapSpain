@@ -31,18 +31,18 @@ A \code{sf} object including all municipalities of Spain as provided by GISCO
 \examples{
 data("esp_munic.sf")
 
-Teruel_cpro <- esp_dict_region_code("Teruel", destination = "cpro")
+teruel_cpro <- esp_dict_region_code("Teruel", destination = "cpro")
 
-Teruel_sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel_cpro, ]
-Teruel_city <- Teruel_sf[Teruel_sf$name == "Teruel", ]
+teruel_sf <- esp_munic.sf[esp_munic.sf$cpro == teruel_cpro, ]
+teruel_city <- teruel_sf[teruel_sf$name == "Teruel", ]
 
 # Plot
 
 library(tmap)
 
-tm_shape(Teruel_sf) +
+tm_shape(teruel_sf) +
   tm_polygons("#FDFBEA") +
-  tm_shape(Teruel_city) +
+  tm_shape(teruel_city) +
   tm_fill(
     col = "name",
     palette = "#C12838",
@@ -62,6 +62,17 @@ tm_shape(Teruel_sf) +
   )
 }
 \seealso{
-\code{\link[=esp_get_munic]{esp_get_munic()}}
+\code{\link[=esp_get_munic]{esp_get_munic()}}.
+
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_nuts.sf}},
+\code{\link{leaflet.providersESP.df}},
+\code{\link{pobmun19}}
+
+Other municipalities: 
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_munic}()}
 }
 \concept{datasets}
+\concept{municipalities}

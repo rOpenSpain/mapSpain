@@ -99,4 +99,9 @@ tm_shape(and) +
   tm_polygons(col = "skyblue", alpha = 0.5, border.col = "skyblue", lwd = 2)
 }
 }
+\seealso{
+Other natural: 
+\code{\link{esp_get_hydrobasin}()},
+\code{\link{esp_get_hypsobath}()}
+}
 \concept{natural}

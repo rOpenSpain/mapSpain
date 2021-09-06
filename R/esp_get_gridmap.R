@@ -7,11 +7,10 @@
 #' @rdname esp_get_gridmap
 #' @name  esp_get_gridmap
 #'
-#' @concept political
+#' @family political
 #'
 #' @return A `sf` POLYGON object.
 #'
-#' @seealso [esp_get_ccaa()], [esp_get_prov()], [esp_codelist]
 #'
 #' @export
 #'
@@ -78,8 +77,6 @@ esp_get_hex_prov <- function(prov = NULL) {
 
 #' @rdname esp_get_gridmap
 #'
-#' @concept political
-#'
 #' @export
 esp_get_hex_ccaa <- function(ccaa = NULL) {
   region <- ccaa
@@ -111,8 +108,6 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
 }
 
 #' @rdname esp_get_gridmap
-#'
-#' @concept political
 #'
 #' @export
 esp_get_grid_prov <- function(prov = NULL) {
@@ -148,8 +143,6 @@ esp_get_grid_prov <- function(prov = NULL) {
 }
 
 #' @rdname esp_get_gridmap
-#'
-#' @concept political
 #'
 #' @export
 esp_get_grid_ccaa <- function(ccaa = NULL) {

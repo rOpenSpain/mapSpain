@@ -2,7 +2,7 @@
 #'
 #' Converts long subdivision names into different coding schemes and languages.
 #'
-#' @concept dictionary
+#' @family dictionary
 #'
 #' @rdname esp_dict
 #'
@@ -215,7 +215,7 @@ esp_dict_region_code <- function(sourcevar,
   return(out)
 }
 
-#' @concept dictionary
+#' @family dictionary
 #'
 #' @rdname esp_dict
 #'
@@ -235,7 +235,7 @@ esp_dict_region_code <- function(sourcevar,
 #'   * `"eu"`: Basque
 #'
 #' @param all Logical. Should the function return all names or not?
-#'   On `FALSE` it returns a character vector. See Value.
+#'   On `FALSE` it returns a character vector. See **Value**.
 #'
 #' @examples
 #'

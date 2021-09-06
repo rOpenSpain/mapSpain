@@ -1,0 +1,66 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+on:
+  push:
+    paths:
+      - DESCRIPTION
+      - inst/CITATION
+  workflow_dispatch:
+
+name: Update CITATION.cff
+
+jobs:
+  update-citation-cff:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+          install-r: false
+
+      # This is needed for workflows running on
+      # ubuntu-20.04 or later
+      - name: Install V8
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y libv8-dev
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: |
+            dieghernan/cffr
+
+# When on CRAN, use instead
+         # extra-packages: |
+         #  cffr
+
+
+      - name: Update CITATION.cff
+        run: |
+
+          library(cffr)
+
+          # Customize with your own code
+          # Mind the indentation!
+
+          cff_write(keys = list(
+                            message="To cite package 'mapSpain' in publications use:",
+                            doi = "10.5281/zenodo.4318024"
+                            )
+                          )
+
+        shell: Rscript {0}
+
+      - name: Commit results
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add -A
+          git commit -m 'Update CITATION.cff' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+
+
+

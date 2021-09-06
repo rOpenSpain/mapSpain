@@ -179,7 +179,14 @@ tm_shape(europe, bbox = c(23, 14, 74, 55) * 10e4) +
 }
 }
 \seealso{
-\code{\link[=esp_get_hex_ccaa]{esp_get_hex_ccaa()}}, \code{\link[=esp_get_nuts]{esp_get_nuts()}}, \code{\link[=esp_get_prov]{esp_get_prov()}},
-\code{\link[=esp_get_munic]{esp_get_munic()}}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{political}

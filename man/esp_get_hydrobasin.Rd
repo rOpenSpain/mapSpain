@@ -92,4 +92,9 @@ tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
   tm_layout(bg.color = "grey95")
 }
 }
+\seealso{
+Other natural: 
+\code{\link{esp_get_hypsobath}()},
+\code{\link{esp_get_rivers}()}
+}
 \concept{natural}

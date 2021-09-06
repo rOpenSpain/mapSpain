@@ -134,6 +134,15 @@ library(tibble)
 as_tibble(leaflet.providersESP.df)
 }
 \seealso{
-\code{\link[=esp_getTiles]{esp_getTiles()}}, \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_munic.sf}},
+\code{\link{esp_nuts.sf}},
+\code{\link{pobmun19}}
+
+Other imagery utilities: 
+\code{\link{addProviderEspTiles}()},
+\code{\link{esp_getTiles}()}
 }
 \concept{datasets}
+\concept{imagery utilities}

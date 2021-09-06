@@ -8,7 +8,7 @@
 #' * [esp_get_ccaa()] uses GISCO (Eurostat) as source. Please use
 #'   [giscoR::gisco_attributions()]
 #'
-#' @concept political
+#' @family political
 #'
 #' @rdname esp_get_ccaa
 #'
@@ -16,9 +16,6 @@
 #'
 #' @return A `sf` object specified by `spatialtype`.
 #'
-#' @seealso
-#' [esp_get_hex_ccaa()], [esp_get_nuts()], [esp_get_prov()],
-#' [esp_get_munic()], [esp_codelist]
 #'
 #' @export
 #'
@@ -156,8 +153,6 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 #' @rdname esp_get_ccaa
 #' @name esp_get_ccaa_siane
 #'
-#' @concept political
-#'
 #' @description
 #' * [esp_get_ccaa_siane()] uses CartoBase ANE as source, provided by
 #'   Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
@@ -286,21 +281,21 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
       }
 
       data_sf <- sf::st_transform(data_sf, 3857)
-      PENIN <- data_sf[-grep("05", data_sf$codauto), ]
-      CAN <- data_sf[grep("05", data_sf$codauto), ]
+      penin <- data_sf[-grep("05", data_sf$codauto), ]
+      can <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
-      CAN <- sf::st_sf(
-        sf::st_drop_geometry(CAN),
-        geometry = sf::st_geometry(CAN) + offset,
-        crs = sf::st_crs(CAN)
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can) + offset,
+        crs = sf::st_crs(can)
       )
 
       # Regenerate
-      if (nrow(PENIN) > 0) {
-        data_sf <- rbind(PENIN, CAN)
+      if (nrow(penin) > 0) {
+        data_sf <- rbind(penin, can)
       } else {
-        data_sf <- CAN
+        data_sf <- can
       }
     }
   }

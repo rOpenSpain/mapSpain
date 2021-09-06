@@ -1,6 +1,7 @@
 #' Set your `mapSpain` cache dir
 #'
-#' @concept helper
+#' @family cache utilities
+#' @seealso [rappdirs::user_config_dir()]
 #'
 #' @return Invisible value
 #' @description
@@ -14,9 +15,9 @@
 #'     run this command on each session (Similar to `install = FALSE`).
 #'   * Set `options(mapSpain_cache_dir = "cache_dir")`. Similar to the previous
 #'     option.
-#'   * Write this line on your .Renviron file: `MAPSPAIN_CACHE_DIR = "cache_dir"`
-#'     (same behavior than `install = TRUE`). This would store your `cache_dir`
-#'     permanently.
+#'   * Write this line on your .Renviron file:
+#'     `MAPSPAIN_CACHE_DIR = "cache_dir"` (same behavior than
+#'     `install = TRUE`). This would store your `cache_dir` permanently.
 #'
 #' @inheritParams esp_get_nuts
 #' @param cache_dir A path to a cache directory.
@@ -25,7 +26,6 @@
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `MAPSPAIN_CACHE_DIR` that you already have in local machine.
 #'
-#' @seealso [rappdirs::user_cache_dir()]
 #'
 #' @examples
 #'

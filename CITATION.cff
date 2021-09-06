@@ -1,13 +1,42 @@
 cff-version: 1.2.0
-message: "To cite package 'mapSpain' in publications use:"
-authors:
-- family-names: "Hernangómez"
-  given-names: "Diego"
-  orcid: "https://orcid.org/0000-0001-8457-4658"
-  affiliation: "rOpenSpain"
-title: "mapSpain"
+message: 'To cite package ''mapSpain'' in publications use:'
+type: software
+license: GPL-3.0-only
+title: 'mapSpain: Administrative Boundaries of Spain'
+version: 0.3.0.9000
 doi: 10.5281/zenodo.4318024
-repository-code: "https://github.com/rOpenSpain/mapSpain"
+abstract: Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities)
+  based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and
+  'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It
+  also provides a 'leaflet' plugin and the ability of downloading and processing static
+  tiles.
+authors:
+- family-names: Hernangómez
+  given-names: Diego
+  email: diego.hernangomezherrero@gmail.com
+  orcid: https://orcid.org/0000-0001-8457-4658
+  affiliation: rOpenSpain
+repository-code: https://github.com/rOpenSpain/mapSpain
 url: https://ropenspain.github.io/mapSpain/
-license: GPL-3.0
-abstract: "Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities) based on the GISCO Eurostat database and CartoBase SIANE from Instituto Geografico Nacional. It also provides a leaflet plugin and the ability of downloading and processing static tiles"
+contact:
+- family-names: Hernangómez
+  given-names: Diego
+  email: diego.hernangomezherrero@gmail.com
+  orcid: https://orcid.org/0000-0001-8457-4658
+  affiliation: rOpenSpain
+keywords:
+- rOpenSpain
+- tiles
+- r
+- maps
+- spatial
+- rstats
+- r-package
+- municipalities
+- Spain
+- gisco
+- provinces
+- ign
+- administrative-boundaries
+- ccaa
+- static-tiles

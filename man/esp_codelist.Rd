@@ -68,4 +68,26 @@ library(tibble)
 
 glimpse(as_tibble(esp_codelist))
 }
+\seealso{
+Other datasets: 
+\code{\link{esp_munic.sf}},
+\code{\link{esp_nuts.sf}},
+\code{\link{leaflet.providersESP.df}},
+\code{\link{pobmun19}}
+
+Other political: 
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
+
+Other dictionary: 
+\code{\link{esp_dict_region_code}()}
+}
 \concept{datasets}
+\concept{dictionary}
+\concept{political}

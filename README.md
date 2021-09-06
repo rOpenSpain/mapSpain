@@ -239,7 +239,7 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
--   [**tmap**](https://mtennekes.github.io/tmap/)
+-   [**tmap**](https://github.com/r-tmap/tmap)
 -   [**mapsf**](https://riatelab.github.io/mapsf/)
 -   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
     [**ggspatial**](https://github.com/paleolimbot/ggspatial)

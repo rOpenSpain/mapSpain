@@ -6,6 +6,8 @@
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
 \strong{v1.2.0}.
+
+For plotting, you can use \code{\link[raster:plotRGB]{raster::plotRGB()}}, \code{\link[tmap:tm_raster]{tmap::tm_rgb()}}.
 }
 \usage{
 esp_getTiles(
@@ -123,9 +125,10 @@ tm_shape(Tile, raster.downsample = FALSE) +
 }
 }
 \seealso{
-\link{leaflet.providersESP.df}, \code{\link[raster:brick]{raster::brick()}}
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+\code{\link[raster:brick]{raster::brick()}}.
 
-For plotting, you can use \code{\link[raster:plotRGB]{raster::plotRGB()}}, \code{\link[tmap:tm_raster]{tmap::tm_rgb()}}.
+Other imagery utilities: 
+\code{\link{addProviderEspTiles}()},
+\code{\link{leaflet.providersESP.df}}
 }
-\concept{imagery}
+\concept{imagery utilities}
