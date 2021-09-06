@@ -1,4 +1,4 @@
-#' Include base tiles of Spanish public administrations on a `leaflet` map
+#' Include base tiles of Spanish public administrations on a **leaflet** map
 #'
 #' @description
 #' Include tiles of public Spanish organisms to a

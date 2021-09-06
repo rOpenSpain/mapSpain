@@ -2,29 +2,31 @@
 % Please edit documentation in R/esp_cache.R
 \name{esp_set_cache_dir}
 \alias{esp_set_cache_dir}
-\title{Set your \code{mapSpain} cache dir}
+\title{Set your \strong{mapSpain} cache dir}
 \usage{
 esp_set_cache_dir(
-  cache_dir = rappdirs::user_cache_dir("mapSpain", "R"),
-  overwrite = TRUE,
-  install = TRUE,
+  cache_dir,
+  overwrite = FALSE,
+  install = FALSE,
   verbose = FALSE
 )
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory.}
+\item{cache_dir}{A path to a cache directory. On missing value the function
+would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
 \code{MAPSPAIN_CACHE_DIR} that you already have in local machine.}
 
 \item{install}{if \code{TRUE}, will install the key in your local machine for
-use in future sessions.  Defaults to \code{FALSE.}}
+use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
+this parameter is set to \code{FALSE} automatically.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
 \value{
-Invisible value
+An (invisible) character with the path to your \code{cache_dir}.
 }
 \description{
 This function will store your \code{cache_dir} path on your local machine and
@@ -37,9 +39,10 @@ options:
 \item Run \code{Sys.setenv(MAPSPAIN_CACHE_DIR = "cache_dir")}. You would need to
 run this command on each session (Similar to \code{install = FALSE}).
 \item Set \code{options(mapSpain_cache_dir = "cache_dir")}. Similar to the previous
-option.
+option. This is \strong{not recommended any more}, and it is provided for
+backwards compatibility purposes.
 \item Write this line on your .Renviron file:
-\code{MAPSPAIN_CACHE_DIR = "cache_dir"} (same behavior than
+\code{MAPSPAIN_CACHE_DIR = "value_for_cache_dir"} (same behavior than
 \code{install = TRUE}). This would store your \code{cache_dir} permanently.
 }
 }
@@ -54,5 +57,8 @@ Sys.getenv("MAPSPAIN_CACHE_DIR")
 }
 \seealso{
 \code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
+
+Other cache utilities: 
+\code{\link{esp_clear_cache}()}
 }
 \concept{cache utilities}
