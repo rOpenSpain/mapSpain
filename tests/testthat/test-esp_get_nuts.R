@@ -12,7 +12,7 @@ expect_message(esp_get_nuts(verbose = TRUE))
 expect_error(esp_get_nuts(resolution = 32))
 expect_error(esp_get_nuts(spatialtype = "XX"))
 expect_error(esp_get_nuts(nuts_level = "XX"))
-expect_error(esp_get_nuts(region = "Maidrid"))
+expect_warning(expect_error(esp_get_nuts(region = "Maidrid")))
 
 # Check all nuts codes
 a <- unique(c(

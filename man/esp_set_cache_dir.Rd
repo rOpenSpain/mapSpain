@@ -8,7 +8,7 @@ esp_set_cache_dir(
   cache_dir,
   overwrite = FALSE,
   install = FALSE,
-  verbose = FALSE
+  verbose = TRUE
 )
 }
 \arguments{

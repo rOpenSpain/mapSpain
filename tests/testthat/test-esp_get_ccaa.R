@@ -34,7 +34,7 @@ test_that("CCAA", {
 
 # Test siane
 test_that("ccaa online", {
-  expect_error(esp_get_ccaa_siane("FFF"))
+  expect_warning(expect_error(esp_get_ccaa_siane("FFF")))
   expect_error(esp_get_ccaa_siane(epsg = "FFF"))
 
   skip_if_not(
@@ -53,7 +53,7 @@ test_that("ccaa online", {
   expect_silent(esp_get_ccaa_siane(moveCAN = c(1, 2)))
   expect_silent(esp_get_ccaa_siane(ccaa = c("Galicia", "ES7", "Centro")))
   expect_warning(esp_get_ccaa_siane(ccaa = "Menorca"))
-  expect_error(esp_get_ccaa_siane(ccaa = "ES6x"))
+  expect_warning(expect_error(esp_get_ccaa_siane(ccaa = "ES6x")))
 
 
   expect_equal(

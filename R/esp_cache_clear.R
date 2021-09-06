@@ -37,6 +37,7 @@
 esp_clear_cache <- function(config = TRUE,
                             cached_data = TRUE,
                             verbose = FALSE) {
+  # nocov start
   config_dir <- rappdirs::user_config_dir("mapSpain", "R")
   data_dir <- esp_hlp_detect_cache_dir()
   if (config && dir.exists(config_dir)) {
@@ -55,4 +56,5 @@ esp_clear_cache <- function(config = TRUE,
 
   # Reset cache dir
   return(invisible())
+  # nocov end
 }

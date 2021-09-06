@@ -42,7 +42,7 @@
 esp_set_cache_dir <- function(cache_dir,
                               overwrite = FALSE,
                               install = FALSE,
-                              verbose = FALSE) {
+                              verbose = TRUE) {
 
   # nocov start
 
