@@ -1,10 +1,9 @@
 cff-version: 1.2.0
-message: 'To cite package ''mapSpain'' in publications use:'
+message: If you use this software, please cite it using these metadata.
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
 version: 0.3.1
-doi: 10.5281/zenodo.4318024
 abstract: Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities)
   based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and
   'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It

@@ -6,10 +6,12 @@ url = 'https://ropenspain.github.io/mapSpain/'
 citEntry(
   ,
   entry = 'manual',
-  title = paste('mapSpain:', 'Administrative Boundaries of Spain'),
-  author = "Diego Hernangómez",
+  title = paste('mapSpain:', meta$Title),
+  author = person(given = "Diego",
+                  family = "Hernangómez"),
   year = year,
+  note = vers,
   url = url,
-  doi = '10.5281/zenodo.4318024',
-  textVersion = paste0('Hernangómez, D. (', year, '). mapSpain: Administrative Boundaries of Spain. ', 'R package. ', 'http://doi.org/10.5281/zenodo.4318024')
+  doi = '10.5281/zenodo.5366622',
+  textVersion = paste0('Hernangómez, D. (', year, '). mapSpain: ', meta$Title, ' R package. ', 'http://doi.org/10.5281/zenodo.5366622')
 )

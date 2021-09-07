@@ -46,11 +46,7 @@ jobs:
           # Customize with your own code
           # Mind the indentation!
 
-          cff_write(keys = list(
-                            message="To cite package 'mapSpain' in publications use:",
-                            doi = "10.5281/zenodo.4318024"
-                            )
-                          )
+          cff_write()
 
         shell: Rscript {0}
 
