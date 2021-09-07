@@ -1,5 +1,7 @@
 url: https://ropenspain.github.io/mapSpain
 
+development:
+  mode: auto
 
 reference:
   - title: "Political"
