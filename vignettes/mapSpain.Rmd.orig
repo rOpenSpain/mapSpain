@@ -55,7 +55,7 @@ agency of Spain.
 esp_set_cache_dir("./path/to/location")
 ```
 
-**mapSpain** relies on [**giscoR**](https://dieghernan.github.io/giscoR/) for
+**mapSpain** relies on [**giscoR**](https://ropengov.github.io/giscoR/) for
 downloading some files, and both packages are well synchronized. Setting the
 same caching directory on both would speed up the data load on your session.
 

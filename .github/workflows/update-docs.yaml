@@ -32,12 +32,6 @@ jobs:
             ropenspain/rostemplate
           needs: website
 
-      - name: Install package
-        run: |
-          devtools::install()
-
-        shell: Rscript {0}
-
       - name: Update docs
         run: |
 
