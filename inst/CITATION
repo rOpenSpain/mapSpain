@@ -12,6 +12,6 @@ citEntry(
   year = year,
   note = vers,
   url = url,
-  doi = '10.5281/zenodo.4318024',
-  textVersion = paste0('Hernangómez, D. (', year, '). mapSpain: ', meta$Title, ' R package. ', 'http://doi.org/10.5281/zenodo.4318024')
+  doi = '10.5281/zenodo.5366622',
+  textVersion = paste0('Hernangómez, D. (', year, '). mapSpain: ', meta$Title, ' R package. ', 'http://doi.org/10.5281/zenodo.5366622')
 )
