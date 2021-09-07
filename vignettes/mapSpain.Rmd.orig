@@ -233,7 +233,7 @@ tm_shape(munic.pop) +
 ## mapSpain and giscoR
 
 If you need to plot Spain along with another countries, consider using
-[**giscoR**](https://dieghernan.github.io/giscoR/) package, that is installed
+[**giscoR**](https://ropengov.github.io/giscoR/) package, that is installed
 as a dependency when you installed **mapSpain**. A basic example:
 
 ```{r giscoR, fig.asp=1}
