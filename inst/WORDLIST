@@ -99,6 +99,7 @@ Orto
 PNOA
 Parcela
 ParquesNaturales
+Precompute
 Puertos
 QUICKFIX
 README
@@ -130,16 +131,19 @@ WaterWet
 YYYY
 ZonasPerifericas
 administratives
+basemaps
 bathymetry
 bezüglich
 ccaa
 centroid
 choropleth
+choropleths
 cldr
 cmun
 codauto
 codecov
 codelist
+config
 cpro
 de
 der
@@ -154,6 +158,7 @@ geospatial
 ggplot
 ggspatial
 giscoR
+github
 hexbin
 https
 hydrographic
@@ -166,7 +171,9 @@ javascript
 lang
 les
 limites
+mapsf
 providersESP
+rOS
 ropenspain
 roxygen
 shortname

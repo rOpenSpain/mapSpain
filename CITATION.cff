@@ -1,9 +1,10 @@
 cff-version: 1.2.0
-message: If you use this software, please cite it using these metadata.
+message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
 version: 0.3.1
+doi: 10.5281/zenodo.5366622
 abstract: Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities)
   based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and
   'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It
@@ -15,6 +16,15 @@ authors:
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
   affiliation: rOpenSpain
+preferred-citation:
+  title: 'mapSpain: Administrative Boundaries of Spain'
+  authors:
+  - family-names: Hernangómez
+    given-names: Diego
+  year: '2021'
+  url: https://ropenspain.github.io/mapSpain/
+  doi: 10.5281/zenodo.5366622
+  type: manual
 repository-code: https://github.com/rOpenSpain/mapSpain
 url: https://ropenspain.github.io/mapSpain/
 contact:
@@ -39,3 +49,6 @@ keywords:
 - administrative-boundaries
 - ccaa
 - static-tiles
+identifiers:
+- type: doi
+  value: 10.5281/zenodo.5366622
