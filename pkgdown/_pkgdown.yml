@@ -52,7 +52,7 @@ reference:
 template:
   package: rostemplate
   params:
-    ganalytics: 'G-PWKD479RCT'
+    ganalytics: 'G-5N21Z0YYJJ'
     docsearch:
       api_key: '2621bfcaa3de971834f4026466317ee7'
       index_name: 'mapSpain'
