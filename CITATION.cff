@@ -1,3 +1,8 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.0.0.9000
+# See also: https://dieghernan.github.io/cffr/
+# -----------------------------------------------------------
+ 
 cff-version: 1.2.0
 message: 'To cite package "mapSpain" in publications use:'
 type: software
@@ -17,6 +22,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
   affiliation: rOpenSpain
 preferred-citation:
+  type: manual
   title: 'mapSpain: Administrative Boundaries of Spain'
   authors:
   - family-names: Hernangómez
@@ -24,7 +30,6 @@ preferred-citation:
   year: '2021'
   url: https://ropenspain.github.io/mapSpain/
   doi: 10.5281/zenodo.5366622
-  type: manual
 repository-code: https://github.com/rOpenSpain/mapSpain
 url: https://ropenspain.github.io/mapSpain/
 contact:
@@ -49,6 +54,3 @@ keywords:
 - administrative-boundaries
 - ccaa
 - static-tiles
-identifiers:
-- type: doi
-  value: 10.5281/zenodo.5366622
