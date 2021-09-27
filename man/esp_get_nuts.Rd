@@ -181,7 +181,7 @@ MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 qtm(MixingCodes, main.title = "Mixing codes")
 }
 \seealso{
-\code{\link[giscoR:gisco_get]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
 
 Other political: 
 \code{\link{esp_codelist}},
