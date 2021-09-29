@@ -69,7 +69,7 @@ esp_set_cache_dir <- function(cache_dir,
     is.logical(overwrite),
     is.logical(install)
   )
-  
+
   # Expand
   cache_dir <- path.expand(cache_dir)
 

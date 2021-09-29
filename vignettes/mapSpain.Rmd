@@ -41,6 +41,7 @@ agency of Spain.
 
 
 ```r
+
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -55,6 +56,7 @@ Some examples of what **mapSpain** can do:
 
 
 ```r
+
 library(mapSpain)
 library(tmap)
 
@@ -73,6 +75,7 @@ tm_shape(country) +
 <img src="basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
+
 # Plot provinces
 
 Andalucia <- esp_get_prov("Andalucia")
@@ -85,6 +88,7 @@ tm_shape(Andalucia) +
 <img src="basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
+
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
@@ -121,6 +125,7 @@ Let's analyze the distribution of women in each autonomous community with
 
 
 ```r
+
 census <- mapSpain::pobmun19
 
 # Extract CCAA from base dataset
@@ -183,6 +188,7 @@ package, however any package that handles `sf` objects (e.g. `ggplot2`, `mapsf`,
 
 
 ```r
+
 # Population density of Spain
 
 library(sf)
@@ -245,6 +251,7 @@ as a dependency when you installed **mapSpain**. A basic example:
 
 
 ```r
+
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -304,6 +311,7 @@ An example of how you can include tiles and shapes to create a static map:
 
 
 ```r
+
 # Get Deltebre - Municipality
 delt <- esp_get_munic(munic = "Deltebre")
 

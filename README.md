@@ -62,6 +62,7 @@ install_github("rOpenSpain/mapSpain")
 This script highlights some features of **mapSpain** :
 
 ``` r
+
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -116,6 +117,7 @@ tm_shape(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
+
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -186,6 +188,7 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
+
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -250,6 +253,7 @@ Some packages recommended for visualization are:
 Please use the following when citing **mapSpain**:
 
 ``` r
+
 citation("mapSpain")
 #> 
 #> To cite the 'mapSpain' package in publications use:

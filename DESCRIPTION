@@ -2,18 +2,14 @@ Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
 Version: 0.3.1
-Authors@R: 
-    c(person(given = "Diego",
-             family = "Hernangómez",
-             role = c("aut", "cre", "cph"),
-             email = "diego.hernangomezherrero@gmail.com",
-             comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
-      person(given = "EuroGeographics",
-             role = "cph",
-             comment = "for the administrative boundaries."),
-      person(given = "Instituto Geográfico Nacional",
-             role = "cph",
-             comment = "for the administrative boundaries."))
+Authors@R: c(
+    person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
+    person("EuroGeographics", role = "cph",
+           comment = "for the administrative boundaries."),
+    person("Instituto Geográfico Nacional", role = "cph",
+           comment = "for the administrative boundaries.")
+  )
 Description: Administrative Boundaries of Spain at several levels (CCAA,
     Provinces, Municipalities) based on the GISCO Eurostat database
     <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from
