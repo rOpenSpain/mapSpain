@@ -8,9 +8,8 @@ mapSpain CDN for CartoBase ANE
       - [Table of files](#table-of-files)
   - [Preview](#preview)
 
-
 ![Data](https://img.shields.io/badge/last%20data%20available-2020-green)
-![Last Update](https://img.shields.io/badge/updated-2021--02--11-blue)
+![Last Update](https://img.shields.io/badge/updated-2021--10--05-blue)
 
 This branch is used as CDN to distribute CartoBase ANE data to
 `mapSpain`.
@@ -18,7 +17,7 @@ This branch is used as CDN to distribute CartoBase ANE data to
 Due to poor API, data is not easily reachable, so this branch would be
 used as API endpoint.
 
-Last update : **2021-02-11**, containing **data up to 2020**.
+Last update : **2021-10-05**, containing **data up to 2020**.
 
 ## Source data
 
@@ -39,7 +38,7 @@ The `dist` folder contains a distribution of [**CartoBase
 ANE**](https://www.ign.es/web/ane-area-ane) on
 [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
 
-A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip), 25.6 Mb ) is
+A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip), 26.1 Mb ) is
 also provided, including all the data on `dist`.
 
 Updates are made running the `R/create_dist.R` script after proper
@@ -149,22 +148,22 @@ There are 77 files available:
 | se89\_3\_hidro\_rio\_l\_x.gpkg       | 3   | Europe | 1.1 Mb |
 | se89\_3\_hidro\_rio\_l\_y.gpkg       | 3   | Europe | 104 Kb |
 | se89\_3\_orog\_hipso\_a\_x.gpkg      | 3   | Europe | 4.6 Mb |
-| se89\_3\_orog\_hipso\_a\_y.gpkg      | 3   | Europe | 324 Kb |
+| se89\_3\_orog\_hipso\_a\_y.gpkg      | 3   | Europe | 320 Kb |
 | se89\_3\_orog\_hipso\_l\_x.gpkg      | 3   | Europe | 2.6 Mb |
 | se89\_3\_orog\_hipso\_l\_y.gpkg      | 3   | Europe | 212 Kb |
 | se89\_3\_urban\_capimuni\_a\_x.gpkg  | 3   | Europe | 136 Kb |
 | se89\_3\_urban\_capimuni\_a\_y.gpkg  | 3   | Europe | 96 Kb  |
-| se89\_3\_urban\_capimuni\_p\_x.gpkg  | 3   | Europe | 1.5 Mb |
-| se89\_3\_urban\_capimuni\_p\_y.gpkg  | 3   | Europe | 116 Kb |
+| se89\_3\_urban\_capimuni\_p\_x.gpkg  | 3   | Europe | 1.2 Mb |
+| se89\_3\_urban\_capimuni\_p\_y.gpkg  | 3   | Europe | 112 Kb |
 | se89\_3\_vias\_ctra\_l\_x.gpkg       | 3   | Europe | 752 Kb |
 | se89\_3\_vias\_ctra\_l\_y.gpkg       | 3   | Europe | 116 Kb |
 | se89\_3\_vias\_ffcc\_l\_x.gpkg       | 3   | Europe | 328 Kb |
 | se89\_3\_vias\_ffcc\_p\_x.gpkg       | 3   | Europe | 124 Kb |
 | se89\_6m5\_admin\_ccaa\_a\_x.gpkg    | 6.5 | Europe | 240 Kb |
 | se89\_6m5\_admin\_ccaa\_a\_y.gpkg    | 6.5 | Europe | 100 Kb |
-| se89\_6m5\_admin\_cela\_a\_x.gpkg    | 6.5 | Europe | 628 Kb |
+| se89\_6m5\_admin\_cela\_a\_x.gpkg    | 6.5 | Europe | 620 Kb |
 | se89\_6m5\_admin\_cela\_a\_y.gpkg    | 6.5 | Europe | 104 Kb |
-| se89\_6m5\_admin\_muni\_a\_x.gpkg    | 6.5 | Europe | 5.3 Mb |
+| se89\_6m5\_admin\_muni\_a\_x.gpkg    | 6.5 | Europe | 5.2 Mb |
 | se89\_6m5\_admin\_muni\_a\_y.gpkg    | 6.5 | Europe | 160 Kb |
 | se89\_6m5\_admin\_prov\_a\_x.gpkg    | 6.5 | Europe | 368 Kb |
 | se89\_6m5\_admin\_prov\_a\_y.gpkg    | 6.5 | Europe | 104 Kb |
@@ -177,7 +176,7 @@ There are 77 files available:
 | se89\_6m5\_orog\_hipso\_a\_x.gpkg    | 6.5 | Europe | 1.5 Mb |
 | se89\_6m5\_orog\_hipso\_a\_y.gpkg    | 6.5 | Europe | 252 Kb |
 | se89\_6m5\_orog\_hipso\_l\_x.gpkg    | 6.5 | Europe | 888 Kb |
-| se89\_6m5\_orog\_hipso\_l\_y.gpkg    | 6.5 | Europe | 176 Kb |
+| se89\_6m5\_orog\_hipso\_l\_y.gpkg    | 6.5 | Europe | 180 Kb |
 | se89\_6m5\_vias\_ffcc\_e\_x.gpkg     | 6.5 | Europe | 208 Kb |
 | se89\_10\_admin\_ccaa\_a\_x.gpkg     | 10  | Spain  | 196 Kb |
 | se89\_10\_admin\_ccaa\_a\_y.gpkg     | 10  | Spain  | 100 Kb |
@@ -191,15 +190,15 @@ There are 77 files available:
 | se89\_10\_admin\_prov\_a\_y.gpkg     | 10  | Spain  | 104 Kb |
 | se89\_10\_hidro\_demc\_a\_x.gpkg     | 10  | Spain  | 168 Kb |
 | se89\_10\_hidro\_demc\_a\_y.gpkg     | 10  | Spain  | 96 Kb  |
-| se89\_10\_hidro\_demt\_a\_x.gpkg     | 10  | Spain  | 212 Kb |
+| se89\_10\_hidro\_demt\_a\_x.gpkg     | 10  | Spain  | 208 Kb |
 | se89\_10\_hidro\_demt\_a\_y.gpkg     | 10  | Spain  | 104 Kb |
 | se89\_10\_hidro\_rio\_a\_x.gpkg      | 10  | Spain  | 116 Kb |
 | se89\_10\_hidro\_rio\_l\_x.gpkg      | 10  | Spain  | 208 Kb |
 | se89\_10\_urban\_capiccaa\_p\_x.gpkg | 10  | Spain  | 96 Kb  |
 | se89\_10\_urban\_capilasp\_p\_y.gpkg | 10  | Spain  | 96 Kb  |
-| se89\_10\_urban\_capimuni\_p\_x.gpkg | 10  | Spain  | 1.5 Mb |
-| se89\_10\_urban\_capimuni\_p\_y.gpkg | 10  | Spain  | 116 Kb |
-| se89\_10\_urban\_capiprov\_p\_x.gpkg | 10  | Spain  | 104 Kb |
+| se89\_10\_urban\_capimuni\_p\_x.gpkg | 10  | Spain  | 1.2 Mb |
+| se89\_10\_urban\_capimuni\_p\_y.gpkg | 10  | Spain  | 112 Kb |
+| se89\_10\_urban\_capiprov\_p\_x.gpkg | 10  | Spain  | 96 Kb  |
 | se89\_10\_urban\_capiprov\_p\_y.gpkg | 10  | Spain  | 96 Kb  |
 | se89\_10\_urban\_capitene\_p\_y.gpkg | 10  | Spain  | 96 Kb  |
 | se89\_10\_vias\_ffcc\_e\_x.gpkg      | 10  | Spain  | 108 Kb |
@@ -209,8 +208,8 @@ There are 77 files available:
 | ee89\_14\_urban\_capital\_p.gpkg     | 14  | Europe | 120 Kb |
 | ww84\_60\_admin\_pais\_a.gpkg        | 60  | World  | 2.2 Mb |
 | ww84\_60\_admin\_paismar\_a.gpkg     | 60  | World  | 112 Kb |
-| ww84\_60\_hidro\_pesc\_a.gpkg        | 60  | World  | 420 Kb |
-| ww84\_60\_urban\_capital\_p.gpkg     | 60  | World  | 152 Kb |
+| ww84\_60\_hidro\_pesc\_a.gpkg        | 60  | World  | 404 Kb |
+| ww84\_60\_urban\_capital\_p.gpkg     | 60  | World  | 156 Kb |
 | se89\_mult\_admin\_provcan\_l.gpkg   | NA  | NA     | 96 Kb  |
 
 ## Preview
