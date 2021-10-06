@@ -7,6 +7,7 @@ test_that("tiles online", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
+  skip_if_offline()
 
   # Skip test as tiles sometimes are not available
 
@@ -25,8 +26,6 @@ test_that("tiles online", {
   point <- esp_get_ccaa("Madrid")
   point <- sf::st_transform(point, 3857)
   point <- sf::st_sample(point, 1)
-
-
 
   expect_message(esp_getTiles(point,
     type = "RedTransporte.Carreteras",

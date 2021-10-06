@@ -100,8 +100,7 @@ get the actual coordinates, instead of the modified ones.
 }
 
 \examples{
-\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\donttest{
+\dontrun{
 # This code compares centroids of municipalities against esp_get_capimun
 # It also download tiles, make sure you are online
 
@@ -146,7 +145,6 @@ tm_shape(tile, raster.downsample = FALSE) +
     legend.text.size = 1
   )
 }
-\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other political: 
