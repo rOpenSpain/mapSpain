@@ -245,7 +245,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
-  "fileSize": "2711.095KB",
+  "fileSize": "2710.93KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
