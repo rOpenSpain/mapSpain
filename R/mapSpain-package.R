@@ -77,5 +77,3 @@ NULL
 #' @importFrom utils download.file
 #' @importFrom sf st_transform
 NULL
-
-
