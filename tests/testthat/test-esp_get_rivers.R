@@ -1,7 +1,3 @@
-
-
-
-
 test_that("rivers online", {
   expect_error(esp_get_rivers(epsg = 3367))
   expect_error(esp_get_rivers(spatialtype = "f"))

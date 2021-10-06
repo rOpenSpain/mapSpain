@@ -1,12 +1,8 @@
-
-
 test_that("tiles online", {
   poly <- esp_get_ccaa("La Rioja")
   expect_error(esp_getTiles(poly, type = "FFF"))
 
   skip_on_cran()
-  skip_if_siane_offline()
-  skip_if_gisco_offline()
   skip_if_offline()
 
   # Skip test as tiles sometimes are not available

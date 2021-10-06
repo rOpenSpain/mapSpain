@@ -9,7 +9,7 @@
 [![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
-[![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/master/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
+[![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/main/graph/badge.svg?token=6L01BKLL85)](https://codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5366622-blue)](https://doi.org/10.5281/zenodo.5366622)
 [![Project-Status:Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -62,7 +62,6 @@ install_github("rOpenSpain/mapSpain")
 This script highlights some features of **mapSpain** :
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -112,12 +111,11 @@ tm_shape(CCAA_sf) +
   tm_layout(legend.position = c("LEFT", "center"))
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-static-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" width="100%" />
 
 You can combine `sf` objects with static tiles
 
 ``` r
-
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -178,7 +176,7 @@ tm_shape(tile, raster.downsample = FALSE) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-tile-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -188,7 +186,6 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -223,7 +220,7 @@ tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
   tm_polygons("#C12838", border.col = "grey80", lwd = 0.1)
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/master/img/README-giscoR-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" width="100%" />
 
 ## A note on caching
 
@@ -242,18 +239,17 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [**tmap**](https://github.com/r-tmap/tmap)
-  - [**mapsf**](https://riatelab.github.io/mapsf/)
-  - [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+-   [**tmap**](https://github.com/r-tmap/tmap)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
     [**ggspatial**](https://github.com/paleolimbot/ggspatial)
-  - [**leaflet**](https://rstudio.github.io/leaflet/)
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
 Please use the following when citing **mapSpain**:
 
 ``` r
-
 citation("mapSpain")
 #> 
 #> To cite the 'mapSpain' package in publications use:
@@ -294,7 +290,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -302,13 +298,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

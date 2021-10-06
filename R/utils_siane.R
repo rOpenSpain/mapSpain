@@ -131,6 +131,26 @@ esp_hlp_download_siane <- function(type,
         return(TRUE)
       }
     )
+
+    # Try again if fails
+    if (isTRUE(err_dwnload)) {
+      if (verbose) message("Retry download")
+      Sys.sleep(1)
+      err_dwnload <- tryCatch(
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
+        warning = function(e) {
+          message(
+            "Download failed",
+            "\n\nurl \n ",
+            url,
+            " not reachable.\n\nPlease try with another options. If you think this is a bug please consider opening an issue on https://github.com/rOpenSpain/mapSpain/issues"
+          )
+          return(TRUE)
+        }
+      )
+    }
+
+
     if (isTRUE(err_dwnload)) {
       file_avail <- FALSE
     } else if (verbose) {
