@@ -1,13 +1,13 @@
-expect_error(esp_get_rivers(epsg = 3367))
-expect_error(esp_get_rivers(spatialtype = "f"))
+
 
 
 
 test_that("rivers online", {
-  skip_if_not(
-    giscoR::gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  expect_error(esp_get_rivers(epsg = 3367))
+  expect_error(esp_get_rivers(spatialtype = "f"))
+
+
+  skip_if_siane_offline()
 
   expect_silent(esp_get_rivers(
     spatialtype = "line",

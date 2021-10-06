@@ -61,6 +61,7 @@ Metadata available on
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
 \examples{
+\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Use of regex
 
@@ -98,6 +99,7 @@ tm_shape(and) +
   tm_shape(Wetlands) +
   tm_polygons(col = "skyblue", alpha = 0.5, border.col = "skyblue", lwd = 2)
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other natural: 

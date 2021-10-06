@@ -4,7 +4,7 @@
 \alias{esp_clear_cache}
 \title{Clear your \strong{mapSpain} cache dir}
 \usage{
-esp_clear_cache(config = TRUE, cached_data = TRUE, verbose = FALSE)
+esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{config}{if \code{TRUE}, will delete the configuration folder of

@@ -20,10 +20,7 @@ test_that("munic local", {
 
 # SIANE
 test_that("munic online", {
-  skip_if_not(
-    giscoR::gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  skip_if_siane_offline()
 
   expect_silent(esp_get_munic_siane())
   expect_silent(esp_get_munic_siane(rawcols = TRUE))

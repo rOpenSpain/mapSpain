@@ -32,12 +32,17 @@
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
 #' # This code would produce a nice plot - It will take a few seconds to run
 #' library(tmap)
 #'
 #' hypsobath <- esp_get_hypsobath()
+#'
+#' # Error on the data provided - There is an empty shape
+#' # Remove:
+#'
+#' hypsobath <- hypsobath[!sf::st_is_empty(hypsobath), ]
 #'
 #' # Tints from Wikipedia
 #' # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/Topographic_maps

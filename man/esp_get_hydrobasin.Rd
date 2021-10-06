@@ -69,6 +69,7 @@ corresponding .geojson file by any other method and save it on your
 }
 
 \examples{
+\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 all <- esp_get_prov(moveCAN = FALSE)
 hydroland <- esp_get_hydrobasin(domain = "land")
@@ -91,6 +92,7 @@ tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
   ) +
   tm_layout(bg.color = "grey95")
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other natural: 

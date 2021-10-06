@@ -23,7 +23,7 @@
 #'
 #' @inheritSection  esp_get_nuts  About caching
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
 #'
 #' provs <- esp_get_prov()

@@ -74,11 +74,17 @@ corresponding .geojson file by any other method and save it on your
 }
 
 \examples{
+\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # This code would produce a nice plot - It will take a few seconds to run
 library(tmap)
 
 hypsobath <- esp_get_hypsobath()
+
+# Error on the data provided - There is an empty shape
+# Remove:
+
+hypsobath <- hypsobath[!sf::st_is_empty(hypsobath), ]
 
 # Tints from Wikipedia
 # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/Topographic_maps
@@ -140,6 +146,7 @@ tm_shape(hypsobath, bbox = c(-9.5, 35.8, 4.4, 44)) +
   ) +
   tm_layout(legend.outside = TRUE)
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other natural: 

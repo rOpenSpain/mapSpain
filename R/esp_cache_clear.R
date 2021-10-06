@@ -1,6 +1,5 @@
 #' Clear your **mapSpain** cache dir
 #'
-#' @name esp_clear_cache
 #' @family cache utilities
 #'
 #' @return Invisible. This function is called for its side effects.
@@ -34,7 +33,7 @@
 #'
 #' Sys.getenv("MAPSPAIN_CACHE_DIR")
 #' @export
-esp_clear_cache <- function(config = TRUE,
+esp_clear_cache <- function(config = FALSE,
                             cached_data = TRUE,
                             verbose = FALSE) {
   # nocov start

@@ -76,8 +76,9 @@ get the actual coordinates, instead of the modified ones.
 }
 
 \examples{
+\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-#'
+
 country <- esp_get_country()
 Roads <- esp_get_roads()
 
@@ -95,6 +96,7 @@ tm_shape(country) +
     legend.outside.position = "bottom"
   )
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other infrastructure: 

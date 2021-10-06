@@ -64,6 +64,7 @@ corresponding .geojson file by any other method and save it on your
 }
 
 \examples{
+\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 
 provs <- esp_get_prov()
@@ -91,6 +92,7 @@ tm_shape(provs, bbox = c(-7.5, 38, -2.5, 41)) +
   tm_shape(stations) +
   tm_symbols("red", size = .3, alpha = 0.5, shape = 19)
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other infrastructure: 

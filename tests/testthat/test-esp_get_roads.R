@@ -1,11 +1,8 @@
-expect_error(esp_get_roads(epsg = 3367))
-
 
 test_that("roads online", {
-  skip_if_not(
-    giscoR::gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  expect_error(esp_get_roads(epsg = 3367))
+
+  skip_if_siane_offline()
 
   expect_silent(esp_get_roads())
 

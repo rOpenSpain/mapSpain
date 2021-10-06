@@ -28,7 +28,7 @@
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
 #' all <- esp_get_prov(moveCAN = FALSE)
 #' hydroland <- esp_get_hydrobasin(domain = "land")

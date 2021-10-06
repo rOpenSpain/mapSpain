@@ -1,4 +1,6 @@
 test_that("Testing leaflet", {
+  skip_on_cran()
+
   library(leaflet)
 
   expect_silent(providerEspTileOptions())

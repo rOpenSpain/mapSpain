@@ -1,12 +1,12 @@
-poly <- esp_get_ccaa("La Rioja")
-expect_error(esp_getTiles(poly, type = "FFF"))
+
 
 test_that("tiles online", {
-  skip_if_not(
-    giscoR::gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  poly <- esp_get_ccaa("La Rioja")
+  expect_error(esp_getTiles(poly, type = "FFF"))
 
+  skip_on_cran()
+  skip_if_siane_offline()
+  skip_if_gisco_offline()
 
   # Skip test as tiles sometimes are not available
 

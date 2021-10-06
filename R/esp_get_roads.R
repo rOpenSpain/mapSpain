@@ -24,9 +24,9 @@
 #' as a specific date ("YYYY-MM-DD" format).
 #'
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
-#' #'
+#'
 #' country <- esp_get_country()
 #' Roads <- esp_get_roads()
 #'

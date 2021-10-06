@@ -1,13 +1,9 @@
-expect_error(esp_get_hydrobasin(epsg = 3367))
-expect_error(esp_get_hydrobasin(domain = "f"))
-
-
-
 test_that("hydrobasin online", {
-  skip_if_not(
-    giscoR::gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  expect_error(esp_get_hydrobasin(epsg = 3367))
+  expect_error(esp_get_hydrobasin(domain = "f"))
+
+  skip_if_siane_offline()
+
   expect_silent(esp_get_hydrobasin(
     domain = "landsea",
     resolution = "10",

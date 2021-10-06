@@ -62,7 +62,6 @@ install_github("rOpenSpain/mapSpain")
 This script highlights some features of **mapSpain** :
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -117,7 +116,6 @@ tm_shape(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
-
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -188,7 +186,6 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -242,18 +239,17 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [**tmap**](https://github.com/r-tmap/tmap)
-  - [**mapsf**](https://riatelab.github.io/mapsf/)
-  - [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+-   [**tmap**](https://github.com/r-tmap/tmap)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
     [**ggspatial**](https://github.com/paleolimbot/ggspatial)
-  - [**leaflet**](https://rstudio.github.io/leaflet/)
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
 Please use the following when citing **mapSpain**:
 
 ``` r
-
 citation("mapSpain")
 #> 
 #> To cite the 'mapSpain' package in publications use:
@@ -267,7 +263,7 @@ citation("mapSpain")
 #>     title = {mapSpain: Administrative Boundaries of Spain},
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
-#>     note = {R package version 0.3.1},
+#>     note = {R package version 0.3.1.9000},
 #>     url = {https://ropenspain.github.io/mapSpain/},
 #>     doi = {10.5281/zenodo.5366622},
 #>   }
@@ -294,7 +290,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -302,13 +298,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

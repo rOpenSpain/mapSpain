@@ -26,7 +26,7 @@
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
 #' # Use of regex
 #'

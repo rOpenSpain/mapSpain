@@ -41,8 +41,8 @@
 #'
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf esp_check_access()
+#' \donttest{
 #' # This code compares centroids of municipalities against esp_get_capimun
 #' # It also download tiles, make sure you are online
 #'
