@@ -9,11 +9,11 @@
 #' **v1.2.0**.
 #'
 #' @family imagery utilities
-#' @seealso [raster::brick()].
+#' @seealso [terra::rast()].
 #'
 #' @return
-#' A `RasterBrick` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
-#' the provider. See [raster::brick()].
+#' A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
+#' the provider. See [terra::rast()].
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
@@ -21,11 +21,11 @@
 #'
 #'
 #'
-#' For plotting, you can use [raster::plotRGB()], [tmap::tm_rgb()].
+#' For plotting, you can use [terra::plotRGB()], [tmap::tm_rgb()].
 #'
 #' @export
 #'
-#' @param x An `sf` object.
+#' @param x An `sf` or `sfc` object.
 #'
 #' @param type Name of the provider. See [leaflet.providersESP.df].
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
@@ -109,15 +109,14 @@ esp_getTiles <- function(x,
                          cache_dir = NULL,
                          verbose = FALSE) {
 
-  # nocov start
-  if (isFALSE(requireNamespace("rgdal", quietly = TRUE))) {
-    stop("`rgdal` package required for esp_getTiles()")
-  }
-  # nocov end
+  # Only sf and sfc objects allowed
 
-  # Disable warnings related with crs
-  oldw <- getOption("warn")
-  options(warn = -1)
+  if (!inherits(x, "sf") && !inherits(x, "sfc")) {
+    stop(
+      "Only sf and sfc ",
+      "objects allowed"
+    )
+  }
 
   # A. Check providers
   leafletProvidersESP <- mapSpain::leaflet.providersESP.df
@@ -148,10 +147,10 @@ esp_getTiles <- function(x,
   if (length(x) & "POINT" %in% sf::st_geometry_type(x)) {
     x <- sf::st_buffer(sf::st_geometry(x), 50)
     crop <- FALSE
-    # Auto zoom = 18 if not set
+    # Auto zoom = 15 if not set
     if (is.null(zoom)) {
-      zoom <- 18
-      if (verbose) message("Auto zoom on point set to 18")
+      zoom <- 15
+      if (verbose) message("Auto zoom on point set to 15")
     }
   }
 
@@ -202,14 +201,17 @@ esp_getTiles <- function(x,
   x <- xinit
 
   # reproject rout
+  x_terra <- terra::vect(x)
+  rout <- terra::project(
+    rout,
+    terra::crs(x_terra)
+  )
 
-  rout <-
-    raster::projectRaster(from = rout, crs = sf::st_crs(x)$proj4string)
 
-  rout <- raster::clamp(rout,
+  rout <- terra::clamp(rout,
     lower = 0,
     upper = 255,
-    useValues = TRUE
+    values = TRUE
   )
 
 
@@ -220,17 +222,15 @@ esp_getTiles <- function(x,
     k <-
       min(c(bbox_expand * (cb[4] - cb[2]), bbox_expand * (cb[3] - cb[1])))
     cb <- cb + c(-k, -k, k, k)
-    rout <- raster::crop(rout, cb[c(1, 3, 2, 4)])
+    rout <- terra::crop(rout, cb[c(1, 3, 2, 4)])
   }
 
   # Mask
-  if (mask & class(x)[1] != "RasterBrick") {
-    rout <- raster::mask(rout, x)
+  if (mask) {
+    rout <- terra::mask(rout, x_terra)
   }
 
-  # Restore warnings
-  options(warn = oldw)
-  on.exit(options(warn = oldw))
+
 
   # Result
   return(rout)

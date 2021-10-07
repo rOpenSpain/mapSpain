@@ -1,3 +1,10 @@
+test_that("tiles error", {
+  df <- data.frame(a = 1, b = 2)
+
+  expect_error(esp_getTiles(df))
+})
+
+
 test_that("tiles online", {
   poly <- esp_get_ccaa("La Rioja")
   expect_error(esp_getTiles(poly, type = "FFF"))
@@ -7,11 +14,17 @@ test_that("tiles online", {
   skip_if_offline()
 
 
-  expect_s4_class(esp_getTiles(poly), "RasterBrick")
+  expect_s4_class(esp_getTiles(poly), "SpatRaster")
   expect_message(esp_getTiles(poly,
     zoom = 5, verbose = TRUE,
     update_cache = TRUE
   ))
+
+  # Try with geom
+  geom <- sf::st_geometry(poly)
+
+  expect_silent(esp_getTiles(geom))
+
 
   # From cache
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
@@ -57,5 +70,5 @@ test_that("tiles online", {
     type = jpeg$provider
   )
 
-  expect_s4_class(s, "RasterBrick")
+  expect_s4_class(s, "SpatRaster")
 })
