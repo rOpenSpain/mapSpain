@@ -48,7 +48,6 @@ test_that("Test local NUTS", {
   expect_silent(esp_get_nuts(region = esp_codelist$nuts2.name))
   expect_silent(esp_get_nuts(region = esp_codelist$nuts3.name))
   expect_silent(esp_get_nuts(resolution = "20"))
-
 })
 
 test_that("Test NUTS online", {
