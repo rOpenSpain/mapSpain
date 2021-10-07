@@ -146,8 +146,6 @@ esp_get_munic <- function(year = "2019",
     dwnload <- FALSE
   }
 
-  # nocov start
-
   if (dwnload) {
     if (year >= "2016") {
       data_sf <- giscoR::gisco_get_lau(
@@ -237,8 +235,6 @@ esp_get_munic <- function(year = "2019",
 
     data_sf <- df2
   }
-
-  # nocov end
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")

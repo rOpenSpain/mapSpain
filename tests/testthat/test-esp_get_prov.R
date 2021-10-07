@@ -46,8 +46,13 @@ test_that("prov offline", {
 })
 
 test_that("prov online", {
+  skip_on_cran()
   skip_if_siane_offline()
+  skip_if_gisco_offline()
 
+  n <- expect_silent(esp_get_prov(resolution = 60, year = 2006))
+  expect_equal(nrow(n), 52)
+  expect_s3_class(n, "sf")
 
   expect_warning(expect_warning(expect_error(
     esp_get_prov_siane("FFF")
@@ -61,12 +66,12 @@ test_that("prov online", {
   expect_warning(expect_error(esp_get_prov_siane(prov = "ES6x")))
 
 
-  expect_equal(
+  expect_identical(
     sf::st_crs(esp_get_prov_siane(epsg = 3035)),
     sf::st_crs(3035)
   )
 
-  expect_equal(
+  expect_identical(
     sf::st_crs(esp_get_prov_siane(epsg = 3857)),
     sf::st_crs(3857)
   )

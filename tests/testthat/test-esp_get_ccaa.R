@@ -34,14 +34,17 @@ test_that("CCAA", {
 
 # Test siane
 test_that("ccaa online", {
+  skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-
-  expect_warning(expect_error(esp_get_ccaa_siane("FFF")))
   expect_error(esp_get_ccaa_siane(epsg = "FFF"))
 
   expect_silent(esp_get_ccaa_siane())
+
+  expect_message(esp_get_ccaa_siane(cache = FALSE, verbose = TRUE))
+
+
   expect_silent(esp_get_ccaa_siane("Canarias"))
   expect_silent(esp_get_ccaa_siane(rawcols = TRUE))
   expect_silent(esp_get_ccaa_siane(ccaa = c("Galicia", "ES7", "Centro")))

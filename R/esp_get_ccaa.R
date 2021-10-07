@@ -107,13 +107,6 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0) {
-      stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
-        " is not a valid name"
-      )
-    }
   }
 
   params$region <- nuts_id
@@ -229,13 +222,6 @@ esp_get_ccaa_siane <- function(ccaa = NULL,
   } else {
     nuts_id <- esp_hlp_all2ccaa(region)
     nuts_id <- unique(nuts_id)
-    if (length(nuts_id) == 0) {
-      stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
-        " is not a valid name"
-      )
-    }
 
     # Get df
     df <- mapSpain::esp_codelist

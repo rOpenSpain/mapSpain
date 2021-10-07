@@ -16,11 +16,19 @@ test_that("munic local", {
 
   s <- esp_get_munic(region = n)
   expect_equal(length(unique(s$cpro)), 52)
+
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_silent(esp_get_munic(year = 2013, region = "Alava"))
+  expect_silent(esp_get_munic(year = 2017, region = "Alava"))
 })
 
 # SIANE
 test_that("munic online", {
+  skip_on_cran()
   skip_if_siane_offline()
+  skip_if_gisco_offline()
 
   expect_silent(esp_get_munic_siane())
   expect_silent(esp_get_munic_siane(rawcols = TRUE))

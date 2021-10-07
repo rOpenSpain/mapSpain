@@ -262,7 +262,6 @@ dl_t <-
            verbose,
            cache_dir,
            update_cache) {
-    # nocov start
     outfile <-
       paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
 
@@ -301,5 +300,4 @@ dl_t <-
       message("Tile cached on ", outfile)
     }
     return(outfile)
-    # nocov end
   }

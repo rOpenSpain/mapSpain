@@ -2,13 +2,20 @@ test_that("tiles online", {
   poly <- esp_get_ccaa("La Rioja")
   expect_error(esp_getTiles(poly, type = "FFF"))
 
+  # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
 
-  # Skip test as tiles sometimes are not available
 
-  expect_true("RasterBrick" %in% class(esp_getTiles(poly)))
+  expect_s4_class(esp_getTiles(poly), "RasterBrick")
+  expect_message(esp_getTiles(poly,
+    zoom = 5, verbose = TRUE,
+    update_cache = TRUE
+  ))
+
+  # From cache
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
+
   expect_message(esp_getTiles(sf::st_geometry(poly), verbose = TRUE))
   expect_message(esp_getTiles(poly, verbose = TRUE))
   expect_message(esp_getTiles(
@@ -35,4 +42,20 @@ test_that("tiles online", {
     type = "RedTransporte.Carreteras",
     verbose = TRUE, mask = TRUE
   ))
+
+
+  # Try with jpg
+  provs <- leaflet.providersESP.df
+  jpeg <- provs[provs$value == "jpeg", ]
+
+  expect_message(esp_getTiles(poly,
+    type = jpeg$provider,
+    verbose = TRUE
+  ))
+
+  s <- esp_getTiles(poly,
+    type = jpeg$provider
+  )
+
+  expect_s4_class(s, "RasterBrick")
 })

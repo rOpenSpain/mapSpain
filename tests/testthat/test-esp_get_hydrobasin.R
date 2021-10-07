@@ -2,7 +2,9 @@ test_that("hydrobasin online", {
   expect_error(esp_get_hydrobasin(epsg = 3367))
   expect_error(esp_get_hydrobasin(domain = "f"))
 
+  skip_on_cran()
   skip_if_siane_offline()
+  skip_if_gisco_offline()
 
   expect_silent(esp_get_hydrobasin(
     domain = "landsea",

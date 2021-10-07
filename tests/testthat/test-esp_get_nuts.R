@@ -49,7 +49,12 @@ test_that("Test local NUTS", {
   expect_silent(esp_get_nuts(region = esp_codelist$nuts3.name))
   expect_silent(esp_get_nuts(resolution = "20"))
 
+})
 
+test_that("Test NUTS online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  expect_silent(esp_get_nuts(resolution = "60"))
+
+  expect_silent(esp_get_nuts(resolution = "60", year = 2021))
+  expect_silent(esp_get_nuts(resolution = "60", year = 2016))
 })

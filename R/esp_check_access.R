@@ -19,6 +19,7 @@ esp_check_access <- function() {
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "dist/se89_3_admin_ccaa_a_y.gpkg"
   )
+
   # nocov start
   access <-
     tryCatch(

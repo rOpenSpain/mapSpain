@@ -28,67 +28,50 @@ esp_hlp_download_siane <- function(type,
   api_entry <-
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist"
 
-  if (type == "munic") {
-    filename <-
-      paste0("se89_", resolution, "_admin_muni_a_", sub, ".gpkg")
-  } else if (type == "prov") {
-    filename <-
-      paste0("se89_", resolution, "_admin_prov_a_", sub, ".gpkg")
-  } else if (type == "ccaa") {
-    filename <-
-      paste0("se89_", resolution, "_admin_ccaa_a_", sub, ".gpkg")
-  } else if (type == "orogarea") {
-    filename <-
-      paste0("se89_", resolution, "_orog_hipso_a_", sub, ".gpkg")
-  } else if (type == "orogline") {
-    filename <-
-      paste0("se89_", resolution, "_orog_hipso_l_", sub, ".gpkg")
-  } else if (type == "riverline") {
-    filename <-
-      paste0("se89_", resolution, "_hidro_rio_l_", sub, ".gpkg")
-  } else if (type == "riverarea") {
-    filename <-
-      paste0("se89_", resolution, "_hidro_rio_a_", sub, ".gpkg")
-  } else if (type == "rivernames") {
-    filename <- "rivernames.rda"
+
+  # If requesting riversname need to change api entry
+
+  if (type == "rivernames") {
     api_entry <-
       "https://github.com/rOpenSpain/mapSpain/raw/sianedata/data-raw"
-  } else if (type == "basinland") {
-    filename <-
-      paste0("se89_", resolution, "_hidro_demt_a_", sub, ".gpkg")
-  } else if (type == "basinlandsea") {
-    filename <-
-      paste0("se89_", resolution, "_hidro_demc_a_", sub, ".gpkg")
-  } else if (type == "capimun") {
-    filename <-
-      paste0("se89_3_urban_capimuni_p_", sub, ".gpkg")
-  } else if (type == "roads") {
-    filename <-
-      paste0("se89_3_vias_ctra_l_", sub, ".gpkg")
-  } else if (type == "ffccline") {
-    filename <-
-      paste0("se89_3_vias_ffcc_l_", sub, ".gpkg")
-  } else if (type == "ffccpoint") {
-    filename <-
-      paste0("se89_3_vias_ffcc_p_", sub, ".gpkg")
-  } else {
+  }
+
+  # Switch name
+
+  filename <- switch(type,
+    "munic" = paste0(
+      "se89_", resolution,
+      "_admin_muni_a_", sub, ".gpkg"
+    ),
+    "prov" = paste0("se89_", resolution, "_admin_prov_a_", sub, ".gpkg"),
+    "ccaa" = paste0("se89_", resolution, "_admin_ccaa_a_", sub, ".gpkg"),
+    "orogarea" = paste0("se89_", resolution, "_orog_hipso_a_", sub, ".gpkg"),
+    "orogline" = paste0("se89_", resolution, "_orog_hipso_l_", sub, ".gpkg"),
+    "riverline" = paste0("se89_", resolution, "_hidro_rio_l_", sub, ".gpkg"),
+    "riverarea" = paste0("se89_", resolution, "_hidro_rio_a_", sub, ".gpkg"),
+    "rivernames" = "rivernames.rda",
+    "basinland" = paste0("se89_", resolution, "_hidro_demt_a_", sub, ".gpkg"),
+    "basinlandsea" = paste0(
+      "se89_", resolution,
+      "_hidro_demc_a_", sub, ".gpkg"
+    ),
+    "capimun" = paste0("se89_3_urban_capimuni_p_", sub, ".gpkg"),
+    "roads" = paste0("se89_3_vias_ctra_l_", sub, ".gpkg"),
+    "ffccline" = paste0("se89_3_vias_ffcc_l_", sub, ".gpkg"),
+    "ffccpoint" = paste0("se89_3_vias_ffcc_p_", sub, ".gpkg"),
     # This should never be activated, as it is an internal function
     stop("Type not recognized")
-  }
+  )
 
   url <- file.path(api_entry, filename)
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  if (verbose) {
-    message("Cache dir is ", cache_dir)
-  }
+  if (verbose) message("Cache dir is ", cache_dir)
 
   # Create filepath
   filepath <- file.path(cache_dir, filename)
   localfile <- file.exists(filepath)
-
-  # nocov start
 
   if (isFALSE(cache)) {
     dwnload <- FALSE
@@ -102,7 +85,8 @@ esp_hlp_download_siane <- function(type,
       message(
         "Downloading file from ",
         url,
-        "\n\nSee https://github.com/rOpenSpain/mapSpain/tree/sianedata/ for more info"
+        "\n\nSee https://github.com/rOpenSpain/mapSpain/tree/sianedata/ ",
+        "for more info"
       )
     }
     if (verbose & update_cache) {
@@ -116,95 +100,71 @@ esp_hlp_download_siane <- function(type,
   }
 
   # Downloading
-  file_avail <- TRUE
-
   if (dwnload) {
-    err_dwnload <- tryCatch(
-      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
-      warning = function(e) {
-        message(
-          "Download failed",
-          "\n\nurl \n ",
-          url,
-          " not reachable.\n\nPlease try with another options. If you think this is a bug please consider opening an issue on https://github.com/rOpenSpain/mapSpain/issues"
-        )
-        return(TRUE)
-      }
-    )
+    err_dwnload <- try(download.file(url, filepath,
+      quiet = isFALSE(verbose),
+      mode = "wb"
+    ), silent = TRUE)
 
-    # Try again if fails
-    if (isTRUE(err_dwnload)) {
-      if (verbose) message("Retry download")
-      Sys.sleep(1)
-      err_dwnload <- tryCatch(
-        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
-        warning = function(e) {
-          message(
-            "Download failed",
-            "\n\nurl \n ",
-            url,
-            " not reachable.\n\nPlease try with another options. If you think this is a bug please consider opening an issue on https://github.com/rOpenSpain/mapSpain/issues"
-          )
-          return(TRUE)
-        }
-      )
+    if (inherits(err_dwnload, "try-error")) {
+      if (verbose) message("Retrying query")
+      err_dwnload <- try(download.file(url, filepath,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ), silent = TRUE)
     }
 
-
-    if (isTRUE(err_dwnload)) {
-      file_avail <- FALSE
+    # If not then message
+    if (inherits(err_dwnload, "try-error")) {
+      message(
+        "Download failed",
+        "\n\nurl \n ",
+        url,
+        " not reachable.\n\nPlease try with another options. ",
+        "If you think this ",
+        "is a bug please consider opening an issue on:",
+        "\nhttps://github.com/rOpenSpain/mapSpain/issues"
+      )
+      stop("\nExecution halted")
     } else if (verbose) {
       message("Download succesful")
     }
   }
 
-  loaded <- FALSE
-
-  if (file_avail) {
-    if (verbose & isTRUE(cache)) {
-      message("Reading from local file ", filepath)
-      size <- file.size(filepath)
-      class(size) <- "object_size"
-      message(format(size, units = "auto"))
-    }
-    if (type == "rivernames") {
-      data <- readRDS(filepath)
-      return(data)
-    }
-    err_onload <- tryCatch(
-      data_sf <- sf::st_read(
-        filepath,
-        quiet = isFALSE(verbose),
-        stringsAsFactors = FALSE
-      ),
-      warning = function(e) {
-        message(
-          "\n\nFile couldn't be loaded from \n\n",
-          filepath,
-          "\n\n Please try cache = TRUE"
-        )
-        return(TRUE)
-      },
-      error = function(e) {
-        message("File may be corrupt. Please try again using cache = TRUE and update_cache = TRUE")
-        return(TRUE)
-      }
-    )
-    if (isTRUE(err_onload)) {
-      loaded <- FALSE
-    } else {
-      loaded <- TRUE
-      if (verbose) {
-        message("File loaded")
-      }
-    }
+  # Rivernames is special cas
+  if (type == "rivernames") {
+    data <- readRDS(filepath)
+    return(data)
   }
-  if (loaded) {
-    return(data_sf)
-  } else {
+
+  if (verbose & isTRUE(cache)) {
+    message("Reading from local file ", filepath)
+    size <- file.size(filepath)
+    class(size) <- "object_size"
+    message(format(size, units = "auto"))
+  }
+
+  # Load
+
+  err_onload <- try(
+    data_sf <- sf::st_read(
+      filepath,
+      quiet = isFALSE(verbose),
+      stringsAsFactors = FALSE
+    ),
+    silent = TRUE
+  )
+
+  if (inherits(err_onload, "try-error")) {
+    message(
+      "File may be corrupt. Please try again using cache = TRUE ",
+      "and update_cache = TRUE"
+    )
     stop("\nExecution halted")
   }
-  # nocov end
+
+  if (verbose) message("File loaded")
+  return(err_onload)
 }
 
 #' Return data from SIANE

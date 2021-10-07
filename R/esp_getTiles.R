@@ -108,11 +108,12 @@ esp_getTiles <- function(x,
                          update_cache = FALSE,
                          cache_dir = NULL,
                          verbose = FALSE) {
+
   # nocov start
   if (isFALSE(requireNamespace("rgdal", quietly = TRUE))) {
     stop("`rgdal` package required for esp_getTiles()")
   }
-
+  # nocov end
 
   # Disable warnings related with crs
   oldw <- getOption("warn")
@@ -233,5 +234,4 @@ esp_getTiles <- function(x,
 
   # Result
   return(rout)
-  # nocov end
 }

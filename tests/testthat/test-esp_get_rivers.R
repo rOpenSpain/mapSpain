@@ -2,7 +2,7 @@ test_that("rivers online", {
   expect_error(esp_get_rivers(epsg = 3367))
   expect_error(esp_get_rivers(spatialtype = "f"))
 
-
+  skip_on_cran()
   skip_if_siane_offline()
 
   expect_silent(esp_get_rivers(
