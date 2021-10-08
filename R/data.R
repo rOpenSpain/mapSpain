@@ -62,10 +62,6 @@
 #' @examples
 #'
 #' data("esp_codelist")
-#'
-#' library(tibble)
-#'
-#' glimpse(as_tibble(esp_codelist))
 NULL
 
 
