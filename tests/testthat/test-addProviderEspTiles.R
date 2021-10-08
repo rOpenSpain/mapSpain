@@ -1,4 +1,5 @@
 test_that("Testing leaflet", {
+  skip_if_not_installed("leaflet")
   skip_on_cran()
 
   library(leaflet)

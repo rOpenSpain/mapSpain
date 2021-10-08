@@ -108,6 +108,9 @@ esp_getTiles <- function(x,
                          update_cache = FALSE,
                          cache_dir = NULL,
                          verbose = FALSE) {
+  if (!requireNamespace("terra", quietly = TRUE)) {
+    stop("terra package required for using this function")
+  }
 
   # Only sf and sfc objects allowed
 

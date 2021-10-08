@@ -1,11 +1,17 @@
 test_that("tiles error", {
+  skip_if_not_installed("terra")
+
+
   df <- data.frame(a = 1, b = 2)
 
-  expect_error(esp_getTiles(df))
+  expect_error(esp_getTiles(df), "Only sf and sfc objects allowed")
 })
 
 
 test_that("tiles online", {
+  skip_if_not_installed("terra")
+
+
   poly <- esp_get_ccaa("La Rioja")
   expect_error(esp_getTiles(poly, type = "FFF"))
 

@@ -49,6 +49,10 @@ addProviderEspTiles <- function(map,
                                 layerId = NULL,
                                 group = NULL,
                                 options = providerEspTileOptions()) {
+  if (!requireNamespace("leaflet", quietly = TRUE)) {
+    stop("leaflet package required for using this function")
+  }
+
   # A. Check providers
   providers_df <-
     as.data.frame(mapSpain::leaflet.providersESP.df)
@@ -170,6 +174,10 @@ addProviderEspTiles <- function(map,
 #'
 #' @export
 providerEspTileOptions <- function(...) {
+  if (!requireNamespace("leaflet", quietly = TRUE)) {
+    stop("leaflet package required for using this function")
+  }
+
   ops <- leaflet::providerTileOptions(...)
   return(ops)
 }

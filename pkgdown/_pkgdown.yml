@@ -1,7 +1,5 @@
 url: https://ropenspain.github.io/mapSpain
 
-development:
-  mode: auto
 repo:
   branch: main
 reference:

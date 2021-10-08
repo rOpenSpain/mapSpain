@@ -16,8 +16,7 @@ getwms <- function(x,
                    verbose,
                    res,
                    transparent,
-                   bbox_expand) { # nocov start
-
+                   bbox_expand) {
   bbox_expand <- max(1 + bbox_expand, 1.1)
 
   # Get squared bbox
@@ -118,7 +117,6 @@ getwms <- function(x,
   # End WMS
 
   return(r_img)
-  # nocov end
 }
 
 #' Get tiles from WMTS

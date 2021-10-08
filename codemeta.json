@@ -4,8 +4,8 @@
   "identifier": "mapSpain",
   "description": "Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.",
   "name": "mapSpain: Administrative Boundaries of Spain",
-  "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "relatedLink": "https://ropenspain.github.io/mapSpain/",
+  "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.3.1.9000",
@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
+  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -63,6 +63,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "leaflet",
+      "name": "leaflet",
+      "version": ">= 2.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=leaflet"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -72,6 +85,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "terra",
+      "name": "terra",
+      "version": ">= 1.1-4",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=terra"
     },
     {
       "@type": "SoftwareApplication",
@@ -147,19 +173,6 @@
     },
     "4": {
       "@type": "SoftwareApplication",
-      "identifier": "leaflet",
-      "name": "leaflet",
-      "version": ">= 2.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=leaflet"
-    },
-    "5": {
-      "@type": "SoftwareApplication",
       "identifier": "png",
       "name": "png",
       "version": ">= 0.1-5",
@@ -171,7 +184,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -184,7 +197,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -197,7 +210,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "slippymath",
       "name": "slippymath",
@@ -210,20 +223,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=slippymath"
     },
-    "9": {
-      "@type": "SoftwareApplication",
-      "identifier": "terra",
-      "name": "terra",
-      "version": ">= 1.1-4",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=terra"
-    },
-    "10": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -233,7 +233,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
-  "fileSize": "2653.521KB",
+  "fileSize": "2641.883KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

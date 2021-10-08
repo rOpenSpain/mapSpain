@@ -29,11 +29,13 @@ jobs:
           - {os: windows-latest, r: 'oldrel'}
           #- {os: macOS-latest, r: 'devel'}
           - {os: macOS-latest, r: 'release'}
-          - {os: macOS-latest, r: 'oldrel'}
+          #- {os: macOS-latest, r: 'oldrel'}
           - {os: ubuntu-20.04, r: 'release'}
           #- {os: ubuntu-20.04, r: 'devel'}
           - {os: ubuntu-20.04, r: 'oldrel'}
           - {os: ubuntu-20.04, r: '3.6'}
+          - {os: ubuntu-18.04, r: '3.6'}
+
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -51,6 +53,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
+          cache-version: 999
           extra-packages: rcmdcheck
 
       - name: Check
