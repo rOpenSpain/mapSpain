@@ -162,23 +162,26 @@ esp_getTiles <- function(x,
   cache_dir <- esp_hlp_cachedir(cache_dir)
   cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
 
+  typeprov <- provs[provs$field == "type", "value"]
 
-  if (provs[provs$field == "type", "value"] == "WMS") {
+  newbbox <- esp_hlp_get_bbox(x, bbox_expand, typeprov)
+
+
+  if (typeprov == "WMS") {
     rout <-
       getwms(
-        x,
+        newbbox,
         provs,
         update_cache,
         cache_dir,
         verbose,
         res,
-        transparent,
-        bbox_expand
+        transparent
       )
   } else {
     rout <-
       getwmts(
-        x,
+        newbbox,
         provs,
         update_cache,
         cache_dir,
@@ -220,11 +223,9 @@ esp_getTiles <- function(x,
 
   # crop management
   if (crop == TRUE) {
-    cb <- sf::st_bbox(x)
+    newbbox <- sf::st_transform(newbbox, sf::st_crs(x))
+    cb <- sf::st_bbox(newbbox)
 
-    k <-
-      min(c(bbox_expand * (cb[4] - cb[2]), bbox_expand * (cb[3] - cb[1])))
-    cb <- cb + c(-k, -k, k, k)
     rout <- terra::crop(rout, cb[c(1, 3, 2, 4)])
   }
 
@@ -237,4 +238,41 @@ esp_getTiles <- function(x,
 
   # Result
   return(rout)
+}
+
+#' Helper to get bboxes
+#' @noRd
+esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
+  # Get bbox, this works with CRS 3857
+
+  stopifnot(identical(sf::st_crs(3857), sf::st_crs(x)))
+
+  bbox <- as.double(sf::st_bbox(x))
+  dimx <- (bbox[3] - bbox[1])
+  dimy <- (bbox[4] - bbox[2])
+  center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
+
+  if (typeprov == "WMS") {
+    bbox_expand <- max(1 + bbox_expand, 1.1)
+    maxdist <- max(dimx, dimy)
+    dimy <- maxdist
+    dimx <- dimy
+  } else {
+    bbox_expand <- 1 + bbox_expand
+  }
+
+  newbbox <- c(
+    center[1] - bbox_expand * dimx / 2,
+    center[2] - bbox_expand * dimy / 2,
+    center[1] + bbox_expand * dimx / 2,
+    center[2] + bbox_expand * dimy / 2
+  )
+
+  class(newbbox) <- "bbox"
+
+  newbbox <- sf::st_as_sfc(newbbox)
+
+  sf::st_crs(newbbox) <- sf::st_crs(x)
+
+  return(newbbox)
 }

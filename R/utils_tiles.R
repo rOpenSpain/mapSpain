@@ -15,15 +15,13 @@ getwms <- function(x,
                    cache_dir,
                    verbose,
                    res,
-                   transparent,
-                   bbox_expand) {
-  bbox_expand <- max(1 + bbox_expand, 1.1)
+                   transparent) {
 
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
-  maxdist <- max(dimx, dimy) * bbox_expand # Expand bbox
+  maxdist <- max(dimx, dimy)
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
   bboxsquare <- c(
