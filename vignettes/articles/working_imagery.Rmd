@@ -79,7 +79,8 @@ UA.opaque <-
 
 ggplot() +
   layer_spatraster(BG) +
-  layer_spatraster(UA.opaque)
+  layer_spatraster(UA.opaque) +
+  theme_void()
 ```
 
 Now let's check the same code using the `tranparent = TRUE` option:
@@ -96,7 +97,8 @@ UA.alpha <- esp_getTiles(Madrid,
 
 ggplot() +
   layer_spatraster(BG) +
-  layer_spatraster(UA.alpha)
+  layer_spatraster(UA.alpha) +
+  theme_void()
 ```
 
 Now the two tiles overlaps with the desired alpha value.

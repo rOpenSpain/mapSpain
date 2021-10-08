@@ -77,4 +77,16 @@ test_that("tiles online", {
   )
 
   expect_s4_class(s, "SpatRaster")
+
+  # Check layers
+  n <- expect_silent(esp_getTiles(poly,
+    type = "RedTransporte.Carreteras"
+  ))
+  expect_equal(terra::nlyr(n), 4)
+
+  opaque <- expect_silent(esp_getTiles(poly,
+    type = "RedTransporte.Carreteras",
+    transparent = FALSE
+  ))
+  expect_equal(terra::nlyr(opaque), 3)
 })

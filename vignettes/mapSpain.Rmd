@@ -76,7 +76,7 @@ ggplot(country) +
   )
 ```
 
-<img src="./basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -89,7 +89,7 @@ ggplot(Andalucia) +
   theme_bw()
 ```
 
-<img src="./basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -119,7 +119,7 @@ ggplot(Euskadi_CCAA) +
   )
 ```
 
-<img src="./basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
 
 ## Choropleth and label maps
 
@@ -175,7 +175,7 @@ ggplot(CCAA_sf) +
   theme(legend.position = c(0.1, 0.6))
 ```
 
-<img src="./choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" />
+<img src="choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" />
 
 ## Thematic maps
 
@@ -246,7 +246,7 @@ ggplot(munic.pop) +
   )
 ```
 
-<img src="./thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" />
+<img src="thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -297,7 +297,7 @@ ggplot(all_countries) +
   )
 ```
 
-<img src="./giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />
+<img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />
 
 ## Working with tiles
 
@@ -338,4 +338,4 @@ ggplot(delt) +
   theme_void()
 ```
 
-<img src="./tile-1.png" title="plot of chunk tile" alt="plot of chunk tile" width="100%" />
+<img src="tile-1.png" title="plot of chunk tile" alt="plot of chunk tile" width="100%" />
