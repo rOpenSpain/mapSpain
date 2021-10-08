@@ -128,7 +128,6 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
 }
 \examples{
 data("leaflet.providersESP.df")
-
 }
 \seealso{
 Other datasets: 
@@ -139,7 +138,8 @@ Other datasets:
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()}
+\code{\link{esp_getTiles}()},
+\code{\link{layer_spatraster}()}
 }
 \concept{datasets}
 \concept{imagery utilities}

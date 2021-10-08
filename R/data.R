@@ -155,7 +155,6 @@ NULL
 #'
 #' @examples
 #' data("pobmun19")
-#'
 NULL
 
 
@@ -205,5 +204,4 @@ NULL
 #' ```
 #' @examples
 #' data("leaflet.providersESP.df")
-#'
 NULL
