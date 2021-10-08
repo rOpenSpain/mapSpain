@@ -14,9 +14,6 @@ rows containing the population data by municipality in Spain (2019).
 \examples{
 data("pobmun19")
 
-library(tibble)
-
-as_tibble(pobmun19)
 }
 \seealso{
 Other datasets: 

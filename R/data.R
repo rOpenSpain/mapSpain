@@ -156,9 +156,6 @@ NULL
 #' @examples
 #' data("pobmun19")
 #'
-#' library(tibble)
-#'
-#' as_tibble(pobmun19)
 NULL
 
 
@@ -209,7 +206,4 @@ NULL
 #' @examples
 #' data("leaflet.providersESP.df")
 #'
-#' library(tibble)
-#'
-#' as_tibble(leaflet.providersESP.df)
 NULL

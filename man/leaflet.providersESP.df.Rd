@@ -129,9 +129,6 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
 \examples{
 data("leaflet.providersESP.df")
 
-library(tibble)
-
-as_tibble(leaflet.providersESP.df)
 }
 \seealso{
 Other datasets: 
