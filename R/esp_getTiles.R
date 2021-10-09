@@ -170,7 +170,7 @@ esp_getTiles <- function(x,
   x <- sf::st_transform(x, 3857)
 
   # Buffer if single point
-  if (length(x) & "POINT" %in% sf::st_geometry_type(x)) {
+  if (length(x) == 1 && "POINT" %in% sf::st_geometry_type(x)) {
     x <- sf::st_buffer(sf::st_geometry(x), 50)
     crop <- FALSE
     # Auto zoom = 15 if not set
