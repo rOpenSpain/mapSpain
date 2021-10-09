@@ -115,10 +115,18 @@ esp_getTiles <- function(x,
                          update_cache = FALSE,
                          cache_dir = NULL,
                          verbose = FALSE) {
+  # nocov start
+
+  if (!requireNamespace("slippymath", quietly = TRUE)) {
+    stop("slippymath package required for using this function")
+  }
   if (!requireNamespace("terra", quietly = TRUE)) {
     stop("terra package required for using this function")
   }
-
+  if (!requireNamespace("png", quietly = TRUE)) {
+    stop("png package required for using this function")
+  }
+  # nocov end
   # Only sf and sfc objects allowed
 
   if (!inherits(x, "sf") && !inherits(x, "sfc")) {
