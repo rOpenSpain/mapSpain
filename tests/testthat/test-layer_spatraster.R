@@ -21,5 +21,11 @@ test_that("Test layers", {
   g <- ggplot2::ggplot() +
     layer_spatraster(tile)
 
+
   expect_s3_class(g, "ggplot")
+  t <- tempfile(fileext = ".png")
+
+  suppressWarnings(ggplot2::ggsave(t, g))
+
+  expect_snapshot_file(t, "layer_spatraster.png")
 })

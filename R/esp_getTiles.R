@@ -25,7 +25,7 @@
 #'
 #' @export
 #'
-#' @param x An `sf` or `sfc` object.
+#' @param x An `sf` object.
 #'
 #' @param type Name of the provider. See [leaflet.providersESP.df].
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
@@ -121,9 +121,9 @@ esp_getTiles <- function(x,
 
   # Only sf and sfc objects allowed
 
-  if (!inherits(x, "sf") && !inherits(x, "sfc")) {
+  if (!inherits(x, "sf")) {
     stop(
-      "Only sf and sfc ",
+      "Only sf ",
       "objects allowed"
     )
   }
