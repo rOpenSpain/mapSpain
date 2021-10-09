@@ -26,8 +26,8 @@ test_that("Test layers", {
   expect_s3_class(g, "ggplot")
   t <- tempfile(fileext = ".png")
 
-  # Run only on windows
-  skip_on_os(c("mac", "linux", "solaris"))
+  # Run only locally
+  skip_on_ci()
 
   suppressWarnings(ggplot2::ggsave(t, g))
   expect_snapshot_file(t, "layer_spatraster.png")
