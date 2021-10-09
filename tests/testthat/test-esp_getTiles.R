@@ -119,8 +119,9 @@ test_that("tiles online", {
 
   expect_equal(terra::nlyr(opaque), 3)
 
-  # Skip snapshots on ci
-  skip_on_ci()
+  # Run only on windows
+  skip_on_os(c("mac", "linux", "solaris"))
+
   expect_snapshot_file(save_png(opaque), "opaque.png")
   expect_snapshot_file(save_png(n), "transp.png")
   expect_snapshot_file(save_png(s), "silent.png")
