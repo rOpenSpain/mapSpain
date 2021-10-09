@@ -27,5 +27,7 @@ test_that("Test layers", {
 
   suppressWarnings(ggplot2::ggsave(t, g))
 
+  # Skip snapshots on ci
+  skip_on_ci()
   expect_snapshot_file(t, "layer_spatraster.png")
 })

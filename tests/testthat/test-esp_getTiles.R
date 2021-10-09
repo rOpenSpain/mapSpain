@@ -42,13 +42,8 @@ test_that("tiles online", {
   ))
 
 
-
   s <- esp_getTiles(poly)
 
-
-  expect_snapshot_file(save_png(
-    terra::plotRGB(s)
-  ), "silent.png")
 
   # From cache
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
@@ -71,11 +66,6 @@ test_that("tiles online", {
 
   p <- esp_getTiles(point,
     type = "RedTransporte.Carreteras"
-  )
-
-  expect_snapshot_file(
-    save_png(terra::plotRGB(p)),
-    "point.png"
   )
 
   expect_message(esp_getTiles(poly,
@@ -109,19 +99,30 @@ test_that("tiles online", {
   ))
 
 
-
-
-  expect_snapshot_file(save_png(
-    terra::plotRGB(n)
-  ), "transp.png")
   expect_equal(terra::nlyr(n), 4)
 
   opaque <- expect_silent(esp_getTiles(poly,
     type = "RedTransporte.Carreteras",
     transparent = FALSE
   ))
+
+  expect_equal(terra::nlyr(opaque), 3)
+
+  # Skip snapshots on ci
+  skip_on_ci()
   expect_snapshot_file(save_png(
     terra::plotRGB(opaque)
   ), "opaque.png")
-  expect_equal(terra::nlyr(opaque), 3)
+  expect_snapshot_file(save_png(
+    terra::plotRGB(n)
+  ), "transp.png")
+
+  expect_snapshot_file(save_png(
+    terra::plotRGB(s)
+  ), "silent.png")
+
+  expect_snapshot_file(
+    save_png(terra::plotRGB(p)),
+    "point.png"
+  )
 })
