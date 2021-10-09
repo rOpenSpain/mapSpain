@@ -323,5 +323,6 @@ PNOA <- esp_getTiles(delt,
 ggplot(delt) +
   layer_spatraster(PNOA) +
   geom_sf(fill = "green", alpha = 0.5) +
+  coord_sf(expand = FALSE) +
   theme_void()
 ```
