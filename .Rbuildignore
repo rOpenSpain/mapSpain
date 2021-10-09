@@ -29,3 +29,5 @@
 ^vignettes/mapSpain\.Rmd\.orig$
 ^_pkgdown\.yaml$
 ^CITATION\.cff$
+^tests/testthat/_snaps/esp_getTiles$
+^tests/testthat/_snaps/layer_spatraster$
