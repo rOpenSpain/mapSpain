@@ -15,6 +15,9 @@
 
 # (binary is a macro for -text -diff)
 *.png binary
+*.yaml binary
+*.yml binary
+*.rda binary
 *.jpg binary
 *.jpeg binary
 *.gif binary
