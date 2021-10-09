@@ -11,6 +11,7 @@ test_that("Test layers", {
   skip_if_not_installed("ggspatial")
   skip_if_not_installed("terra")
   skip_if_not_installed("raster")
+  skip_on_cran()
   skip_if_offline()
 
   tile <- esp_getTiles(x)
