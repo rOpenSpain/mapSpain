@@ -26,6 +26,7 @@ jobs:
           extra-packages: |
             pkgdown
             ropenspain/rostemplate
+            reactable
           needs: website
 
       - name: Deploy package

@@ -30,6 +30,7 @@ jobs:
             pkgdown
             dieghernan/pkgdev
             ropenspain/rostemplate
+            reactable
           needs: website
 
       - name: Update docs

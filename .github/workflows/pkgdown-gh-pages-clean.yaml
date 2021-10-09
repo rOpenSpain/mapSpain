@@ -24,6 +24,7 @@ jobs:
             remotes
             devtools
             ropenspain/rostemplate
+            reactable
           needs: website
 
       - name: Deploy package
