@@ -1,6 +1,8 @@
 # mapSpain (development version)
 
--   Fix an error on CRAN related with the cache folder #52:
+-   Switch from `raster` to `terra`
+-   Clean up dependencies.
+-   Add `layer_spatraster()`
 
 # mapSpain 0.3.1
 

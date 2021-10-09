@@ -55,20 +55,27 @@
 #'
 #' ```{r, echo=FALSE}
 #'
-#' t <- tibble::tribble(
-#'  ~zoom, ~"area to represent",
-#'  0, "whole world",
-#'  3, "large country",
-#'  5, "state",
-#'  8, "county",
-#'  10, "metropolitan area",
-#'  11, "city",
-#'  13, "village or suburb",
-#'  16, "streets",
-#'  18, "some buildings, trees"
-#'  )
 #'
-#' knitr::kable(t)
+#' df <- data.frame(
+#'   zoom = c(0, 3, 5, 8, 10, 11, 13, 16, 18),
+#'   represents = c(
+#'     "whole world",
+#'     "large country",
+#'     "state",
+#'     "county",
+#'     "metropolitan area",
+#'     "city",
+#'     "village or suburb",
+#'     "streets",
+#'     "some buildings, trees"
+#'   )
+#' )
+#'
+#'
+#' knitr::kable(df,
+#'              col.names = c("zoom",
+#'                            "area to represent")
+#'                            )
 #'
 #'
 #' ```
@@ -118,6 +125,14 @@ esp_getTiles <- function(x,
     stop(
       "Only sf and sfc ",
       "objects allowed"
+    )
+  }
+
+  # If sfc convert to sf
+  if (inherits(x, "sfc")) {
+    x <- sf::st_as_sf(
+      data.frame(x = 1),
+      x
     )
   }
 
@@ -234,6 +249,11 @@ esp_getTiles <- function(x,
     rout <- terra::mask(rout, x_terra)
   }
 
+  # Manage transparency
+
+  if (!transparent && terra::nlyr(rout) == 4) {
+    rout <- rout[[-4]]
+  }
 
 
   # Result

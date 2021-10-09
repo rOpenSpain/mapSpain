@@ -63,10 +63,6 @@ or Murcia) on this dataset.
 \examples{
 
 data("esp_codelist")
-
-library(tibble)
-
-glimpse(as_tibble(esp_codelist))
 }
 \seealso{
 Other datasets: 

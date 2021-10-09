@@ -62,10 +62,6 @@
 #' @examples
 #'
 #' data("esp_codelist")
-#'
-#' library(tibble)
-#'
-#' glimpse(as_tibble(esp_codelist))
 NULL
 
 
@@ -159,10 +155,6 @@ NULL
 #'
 #' @examples
 #' data("pobmun19")
-#'
-#' library(tibble)
-#'
-#' as_tibble(pobmun19)
 NULL
 
 
@@ -212,8 +204,4 @@ NULL
 #' ```
 #' @examples
 #' data("leaflet.providersESP.df")
-#'
-#' library(tibble)
-#'
-#' as_tibble(leaflet.providersESP.df)
 NULL

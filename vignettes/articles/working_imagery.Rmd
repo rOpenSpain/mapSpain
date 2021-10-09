@@ -17,10 +17,6 @@ knitr::opts_chunk$set(
   tidy = "styler",
   out.width = "100%"
 )
-
-if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
-  install.packages("reactable")
-}
 ```
 
 **mapSpain** provides a powerful interface for working with imagery.
@@ -48,7 +44,7 @@ the images for the Canary Islands won't be accurate.**
 
 library(mapSpain)
 library(sf)
-library(tmap)
+library(ggplot2)
 
 # Logroño
 
@@ -59,13 +55,10 @@ LGN <- st_transform(LGN, 3857)
 
 tile_LGN <- esp_getTiles(LGN, "IDErioja", bbox_expand = 0.5)
 
-tm_shape(tile_LGN, raster.downsample = FALSE) +
-  tm_rgb() +
-  # Mix with a sf polygon
-  tm_shape(LGN) +
-  tm_borders(lwd = 2, lty = "dotted")
+ggplot(LGN) +
+  layer_spatraster(tile_LGN) +
+  geom_sf(fill = NA, lwd = 2, color = "blue")
 ```
-
 
 ### Alpha value on tiles
 
@@ -84,10 +77,10 @@ UA.opaque <-
     transparent = FALSE
   )
 
-tm_shape(BG, raster.downsample = FALSE) +
-  tm_rgb() +
-  tm_shape(UA.opaque, raster.downsample = FALSE) +
-  tm_rgb()
+ggplot() +
+  layer_spatraster(BG) +
+  layer_spatraster(UA.opaque) +
+  theme_void()
 ```
 
 Now let's check the same code using the `tranparent = TRUE` option:
@@ -102,12 +95,11 @@ UA.alpha <- esp_getTiles(Madrid,
 
 # Same code than above for plotting
 
-tm_shape(BG, raster.downsample = FALSE) +
-  tm_rgb() +
-  tm_shape(UA.alpha, raster.downsample = FALSE) +
-  tm_rgb()
+ggplot() +
+  layer_spatraster(BG) +
+  layer_spatraster(UA.alpha) +
+  theme_void()
 ```
-
 
 Now the two tiles overlaps with the desired alpha value.
 
@@ -124,15 +116,14 @@ Basemap <- esp_getTiles(LaRioja, bbox_expand = 0.1, zoom = 10)
 
 Mask <- esp_getTiles(LaRioja, "PNOA", mask = TRUE, zoom = 10)
 
-tm_shape(Basemap, raster.downsample = FALSE) +
-  tm_rgb() +
-  tm_shape(Mask, raster.downsample = FALSE) +
-  tm_rgb()
+ggplot() +
+  layer_spatraster(Basemap) +
+  layer_spatraster(Mask)
 ```
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin to be used with the `leaflet` package. Here you 
+**mapSpain** provides a plugin to be used with the `leaflet` package. Here you
 can find some quick examples:
 
 ### Earthquakes in Tenerife (last year)
@@ -286,9 +277,9 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
 ## Providers available
 
 The data frame `leaflet.providersESP.df` includes the data of the available
-providers you can use on functions described above. This data frame includes 
-all the parameters needed to replicate the API request. In this summary only 
-the parameter `url_static` is shown:
+providers you can use on functions described above. This data frame includes all
+the parameters needed to replicate the API request. In this summary only the
+parameter `url_static` is shown:
 
 ```{r providers, echo=FALSE}
 

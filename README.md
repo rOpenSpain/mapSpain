@@ -89,27 +89,31 @@ CCAA_sf <- merge(CCAA_sf, census_ccaa)
 Can <- esp_get_can_box()
 
 
-# Plot with tmap
-library(tmap)
+# Plot with ggplot
+library(ggplot2)
 
-tm_shape(CCAA_sf) +
-  tm_polygons(
-    "porc_women",
-    border.col = "grey70",
-    title = "Porc. women",
-    palette = "Blues",
-    alpha = 0.7,
-    legend.format = list(
-      fun = function(x) {
-        sprintf("%1.1f%%", 100 * x)
-      }
-    )
+
+ggplot(CCAA_sf) +
+  geom_sf(aes(fill = porc_women),
+    color = "grey70",
+    lwd = .3
   ) +
-  tm_shape(CCAA_sf, point.per = "feature") +
-  tm_text("porc_women_lab", remove.overlap = TRUE, shadow = TRUE) +
-  tm_shape(Can) +
-  tm_lines(col = "grey70") +
-  tm_layout(legend.position = c("LEFT", "center"))
+  geom_sf(data = Can, color = "grey70") +
+  geom_sf_label(aes(label = porc_women_lab),
+    fill = "white", alpha = 0.5,
+    size = 3,
+    label.size = 0
+  ) +
+  scale_fill_gradientn(
+    colors = hcl.colors(10, "Blues", rev = TRUE),
+    n.breaks = 10,
+    labels = function(x) {
+      sprintf("%1.1f%%", 100 * x)
+    },
+    guide = guide_legend(title = "Porc. women")
+  ) +
+  theme_void() +
+  theme(legend.position = c(0.1, 0.6))
 ```
 
 <img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" width="100%" />
@@ -136,45 +140,38 @@ shape_pop <- merge(shape,
 tile <-
   esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 10,
-    bbox_expand = 0.1
+    zoom = 10
   )
 
 # Plot
 
+library(ggplot2)
 
-library(tmap)
+lims <- as.double(sf::st_bbox(shape))
 
-tm_shape(tile, raster.downsample = FALSE) +
-  tm_rgb() +
-  tm_shape(shape_pop) +
-  tm_fill("porc_women",
-    palette = "RdYlBu",
-    title = "",
-    n = 8,
-    alpha = 0.6,
-    showNA = FALSE,
-    legend.format = list(
-      fun = function(x) {
-        sprintf("%1.0f%%", 100 * x)
-      },
-      text.separator = "-"
-    )
+ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
+  layer_spatraster(tile) +
+  geom_sf(aes(fill = porc_women), color = NA) +
+  geom_sf(data = provs, fill = NA) +
+  scale_fill_gradientn(
+    colours = hcl.colors(10, "RdYlBu", alpha = .5),
+    n.breaks = 8,
+    labels = function(x) {
+      sprintf("%1.0f%%", 100 * x)
+    },
+    guide = guide_legend(title = "", )
   ) +
-  tm_shape(provs) +
-  tm_credits("Source: INE",
-    fontface = "bold",
-    position = c("left", "bottom")
+  coord_sf(
+    xlim = lims[c(1, 3)],
+    ylim = lims[c(2, 4)]
   ) +
-  tm_borders(alpha = 0.5) +
-  tm_layout(
-    frame = FALSE,
-    main.title = "Share of women in Segovia by town (2019)",
-    main.title.fontface = "bold",
-    main.title.size = 0.8,
-    legend.position = c("right", "bottom"),
-    legend.bg.color = "white",
-    legend.bg.alpha = 0.7
+  labs(
+    title = "Share of women in Segovia by town (2019)",
+    caption = "Source: INE"
+  ) +
+  theme_void() +
+  theme(
+    title = element_text(face = "bold")
   )
 ```
 
@@ -211,16 +208,24 @@ ccaa <- esp_get_ccaa(
   epsg = target_crs
 )
 
-# Plot
-library(tmap)
+library(ggplot2)
 
-tm_shape(all_countries, bbox = c(23, 14, 67, 54) * 10e4) +
-  tm_graticules(col = "#DFDFDF", alpha = 0.7) +
-  tm_fill("#DFDFDF") +
-  tm_shape(eu_countries) +
-  tm_polygons("#FDFBEA", border.col = "#656565") +
-  tm_shape(ccaa) +
-  tm_polygons("#C12838", border.col = "grey80", lwd = 0.1)
+ggplot(all_countries) +
+  geom_sf(fill = "#DFDFDF", color = "#656565") +
+  geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", lwd = .1) +
+  # Center in Europe: EPSG 3035
+  coord_sf(
+    xlim = c(2377294, 7453440),
+    ylim = c(1313597, 5628510)
+  ) +
+  theme(
+    panel.background = element_blank(),
+    panel.grid = element_line(
+      colour = "#DFDFDF",
+      linetype = "dotted"
+    )
+  )
 ```
 
 <img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" width="100%" />

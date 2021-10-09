@@ -103,6 +103,7 @@ ParquesNaturales
 Precompute
 Puertos
 QUICKFIX
+README
 RGBA
 RedTransporte
 Renviron
@@ -131,6 +132,7 @@ WaterWet
 YYYY
 ZonasPerifericas
 administratives
+aes
 basemaps
 bathymetry
 bezüglich
@@ -172,8 +174,10 @@ lang
 les
 limites
 mapsf
+natively
 providersESP
 rOS
+rasterVis
 ropenspain
 roxygen
 shortname

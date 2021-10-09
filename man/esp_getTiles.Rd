@@ -129,6 +129,7 @@ tm_shape(Tile, raster.downsample = FALSE) +
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
+\code{\link{layer_spatraster}()},
 \code{\link{leaflet.providersESP.df}}
 }
 \concept{imagery utilities}
