@@ -73,9 +73,9 @@ test_that("tiles online", {
   point <- sf::st_transform(point, 3857)
 
   point <- sf::st_centroid(
-               sf::st_geometry(point), 
-               of_largest_polygon = TRUE
-             )
+    sf::st_geometry(point),
+    of_largest_polygon = TRUE
+  )
 
   expect_message(esp_getTiles(point,
     type = "RedTransporte.Carreteras",
