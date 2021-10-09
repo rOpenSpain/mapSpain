@@ -25,9 +25,8 @@ test_that("Test layers", {
   expect_s3_class(g, "ggplot")
   t <- tempfile(fileext = ".png")
 
-  suppressWarnings(ggplot2::ggsave(t, g))
-
   # Skip snapshots on ci
   skip_on_ci()
+  suppressWarnings(ggplot2::ggsave(t, g))
   expect_snapshot_file(t, "layer_spatraster.png")
 })
