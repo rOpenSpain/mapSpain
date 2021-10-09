@@ -37,7 +37,6 @@ jobs:
         run: |
 
           pkgdev::update_docs()
-          testthat::test_local()
 
         shell: Rscript {0}
 
