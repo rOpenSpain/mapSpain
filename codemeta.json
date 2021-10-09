@@ -4,8 +4,8 @@
   "identifier": "mapSpain",
   "description": "Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.",
   "name": "mapSpain: Administrative Boundaries of Spain",
-  "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "relatedLink": "https://ropenspain.github.io/mapSpain/",
+  "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.3.1.9000",
@@ -258,7 +258,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
-  "fileSize": "2974.185KB",
+  "fileSize": "2477.157KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
