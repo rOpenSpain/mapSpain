@@ -21,7 +21,7 @@ A ggplot2 layer
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-This is a wrapper of \code{\link[ggspatial:layer_spatial]{ggspatial::layer_spatial()}} that works with
+This is a wrapper of \code{\link[ggspatial:layer_spatial.Raster]{ggspatial::layer_spatial.Raster()}} that works with
 \code{SpatRaster} objects.
 
 This function is likely to be deprecated in the future when \strong{ggspatial}
@@ -62,7 +62,7 @@ ggplot(x) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[ggspatial:layer_spatial]{ggspatial::layer_spatial()}}, \code{\link[raster:stack]{raster::stack()}}.
+\code{\link[ggspatial:layer_spatial.Raster]{ggspatial::layer_spatial.Raster()}}, \code{\link[raster:stack]{raster::stack()}}.
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},

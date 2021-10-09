@@ -3,7 +3,7 @@
 #' @description
 #' `r lifecycle::badge("experimental")`
 #'
-#' This is a wrapper of [ggspatial::layer_spatial()] that works with
+#' This is a wrapper of [ggspatial::layer_spatial.Raster()] that works with
 #' `SpatRaster` objects.
 #'
 #' This function is likely to be deprecated in the future when **ggspatial**
@@ -16,7 +16,7 @@
 #' - [**mapsf**](https://CRAN.R-project.org/package=mapsf)
 #' - [**rasterVis**]( https://CRAN.R-project.org/package=rasterVis)
 #'
-#' @seealso [ggspatial::layer_spatial()], [raster::stack()].
+#' @seealso [ggspatial::layer_spatial.Raster()], [raster::stack()].
 #'
 #' @details
 #' This function requires both **ggspatial** and **raster** packages.

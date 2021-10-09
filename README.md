@@ -62,7 +62,6 @@ install_github("rOpenSpain/mapSpain")
 This script highlights some features of **mapSpain** :
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -121,7 +120,6 @@ ggplot(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
-
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -140,14 +138,15 @@ shape_pop <- merge(shape,
 tile <-
   esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 10
+    zoom = 10,
+    bbox_expand = .1
   )
 
 # Plot
 
 library(ggplot2)
 
-lims <- as.double(sf::st_bbox(shape))
+lims <- as.double(terra::ext(tile)@ptr$vector)
 
 ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   layer_spatraster(tile) +
@@ -162,8 +161,9 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     guide = guide_legend(title = "", )
   ) +
   coord_sf(
-    xlim = lims[c(1, 3)],
-    ylim = lims[c(2, 4)]
+    xlim = lims[c(1, 2)],
+    ylim = lims[c(3, 4)],
+    expand = FALSE
   ) +
   labs(
     title = "Share of women in Segovia by town (2019)",
@@ -185,7 +185,6 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -247,18 +246,17 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [**tmap**](https://github.com/r-tmap/tmap)
-  - [**mapsf**](https://riatelab.github.io/mapsf/)
-  - [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+-   [**tmap**](https://github.com/r-tmap/tmap)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
     [**ggspatial**](https://github.com/paleolimbot/ggspatial)
-  - [**leaflet**](https://rstudio.github.io/leaflet/)
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
 Please use the following when citing **mapSpain**:
 
 ``` r
-
 citation("mapSpain")
 #> 
 #> To cite the 'mapSpain' package in publications use:
@@ -299,7 +297,7 @@ This package uses data from **GISCO**. GISCO
 open data repository including several data sets at several resolution
 levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -307,13 +305,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.
