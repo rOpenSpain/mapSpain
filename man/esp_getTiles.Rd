@@ -26,7 +26,7 @@ esp_getTiles(
 )
 }
 \arguments{
-\item{x}{An \code{sf} object.}
+\item{x}{An \code{sf} or \code{sfc} object.}
 
 \item{type}{Name of the provider. See \link{leaflet.providersESP.df}.}
 

@@ -4,13 +4,7 @@ test_that("tiles error", {
 
   df <- data.frame(a = 1, b = 2)
 
-  expect_error(esp_getTiles(df), "Only sf objects allowed")
-
-  # Try with geom
-  poly <- esp_get_ccaa("La Rioja")
-  geom <- sf::st_geometry(poly)
-
-  expect_error(esp_getTiles(geom), "Only sf objects allowed")
+  expect_error(esp_getTiles(df), "Only sf and sfc objects allowed")
 })
 
 
@@ -31,7 +25,7 @@ test_that("tiles online", {
     path <- tempfile(fileext = ".png")
     png(path, width = width, height = height)
     on.exit(dev.off())
-    code
+    terra::plotRGB(code)
 
     path
   }
@@ -44,6 +38,23 @@ test_that("tiles online", {
 
   s <- esp_getTiles(poly)
 
+
+  # With sfc
+  geom <- sf::st_geometry(poly)
+
+  # Convert from bbox
+
+  bbox <- sf::st_bbox(poly)
+  expect_error(esp_getTiles(bbox))
+  expect_silent(esp_getTiles(sf::st_as_sfc(bbox)))
+
+  frombbox <- esp_getTiles(sf::st_as_sfc(bbox))
+
+  expect_s3_class(geom, "sfc")
+
+  expect_silent(esp_getTiles(geom))
+
+  sfc <- esp_getTiles(geom)
 
   # From cache
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
@@ -110,19 +121,10 @@ test_that("tiles online", {
 
   # Skip snapshots on ci
   skip_on_ci()
-  expect_snapshot_file(save_png(
-    terra::plotRGB(opaque)
-  ), "opaque.png")
-  expect_snapshot_file(save_png(
-    terra::plotRGB(n)
-  ), "transp.png")
-
-  expect_snapshot_file(save_png(
-    terra::plotRGB(s)
-  ), "silent.png")
-
-  expect_snapshot_file(
-    save_png(terra::plotRGB(p)),
-    "point.png"
-  )
+  expect_snapshot_file(save_png(opaque), "opaque.png")
+  expect_snapshot_file(save_png(n), "transp.png")
+  expect_snapshot_file(save_png(s), "silent.png")
+  expect_snapshot_file(save_png(p), "point.png")
+  expect_snapshot_file(save_png(sfc), "sfc.png")
+  expect_snapshot_file(save_png(frombbox), "frombbox.png")
 })
