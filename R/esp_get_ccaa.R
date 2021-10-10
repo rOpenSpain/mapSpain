@@ -39,9 +39,10 @@
 #' @examples
 #' ccaa <- esp_get_ccaa()
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' qtm(ccaa)
+#' ggplot(ccaa) +
+#'   geom_sf()
 #'
 #' # Random CCAA
 #' Random <- esp_get_ccaa(ccaa = c(
@@ -54,21 +55,17 @@
 #' ))
 #'
 #'
-#' tm_shape(Random) +
-#'   tm_polygons(col = "codauto", legend.show = FALSE) +
-#'   tm_shape(Random, point.per = "feature") +
-#'   tm_text("codauto",
-#'     auto.placement = TRUE,
-#'     shadow = TRUE
-#'   )
-#'
+#' ggplot(Random) +
+#'   geom_sf(aes(fill = codauto), show.legend = FALSE) +
+#'   geom_sf_label(aes(label = codauto), alpha = 0.3)
 #'
 #' # All CCAA of a Zone plus an addition
 #'
 #' Mix <-
 #'   esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 #'
-#' qtm(Mix)
+#' ggplot(Mix) +
+#'   geom_sf()
 #'
 #' # Combine with giscoR to get countries
 #' \donttest{
@@ -85,12 +82,14 @@
 #' europe <- st_transform(europe, 3035)
 #' ccaa <- st_transform(ccaa, 3035)
 #'
-#' tm_shape(europe, bbox = c(23, 14, 74, 55) * 10e4) +
-#'   tm_graticules() +
-#'   tm_polygons("#DFDFDF", border.col = "#656565") +
-#'   tm_shape(ccaa) +
-#'   tm_polygons("#FDFBEA", border.col = "#656565") +
-#'   tm_layout(bg.color = "#C7E7FB")
+#' ggplot(europe) +
+#'   geom_sf(fill = "#DFDFDF", color = "#656565") +
+#'   geom_sf(data = ccaa, fill = "#FDFBEA", color = "#656565") +
+#'   coord_sf(
+#'     xlim = c(23, 74) * 10e4,
+#'     ylim = c(14, 55) * 10e4
+#'   ) +
+#'   theme(panel.background = element_rect(fill = "#C7E7FB"))
 #' }
 esp_get_ccaa <- function(ccaa = NULL, ...) {
   params <- list(...)

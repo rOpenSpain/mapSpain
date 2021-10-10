@@ -96,12 +96,11 @@
 #' Murcia <- esp_get_ccaa_siane("Murcia", epsg = 3857)
 #' Tile <- esp_getTiles(Murcia)
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' tm_shape(Tile, raster.downsample = FALSE) +
-#'   tm_rgb(interpolate = FALSE) +
-#'   tm_shape(Murcia) +
-#'   tm_borders()
+#' ggplot(Murcia) +
+#'   layer_spatraster(Tile) +
+#'   geom_sf(fill = NA)
 #' }
 esp_getTiles <- function(x,
                          type = "IDErioja",

@@ -25,14 +25,20 @@
 #'
 #' nrow(OriginalCan)
 #'
-#' library(tmap)
-#' qtm(OriginalCan, fill = "grey70")
+#' library(ggplot2)
+#'
+#' ggplot(OriginalCan) +
+#'   geom_sf(fill = "grey70")
+#'
 #'
 #' # Less resolution
 #'
 #' MovedCan <- esp_get_country(moveCAN = TRUE, resolution = "20")
 #'
-#' qtm(MovedCan, fill = "grey70")
+#' library(ggplot2)
+#'
+#' ggplot(MovedCan) +
+#'   geom_sf(fill = "grey70")
 esp_get_country <- function(...) {
   params <- list(...)
   params$nuts_level <- 1
