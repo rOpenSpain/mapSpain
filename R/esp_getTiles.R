@@ -280,13 +280,13 @@ esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
   dimy <- (bbox[4] - bbox[2])
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
+  bbox_expand <- 1 + bbox_expand
+
+
   if (typeprov == "WMS") {
-    bbox_expand <- max(1 + bbox_expand, 1.1)
     maxdist <- max(dimx, dimy)
     dimy <- maxdist
     dimx <- dimy
-  } else {
-    bbox_expand <- 1 + bbox_expand
   }
 
   newbbox <- c(

@@ -66,31 +66,31 @@ Box <- esp_get_can_box()
 Line <- esp_get_can_provinces()
 
 # Plot
+library(ggplot2)
 
-library(tmap)
-
-
-tm_shape(Provs) +
-  tm_polygons() +
-  tm_shape(Box) +
-  tm_lines() +
-  tm_shape(Line) +
-  tm_lines()
+ggplot(Provs) +
+  geom_sf() +
+  geom_sf(data = Box) +
+  geom_sf(data = Line) +
+  theme_linedraw()
 \donttest{
 # Displacing Canary
 
-Provs_D <- esp_get_prov(moveCAN = c(15, 0))
+# By same factor
 
-Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
+displace <- c(15, 0)
 
-Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
+Provs_D <- esp_get_prov(moveCAN = displace)
 
-tm_shape(Provs_D) +
-  tm_polygons() +
-  tm_shape(Box_D) +
-  tm_lines() +
-  tm_shape(Line_D) +
-  tm_lines()
+Box_D <- esp_get_can_box(style = "left", moveCAN = displace)
+
+Line_D <- esp_get_can_provinces(moveCAN = displace)
+
+ggplot(Provs_D) +
+  geom_sf() +
+  geom_sf(data = Box_D) +
+  geom_sf(data = Line_D) +
+  theme_linedraw()
 
 
 # Example with poly option
@@ -123,18 +123,17 @@ CCAA <- esp_get_ccaa(
 
 # Plot
 
-tm_shape(Countries, bbox = c(-10, 34.6, 4.3, 44)) +
-  tm_polygons(col = "#DFDFDF") +
-  tm_shape(CANbox) +
-  tm_polygons(col = "#C7E7FB") +
-  tm_shape(CANbox) +
-  tm_borders(lwd = 2) +
-  tm_shape(CCAA) +
-  tm_polygons("#FDFBEA") +
-  tm_graticules(lines = FALSE) +
-  tm_layout(
-    bg.color = "#C7E7FB",
-    frame.double.line = TRUE
+ggplot(Countries) +
+  geom_sf(fill = "#DFDFDF") +
+  geom_sf(data = CANbox, fill = "#C7E7FB", lwd = 1) +
+  geom_sf(data = CCAA, fill = "#FDFBEA") +
+  coord_sf(
+    xlim = c(-10, 4.3),
+    ylim = c(34.6, 44)
+  ) +
+  theme(
+    panel.background = element_rect(fill = "#C7E7FB"),
+    panel.grid = element_blank()
   )
 }
 }

@@ -32,6 +32,9 @@ test_that("Test layers", {
   # Run only locally
   skip_on_ci()
 
-  suppressWarnings(ggplot2::ggsave(t, g))
+  suppressWarnings(ggplot2::ggsave(t, g,
+    width = 3, height = 3,
+    dpi = 90
+  ))
   expect_snapshot_file(t, "layer_spatraster.png")
 })

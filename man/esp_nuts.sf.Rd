@@ -41,25 +41,27 @@ nuts3 <- esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3, ]
 
 spain <- esp_get_country(moveCAN = FALSE)
 
-library(tmap)
-
 # Plot Urban Type: See
 # https://ec.europa.eu/eurostat/web/rural-development/methodology
-tm_shape(nuts3) +
-  tm_polygons(
-    "URBN_TYPE",
-    style = "cat",
-    border.col = "black",
-    border.alpha = 0.3,
-    title = "Urban topology",
-    labels = c("Urban", "Intermediate", "Rural"),
-    palette = c("grey80", "#FFC183", "#68AC20")
+
+library(ggplot2)
+
+nuts3$URBN_TYPE_cat <- as.factor(nuts3$URBN_TYPE)
+
+levels(nuts3$URBN_TYPE_cat)
+levels(nuts3$URBN_TYPE_cat) <- c("Urban", "Intermediate", "Rural")
+
+ggplot(nuts3) +
+  geom_sf(aes(fill = URBN_TYPE_cat), lwd = .1) +
+  scale_fill_manual(values = c("grey80", "#FFC183", "#68AC20")) +
+  labs(
+    title = "NUTS3 levels of Spain",
+    fill = "Urban topology"
   ) +
-  tm_graticules(lines = FALSE) +
-  tm_layout(
-    main.title = "NUTS3 levels of Spain",
-    legend.position = c("left", "center"),
-    legend.title.size = 0.8
+  theme_linedraw() +
+  theme(
+    legend.position = c(.7, .2),
+    legend.background = element_blank()
   )
 }
 \seealso{

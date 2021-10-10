@@ -7,25 +7,26 @@ teruel_city <- teruel_sf[teruel_sf$name == "Teruel", ]
 
 # Plot
 
-library(tmap)
+library(ggplot2)
+library(ggspatial)
 
-tm_shape(teruel_sf) +
-  tm_polygons("#FDFBEA") +
-  tm_shape(teruel_city) +
-  tm_fill(
-    col = "name",
-    palette = "#C12838",
-    labels = "City of Teruel",
-    title = ""
+ggplot(teruel_sf) +
+  geom_sf(fill = "#FDFBEA") +
+  geom_sf(data = teruel_city, aes(fill = name)) +
+  scale_fill_manual(
+    values = "#C12838",
+    labels = "City of Teruel"
   ) +
-  tm_graticules(lines = FALSE) +
-  tm_layout(
-    main.title = "Municipalities of Teruel",
-    legend.position = c("left", "top")
+  labs(
+    fill = "",
+    title = "Municipalities of Teruel"
   ) +
-  tm_scale_bar() +
-  tm_compass(
-    type = "rose",
-    size = 3,
-    position = c("left", "bottom")
+  annotation_scale(location = "br") +
+  annotation_north_arrow(style = north_arrow_nautical) +
+  theme_minimal() +
+  theme(
+    text = element_text(face = "bold"),
+    panel.background = element_rect(colour = "black"),
+    panel.grid = element_blank(),
+    legend.position = c(.2, .95)
   )

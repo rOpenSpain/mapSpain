@@ -22,8 +22,9 @@ test_that("tiles online", {
   skip_on_cran()
   skip_if_offline()
 
+  png
 
-  save_png <- function(code, width = 400, height = 400) {
+  save_png <- function(code, width = 200, height = 200) {
     path <- tempfile(fileext = ".png")
     png(path, width = width, height = height)
     on.exit(dev.off())
@@ -77,14 +78,16 @@ test_that("tiles online", {
     of_largest_polygon = TRUE
   )
 
+  expect_length(point, 1)
+  expect_s3_class(point, "sfc_POINT")
+
   expect_message(esp_getTiles(point,
-    type = "RedTransporte.Carreteras",
     verbose = TRUE
   ))
 
-  p <- esp_getTiles(point,
-    type = "RedTransporte.Carreteras"
-  )
+  p <- esp_getTiles(point, verbose = TRUE)
+
+
 
   expect_message(esp_getTiles(poly,
     type = "RedTransporte.Carreteras",

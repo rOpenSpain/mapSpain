@@ -71,21 +71,17 @@
 #'   capimun[, "type"]
 #' )
 #'
-#' # Check on plot
-#' library(tmap)
 #'
-#' tm_shape(tile, raster.downsample = FALSE) +
-#'   tm_rgb() +
-#'   tm_shape(area) +
-#'   tm_borders(col = "grey40") +
-#'   tm_shape(points) +
-#'   tm_symbols(col = "type", alpha = 0.8, pal = "RdBu") +
-#'   tm_layout(
-#'     main.title = "Centroid vs. capimun",
-#'     legend.outside = TRUE,
-#'     legend.outside.size = 0.3,
-#'     legend.text.size = 1
-#'   )
+#' # Check on plot
+#' library(ggplot2)
+#'
+#' ggplot(points) +
+#'   layer_spatraster(tile) +
+#'   geom_sf(data = area, fill = NA, color = "blue") +
+#'   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
+#'   scale_fill_manual(values = c("green", "red")) +
+#'   theme_void() +
+#'   labs(title = "Centroid vs. capimun")
 #' }
 esp_get_capimun <- function(year = Sys.Date(),
                             epsg = "4258",
