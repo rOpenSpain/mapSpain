@@ -46,25 +46,6 @@ provided (in this case , all the provinces of Andalucia).
 Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf::st_transform()}}
 to change the projection.
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-}
-
-\section{Displacing the Canary Islands}{
-While \code{moveCAN} is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
-get the actual coordinates, instead of the modified ones.
-}
-
 \examples{
 
 
