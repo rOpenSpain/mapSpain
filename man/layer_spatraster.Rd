@@ -26,7 +26,7 @@ This is a wrapper of \code{\link[ggspatial:layer_spatial.Raster]{ggspatial::laye
 
 This function is likely to be deprecated in the future when \strong{ggspatial}
 (or any other package) provides native support to \code{SpatRaster} on
-\strong{ggplot}.
+\strong{ggplot}. See also \url{https://github.com/paleolimbot/ggspatial/issues/91}
 
 Other packages that supports natively \code{SpatRaster}:
 \itemize{

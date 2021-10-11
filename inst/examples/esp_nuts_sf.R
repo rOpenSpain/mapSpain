@@ -28,6 +28,5 @@ ggplot(nuts3) +
   ) +
   theme_linedraw() +
   theme(
-    legend.position = c(.7, .2),
-    legend.background = element_blank()
+    legend.position = c(.8, .2)
   )

@@ -8,7 +8,7 @@
 #'
 #' This function is likely to be deprecated in the future when **ggspatial**
 #' (or any other package) provides native support to `SpatRaster` on
-#' **ggplot**.
+#' **ggplot**. See also <https://github.com/paleolimbot/ggspatial/issues/91>
 #'
 #' Other packages that supports natively `SpatRaster`:
 #'

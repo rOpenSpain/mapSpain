@@ -75,21 +75,19 @@
 #' ))
 #'
 #' # Plot
-#' library(tmap)
-#' tm_shape(Base_pop) +
-#'   tm_fill(
-#'     col = "pob19", palette = "cividis",
-#'     breaks = br,
-#'     title = "Persons"
+#' library(ggplot2)
+#'
+#'
+#' ggplot(Base_pop) +
+#'   geom_sf(aes(fill = cuts), color = NA) +
+#'   geom_sf(data = provs, fill = NA, color = "grey70") +
+#'   scale_fill_manual(values = hcl.colors(length(br), "cividis")) +
+#'   labs(
+#'     title = "Population in Castilla y Leon",
+#'     subtitle = "INE, 2019",
+#'     fill = "Persons"
 #'   ) +
-#'   tm_shape(provs) +
-#'   tm_borders(col = "white", alpha = 0.25) +
-#'   tm_layout(
-#'     legend.outside = TRUE,
-#'     legend.position = c("right", "center"),
-#'     main.title = "Population in Castilla y Leon (2019)",
-#'     frame = FALSE
-#'   )
+#'   theme_void()
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
                           cache = TRUE,

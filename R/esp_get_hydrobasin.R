@@ -30,26 +30,25 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' all <- esp_get_prov(moveCAN = FALSE)
 #' hydroland <- esp_get_hydrobasin(domain = "land")
 #' hydrolandsea <- esp_get_hydrobasin(domain = "landsea")
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' tm_shape(hydrolandsea, bbox = c(-9.5, 35, 4.5, 44)) +
-#'   tm_fill("skyblue4") +
-#'   tm_shape(all) +
-#'   tm_polygons("grey90") +
-#'   tm_shape(hydroland) +
-#'   tm_polygons("skyblue", alpha = 0.5, border.col = "blue") +
-#'   tm_text(
-#'     text = "rotulo",
-#'     remove.overlap = TRUE,
-#'     size = 0.5,
+#'
+#' ggplot(hydroland) +
+#'   geom_sf(data = hydrolandsea, fill = "skyblue4", alpha = .4) +
+#'   geom_sf(fill = "skyblue", alpha = .5) +
+#'   geom_sf_text(aes(label = rotulo),
+#'     size = 3, check_overlap = TRUE,
 #'     fontface = "bold",
-#'     shadow = TRUE
+#'     family = "serif"
 #'   ) +
-#'   tm_layout(bg.color = "grey95")
+#'   coord_sf(
+#'     xlim = c(-9.5, 4.5),
+#'     ylim = c(35, 44)
+#'   ) +
+#'   theme_void()
 #' }
 esp_get_hydrobasin <- function(epsg = "4258",
                                cache = TRUE,

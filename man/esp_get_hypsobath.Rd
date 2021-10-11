@@ -77,7 +77,7 @@ corresponding .geojson file by any other method and save it on your
 \dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # This code would produce a nice plot - It will take a few seconds to run
-library(tmap)
+library(ggplot2)
 
 hypsobath <- esp_get_hypsobath()
 
@@ -118,33 +118,43 @@ levels <- sort(unique(hypsobath$val_inf))
 br_bath <- length(levels[levels < 0])
 br_terrain <- length(levels) - br_bath
 
-bath_tints(br_bath)
-
 pal <- c(bath_tints((br_bath)), hyps_tints((br_terrain)))
 
 
 # Plot Canary Islands
-tm_shape(hypsobath, bbox = c(-18.6, 27, -13, 29.5)) +
-  tm_fill("val_inf",
-    style = "cat",
-    palette = pal,
-    title = "Elevation",
-    legend.reverse = TRUE
+ggplot(hypsobath) +
+  geom_sf(aes(fill = as.factor(val_inf)),
+    color = NA
   ) +
-  tm_layout(
-    legend.outside = TRUE
-  )
+  coord_sf(
+    xlim = c(-18.6, -13),
+    ylim = c(27, 29.5)
+  ) +
+  scale_fill_manual(values = pal) +
+  guides(fill = guide_legend(
+    title = "Elevation",
+    direction = "horizontal",
+    label.position = "bottom",
+    title.position = "top",
+    nrow = 1
+  )) +
+  theme(legend.position = "bottom")
 
 
 # Plot Mainland
-tm_shape(hypsobath, bbox = c(-9.5, 35.8, 4.4, 44)) +
-  tm_fill("val_inf",
-    style = "cat",
-    palette = pal,
-    title = "Elevation",
-    legend.reverse = TRUE
+ggplot(hypsobath) +
+  geom_sf(aes(fill = as.factor(val_inf)),
+    color = NA
   ) +
-  tm_layout(legend.outside = TRUE)
+  coord_sf(
+    xlim = c(-9.5, 4.4),
+    ylim = c(35.8, 44)
+  ) +
+  scale_fill_manual(values = pal) +
+  guides(fill = guide_legend(
+    title = "Elevation",
+    keyheight = .8
+  ))
 }
 \dontshow{\}) # examplesIf}
 }
