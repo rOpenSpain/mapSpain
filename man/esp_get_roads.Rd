@@ -82,19 +82,18 @@ get the actual coordinates, instead of the modified ones.
 country <- esp_get_country()
 Roads <- esp_get_roads()
 
+library(ggplot2)
 
-library(tmap)
-
-tm_shape(country) +
-  tm_fill(col = "grey90") +
-  tm_shape(Roads) +
-  tm_lines("tipo",
-    palette = c("#003399", "#003399", "#ff0000", "#ffff00")
+ggplot(country) +
+  geom_sf(fill = "grey90") +
+  geom_sf(data = Roads, aes(color = tipo), show.legend = "line") +
+  scale_color_manual(
+    values = c("#003399", "#003399", "#ff0000", "#ffff00")
   ) +
-  tm_layout(
-    legend.outside = TRUE,
-    legend.outside.position = "bottom"
-  )
+  guides(color = guide_legend(direction = "vertical")) +
+  theme_minimal() +
+  labs(color = "Road type") +
+  theme(legend.position = "bottom")
 }
 \dontshow{\}) # examplesIf}
 }

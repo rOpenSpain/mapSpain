@@ -30,3 +30,4 @@ vignettes/*.pdf
 *.knit.md
 .Renviron
 docs/
+/*.pdf

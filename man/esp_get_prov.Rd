@@ -126,9 +126,12 @@ get the actual coordinates, instead of the modified ones.
 \examples{
 prov <- esp_get_prov()
 
-library(tmap)
+library(ggplot2)
 
-qtm(prov)
+ggplot(prov) +
+  geom_sf() +
+  theme_void()
+
 
 # Random Provinces
 
@@ -141,9 +144,13 @@ Random <-
     "01"
   ))
 
-tm_shape(Random) +
-  tm_polygons(col = "codauto", legend.show = FALSE, palette = "Spectral")
 
+ggplot(Random) +
+  geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
+  scale_fill_manual(values = hcl.colors(
+    nrow(Random), "Spectral"
+  )) +
+  theme_minimal()
 
 
 # All Provinces of a Zone plus an addition
@@ -153,19 +160,27 @@ Mix <- esp_get_prov(prov = c(
   "Castilla y Leon", "La Rioja"
 ))
 
-qtm(Mix)
+Mix$CCAA <- esp_dict_region_code(
+  Mix$codauto,
+  origin = "codauto"
+)
+
+ggplot(Mix) +
+  geom_sf(aes(fill = CCAA), alpha = 0.5) +
+  scale_fill_discrete(type = hcl.colors(5, "Roma")) +
+  theme_classic()
 
 # ISO codes available
 
 allprovs <- esp_get_prov()
 
-
-tm_shape(allprovs, point.per = "feature") +
-  tm_polygons() +
-  tm_text("iso2.prov.code",
-    remove.overlap = TRUE,
-    shadow = TRUE
-  )
+ggplot(allprovs) +
+  geom_sf(fill = NA) +
+  geom_sf_text(aes(label = iso2.prov.code),
+    check_overlap = TRUE,
+    fontface = "bold"
+  ) +
+  theme_void()
 }
 \seealso{
 Other political: 

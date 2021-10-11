@@ -97,68 +97,61 @@
 #'
 #' NUTS1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 #'
+#' library(ggplot2)
 #'
-#' library(tmap)
-#'
-#' tm_shape(NUTS1) +
-#'   tm_graticules() +
-#'   tm_polygons() +
-#'   tm_credits(giscoR::gisco_attributions(),
-#'     fontface = "italic",
-#'     size = 0.7
-#'   ) +
-#'   tm_layout(
-#'     main.title = "NUTS1: Displacing Canary Islands",
-#'     main.title.size = 0.9,
-#'     main.title.fontface = "bold",
-#'     attr.outside = TRUE
+#' ggplot(NUTS1) +
+#'   geom_sf() +
+#'   labs(
+#'     title = "NUTS1: Displacing Canary Islands",
+#'     caption = giscoR::gisco_attributions()
 #'   )
+#'
 #'
 #' NUTS1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 #'
-#' tm_shape(NUTS1_alt) +
-#'   tm_graticules() +
-#'   tm_polygons() +
-#'   tm_credits(giscoR::gisco_attributions(),
-#'     fontface = "italic",
-#'     size = 0.7
-#'   ) +
-#'   tm_layout(
-#'     main.title = "NUTS1: Displacing Canary Islands to the right",
-#'     main.title.size = 0.9,
-#'     main.title.fontface = "bold",
-#'     attr.outside = TRUE
+#'
+#' ggplot(NUTS1_alt) +
+#'   geom_sf() +
+#'   labs(
+#'     title = "NUTS1: Displacing Canary Islands",
+#'     subtitle = "to the right",
+#'     caption = giscoR::gisco_attributions()
 #'   )
+#'
 #'
 #' NUTS1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 #'
-#' tm_shape(NUTS1_orig) +
-#'   tm_graticules() +
-#'   tm_polygons() +
-#'   tm_credits(giscoR::gisco_attributions(),
-#'     fontface = "italic",
-#'     size = 0.7
-#'   ) +
-#'   tm_layout(
-#'     main.title = "NUTS1: Canary Islands on the true location",
-#'     main.title.size = 0.9,
-#'     main.title.fontface = "bold",
-#'     attr.outside = TRUE
+#' ggplot(NUTS1_orig) +
+#'   geom_sf() +
+#'   labs(
+#'     title = "NUTS1",
+#'     subtitle = "Canary Islands on the true location",
+#'     caption = giscoR::gisco_attributions()
 #'   )
 #'
 #'
 #' AndOriental <-
 #'   esp_get_nuts(region = c("Almeria", "Granada", "Jaen", "Malaga"))
 #'
-#' qtm(AndOriental, main.title = "Andalucia Oriental")
+#'
+#' ggplot(AndOriental) +
+#'   geom_sf()
 #'
 #'
 #'
 #' RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
-#' qtm(RandomRegions, main.title = "Random regions")
+#'
+#' ggplot(RandomRegions) +
+#'   geom_sf() +
+#'   labs(title = "Random Regions")
+#'
 #'
 #' MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
-#' qtm(MixingCodes, main.title = "Mixing codes")
+#'
+#'
+#' ggplot(MixingCodes) +
+#'   geom_sf() +
+#'   labs(title = "Mixing Codes")
 esp_get_nuts <- function(year = "2016",
                          epsg = "4258",
                          cache = TRUE,

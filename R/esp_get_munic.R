@@ -24,8 +24,8 @@
 #' @param region A vector of names and/or codes for provinces
 #'  or `NULL` to get all the municipalities. See **Details**.
 #'
-#' @param munic A name or [`regex`][base::grep()] expression with the names of the
-#'   required municipalities. `NULL` would not produce any filtering.
+#' @param munic A name or [`regex`][base::grep()] expression with the names of
+#'   the required municipalities. `NULL` would not produce any filtering.
 #'
 #' @inheritParams esp_get_nuts
 #'
@@ -71,8 +71,10 @@
 #' br <- sort(c(
 #'   0, 50, 100, 200, 500,
 #'   1000, 5000, 50000, 100000,
-#'   max(Base_pop$pob19)
+#'   Inf
 #' ))
+#'
+#' Base_pop$cuts <- cut(Base_pop$pob19, br, dig.lab = 20)
 #'
 #' # Plot
 #' library(ggplot2)

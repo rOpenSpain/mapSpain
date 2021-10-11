@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.3.1.9000
+Version: 0.4.0
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain"))
@@ -33,13 +33,12 @@ Suggests:
     rmarkdown,
     slippymath (>= 0.3.1),
     terra (>= 1.1-4),
-    testthat (>= 3.0.0),
-    tmap
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Copyright: (c) EuroGeographics for the administrative boundaries. Atlas
+Copyright: © EuroGeographics for the administrative boundaries. Atlas
     Nacional de España (ANE) CC BY 4.0 <http://www.ign.es>
 Encoding: UTF-8
 LazyData: true

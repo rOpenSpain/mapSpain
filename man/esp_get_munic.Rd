@@ -63,8 +63,8 @@ default is \code{FALSE}.}
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
-\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of the
-required municipalities. \code{NULL} would not produce any filtering.}
+\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
+the required municipalities. \code{NULL} would not produce any filtering.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -150,8 +150,10 @@ Base_pop <- merge(Base, pobmun19,
 br <- sort(c(
   0, 50, 100, 200, 500,
   1000, 5000, 50000, 100000,
-  max(Base_pop$pob19)
+  Inf
 ))
+
+Base_pop$cuts <- cut(Base_pop$pob19, br, dig.lab = 20)
 
 # Plot
 library(ggplot2)

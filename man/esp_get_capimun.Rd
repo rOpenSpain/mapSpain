@@ -47,8 +47,8 @@ default is \code{FALSE}.}
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
-\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of the
-required municipalities. \code{NULL} would not produce any filtering.}
+\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
+the required municipalities. \code{NULL} would not produce any filtering.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.

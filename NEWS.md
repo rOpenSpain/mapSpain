@@ -1,8 +1,9 @@
-# mapSpain (development version)
+# mapSpain 0.4.0
 
--   Switch from `raster` to `terra`
+-   Switch from `raster` to `terra`.
 -   Clean up dependencies. Imagery packages moved to 'Suggests'.
--   Add `layer_spatraster()`
+-   Add `layer_spatraster()`.
+-   Move examples to `ggplot2`
 
 # mapSpain 0.3.1
 

@@ -45,24 +45,34 @@
 #' MainRivers <-
 #'   esp_get_rivers(name = "Tajo$|Ebro$|Ebre$|Duero|Guadiana$|Guadalquivir")
 #'
+#' sf::st_bbox(MainRivers)
+#' library(ggplot2)
 #'
-#' library(tmap)
-#'
-#' tm_shape(shapeEsp, bbox = MainRivers) +
-#'   tm_borders() +
-#'   tm_shape(MainRivers) +
-#'   tm_lines(col = "skyblue", lwd = 3)
+#' ggplot(shapeEsp) +
+#'   geom_sf() +
+#'   geom_sf(data = MainRivers, color = "skyblue", lwd = 2) +
+#'   coord_sf(
+#'     xlim = c(-7.5, 1),
+#'     ylim = c(36.8, 43)
+#'   ) +
+#'   theme_void()
 #'
 #'
 #' # Wetlands in South-West Andalucia
 #' and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))
 #' Wetlands <- esp_get_rivers(spatialtype = "area")
 #'
-#'
-#' tm_shape(and) +
-#'   tm_polygons() +
-#'   tm_shape(Wetlands) +
-#'   tm_polygons(col = "skyblue", alpha = 0.5, border.col = "skyblue", lwd = 2)
+#' ggplot(and) +
+#'   geom_sf() +
+#'   geom_sf(
+#'     data = Wetlands, fill = "skyblue",
+#'     color = "skyblue", alpha = 0.5
+#'   ) +
+#'   coord_sf(
+#'     xlim = c(-7.5, -4.5),
+#'     ylim = c(36, 38.5)
+#'   ) +
+#'   theme_void()
 #' }
 esp_get_rivers <- function(epsg = "4258",
                            cache = TRUE,

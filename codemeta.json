@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.1.9000",
+  "version": "0.4.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -175,18 +175,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tmap",
-      "name": "tmap",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tmap"
     }
   ],
   "softwareRequirements": {
@@ -258,7 +246,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
-  "fileSize": "2512.825KB",
+  "fileSize": "3004.211KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -273,7 +261,7 @@
       "name": "mapSpain: Administrative Boundaries of Spain",
       "identifier": "10.5281/zenodo.5366622",
       "url": "https://ropenspain.github.io/mapSpain/",
-      "description": "R package version 0.3.1.9000",
+      "description": "R package version 0.4.0",
       "@id": "https://doi.org/10.5281/zenodo.5366622",
       "sameAs": "https://doi.org/10.5281/zenodo.5366622"
     }
