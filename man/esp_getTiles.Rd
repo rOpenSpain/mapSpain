@@ -6,8 +6,6 @@
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
 \strong{v1.2.0}.
-
-For plotting, you can use \code{\link[terra:plotRGB]{terra::plotRGB()}}, \code{\link[tmap:tm_raster]{tmap::tm_rgb()}}.
 }
 \usage{
 esp_getTiles(

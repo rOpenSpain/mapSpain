@@ -5,12 +5,12 @@ Version: 0.4.0
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain"))
-Description: Administrative Boundaries of Spain at several levels (CCAA,
-    Provinces, Municipalities) based on the GISCO Eurostat database
-    <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from
-    'Instituto Geografico Nacional' <https://www.ign.es/>.  It also
-    provides a 'leaflet' plugin and the ability of downloading and
-    processing static tiles.
+Description: Administrative Boundaries of Spain at several levels
+    (Autonomous Communities, Provinces, Municipalities) based on the
+    'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
+    and 'CartoBase SIANE' from 'Instituto Geografico Nacional'
+    <https://www.ign.es/>.  It also provides a 'leaflet' plugin and the
+    ability of downloading and processing static tiles.
 License: GPL-3
 URL: https://ropenspain.github.io/mapSpain/,
     https://github.com/rOpenSpain/mapSpain

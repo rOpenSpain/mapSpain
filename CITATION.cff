@@ -10,11 +10,11 @@ license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
 version: 0.4.0
 doi: 10.5281/zenodo.5366622
-abstract: Administrative Boundaries of Spain at several levels (CCAA, Provinces, Municipalities)
-  based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and
-  'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It
-  also provides a 'leaflet' plugin and the ability of downloading and processing static
-  tiles.
+abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
+  Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
+  and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>.
+  It also provides a 'leaflet' plugin and the ability of downloading and processing
+  static tiles.
 authors:
 - family-names: Hernangómez
   given-names: Diego

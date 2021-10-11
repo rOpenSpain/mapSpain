@@ -52,6 +52,7 @@
 #' all the municipalities of that level would be added.
 #'
 #' @examples
+#' \donttest{
 #' # Get munics
 #' Base <- esp_get_munic(year = "2019", region = "Castilla y Leon")
 #'
@@ -90,6 +91,7 @@
 #'     fill = "Persons"
 #'   ) +
 #'   theme_void()
+#' }
 esp_get_munic <- function(year = "2019",
                           epsg = "4258",
                           cache = TRUE,

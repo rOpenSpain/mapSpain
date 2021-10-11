@@ -131,6 +131,7 @@ get the actual coordinates, instead of the modified ones.
 }
 
 \examples{
+\donttest{
 # Get munics
 Base <- esp_get_munic(year = "2019", region = "Castilla y Leon")
 
@@ -169,6 +170,7 @@ ggplot(Base_pop) +
     fill = "Persons"
   ) +
   theme_void()
+}
 }
 \seealso{
 \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[base:regex]{base::regex()}}.

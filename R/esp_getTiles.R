@@ -19,10 +19,6 @@
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
 #'  **v1.2.0**.
 #'
-#'
-#'
-#' For plotting, you can use [terra::plotRGB()], [tmap::tm_rgb()].
-#'
 #' @export
 #'
 #' @param x An `sf` or `sfc` object.
