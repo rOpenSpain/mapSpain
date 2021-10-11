@@ -167,7 +167,7 @@ Mix$CCAA <- esp_dict_region_code(
 
 ggplot(Mix) +
   geom_sf(aes(fill = CCAA), alpha = 0.5) +
-  scale_fill_discrete(type = hcl.colors(5, "Roma")) +
+  scale_fill_discrete(type = hcl.colors(5, "Temps")) +
   theme_classic()
 
 # ISO codes available
