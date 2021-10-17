@@ -22,8 +22,6 @@ test_that("tiles online", {
   skip_on_cran()
   skip_if_offline()
 
-  png
-
   save_png <- function(code, width = 200, height = 200) {
     path <- tempfile(fileext = ".png")
     png(path, width = width, height = height)
@@ -34,12 +32,12 @@ test_that("tiles online", {
   }
   expect_s4_class(esp_getTiles(poly), "SpatRaster")
   expect_message(esp_getTiles(poly,
-    zoom = 5, verbose = TRUE,
+    zoom = 3, verbose = TRUE,
     update_cache = TRUE
   ))
 
 
-  s <- esp_getTiles(poly)
+  s <- esp_getTiles(poly, zoom = 3)
 
 
   # With sfc
@@ -49,22 +47,22 @@ test_that("tiles online", {
 
   bbox <- sf::st_bbox(poly)
   expect_error(esp_getTiles(bbox))
-  expect_silent(esp_getTiles(sf::st_as_sfc(bbox)))
+  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), zoom = 3))
 
-  frombbox <- esp_getTiles(sf::st_as_sfc(bbox))
+  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), zoom = 3)
 
   expect_s3_class(geom, "sfc")
 
-  expect_silent(esp_getTiles(geom))
+  expect_silent(esp_getTiles(geom, zoom = 3))
 
-  sfc <- esp_getTiles(geom)
+  sfc <- esp_getTiles(geom, zoom = 3)
 
   # From cache
   expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
-  expect_message(esp_getTiles(poly, verbose = TRUE))
+  expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
   expect_message(esp_getTiles(
     poly,
-    zoom = 2,
+    zoom = 5,
     verbose = TRUE,
     type = "IGNBase.Orto"
   ))
