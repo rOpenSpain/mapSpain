@@ -153,6 +153,7 @@ ggplot(hypsobath) +
   scale_fill_manual(values = pal) +
   guides(fill = guide_legend(
     title = "Elevation",
+    reverse = TRUE,
     keyheight = .8
   ))
 }
