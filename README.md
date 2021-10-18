@@ -34,7 +34,7 @@ Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
 ``` r
-install.packages("mapSpain")
+install.packages("mapSpain", dependencies = TRUE)
 ```
 
 You can install the developing version of **mapSpain** using the
@@ -47,7 +47,7 @@ options(repos = c(
   CRAN = "https://cloud.r-project.org"
 ))
 
-install.packages("mapSpain")
+install.packages("mapSpain", dependencies = TRUE)
 ```
 
 Alternatively, you can install the developing version of **mapSpain**
@@ -55,7 +55,7 @@ with:
 
 ``` r
 library(remotes)
-install_github("rOpenSpain/mapSpain")
+install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ## Usage
