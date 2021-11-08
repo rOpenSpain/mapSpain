@@ -112,9 +112,11 @@ can be plotted:
 
 LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-Basemap <- esp_getTiles(LaRioja, bbox_expand = 0.1, zoom = 10)
+Basemap <- esp_getTiles(LaRioja, "IGNBase.Gris",
+  bbox_expand = 0.1, zoom = 10
+)
 
-Mask <- esp_getTiles(LaRioja, "PNOA", mask = TRUE, zoom = 10)
+Mask <- esp_getTiles(LaRioja, "IDErioja", mask = TRUE, zoom = 10)
 
 ggplot() +
   layer_spatraster(Basemap) +

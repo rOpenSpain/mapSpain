@@ -27,6 +27,9 @@ jobs:
             pkgdown
             ropenspain/rostemplate
             reactable
+            GADMTools
+            rnaturalearth
+            ropensci/rnaturalearthhires
           needs: website
 
       - name: Deploy package

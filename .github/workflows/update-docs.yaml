@@ -31,6 +31,9 @@ jobs:
             dieghernan/pkgdev
             ropenspain/rostemplate
             reactable
+            GADMTools
+            rnaturalearth
+            ropensci/rnaturalearthhires
           needs: website
 
       - name: Update docs
