@@ -9,7 +9,7 @@ name: update-docs
 
 jobs:
   update-docs:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -34,6 +34,8 @@ jobs:
             GADMTools
             rnaturalearth
             ropensci/rnaturalearthhires
+            tidyverse
+            styler
           needs: website
 
       - name: Update docs

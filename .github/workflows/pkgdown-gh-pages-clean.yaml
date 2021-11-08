@@ -5,7 +5,7 @@ name: Clean pkgdown manually
 
 jobs:
   pkgdown-gh-pages-manual:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -28,6 +28,8 @@ jobs:
             GADMTools
             rnaturalearth
             ropensci/rnaturalearthhires
+            tidyverse
+            styler
           needs: website
 
       - name: Deploy package
