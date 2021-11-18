@@ -1,18 +1,22 @@
-url: https://ropenspain.github.io/mapSpain
+url: 'https://ropenspain.github.io/mapSpain'
 
 repo:
   branch: main
+
+development:
+  mode: auto
+
 reference:
-  - title: "Political"
+  - title: Political
     desc: These functions return `sf` objects with political boundaries
     contents:
       - has_concept("political")
       - -esp_codelist
-  - title: "Natural"
+  - title: Natural
     desc: These functions return `sf` objects with natural features
     contents:
       - has_concept("natural")
-  - title: "Infrastructures"
+  - title: Infrastructures
     desc: These functions return `sf` objects with man-made features
     contents:
       - has_concept("infrastructure")
@@ -24,11 +28,11 @@ reference:
   - title: Cache management
     contents:
       - has_concept("cache utilities")
-  - title: "Dictionary"
+  - title: Dictionary
     desc: Translation across languages and coding systems
     contents:
       - esp_dict_region_code
-  - title: "Datasets"
+  - title: Datasets
     desc: These objects are datasets already included in the package.
     contents:
       - has_concept("datasets")
@@ -36,47 +40,53 @@ reference:
     desc: A collection of helper functions
     contents:
       - has_concept("helper")
-  - title: "About the package"
+  - title: About the package
     contents:
       - mapSpain-package
 
 template:
   package: rostemplate
   params:
-    ganalytics: 'G-5N21Z0YYJJ'
+    ganalytics: "G-5N21Z0YYJJ"
     docsearch:
-      api_key: '2621bfcaa3de971834f4026466317ee7'
-      index_name: 'mapSpain'
+      api_key: "2621bfcaa3de971834f4026466317ee7"
+      index_name: mapSpain
   opengraph:
     twitter:
-      creator: "@dhernangomez"
-      site: "@rOpenSpain"
+      creator: '@dhernangomez'
+      site: '@rOpenSpain'
       card: summary_large_image
 
 home:
-  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and Municipalities
-  description: Administrative Boundaries of Spain based on the GISCO (Geographic Information System of the Commission) Eurostat database. It also provides a leaflet plugin and the ability of downloading and processing static tiles.
+  title: >-
+    mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
+    Municipalities
+  description: >-
+    Administrative Boundaries of Spain based on the GISCO (Geographic
+    Information System of the Commission) Eurostat database. It also provides a
+    leaflet plugin and the ability of downloading and processing static tiles.
 
 navbar:
   components:
+    home: ~
     articles:
-     text: Articles
-     menu:
-     - text: Working with imagery
-       href: articles/working_imagery.html
-     - text: Annex: Codes and names of the Spanish regions
-       href: articles/x02_mapasesp.html
-     - text: Other materials (es)
-       menu:
-       - text "mapSpain: Mapas de España en R (xaringan)"
-         href: https://dieghernan.github.io/rpubs/mapSpain_RMadrid/
-       - text "mapSpain: Mapas de España en R (.Rmd)"
-         href: articles/x02_mapasesp.html
+      text: Articles
+      menu:
+        - text: Working with imagery
+          href: articles/articles/working_imagery.html
+        - text: 'Annex: Codes and names of the Spanish regions'
+          href: articles/articles/x02_mapasesp.html
+        - text: -----
+        - text: 'mapSpain: Mapas de España en R (xaringan)'
+          href: 'https://dieghernan.github.io/rpubs/mapSpain_RMadrid/'
+        - text: 'mapSpain: Mapas de España en R (.Rmd)'
+          href: articles/articles/x02_mapasesp.html
 
 authors:
   Diego Hernangómez:
-    href: https://dieghernan.github.io/
+    href: 'https://dieghernan.github.io/'
   EuroGeographics:
-    href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
+    href: >-
+      https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Instituto Geográfico Nacional:
-    href: https://www.ign.es/
+    href: 'https://www.ign.es/'
