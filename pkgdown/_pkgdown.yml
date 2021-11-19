@@ -75,7 +75,7 @@ navbar:
         - text: Working with imagery
           href: articles/articles/working_imagery.html
         - text: 'Annex: Codes and names of the Spanish regions'
-          href: articles/articles/x02_mapasesp.html
+          href: articles/articles/x01_regioncodes.html
         - text: -----
         - text: 'mapSpain: Mapas de España en R (xaringan)'
           href: 'https://dieghernan.github.io/rpubs/mapSpain_RMadrid/'
