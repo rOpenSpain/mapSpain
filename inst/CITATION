@@ -9,5 +9,5 @@ bibentry(
   author = person("Diego", "Hernangómez"),
   doi = "10.5281/zenodo.5366622",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = meta$Description
+  abstract = gsub("[\r\n]", "", meta$Description)
 )
