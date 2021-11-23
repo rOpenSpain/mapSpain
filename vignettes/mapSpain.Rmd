@@ -1,6 +1,8 @@
 ---
 title: "Get Started"
 author: "Diego Hernangómez"
+description: >
+  First steps with `mapSpain`.
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get Started}

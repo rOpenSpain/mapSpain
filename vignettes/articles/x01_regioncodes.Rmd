@@ -1,5 +1,7 @@
 ---
 title: "Annex: Codes and names of the Spanish regions"
+description: >
+  Interactive explorer of the data included in the package.
 ---
 
 ```{r knitropts, include=FALSE}
