@@ -274,7 +274,7 @@ A BibTeX entry for LaTeX users is:
     #>   author = {Diego Hernangómez},
     #>   doi = {10.5281/zenodo.5366622},
     #>   url = {https://ropenspain.github.io/mapSpain/},
-    #>   abstract = {Administrative Boundaries of Spain at several levels    (Autonomous Communities, Provinces, Municipalities) based on the    'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>    and 'CartoBase SIANE' from 'Instituto Geografico Nacional'    <https://www.ign.es/>.  It also provides a 'leaflet' plugin and the    ability of downloading and processing static tiles.},
+    #>   abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.},
     #> }
 
 ## Contribute

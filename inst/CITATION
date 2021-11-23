@@ -1,4 +1,5 @@
 year <- format(Sys.time(), "%Y")
+abs <- trimws(gsub("\\s+", " ", meta$Description))
 
 bibentry(
   "Manual",
@@ -9,5 +10,5 @@ bibentry(
   author = person("Diego", "Hernangómez"),
   doi = "10.5281/zenodo.5366622",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = gsub("[\r\n]", "", meta$Description)
+  abstract = abs
 )
