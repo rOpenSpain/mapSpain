@@ -5,7 +5,6 @@ bibentry(
   header = "To cite the 'mapSpain' package in publications use:",
   title = paste("mapSpain:", meta$Title),
   year = year,
-  note = paste("R package version", meta$Version),
   version = meta$Version,
   author = person("Diego", "Hernangómez"),
   doi = "10.5281/zenodo.5366622",

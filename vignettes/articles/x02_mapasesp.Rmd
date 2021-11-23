@@ -1,6 +1,8 @@
 ---
 title: "mapSpain: Mapas de España en R [Spanish]"
 author: "Diego Hernangómez"
+description: >
+  Mapas de España en R de manera rápida y sencilla.
 output:
   html_document:
     toc: true

@@ -1,6 +1,8 @@
 ---
 title: "Working with imagery"
 author: "Diego Hernangómez"
+description: >
+  Learn how to include images on your maps.
 editor_options: 
   markdown: 
     wrap: 80
