@@ -276,11 +276,15 @@ Some packages recommended for visualization are:
 
 ## Citation
 
-Please use the following when citing **mapSpain**:
+```{r echo=FALSE, results='asis'}
+print(citation("mapSpain"), bibtex = FALSE)
+```
 
-```{r citation}
 
-citation("mapSpain")
+A BibTeX entry for LaTeX users is:
+
+```{r echo=FALSE}
+toBibtex(citation("mapSpain"))
 ```
 
 ## Contribute
