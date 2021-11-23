@@ -246,7 +246,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
-  "fileSize": "2506.261KB",
+  "fileSize": "2506.188KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -261,7 +261,6 @@
       "name": "mapSpain: Administrative Boundaries of Spain",
       "identifier": "10.5281/zenodo.5366622",
       "url": "https://ropenspain.github.io/mapSpain/",
-      "description": "R package version 0.4.0",
       "@id": "https://doi.org/10.5281/zenodo.5366622",
       "sameAs": "https://doi.org/10.5281/zenodo.5366622"
     }
