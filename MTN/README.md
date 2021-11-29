@@ -10,6 +10,8 @@ MTN Grids
 
 **Updated: 2021-11-30**
 
+Data Source: <https://centrodedescargas.cnig.es/>
+
 ## DESCRIPCIÓN DE LOS DISTINTOS JUEGOS DE CUADRÍCULAS CARTOGRÁFICAS (ES)
 
 -   **MTN25_ED50_Peninsula_Baleares.shp**
@@ -120,7 +122,7 @@ MTN Grids
 
 ## Table of files
 
-Full reference of each dataset in the [source](./MTN/source) folder.
+Full reference of each dataset in the [source](./source/) folder.
 
 There are 7 files available:
 

@@ -22,6 +22,8 @@ library(dplyr)
 
 **Updated: `r Sys.Date()`**
 
+Data Source: <https://centrodedescargas.cnig.es/>
+
 ## DESCRIPCIÓN DE LOS DISTINTOS JUEGOS DE CUADRÍCULAS CARTOGRÁFICAS (ES)
 
 -   **MTN25_ED50_Peninsula_Baleares.shp**
@@ -124,7 +126,7 @@ library(dplyr)
 
 ## Table of files
 
-Full reference of each dataset in the [source](./MTN/source) folder.
+Full reference of each dataset in the [source](./source/) folder.
 
 There are `r length(list.files("dist/", ".gpkg"))` files available:
 
