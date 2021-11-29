@@ -34,3 +34,5 @@ doc
 Meta
 CRAN-RELEASE
 cran-comments.md
+vignettes/
+dev/

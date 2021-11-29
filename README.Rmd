@@ -14,11 +14,12 @@ params:
 
 ```{r config, message=FALSE, warning=FALSE, include=FALSE}
 
-knitr::opts_chunk$set(collapse = TRUE,
-                      tidy = "styler",
-                      comment = "#>",
-                      fig.path = "img/README-")
-
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "img/README-"
+)
 ```
 
 
@@ -55,7 +56,6 @@ The `dist` folder contains a distribution of
 
 size <- file.size("dist/CartoBase.zip")
 class(size) <- "object_size"
-
 ```
 
 
@@ -83,7 +83,7 @@ It is necessary to apply some filtering depending on the date requested:
 library(sf)
 library(dplyr)
 
-munic <- st_read("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>% 
+munic <- st_read("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>%
   filter(rotulo == "Arenas del Rey")
 
 # Grey area = Initial
@@ -98,10 +98,9 @@ plot(
 )
 
 
-keepcols <- c("fecha_alta","fecha_baja","rotulo")
+keepcols <- c("fecha_alta", "fecha_baja", "rotulo")
 
-knitr::kable(st_drop_geometry(munic[,keepcols]))
-
+knitr::kable(st_drop_geometry(munic[, keepcols]))
 ```
 
 
@@ -117,7 +116,7 @@ year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
 shp2010 <- munic %>%
   # If fecha_baja is NA means it is the current valid shape
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 plot(st_geometry(shp2010), main = year, cex.main = 3)
@@ -127,7 +126,7 @@ year <- 2017
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
 shp2017 <- munic %>%
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 plot(st_geometry(shp2017), main = year, cex.main = 3)
@@ -138,7 +137,6 @@ shpcurrent <- munic %>% filter(is.na(fecha_baja))
 
 
 plot(st_geometry(shpcurrent), main = "Current", cex.main = 3)
-
 ```
 
 
@@ -157,21 +155,28 @@ files <-
   list.files("dist/", ".gpkg")
 
 
-df <- data.frame(file = files,
-                 res = NA,
-                 stringsAsFactors = FALSE)
+df <- data.frame(
+  file = files,
+  res = NA,
+  stringsAsFactors = FALSE
+)
 
 
-if (length(grep("3", df$file)) > 0)
-  df[grep("3", df$file),]$res <- "3"
-if (length(grep("6m5", df$file) > 0))
-  df[grep("6m5", df$file),]$res <- "6.5"
-if (length(grep("10", df$file)) > 0)
-  df[grep("10", df$file),]$res <- "10"
-if (length(grep("14", df$file)) > 0)
-  df[grep("14", df$file),]$res <- "14"
-if (length(grep("60", df$file)) > 0)
-  df[grep("60", df$file),]$res <- "60"
+if (length(grep("3", df$file)) > 0) {
+  df[grep("3", df$file), ]$res <- "3"
+}
+if (length(grep("6m5", df$file) > 0)) {
+  df[grep("6m5", df$file), ]$res <- "6.5"
+}
+if (length(grep("10", df$file)) > 0) {
+  df[grep("10", df$file), ]$res <- "10"
+}
+if (length(grep("14", df$file)) > 0) {
+  df[grep("14", df$file), ]$res <- "14"
+}
+if (length(grep("60", df$file)) > 0) {
+  df[grep("60", df$file), ]$res <- "60"
+}
 
 df <- df %>% arrange(as.double(res), file)
 
@@ -191,7 +196,6 @@ df$size <- size
 
 
 knitr::kable(df)
-
 ```
 
 
@@ -202,15 +206,11 @@ knitr::kable(df)
 par(mar = c(2, 2, 2, 2))
 for (i in seq_len(nrow(df))) {
   path <- file.path("dist", df[i, "file"])
-  
-  input <-  st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
-  
+
+  input <- st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
+
   plot(st_geometry(input), axes = TRUE, main = df[i, "file"])
-  
 }
-
-
-
 ```
 
 

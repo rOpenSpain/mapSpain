@@ -37,17 +37,17 @@ for (i in seq_len(length(shp))) {
   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
 
   if (file.exists(outpath)) {
-    print(paste0("Skipping ", outpath ,", already in dist"))
+    print(paste0("Skipping ", outpath, ", already in dist"))
     next()
   }
   input <-
     st_read(path, stringsAsFactors = FALSE, quiet = TRUE) %>% st_make_valid()
 
   write_sf(input,
-           outpath,
-           factorsAsCharacter = FALSE,
-           overwrite = TRUE)
-
+    outpath,
+    factorsAsCharacter = FALSE,
+    overwrite = TRUE
+  )
 }
 
 
@@ -71,7 +71,7 @@ for (i in seq_len(length(shp))) {
   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
 
   if (file.exists(outpath)) {
-    print(paste0("Skipping ", outpath ,", already in dist"))
+    print(paste0("Skipping ", outpath, ", already in dist"))
     next()
   }
 
@@ -79,10 +79,10 @@ for (i in seq_len(length(shp))) {
     st_read(path, stringsAsFactors = FALSE, quiet = TRUE) %>% st_make_valid()
 
   write_sf(input,
-           outpath,
-           factorsAsCharacter = FALSE,
-           overwrite = TRUE)
-
+    outpath,
+    factorsAsCharacter = FALSE,
+    overwrite = TRUE
+  )
 }
 
 
@@ -107,7 +107,7 @@ for (i in seq_len(length(shp))) {
   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
 
   if (file.exists(outpath)) {
-    print(paste0("Skipping ", outpath ,", already in dist"))
+    print(paste0("Skipping ", outpath, ", already in dist"))
     next()
   }
 
@@ -115,10 +115,10 @@ for (i in seq_len(length(shp))) {
     st_read(path, stringsAsFactors = FALSE, quiet = TRUE) %>% st_make_valid()
 
   write_sf(input,
-           outpath,
-           factorsAsCharacter = FALSE,
-           overwrite = TRUE)
-
+    outpath,
+    factorsAsCharacter = FALSE,
+    overwrite = TRUE
+  )
 }
 
 
@@ -142,7 +142,7 @@ for (i in seq_len(length(shp))) {
   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
 
   if (file.exists(outpath)) {
-    print(paste0("Skipping ", outpath ,", already in dist"))
+    print(paste0("Skipping ", outpath, ", already in dist"))
     next()
   }
 
@@ -150,10 +150,10 @@ for (i in seq_len(length(shp))) {
     st_read(path, stringsAsFactors = FALSE, quiet = TRUE) %>% st_make_valid()
 
   write_sf(input,
-           outpath,
-           factorsAsCharacter = FALSE,
-           overwrite = TRUE)
-
+    outpath,
+    factorsAsCharacter = FALSE,
+    overwrite = TRUE
+  )
 }
 
 
@@ -179,7 +179,7 @@ for (i in seq_len(length(shp))) {
   outpath <- gsub(".shp", ".gpkg", file.path("dist", shp[i]))
 
   if (file.exists(outpath)) {
-    print(paste0("Skipping ", outpath ,", already in dist"))
+    print(paste0("Skipping ", outpath, ", already in dist"))
     next()
   }
 
@@ -187,10 +187,10 @@ for (i in seq_len(length(shp))) {
     st_read(path, stringsAsFactors = FALSE, quiet = TRUE) %>% st_make_valid()
 
   write_sf(input,
-           outpath,
-           factorsAsCharacter = FALSE,
-           overwrite = TRUE)
-
+    outpath,
+    factorsAsCharacter = FALSE,
+    overwrite = TRUE
+  )
 }
 
 # 8. Create zip----
@@ -199,8 +199,8 @@ for (i in seq_len(length(shp))) {
 
 
 
-files2zip <- dir('dist', full.names = TRUE)
-zipr(zipfile = 'dist/CartoBase.zip', files = files2zip)
+files2zip <- dir("dist", full.names = TRUE)
+zipr(zipfile = "dist/CartoBase.zip", files = files2zip)
 
 
 
@@ -211,6 +211,3 @@ rmarkdown::render(
   clean = TRUE,
   params = list(last_year = lastdist)
 )
-
-
-
