@@ -32,12 +32,13 @@ test_that("tiles online", {
   }
   expect_s4_class(esp_getTiles(poly), "SpatRaster")
   expect_message(esp_getTiles(poly,
-    zoom = 3, verbose = TRUE,
+    zoom = 7,
+    verbose = TRUE,
     update_cache = TRUE
   ))
 
 
-  s <- esp_getTiles(poly, zoom = 3)
+  s <- esp_getTiles(poly, zoom = 7)
 
 
   # With sfc
@@ -46,23 +47,23 @@ test_that("tiles online", {
   # Convert from bbox
 
   bbox <- sf::st_bbox(poly)
-  expect_error(esp_getTiles(bbox))
-  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), zoom = 3))
+  expect_error(esp_getTiles(bbox, zoom = 7))
+  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), zoom = 7))
 
-  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), zoom = 3)
+  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), zoom = 7)
 
   expect_s3_class(geom, "sfc")
 
-  expect_silent(esp_getTiles(geom, zoom = 3))
+  expect_silent(esp_getTiles(geom, zoom = 7))
 
-  sfc <- esp_getTiles(geom, zoom = 3)
+  sfc <- esp_getTiles(geom, zoom = 7)
 
   # From cache
-  expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
-  expect_message(esp_getTiles(poly, zoom = 5, verbose = TRUE))
+  expect_message(esp_getTiles(poly, zoom = 7, verbose = TRUE))
+  expect_message(esp_getTiles(poly, zoom = 7, verbose = TRUE))
   expect_message(esp_getTiles(
     poly,
-    zoom = 5,
+    zoom = 7,
     verbose = TRUE,
     type = "IGNBase.Orto"
   ))

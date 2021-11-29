@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Rebuild coding database to avoid errors due to encoding.
+
 # mapSpain 0.4.0
 
 -   Switch from `raster` to `terra`.
@@ -15,7 +19,9 @@
 
 # mapSpain 0.3.0
 
--   Caching improvements: new function `esp_set_cache_dir()` based on `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is not necessary to set it up again on a new session.
+-   Caching improvements: new function `esp_set_cache_dir()` based on
+    `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is not
+    necessary to set it up again on a new session.
 -   Add a new parameter `zoommin` on `esp_getTiles()`.
 -   New tests with `testthat`.
 -   Update on docs. New examples
@@ -25,7 +31,7 @@
 
 -   Move minimum version of `giscoR` to v0.2.4
 
--   Fix typos on `esp_dict_translate()` [\#36](https://github.com/rOpenSpain/mapSpain/issues/36)
+-   Fix typos on `esp_dict_translate()` #36.
 
 -   Not run examples on tiles, as the server sometimes doesn't respond.
 
@@ -42,11 +48,13 @@
 
 -   Migrate examples, vignettes and README to `tmap`.
 -   Add vignette to package.
--   `esp_dict_region_code()` works with mixed casings (e.g: `esp_dict_region_code("aLbacEte", destination = "cpro")`).
+-   `esp_dict_region_code()` works with mixed casings (e.g:
+    `esp_dict_region_code("aLbacEte", destination = "cpro")`).
 
 # mapSpain 0.2.1
 
--   **QUICKFIX**: Fix a typo on documentation: `cache_dir` should be set as `options(mapSpain_cache_dir = "path/to/dir")`.
+-   **QUICKFIX**: Fix a typo on documentation: `cache_dir` should be set as
+    `options(mapSpain_cache_dir = "path/to/dir")`.
 
 # mapSpain 0.2.0
 
@@ -54,7 +62,8 @@
 
 -   Documentation ported to roxygen2/markdown.
 
--   Include CartoBase ANE data <https://github.com/rOpenSpain/mapSpain/tree/sianedata>:
+-   Include CartoBase ANE data
+    <https://github.com/rOpenSpain/mapSpain/tree/sianedata>:
 
     -   `mapSpain::esp_get_munic_siane()`
     -   `mapSpain::esp_get_prov_siane()`

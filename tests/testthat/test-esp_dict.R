@@ -9,6 +9,18 @@ test_that("Testing dict", {
   expect_silent(esp_dict_region_code(vals, destination = "cpro"))
   expect_silent(esp_dict_region_code(vals, destination = "iso2"))
 
+  # test fix on new database
+  expect_silent(
+    esp_dict_region_code(c(
+      "Ciudad Autónoma de Ceuta",
+      "Ciudad Autónoma de Melilla",
+      "Región de Murcia",
+      "Principado de Asturias"
+    ),
+    destination = "cpro"
+    )
+  )
+
   # test different casing of strings
   expect_silent(esp_dict_region_code(c(
     "AlBaceTe",
