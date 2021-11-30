@@ -25,6 +25,9 @@ reference:
     contents:
       - has_concept("imagery utilities")
       - -leaflet.providersESP.df
+  - title: Geographic grids
+    contents:
+      - has_concept("grids")
   - title: Cache management
     contents:
       - has_concept("cache utilities")
