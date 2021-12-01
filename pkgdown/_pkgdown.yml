@@ -3,9 +3,6 @@ url: 'https://ropenspain.github.io/mapSpain'
 repo:
   branch: main
 
-development:
-  mode: auto
-
 reference:
   - title: Political
     desc: These functions return `sf` objects with political boundaries
@@ -84,6 +81,8 @@ navbar:
           href: 'https://dieghernan.github.io/rpubs/mapSpain_RMadrid/'
         - text: 'mapSpain: Mapas de España en R (.Rmd)'
           href: articles/articles/x02_mapasesp.html
+        - text: 'Grupo de Usuarios R Madrid 25-nov-2021 (video)'
+          href: 'http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/'
 
 authors:
   Diego Hernangómez:
