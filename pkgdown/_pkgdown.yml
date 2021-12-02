@@ -8,8 +8,6 @@ reference:
     desc: These functions return `sf` objects with political boundaries
     contents:
       - has_concept("political")
-      - -has_concept("imagery utilities")
-      - -has_concept("datasets")
   - title: Natural
     desc: These functions return `sf` objects with natural features
     contents:
@@ -22,8 +20,6 @@ reference:
     desc: Return static tiles or create a leaflet map
     contents:
       - has_concept("imagery utilities")
-      - -has_concept("political")
-      - -has_concept("datasets")
   - title: Geographic grids
     contents:
       - has_concept("grids")
