@@ -283,7 +283,7 @@ print(citation("mapSpain"), bibtex = FALSE)
 
 A BibTeX entry for LaTeX users is:
 
-```{r echo=FALSE}
+```{r echo=FALSE, comment=''}
 toBibtex(citation("mapSpain"))
 ```
 

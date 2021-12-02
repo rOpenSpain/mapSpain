@@ -63,7 +63,6 @@ install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 This script highlights some features of **mapSpain** :
 
 ``` r
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -122,7 +121,6 @@ ggplot(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
-
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -188,7 +186,6 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -250,11 +247,11 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
-  - [**tmap**](https://github.com/r-tmap/tmap)
-  - [**mapsf**](https://riatelab.github.io/mapsf/)
-  - [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+-   [**tmap**](https://github.com/r-tmap/tmap)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
     [**ggspatial**](https://github.com/paleolimbot/ggspatial)
-  - [**leaflet**](https://rstudio.github.io/leaflet/)
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
@@ -267,15 +264,15 @@ doi: 10.5281/zenodo.5366622 (URL:
 
 A BibTeX entry for LaTeX users is:
 
-    #> @Manual{,
-    #>   title = {mapSpain: Administrative Boundaries of Spain},
-    #>   year = {2021},
-    #>   version = {0.4.0.9000},
-    #>   author = {Diego Hernangómez},
-    #>   doi = {10.5281/zenodo.5366622},
-    #>   url = {https://ropenspain.github.io/mapSpain/},
-    #>   abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.},
-    #> }
+    @Manual{,
+      title = {mapSpain: Administrative Boundaries of Spain},
+      year = {2021},
+      version = {0.4.0.9000},
+      author = {Diego Hernangómez},
+      doi = {10.5281/zenodo.5366622},
+      url = {https://ropenspain.github.io/mapSpain/},
+      abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.},
+    }
 
 ## Contribute
 
@@ -306,13 +303,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.
