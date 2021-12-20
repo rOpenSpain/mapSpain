@@ -466,7 +466,7 @@ Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ```{r imagesestaticos}
 madrid_munis <- esp_get_munic_siane(region = "Madrid")
-base_pnoa <- esp_getTiles(madrid_munis, "PNOA", bbox_expand = 0.1, zoommin = 1)
+base_pnoa <- esp_getTiles(madrid_munis, "IGNBase.Todo", bbox_expand = 0.1, zoommin = 1)
 
 ggplot() +
   layer_spatraster(base_pnoa) +
