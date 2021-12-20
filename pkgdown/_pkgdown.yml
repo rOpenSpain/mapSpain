@@ -78,6 +78,7 @@ navbar:
         - text: 'Annex: Codes and names of the Spanish regions'
           href: articles/articles/x01_regioncodes.html
         - text: -----
+        - text: Other materials
         - text: 'mapSpain: Mapas de España en R (xaringan)'
           href: 'https://dieghernan.github.io/rpubs/mapSpain_RMadrid/'
         - text: 'mapSpain: Mapas de España en R (.Rmd)'
