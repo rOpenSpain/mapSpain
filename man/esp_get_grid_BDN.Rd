@@ -87,6 +87,7 @@ ggplot(grid) +
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 
 Other grids: 
+\code{\link{esp_get_grid_EEA}()},
 \code{\link{esp_get_grid_MTN}()}
 }
 \concept{grids}

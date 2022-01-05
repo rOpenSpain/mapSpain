@@ -4,6 +4,7 @@
 -   New grid functions (#61):
     -  `esp_get_grid_MTN()`
     -  `esp_get_grid_BDN()`
+    -  `esp_get_grid_EEA()`
 
 
 
