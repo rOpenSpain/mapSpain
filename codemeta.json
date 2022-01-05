@@ -245,8 +245,8 @@
   },
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
-  "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "spain", "cran", "ropenspain", "ggplot2"],
-  "fileSize": "2542.155KB",
+  "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles"],
+  "fileSize": "2545.247KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -266,7 +266,6 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
-  "readme": "https://github.com/rOpenSpain/mapSpain/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/mapSpain"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }

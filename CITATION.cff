@@ -64,10 +64,6 @@ keywords:
 - administrative-boundaries
 - ccaa
 - static-tiles
-- cran
-- ggplot2
-- ropenspain
-- spain
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'

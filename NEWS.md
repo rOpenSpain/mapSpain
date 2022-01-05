@@ -3,6 +3,7 @@
 -   Rebuild coding database to avoid errors due to encoding.
 -   New grid functions (#61):
     -  `esp_get_grid_MTN()`
+    -  `esp_get_grid_BDN()`
 
 
 

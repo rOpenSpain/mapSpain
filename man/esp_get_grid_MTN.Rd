@@ -125,4 +125,8 @@ ggplot(grid) +
 }
 \dontshow{\}) # examplesIf}
 }
+\seealso{
+Other grids: 
+\code{\link{esp_get_grid_BDN}()}
+}
 \concept{grids}
