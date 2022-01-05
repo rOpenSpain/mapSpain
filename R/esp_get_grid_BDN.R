@@ -119,7 +119,7 @@ esp_get_grid_BDN_ccaa <- function(ccaa,
 
   # Check if it is a valid NUTS, if not throws an error
 
-  data <- esp_codelist
+  data <- mapSpain::esp_codelist
 
   if (!nuts_id %in% data$nuts2.code) stop(ccaa, " is not a CCAA")
 
