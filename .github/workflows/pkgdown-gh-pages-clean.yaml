@@ -5,7 +5,7 @@ name: Clean pkgdown manually
 
 jobs:
   pkgdown-gh-pages-manual:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -17,17 +17,19 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: |
-            any::pkgdown
-            any::reactable
-            any::GADMTools
-            any::rnaturalearth
-            any::tidyverse
-            any::styler
-            ropensci/rnaturalearthhires
+            pkgdown
+            remotes
+            devtools
             ropenspain/rostemplate
+            reactable
+            GADMTools
+            rnaturalearth
+            ropensci/rnaturalearthhires
+            tidyverse
+            styler
           needs: website
 
       - name: Deploy package
