@@ -1,8 +1,8 @@
-#' Get `sf` polygons of the national geographic grids provided by EEA
+#' Get `sf` polygons of the national geographic grids provided by ESDAC
 #'
 #' @description
 #' Loads a `sf` polygon with the geographic grids of Spain as provided by the
-#' European Environment Agency (EEA).
+#' European Soil Data Centre (ESDAC).
 #'
 #' @family grids
 #'
@@ -10,72 +10,68 @@
 #'
 #'
 #' @source
-#' [EEA reference grid](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2).
+#' [EEA reference grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
+#'
+#' @references
+#' - Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
+#'   Data Centre: Response to European policy support and public data
+#'   requirements"; (2012) _Land Use Policy_, 29 (2), pp. 329-338.
+#'   \doi{10.1016/j.landusepol.2011.07.003}
+#' - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
+#'   Commission, Joint Research Centre.
 #'
 #' @export
-#' @param resolution Resolution of the grid in kms. Could be `1`, `10` or `100`.
+#' @param resolution Resolution of the grid in kms. Could be `1` or `10`.
 #'
-#' @inheritParams esp_get_grid_BDN
+#' @inheritParams esp_get_grid_EEA
 #'
 #' @inheritSection esp_get_nuts About caching
 #' @examplesIf esp_check_access()
 #' \donttest{
-#'
-#' grid <- esp_get_grid_EEA(type = "main", resolution = 100)
-#' grid_can <- esp_get_grid_EEA(type = "canary", resolution = 100)
+#' grid <- esp_get_grid_ESDAC()
 #' esp <- esp_get_country(moveCAN = FALSE)
 #'
 #' library(ggplot2)
 #'
 #' ggplot(grid) +
 #'   geom_sf() +
-#'   geom_sf(data = grid_can) +
-#'   geom_sf(data = esp, fill = NA) +
+#'   geom_sf(data = esp, color = "grey50", fill = NA) +
 #'   theme_light() +
-#'   labs(title = "EEA Grid for Spain")
+#'   labs(title = "ESDAC Grid for Spain")
 #' }
-esp_get_grid_EEA <- function(resolution = 100,
-                             type = "main",
-                             update_cache = FALSE,
-                             cache_dir = NULL,
-                             verbose = FALSE) {
-
+#'
+esp_get_grid_ESDAC <- function(resolution = 10,
+                               update_cache = FALSE,
+                               cache_dir = NULL,
+                               verbose = FALSE) {
 
   # Check grid
   res <- as.numeric(resolution)
 
-  if (!res %in% c(1, 10, 100)) {
+  if (!res %in% c(1, 10)) {
     stop(
-      "resolution should be one of 1, 10 or 100"
+      "resolution should be one of 1, 10"
     )
   }
 
-  if (!type %in% c("main", "canary")) {
-    stop(
-      "type should be one of 'main', 'canary'"
-    )
-  }
-
-  newtype <- switch(type,
-    "main" = "es",
-    "ic"
-  )
-
-  # Url
-  url <- "https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file"
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  # Create filepath
-  filename <- "Spain_shapefile.zip"
+
+  # Url
+  if (res == 10) {
+    url <- "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
+    filename <- "grids_for_single_eu25_countries_etrs_laea_10k.zip"
+    init_grid <- "grid_spain_etrs_laea_10k.shp"
+  } else {
+    # nocov start
+    url <- "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/Grids/grid_spain_etrs_laea_1k.zip"
+    filename <- "grid_spain_etrs_laea_1k.zip"
+    init_grid <- "grid_spain_etrs_laea_1k.shp"
+    # nocov end
+  }
+
 
   filepath <- file.path(cache_dir, filename)
-
-
-  init_grid <- paste0(
-    newtype, "_",
-    resolution,
-    "km.shp"
-  )
 
   init_grid <- file.path(cache_dir, init_grid)
 

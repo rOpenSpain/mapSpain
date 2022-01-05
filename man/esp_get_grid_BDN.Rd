@@ -88,6 +88,7 @@ ggplot(grid) +
 
 Other grids: 
 \code{\link{esp_get_grid_EEA}()},
+\code{\link{esp_get_grid_ESDAC}()},
 \code{\link{esp_get_grid_MTN}()}
 }
 \concept{grids}

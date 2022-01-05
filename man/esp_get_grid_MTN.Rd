@@ -128,6 +128,7 @@ ggplot(grid) +
 \seealso{
 Other grids: 
 \code{\link{esp_get_grid_BDN}()},
-\code{\link{esp_get_grid_EEA}()}
+\code{\link{esp_get_grid_EEA}()},
+\code{\link{esp_get_grid_ESDAC}()}
 }
 \concept{grids}

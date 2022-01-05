@@ -3,7 +3,7 @@ test_that("Errors", {
   expect_error(esp_get_grid_EEA(type = "50"))
 })
 
-test_that("MTN grid online", {
+test_that("EEA grid online", {
   skip_on_cran()
   skip_if_siane_offline()
 
