@@ -39,7 +39,7 @@
 #'
 #' x <- esp_get_ccaa("Galicia")
 #'
-#' tile <- esp_getTiles(x, "PNOA")
+#' tile <- esp_getTiles(x, "IDErioja")
 #'
 #' class(tile)
 #'
