@@ -190,6 +190,7 @@ references:
     email: dewey@fishandwhistle.net
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
+  url: https://CRAN.R-project.org/package=ggspatial
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
