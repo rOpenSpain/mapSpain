@@ -1,0 +1,17 @@
+---
+title: "Working with imagery"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working with imagery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Visit <https://ropenspain.github.io/mapSpain/articles/working_imagery.html>.`

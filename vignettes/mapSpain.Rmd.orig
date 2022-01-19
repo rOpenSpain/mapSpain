@@ -307,24 +307,3 @@ can check a display of each provider on the previous link.
 **Note that** When working with imagery, it is important to set
 `moveCAN = FALSE` on the `esp_get_*` functions. See **Displacing the Canary
 Islands** on `help("esp_get_ccaa", package = "mapSpain")`.
-
-An example of how you can include tiles and shapes to create a static map:
-
-```{r tile}
-
-# Get Deltebre - Municipality
-delt <- esp_get_munic(munic = "Deltebre")
-
-# Base PNOA - Satellite imagery
-PNOA <- esp_getTiles(delt,
-  type = "PNOA",
-  zoom = 11,
-  bbox_expand = 1.5
-)
-
-ggplot(delt) +
-  layer_spatraster(PNOA) +
-  geom_sf(fill = "green", alpha = 0.5) +
-  coord_sf(expand = FALSE) +
-  theme_void()
-```
