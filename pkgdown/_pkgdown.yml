@@ -80,7 +80,7 @@ navbar:
         - text: -----
         - text: Other materials
         - text: 'mapSpain: Mapas de España en R (xaringan)'
-          href: 'https://dieghernan.github.io/rpubs/mapSpain_RMadrid/'
+          href: 'https://dieghernan.github.io/rpubs/mapSpain_slides/'
         - text: 'mapSpain: Mapas de España en R (.Rmd)'
           href: articles/articles/x02_mapasesp.html
         - text: 'Grupo de Usuarios R Madrid 25-nov-2021 (video)'
