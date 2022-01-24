@@ -1,6 +1,7 @@
-# mapSpain (development version)
+# mapSpain 0.5.0
 
 -   Rebuild coding database to avoid errors due to encoding.
+-   Fix translations on Galician.
 -   New grid functions (#61):
     -  `esp_get_grid_MTN()`
     -  `esp_get_grid_BDN()`
