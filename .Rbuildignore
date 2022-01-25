@@ -32,3 +32,4 @@
 ^tests/testthat/_snaps/esp_getTiles$
 ^tests/testthat/_snaps/layer_spatraster$
 ^.*\.pdf$
+^CRAN-SUBMISSION$
