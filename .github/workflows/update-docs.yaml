@@ -24,15 +24,16 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            rcmdcheck
-            pkgdown
+            any::rcmdcheck
+            any::pkgdown
+            any::reactable
+            any::GADMTools
+            any::rnaturalearth
+            any::tidyverse
             dieghernan/pkgdev
             ropenspain/rostemplate
-            reactable
-            GADMTools
-            rnaturalearth
             ropensci/rnaturalearthhires
-            tidyverse
+
           needs: website
 
       - name: Update docs
