@@ -31,3 +31,5 @@ vignettes/*.pdf
 .Renviron
 docs/
 /*.pdf
+CRAN-SUBMISSION
+.github/pkg.lock
