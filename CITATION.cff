@@ -92,7 +92,7 @@ references:
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
-  url: https://vincentarelbundock.github.io/countrycode/
+  url: https://CRAN.R-project.org/package=countrycode
   version: '>= 1.2.0'
 - type: software
   title: giscoR
@@ -105,6 +105,7 @@ references:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenGov
   year: '2022'
+  url: https://CRAN.R-project.org/package=giscoR
   version: '>= 0.2.4'
 - type: software
   title: rappdirs
@@ -119,6 +120,7 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
+  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.0'
 - type: software
   title: sf
@@ -130,6 +132,7 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
+  url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9.0'
 - type: software
   title: utils
@@ -176,6 +179,7 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
+  url: https://CRAN.R-project.org/package=ggplot2
   version: '>= 3.0.0'
 - type: software
   title: ggspatial
@@ -187,6 +191,7 @@ references:
     email: dewey@fishandwhistle.net
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
+  url: https://CRAN.R-project.org/package=ggspatial
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -197,7 +202,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://yihui.org/knitr/
+  url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: leaflet
   abstract: 'leaflet: Create Interactive Web Maps with the JavaScript ''Leaflet''
@@ -212,7 +217,7 @@ references:
   - family-names: Xie
     given-names: Yihui
   year: '2022'
-  url: https://rstudio.github.io/leaflet/
+  url: https://CRAN.R-project.org/package=leaflet
   version: '>= 2.0.0'
 - type: software
   title: png
@@ -223,7 +228,7 @@ references:
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: http://www.rforge.net/png/
+  url: https://CRAN.R-project.org/package=png
   version: '>= 0.1-5'
 - type: software
   title: raster
@@ -235,7 +240,7 @@ references:
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://rspatial.org/raster
+  url: https://CRAN.R-project.org/package=raster
   version: '>= 3.0-2'
 - type: software
   title: rmarkdown
@@ -275,6 +280,7 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
+  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: slippymath
   abstract: 'slippymath: Slippy Map Tile Tools'
@@ -288,7 +294,7 @@ references:
     given-names: Michael
     email: mdsumner@gmail.com
   year: '2022'
-  url: https://www.github.com/milesmcbain/slippymath
+  url: https://CRAN.R-project.org/package=slippymath
   version: '>= 0.3.1'
 - type: software
   title: terra
@@ -300,7 +306,7 @@ references:
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://rspatial.org/terra/
+  url: https://CRAN.R-project.org/package=terra
   version: '>= 1.1-4'
 - type: software
   title: testthat
@@ -311,4 +317,5 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'
