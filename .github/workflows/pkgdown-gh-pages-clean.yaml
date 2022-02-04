@@ -20,13 +20,14 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
+            local::.
+            any::cli
             any::rcmdcheck
             any::pkgdown
             any::reactable
             any::GADMTools
             any::rnaturalearth
             any::tidyverse
-            local::.
             dieghernan/pkgdev
             ropenspain/rostemplate
             ropensci/rnaturalearthhires
