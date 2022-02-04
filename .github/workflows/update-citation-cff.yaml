@@ -1,6 +1,14 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# The action runs when:
+# - A new release is published
+# - The DESCRIPTION or inst/CITATION are modified
+# - Can be run manually
+# For customizing the triggers, visit https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
+  release:
+    types: [published]
   push:
+    branches: [main, master]
     paths:
       - DESCRIPTION
       - inst/CITATION
@@ -10,7 +18,7 @@ name: Update CITATION.cff
 
 jobs:
   update-citation-cff:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -19,24 +27,12 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           use-public-rspm: true
-          install-r: false
-
-      # This is needed for workflows running on
-      # ubuntu-20.04 or later
-      - name: Install V8
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get install -y libv8-dev
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: |
-            dieghernan/cffr
-
-# When on CRAN, use instead
-         # extra-packages: |
-         #  cffr
-
+            cffr
+            V8
 
       - name: Update CITATION.cff
         run: |
@@ -44,9 +40,13 @@ jobs:
           library(cffr)
 
           # Customize with your own code
-          # Mind the indentation!
+          # See https://docs.ropensci.org/cffr/articles/cffr.html
 
-          cff_write()
+          # Write your own keys
+          mykeys <- list()
+
+          # Create your CITATION.cff file
+          cff_write(keys = mykeys)
 
         shell: Rscript {0}
 

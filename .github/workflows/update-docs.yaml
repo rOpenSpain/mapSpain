@@ -30,6 +30,7 @@ jobs:
             any::GADMTools
             any::rnaturalearth
             any::tidyverse
+            local::.
             dieghernan/pkgdev
             ropenspain/rostemplate
             ropensci/rnaturalearthhires

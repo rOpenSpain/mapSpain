@@ -17,19 +17,19 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            pkgdown
-            remotes
-            devtools
+            any::rcmdcheck
+            any::pkgdown
+            any::reactable
+            any::GADMTools
+            any::rnaturalearth
+            any::tidyverse
+            local::.
+            dieghernan/pkgdev
             ropenspain/rostemplate
-            reactable
-            GADMTools
-            rnaturalearth
             ropensci/rnaturalearthhires
-            tidyverse
-            styler
           needs: website
 
       - name: Deploy package
