@@ -12,6 +12,8 @@ test_that("tiles online", {
   skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  # Skip on windows (CI)
+  skip_on_os("windows")
 
 
   poly <- esp_get_ccaa("La Rioja")
