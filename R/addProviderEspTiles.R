@@ -12,7 +12,7 @@
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **v1.2.0**.
+#'  **v1.3.0**.
 #'
 #' @return A map object generated with [leaflet::leaflet()].
 #'

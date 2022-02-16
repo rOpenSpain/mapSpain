@@ -5,7 +5,7 @@
 \title{Get static tiles from public administrations of Spanish.}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.2.0}.
+\strong{v1.3.0}.
 }
 \usage{
 esp_getTiles(
@@ -70,7 +70,7 @@ various open map servers.
 
 This function is a implementation of the javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.2.0}.
+\strong{v1.3.0}.
 }
 \details{
 Zoom levels are described on the

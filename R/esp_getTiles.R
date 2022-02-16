@@ -6,7 +6,7 @@
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **v1.2.0**.
+#' **v1.3.0**.
 #'
 #' @family imagery utilities
 #' @seealso [terra::rast()].
@@ -17,7 +17,7 @@
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **v1.2.0**.
+#'  **v1.3.0**.
 #'
 #' @export
 #'

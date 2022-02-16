@@ -16,7 +16,7 @@ the service:
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.2.0}.
+\strong{v1.3.0}.
 }
 \description{
 A data frame containing information of different public WMS and WMTS
@@ -24,7 +24,7 @@ providers of Spain
 
 This function is a implementation of the javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.2.0}.
+\strong{v1.3.0}.
 }
 \details{
 Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:\tabular{l}{
@@ -73,6 +73,9 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
    'Catastro.CadastralZoning' \cr
    'Catastro.Address' \cr
    'Catastro.Building' \cr
+   'Catastro.BuildingPart' \cr
+   'Catastro.AdministrativeBoundary' \cr
+   'Catastro.AdministrativeUnit' \cr
    'RedTransporte' \cr
    'RedTransporte.Carreteras' \cr
    'RedTransporte.Ferroviario' \cr
