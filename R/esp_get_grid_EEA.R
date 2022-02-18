@@ -19,7 +19,7 @@
 #'
 #' @inheritSection esp_get_nuts About caching
 #' @examplesIf esp_check_access()
-#' \donttest{
+#' \dontrun{
 #'
 #' grid <- esp_get_grid_EEA(type = "main", resolution = 100)
 #' grid_can <- esp_get_grid_EEA(type = "canary", resolution = 100)

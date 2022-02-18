@@ -27,7 +27,7 @@
 #'
 #' @inheritSection esp_get_nuts About caching
 #' @examplesIf esp_check_access()
-#' \donttest{
+#' \dontrun{
 #' grid <- esp_get_grid_ESDAC()
 #' esp <- esp_get_country(moveCAN = FALSE)
 #'
