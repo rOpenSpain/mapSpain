@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.6.0
 
 -   Upgrade `leaflet.providersESP.df` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.0. New providers:
@@ -6,6 +6,11 @@
     -   `Catastro.BuildingPart`
     -   `Catastro.AdministrativeBoundary`
     -   `Catastro.AdministrativeUnit`
+
+-   Add new param `options` to `esp_getTiles()`.
+
+-   Improve regex search on municipalities: Now the casing of the word is
+    ignored.
 
 # mapSpain 0.5.0
 

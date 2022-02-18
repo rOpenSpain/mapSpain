@@ -240,7 +240,7 @@ esp_get_munic <- function(year = "2019",
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
-    data_sf <- data_sf[grep(munic, data_sf$name), ]
+    data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
   }
 
 
@@ -393,7 +393,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
 
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
-    data_sf <- data_sf[grep(munic, data_sf$name), ]
+    data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
   }
 
   if (!is.null(region)) {

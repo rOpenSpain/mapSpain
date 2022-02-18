@@ -139,6 +139,10 @@ esp_gdam <- gadm_sf_loadCountries("ESP")
 
 esp_mapSpain <- esp_get_country(epsg = 4326)
 
+# Imagen Ria Ferrol
+tile <- esp_getTiles(esp_get_munic(munic = "Ferrol"), "PNOA",
+  bbox_expand = 0.5, zoommin = 1
+)
 
 # Prepara el plot
 
@@ -151,13 +155,16 @@ esp_all <- bind_rows(
 esp_all$source <- c("rnaturalearth", "gdam", "mapSpain")
 
 ggplot(esp_all) +
+  layer_spatraster(tile) +
   geom_sf(aes(color = source),
     fill = NA, show.legend = "line",
     lwd = 1.2
   ) +
   coord_sf(
-    crs = 4326, xlim = c(-8.378448, -8.125076),
-    ylim = c(43.411033, 43.577406)
+    crs = 4326,
+    xlim = c(-8.384421, -8.154413),
+    ylim = c(43.43201, 43.59545),
+    expand = FALSE
   ) +
   scale_color_manual(values = hcl.colors(3, "Berlin")) +
   theme_void() +
@@ -535,4 +542,3 @@ que permiten extraer información sobre altitud, rios y cuencas hidrográficas d
 España, así líneas y puntos de
 [infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
 de España, como carreteras y líneas ferroviarias.
-

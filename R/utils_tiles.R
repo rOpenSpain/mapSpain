@@ -15,7 +15,8 @@ getwms <- function(x,
                    cache_dir,
                    verbose,
                    res,
-                   transparent) {
+                   transparent,
+                   options) {
 
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
@@ -37,10 +38,23 @@ getwms <- function(x,
 
   # Compose params
   q <- provs[provs$field == "url_static", "value"]
+
   q <-
-    gsub("{bbox}", paste0(bboxsquare, collapse = ","), q, fixed = TRUE)
+    gsub("{bbox}", paste0(bboxsquare, collapse = ","),
+      q,
+      fixed = TRUE
+    )
 
   q <- gsub("512", as.character(res), q)
+
+
+  # Add options
+  withopt <- tile_handle_options(q, options, cache_dir)
+
+  q <- withopt$q
+  cache_dir <- withopt$cache_dir
+
+
   src <- unique(provs$provider)
 
 
@@ -85,18 +99,21 @@ getwms <- function(x,
   # Read png and geotag
 
   # Only png
+  if (ext == "png") {
+    img <- png::readPNG(filename) * 255
+    # Give transparency if available
+    if (dim(img)[3] == 4 && transparent) {
+      nrow <- dim(img)[1]
 
-  img <- png::readPNG(filename) * 255
-  # Give transparency if available
-  if (dim(img)[3] == 4 && transparent) {
-    nrow <- dim(img)[1]
-
-    for (i in seq_len(nrow)) {
-      row <- img[i, , ]
-      alpha <- row[, 4] == 0
-      row[alpha, ] <- NA
-      img[i, , ] <- row
+      for (i in seq_len(nrow)) {
+        row <- img[i, , ]
+        alpha <- row[, 4] == 0
+        row[alpha, ] <- NA
+        img[i, , ] <- row
+      }
     }
+  } else {
+    img <- filename
   }
 
 
@@ -133,7 +150,8 @@ getwmts <- function(x,
                     zoom,
                     zoommin,
                     type,
-                    transparent) {
+                    transparent,
+                    options) {
   # New fun
 
   x <- sf::st_transform(x, 4326)
@@ -171,6 +189,13 @@ getwmts <- function(x,
 
   # Compose params
   q <- provs[provs$field == "url_static", "value"]
+
+  # Add options
+  withopt <- tile_handle_options(q, options, cache_dir)
+
+  q <- withopt$q
+  cache_dir <- withopt$cache_dir
+
   ext <- "jpeg"
   if (length(grep("png", q)) > 0) {
     ext <- "png"
@@ -315,3 +340,71 @@ dl_t <-
     }
     return(outfile)
   }
+
+
+tile_handle_options <- function(q, options, cache_dir) {
+  if (is.null(options)) {
+    res <- list(
+      q = q,
+      cache_dir = cache_dir
+    )
+    return(res)
+  }
+
+  # Get params from root q
+  root <- paste0(unlist(strsplit(q, "?", fixed = TRUE))[1], "?")
+  getparams <- gsub(root, "", q, fixed = TRUE)
+  getparams <- unlist(strsplit(getparams, "&"))
+  getparams <- as.list(getparams)
+
+  initnames <- vapply(getparams, function(x) {
+    unlist(strsplit(x, "="))[1]
+  },
+  FUN.VALUE = character(1)
+  )
+
+  initvalues <- vapply(getparams, function(x) {
+    a <- unlist(strsplit(x, "="))[-1]
+    a <- paste0(a, collapse = "=")
+  },
+  FUN.VALUE = character(1)
+  )
+
+  names(initvalues) <- tolower(initnames)
+
+  initparams <- as.list(initvalues)
+
+  # Handle options and replace if needed
+  names(options) <- tolower(names(options))
+
+  # Modify list
+  endopts <- utils::modifyList(
+    initparams,
+    options
+  )
+
+  # Restore casing on original values
+  restnames <- names(endopts)
+  restnames[seq_len(length(initnames))] <- initnames
+
+  names(endopts) <- restnames
+
+  # Create new url
+  newopts <- paste0(names(endopts), "=", endopts, collapse = "&")
+
+  endurl <- paste0(root, newopts)
+
+
+  # Modify cache dir
+  newdir <- tolower(paste0(names(options), "_", options, collapse = "_"))
+  cache_dir <- paste0(cache_dir, "_withopts_", newdir)
+  cache_dir <- esp_hlp_cachedir(cache_dir)
+
+
+  # Final object
+  res <- list(
+    q = endurl,
+    cache_dir = cache_dir
+  )
+  return(res)
+}

@@ -20,7 +20,8 @@ esp_getTiles(
   mask = FALSE,
   update_cache = FALSE,
   cache_dir = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  options = NULL
 )
 }
 \arguments{
@@ -58,6 +59,9 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
+
+\item{options}{A named list containing additional options to pass to the
+query.}
 }
 \value{
 A \code{SpatRaster} is returned, with 3 (RGB) or 4 (RGBA) layers, depending on

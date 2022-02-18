@@ -40,6 +40,8 @@
 #' @param transparent Logical. Provides transparent background, if supported.
 #' Depends on the selected provider on `type`.
 #' @param mask `TRUE` if the result should be masked to `x`.
+#' @param options A named list containing additional options to pass to the
+#'   query.
 #'
 #' @inheritParams esp_get_nuts
 #'
@@ -109,7 +111,8 @@ esp_getTiles <- function(x,
                          mask = FALSE,
                          update_cache = FALSE,
                          cache_dir = NULL,
-                         verbose = FALSE) {
+                         verbose = FALSE,
+                         options = NULL) {
   # nocov start
 
   if (!requireNamespace("slippymath", quietly = TRUE)) {
@@ -148,8 +151,7 @@ esp_getTiles <- function(x,
     stop(
       "No match for type = '",
       type,
-      "' found. Available providers are:\n\n",
-      paste0("'", unique(leafletProvidersESP$provider), "'", collapse = ", ")
+      "' found. Check providers available in mapSpain::leaflet.providersESP.df"
     )
   }
 
@@ -194,7 +196,8 @@ esp_getTiles <- function(x,
         cache_dir,
         verbose,
         res,
-        transparent
+        transparent,
+        options
       )
   } else {
     rout <-
@@ -208,7 +211,8 @@ esp_getTiles <- function(x,
         zoom,
         zoommin,
         type,
-        transparent
+        transparent,
+        options
       )
   }
 
@@ -224,13 +228,24 @@ esp_getTiles <- function(x,
 
   x <- xinit
 
-  # reproject rout
-  x_terra <- terra::vect(x)
-  rout <- terra::project(
-    rout,
-    terra::crs(x_terra)
-  )
+  # reproject rout if needed
+  if (!sf::st_crs(x) == sf::st_crs(rout)) {
+    x_terra <- terra::vect(x)
 
+    # Sometimes it gets an error
+
+    rout_end <- try(terra::project(
+      rout,
+      terra::crs(x_terra)
+    ), silent = TRUE)
+
+    if (inherits(rout_end, "try-error")) {
+      if (verbose) message("Tile not reprojected.")
+      rout <- rout
+    } else {
+      rout <- rout_end
+    }
+  }
 
   rout <- terra::clamp(rout,
     lower = 0,
