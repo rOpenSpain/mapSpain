@@ -231,7 +231,7 @@ esp_getTiles <- function(x,
 
   # reproject rout if needed
   if (!sf::st_crs(x) == sf::st_crs(rout)) {
-   
+
     # Sometimes it gets an error
 
     rout_end <- try(terra::project(
