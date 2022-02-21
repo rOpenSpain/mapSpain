@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   HOTFIX: Bug on `esp_getTiles()` when `mask = TRUE`.
+
 # mapSpain 0.6.0
 
 -   Upgrade `leaflet.providersESP.df` to

@@ -140,3 +140,60 @@ test_that("tiles online", {
   expect_snapshot_file(save_png(sfc), "sfc.png")
   expect_snapshot_file(save_png(frombbox), "frombbox.png")
 })
+
+
+test_that("tiles masks and crops", {
+  skip_if_not_installed("slippymath")
+  skip_if_not_installed("terra")
+  skip_if_not_installed("png")
+  # Skip on windows (CI)
+  skip_on_os("windows")
+
+  # Skip test as tiles sometimes are not available
+  skip_on_cran()
+  skip_if_offline()
+
+
+  poly <- esp_get_ccaa("La Rioja", epsg = 4326)
+  tile <- esp_getTiles(poly, crop = FALSE)
+  expect_s4_class(tile, "SpatRaster")
+
+  tilecrop <- esp_getTiles(poly, crop = TRUE)
+  expect_s4_class(tilecrop, "SpatRaster")
+
+  tilemask <- esp_getTiles(poly, mask = TRUE)
+  expect_s4_class(tilemask, "SpatRaster")
+
+  # Try with EPSG 3857
+
+  poly <- esp_get_ccaa("La Rioja", epsg = 3857)
+  tile <- esp_getTiles(poly, crop = FALSE)
+  expect_s4_class(tile, "SpatRaster")
+
+  tilecrop <- esp_getTiles(poly, crop = TRUE)
+  expect_s4_class(tilecrop, "SpatRaster")
+
+  tilemask <- esp_getTiles(poly, mask = TRUE)
+  expect_s4_class(tilemask, "SpatRaster")
+})
+
+
+test_that("tiles options", {
+  skip_if_not_installed("slippymath")
+  skip_if_not_installed("terra")
+  skip_if_not_installed("png")
+  # Skip on windows (CI)
+  skip_on_os("windows")
+
+  # Skip test as tiles sometimes are not available
+  skip_on_cran()
+  skip_if_offline()
+
+  poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
+  poly <- sf::st_buffer(poly, 20)
+  tile <- esp_getTiles(poly,
+    type = "Catastro.Building",
+    options = list(styles = "elfcadastre")
+  )
+  expect_s4_class(tile, "SpatRaster")
+})
