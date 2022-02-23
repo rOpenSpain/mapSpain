@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.6.1
 
 -   HOTFIX: Bug on `esp_getTiles()` when `mask = TRUE`.
 
