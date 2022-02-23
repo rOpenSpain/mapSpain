@@ -5,8 +5,6 @@ test_that("Errors", {
 test_that("ESDAC grid online", {
   skip_on_cran()
   skip_if_siane_offline()
-  skip_on_ci()
-  skip_on_covr()
 
   expect_message(
     esp_get_grid_ESDAC(
