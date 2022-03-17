@@ -148,6 +148,9 @@ test_that("tiles masks and crops", {
   skip_if_not_installed("png")
 
   skip_on_os("linux")
+  # Skip on windows (CI)
+  skip_on_os("windows")
+
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
@@ -183,6 +186,9 @@ test_that("tiles options", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
   skip_on_os("linux")
+
+  # Skip on windows (CI)
+  skip_on_os("windows")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
