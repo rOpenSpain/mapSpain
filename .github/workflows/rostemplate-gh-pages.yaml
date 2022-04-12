@@ -3,8 +3,6 @@
 on:
   push:
     branches: [main, master, v2-branch]
-  pull_request:
-    branches: [main, master, v2-branch]
   release:
     types: [published]
   workflow_dispatch:
@@ -13,7 +11,7 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: macos-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
