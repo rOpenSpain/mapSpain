@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
+
 # mapSpain 0.6.1
 
 -   HOTFIX: Bug on `esp_getTiles()` when `mask = TRUE`.
