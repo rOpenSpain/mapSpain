@@ -87,7 +87,7 @@ labelLayer(newgrid, txt = "id")
 df <-
   data.frame(
     iso2.ccaa.code = c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-    id = c(22, 46, 56, 83)
+    id = c(22, 47, 57, 83)
   )
 
 finalgrid <- newgrid %>%
@@ -221,7 +221,7 @@ plot(st_geometry(REST), col = "blue", add = TRUE)
 labelLayer(newgrid, txt = "id")
 
 df <- data.frame(
-  id = c(2, 34, 82, 114, 188),
+  id = c(2, 34, 82, 114, 189),
   cpro = esp_dict_region_code(
     c(
       "Santa Cruz de Tenerife",
@@ -256,6 +256,8 @@ final <- final[, newnames]
 final <- st_make_valid(final)
 final <- st_transform(final, 4258)
 
+plot(st_geometry(final))
+plot(esp_get_prov() %>% st_transform(4258) %>% st_geometry(), add = TRUE)
 esp_hexbin_prov <- st_make_valid(final)
 
 

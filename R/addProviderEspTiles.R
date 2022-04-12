@@ -28,7 +28,7 @@
 #'   [leaflet::addTiles()].
 #' @param provider Name of the provider, see [leaflet.providersESP.df] for
 #'   values available.
-#'
+#' @param ... Arguments passed on to [leaflet::providerTileOptions()].
 #' @inheritParams leaflet::addTiles
 #'
 #' @examples
@@ -168,7 +168,6 @@ addProviderEspTiles <- function(map,
 #' [providerEspTileOptions()] is a wrapper of
 #' [leaflet::providerTileOptions()].
 #'
-#' @inheritDotParams leaflet::providerTileOptions
 #'
 #' @seealso [leaflet::providerTileOptions()], [leaflet::tileOptions()]
 #'

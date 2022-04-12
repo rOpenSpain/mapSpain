@@ -36,22 +36,7 @@ layers (e.g. markers and polygons) can share the same group name. See
 \item{options}{a list of extra options for tile layers, popups, paths
 (circles, rectangles, polygons, ...), or other map elements}
 
-\item{...}{
-  Arguments passed on to \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions}}
-  \describe{
-    \item{\code{errorTileUrl}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-    \item{\code{noWrap}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-    \item{\code{opacity}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-    \item{\code{zIndex}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-    \item{\code{updateWhenIdle}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-    \item{\code{detectRetina}}{the tile layer options; see
-\url{https://leafletjs.com/reference-1.3.4.html#tilelayer}}
-  }}
+\item{...}{Arguments passed on to \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}.}
 }
 \value{
 A map object generated with \code{\link[leaflet:leaflet]{leaflet::leaflet()}}.
