@@ -94,8 +94,8 @@ INE (Instituto Nacional de Estadistica)."><meta property="og:image" content="htt
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>region</dt>
-<dd><p>A vector of names and/or codes for provinces
-or <code>NULL</code> to get all the municipalities. See <strong>Details</strong>.</p></dd>
+<dd><p>A vector of names and/or codes for provinces or <code>NULL</code> to get
+all the comarcas., See <strong>Details</strong>.</p></dd>
 <dt>comarca</dt>
 <dd><p>A name or <code><a href="https://rdrr.io/r/base/grep.html" class="external-link">regex</a></code> expression with the names of
 the required comarcas. <code>NULL</code> would not produce any filtering.</p></dd>
@@ -130,7 +130,7 @@ kingdoms.</p>
 (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 "cpro" (see <a href="esp_codelist.html">esp_codelist</a>).</p>
 <p>When calling a superior level (Province, Autonomous Community or NUTS1) ,
-all the municipalities of that level would be added.</p><div class="section">
+all the comarcas of that level would be added.</p><div class="section">
 <h3 id="legal-notice">Legal Notice<a class="anchor" aria-label="anchor" href="#legal-notice"></a></h3>
 
 
@@ -172,7 +172,8 @@ get the actual coordinates, instead of the modified ones.</p>
 <code><a href="esp_get_gridmap.html">esp_get_gridmap</a></code>,
 <code><a href="esp_get_munic.html">esp_get_munic</a>()</code>,
 <code><a href="esp_get_nuts.html">esp_get_nuts</a>()</code>,
-<code><a href="esp_get_prov.html">esp_get_prov</a>()</code></p></div>
+<code><a href="esp_get_prov.html">esp_get_prov</a>()</code>,
+<code><a href="esp_get_simplified.html">esp_get_simpl_prov</a>()</code></p></div>
     </div>
 
     <div class="section level2">
