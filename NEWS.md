@@ -2,6 +2,9 @@
 
 -   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
 
+-   Add new function to get comarcas: `esp_get_comarca()`.
+
+
 # mapSpain 0.6.1
 
 -   HOTFIX: Bug on `esp_getTiles()` when `mask = TRUE`.
