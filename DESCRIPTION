@@ -39,7 +39,8 @@ VignetteBuilder:
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas
-    Nacional de España (ANE) CC BY 4.0 <http://www.ign.es>
+    Nacional de España (ANE) CC BY 4.0 <http://www.ign.es>. INE
+    <https://www.ine.es/en/index.htm>
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

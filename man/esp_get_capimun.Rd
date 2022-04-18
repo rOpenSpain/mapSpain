@@ -147,11 +147,13 @@ Other political:
 \code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()}
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
 
 Other municipalities: 
 \code{\link{esp_get_munic}()},

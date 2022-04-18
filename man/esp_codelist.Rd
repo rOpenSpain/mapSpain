@@ -75,11 +75,13 @@ Other political:
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()}
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
 
 Other dictionary: 
 \code{\link{esp_dict_region_code}()}
