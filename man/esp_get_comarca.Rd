@@ -18,8 +18,8 @@ esp_get_comarca(
 )
 }
 \arguments{
-\item{region}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the municipalities. See \strong{Details}.}
+\item{region}{A vector of names and/or codes for provinces or \code{NULL} to get
+all the comarcas., See \strong{Details}.}
 
 \item{comarca}{A name or \code{\link[base:grep]{regex}} expression with the names of
 the required comarcas. \code{NULL} would not produce any filtering.}
@@ -61,7 +61,7 @@ When using \code{region} you can use and mix names and NUTS codes
 "cpro" (see \link{esp_codelist}).
 
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
-all the municipalities of that level would be added.
+all the comarcas of that level would be added.
 \subsection{Legal Notice}{
 
 The use of the information contained on the
@@ -135,6 +135,7 @@ Other political:
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()}
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
 }
 \concept{political}

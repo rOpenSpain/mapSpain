@@ -8,6 +8,9 @@
 #'
 #' @family political
 #'
+#' @param region A vector of names and/or codes for provinces or `NULL` to get
+#'   all the comarcas., See **Details**.
+#'
 #' @param comarca A name or [`regex`][base::grep()] expression with the names of
 #'   the required comarcas. `NULL` would not produce any filtering.
 #'
@@ -31,7 +34,7 @@
 #' "cpro" (see [esp_codelist]).
 #'
 #' When calling a superior level (Province, Autonomous Community or NUTS1) ,
-#' all the municipalities of that level would be added.
+#' all the comarcas of that level would be added.
 #'
 #' ## Legal Notice
 #'

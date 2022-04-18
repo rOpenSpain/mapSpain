@@ -192,6 +192,7 @@ Other political:
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
-\code{\link{esp_get_nuts}()}
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_simpl_prov}()}
 }
 \concept{political}
