@@ -258,9 +258,8 @@ Some packages recommended for visualization are:
 To cite the ‘mapSpain’ package in publications use:
 
 Hernangómez D (2022). *mapSpain: Administrative Boundaries of Spain*.
-doi: 10.5281/zenodo.5366622 (URL:
-<https://doi.org/10.5281/zenodo.5366622>), \<URL:
-<https://ropenspain.github.io/mapSpain/>\>.
+<doi:10.5281/zenodo.5366622> <https://doi.org/10.5281/zenodo.5366622>,
+<https://ropenspain.github.io/mapSpain/>.
 
 A BibTeX entry for LaTeX users is:
 
