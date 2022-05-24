@@ -48,7 +48,7 @@
     <div>
       <img src="logo.png" alt="mapSpain-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="index.html">mapSpain</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1.9000</small>
+      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1.9001</small>
     </div>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -210,11 +210,12 @@
 <span class="co"># Plot</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span>
 
 <span class="va">lims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/ext.html" class="external-link">ext</a></span><span class="op">(</span><span class="va">tile</span><span class="op">)</span><span class="op">@</span><span class="va">ptr</span><span class="op">$</span><span class="va">vector</span><span class="op">)</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/remove_missing.html" class="external-link">remove_missing</a></span><span class="op">(</span><span class="va">shape_pop</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/layer_spatraster.html">layer_spatraster</a></span><span class="op">(</span><span class="va">tile</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile</span>, maxcell <span class="op">=</span> <span class="fl">10e6</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">porc_women</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">provs</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradientn</a></span><span class="op">(</span>
@@ -312,16 +313,16 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the ‘mapSpain’ package in publications use:</p>
-<p>Hernangómez D (2022). <em>mapSpain: Administrative Boundaries of Spain</em>. <a href="doi:10.5281/zenodo.5366622" class="uri">doi:10.5281/zenodo.5366622</a> <a href="https://doi.org/10.5281/zenodo.5366622" class="external-link uri">https://doi.org/10.5281/zenodo.5366622</a>, <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
+<p>Hernangomez D (2022). <em>mapSpain: Administrative Boundaries of Spain</em>. <a href="https://doi.org/10.5281/zenodo.5366622" class="external-link uri">https://doi.org/10.5281/zenodo.5366622</a>, <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a></p>
 <p>A BibTeX entry for LaTeX users is:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {mapSpain<span class="sc">:</span> Administrative Boundaries of Spain},</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>mapspain,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{mapSpain}<span class="sc">:</span> Administrative Boundaries of Spain},</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2022</span>},</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">6</span>.<span class="fl">1.9000</span>},</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">6</span>.<span class="fl">1.9001</span>},</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5366622</span>},</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>mapSpain<span class="sc">/</span>},</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative Boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, Provinces, Municipalities) based on the <span class="st">'GISCO'</span> <span class="st">'Eurostat'</span> database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and <span class="st">'CartoBase SIANE'</span> from <span class="st">'Instituto Geografico Nacional'</span> <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a <span class="st">'leaflet'</span> plugin and the ability of downloading and processing static tiles.},</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative Boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, Provinces, Municipalities) based on the GISCO Eurostat database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase SIANE from Instituto Geografico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a leaflet plugin and the ability of downloading and processing static tiles.},</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
