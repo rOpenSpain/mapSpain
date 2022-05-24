@@ -8,7 +8,7 @@ message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
-version: 0.6.1.9000
+version: 0.6.1.9001
 doi: 10.5281/zenodo.5366622
 abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
   Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
@@ -31,13 +31,13 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenSpain
   year: '2022'
-  version: 0.6.1.9000
+  version: 0.6.1.9001
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
-    Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
-    and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>.
-    It also provides a 'leaflet' plugin and the ability of downloading and processing
+    Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco>
+    and CartoBase SIANE from Instituto Geografico Nacional <https://www.ign.es/>.
+    It also provides a leaflet plugin and the ability of downloading and processing
     static tiles.
 repository: https://CRAN.R-project.org/package=mapSpain
 repository-code: https://github.com/rOpenSpain/mapSpain
@@ -182,17 +182,6 @@ references:
   url: https://CRAN.R-project.org/package=ggplot2
   version: '>= 3.0.0'
 - type: software
-  title: ggspatial
-  abstract: 'ggspatial: Spatial Data Framework for ggplot2'
-  notes: Suggests
-  authors:
-  - family-names: Dunnington
-    given-names: Dewey
-    email: dewey@fishandwhistle.net
-    orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2022'
-  url: https://CRAN.R-project.org/package=ggspatial
-- type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
@@ -230,18 +219,6 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=png
   version: '>= 0.1-5'
-- type: software
-  title: raster
-  abstract: 'raster: Geographic Data Analysis and Modeling'
-  notes: Suggests
-  authors:
-  - family-names: Hijmans
-    given-names: Robert J.
-    email: r.hijmans@gmail.com
-    orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2022'
-  url: https://CRAN.R-project.org/package=raster
-  version: '>= 3.0-2'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -319,3 +296,15 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'
+- type: software
+  title: tidyterra
+  abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Utils for ''terra''
+    Objects'
+  notes: Suggests
+  authors:
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+  year: '2022'
+  url: https://CRAN.R-project.org/package=tidyterra

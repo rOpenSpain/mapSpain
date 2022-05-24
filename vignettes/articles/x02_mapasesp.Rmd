@@ -145,6 +145,8 @@ tile <- esp_getTiles(esp_get_munic(munic = "Ferrol"), "PNOA",
 )
 
 # Prepara el plot
+library(tidyterra)
+
 
 esp_all <- bind_rows(
   esp_rnat,
@@ -155,7 +157,7 @@ esp_all <- bind_rows(
 esp_all$source <- c("rnaturalearth", "gdam", "mapSpain")
 
 ggplot(esp_all) +
-  layer_spatraster(tile) +
+  geom_spatraster_rgb(data = tile) +
   geom_sf(aes(color = source),
     fill = NA, show.legend = "line",
     lwd = 1.2
@@ -475,8 +477,10 @@ Tenemos varias opciones que podemos emplear para componer mapas base:
 madrid_munis <- esp_get_munic_siane(region = "Madrid")
 base_pnoa <- esp_getTiles(madrid_munis, "IGNBase.Todo", bbox_expand = 0.1, zoommin = 1)
 
+library(tidyterra)
+
 ggplot() +
-  layer_spatraster(base_pnoa) +
+  geom_spatraster_rgb(data = base_pnoa) +
   geom_sf(
     data = madrid_munis, color = "blue", fill = "blue",
     alpha = 0.25, lwd = 0.5
@@ -491,7 +495,7 @@ madrid_mask <- esp_getTiles(madrid, mask = TRUE, crop = TRUE, zoommin = 2)
 
 
 ggplot() +
-  layer_spatraster(madrid_mask) +
+  geom_spatraster_rgb(data = madrid_mask) +
   theme_void() +
   labs(
     title = "Mapa Base de la Comunidad de Madrid",

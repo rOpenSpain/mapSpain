@@ -70,7 +70,6 @@ PuertadelSol
 
 Other imagery utilities: 
 \code{\link{esp_getTiles}()},
-\code{\link{layer_spatraster}()},
 \code{\link{leaflet.providersESP.df}}
 }
 \concept{imagery utilities}

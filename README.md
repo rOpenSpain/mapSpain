@@ -146,11 +146,12 @@ tile <-
 # Plot
 
 library(ggplot2)
+library(tidyterra)
 
 lims <- as.double(terra::ext(tile)@ptr$vector)
 
 ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
-  layer_spatraster(tile) +
+  geom_spatraster_rgb(data = tile, maxcell = 10e6) +
   geom_sf(aes(fill = porc_women), color = NA) +
   geom_sf(data = provs, fill = NA) +
   scale_fill_gradientn(
@@ -257,20 +258,20 @@ Some packages recommended for visualization are:
 
 To cite the ‘mapSpain’ package in publications use:
 
-Hernangómez D (2022). *mapSpain: Administrative Boundaries of Spain*.
-<doi:10.5281/zenodo.5366622> <https://doi.org/10.5281/zenodo.5366622>,
-<https://ropenspain.github.io/mapSpain/>.
+Hernangomez D (2022). *mapSpain: Administrative Boundaries of Spain*.
+<https://doi.org/10.5281/zenodo.5366622>,
+<https://ropenspain.github.io/mapSpain/>
 
 A BibTeX entry for LaTeX users is:
 
-    @Manual{,
-      title = {mapSpain: Administrative Boundaries of Spain},
+    @Manual{R-mapspain,
+      title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2022},
-      version = {0.6.1.9000},
+      version = {0.6.1.9001},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.},
+      abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE from Instituto Geografico Nacional <https://www.ign.es/>. It also provides a leaflet plugin and the ability of downloading and processing static tiles.},
     }
 
 ## Contribute

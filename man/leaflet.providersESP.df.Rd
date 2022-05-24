@@ -141,8 +141,7 @@ Other datasets:
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()},
-\code{\link{layer_spatraster}()}
+\code{\link{esp_getTiles}()}
 }
 \concept{datasets}
 \concept{imagery utilities}

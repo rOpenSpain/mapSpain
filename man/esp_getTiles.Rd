@@ -119,9 +119,10 @@ Murcia <- esp_get_ccaa_siane("Murcia", epsg = 3857)
 Tile <- esp_getTiles(Murcia)
 
 library(ggplot2)
+library(tidyterra)
 
 ggplot(Murcia) +
-  layer_spatraster(Tile) +
+  geom_spatraster_rgb(data = Tile) +
   geom_sf(fill = NA)
 }
 }
@@ -130,7 +131,6 @@ ggplot(Murcia) +
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{layer_spatraster}()},
 \code{\link{leaflet.providersESP.df}}
 }
 \concept{imagery utilities}

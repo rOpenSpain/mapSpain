@@ -8,7 +8,6 @@ teruel_city <- teruel_sf[teruel_sf$name == "Teruel", ]
 # Plot
 
 library(ggplot2)
-library(ggspatial)
 
 ggplot(teruel_sf) +
   geom_sf(fill = "#FDFBEA") +
@@ -21,8 +20,6 @@ ggplot(teruel_sf) +
     fill = "",
     title = "Municipalities of Teruel"
   ) +
-  annotation_scale(location = "br") +
-  annotation_north_arrow(style = north_arrow_nautical) +
   theme_minimal() +
   theme(
     text = element_text(face = "bold"),

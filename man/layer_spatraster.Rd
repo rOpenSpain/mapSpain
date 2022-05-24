@@ -2,48 +2,26 @@
 % Please edit documentation in R/layer_spatraster.R
 \name{layer_spatraster}
 \alias{layer_spatraster}
-\title{Spatial ggplot2 layer for \code{SpatRaster} objects}
+\title{Deprecated: Use \code{tidyterra::geom_spatraster_rgb()}}
 \usage{
 layer_spatraster(data, ...)
 }
 \arguments{
-\item{data}{A \code{SpatRaster} object created with \code{\link[terra:rast]{terra::rast()}}.}
+\item{data}{Deprecated.}
 
-\item{...}{
-  Arguments passed on to \code{\link[ggspatial:layer_spatial]{ggspatial::layer_spatial}}
-  \describe{
-    \item{\code{mapping}}{A mapping, created using \link[ggplot2:aes]{aes}.}
-  }}
+\item{...}{Deprecated}
 }
 \value{
-A ggplot2 layer
+An error
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
-This is a wrapper of \code{\link[ggspatial:layer_spatial.Raster]{ggspatial::layer_spatial.Raster()}} that works with
-\code{SpatRaster} objects.
-
-This function is likely to be deprecated in the future when \strong{ggspatial}
-(or any other package) provides native support to \code{SpatRaster} on
-\strong{ggplot}. See also \url{https://github.com/paleolimbot/ggspatial/issues/91}
-
-Other packages that supports natively \code{SpatRaster}:
-\itemize{
-\item \href{https://CRAN.R-project.org/package=tmap}{\strong{tmap}}
-\item \href{https://CRAN.R-project.org/package=mapsf}{\strong{mapsf}}
-\item \href{https://CRAN.R-project.org/package=rasterVis}{\strong{rasterVis}}
-}
-}
-\details{
-This function requires both \strong{ggspatial} and \strong{raster} packages.
-
-You can install both running
-\code{install.packages("ggspatial", dependencies = TRUE)}
+This function is deprecated. Use \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} for
+plot tiles with ggplot2.
 }
 \examples{
 \dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
+
 # Get a SpatRaster
 
 x <- esp_get_ccaa("Galicia")
@@ -53,20 +31,17 @@ tile <- esp_getTiles(x, "IDErioja")
 class(tile)
 
 library(ggplot2)
+# Use tidyterra
+library(tidyterra)
 
 ggplot(x) +
-  layer_spatraster(tile) +
+  geom_spatraster_rgb(data = tile) +
   geom_sf(color = "yellow", fill = NA) +
   theme_minimal()
 }
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[ggspatial:layer_spatial.Raster]{ggspatial::layer_spatial.Raster()}}, \code{\link[raster:stack]{raster::stack()}}.
-
-Other imagery utilities: 
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()},
-\code{\link{leaflet.providersESP.df}}
+\code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 }
-\concept{imagery utilities}
+\keyword{internal}

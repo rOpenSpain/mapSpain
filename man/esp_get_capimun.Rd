@@ -132,9 +132,10 @@ points <- rbind(
 
 # Check on plot
 library(ggplot2)
+library(tidyterra)
 
 ggplot(points) +
-  layer_spatraster(tile) +
+  geom_spatraster_rgb(data = tile) +
   geom_sf(data = area, fill = NA, color = "blue") +
   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
   scale_fill_manual(values = c("green", "red")) +

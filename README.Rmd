@@ -171,11 +171,12 @@ tile <-
 # Plot
 
 library(ggplot2)
+library(tidyterra)
 
 lims <- as.double(terra::ext(tile)@ptr$vector)
 
 ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
-  layer_spatraster(tile) +
+  geom_spatraster_rgb(data = tile, maxcell = 10e6) +
   geom_sf(aes(fill = porc_women), color = NA) +
   geom_sf(data = provs, fill = NA) +
   scale_fill_gradientn(

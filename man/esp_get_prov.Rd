@@ -132,7 +132,7 @@ ggplot(prov) +
   geom_sf() +
   theme_void()
 
-
+\donttest{
 # Random Provinces
 
 Random <-
@@ -181,6 +181,7 @@ ggplot(allprovs) +
     fontface = "bold"
   ) +
   theme_void()
+}
 }
 \seealso{
 Other political: 

@@ -1,5 +1,8 @@
 # mapSpain (development version)
 
+-   Deprecate `layer_spatraster().` Use `tidyterra::geom_spatraster_rgb()`
+    instead.
+
 -   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
 
 -   Add new function to get comarcas from INE: `esp_get_comarca()`.

@@ -1,14 +1,21 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
+abs <- gsub("'", "", abs)
+title <- gsub("'", "", meta$Title)
+
 
 bibentry(
   "Manual",
   header = "To cite the 'mapSpain' package in publications use:",
-  title = paste("mapSpain:", meta$Title),
+  title = paste("{mapSpain}:", title),
   year = year,
   version = meta$Version,
   author = person("Diego", "Hernangómez"),
   doi = "10.5281/zenodo.5366622",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = abs
+  abstract = abs,
+  key = "R-mapspain",
+  textVersion = paste0("Hernangomez D (",year,"). _mapSpain: ",
+    title,"_. <https://doi.org/10.5281/zenodo.5366622>, <",
+    unlist(strsplit(meta$URL, ","))[1],">")
 )

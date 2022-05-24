@@ -47,7 +47,7 @@
 #'   geom_sf() +
 #'   theme_void()
 #'
-#'
+#' \donttest{
 #' # Random Provinces
 #'
 #' Random <-
@@ -96,6 +96,7 @@
 #'     fontface = "bold"
 #'   ) +
 #'   theme_void()
+#' }
 esp_get_prov <- function(prov = NULL, ...) {
   params <- list(...)
 

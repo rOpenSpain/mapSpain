@@ -95,9 +95,10 @@
 #' Tile <- esp_getTiles(Murcia)
 #'
 #' library(ggplot2)
+#' library(tidyterra)
 #'
 #' ggplot(Murcia) +
-#'   layer_spatraster(Tile) +
+#'   geom_spatraster_rgb(data = Tile) +
 #'   geom_sf(fill = NA)
 #' }
 esp_getTiles <- function(x,

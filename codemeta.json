@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.1.9000",
+  "version": "0.6.1.9001",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
+  "runtimePlatform": "R version 4.2.0 (2022-04-22 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -64,18 +64,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "ggspatial",
-      "name": "ggspatial",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ggspatial"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -111,19 +99,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=png"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "raster",
-      "name": "raster",
-      "version": ">= 3.0-2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=raster"
     },
     {
       "@type": "SoftwareApplication",
@@ -175,6 +150,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyterra",
+      "name": "tidyterra",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyterra"
     }
   ],
   "softwareRequirements": {
@@ -246,7 +233,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "spain", "cran", "ropenspain", "ggplot2", "gis"],
-  "fileSize": "2856.489KB",
+  "fileSize": "2308.483KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -258,7 +245,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "mapSpain: Administrative Boundaries of Spain",
+      "name": "{mapSpain}: Administrative Boundaries of Spain",
       "identifier": "10.5281/zenodo.5366622",
       "url": "https://ropenspain.github.io/mapSpain/",
       "@id": "https://doi.org/10.5281/zenodo.5366622",
