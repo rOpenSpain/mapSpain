@@ -124,11 +124,15 @@ provinces of the Canary Islands.</p></li>
     <dl><dt>style</dt>
 <dd><p>Style of line around Canary Islands. Four options available:
 <code>"left"</code>, <code>"right"</code>, <code>"box"</code> or <code>"poly"</code>.</p></dd>
+
+
 <dt>moveCAN</dt>
 <dd><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
 <code>c(lat, lon)</code>. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
 <strong>Displacing the Canary Islands</strong>.</p></dd>
+
+
 <dt>epsg</dt>
 <dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
 One of:</p><ul><li><p><code>"4258"</code>: ETRS89</p></li>
@@ -136,11 +140,16 @@ One of:</p><ul><li><p><code>"4258"</code>: ETRS89</p></li>
 <li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA</p></li>
 <li><p><code>"3857"</code>: Pseudo-Mercator</p></li>
 </ul></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>sf</code> polygon or line depending of <code>style</code> parameter.
-<code>esp_get_can_provinces</code> returns a <code>LINESTRING</code> object.</p>
+    
+
+<p>A <code>sf</code> polygon or line depending of <code>style</code> parameter.</p>
+
+
+<p><code>esp_get_can_provinces</code> returns a <code>LINESTRING</code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
@@ -272,7 +281,7 @@ get the actual coordinates, instead of the modified ones.</p>
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

@@ -102,26 +102,39 @@ leaflet::leaflet() map."><meta property="og:image" content="https://ropenspain.g
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>map</dt>
 <dd><p>A map widget created from <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet::leaflet()</a></code>.</p></dd>
+
+
 <dt>provider</dt>
 <dd><p>Name of the provider, see <a href="leaflet.providersESP.df.html">leaflet.providersESP.df</a> for
 values available.</p></dd>
+
+
 <dt>layerId</dt>
 <dd><p>the layer id</p></dd>
+
+
 <dt>group</dt>
 <dd><p>The name of the group the newly created layers should belong to
 Human-friendly group names are permitted–they need not be short,
 identifier-style names. Any number of layers and even different types of
 layers (e.g. markers and polygons) can share the same group name. See
 <code><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">leaflet::addTiles()</a></code>.</p></dd>
+
+
 <dt>options</dt>
 <dd><p>a list of extra options for tile layers, popups, paths
 (circles, rectangles, polygons, ...), or other map elements</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Arguments passed on to <code><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html" class="external-link">leaflet::providerTileOptions()</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A map object generated with <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet::leaflet()</a></code>.</p>
+    
+
+<p>A map object generated with <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet::leaflet()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -151,8 +164,8 @@ layers (e.g. markers and polygons) can share the same group name. See
 <span class="r-in">  <span class="fu">addProviderEspTiles</span><span class="op">(</span>provider <span class="op">=</span> <span class="st">"RedTransporte.Carreteras"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">PuertadelSol</span></span>
-<div id="htmlwidget-a4bf634ba7c4bbc9b41d" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a4bf634ba7c4bbc9b41d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4166,-3.70384],18,[]],"calls":[{"method":"addTiles","args":["https://www.ign.es/wmts/ign-base?service=WMTS&request=GetTile&version=1.0.0&Format=image/jpeg&layer=IGNBase-gris&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"CC BY 4.0 scne.es. Sistema Geogr&aacute;fico Nacional <a href='http://www.ign.es'>IGN<\/a>"}]},{"method":"addWMSTiles","args":["https://servicios.idee.es/wms-inspire/transportes",null,null,{"styles":"","format":"image/png","transparent":"true","version":"1.1.1","errorTileUrl":"","noWrap":false,"detectRetina":false,"attribution":"Sistema Geogr&aacute;fico Nacional <a href='http://www.scne.es'>SCNE<\/a>","layers":"TN.RoadTransportNetwork.RoadLink"}]}]},"evals":[],"jsHooks":[]}</script></code></pre></div>
+<div id="htmlwidget-1a5c67a2ab9aa8d0d782" style="width:700px;height:432.632880098888px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a5c67a2ab9aa8d0d782">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4166,-3.70384],18,[]],"calls":[{"method":"addTiles","args":["https://www.ign.es/wmts/ign-base?service=WMTS&request=GetTile&version=1.0.0&Format=image/jpeg&layer=IGNBase-gris&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"CC BY 4.0 scne.es. Sistema Geogr&aacute;fico Nacional <a href='http://www.ign.es'>IGN<\/a>"}]},{"method":"addWMSTiles","args":["https://servicios.idee.es/wms-inspire/transportes",null,null,{"styles":"","format":"image/png","transparent":"true","version":"1.1.1","errorTileUrl":"","noWrap":false,"detectRetina":false,"attribution":"Sistema Geogr&aacute;fico Nacional <a href='http://www.scne.es'>SCNE<\/a>","layers":"TN.RoadTransportNetwork.RoadLink"}]}]},"evals":[],"jsHooks":[]}</script></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -178,7 +191,7 @@ layers (e.g. markers and polygons) can share the same group name. See
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

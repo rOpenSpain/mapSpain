@@ -117,46 +117,73 @@ various open map servers.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>An <code>sf</code> or <code>sfc</code> object.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>Name of the provider. See <a href="leaflet.providersESP.df.html">leaflet.providersESP.df</a>.</p></dd>
+
+
 <dt>zoom</dt>
 <dd><p>Zoom level. If <code>NULL</code>, it is determined automatically. If set,
 it overrides <code>zoommin</code>. Only valid for WMTS tiles. On a single point it
 applies a buffer to the point and on <code>zoom = NULL</code> the function set a zoom
 level of 18. See <strong>Details</strong>.</p></dd>
+
+
 <dt>zoommin</dt>
 <dd><p>Delta on default <code>zoom</code>. The default value is designed to
 download fewer tiles than you probably want. Use <code>1</code> or <code>2</code> to
 increase the resolution.</p></dd>
+
+
 <dt>crop</dt>
 <dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
 <code>FALSE</code> otherwise. If <code>x</code> is an <code>sf</code> object with one <code>POINT</code>, crop is set
 to <code>FALSE</code>.</p></dd>
+
+
 <dt>res</dt>
 <dd><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></dd>
+
+
 <dt>bbox_expand</dt>
 <dd><p>A numeric value that indicates the expansion percentage
 of the bounding box of <code>x</code>.</p></dd>
+
+
 <dt>transparent</dt>
 <dd><p>Logical. Provides transparent background, if supported.
 Depends on the selected provider on <code>type</code>.</p></dd>
+
+
 <dt>mask</dt>
 <dd><p><code>TRUE</code> if the result should be masked to <code>x</code>.</p></dd>
+
+
 <dt>update_cache</dt>
 <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+
+
 <dt>cache_dir</dt>
 <dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
+
+
 <dt>options</dt>
 <dd><p>A named list containing additional options to pass to the
 query.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
+    
+
+<p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
 the provider. See <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.
 .</p>
     </div>
@@ -228,7 +255,7 @@ corresponding .geojson file by any other method and save it on your
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.
