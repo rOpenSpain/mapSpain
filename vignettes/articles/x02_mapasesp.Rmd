@@ -140,7 +140,7 @@ esp_gdam <- gadm_sf_loadCountries("ESP")
 esp_mapSpain <- esp_get_country(epsg = 4326)
 
 # Imagen Ria Ferrol
-tile <- esp_getTiles(esp_get_munic(munic = "Ferrol"), "PNOA",
+tile <- esp_getTiles(esp_get_munic(munic = "Ferrol"), "IGNBase.Gris",
   bbox_expand = 0.5, zoommin = 1
 )
 
@@ -168,7 +168,7 @@ ggplot(esp_all) +
     ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = hcl.colors(3, "Berlin")) +
+  scale_color_manual(values = c("red", "blue", "black")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
 ```
