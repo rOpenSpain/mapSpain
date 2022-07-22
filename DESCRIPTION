@@ -43,7 +43,7 @@ Copyright: © EuroGeographics for the administrative boundaries. Atlas
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: https://ropenspain.es/
 X-schema.org-keywords: rOpenSpain, tiles, r, maps, spatial, rstats,

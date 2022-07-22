@@ -11,6 +11,7 @@
 #'
 #' @export
 #'
+#' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
 #' @inheritSection  esp_get_nuts  About caching
@@ -39,10 +40,12 @@
 #'
 #' ggplot(MovedCan) +
 #'   geom_sf(fill = "grey70")
-esp_get_country <- function(...) {
+esp_get_country <- function(moveCAN = TRUE, ...) {
   params <- list(...)
   params$nuts_level <- 1
   params$region <- NULL
+  params$moveCAN <- moveCAN
+
   data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   # Extract geom column

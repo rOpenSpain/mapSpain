@@ -1,5 +1,7 @@
 # mapSpain (development version)
 
+-   Now `moveCAN` is a explicit parameter in the relevant functions.
+
 -   Deprecate `layer_spatraster().` Use `tidyterra::geom_spatraster_rgb()`
     instead.
 

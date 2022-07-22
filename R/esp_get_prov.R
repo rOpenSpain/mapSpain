@@ -97,7 +97,7 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_prov <- function(prov = NULL, ...) {
+esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   params <- list(...)
 
   # Get region id
@@ -123,7 +123,7 @@ esp_get_prov <- function(prov = NULL, ...) {
 
   params$region <- nuts_id
   params$nuts_level <- 3
-
+  params$moveCAN <- moveCAN
 
   data_sf <- do.call(mapSpain::esp_get_nuts, params)
 

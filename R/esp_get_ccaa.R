@@ -91,7 +91,7 @@
 #'   ) +
 #'   theme(panel.background = element_rect(fill = "#C7E7FB"))
 #' }
-esp_get_ccaa <- function(ccaa = NULL, ...) {
+esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   params <- list(...)
 
   # Get region id
@@ -110,6 +110,7 @@ esp_get_ccaa <- function(ccaa = NULL, ...) {
 
   params$region <- nuts_id
   params$nuts_level <- 2
+  params$moveCAN <- moveCAN
 
 
   data_sf <- do.call(mapSpain::esp_get_nuts, params)
