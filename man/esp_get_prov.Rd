@@ -9,7 +9,7 @@ IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
-esp_get_prov(prov = NULL, ...)
+esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 
 esp_get_prov_siane(
   prov = NULL,
@@ -27,6 +27,11 @@ esp_get_prov_siane(
 \arguments{
 \item{prov}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the provinces. See \strong{Details}.}
+
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
@@ -63,11 +68,6 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
 "3", "6.5" or "10".}
-
-\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
 the dataset provided by IGN.}
