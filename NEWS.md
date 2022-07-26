@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.6.2
 
 -   Now `moveCAN` is a explicit parameter in the relevant functions.
 
