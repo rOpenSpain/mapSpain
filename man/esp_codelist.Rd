@@ -31,7 +31,7 @@ Several languages available.
 \itemize{
 \item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
 \item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/background}
-\item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
+\item \strong{ISO}: \url{https://www.iso.org/home.html}
 \item \strong{CLDR}: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
 }
 }

@@ -4,7 +4,7 @@
 #' Returns 'comarcas' of Spain as polygons,as provided by the
 #' **INE** (Instituto Nacional de Estadistica).
 #'
-#' @source [INE: PC_Axis files](https://www.ine.es/ss/Satellite?c=Page&p=1254735116596&pagename=ProductosYServicios%2FPYSLayout&cid=1254735116596&L=1).
+#' @source INE: PC_Axis files.
 #'
 #' @family political
 #'
@@ -44,8 +44,6 @@
 #' in the case of having to answer to third parties due to damages arising
 #' from such use.
 #'
-#' Read the [full legal notice](https://www.ine.es/ss/Satellite?L=1&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda%2FINELayout)
-#' for more info.
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

@@ -21,7 +21,7 @@
 #'
 #' @seealso [esp_get_hex_prov()], [esp_get_hex_ccaa()]
 #'
-#' @source [INE: PC_Axis files](https://www.ine.es/ss/Satellite?c=Page&p=1254735116596&pagename=ProductosYServicios%2FPYSLayout&cid=1254735116596&L=1).
+#' @source INE: PC_Axis files
 #'
 #' @details
 #'

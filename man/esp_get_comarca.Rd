@@ -4,7 +4,7 @@
 \alias{esp_get_comarca}
 \title{Get 'comarcas' of Spain as \code{sf} polygons}
 \source{
-\href{https://www.ine.es/ss/Satellite?c=Page&p=1254735116596&pagename=ProductosYServicios\%2FPYSLayout&cid=1254735116596&L=1}{INE: PC_Axis files}.
+INE: PC_Axis files.
 }
 \usage{
 esp_get_comarca(
@@ -69,9 +69,6 @@ The use of the information contained on the
 re-use agents, at their own risk, and they will be the sole liable parties
 in the case of having to answer to third parties due to damages arising
 from such use.
-
-Read the \href{https://www.ine.es/ss/Satellite?L=1&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda\%2FINELayout}{full legal notice}
-for more info.
 }
 }
 \section{About caching}{

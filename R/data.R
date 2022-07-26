@@ -17,7 +17,7 @@
 #' @source
 #' * **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
 #' * **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/background>
-#' * **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
+#' * **ISO**: <https://www.iso.org/home.html>
 #' * **CLDR**: <https://unicode-org.github.io/cldr-staging/charts/38/index.html>
 #'
 #' @encoding UTF-8

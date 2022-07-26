@@ -17,7 +17,7 @@
 #' @return An error
 #'
 #' @examplesIf esp_check_access()
-#' \donttest{
+#' \dontrun{
 #'
 #' # Get a SpatRaster
 #'

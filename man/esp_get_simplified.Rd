@@ -5,7 +5,7 @@
 \alias{esp_get_simpl_ccaa}
 \title{Get a simplified map of provinces and autonomous communities of Spain}
 \source{
-\href{https://www.ine.es/ss/Satellite?c=Page&p=1254735116596&pagename=ProductosYServicios\%2FPYSLayout&cid=1254735116596&L=1}{INE: PC_Axis files}.
+INE: PC_Axis files
 }
 \usage{
 esp_get_simpl_prov(

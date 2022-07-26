@@ -20,7 +20,7 @@ plot tiles with ggplot2.
 }
 \examples{
 \dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\donttest{
+\dontrun{
 
 # Get a SpatRaster
 
