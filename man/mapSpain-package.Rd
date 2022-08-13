@@ -2,73 +2,25 @@
 % Please edit documentation in R/mapSpain-package.R
 \docType{package}
 \name{mapSpain-package}
-\alias{mapSpain-package}
 \alias{mapSpain}
-\title{mapSpain package}
-\source{
-\href{https://ec.europa.eu/eurostat/web/gisco/geodata}{GISCO webpage}
-}
+\alias{mapSpain-package}
+\title{mapSpain: Administrative Boundaries of Spain}
 \description{
-\if{html}{\figure{logo.png}{options: width=120 alt="mapSpain logo" align='right'}}
-This package provides Administrative Boundaries of Spain based on
-the GISCO (Geographic Information System of the Commission) Eurostat
-database and CartoBase SIANE from
-Instituto Geográfico Nacional.
-}
-\details{
-\tabular{ll}{
-    \tab  \cr
-   \strong{Package} \tab mapSpain \cr
-   \strong{Type} \tab Package \cr
-   \strong{Version} \tab 0.6.2 \cr
-   \strong{Date} \tab 2022 \cr
-   \strong{License} \tab GPL-3 \cr
-   \strong{LazyLoad} \tab yes \cr
-}
-}
-\section{COPYRIGHT NOTICE (IGN)}{
-This package uses data from CartoBase SIANE, provided by Instituto
-Geografico Nacional (IGN):
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Atlas Nacional de España (ANE)
-\href{https://creativecommons.org/licenses/by/4.0/deed.en}{CC BY 4.0}
-\href{https://www.ign.es/}{ign.es}
-}
-
-\section{COPYRIGHT NOTICE (GISCO)}{
-When data downloaded from GISCO
-is used in any printed or electronic publication,
-in addition to any other provisions
-applicable to the whole Eurostat website,
-data source will have to be acknowledged
-in the legend of the map and
-in the introductory page of the publication
-with the following copyright notice:
-\itemize{
-\item EN: (C) EuroGeographics for the administrative boundaries
-\item FR: (C) EuroGeographics pour les limites administratives
-\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
-}
-
-For publications in languages other than
-English, French or German,
-the translation of the copyright notice
-in the language of the publication shall be used.
-
-If you intend to use the data commercially,
-please contact EuroGeographics for
-information regarding their license agreements.
-}
-
-\references{
-See \code{citation("mapSpain")}.
+Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database \url{https://ec.europa.eu/eurostat/web/gisco} and 'CartoBase SIANE' from 'Instituto Geografico Nacional' \url{https://www.ign.es/}. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.
 }
 \seealso{
 Useful links:
 \itemize{
-\item \url{https://ropenspain.github.io/mapSpain/}
-\item \url{https://github.com/rOpenSpain/mapSpain}
-\item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
+  \item \url{https://ropenspain.github.io/mapSpain/}
+  \item \url{https://github.com/rOpenSpain/mapSpain}
+  \item Report bugs at \url{https://github.com/rOpenSpain/mapSpain/issues}
 }
+
 }
-\keyword{package}
+\author{
+\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) (rOpenSpain) [copyright holder]
+
+}
+\keyword{internal}

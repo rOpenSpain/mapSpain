@@ -246,9 +246,8 @@ ggplot(munic.pop) +
     text = element_text(colour = "white"),
     legend.position = "bottom"
   )
+#> Error in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : polygon edge not found
 ```
-
-<img src="./thematic-1.png" title="plot of chunk thematic" alt="plot of chunk thematic" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -297,9 +296,8 @@ ggplot(all_countries) +
       linetype = "dotted"
     )
   )
+#> Error in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : polygon edge not found
 ```
-
-<img src="./giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%" />
 
 ## Working with tiles
 
