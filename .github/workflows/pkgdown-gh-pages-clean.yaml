@@ -35,14 +35,8 @@ jobs:
             IamKDO/GADMTools
           needs: website
 
-      - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, run_dont_run = TRUE, clean = TRUE)
-        shell: Rscript {0}
-
-      - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          clean: false
-          branch: gh-pages
-          folder: docs
+      - name: Deploy package
+        run: |
+          git config --local user.name "dieghernan"
+          git config --local user.email "dieghernan@users.noreply.github.com"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE, run_dont_run = TRUE)'
