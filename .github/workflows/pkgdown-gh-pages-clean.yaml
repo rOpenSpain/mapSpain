@@ -27,12 +27,12 @@ jobs:
             any::rcmdcheck
             any::pkgdown
             any::reactable
-            any::GADMTools
             any::rnaturalearth
             any::tidyverse
             dieghernan/pkgdev
             ropenspain/rostemplate
             ropensci/rnaturalearthhires
+            IamKDO/GADMTools
           needs: website
 
       - name: Build site
