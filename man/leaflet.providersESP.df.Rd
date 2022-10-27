@@ -16,7 +16,7 @@ the service:
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.3.0}.
+\strong{v1.3.1}.
 }
 \description{
 A data frame containing information of different public WMS and WMTS
@@ -24,7 +24,7 @@ providers of Spain
 
 This function is a implementation of the javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.3.0}.
+\strong{v1.3.1}.
 }
 \details{
 Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:\tabular{l}{

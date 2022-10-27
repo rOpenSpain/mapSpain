@@ -1,3 +1,9 @@
+# mapSpain (development version)
+
+-   Upgrade `leaflet.providersESP.df` to
+    <https://dieghernan.github.io/leaflet-providersESP/> v1.3.1. Fix
+    `"MDT"/"MDT.Relieve"` provider.
+
 # mapSpain 0.6.2
 
 -   Now `moveCAN` is a explicit parameter in the relevant functions.

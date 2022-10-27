@@ -6,7 +6,7 @@
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **v1.3.0**.
+#' **v1.3.1**.
 #'
 #' @family imagery utilities
 #' @seealso [terra::rast()].
@@ -17,7 +17,7 @@
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **v1.3.0**.
+#'  **v1.3.1**.
 #'
 #' @export
 #'
@@ -232,7 +232,6 @@ esp_getTiles <- function(x,
 
   # reproject rout if needed
   if (!sf::st_crs(x) == sf::st_crs(rout)) {
-
     # Sometimes it gets an error
 
     rout_end <- try(terra::project(

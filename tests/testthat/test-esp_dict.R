@@ -11,13 +11,14 @@ test_that("Testing dict", {
 
   # test fix on new database
   expect_silent(
-    esp_dict_region_code(c(
-      "Ciudad Autónoma de Ceuta",
-      "Ciudad Autónoma de Melilla",
-      "Región de Murcia",
-      "Principado de Asturias"
-    ),
-    destination = "cpro"
+    esp_dict_region_code(
+      c(
+        "Ciudad Autónoma de Ceuta",
+        "Ciudad Autónoma de Melilla",
+        "Región de Murcia",
+        "Principado de Asturias"
+      ),
+      destination = "cpro"
     )
   )
 
