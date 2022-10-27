@@ -78,7 +78,7 @@ ggplot(country) +
   )
 ```
 
-<img src="./basic-1.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="./basic-1.png" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -91,7 +91,7 @@ ggplot(Andalucia) +
   theme_bw()
 ```
 
-<img src="./basic-2.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="./basic-2.png" alt="plot of chunk basic" width="100%" />
 
 ```r
 
@@ -121,7 +121,7 @@ ggplot(Euskadi_CCAA) +
   )
 ```
 
-<img src="./basic-3.png" title="plot of chunk basic" alt="plot of chunk basic" width="100%" />
+<img src="./basic-3.png" alt="plot of chunk basic" width="100%" />
 
 ## Choropleth and label maps
 
@@ -177,7 +177,7 @@ ggplot(CCAA_sf) +
   theme(legend.position = c(0.1, 0.6))
 ```
 
-<img src="./choro-1.png" title="plot of chunk choro" alt="plot of chunk choro" width="100%" />
+<img src="./choro-1.png" alt="plot of chunk choro" width="100%" />
 
 ## Thematic maps
 
@@ -246,8 +246,9 @@ ggplot(munic.pop) +
     text = element_text(colour = "white"),
     legend.position = "bottom"
   )
-#> Error in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : polygon edge not found
 ```
+
+<img src="./thematic-1.png" alt="plot of chunk thematic" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -296,8 +297,9 @@ ggplot(all_countries) +
       linetype = "dotted"
     )
   )
-#> Error in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : polygon edge not found
 ```
+
+<img src="./giscoR-1.png" alt="plot of chunk giscoR" width="100%" />
 
 ## Working with tiles
 

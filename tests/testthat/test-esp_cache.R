@@ -1,5 +1,4 @@
 test_that("Test cache online", {
-
   # Get current cache dir
   current <- esp_hlp_detect_cache_dir()
 

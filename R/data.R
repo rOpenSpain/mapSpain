@@ -171,13 +171,13 @@ NULL
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **v1.3.0**.
+#' **v1.3.1**.
 #'
 #' @docType data
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **v1.3.0**.
+#' **v1.3.1**.
 #'
 #' @encoding UTF-8
 #'

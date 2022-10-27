@@ -8,29 +8,29 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 	<!-- Install leaflet-providersESP -->
-	<script src="https://cdn.jsdelivr.net/gh/dieghernan/leaflet-providersESP@v1.2.0/dist/leaflet-providersESP.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/dieghernan/leaflet-providersESP/dist/leaflet-providersESP.min.js"></script>
 	<link rel="stylesheet" href="https://dieghernan.github.io/leaflet-providersESP/assets/css/main.css" />
     <!-- Highlighter -->
 	<link id="csshigh" rel="stylesheet" href="https://dieghernan.github.io/leaflet-providersESP/assets/css/highlighter.css" />
-	
+
 	<!-- Display map full page -->
 	<style>
 	html {
 		height: 100%
 	}
-	
+
 	body {
 		height: 100%;
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	td,
 	th {
 		border: solid;
 		border-width: thin;
 	}
-	
+
 	#mapid {
 		height: 100%;
 		width: 100%
@@ -103,11 +103,11 @@
 			}
 		}
 		var url2 = url;
-		var completeWMS = '?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT={format}' + 
+		var completeWMS = '?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT={format}' +
 		'&TRANSPARENT={transparent}&LAYERS={layers}&SRS=EPSG:3857&WIDTH=512&HEIGHT=512&BBOX={bbox}';
-		var completeWMSADIF = '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT={format}' + 
+		var completeWMSADIF = '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT={format}' +
 		'&TRANSPARENT=false&STYLES=&LAYERS={layers}&CRS=EPSG:3857&WIDTH=512&HEIGHT=512&BBOX={bbox}';
-		
+
 
 		if(type == "WMS") {
 			if(name.includes("ADIF")){
@@ -115,21 +115,21 @@
 			} else {
 			url2 = url + completeWMS;
 			}
-			
+
 			if (name.includes("LimitesMaritimos")){
 			url2 = url2 + '&STYLES=';
 			}
-			
 
-			
-		
-			
+
+
+
+
 
 			url2 = url2.replace("??", "?");
 		}
-		
+
 		//Special for adif
-		
+
 		for(var option in options) {
 			var templ = '{' + option + '}';
 			if(url2.includes(templ)) {

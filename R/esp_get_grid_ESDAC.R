@@ -44,7 +44,6 @@ esp_get_grid_ESDAC <- function(resolution = 10,
                                update_cache = FALSE,
                                cache_dir = NULL,
                                verbose = FALSE) {
-
   # Check grid
   res <- as.numeric(resolution)
 

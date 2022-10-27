@@ -17,7 +17,6 @@ getwms <- function(x,
                    res,
                    transparent,
                    options) {
-
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
@@ -229,7 +228,6 @@ getwmts <- function(x,
 #' @name compose_tile_grid
 #' @noRd
 compose_tile_grid <- function(tile_grid, ext, images, transparent) {
-
   # Based on https://github.com/riatelab/maptiles/blob/main/R/get_tiles.R
 
   bricks <- vector("list", nrow(tile_grid$tiles))

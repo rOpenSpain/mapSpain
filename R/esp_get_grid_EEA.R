@@ -39,8 +39,6 @@ esp_get_grid_EEA <- function(resolution = 100,
                              update_cache = FALSE,
                              cache_dir = NULL,
                              verbose = FALSE) {
-
-
   # Check grid
   res <- as.numeric(resolution)
 

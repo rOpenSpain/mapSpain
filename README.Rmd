@@ -164,8 +164,7 @@ shape_pop <- merge(shape,
 tile <-
   esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 10,
-    bbox_expand = .1
+    zoommin = 1
   )
 
 # Plot

@@ -1,5 +1,4 @@
 test_that("Test layers", {
-
   # Test with sf
 
   x <- esp_get_ccaa("Catalonia")

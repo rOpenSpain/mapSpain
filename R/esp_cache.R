@@ -43,8 +43,6 @@ esp_set_cache_dir <- function(cache_dir,
                               overwrite = FALSE,
                               install = FALSE,
                               verbose = TRUE) {
-
-
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     if (verbose) {
@@ -147,7 +145,6 @@ esp_clear_cache <- function(config = TRUE,
 #'
 #' @noRd
 esp_hlp_detect_cache_dir <- function() {
-
   # Try from getenv
   getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
 

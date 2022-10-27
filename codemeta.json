@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.2",
+  "version": "0.6.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -233,7 +233,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "spain", "cran", "ropenspain", "ggplot2", "gis"],
-  "fileSize": "2849.304KB",
+  "fileSize": "2622.307KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

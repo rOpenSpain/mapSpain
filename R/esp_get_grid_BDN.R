@@ -45,7 +45,6 @@ esp_get_grid_BDN <- function(resolution = 10,
                              update_cache = FALSE,
                              cache_dir = NULL,
                              verbose = FALSE) {
-
   # Check grid
   res <- as.numeric(resolution)
 
@@ -101,8 +100,6 @@ esp_get_grid_BDN_ccaa <- function(ccaa,
                                   update_cache = FALSE,
                                   cache_dir = NULL,
                                   verbose = FALSE) {
-
-
   # Get region id
 
   ccaa <- ccaa[!is.na(ccaa)]
