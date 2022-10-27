@@ -63,6 +63,7 @@ install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 This script highlights some features of **mapSpain** :
 
 ``` r
+
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -121,6 +122,7 @@ ggplot(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
+
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -139,8 +141,7 @@ shape_pop <- merge(shape,
 tile <-
   esp_getTiles(shape_pop,
     type = "IGNBase.Todo",
-    zoom = 10,
-    bbox_expand = .1
+    zoommin = 1
   )
 
 # Plot
@@ -187,6 +188,7 @@ installed as a dependency when you installed **mapSpain**. A basic
 example:
 
 ``` r
+
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -248,11 +250,11 @@ it will load it, speeding up the process.
 
 Some packages recommended for visualization are:
 
--   [**tmap**](https://github.com/r-tmap/tmap)
--   [**mapsf**](https://riatelab.github.io/mapsf/)
--   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-    [**ggspatial**](https://github.com/paleolimbot/ggspatial)
--   [**leaflet**](https://rstudio.github.io/leaflet/)
+- [**tmap**](https://github.com/r-tmap/tmap)
+- [**mapsf**](https://riatelab.github.io/mapsf/)
+- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+  [**ggspatial**](https://github.com/paleolimbot/ggspatial)
+- [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
@@ -267,7 +269,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2022},
-      version = {0.6.2},
+      version = {0.6.2.9000},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
