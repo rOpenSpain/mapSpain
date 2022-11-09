@@ -301,3 +301,4 @@ references:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2022'
+  url: https://CRAN.R-project.org/package=tidyterra
