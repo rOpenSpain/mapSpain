@@ -24,7 +24,7 @@ plot tiles with ggplot2.
 
 # Get a SpatRaster
 
-x <- esp_get_ccaa("Galicia")
+x <- esp_get_ccaa("Galicia", epsg = 3857)
 
 tile <- esp_getTiles(x, "IDErioja")
 
