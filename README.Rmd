@@ -122,7 +122,7 @@ library(ggplot2)
 ggplot(CCAA_sf) +
   geom_sf(aes(fill = porc_women),
     color = "grey70",
-    lwd = .3
+    linewidth = .3
   ) +
   geom_sf(data = Can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
@@ -236,7 +236,7 @@ library(ggplot2)
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
-  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", lwd = .1) +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = .1) +
   # Center in Europe: EPSG 3035
   coord_sf(
     xlim = c(2377294, 7453440),

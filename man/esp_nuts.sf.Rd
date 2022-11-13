@@ -52,7 +52,7 @@ levels(nuts3$URBN_TYPE_cat)
 levels(nuts3$URBN_TYPE_cat) <- c("Urban", "Intermediate", "Rural")
 
 ggplot(nuts3) +
-  geom_sf(aes(fill = URBN_TYPE_cat), lwd = .1) +
+  geom_sf(aes(fill = URBN_TYPE_cat), linewidth = .1) +
   scale_fill_manual(values = c("grey80", "#FFC183", "#68AC20")) +
   labs(
     title = "NUTS3 levels of Spain",

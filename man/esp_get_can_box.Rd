@@ -125,7 +125,7 @@ CCAA <- esp_get_ccaa(
 
 ggplot(Countries) +
   geom_sf(fill = "#DFDFDF") +
-  geom_sf(data = CANbox, fill = "#C7E7FB", lwd = 1) +
+  geom_sf(data = CANbox, fill = "#C7E7FB", linewidth = 1) +
   geom_sf(data = CCAA, fill = "#FDFBEA") +
   coord_sf(
     xlim = c(-10, 4.3),

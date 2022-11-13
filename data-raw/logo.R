@@ -28,10 +28,10 @@ a <- ggplot(map) +
     data = map2,
     color = "#FABD00",
     fill = NA,
-    lwd = 0.1
+    linewidth = 0.1
   ) +
-  geom_sf(data = l, color = "#FABD00", lwd = 0.1) +
-  geom_sf(data = p, color = "#FABD00", lwd = 0.1) +
+  geom_sf(data = l, color = "#FABD00", linewidth = 0.1) +
+  geom_sf(data = p, color = "#FABD00", linewidth = 0.1) +
   theme_void()
 
 

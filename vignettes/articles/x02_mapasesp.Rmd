@@ -161,7 +161,7 @@ ggplot(esp_all) +
   geom_spatraster_rgb(data = tile) +
   geom_sf(aes(color = source),
     fill = NA, show.legend = "line",
-    lwd = 1.2
+    linewidth = 1.2
   ) +
   coord_sf(
     crs = 4326,
@@ -484,7 +484,7 @@ ggplot() +
   geom_spatraster_rgb(data = base_pnoa) +
   geom_sf(
     data = madrid_munis, color = "blue", fill = "blue",
-    alpha = 0.25, lwd = 0.5
+    alpha = 0.25, linewidth = 0.5
   ) +
   theme_minimal() +
   labs(title = "Municipios en Madrid")

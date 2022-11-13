@@ -44,7 +44,7 @@
 #'   geom_sf(data = ccaa, fill = NA) +
 #'   geom_sf(
 #'     data = rails, aes(color = tipo),
-#'     show.legend = FALSE, lwd = 1.5
+#'     show.legend = FALSE, linewidth = 1.5
 #'   ) +
 #'   geom_sf(
 #'     data = stations,
