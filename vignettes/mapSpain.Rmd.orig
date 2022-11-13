@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   tidy = "styler",
+  dev = "ragg_png",
   dpi = 90,
   fig.path = "./",
   out.width = "100%"
@@ -153,7 +154,7 @@ Can <- esp_get_can_box()
 ggplot(CCAA_sf) +
   geom_sf(aes(fill = porc_women),
     color = "grey70",
-    lwd = .3
+    linewidth = .3
   ) +
   geom_sf(data = Can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
@@ -215,7 +216,7 @@ br <-
 munic.pop$cuts <- cut(munic.pop$dens, br)
 
 ggplot(munic.pop) +
-  geom_sf(aes(fill = cuts), color = NA, lwd = 0) +
+  geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
   scale_fill_manual(
     values = c("grey5", hcl.colors(
       length(br) - 2,
@@ -274,7 +275,7 @@ ccaa <- esp_get_ccaa(
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
-  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", lwd = .1) +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = .1) +
   # Center in Europe: EPSG 3035
   coord_sf(
     xlim = c(2377294, 7453440),

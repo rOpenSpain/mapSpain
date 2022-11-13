@@ -50,7 +50,7 @@
 #'
 #' ggplot(shapeEsp) +
 #'   geom_sf() +
-#'   geom_sf(data = MainRivers, color = "skyblue", lwd = 2) +
+#'   geom_sf(data = MainRivers, color = "skyblue", linewidth = 2) +
 #'   coord_sf(
 #'     xlim = c(-7.5, 1),
 #'     ylim = c(36.8, 43)

@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   dpi = 300,
   tidy = "styler",
+  dev = "ragg_png",
   out.width = "100%"
 )
 ```
@@ -60,7 +61,7 @@ tile_LGN <- esp_getTiles(LGN, "IDErioja", bbox_expand = 0.5)
 
 ggplot(LGN) +
   geom_spatraster_rgb(data = tile_LGN) +
-  geom_sf(fill = NA, lwd = 2, color = "blue")
+  geom_sf(fill = NA, linewidth = 2, color = "blue")
 ```
 
 ### Alpha value on tiles
