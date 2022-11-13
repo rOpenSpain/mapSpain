@@ -253,7 +253,7 @@ Some packages recommended for visualization are:
 - [**tmap**](https://github.com/r-tmap/tmap)
 - [**mapsf**](https://riatelab.github.io/mapsf/)
 - [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-  [**ggspatial**](https://github.com/paleolimbot/ggspatial)
+  [**tidyterra**](https://github.com/dieghernan/tidyterra).
 - [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
