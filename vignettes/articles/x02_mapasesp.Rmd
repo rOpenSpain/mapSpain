@@ -141,7 +141,7 @@ esp_gdam <- gadm_sf_loadCountries("ESP")
 esp_mapSpain <- esp_get_country(epsg = 4326)
 
 # Imagen Ria Ferrol
-tile <- esp_getTiles(esp_get_munic(munic = "Ferrol"), "IGNBase.Gris",
+tile <- esp_getTiles(esp_get_munic(munic = "Ferrol", epsg = 3857), "IGNBase.Gris",
   bbox_expand = 0.5, zoommin = 1
 )
 
@@ -330,8 +330,7 @@ can_box <- esp_get_can_box()
 ggplot(esp_can) +
   geom_sf() +
   geom_sf(data = can_prov) +
-  geom_sf(data = can_box) +
-  theme_linedraw()
+  geom_sf(data = can_box)
 ```
 
 **Cuando se trabaja con imágenes, mapas interactivos o se desean realizar
@@ -345,7 +344,6 @@ nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
   geom_sf() +
-  theme_linedraw() +
   labs(title = "NUTS1: Baja Resolución")
 ```
 
@@ -475,7 +473,7 @@ Los proveedores se han extraido del plugin para leaflet
 Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ```{r imagesestaticos}
-madrid_munis <- esp_get_munic_siane(region = "Madrid")
+madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
 base_pnoa <- esp_getTiles(madrid_munis, "IGNBase.Todo", bbox_expand = 0.1, zoommin = 1)
 
 library(tidyterra)
@@ -490,7 +488,7 @@ ggplot() +
   labs(title = "Municipios en Madrid")
 
 # Usando la opción mask
-madrid <- esp_get_munic_siane(munic = "^Madrid$")
+madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
 madrid_mask <- esp_getTiles(madrid, mask = TRUE, crop = TRUE, zoommin = 2)
 
