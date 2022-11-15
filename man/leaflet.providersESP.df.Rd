@@ -16,7 +16,7 @@ the service:
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.3.1}.
+\strong{v1.3.2}.
 }
 \description{
 A data frame containing information of different public WMS and WMTS
@@ -24,7 +24,7 @@ providers of Spain
 
 This function is a implementation of the javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.3.1}.
+\strong{v1.3.2}.
 }
 \details{
 Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:\tabular{l}{
@@ -39,6 +39,7 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
    'MDT.Elevaciones' \cr
    'MDT.Relieve' \cr
    'MDT.CurvasNivel' \cr
+   'MDT.SpotElevation' \cr
    'PNOA' \cr
    'PNOA.MaximaActualidad' \cr
    'PNOA.Mosaico' \cr
@@ -51,10 +52,13 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
    'Geofisica.Terremotos10dias' \cr
    'Geofisica.Terremotos30dias' \cr
    'Geofisica.Terremotos365dias' \cr
-   'Geofisica.VigilanciaVolcanica' \cr
+   'Geofisica.ObservedEvents' \cr
+   'Geofisica.HazardArea' \cr
+   'VigilanciaVolcanica' \cr
+   'VigilanciaVolcanica.ErupcionesHistoricas' \cr
    'CaminoDeSantiago' \cr
    'CaminoDeSantiago.CaminoFrances' \cr
-   'CaminoDeSantiago.CaminosTuronensis' \cr
+   'CaminoDeSantiago.CaminosFrancia' \cr
    'CaminoDeSantiago.CaminosGalicia' \cr
    'CaminoDeSantiago.CaminosDelNorte' \cr
    'CaminoDeSantiago.CaminosAndaluces' \cr
@@ -63,8 +67,6 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
    'CaminoDeSantiago.CaminosCatalanes' \cr
    'CaminoDeSantiago.CaminosSureste' \cr
    'CaminoDeSantiago.CaminosInsulares' \cr
-   'CaminoDeSantiago.CaminosPiemonts' \cr
-   'CaminoDeSantiago.CaminosTolosana' \cr
    'CaminoDeSantiago.CaminosPortugueses' \cr
    'Catastro' \cr
    'Catastro.Catastro' \cr
@@ -113,13 +115,11 @@ Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{es
    'LimitesMaritimos.LimitesMaritimos' \cr
    'LimitesMaritimos.LineasBase' \cr
    'Copernicus' \cr
-   'Copernicus.LandCover' \cr
    'Copernicus.Forest' \cr
    'Copernicus.ForestLeaf' \cr
    'Copernicus.WaterWet' \cr
    'Copernicus.SoilSeal' \cr
    'Copernicus.GrassLand' \cr
-   'Copernicus.Local' \cr
    'Copernicus.RiparianGreen' \cr
    'Copernicus.RiparianLandCover' \cr
    'Copernicus.Natura2k' \cr

@@ -34,13 +34,11 @@ CaminosCatalanes
 CaminosCentro
 CaminosDelNorte
 CaminosEste
+CaminosFrancia
 CaminosGalicia
 CaminosInsulares
-CaminosPiemonts
 CaminosPortugueses
 CaminosSureste
-CaminosTolosana
-CaminosTuronensis
 Canarias
 Carreteras
 CartoBase
@@ -73,6 +71,7 @@ ESDAC
 ETRS
 El
 Elevaciones
+ErupcionesHistoricas
 Espaciales
 España
 Esquemas
@@ -97,6 +96,7 @@ Geografico
 Geográfico
 GrassLand
 HOTFIX
+HazardArea
 Hernangomez
 Hexbin
 Hidrografia
@@ -117,7 +117,6 @@ LAEA
 LATN
 LAU
 LEVL
-LandCover
 LiDAR
 Liedekerke
 Limites
@@ -145,6 +144,7 @@ Niveles
 Nodos
 NombresGeograficos
 ORCID
+ObservedEvents
 Ocupacion
 OcupacionSuelo
 OpenStreetMap
@@ -175,6 +175,7 @@ RiparianGreen
 RiparianLandCover
 SIANE
 SoilSeal
+SpotElevation
 Subcuencas
 Tenemos
 Tenerife
@@ -306,7 +307,6 @@ geojson
 georeferenciada
 geospatial
 ggplot
-ggspatial
 giscoR
 github
 hacer
@@ -428,6 +428,7 @@ sus
 también
 teselas
 textos
+tidyterra
 tipo
 tmap
 todas

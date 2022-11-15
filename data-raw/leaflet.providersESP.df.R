@@ -23,7 +23,7 @@ devtools::load_all()
 # Try MDT
 library(tidyterra)
 ccaa <- esp_get_ccaa(c("Andalucia"), epsg = 3857)
-tile <- esp_getTiles(ccaa, "MDT", crop = FALSE)
+tile <- esp_getTiles(ccaa, "Copernicus", crop = FALSE)
 
 ggplot2::ggplot() +
   geom_spatraster_rgb(data = tile)

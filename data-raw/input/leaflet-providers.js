@@ -1,11 +1,11 @@
-// leaflet-providersESP.js plugin v1.3.1
+// leaflet-providersESP.js plugin v1.3.2
 // (c) D. Hernangomez - MIT License
 // https://dieghernan.github.io/leaflet-providersESP/
 // Issues: https://dieghernan.github.io/leaflet-providersESP/issues
 // All providers are open source. Please check attributions
 // Feel free to contribute
 "use strict";
-var providersESPversion = 'v1.3.1';
+var providersESPversion = 'v1.3.2';
 // Databases
 // WMTS Servers - Tile Maps - Mapas de Teselas
 var completeWMTS = "&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}";
@@ -71,12 +71,21 @@ var providersESP = {
       Elevaciones: {},
       Relieve: "Relieve",
       CurvasNivel: {
-        url: "http://www.ign.es/wms-inspire/mdt?",
+        url: "https://servicios.idee.es/wms-inspire/mdt?",
         options: {
           layers: "EL.ContourLine",
           transparent: true,
           format: "image/png",
           minZoom: 12
+        }
+      },
+      SpotElevation: {
+        url: "https://servicios.idee.es/wms-inspire/mdt?",
+        options: {
+          layers: "EL.SpotElevation",
+          transparent: true,
+          format: "image/png",
+          minZoom: 14
         }
       }
     }
@@ -154,7 +163,21 @@ var providersESP = {
       Terremotos10dias: {},
       Terremotos30dias: "Ultimos30dias",
       Terremotos365dias: "Ultimos365dias",
-      VigilanciaVolcanica: "VigilanciaVolcanica"
+      ObservedEvents: "NZ.ObservedEvent",
+      HazardArea: "NZ.HazardArea"
+    }
+  },
+  VigilanciaVolcanica: {
+    url: "https://wms-volcanologia.ign.es/volcanologia?",
+    options: {
+      layers: "erupciones",
+      format: "image/png",
+      transparent: true,
+      attribution: "{attribution.IGNBase}"
+    },
+    // Selected
+    variants: {
+      ErupcionesHistoricas: {}
     }
   },
   CaminoDeSantiago: {
@@ -167,7 +190,7 @@ var providersESP = {
     },
     variants: {
       CaminoFrances: {},
-      CaminosTuronensis: "caminos_turonensis",
+      CaminosFrancia: "caminos_francia",
       CaminosGalicia: "caminos_galicia",
       CaminosDelNorte: "caminos_norte",
       CaminosAndaluces: "caminos_andaluces",
@@ -176,8 +199,6 @@ var providersESP = {
       CaminosCatalanes: "caminos_catalanes",
       CaminosSureste: "caminos_sureste",
       CaminosInsulares: "caminos_insulares",
-      CaminosPiemonts: "caminos_piemonts",
-      CaminosTolosana: "caminos_tolosana",
       CaminosPortugueses: "caminos_portugueses"
     }
   },
@@ -203,7 +224,7 @@ var providersESP = {
         url: "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx",
         options: {
           layers: "PARCELA",
-          minZoom: 10
+          minZoom: 15
         }
       },
       CadastralParcel: "CP.CadastralParcel",
@@ -235,7 +256,7 @@ var providersESP = {
     }
   },
   Cartociudad: {
-    url: "https://www.cartociudad.es/wms-inspire/direcciones-ccpp",
+    url: "https://www.cartociudad.es/wms-inspire/direcciones-ccpp?",
     options: {
       attribution: "CC BY 4.0 scne.es <a href='http://www.cartociudad.es'>Cartociudad</a>",
       layers: "codigo-postal",
@@ -358,19 +379,17 @@ var providersESP = {
   Copernicus: {
     url: "https://servicios.idee.es/wms/copernicus-landservice-spain?",
     options: {
-      layers: "CoperPanEuropean",
+      layers: "HRLForestTCD2015",
       format: "image/png",
       transparent: true,
       attribution: "{attribution.IGNBase}"
     },
     variants: {
-      LandCover: {},
-      Forest: "HRLForestTCD2015",
+      Forest: {},
       ForestLeaf: "HRLForestDLT2015",
       WaterWet: "HRLWaterWetT2015",
       SoilSeal: "HRLImpervioDens2015",
       GrassLand: "HRLGrassLand2015",
-      Local: "Local",
       RiparianGreen: "Copernicus_RZ_GLE",
       RiparianLandCover: "Copernicus_RZ_LCLU",
       Natura2k: "N2k_LCLU_2012",
@@ -383,7 +402,7 @@ var providersESP = {
     }
   },
   ParquesNaturales: {
-    url: "http://sigred.oapn.es/geoserver/LimitesParquesNacionalesZPP/wms?",
+    url: "http://sigred.oapn.es/geoserverOAPN/LimitesParquesNacionalesZPP/ows?",
     options: {
       layers: "view_red_oapn_limite_pn",
       format: "image/png",
