@@ -17,7 +17,6 @@ test_that("Test layers", {
   skip_on_cran()
   skip_on_ci()
   skip_if_offline()
-  skip_on_covr()
 
 
   tile <- esp_getTiles(x)
