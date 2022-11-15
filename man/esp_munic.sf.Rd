@@ -8,16 +8,16 @@
 \format{
 A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
 8,131 rows and fields:
-\itemize{
-\item \strong{codauto}: INE code of each autonomous community.
-\item \strong{ine.ccaa.name}: INE name of each autonomous community.
-\item \strong{cpro}: INE code of each province.
-\item \strong{ine.prov.name}: INE name of each province.
-\item \strong{cmun}: INE code of each municipality.
-\item \strong{name}: Name of the municipality.
-\item \strong{LAU_CODE}: LAU Code (GISCO) of the municipality. This is a
-combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.
-\item \strong{geometry}: geometry field.
+\describe{
+\item{codauto}{INE code of each autonomous community.}
+\item{ine.ccaa.name}{INE name of each autonomous community.}
+\item{cpro}{INE code of each province.}
+\item{ine.prov.name}{INE name of each province.}
+\item{cmun}{INE code of each municipality.}
+\item{name}{Name of the municipality.}
+\item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
+combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
+\item{geometry}{geometry field.}
 }
 }
 \source{

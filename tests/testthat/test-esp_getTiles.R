@@ -12,8 +12,6 @@ test_that("tiles online", {
   skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
-  # Skip on windows (CI)
-  skip_on_os("windows")
 
 
   poly <- esp_get_ccaa("La Rioja")
@@ -22,7 +20,9 @@ test_that("tiles online", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_ci()
   skip_if_offline()
+  skip_on_covr()
 
   save_png <- function(code, width = 200, height = 200) {
     path <- tempfile(fileext = ".png")
@@ -147,15 +147,12 @@ test_that("tiles masks and crops", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
-  skip_on_os("linux")
-  # Skip on windows (CI)
-  skip_on_os("windows")
-
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_ci()
   skip_if_offline()
-
+  skip_on_covr()
 
   poly <- esp_get_ccaa("La Rioja", epsg = 4326)
   tile <- esp_getTiles(poly, crop = FALSE)
@@ -185,14 +182,13 @@ test_that("tiles options", {
   skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
-  skip_on_os("linux")
 
-  # Skip on windows (CI)
-  skip_on_os("windows")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_ci()
   skip_if_offline()
+  skip_on_covr()
 
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
   poly <- sf::st_buffer(poly, 20)

@@ -88,17 +88,18 @@ NULL
 #' @format
 #' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
 #' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and fields:
-#'   * COAST_TYPE: COAST_TYPE
-#'   * FID: FID
-#'   * NUTS_NAME: NUTS name on local alphabet
-#'   * MOUNT_TYPE: MOUNT_TYPE
-#'   * NAME_LATN: Name on Latin characters
-#'   * CNTR_CODE: Eurostat Country code
-#'   * URBN_TYPE: URBN_TYPE
-#'   * NUTS_ID: NUTS identifier
-#'   * LEVL_CODE: NUTS level code (0,1,2,3)
-#'   * geometry: geometry field
-#'
+#' \describe{
+#'   \item{COAST_TYPE}{COAST_TYPE}
+#'   \item{FID}{FID}
+#'   \item{NUTS_NAME}{NUTS name on local alphabet}
+#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
+#'   \item{NAME_LATN}{Name on Latin characters}
+#'   \item{CNTR_CODE}{Eurostat Country code}
+#'   \item{URBN_TYPE}{URBN_TYPE}
+#'   \item{NUTS_ID}{NUTS identifier}
+#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+#'   \item{geometry}{geometry field}
+#' }
 #' @example inst/examples/esp_nuts_sf.R
 NULL
 
@@ -125,16 +126,17 @@ NULL
 #' @format
 #' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
 #' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and fields:
-#'   * **codauto**: INE code of each autonomous community.
-#'   * **ine.ccaa.name**: INE name of each autonomous community.
-#'   * **cpro**: INE code of each province.
-#'   * **ine.prov.name**: INE name of each province.
-#'   * **cmun**: INE code of each municipality.
-#'   * **name**: Name of the municipality.
-#'   * **LAU_CODE**: LAU Code (GISCO) of the municipality. This is a
-#'     combination of **cpro** and **cmun**, aligned with INE coding scheme.
-#'   * **geometry**: geometry field.
-#'
+#' \describe{
+#'   \item{codauto}{INE code of each autonomous community.}
+#'   \item{ine.ccaa.name}{INE name of each autonomous community.}
+#'   \item{cpro}{INE code of each province.}
+#'   \item{ine.prov.name}{INE name of each province.}
+#'   \item{cmun}{INE code of each municipality.}
+#'   \item{name}{Name of the municipality.}
+#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
+#'     combination of **cpro** and **cmun**, aligned with INE coding scheme.}
+#'   \item{geometry}{geometry field.}
+#' }
 #' @example inst/examples/esp_munic_sf.R
 NULL
 
@@ -184,10 +186,11 @@ NULL
 #' @format
 #' A data frame object with a list of the required parameters for calling
 #' the service:
-#'   * **provider**: Provider name.
-#'   * **field**: Description of `value`.
-#'   * **value**: INE code of each province.
-#'
+#' \describe{
+#'   \item{provider}{Provider name}.
+#'   \item{field}{Description of `value`}.
+#'   \item{value}{INE code of each province}.
+#' }
 #'
 #' @details
 #' Providers available to be passed to `type` on [esp_getTiles()] are:

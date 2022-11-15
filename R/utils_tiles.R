@@ -394,10 +394,11 @@ tile_handle_options <- function(q, options, cache_dir) {
 
 
   # Modify cache dir
-  newdir <- tolower(paste0(names(options), "_", options, collapse = "_"))
-  cache_dir <- paste0(cache_dir, "_withopts_", newdir)
+  newdir <- tolower(paste0(names(options), "_", options,
+    collapse = .Platform$file.sep
+  ))
+  cache_dir <- file.path(cache_dir, newdir)
   cache_dir <- esp_hlp_cachedir(cache_dir)
-
 
   # Final object
   res <- list(

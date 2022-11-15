@@ -8,17 +8,17 @@
 \format{
 A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
 86 rows and fields:
-\itemize{
-\item COAST_TYPE: COAST_TYPE
-\item FID: FID
-\item NUTS_NAME: NUTS name on local alphabet
-\item MOUNT_TYPE: MOUNT_TYPE
-\item NAME_LATN: Name on Latin characters
-\item CNTR_CODE: Eurostat Country code
-\item URBN_TYPE: URBN_TYPE
-\item NUTS_ID: NUTS identifier
-\item LEVL_CODE: NUTS level code (0,1,2,3)
-\item geometry: geometry field
+\describe{
+\item{COAST_TYPE}{COAST_TYPE}
+\item{FID}{FID}
+\item{NUTS_NAME}{NUTS name on local alphabet}
+\item{MOUNT_TYPE}{MOUNT_TYPE}
+\item{NAME_LATN}{Name on Latin characters}
+\item{CNTR_CODE}{Eurostat Country code}
+\item{URBN_TYPE}{URBN_TYPE}
+\item{NUTS_ID}{NUTS identifier}
+\item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+\item{geometry}{geometry field}
 }
 }
 \source{

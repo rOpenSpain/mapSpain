@@ -8,10 +8,10 @@
 \format{
 A data frame object with a list of the required parameters for calling
 the service:
-\itemize{
-\item \strong{provider}: Provider name.
-\item \strong{field}: Description of \code{value}.
-\item \strong{value}: INE code of each province.
+\describe{
+\item{provider}{Provider name}.
+\item{field}{Description of \code{value}}.
+\item{value}{INE code of each province}.
 }
 }
 \source{

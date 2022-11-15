@@ -37,7 +37,6 @@ test_that("ccaa online", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
-  skip_on_os("mac")
 
   expect_error(esp_get_ccaa_siane(epsg = "FFF"))
 
