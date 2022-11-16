@@ -15,7 +15,6 @@ test_that("Test layers", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_ci()
   skip_if_offline()
 
 

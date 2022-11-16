@@ -20,7 +20,7 @@ test_that("tiles online", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_ci()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   save_png <- function(code, width = 200, height = 200) {
@@ -149,7 +149,7 @@ test_that("tiles masks and crops", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_ci()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_ccaa("La Rioja", epsg = 4326)
@@ -184,7 +184,7 @@ test_that("tiles options", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_ci()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
