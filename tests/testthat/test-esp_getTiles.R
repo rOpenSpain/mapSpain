@@ -69,26 +69,6 @@ test_that("tiles online", {
     type = "IGNBase.Orto"
   ))
 
-  # Single point
-  point <- esp_get_ccaa("Madrid")
-  point <- sf::st_transform(point, 3857)
-
-  point <- sf::st_centroid(
-    sf::st_geometry(point),
-    of_largest_polygon = TRUE
-  )
-
-  expect_length(point, 1)
-  expect_s3_class(point, "sfc_POINT")
-
-  expect_message(esp_getTiles(point,
-    verbose = TRUE
-  ))
-
-  p <- esp_getTiles(point, verbose = TRUE)
-
-
-
   expect_message(esp_getTiles(poly,
     type = "RedTransporte.Carreteras",
     verbose = TRUE, mask = TRUE
@@ -131,6 +111,26 @@ test_that("tiles online", {
 
   # Run only locally
   skip_on_ci()
+  
+  # Single point
+  point <- esp_get_ccaa("Madrid")
+  point <- sf::st_transform(point, 3857)
+
+  point <- sf::st_centroid(
+    sf::st_geometry(point),
+    of_largest_polygon = TRUE
+  )
+
+  expect_length(point, 1)
+  expect_s3_class(point, "sfc_POINT")
+
+  expect_message(esp_getTiles(point,
+    verbose = TRUE
+  ))
+
+  p <- esp_getTiles(point, verbose = TRUE)
+
+  
 
   expect_snapshot_file(save_png(opaque), "opaque.png")
   expect_snapshot_file(save_png(n), "transp.png")
