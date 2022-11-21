@@ -4,19 +4,20 @@
 #'
 #' @param bbox_expand Expansion of the bbox
 #'
-#' @param provs Provider
+#' @param url_pieces Provider
 #'
 #' @inheritParams esp_getTiles
 #'
 #' @noRd
 getwms <- function(x,
-                   provs,
+                   url_pieces,
                    update_cache,
                    cache_dir,
                    verbose,
                    res,
                    transparent,
                    options) {
+
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])

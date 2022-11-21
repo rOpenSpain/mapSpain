@@ -143,6 +143,15 @@ esp_getTiles <- function(x,
     )
   }
 
+
+  # Some transformations
+  res <- as.numeric(res)
+
+  # Keep initial
+  xinit <- x
+  x <- sf::st_geometry(x)
+
+
   # A. Check providers
   leafletProvidersESP <- mapSpain::leaflet.providersESP.df
   provs <-
@@ -156,16 +165,23 @@ esp_getTiles <- function(x,
     )
   }
 
-  # Some transformations
-  res <- as.numeric(res)
+  # extract info from url
+  url_static <- provs[provs$field == "url_static", "value"]
 
-  # Keep initial
-  xinit <- x
-  x <- sf::st_geometry(x)
 
-  # Transform to 3857 as it is native for tiles
+  # Split url
 
-  x <- sf::st_transform(x, 3857)
+  url_pieces <- esp_hlp_split_url(url_static)
+
+# Get CRS of Tile
+  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+
+  crs_sf <- sf::st_crs(crs)
+
+
+  # Transform to crs of tile
+
+  x <- sf::st_transform(x, crs_sf)
 
   # Buffer if single point
   if (length(x) == 1 && "POINT" %in% sf::st_geometry_type(x)) {
@@ -183,7 +199,8 @@ esp_getTiles <- function(x,
   cache_dir <- esp_hlp_cachedir(cache_dir)
   cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
 
-  typeprov <- provs[provs$field == "type", "value"]
+  # Get type of service
+  typeprov <- url_pieces$service
 
   newbbox <- esp_hlp_get_bbox(x, bbox_expand, typeprov)
 
@@ -192,7 +209,7 @@ esp_getTiles <- function(x,
     rout <-
       getwms(
         newbbox,
-        provs,
+        url_pieces,
         update_cache,
         cache_dir,
         verbose,
@@ -281,9 +298,6 @@ esp_getTiles <- function(x,
 #' Helper to get bboxes
 #' @noRd
 esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
-  # Get bbox, this works with CRS 3857
-
-  stopifnot(identical(sf::st_crs(3857), sf::st_crs(x)))
 
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
@@ -313,4 +327,31 @@ esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
   sf::st_crs(newbbox) <- sf::st_crs(x)
 
   return(newbbox)
+}
+
+# Helper to split urls
+esp_hlp_split_url <- function(url_static) {
+  split <- unlist(strsplit(url_static, "?", fixed = TRUE))
+
+  urlsplit <- list()
+  urlsplit$q <- paste0(split[1], "?")
+
+  opts <- unlist(strsplit(split[2], "&"))
+
+  names_opts <- vapply(opts, function(x) {
+    n <- strsplit(x, "=", fixed = TRUE)
+    return(unlist(n)[1])
+  }, FUN.VALUE = character(1))
+
+  values_opts <- vapply(opts, function(x) {
+    n <- strsplit(x, "=", fixed = TRUE)
+    return(unlist(n)[-1])
+  }, FUN.VALUE = character(1))
+
+
+  names(values_opts) <- tolower(names_opts)
+
+  urlsplit <- modifyList(urlsplit, as.list(values_opts))
+
+  return(urlsplit)
 }
