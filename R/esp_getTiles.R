@@ -168,13 +168,68 @@ esp_getTiles <- function(x,
   # extract info from url
   url_static <- provs[provs$field == "url_static", "value"]
 
+  # Create cache dir
+  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
+
 
   # Split url
 
   url_pieces <- esp_hlp_split_url(url_static)
 
-# Get CRS of Tile
+  # Get type of service
+  typeprov <- toupper(url_pieces$service)
+
+  # Add options
+  if (is.list(options)) {
+    names(options) <- tolower(names(options))
+
+    if (typeprov == "WMS" && "version" %in% names(options)) {
+      # Exception: need to change names depending on the version of WMS
+
+      v_wms <- unlist(modifyList(
+        list(v = url_pieces$version),
+        list(v = options$version)
+      ))
+
+
+      # Assess version
+      v_wms <- unlist(strsplit(v_wms, ".", fixed = TRUE))
+
+
+      if (v_wms[1] >= "1" && v_wms[2] >= "3") {
+        names(url_pieces) <- gsub("srs", "crs", names(url_pieces))
+      } else {
+        names(url_pieces) <- gsub("crs", "srs", names(url_pieces))
+      }
+    }
+
+    # Ignore TileMatrix fields in WMTS
+    if (typeprov == "WMTS") {
+      options <- options[!grepl("tilematrix", names(options), ignore.case = TRUE)]
+    }
+
+
+
+    url_pieces <- modifyList(url_pieces, options)
+    # Create new cache dir
+
+    # Modify cache dir
+    newdir <- tolower(paste0(names(options), "_", options,
+      collapse = .Platform$file.sep
+    ))
+    newdir <- gsub(":|,", "", newdir)
+
+    cache_dir <- file.path(cache_dir, newdir)
+    cache_dir <- esp_hlp_cachedir(cache_dir)
+  }
+
+
+
+  # Get CRS of Tile
   crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+
+  if (tolower(crs) == tolower("GoogleMapsCompatible")) crs <- "epsg:3857"
 
   crs_sf <- sf::st_crs(crs)
 
@@ -185,7 +240,9 @@ esp_getTiles <- function(x,
 
   # Buffer if single point
   if (length(x) == 1 && "POINT" %in% sf::st_geometry_type(x)) {
-    x <- sf::st_buffer(sf::st_geometry(x), 50)
+    xmod <- sf::st_transform(sf::st_geometry(x), 3857)
+    xmod <- sf::st_buffer(xmod, 50)
+    x <- sf::st_transform(xmod, sf::st_crs(x))
     crop <- FALSE
     # Auto zoom = 15 if not set
     if (is.null(zoom)) {
@@ -193,14 +250,6 @@ esp_getTiles <- function(x,
       if (verbose) message("Auto zoom on point set to 15")
     }
   }
-
-
-  # Create cache dir
-  cache_dir <- esp_hlp_cachedir(cache_dir)
-  cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
-
-  # Get type of service
-  typeprov <- url_pieces$service
 
   newbbox <- esp_hlp_get_bbox(x, bbox_expand, typeprov)
 
@@ -215,7 +264,8 @@ esp_getTiles <- function(x,
         verbose,
         res,
         transparent,
-        options
+        options,
+        type
       )
   } else {
     rout <-
@@ -287,7 +337,7 @@ esp_getTiles <- function(x,
   # Manage transparency
 
   if (!transparent && terra::nlyr(rout) == 4) {
-    rout <- rout[[-4]]
+    rout <- terra::subset(rout, 1:3)
   }
 
 
@@ -298,7 +348,6 @@ esp_getTiles <- function(x,
 #' Helper to get bboxes
 #' @noRd
 esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
-
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])

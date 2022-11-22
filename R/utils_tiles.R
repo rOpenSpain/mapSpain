@@ -16,8 +16,7 @@ getwms <- function(x,
                    verbose,
                    res,
                    transparent,
-                   options) {
-
+                   options, type) {
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(x))
   dimx <- (bbox[3] - bbox[1])
@@ -33,42 +32,39 @@ getwms <- function(x,
   )
 
 
+
+
   class(bboxsquare) <- "bbox"
 
-
   # Compose params
-  q <- provs[provs$field == "url_static", "value"]
+  url_pieces$bbox <- paste0(bboxsquare, collapse = ",")
+  url_pieces$width <- as.character(res)
+  url_pieces$height <- as.character(res)
 
-  q <-
-    gsub("{bbox}", paste0(bboxsquare, collapse = ","),
-      q,
-      fixed = TRUE
+  # Compose
+  src <- type
+  ext <- tolower(gsub("image/", "", url_pieces$format))
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
     )
-
-  q <- gsub("512", as.character(res), q)
-
-
-  # Add options
-  withopt <- tile_handle_options(q, options, cache_dir)
-
-  q <- withopt$q
-  cache_dir <- withopt$cache_dir
-
-
-  src <- unique(provs$provider)
-
-
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
   }
+
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
+  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
 
   filename <-
     paste0(
       src,
-      "_bbox3857_res",
+      "_bbox_", crs,
+      "_res",
       res,
       "_",
       paste0(bboxsquare, collapse = "_"),
@@ -101,17 +97,6 @@ getwms <- function(x,
   # Only png
   if (ext == "png") {
     img <- png::readPNG(filename) * 255
-    # Give transparency if available
-    if (dim(img)[3] == 4 && transparent) {
-      nrow <- dim(img)[1]
-
-      for (i in seq_len(nrow)) {
-        row <- img[i, , ]
-        alpha <- row[, 4] == 0
-        row[alpha, ] <- NA
-        img[i, , ] <- row
-      }
-    }
   } else {
     img <- filename
   }
@@ -120,15 +105,27 @@ getwms <- function(x,
   # compose brick raster
   r_img <- suppressWarnings(terra::rast(img))
 
+  # Provide transparency if available
+  if (terra::nlyr(r_img) == 4 && transparent) {
+    tomask <- terra::subset(r_img, 4)
+    tomask[tomask == 0] <- NA
+
+    r_img <- terra::mask(r_img, tomask)
+  }
 
   if (is.null(terra::RGB(r_img))) {
     terra::RGB(r_img) <- c(1, 2, 3)
   }
 
-  terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
+  # Check if need extent, some tiffs dont
+  if (all(as.vector(terra::ext(r_img)) == c(0, res, 0, res))) {
+    terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
+  }
 
-
-  terra::crs(r_img) <- "epsg:3857"
+  # Check if need a CRS
+  if (terra::crs(r_img) == "") {
+    terra::crs(r_img) <- crs
+  }
   # End WMS
 
   return(r_img)
@@ -154,10 +151,16 @@ getwmts <- function(x,
                     options) {
   # New fun
 
+  opts <- options
+  rm(options)
+
+
+
   x <- sf::st_transform(x, 4326)
   bbx <- sf::st_bbox(x)
 
   # select a default zoom level
+
   if (is.null(zoom)) {
     gz <- slippymath::bbox_tile_query(bbx)
     zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"]) + zoommin
@@ -191,10 +194,9 @@ getwmts <- function(x,
   q <- provs[provs$field == "url_static", "value"]
 
   # Add options
-  withopt <- tile_handle_options(q, options, cache_dir)
+  withopt <- tile_handle_options(q, opts, cache_dir)
 
   q <- withopt$q
-  cache_dir <- withopt$cache_dir
 
   ext <- "jpeg"
   if (length(grep("png", q)) > 0) {
@@ -399,7 +401,7 @@ tile_handle_options <- function(q, options, cache_dir) {
     collapse = .Platform$file.sep
   ))
   cache_dir <- file.path(cache_dir, newdir)
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  # cache_dir <- esp_hlp_cachedir(cache_dir)
 
   # Final object
   res <- list(
