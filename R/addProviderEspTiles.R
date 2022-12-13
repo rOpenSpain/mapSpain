@@ -90,6 +90,11 @@ addProviderEspTiles <- function(map,
     # Remove
     def_opts <- modifyList(def_opts, list(attribution = NULL))
 
+    # Normalize names
+    names(def_opts) <- tolower(names(def_opts))
+    names(options) <- tolower(names(options))
+
+
     optionend <- modifyList(def_opts, options)
 
     # Build template url
@@ -108,9 +113,13 @@ addProviderEspTiles <- function(map,
     templurl <- paste0(q, rest_temp)
 
     # Modify default leaflet::tileOptions() with our options
+    # Normalize names
+    tileops <- leaflet::tileOptions()
+    names(tileops) <- tolower(names(tileops))
+
 
     optionend <- modifyList(
-      leaflet::tileOptions(),
+      tileops,
       optionend
     )
 
@@ -136,6 +145,8 @@ addProviderEspTiles <- function(map,
 
     # Get important params
     temp_pieces <- thisprov$static
+    names(temp_pieces) <- tolower(names(temp_pieces))
+
 
     templurl <- gsub("\\?$", "", temp_pieces$q)
     layers <- temp_pieces$layers
@@ -147,18 +158,24 @@ addProviderEspTiles <- function(map,
       "height", "bbox"
     )
 
+    names(def_opts) <- tolower(names(def_opts))
+
     def_opts <- modifyList(
       def_opts,
       temp_pieces[!todel]
     )
 
     # Add custom options
+    names(options) <- tolower(names(options))
     optionend <- modifyList(def_opts, options)
 
     # Modify default leaflet::WMSTileOptions() with our options
+    wmsopts <- leaflet::WMSTileOptions()
+    names(wmsopts) <- tolower(names(wmsopts))
+
 
     optionend <- modifyList(
-      leaflet::WMSTileOptions(),
+      wmsopts,
       optionend
     )
 
