@@ -1,7 +1,7 @@
-#' Get `sf` polygons and lines with the hypsometry and bathymetry of Spain
+#' Get \pkg{sf} polygons and lines with the hypsometry and bathymetry of Spain
 #'
 #' @description
-#' Loads a `sf` polygon or line object representing the hypsometry and
+#' Loads a \pkg{sf} polygon or line object representing the hypsometry and
 #' bathymetry of Spain.
 #'
 #' * **Hypsometry** represents the  the elevation and depth of features of the
@@ -11,7 +11,7 @@
 #'
 #' @family natural
 #'
-#' @return A `sf` polygon or line object.
+#' @return A \pkg{sf} polygon or line object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

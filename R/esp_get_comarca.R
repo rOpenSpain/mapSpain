@@ -1,4 +1,4 @@
-#' Get 'comarcas' of Spain as `sf` polygons
+#' Get 'comarcas' of Spain as \pkg{sf} polygons
 #'
 #' @description
 #' Returns 'comarcas' of Spain as polygons,as provided by the

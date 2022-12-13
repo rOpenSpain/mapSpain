@@ -1,11 +1,11 @@
-#' Get `sf` polygons of the national geographic grids provided by IGN
+#' Get \pkg{sf} polygons of the national geographic grids provided by IGN
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain.
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain.
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source IGN data via a custom CDN (see

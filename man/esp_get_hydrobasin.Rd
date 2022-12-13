@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_hydrobasin.R
 \name{esp_get_hydrobasin}
 \alias{esp_get_hydrobasin}
-\title{Get \code{sf} polygons of the drainage basin demarcations of Spain}
+\title{Get \pkg{sf} polygons of the drainage basin demarcations of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -47,10 +47,10 @@ the ground part or the ground or \code{"landsea"}, that includes both the ground
 and the related sea waters of the basin}
 }
 \value{
-A \code{sf} polygon object.
+A \pkg{sf} polygon object.
 }
 \description{
-Loads a \code{sf} polygon object containing areas with the required
+Loads a \pkg{sf} polygon object containing areas with the required
 hydrographic elements of Spain.
 }
 \details{

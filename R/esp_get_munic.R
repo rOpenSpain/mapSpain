@@ -1,4 +1,4 @@
-#' Get municipalities of Spain as `sf` polygons
+#' Get municipalities of Spain as \pkg{sf} polygons
 #'
 #' @description
 #' Returns municipalities of Spain as polygons at a specified scale.
@@ -10,7 +10,7 @@
 #' @family municipalities
 #' @seealso [giscoR::gisco_get_lau()], [base::regex()].
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #' @export
 #'

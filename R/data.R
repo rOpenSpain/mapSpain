@@ -75,7 +75,7 @@ NULL
 #' @docType data
 #'
 #' @description
-#' A `sf` object including all NUTS levels of Spain as provided by
+#' A \pkg{sf} object including all NUTS levels of Spain as provided by
 #' GISCO (2016 version).
 #'
 #' @source
@@ -111,7 +111,7 @@ NULL
 #' @name esp_munic.sf
 #'
 #' @description
-#' A `sf` object including all municipalities of Spain as provided by GISCO
+#' A \pkg{sf} object including all municipalities of Spain as provided by GISCO
 #' (2019 version).
 #'
 #' @docType data
@@ -166,8 +166,11 @@ NULL
 #'
 #' @name leaflet.providersESP.df
 #'
-#' @description `r lifecycle::badge('superseded')`. This data frame is not
-#' longer in use by \pkg{mapSpain}. See [esp_tiles_providers] instead.
+#' @description
+#' `r lifecycle::badge('superseded')`
+#'
+#' This data frame is not longer in use by \pkg{mapSpain}. See
+#' [esp_tiles_providers] instead.
 #'
 #' A data frame containing information of different public WMS and WMTS
 #' providers of Spain

@@ -6,7 +6,7 @@
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **v1.3.2**.
+#' **`r leafletprovidersESP_v`**.
 #'
 #' @family imagery utilities
 #' @seealso [terra::rast()].
@@ -17,11 +17,11 @@
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **v1.3.2**.
+#'  **`r leafletprovidersESP_v`**.
 #'
 #' @export
 #'
-#' @param x An `sf` or `sfc` object.
+#' @param x An \pkg{sf} or `sfc` object.
 #'
 #' @param type Name of the provider. See [leaflet.providersESP.df].
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
@@ -32,7 +32,7 @@
 #'   download fewer tiles than you probably want. Use `1` or `2` to
 #'   increase the resolution.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
-#'   `FALSE` otherwise. If `x` is an `sf` object with one `POINT`, crop is set
+#'   `FALSE` otherwise. If `x` is an \pkg{sf} object with one `POINT`, crop is set
 #'   to `FALSE`.
 #' @param res Resolution (in pixels) of the final tile. Only valid for WMS.
 #' @param bbox_expand A numeric value that indicates the expansion percentage

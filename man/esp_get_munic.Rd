@@ -3,7 +3,7 @@
 \name{esp_get_munic}
 \alias{esp_get_munic}
 \alias{esp_get_munic_siane}
-\title{Get municipalities of Spain as \code{sf} polygons}
+\title{Get municipalities of Spain as \pkg{sf} polygons}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 
@@ -78,7 +78,7 @@ Initial position can be adjusted using the vector of coordinates. See
 the dataset provided by IGN.}
 }
 \value{
-A \code{sf} polygon
+A \pkg{sf} polygon
 }
 \description{
 Returns municipalities of Spain as polygons at a specified scale.

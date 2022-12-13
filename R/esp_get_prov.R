@@ -1,4 +1,4 @@
-#' Get Provinces of Spain as `sf` polygons and points
+#' Get Provinces of Spain as \pkg{sf} polygons and points
 #'
 #' @description
 #' Returns
@@ -14,7 +14,7 @@
 #' @rdname esp_get_prov
 #' @name esp_get_prov
 #'
-#' @return A `sf` object specified by `spatialtype`.
+#' @return A \pkg{sf} object specified by `spatialtype`.
 #'
 #'
 #' @export

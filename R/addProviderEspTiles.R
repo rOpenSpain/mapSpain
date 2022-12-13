@@ -2,7 +2,7 @@
 leafletprovidersESP_v <- "v1.3.2"
 
 
-#' Include base tiles of Spanish public administrations on a **leaflet** map
+#' Include base tiles of Spanish public administrations on a \pkg{leaflet} map
 #'
 #' @description
 #' Include tiles of public Spanish organisms to a

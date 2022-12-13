@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_grid_MTN.R
 \name{esp_get_grid_MTN}
 \alias{esp_get_grid_MTN}
-\title{Get \code{sf} polygons of the national geographic grids provided by IGN}
+\title{Get \pkg{sf} polygons of the national geographic grids provided by IGN}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN}).
@@ -27,10 +27,10 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 }
 \value{
-A \code{sf} polygon
+A \pkg{sf} polygon
 }
 \description{
-Loads a \code{sf} polygon with the geographic grids of Spain.
+Loads a \pkg{sf} polygon with the geographic grids of Spain.
 }
 \details{
 Metadata available on

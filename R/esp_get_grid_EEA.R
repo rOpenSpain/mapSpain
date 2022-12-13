@@ -1,12 +1,12 @@
-#' Get `sf` polygons of the national geographic grids provided by EEA
+#' Get \pkg{sf} polygons of the national geographic grids provided by EEA
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain as provided by the
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
 #' European Environment Agency (EEA).
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source

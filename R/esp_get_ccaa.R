@@ -1,4 +1,4 @@
-#' Get Autonomous Communities of Spain as `sf` polygons and points
+#' Get Autonomous Communities of Spain as \pkg{sf} polygons and points
 #'
 #' @description
 #' Returns
@@ -14,7 +14,7 @@
 #'
 #' @name esp_get_ccaa
 #'
-#' @return A `sf` object specified by `spatialtype`.
+#' @return A \pkg{sf} object specified by `spatialtype`.
 #'
 #'
 #' @export
