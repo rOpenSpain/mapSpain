@@ -79,7 +79,7 @@ esp_dict_region_code <- function(sourcevar,
     )
   }
 
-  if (origin == destination & origin == "text") {
+  if (origin == destination && origin == "text") {
     message("No conversion - origin equal to destination")
     return(initsourcevar)
   }
@@ -193,7 +193,7 @@ esp_dict_region_code <- function(sourcevar,
       out[sourcevar == "ES530"] <- "07"
     }
     # Ceuta
-    if (origin == "iso2" & destination == "codauto") {
+    if (origin == "iso2" && destination == "codauto") {
       out[sourcevar == "ES-CE"] <- "18"
       out[sourcevar == "ES-ML"] <- "19"
     }

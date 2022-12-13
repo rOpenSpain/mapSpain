@@ -214,10 +214,10 @@ esp_get_nuts <- function(year = "2016",
 
   dwnload <- TRUE
 
-  if (year == "2016" &
-    resolution == "01" &
-    epsg == "4326" &
-    spatialtype == "RG" & isFALSE(update_cache)) {
+  if (year == "2016" &&
+    resolution == "01" &&
+    epsg == "4326" &&
+    spatialtype == "RG" && isFALSE(update_cache)) {
     if (verbose) {
       message("Reading from esp_nuts.sf")
     }

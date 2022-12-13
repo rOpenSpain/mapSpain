@@ -125,7 +125,7 @@ esp_get_can_box <- function(style = "right",
   bbox <- sf::st_bbox(can)
 
 
-  if (style == "box" | style == "poly") {
+  if (style == "box" || style == "poly") {
     bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 
     lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(can))

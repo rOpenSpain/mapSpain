@@ -149,7 +149,7 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
 
   if (verbose) message("Cache dir is ", cache_dir)
 
-  if (update_cache | isFALSE(localfile)) {
+  if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -159,12 +159,12 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
         "for more info"
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }

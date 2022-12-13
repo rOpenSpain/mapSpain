@@ -77,7 +77,7 @@ getwms <- function(x,
 
   filename <- file.path(cache_dir, filename)
 
-  if (isFALSE(file.exists(filename)) | isTRUE(update_cache)) {
+  if (isFALSE(file.exists(filename)) || isTRUE(update_cache)) {
     if (verbose) {
       message("Downloading from \n", q, "\n to cache dir \n", cache_dir)
     }
@@ -302,7 +302,7 @@ dl_t <-
     outfile <-
       paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
 
-    if (!file.exists(outfile) |
+    if (!file.exists(outfile) ||
       isTRUE(update_cache)) {
       q <-
         gsub(

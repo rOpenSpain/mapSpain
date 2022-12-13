@@ -81,7 +81,7 @@ esp_get_grid_EEA <- function(resolution = 100,
 
   if (verbose) message("Cache dir is ", cache_dir)
 
-  if (update_cache | isFALSE(localfile)) {
+  if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -89,12 +89,12 @@ esp_get_grid_EEA <- function(resolution = 100,
         url
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }
