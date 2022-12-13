@@ -3,6 +3,9 @@
 -   Upgrade `leaflet.providersESP.df` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.2. 
 
+-  Changes on how to package manages tiles providers:
+  - `leaflet.providersESP.df` is superseded in favor of `esp_tiles_providers`.
+
 # mapSpain 0.6.2
 
 -   Now `moveCAN` is a explicit parameter in the relevant functions.

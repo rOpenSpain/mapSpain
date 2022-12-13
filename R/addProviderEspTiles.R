@@ -1,3 +1,7 @@
+# Leaflet plugin version
+leafletprovidersESP_v <- "v1.3.2"
+
+
 #' Include base tiles of Spanish public administrations on a **leaflet** map
 #'
 #' @description
@@ -12,7 +16,7 @@
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **v1.3.2**.
+#'  **`r leafletprovidersESP_v`**.
 #'
 #' @return A map object generated with [leaflet::leaflet()].
 #'
@@ -26,7 +30,7 @@
 #'   identifier-style names. Any number of layers and even different types of
 #'   layers (e.g. markers and polygons) can share the same group name. See
 #'   [leaflet::addTiles()].
-#' @param provider Name of the provider, see [leaflet.providersESP.df] for
+#' @param provider Name of the provider, see [esp_tiles_providers] for
 #'   values available.
 #' @param ... Arguments passed on to [leaflet::providerTileOptions()].
 #' @inheritParams leaflet::addTiles
@@ -54,88 +58,62 @@ addProviderEspTiles <- function(map,
   }
 
   # A. Check providers
-  providers_df <-
-    as.data.frame(mapSpain::leaflet.providersESP.df)
-  provs <-
-    providers_df[providers_df$provider == provider, ]
+  prov_list <- mapSpain::esp_tiles_providers
 
-  if (nrow(provs) == 0) {
+  allprovs <- names(prov_list)
+
+
+  if (!provider %in% allprovs) {
     stop(
       "No match for provider = '",
       provider,
-      "' found. Available providers are:\n\n",
-      paste0("'",
-        unique(providers_df$provider), "'",
-        collapse = ", "
-      )
+      "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
     )
   }
 
+  # Check type of provider
+  thisprov <- prov_list[[provider]]
+
   # Get url
-
-  templurl <- provs[provs$field == "url", "value"]
-  attribution <- provs[provs$field == "attribution", "value"]
-
-  iswmts <- provs[provs$field == "type", "value"] == "WMTS"
-
-  # Work with options
-  if (isFALSE(iswmts)) {
-    layers <- provs[provs$field == "layers", "value"]
-  }
-
-  opts <-
-    provs[!(
-      provs$field %in% c(
-        "url",
-        "type",
-        "url_static",
-        "attribution",
-        "attribution_static",
-        "bounds",
-        "layers"
-      )
-    ), c(2, 3)]
+  type_prov <- tolower(thisprov$static$service)
+  iswmts <- type_prov == "wmts"
 
 
-
-  # Clean if the option was already set
-  opts <- opts[!(opts$field %in% names(options)), ]
-
-  # Pass to list
-
-  opinit <- list()
-
-  for (j in seq_len(nrow(opts))) {
-    name <- paste(opts[j, 1])
-    value <- paste(opts[j, 2])
-
-    opinit[[name]] <- value
-  }
-
-  options <- c(options, opinit)
-  rm(opts, provs, providers_df, opinit)
-
-  # Replace on template
-
-  optionend <- list()
-
-  for (i in seq_len(length(options))) {
-    n <- names(options[i])
-    v <- options[i][[1]]
-
-    needreplace <-
-      grepl(paste0("{", n, "}"), templurl, fixed = TRUE)
-
-    if (needreplace) {
-      templurl <- gsub(paste0("{", n, "}"), v, templurl, fixed = TRUE)
-    } else {
-      optionend <- c(optionend, options[i])
-    }
-  }
-
-
-
+  # Prepare each provider
   if (iswmts) {
+    # Build template
+    # Get requested options and merge with the current ones
+    def_opts <- thisprov$leaflet
+
+    # Extract attribution
+    attribution <- def_opts$attribution
+    # Remove
+    def_opts <- modifyList(def_opts, list(attribution = NULL))
+
+    optionend <- modifyList(def_opts, options)
+
+    # Build template url
+    temp_pieces <- thisprov$static
+    q <- temp_pieces$q
+    # Remove
+    rest <- modifyList(
+      temp_pieces, list(
+        attribution = NULL,
+        q = NULL
+      )
+    )
+
+    rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
+
+    templurl <- paste0(q, rest_temp)
+
+    # Modify default leaflet::tileOptions() with our options
+
+    optionend <- modifyList(
+      leaflet::tileOptions(),
+      optionend
+    )
+
     optionend <- do.call(leaflet::tileOptions, optionend)
 
     leaflet::addTiles(
@@ -147,7 +125,42 @@ addProviderEspTiles <- function(map,
       options = optionend
     )
   } else {
-    optionend <- do.call(leaflet::WMSTileOptions, optionend)
+    # Build template
+    # Get requested options and merge with the current ones
+    def_opts <- thisprov$leaflet
+
+    # Extract attribution
+    attribution <- def_opts$attribution
+    # Remove
+    def_opts <- modifyList(def_opts, list(attribution = NULL))
+
+    # Get important params
+    temp_pieces <- thisprov$static
+
+    templurl <- gsub("\\?$", "", temp_pieces$q)
+    layers <- temp_pieces$layers
+
+    # Remove parameters only affecting static urls
+    todel <- names(temp_pieces) %in% c(
+      "attribution", "q", "service",
+      "request", "layers", "srs", "width",
+      "height", "bbox"
+    )
+
+    def_opts <- modifyList(
+      def_opts,
+      temp_pieces[!todel]
+    )
+
+    # Add custom options
+    optionend <- modifyList(def_opts, options)
+
+    # Modify default leaflet::WMSTileOptions() with our options
+
+    optionend <- modifyList(
+      leaflet::WMSTileOptions(),
+      optionend
+    )
 
     leaflet::addWMSTiles(
       map,

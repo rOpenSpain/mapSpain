@@ -131,6 +131,6 @@ ggplot(Murcia) +
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{leaflet.providersESP.df}}
+\code{\link{esp_tiles_providers}}
 }
 \concept{imagery utilities}

@@ -68,7 +68,7 @@ data("esp_codelist")
 Other datasets: 
 \code{\link{esp_munic.sf}},
 \code{\link{esp_nuts.sf}},
-\code{\link{leaflet.providersESP.df}},
+\code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 
 Other political: 

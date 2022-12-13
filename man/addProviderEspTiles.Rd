@@ -22,7 +22,7 @@ providerEspTileOptions(...)
 \arguments{
 \item{map}{A map widget created from \code{\link[leaflet:leaflet]{leaflet::leaflet()}}.}
 
-\item{provider}{Name of the provider, see \link{leaflet.providersESP.df} for
+\item{provider}{Name of the provider, see \link{esp_tiles_providers} for
 values available.}
 
 \item{layerId}{the layer id}
@@ -70,6 +70,6 @@ PuertadelSol
 
 Other imagery utilities: 
 \code{\link{esp_getTiles}()},
-\code{\link{leaflet.providersESP.df}}
+\code{\link{esp_tiles_providers}}
 }
 \concept{imagery utilities}

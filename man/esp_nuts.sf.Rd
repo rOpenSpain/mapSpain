@@ -67,7 +67,7 @@ ggplot(nuts3) +
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_munic.sf}},
-\code{\link{leaflet.providersESP.df}},
+\code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 
 Other nuts: 

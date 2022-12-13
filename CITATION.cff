@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.3.0
+# CITATION file created with {cffr} R package, v0.4.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -73,12 +73,12 @@ references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
   notes: Depends
+  url: https://www.R-project.org/
   authors:
   - name: R Core Team
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
@@ -86,18 +86,21 @@ references:
   title: countrycode
   abstract: 'countrycode: Convert Country Names and Country Codes'
   notes: Imports
+  url: https://vincentarelbundock.github.io/countrycode/
+  repository: https://CRAN.R-project.org/package=countrycode
   authors:
   - family-names: Arel-Bundock
     given-names: Vincent
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
   year: '2022'
-  url: https://CRAN.R-project.org/package=countrycode
   version: '>= 1.2.0'
 - type: software
   title: giscoR
   abstract: 'giscoR: Download Map Data from GISCO API - Eurostat'
   notes: Imports
+  url: https://ropengov.github.io/giscoR/
+  repository: https://CRAN.R-project.org/package=giscoR
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -105,13 +108,14 @@ references:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenGov
   year: '2022'
-  url: https://CRAN.R-project.org/package=giscoR
   version: '>= 0.2.4'
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
   notes: Imports
+  url: https://rappdirs.r-lib.org
+  repository: https://CRAN.R-project.org/package=rappdirs
   authors:
   - family-names: Ratnakumar
     given-names: Sridhar
@@ -120,19 +124,19 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
-  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.0'
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
   notes: Imports
+  url: https://r-spatial.github.io/sf/
+  repository: https://CRAN.R-project.org/package=sf
   authors:
   - family-names: Pebesma
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9.0'
 - type: software
   title: utils
@@ -143,13 +147,14 @@ references:
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
+  url: https://ggplot2.tidyverse.org
+  repository: https://CRAN.R-project.org/package=ggplot2
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -179,24 +184,26 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  url: https://CRAN.R-project.org/package=ggplot2
   version: '>= 3.0.0'
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
   authors:
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: leaflet
   abstract: 'leaflet: Create Interactive Web Maps with the JavaScript ''Leaflet''
     Library'
   notes: Suggests
+  url: https://rstudio.github.io/leaflet/
+  repository: https://CRAN.R-project.org/package=leaflet
   authors:
   - family-names: Cheng
     given-names: Joe
@@ -206,23 +213,25 @@ references:
   - family-names: Xie
     given-names: Yihui
   year: '2022'
-  url: https://CRAN.R-project.org/package=leaflet
   version: '>= 2.0.0'
 - type: software
   title: png
   abstract: 'png: Read and write PNG images'
   notes: Suggests
+  url: http://www.rforge.net/png/
+  repository: https://CRAN.R-project.org/package=png
   authors:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: https://CRAN.R-project.org/package=png
   version: '>= 0.1-5'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
   notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -257,11 +266,12 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: slippymath
   abstract: 'slippymath: Slippy Map Tile Tools'
   notes: Suggests
+  url: https://www.github.com/milesmcbain/slippymath
+  repository: https://CRAN.R-project.org/package=slippymath
   authors:
   - family-names: McBain
     given-names: Miles
@@ -271,40 +281,42 @@ references:
     given-names: Michael
     email: mdsumner@gmail.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=slippymath
   version: '>= 0.3.1'
 - type: software
   title: terra
   abstract: 'terra: Spatial Data Analysis'
   notes: Suggests
+  url: https://rspatial.org/terra/
+  repository: https://CRAN.R-project.org/package=terra
   authors:
   - family-names: Hijmans
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://CRAN.R-project.org/package=terra
   version: '>= 1.1-4'
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
   notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
   authors:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'
 - type: software
   title: tidyterra
   abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
     Objects'
   notes: Suggests
+  url: https://dieghernan.github.io/tidyterra/
+  repository: https://CRAN.R-project.org/package=tidyterra
   authors:
   - family-names: Hernangómez
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2022'
-  url: https://CRAN.R-project.org/package=tidyterra
