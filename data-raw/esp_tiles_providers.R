@@ -71,8 +71,7 @@ esp_tiles_providers <- lapply(len_prov, function(x) {
   # Add additional options for leaflet
   leaflet <- list(
     attribution = as.vector(prov$attribution),
-    minZoom = as.vector(prov$minZoom),
-    bounds = as.vector(prov$bounds)
+    minZoom = as.vector(prov$minZoom)
   )
 
   # Cleanup
