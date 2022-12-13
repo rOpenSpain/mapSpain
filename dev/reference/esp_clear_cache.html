@@ -84,14 +84,14 @@ options(mapSpain_cache_dir).
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Clear your <strong>mapSpain</strong> cache dir</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Clear your <span class="pkg">mapSpain</span> cache dir</h1>
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp_cache_clear.R" class="external-link"><code>R/esp_cache_clear.R</code></a></small>
       <div class="d-none name"><code>esp_clear_cache.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
     <p><strong>Use this function with caution</strong>. This function would clear your cached
-data and configuration, specifically:</p><ul><li><p>Deletes the <strong>mapSpain</strong> config directory
+data and configuration, specifically:</p><ul><li><p>Deletes the <span class="pkg">mapSpain</span> config directory
 (<code>rappdirs::user_config_dir("mapSpain", "R")</code>).</p></li>
 <li><p>Deletes the <code>cache_dir</code> directory.</p></li>
 <li><p>Deletes the values on stored on <code>Sys.getenv("MAPSPAIN_CACHE_DIR")</code> and
@@ -107,7 +107,7 @@ data and configuration, specifically:</p><ul><li><p>Deletes the <strong>mapSpain
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>config</dt>
 <dd><p>if <code>TRUE</code>, will delete the configuration folder of
-<strong>mapSpain</strong>.</p></dd>
+<span class="pkg">mapSpain</span>.</p></dd>
 
 
 <dt>cached_data</dt>
@@ -129,7 +129,7 @@ default is <code>FALSE</code>.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used <strong>mapSpain</strong>.</p>
+as it you would never have installed and/or used <span class="pkg">mapSpain</span>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -143,7 +143,7 @@ as it you would never have installed and/or used <strong>mapSpain</strong>.</p>
 <span class="r-in"><span><span class="co"># Don't run this! It would modify your current state</span></span></span>
 <span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">esp_clear_cache</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> mapSpain cached data deleted: /tmp/RtmpKGOXBS/mapSpain</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> mapSpain cached data deleted: /tmp/RtmpZhkv7C/mapSpain</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"MAPSPAIN_CACHE_DIR"</span><span class="op">)</span></span></span>
