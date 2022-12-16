@@ -1,11 +1,11 @@
-#' Get `sf` polygons of the national geographic grids provided by IGN
+#' Get \pkg{sf} polygons of the national geographic grids provided by IGN
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain.
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain.
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source IGN data via a custom CDN (see
@@ -149,7 +149,7 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
 
   if (verbose) message("Cache dir is ", cache_dir)
 
-  if (update_cache | isFALSE(localfile)) {
+  if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -159,12 +159,12 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
         "for more info"
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }

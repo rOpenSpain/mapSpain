@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_capimun.R
 \name{esp_get_capimun}
 \alias{esp_get_capimun}
-\title{Get \code{sf} points of the municipalities of Spain}
+\title{Get \pkg{sf} points of the municipalities of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -59,10 +59,10 @@ Initial position can be adjusted using the vector of coordinates. See
 the dataset provided by IGN.}
 }
 \value{
-A \code{sf} point object.
+A \pkg{sf} point object.
 }
 \description{
-Get a \code{sf} point with the location of the political powers for
+Get a \pkg{sf} point with the location of the political powers for
 each municipality (possibly the center of the municipality).
 
 Note that this differs of the centroid of the boundaries of the

@@ -1,12 +1,12 @@
-#' Get `sf` polygon and lines of rivers, channels and other wetlands of Spain
+#' Get \pkg{sf} polygon and lines of rivers, channels and other wetlands of Spain
 #'
 #' @description
-#' Loads a `sf` polygon or line object representing rivers, channels,
+#' Loads a \pkg{sf} polygon or line object representing rivers, channels,
 #' reservoirs and other wetlands of Spain
 #'
 #' @family natural
 #'
-#' @return A `sf` polygon or line object.
+#' @return A \pkg{sf} polygon or line object.
 #'
 #'
 #' @source IGN data via a custom CDN (see

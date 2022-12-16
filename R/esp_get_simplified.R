@@ -1,7 +1,7 @@
 #' Get a simplified map of provinces and autonomous communities of Spain
 #'
 #' @description
-#' Loads a simplified map (`sf` object) with the boundaries of the provinces or
+#' Loads a simplified map (\pkg{sf} object) with the boundaries of the provinces or
 #' autonomous communities of Spain, as provided by the **INE** (Instituto
 #' Nacional de Estadistica).
 #'
@@ -11,7 +11,7 @@
 #'
 #' @family political
 #'
-#' @return A `sf` POLYGON object.
+#' @return A \pkg{sf} POLYGON object.
 #'
 #' @inheritParams esp_get_prov
 #'

@@ -111,7 +111,7 @@ test_that("tiles online", {
 
   # Run only locally
   skip_on_ci()
-  
+
   # Single point
   point <- esp_get_ccaa("Madrid")
   point <- sf::st_transform(point, 3857)
@@ -130,7 +130,7 @@ test_that("tiles online", {
 
   p <- esp_getTiles(point, verbose = TRUE)
 
-  
+
 
   expect_snapshot_file(save_png(opaque), "opaque.png")
   expect_snapshot_file(save_png(n), "transp.png")

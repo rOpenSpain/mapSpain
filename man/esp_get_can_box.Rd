@@ -3,7 +3,7 @@
 \name{esp_get_can_box}
 \alias{esp_get_can_box}
 \alias{esp_get_can_provinces}
-\title{Get \code{sf} lines and polygons for insetting the Canary Islands}
+\title{Get \pkg{sf} lines and polygons for insetting the Canary Islands}
 \source{
 \code{esp_get_can_provinces} extracted from CartoBase ANE,
 \code{se89_mult_admin_provcan_l.shp} file.
@@ -32,7 +32,7 @@ One of:
 }}
 }
 \value{
-A \code{sf} polygon or line depending of \code{style} parameter.
+A \pkg{sf} polygon or line depending of \code{style} parameter.
 
 \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }

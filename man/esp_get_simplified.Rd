@@ -38,10 +38,10 @@ default is \code{FALSE}.}
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }
 \value{
-A \code{sf} POLYGON object.
+A \pkg{sf} POLYGON object.
 }
 \description{
-Loads a simplified map (\code{sf} object) with the boundaries of the provinces or
+Loads a simplified map (\pkg{sf} object) with the boundaries of the provinces or
 autonomous communities of Spain, as provided by the \strong{INE} (Instituto
 Nacional de Estadistica).
 }

@@ -3,6 +3,9 @@ url: 'https://ropenspain.github.io/mapSpain'
 repo:
   branch: main
 
+development:
+  mode: auto
+
 reference:
   - title: Political
     desc: These functions return `sf` objects with political boundaries

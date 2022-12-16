@@ -1,4 +1,4 @@
-#' Get `sf` lines and polygons for insetting the Canary Islands
+#' Get \pkg{sf} lines and polygons for insetting the Canary Islands
 #'
 #' @description
 #' When plotting Spain, it is usual to represent the Canary Islands as an inset
@@ -15,7 +15,7 @@
 #'
 #' @name esp_get_can_box
 #'
-#' @return A `sf` polygon or line depending of `style` parameter.
+#' @return A \pkg{sf} polygon or line depending of `style` parameter.
 #'
 #'
 #' @export
@@ -125,7 +125,7 @@ esp_get_can_box <- function(style = "right",
   bbox <- sf::st_bbox(can)
 
 
-  if (style == "box" | style == "poly") {
+  if (style == "box" || style == "poly") {
     bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 
     lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(can))

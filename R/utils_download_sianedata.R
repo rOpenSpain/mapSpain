@@ -16,7 +16,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
     if (verbose) {
       message("Try loading from ", filepath)
     }
-  } else if (update_cache | isFALSE(localfile)) {
+  } else if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -26,12 +26,12 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
         "for more info"
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else if (localfile) {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }
@@ -69,7 +69,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
   }
 
 
-  if (verbose & isTRUE(cache)) {
+  if (verbose && isTRUE(cache)) {
     message("Reading from local file ", filepath)
     size <- file.size(filepath)
     class(size) <- "object_size"

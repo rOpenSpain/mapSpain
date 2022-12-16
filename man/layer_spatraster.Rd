@@ -15,6 +15,8 @@ layer_spatraster(data, ...)
 An error
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
 This function is deprecated. Use \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} for
 plot tiles with ggplot2.
 }

@@ -1,7 +1,7 @@
-#' Get `sf` polygons of the national geographic grids provided by BDN
+#' Get \pkg{sf} polygons of the national geographic grids provided by BDN
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain as provided on
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided on
 #' the Banco de Datos de la Naturaleza (Nature Data Bank), by the
 #' Ministry of Environment (MITECO):
 #'   * [esp_get_grid_BDN()] extracts country-wide grids with resolutions
@@ -11,7 +11,7 @@
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source BDN data via a custom CDN (see
