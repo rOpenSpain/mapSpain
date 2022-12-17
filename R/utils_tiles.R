@@ -9,16 +9,15 @@
 #' @inheritParams esp_getTiles
 #'
 #' @noRd
-getwms <- function(x,
+getwms <- function(newbbox,
                    url_pieces,
                    update_cache,
                    cache_dir,
                    verbose,
                    res,
-                   transparent,
-                   options, type) {
+                   transparent) {
   # Get squared bbox
-  bbox <- as.double(sf::st_bbox(x))
+  bbox <- as.double(sf::st_bbox(newbbox))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
   maxdist <- max(dimx, dimy)
@@ -42,7 +41,6 @@ getwms <- function(x,
   url_pieces$height <- as.character(res)
 
   # Compose
-  src <- type
   ext <- tolower(gsub("image/", "", url_pieces$format))
   if (!ext %in% c(
     "png", "jpeg", "jpg", "tiff",
@@ -62,7 +60,7 @@ getwms <- function(x,
 
   filename <-
     paste0(
-      src,
+      "tile_",
       "_bbox_", crs,
       "_res",
       res,
@@ -72,6 +70,7 @@ getwms <- function(x,
       ext
     )
 
+  filename <- paste0(esp_get_md5(filename), ".", ext)
   filename <- file.path(cache_dir, filename)
 
   if (isFALSE(file.exists(filename)) || isTRUE(update_cache)) {
@@ -113,10 +112,6 @@ getwms <- function(x,
     r_img <- terra::mask(r_img, tomask)
   }
 
-  if (is.null(terra::RGB(r_img))) {
-    terra::RGB(r_img) <- c(1, 2, 3)
-  }
-
   # Check if need extent, some tiffs dont
   if (all(as.vector(terra::ext(r_img)) == c(0, res, 0, res))) {
     terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
@@ -138,26 +133,18 @@ getwms <- function(x,
 #' @inheritParams getWMS
 #'
 #' @noRd
-getwmts <- function(x,
-                    provs,
+getwmts <- function(newbbox,
+                    type,
+                    url_pieces,
                     update_cache,
                     cache_dir,
                     verbose,
-                    res,
                     zoom,
                     zoommin,
-                    type,
                     transparent,
-                    options) {
-  # New fun
-
-  opts <- options
-  rm(options)
-
-
-
-  x <- sf::st_transform(x, 4326)
-  bbx <- sf::st_bbox(x)
+                    extra_opts) {
+  newbbox <- sf::st_transform(newbbox, 4326)
+  bbx <- sf::st_bbox(newbbox)
 
   # select a default zoom level
 
@@ -170,12 +157,13 @@ getwmts <- function(x,
     }
   }
 
-  # Check zoom
-  if ("minZoom" %in% provs$field) {
-    minZoom <- as.numeric(provs[provs$field == "minZoom", "value"])
 
-    if (zoom < minZoom) {
-      zoom <- max(zoom, minZoom)
+  # Check zoom
+  if ("minzoom" %in% names(extra_opts)) {
+    minzoom <- as.double(extra_opts$minzoom)
+
+    if (zoom < minzoom) {
+      zoom <- max(zoom, minzoom)
       if (verbose) {
         message(
           "\nSwitching. Minimum zoom for this provider is ",
@@ -188,22 +176,26 @@ getwmts <- function(x,
 
   # get tile list
   tile_grid <-
-    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = zoom)
+    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = as.numeric(zoom))
 
-  # Compose params
-  q <- provs[provs$field == "url_static", "value"]
-
-  # Add options
-  withopt <- tile_handle_options(q, opts, cache_dir)
-
-  q <- withopt$q
-
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
+  # Compose
+  ext <- tolower(gsub("image/", "", url_pieces$format))
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
+    )
   }
+
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
+  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+
 
   if (verbose) {
     message("Caching tiles on ", cache_dir)
@@ -223,14 +215,14 @@ getwmts <- function(x,
     update_cache = update_cache
   )
 
-  rout <- compose_tile_grid(tile_grid, ext, images, transparent)
+  rout <- compose_tile_grid(tile_grid, ext, images, transparent, "epsg:3857")
   return(rout)
 }
 
 
 #' @name compose_tile_grid
 #' @noRd
-compose_tile_grid <- function(tile_grid, ext, images, transparent) {
+compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
   # Based on https://github.com/riatelab/maptiles/blob/main/R/get_tiles.R
 
   bricks <- vector("list", nrow(tile_grid$tiles))
@@ -242,36 +234,37 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
       tile_grid$zoom
     )
     img <- images[i]
-    # special for png tiles
+
+    # Read png and geotag
+
+    # Only png
     if (ext == "png") {
       img <- png::readPNG(img) * 255
-
-      # Give transparency
-      if (dim(img)[3] == 4 && transparent) {
-        nrow <- dim(img)[1]
-        for (j in seq_len(nrow)) {
-          row <- img[j, , ]
-          alpha <- row[, 4] == 0
-          row[alpha, ] <- NA
-          img[j, , ] <- row
-        }
-      }
     }
 
-    # compose brick raster
-    r_img <- suppressWarnings(terra::rast(img))
 
     # compose brick raster
     r_img <- suppressWarnings(terra::rast(img))
 
-    if (is.null(terra::RGB(r_img))) {
-      terra::RGB(r_img) <- c(1, 2, 3)
+    # Provide transparency if available
+    if (terra::nlyr(r_img) == 4 && transparent) {
+      tomask <- terra::subset(r_img, 4)
+      tomask[tomask == 0] <- NA
+
+      r_img <- terra::mask(r_img, tomask)
     }
 
     terra::ext(r_img) <- terra::ext(bbox[c(
       "xmin", "xmax",
       "ymin", "ymax"
     )])
+
+    # Check if need a CRS
+    if (terra::crs(r_img) == "") {
+      terra::crs(r_img) <- crs
+    }
+
+
     bricks[[i]] <- r_img
   }
 
@@ -283,9 +276,6 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
     # all tiles together
     rout <- do.call(terra::merge, bricks)
   }
-
-  terra::RGB(rout) <- c(1, 2, 3)
-  terra::crs(rout) <- "epsg:3857"
 
   return(rout)
 }

@@ -153,20 +153,15 @@ esp_getTiles <- function(x,
 
 
   # A. Check providers
-  leafletProvidersESP <- mapSpain::leaflet.providersESP.df
-  provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == type, ]
+  provs <- mapSpain::esp_tiles_providers
 
-  if (nrow(provs) == 0) {
+  if (!type %in% names(provs)) {
     stop(
       "No match for type = '",
       type,
-      "' found. Check providers available in mapSpain::leaflet.providersESP.df"
+      "' found. Check providers available in mapSpain::esp_tiles_providers"
     )
   }
-
-  # extract info from url
-  url_static <- provs[provs$field == "url_static", "value"]
 
   # Create cache dir
   cache_dir <- esp_hlp_cachedir(cache_dir)
@@ -174,8 +169,17 @@ esp_getTiles <- function(x,
 
 
   # Split url
+  url_pieces <- provs[[type]]$static
+  # And get extra optios
+  extra_opts <- provs[[type]]$leaflet
 
-  url_pieces <- esp_hlp_split_url(url_static)
+  names(url_pieces) <- tolower(names(url_pieces))
+  names(extra_opts) <- tolower(names(extra_opts))
+
+  # Attribution
+  attr <- url_pieces$attribution
+
+  url_pieces <- modifyList(url_pieces, list(attribution = NULL))
 
   # Get type of service
   typeprov <- toupper(url_pieces$service)
@@ -215,10 +219,8 @@ esp_getTiles <- function(x,
     # Create new cache dir
 
     # Modify cache dir
-    newdir <- tolower(paste0(names(options), "_", options,
-      collapse = .Platform$file.sep
-    ))
-    newdir <- gsub(":|,", "", newdir)
+    newdir <- paste0(names(options), "=", options, collapse = "&")
+    newdir <- esp_get_md5(newdir)
 
     cache_dir <- file.path(cache_dir, newdir)
     cache_dir <- esp_hlp_cachedir(cache_dir)
@@ -253,7 +255,6 @@ esp_getTiles <- function(x,
 
   newbbox <- esp_hlp_get_bbox(x, bbox_expand, typeprov)
 
-
   if (typeprov == "WMS") {
     rout <-
       getwms(
@@ -263,34 +264,30 @@ esp_getTiles <- function(x,
         cache_dir,
         verbose,
         res,
-        transparent,
-        options,
-        type
+        transparent
       )
   } else {
     rout <-
       getwmts(
         newbbox,
-        provs,
+        type,
+        url_pieces,
         update_cache,
         cache_dir,
         verbose,
-        res,
         zoom,
         zoommin,
-        type,
         transparent,
-        options
+        extra_opts
       )
   }
 
   # Regenerate
   # Display attributions
 
-  if (verbose) {
+  if (verbose && !is.null(attr)) {
     message(
-      "\nData and map tiles sources:\n",
-      provs[provs$field == "attribution_static", "value"]
+      "\nData and map tiles sources:\n", attr
     )
   }
 
@@ -338,6 +335,11 @@ esp_getTiles <- function(x,
 
   if (!transparent && terra::nlyr(rout) == 4) {
     rout <- terra::subset(rout, 1:3)
+  }
+
+  # Manage RGB
+  if (isFALSE(terra::has.RGB(rout))) {
+    terra::RGB(rout) <- seq_len(terra::nlyr(rout))
   }
 
 
@@ -394,7 +396,12 @@ esp_hlp_split_url <- function(url_static) {
 
   values_opts <- vapply(opts, function(x) {
     n <- strsplit(x, "=", fixed = TRUE)
-    return(unlist(n)[-1])
+
+    unl <- unlist(n)
+    if (length(unl) == 2) {
+      return(unl[2])
+    }
+    return("")
   }, FUN.VALUE = character(1))
 
 
@@ -403,4 +410,13 @@ esp_hlp_split_url <- function(url_static) {
   urlsplit <- modifyList(urlsplit, as.list(values_opts))
 
   return(urlsplit)
+}
+
+esp_get_md5 <- function(x) {
+  tmp <- tempfile(fileext = ".txt")
+  writeLines(x, tmp)
+
+  md5 <- unname(tools::md5sum(tmp))
+
+  return(md5)
 }
