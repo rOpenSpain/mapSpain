@@ -190,9 +190,16 @@ getwmts <- function(newbbox,
     )
   }
 
+
+  url_pieces$tilematrixset <- "GoogleMapsCompatible"
+  url_pieces$tilematrix <- "{z}"
+  url_pieces$tilerow <- "{y}"
+  url_pieces$tilecol <- "{x}"
+
   q <- url_pieces$q
   rest <- url_pieces[names(url_pieces) != "q"]
   q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
 
   crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
 

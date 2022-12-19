@@ -80,11 +80,19 @@ test_that("tiles online", {
 
 
   # Try with jpg
-  provs <- leaflet.providersESP.df
-  jpeg <- provs[provs$value == "jpeg", ]
+  provs <- mapSpain::esp_tiles_providers
+  params <- vapply(provs, function(x) {
+    fmt <- x$static$format
+    return(fmt)
+  }, FUN.VALUE = character(1))
+
+  arejpeg <- provs[params == "image/jpeg"]
+
+
+  jpeg <- names(arejpeg)
 
   expect_message(esp_getTiles(poly,
-    type = as.character(jpeg$provider[1]),
+    type = as.character(jpeg[1]),
     verbose = TRUE
   ))
 
@@ -193,5 +201,62 @@ test_that("tiles options", {
     type = "Catastro.Building",
     options = list(styles = "elfcadastre")
   )
+  expect_s4_class(tile, "SpatRaster")
+})
+
+test_that("Custom WMS", {
+  skip_if_not_installed("slippymath")
+  skip_if_not_installed("terra")
+  skip_if_not_installed("png")
+
+
+  # Skip test as tiles sometimes are not available
+  skip_on_cran()
+  skip_on_os(c("mac", "linux"))
+  skip_if_offline()
+
+  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  custom_wms <- list(
+    id = "an_id_for_caching",
+    q = paste0(
+      "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
+      "&service=WMS&version=1.3.0",
+      "&format=image/png",
+      "&CRS=epsg:3857",
+      "&layers=geolog_cyl_litologia",
+      "&styles="
+    )
+  )
+
+  tile <- esp_getTiles(segovia, type = custom_wms)
+  expect_s4_class(tile, "SpatRaster")
+})
+
+
+test_that("Custom WMTS", {
+  skip_if_not_installed("slippymath")
+  skip_if_not_installed("terra")
+  skip_if_not_installed("png")
+
+
+  # Skip test as tiles sometimes are not available
+  skip_on_cran()
+  skip_on_os(c("mac", "linux"))
+  skip_if_offline()
+
+  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  custom_wmts <- list(
+    id = "cyl_wmts",
+    q = paste0(
+      "https://www.ign.es/wmts/pnoa-ma?",
+      "request=GetTile&service=WMTS&version=1.0.0",
+      "&format=image/jpeg",
+      "&tilematrixset=GoogleMapsCompatible",
+      "&layer=OI.OrthoimageCoverage&style=default"
+    )
+  )
+
+
+  tile <- esp_getTiles(segovia, type = custom_wmts)
   expect_s4_class(tile, "SpatRaster")
 })

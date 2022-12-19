@@ -27,7 +27,13 @@ esp_getTiles(
 \arguments{
 \item{x}{An \pkg{sf} or \code{sfc} object.}
 
-\item{type}{Name of the provider. See \link{leaflet.providersESP.df}.}
+\item{type}{This parameter could be either:
+\itemize{
+\item The name of one of the  pre-defined providers
+(see \link{esp_tiles_providers}).
+\item A list with two named elements \code{id} and \code{q} with your own parameters.
+See \strong{Details} and examples.
+}}
 
 \item{zoom}{Zoom level. If \code{NULL}, it is determined automatically. If set,
 it overrides \code{zoommin}. Only valid for WMTS tiles. On a single point it
@@ -92,12 +98,62 @@ Zoom levels are described on the
 }
 
 
-For a complete list of providers see \link{leaflet.providersESP.df}.
+For a complete list of providers see \link{esp_tiles_providers}.
 
 Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
 looks deformed, try projecting first \code{x}:
 
 \code{x <- sf::st_transform(x, 3857)}
+\subsection{Custom tile providers}{
+
+You can pass a named list to the \code{type} parameter to download any type of
+tile provided as of the
+\href{http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap}{OGC Standard}.
+
+As an example, a valid list for a WMS provider would be:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{x <- esp_get_prov("Segovia")
+
+custom_prov <- list(
+  id = "an_id_for_caching",
+  q = paste0(
+    "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
+    "&service=WMS&version=1.3.0",
+    "&format=image/png",
+    "&CRS=epsg:3857",
+    "&layers=geolog_cyl_litologia",
+    "&styles="
+  )
+)
+custom_tile <- esp_getTiles(x, custom_prov)
+
+}\if{html}{\out{</div>}}
+
+In the case of a WMTS provider, a valid list would be:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{x <- esp_get_prov("Segovia")
+
+custom_wmts <- list(
+  id = "cyl_wmts",
+  q = paste0(
+    "https://www.ign.es/wmts/ign-base?",
+    "request=GetTile&service=WMTS&version=1.0.0",
+    "&format=image/png",
+    "&tilematrixset=GoogleMapsCompatible",
+    "&layer=IGNBaseTodo&style=default"
+  )
+)
+seg_tile <- esp_getTiles(x, custom_wmts)
+}\if{html}{\out{</div>}}
+
+Note that:
+\itemize{
+\item \pkg{mapSpain} would not provide advice on the parameter \code{q} to be
+provided.
+\item Currently, on \strong{WMTS} requests only services with
+\code{tilematrixset=GoogleMapsCompatible} are supported.
+}
+}
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
@@ -115,15 +171,61 @@ corresponding .geojson file by any other method and save it on your
 # This script downloads tiles to your local machine
 # Run only if you are online
 
-Murcia <- esp_get_ccaa_siane("Murcia", epsg = 3857)
-Tile <- esp_getTiles(Murcia)
+segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+tile <- esp_getTiles(segovia)
 
 library(ggplot2)
 library(tidyterra)
 
-ggplot(Murcia) +
-  geom_spatraster_rgb(data = Tile) +
+ggplot(segovia) +
+  geom_spatraster_rgb(data = tile) +
   geom_sf(fill = NA)
+
+# Another provider
+
+tile2 <- esp_getTiles(segovia, type = "MDT")
+
+ggplot(segovia) +
+  geom_spatraster_rgb(data = tile2) +
+  geom_sf(fill = NA)
+
+# A custom WMS provided
+
+custom_wms <- list(
+  id = "an_id_for_caching",
+  q = paste0(
+    "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
+    "&service=WMS&version=1.3.0",
+    "&format=image/png",
+    "&CRS=epsg:3857",
+    "&layers=geolog_cyl_litologia",
+    "&styles="
+  )
+)
+
+custom_wms_tile <- esp_getTiles(segovia, custom_wms)
+
+autoplot(custom_wms_tile) +
+  geom_sf(data = segovia, fill = NA, color = "red")
+
+# A custom WMTS provider
+
+custom_wmts <- list(
+  id = "cyl_wmts",
+  q = paste0(
+    "https://www.ign.es/wmts/pnoa-ma?",
+    "request=GetTile&service=WMTS&version=1.0.0",
+    "&format=image/jpeg",
+    "&tilematrixset=GoogleMapsCompatible",
+    "&layer=OI.OrthoimageCoverage&style=default"
+  )
+)
+
+
+custom_wmts_tile <- esp_getTiles(segovia, custom_wmts)
+
+autoplot(custom_wmts_tile) +
+  geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
 }
 }
 \seealso{
