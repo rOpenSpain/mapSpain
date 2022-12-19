@@ -3,7 +3,7 @@
 various open map servers.
 This function is a implementation of the javascript plugin
 leaflet-providersESP
-v1.3.2."><title>Get static tiles from public administrations of Spanish. — esp_getTiles • mapSpain</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.4/font.css" rel="stylesheet"><link href="../deps/Roboto_Mono-0.4.4/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get static tiles from public administrations of Spanish. — esp_getTiles"><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
+v1.3.2."><title>Get static tiles from public administrations of Spanish. — esp_getTiles • mapSpain</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.4/font.css" rel="stylesheet"><link href="../deps/Roboto_Mono-0.4.4/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get static tiles from public administrations of Spanish. — esp_getTiles"><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 This function is a implementation of the javascript plugin
 leaflet-providersESP
@@ -120,7 +120,11 @@ various open map servers.</p>
 
 
 <dt>type</dt>
-<dd><p>Name of the provider. See <a href="leaflet.providersESP.df.html">leaflet.providersESP.df</a>.</p></dd>
+<dd><p>This parameter could be either:</p><ul><li><p>The name of one of the  pre-defined providers
+(see <a href="esp_tiles_providers.html">esp_tiles_providers</a>).</p></li>
+<li><p>A list with two named elements <code>id</code> and <code>q</code> with your own parameters.
+See <strong>Details</strong> and examples.</p></li>
+</ul></dd>
 
 
 <dt>zoom</dt>
@@ -190,10 +194,52 @@ the provider. See <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class=
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Zoom levels are described on the
-<a href="https://wiki.openstreetmap.org/wiki/Zoom_levels" class="external-link">OpenStreetMap wiki</a>:</p><table class="table table"><tr><td>zoom</td><td>area to represent</td></tr><tr><td>0</td><td>whole world</td></tr><tr><td>3</td><td>large country</td></tr><tr><td>5</td><td>state</td></tr><tr><td>8</td><td>county</td></tr><tr><td>10</td><td>metropolitan area</td></tr><tr><td>11</td><td>city</td></tr><tr><td>13</td><td>village or suburb</td></tr><tr><td>16</td><td>streets</td></tr><tr><td>18</td><td>some buildings, trees</td></tr></table><p>For a complete list of providers see <a href="leaflet.providersESP.df.html">leaflet.providersESP.df</a>.</p>
+<a href="https://wiki.openstreetmap.org/wiki/Zoom_levels" class="external-link">OpenStreetMap wiki</a>:</p><table class="table table"><tr><td>zoom</td><td>area to represent</td></tr><tr><td>0</td><td>whole world</td></tr><tr><td>3</td><td>large country</td></tr><tr><td>5</td><td>state</td></tr><tr><td>8</td><td>county</td></tr><tr><td>10</td><td>metropolitan area</td></tr><tr><td>11</td><td>city</td></tr><tr><td>13</td><td>village or suburb</td></tr><tr><td>16</td><td>streets</td></tr><tr><td>18</td><td>some buildings, trees</td></tr></table><p>For a complete list of providers see <a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p>
 <p>Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
 looks deformed, try projecting first <code>x</code>:</p>
-<p><code>x &lt;- sf::st_transform(x, 3857)</code></p>
+<p><code>x &lt;- sf::st_transform(x, 3857)</code></p><div class="section">
+<h3 id="custom-tile-providers">Custom tile providers<a class="anchor" aria-label="anchor" href="#custom-tile-providers"></a></h3>
+
+
+<p>You can pass a named list to the <code>type</code> parameter to download any type of
+tile provided as of the
+<a href="http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap" class="external-link">OGC Standard</a>.</p>
+<p>As an example, a valid list for a WMS provider would be:</p>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_prov.html">esp_get_prov</a></span><span class="op">(</span><span class="st">"Segovia"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">custom_prov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  id <span class="op">=</span> <span class="st">"an_id_for_caching"</span>,</span>
+<span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap"</span>,</span>
+<span>    <span class="st">"&amp;service=WMS&amp;version=1.3.0"</span>,</span>
+<span>    <span class="st">"&amp;format=image/png"</span>,</span>
+<span>    <span class="st">"&amp;CRS=epsg:3857"</span>,</span>
+<span>    <span class="st">"&amp;layers=geolog_cyl_litologia"</span>,</span>
+<span>    <span class="st">"&amp;styles="</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">custom_tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_getTiles.html">esp_getTiles</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">custom_prov</span><span class="op">)</span></span>
+<span></span></code></pre><p></p></div>
+<p>In the case of a WMTS provider, a valid list would be:</p>
+<p></p><div class="sourceCode r"><pre><code><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_prov.html">esp_get_prov</a></span><span class="op">(</span><span class="st">"Segovia"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  id <span class="op">=</span> <span class="st">"cyl_wmts"</span>,</span>
+<span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://www.ign.es/wmts/ign-base?"</span>,</span>
+<span>    <span class="st">"request=GetTile&amp;service=WMTS&amp;version=1.0.0"</span>,</span>
+<span>    <span class="st">"&amp;format=image/png"</span>,</span>
+<span>    <span class="st">"&amp;tilematrixset=GoogleMapsCompatible"</span>,</span>
+<span>    <span class="st">"&amp;layer=IGNBaseTodo&amp;style=default"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">seg_tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_getTiles.html">esp_getTiles</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></code></pre><p></p></div>
+<p>Note that:</p><ul><li><p><span class="pkg">mapSpain</span> would not provide advice on the parameter <code>q</code> to be
+provided.</p></li>
+<li><p>Currently, on <strong>WMTS</strong> requests only services with
+<code>tilematrixset=GoogleMapsCompatible</code> are supported.</p></li>
+</ul></div>
+
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
@@ -218,8 +264,8 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in"><span><span class="co"># This script downloads tiles to your local machine</span></span></span>
 <span class="r-in"><span><span class="co"># Run only if you are online</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">Murcia</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_get_ccaa.html">esp_get_ccaa_siane</a></span><span class="op">(</span><span class="st">"Murcia"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">Tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">Murcia</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">segovia</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_get_prov.html">esp_get_prov_siane</a></span><span class="op">(</span><span class="st">"segovia"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
@@ -229,10 +275,59 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     filter</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">Murcia</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">Tile</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_getTiles-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Another provider</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">tile2</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, type <span class="op">=</span> <span class="st">"MDT"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile2</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="esp_getTiles-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># A custom WMS provided</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">custom_wms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"an_id_for_caching"</span>,</span></span>
+<span class="r-in"><span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;service=WMS&amp;version=1.3.0"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;format=image/png"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;CRS=epsg:3857"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;layers=geolog_cyl_litologia"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;styles="</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">custom_wms_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wms</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wms_tile</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="esp_getTiles-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># A custom WMTS provider</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"cyl_wmts"</span>,</span></span>
+<span class="r-in"><span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"https://www.ign.es/wmts/pnoa-ma?"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"request=GetTile&amp;service=WMTS&amp;version=1.0.0"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;format=image/jpeg"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;tilematrixset=GoogleMapsCompatible"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"&amp;layer=OI.OrthoimageCoverage&amp;style=default"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">custom_wmts_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wmts_tile</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="esp_getTiles-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
