@@ -10,7 +10,7 @@ name: test-coverage
 
 jobs:
   test-coverage:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -25,6 +25,7 @@ jobs:
         with:
           extra-packages: any::covr
           needs: coverage
+          cache-version: tile
 
       - name: Test coverage
         run: covr::codecov()
