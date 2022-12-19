@@ -20,7 +20,6 @@ test_that("tiles online", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   save_png <- function(code, width = 200, height = 200) {
@@ -157,7 +156,6 @@ test_that("tiles masks and crops", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_ccaa("La Rioja", epsg = 4326)
@@ -192,7 +190,6 @@ test_that("tiles options", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
@@ -212,7 +209,6 @@ test_that("Custom WMS", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   segovia <- esp_get_prov_siane("segovia", epsg = 3857)
@@ -241,18 +237,17 @@ test_that("Custom WMTS", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   segovia <- esp_get_prov_siane("segovia", epsg = 3857)
   custom_wmts <- list(
     id = "cyl_wmts",
     q = paste0(
-      "https://www.ign.es/wmts/pnoa-ma?",
+      "https://www.ign.es/wmts/ign-base?",
       "request=GetTile&service=WMTS&version=1.0.0",
       "&format=image/jpeg",
       "&tilematrixset=GoogleMapsCompatible",
-      "&layer=OI.OrthoimageCoverage&style=default"
+      "&layer= IGNBaseTodo-nofondo&style=default"
     )
   )
 
