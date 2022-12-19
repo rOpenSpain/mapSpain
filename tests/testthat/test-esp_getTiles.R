@@ -97,7 +97,7 @@ test_that("tiles online", {
   ))
 
   s <- esp_getTiles(poly,
-    type = jpeg$provider
+    type = as.character(jpeg[1])
   )
 
   expect_s4_class(s, "SpatRaster")
