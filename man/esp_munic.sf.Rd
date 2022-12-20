@@ -25,7 +25,7 @@ combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
 data.
 }
 \description{
-A \code{sf} object including all municipalities of Spain as provided by GISCO
+A \pkg{sf} object including all municipalities of Spain as provided by GISCO
 (2019 version).
 }
 \examples{
@@ -65,7 +65,7 @@ ggplot(teruel_sf) +
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts.sf}},
-\code{\link{leaflet.providersESP.df}},
+\code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 
 Other municipalities: 

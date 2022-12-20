@@ -1,12 +1,12 @@
-#' Get `sf` polygons of the national geographic grids provided by EEA
+#' Get \pkg{sf} polygons of the national geographic grids provided by EEA
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain as provided by the
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
 #' European Environment Agency (EEA).
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source
@@ -81,7 +81,7 @@ esp_get_grid_EEA <- function(resolution = 100,
 
   if (verbose) message("Cache dir is ", cache_dir)
 
-  if (update_cache | isFALSE(localfile)) {
+  if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -89,12 +89,12 @@ esp_get_grid_EEA <- function(resolution = 100,
         url
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }

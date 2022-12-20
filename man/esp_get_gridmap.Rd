@@ -6,7 +6,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get a \code{sf} hexbin or squared polygon of Spain}
+\title{Get a \pkg{sf} hexbin or squared polygon of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 
@@ -24,10 +24,10 @@ or \code{NULL} to get all the provinces. See \strong{Details}.}
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }
 \value{
-A \code{sf} POLYGON object.
+A \pkg{sf} POLYGON object.
 }
 \description{
-Loads a hexbin map (\code{sf} object) or a map of squares with the boundaries of
+Loads a hexbin map (\pkg{sf} object) or a map of squares with the boundaries of
 the provinces or autonomous communities of Spain.
 }
 \details{

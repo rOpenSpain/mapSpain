@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_rivers.R
 \name{esp_get_rivers}
 \alias{esp_get_rivers}
-\title{Get \code{sf} polygon and lines of rivers, channels and other wetlands of Spain}
+\title{Get \pkg{sf} polygon and lines of rivers, channels and other wetlands of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -50,10 +50,10 @@ default is \code{FALSE}.}
 with the name of the element(s) to be extracted.}
 }
 \value{
-A \code{sf} polygon or line object.
+A \pkg{sf} polygon or line object.
 }
 \description{
-Loads a \code{sf} polygon or line object representing rivers, channels,
+Loads a \pkg{sf} polygon or line object representing rivers, channels,
 reservoirs and other wetlands of Spain
 }
 \details{

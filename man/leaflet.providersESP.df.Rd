@@ -19,129 +19,15 @@ the service:
 \strong{v1.3.2}.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
+This data frame is not longer in use by \pkg{mapSpain}. See
+\link{esp_tiles_providers} instead.
+
 A data frame containing information of different public WMS and WMTS
 providers of Spain
-
-This function is a implementation of the javascript plugin
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.3.2}.
-}
-\details{
-Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:\tabular{l}{
-   provider \cr
-   'IDErioja' \cr
-   'IGNBase' \cr
-   'IGNBase.Todo' \cr
-   'IGNBase.Gris' \cr
-   'IGNBase.TodoNoFondo' \cr
-   'IGNBase.Orto' \cr
-   'MDT' \cr
-   'MDT.Elevaciones' \cr
-   'MDT.Relieve' \cr
-   'MDT.CurvasNivel' \cr
-   'MDT.SpotElevation' \cr
-   'PNOA' \cr
-   'PNOA.MaximaActualidad' \cr
-   'PNOA.Mosaico' \cr
-   'OcupacionSuelo' \cr
-   'OcupacionSuelo.Ocupacion' \cr
-   'OcupacionSuelo.Usos' \cr
-   'LiDAR' \cr
-   'MTN' \cr
-   'Geofisica' \cr
-   'Geofisica.Terremotos10dias' \cr
-   'Geofisica.Terremotos30dias' \cr
-   'Geofisica.Terremotos365dias' \cr
-   'Geofisica.ObservedEvents' \cr
-   'Geofisica.HazardArea' \cr
-   'VigilanciaVolcanica' \cr
-   'VigilanciaVolcanica.ErupcionesHistoricas' \cr
-   'CaminoDeSantiago' \cr
-   'CaminoDeSantiago.CaminoFrances' \cr
-   'CaminoDeSantiago.CaminosFrancia' \cr
-   'CaminoDeSantiago.CaminosGalicia' \cr
-   'CaminoDeSantiago.CaminosDelNorte' \cr
-   'CaminoDeSantiago.CaminosAndaluces' \cr
-   'CaminoDeSantiago.CaminosCentro' \cr
-   'CaminoDeSantiago.CaminosEste' \cr
-   'CaminoDeSantiago.CaminosCatalanes' \cr
-   'CaminoDeSantiago.CaminosSureste' \cr
-   'CaminoDeSantiago.CaminosInsulares' \cr
-   'CaminoDeSantiago.CaminosPortugueses' \cr
-   'Catastro' \cr
-   'Catastro.Catastro' \cr
-   'Catastro.Parcela' \cr
-   'Catastro.CadastralParcel' \cr
-   'Catastro.CadastralZoning' \cr
-   'Catastro.Address' \cr
-   'Catastro.Building' \cr
-   'Catastro.BuildingPart' \cr
-   'Catastro.AdministrativeBoundary' \cr
-   'Catastro.AdministrativeUnit' \cr
-   'RedTransporte' \cr
-   'RedTransporte.Carreteras' \cr
-   'RedTransporte.Ferroviario' \cr
-   'RedTransporte.Aerodromo' \cr
-   'RedTransporte.AreaServicio' \cr
-   'RedTransporte.EstacionesFerroviario' \cr
-   'RedTransporte.Puertos' \cr
-   'Cartociudad' \cr
-   'Cartociudad.CodigosPostales' \cr
-   'Cartociudad.Direcciones' \cr
-   'NombresGeograficos' \cr
-   'UnidadesAdm' \cr
-   'UnidadesAdm.Limites' \cr
-   'UnidadesAdm.Unidades' \cr
-   'Hidrografia' \cr
-   'Hidrografia.MasaAgua' \cr
-   'Hidrografia.Cuencas' \cr
-   'Hidrografia.Subcuencas' \cr
-   'Hidrografia.POI' \cr
-   'Hidrografia.ManMade' \cr
-   'Hidrografia.LineaCosta' \cr
-   'Hidrografia.Rios' \cr
-   'Hidrografia.Humedales' \cr
-   'Militar' \cr
-   'Militar.CEGET1M' \cr
-   'Militar.CEGETM7814' \cr
-   'Militar.CEGETM7815' \cr
-   'Militar.CEGETM682' \cr
-   'Militar.CECAF1M' \cr
-   'ADIF' \cr
-   'ADIF.Vias' \cr
-   'ADIF.Nodos' \cr
-   'ADIF.Estaciones' \cr
-   'LimitesMaritimos' \cr
-   'LimitesMaritimos.LimitesMaritimos' \cr
-   'LimitesMaritimos.LineasBase' \cr
-   'Copernicus' \cr
-   'Copernicus.Forest' \cr
-   'Copernicus.ForestLeaf' \cr
-   'Copernicus.WaterWet' \cr
-   'Copernicus.SoilSeal' \cr
-   'Copernicus.GrassLand' \cr
-   'Copernicus.RiparianGreen' \cr
-   'Copernicus.RiparianLandCover' \cr
-   'Copernicus.Natura2k' \cr
-   'Copernicus.UrbanAtlas' \cr
-   'ParquesNaturales' \cr
-   'ParquesNaturales.Limites' \cr
-   'ParquesNaturales.ZonasPerifericas' \cr
-}
 }
 \examples{
 data("leaflet.providersESP.df")
 }
-\seealso{
-Other datasets: 
-\code{\link{esp_codelist}},
-\code{\link{esp_munic.sf}},
-\code{\link{esp_nuts.sf}},
-\code{\link{pobmun19}}
-
-Other imagery utilities: 
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()}
-}
-\concept{datasets}
-\concept{imagery utilities}
+\keyword{internal}

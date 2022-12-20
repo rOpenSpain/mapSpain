@@ -4,21 +4,20 @@
 #'
 #' @param bbox_expand Expansion of the bbox
 #'
-#' @param provs Provider
+#' @param url_pieces Provider
 #'
 #' @inheritParams esp_getTiles
 #'
 #' @noRd
-getwms <- function(x,
-                   provs,
+getwms <- function(newbbox,
+                   url_pieces,
                    update_cache,
                    cache_dir,
                    verbose,
                    res,
-                   transparent,
-                   options) {
+                   transparent) {
   # Get squared bbox
-  bbox <- as.double(sf::st_bbox(x))
+  bbox <- as.double(sf::st_bbox(newbbox))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
   maxdist <- max(dimx, dimy)
@@ -32,42 +31,38 @@ getwms <- function(x,
   )
 
 
+
+
   class(bboxsquare) <- "bbox"
 
-
   # Compose params
-  q <- provs[provs$field == "url_static", "value"]
+  url_pieces$bbox <- paste0(bboxsquare, collapse = ",")
+  url_pieces$width <- as.character(res)
+  url_pieces$height <- as.character(res)
 
-  q <-
-    gsub("{bbox}", paste0(bboxsquare, collapse = ","),
-      q,
-      fixed = TRUE
+  # Compose
+  ext <- tolower(gsub("image/", "", url_pieces$format))
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
     )
-
-  q <- gsub("512", as.character(res), q)
-
-
-  # Add options
-  withopt <- tile_handle_options(q, options, cache_dir)
-
-  q <- withopt$q
-  cache_dir <- withopt$cache_dir
-
-
-  src <- unique(provs$provider)
-
-
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
   }
+
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
+  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
 
   filename <-
     paste0(
-      src,
-      "_bbox3857_res",
+      "tile_",
+      "_bbox_", crs,
+      "_res",
       res,
       "_",
       paste0(bboxsquare, collapse = "_"),
@@ -75,9 +70,10 @@ getwms <- function(x,
       ext
     )
 
+  filename <- paste0(esp_get_md5(filename), ".", ext)
   filename <- file.path(cache_dir, filename)
 
-  if (isFALSE(file.exists(filename)) | isTRUE(update_cache)) {
+  if (isFALSE(file.exists(filename)) || isTRUE(update_cache)) {
     if (verbose) {
       message("Downloading from \n", q, "\n to cache dir \n", cache_dir)
     }
@@ -100,17 +96,6 @@ getwms <- function(x,
   # Only png
   if (ext == "png") {
     img <- png::readPNG(filename) * 255
-    # Give transparency if available
-    if (dim(img)[3] == 4 && transparent) {
-      nrow <- dim(img)[1]
-
-      for (i in seq_len(nrow)) {
-        row <- img[i, , ]
-        alpha <- row[, 4] == 0
-        row[alpha, ] <- NA
-        img[i, , ] <- row
-      }
-    }
   } else {
     img <- filename
   }
@@ -119,15 +104,23 @@ getwms <- function(x,
   # compose brick raster
   r_img <- suppressWarnings(terra::rast(img))
 
+  # Provide transparency if available
+  if (terra::nlyr(r_img) == 4 && transparent) {
+    tomask <- terra::subset(r_img, 4)
+    tomask[tomask == 0] <- NA
 
-  if (is.null(terra::RGB(r_img))) {
-    terra::RGB(r_img) <- c(1, 2, 3)
+    r_img <- terra::mask(r_img, tomask)
   }
 
-  terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
+  # Check if need extent, some tiffs dont
+  if (all(as.vector(terra::ext(r_img)) == c(0, res, 0, res))) {
+    terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
+  }
 
-
-  terra::crs(r_img) <- "epsg:3857"
+  # Check if need a CRS
+  if (terra::crs(r_img) == "") {
+    terra::crs(r_img) <- crs
+  }
   # End WMS
 
   return(r_img)
@@ -140,23 +133,21 @@ getwms <- function(x,
 #' @inheritParams getWMS
 #'
 #' @noRd
-getwmts <- function(x,
-                    provs,
+getwmts <- function(newbbox,
+                    type,
+                    url_pieces,
                     update_cache,
                     cache_dir,
                     verbose,
-                    res,
                     zoom,
                     zoommin,
-                    type,
                     transparent,
-                    options) {
-  # New fun
-
-  x <- sf::st_transform(x, 4326)
-  bbx <- sf::st_bbox(x)
+                    extra_opts) {
+  newbbox <- sf::st_transform(newbbox, 4326)
+  bbx <- sf::st_bbox(newbbox)
 
   # select a default zoom level
+
   if (is.null(zoom)) {
     gz <- slippymath::bbox_tile_query(bbx)
     zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"]) + zoommin
@@ -166,12 +157,13 @@ getwmts <- function(x,
     }
   }
 
-  # Check zoom
-  if ("minZoom" %in% provs$field) {
-    minZoom <- as.numeric(provs[provs$field == "minZoom", "value"])
 
-    if (zoom < minZoom) {
-      zoom <- max(zoom, minZoom)
+  # Check zoom
+  if ("minzoom" %in% names(extra_opts)) {
+    minzoom <- as.double(extra_opts$minzoom)
+
+    if (zoom < minzoom) {
+      zoom <- max(zoom, minzoom)
       if (verbose) {
         message(
           "\nSwitching. Minimum zoom for this provider is ",
@@ -184,23 +176,33 @@ getwmts <- function(x,
 
   # get tile list
   tile_grid <-
-    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = zoom)
+    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = as.numeric(zoom))
 
-  # Compose params
-  q <- provs[provs$field == "url_static", "value"]
-
-  # Add options
-  withopt <- tile_handle_options(q, options, cache_dir)
-
-  q <- withopt$q
-  cache_dir <- withopt$cache_dir
-
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
+  # Compose
+  ext <- tolower(gsub("image/", "", url_pieces$format))
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
+    )
   }
+
+
+  url_pieces$tilematrixset <- "GoogleMapsCompatible"
+  url_pieces$tilematrix <- "{z}"
+  url_pieces$tilerow <- "{y}"
+  url_pieces$tilecol <- "{x}"
+
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
+
+  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+
 
   if (verbose) {
     message("Caching tiles on ", cache_dir)
@@ -220,14 +222,14 @@ getwmts <- function(x,
     update_cache = update_cache
   )
 
-  rout <- compose_tile_grid(tile_grid, ext, images, transparent)
+  rout <- compose_tile_grid(tile_grid, ext, images, transparent, "epsg:3857")
   return(rout)
 }
 
 
 #' @name compose_tile_grid
 #' @noRd
-compose_tile_grid <- function(tile_grid, ext, images, transparent) {
+compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
   # Based on https://github.com/riatelab/maptiles/blob/main/R/get_tiles.R
 
   bricks <- vector("list", nrow(tile_grid$tiles))
@@ -239,36 +241,37 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
       tile_grid$zoom
     )
     img <- images[i]
-    # special for png tiles
+
+    # Read png and geotag
+
+    # Only png
     if (ext == "png") {
       img <- png::readPNG(img) * 255
-
-      # Give transparency
-      if (dim(img)[3] == 4 && transparent) {
-        nrow <- dim(img)[1]
-        for (j in seq_len(nrow)) {
-          row <- img[j, , ]
-          alpha <- row[, 4] == 0
-          row[alpha, ] <- NA
-          img[j, , ] <- row
-        }
-      }
     }
 
-    # compose brick raster
-    r_img <- suppressWarnings(terra::rast(img))
 
     # compose brick raster
     r_img <- suppressWarnings(terra::rast(img))
 
-    if (is.null(terra::RGB(r_img))) {
-      terra::RGB(r_img) <- c(1, 2, 3)
+    # Provide transparency if available
+    if (terra::nlyr(r_img) == 4 && transparent) {
+      tomask <- terra::subset(r_img, 4)
+      tomask[tomask == 0] <- NA
+
+      r_img <- terra::mask(r_img, tomask)
     }
 
     terra::ext(r_img) <- terra::ext(bbox[c(
       "xmin", "xmax",
       "ymin", "ymax"
     )])
+
+    # Check if need a CRS
+    if (terra::crs(r_img) == "") {
+      terra::crs(r_img) <- crs
+    }
+
+
     bricks[[i]] <- r_img
   }
 
@@ -280,9 +283,6 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent) {
     # all tiles together
     rout <- do.call(terra::merge, bricks)
   }
-
-  terra::RGB(rout) <- c(1, 2, 3)
-  terra::crs(rout) <- "epsg:3857"
 
   return(rout)
 }
@@ -302,7 +302,7 @@ dl_t <-
     outfile <-
       paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
 
-    if (!file.exists(outfile) |
+    if (!file.exists(outfile) ||
       isTRUE(update_cache)) {
       q <-
         gsub(
@@ -338,72 +338,3 @@ dl_t <-
     }
     return(outfile)
   }
-
-
-tile_handle_options <- function(q, options, cache_dir) {
-  if (is.null(options)) {
-    res <- list(
-      q = q,
-      cache_dir = cache_dir
-    )
-    return(res)
-  }
-
-  # Get params from root q
-  root <- paste0(unlist(strsplit(q, "?", fixed = TRUE))[1], "?")
-  getparams <- gsub(root, "", q, fixed = TRUE)
-  getparams <- unlist(strsplit(getparams, "&"))
-  getparams <- as.list(getparams)
-
-  initnames <- vapply(getparams, function(x) {
-    unlist(strsplit(x, "="))[1]
-  },
-  FUN.VALUE = character(1)
-  )
-
-  initvalues <- vapply(getparams, function(x) {
-    a <- unlist(strsplit(x, "="))[-1]
-    a <- paste0(a, collapse = "=")
-  },
-  FUN.VALUE = character(1)
-  )
-
-  names(initvalues) <- tolower(initnames)
-
-  initparams <- as.list(initvalues)
-
-  # Handle options and replace if needed
-  names(options) <- tolower(names(options))
-
-  # Modify list
-  endopts <- utils::modifyList(
-    initparams,
-    options
-  )
-
-  # Restore casing on original values
-  restnames <- names(endopts)
-  restnames[seq_len(length(initnames))] <- initnames
-
-  names(endopts) <- restnames
-
-  # Create new url
-  newopts <- paste0(names(endopts), "=", endopts, collapse = "&")
-
-  endurl <- paste0(root, newopts)
-
-
-  # Modify cache dir
-  newdir <- tolower(paste0(names(options), "_", options,
-    collapse = .Platform$file.sep
-  ))
-  cache_dir <- file.path(cache_dir, newdir)
-  cache_dir <- esp_hlp_cachedir(cache_dir)
-
-  # Final object
-  res <- list(
-    q = endurl,
-    cache_dir = cache_dir
-  )
-  return(res)
-}

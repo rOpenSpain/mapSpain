@@ -282,17 +282,39 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
 
 ## Providers available
 
-The data frame `leaflet.providersESP.df` includes the data of the available
-providers you can use on functions described above. This data frame includes all
-the parameters needed to replicate the API request. In this summary only the
-parameter `url_static` is shown:
+The list `esp_tiles_providers` includes the data of the available
+providers you can use on functions described above. This list includes all
+the parameters needed to replicate the API request. See the static url of each
+provider:
 
 ```{r providers, echo=FALSE}
 
 library(reactable)
 
-df <- leaflet.providersESP.df[leaflet.providersESP.df$field == "url_static", ]
+prov_names <- names(esp_tiles_providers)
 
+urls <- vapply(esp_tiles_providers, function(x) {
+  # Create url
+  allpars <- x$static
+  q <- allpars$q
+  rest <- modifyList(
+    allpars,
+    list(
+      attribution = NULL,
+      q = NULL
+    )
+  )
+  rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
+  templurl <- paste0(q, rest_temp)
+}, FUN.VALUE = character(1))
+
+
+df <- data.frame(
+  provider = prov_names,
+  static_url = urls
+)
+
+rownames(df) <- NULL
 reactable(df,
   filterable = TRUE,
   searchable = TRUE,

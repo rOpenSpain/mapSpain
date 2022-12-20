@@ -2,6 +2,6 @@
 "_PACKAGE"
 
 # import stuffs
-#' @importFrom utils download.file unzip
+#' @importFrom utils download.file unzip modifyList
 #' @importFrom sf st_transform
 NULL

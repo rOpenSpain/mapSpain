@@ -1,4 +1,4 @@
-#' Set your **mapSpain** cache dir
+#' Set your \pkg{mapSpain} cache dir
 #'
 #' @family cache utilities
 #' @seealso [rappdirs::user_config_dir()]

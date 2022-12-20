@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_grid_EEA.R
 \name{esp_get_grid_EEA}
 \alias{esp_get_grid_EEA}
-\title{Get \code{sf} polygons of the national geographic grids provided by EEA}
+\title{Get \pkg{sf} polygons of the national geographic grids provided by EEA}
 \source{
 \href{https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2}{EEA reference grid}.
 }
@@ -30,10 +30,10 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 }
 \value{
-A \code{sf} polygon
+A \pkg{sf} polygon
 }
 \description{
-Loads a \code{sf} polygon with the geographic grids of Spain as provided by the
+Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
 European Environment Agency (EEA).
 }
 \section{About caching}{

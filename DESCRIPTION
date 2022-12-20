@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.6.2.9000
+Version: 0.6.2.9010
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain"))
@@ -46,7 +46,7 @@ Copyright: © EuroGeographics for the administrative boundaries. Atlas
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: https://ropenspain.es/
 X-schema.org-keywords: rOpenSpain, tiles, r, maps, spatial, rstats,

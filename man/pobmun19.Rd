@@ -19,6 +19,6 @@ Other datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_munic.sf}},
 \code{\link{esp_nuts.sf}},
-\code{\link{leaflet.providersESP.df}}
+\code{\link{esp_tiles_providers}}
 }
 \concept{datasets}

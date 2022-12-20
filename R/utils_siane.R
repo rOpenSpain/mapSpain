@@ -79,7 +79,7 @@ esp_hlp_download_siane <- function(type,
     if (verbose) {
       message("Try loading from ", filepath)
     }
-  } else if (update_cache | isFALSE(localfile)) {
+  } else if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -89,12 +89,12 @@ esp_hlp_download_siane <- function(type,
         "for more info"
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else if (localfile) {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }
@@ -137,7 +137,7 @@ esp_hlp_download_siane <- function(type,
     return(data)
   }
 
-  if (verbose & isTRUE(cache)) {
+  if (verbose && isTRUE(cache)) {
     message("Reading from local file ", filepath)
     size <- file.size(filepath)
     class(size) <- "object_size"
@@ -200,7 +200,7 @@ esp_hlp_get_siane <- function(type,
       verbose, "x"
     )
   # Canary Islands
-  if (type == "riverline" & as.character(resolution) != "3") {
+  if (type == "riverline" && as.character(resolution) != "3") {
     # Nothing
   } else if (type == "riverarea") {
     # Nothing

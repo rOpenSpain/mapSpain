@@ -2,6 +2,8 @@
 #'
 #' @description
 #'
+#' `r lifecycle::badge("deprecated")`
+#'
 #' This function is deprecated. Use [tidyterra::geom_spatraster_rgb()] for
 #' plot tiles with ggplot2.
 #'

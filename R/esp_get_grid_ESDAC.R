@@ -1,12 +1,12 @@
-#' Get `sf` polygons of the national geographic grids provided by ESDAC
+#' Get \pkg{sf} polygons of the national geographic grids provided by ESDAC
 #'
 #' @description
-#' Loads a `sf` polygon with the geographic grids of Spain as provided by the
+#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
 #' European Soil Data Centre (ESDAC).
 #'
 #' @family grids
 #'
-#' @return A `sf` polygon
+#' @return A \pkg{sf} polygon
 #'
 #'
 #' @source
@@ -78,7 +78,7 @@ esp_get_grid_ESDAC <- function(resolution = 10,
 
   if (verbose) message("Cache dir is ", cache_dir)
 
-  if (update_cache | isFALSE(localfile)) {
+  if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
       message(
@@ -86,12 +86,12 @@ esp_get_grid_ESDAC <- function(resolution = 10,
         url
       )
     }
-    if (verbose & update_cache) {
+    if (verbose && update_cache) {
       message("\nUpdating cache")
     }
   } else {
     dwnload <- FALSE
-    if (verbose & isFALSE(update_cache)) {
+    if (verbose && isFALSE(update_cache)) {
       message("File already available on ", filepath)
     }
   }

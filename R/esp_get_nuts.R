@@ -1,4 +1,4 @@
-#' Get NUTS of Spain as `sf` polygons and points
+#' Get NUTS of Spain as \pkg{sf} polygons and points
 #'
 #' @description
 #' Returns
@@ -20,7 +20,7 @@
 #' @family nuts
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#' @return A `sf` object specified by `spatialtype`.
+#' @return A \pkg{sf} object specified by `spatialtype`.
 #'
 #' @note
 #' Please check the download and usage provisions on
@@ -214,10 +214,10 @@ esp_get_nuts <- function(year = "2016",
 
   dwnload <- TRUE
 
-  if (year == "2016" &
-    resolution == "01" &
-    epsg == "4326" &
-    spatialtype == "RG" & isFALSE(update_cache)) {
+  if (year == "2016" &&
+    resolution == "01" &&
+    epsg == "4326" &&
+    spatialtype == "RG" && isFALSE(update_cache)) {
     if (verbose) {
       message("Reading from esp_nuts.sf")
     }

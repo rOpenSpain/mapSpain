@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_hypsobath.R
 \name{esp_get_hypsobath}
 \alias{esp_get_hypsobath}
-\title{Get \code{sf} polygons and lines with the hypsometry and bathymetry of Spain}
+\title{Get \pkg{sf} polygons and lines with the hypsometry and bathymetry of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -46,10 +46,10 @@ are \code{"3"} or \code{"6.5"}.}
 \code{"line"} for lines.}
 }
 \value{
-A \code{sf} polygon or line object.
+A \pkg{sf} polygon or line object.
 }
 \description{
-Loads a \code{sf} polygon or line object representing the hypsometry and
+Loads a \pkg{sf} polygon or line object representing the hypsometry and
 bathymetry of Spain.
 \itemize{
 \item \strong{Hypsometry} represents the  the elevation and depth of features of the

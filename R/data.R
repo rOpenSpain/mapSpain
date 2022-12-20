@@ -75,7 +75,7 @@ NULL
 #' @docType data
 #'
 #' @description
-#' A `sf` object including all NUTS levels of Spain as provided by
+#' A \pkg{sf} object including all NUTS levels of Spain as provided by
 #' GISCO (2016 version).
 #'
 #' @source
@@ -111,7 +111,7 @@ NULL
 #' @name esp_munic.sf
 #'
 #' @description
-#' A `sf` object including all municipalities of Spain as provided by GISCO
+#' A \pkg{sf} object including all municipalities of Spain as provided by GISCO
 #' (2019 version).
 #'
 #' @docType data
@@ -162,24 +162,25 @@ NULL
 
 #' @title Public WMS and WMTS of Spain
 #'
-#' @family datasets
-#' @family imagery utilities
+#' @keywords internal
 #'
 #' @name leaflet.providersESP.df
 #'
 #' @description
+#' `r lifecycle::badge('superseded')`
+#'
+#' This data frame is not longer in use by \pkg{mapSpain}. See
+#' [esp_tiles_providers] instead.
+#'
 #' A data frame containing information of different public WMS and WMTS
 #' providers of Spain
 #'
-#' This function is a implementation of the javascript plugin
-#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **v1.3.2**.
 #'
 #' @docType data
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **v1.3.2**.
+#' **`r leafletprovidersESP_v`**.
 #'
 #' @encoding UTF-8
 #'
@@ -192,19 +193,63 @@ NULL
 #'   \item{value}{INE code of each province}.
 #' }
 #'
+#' @examples
+#' data("leaflet.providersESP.df")
+NULL
+
+#' @title List with information of Public WMS and WMTS of Spain
+#'
+#' @family datasets
+#' @family imagery utilities
+#'
+#' @name esp_tiles_providers
+#'
+#' @description
+#' A named list of length `r length(esp_tiles_providers)` containing
+#' the parameters of the url information of different public WMS and WMTS
+#' providers of Spain.
+#'
+#' Implementation of javascript plugin
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **`r leafletprovidersESP_v`**.
+#'
+#' @docType data
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#' **`r leafletprovidersESP_v`**.
+#'
+#' @encoding UTF-8
+#'
+#' @format
+#' A named list of the providers available with the following structure:
+#' - Each item of the list is named with the provider alias.
+#' - Each element of the list contains two nested named lists:
+#'   - `static` with the parameters to get static tiles plus an additional item
+#'     named `attribution`.
+#'   - `leaflet` with additional parameters to be passed onto
+#'     [addProviderEspTiles()].
+#'
 #' @details
 #' Providers available to be passed to `type` on [esp_getTiles()] are:
 #'
-#' ```{r, echo=FALSE}
+#' ```{r, echo=FALSE, comment="", results="asis"}
 #'
-#' t <- mapSpain::leaflet.providersESP.df
-#' t <- paste0("'", unique(t$provider), "'")
-#' t <- data.frame(provider=t)
+#' t <- names(mapSpain::esp_tiles_providers)
+#' t <- paste0('\n - `"', t, '"`')
 #'
-#' knitr::kable(t)
+#'
+#' cat(t)
 #'
 #'
 #' ```
 #' @examples
-#' data("leaflet.providersESP.df")
+#' data("esp_tiles_providers")
+#' # Get a single provider
+#'
+#' single <- esp_tiles_providers[["IGNBase.Todo"]]
+#' single$static
+#'
+#' single$leaflet
+#'
 NULL

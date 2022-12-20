@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_nuts.R
 \name{esp_get_nuts}
 \alias{esp_get_nuts}
-\title{Get NUTS of Spain as \code{sf} polygons and points}
+\title{Get NUTS of Spain as \pkg{sf} polygons and points}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 }
@@ -72,7 +72,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}.
+A \pkg{sf} object specified by \code{spatialtype}.
 }
 \description{
 Returns

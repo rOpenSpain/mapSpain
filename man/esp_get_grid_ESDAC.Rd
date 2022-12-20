@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_grid_ESDAC.R
 \name{esp_get_grid_ESDAC}
 \alias{esp_get_grid_ESDAC}
-\title{Get \code{sf} polygons of the national geographic grids provided by ESDAC}
+\title{Get \pkg{sf} polygons of the national geographic grids provided by ESDAC}
 \source{
 \href{https://esdac.jrc.ec.europa.eu/content/european-reference-grids}{EEA reference grid}.
 }
@@ -26,10 +26,10 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 }
 \value{
-A \code{sf} polygon
+A \pkg{sf} polygon
 }
 \description{
-Loads a \code{sf} polygon with the geographic grids of Spain as provided by the
+Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
 European Soil Data Centre (ESDAC).
 }
 \section{About caching}{

@@ -3,7 +3,7 @@
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
 \alias{esp_get_ccaa_siane}
-\title{Get Autonomous Communities of Spain as \code{sf} polygons and points}
+\title{Get Autonomous Communities of Spain as \pkg{sf} polygons and points}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -73,7 +73,7 @@ default is \code{FALSE}.}
 the dataset provided by IGN.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}.
+A \pkg{sf} object specified by \code{spatialtype}.
 }
 \description{
 Returns
