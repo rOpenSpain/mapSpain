@@ -7,6 +7,8 @@
 
     -   `leaflet.providersESP.df` is superseded in favor of
         `esp_tiles_providers`.
+    -   You can use a custom url with the `type` argument in `esp_getTiles()`
+        #88 .
 
 # mapSpain 0.6.2
 
