@@ -20,6 +20,7 @@ test_that("tiles online", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   save_png <- function(code, width = 200, height = 200) {
@@ -32,9 +33,9 @@ test_that("tiles online", {
   }
   expect_s4_class(esp_getTiles(poly), "SpatRaster")
   expect_message(esp_getTiles(poly,
-    zoom = 7,
-    verbose = TRUE,
-    update_cache = TRUE
+                              zoom = 7,
+                              verbose = TRUE,
+                              update_cache = TRUE
   ))
 
 
@@ -69,49 +70,41 @@ test_that("tiles online", {
   ))
 
   expect_message(esp_getTiles(poly,
-    type = "RedTransporte.Carreteras",
-    verbose = TRUE, mask = TRUE
+                              type = "RedTransporte.Carreteras",
+                              verbose = TRUE, mask = TRUE
   ))
   expect_message(esp_getTiles(poly,
-    type = "RedTransporte.Carreteras",
-    verbose = TRUE, mask = TRUE
+                              type = "RedTransporte.Carreteras",
+                              verbose = TRUE, mask = TRUE
   ))
 
 
   # Try with jpg
-  provs <- mapSpain::esp_tiles_providers
-  params <- vapply(provs, function(x) {
-    fmt <- x$static$format
-    return(fmt)
-  }, FUN.VALUE = character(1))
-
-  arejpeg <- provs[params == "image/jpeg"]
-
-
-  jpeg <- names(arejpeg)
+  provs <- leaflet.providersESP.df
+  jpeg <- provs[provs$value == "jpeg", ]
 
   expect_message(esp_getTiles(poly,
-    type = as.character(jpeg[1]),
-    verbose = TRUE
+                              type = as.character(jpeg$provider[1]),
+                              verbose = TRUE
   ))
 
   s <- esp_getTiles(poly,
-    type = as.character(jpeg[1])
+                    type = jpeg$provider
   )
 
   expect_s4_class(s, "SpatRaster")
 
   # Check layers
   n <- expect_silent(esp_getTiles(poly,
-    type = "RedTransporte.Carreteras"
+                                  type = "RedTransporte.Carreteras"
   ))
 
 
   expect_equal(terra::nlyr(n), 4)
 
   opaque <- expect_silent(esp_getTiles(poly,
-    type = "RedTransporte.Carreteras",
-    transparent = FALSE
+                                       type = "RedTransporte.Carreteras",
+                                       transparent = FALSE
   ))
 
   expect_equal(terra::nlyr(opaque), 3)
@@ -132,7 +125,7 @@ test_that("tiles online", {
   expect_s3_class(point, "sfc_POINT")
 
   expect_message(esp_getTiles(point,
-    verbose = TRUE
+                              verbose = TRUE
   ))
 
   p <- esp_getTiles(point, verbose = TRUE)
@@ -156,6 +149,7 @@ test_that("tiles masks and crops", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_ccaa("La Rioja", epsg = 4326)
@@ -190,13 +184,14 @@ test_that("tiles options", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
+  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
   poly <- sf::st_buffer(poly, 20)
   tile <- esp_getTiles(poly,
-    type = "Catastro.Building",
-    options = list(styles = "elfcadastre")
+                       type = "Catastro.Building",
+                       options = list(styles = "elfcadastre")
   )
   expect_s4_class(tile, "SpatRaster")
 })
@@ -245,9 +240,9 @@ test_that("Custom WMTS", {
     q = paste0(
       "https://www.ign.es/wmts/ign-base?",
       "request=GetTile&service=WMTS&version=1.0.0",
-      "&format=image/jpeg",
+      "&format=image/png",
       "&tilematrixset=GoogleMapsCompatible",
-      "&layer= IGNBaseTodo-nofondo&style=default"
+      "&layer=IGNBaseTodo-nofondo&style=default"
     )
   )
 
