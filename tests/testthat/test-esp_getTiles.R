@@ -5,6 +5,11 @@ test_that("tiles error", {
   df <- data.frame(a = 1, b = 2)
 
   expect_error(esp_getTiles(df), "Only sf and sfc objects allowed")
+
+  ff <- esp_get_prov("La Rioja")
+
+  expect_error(esp_getTiles(ff, options = list(format = "image/aabbcc")))
+  expect_error(esp_getTiles(ff, type = list(format = "image/aabbcc")))
 })
 
 
@@ -33,9 +38,9 @@ test_that("tiles online", {
   }
   expect_s4_class(esp_getTiles(poly), "SpatRaster")
   expect_message(esp_getTiles(poly,
-                              zoom = 7,
-                              verbose = TRUE,
-                              update_cache = TRUE
+    zoom = 7,
+    verbose = TRUE,
+    update_cache = TRUE
   ))
 
 
@@ -70,12 +75,12 @@ test_that("tiles online", {
   ))
 
   expect_message(esp_getTiles(poly,
-                              type = "RedTransporte.Carreteras",
-                              verbose = TRUE, mask = TRUE
+    type = "RedTransporte.Carreteras",
+    verbose = TRUE, mask = TRUE
   ))
   expect_message(esp_getTiles(poly,
-                              type = "RedTransporte.Carreteras",
-                              verbose = TRUE, mask = TRUE
+    type = "RedTransporte.Carreteras",
+    verbose = TRUE, mask = TRUE
   ))
 
 
@@ -84,27 +89,27 @@ test_that("tiles online", {
   jpeg <- provs[provs$value == "jpeg", ]
 
   expect_message(esp_getTiles(poly,
-                              type = as.character(jpeg$provider[1]),
-                              verbose = TRUE
+    type = as.character(jpeg$provider[1]),
+    verbose = TRUE
   ))
 
   s <- esp_getTiles(poly,
-                    type = jpeg$provider
+    type = jpeg$provider
   )
 
   expect_s4_class(s, "SpatRaster")
 
   # Check layers
   n <- expect_silent(esp_getTiles(poly,
-                                  type = "RedTransporte.Carreteras"
+    type = "RedTransporte.Carreteras"
   ))
 
 
   expect_equal(terra::nlyr(n), 4)
 
   opaque <- expect_silent(esp_getTiles(poly,
-                                       type = "RedTransporte.Carreteras",
-                                       transparent = FALSE
+    type = "RedTransporte.Carreteras",
+    transparent = FALSE
   ))
 
   expect_equal(terra::nlyr(opaque), 3)
@@ -125,7 +130,7 @@ test_that("tiles online", {
   expect_s3_class(point, "sfc_POINT")
 
   expect_message(esp_getTiles(point,
-                              verbose = TRUE
+    verbose = TRUE
   ))
 
   p <- esp_getTiles(point, verbose = TRUE)
@@ -190,9 +195,20 @@ test_that("tiles options", {
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
   poly <- sf::st_buffer(poly, 20)
   tile <- esp_getTiles(poly,
-                       type = "Catastro.Building",
-                       options = list(styles = "elfcadastre")
+    type = "Catastro.Building",
+    options = list(styles = "elfcadastre")
   )
+  expect_s4_class(tile, "SpatRaster")
+
+  tile2 <- esp_getTiles(poly,
+    type = "RedTransporte.Carreteras",
+    options = list(
+      version = "1.3.0",
+      crs = "EPSG:25830",
+      format = "image/jpeg"
+    )
+  )
+
   expect_s4_class(tile, "SpatRaster")
 })
 

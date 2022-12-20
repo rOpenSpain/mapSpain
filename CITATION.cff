@@ -8,7 +8,7 @@ message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
-version: 0.6.2.9000
+version: 0.6.2.9010
 doi: 10.5281/zenodo.5366622
 abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
   Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
@@ -31,7 +31,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenSpain
   year: '2022'
-  version: 0.6.2.9000
+  version: 0.6.2.9010
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
