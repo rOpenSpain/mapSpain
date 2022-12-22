@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.7.0
 
 -   Upgrade `leaflet.providersESP.df` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.2.
