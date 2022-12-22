@@ -153,7 +153,8 @@ Other datasets:
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()}
+\code{\link{esp_getTiles}()},
+\code{\link{esp_make_provider}()}
 }
 \concept{datasets}
 \concept{imagery utilities}

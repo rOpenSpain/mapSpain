@@ -27,7 +27,7 @@
 #'   - The name of one of the  pre-defined providers
 #'     (see [esp_tiles_providers]).
 #'   - A list with two named elements `id` and `q` with your own parameters.
-#'     See **Details** and examples.
+#'     See [esp_make_provider()] and examples.
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
 #'   it overrides `zoommin`. Only valid for WMTS tiles. On a single point it
 #'   applies a buffer to the point and on `zoom = NULL` the function set a zoom
@@ -90,54 +90,6 @@
 #'
 #' `x <- sf::st_transform(x, 3857)`
 #'
-#'  ## Custom tile providers
-#'
-#'  You can pass a named list to the `type` parameter to download any type of
-#'  tile provided as of the
-#'  [OGC Standard](http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap).
-#'
-#'  As an example, a valid list for a WMS provider would be:
-#'
-#' ```r
-#' x <- esp_get_prov("Segovia")
-#'
-#' custom_prov <- list(
-#'   id = "an_id_for_caching",
-#'   q = paste0(
-#'     "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
-#'     "&service=WMS&version=1.3.0",
-#'     "&format=image/png",
-#'     "&CRS=epsg:3857",
-#'     "&layers=geolog_cyl_litologia",
-#'     "&styles="
-#'   )
-#' )
-#' custom_tile <- esp_getTiles(x, custom_prov)
-#'
-#' ```
-#' In the case of a WMTS provider, a valid list would be:
-#'
-#' ```r
-#' x <- esp_get_prov("Segovia")
-#'
-#' custom_wmts <- list(
-#'   id = "cyl_wmts",
-#'   q = paste0(
-#'     "https://www.ign.es/wmts/ign-base?",
-#'     "request=GetTile&service=WMTS&version=1.0.0",
-#'     "&format=image/png",
-#'     "&tilematrixset=GoogleMapsCompatible",
-#'     "&layer=IGNBaseTodo&style=default"
-#'   )
-#' )
-#' seg_tile <- esp_getTiles(x, custom_wmts)
-
-#' ```
-#' Note that:
-#' - \pkg{mapSpain} would not provide advice on the parameter `q` to be
-#'   provided.
-#' - Currently, on **WMTS** requests only services with
-#'   `tilematrixset=GoogleMapsCompatible` are supported.
 #'
 #' @examples
 #' \dontrun{
@@ -164,16 +116,13 @@
 #'
 #' # A custom WMS provided
 #'
-#' custom_wms <- list(
+#' custom_wms <- esp_make_provider(
 #'   id = "an_id_for_caching",
-#'   q = paste0(
-#'     "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
-#'     "&service=WMS&version=1.3.0",
-#'     "&format=image/png",
-#'     "&CRS=epsg:3857",
-#'     "&layers=geolog_cyl_litologia",
-#'     "&styles="
-#'   )
+#'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
+#'   service = "WMS",
+#'   version = "1.3.0",
+#'   format = "image/png",
+#'   layers = "geolog_cyl_litologia"
 #' )
 #'
 #' custom_wms_tile <- esp_getTiles(segovia, custom_wms)
@@ -183,17 +132,12 @@
 #'
 #' # A custom WMTS provider
 #'
-#' custom_wmts <- list(
+#' custom_wmts <- esp_make_provider(
 #'   id = "cyl_wmts",
-#'   q = paste0(
-#'     "https://www.ign.es/wmts/pnoa-ma?",
-#'     "request=GetTile&service=WMTS&version=1.0.0",
-#'     "&format=image/jpeg",
-#'     "&tilematrixset=GoogleMapsCompatible",
-#'     "&layer=OI.OrthoimageCoverage&style=default"
-#'   )
+#'   q = "https://www.ign.es/wmts/pnoa-ma?",
+#'   service = "WMTS",
+#'   layer = "OI.OrthoimageCoverage"
 #' )
-#'
 #'
 #' custom_wmts_tile <- esp_getTiles(segovia, custom_wmts)
 #'
