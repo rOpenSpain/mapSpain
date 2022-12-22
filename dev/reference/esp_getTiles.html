@@ -123,7 +123,7 @@ various open map servers.</p>
 <dd><p>This parameter could be either:</p><ul><li><p>The name of one of the  pre-defined providers
 (see <a href="esp_tiles_providers.html">esp_tiles_providers</a>).</p></li>
 <li><p>A list with two named elements <code>id</code> and <code>q</code> with your own parameters.
-See <strong>Details</strong> and examples.</p></li>
+See <code><a href="esp_make_provider.html">esp_make_provider()</a></code> and examples.</p></li>
 </ul></dd>
 
 
@@ -197,49 +197,7 @@ the provider. See <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class=
 <a href="https://wiki.openstreetmap.org/wiki/Zoom_levels" class="external-link">OpenStreetMap wiki</a>:</p><table class="table table"><tr><td>zoom</td><td>area to represent</td></tr><tr><td>0</td><td>whole world</td></tr><tr><td>3</td><td>large country</td></tr><tr><td>5</td><td>state</td></tr><tr><td>8</td><td>county</td></tr><tr><td>10</td><td>metropolitan area</td></tr><tr><td>11</td><td>city</td></tr><tr><td>13</td><td>village or suburb</td></tr><tr><td>16</td><td>streets</td></tr><tr><td>18</td><td>some buildings, trees</td></tr></table><p>For a complete list of providers see <a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p>
 <p>Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
 looks deformed, try projecting first <code>x</code>:</p>
-<p><code>x &lt;- sf::st_transform(x, 3857)</code></p><div class="section">
-<h3 id="custom-tile-providers">Custom tile providers<a class="anchor" aria-label="anchor" href="#custom-tile-providers"></a></h3>
-
-
-<p>You can pass a named list to the <code>type</code> parameter to download any type of
-tile provided as of the
-<a href="http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap" class="external-link">OGC Standard</a>.</p>
-<p>As an example, a valid list for a WMS provider would be:</p>
-<p></p><div class="sourceCode r"><pre><code><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_prov.html">esp_get_prov</a></span><span class="op">(</span><span class="st">"Segovia"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">custom_prov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  id <span class="op">=</span> <span class="st">"an_id_for_caching"</span>,</span>
-<span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span>    <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap"</span>,</span>
-<span>    <span class="st">"&amp;service=WMS&amp;version=1.3.0"</span>,</span>
-<span>    <span class="st">"&amp;format=image/png"</span>,</span>
-<span>    <span class="st">"&amp;CRS=epsg:3857"</span>,</span>
-<span>    <span class="st">"&amp;layers=geolog_cyl_litologia"</span>,</span>
-<span>    <span class="st">"&amp;styles="</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">custom_tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_getTiles.html">esp_getTiles</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">custom_prov</span><span class="op">)</span></span>
-<span></span></code></pre><p></p></div>
-<p>In the case of a WMTS provider, a valid list would be:</p>
-<p></p><div class="sourceCode r"><pre><code><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_prov.html">esp_get_prov</a></span><span class="op">(</span><span class="st">"Segovia"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  id <span class="op">=</span> <span class="st">"cyl_wmts"</span>,</span>
-<span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span>    <span class="st">"https://www.ign.es/wmts/ign-base?"</span>,</span>
-<span>    <span class="st">"request=GetTile&amp;service=WMTS&amp;version=1.0.0"</span>,</span>
-<span>    <span class="st">"&amp;format=image/png"</span>,</span>
-<span>    <span class="st">"&amp;tilematrixset=GoogleMapsCompatible"</span>,</span>
-<span>    <span class="st">"&amp;layer=IGNBaseTodo&amp;style=default"</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">seg_tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_getTiles.html">esp_getTiles</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></code></pre><p></p></div>
-<p>Note that:</p><ul><li><p><span class="pkg">mapSpain</span> would not provide advice on the parameter <code>q</code> to be
-provided.</p></li>
-<li><p>Currently, on <strong>WMTS</strong> requests only services with
-<code>tilematrixset=GoogleMapsCompatible</code> are supported.</p></li>
-</ul></div>
-
+<p><code>x &lt;- sf::st_transform(x, 3857)</code></p>
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
@@ -255,6 +213,7 @@ corresponding .geojson file by any other method and save it on your
     <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.</p>
 <p>Other imagery utilities: 
 <code><a href="addProviderEspTiles.html">addProviderEspTiles</a>()</code>,
+<code><a href="esp_make_provider.html">esp_make_provider</a>()</code>,
 <code><a href="esp_tiles_providers.html">esp_tiles_providers</a></code></p></div>
     </div>
 
@@ -291,16 +250,13 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMS provided</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">custom_wms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">custom_wms</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_make_provider.html">esp_make_provider</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  id <span class="op">=</span> <span class="st">"an_id_for_caching"</span>,</span></span>
-<span class="r-in"><span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;service=WMS&amp;version=1.3.0"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;format=image/png"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;CRS=epsg:3857"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;layers=geolog_cyl_litologia"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;styles="</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  q <span class="op">=</span> <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?"</span>,</span></span>
+<span class="r-in"><span>  service <span class="op">=</span> <span class="st">"WMS"</span>,</span></span>
+<span class="r-in"><span>  version <span class="op">=</span> <span class="st">"1.3.0"</span>,</span></span>
+<span class="r-in"><span>  format <span class="op">=</span> <span class="st">"image/png"</span>,</span></span>
+<span class="r-in"><span>  layers <span class="op">=</span> <span class="st">"geolog_cyl_litologia"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">custom_wms_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wms</span><span class="op">)</span></span></span>
@@ -311,17 +267,12 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMTS provider</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_make_provider.html">esp_make_provider</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  id <span class="op">=</span> <span class="st">"cyl_wmts"</span>,</span></span>
-<span class="r-in"><span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="st">"https://www.ign.es/wmts/pnoa-ma?"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"request=GetTile&amp;service=WMTS&amp;version=1.0.0"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;format=image/jpeg"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;tilematrixset=GoogleMapsCompatible"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"&amp;layer=OI.OrthoimageCoverage&amp;style=default"</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  q <span class="op">=</span> <span class="st">"https://www.ign.es/wmts/pnoa-ma?"</span>,</span></span>
+<span class="r-in"><span>  service <span class="op">=</span> <span class="st">"WMTS"</span>,</span></span>
+<span class="r-in"><span>  layer <span class="op">=</span> <span class="st">"OI.OrthoimageCoverage"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">custom_wmts_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
