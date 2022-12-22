@@ -8,7 +8,6 @@ mapSpain*.tgz
 Meta
 CRAN-RELEASE
 cran-comments.md
-revdep
 dev
 doc
 docs

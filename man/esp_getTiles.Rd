@@ -30,7 +30,7 @@ esp_getTiles(
 \item{type}{This parameter could be either:
 \itemize{
 \item The name of one of the  pre-defined providers
-(see \link{esp_tiles_providers}).
+(see \code{\link[=esp_tiles_providers]{esp_tiles_providers()}}).
 \item A list with two named elements \code{id} and \code{q} with your own parameters.
 See \code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
 }}

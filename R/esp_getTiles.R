@@ -25,7 +25,7 @@
 #'
 #' @param type This parameter could be either:
 #'   - The name of one of the  pre-defined providers
-#'     (see [esp_tiles_providers]).
+#'     (see [esp_tiles_providers()]).
 #'   - A list with two named elements `id` and `q` with your own parameters.
 #'     See [esp_make_provider()] and examples.
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
