@@ -9,6 +9,8 @@
         `esp_tiles_providers`.
     -   You can use a custom url with the `type` argument in `esp_getTiles()`
         #88 .
+    -   Add new function `esp_make_provider()` that helps to create custom
+        providers.
 
 # mapSpain 0.6.2
 

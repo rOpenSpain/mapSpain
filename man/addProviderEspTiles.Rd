@@ -70,6 +70,7 @@ PuertadelSol
 
 Other imagery utilities: 
 \code{\link{esp_getTiles}()},
+\code{\link{esp_make_provider}()},
 \code{\link{esp_tiles_providers}}
 }
 \concept{imagery utilities}
