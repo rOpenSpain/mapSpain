@@ -260,7 +260,7 @@ Some packages recommended for visualization are:
 
 To cite the ‘mapSpain’ package in publications use:
 
-Hernangomez D (2022). *mapSpain: Administrative Boundaries of Spain*.
+Hernangomez D (2023). *mapSpain: Administrative Boundaries of Spain*.
 <https://doi.org/10.5281/zenodo.5366622>,
 <https://ropenspain.github.io/mapSpain/>
 
@@ -268,7 +268,7 @@ A BibTeX entry for LaTeX users is:
 
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
-      year = {2022},
+      year = {2023},
       version = {0.7.0},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
