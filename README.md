@@ -5,7 +5,7 @@
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 [![CRAN-status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
-[![CRAN-results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
+[![CRAN-results](https://badges.cranchecks.info/worst/mapSpain.svg)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/mapSpain/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check)
@@ -260,7 +260,7 @@ Some packages recommended for visualization are:
 
 To cite the ‘mapSpain’ package in publications use:
 
-Hernangomez D (2022). *mapSpain: Administrative Boundaries of Spain*.
+Hernangomez D (2023). *mapSpain: Administrative Boundaries of Spain*.
 <https://doi.org/10.5281/zenodo.5366622>,
 <https://ropenspain.github.io/mapSpain/>
 
@@ -268,7 +268,7 @@ A BibTeX entry for LaTeX users is:
 
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
-      year = {2022},
+      year = {2023},
       version = {0.7.0},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},

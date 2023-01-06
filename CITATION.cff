@@ -30,7 +30,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenSpain
-  year: '2022'
+  year: '2023'
   version: 0.7.0
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
@@ -78,7 +78,7 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
@@ -93,7 +93,7 @@ references:
     given-names: Vincent
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
-  year: '2022'
+  year: '2023'
   version: '>= 1.2.0'
 - type: software
   title: giscoR
@@ -107,7 +107,7 @@ references:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenGov
-  year: '2022'
+  year: '2023'
   version: '>= 0.2.4'
 - type: software
   title: rappdirs
@@ -123,7 +123,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2022'
+  year: '2023'
   version: '>= 0.3.0'
 - type: software
   title: sf
@@ -136,7 +136,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2022'
+  year: '2023'
   version: '>= 0.9.0'
 - type: software
   title: utils
@@ -146,7 +146,7 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
 - type: software
@@ -183,7 +183,7 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2022'
+  year: '2023'
   version: '>= 3.0.0'
 - type: software
   title: knitr
@@ -196,7 +196,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2022'
+  year: '2023'
 - type: software
   title: leaflet
   abstract: 'leaflet: Create Interactive Web Maps with the JavaScript ''Leaflet''
@@ -212,7 +212,7 @@ references:
     given-names: Bhaskar
   - family-names: Xie
     given-names: Yihui
-  year: '2022'
+  year: '2023'
   version: '>= 2.0.0'
 - type: software
   title: png
@@ -224,7 +224,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
-  year: '2022'
+  year: '2023'
   version: '>= 0.1-5'
 - type: software
   title: rmarkdown
@@ -265,7 +265,7 @@ references:
     given-names: Richard
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2022'
+  year: '2023'
 - type: software
   title: slippymath
   abstract: 'slippymath: Slippy Map Tile Tools'
@@ -280,7 +280,7 @@ references:
   - family-names: Sumner
     given-names: Michael
     email: mdsumner@gmail.com
-  year: '2022'
+  year: '2023'
   version: '>= 0.3.1'
 - type: software
   title: terra
@@ -293,7 +293,7 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2022'
+  year: '2023'
   version: '>= 1.1-4'
 - type: software
   title: testthat
@@ -305,7 +305,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   version: '>= 3.0.0'
 - type: software
   title: tidyterra
@@ -319,4 +319,4 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2022'
+  year: '2023'
