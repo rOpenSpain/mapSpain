@@ -139,8 +139,7 @@
 </h2>
 <p>This script highlights some features of <strong>mapSpain</strong> :</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/pobmun19.html">pobmun19</a></span></span>
 <span></span>
@@ -194,8 +193,7 @@
 <p><img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" width="100%"></p>
 <p>You can combine <code>sf</code> objects with static tiles</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Get census</span></span>
+<code class="sourceCode R"><span><span class="co"># Get census</span></span>
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/pobmun19.html">pobmun19</a></span></span>
 <span><span class="va">census</span><span class="op">$</span><span class="va">porc_women</span> <span class="op">&lt;-</span> <span class="va">census</span><span class="op">$</span><span class="va">women</span> <span class="op">/</span> <span class="va">census</span><span class="op">$</span><span class="va">pob19</span></span>
 <span></span>
@@ -255,8 +253,7 @@
 </h2>
 <p>If you need to plot Spain along with another countries, consider using <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> package, that is installed as a dependency when you installed <strong>mapSpain</strong>. A basic example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Set the same resolution for a perfect fit</span></span>
 <span></span>
