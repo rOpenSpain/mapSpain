@@ -1,4 +1,3 @@
-
 test_that("capimun online", {
   skip_on_cran()
   skip_if_siane_offline()

@@ -41,7 +41,6 @@ as:
 
 
 ```r
-
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -55,7 +54,6 @@ Some examples of what **mapSpain** can do:
 
 
 ```r
-
 library(mapSpain)
 library(ggplot2)
 
@@ -130,7 +128,6 @@ Let's analyze the distribution of women in each autonomous community with
 
 
 ```r
-
 census <- mapSpain::pobmun19
 
 # Extract CCAA from base dataset
@@ -189,7 +186,6 @@ used).
 
 
 ```r
-
 # Population density of Spain
 
 library(sf)
@@ -258,7 +254,6 @@ dependency when you installed **mapSpain**. A basic example:
 
 
 ```r
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit

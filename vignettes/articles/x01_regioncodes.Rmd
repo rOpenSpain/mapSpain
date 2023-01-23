@@ -26,7 +26,6 @@ and different naming versions on several languages.
 
 
 ```{r esp_codelist, echo=FALSE}
-
 library(mapSpain)
 library(reactable)
 

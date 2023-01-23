@@ -47,8 +47,6 @@ Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf:
 to change the projection.
 }
 \examples{
-
-
 esp <- esp_get_country()
 hexccaa <- esp_get_hex_ccaa()
 

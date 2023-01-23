@@ -1,5 +1,3 @@
-
-
 esp <- esp_get_country()
 hexccaa <- esp_get_hex_ccaa()
 

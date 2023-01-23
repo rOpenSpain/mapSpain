@@ -80,14 +80,12 @@ install.packages("mapSpain", dependencies = TRUE)
 #### Remotes
 
 ```{r instremotes, eval=FALSE}
-
 remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ### Un ejemplo rápido
 
 ```{r intro}
-
 library(mapSpain)
 library(tidyverse)
 
@@ -270,7 +268,6 @@ esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"),
 #### `esp_dict_translate()`
 
 ```{r}
-
 vals <- c(
   "La Rioja", "Sevilla", "Madrid",
   "Jaen", "Orense", "Baleares"
@@ -304,7 +301,6 @@ La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
 ```{r pais}
-
 esp <- esp_get_country(moveCAN = FALSE)
 
 ggplot(esp) +
@@ -323,7 +319,6 @@ de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
 ```{r can}
-
 esp_can <- esp_get_country()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -340,7 +335,6 @@ analisis espaciales, se debe usar `moveCAN = FALSE`**
 ### NUTS
 
 ```{r nuts}
-
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
@@ -365,7 +359,6 @@ ggplot(nuts3_sf) +
 ### CCAA
 
 ```{r ccaa}
-
 ccaa <- esp_get_ccaa(ccaa = c(
   "Catalunya",
   "Comunidad Valenciana",
@@ -390,7 +383,6 @@ Si pasamos una entidad de orden superior (e.g. Andalucia) obtenemos todas las
 provincias de esa entidad.
 
 ```{r prov}
-
 provs <- esp_get_prov_siane(c(
   "Andalucía", "Ciudad Real",
   "Murcia", "Ceuta", "Melilla"
@@ -408,7 +400,6 @@ ggplot(provs) +
 ### Municipios
 
 ```{r munic}
-
 munic <- esp_get_munic(region = "Segovia") %>%
   # Datos de ejemplo: Población INE
   left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
@@ -511,7 +502,6 @@ ggplot() +
 Estas capas se pueden usar también como fondo en mapas estáticos
 
 ```{r leaflet}
-
 stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 
 library(leaflet)

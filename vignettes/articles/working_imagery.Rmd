@@ -9,7 +9,6 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -44,7 +43,6 @@ here on layer provided by La Rioja's [Infraestructura de Datos Espaciales
 the images for the Canary Islands won't be accurate.**
 
 ```{r static1}
-
 library(mapSpain)
 library(sf)
 library(ggplot2)
@@ -70,7 +68,6 @@ Some tiles could be loaded with or without an alpha value, that controls the
 transparency of the object:
 
 ```{r static2, fig.asp=1}
-
 Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
@@ -113,7 +110,6 @@ Another nice feature is the ability of masking the tiles, so more advanced maps
 can be plotted:
 
 ```{r static3}
-
 LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 Basemap <- esp_getTiles(LaRioja, "IGNBase.Gris",
@@ -135,7 +131,6 @@ can find some quick examples:
 ### Earthquakes in Tenerife (last year)
 
 ```{r leaflet1}
-
 library(leaflet)
 
 Tenerife.leaf <-
@@ -187,7 +182,6 @@ m %>%
 A map showing the population density of Spain as of 2019:
 
 ```{r leaflet2}
-
 munic <- esp_get_munic_siane(
   year = 2019,
   epsg = 4326,
@@ -288,7 +282,6 @@ the parameters needed to replicate the API request. See the static url of each
 provider:
 
 ```{r providers, echo=FALSE}
-
 library(reactable)
 
 prov_names <- names(esp_tiles_providers)

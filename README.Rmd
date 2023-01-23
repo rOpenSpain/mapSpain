@@ -88,7 +88,6 @@ install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 This script highlights some features of **mapSpain** :
 
 ```{r static}
-
 library(mapSpain)
 
 census <- mapSpain::pobmun19
@@ -145,7 +144,6 @@ ggplot(CCAA_sf) +
 You can combine `sf` objects with static tiles
 
 ```{r tile}
-
 # Get census
 census <- mapSpain::pobmun19
 census$porc_women <- census$women / census$pob19
@@ -208,7 +206,6 @@ If you need to plot Spain along with another countries, consider using
 dependency when you installed **mapSpain**. A basic example:
 
 ```{r giscoR, fig.asp=1}
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
