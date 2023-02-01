@@ -38,7 +38,7 @@ install.packages("mapSpain", dependencies = TRUE)
 ```
 
 You can install the developing version of **mapSpain** using the
-[r-universe](https://ropenspain.r-universe.dev/ui#builds):
+[r-universe](http://ropenspain.r-universe.dev/ui/):
 
 ``` r
 # Enable this universe
