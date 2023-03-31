@@ -33,3 +33,6 @@
 ^tests/testthat/_snaps/layer_spatraster$
 ^.*\.pdf$
 ^CRAN-SUBMISSION$
+^pkgdown\.yaml$
+^pkgdown\.yml$
+^\.imgbotconfig$
