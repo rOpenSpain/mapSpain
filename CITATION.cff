@@ -289,7 +289,7 @@ references:
   title: terra
   abstract: 'terra: Spatial Data Analysis'
   notes: Suggests
-  url: https://rspatial.org/terra/
+  url: https://rspatial.org/
   repository: https://CRAN.R-project.org/package=terra
   authors:
   - family-names: Hijmans
