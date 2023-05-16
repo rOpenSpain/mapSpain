@@ -11,7 +11,7 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       CURL_SSL_BACKEND: "openssl"
