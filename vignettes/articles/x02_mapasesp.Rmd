@@ -264,7 +264,6 @@ esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"),
 )
 ```
 
-
 #### `esp_dict_translate()`
 
 ```{r}
@@ -485,15 +484,17 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, mask = TRUE, crop = TRUE, zoommin = 2)
+madrid_mask <- esp_getTiles(madrid, "IGNBase.Gris",
+  mask = TRUE, crop = TRUE, zoommin = 2
+)
 
 
 ggplot() +
   geom_spatraster_rgb(data = madrid_mask) +
   theme_void() +
   labs(
-    title = "Mapa Base de la Comunidad de Madrid",
-    caption = "CC BY 4.0 www.iderioja.org"
+    title = "Mapa Base de Madrid",
+    caption = "CC BY 4.0 scne.es. Sistema Geográfico Nacional IGN"
   )
 ```
 

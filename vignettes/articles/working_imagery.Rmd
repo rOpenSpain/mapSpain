@@ -55,7 +55,7 @@ LGN <- esp_get_munic(munic = "Logroño")
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
 LGN <- st_transform(LGN, 3857)
 
-tile_LGN <- esp_getTiles(LGN, "IDErioja", bbox_expand = 0.5)
+tile_LGN <- esp_getTiles(LGN, "IGNBase.Todo", bbox_expand = 0.5)
 
 ggplot(LGN) +
   geom_spatraster_rgb(data = tile_LGN) +
@@ -72,7 +72,7 @@ Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-BG <- esp_getTiles(Madrid, "IGNBase.Gris", zoom = 9)
+BG <- esp_getTiles(Madrid, "IGNBase.Gris", zoommin = 1)
 UA.opaque <-
   esp_getTiles(Madrid, "UnidadesAdm.Limites",
     transparent = FALSE
@@ -113,10 +113,10 @@ can be plotted:
 LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 Basemap <- esp_getTiles(LaRioja, "IGNBase.Gris",
-  bbox_expand = 0.1, zoom = 10
+  bbox_expand = 0.1, zoommin = 1
 )
 
-Mask <- esp_getTiles(LaRioja, "IDErioja", mask = TRUE, zoom = 10)
+Mask <- esp_getTiles(LaRioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
 
 ggplot() +
   geom_spatraster_rgb(data = Basemap, maxcell = 10e6) +
@@ -276,10 +276,9 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
 
 ## Providers available
 
-The list `esp_tiles_providers` includes the data of the available
-providers you can use on functions described above. This list includes all
-the parameters needed to replicate the API request. See the static url of each
-provider:
+The list `esp_tiles_providers` includes the data of the available providers you
+can use on functions described above. This list includes all the parameters
+needed to replicate the API request. See the static url of each provider:
 
 ```{r providers, echo=FALSE}
 library(reactable)
