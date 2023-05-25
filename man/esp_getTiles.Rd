@@ -122,7 +122,7 @@ corresponding .geojson file by any other method and save it on your
 # Run only if you are online
 
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
-tile <- esp_getTiles(segovia)
+tile <- esp_getTiles(segovia, "IGNBase.Todo")
 
 library(ggplot2)
 library(tidyterra)

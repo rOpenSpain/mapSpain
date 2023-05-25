@@ -63,7 +63,7 @@
 #' capimun$type <- "Capimun"
 #'
 #' # Get a tile to check
-#' tile <- esp_getTiles(area, zoommin = 2)
+#' tile <- esp_getTiles(area, "IGNBase.Todo", zoommin = 2)
 #'
 #' # Join both point geometries
 #' points <- rbind(
