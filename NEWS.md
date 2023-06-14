@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Improve download of NUTS data from **giscoR**.
+
 # mapSpain 0.7.0
 
 -   Upgrade `leaflet.providersESP.df` to
