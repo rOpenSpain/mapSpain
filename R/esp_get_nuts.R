@@ -199,7 +199,7 @@ esp_get_nuts <- function(year = "2016",
     # https://github.com/rOpenGov/giscoR/issues/57
     getids <- sf::st_drop_geometry(mapSpain::esp_nuts.sf)
 
-    if (nuts_level != "all"){
+    if (nuts_level != "all") {
       getids <- getids[getids$LEVL_CODE == nuts_level, ]
     }
     nuts_id <- as.character(getids$NUTS_ID)

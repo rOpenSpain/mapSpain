@@ -76,10 +76,13 @@ ggplot(country) +
   )
 ```
 
-<img src="./basic-1.png" alt="plot of chunk basic" width="100%" />
+<div class="figure">
+<img src="./basic-1.png" alt="Example: Map of Spain" width="100%" />
+<p class="caption">Example: Map of Spain</p>
+</div>
+
 
 ```r
-
 # Plot provinces
 
 Andalucia <- esp_get_prov("Andalucia")
@@ -89,11 +92,13 @@ ggplot(Andalucia) +
   theme_bw()
 ```
 
-<img src="./basic-2.png" alt="plot of chunk basic" width="100%" />
+<div class="figure">
+<img src="./basic2-1.png" alt="Example: Provinces of Andalucia" width="100%" />
+<p class="caption">Example: Provinces of Andalucia</p>
+</div>
+
 
 ```r
-
-
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
@@ -119,7 +124,10 @@ ggplot(Euskadi_CCAA) +
   )
 ```
 
-<img src="./basic-3.png" alt="plot of chunk basic" width="100%" />
+<div class="figure">
+<img src="./basic3-1.png" alt="Example: Municipalities of the Basque Country" width="100%" />
+<p class="caption">Example: Municipalities of the Basque Country</p>
+</div>
 
 ## Choropleth and label maps
 
@@ -174,7 +182,10 @@ ggplot(CCAA_sf) +
   theme(legend.position = c(0.1, 0.6))
 ```
 
-<img src="./choro-1.png" alt="plot of chunk choro" width="100%" />
+<div class="figure">
+<img src="./choro-1.png" alt="Percentage of women by Autonomous Community (2019)" width="100%" />
+<p class="caption">Percentage of women by Autonomous Community (2019)</p>
+</div>
 
 ## Thematic maps
 
@@ -200,19 +211,7 @@ munic$area <- municarea
 munic.pop <- merge(munic, pop, all.x = TRUE, by = c("cpro", "cmun"))
 munic.pop$dens <- munic.pop$pob19 / munic.pop$area
 
-br <-
-  c(
-    -Inf,
-    10,
-    25,
-    100,
-    200,
-    500,
-    1000,
-    5000,
-    10000,
-    Inf
-  )
+br <- c(-Inf, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 
 munic.pop$cuts <- cut(munic.pop$dens, br)
@@ -244,7 +243,10 @@ ggplot(munic.pop) +
   )
 ```
 
-<img src="./thematic-1.png" alt="plot of chunk thematic" width="100%" />
+<div class="figure">
+<img src="./thematic-1.png" alt="Population density in Spain (2019)" width="100%" />
+<p class="caption">Population density in Spain (2019)</p>
+</div>
 
 ## mapSpain and giscoR
 
@@ -258,24 +260,24 @@ library(giscoR)
 
 # Set the same resolution for a perfect fit
 
-res <- "03"
-
-# Same crs
-target_crs <- 3035
+res <- "20"
 
 all_countries <- gisco_get_countries(
-  resolution = res,
-  epsg = target_crs
-)
-eu_countries <- gisco_get_countries(
-  resolution = res, region = "EU",
-  epsg = target_crs
-)
-ccaa <- esp_get_ccaa(
-  moveCAN = FALSE, resolution = res,
-  epsg = target_crs
-)
+  resolution = res
+) |>
+  st_transform(3035)
 
+eu_countries <- gisco_get_countries(
+  resolution = res, region = "EU"
+) |>
+  st_transform(3035)
+
+ccaa <- esp_get_ccaa(
+  moveCAN = FALSE, resolution = res
+) |>
+  st_transform(3035)
+
+# Plot
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
@@ -294,7 +296,10 @@ ggplot(all_countries) +
   )
 ```
 
-<img src="./giscoR-1.png" alt="plot of chunk giscoR" width="100%" />
+<div class="figure">
+<img src="./giscoR-1.png" alt="mapSpain and giscoR example" width="100%" />
+<p class="caption">mapSpain and giscoR example</p>
+</div>
 
 ## Working with tiles
 

@@ -14,8 +14,5 @@ bibentry(
   doi = "10.5281/zenodo.5366622",
   url = unlist(strsplit(meta$URL, ","))[1],
   abstract = abs,
-  key = "R-mapspain",
-  textVersion = paste0("Hernangomez D (",year,"). _mapSpain: ",
-    title,"_. <https://doi.org/10.5281/zenodo.5366622>, <",
-    unlist(strsplit(meta$URL, ","))[1],">")
+  key = "R-mapspain"
 )

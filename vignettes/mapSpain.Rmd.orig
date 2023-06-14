@@ -64,7 +64,7 @@ same caching directory on both would speed up the data load on your session.
 
 Some examples of what **mapSpain** can do:
 
-```{r basic}
+```{r basic, fig.cap="Example: Map of Spain"}
 
 library(mapSpain)
 library(ggplot2)
@@ -87,6 +87,9 @@ ggplot(country) +
     )
   )
 
+```
+
+```{r basic2, fig.cap="Example: Provinces of Andalucia"}
 # Plot provinces
 
 Andalucia <- esp_get_prov("Andalucia")
@@ -94,8 +97,9 @@ Andalucia <- esp_get_prov("Andalucia")
 ggplot(Andalucia) +
   geom_sf(fill = "darkgreen", color = "white") +
   theme_bw()
+```
 
-
+```{r basic3, fig.cap="Example: Municipalities of the Basque Country"}
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
@@ -126,7 +130,7 @@ ggplot(Euskadi_CCAA) +
 Let's analyze the distribution of women in each autonomous community with
 `ggplot`:
 
-```{r choro}
+```{r choro, fig.cap="Percentage of women by Autonomous Community (2019)"}
 
 census <- mapSpain::pobmun19
 
@@ -182,7 +186,7 @@ For plotting purposes we would use the
 handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
 used).
 
-```{r thematic}
+```{r thematic, fig.cap="Population density in Spain (2019)"}
 
 # Population density of Spain
 
@@ -198,19 +202,7 @@ munic$area <- municarea
 munic.pop <- merge(munic, pop, all.x = TRUE, by = c("cpro", "cmun"))
 munic.pop$dens <- munic.pop$pob19 / munic.pop$area
 
-br <-
-  c(
-    -Inf,
-    10,
-    25,
-    100,
-    200,
-    500,
-    1000,
-    5000,
-    10000,
-    Inf
-  )
+br <- c(-Inf, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 
 munic.pop$cuts <- cut(munic.pop$dens, br)
@@ -248,30 +240,28 @@ If you need to plot Spain along with another countries, consider using
 [**giscoR**](https://ropengov.github.io/giscoR/) package, that is installed as a
 dependency when you installed **mapSpain**. A basic example:
 
-```{r giscoR}
+```{r giscoR, fig.cap="mapSpain and giscoR example"}
 
 library(giscoR)
 
 # Set the same resolution for a perfect fit
 
-res <- "03"
-
-# Same crs
-target_crs <- 3035
+res <- "20"
 
 all_countries <- gisco_get_countries(
-  resolution = res,
-  epsg = target_crs
-)
-eu_countries <- gisco_get_countries(
-  resolution = res, region = "EU",
-  epsg = target_crs
-)
-ccaa <- esp_get_ccaa(
-  moveCAN = FALSE, resolution = res,
-  epsg = target_crs
-)
+  resolution = res
+  ) |>
+  st_transform(3035)
 
+eu_countries <- gisco_get_countries(
+  resolution = res, region = "EU") |>
+  st_transform(3035)
+
+ccaa <- esp_get_ccaa(
+  moveCAN = FALSE, resolution = res) |>
+  st_transform(3035)
+
+# Plot
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
