@@ -158,7 +158,7 @@ m <- leaflet(Tenerife.leaf,
 
 # Add layers
 m <- m %>%
-  addProviderEspTiles("MDT.Relieve") %>%
+  addProviderEspTiles("IDErioja.Relieve") %>%
   addPolygons(
     color = NA,
     fillColor = "red",
@@ -298,6 +298,10 @@ urls <- vapply(esp_tiles_providers, function(x) {
   )
   rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
   templurl <- paste0(q, rest_temp)
+  
+  if(rest_temp == "="){
+    templurl <- q
+  }
 }, FUN.VALUE = character(1))
 
 
