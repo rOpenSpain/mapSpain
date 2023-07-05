@@ -241,6 +241,10 @@ esp_getTiles <- function(x,
   # Get type of service
   typeprov <- toupper(url_pieces$service)
 
+  # Case of IDErioja
+
+  if (grepl("iderioja", type, ignore.case = TRUE)) typeprov <- "WMTS"
+
   # Add options
   if (is.list(options)) {
     names(options) <- tolower(names(options))
@@ -283,10 +287,10 @@ esp_getTiles <- function(x,
     cache_dir <- esp_hlp_cachedir(cache_dir)
   }
 
-
-
   # Get CRS of Tile
   crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+  # Caso IDErioja
+  if (is.null(crs)) crs <- "epsg:3857"
 
   if (tolower(crs) == tolower("GoogleMapsCompatible")) crs <- "epsg:3857"
 

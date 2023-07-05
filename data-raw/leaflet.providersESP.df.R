@@ -10,6 +10,7 @@ leaflet.providersESP.df <-
   esp_hlp_utf8() %>%
   as.data.frame()
 
+tb <- as_tibble(leaflet.providersESP.df)
 
 usethis::use_data(leaflet.providersESP.df, overwrite = TRUE, compress = "xz")
 
@@ -23,7 +24,7 @@ devtools::load_all()
 # Try MDT
 library(tidyterra)
 ccaa <- esp_get_ccaa(c("Andalucia"), epsg = 3857)
-tile <- esp_getTiles(ccaa, "Copernicus", crop = FALSE)
+tile <- esp_getTiles(ccaa, "IDErioja", crop = FALSE)
 
 ggplot2::ggplot() +
   geom_spatraster_rgb(data = tile)

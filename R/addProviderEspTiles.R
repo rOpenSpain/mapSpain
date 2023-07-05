@@ -1,5 +1,5 @@
 # Leaflet plugin version
-leafletprovidersESP_v <- "v1.3.2"
+leafletprovidersESP_v <- "v1.3.3"
 
 
 #' Include base tiles of Spanish public administrations on a \pkg{leaflet} map
@@ -75,9 +75,13 @@ addProviderEspTiles <- function(map,
   thisprov <- prov_list[[provider]]
 
   # Get url
-  type_prov <- tolower(thisprov$static$service)
-  iswmts <- type_prov == "wmts"
-
+  # Special case for IDErioja
+  if (grepl("rioja", provider, ignore.case = TRUE)) {
+    iswmts <- TRUE
+  } else {
+    type_prov <- tolower(thisprov$static$service)
+    iswmts <- type_prov == "wmts"
+  }
 
   # Prepare each provider
   if (iswmts) {
@@ -111,6 +115,11 @@ addProviderEspTiles <- function(map,
     rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
 
     templurl <- paste0(q, rest_temp)
+
+    # Special case for IDErioja
+    if (grepl("rioja", provider, ignore.case = TRUE)) {
+      templurl <- q
+    }
 
     # Modify default leaflet::tileOptions() with our options
     # Normalize names

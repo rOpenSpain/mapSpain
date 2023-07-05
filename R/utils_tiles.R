@@ -180,6 +180,14 @@ getwmts <- function(newbbox,
 
   # Compose
   ext <- tolower(gsub("image/", "", url_pieces$format))
+
+  # Special case for iderioja
+  if (grepl("iderioja", type, ignore.case = TRUE)) {
+    ext <- tools::file_ext(url_pieces$q)
+  }
+
+
+
   if (!ext %in% c(
     "png", "jpeg", "jpg", "tiff",
     "geotiff"
@@ -198,11 +206,17 @@ getwmts <- function(newbbox,
 
   q <- url_pieces$q
   rest <- url_pieces[names(url_pieces) != "q"]
-  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
+
+  # Special case iderioja
+  if (grepl("rts.larioja", url_pieces$q, ignore.case = TRUE)) {
+    q <- url_pieces$q
+    crs <- "epsg:3857"
+  } else {
+    q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
 
 
-  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
-
+    crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+  }
 
   if (verbose) {
     message("Caching tiles on ", cache_dir)

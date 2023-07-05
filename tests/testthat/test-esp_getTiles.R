@@ -8,7 +8,7 @@ test_that("tiles error", {
 
   ff <- esp_get_prov("La Rioja")
 
-  expect_error(esp_getTiles(ff, options = list(format = "image/aabbcc")))
+  expect_error(esp_getTiles(ff, type = "IGNBase", options = list(format = "image/aabbcc")))
   expect_error(esp_getTiles(ff, type = list(format = "image/aabbcc")))
 })
 
@@ -25,7 +25,6 @@ test_that("tiles online", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   save_png <- function(code, width = 200, height = 200) {

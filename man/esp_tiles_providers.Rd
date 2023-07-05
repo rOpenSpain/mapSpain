@@ -20,21 +20,25 @@ named \code{attribution}.
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.3.2}.
+\strong{v1.3.3}.
 }
 \description{
-A named list of length 98 containing
+A named list of length 102 containing
 the parameters of the url information of different public WMS and WMTS
 providers of Spain.
 
 Implementation of javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.3.2}.
+\strong{v1.3.3}.
 }
 \details{
 Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:
 \itemize{
 \item \code{"IDErioja"}
+\item \code{"IDErioja.Base"}
+\item \code{"IDErioja.Relieve"}
+\item \code{"IDErioja.Claro"}
+\item \code{"IDErioja.Oscuro"}
 \item \code{"IGNBase"}
 \item \code{"IGNBase.Todo"}
 \item \code{"IGNBase.Gris"}

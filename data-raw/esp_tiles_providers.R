@@ -20,13 +20,17 @@ df_pivoted <- df %>%
   )
 
 
+url_static <- "https://rts.larioja.org/mapa-base/rioja/{z}/{x}/{y}.png"
 # Helper to split urls
 esp_hlp_split_url <- function(url_static) {
   split <- unlist(strsplit(url_static, "?", fixed = TRUE))
 
   urlsplit <- list()
-  urlsplit$q <- paste0(split[1], "?")
-
+  if (length(split) > 1) {
+    urlsplit$q <- paste0(split[1], "?")
+  } else {
+    urlsplit$q <- split[1]
+  }
   opts <- unlist(strsplit(split[2], "&"))
 
   names_opts <- vapply(opts, function(x) {
@@ -89,3 +93,40 @@ esp_tiles_providers <- lapply(len_prov, function(x) {
 
 names(esp_tiles_providers) <- df_pivoted$provider
 usethis::use_data(esp_tiles_providers, overwrite = TRUE)
+
+# Check
+
+rm(list = ls())
+# Try
+
+
+esp_set_cache_dir("~/R/maplibs/GISCO", install = TRUE, overwrite = TRUE)
+
+esp_hlp_detect_cache_dir()
+devtools::load_all()
+
+# Try MDT
+library(tidyterra)
+ccaa <- esp_get_ccaa(c("LA Rioja"), epsg = 3857)
+tile <- esp_getTiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
+
+ggplot2::ggplot() +
+  geom_spatraster_rgb(data = tile)
+
+library(leaflet)
+
+leaflet() %>%
+  setView(
+    lat = 40.4166,
+    lng = -3.7038400,
+    zoom = 10
+  ) %>%
+  addProviderEspTiles(provider = "IDErioja.Claro") %>%
+  addProviderEspTiles(provider = "CaminoDeSantiago", options = list(transparent = TRUE))
+
+names(mapSpain::esp_tiles_providers)
+
+esp_tiles_providers$IDErioja$static$q
+provider <- "IGNBase.Todo"
+
+tt <- esp_tiles_providers
