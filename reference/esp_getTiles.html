@@ -21,18 +21,16 @@ v1.3.2."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
     
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
-    <div>
-      <img src="../logo.png" alt="mapSpain-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">mapSpain</a>
+  <a class="navbar-brand me-2" href="../index.html">
+    <img src="../logo.png" alt="mapSpain logo" height="32" class="d-inline-block me-1">mapSpain</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9000</small>
-    </div>
-    
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9000</small>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/mapSpain.html">Get started</a>
 </li>
@@ -70,8 +68,6 @@ v1.3.2."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
   </a>
 </li>
       </ul></div>
-
-    
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
@@ -275,13 +271,10 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">custom_wmts_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_getTiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>downloaded length 0 != reported length 0</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open URL 'https://www.ign.es/wmts/pnoa-ma?request=GetTile&amp;service=WMTS&amp;version=1.0.0&amp;format=image/png&amp;layer=OI.OrthoimageCoverage&amp;style=&amp;tilematrixset=GoogleMapsCompatible&amp;tilematrix=8&amp;tilerow=96&amp;tilecol=125': HTTP status was '404 Not Found'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in download.file(url = q, destfile = outfile, quiet = TRUE, mode = "wb"):</span> cannot open URL 'https://www.ign.es/wmts/pnoa-ma?request=GetTile&amp;service=WMTS&amp;version=1.0.0&amp;format=image/png&amp;layer=OI.OrthoimageCoverage&amp;style=&amp;tilematrixset=GoogleMapsCompatible&amp;tilematrix=8&amp;tilerow=96&amp;tilecol=125'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wmts_tile</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'custom_wmts_tile' not found</span>
+<span class="r-plt img"><img src="esp_getTiles-4.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
