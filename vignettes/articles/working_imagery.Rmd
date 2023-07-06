@@ -302,6 +302,7 @@ urls <- vapply(esp_tiles_providers, function(x) {
   if(rest_temp == "="){
     templurl <- q
   }
+  templurl
 }, FUN.VALUE = character(1))
 
 
