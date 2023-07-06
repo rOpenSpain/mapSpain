@@ -102,7 +102,7 @@ test_that("tiles online", {
     verbose = TRUE
   ))
 
-  s <- esp_getTiles(poly,
+  s <- esp_getTiles(poly, 
     type = jpeg$provider
   )
 
