@@ -299,12 +299,11 @@ urls <- vapply(esp_tiles_providers, function(x) {
   rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
   templurl <- paste0(q, rest_temp)
 
-  if (rest_temp == "=") {
+  if (grepl("rioja", q, ignore.case = TRUE)) {
     templurl <- q
   }
   templurl
 }, FUN.VALUE = character(1))
-
 
 df <- data.frame(
   provider = prov_names,
