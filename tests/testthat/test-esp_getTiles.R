@@ -52,25 +52,30 @@ test_that("tiles online", {
   # Convert from bbox
 
   bbox <- sf::st_bbox(poly)
-  expect_error(esp_getTiles(bbox,"IGNBase.Todo", zoom = 7))
-  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo", 
-  zoom = 7))
+  expect_error(esp_getTiles(bbox, "IGNBase.Todo", zoom = 7))
+  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo",
+    zoom = 7
+  ))
 
-  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo", 
-  zoom = 7)
+  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo",
+    zoom = 7
+  )
 
   expect_s3_class(geom, "sfc")
 
   expect_silent(esp_getTiles(geom, "IGNBase.Todo",
-  zoom = 7))
+    zoom = 7
+  ))
 
   sfc <- esp_getTiles(geom, "IGNBase.Todo", zoom = 7)
 
   # From cache
   expect_message(esp_getTiles(poly, "IGNBase.Todo",
-  zoom = 7, verbose = TRUE))
+    zoom = 7, verbose = TRUE
+  ))
   expect_message(esp_getTiles(poly, "IGNBase.Todo",
-  zoom = 7, verbose = TRUE))
+    zoom = 7, verbose = TRUE
+  ))
   expect_message(esp_getTiles(
     poly,
     zoom = 7,
@@ -134,7 +139,7 @@ test_that("tiles online", {
   expect_s3_class(point, "sfc_POINT")
 
   expect_message(esp_getTiles(point,
-  "IGNBase.Todo",
+    "IGNBase.Todo",
     verbose = TRUE
   ))
 
@@ -174,7 +179,7 @@ test_that("tiles masks and crops", {
   # Try with EPSG 3857
 
   poly <- esp_get_ccaa("La Rioja", epsg = 3857)
-  tile <- esp_getTiles(poly,  "IGNBase.Todo", crop = FALSE)
+  tile <- esp_getTiles(poly, "IGNBase.Todo", crop = FALSE)
   expect_s4_class(tile, "SpatRaster")
 
   tilecrop <- esp_getTiles(poly, "IGNBase.Todo", crop = TRUE)

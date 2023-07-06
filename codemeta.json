@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -233,7 +233,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "spain", "cran", "ropenspain", "ggplot2", "gis"],
-  "fileSize": "2715.64KB",
+  "fileSize": "2703.938KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
