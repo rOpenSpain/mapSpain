@@ -10,7 +10,7 @@ name: test-coverage
 
 jobs:
   test-coverage:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       CURL_SSL_BACKEND: "openssl"
@@ -32,7 +32,8 @@ jobs:
         run: | 
           covr::codecov(
             quiet = FALSE,
-            clean = FALSE
+            clean = FALSE,
+            install_path = file.path(Sys.getenv("RUNNER_TEMP"), "package")
           )
         shell: Rscript {0}
         
@@ -40,7 +41,7 @@ jobs:
         if: always()
         run: |
           ## --------------------------------------------------------------------
-          find ${{ runner.temp }} -name 'testthat.Rout*' -exec cat '{}' \; || true
+          find ${{ runner.temp }}/package -name 'testthat.Rout*' -exec cat '{}' \; || true
         shell: bash
 
       - name: Upload test results
@@ -48,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-test-failures
-          path: ${{ runner.temp }}
+          path: ${{ runner.temp }}/package

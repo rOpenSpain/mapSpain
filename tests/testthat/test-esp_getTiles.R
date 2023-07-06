@@ -214,9 +214,8 @@ test_that("tiles options", {
   
   expect_s4_class(tile2, "SpatRaster")
 
-  # Known problem on SSH certificate of catastro 
-  
-  skip_on_os(c("mac", "linux"))
+  # Known problem on SSH certificate of catastro on ci
+  skip_on_ci()
   tile <- esp_getTiles(poly,
     type = "Catastro.Building",
     options = list(styles = "elfcadastre")
