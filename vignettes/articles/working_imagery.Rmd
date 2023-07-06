@@ -213,7 +213,7 @@ munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
 
 # Create leaflet
 
-bins <- c(0,10,25,100,200,500,1000,5000,10000,Inf)
+bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 
 pal <-

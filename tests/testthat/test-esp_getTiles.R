@@ -36,9 +36,9 @@ test_that("tiles online", {
     path
   }
   expect_s4_class(esp_getTiles(poly, "IGNBase.Todo"), "SpatRaster")
-  
+
   expect_message(esp_getTiles(poly,
-  "IGNBase.Todo",
+    "IGNBase.Todo",
     zoom = 7,
     verbose = TRUE,
     update_cache = TRUE
@@ -104,7 +104,7 @@ test_that("tiles online", {
     verbose = TRUE
   ))
 
-  s <- esp_getTiles(poly, 
+  s <- esp_getTiles(poly,
     type = jpeg$provider
   )
 
@@ -201,10 +201,10 @@ test_that("tiles options", {
   # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
-  
+
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
   poly <- sf::st_buffer(poly, 20)
-  
+
   tile2 <- esp_getTiles(poly,
     type = "RedTransporte.Carreteras",
     options = list(
@@ -213,7 +213,7 @@ test_that("tiles options", {
       format = "image/jpeg"
     )
   )
-  
+
   expect_s4_class(tile2, "SpatRaster")
 
   # Known problem on SSH certificate of catastro on ci
@@ -222,7 +222,7 @@ test_that("tiles options", {
     type = "Catastro.Building",
     options = list(styles = "elfcadastre")
   )
-  expect_s4_class(tile, "SpatRaster") 
+  expect_s4_class(tile, "SpatRaster")
 })
 
 test_that("Custom WMS", {
