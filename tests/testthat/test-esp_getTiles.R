@@ -38,7 +38,7 @@ test_that("tiles online", {
   expect_s4_class(esp_getTiles(poly, "IGNBase.Todo"), "SpatRaster")
   
   expect_message(esp_getTiles(poly,
-  "IGNBase.Todo"
+  "IGNBase.Todo",
     zoom = 7,
     verbose = TRUE,
     update_cache = TRUE
