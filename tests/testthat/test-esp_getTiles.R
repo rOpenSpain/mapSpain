@@ -35,15 +35,17 @@ test_that("tiles online", {
 
     path
   }
-  expect_s4_class(esp_getTiles(poly), "SpatRaster")
+  expect_s4_class(esp_getTiles(poly, "IGNBase.Todo"), "SpatRaster")
+
   expect_message(esp_getTiles(poly,
+    "IGNBase.Todo",
     zoom = 7,
     verbose = TRUE,
     update_cache = TRUE
   ))
 
 
-  s <- esp_getTiles(poly, zoom = 7)
+  s <- esp_getTiles(poly, "IGNBase.Todo", zoom = 7)
 
 
   # With sfc
@@ -52,20 +54,30 @@ test_that("tiles online", {
   # Convert from bbox
 
   bbox <- sf::st_bbox(poly)
-  expect_error(esp_getTiles(bbox, zoom = 7))
-  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), zoom = 7))
+  expect_error(esp_getTiles(bbox, "IGNBase.Todo", zoom = 7))
+  expect_silent(esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo",
+    zoom = 7
+  ))
 
-  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), zoom = 7)
+  frombbox <- esp_getTiles(sf::st_as_sfc(bbox), "IGNBase.Todo",
+    zoom = 7
+  )
 
   expect_s3_class(geom, "sfc")
 
-  expect_silent(esp_getTiles(geom, zoom = 7))
+  expect_silent(esp_getTiles(geom, "IGNBase.Todo",
+    zoom = 7
+  ))
 
-  sfc <- esp_getTiles(geom, zoom = 7)
+  sfc <- esp_getTiles(geom, "IGNBase.Todo", zoom = 7)
 
   # From cache
-  expect_message(esp_getTiles(poly, zoom = 7, verbose = TRUE))
-  expect_message(esp_getTiles(poly, zoom = 7, verbose = TRUE))
+  expect_message(esp_getTiles(poly, "IGNBase.Todo",
+    zoom = 7, verbose = TRUE
+  ))
+  expect_message(esp_getTiles(poly, "IGNBase.Todo",
+    zoom = 7, verbose = TRUE
+  ))
   expect_message(esp_getTiles(
     poly,
     zoom = 7,
@@ -129,10 +141,11 @@ test_that("tiles online", {
   expect_s3_class(point, "sfc_POINT")
 
   expect_message(esp_getTiles(point,
+    "IGNBase.Todo",
     verbose = TRUE
   ))
 
-  p <- esp_getTiles(point, verbose = TRUE)
+  p <- esp_getTiles(point, "IGNBase.Todo", verbose = TRUE)
 
 
 
@@ -153,29 +166,28 @@ test_that("tiles masks and crops", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_ccaa("La Rioja", epsg = 4326)
-  tile <- esp_getTiles(poly, crop = FALSE)
+  tile <- esp_getTiles(poly, "IGNBase.Todo", crop = FALSE)
   expect_s4_class(tile, "SpatRaster")
 
-  tilecrop <- esp_getTiles(poly, crop = TRUE)
+  tilecrop <- esp_getTiles(poly, "IGNBase.Todo", crop = TRUE)
   expect_s4_class(tilecrop, "SpatRaster")
 
-  tilemask <- esp_getTiles(poly, mask = TRUE)
+  tilemask <- esp_getTiles(poly, "IGNBase.Todo", mask = TRUE)
   expect_s4_class(tilemask, "SpatRaster")
 
   # Try with EPSG 3857
 
   poly <- esp_get_ccaa("La Rioja", epsg = 3857)
-  tile <- esp_getTiles(poly, crop = FALSE)
+  tile <- esp_getTiles(poly, "IGNBase.Todo", crop = FALSE)
   expect_s4_class(tile, "SpatRaster")
 
-  tilecrop <- esp_getTiles(poly, crop = TRUE)
+  tilecrop <- esp_getTiles(poly, "IGNBase.Todo", crop = TRUE)
   expect_s4_class(tilecrop, "SpatRaster")
 
-  tilemask <- esp_getTiles(poly, mask = TRUE)
+  tilemask <- esp_getTiles(poly, "IGNBase.Todo", mask = TRUE)
   expect_s4_class(tilemask, "SpatRaster")
 })
 
@@ -188,16 +200,10 @@ test_that("tiles options", {
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
-  skip_on_os(c("mac", "linux"))
   skip_if_offline()
 
   poly <- esp_get_capimun(munic = "^Toledo", epsg = 3857)
   poly <- sf::st_buffer(poly, 20)
-  tile <- esp_getTiles(poly,
-    type = "Catastro.Building",
-    options = list(styles = "elfcadastre")
-  )
-  expect_s4_class(tile, "SpatRaster")
 
   tile2 <- esp_getTiles(poly,
     type = "RedTransporte.Carreteras",
@@ -208,6 +214,14 @@ test_that("tiles options", {
     )
   )
 
+  expect_s4_class(tile2, "SpatRaster")
+
+  # Known problem on SSH certificate of catastro on ci
+  skip_on_ci()
+  tile <- esp_getTiles(poly,
+    type = "Catastro.Building",
+    options = list(styles = "elfcadastre")
+  )
   expect_s4_class(tile, "SpatRaster")
 })
 

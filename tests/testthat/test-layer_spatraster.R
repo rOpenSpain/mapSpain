@@ -18,7 +18,7 @@ test_that("Test layers", {
   skip_if_offline()
 
 
-  tile <- esp_getTiles(x)
+  tile <- esp_getTiles(x, "IGNBase.Todo")
 
 
   expect_error(layer_spatraster(tile))
