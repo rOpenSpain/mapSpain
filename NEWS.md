@@ -8,6 +8,8 @@
     -   `IDErioja.Relieve`
     -   `IDErioja.Claro`
     -   `IDErioja.Oscuro`
+-   `esp_getTiles()` now supports non-OGC compliant WMTS providers, such as
+    Stamen or OpenStreetMaps (see examples).
 
 # mapSpain 0.7.0
 

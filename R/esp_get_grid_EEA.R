@@ -138,7 +138,7 @@ esp_get_grid_EEA <- function(resolution = 100,
   }
 
   err_onload <- try(
-    data_sf <- sf::st_read(
+    sf::st_read(
       init_grid,
       quiet = isFALSE(verbose),
       stringsAsFactors = FALSE

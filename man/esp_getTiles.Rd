@@ -168,6 +168,17 @@ custom_wmts_tile <- esp_getTiles(segovia, custom_wmts)
 
 autoplot(custom_wmts_tile) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
+
+# Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+stamen_water <- list(
+  id = "Stamen_Water",
+  q = "https://stamen-tiles-b.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+)
+
+stamen <- esp_getTiles(segovia, stamen_water, zoommin = 1)
+
+autoplot(stamen) +
+  geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 }
 }
 \seealso{

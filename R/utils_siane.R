@@ -147,7 +147,7 @@ esp_hlp_download_siane <- function(type,
   # Load
 
   err_onload <- try(
-    data_sf <- sf::st_read(
+    sf::st_read(
       filepath,
       quiet = isFALSE(verbose),
       stringsAsFactors = FALSE

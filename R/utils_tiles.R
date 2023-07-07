@@ -175,15 +175,17 @@ getwmts <- function(newbbox,
   }
 
   # get tile list
-  tile_grid <-
-    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = as.numeric(zoom))
+  tile_grid <- slippymath::bbox_to_tile_grid(
+    bbox = bbx,
+    zoom = as.numeric(zoom)
+  )
 
   # Compose
-  ext <- tolower(gsub("image/", "", url_pieces$format))
-
-  # Special case for iderioja
-  if (grepl("iderioja", type, ignore.case = TRUE)) {
+  # Special case for non INSPIRE serves
+  if (is.null(url_pieces$format)) {
     ext <- tools::file_ext(url_pieces$q)
+  } else {
+    ext <- tolower(gsub("image/", "", url_pieces$format))
   }
 
 
@@ -198,7 +200,6 @@ getwmts <- function(newbbox,
     )
   }
 
-
   url_pieces$tilematrixset <- "GoogleMapsCompatible"
   url_pieces$tilematrix <- "{z}"
   url_pieces$tilerow <- "{y}"
@@ -207,8 +208,8 @@ getwmts <- function(newbbox,
   q <- url_pieces$q
   rest <- url_pieces[names(url_pieces) != "q"]
 
-  # Special case iderioja
-  if (grepl("rts.larioja", url_pieces$q, ignore.case = TRUE)) {
+  # Special case WMTS
+  if (isFALSE(grepl("?", url_pieces$q, fixed = TRUE))) {
     q <- url_pieces$q
     crs <- "epsg:3857"
   } else {

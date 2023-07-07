@@ -143,6 +143,17 @@
 #'
 #' autoplot(custom_wmts_tile) +
 #'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
+#'
+#' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+#' stamen_water <- list(
+#'   id = "Stamen_Water",
+#'   q = "https://stamen-tiles-b.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+#' )
+#'
+#' stamen <- esp_getTiles(segovia, stamen_water, zoommin = 1)
+#'
+#' autoplot(stamen) +
+#'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 #' }
 esp_getTiles <- function(x,
                          type = "IDErioja",
@@ -239,12 +250,12 @@ esp_getTiles <- function(x,
   url_pieces <- modifyList(url_pieces, list(attribution = NULL))
 
   # Get type of service
-  typeprov <- toupper(url_pieces$service)
-
-  # Case of IDErioja
-
-  if (grepl("iderioja", type, ignore.case = TRUE)) typeprov <- "WMTS"
-
+  if (is.null(url_pieces$service)) {
+    # On null we assume WMTS, case of non INSPIRE serves OSM)
+    typeprov <- "WMTS"
+  } else {
+    typeprov <- toupper(url_pieces$service)
+  }
   # Add options
   if (is.list(options)) {
     names(options) <- tolower(names(options))
@@ -289,7 +300,7 @@ esp_getTiles <- function(x,
 
   # Get CRS of Tile
   crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
-  # Caso IDErioja
+  # Caso some WMTS
   if (is.null(crs)) crs <- "epsg:3857"
 
   if (tolower(crs) == tolower("GoogleMapsCompatible")) crs <- "epsg:3857"
@@ -444,6 +455,10 @@ esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
 # Helper to split urls
 esp_hlp_split_url <- function(url_static) {
   split <- unlist(strsplit(url_static, "?", fixed = TRUE))
+
+  if (length(split) == 1) {
+    return(list(q = split))
+  }
 
   urlsplit <- list()
   urlsplit$q <- paste0(split[1], "?")

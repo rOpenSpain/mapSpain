@@ -208,7 +208,7 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
   }
 
   err_onload <- try(
-    data_sf <- sf::st_read(
+    sf::st_read(
       gpkgpath,
       quiet = isFALSE(verbose),
       stringsAsFactors = FALSE

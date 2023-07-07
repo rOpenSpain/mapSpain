@@ -79,7 +79,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
   # Load
 
   err_onload <- try(
-    data_sf <- sf::st_read(
+    sf::st_read(
       filepath,
       quiet = isFALSE(verbose),
       stringsAsFactors = FALSE

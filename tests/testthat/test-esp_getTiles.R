@@ -278,4 +278,22 @@ test_that("Custom WMTS", {
 
   tile <- esp_getTiles(segovia, type = custom_wmts)
   expect_s4_class(tile, "SpatRaster")
+
+  # Non-INSPIRE e.g OSM
+  another_wms <- list(
+    id = "OSM2",
+    q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+  )
+
+  tile2 <- esp_getTiles(segovia, type = another_wms)
+  expect_s4_class(tile2, "SpatRaster")
+
+  # With another extension
+  stamen_water <- list(
+    id = "Stamen_Water",
+    q = "https://stamen-tiles-b.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+  )
+
+  tile3 <- esp_getTiles(segovia, type = stamen_water)
+  expect_s4_class(tile3, "SpatRaster")
 })
