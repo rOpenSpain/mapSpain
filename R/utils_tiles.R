@@ -211,12 +211,8 @@ getwmts <- function(newbbox,
   # Special case WMTS
   if (isFALSE(grepl("?", url_pieces$q, fixed = TRUE))) {
     q <- url_pieces$q
-    crs <- "epsg:3857"
   } else {
     q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
-
-
-    crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
   }
 
   if (verbose) {

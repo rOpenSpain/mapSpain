@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.8.0
 
 -   Improve download of NUTS data from **giscoR**.
 -   Upgrade `esp_tiles_providers` to
