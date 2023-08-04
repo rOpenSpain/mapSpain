@@ -42,6 +42,7 @@ esp_clear_cache <- function(config = FALSE,
   # nocov start
   if (config && dir.exists(config_dir)) {
     unlink(config_dir, recursive = TRUE, force = TRUE)
+
     if (verbose) message("mapSpain cache config deleted")
   }
   # nocov end
@@ -50,7 +51,6 @@ esp_clear_cache <- function(config = FALSE,
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) message("mapSpain cached data deleted: ", data_dir)
   }
-
 
   Sys.setenv(MAPSPAIN_CACHE_DIR = "")
   options(mapSpain_cache_dir = NULL)

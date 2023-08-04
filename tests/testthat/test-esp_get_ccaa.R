@@ -13,7 +13,7 @@ test_that("CCAA", {
   n <- esp_get_ccaa(ccaa = f$nuts1.code)
   expect_equal(nrow(n), 19)
 
-  n <- esp_get_ccaa(ccaa = c("Melilla"))
+  n <- esp_get_ccaa(ccaa = "Melilla")
   expect_equal(nrow(n), 1)
 
   n <- esp_get_ccaa(ccaa = f$nuts1.name.alt)
@@ -75,7 +75,7 @@ test_that("ccaa online", {
   n <- esp_get_ccaa_siane(ccaa = f$nuts1.code)
   expect_equal(nrow(n), 19)
 
-  n <- esp_get_ccaa_siane(ccaa = c("Melilla"))
+  n <- esp_get_ccaa_siane(ccaa = "Melilla")
   expect_equal(nrow(n), 1)
 
   n <- esp_get_ccaa_siane(ccaa = f$nuts1.name.alt)

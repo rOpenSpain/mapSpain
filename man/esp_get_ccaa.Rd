@@ -67,7 +67,7 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
-"3", "6.5" or "10".}
+\code{3}, \code{6.5} or \code{10}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
 the dataset provided by IGN.}
@@ -92,14 +92,14 @@ Years available are 2005 up to today.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
-ISO codes (corresponding to level 2) or "codauto" (see \link{esp_codelist}).
+ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
 Ceuta and Melilla are considered as Autonomous Communities on this function.
 
 When calling a NUTS1 level, all the Autonomous Communities of that level
 would be added.
 
-On \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}, \code{year} could be passed as a single year ("YYYY"
-format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+On \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}, \code{year} could be passed as a single year (\code{YYYY}
+format, as end of year) or as a specific date (\code{YYYY-MM-DD} format).
 Historical information starts as of 2005.
 }
 \section{About caching}{

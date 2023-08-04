@@ -49,18 +49,12 @@ esp_get_grid_BDN <- function(resolution = 10,
   res <- as.numeric(resolution)
 
   if (!res %in% c(5, 10)) {
-    stop(
-      "resolution should be one of 5, 10"
-    )
+    stop("resolution should be one of 5, 10")
   }
 
   if (!type %in% c("main", "canary")) {
-    stop(
-      "type should be one of 'main', 'canary'"
-    )
+    stop("type should be one of 'main', 'canary'")
   }
-
-
 
 
   # Url

@@ -20,10 +20,10 @@ test_that("prov offline", {
   n <- esp_get_prov(prov = f$nuts1.code)
   expect_equal(nrow(n), 52)
 
-  n <- esp_get_prov(prov = c("Canarias"))
+  n <- esp_get_prov(prov = "Canarias")
   expect_equal(nrow(n), 2)
 
-  n <- esp_get_prov(prov = c("Baleares"))
+  n <- esp_get_prov(prov = "Baleares")
   expect_equal(nrow(n), 1)
 
   n <- esp_get_prov(prov = f$nuts1.name.alt)
@@ -92,10 +92,10 @@ test_that("prov online", {
   n <- esp_get_prov_siane(prov = f$nuts1.code)
   expect_equal(nrow(n), 52)
 
-  n <- esp_get_prov_siane(prov = c("Canarias"))
+  n <- esp_get_prov_siane(prov = "Canarias")
   expect_equal(nrow(n), 2)
 
-  n <- esp_get_prov_siane(prov = c("Baleares"))
+  n <- esp_get_prov_siane(prov = "Baleares")
   expect_equal(nrow(n), 1)
 
   n <- esp_get_prov_siane(prov = f$nuts1.name.alt)

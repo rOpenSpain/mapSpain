@@ -4,12 +4,26 @@
 \name{pobmun19}
 \alias{pobmun19}
 \title{Population by municipality (2019)}
+\format{
+An example data frame with
+8,131 rows containing the
+population data by municipality in Spain (2019).
+
+\describe{
+\item{cpro}{INE code of the province.}
+\item{provincia}{name of the province.}
+\item{cmun}{INE code of the municipality.}
+\item{name}{Name of the municipality.}
+\item{pob19}{Overall population (2019)}
+\item{men}{Men population (2019)}
+\item{women}{Women population (2019)}
+}
+}
 \source{
 INE: Instituto Nacional de Estadistica \url{https://www.ine.es/}
 }
 \description{
-A data frame with 8,131
-rows containing the population data by municipality in Spain (2019).
+Population by municipality (2019)
 }
 \examples{
 data("pobmun19")

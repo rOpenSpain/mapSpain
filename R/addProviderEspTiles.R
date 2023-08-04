@@ -19,7 +19,7 @@ leafletprovidersESP_v <- "v1.3.3"
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
 #'  **`r leafletprovidersESP_v`**.
 #'
-#' @return A map object generated with [leaflet::leaflet()].
+#' @return A modified [leaflet::leaflet()] `map` object.
 #'
 #'
 #'
@@ -49,9 +49,7 @@ leafletprovidersESP_v <- "v1.3.3"
 #'   addProviderEspTiles(provider = "RedTransporte.Carreteras")
 #'
 #' PuertadelSol
-addProviderEspTiles <- function(map,
-                                provider,
-                                layerId = NULL,
+addProviderEspTiles <- function(map, provider, layerId = NULL,
                                 group = NULL,
                                 options = providerEspTileOptions()) {
   if (!requireNamespace("leaflet", quietly = TRUE)) {
@@ -99,19 +97,13 @@ addProviderEspTiles <- function(map,
     names(def_opts) <- tolower(names(def_opts))
     names(options) <- tolower(names(options))
 
-
     optionend <- modifyList(def_opts, options)
 
     # Build template url
     temp_pieces <- thisprov$static
     q <- temp_pieces$q
     # Remove
-    rest <- modifyList(
-      temp_pieces, list(
-        attribution = NULL,
-        q = NULL
-      )
-    )
+    rest <- modifyList(temp_pieces, list(attribution = NULL, q = NULL))
 
     rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
 
@@ -127,21 +119,12 @@ addProviderEspTiles <- function(map,
     tileops <- leaflet::tileOptions()
     names(tileops) <- tolower(names(tileops))
 
-
-    optionend <- modifyList(
-      tileops,
-      optionend
-    )
-
+    optionend <- modifyList(tileops, optionend)
     optionend <- do.call(leaflet::tileOptions, optionend)
 
-    leaflet::addTiles(
-      map,
-      urlTemplate = templurl,
-      attribution = attribution,
-      layerId = layerId,
-      group = group,
-      options = optionend
+    leaflet::addTiles(map,
+      urlTemplate = templurl, attribution = attribution,
+      layerId = layerId, group = group, options = optionend
     )
   } else {
     # Build template
@@ -157,23 +140,19 @@ addProviderEspTiles <- function(map,
     temp_pieces <- thisprov$static
     names(temp_pieces) <- tolower(names(temp_pieces))
 
-
     templurl <- gsub("\\?$", "", temp_pieces$q)
     layers <- temp_pieces$layers
 
     # Remove parameters only affecting static urls
     todel <- names(temp_pieces) %in% c(
-      "attribution", "q", "service",
-      "request", "layers", "srs", "width",
-      "height", "bbox"
+      "attribution", "q", "service", "request",
+      "layers", "srs", "width", "height",
+      "bbox"
     )
 
     names(def_opts) <- tolower(names(def_opts))
 
-    def_opts <- modifyList(
-      def_opts,
-      temp_pieces[!todel]
-    )
+    def_opts <- modifyList(def_opts, temp_pieces[!todel])
 
     # Add custom options
     names(options) <- tolower(names(options))
@@ -183,20 +162,12 @@ addProviderEspTiles <- function(map,
     wmsopts <- leaflet::WMSTileOptions()
     names(wmsopts) <- tolower(names(wmsopts))
 
+    optionend <- modifyList(wmsopts, optionend)
 
-    optionend <- modifyList(
-      wmsopts,
-      optionend
-    )
-
-    leaflet::addWMSTiles(
-      map,
-      baseUrl = templurl,
-      layers = layers,
-      attribution = attribution,
-      layerId = layerId,
-      group = group,
-      options = optionend
+    leaflet::addWMSTiles(map,
+      baseUrl = templurl, layers = layers,
+      attribution = attribution, layerId = layerId,
+      group = group, options = optionend
     )
   }
 }

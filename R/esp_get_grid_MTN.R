@@ -175,20 +175,14 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
   # Downloading
   if (dwnload) {
     err_dwnload <- try(
-      download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
       err_dwnload <- try(
-        download.file(url, filepath,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       )
     }
@@ -217,11 +211,7 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
   }
 
   err_onload <- try(
-    sf::st_read(
-      gpkgpath,
-      quiet = isFALSE(verbose),
-      stringsAsFactors = FALSE
-    ),
+    sf::st_read(gpkgpath, quiet = isFALSE(verbose), stringsAsFactors = FALSE),
     silent = TRUE
   )
   # nocov start

@@ -51,12 +51,13 @@ esp_get_country <- function(moveCAN = TRUE, ...) {
   # Extract geom column
   names <- names(data_sf)
 
-  which.geom <-
-    which(vapply(data_sf, function(f) {
+  which_geom <- which(
+    vapply(data_sf, function(f) {
       inherits(f, "sfc")
-    }, TRUE))
+    }, TRUE)
+  )
 
-  nm <- names(which.geom)
+  nm <- names(which_geom)
 
   # Join all
   init <- sf::st_crs(data_sf)

@@ -78,10 +78,8 @@ esp_dict_region_code(valsmix, destination = "iso2")
 }
 
 
-vals <- c(
-  "La Rioja", "Sevilla", "Madrid",
-  "Jaen", "Orense", "Baleares"
-)
+vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
+
 esp_dict_translate(vals)
 esp_dict_translate(vals, lang = "es")
 esp_dict_translate(vals, lang = "ca")

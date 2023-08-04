@@ -6,6 +6,8 @@
 #'
 #' @source INE: PC_Axis files.
 #'
+#' @return A \CRANpkg{sf} polygon object.
+#'
 #' @family political
 #'
 #' @param region A vector of names and/or codes for provinces or `NULL` to get
@@ -152,8 +154,7 @@ esp_get_comarca <- function(region = NULL,
       can <- data_sf[grep("05", data_sf$codauto), ]
 
       # Move CAN
-      can <- sf::st_sf(
-        sf::st_drop_geometry(can),
+      can <- sf::st_sf(sf::st_drop_geometry(can),
         geom = sf::st_geometry(can) + offset,
         crs = sf::st_crs(can)
       )
@@ -168,8 +169,7 @@ esp_get_comarca <- function(region = NULL,
   }
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
-  data_sf <-
-    data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$COMAGR), ]
+  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$COMAGR), ]
 
   return(data_sf)
 }

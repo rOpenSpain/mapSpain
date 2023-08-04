@@ -44,15 +44,11 @@ esp_get_grid_EEA <- function(resolution = 100,
   res <- as.numeric(resolution)
 
   if (!res %in% c(1, 10, 100)) {
-    stop(
-      "resolution should be one of 1, 10 or 100"
-    )
+    stop("resolution should be one of 1, 10 or 100")
   }
 
   if (!type %in% c("main", "canary")) {
-    stop(
-      "type should be one of 'main', 'canary'"
-    )
+    stop("type should be one of 'main', 'canary'")
   }
 
   newtype <- switch(type,
@@ -72,12 +68,7 @@ esp_get_grid_EEA <- function(resolution = 100,
 
   filepath <- file.path(cache_dir, filename)
 
-
-  init_grid <- paste0(
-    newtype, "_",
-    resolution,
-    "km.shp"
-  )
+  init_grid <- paste0(newtype, "_", resolution, "km.shp")
 
   init_grid <- file.path(cache_dir, init_grid)
 
@@ -88,10 +79,7 @@ esp_get_grid_EEA <- function(resolution = 100,
   if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
-      message(
-        "Downloading file from ",
-        url
-      )
+      message("Downloading file from ", url)
     }
     if (verbose && update_cache) {
       message("\nUpdating cache")
@@ -106,20 +94,14 @@ esp_get_grid_EEA <- function(resolution = 100,
   # Downloading
   if (dwnload) {
     err_dwnload <- try(
-      download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
       err_dwnload <- try(
-        download.file(url, filepath,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       )
     }
@@ -148,11 +130,7 @@ esp_get_grid_EEA <- function(resolution = 100,
   }
 
   err_onload <- try(
-    sf::st_read(
-      init_grid,
-      quiet = isFALSE(verbose),
-      stringsAsFactors = FALSE
-    ),
+    sf::st_read(init_grid, quiet = isFALSE(verbose), stringsAsFactors = FALSE),
     silent = TRUE
   )
   # nocov start

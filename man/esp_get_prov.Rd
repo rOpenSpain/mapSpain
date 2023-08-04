@@ -67,7 +67,7 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
-"3", "6.5" or "10".}
+\code{3}, \code{6.5} or \code{10}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
 the dataset provided by IGN.}

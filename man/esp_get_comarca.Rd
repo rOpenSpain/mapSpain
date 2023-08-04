@@ -46,6 +46,9 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
+\value{
+A \CRANpkg{sf} polygon object.
+}
 \description{
 Returns 'comarcas' of Spain as polygons,as provided by the
 \strong{INE} (Instituto Nacional de Estadistica).

@@ -69,12 +69,12 @@ Note that this differs of the centroid of the boundaries of the
 municipality, returned by \code{\link[=esp_get_munic]{esp_get_munic()}}.
 }
 \details{
-\code{year} could be passed as a single year ("YYYY" format, as end of year) or
-as a specific date ("YYYY-MM-DD" format). Historical information starts as
+\code{year} could be passed as a single year (\code{YYYY} format, as end of year) or
+as a specific date (\code{YYYY-MM-DD} format). Historical information starts as
 of 2005.
 
 When using \code{region} you can use and mix names and NUTS codes (levels 1,
-2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro". See
+2 or 3), ISO codes (corresponding to level 2 or 3) or \code{cpro}. See
 \link{esp_codelist}
 
 When calling a superior level (Province, Autonomous Community or NUTS1) ,

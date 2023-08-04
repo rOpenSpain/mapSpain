@@ -6,14 +6,14 @@
 \alias{esp_munic.sf}
 \title{All Municipalities \code{POLYGON} object of Spain (2019)}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
-8,131 rows and fields:
+A \code{sf} object (resolution: 1:1million, EPSG:4258) object with
+8,131 rows and columns:
 \describe{
-\item{codauto}{INE code of each autonomous community.}
-\item{ine.ccaa.name}{INE name of each autonomous community.}
-\item{cpro}{INE code of each province.}
-\item{ine.prov.name}{INE name of each province.}
-\item{cmun}{INE code of each municipality.}
+\item{codauto}{INE code of the autonomous community.}
+\item{ine.ccaa.name}{INE name of the autonomous community.}
+\item{cpro}{INE code of the province.}
+\item{ine.prov.name}{INE name of the province.}
+\item{cmun}{INE code of the municipality.}
 \item{name}{Name of the municipality.}
 \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
 combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}

@@ -112,16 +112,13 @@ esp_get_can_box <- function(style = "right",
     stop("style should be one of 'right','left','box'")
   }
 
-
   epsg <- as.character(epsg)
 
   if (!epsg %in% c("4258", "4326", "3035", "3857")) {
     stop("epsg should be one of '4258','4326','3035', '3857'")
   }
 
-
   can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
-
   bbox <- sf::st_bbox(can)
 
 

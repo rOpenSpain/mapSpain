@@ -40,7 +40,7 @@ layers (e.g. markers and polygons) can share the same group name. See
 \item{...}{Arguments passed on to \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}.}
 }
 \value{
-A map object generated with \code{\link[leaflet:leaflet]{leaflet::leaflet()}}.
+A modified \code{\link[leaflet:leaflet]{leaflet::leaflet()}} \code{map} object.
 }
 \description{
 Include tiles of public Spanish organisms to a

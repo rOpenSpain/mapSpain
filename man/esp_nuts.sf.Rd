@@ -6,18 +6,18 @@
 \alias{esp_nuts.sf}
 \title{All NUTS \code{POLYGON} object of Spain}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
-86 rows and fields:
+A \code{sf} object (resolution: 1:1million, EPSG:4258) with
+86 rows and columns:
 \describe{
-\item{COAST_TYPE}{COAST_TYPE}
-\item{FID}{FID}
-\item{NUTS_NAME}{NUTS name on local alphabet}
-\item{MOUNT_TYPE}{MOUNT_TYPE}
-\item{NAME_LATN}{Name on Latin characters}
-\item{CNTR_CODE}{Eurostat Country code}
-\item{URBN_TYPE}{URBN_TYPE}
-\item{NUTS_ID}{NUTS identifier}
 \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+\item{NUTS_ID}{NUTS identifier}
+\item{URBN_TYPE}{Urban Type, see Details}
+\item{CNTR_CODE}{Eurostat Country code \code{ES}}
+\item{NAME_LATN}{NUTS name on Latin characters}
+\item{NUTS_NAME}{NUTS name on local alphabet}
+\item{MOUNT_TYPE}{Mount Type, see Details}
+\item{COAST_TYPE}{Coast Type, see Details}
+\item{FID}{FID}
 \item{geometry}{geometry field}
 }
 }
@@ -28,6 +28,36 @@ A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
 \description{
 A \CRANpkg{sf} object including all NUTS levels of Spain as provided by
 GISCO (2016 version).
+}
+\details{
+\strong{MOUNT_TYPE}: Mountain typology:
+\itemize{
+\item 1: More than 50 \% of the surface is covered by topographic mountain areas.
+\item 2: More than 50 \% of the regional population lives in topographic
+mountain areas.
+\item 3: More than 50 \% of the surface is covered by topographic mountain areas
+and where more than 50 \% of the regional population lives in these
+mountain areas.
+\item 4: Non-mountain region / other regions.
+\item 0: No classification provided
+}
+
+\strong{URBN_TYPE}: Urban-rural typology:
+\itemize{
+\item 1: Predominantly urban region.
+\item 2: Intermediate region.
+\item 3: Predominantly rural region.
+\item 0: No classification provided
+}
+
+\strong{COAST_TYPE}: Coastal typology:
+\itemize{
+\item 1: Coastal (on coast).
+\item 2: Coastal (less than 50\% of population living within 50 km. of the
+coastline).
+\item 3: Non-coastal region.
+\item 0: No classification provided
+}
 }
 \examples{
 data("esp_nuts.sf")

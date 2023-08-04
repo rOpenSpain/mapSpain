@@ -12,7 +12,7 @@
 #' A data frame used internally for translating codes and names of the
 #' different subdivisions of Spain. The data frame provides the hierarchy of
 #' the subdivisions including NUTS1 level, Autonomous Communities
-#' (equivalent to NUTS2), Provinces and NUTS3 level. See Note.
+#' (equivalent to NUTS2), Provinces and NUTS3 level. See **Note**.
 #'
 #' @source
 #' * **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
@@ -24,31 +24,61 @@
 #'
 #' @format
 #' A data frame with `r nrow(mapSpain::esp_codelist)` rows
-#' codes as columns
-#'   * **nuts+.code**: NUTS code of each subdivision.
-#'   * **nuts+.code**: NUTS name of each subdivision.
-#'   * **codauto**: INE code of each autonomous community.
-#'   * **iso2.+.code**: ISO2 code of each autonomous
-#'   community and province.
-#'   * **ine.+.name**: INE name of each autonomous community
-#'   and province.
-#'   * **iso2.+.name.(lang)**: ISO2 name of each autonomous community
-#'   and province. Several languages available.
-#'   * **cldr.+.name.(lang)**: CLDR name of each autonomous community and
-#'   province. Several languages available.
-#'   * **ccaa.short.+**: Short (common) name of each autonomous
-#'   community. Several languages available.
-#'   * **cpro**: INE code of each province.
-#'   * **prov.shortname.+**: Short (common) name of each province.
-#'   Several languages available.
+#' codes and columns:
+#'
+#' \describe{
+#'  \item{nuts1.code}{NUTS 1 code}
+#'  \item{nuts1.name}{NUTS 1 name}
+#'  \item{nuts1.name.alt}{NUTS 1 alternative name}
+#'  \item{nuts1.shortname.es}{NUTS1 1 short (common) name (Spanish)}
+#'  \item{codauto}{INE code of the autonomous community}
+#'  \item{iso2.ccaa.code}{ISO2 code of the autonomous community}
+#'  \item{nuts2.code}{NUTS 2 Code}
+#'  \item{ine.ccaa.name}{INE name of the autonomous community}
+#'  \item{iso2.ccaa.name.es}{ISO2 name of the autonomous community (Spanish)}
+#'  \item{iso2.ccaa.name.ca}{ISO2 name of the autonomous community (Catalan)}
+#'  \item{iso2.ccaa.name.gl}{ISO2 name of the autonomous community (Galician)}
+#'  \item{iso2.ccaa.name.eu}{ISO2 name of the autonomous community (Basque)}
+#'  \item{nuts2.name}{NUTS 2 name}
+#'  \item{cldr.ccaa.name.en}{CLDR name of the autonomous community (English)}
+#'  \item{cldr.ccaa.name.es}{CLDR name of the autonomous community (Spanish)}
+#'  \item{cldr.ccaa.name.ca}{CLDR name of the autonomous community (Catalan)}
+#'  \item{cldr.ccaa.name.ga}{CLDR name of the autonomous community (Galician)}
+#'  \item{cldr.ccaa.name.eu}{CLDR name of the autonomous community (Basque)}
+#'  \item{ccaa.shortname.en}{Short (common) name of the autonomous community
+#'     (English)}
+#'  \item{ccaa.shortname.es}{Short (common) name of the autonomous community
+#'     (Spanish)}
+#'  \item{ccaa.shortname.ca}{Short (common) name of the autonomous community
+#'     (Catalan)}
+#'  \item{ccaa.shortname.ga}{Short (common) name of the autonomous community
+#'     (Galician)}
+#'  \item{ccaa.shortname.eu}{Short (common) name of the autonomous community
+#'     (Basque)}
+#'  \item{cpro}{INE code of the province}
+#'  \item{iso2.prov.code}{ISO2 code of the province}
+#'  \item{nuts.prov.code}{NUTS code of the province}
+#'  \item{ine.prov.name}{INE name of the province}
+#'  \item{iso2.prov.name.es}{ISO2 name of the province (Spanish)}
+#'  \item{iso2.prov.name.ca}{ISO2 name of the province (Catalan)}
+#'  \item{iso2.prov.name.ga}{ISO2 name of the province (Galician)}
+#'  \item{iso2.prov.name.eu}{ISO2 name of the province (Basque)}
+#'  \item{cldr.prov.name.en}{CLDR name of the province (English)}
+#'  \item{cldr.prov.name.es}{CLDR name of the province (Spanish)}
+#'  \item{cldr.prov.name.ca}{CLDR name of the province (Catalan)}
+#'  \item{cldr.prov.name.ga}{CLDR name of the province (Galician)}
+#'  \item{cldr.prov.name.eu}{CLDR name of the province (Basque)}
+#'  \item{prov.shortname.en}{Short (common) name of the province (English)}
+#'  \item{prov.shortname.es}{Short (common) name of the province (Spanish)}
+#'  \item{prov.shortname.ca}{Short (common) name of the province (Catalan)}
+#'  \item{prov.shortname.ga}{Short (common) name of the province (Galician)}
+#'  \item{prov.shortname.eu}{Short (common) name of the province (Basque)}
+#'  \item{nuts3.code}{NUTS 3 code}
+#'  \item{nuts3.name}{NUTS 3 name}
+#'  \item{nuts3.shortname.es}{NUTS 3 short (common) name}
+#' }
 #'
 #' @note
-#' Languages available are:
-#'   * **"en"**: English
-#'   * **"es"**: Spanish
-#'   * **"ca"**: Catalan
-#'   * **"ga"**: Galician
-#'   * **"eu"**: Basque
 #'
 #' Although NUTS2 matches the first subdivision level of Spain
 #' (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
@@ -86,21 +116,47 @@ NULL
 #'
 #'
 #' @format
-#' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
-#' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and fields:
+#' A `sf` object (resolution: 1:1million, EPSG:4258) with
+#' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and columns:
 #' \describe{
-#'   \item{COAST_TYPE}{COAST_TYPE}
-#'   \item{FID}{FID}
-#'   \item{NUTS_NAME}{NUTS name on local alphabet}
-#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
-#'   \item{NAME_LATN}{Name on Latin characters}
-#'   \item{CNTR_CODE}{Eurostat Country code}
-#'   \item{URBN_TYPE}{URBN_TYPE}
-#'   \item{NUTS_ID}{NUTS identifier}
 #'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+#'   \item{NUTS_ID}{NUTS identifier}
+#'   \item{URBN_TYPE}{Urban Type, see Details}
+#'   \item{CNTR_CODE}{Eurostat Country code \code{ES}}
+#'   \item{NAME_LATN}{NUTS name on Latin characters}
+#'   \item{NUTS_NAME}{NUTS name on local alphabet}
+#'   \item{MOUNT_TYPE}{Mount Type, see Details}
+#'   \item{COAST_TYPE}{Coast Type, see Details}
+#'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
 #' @example inst/examples/esp_nuts_sf.R
+#'
+#' @details
+#'
+#' **MOUNT_TYPE**: Mountain typology:
+#'  - 1: More than 50 % of the surface is covered by topographic mountain areas.
+#'  - 2: More than 50 % of the regional population lives in topographic
+#'    mountain areas.
+#'  - 3: More than 50 % of the surface is covered by topographic mountain areas
+#'    and where more than 50 % of the regional population lives in these
+#'    mountain areas.
+#'  - 4: Non-mountain region / other regions.
+#'  - 0: No classification provided
+#'
+#' **URBN_TYPE**: Urban-rural typology:
+#'  - 1: Predominantly urban region.
+#'  - 2: Intermediate region.
+#'  - 3: Predominantly rural region.
+#'  - 0: No classification provided
+#'
+#' **COAST_TYPE**: Coastal typology:
+#'   - 1: Coastal (on coast).
+#'   - 2: Coastal (less than 50% of population living within 50 km. of the
+#'        coastline).
+#'   - 3: Non-coastal region.
+#'   - 0: No classification provided
+#'
 NULL
 
 #' All Municipalities `POLYGON` object of Spain (2019)
@@ -124,14 +180,14 @@ NULL
 #'
 #' @seealso [esp_get_munic()].
 #' @format
-#' A `POLYGON` data frame (resolution: 1:1million, EPSG:4258) object with
-#' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and fields:
+#' A `sf` object (resolution: 1:1million, EPSG:4258) object with
+#' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and columns:
 #' \describe{
-#'   \item{codauto}{INE code of each autonomous community.}
-#'   \item{ine.ccaa.name}{INE name of each autonomous community.}
-#'   \item{cpro}{INE code of each province.}
-#'   \item{ine.prov.name}{INE name of each province.}
-#'   \item{cmun}{INE code of each municipality.}
+#'   \item{codauto}{INE code of the autonomous community.}
+#'   \item{ine.ccaa.name}{INE name of the autonomous community.}
+#'   \item{cpro}{INE code of the province.}
+#'   \item{ine.prov.name}{INE name of the province.}
+#'   \item{cmun}{INE code of the municipality.}
 #'   \item{name}{Name of the municipality.}
 #'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
 #'     combination of **cpro** and **cmun**, aligned with INE coding scheme.}
@@ -149,9 +205,20 @@ NULL
 #'
 #' @docType data
 #'
-#' @description
-#' A data frame with `r prettyNum(nrow(mapSpain::pobmun19), big.mark=",")`
-#' rows containing the population data by municipality in Spain (2019).
+#' @format
+#' An example data frame with
+#' `r prettyNum(nrow(mapSpain::pobmun19), big.mark=",")` rows containing the
+#' population data by municipality in Spain (2019).
+#'
+#' \describe{
+#'   \item{cpro}{INE code of the province.}
+#'   \item{provincia}{name of the province.}
+#'   \item{cmun}{INE code of the municipality.}
+#'   \item{name}{Name of the municipality.}
+#'   \item{pob19}{Overall population (2019)}
+#'   \item{men}{Men population (2019)}
+#'   \item{women}{Women population (2019)}
+#' }
 #'
 #' @source INE: Instituto Nacional de Estadistica <https://www.ine.es/>
 #'

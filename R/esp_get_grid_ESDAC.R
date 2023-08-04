@@ -88,10 +88,7 @@ esp_get_grid_ESDAC <- function(resolution = 10,
   if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
     if (verbose) {
-      message(
-        "Downloading file from ",
-        url
-      )
+      message("Downloading file from ", url)
     }
     if (verbose && update_cache) {
       message("\nUpdating cache")
@@ -106,20 +103,14 @@ esp_get_grid_ESDAC <- function(resolution = 10,
   # Downloading
   if (dwnload) {
     err_dwnload <- try(
-      download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
       err_dwnload <- try(
-        download.file(url, filepath,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       )
     }
@@ -148,11 +139,7 @@ esp_get_grid_ESDAC <- function(resolution = 10,
   }
 
   err_onload <- try(
-    sf::st_read(
-      init_grid,
-      quiet = isFALSE(verbose),
-      stringsAsFactors = FALSE
-    ),
+    sf::st_read(init_grid, quiet = isFALSE(verbose), stringsAsFactors = FALSE),
     silent = TRUE
   )
   # nocov start

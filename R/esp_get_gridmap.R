@@ -61,8 +61,7 @@ esp_get_hex_prov <- function(prov = NULL) {
 
     dfcpro <- mapSpain::esp_codelist
     dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-    cprocodes <-
-      unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
+    cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
 
     data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
   }
@@ -128,8 +127,7 @@ esp_get_grid_prov <- function(prov = NULL) {
 
     dfcpro <- mapSpain::esp_codelist
     dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-    cprocodes <-
-      unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
+    cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
 
     data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
   }
