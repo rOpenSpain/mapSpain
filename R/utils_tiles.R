@@ -56,7 +56,9 @@ getwms <- function(newbbox,
   rest <- url_pieces[names(url_pieces) != "q"]
   q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
 
-  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+  crs <- unlist(
+    url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")]
+  )
 
   filename <-
     paste0(
@@ -301,51 +303,27 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
 
 #' @name dl_t
 #' @noRd
-dl_t <-
-  function(x,
-           z,
-           ext,
-           src,
-           q,
-           verbose,
-           cache_dir,
-           update_cache) {
-    outfile <-
-      paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
+dl_t <- function(x, z, ext, src, q, verbose, cache_dir, update_cache) {
+  outfile <- paste0(
+    cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".",
+    ext
+  )
 
-    if (!file.exists(outfile) ||
-      isTRUE(update_cache)) {
-      q <-
-        gsub(
-          pattern = "{x}",
-          replacement = x[1],
-          x = q,
-          fixed = TRUE
-        )
-      q <-
-        gsub(
-          pattern = "{y}",
-          replacement = x[2],
-          x = q,
-          fixed = TRUE
-        )
-      q <- gsub(
-        pattern = "{z}",
-        replacement = z,
-        x = q,
-        fixed = TRUE
-      )
-      if (verbose) {
-        message("Downloading ", q, "\n")
-      }
-      download.file(
-        url = q,
-        destfile = outfile,
-        quiet = TRUE,
-        mode = "wb"
-      )
-    } else if (verbose) {
-      message("Tile cached on ", outfile)
+  if (!file.exists(outfile) || isTRUE(update_cache)) {
+    q <- gsub(pattern = "{x}", replacement = x[1], x = q, fixed = TRUE)
+    q <- gsub(pattern = "{y}", replacement = x[2], x = q, fixed = TRUE)
+    q <- gsub(pattern = "{z}", replacement = z, x = q, fixed = TRUE)
+    if (verbose) {
+      message("Downloading ", q, "\n")
     }
-    return(outfile)
+    download.file(
+      url = q,
+      destfile = outfile,
+      quiet = TRUE,
+      mode = "wb"
+    )
+  } else if (verbose) {
+    message("Tile cached on ", outfile)
   }
+  return(outfile)
+}

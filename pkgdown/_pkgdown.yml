@@ -2,7 +2,7 @@ url: 'https://ropenspain.github.io/mapSpain'
 
 repo:
   branch: main
-  
+
 development:
   mode: auto
 
@@ -106,3 +106,4 @@ authors:
       https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Instituto Geográfico Nacional:
     href: 'https://www.ign.es/'
+

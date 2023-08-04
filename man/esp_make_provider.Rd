@@ -31,7 +31,7 @@ This function is meant to work with services provided as of the
 
 Note that:
 \itemize{
-\item \pkg{mapSpain} would not provide advice on the parameter \code{q} to be
+\item \CRANpkg{mapSpain} would not provide advice on the parameter \code{q} to be
 provided.
 \item Currently, on \strong{WMTS} requests only services with
 \code{tilematrixset=GoogleMapsCompatible} are supported.

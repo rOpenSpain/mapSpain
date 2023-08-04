@@ -21,7 +21,7 @@
 #'
 #' @export
 #'
-#' @param x An \pkg{sf} or `sfc` object.
+#' @param x An \CRANpkg{sf} or `sfc` object.
 #'
 #' @param type This parameter could be either:
 #'   - The name of one of the  pre-defined providers
@@ -36,8 +36,8 @@
 #'   download fewer tiles than you probably want. Use `1` or `2` to
 #'   increase the resolution.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
-#'   `FALSE` otherwise. If `x` is an \pkg{sf} object with one `POINT`, crop is set
-#'   to `FALSE`.
+#'   `FALSE` otherwise. If `x` is an \CRANpkg{sf} object with one `POINT`, crop
+#'   is set to `FALSE`.
 #' @param res Resolution (in pixels) of the final tile. Only valid for WMS.
 #' @param bbox_expand A numeric value that indicates the expansion percentage
 #' of the bounding box of `x`.
@@ -214,7 +214,10 @@ esp_getTiles <- function(x,
     type <- type$id
 
     if (any(is.null(url_pieces), is.null(type))) {
-      stop("Custom provider should be a named list with an 'id' and a 'q' field")
+      stop(
+        "Custom provider should be a named list with an 'id' ",
+        "and a 'q' field"
+      )
     }
 
     url_pieces <- esp_hlp_split_url(url_pieces)
@@ -282,7 +285,8 @@ esp_getTiles <- function(x,
 
     # Ignore TileMatrix fields in WMTS
     if (typeprov == "WMTS") {
-      options <- options[!grepl("tilematrix", names(options), ignore.case = TRUE)]
+      ig <- !grepl("tilematrix", names(options), ignore.case = TRUE)
+      options <- options[ig]
     }
 
 
@@ -299,7 +303,9 @@ esp_getTiles <- function(x,
   }
 
   # Get CRS of Tile
-  crs <- unlist(url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")])
+  crs <- unlist(
+    url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")]
+  )
   # Caso some WMTS
   if (is.null(crs)) crs <- "epsg:3857"
 

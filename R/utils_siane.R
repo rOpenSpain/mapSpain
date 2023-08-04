@@ -101,17 +101,23 @@ esp_hlp_download_siane <- function(type,
 
   # Downloading
   if (dwnload) {
-    err_dwnload <- try(download.file(url, filepath,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ), silent = TRUE)
+    err_dwnload <- try(
+      download.file(url, filepath,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ),
+      silent = TRUE
+    )
 
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
-      err_dwnload <- try(download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ), silent = TRUE)
+      err_dwnload <- try(
+        download.file(url, filepath,
+          quiet = isFALSE(verbose),
+          mode = "wb"
+        ),
+        silent = TRUE
+      )
     }
 
     # If not then message
@@ -280,9 +286,10 @@ esp_hlp_get_siane <- function(type,
       as.character(Sys.Date()),
       df$fecha_bajamod
     ))
-  df <-
-    df[df$fecha_alta <= selDate &
-      selDate <= df$fecha_bajamod, colnames(data_sf)]
+  df <- df[
+    df$fecha_alta <= selDate & selDate <= df$fecha_bajamod,
+    colnames(data_sf)
+  ]
 
   return(df)
 }

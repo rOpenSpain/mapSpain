@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      CURL_SSL_BACKEND: "openssl"
 
     steps:
       - uses: actions/checkout@v3
@@ -26,17 +25,16 @@ jobs:
         with:
           extra-packages: any::covr
           needs: coverage
-          cache-version: tile
 
       - name: Test coverage
-        run: | 
+        run: |
           covr::codecov(
             quiet = FALSE,
             clean = FALSE,
             install_path = file.path(Sys.getenv("RUNNER_TEMP"), "package")
           )
         shell: Rscript {0}
-        
+
       - name: Show testthat output
         if: always()
         run: |
@@ -50,3 +48,4 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
+

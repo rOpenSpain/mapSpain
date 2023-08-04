@@ -3,7 +3,8 @@
 \name{addProviderEspTiles}
 \alias{addProviderEspTiles}
 \alias{providerEspTileOptions}
-\title{Include base tiles of Spanish public administrations on a \pkg{leaflet} map}
+\title{Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
+map}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
 \strong{v1.3.3}.

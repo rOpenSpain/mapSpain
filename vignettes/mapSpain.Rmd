@@ -1,6 +1,6 @@
 ---
 title: "Get Started"
-author: "Diego Hernangómez"
+author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 description: >
   First steps with `mapSpain`.
 output: rmarkdown::html_vignette
@@ -9,6 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
+
+<!-- mapSpain.Rmd is generated from mapSpain.Rmd.orig. Please edit that file -->
 
 
 
@@ -219,10 +221,7 @@ munic.pop$cuts <- cut(munic.pop$dens, br)
 ggplot(munic.pop) +
   geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
   scale_fill_manual(
-    values = c("grey5", hcl.colors(
-      length(br) - 2,
-      "Spectral"
-    )),
+    values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(
       title = "Pop. per km2",
@@ -262,9 +261,7 @@ library(giscoR)
 
 res <- "20"
 
-all_countries <- gisco_get_countries(
-  resolution = res
-) |>
+all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
 
 eu_countries <- gisco_get_countries(

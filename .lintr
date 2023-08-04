@@ -1,4 +1,3 @@
 linters: linters_with_defaults() # see vignette("lintr")
-exclusions: list(
-    "data-raw"
-  )
+encoding: "UTF-8"
+exclusions: list("data-raw")

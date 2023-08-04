@@ -26,7 +26,7 @@ A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258) object with
 \code{NUTS_RG_20M_2016_4326.geojson}.
 }
 \description{
-A \pkg{sf} object including all NUTS levels of Spain as provided by
+A \CRANpkg{sf} object including all NUTS levels of Spain as provided by
 GISCO (2016 version).
 }
 \examples{

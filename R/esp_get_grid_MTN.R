@@ -1,11 +1,11 @@
-#' Get \pkg{sf} polygons of the national geographic grids provided by IGN
+#' Get \CRANpkg{sf} polygons of the national geographic grids provided by IGN
 #'
 #' @description
-#' Loads a \pkg{sf} polygon with the geographic grids of Spain.
+#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain.
 #'
 #' @family grids
 #'
-#' @return A \pkg{sf} polygon
+#' @return A \CRANpkg{sf} polygon
 #'
 #'
 #' @source IGN data via a custom CDN (see
@@ -135,7 +135,10 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
   }
 
   # Url
-  url <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MTN/dist/MTN_grids.zip"
+  url <- paste0(
+    "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
+    "MTN/dist/MTN_grids.zip"
+  )
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
@@ -171,17 +174,23 @@ esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
 
   # Downloading
   if (dwnload) {
-    err_dwnload <- try(download.file(url, filepath,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ), silent = TRUE)
+    err_dwnload <- try(
+      download.file(url, filepath,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ),
+      silent = TRUE
+    )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
-      err_dwnload <- try(download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ), silent = TRUE)
+      err_dwnload <- try(
+        download.file(url, filepath,
+          quiet = isFALSE(verbose),
+          mode = "wb"
+        ),
+        silent = TRUE
+      )
     }
 
     # If not then message

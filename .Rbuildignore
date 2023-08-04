@@ -37,3 +37,5 @@
 ^pkgdown\.yml$
 ^\.imgbotconfig$
 ^\.lintr$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$

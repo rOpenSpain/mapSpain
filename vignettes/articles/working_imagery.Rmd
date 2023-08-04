@@ -1,11 +1,8 @@
 ---
 title: "Working with imagery"
-author: "Diego Hernangómez"
+author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 description: >
   Learn how to include images on your maps.
-editor_options: 
-  markdown: 
-    wrap: 80
 ---
 
 ```{r, include = FALSE}
@@ -50,15 +47,15 @@ library(tidyterra)
 
 # Logroño
 
-LGN <- esp_get_munic(munic = "Logroño")
+lgn_borders <- esp_get_munic(munic = "Logroño")
 
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
-LGN <- st_transform(LGN, 3857)
+lgn_borders <- st_transform(lgn_borders, 3857)
 
-tile_LGN <- esp_getTiles(LGN, "IGNBase.Todo", bbox_expand = 0.5)
+tile_lgn <- esp_getTiles(lgn_borders, "IGNBase.Todo", bbox_expand = 0.5)
 
-ggplot(LGN) +
-  geom_spatraster_rgb(data = tile_LGN) +
+ggplot(lgn_borders) +
+  geom_spatraster_rgb(data = tile_lgn) +
   geom_sf(fill = NA, linewidth = 2, color = "blue")
 ```
 
@@ -67,38 +64,31 @@ ggplot(LGN) +
 Some tiles could be loaded with or without an alpha value, that controls the
 transparency of the object:
 
-```{r static2, fig.asp=1}
-Madrid <- esp_get_ccaa("Madrid", epsg = 3857)
+```{r static2}
+madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-BG <- esp_getTiles(Madrid, "IGNBase.Gris", zoommin = 1)
-UA.opaque <-
-  esp_getTiles(Madrid, "UnidadesAdm.Limites",
-    transparent = FALSE
-  )
+basemap <- esp_getTiles(madrid, "IGNBase.Gris", zoommin = 1)
+tile_opaque <- esp_getTiles(madrid, "UnidadesAdm.Limites", transparent = FALSE)
 
 ggplot() +
-  geom_spatraster_rgb(data = BG) +
-  geom_spatraster_rgb(data = UA.opaque) +
+  geom_spatraster_rgb(data = basemap) +
+  geom_spatraster_rgb(data = tile_opaque) +
   theme_void()
 ```
 
 Now let's check the same code using the `tranparent = TRUE` option:
 
-```{r static_transp, fig.asp=1}
+```{r static_transp}
 # Example with transparency
 
-UA.alpha <- esp_getTiles(Madrid,
-  "UnidadesAdm.Limites",
-  transparent = TRUE
-)
+tile_alpha <- esp_getTiles(madrid, "UnidadesAdm.Limites", transparent = TRUE)
 
 # Same code than above for plotting
-
 ggplot() +
-  geom_spatraster_rgb(data = BG) +
-  geom_spatraster_rgb(data = UA.alpha) +
+  geom_spatraster_rgb(data = basemap) +
+  geom_spatraster_rgb(data = tile_alpha) +
   theme_void()
 ```
 
@@ -110,17 +100,15 @@ Another nice feature is the ability of masking the tiles, so more advanced maps
 can be plotted:
 
 ```{r static3}
-LaRioja <- esp_get_prov("La Rioja", epsg = 3857)
+rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-Basemap <- esp_getTiles(LaRioja, "IGNBase.Gris",
-  bbox_expand = 0.1, zoommin = 1
-)
+basemap <- esp_getTiles(rioja, "IGNBase.Gris", bbox_expand = 0.1, zoommin = 1)
 
-Mask <- esp_getTiles(LaRioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
+masked <- esp_getTiles(rioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
 
 ggplot() +
-  geom_spatraster_rgb(data = Basemap, maxcell = 10e6) +
-  geom_spatraster_rgb(data = Mask, maxcell = 10e6)
+  geom_spatraster_rgb(data = basemap, maxcell = 10e6) +
+  geom_spatraster_rgb(data = masked, maxcell = 10e6)
 ```
 
 ## Dynamic maps with Leaflet
@@ -133,37 +121,25 @@ can find some quick examples:
 ```{r leaflet1}
 library(leaflet)
 
-Tenerife.leaf <-
-  esp_get_nuts(
-    region = "Tenerife",
-    epsg = 4326,
-    moveCAN = FALSE
-  )
+tenerife_leaf <- esp_get_nuts(
+  region = "Tenerife", epsg = 4326,
+  moveCAN = FALSE
+)
 
 
-bbox <- as.double(round(
-  st_bbox(Tenerife.leaf) + c(-1, -1, 1, 1), 2
-))
+bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
 
 # Start leaflet
-m <- leaflet(Tenerife.leaf,
+m <- leaflet(tenerife_leaf,
   elementId = "tenerife-earthquakes",
-  width = "100%",
-  height = "60vh",
-  options = leafletOptions(
-    minZoom = 9,
-    maxZoom = 18
-  )
+  width = "100%", height = "60vh",
+  options = leafletOptions(minZoom = 9, maxZoom = 18)
 )
 
 # Add layers
 m <- m %>%
   addProviderEspTiles("IDErioja.Relieve") %>%
-  addPolygons(
-    color = NA,
-    fillColor = "red",
-    group = "Polygon"
-  ) %>%
+  addPolygons(color = NA, fillColor = "red", group = "Polygon") %>%
   addProviderEspTiles("Geofisica.Terremotos365dias",
     group = "Earthquakes"
   )
@@ -199,11 +175,10 @@ munic$area_km2 <- munic$st_area_sh * 10000
 pop <- mapSpain::pobmun19
 
 # Paste
-munic_pop <-
-  merge(munic, pop[, c("cmun", "cpro", "pob19")],
-    by = c("cmun", "cpro"),
-    all.x = TRUE
-  )
+munic_pop <- merge(munic, pop[, c("cmun", "cpro", "pob19")],
+  by = c("cmun", "cpro"),
+  all.x = TRUE
+)
 
 munic_pop$dens <- munic_pop$pob19 / munic_pop$area_km2
 munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
@@ -212,16 +187,10 @@ munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
 )
 
 # Create leaflet
-
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 
-pal <-
-  colorBin("inferno",
-    domain = munic_pop$dens,
-    bins = bins,
-    reverse = TRUE
-  )
+pal <- colorBin("inferno", domain = munic_pop$dens, bins = bins, reverse = TRUE)
 
 labels <- sprintf(
   "<strong>%s</strong><br/><em>%s</em><br/>%s pers. / km<sup>2</sup>",
@@ -231,13 +200,8 @@ labels <- sprintf(
 ) %>% lapply(htmltools::HTML)
 
 
-
 leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
-  setView(
-    lng = -3.684444,
-    lat = 40.308611,
-    zoom = 5
-  ) %>%
+  setView(lng = -3.684444, lat = 40.308611, zoom = 5) %>%
   addProviderEspTiles("IGNBase.Gris") %>%
   addPolygons(
     data = munic_pop,
@@ -255,9 +219,8 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
     popup = labels
   ) %>%
   addLegend(
-    pal = pal,
-    values = bins,
-    opacity = 0.7, title = "<small>Pop. Density km<sup>2</sup></small><br><small>(2019)</small>",
+    pal = pal, values = bins, opacity = 0.7,
+    title = "<small>Pop. Density km<sup>2</sup></small><br><small>(2019)</small>",
     position = "bottomright"
   )
 ```

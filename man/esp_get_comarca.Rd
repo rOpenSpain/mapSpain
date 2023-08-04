@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_comarca.R
 \name{esp_get_comarca}
 \alias{esp_get_comarca}
-\title{Get 'comarcas' of Spain as \pkg{sf} polygons}
+\title{Get 'comarcas' of Spain as \CRANpkg{sf} polygons}
 \source{
 INE: PC_Axis files.
 }

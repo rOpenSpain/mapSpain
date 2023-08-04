@@ -1,16 +1,17 @@
-#' Get \pkg{sf} polygons of the national geographic grids provided by EEA
+#' Get \CRANpkg{sf} polygons of the national geographic grids provided by EEA
 #'
 #' @description
-#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
-#' European Environment Agency (EEA).
+#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
+#' by the European Environment Agency (EEA).
 #'
 #' @family grids
 #'
-#' @return A \pkg{sf} polygon
+#' @return A \CRANpkg{sf} polygon
 #'
 #'
 #' @source
-#' [EEA reference grid](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2).
+#' [EEA reference
+#' grid](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2).
 #'
 #' @export
 #' @param resolution Resolution of the grid in kms. Could be `1`, `10` or `100`.
@@ -60,7 +61,10 @@ esp_get_grid_EEA <- function(resolution = 100,
   )
 
   # Url
-  url <- "https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file"
+  url <- paste0(
+    "https://www.eea.europa.eu/data-and-maps/data/",
+    "eea-reference-grids-2/gis-files/spain-shapefile/at_download/file"
+  )
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
   # Create filepath
@@ -101,17 +105,23 @@ esp_get_grid_EEA <- function(resolution = 100,
 
   # Downloading
   if (dwnload) {
-    err_dwnload <- try(download.file(url, filepath,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ), silent = TRUE)
+    err_dwnload <- try(
+      download.file(url, filepath,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ),
+      silent = TRUE
+    )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
-      err_dwnload <- try(download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ), silent = TRUE)
+      err_dwnload <- try(
+        download.file(url, filepath,
+          quiet = isFALSE(verbose),
+          mode = "wb"
+        ),
+        silent = TRUE
+      )
     }
 
     # If not then message

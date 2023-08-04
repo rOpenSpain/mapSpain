@@ -2,7 +2,8 @@
 leafletprovidersESP_v <- "v1.3.3"
 
 
-#' Include base tiles of Spanish public administrations on a \pkg{leaflet} map
+#' Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
+#' map
 #'
 #' @description
 #' Include tiles of public Spanish organisms to a

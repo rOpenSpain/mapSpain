@@ -75,7 +75,7 @@ NULL
 #' @docType data
 #'
 #' @description
-#' A \pkg{sf} object including all NUTS levels of Spain as provided by
+#' A \CRANpkg{sf} object including all NUTS levels of Spain as provided by
 #' GISCO (2016 version).
 #'
 #' @source
@@ -111,8 +111,8 @@ NULL
 #' @name esp_munic.sf
 #'
 #' @description
-#' A \pkg{sf} object including all municipalities of Spain as provided by GISCO
-#' (2019 version).
+#' A \CRANpkg{sf} object including all municipalities of Spain as provided by
+#' GISCO (2019 version).
 #'
 #' @docType data
 #'
@@ -169,7 +169,7 @@ NULL
 #' @description
 #' `r lifecycle::badge('superseded')`
 #'
-#' This data frame is not longer in use by \pkg{mapSpain}. See
+#' This data frame is not longer in use by \CRANpkg{mapSpain}. See
 #' [esp_tiles_providers] instead.
 #'
 #' A data frame containing information of different public WMS and WMTS

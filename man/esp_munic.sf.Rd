@@ -25,8 +25,8 @@ combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
 data.
 }
 \description{
-A \pkg{sf} object including all municipalities of Spain as provided by GISCO
-(2019 version).
+A \CRANpkg{sf} object including all municipalities of Spain as provided by
+GISCO (2019 version).
 }
 \examples{
 data("esp_munic.sf")

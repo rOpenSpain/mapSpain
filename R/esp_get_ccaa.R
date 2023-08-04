@@ -1,9 +1,10 @@
-#' Get Autonomous Communities of Spain as \pkg{sf} polygons and points
+#' Get Autonomous Communities of Spain as \CRANpkg{sf} polygons and points
 #'
 #' @description
 #' Returns
-#' [Autonomous Communities of Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain)
-#' as polygons and points at a specified scale.
+#' [Autonomous Communities of
+#' Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) as
+#' polygons and points at a specified scale.
 #'
 #' * [esp_get_ccaa()] uses GISCO (Eurostat) as source. Please use
 #'   [giscoR::gisco_attributions()]
@@ -14,7 +15,7 @@
 #'
 #' @name esp_get_ccaa
 #'
-#' @return A \pkg{sf} object specified by `spatialtype`.
+#' @return A \CRANpkg{sf} object specified by `spatialtype`.
 #'
 #'
 #' @export

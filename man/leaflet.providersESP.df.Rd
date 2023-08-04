@@ -21,7 +21,7 @@ the service:
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
-This data frame is not longer in use by \pkg{mapSpain}. See
+This data frame is not longer in use by \CRANpkg{mapSpain}. See
 \link{esp_tiles_providers} instead.
 
 A data frame containing information of different public WMS and WMTS

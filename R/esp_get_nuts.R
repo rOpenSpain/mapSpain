@@ -1,8 +1,8 @@
-#' Get NUTS of Spain as \pkg{sf} polygons and points
+#' Get NUTS of Spain as \CRANpkg{sf} polygons and points
 #'
 #' @description
-#' Returns
-#' [NUTS regions of Spain](https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Spain)
+#' Returns [NUTS regions of
+#' Spain](https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Spain)
 #' as polygons and points at a specified scale, as provided by
 #' [GISCO](https://ec.europa.eu/eurostat/web/gisco)
 #' (Geographic Information System of the Commission, depending of Eurostat).
@@ -20,7 +20,7 @@
 #' @family nuts
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#' @return A \pkg{sf} object specified by `spatialtype`.
+#' @return A \CRANpkg{sf} object specified by `spatialtype`.
 #'
 #' @note
 #' Please check the download and usage provisions on
@@ -221,10 +221,10 @@ esp_get_nuts <- function(year = "2016",
 
   dwnload <- TRUE
 
-  if (year == "2016" &&
-    resolution == "01" &&
-    epsg == "4326" &&
-    spatialtype == "RG" && isFALSE(update_cache)) {
+  if (all(
+    year == "2016", resolution == "01", epsg == "4326", spatialtype == "RG",
+    isFALSE(update_cache)
+  )) {
     if (verbose) {
       message("Reading from esp_nuts.sf")
     }

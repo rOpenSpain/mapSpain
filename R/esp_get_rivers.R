@@ -1,12 +1,13 @@
-#' Get \pkg{sf} polygon and lines of rivers, channels and other wetlands of Spain
+#' Get \CRANpkg{sf} polygon and lines of rivers, channels and other wetlands of
+#' Spain
 #'
 #' @description
-#' Loads a \pkg{sf} polygon or line object representing rivers, channels,
+#' Loads a \CRANpkg{sf} polygon or line object representing rivers, channels,
 #' reservoirs and other wetlands of Spain
 #'
 #' @family natural
 #'
-#' @return A \pkg{sf} polygon or line object.
+#' @return A \CRANpkg{sf} polygon or line object.
 #'
 #'
 #' @source IGN data via a custom CDN (see

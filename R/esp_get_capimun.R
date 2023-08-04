@@ -1,7 +1,7 @@
-#' Get \pkg{sf} points of the municipalities of Spain
+#' Get \CRANpkg{sf} points of the municipalities of Spain
 #'
 #' @description
-#' Get a \pkg{sf} point with the location of the political powers for
+#' Get a \CRANpkg{sf} point with the location of the political powers for
 #' each municipality (possibly the center of the municipality).
 #'
 #' Note that this differs of the centroid of the boundaries of the
@@ -10,7 +10,7 @@
 #' @family political
 #' @family municipalities
 #'
-#' @return A \pkg{sf} point object.
+#' @return A \CRANpkg{sf} point object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

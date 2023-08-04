@@ -1,15 +1,15 @@
-#' Get a \pkg{sf} hexbin or squared polygon of Spain
+#' Get a \CRANpkg{sf} hexbin or squared polygon of Spain
 #'
 #' @description
-#' Loads a hexbin map (\pkg{sf} object) or a map of squares with the boundaries of
-#' the provinces or autonomous communities of Spain.
+#' Loads a hexbin map (\CRANpkg{sf} object) or a map of squares with the
+#' boundaries of the provinces or autonomous communities of Spain.
 #'
 #' @rdname esp_get_gridmap
 #' @name  esp_get_gridmap
 #'
 #' @family political
 #'
-#' @return A \pkg{sf} POLYGON object.
+#' @return A \CRANpkg{sf} POLYGON object.
 #'
 #'
 #' @export

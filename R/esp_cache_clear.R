@@ -1,4 +1,4 @@
-#' Clear your \pkg{mapSpain} cache dir
+#' Clear your \CRANpkg{mapSpain} cache dir
 #'
 #' @family cache utilities
 #'
@@ -8,21 +8,21 @@
 #' **Use this function with caution**. This function would clear your cached
 #' data and configuration, specifically:
 #'
-#' * Deletes the \pkg{mapSpain} config directory
+#' * Deletes the \CRANpkg{mapSpain} config directory
 #'   (`rappdirs::user_config_dir("mapSpain", "R")`).
 #' * Deletes the `cache_dir` directory.
 #' * Deletes the values on stored on `Sys.getenv("MAPSPAIN_CACHE_DIR")` and
 #'   `options(mapSpain_cache_dir)`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
-#'   \pkg{mapSpain}.
+#'   \CRANpkg{mapSpain}.
 #' @param cached_data If this is set to `TRUE`, it will delete your
 #'   `cache_dir` and all its content.
 #' @inheritParams esp_set_cache_dir
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as it you would never have installed and/or used \pkg{mapSpain}.
+#' as it you would never have installed and/or used \CRANpkg{mapSpain}.
 #'
 #' @examples
 #'

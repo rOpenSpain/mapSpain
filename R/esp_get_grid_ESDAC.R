@@ -1,16 +1,17 @@
-#' Get \pkg{sf} polygons of the national geographic grids provided by ESDAC
+#' Get \CRANpkg{sf} polygons of the national geographic grids provided by ESDAC
 #'
 #' @description
-#' Loads a \pkg{sf} polygon with the geographic grids of Spain as provided by the
-#' European Soil Data Centre (ESDAC).
+#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
+#' by the European Soil Data Centre (ESDAC).
 #'
 #' @family grids
 #'
-#' @return A \pkg{sf} polygon
+#' @return A \CRANpkg{sf} polygon
 #'
 #'
 #' @source
-#' [EEA reference grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
+#' [EEA reference
+#' grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 #'
 #' @references
 #' - Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
@@ -58,12 +59,18 @@ esp_get_grid_ESDAC <- function(resolution = 10,
 
   # Url
   if (res == 10) {
-    url <- "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
+    url <- paste0(
+      "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
+      "Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
+    )
     filename <- "grids_for_single_eu25_countries_etrs_laea_10k.zip"
     init_grid <- "grid_spain_etrs_laea_10k.shp"
   } else {
     # nocov start
-    url <- "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/Grids/grid_spain_etrs_laea_1k.zip"
+    url <- paste0(
+      "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
+      "Grids/grid_spain_etrs_laea_1k.zip"
+    )
     filename <- "grid_spain_etrs_laea_1k.zip"
     init_grid <- "grid_spain_etrs_laea_1k.shp"
     # nocov end
@@ -98,17 +105,23 @@ esp_get_grid_ESDAC <- function(resolution = 10,
 
   # Downloading
   if (dwnload) {
-    err_dwnload <- try(download.file(url, filepath,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ), silent = TRUE)
+    err_dwnload <- try(
+      download.file(url, filepath,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ),
+      silent = TRUE
+    )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
-      err_dwnload <- try(download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ), silent = TRUE)
+      err_dwnload <- try(
+        download.file(url, filepath,
+          quiet = isFALSE(verbose),
+          mode = "wb"
+        ),
+        silent = TRUE
+      )
     }
 
     # If not then message

@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_country.R
 \name{esp_get_country}
 \alias{esp_get_country}
-\title{Get the borders of Spain as a \pkg{sf} polygon}
+\title{Get the borders of Spain as a \CRANpkg{sf} polygon}
 \usage{
 esp_get_country(moveCAN = TRUE, ...)
 }
@@ -43,10 +43,10 @@ default is \code{FALSE}.}
   }}
 }
 \value{
-A \pkg{sf} polygon object.
+A \CRANpkg{sf} polygon object.
 }
 \description{
-Returns the boundaries of Spain as a single \pkg{sf} polygon at a
+Returns the boundaries of Spain as a single \CRANpkg{sf} polygon at a
 specified scale.
 }
 \section{About caching}{

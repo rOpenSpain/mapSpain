@@ -1,4 +1,4 @@
-#' Get 'comarcas' of Spain as \pkg{sf} polygons
+#' Get 'comarcas' of Spain as \CRANpkg{sf} polygons
 #'
 #' @description
 #' Returns 'comarcas' of Spain as polygons,as provided by the

@@ -29,10 +29,11 @@
 #'
 #' @details
 #' This function is meant to work with services provided as of the
-#'  [OGC Standard](http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap).
+#' [OGC
+#' Standard](http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap).
 #'
 #' Note that:
-#' - \pkg{mapSpain} would not provide advice on the parameter `q` to be
+#' - \CRANpkg{mapSpain} would not provide advice on the parameter `q` to be
 #'   provided.
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.

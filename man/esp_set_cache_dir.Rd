@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_cache.R
 \name{esp_set_cache_dir}
 \alias{esp_set_cache_dir}
-\title{Set your \pkg{mapSpain} cache dir}
+\title{Set your \CRANpkg{mapSpain} cache dir}
 \usage{
 esp_set_cache_dir(
   cache_dir,

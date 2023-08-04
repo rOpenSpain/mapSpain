@@ -2,13 +2,13 @@
 % Please edit documentation in R/esp_cache_clear.R
 \name{esp_clear_cache}
 \alias{esp_clear_cache}
-\title{Clear your \pkg{mapSpain} cache dir}
+\title{Clear your \CRANpkg{mapSpain} cache dir}
 \usage{
 esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{config}{if \code{TRUE}, will delete the configuration folder of
-\pkg{mapSpain}.}
+\CRANpkg{mapSpain}.}
 
 \item{cached_data}{If this is set to \code{TRUE}, it will delete your
 \code{cache_dir} and all its content.}
@@ -23,7 +23,7 @@ Invisible. This function is called for its side effects.
 \strong{Use this function with caution}. This function would clear your cached
 data and configuration, specifically:
 \itemize{
-\item Deletes the \pkg{mapSpain} config directory
+\item Deletes the \CRANpkg{mapSpain} config directory
 (\code{rappdirs::user_config_dir("mapSpain", "R")}).
 \item Deletes the \code{cache_dir} directory.
 \item Deletes the values on stored on \code{Sys.getenv("MAPSPAIN_CACHE_DIR")} and
@@ -32,7 +32,7 @@ data and configuration, specifically:
 }
 \details{
 This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used \pkg{mapSpain}.
+as it you would never have installed and/or used \CRANpkg{mapSpain}.
 }
 \examples{
 

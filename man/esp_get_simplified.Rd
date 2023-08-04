@@ -38,12 +38,12 @@ default is \code{FALSE}.}
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }
 \value{
-A \pkg{sf} POLYGON object.
+A \CRANpkg{sf} POLYGON object.
 }
 \description{
-Loads a simplified map (\pkg{sf} object) with the boundaries of the provinces or
-autonomous communities of Spain, as provided by the \strong{INE} (Instituto
-Nacional de Estadistica).
+Loads a simplified map (\CRANpkg{sf} object) with the boundaries of the
+provinces or autonomous communities of Spain, as provided by the \strong{INE}
+(Instituto Nacional de Estadistica).
 }
 \details{
 Results are provided \strong{without CRS}, as provided on source.

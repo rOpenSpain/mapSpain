@@ -3,7 +3,7 @@
 \name{esp_get_prov}
 \alias{esp_get_prov}
 \alias{esp_get_prov_siane}
-\title{Get Provinces of Spain as \pkg{sf} polygons and points}
+\title{Get Provinces of Spain as \CRANpkg{sf} polygons and points}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -73,7 +73,7 @@ default is \code{FALSE}.}
 the dataset provided by IGN.}
 }
 \value{
-A \pkg{sf} object specified by \code{spatialtype}.
+A \CRANpkg{sf} object specified by \code{spatialtype}.
 }
 \description{
 Returns

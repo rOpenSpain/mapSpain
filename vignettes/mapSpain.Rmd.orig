@@ -1,6 +1,6 @@
 ---
 title: "Get Started"
-author: "Diego Hernangómez"
+author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 description: >
   First steps with `mapSpain`.
 output: rmarkdown::html_vignette
@@ -9,6 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
+
+<!-- mapSpain.Rmd is generated from mapSpain.Rmd.orig. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -64,7 +66,7 @@ same caching directory on both would speed up the data load on your session.
 
 Some examples of what **mapSpain** can do:
 
-```{r basic, fig.cap="Example: Map of Spain"}
+```{r basic, fig.cap="Example: Map of Spain", fig.asp=0.7}
 
 library(mapSpain)
 library(ggplot2)
@@ -89,7 +91,7 @@ ggplot(country) +
 
 ```
 
-```{r basic2, fig.cap="Example: Provinces of Andalucia"}
+```{r basic2, fig.cap="Example: Provinces of Andalucia", fig.asp=0.55}
 # Plot provinces
 
 Andalucia <- esp_get_prov("Andalucia")
@@ -99,7 +101,7 @@ ggplot(Andalucia) +
   theme_bw()
 ```
 
-```{r basic3, fig.cap="Example: Municipalities of the Basque Country"}
+```{r basic3, fig.cap="Example: Municipalities of the Basque Country", fig.asp=0.8}
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
@@ -130,7 +132,7 @@ ggplot(Euskadi_CCAA) +
 Let's analyze the distribution of women in each autonomous community with
 `ggplot`:
 
-```{r choro, fig.cap="Percentage of women by Autonomous Community (2019)"}
+```{r choro, fig.cap="Percentage of women by Autonomous Community (2019)", fig.asp=0.7}
 
 census <- mapSpain::pobmun19
 
@@ -186,7 +188,7 @@ For plotting purposes we would use the
 handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
 used).
 
-```{r thematic, fig.cap="Population density in Spain (2019)"}
+```{r thematic, fig.cap="Population density in Spain (2019)", fig.asp=0.9}
 
 # Population density of Spain
 
@@ -209,11 +211,7 @@ munic.pop$cuts <- cut(munic.pop$dens, br)
 
 ggplot(munic.pop) +
   geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
-  scale_fill_manual(
-    values = c("grey5", hcl.colors(
-      length(br) - 2,
-      "Spectral"
-    )),
+  scale_fill_manual(values = c("grey5", hcl.colors(length(br) - 2,"Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(
       title = "Pop. per km2",
@@ -240,7 +238,7 @@ If you need to plot Spain along with another countries, consider using
 [**giscoR**](https://ropengov.github.io/giscoR/) package, that is installed as a
 dependency when you installed **mapSpain**. A basic example:
 
-```{r giscoR, fig.cap="mapSpain and giscoR example"}
+```{r giscoR, fig.cap="mapSpain and giscoR example", fig.asp=0.9}
 
 library(giscoR)
 
@@ -248,9 +246,7 @@ library(giscoR)
 
 res <- "20"
 
-all_countries <- gisco_get_countries(
-  resolution = res
-  ) |>
+all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
 
 eu_countries <- gisco_get_countries(
