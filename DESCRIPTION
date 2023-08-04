@@ -37,7 +37,7 @@ VignetteBuilder:
     knitr
 Config/Needs/coverage: covr
 Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse,
-    ropenspain/rostemplate, ropensci/rnaturalearthhires, IamKDO/GADMTools
+    ropenspain/rostemplate, ropensci/rnaturalearthhires
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas

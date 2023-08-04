@@ -1,6 +1,6 @@
 ---
 title: "mapSpain: Mapas de España en R [Spanish]"
-author: "Diego Hernangómez"
+author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 description: >
   Mapas de España en R de manera rápida y sencilla.
 output:
@@ -121,8 +121,8 @@ reactable(galicia,
 
 ### Comparando mapSpain con otras alternativas
 
-Comparamos ahora **mapSpain** con otros dos paquetes que proporcionan objetos
-`sf` de distintos paises:
+Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` de
+distintos paises:
 
 ```{r compara}
 # rnaturalearth
@@ -130,13 +130,9 @@ library(rnaturalearth)
 
 esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf")
 
-# gadm
-library(GADMTools)
-esp_gdam <- gadm_sf_loadCountries("ESP")
+# mapSpain
 
-# MapSpain
-
-esp_mapSpain <- esp_get_country(epsg = 4326)
+esp_mapspain <- esp_get_country(epsg = 4326)
 
 # Imagen Ria Ferrol
 tile <- esp_getTiles(esp_get_munic(munic = "Ferrol", epsg = 3857),
@@ -148,16 +144,12 @@ tile <- esp_getTiles(esp_get_munic(munic = "Ferrol", epsg = 3857),
 library(tidyterra)
 
 
-esp_all <- bind_rows(
-  esp_rnat,
-  esp_gdam$sf,
-  esp_mapSpain
-)
+esp_all <- bind_rows(esp_rnat, esp_mapspain)
 
-esp_all$source <- c("rnaturalearth", "gdam", "mapSpain")
+esp_all$source <- c("rnaturalearth", "mapSpain")
 
 ggplot(esp_all) +
-  geom_spatraster_rgb(data = tile) +
+  geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(aes(color = source),
     fill = NA, show.legend = "line",
     linewidth = 1.2
@@ -168,16 +160,14 @@ ggplot(esp_all) +
     ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "blue", "black")) +
+  scale_color_manual(values = c("red", "black")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
 ```
 
--   rnaturalearth: No capta bien el contorno.
+-   **rnaturalearth**: No capta bien el contorno.
 
--   GADM: Proporciona datos muy detallados.
-
--   mapSpain: Resultados satisfactorios.
+-   **mapSpain**: Resultados satisfactorios.
 
 ### Almacenamiento
 

@@ -32,7 +32,6 @@ jobs:
             dieghernan/pkgdev
             ropenspain/rostemplate
             ropensci/rnaturalearthhires
-            IamKDO/GADMTools
           needs: website
 
       - name: Deploy package

@@ -42,8 +42,6 @@ You can install the developing version of **mapSpain** using the
 
 ``` r
 # Install mapSpain in R:
-
-# Install mapSpain in R:
 install.packages("mapSpain",
   repos = c(
     "https://ropenspain.r-universe.dev",
