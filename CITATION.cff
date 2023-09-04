@@ -207,7 +207,11 @@ references:
   authors:
   - family-names: Cheng
     given-names: Joe
-    email: joe@rstudio.com
+    email: joe@posit.co
+  - family-names: Schloerke
+    given-names: Barret
+    email: barret@posit.co
+    orcid: https://orcid.org/0000-0001-9986-114X
   - family-names: Karambelkar
     given-names: Bhaskar
   - family-names: Xie
