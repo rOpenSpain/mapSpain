@@ -148,7 +148,7 @@ tile <-
 library(ggplot2)
 library(tidyterra)
 
-lims <- as.double(terra::ext(tile)@ptr$vector)
+lims <- as.vector(terra::ext(tile))
 
 ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   geom_spatraster_rgb(data = tile, maxcell = 10e6) +
