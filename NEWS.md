@@ -69,9 +69,7 @@
 # mapSpain 0.3.1
 
 -   Fix an error on CRAN related with the cache folder #52:
-
     -   Add `mapSpain::esp_clear_cache()`
-
 -   Update docs with `@family` tag.
 
 # mapSpain 0.3.0

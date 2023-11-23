@@ -11,7 +11,7 @@
 #'
 #' @source
 #' [EEA reference
-#' grid](https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2).
+#' grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8c16-aaadfb1a003b).
 #'
 #' @export
 #' @param resolution Resolution of the grid in kms. Could be `1`, `10` or `100`.

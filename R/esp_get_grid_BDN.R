@@ -18,7 +18,7 @@
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
 #' See original metadata and source on
-#' <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.aspx>
+#' <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html>
 #'
 #' @export
 #'

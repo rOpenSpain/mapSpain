@@ -9,7 +9,7 @@ BDN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN}).
 
 See original metadata and source on
-\url{https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.aspx}
+\url{https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html}
 }
 \usage{
 esp_get_grid_BDN(

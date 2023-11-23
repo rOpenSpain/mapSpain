@@ -291,8 +291,8 @@ Geográfico Nacional:
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
 This package uses data from **GISCO**. GISCO
-[(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial
-open data repository including several data sets at several resolution
+[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
+data repository including several data sets at several resolution
 levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /

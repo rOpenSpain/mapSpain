@@ -4,7 +4,7 @@
 \alias{esp_get_grid_EEA}
 \title{Get \CRANpkg{sf} polygons of the national geographic grids provided by EEA}
 \source{
-\href{https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2}{EEA reference grid}.
+\href{https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8c16-aaadfb1a003b}{EEA reference grid}.
 }
 \usage{
 esp_get_grid_EEA(

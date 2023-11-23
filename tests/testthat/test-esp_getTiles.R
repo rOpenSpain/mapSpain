@@ -294,7 +294,7 @@ test_that("Custom WMTS", {
   # With another extension
   stamen_water <- list(
     id = "Stamen_Water",
-    q = "https://stamen-tiles-b.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+    q = "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
   )
 
   tile3 <- esp_getTiles(segovia, type = stamen_water)
