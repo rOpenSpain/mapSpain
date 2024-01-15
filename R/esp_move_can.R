@@ -69,6 +69,14 @@ esp_move_can <- function(x, moveCAN = TRUE) {
   }
 
   is_sfc <- inherits(x, "sfc")
+
+  # If no object then return the same
+  g <- sf::st_geometry(x)
+
+  if (length(g) == 0) {
+    return(x)
+  }
+
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 

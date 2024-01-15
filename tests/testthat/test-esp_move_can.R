@@ -37,8 +37,12 @@ test_that("sfc", {
   expect_identical(sf::st_crs(moved3), sf::st_crs(teide_sfc_3857))
 
   # Check movs
-  mat <- sf::st_coordinates(sf::st_geometry(moved3[1]) -
-    sf::st_geometry(teide_sfc_3857[1]))
+
+  # Avoid errors due to changes in precision across GDAL versions
+  skip_on_cran()
+
+  a1 <- sf::st_geometry(moved3[1]) - sf::st_geometry(teide_sfc_3857[1])
+  mat <- sf::st_coordinates(a1)
 
   # Default mov in 3857
   expect_identical(
@@ -51,13 +55,10 @@ test_that("sfc", {
 
   moved4 <- esp_move_can(teide_sfc, moveCAN = c(5, 10))
 
+  a2 <- sf::st_geometry(moved4) - sf::st_geometry(teide_sfc)
+  mat2 <- sf::st_coordinates(a2)
 
-  mat2 <- sf::st_coordinates(sf::st_geometry(moved4) -
-    sf::st_geometry(teide_sfc))
 
-
-  # Avoid errors due to changes in precision across GDAL versions
-  skip_on_cran()
 
   expect_equal(sort(unique(as.integer(mat2))), c(9L, 14L))
 })
@@ -101,4 +102,25 @@ test_that("sf", {
   expect_identical(names(moved3), names(teide_sf_3857))
 
   expect_true(all(sf::st_is_valid(moved3)))
+})
+
+
+test_that("Empty", {
+  teide <- data.frame(
+    name = rep("test", 20),
+    lon = seq(-16.1, -15.8, length.out = 20),
+    lat = seq(28.2, 29, length.out = 20)
+  )
+
+  teide_sf <- sf::st_as_sf(teide, coords = c("lon", "lat"), crs = 4326)
+  teide_null <- teide_sf[teide_sf$name != "test", ]
+  expect_equal(nrow(teide_null), 0)
+  expect_identical(teide_null, esp_move_can(teide_null, moveCAN = TRUE))
+
+  # sfc
+  teide_null_sfc <- sf::st_geometry(teide_null)
+  expect_equal(length(teide_null_sfc), 0)
+  expect_identical(teide_null_sfc, esp_move_can(teide_null_sfc,
+    moveCAN = TRUE
+  ))
 })

@@ -159,20 +159,7 @@ esp_get_can_box <- function(style = "right",
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    offset <- c(550000, 920000)
-
-    if (length(moveCAN) > 1) {
-      coords <- sf::st_point(moveCAN)
-      coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
-      coords <- sf::st_transform(coords, 3857)
-      coords <- sf::st_coordinates(coords)
-      offset <- offset + as.double(coords)
-    }
-
-    can <- sf::st_transform(lall, 3857) + offset
-    can <- sf::st_sfc(can, crs = 3857)
-    can <- sf::st_transform(can, sf::st_crs(lall))
-    lall <- can
+    lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
   # Transform
@@ -220,20 +207,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    offset <- c(550000, 920000)
-
-    if (length(moveCAN) > 1) {
-      coords <- sf::st_point(moveCAN)
-      coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
-      coords <- sf::st_transform(coords, 3857)
-      coords <- sf::st_coordinates(coords)
-      offset <- offset + as.double(coords)
-    }
-
-    can <- sf::st_transform(lall, 3857) + offset
-    can <- sf::st_sfc(can, crs = 3857)
-    can <- sf::st_transform(can, sf::st_crs(lall))
-    lall <- can
+    lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
   # Transform
