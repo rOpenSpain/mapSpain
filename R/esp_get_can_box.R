@@ -10,7 +10,8 @@
 #'   Islands.
 #'
 #' @family political
-#' @seealso [esp_move_can()]
+#' @family Canary Islands
+#'
 #' @rdname esp_get_can_box
 #'
 #' @name esp_get_can_box
@@ -187,6 +188,9 @@ esp_get_can_box <- function(style = "right",
 #' @description
 #' * [esp_get_can_provinces()] is used to draw a separator line between the two
 #' provinces of the Canary Islands.
+#'
+#' See also [esp_move_can()] to displace stand-alone objects on the Canary
+#' Islands.
 #'
 #' @return `esp_get_can_provinces` returns a `LINESTRING` object.
 #'

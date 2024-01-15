@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Helper function to displace an external \CRANpkg{sf} object (potentially
-#' representing a location in the Canary Islands) to aling it with the objects
+#' representing a location in the Canary Islands) to align it with the objects
 #' provided by \CRANpkg{sf} with the option `moveCAN = TRUE`.
 #'
 #'
@@ -19,8 +19,8 @@
 #' rather than the package \CRANpkg{mapSpain}.
 #'
 #' @family helper
+#' @family Canary Islands
 #'
-#' @seealso [esp_get_can_box()], [esp_get_can_provinces()]
 #'
 #' @export
 #'

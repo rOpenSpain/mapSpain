@@ -18,7 +18,7 @@ displaced accordingly.
 }
 \description{
 Helper function to displace an external \CRANpkg{sf} object (potentially
-representing a location in the Canary Islands) to aling it with the objects
+representing a location in the Canary Islands) to align it with the objects
 provided by \CRANpkg{sf} with the option \code{moveCAN = TRUE}.
 }
 \details{
@@ -67,9 +67,11 @@ ggplot(esp) +
 
 }
 \seealso{
-\code{\link[=esp_get_can_box]{esp_get_can_box()}}, \code{\link[=esp_get_can_provinces]{esp_get_can_provinces()}}
-
-Other helper: 
+Other helper:
 \code{\link{esp_check_access}()}
+
+Other Canary Islands:
+\code{\link{esp_get_can_box}()}
 }
+\concept{Canary Islands}
 \concept{helper}

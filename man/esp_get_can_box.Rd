@@ -50,6 +50,9 @@ Islands.
 \item \code{\link[=esp_get_can_provinces]{esp_get_can_provinces()}} is used to draw a separator line between the two
 provinces of the Canary Islands.
 }
+
+See also \code{\link[=esp_move_can]{esp_move_can()}} to displace stand-alone objects on the Canary
+Islands.
 }
 \section{Displacing the Canary Islands}{
 While \code{moveCAN} is useful for visualization, it would alter the actual
@@ -139,8 +142,6 @@ ggplot(Countries) +
 }
 }
 \seealso{
-\code{\link[=esp_move_can]{esp_move_can()}}
-
 Other political: 
 \code{\link{esp_codelist}},
 \code{\link{esp_get_capimun}()},
@@ -152,5 +153,9 @@ Other political:
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_simpl_prov}()}
+
+Other Canary Islands: 
+\code{\link{esp_move_can}()}
 }
+\concept{Canary Islands}
 \concept{political}
