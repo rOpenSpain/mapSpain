@@ -202,27 +202,21 @@ used).
 # Population density of Spain
 
 library(sf)
-#> Error in value[[3L]](cond): Package 'sf' version 1.0.14 cannot be unloaded:
-#>  Error in unloadNamespace(package) : namespace 'sf' is imported by 'mapSpain' so cannot be unloaded
 
 pop <- mapSpain::pobmun19
 munic <- esp_get_munic()
 
 # Get area (km2) - Use LAEA projection
 municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)
-#> Error in st_area(st_transform(munic, 3035)): could not find function "st_area"
 munic$area <- municarea
-#> Error in eval(expr, envir, enclos): object 'municarea' not found
 
 munic.pop <- merge(munic, pop, all.x = TRUE, by = c("cpro", "cmun"))
 munic.pop$dens <- munic.pop$pob19 / munic.pop$area
-#> Error in `[[<-.data.frame`(`*tmp*`, i, value = numeric(0)): replacement has 0 rows, data has 8131
 
 br <- c(-Inf, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 
 munic.pop$cuts <- cut(munic.pop$dens, br)
-#> Error in cut.default(munic.pop$dens, br): 'x' must be numeric
 
 ggplot(munic.pop) +
   geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
@@ -246,12 +240,12 @@ ggplot(munic.pop) +
     text = element_text(colour = "white"),
     legend.position = "bottom"
   )
-#> Error in `geom_sf()`:
-#> ! Problem while computing aesthetics.
-#> ℹ Error occurred in the 1st layer.
-#> Caused by error:
-#> ! object 'cuts' not found
 ```
+
+<div class="figure">
+<img src="./thematic-1.png" alt="Population density in Spain (2019)" width="100%" />
+<p class="caption">Population density in Spain (2019)</p>
+</div>
 
 ## mapSpain and giscoR
 
