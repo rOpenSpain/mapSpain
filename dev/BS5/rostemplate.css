@@ -11,6 +11,10 @@ code a {
     text-decoration: underline;
 }
 
+.pkg {
+    font-weight: bold;
+  }
+
 /* Section: Syntax highlighter emacs (como en la web de rOpenSpain) */
 pre {
 	display: block;
@@ -128,11 +132,6 @@ pre code span.wa /* Warning        */ {border: 1px solid #FF0000}
      display: none;
 }
 /* Section: specific ros elements and classes */
- #ROS-navbar-logo {
-     margin-top: -10px;
-     height: 32px;
-     margin-right: 10px;
-}
  .ROSh1 {
      background: url('texture-bw.png') center center repeat;
      padding: 20px 0;
@@ -198,6 +197,7 @@ pre code span.wa /* Warning        */ {border: 1px solid #FF0000}
      margin-right: auto;
      margin-top: 0.5rem;
      font-size: 85%;
+     width: 100%;
 }
 
 blockquote {
