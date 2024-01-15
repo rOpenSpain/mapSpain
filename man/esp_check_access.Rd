@@ -19,5 +19,8 @@ esp_check_access()
 }
 \seealso{
 \code{\link[giscoR:gisco_check_access]{giscoR::gisco_check_access()}}
+
+Other helper: 
+\code{\link{esp_move_can}()}
 }
 \concept{helper}

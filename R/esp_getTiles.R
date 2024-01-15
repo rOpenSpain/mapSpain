@@ -103,7 +103,7 @@
 #' library(tidyterra)
 #'
 #' ggplot(segovia) +
-#'   geom_spatraster_rgb(data = tile) +
+#'   geom_spatraster_rgb(data = tile, maxcell = Inf) +
 #'   geom_sf(fill = NA)
 #'
 #' # Another provider
@@ -111,7 +111,7 @@
 #' tile2 <- esp_getTiles(segovia, type = "MDT")
 #'
 #' ggplot(segovia) +
-#'   geom_spatraster_rgb(data = tile2) +
+#'   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
 #'   geom_sf(fill = NA)
 #'
 #' # A custom WMS provided
@@ -127,7 +127,7 @@
 #'
 #' custom_wms_tile <- esp_getTiles(segovia, custom_wms)
 #'
-#' autoplot(custom_wms_tile) +
+#' autoplot(custom_wms_tile, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "red")
 #'
 #' # A custom WMTS provider
@@ -141,7 +141,7 @@
 #'
 #' custom_wmts_tile <- esp_getTiles(segovia, custom_wmts)
 #'
-#' autoplot(custom_wmts_tile) +
+#' autoplot(custom_wmts_tile, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
 #'
 #' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -151,7 +151,7 @@
 #' )
 #' cartodb <- esp_getTiles(segovia, cartodb_voyager, zoommin = 1)
 #'
-#' autoplot(cartodb) +
+#' autoplot(cartodb, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
 #' }
 esp_getTiles <- function(x,

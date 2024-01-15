@@ -91,7 +91,8 @@
 #' geographic position of the Canary Islands. When using the output for
 #' spatial analysis or using tiles (e.g. with [esp_getTiles()] or
 #' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
-#' get the actual coordinates, instead of the modified ones.
+#' get the actual coordinates, instead of the modified ones. See also
+#' [esp_move_can()] for displacing stand-alone \CRANpkg{sf} objects.
 #'
 #' @examples
 #'
@@ -266,26 +267,11 @@ esp_get_nuts <- function(year = "2016",
 
   if (moving) {
     if (length(grep("ES7", data_sf$NUTS_ID)) > 0) {
-      offset <- c(550000, 920000)
-
-      if (length(moveCAN) > 1) {
-        coords <- sf::st_point(moveCAN)
-        coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
-        coords <- sf::st_transform(coords, 3857)
-        coords <- sf::st_coordinates(coords)
-        offset <- offset + as.double(coords)
-      }
-
-      data_sf <- sf::st_transform(data_sf, 3857)
       penin <- data_sf[-grep("ES7", data_sf$NUTS_ID), ]
       can <- data_sf[grep("ES7", data_sf$NUTS_ID), ]
 
       # Move can
-      can <- sf::st_sf(
-        sf::st_drop_geometry(can),
-        geometry = sf::st_geometry(can) + offset,
-        crs = sf::st_crs(can)
-      )
+      can <- esp_move_can(can, moveCAN = moveCAN)
 
       # Regenerate
       if (nrow(penin) > 0) {

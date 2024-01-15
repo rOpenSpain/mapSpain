@@ -1,6 +1,6 @@
 test_that("Test cache online", {
   # Get current cache dir
-  current <- esp_hlp_detect_cache_dir()
+  current <- esp_detect_cache_dir()
 
   cat("User cache dir is ", current, "\n")
 
@@ -10,6 +10,8 @@ test_that("Test cache online", {
     file.path(current, "testthat"),
     verbose = FALSE
   ))
+
+  expect_identical(esp_detect_cache_dir(), testdir)
 
   # Clean
   expect_silent(esp_clear_cache(config = FALSE, verbose = FALSE))

@@ -59,6 +59,7 @@ Sys.getenv("MAPSPAIN_CACHE_DIR")
 \code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
 
 Other cache utilities: 
-\code{\link{esp_clear_cache}()}
+\code{\link{esp_clear_cache}()},
+\code{\link{esp_detect_cache_dir}()}
 }
 \concept{cache utilities}

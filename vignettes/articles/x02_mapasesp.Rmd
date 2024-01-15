@@ -115,7 +115,8 @@ library(reactable)
 
 reactable(galicia,
   searchable = TRUE, striped = TRUE,
-  filterable = TRUE, height = 350
+  filterable = TRUE, height = 350,
+  elementId = "munis-galicia"
 )
 ```
 

@@ -45,7 +45,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
       ),
       silent = TRUE
     )
-
+    # nocov start
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
       err_dwnload <- try(
@@ -74,7 +74,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
     }
   }
 
-
+  # nocov end
   if (verbose && isTRUE(cache)) {
     message("Reading from local file ", filepath)
     size <- file.size(filepath)
@@ -93,6 +93,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
     silent = TRUE
   )
 
+  # nocov start
   if (inherits(err_onload, "try-error")) {
     message(
       "File may be corrupt. Please try again using cache = TRUE ",
@@ -100,6 +101,7 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
     )
     stop("\nExecution halted")
   }
+  # nocov end
 
   if (verbose) message("File loaded")
   return(err_onload)
