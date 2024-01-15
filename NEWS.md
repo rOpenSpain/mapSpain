@@ -1,3 +1,8 @@
+# mapSpain (development version)
+
+-   Add a helper function for displace stand-alone **sf** objects in Canary
+    Islands: `esp_move_can()`.
+
 # mapSpain 0.8.0
 
 -   Improve download of NUTS data from **giscoR**.

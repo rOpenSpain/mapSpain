@@ -10,7 +10,7 @@
 #'   Islands.
 #'
 #' @family political
-#'
+#' @seealso [esp_move_can()]
 #' @rdname esp_get_can_box
 #'
 #' @name esp_get_can_box
