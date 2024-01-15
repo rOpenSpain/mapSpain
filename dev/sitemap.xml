@@ -49,6 +49,9 @@
     <loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.html</loc>
   </url>
   <url>
+    <loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_detect_cache_dir.html</loc>
+  </url>
+  <url>
     <loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.html</loc>
   </url>
   <url>
@@ -131,9 +134,6 @@
   </url>
   <url>
     <loc>https://ropenspain.github.io/mapSpain/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/mapSpain/dev/reference/layer_spatraster.html</loc>
   </url>
   <url>
     <loc>https://ropenspain.github.io/mapSpain/dev/reference/leaflet.providersESP.df.html</loc>
