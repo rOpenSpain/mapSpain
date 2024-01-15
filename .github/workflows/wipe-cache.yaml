@@ -1,7 +1,8 @@
 name: Clear GHA caches manually
 on:
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 18 15 * *'
 jobs:
   cache-clear:
     runs-on: ubuntu-latest

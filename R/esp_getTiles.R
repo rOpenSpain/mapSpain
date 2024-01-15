@@ -145,15 +145,14 @@
 #'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
 #'
 #' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
-#' stamen_water <- list(
-#'   id = "Stamen_Water",
-#'   q = "https://stamen-tiles-b.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+#' cartodb_voyager <- list(
+#'   id = "CartoDB_Voyager",
+#'   q = "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
 #' )
+#' cartodb <- esp_getTiles(segovia, cartodb_voyager, zoommin = 1)
 #'
-#' stamen <- esp_getTiles(segovia, stamen_water, zoommin = 1)
-#'
-#' autoplot(stamen) +
-#'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#' autoplot(cartodb) +
+#'   geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
 #' }
 esp_getTiles <- function(x,
                          type = "IDErioja",
