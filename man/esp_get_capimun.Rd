@@ -136,7 +136,7 @@ library(ggplot2)
 library(tidyterra)
 
 ggplot(points) +
-  geom_spatraster_rgb(data = tile) +
+  geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(data = area, fill = NA, color = "blue") +
   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
   scale_fill_manual(values = c("green", "red")) +

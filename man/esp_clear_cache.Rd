@@ -45,6 +45,7 @@ Sys.getenv("MAPSPAIN_CACHE_DIR")
 }
 \seealso{
 Other cache utilities: 
+\code{\link{esp_detect_cache_dir}()},
 \code{\link{esp_set_cache_dir}()}
 }
 \concept{cache utilities}

@@ -199,3 +199,29 @@ esp_hlp_cachedir <- function(cache_dir = NULL) {
   }
   return(cache_dir)
 }
+
+#' Detect cache dir for \CRANpkg{mapSpain}
+#'
+#' @description
+#'
+#' Helper function to detect the current cache folder. See
+#' [esp_set_cache_dir()]
+#'
+#'
+#' @param x Ignored
+#'
+#' @return A character with the path to your `cache_dir`.
+#'
+#' @export
+#'
+#' @rdname esp_detect_cache_dir
+#' @family cache utilities
+#' @examples
+#' esp_detect_cache_dir()
+#'
+esp_detect_cache_dir <- function(x = NULL) {
+  # Cheat linters
+  cd <- x
+  cd <- esp_hlp_detect_cache_dir()
+  cd
+}
