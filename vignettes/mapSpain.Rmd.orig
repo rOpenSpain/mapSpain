@@ -13,6 +13,7 @@ vignette: >
 <!-- mapSpain.Rmd is generated from mapSpain.Rmd.orig. Please edit that file -->
 
 ```{r, include = FALSE}
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -188,7 +189,7 @@ For plotting purposes we would use the
 handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
 used).
 
-```{r thematic, fig.cap="Population density in Spain (2019)", fig.asp=0.9}
+```{r thematic, fig.cap="Population density in Spain (2019)", crop=TRUE, dpi=120}
 
 # Population density of Spain
 
