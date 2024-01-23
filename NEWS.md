@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.9.0
 
 -   Changes on how to handle modifications on Canary Islands objects (#101):
     -   Add a helper function for displace stand-alone **sf** objects in Canary
@@ -6,7 +6,8 @@
     -   `esp_move_can()` is used internally on all functions.
 -   Add a new function to show the current cache directory:
     `esp_detect_cache_dir()`.
--   `mapSpain::layer_spatraster()` removed.
+-   `mapSpain::layer_spatraster()` removed (was deprecated in **mapSpain**
+    0.6.2).
 
 # mapSpain 0.8.0
 
