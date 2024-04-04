@@ -24,6 +24,7 @@ Imports:
     sf (>= 0.9.0),
     utils
 Suggests:
+    curl,
     ggplot2 (>= 3.0.0),
     knitr,
     leaflet (>= 2.0.0),
