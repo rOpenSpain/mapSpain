@@ -35,6 +35,7 @@ Suggests:
     tidyterra
 VignetteBuilder: 
     knitr
+Config/Needs/check: curl
 Config/Needs/coverage: covr
 Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse,
     ropenspain/rostemplate, ropensci/rnaturalearthhires, devtools
