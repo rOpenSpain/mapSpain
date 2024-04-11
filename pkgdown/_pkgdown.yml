@@ -49,6 +49,7 @@ reference:
       - mapSpain-package
 
 template:
+  bootstrap: 5
   package: rostemplate
   params:
     ganalytics: "G-5N21Z0YYJJ"
