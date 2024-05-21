@@ -42,7 +42,7 @@ of Spain.
 as:
 
 
-```r
+``` r
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -55,7 +55,7 @@ same caching directory on both would speed up the data load on your session.
 Some examples of what **mapSpain** can do:
 
 
-```r
+``` r
 library(mapSpain)
 library(ggplot2)
 
@@ -84,7 +84,7 @@ ggplot(country) +
 </div>
 
 
-```r
+``` r
 # Plot provinces
 
 Andalucia <- esp_get_prov("Andalucia")
@@ -100,7 +100,7 @@ ggplot(Andalucia) +
 </div>
 
 
-```r
+``` r
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
@@ -137,7 +137,7 @@ Let's analyze the distribution of women in each autonomous community with
 `ggplot`:
 
 
-```r
+``` r
 census <- mapSpain::pobmun19
 
 # Extract CCAA from base dataset
@@ -198,7 +198,7 @@ handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
 used).
 
 
-```r
+``` r
 # Population density of Spain
 
 library(sf)
@@ -254,7 +254,7 @@ If you need to plot Spain along with another countries, consider using
 dependency when you installed **mapSpain**. A basic example:
 
 
-```r
+``` r
 library(giscoR)
 
 # Set the same resolution for a perfect fit
