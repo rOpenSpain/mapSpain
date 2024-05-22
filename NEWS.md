@@ -1,7 +1,11 @@
+# mapSpain (development version)
+
+-   Update actions and docs.
+
 # mapSpain 0.9.0
 
 -   Changes on how to handle modifications on Canary Islands objects (#101):
-    -   Add a helper function for displace stand-alone **sf** objects in Canary
+    -   Add a helper function for displace stand-alone `sf` objects in Canary
         Islands: `esp_move_can()`.
     -   `esp_move_can()` is used internally on all functions.
 -   Add a new function to show the current cache directory:
@@ -30,7 +34,7 @@
     -   `leaflet.providersESP.df` is superseded in favor of
         `esp_tiles_providers`.
     -   You can use a custom url with the `type` argument in `esp_getTiles()`
-        #88 .
+        (#88).
     -   Add new function `esp_make_provider()` that helps to create custom
         providers.
 
@@ -42,8 +46,8 @@
 -   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
 -   Add new function to get comarcas from INE: `esp_get_comarca()`.
 -   Add new functions to get simplified maps from INE:
-    -   `esp_get_simpl_prov()`
-    -   `esp_get_simpl_ccaa()`
+    -   `esp_get_simpl_prov()`.
+    -   `esp_get_simpl_ccaa()`.
 
 # mapSpain 0.6.1
 
@@ -72,14 +76,14 @@
 
 # mapSpain 0.4.0
 
--   Switch from `raster` to `terra`.
+-   Switch from **raster** to **terra**.
 -   Clean up dependencies. Imagery packages moved to 'Suggests'.
 -   Add `layer_spatraster()`.
--   Move examples to `ggplot2`
+-   Move examples to **ggplot2**.
 
 # mapSpain 0.3.1
 
--   Fix an error on CRAN related with the cache folder #52:
+-   Fix an error on **CRAN** related with the cache folder #52:
     -   Add `mapSpain::esp_clear_cache()`
 -   Update docs with `@family` tag.
 
@@ -89,24 +93,24 @@
     `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is not
     necessary to set it up again on a new session.
 -   Add a new parameter `zoommin` on `esp_getTiles()`.
--   New tests with `testthat`.
+-   New tests with **testthat**.
 -   Update on docs. New examples
 -   Precompute vignette.
 
 # mapSpain 0.2.3
 
--   Move minimum version of `giscoR` to v0.2.4
--   Fix typos on `esp_dict_translate()` #36.
+-   Move minimum version of **giscoR** to v0.2.4
+-   Fix typos on `esp_dict_translate()` (#36).
 -   Not run examples on tiles, as the server sometimes doesn't respond.
 -   Re factor `sysdata.rda`.
--   CRAN fixes:
+-   **CRAN** fixes:
     -   Removed broken link on `addProviderEspTiles()`.
-    -   Vignette removed (CRAN warning).
+    -   Vignette removed (**CRAN** warning).
 -   Now the `cache` directory is created recursively.
 
 # mapSpain 0.2.2
 
--   Migrate examples, vignettes and README to `tmap`.
+-   Migrate examples, vignettes and README to **tmap**.
 -   Add vignette to package.
 -   `esp_dict_region_code()` works with mixed casings (e.g:
     `esp_dict_region_code("aLbacEte", destination = "cpro")`).
@@ -119,7 +123,7 @@
 # mapSpain 0.2.0
 
 -   Fix DOI <https://doi.org/10.5281/zenodo.4318024>
--   Documentation ported to roxygen2/markdown.
+-   Documentation ported to **roxygen2**.
 -   Include CartoBase ANE data
     <https://github.com/rOpenSpain/mapSpain/tree/sianedata>:
     -   `mapSpain::esp_get_munic_siane()`
@@ -131,11 +135,11 @@
     -   `mapSpain::esp_get_capimun()`
     -   `mapSpain::esp_get_roads()`
     -   `mapSpain::esp_get_railway()`
--   Mute warnings from `rgdal`.
+-   Mute warnings from **rgdal**.
 
 # mapSpain 0.1.2
 
--   Fix annoying warning if `sf` was not loaded first.
+-   Fix annoying warning if **sf** was not loaded first.
 -   Include new `poly` option on `mapSpain::esp_get_can_box()`.
 -   New grids created with `geogrid::calculate_grid()`.
 -   Add more years on `mapSpain::esp_get_munic()`.
@@ -143,7 +147,7 @@
 
 # mapSpain 0.1.1
 
--   Fix CRAN submission.
+-   Fix **CRAN** submission.
 -   Added `mapSpain::esp_get_grid_prov()` and `mapSpain::esp_get_grid_ccaa()`.
 
 # mapSpain 0.1.0

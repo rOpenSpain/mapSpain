@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_hypsobath.R
 \name{esp_get_hypsobath}
 \alias{esp_get_hypsobath}
-\title{Get \CRANpkg{sf} polygons and lines with the hypsometry and bathymetry of
+\title{Get \code{\link[sf:sf]{sf}} polygons and lines with hypsometry and bathymetry of
 Spain.}
 \source{
 IGN data via a custom CDN (see
@@ -47,11 +47,11 @@ are \code{"3"} or \code{"6.5"}.}
 \code{"line"} for lines.}
 }
 \value{
-A \CRANpkg{sf} polygon or line object.
+A \code{\link[sf:sf]{sf}} polygon or line object.
 }
 \description{
-Loads a \CRANpkg{sf} polygon or line object representing the hypsometry and
-bathymetry of Spain.
+Loads a \code{\link[sf:sf]{sf}} polygon or line object representing the hypsometry
+and bathymetry of Spain.
 \itemize{
 \item \strong{Hypsometry} represents the  the elevation and depth of features of the
 Earth's surface relative to mean sea level.

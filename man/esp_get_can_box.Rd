@@ -3,7 +3,7 @@
 \name{esp_get_can_box}
 \alias{esp_get_can_box}
 \alias{esp_get_can_provinces}
-\title{Get \CRANpkg{sf} lines and polygons for insetting the Canary Islands}
+\title{Get \code{\link[sf:sf]{sf}} lines and polygons for insetting the Canary Islands}
 \source{
 \code{esp_get_can_provinces} extracted from CartoBase ANE,
 \code{se89_mult_admin_provcan_l.shp} file.
@@ -32,7 +32,7 @@ One of:
 }}
 }
 \value{
-A \CRANpkg{sf} polygon or line depending of \code{style} parameter.
+A \code{\link[sf:sf]{sf}} polygon or line depending of \code{style} parameter.
 
 \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }
@@ -60,7 +60,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

@@ -1,12 +1,12 @@
-#' Get \CRANpkg{sf} polygons of the drainage basin demarcations of Spain
+#' Get [`sf`][sf::st_sf] polygons of the drainage basin demarcations of Spain
 #'
 #' @description
-#' Loads a \CRANpkg{sf} polygon object containing areas with the required
+#' Loads a [`sf`][sf::st_sf] polygon object containing areas with the required
 #' hydrographic elements of Spain.
 #'
 #' @family natural
 #'
-#' @return A \CRANpkg{sf} polygon object.
+#' @return A [`sf`][sf::st_sf] polygon object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

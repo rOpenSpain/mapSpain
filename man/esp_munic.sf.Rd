@@ -6,7 +6,7 @@
 \alias{esp_munic.sf}
 \title{All Municipalities \code{POLYGON} object of Spain (2019)}
 \format{
-A \code{sf} object (resolution: 1:1million, EPSG:4258) object with
+A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) object with
 8,131 rows and columns:
 \describe{
 \item{codauto}{INE code of the autonomous community.}
@@ -25,8 +25,8 @@ combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
 LAU 2019 data.
 }
 \description{
-A \CRANpkg{sf} object including all municipalities of Spain as provided by
-GISCO (2019 version).
+A \code{\link[sf:sf]{sf}} object including all municipalities of Spain as provided
+by GISCO (2019 version).
 }
 \examples{
 data("esp_munic.sf")

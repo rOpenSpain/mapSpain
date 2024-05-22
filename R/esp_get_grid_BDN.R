@@ -1,9 +1,9 @@
-#' Get \CRANpkg{sf} polygons of the national geographic grids provided by BDN
+#' Get [`sf`][sf::st_sf] polygons with the national geographic grids from BDN
 #'
 #' @description
-#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
-#' on the Banco de Datos de la Naturaleza (Nature Data Bank), by the Ministry
-#' of Environment (MITECO):
+#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain as
+#' provided on the Banco de Datos de la Naturaleza (Nature Data Bank), by the
+#' Ministry of Environment (MITECO):
 #'   * [esp_get_grid_BDN()] extracts country-wide grids with resolutions
 #'     5x5 or 10x10 kms.
 #'   * [esp_get_grid_BDN_ccaa()] extracts grids by Autonomous Community with
@@ -11,7 +11,7 @@
 #'
 #' @family grids
 #'
-#' @return A \CRANpkg{sf} polygon
+#' @return A [`sf`][sf::st_sf] polygon
 #'
 #'
 #' @source BDN data via a custom CDN (see

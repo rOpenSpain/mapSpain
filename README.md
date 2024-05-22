@@ -13,17 +13,17 @@
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/main/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5366622-blue)](https://doi.org/10.5281/zenodo.5366622)
 [![Project-Status:Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![status](https://tinyverse.netlify.com/badge/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+[![status](https://tinyverse.netlify.app/badge/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 
 <!-- badges: end -->
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial `sf` objects of the administrative boundaries of Spain,
-including CCAA, provinces and municipalities.
+provides spatial **sf** objects of the administrative boundaries of
+Spain, including CCAA, provinces and municipalities.
 
 **mapSpain** also provides a leaflet plugin to be used with the
-[`leaflet` package](https://rstudio.github.io/leaflet/), that loads
-several basemaps of public institutions of Spain, and the ability of
+[**leaflet** package](https://rstudio.github.io/leaflet/), that loads
+several base maps of public institutions of Spain, and the ability of
 downloading and processing static tiles.
 
 Full site with examples and vignettes on
@@ -268,7 +268,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2024},
-      version = {0.9.0},
+      version = {0.9.0.9000},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},

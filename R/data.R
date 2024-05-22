@@ -105,7 +105,7 @@ NULL
 #' @docType data
 #'
 #' @description
-#' A \CRANpkg{sf} object including all NUTS levels of Spain as provided by
+#' A [`sf`][sf::st_sf] object including all NUTS levels of Spain as provided by
 #' GISCO (2016 version).
 #'
 #' @source
@@ -116,7 +116,7 @@ NULL
 #'
 #'
 #' @format
-#' A `sf` object (resolution: 1:1million, EPSG:4258) with
+#' A [`sf`][sf::st_sf] object (resolution: 1:1million, EPSG:4258) with
 #' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and columns:
 #' \describe{
 #'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
@@ -167,8 +167,8 @@ NULL
 #' @name esp_munic.sf
 #'
 #' @description
-#' A \CRANpkg{sf} object including all municipalities of Spain as provided by
-#' GISCO (2019 version).
+#' A [`sf`][sf::st_sf] object including all municipalities of Spain as provided
+#' by GISCO (2019 version).
 #'
 #' @docType data
 #'
@@ -187,7 +187,7 @@ NULL
 #'
 #' @seealso [esp_get_munic()].
 #' @format
-#' A `sf` object (resolution: 1:1million, EPSG:4258) object with
+#' A [`sf`][sf::st_sf] object (resolution: 1:1million, EPSG:4258) object with
 #' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and columns:
 #' \describe{
 #'   \item{codauto}{INE code of the autonomous community.}

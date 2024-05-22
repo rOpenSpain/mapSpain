@@ -1,9 +1,9 @@
-#' Get \CRANpkg{sf} polygons and lines with the hypsometry and bathymetry of
+#' Get [`sf`][sf::st_sf] polygons and lines with hypsometry and bathymetry of
 #' Spain.
 #'
 #' @description
-#' Loads a \CRANpkg{sf} polygon or line object representing the hypsometry and
-#' bathymetry of Spain.
+#' Loads a [`sf`][sf::st_sf] polygon or line object representing the hypsometry
+#' and bathymetry of Spain.
 #'
 #' * **Hypsometry** represents the  the elevation and depth of features of the
 #'   Earth's surface relative to mean sea level.
@@ -12,7 +12,7 @@
 #'
 #' @family natural
 #'
-#' @return A \CRANpkg{sf} polygon or line object.
+#' @return A [`sf`][sf::st_sf] polygon or line object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

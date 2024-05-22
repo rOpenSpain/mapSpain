@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_nuts.R
 \name{esp_get_nuts}
 \alias{esp_get_nuts}
-\title{Get NUTS of Spain as \CRANpkg{sf} polygons and points}
+\title{Get NUTS of Spain as \code{\link[sf:sf]{sf}} polygons and points}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 }
@@ -72,7 +72,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
 Returns \href{https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Spain}{NUTS regions of Spain}
@@ -110,7 +110,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

@@ -3,7 +3,7 @@
 \name{esp_get_grid_BDN}
 \alias{esp_get_grid_BDN}
 \alias{esp_get_grid_BDN_ccaa}
-\title{Get \CRANpkg{sf} polygons of the national geographic grids provided by BDN}
+\title{Get \code{\link[sf:sf]{sf}} polygons with the national geographic grids from BDN}
 \source{
 BDN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN}).
@@ -45,12 +45,12 @@ default is \code{FALSE}.}
 See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}.}
 }
 \value{
-A \CRANpkg{sf} polygon
+A \code{\link[sf:sf]{sf}} polygon
 }
 \description{
-Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
-on the Banco de Datos de la Naturaleza (Nature Data Bank), by the Ministry
-of Environment (MITECO):
+Loads a \code{\link[sf:sf]{sf}} polygon with the geographic grids of Spain as
+provided on the Banco de Datos de la Naturaleza (Nature Data Bank), by the
+Ministry of Environment (MITECO):
 \itemize{
 \item \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts country-wide grids with resolutions
 5x5 or 10x10 kms.

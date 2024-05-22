@@ -25,7 +25,7 @@ esp_getTiles(
 )
 }
 \arguments{
-\item{x}{An \CRANpkg{sf} or \code{sfc} object.}
+\item{x}{An \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object.}
 
 \item{type}{This parameter could be either:
 \itemize{
@@ -45,8 +45,8 @@ download fewer tiles than you probably want. Use \code{1} or \code{2} to
 increase the resolution.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
-\code{FALSE} otherwise. If \code{x} is an \CRANpkg{sf} object with one \code{POINT}, crop
-is set to \code{FALSE}.}
+\code{FALSE} otherwise. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
+\code{crop} is set to \code{FALSE}.}
 
 \item{res}{Resolution (in pixels) of the final tile. Only valid for WMS.}
 

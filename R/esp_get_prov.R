@@ -1,4 +1,4 @@
-#' Get Provinces of Spain as \CRANpkg{sf} polygons and points
+#' Get Provinces of Spain as [`sf`][sf::st_sf] polygons and points
 #'
 #' @description
 #' Returns
@@ -14,7 +14,7 @@
 #' @rdname esp_get_prov
 #' @name esp_get_prov
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`.
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #'
 #' @export

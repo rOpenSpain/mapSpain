@@ -6,7 +6,7 @@
 \alias{esp_nuts.sf}
 \title{All NUTS \code{POLYGON} object of Spain}
 \format{
-A \code{sf} object (resolution: 1:1million, EPSG:4258) with
+A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) with
 86 rows and columns:
 \describe{
 \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
@@ -26,7 +26,7 @@ A \code{sf} object (resolution: 1:1million, EPSG:4258) with
 \code{NUTS_RG_20M_2016_4326.geojson}.
 }
 \description{
-A \CRANpkg{sf} object including all NUTS levels of Spain as provided by
+A \code{\link[sf:sf]{sf}} object including all NUTS levels of Spain as provided by
 GISCO (2016 version).
 }
 \details{

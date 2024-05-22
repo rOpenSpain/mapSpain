@@ -1,4 +1,4 @@
-#' Get NUTS of Spain as \CRANpkg{sf} polygons and points
+#' Get NUTS of Spain as [`sf`][sf::st_sf] polygons and points
 #'
 #' @description
 #' Returns [NUTS regions of
@@ -20,7 +20,7 @@
 #' @family nuts
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`.
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #' @note
 #' Please check the download and usage provisions on
@@ -92,7 +92,7 @@
 #' spatial analysis or using tiles (e.g. with [esp_getTiles()] or
 #' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
 #' get the actual coordinates, instead of the modified ones. See also
-#' [esp_move_can()] for displacing stand-alone \CRANpkg{sf} objects.
+#' [esp_move_can()] for displacing stand-alone [`sf`][sf::st_sf] objects.
 #'
 #' @examples
 #'

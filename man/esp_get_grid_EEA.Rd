@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_grid_EEA.R
 \name{esp_get_grid_EEA}
 \alias{esp_get_grid_EEA}
-\title{Get \CRANpkg{sf} polygons of the national geographic grids provided by EEA}
+\title{Get \code{\link[sf:sf]{sf}} polygons of the national geographic grids from EEA}
 \source{
 \href{https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8c16-aaadfb1a003b}{EEA reference grid}.
 }
@@ -30,11 +30,11 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 }
 \value{
-A \CRANpkg{sf} polygon
+A \code{\link[sf:sf]{sf}} polygon
 }
 \description{
-Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
-by the European Environment Agency (EEA).
+Loads a \code{\link[sf:sf]{sf}} polygon with the geographic grids of Spain as
+provided by the European Environment Agency (EEA).
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.

@@ -1,11 +1,11 @@
-#' Get \CRANpkg{sf} polygons of the national geographic grids provided by IGN
+#' Get [`sf`][sf::st_sf] polygons of the national geographic grids from IGN
 #'
 #' @description
-#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain.
+#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain.
 #'
 #' @family grids
 #'
-#' @return A \CRANpkg{sf} polygon
+#' @return A [`sf`][sf::st_sf] polygon
 #'
 #'
 #' @source IGN data via a custom CDN (see

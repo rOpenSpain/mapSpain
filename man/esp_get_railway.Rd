@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_railway.R
 \name{esp_get_railway}
 \alias{esp_get_railway}
-\title{Get \CRANpkg{sf} lines and points with the railways of Spain}
+\title{Get \code{\link[sf:sf]{sf}} lines and points with the railways of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -46,11 +46,11 @@ for extracting the railway as lines and \code{"point"} for extracting
 stations.}
 }
 \value{
-A \CRANpkg{sf} line or point object.
+A \code{\link[sf:sf]{sf}} line or point object.
 }
 \description{
-Loads a \CRANpkg{sf} lines or point object representing the nodes and railway
-lines of Spain.
+Loads a \code{\link[sf:sf]{sf}} lines or point object representing the nodes and
+railway lines of Spain.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.

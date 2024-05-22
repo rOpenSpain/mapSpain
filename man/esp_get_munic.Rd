@@ -3,7 +3,7 @@
 \name{esp_get_munic}
 \alias{esp_get_munic}
 \alias{esp_get_munic_siane}
-\title{Get municipalities of Spain as \CRANpkg{sf} polygons}
+\title{Get municipalities of Spain as \code{\link[sf:sf]{sf}} polygons}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 
@@ -78,7 +78,7 @@ Initial position can be adjusted using the vector of coordinates. See
 the dataset provided by IGN.}
 }
 \value{
-A \CRANpkg{sf} polygon
+A \code{\link[sf:sf]{sf}} polygon
 }
 \description{
 Returns municipalities of Spain as polygons at a specified scale.
@@ -128,7 +128,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

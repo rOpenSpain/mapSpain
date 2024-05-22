@@ -1,11 +1,11 @@
-#' Get \CRANpkg{sf} lines of the roads of Spain
+#' Get [`sf`][sf::st_sf] lines of the roads of Spain
 #'
 #' @description
-#' Loads a \CRANpkg{sf} line object representing the main roads of Spain.
+#' Loads a [`sf`][sf::st_sf] line object representing the main roads of Spain.
 #'
 #' @family infrastructure
 #'
-#' @return A \CRANpkg{sf} line object.
+#' @return A [`sf`][sf::st_sf] line object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

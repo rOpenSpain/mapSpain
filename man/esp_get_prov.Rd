@@ -3,7 +3,7 @@
 \name{esp_get_prov}
 \alias{esp_get_prov}
 \alias{esp_get_prov_siane}
-\title{Get Provinces of Spain as \CRANpkg{sf} polygons and points}
+\title{Get Provinces of Spain as \code{\link[sf:sf]{sf}} polygons and points}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -73,7 +73,7 @@ default is \code{FALSE}.}
 the dataset provided by IGN.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
 Returns
@@ -121,7 +121,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

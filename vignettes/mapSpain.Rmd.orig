@@ -41,7 +41,7 @@ other complementary shapes, as the usual lines around the Canary Islands.
 
 **mapSpain** provides access to map tiles of public organisms of Spain, that can
 be represented on static maps via `mapSpain::esp_getTiles()` or on a **R**
-`leaflet` map using `mapSpain::addProviderEspTiles()`.
+**leaflet** map using `mapSpain::addProviderEspTiles()`.
 
 On top of that, **mapSpain** also has a powerful dictionary that translate
 provinces and other regions to English, Spanish, Catalan, Basque language or

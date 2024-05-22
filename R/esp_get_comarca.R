@@ -1,4 +1,4 @@
-#' Get 'comarcas' of Spain as \CRANpkg{sf} polygons
+#' Get 'comarcas' of Spain as [`sf`][sf::st_sf] polygons
 #'
 #' @description
 #' Returns 'comarcas' of Spain as polygons,as provided by the
@@ -6,7 +6,7 @@
 #'
 #' @source INE: PC_Axis files.
 #'
-#' @return A \CRANpkg{sf} polygon object.
+#' @return A [`sf`][sf::st_sf] polygon object.
 #'
 #' @family political
 #'

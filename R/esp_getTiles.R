@@ -21,7 +21,7 @@
 #'
 #' @export
 #'
-#' @param x An \CRANpkg{sf} or `sfc` object.
+#' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #'
 #' @param type This parameter could be either:
 #'   - The name of one of the  pre-defined providers
@@ -36,8 +36,8 @@
 #'   download fewer tiles than you probably want. Use `1` or `2` to
 #'   increase the resolution.
 #' @param crop `TRUE` if results should be cropped to the specified `x` extent,
-#'   `FALSE` otherwise. If `x` is an \CRANpkg{sf} object with one `POINT`, crop
-#'   is set to `FALSE`.
+#'   `FALSE` otherwise. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
+#'   `crop` is set to `FALSE`.
 #' @param res Resolution (in pixels) of the final tile. Only valid for WMS.
 #' @param bbox_expand A numeric value that indicates the expansion percentage
 #' of the bounding box of `x`.

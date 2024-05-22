@@ -1,12 +1,12 @@
-#' Get \CRANpkg{sf} lines and points with the railways of Spain
+#' Get [`sf`][sf::st_sf] lines and points with the railways of Spain
 #'
 #' @description
-#' Loads a \CRANpkg{sf} lines or point object representing the nodes and railway
-#' lines of Spain.
+#' Loads a [`sf`][sf::st_sf] lines or point object representing the nodes and
+#' railway lines of Spain.
 #'
 #' @family infrastructure
 #'
-#' @return A \CRANpkg{sf} line or point object.
+#' @return A [`sf`][sf::st_sf] line or point object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).

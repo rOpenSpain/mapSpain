@@ -1,17 +1,17 @@
-#' Displace a \CRANpkg{sf} object located in the Canary Islands
+#' Displace a [`sf`][sf::st_sf] object located in the Canary Islands
 #'
 #' @description
-#' Helper function to displace an external \CRANpkg{sf} object (potentially
+#' Helper function to displace an external [`sf`][sf::st_sf] object (potentially
 #' representing a location in the Canary Islands) to align it with the objects
-#' provided by \CRANpkg{sf} with the option `moveCAN = TRUE`.
+#' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
 #'
 #'
-#' @param x An \CRANpkg{sf} object. It may be `sf` or `sfc` object.
+#' @param x An [`sf`][sf::st_sf] object. It may be `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`.
 #'
-#' @return A \CRANpkg{sf} object of the same class and same CRS than `x` but
-#' displaced accordingly.
+#' @return A [`sf`][sf::st_sf] object of the same class and same CRS than `x`
+#' but displaced accordingly.
 #'
 #' @details
 #' This is a helper function that intends to ease the representation of objects

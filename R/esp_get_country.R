@@ -1,12 +1,12 @@
-#' Get the borders of Spain as a \CRANpkg{sf} polygon
+#' Get the borders of Spain as a [`sf`][sf::st_sf] polygon
 #'
 #' @description
-#' Returns the boundaries of Spain as a single \CRANpkg{sf} polygon at a
+#' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] polygon at a
 #' specified scale.
 #'
 #' @family political
 #'
-#' @return A \CRANpkg{sf} polygon object.
+#' @return A [`sf`][sf::st_sf] polygon object.
 #'
 #'
 #' @export

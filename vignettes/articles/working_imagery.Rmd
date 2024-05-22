@@ -113,7 +113,7 @@ ggplot() +
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin to be used with the `leaflet` package. Here you
+**mapSpain** provides a plugin to be used with the **leaflet** package. Here you
 can find some quick examples:
 
 ### Earthquakes in Tenerife (last year)

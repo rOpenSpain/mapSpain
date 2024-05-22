@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_country.R
 \name{esp_get_country}
 \alias{esp_get_country}
-\title{Get the borders of Spain as a \CRANpkg{sf} polygon}
+\title{Get the borders of Spain as a \code{\link[sf:sf]{sf}} polygon}
 \usage{
 esp_get_country(moveCAN = TRUE, ...)
 }
@@ -43,10 +43,10 @@ default is \code{FALSE}.}
   }}
 }
 \value{
-A \CRANpkg{sf} polygon object.
+A \code{\link[sf:sf]{sf}} polygon object.
 }
 \description{
-Returns the boundaries of Spain as a single \CRANpkg{sf} polygon at a
+Returns the boundaries of Spain as a single \code{\link[sf:sf]{sf}} polygon at a
 specified scale.
 }
 \section{About caching}{
@@ -66,7 +66,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

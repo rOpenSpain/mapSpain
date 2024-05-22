@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_roads.R
 \name{esp_get_roads}
 \alias{esp_get_roads}
-\title{Get \CRANpkg{sf} lines of the roads of Spain}
+\title{Get \code{\link[sf:sf]{sf}} lines of the roads of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -47,10 +47,10 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 }
 \value{
-A \CRANpkg{sf} line object.
+A \code{\link[sf:sf]{sf}} line object.
 }
 \description{
-Loads a \CRANpkg{sf} line object representing the main roads of Spain.
+Loads a \code{\link[sf:sf]{sf}} line object representing the main roads of Spain.
 }
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or
@@ -73,7 +73,7 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \CRANpkg{sf} objects.
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
 }
 
 \examples{

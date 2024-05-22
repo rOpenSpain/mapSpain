@@ -1,4 +1,4 @@
-#' Get \CRANpkg{sf} lines and polygons for insetting the Canary Islands
+#' Get [`sf`][sf::st_sf] lines and polygons for insetting the Canary Islands
 #'
 #' @description
 #' When plotting Spain, it is usual to represent the Canary Islands as an inset
@@ -16,7 +16,7 @@
 #'
 #' @name esp_get_can_box
 #'
-#' @return A \CRANpkg{sf} polygon or line depending of `style` parameter.
+#' @return A [`sf`][sf::st_sf] polygon or line depending of `style` parameter.
 #'
 #'
 #' @export

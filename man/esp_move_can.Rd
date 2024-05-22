@@ -2,24 +2,24 @@
 % Please edit documentation in R/esp_move_can.R
 \name{esp_move_can}
 \alias{esp_move_can}
-\title{Displace a \CRANpkg{sf} object located in the Canary Islands}
+\title{Displace a \code{\link[sf:sf]{sf}} object located in the Canary Islands}
 \usage{
 esp_move_can(x, moveCAN = TRUE)
 }
 \arguments{
-\item{x}{An \CRANpkg{sf} object. It may be \code{sf} or \code{sfc} object.}
+\item{x}{An \code{\link[sf:sf]{sf}} object. It may be \code{sf} or \code{sfc} object.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}.}
 }
 \value{
-A \CRANpkg{sf} object of the same class and same CRS than \code{x} but
-displaced accordingly.
+A \code{\link[sf:sf]{sf}} object of the same class and same CRS than \code{x}
+but displaced accordingly.
 }
 \description{
-Helper function to displace an external \CRANpkg{sf} object (potentially
+Helper function to displace an external \code{\link[sf:sf]{sf}} object (potentially
 representing a location in the Canary Islands) to align it with the objects
-provided by \CRANpkg{sf} with the option \code{moveCAN = TRUE}.
+provided by \code{\link[sf:sf]{sf}} with the option \code{moveCAN = TRUE}.
 }
 \details{
 This is a helper function that intends to ease the representation of objects

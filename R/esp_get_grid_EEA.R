@@ -1,12 +1,12 @@
-#' Get \CRANpkg{sf} polygons of the national geographic grids provided by EEA
+#' Get [`sf`][sf::st_sf] polygons of the national geographic grids from EEA
 #'
 #' @description
-#' Loads a \CRANpkg{sf} polygon with the geographic grids of Spain as provided
-#' by the European Environment Agency (EEA).
+#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain as
+#' provided by the European Environment Agency (EEA).
 #'
 #' @family grids
 #'
-#' @return A \CRANpkg{sf} polygon
+#' @return A [`sf`][sf::st_sf] polygon
 #'
 #'
 #' @source

@@ -1,4 +1,4 @@
-#' Get Autonomous Communities of Spain as \CRANpkg{sf} polygons and points
+#' Get Autonomous Communities of Spain as [`sf`][sf::st_sf] polygons and points
 #'
 #' @description
 #' Returns
@@ -15,7 +15,7 @@
 #'
 #' @name esp_get_ccaa
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`.
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #'
 #' @export
