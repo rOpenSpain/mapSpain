@@ -21,8 +21,8 @@ combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
 }
 }
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/}, LAU 2019
-data.
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/local-administrative-units},
+LAU 2019 data.
 }
 \description{
 A \CRANpkg{sf} object including all municipalities of Spain as provided by

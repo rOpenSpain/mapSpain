@@ -1,4 +1,4 @@
-#' Convert and translate Subdivision Names
+#' Convert and translate subdivision names
 #'
 #' Converts long subdivision names into different coding schemes and languages.
 #'

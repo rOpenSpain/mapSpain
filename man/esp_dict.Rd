@@ -3,7 +3,7 @@
 \name{esp_dict_region_code}
 \alias{esp_dict_region_code}
 \alias{esp_dict_translate}
-\title{Convert and translate Subdivision Names}
+\title{Convert and translate subdivision names}
 \usage{
 esp_dict_region_code(sourcevar, origin = "text", destination = "text")
 

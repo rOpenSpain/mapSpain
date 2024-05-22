@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_getTiles.R
 \name{esp_getTiles}
 \alias{esp_getTiles}
-\title{Get static tiles from public administrations of Spanish.}
+\title{Get static tiles from public administrations of Spain}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
 \strong{v1.3.3}.
