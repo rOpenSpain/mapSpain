@@ -240,7 +240,7 @@ test_that("Custom WMS", {
 
   segovia <- esp_get_prov_siane("segovia", epsg = 3857)
   custom_wms <- list(
-    id = "an_id_for_caching",
+    id = "new_cached_test",
     q = paste0(
       "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
       "&service=WMS&version=1.3.0",

@@ -173,8 +173,15 @@ NULL
 #' @docType data
 #'
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/>, LAU 2019
-#' data.
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/",
+#'            "statistical-units/local-administrative-units>, "))
+#'
+#'
+#' ```
+#' LAU 2019 data.
 #'
 #' @encoding UTF-8
 #'

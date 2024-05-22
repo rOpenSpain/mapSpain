@@ -1,4 +1,4 @@
-#' Get static tiles from public administrations of Spanish.
+#' Get static tiles from public administrations of Spain
 #'
 #' @description
 #' Get static map tiles based on a spatial object. Maps can be fetched from
