@@ -66,11 +66,11 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{3}, \code{6.5} or \code{10}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
-the dataset provided by IGN.}
+the resulting object as provided by IGN.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.

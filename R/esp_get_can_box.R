@@ -6,7 +6,7 @@
 #' lines and polygons to be used when the Canary Islands are displayed
 #' as an inset.
 #'
-#' * [esp_get_can_box()] is used to draw lines around the displaced Canary
+#' - [esp_get_can_box()] is used to draw lines around the displaced Canary
 #'   Islands.
 #'
 #' @family political
@@ -16,8 +16,8 @@
 #'
 #' @name esp_get_can_box
 #'
-#' @return A [`sf`][sf::st_sf] polygon or line depending of `style` parameter.
-#'
+#' @return A [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` depending of `style`
+#'   parameter.
 #'
 #' @export
 #'
@@ -105,9 +105,7 @@
 #'     panel.grid = element_blank()
 #'   )
 #' }
-esp_get_can_box <- function(style = "right",
-                            moveCAN = TRUE,
-                            epsg = "4258") {
+esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
   # checks
   if (!style %in% c("left", "right", "box", "poly")) {
     stop("style should be one of 'right','left','box'")
@@ -173,8 +171,8 @@ esp_get_can_box <- function(style = "right",
 #'
 #'
 #' @description
-#' * [esp_get_can_provinces()] is used to draw a separator line between the two
-#' provinces of the Canary Islands.
+#' - [esp_get_can_provinces()] is used to draw a separator line between the two
+#'   provinces of the Canary Islands.
 #'
 #' See also [esp_move_can()] to displace stand-alone objects on the Canary
 #' Islands.
@@ -186,8 +184,7 @@ esp_get_can_box <- function(style = "right",
 #' `se89_mult_admin_provcan_l.shp` file.
 #'
 #' @export
-esp_get_can_provinces <- function(moveCAN = TRUE,
-                                  epsg = "4258") {
+esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   epsg <- as.character(epsg)
 
   if (!epsg %in% c("4258", "4326", "3035", "3857")) {

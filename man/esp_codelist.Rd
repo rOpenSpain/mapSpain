@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Spanish Code Translation Data Frame}
+\title{Database with codes and names of spanish regions}
 \format{
-A data frame with 59 rows
+A \code{\link[base:data.frame]{data.frame}} with 59 rows
 codes and columns:
 
 \describe{
@@ -70,20 +70,20 @@ codes and columns:
 }
 }
 \description{
-A data frame used internally for translating codes and names of the
-different subdivisions of Spain. The data frame provides the hierarchy of
-the subdivisions including NUTS1 level, Autonomous Communities
-(equivalent to NUTS2), Provinces and NUTS3 level. See \strong{Note}.
+A \code{data.frame} object used internally for translating codes and names of the
+different subdivisions of Spain. The \code{data.frame} provides the hierarchy of
+the subdivisions including NUTS1 level, autonomous communities (equivalent
+to NUTS2), provinces and NUTS3 level. See \strong{Note}.
 }
 \note{
 Although NUTS2 matches the first subdivision level of Spain
 (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
 match the second subdivision level of Spain (Provinces). NUTS3 provides a
-dedicated code for major islands whereas the Provinces doesn't.
+dedicated code for major islands whereas the provinces doesn't.
 
 Ceuta and Melilla has an specific status (Autonomous Cities) but are
-considered as communities with a single province (as Madrid, Asturias
-or Murcia) on this dataset.
+considered as autonomous communities with a single province (as Madrid,
+Asturias or Murcia) on this database.
 }
 \examples{
 

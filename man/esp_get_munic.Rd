@@ -75,7 +75,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \code{"3"}, \code{"6.5"} or  \code{"10"}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
-the dataset provided by IGN.}
+the resulting object as provided by IGN.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} polygon

@@ -3,9 +3,9 @@
 \docType{data}
 \name{pobmun19}
 \alias{pobmun19}
-\title{Population by municipality (2019)}
+\title{Database with the population of Spain by municipality (2019)}
 \format{
-An example data frame with
+An example \code{data.frame} object with
 8,131 rows containing the
 population data by municipality in Spain (2019).
 
@@ -23,7 +23,7 @@ population data by municipality in Spain (2019).
 INE: Instituto Nacional de Estadistica \url{https://www.ine.es/}
 }
 \description{
-Population by municipality (2019)
+Database with the population of Spain by municipality (2019)
 }
 \examples{
 data("pobmun19")

@@ -8,16 +8,16 @@
 #' **Use this function with caution**. This function would clear your cached
 #' data and configuration, specifically:
 #'
-#' * Deletes the \CRANpkg{mapSpain} config directory
+#' - Deletes the \CRANpkg{mapSpain} config directory
 #'   (`rappdirs::user_config_dir("mapSpain", "R")`).
-#' * Deletes the `cache_dir` directory.
-#' * Deletes the values on stored on `Sys.getenv("MAPSPAIN_CACHE_DIR")` and
+#' - Deletes the `cache_dir` directory.
+#' - Deletes the values on stored on `Sys.getenv("MAPSPAIN_CACHE_DIR")` and
 #'   `options(mapSpain_cache_dir)`.
 #'
-#' @param config if `TRUE`, will delete the configuration folder of
+#' @param config Logical. If `TRUE`, will delete the configuration folder of
 #'   \CRANpkg{mapSpain}.
-#' @param cached_data If this is set to `TRUE`, it will delete your
-#'   `cache_dir` and all its content.
+#' @param cached_data Logical. If `TRUE`, it will delete your `cache_dir` and
+#'   all its content.
 #' @inheritParams esp_set_cache_dir
 #'
 #' @details
@@ -33,8 +33,7 @@
 #'
 #' Sys.getenv("MAPSPAIN_CACHE_DIR")
 #' @export
-esp_clear_cache <- function(config = FALSE,
-                            cached_data = TRUE,
+esp_clear_cache <- function(config = FALSE, cached_data = TRUE,
                             verbose = FALSE) {
   config_dir <- rappdirs::user_config_dir("mapSpain", "R")
   data_dir <- esp_hlp_detect_cache_dir()

@@ -6,8 +6,7 @@ leafletprovidersESP_v <- "v1.3.3"
 #' map
 #'
 #' @description
-#' Include tiles of public Spanish organisms to a
-#' [leaflet::leaflet()] map.
+#' Include tiles of public Spanish organisms to a [leaflet::leaflet()] map.
 #'
 #' @family imagery utilities
 #' @seealso [leaflet::leaflet()], [leaflet::addTiles()]
@@ -21,41 +20,23 @@ leafletprovidersESP_v <- "v1.3.3"
 #'
 #' @return A modified [leaflet::leaflet()] `map` object.
 #'
-#'
-#'
 #' @export
 #'
-#' @param map A map widget created from [leaflet::leaflet()].
-#' @param group The name of the group the newly created layers should belong to
-#'   Human-friendly group names are permitted–they need not be short,
-#'   identifier-style names. Any number of layers and even different types of
-#'   layers (e.g. markers and polygons) can share the same group name. See
-#'   [leaflet::addTiles()].
 #' @param provider Name of the provider, see [esp_tiles_providers] for
 #'   values available.
-#' @param ... Arguments passed on to [leaflet::providerTileOptions()].
+#' @inheritParams leaflet::addProviderTiles
 #' @inheritParams leaflet::addTiles
 #'
 #' @examples
 #' library(leaflet)
-#' PuertadelSol <-
-#'   leaflet() %>%
-#'   setView(
-#'     lat = 40.4166,
-#'     lng = -3.7038400,
-#'     zoom = 18
-#'   ) %>%
+#' PuertadelSol <- leaflet() %>%
+#'   setView(lat = 40.4166, lng = -3.7038400, zoom = 18) %>%
 #'   addProviderEspTiles(provider = "IGNBase.Gris") %>%
 #'   addProviderEspTiles(provider = "RedTransporte.Carreteras")
 #'
 #' PuertadelSol
-addProviderEspTiles <- function(map, provider, layerId = NULL,
-                                group = NULL,
+addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
                                 options = providerEspTileOptions()) {
-  if (!requireNamespace("leaflet", quietly = TRUE)) {
-    stop("leaflet package required for using this function")
-  }
-
   # A. Check providers
   prov_list <- mapSpain::esp_tiles_providers
 
@@ -64,8 +45,7 @@ addProviderEspTiles <- function(map, provider, layerId = NULL,
 
   if (!provider %in% allprovs) {
     stop(
-      "No match for provider = '",
-      provider,
+      "No match for provider = '", provider,
       "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
     )
   }
@@ -176,18 +156,13 @@ addProviderEspTiles <- function(map, provider, layerId = NULL,
 #' @name providerEspTileOptions
 #'
 #' @details
-#' [providerEspTileOptions()] is a wrapper of
-#' [leaflet::providerTileOptions()].
+#' [providerEspTileOptions()] is a wrapper of [leaflet::providerTileOptions()].
 #'
-#'
+#' @param ... Arguments passed on to [leaflet::providerTileOptions()].
 #' @seealso [leaflet::providerTileOptions()], [leaflet::tileOptions()]
 #'
 #' @export
 providerEspTileOptions <- function(...) {
-  if (!requireNamespace("leaflet", quietly = TRUE)) {
-    stop("leaflet package required for using this function")
-  }
-
   ops <- leaflet::providerTileOptions(...)
   return(ops)
 }

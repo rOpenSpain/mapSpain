@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{esp_munic.sf}
 \alias{esp_munic.sf}
-\title{All Municipalities \code{POLYGON} object of Spain (2019)}
+\title{\code{\link[sf:sf]{sf}} object with all the municipalities of Spain (2019)}
 \format{
-A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) object with
+A \code{\link[sf:sf]{sf}} object (resolution: 1:1 million, EPSG:4258) object with
 8,131 rows and columns:
 \describe{
 \item{codauto}{INE code of the autonomous community.}
@@ -16,7 +16,8 @@ A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) object with
 \item{cmun}{INE code of the municipality.}
 \item{name}{Name of the municipality.}
 \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
-combination of \strong{cpro} and \strong{cmun}, aligned with INE coding scheme.}
+combination of \strong{cpro} and \strong{cmun} fields, aligned with INE coding
+scheme.}
 \item{geometry}{geometry field.}
 }
 }

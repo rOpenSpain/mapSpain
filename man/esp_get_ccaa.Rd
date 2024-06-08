@@ -3,7 +3,7 @@
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
 \alias{esp_get_ccaa_siane}
-\title{Get Autonomous Communities of Spain as \code{\link[sf:sf]{sf}} polygons and points}
+\title{Get Autonomous Communities of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -44,7 +44,7 @@ Initial position can be adjusted using the vector of coordinates. See
   }}
 
 \item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} and
-\strong{Details} for \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}}
+\strong{Details} for \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -66,11 +66,11 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{3}, \code{6.5} or \code{10}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
-the dataset provided by IGN.}
+the resulting object as provided by IGN.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
@@ -78,7 +78,7 @@ A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 \description{
 Returns
 \href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} as
-polygons and points at a specified scale.
+\code{sf} \code{POLYGON} or \code{POINT} at a specified scale.
 \itemize{
 \item \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} uses GISCO (Eurostat) as source. Please use
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}

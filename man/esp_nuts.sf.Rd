@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_nuts.sf}
 \alias{esp_nuts.sf}
-\title{All NUTS \code{POLYGON} object of Spain}
+\title{\code{\link[sf:sf]{sf}} object with all the NUTS levels of Spain (2016)}
 \format{
 A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) with
 86 rows and columns:

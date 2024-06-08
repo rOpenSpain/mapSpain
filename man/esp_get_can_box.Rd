@@ -32,7 +32,8 @@ One of:
 }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon or line depending of \code{style} parameter.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} depending of \code{style}
+parameter.
 
 \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }
