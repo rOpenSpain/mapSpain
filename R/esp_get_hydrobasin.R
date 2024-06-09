@@ -1,21 +1,22 @@
-#' Get [`sf`][sf::st_sf] polygons of the drainage basin demarcations of Spain
+#' Get [`sf`][sf::st_sf] `POLYGON` of the drainage basin demarcations of Spain
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon object containing areas with the required
+#' Loads a [`sf`][sf::st_sf] `POLYGON` object containing areas with the required
 #' hydrographic elements of Spain.
 #'
 #' @family natural
 #'
-#' @return A [`sf`][sf::st_sf] polygon object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
-#' @source IGN data via a custom CDN (see
+#' @source
+#' IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
 #'
 #' @param domain Possible values are `"land"`, that includes only
 #' the ground part or the ground or `"landsea"`, that includes both the ground
-#' and the related sea waters of the basin
+#' and the related sea waters of the basin.
 #'
 #' @inheritParams esp_get_rivers
 #'
@@ -50,12 +51,9 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_hydrobasin <- function(epsg = "4258",
-                               cache = TRUE,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE,
-                               resolution = "3",
+esp_get_hydrobasin <- function(epsg = "4258", cache = TRUE,
+                               update_cache = FALSE, cache_dir = NULL,
+                               verbose = FALSE, resolution = "3",
                                domain = "land") {
   # Check epsg
   init_epsg <- as.character(epsg)
@@ -75,19 +73,12 @@ esp_get_hydrobasin <- function(epsg = "4258",
   }
 
   type <- paste0("basin", domain)
-  basin_sf <-
-    esp_hlp_get_siane(
-      type,
-      resolution,
-      cache,
-      cache_dir,
-      update_cache,
-      verbose,
-      Sys.Date()
-    )
+  basin_sf <- esp_hlp_get_siane(
+    type, resolution, cache, cache_dir,
+    update_cache, verbose, Sys.Date()
+  )
 
-  basin_sf <-
-    sf::st_transform(basin_sf, as.double(init_epsg))
+  basin_sf <- sf::st_transform(basin_sf, as.double(init_epsg))
 
   return(basin_sf)
 }

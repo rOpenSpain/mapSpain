@@ -1,18 +1,18 @@
-#' Get NUTS of Spain as [`sf`][sf::st_sf] polygons and points
+#' Get NUTS of Spain as [`sf`][sf::st_sf] `POLYGON` or `POINT`
 #'
 #' @description
 #' Returns [NUTS regions of
 #' Spain](https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Spain)
-#' as polygons and points at a specified scale, as provided by
+#' as `POLYGON` or `POINT` at a specified scale, as provided by
 #' [GISCO](https://ec.europa.eu/eurostat/web/gisco)
 #' (Geographic Information System of the Commission, depending of Eurostat).
 #'
 #' NUTS are provided at three different levels:
-#' * **"0"**: Country level
-#' * **"1"**: Groups of autonomous communities
-#' * **"2"**: Autonomous communities
-#' * **"3"**: Roughly matches the provinces, but providing specific individual
-#'   objects for each major island
+#' - **"0"**: Country level.
+#' - **"1"**: Groups of autonomous communities.
+#' - **"2"**: Autonomous communities (CCAA).
+#' - **"3"**: Roughly matches the provinces, but providing specific individual
+#'   objects for each major island.
 #'
 #' @export
 #'
@@ -26,18 +26,18 @@
 #' Please check the download and usage provisions on
 #' [giscoR::gisco_attributions()]
 #'
-#' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
+#' @source
+#' [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
 #'
 #'
 #' @param year Release year of the file. One of `"2003"`, `"2006"`,
 #'   `"2010"`, `"2013"`, `"2016"`  or `"2021"`.
-#'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
-#'  * `"4258"`: ETRS89
-#'  * `"4326"`: WGS84
-#'  * `"3035"`: ETRS89 / ETRS-LAEA
-#'  * `"3857"`: Pseudo-Mercator
+#'  - `"4258"`: ETRS89.
+#'  - `"4326"`: WGS84.
+#'  - `"3035"`: ETRS89 / ETRS-LAEA.
+#'  - `"3857"`: Pseudo-Mercator.
 #'
 #' @param cache A logical whether to do caching. Default is `TRUE`. See
 #'   **About caching**.
@@ -51,21 +51,21 @@
 #'   default is `FALSE`.
 #'
 #' @param resolution Resolution of the geospatial data. One of
-#'  * "60": 1:60million
-#'  * "20": 1:20million
-#'  * "10": 1:10million
-#'  * "03": 1:3million
-#'  * "01": 1:1million
+#'  - `"60"`: 1:60million
+#'  - `"20"`: 1:20million
+#'  - `"10"`: 1:10million
+#'  - `"03"`: 1:3million
+#'  - `"01"`: 1:1million
 #'
 #' @param spatialtype Type of geometry to be returned:
-#'  * `"LB"`: Labels - point object.
-#'  * `"RG"`: Regions - polygon object.
+#'  - `"LB"`: Labels - `POINT` object.
+#'  - `"RG"`: Regions - `POLYGON` object.
 #'
 #' @param region Optional. A vector of region names, NUTS or ISO codes
 #'   (see [esp_dict_region_code()]).
 #'
-#' @param nuts_level NUTS level. One of "0" (Country-level), "1", "2" or "3".
-#'   See **Description**.
+#' @param nuts_level NUTS level. One of `"0"` (Country-level), `"1"`, `"2"` or
+#'  `"3"`. See **Description**.
 #'
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
@@ -83,7 +83,6 @@
 #' If you experience any problem on download, try to download the
 #' corresponding .geojson file by any other method and save it on your
 #' `cache_dir`. Use the option `verbose = TRUE` for debugging the API query.
-#'
 #'
 #' # Displacing the Canary Islands
 #'
@@ -131,8 +130,10 @@
 #'   )
 #'
 #'
-#' AndOriental <-
-#'   esp_get_nuts(region = c("Almeria", "Granada", "Jaen", "Malaga"))
+#' AndOriental <- esp_get_nuts(region = c(
+#'   "Almeria", "Granada",
+#'   "Jaen", "Malaga"
+#' ))
 #'
 #'
 #' ggplot(AndOriental) +
@@ -153,17 +154,10 @@
 #' ggplot(MixingCodes) +
 #'   geom_sf() +
 #'   labs(title = "Mixing Codes")
-esp_get_nuts <- function(year = "2016",
-                         epsg = "4258",
-                         cache = TRUE,
-                         update_cache = FALSE,
-                         cache_dir = NULL,
-                         verbose = FALSE,
-                         resolution = "01",
-                         spatialtype = "RG",
-                         region = NULL,
-                         nuts_level = "all",
-                         moveCAN = TRUE) {
+esp_get_nuts <- function(year = "2016", epsg = "4258", cache = TRUE,
+                         update_cache = FALSE, cache_dir = NULL,
+                         verbose = FALSE, resolution = "01", spatialtype = "RG",
+                         region = NULL, nuts_level = "all", moveCAN = TRUE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
   resolution <- as.character(resolution)
@@ -212,13 +206,11 @@ esp_get_nuts <- function(year = "2016",
 
     if (length(nuts_id) == 0) {
       stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
+        "region ", paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }
   }
-
 
   dwnload <- TRUE
 
@@ -245,16 +237,13 @@ esp_get_nuts <- function(year = "2016",
 
   if (dwnload) {
     data_sf <- giscoR::gisco_get_nuts(
-      resolution = resolution,
-      year = year,
-      epsg = epsg,
-      nuts_level = nuts_level,
+      resolution = resolution, year = year,
+      epsg = epsg, nuts_level = nuts_level,
       cache = cache,
       update_cache = update_cache,
       cache_dir = cache_dir,
       spatialtype = spatialtype,
-      nuts_id = nuts_id,
-      country = "ES",
+      nuts_id = nuts_id, country = "ES",
       verbose = verbose
     )
   }

@@ -1,20 +1,21 @@
-#' Get [`sf`][sf::st_sf] polygons with the national geographic grids from BDN
+#' Get [`sf`][sf::st_sf] `POLYGON` with the national geographic grids from BDN
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain as
+#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
 #' provided on the Banco de Datos de la Naturaleza (Nature Data Bank), by the
 #' Ministry of Environment (MITECO):
-#'   * [esp_get_grid_BDN()] extracts country-wide grids with resolutions
+#'   - [esp_get_grid_BDN()] extracts country-wide grids with resolutions
 #'     5x5 or 10x10 kms.
-#'   * [esp_get_grid_BDN_ccaa()] extracts grids by Autonomous Community with
+#'   - [esp_get_grid_BDN_ccaa()] extracts grids by Autonomous Community with
 #'     resolution 1x1 km.
 #'
 #' @family grids
 #'
-#' @return A [`sf`][sf::st_sf] polygon
+#' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #'
-#' @source BDN data via a custom CDN (see
+#' @source
+#' BDN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
 #' See original metadata and source on
@@ -40,10 +41,8 @@
 #'   theme_light() +
 #'   labs(title = "BDN Grid for Spain")
 #' }
-esp_get_grid_BDN <- function(resolution = 10,
-                             type = "main",
-                             update_cache = FALSE,
-                             cache_dir = NULL,
+esp_get_grid_BDN <- function(resolution = 10, type = "main",
+                             update_cache = FALSE, cache_dir = NULL,
                              verbose = FALSE) {
   # Check grid
   res <- as.numeric(resolution)
@@ -55,7 +54,6 @@ esp_get_grid_BDN <- function(resolution = 10,
   if (!type %in% c("main", "canary")) {
     stop("type should be one of 'main', 'canary'")
   }
-
 
   # Url
   api_entry <- paste0(
@@ -93,14 +91,11 @@ esp_get_grid_BDN <- function(resolution = 10,
 #'   See **Details** on [esp_get_ccaa()].
 #' @seealso [esp_get_ccaa()]
 
-esp_get_grid_BDN_ccaa <- function(ccaa,
-                                  update_cache = FALSE,
-                                  cache_dir = NULL,
+esp_get_grid_BDN_ccaa <- function(ccaa, update_cache = FALSE, cache_dir = NULL,
                                   verbose = FALSE) {
   # Get region id
 
   ccaa <- ccaa[!is.na(ccaa)]
-
 
   region <- ccaa
   if (is.null(region)) {

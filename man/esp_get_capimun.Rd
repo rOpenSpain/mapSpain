@@ -27,10 +27,10 @@ esp_get_capimun(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -48,7 +48,7 @@ default is \code{FALSE}.}
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
 \item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
-the required municipalities. \code{NULL} would not produce any filtering.}
+the required municipalities. \code{NULL} would return all municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.

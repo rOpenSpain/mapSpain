@@ -6,7 +6,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get a \code{\link[sf:sf]{sf}} hexbin or squared polygon of Spain}
+\title{Get a \code{\link[sf:sf]{sf}} hexbin or squared \code{POLYGON} of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 
@@ -24,7 +24,7 @@ or \code{NULL} to get all the provinces. See \strong{Details}.}
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} POLYGON object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 }
 \description{
 Loads a hexbin map (\code{\link[sf:sf]{sf}} object) or a map of squares with the
@@ -36,12 +36,12 @@ In choropleths, a large polygon data looks more emphasized just because
 of its size, what introduces a bias. Here with hexbin, each region is
 represented equally dismissing the bias.
 
-You can use and mix names, ISO codes, "codauto"/"cpro" codes (see
+You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
 When using a code corresponding of a higher level (e.g.
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
-provided (in this case , all the provinces of Andalucia).
+provided (in this case , all the provinces of Andalusia).
 
 Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf::st_transform()}}
 to change the projection.

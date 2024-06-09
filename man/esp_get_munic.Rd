@@ -3,7 +3,7 @@
 \name{esp_get_munic}
 \alias{esp_get_munic}
 \alias{esp_get_munic_siane}
-\title{Get municipalities of Spain as \code{\link[sf:sf]{sf}} polygons}
+\title{Get municipalities of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON}}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 
@@ -43,10 +43,10 @@ esp_get_munic_siane(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -64,7 +64,7 @@ default is \code{FALSE}.}
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
 \item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
-the required municipalities. \code{NULL} would not produce any filtering.}
+the required municipalities. \code{NULL} would return all municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -78,13 +78,13 @@ Initial position can be adjusted using the vector of coordinates. See
 the resulting object as provided by IGN.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon
+A \code{\link[sf:sf]{sf}} \code{POLYGON}.
 }
 \description{
-Returns municipalities of Spain as polygons at a specified scale.
+Returns municipalities of Spain \code{sf} POLYGON` at a specified scale.
 \itemize{
 \item \code{\link[=esp_get_munic]{esp_get_munic()}} uses GISCO (Eurostat) as source. Please use
-\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
 }
 
 \itemize{
@@ -104,9 +104,9 @@ format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 Historical information starts as of 2005.
 }
 
-When using \code{region} you can use and mix names and NUTS codes
-(levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-"cpro" (see \link{esp_codelist}).
+When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 or
+3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
+(see \link{esp_codelist}).
 
 When calling a superior level (Province, Autonomous Community or NUTS1) ,
 all the municipalities of that level would be added.

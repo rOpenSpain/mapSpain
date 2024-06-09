@@ -1,12 +1,12 @@
-#' Get the borders of Spain as a [`sf`][sf::st_sf] polygon
+#' Get [`sf`][sf::st_sf] `POLYGON` representing Spain
 #'
 #' @description
-#' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] polygon at a
+#' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON` at a
 #' specified scale.
 #'
 #' @family political
 #'
-#' @return A [`sf`][sf::st_sf] polygon object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #'
 #' @export

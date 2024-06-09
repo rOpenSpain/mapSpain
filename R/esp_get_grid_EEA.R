@@ -1,12 +1,12 @@
-#' Get [`sf`][sf::st_sf] polygons of the national geographic grids from EEA
+#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from EEA
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain as
+#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
 #' provided by the European Environment Agency (EEA).
 #'
 #' @family grids
 #'
-#' @return A [`sf`][sf::st_sf] polygon
+#' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #'
 #' @source
@@ -35,10 +35,8 @@
 #'   theme_light() +
 #'   labs(title = "EEA Grid for Spain")
 #' }
-esp_get_grid_EEA <- function(resolution = 100,
-                             type = "main",
-                             update_cache = FALSE,
-                             cache_dir = NULL,
+esp_get_grid_EEA <- function(resolution = 100, type = "main",
+                             update_cache = FALSE, cache_dir = NULL,
                              verbose = FALSE) {
   # Check grid
   res <- as.numeric(resolution)

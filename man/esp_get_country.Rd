@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_country.R
 \name{esp_get_country}
 \alias{esp_get_country}
-\title{Get the borders of Spain as a \code{\link[sf:sf]{sf}} polygon}
+\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} representing Spain}
 \usage{
 esp_get_country(moveCAN = TRUE, ...)
 }
@@ -20,10 +20,10 @@ Initial position can be adjusted using the vector of coordinates. See
     \item{\code{epsg}}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
     \item{\code{cache}}{A logical whether to do caching. Default is \code{TRUE}. See
 \strong{About caching}.}
@@ -34,19 +34,19 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
     \item{\code{resolution}}{Resolution of the geospatial data. One of
 \itemize{
-\item "60": 1:60million
-\item "20": 1:20million
-\item "10": 1:10million
-\item "03": 1:3million
-\item "01": 1:1million
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
 }}
   }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Returns the boundaries of Spain as a single \code{\link[sf:sf]{sf}} polygon at a
+Returns the boundaries of Spain as a single \code{\link[sf:sf]{sf}} \code{POLYGON} at a
 specified scale.
 }
 \section{About caching}{

@@ -1,4 +1,4 @@
-#' Get a [`sf`][sf::st_sf] hexbin or squared polygon of Spain
+#' Get a [`sf`][sf::st_sf] hexbin or squared `POLYGON` of Spain
 #'
 #' @description
 #' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with the
@@ -9,7 +9,7 @@
 #'
 #' @family political
 #'
-#' @return A [`sf`][sf::st_sf] POLYGON object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #'
 #' @export
@@ -18,8 +18,6 @@
 #'
 #' @inheritParams esp_get_ccaa
 #'
-#'
-#'
 #' @details
 #'
 #' Hexbin or grid map has an advantage over usual choropleth maps.
@@ -27,12 +25,12 @@
 #' of its size, what introduces a bias. Here with hexbin, each region is
 #' represented equally dismissing the bias.
 #'
-#' You can use and mix names, ISO codes, "codauto"/"cpro" codes (see
+#' You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
 #' When using a code corresponding of a higher level (e.g.
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
-#' provided (in this case , all the provinces of Andalucia).
+#' provided (in this case , all the provinces of Andalusia).
 #'
 #'
 #' Results are provided in **EPSG:4258**, use [sf::st_transform()]
@@ -155,8 +153,7 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
     nuts_id <- unique(nuts_id)
     if (length(nuts_id) == 0) {
       stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
+        "region ", paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }

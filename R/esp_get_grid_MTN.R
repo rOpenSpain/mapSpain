@@ -1,11 +1,11 @@
-#' Get [`sf`][sf::st_sf] polygons of the national geographic grids from IGN
+#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from IGN
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain.
+#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain.
 #'
 #' @family grids
 #'
-#' @return A [`sf`][sf::st_sf] polygon
+#' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #'
 #' @source IGN data via a custom CDN (see
@@ -111,8 +111,7 @@
 #'   labs(title = "MTN50 Grid for Spain")
 #' }
 esp_get_grid_MTN <- function(grid = "MTN25_ETRS89_Peninsula_Baleares_Canarias",
-                             update_cache = FALSE,
-                             cache_dir = NULL,
+                             update_cache = FALSE, cache_dir = NULL,
                              verbose = FALSE) {
   # Check grid
   init_grid <- grid

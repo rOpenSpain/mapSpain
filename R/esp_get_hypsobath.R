@@ -1,20 +1,21 @@
-#' Get [`sf`][sf::st_sf] polygons and lines with hypsometry and bathymetry of
-#' Spain.
+#' Get [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` with hypsometry and
+#' bathymetry of Spain
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon or line object representing the hypsometry
-#' and bathymetry of Spain.
+#' Loads a [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` object representing the
+#' hypsometry and bathymetry of Spain.
 #'
-#' * **Hypsometry** represents the  the elevation and depth of features of the
+#' - **Hypsometry** represents the  the elevation and depth of features of the
 #'   Earth's surface relative to mean sea level.
-#' * **Bathymetry** is the measurement of the depth of water in oceans, rivers,
+#' - **Bathymetry** is the measurement of the depth of water in oceans, rivers,
 #'   or lakes.
 #'
 #' @family natural
 #'
-#' @return A [`sf`][sf::st_sf] polygon or line object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` object.
 #'
-#' @source IGN data via a custom CDN (see
+#' @source
+#' IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 #'
 #' @export
@@ -22,8 +23,8 @@
 #' @param resolution Resolution of the shape. Values available
 #'   are `"3"` or `"6.5"`.
 #'
-#' @param spatialtype Spatial type of the output. Use `"area"` for polygons or
-#'   `"line"` for lines.
+#' @param spatialtype Spatial type of the output. Use `"area"` for `POLYGON` or
+#'   `"line"` for `LINESTRING`.
 #'
 #' @inheritParams esp_get_nuts
 #'
@@ -46,7 +47,8 @@
 #' hypsobath <- hypsobath[!sf::st_is_empty(hypsobath), ]
 #'
 #' # Tints from Wikipedia
-#' # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/Topographic_maps
+#' # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/
+#' # Topographic_maps
 #'
 #' bath_tints <- colorRampPalette(
 #'   rev(
@@ -116,13 +118,9 @@
 #'     keyheight = .8
 #'   ))
 #' }
-esp_get_hypsobath <- function(epsg = "4258",
-                              cache = TRUE,
-                              update_cache = FALSE,
-                              cache_dir = NULL,
-                              verbose = FALSE,
-                              resolution = "3",
-                              spatialtype = "area") {
+esp_get_hypsobath <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
+                              cache_dir = NULL, verbose = FALSE,
+                              resolution = "3", spatialtype = "area") {
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
@@ -133,8 +131,7 @@ esp_get_hypsobath <- function(epsg = "4258",
 
   if (!resolution %in% validres) {
     stop(
-      "resolution should be one of '",
-      paste0(validres, collapse = "', "),
+      "resolution should be one of '", paste0(validres, collapse = "', "),
       "'"
     )
   }
@@ -145,20 +142,16 @@ esp_get_hypsobath <- function(epsg = "4258",
   if (!spatialtype %in% validspatialtype) {
     stop(
       "spatialtype should be one of '",
-      paste0(validspatialtype, collapse = "', "),
-      "'"
+      paste0(validspatialtype, collapse = "', "), "'"
     )
   }
 
   type <- paste0("orog", spatialtype)
 
-  data_sf <- esp_hlp_get_siane(type,
-    resolution,
-    cache,
-    cache_dir,
-    update_cache,
+  data_sf <- esp_hlp_get_siane(type, resolution, cache, cache_dir, update_cache,
     verbose,
     year = Sys.Date()
   )
+
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 }

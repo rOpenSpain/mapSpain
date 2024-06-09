@@ -24,10 +24,10 @@ esp_get_rivers(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -44,8 +44,8 @@ default is \code{FALSE}.}
 \item{resolution}{Resolution of the polygon. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
 
-\item{spatialtype}{Spatial type of the output. Use \code{"area"} for polygons or
-\code{"line"} for lines.}
+\item{spatialtype}{Spatial type of the output. Use \code{"area"} for \code{POLYGON} or
+\code{"line"} for \code{LINESTRING}.}
 
 \item{name}{Optional. A character or  \code{\link[base:grep]{regex}} expression
 with the name of the element(s) to be extracted.}

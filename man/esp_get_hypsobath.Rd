@@ -2,8 +2,8 @@
 % Please edit documentation in R/esp_get_hypsobath.R
 \name{esp_get_hypsobath}
 \alias{esp_get_hypsobath}
-\title{Get \code{\link[sf:sf]{sf}} polygons and lines with hypsometry and bathymetry of
-Spain.}
+\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} with hypsometry and
+bathymetry of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -23,10 +23,10 @@ esp_get_hypsobath(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -43,15 +43,15 @@ default is \code{FALSE}.}
 \item{resolution}{Resolution of the shape. Values available
 are \code{"3"} or \code{"6.5"}.}
 
-\item{spatialtype}{Spatial type of the output. Use \code{"area"} for polygons or
-\code{"line"} for lines.}
+\item{spatialtype}{Spatial type of the output. Use \code{"area"} for \code{POLYGON} or
+\code{"line"} for \code{LINESTRING}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon or line object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} polygon or line object representing the hypsometry
-and bathymetry of Spain.
+Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} object representing the
+hypsometry and bathymetry of Spain.
 \itemize{
 \item \strong{Hypsometry} represents the  the elevation and depth of features of the
 Earth's surface relative to mean sea level.
@@ -88,7 +88,8 @@ hypsobath <- esp_get_hypsobath()
 hypsobath <- hypsobath[!sf::st_is_empty(hypsobath), ]
 
 # Tints from Wikipedia
-# https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/Topographic_maps
+# https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/
+# Topographic_maps
 
 bath_tints <- colorRampPalette(
   rev(
