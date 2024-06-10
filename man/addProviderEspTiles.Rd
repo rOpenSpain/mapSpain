@@ -48,8 +48,8 @@ Include tiles of public Spanish organisms to a \code{\link[leaflet:leaflet]{leaf
 }
 \examples{
 library(leaflet)
-leafmap <- leaflet() \%>\%
-  setView(lat = 40.4166, lng = -3.7038400, zoom = 6) \%>\%
+leafmap <- leaflet(width = "100\%", height = "60vh") \%>\%
+  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) \%>\%
   addTiles(group = "Default (OSM)") \%>\%
   addProviderEspTiles(
     provider = "IDErioja.Claro",
