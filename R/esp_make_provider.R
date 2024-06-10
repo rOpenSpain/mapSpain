@@ -18,11 +18,11 @@
 #' @param id An identifier for the user. Would be used also for identifying
 #'   cached tiles.
 #'
-#' @param q The base url of the service
+#' @param q The base url of the service.
 #'
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #'
-#' @param layers The name of the layer to retrieve
+#' @param layers The name of the layer to retrieve.
 #'
 #' @param ... Additional parameters to the query, like `version`, `format`,
 #'   `crs/srs`, `style`, ... depending on the capabilities of the service.
@@ -68,24 +68,14 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   if (toupper(service) == "WMS") {
     def_params <- list(
-      q = q,
-      request = "GetMap",
-      service = "WMS",
-      version = "1.0.0",
-      format = "image/png",
-      layers = layers,
-      styles = ""
+      q = q, request = "GetMap", service = "WMS",
+      format = "image/png", layers = layers, styles = ""
     )
   } else {
     def_params <- list(
-      q = q,
-      request = "GetTile",
-      service = "WMTS",
-      version = "1.0.0",
-      format = "image/png",
-      layer = layers,
-      style = "",
-      tilematrixset = "GoogleMapsCompatible"
+      q = q, request = "GetTile", service = "WMTS",
+      version = "1.0.0", format = "image/png", layer = layers,
+      style = "", tilematrixset = "GoogleMapsCompatible"
     )
   }
 

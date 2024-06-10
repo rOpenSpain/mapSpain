@@ -154,46 +154,19 @@
 #' autoplot(cartodb, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
 #' }
-esp_getTiles <- function(x,
-                         type = "IDErioja",
-                         zoom = NULL,
-                         zoommin = 0,
-                         crop = TRUE,
-                         res = 512,
-                         bbox_expand = 0.05,
-                         transparent = TRUE,
-                         mask = FALSE,
-                         update_cache = FALSE,
-                         cache_dir = NULL,
-                         verbose = FALSE,
-                         options = NULL) {
-  # nocov start
-
-  if (!requireNamespace("slippymath", quietly = TRUE)) {
-    stop("slippymath package required for using this function")
-  }
-  if (!requireNamespace("terra", quietly = TRUE)) {
-    stop("terra package required for using this function")
-  }
-  if (!requireNamespace("png", quietly = TRUE)) {
-    stop("png package required for using this function")
-  }
-  # nocov end
+esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
+                         crop = TRUE, res = 512, bbox_expand = 0.05,
+                         transparent = TRUE, mask = FALSE, update_cache = FALSE,
+                         cache_dir = NULL, verbose = FALSE, options = NULL) {
   # Only sf and sfc objects allowed
 
   if (!inherits(x, "sf") && !inherits(x, "sfc")) {
-    stop(
-      "Only sf and sfc ",
-      "objects allowed"
-    )
+    stop("Only sf and sfc objects allowed")
   }
 
   # If sfc convert to sf
   if (inherits(x, "sfc")) {
-    x <- sf::st_as_sf(
-      data.frame(x = 1),
-      x
-    )
+    x <- sf::st_as_sf(data.frame(x = 1), x)
   }
 
 
@@ -288,8 +261,6 @@ esp_getTiles <- function(x,
       options <- options[ig]
     }
 
-
-
     url_pieces <- modifyList(url_pieces, options)
     # Create new cache dir
 
@@ -333,39 +304,22 @@ esp_getTiles <- function(x,
   newbbox <- esp_hlp_get_bbox(x, bbox_expand, typeprov)
 
   if (typeprov == "WMS") {
-    rout <-
-      getwms(
-        newbbox,
-        url_pieces,
-        update_cache,
-        cache_dir,
-        verbose,
-        res,
-        transparent
-      )
+    rout <- getwms(
+      newbbox, url_pieces, update_cache, cache_dir, verbose,
+      res, transparent
+    )
   } else {
-    rout <-
-      getwmts(
-        newbbox,
-        type,
-        url_pieces,
-        update_cache,
-        cache_dir,
-        verbose,
-        zoom,
-        zoommin,
-        transparent,
-        extra_opts
-      )
+    rout <- getwmts(
+      newbbox, type, url_pieces, update_cache, cache_dir, verbose,
+      zoom, zoommin, transparent, extra_opts
+    )
   }
 
   # Regenerate
   # Display attributions
 
   if (verbose && !is.null(attr)) {
-    message(
-      "\nData and map tiles sources:\n", attr
-    )
+    message("\nData and map tiles sources:\n", attr)
   }
 
   x <- xinit
@@ -375,10 +329,7 @@ esp_getTiles <- function(x,
   if (!sf::st_crs(x) == sf::st_crs(rout)) {
     # Sometimes it gets an error
 
-    rout_end <- try(terra::project(
-      rout,
-      terra::crs(x_terra)
-    ), silent = TRUE)
+    rout_end <- try(terra::project(rout, terra::crs(x_terra)), silent = TRUE)
 
     if (inherits(rout_end, "try-error")) {
       if (verbose) message("Tile not reprojected.")
@@ -388,11 +339,7 @@ esp_getTiles <- function(x,
     }
   }
 
-  rout <- terra::clamp(rout,
-    lower = 0,
-    upper = 255,
-    values = TRUE
-  )
+  rout <- terra::clamp(rout, lower = 0, upper = 255, values = TRUE)
 
 
   # crop management

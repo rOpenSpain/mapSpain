@@ -36,8 +36,8 @@
 #' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
 #' [esp_codelist]
 #'
-#' When calling a higher level (province, CCAA or NUTS1) ,
-#' all the municipalities of that level would be added.
+#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
+#' of that level would be added.
 #'
 #' @export
 #'

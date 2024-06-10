@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_rivers.R
 \name{esp_get_rivers}
 \alias{esp_get_rivers}
-\title{Get \code{\link[sf:sf]{sf}} polygon and lines of rivers, channels and other
+\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} of rivers, channels and other
 wetlands of Spain}
 \source{
 IGN data via a custom CDN (see
@@ -41,7 +41,7 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
 
 \item{spatialtype}{Spatial type of the output. Use \code{"area"} for \code{POLYGON} or
@@ -51,11 +51,11 @@ default is \code{FALSE}.}
 with the name of the element(s) to be extracted.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon or line object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} polygon or line object representing rivers,
-channels, reservoirs and other wetlands of Spain.
+Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} object representing
+rivers, channels, reservoirs and other wetlands of Spain.
 }
 \details{
 Metadata available on

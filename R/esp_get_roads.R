@@ -1,11 +1,12 @@
-#' Get [`sf`][sf::st_sf] lines of the roads of Spain
+#' Get [`sf`][sf::st_sf] `LINESTRING` of the roads of Spain
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] line object representing the main roads of Spain.
+#' Loads a [`sf`][sf::st_sf] `LINESTRING` object representing the main roads of
+#' Spain.
 #'
 #' @family infrastructure
 #'
-#' @return A [`sf`][sf::st_sf] line object.
+#' @return A [`sf`][sf::st_sf] `LINESTRING` object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
@@ -43,13 +44,9 @@
 #'   labs(color = "Road type") +
 #'   theme(legend.position = "bottom")
 #' }
-esp_get_roads <- function(year = Sys.Date(),
-                          epsg = "4258",
-                          cache = TRUE,
-                          update_cache = FALSE,
-                          cache_dir = NULL,
-                          verbose = FALSE,
-                          moveCAN = TRUE) {
+esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
+                          update_cache = FALSE, cache_dir = NULL,
+                          verbose = FALSE, moveCAN = TRUE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -59,13 +56,8 @@ esp_get_roads <- function(year = Sys.Date(),
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "roads",
-    3,
-    cache,
-    cache_dir,
-    update_cache,
-    verbose,
-    year
+    "roads", 3, cache, cache_dir, update_cache,
+    verbose, year
   )
 
 

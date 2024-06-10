@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_roads.R
 \name{esp_get_roads}
 \alias{esp_get_roads}
-\title{Get \code{\link[sf:sf]{sf}} lines of the roads of Spain}
+\title{Get \code{\link[sf:sf]{sf}} \code{LINESTRING} of the roads of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -47,10 +47,11 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} line object.
+A \code{\link[sf:sf]{sf}} \code{LINESTRING} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} line object representing the main roads of Spain.
+Loads a \code{\link[sf:sf]{sf}} \code{LINESTRING} object representing the main roads of
+Spain.
 }
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or

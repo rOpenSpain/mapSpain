@@ -45,13 +45,12 @@ Las **fuentes de información** empleadas en **mapSpain** son:
 
 -   [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat) via el paquete
     [**giscoR**](https://ropengov.github.io/giscoR/).
-
 -   [Instituto Geografico Nacional](https://www.ign.es/) (IGN)
-
 -   Distintos organismos públicos de España que proporcionan servicios de
     teselas WMTS/WMS (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Los objetos resultantes se proporcionan en formato `sf` o `SpatRaster`(`terra`).
+Los objetos resultantes se proporcionan en formato `sf` (librería **sf)** o
+`SpatRaster`(librería **terra**).
 
 Página web: <https://ropenspain.github.io/mapSpain/>
 
@@ -69,12 +68,13 @@ Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ```{r instruniverse, eval=FALSE}
 # Enable this universe
-options(repos = c(
-  ropenspain = "https://ropenspain.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-install.packages("mapSpain", dependencies = TRUE)
+install.packages("mapSpain",
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  ),
+  dependencies = TRUE
+)
 ```
 
 #### Remotes
@@ -91,20 +91,13 @@ library(tidyverse)
 
 galicia <- esp_get_munic_siane(region = "Galicia") %>%
   # Homogeinizo labels
-  mutate(
-    Provincia = esp_dict_translate(ine.prov.name, "es")
-  )
+  mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
 
 ggplot(galicia) +
-  geom_sf(aes(fill = Provincia),
-    color = "grey70"
-  ) +
+  geom_sf(aes(fill = Provincia), color = "grey70") +
   labs(title = "Provincias de Galicia") +
-  scale_fill_discrete(
-    type =
-      hcl.colors(4, "Blues")
-  ) +
+  scale_fill_discrete(type = hcl.colors(4, "Blues")) +
   theme_bw()
 ```
 
@@ -114,8 +107,7 @@ Si exploramos el dataset:
 library(reactable)
 
 reactable(galicia,
-  searchable = TRUE, striped = TRUE,
-  filterable = TRUE, height = 350,
+  searchable = TRUE, striped = TRUE, filterable = TRUE, height = 350,
   elementId = "munis-galicia"
 )
 ```
@@ -136,10 +128,8 @@ esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf")
 esp_mapspain <- esp_get_country(epsg = 4326)
 
 # Imagen Ria Ferrol
-tile <- esp_getTiles(esp_get_munic(munic = "Ferrol", epsg = 3857),
-  "IGNBase.Gris",
-  bbox_expand = 0.5, zoommin = 1
-)
+tile <- esp_get_munic(munic = "Ferrol", epsg = 3857) %>%
+  esp_getTiles("IGNBase.Gris", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
 library(tidyterra)
@@ -151,14 +141,9 @@ esp_all$source <- c("rnaturalearth", "mapSpain")
 
 ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
-  geom_sf(aes(color = source),
-    fill = NA, show.legend = "line",
-    linewidth = 1.2
-  ) +
+  geom_sf(aes(color = source), fill = NA, show.legend = "line", linewidth = 1.2) +
   coord_sf(
-    crs = 4326,
-    xlim = c(-8.384421, -8.154413),
-    ylim = c(43.43201, 43.59545),
+    crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
   scale_color_manual(values = c("red", "black")) +
@@ -167,7 +152,6 @@ ggplot(esp_all) +
 ```
 
 -   **rnaturalearth**: No capta bien el contorno.
-
 -   **mapSpain**: Resultados satisfactorios.
 
 ### Almacenamiento
@@ -209,13 +193,10 @@ códigos:
 
 -   `esp_dict_region_code()` convierte textos en códigos de CCAA y provincias.
     Esquemas de codificación soportados:
-
     -   ISO2
     -   NUTS
     -   INE (codauto y cpro)
-
 -   `esp_dict_translate()` traduce textos a diferentes idiomas:
-
     -   Castellano
     -   Inglés
     -   Catalán
@@ -241,27 +222,19 @@ esp_dict_region_code(iso2vals, origin = "iso2")
 
 iso2vals <- c("ES-GA", "ES-CT", "ES-PV")
 
-esp_dict_region_code(iso2vals,
-  origin = "iso2",
-  destination = "nuts"
-)
+esp_dict_region_code(iso2vals, origin = "iso2", destination = "nuts")
 
 # Soporta diferentes niveles
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
 
-esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"),
-  destination = "iso2"
-)
+esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"), destination = "iso2")
 ```
 
 #### `esp_dict_translate()`
 
 ```{r}
-vals <- c(
-  "La Rioja", "Sevilla", "Madrid",
-  "Jaen", "Orense", "Baleares"
-)
+vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 
 esp_dict_translate(vals, lang = "en")
 esp_dict_translate(vals, lang = "es")
@@ -350,15 +323,12 @@ ggplot(nuts3_sf) +
 
 ```{r ccaa}
 ccaa <- esp_get_ccaa(ccaa = c(
-  "Catalunya",
-  "Comunidad Valenciana",
-  "Aragón",
+  "Catalunya", "Comunidad Valenciana", "Aragón",
   "Baleares"
 ))
 
-ccaa <- ccaa %>% mutate(
-  ccaa_cat = esp_dict_translate(ccaa$ine.ccaa.name, "ca")
-)
+ccaa <- ccaa %>%
+  mutate(ccaa_cat = esp_dict_translate(ine.ccaa.name, "ca"))
 
 ggplot(ccaa) +
   geom_sf(aes(fill = ccaa_cat)) +
@@ -374,14 +344,12 @@ provincias de esa entidad.
 
 ```{r prov}
 provs <- esp_get_prov_siane(c(
-  "Andalucía", "Ciudad Real",
-  "Murcia", "Ceuta", "Melilla"
+  "Andalucía", "Ciudad Real", "Murcia", "Ceuta",
+  "Melilla"
 ))
 
 ggplot(provs) +
-  geom_sf(aes(fill = prov.shortname.es),
-    alpha = 0.9
-  ) +
+  geom_sf(aes(fill = prov.shortname.es), alpha = 0.9) +
   scale_fill_discrete(type = hcl.colors(12, "Cividis")) +
   theme_minimal() +
   labs(fill = "Provincias")
@@ -398,13 +366,11 @@ ggplot(munic) +
   geom_sf(aes(fill = pob19), alpha = 0.9, color = NA) +
   scale_fill_gradientn(
     colors = hcl.colors(100, "Inferno"),
-    n.breaks = 10,
-    labels = scales::label_comma(),
+    n.breaks = 10, labels = scales::label_comma(),
     guide = guide_legend()
   ) +
   labs(
-    fill = "Habitantes",
-    title = "Población en Segovia",
+    fill = "Habitantes", title = "Población en Segovia",
     subtitle = "Datos INE (2019)"
   ) +
   theme_void() +
@@ -476,7 +442,8 @@ ggplot() +
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
 madrid_mask <- esp_getTiles(madrid, "IGNBase.Gris",
-  mask = TRUE, crop = TRUE, zoommin = 2
+  mask = TRUE, crop = TRUE,
+  zoommin = 2
 )
 
 

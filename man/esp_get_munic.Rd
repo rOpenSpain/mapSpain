@@ -108,8 +108,8 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
 (see \link{esp_codelist}).
 
-When calling a superior level (Province, Autonomous Community or NUTS1) ,
-all the municipalities of that level would be added.
+When calling a higher level (Province, Autonomous Community or NUTS1), all
+the municipalities of that level would be added.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.

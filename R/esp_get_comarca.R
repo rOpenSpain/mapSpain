@@ -35,7 +35,7 @@
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 #' "cpro" (see [esp_codelist]).
 #'
-#' When calling a superior level (Province, Autonomous Community or NUTS1) ,
+#' When calling a higher level (Province, Autonomous Community or NUTS1),
 #' all the comarcas of that level would be added.
 #'
 #' ## Legal Notice

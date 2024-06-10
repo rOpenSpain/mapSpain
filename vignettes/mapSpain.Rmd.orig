@@ -55,7 +55,6 @@ of Spain.
 as:
 
 ```{r, eval=FALSE}
-
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -68,7 +67,6 @@ same caching directory on both would speed up the data load on your session.
 Some examples of what **mapSpain** can do:
 
 ```{r basic, fig.cap="Example: Map of Spain", fig.asp=0.7}
-
 library(mapSpain)
 library(ggplot2)
 
@@ -89,7 +87,6 @@ ggplot(country) +
       face = "bold"
     )
   )
-
 ```
 
 ```{r basic2, fig.cap="Example: Provinces of Andalucia", fig.asp=0.55}
@@ -134,23 +131,22 @@ Let's analyze the distribution of women in each autonomous community with
 `ggplot`:
 
 ```{r choro, fig.cap="Percentage of women by Autonomous Community (2019)", fig.asp=0.7}
-
 census <- mapSpain::pobmun19
 
 # Extract CCAA from base dataset
 
 codelist <- mapSpain::esp_codelist
 
-census <-
-  unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
+census <- unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
 
 # Summarize by CCAA
-census_ccaa <-
-  aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
+census_ccaa <- aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
 
 census_ccaa$porc_women <- census_ccaa$women / census_ccaa$pob19
-census_ccaa$porc_women_lab <-
-  paste0(round(100 * census_ccaa$porc_women, 2), "%")
+census_ccaa$porc_women_lab <- paste0(
+  round(100 * census_ccaa$porc_women, 2),
+  "%"
+)
 
 # Merge into spatial data
 
@@ -165,9 +161,7 @@ ggplot(CCAA_sf) +
   ) +
   geom_sf(data = Can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5,
-    size = 3,
-    label.size = 0
+    fill = "white", alpha = 0.5, size = 3, label.size = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
@@ -178,7 +172,7 @@ ggplot(CCAA_sf) +
     guide = guide_legend(title = "Porc. women")
   ) +
   theme_void() +
-  theme(legend.position = c(0.1, 0.6))
+  theme(legend.position = "left")
 ```
 
 ## Thematic maps
@@ -190,7 +184,6 @@ handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
 used).
 
 ```{r thematic, fig.cap="Population density in Spain (2019)", crop=TRUE, dpi=120}
-
 # Population density of Spain
 
 library(sf)
@@ -212,15 +205,12 @@ munic.pop$cuts <- cut(munic.pop$dens, br)
 
 ggplot(munic.pop) +
   geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
-  scale_fill_manual(values = c("grey5", hcl.colors(length(br) - 2,"Spectral")),
+  scale_fill_manual(
+    values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(
       title = "Pop. per km2",
-      direction = "horizontal",
-      nrow = 1,
-      keywidth = 2,
-      title.position = "top",
-      label.position = "bottom"
+      direction = "horizontal", nrow = 1
     )
   ) +
   labs(title = "Population density in Spain (2019)") +
@@ -229,7 +219,10 @@ ggplot(munic.pop) +
     plot.title = element_text(hjust = .5),
     plot.background = element_rect(fill = "black"),
     text = element_text(colour = "white"),
-    legend.position = "bottom"
+    legend.position = "bottom",
+    legend.title.position = "top",
+    legend.text.position = "bottom",
+    legend.key.width = unit(30, "pt")
   )
 ```
 
@@ -240,7 +233,6 @@ If you need to plot Spain along with another countries, consider using
 dependency when you installed **mapSpain**. A basic example:
 
 ```{r giscoR, fig.cap="mapSpain and giscoR example", fig.asp=0.9}
-
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -251,11 +243,13 @@ all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
 
 eu_countries <- gisco_get_countries(
-  resolution = res, region = "EU") |>
+  resolution = res, region = "EU"
+) |>
   st_transform(3035)
 
 ccaa <- esp_get_ccaa(
-  moveCAN = FALSE, resolution = res) |>
+  moveCAN = FALSE, resolution = res
+) |>
   st_transform(3035)
 
 # Plot
@@ -275,7 +269,6 @@ ggplot(all_countries) +
       linetype = "dotted"
     )
   )
-
 ```
 
 ## Working with tiles

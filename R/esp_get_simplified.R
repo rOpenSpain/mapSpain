@@ -11,7 +11,7 @@
 #'
 #' @family political
 #'
-#' @return A [`sf`][sf::st_sf] POLYGON object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @inheritParams esp_get_prov
 #'
@@ -27,12 +27,12 @@
 #'
 #' Results are provided **without CRS**, as provided on source.
 #'
-#' You can use and mix names, ISO codes, "codauto"/"cpro" codes (see
+#' You can use and mix names, ISO codes, `"codauto"/"cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
 #' When using a code corresponding of a higher level (e.g.
 #' `esp_get_simpl_prov("Andalucia")`) all the corresponding units of that level
-#' are provided (in this case , all the provinces of Andalucia).
+#' are provided (in this case , all the provinces of Andalusia).
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -59,10 +59,8 @@
 #'   geom_sf() +
 #'   geom_sf_text(aes(label = ine.ccaa.name), check_overlap = TRUE)
 #' }
-esp_get_simpl_prov <- function(prov = NULL,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE) {
+esp_get_simpl_prov <- function(prov = NULL, update_cache = FALSE,
+                               cache_dir = NULL, verbose = FALSE) {
   region <- prov
 
   # Url
@@ -73,13 +71,10 @@ esp_get_simpl_prov <- function(prov = NULL,
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
     filename = filename,
-    cache_dir = cache_dir,
-    verbose = verbose,
+    cache_dir = cache_dir, verbose = verbose,
     update_cache = update_cache,
     cache = TRUE
   )
-
-
 
   region <- unique(region)
 
@@ -98,8 +93,7 @@ esp_get_simpl_prov <- function(prov = NULL,
 
     dfcpro <- mapSpain::esp_codelist
     dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-    cprocodes <-
-      unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
+    cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
 
     data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
   }
@@ -116,10 +110,8 @@ esp_get_simpl_prov <- function(prov = NULL,
 #' @rdname esp_get_simplified
 #'
 #' @export
-esp_get_simpl_ccaa <- function(ccaa = NULL,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE) {
+esp_get_simpl_ccaa <- function(ccaa = NULL, update_cache = FALSE,
+                               cache_dir = NULL, verbose = FALSE) {
   region <- ccaa
 
   # Url
@@ -130,8 +122,7 @@ esp_get_simpl_ccaa <- function(ccaa = NULL,
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
     filename = filename,
-    cache_dir = cache_dir,
-    verbose = verbose,
+    cache_dir = cache_dir, verbose = verbose,
     update_cache = update_cache,
     cache = TRUE
   )
@@ -154,8 +145,7 @@ esp_get_simpl_ccaa <- function(ccaa = NULL,
     codauto <- codauto[!is.na(codauto)]
     if (length(codauto) == 0) {
       stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
+        "region ", paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }

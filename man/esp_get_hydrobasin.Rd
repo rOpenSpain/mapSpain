@@ -39,7 +39,7 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
 
 \item{domain}{Possible values are \code{"land"}, that includes only

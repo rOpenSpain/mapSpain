@@ -144,16 +144,16 @@ census <- mapSpain::pobmun19
 
 codelist <- mapSpain::esp_codelist
 
-census <-
-  unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
+census <- unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
 
 # Summarize by CCAA
-census_ccaa <-
-  aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
+census_ccaa <- aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
 
 census_ccaa$porc_women <- census_ccaa$women / census_ccaa$pob19
-census_ccaa$porc_women_lab <-
-  paste0(round(100 * census_ccaa$porc_women, 2), "%")
+census_ccaa$porc_women_lab <- paste0(
+  round(100 * census_ccaa$porc_women, 2),
+  "%"
+)
 
 # Merge into spatial data
 
@@ -168,9 +168,7 @@ ggplot(CCAA_sf) +
   ) +
   geom_sf(data = Can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5,
-    size = 3,
-    label.size = 0
+    fill = "white", alpha = 0.5, size = 3, label.size = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
@@ -181,7 +179,7 @@ ggplot(CCAA_sf) +
     guide = guide_legend(title = "Porc. women")
   ) +
   theme_void() +
-  theme(legend.position = c(0.1, 0.6))
+  theme(legend.position = "left")
 ```
 
 <div class="figure">
@@ -225,11 +223,7 @@ ggplot(munic.pop) +
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(
       title = "Pop. per km2",
-      direction = "horizontal",
-      nrow = 1,
-      keywidth = 2,
-      title.position = "top",
-      label.position = "bottom"
+      direction = "horizontal", nrow = 1
     )
   ) +
   labs(title = "Population density in Spain (2019)") +
@@ -238,7 +232,10 @@ ggplot(munic.pop) +
     plot.title = element_text(hjust = .5),
     plot.background = element_rect(fill = "black"),
     text = element_text(colour = "white"),
-    legend.position = "bottom"
+    legend.position = "bottom",
+    legend.title.position = "top",
+    legend.text.position = "bottom",
+    legend.key.width = unit(30, "pt")
   )
 ```
 

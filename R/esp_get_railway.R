@@ -1,12 +1,12 @@
-#' Get [`sf`][sf::st_sf] lines and points with the railways of Spain
+#' Get [`sf`][sf::st_sf] `LINESTRING` or `POINT` with the railways of Spain
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] lines or point object representing the nodes and
-#' railway lines of Spain.
+#' Loads a [`sf`][sf::st_sf] `LINESTRING` or `POINT` object representing the
+#' nodes and railway lines of Spain.
 #'
 #' @family infrastructure
 #'
-#' @return A [`sf`][sf::st_sf] line or point object.
+#' @return A [`sf`][sf::st_sf] `LINESTRING` or `POINT` object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
@@ -59,13 +59,9 @@
 #'   )) +
 #'   theme_minimal()
 #' }
-esp_get_railway <- function(year = Sys.Date(),
-                            epsg = "4258",
-                            cache = TRUE,
-                            update_cache = FALSE,
-                            cache_dir = NULL,
-                            verbose = FALSE,
-                            spatialtype = "line") {
+esp_get_railway <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
+                            update_cache = FALSE, cache_dir = NULL,
+                            verbose = FALSE, spatialtype = "line") {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -88,11 +84,7 @@ esp_get_railway <- function(year = Sys.Date(),
   type <- paste0("ffcc", spatialtype)
 
 
-  data_sf <- esp_hlp_get_siane(type,
-    "3",
-    cache,
-    cache_dir,
-    update_cache,
+  data_sf <- esp_hlp_get_siane(type, "3", cache, cache_dir, update_cache,
     verbose,
     year = Sys.Date()
   )
