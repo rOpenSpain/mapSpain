@@ -464,20 +464,20 @@ ggplot() +
   labs(title = "Municipios en Madrid")
 
 # Usando la opción mask
-madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
+lgn <- esp_get_munic_siane(munic = "^Logroño$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
+lgn_mask <- esp_getTiles(lgn, "IDErioja",
   mask = TRUE, crop = TRUE,
-  zoommin = 2
+  zoommin = 1
 )
 
 
 ggplot() +
-  geom_spatraster_rgb(data = madrid_mask) +
+  geom_spatraster_rgb(data = lgn_mask, maxcell = Inf) +
   theme_void() +
   labs(
-    title = "Mapa Base de Madrid",
-    caption = "CC BY 4.0 scne.es. Sistema Geográfico Nacional IGN"
+    title = "Mapa Base de Logroño",
+    caption = "CC BY 4.0 www.iderioja.org"
   )
 ```
 
