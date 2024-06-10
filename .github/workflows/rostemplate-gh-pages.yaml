@@ -2,7 +2,7 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master, v2-branch]
+    branches: [main, master]
   release:
     types: [published]
   workflow_dispatch:
@@ -11,10 +11,9 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: macos-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      CURL_SSL_BACKEND: "openssl"
     steps:
       - uses: actions/checkout@v4
 
