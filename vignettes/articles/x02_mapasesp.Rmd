@@ -144,7 +144,7 @@ esp_rgeob <- gb_adm0("ESP") %>%
 
 # Imagen Ria Ferrol
 tile <- esp_get_munic(munic = "Ferrol", epsg = 3857) %>%
-  esp_getTiles("IDErioja.Claro", bbox_expand = 0.5, zoommin = 1)
+  esp_getTiles("MDT.Relieve", bbox_expand = 0.5, zoommin = 1)
 
 
 # Prepara el plot
@@ -162,13 +162,13 @@ ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(aes(color = source, linetype = source),
     fill = NA, show.legend = "line",
-    linewidth = 1.2
+    linewidth = 0.5, alpha = 0.7
   ) +
   coord_sf(
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "black", "green", "orange")) +
+  scale_color_manual(values = c("red", "black", "blue", "orange")) +
   scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
