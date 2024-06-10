@@ -69,7 +69,7 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IGNBase.Gris", zoommin = 1)
+basemap <- esp_getTiles(madrid, "IDErioja.Claro")
 tile_opaque <- esp_getTiles(madrid, "UnidadesAdm.Limites", transparent = FALSE)
 
 ggplot() +
@@ -220,7 +220,10 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
   ) %>%
   addLegend(
     pal = pal, values = bins, opacity = 0.7,
-    title = "<small>Pop. Density km<sup>2</sup></small><br><small>(2019)</small>",
+    title = paste0(
+      "<small>Pop. Density km<sup>2</sup></small><br><small>",
+      "(2019)</small>"
+    ),
     position = "bottomright"
   )
 ```

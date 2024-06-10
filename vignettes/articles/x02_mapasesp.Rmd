@@ -141,7 +141,10 @@ esp_all$source <- c("rnaturalearth", "mapSpain")
 
 ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
-  geom_sf(aes(color = source), fill = NA, show.legend = "line", linewidth = 1.2) +
+  geom_sf(aes(color = source),
+    fill = NA, show.legend = "line",
+    linewidth = 1.2
+  ) +
   coord_sf(
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
