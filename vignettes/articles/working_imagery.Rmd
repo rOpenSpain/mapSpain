@@ -100,18 +100,15 @@ Another nice feature is the ability of masking the tiles, so more advanced maps
 can be plotted:
 
 ```{r static3}
-rioja <- esp_get_prov("La Rioja", epsg = 3857)
+lgn_borders <- esp_get_munic(munic = "Logroño", epsg = 3857)
 
-basemap <- esp_getTiles(rioja, "IDErioja",
-  bbox_expand = 0.1,
-  zoommin = 1
-)
+basemap <- esp_getTiles(lgn_borders, "IGNBase.Todo", bbox_expand = 0.1)
 
-masked <- esp_getTiles(rioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
+masked <- esp_getTiles(lgn_borders, "PNOA", mask = TRUE)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap, maxcell = 10e6) +
-  geom_spatraster_rgb(data = masked, maxcell = 10e6)
+  geom_spatraster_rgb(data = masked, maxcell = 10e6, alpha = 0.6)
 ```
 
 ## Dynamic maps with Leaflet
