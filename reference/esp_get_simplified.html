@@ -103,8 +103,8 @@ provinces or autonomous communities of Spain, as provided by the <strong>INE</st
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>prov</dt>
-<dd><p>A vector of names and/or codes for provinces
-or <code>NULL</code> to get all the provinces. See <strong>Details</strong>.</p></dd>
+<dd><p>A vector of names and/or codes for provinces or <code>NULL</code> to get all
+the provinces. See <strong>Details</strong>.</p></dd>
 
 
 <dt>update_cache</dt>
@@ -130,16 +130,18 @@ or <code>NULL</code> to get all the autonomous communities. See <strong>Details<
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> POLYGON object.</p>
+<p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code></p>
+<p></p>
+<p><code>POLYGON</code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Results are provided <strong>without CRS</strong>, as provided on source.</p>
-<p>You can use and mix names, ISO codes, "codauto"/"cpro" codes (see
+<p>You can use and mix names, ISO codes, <code>"codauto"/"cpro"</code> codes (see
 <a href="esp_codelist.html">esp_codelist</a>) and NUTS codes of different levels.</p>
 <p>When using a code corresponding of a higher level (e.g.
 <code>esp_get_simpl_prov("Andalucia")</code>) all the corresponding units of that level
-are provided (in this case , all the provinces of Andalucia).</p>
+are provided (in this case , all the provinces of Andalusia).</p>
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
