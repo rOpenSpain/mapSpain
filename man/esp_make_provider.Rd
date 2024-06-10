@@ -46,6 +46,7 @@ custom_wms <- esp_make_provider(
   id = "an_id_for_caching",
   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
   service = "WMS",
+  version = "1.3.0",
   layers = "geolog_cyl_litologia"
 )
 

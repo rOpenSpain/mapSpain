@@ -16,6 +16,7 @@ ggplot(teruel_sf) +
     values = "#C12838",
     labels = "City of Teruel"
   ) +
+  guides(fill = guide_legend(position = "inside")) +
   labs(
     fill = "",
     title = "Municipalities of Teruel"
@@ -25,5 +26,5 @@ ggplot(teruel_sf) +
     text = element_text(face = "bold"),
     panel.background = element_rect(colour = "black"),
     panel.grid = element_blank(),
-    legend.position = c(.2, .95)
+    legend.position.inside = c(.2, .95)
   )

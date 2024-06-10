@@ -111,8 +111,6 @@ census_ccaa <- census %>%
   )
 
 
-
-
 # Merge into spatial data
 
 ccaa_sf <- esp_get_ccaa() %>%
@@ -134,10 +132,10 @@ ggplot(ccaa_sf) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
     n.breaks = 10, labels = scales::label_percent(),
-    guide = guide_legend(title = "Porc. women")
+    guide = guide_legend(title = "Porc. women", position = "inside")
   ) +
   theme_void() +
-  theme(legend.position = "left")
+  theme(legend.position.inside = c(0.1, 0.6))
 ```
 
 You can combine `sf` objects with static tiles

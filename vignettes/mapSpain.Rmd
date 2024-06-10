@@ -176,10 +176,10 @@ ggplot(CCAA_sf) +
     labels = function(x) {
       sprintf("%1.1f%%", 100 * x)
     },
-    guide = guide_legend(title = "Porc. women")
+    guide = guide_legend(title = "Porc. women", position = "inside")
   ) +
   theme_void() +
-  theme(legend.position = "left")
+  theme(legend.position.inside = c(0.1, 0.6))
 ```
 
 <div class="figure">
@@ -221,10 +221,7 @@ ggplot(munic.pop) +
   scale_fill_manual(
     values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
-    guide = guide_legend(
-      title = "Pop. per km2",
-      direction = "horizontal", nrow = 1
-    )
+    guide = guide_legend(title = "Pop. per km2", direction = "horizontal", nrow = 1)
   ) +
   labs(title = "Population density in Spain (2019)") +
   theme_void() +

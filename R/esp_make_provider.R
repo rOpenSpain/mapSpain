@@ -47,6 +47,7 @@
 #'   id = "an_id_for_caching",
 #'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
 #'   service = "WMS",
+#'   version = "1.3.0",
 #'   layers = "geolog_cyl_litologia"
 #' )
 #'
@@ -82,10 +83,11 @@ esp_make_provider <- function(id, q, service, layers, ...) {
   # Modify
   end <- modifyList(def_params, dots)
 
+
   # Here adjust crs values
 
   if (end$service == "WMS") {
-    if (end$version < "1.3.0") {
+    if (all(!is.null(end$version), end$version < "1.3.0")) {
       names(end) <- gsub("crs", "srs", names(end))
       end$srs <- ifelse(is.null(end$srs), "EPSG:3857", end$srs)
     } else {
