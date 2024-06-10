@@ -16,6 +16,14 @@ knitr::opts_chunk$set(
   dev = "ragg_png",
   out.width = "100%"
 )
+
+# Cache for articles
+library(mapSpain)
+initcache <- mapSpain::esp_detect_cache_dir()
+
+cache_dir_here <- file.path(getwd(), "artcache")
+
+esp_set_cache_dir(cache_dir_here, verbose = FALSE)
 ```
 
 **mapSpain** provides a powerful interface for working with imagery.
@@ -47,12 +55,12 @@ library(tidyterra)
 
 # Logroño
 
-lgn_borders <- esp_get_munic(munic = "Logroño")
+lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
 lgn_borders <- st_transform(lgn_borders, 3857)
 
-tile_lgn <- esp_getTiles(lgn_borders, "IGNBase.Todo", bbox_expand = 0.5)
+tile_lgn <- esp_getTiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
 
 ggplot(lgn_borders) +
   geom_spatraster_rgb(data = tile_lgn) +
@@ -69,7 +77,7 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IDErioja.Claro")
+basemap <- esp_getTiles(madrid, "IGNBase.Gris", zoommin = 1)
 tile_opaque <- esp_getTiles(madrid, "UnidadesAdm.Limites", transparent = FALSE)
 
 ggplot() +
@@ -102,10 +110,7 @@ can be plotted:
 ```{r static3}
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-basemap <- esp_getTiles(rioja, "IDErioja.Claro",
-  bbox_expand = 0.1,
-  zoommin = 1
-)
+basemap <- esp_getTiles(rioja, "IGNBase.Gris", bbox_expand = 0.1, zoommin = 1)
 
 masked <- esp_getTiles(rioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
 
@@ -205,7 +210,7 @@ labels <- sprintf(
 
 leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
   setView(lng = -3.684444, lat = 40.308611, zoom = 5) %>%
-  addProviderEspTiles("IDErioja.Claro") %>%
+  addProviderEspTiles("IDErioja") %>%
   addPolygons(
     data = munic_pop,
     fillColor = ~ pal(dens),
@@ -277,3 +282,23 @@ reactable(df,
   elementId = "leaflet-prov-summ"
 )
 ```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# Restore cache
+esp_set_cache_dir(initcache, verbose = TRUE)
+```
+
+## Session info
+
+<details>
+
+<summary>Details</summary>
+
+```{r session, echo=FALSE}
+if (!require("sessioninfo")) {
+  install.packages("sessioninfo")
+}
+sessioninfo::session_info()
+```
+
+</details>

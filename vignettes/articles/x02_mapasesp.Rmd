@@ -21,7 +21,13 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
+# Cache for articles
 library(mapSpain)
+initcache <- mapSpain::esp_detect_cache_dir()
+
+cache_dir_here <- file.path(getwd(), "artcache")
+
+esp_set_cache_dir(cache_dir_here, verbose = FALSE)
 ```
 
 ## Bienvenidos a mapSpain
@@ -131,21 +137,19 @@ esp_mapspain <- esp_get_country(epsg = 4326) %>%
 
 # geodata (GADM)
 library(geodata)
-esp_geodata <- geodata::gadm("ES", path = tempdir(), level = 0) %>%
+esp_geodata <- geodata::gadm("ES", path = ".", level = 0) %>%
   # Convertimos de SpatVector a objecto sf
   sf::st_as_sf() %>%
   st_transform(3857)
 
 # geoboundaries
 library(rgeoboundaries)
-
 esp_rgeob <- gb_adm0("ESP") %>%
   st_transform(3857)
 
 # Imagen Ria Ferrol
-tile <- esp_get_munic(munic = "Ferrol", epsg = 3857) %>%
-  esp_getTiles("IDErioja.Claro", bbox_expand = 0.5, zoommin = 1)
-
+tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
+  esp_getTiles("IGNBase.Gris", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
 library(tidyterra)
@@ -162,13 +166,13 @@ ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(aes(color = source, linetype = source),
     fill = NA, show.legend = "line",
-    linewidth = 1.2
+    linewidth = 0.5, alpha = 0.7
   ) +
   coord_sf(
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "black", "green", "orange")) +
+  scale_color_manual(values = c("red", "black", "blue", "orange")) +
   scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
@@ -463,12 +467,12 @@ ggplot() +
   theme_minimal() +
   labs(title = "Municipios en Madrid")
 
+
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
-  mask = TRUE, crop = TRUE,
-  zoommin = 2
+madrid_mask <- esp_getTiles(madrid, "IGNBase.Gris",
+  mask = TRUE, crop = TRUE, zoommin = 2
 )
 
 
@@ -523,3 +527,23 @@ que permiten extraer información sobre altitud, rios y cuencas hidrográficas d
 España, así líneas y puntos de
 [infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
 de España, como carreteras y líneas ferroviarias.
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# Restore cache
+esp_set_cache_dir(initcache, verbose = TRUE)
+```
+
+## Session info
+
+<details>
+
+<summary>Details</summary>
+
+```{r session, echo=FALSE}
+if (!require("sessioninfo")) {
+  install.packages("sessioninfo")
+}
+sessioninfo::session_info()
+```
+
+</details>
