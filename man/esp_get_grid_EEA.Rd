@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_grid_EEA.R
 \name{esp_get_grid_EEA}
 \alias{esp_get_grid_EEA}
-\title{Get \code{\link[sf:sf]{sf}} polygons of the national geographic grids from EEA}
+\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} of the national geographic grids from EEA}
 \source{
 \href{https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8c16-aaadfb1a003b}{EEA reference grid}.
 }
@@ -30,10 +30,10 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 default is \code{FALSE}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon
+A \code{\link[sf:sf]{sf}} \code{POLYGON}.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} polygon with the geographic grids of Spain as
+Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} with the geographic grids of Spain as
 provided by the European Environment Agency (EEA).
 }
 \section{About caching}{

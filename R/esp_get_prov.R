@@ -1,11 +1,11 @@
-#' Get Provinces of Spain as [`sf`][sf::st_sf] polygons and points
+#' Get Provinces of Spain as [`sf`][sf::st_sf] `POLYGON` or `POINT`
 #'
 #' @description
 #' Returns
 #' [provinces of Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain)
-#' as polygons and points at a specified scale.
+#' as `POLYGON` or `POINT` at a specified scale.
 #'
-#' * [esp_get_prov()] uses GISCO (Eurostat) as source. Please use
+#' - [esp_get_prov()] uses GISCO (Eurostat) as source. Please use
 #'   [giscoR::gisco_attributions()]
 #'
 #'
@@ -19,8 +19,8 @@
 #'
 #' @export
 #'
-#' @param prov A vector of names and/or codes for provinces
-#'   or `NULL` to get all the provinces. See **Details**.
+#' @param prov A vector of names and/or codes for provinces or `NULL` to get all
+#'   the provinces. See **Details**.
 #'
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
@@ -31,8 +31,8 @@
 #'
 #' Ceuta and Melilla are considered as provinces on this dataset.
 #'
-#' When calling a superior level (Autonomous Community or NUTS1) ,
-#' all the provinces of that level would be added.
+#' When calling a higher level (Autonomous Community or NUTS1), all the
+#' provinces of that level would be added.
 #'
 #' @inheritSection  esp_get_nuts  About caching
 #'
@@ -50,14 +50,10 @@
 #' \donttest{
 #' # Random Provinces
 #'
-#' Random <-
-#'   esp_get_prov(prov = c(
-#'     "Zamora",
-#'     "Palencia",
-#'     "ES-GR",
-#'     "ES521",
-#'     "01"
-#'   ))
+#' Random <- esp_get_prov(prov = c(
+#'   "Zamora", "Palencia", "ES-GR",
+#'   "ES521", "01"
+#' ))
 #'
 #'
 #' ggplot(Random) +
@@ -223,14 +219,10 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
       "nuts1.name"
     )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
-  data_sf <-
-    data_sf[, c(
-      colnames(df),
-      "nuts2.code",
-      "nuts2.name",
-      "nuts1.code",
-      "nuts1.name"
-    )]
+  data_sf <- data_sf[, c(
+    colnames(df), "nuts2.code", "nuts2.name",
+    "nuts1.code", "nuts1.name"
+  )]
 
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
@@ -248,9 +240,9 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 #'
 #'
 #' @description
-#' * [esp_get_prov_siane()] uses CartoBase ANE as source, provided by Instituto
-#' Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
-#' available are 2005 up to today.
+#' - [esp_get_prov_siane()] uses CartoBase ANE as source, provided by Instituto
+#'   Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+#'   available are 2005 up to today.
 #'
 #' @source
 #' IGN data via a custom CDN (see
@@ -259,7 +251,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 #' @export
 #'
 #' @param year Release year. See [esp_get_nuts()] for [esp_get_prov()] and
-#'   **Details** for [esp_get_prov_siane()]
+#'   **Details** for [esp_get_prov_siane()].
 #'
 #' @inheritParams esp_get_ccaa
 #'
@@ -267,15 +259,10 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 #' On [esp_get_prov_siane()], `year` could be passed as a single year ("YYYY"
 #' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 #' Historical information starts as of 2005.
-esp_get_prov_siane <- function(prov = NULL,
-                               year = Sys.Date(),
-                               epsg = "4258",
-                               cache = TRUE,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE,
-                               resolution = "3",
-                               moveCAN = TRUE,
+esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
+                               cache = TRUE, update_cache = FALSE,
+                               cache_dir = NULL, verbose = FALSE,
+                               resolution = "3", moveCAN = TRUE,
                                rawcols = FALSE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
@@ -287,13 +274,8 @@ esp_get_prov_siane <- function(prov = NULL,
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "prov",
-    resolution,
-    cache,
-    cache_dir,
-    update_cache,
-    verbose,
-    year
+    "prov", resolution, cache, cache_dir,
+    update_cache, verbose, year
   )
 
 
@@ -327,14 +309,10 @@ esp_get_prov_siane <- function(prov = NULL,
 
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
-  dfnuts <-
-    unique(dfnuts[, c(
-      "cpro",
-      "nuts2.code",
-      "nuts2.name",
-      "nuts1.code",
-      "nuts1.name"
-    )])
+  dfnuts <- unique(dfnuts[, c(
+    "cpro", "nuts2.code", "nuts2.name", "nuts1.code",
+    "nuts1.name"
+  )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
 

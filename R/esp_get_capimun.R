@@ -1,7 +1,7 @@
-#' Get [`sf`][sf::st_sf] points of the municipalities of Spain
+#' Get [`sf`][sf::st_sf] `POINT` of the municipalities of Spain
 #'
 #' @description
-#' Get a [`sf`][sf::st_sf] point with the location of the political powers for
+#' Get a [`sf`][sf::st_sf] `POINT` with the location of the political powers for
 #' each municipality (possibly the center of the municipality).
 #'
 #' Note that this differs of the centroid of the boundaries of the
@@ -10,7 +10,7 @@
 #' @family political
 #' @family municipalities
 #'
-#' @return A [`sf`][sf::st_sf] point object.
+#' @return A [`sf`][sf::st_sf] `POINT` object.
 #'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
@@ -36,8 +36,8 @@
 #' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
 #' [esp_codelist]
 #'
-#' When calling a superior level (Province, Autonomous Community or NUTS1) ,
-#' all the municipalities of that level would be added.
+#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
+#' of that level would be added.
 #'
 #' @export
 #'
@@ -84,16 +84,10 @@
 #'   theme_void() +
 #'   labs(title = "Centroid vs. capimun")
 #' }
-esp_get_capimun <- function(year = Sys.Date(),
-                            epsg = "4258",
-                            cache = TRUE,
-                            update_cache = FALSE,
-                            cache_dir = NULL,
-                            verbose = FALSE,
-                            region = NULL,
-                            munic = NULL,
-                            moveCAN = TRUE,
-                            rawcols = FALSE) {
+esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
+                            update_cache = FALSE, cache_dir = NULL,
+                            verbose = FALSE, region = NULL, munic = NULL,
+                            moveCAN = TRUE, rawcols = FALSE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -122,10 +116,10 @@ esp_get_capimun <- function(year = Sys.Date(),
   )
 
   cod <- unique(
-    mapSpain::esp_codelist[, c(
-      "codauto",
-      "ine.ccaa.name", "cpro", "ine.prov.name"
-    )]
+    mapSpain::esp_codelist[
+      ,
+      c("codauto", "ine.ccaa.name", "cpro", "ine.prov.name")
+    ]
   )
 
   df2 <- merge(df, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
@@ -147,10 +141,7 @@ esp_get_capimun <- function(year = Sys.Date(),
   }
 
   if (nrow(data_sf) == 0) {
-    stop(
-      "The combination of region and/or munic does ",
-      "not return any result"
-    )
+    stop("The combination of region and/or munic does not return any result")
   }
   # Move CAN
 

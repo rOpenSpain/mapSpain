@@ -7,14 +7,14 @@
 esp_detect_cache_dir(x = NULL)
 }
 \arguments{
-\item{x}{Ignored}
+\item{x}{Ignored.}
 }
 \value{
 A character with the path to your \code{cache_dir}.
 }
 \description{
 Helper function to detect the current cache folder. See
-\code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}
+\code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
 }
 \examples{
 esp_detect_cache_dir()

@@ -1,31 +1,28 @@
-#' Get municipalities of Spain as [`sf`][sf::st_sf] polygons
+#' Get municipalities of Spain as [`sf`][sf::st_sf] `POLYGON`
 #'
 #' @description
-#' Returns municipalities of Spain as polygons at a specified scale.
+#' Returns municipalities of Spain `sf` POLYGON` at a specified scale.
 #'
-#' * [esp_get_munic()] uses GISCO (Eurostat) as source. Please use
-#'   [giscoR::gisco_attributions()]
+#' - [esp_get_munic()] uses GISCO (Eurostat) as source. Please use
+#'   [giscoR::gisco_attributions()].
 #'
 #' @family political
 #' @family municipalities
 #' @seealso [giscoR::gisco_get_lau()], [base::regex()].
 #'
-#' @return A [`sf`][sf::st_sf] polygon
+#' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #' @export
 #'
-#' @source [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
-#'
-#'
-#'
+#' @source
+#' [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
 #'
 #' @param year Release year. See **Details** for years available.
-
 #' @param region A vector of names and/or codes for provinces
 #'  or `NULL` to get all the municipalities. See **Details**.
 #'
 #' @param munic A name or [`regex`][base::grep()] expression with the names of
-#'   the required municipalities. `NULL` would not produce any filtering.
+#'   the required municipalities. `NULL` would return all municipalities.
 #'
 #' @inheritParams esp_get_nuts
 #'
@@ -36,20 +33,19 @@
 #' @details
 #'
 #' The years available are:
-#' * [esp_get_munic()]:  `year` could be one of "2001", "2004", "2006", "2008",
+#' - [esp_get_munic()]:  `year` could be one of "2001", "2004", "2006", "2008",
 #'    "2010", "2013" and any year between 2016 and 2019.
 #'    See [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
-#'
-#' * [esp_get_munic_siane()]: `year` could be passed as a single year ("YYYY"
+#' - [esp_get_munic_siane()]: `year` could be passed as a single year ("YYYY"
 #'   format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 #'   Historical information starts as of 2005.
 #'
-#' When using `region` you can use and mix names and NUTS codes
-#' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' "cpro" (see [esp_codelist]).
+#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
+#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
+#' (see [esp_codelist]).
 #'
-#' When calling a superior level (Province, Autonomous Community or NUTS1) ,
-#' all the municipalities of that level would be added.
+#' When calling a higher level (Province, Autonomous Community or NUTS1), all
+#' the municipalities of that level would be added.
 #'
 #' @examples
 #' \donttest{
@@ -92,46 +88,28 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_munic <- function(year = "2019",
-                          epsg = "4258",
-                          cache = TRUE,
-                          update_cache = FALSE,
-                          cache_dir = NULL,
-                          verbose = FALSE,
-                          region = NULL,
-                          munic = NULL,
+esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
+                          update_cache = FALSE, cache_dir = NULL,
+                          verbose = FALSE, region = NULL, munic = NULL,
                           moveCAN = TRUE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
-  yearsav <-
-    c(
-      "2001",
-      "2004",
-      "2006",
-      "2008",
-      "2010",
-      "2013",
-      "2016",
-      "2017",
-      "2018",
-      "2019"
-    )
+  yearsav <- c(
+    "2001", "2004", "2006", "2008", "2010", "2013", "2016", "2017",
+    "2018", "2019"
+  )
 
   if (!year %in% yearsav) {
     stop(
-      "year ",
-      year,
-      " not available, try ",
+      "year ", year, " not available, try ",
       paste0("'", yearsav, "'", collapse = ", ")
     )
   }
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  if (init_epsg == "4258") {
-    epsg <- "4326"
-  }
+  if (init_epsg == "4258") epsg <- "4326"
 
   dwnload <- TRUE
 
@@ -149,18 +127,15 @@ esp_get_munic <- function(year = "2019",
   if (dwnload) {
     if (year >= "2016") {
       data_sf <- giscoR::gisco_get_lau(
-        year = year,
-        epsg = epsg,
+        year = year, epsg = epsg,
         cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
-        verbose = verbose,
-        country = "ES"
+        verbose = verbose, country = "ES"
       )
     } else {
       data_sf <- giscoR::gisco_get_communes(
-        year = year,
-        epsg = epsg,
+        year = year, epsg = epsg,
         cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
@@ -206,31 +181,19 @@ esp_get_munic <- function(year = "2019",
 
     df <- df[, c("cpro", "cmun", "name", "LAU_CODE")]
 
-    cod <-
-      unique(mapSpain::esp_codelist[, c(
-        "codauto",
-        "ine.ccaa.name",
-        "cpro", "ine.prov.name"
-      )])
+    cod <- unique(mapSpain::esp_codelist[, c(
+      "codauto",
+      "ine.ccaa.name",
+      "cpro", "ine.prov.name"
+    )])
 
-    df2 <- merge(df,
-      cod,
-      by = "cpro",
-      all.x = TRUE,
-      no.dups = TRUE
-    )
+    df2 <- merge(df, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
 
 
-    df2 <-
-      df2[, c(
-        "codauto",
-        "ine.ccaa.name",
-        "cpro",
-        "ine.prov.name",
-        "cmun",
-        "name",
-        "LAU_CODE"
-      )]
+    df2 <- df2[, c(
+      "codauto", "ine.ccaa.name", "cpro", "ine.prov.name",
+      "cmun", "name", "LAU_CODE"
+    )]
 
 
     data_sf <- df2
@@ -300,7 +263,7 @@ esp_get_munic <- function(year = "2019",
 #'
 #'
 #' @description
-#' * [esp_get_munic_siane()] uses CartoBase ANE as source, provided by
+#' - [esp_get_munic_siane()] uses CartoBase ANE as source, provided by
 #'   Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
 #'   Years available are 2005 up to today.
 #'
@@ -315,17 +278,10 @@ esp_get_munic <- function(year = "2019",
 #'
 #'
 #' @export
-esp_get_munic_siane <- function(year = Sys.Date(),
-                                epsg = "4258",
-                                cache = TRUE,
-                                update_cache = FALSE,
-                                cache_dir = NULL,
-                                verbose = FALSE,
-                                resolution = 3,
-                                region = NULL,
-                                munic = NULL,
-                                moveCAN = TRUE,
-                                rawcols = FALSE) {
+esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
+                                update_cache = FALSE, cache_dir = NULL,
+                                verbose = FALSE, resolution = 3, region = NULL,
+                                munic = NULL, moveCAN = TRUE, rawcols = FALSE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -335,13 +291,8 @@ esp_get_munic_siane <- function(year = Sys.Date(),
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "munic",
-    resolution,
-    cache,
-    cache_dir,
-    update_cache,
-    verbose,
-    year
+    "munic", resolution, cache, cache_dir,
+    update_cache, verbose, year
   )
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
@@ -358,19 +309,13 @@ esp_get_munic_siane <- function(year = Sys.Date(),
     NA
   )
 
-  cod <-
-    unique(mapSpain::esp_codelist[, c(
-      "codauto",
-      "ine.ccaa.name",
-      "cpro", "ine.prov.name"
-    )])
+  cod <- unique(mapSpain::esp_codelist[, c(
+    "codauto",
+    "ine.ccaa.name",
+    "cpro", "ine.prov.name"
+  )])
 
-  df2 <- merge(df,
-    cod,
-    by = "cpro",
-    all.x = TRUE,
-    no.dups = TRUE
-  )
+  df2 <- merge(df, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
 
   data_sf <- df2
 
@@ -423,12 +368,7 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   namesend <- unique(c(
     colnames_init,
     c(
-      "codauto",
-      "ine.ccaa.name",
-      "cpro",
-      "ine.prov.name",
-      "cmun",
-      "name",
+      "codauto", "ine.ccaa.name", "cpro", "ine.prov.name", "cmun", "name",
       "LAU_CODE"
     ),
     colnames(data_sf)
@@ -437,15 +377,13 @@ esp_get_munic_siane <- function(year = Sys.Date(),
   data_sf <- data_sf[, namesend]
 
   if (isFALSE(rawcols)) {
-    data_sf <- data_sf[, c(
-      "codauto",
-      "ine.ccaa.name",
-      "cpro",
-      "ine.prov.name",
-      "cmun",
-      "name",
-      "LAU_CODE"
-    )]
+    data_sf <- data_sf[
+      ,
+      c(
+        "codauto", "ine.ccaa.name", "cpro", "ine.prov.name",
+        "cmun", "name", "LAU_CODE"
+      )
+    ]
   }
   return(data_sf)
 }

@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{leaflet.providersESP.df}
 \alias{leaflet.providersESP.df}
-\title{Public WMS and WMTS of Spain}
+\title{(Superseded) Database of public WMS and WMTS of Spain}
 \format{
-A data frame object with a list of the required parameters for calling
+A \code{data.frame} object with a list of the required parameters for calling
 the service:
 \describe{
 \item{provider}{Provider name}.
@@ -21,10 +21,10 @@ the service:
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
-This data frame is not longer in use by \CRANpkg{mapSpain}. See
+This \code{data.frame} is not longer in use by \CRANpkg{mapSpain}. See
 \link{esp_tiles_providers} instead.
 
-A data frame containing information of different public WMS and WMTS
+A \code{data.frame} containing information of different public WMS and WMTS
 providers of Spain
 }
 \examples{

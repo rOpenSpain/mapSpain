@@ -10,11 +10,11 @@ esp_make_provider(id, q, service, layers, ...)
 \item{id}{An identifier for the user. Would be used also for identifying
 cached tiles.}
 
-\item{q}{The base url of the service}
+\item{q}{The base url of the service.}
 
 \item{service}{The type of tile service, either \code{"WMS"} or \code{"WMTS"}.}
 
-\item{layers}{The name of the layer to retrieve}
+\item{layers}{The name of the layer to retrieve.}
 
 \item{...}{Additional parameters to the query, like \code{version}, \code{format},
 \code{crs/srs}, \code{style}, ... depending on the capabilities of the service.}
@@ -46,6 +46,7 @@ custom_wms <- esp_make_provider(
   id = "an_id_for_caching",
   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
   service = "WMS",
+  version = "1.3.0",
   layers = "geolog_cyl_litologia"
 )
 

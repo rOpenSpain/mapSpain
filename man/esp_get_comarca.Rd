@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_comarca.R
 \name{esp_get_comarca}
 \alias{esp_get_comarca}
-\title{Get 'comarcas' of Spain as \code{\link[sf:sf]{sf}} polygons}
+\title{Get 'comarcas' of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON}}
 \source{
 INE: PC_Axis files.
 }
@@ -19,10 +19,10 @@ esp_get_comarca(
 }
 \arguments{
 \item{region}{A vector of names and/or codes for provinces or \code{NULL} to get
-all the comarcas., See \strong{Details}.}
+all the comarcas. See \strong{Details}.}
 
 \item{comarca}{A name or \code{\link[base:grep]{regex}} expression with the names of
-the required comarcas. \code{NULL} would not produce any filtering.}
+the required comarcas. \code{NULL} would return all the possible comarcas.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -32,10 +32,10 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
@@ -50,7 +50,7 @@ default is \code{FALSE}.}
 A \code{\link[sf:sf]{sf}} polygon object.
 }
 \description{
-Returns 'comarcas' of Spain as polygons,as provided by the
+Returns 'comarcas' of Spain as \code{sf} \code{POLYGON} objects, as provided by the
 \strong{INE} (Instituto Nacional de Estadistica).
 }
 \details{
@@ -63,7 +63,7 @@ When using \code{region} you can use and mix names and NUTS codes
 (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 "cpro" (see \link{esp_codelist}).
 
-When calling a superior level (Province, Autonomous Community or NUTS1) ,
+When calling a higher level (Province, Autonomous Community or NUTS1),
 all the comarcas of that level would be added.
 \subsection{Legal Notice}{
 

@@ -7,11 +7,11 @@
 esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{if \code{TRUE}, will delete the configuration folder of
+\item{config}{Logical. If \code{TRUE}, will delete the configuration folder of
 \CRANpkg{mapSpain}.}
 
-\item{cached_data}{If this is set to \code{TRUE}, it will delete your
-\code{cache_dir} and all its content.}
+\item{cached_data}{Logical. If \code{TRUE}, it will delete your \code{cache_dir} and
+all its content.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}

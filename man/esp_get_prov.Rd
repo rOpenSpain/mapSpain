@@ -3,7 +3,7 @@
 \name{esp_get_prov}
 \alias{esp_get_prov}
 \alias{esp_get_prov_siane}
-\title{Get Provinces of Spain as \code{\link[sf:sf]{sf}} polygons and points}
+\title{Get Provinces of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -25,8 +25,8 @@ esp_get_prov_siane(
 )
 }
 \arguments{
-\item{prov}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the provinces. See \strong{Details}.}
+\item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
+the provinces. See \strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -38,21 +38,21 @@ Initial position can be adjusted using the vector of coordinates. See
   \describe{
     \item{\code{spatialtype}}{Type of geometry to be returned:
 \itemize{
-\item \code{"LB"}: Labels - point object.
-\item \code{"RG"}: Regions - polygon object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{POLYGON} object.
 }}
   }}
 
 \item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_prov]{esp_get_prov()}} and
-\strong{Details} for \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}}
+\strong{Details} for \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -66,11 +66,11 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{3}, \code{6.5} or \code{10}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
-the dataset provided by IGN.}
+the resulting object as provided by IGN.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
@@ -78,7 +78,7 @@ A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 \description{
 Returns
 \href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
-as polygons and points at a specified scale.
+as \code{POLYGON} or \code{POINT} at a specified scale.
 \itemize{
 \item \code{\link[=esp_get_prov]{esp_get_prov()}} uses GISCO (Eurostat) as source. Please use
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
@@ -97,8 +97,8 @@ When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
 
 Ceuta and Melilla are considered as provinces on this dataset.
 
-When calling a superior level (Autonomous Community or NUTS1) ,
-all the provinces of that level would be added.
+When calling a higher level (Autonomous Community or NUTS1), all the
+provinces of that level would be added.
 
 On \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}, \code{year} could be passed as a single year ("YYYY"
 format, as end of year) or as a specific date ("YYYY-MM-DD" format).
@@ -136,14 +136,10 @@ ggplot(prov) +
 \donttest{
 # Random Provinces
 
-Random <-
-  esp_get_prov(prov = c(
-    "Zamora",
-    "Palencia",
-    "ES-GR",
-    "ES521",
-    "01"
-  ))
+Random <- esp_get_prov(prov = c(
+  "Zamora", "Palencia", "ES-GR",
+  "ES521", "01"
+))
 
 
 ggplot(Random) +

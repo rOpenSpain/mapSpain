@@ -36,6 +36,7 @@ test_that("Custom WMS provider", {
     id = "wms_1.1",
     q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
     service = "WMS",
+    version = "1.1.1",
     crs = "EPSG:25830",
     layers = "geolog_cyl_litologia"
   )
@@ -51,8 +52,8 @@ test_that("Custom WMS provider", {
 
   # Both works
 
-  tilewms1 <- esp_getTiles(segovia, custom_wms_11)
+  tilewms1 <- esp_getTiles(segovia, custom_wms_11, cache_dir = tempdir())
   expect_s4_class(tilewms1, "SpatRaster")
-  tilewms13 <- esp_getTiles(segovia, custom_wms_13)
+  tilewms13 <- esp_getTiles(segovia, custom_wms_13, cache_dir = tempdir())
   expect_s4_class(tilewms13, "SpatRaster")
 })

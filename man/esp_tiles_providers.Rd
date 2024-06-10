@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{esp_tiles_providers}
 \alias{esp_tiles_providers}
-\title{List with information of Public WMS and WMTS of Spain}
+\title{Database of public WMS and WMTS of Spain}
 \format{
-A named list of the providers available with the following structure:
+A named \code{list} of the providers available with the following structure:
 \itemize{
 \item Each item of the list is named with the provider alias.
 \item Each element of the list contains two nested named lists:
@@ -23,9 +23,9 @@ named \code{attribution}.
 \strong{v1.3.3}.
 }
 \description{
-A named list of length 102 containing
-the parameters of the url information of different public WMS and WMTS
-providers of Spain.
+A named \code{\link[base:list]{list}} of length 102
+containing the parameters of the url information of different public WMS and
+WMTSproviders of Spain.
 
 Implementation of javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}

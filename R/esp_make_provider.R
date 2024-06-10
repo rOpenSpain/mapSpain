@@ -18,11 +18,11 @@
 #' @param id An identifier for the user. Would be used also for identifying
 #'   cached tiles.
 #'
-#' @param q The base url of the service
+#' @param q The base url of the service.
 #'
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #'
-#' @param layers The name of the layer to retrieve
+#' @param layers The name of the layer to retrieve.
 #'
 #' @param ... Additional parameters to the query, like `version`, `format`,
 #'   `crs/srs`, `style`, ... depending on the capabilities of the service.
@@ -47,6 +47,7 @@
 #'   id = "an_id_for_caching",
 #'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
 #'   service = "WMS",
+#'   version = "1.3.0",
 #'   layers = "geolog_cyl_litologia"
 #' )
 #'
@@ -68,34 +69,25 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   if (toupper(service) == "WMS") {
     def_params <- list(
-      q = q,
-      request = "GetMap",
-      service = "WMS",
-      version = "1.0.0",
-      format = "image/png",
-      layers = layers,
-      styles = ""
+      q = q, request = "GetMap", service = "WMS",
+      format = "image/png", layers = layers, styles = ""
     )
   } else {
     def_params <- list(
-      q = q,
-      request = "GetTile",
-      service = "WMTS",
-      version = "1.0.0",
-      format = "image/png",
-      layer = layers,
-      style = "",
-      tilematrixset = "GoogleMapsCompatible"
+      q = q, request = "GetTile", service = "WMTS",
+      version = "1.0.0", format = "image/png", layer = layers,
+      style = "", tilematrixset = "GoogleMapsCompatible"
     )
   }
 
   # Modify
   end <- modifyList(def_params, dots)
 
+
   # Here adjust crs values
 
   if (end$service == "WMS") {
-    if (end$version < "1.3.0") {
+    if (all(!is.null(end$version), end$version < "1.3.0")) {
       names(end) <- gsub("crs", "srs", names(end))
       end$srs <- ifelse(is.null(end$srs), "EPSG:3857", end$srs)
     } else {

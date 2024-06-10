@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_roads.R
 \name{esp_get_roads}
 \alias{esp_get_roads}
-\title{Get \code{\link[sf:sf]{sf}} lines of the roads of Spain}
+\title{Get \code{\link[sf:sf]{sf}} \code{LINESTRING} of the roads of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -24,10 +24,10 @@ esp_get_roads(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -47,10 +47,11 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} line object.
+A \code{\link[sf:sf]{sf}} \code{LINESTRING} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} line object representing the main roads of Spain.
+Loads a \code{\link[sf:sf]{sf}} \code{LINESTRING} object representing the main roads of
+Spain.
 }
 \details{
 \code{year} could be passed as a single year ("YYYY" format, as end of year) or

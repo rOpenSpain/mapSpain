@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_hydrobasin.R
 \name{esp_get_hydrobasin}
 \alias{esp_get_hydrobasin}
-\title{Get \code{\link[sf:sf]{sf}} polygons of the drainage basin demarcations of Spain}
+\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} of the drainage basin demarcations of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -22,10 +22,10 @@ esp_get_hydrobasin(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -39,18 +39,18 @@ When set to \code{TRUE} it would force a fresh download of the source file.}
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{resolution}{Resolution of the polygon. Values available are
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
 
 \item{domain}{Possible values are \code{"land"}, that includes only
 the ground part or the ground or \code{"landsea"}, that includes both the ground
-and the related sea waters of the basin}
+and the related sea waters of the basin.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} polygon object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} polygon object containing areas with the required
+Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} object containing areas with the required
 hydrographic elements of Spain.
 }
 \details{

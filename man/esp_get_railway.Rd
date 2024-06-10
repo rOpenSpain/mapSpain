@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_railway.R
 \name{esp_get_railway}
 \alias{esp_get_railway}
-\title{Get \code{\link[sf:sf]{sf}} lines and points with the railways of Spain}
+\title{Get \code{\link[sf:sf]{sf}} \code{LINESTRING} or \code{POINT} with the railways of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -24,10 +24,10 @@ esp_get_railway(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -46,11 +46,11 @@ for extracting the railway as lines and \code{"point"} for extracting
 stations.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} line or point object.
+A \code{\link[sf:sf]{sf}} \code{LINESTRING} or \code{POINT} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} lines or point object representing the nodes and
-railway lines of Spain.
+Loads a \code{\link[sf:sf]{sf}} \code{LINESTRING} or \code{POINT} object representing the
+nodes and railway lines of Spain.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.

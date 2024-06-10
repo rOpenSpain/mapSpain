@@ -1,12 +1,12 @@
-#' Get [`sf`][sf::st_sf] polygons of the national geographic grids from ESDAC
+#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from ESDAC
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon with the geographic grids of Spain as
+#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
 #' provided by the European Soil Data Centre (ESDAC).
 #'
 #' @family grids
 #'
-#' @return A [`sf`][sf::st_sf] polygon
+#' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #'
 #' @source
@@ -41,10 +41,8 @@
 #'   labs(title = "ESDAC Grid for Spain")
 #' }
 #'
-esp_get_grid_ESDAC <- function(resolution = 10,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE) {
+esp_get_grid_ESDAC <- function(resolution = 10, update_cache = FALSE,
+                               cache_dir = NULL, verbose = FALSE) {
   # Check grid
   res <- as.numeric(resolution)
 

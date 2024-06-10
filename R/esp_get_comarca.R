@@ -1,7 +1,7 @@
-#' Get 'comarcas' of Spain as [`sf`][sf::st_sf] polygons
+#' Get 'comarcas' of Spain as [`sf`][sf::st_sf] `POLYGON`
 #'
 #' @description
-#' Returns 'comarcas' of Spain as polygons,as provided by the
+#' Returns 'comarcas' of Spain as `sf` `POLYGON` objects, as provided by the
 #' **INE** (Instituto Nacional de Estadistica).
 #'
 #' @source INE: PC_Axis files.
@@ -11,10 +11,10 @@
 #' @family political
 #'
 #' @param region A vector of names and/or codes for provinces or `NULL` to get
-#'   all the comarcas., See **Details**.
+#'   all the comarcas. See **Details**.
 #'
 #' @param comarca A name or [`regex`][base::grep()] expression with the names of
-#'   the required comarcas. `NULL` would not produce any filtering.
+#'   the required comarcas. `NULL` would return all the possible comarcas.
 #'
 #' @inheritParams esp_get_munic
 #'
@@ -35,7 +35,7 @@
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 #' "cpro" (see [esp_codelist]).
 #'
-#' When calling a superior level (Province, Autonomous Community or NUTS1) ,
+#' When calling a higher level (Province, Autonomous Community or NUTS1),
 #' all the comarcas of that level would be added.
 #'
 #' ## Legal Notice
@@ -77,13 +77,9 @@
 #'   labs(fill = "CCAA")
 #' }
 #'
-esp_get_comarca <- function(region = NULL,
-                            comarca = NULL,
-                            moveCAN = TRUE,
-                            epsg = "4258",
-                            update_cache = FALSE,
-                            cache_dir = NULL,
-                            verbose = FALSE) {
+esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
+                            epsg = "4258", update_cache = FALSE,
+                            cache_dir = NULL, verbose = FALSE) {
   init_epsg <- as.character(epsg)
 
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {

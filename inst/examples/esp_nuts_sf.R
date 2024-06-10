@@ -26,7 +26,4 @@ ggplot(nuts3) +
     title = "NUTS3 levels of Spain",
     fill = "Urban topology"
   ) +
-  theme_linedraw() +
-  theme(
-    legend.position = c(.8, .2)
-  )
+  theme_linedraw()

@@ -12,8 +12,8 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 \arguments{
 \item{sourcevar}{Vector which contains the subdivision names to be converted.}
 
-\item{origin, destination}{One of \code{"text"}, \code{"nuts"}, \code{"iso2"},
-\code{"codauto"} and \code{"cpro"}.}
+\item{origin, destination}{One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"}
+and \code{"cpro"}.}
 
 \item{lang}{Language of translation. Available languages are:
 \itemize{
@@ -30,9 +30,9 @@ On \code{FALSE} it returns a character vector. See \strong{Value}.}
 \value{
 \code{\link[=esp_dict_region_code]{esp_dict_region_code()}} returns a vector of characters.
 
-\code{\link[=esp_dict_translate]{esp_dict_translate()}} returns a character vector or a named
-list with each of the possible names of each \code{sourcevar} on the required
-language \code{lang}.
+\code{\link[=esp_dict_translate]{esp_dict_translate()}} returns a \code{character} vector or a named \code{list} with
+each of the possible names of each \code{sourcevar} on the required language
+\code{lang}.
 }
 \description{
 Converts long subdivision names into different coding schemes and languages.

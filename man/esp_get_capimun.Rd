@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_capimun.R
 \name{esp_get_capimun}
 \alias{esp_get_capimun}
-\title{Get \code{\link[sf:sf]{sf}} points of the municipalities of Spain}
+\title{Get \code{\link[sf:sf]{sf}} \code{POINT} of the municipalities of Spain}
 \source{
 IGN data via a custom CDN (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
@@ -27,10 +27,10 @@ esp_get_capimun(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
-\item \code{"4326"}: WGS84
-\item \code{"3035"}: ETRS89 / ETRS-LAEA
-\item \code{"3857"}: Pseudo-Mercator
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -48,7 +48,7 @@ default is \code{FALSE}.}
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
 \item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
-the required municipalities. \code{NULL} would not produce any filtering.}
+the required municipalities. \code{NULL} would return all municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -56,13 +56,13 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
 
 \item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
-the dataset provided by IGN.}
+the resulting object as provided by IGN.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} point object.
+A \code{\link[sf:sf]{sf}} \code{POINT} object.
 }
 \description{
-Get a \code{\link[sf:sf]{sf}} point with the location of the political powers for
+Get a \code{\link[sf:sf]{sf}} \code{POINT} with the location of the political powers for
 each municipality (possibly the center of the municipality).
 
 Note that this differs of the centroid of the boundaries of the
@@ -77,8 +77,8 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or \code{cpro}. See
 \link{esp_codelist}
 
-When calling a superior level (Province, Autonomous Community or NUTS1) ,
-all the municipalities of that level would be added.
+When calling a higher level (province, CCAA or NUTS1), all the municipalities
+of that level would be added.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.

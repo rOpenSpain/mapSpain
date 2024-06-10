@@ -1,13 +1,13 @@
-#' Get [`sf`][sf::st_sf] polygon and lines of rivers, channels and other
+#' Get [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` of rivers, channels and other
 #' wetlands of Spain
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] polygon or line object representing rivers,
-#' channels, reservoirs and other wetlands of Spain.
+#' Loads a [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` object representing
+#' rivers, channels, reservoirs and other wetlands of Spain.
 #'
 #' @family natural
 #'
-#' @return A [`sf`][sf::st_sf] polygon or line object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` object.
 #'
 #'
 #' @source IGN data via a custom CDN (see
@@ -15,7 +15,7 @@
 #'
 #' @export
 #'
-#' @param resolution Resolution of the polygon. Values available are
+#' @param resolution Resolution of the `POLYGON`. Values available are
 #'   `"3"`, `"6.5"` or `"10"`.
 #'
 #' @inheritParams esp_get_hypsobath
@@ -75,14 +75,9 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_rivers <- function(epsg = "4258",
-                           cache = TRUE,
-                           update_cache = FALSE,
-                           cache_dir = NULL,
-                           verbose = FALSE,
-                           resolution = "3",
-                           spatialtype = "line",
-                           name = NULL) {
+esp_get_rivers <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
+                           cache_dir = NULL, verbose = FALSE, resolution = "3",
+                           spatialtype = "line", name = NULL) {
   # Check epsg
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
@@ -103,39 +98,22 @@ esp_get_rivers <- function(epsg = "4258",
   type <- paste0("river", spatialtype)
 
   # Get shape
-  rivers_sf <-
-    esp_hlp_get_siane(
-      type,
-      resolution,
-      cache,
-      cache_dir,
-      update_cache,
-      verbose,
-      Sys.Date()
-    )
+  rivers_sf <- esp_hlp_get_siane(
+    type, resolution, cache, cache_dir,
+    update_cache, verbose, Sys.Date()
+  )
 
   # Get river names
-  rivernames <-
-    esp_hlp_get_siane(
-      "rivernames",
-      resolution,
-      cache,
-      cache_dir,
-      update_cache,
-      verbose,
-      Sys.Date()
-    )
-
-
+  rivernames <- esp_hlp_get_siane(
+    "rivernames", resolution, cache, cache_dir,
+    update_cache, verbose, Sys.Date()
+  )
 
   # Merge names
   rivernames$id_rio <- rivernames$PFAFRIO
   rivernames <- rivernames[, c("id_rio", "NOM_RIO")]
 
-  rivers_sf_merge <- merge(rivers_sf,
-    rivernames,
-    all.x = TRUE
-  )
+  rivers_sf_merge <- merge(rivers_sf, rivernames, all.x = TRUE)
 
   if (!is.null(name)) {
     getrows1 <- grep(name, rivers_sf_merge$rotulo)
@@ -145,22 +123,19 @@ esp_get_rivers <- function(epsg = "4258",
 
     if (nrow(rivers_sf_merge) == 0) {
       stop(
-        "Your value '",
-        name,
-        "' for name does not produce any result ",
-        "for spatialtype = '",
-        spatialtype,
-        "'"
+        "Your value '", name, "' for name does not produce any result ",
+        "for spatialtype = '", spatialtype, "'"
       )
     }
   }
 
   if (spatialtype == "area") {
-    rivers_sf_merge <-
-      rivers_sf_merge[, -match("NOM_RIO", colnames(rivers_sf_merge))]
+    rivers_sf_merge <- rivers_sf_merge[, -match(
+      "NOM_RIO",
+      colnames(rivers_sf_merge)
+    )]
   }
 
-  rivers_sf_merge <-
-    sf::st_transform(rivers_sf_merge, as.double(init_epsg))
+  rivers_sf_merge <- sf::st_transform(rivers_sf_merge, as.double(init_epsg))
   return(rivers_sf_merge)
 }

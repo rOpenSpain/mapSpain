@@ -1,12 +1,12 @@
-#' Get Autonomous Communities of Spain as [`sf`][sf::st_sf] polygons and points
+#' Get Autonomous Communities of Spain as [`sf`][sf::st_sf] `POLYGON` or `POINT`
 #'
 #' @description
 #' Returns
 #' [Autonomous Communities of
 #' Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) as
-#' polygons and points at a specified scale.
+#' `sf` `POLYGON` or `POINT` at a specified scale.
 #'
-#' * [esp_get_ccaa()] uses GISCO (Eurostat) as source. Please use
+#' - [esp_get_ccaa()] uses GISCO (Eurostat) as source. Please use
 #'   [giscoR::gisco_attributions()]
 #'
 #' @family political
@@ -147,7 +147,7 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 #' @name esp_get_ccaa_siane
 #'
 #' @description
-#' * [esp_get_ccaa_siane()] uses CartoBase ANE as source, provided by
+#' - [esp_get_ccaa_siane()] uses CartoBase ANE as source, provided by
 #'   Instituto Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>.
 #'   Years available are 2005 up to today.
 #'
@@ -158,13 +158,13 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 #' @export
 #'
 #' @param year Release year. See [esp_get_nuts()] for [esp_get_ccaa()] and
-#'   **Details** for [esp_get_ccaa_siane()]
+#'   **Details** for [esp_get_ccaa_siane()].
 #'
-#' @param resolution Resolution of the polygon. Values available are
+#' @param resolution Resolution of the `POLYGON`. Values available are
 #'   `3`, `6.5` or `10`.
 #'
 #' @param rawcols Logical. Setting this to `TRUE` would add the raw columns of
-#'   the dataset provided by IGN.
+#'   the resulting object as provided by IGN.
 #'
 #' @inheritParams esp_get_nuts
 #'
@@ -172,16 +172,10 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 #' On [esp_get_ccaa_siane()], `year` could be passed as a single year (`YYYY`
 #' format, as end of year) or as a specific date (`YYYY-MM-DD` format).
 #' Historical information starts as of 2005.
-
-esp_get_ccaa_siane <- function(ccaa = NULL,
-                               year = Sys.Date(),
-                               epsg = "4258",
-                               cache = TRUE,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE,
-                               resolution = "3",
-                               moveCAN = TRUE,
+esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
+                               cache = TRUE, update_cache = FALSE,
+                               cache_dir = NULL, verbose = FALSE,
+                               resolution = "3", moveCAN = TRUE,
                                rawcols = FALSE) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)

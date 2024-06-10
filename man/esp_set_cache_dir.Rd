@@ -15,12 +15,12 @@ esp_set_cache_dir(
 \item{cache_dir}{A path to a cache directory. On missing value the function
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
-\item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
-\code{MAPSPAIN_CACHE_DIR} that you already have in local machine.}
+\item{overwrite}{Logical. If this is set to \code{TRUE}, it will overwrite an
+existing \code{MAPSPAIN_CACHE_DIR} that you already have in local machine.}
 
-\item{install}{if \code{TRUE}, will install the key in your local machine for
-use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
-this parameter is set to \code{FALSE} automatically.}
+\item{install}{Logical. If \code{TRUE}, will install the key in your local
+machine for use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir}
+is \code{FALSE} this parameter is set to \code{FALSE} automatically.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
