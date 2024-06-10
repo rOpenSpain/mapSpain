@@ -23,7 +23,7 @@ test_that("Testing leaflet", {
         lng = -3.7038400,
         zoom = 18
       ) %>%
-      addProviderEspTiles(provider = "IGNBase.Gris") %>%
+      addProviderEspTiles(provider = "IDErioja.Claro") %>%
       addProviderEspTiles(provider = "RedTransporte.Carreteras")
   )
 })

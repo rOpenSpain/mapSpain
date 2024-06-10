@@ -38,8 +38,9 @@ VignetteBuilder:
     knitr
 Config/Needs/check: curl
 Config/Needs/coverage: covr
-Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse,
-    ropenspain/rostemplate, ropensci/rnaturalearthhires, devtools, remotes
+Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse, devtools,
+    remotes, ropenspain/rostemplate, ropensci/rnaturalearthhires,
+    rspatial/geodata, rgeoboundaries
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas

@@ -114,34 +114,53 @@ reactable(galicia,
 
 ### Comparando mapSpain con otras alternativas
 
-Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` de
-distintos paises:
+Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` o
+`SpatVector` de distintos paises:
 
 ```{r compara}
+library(sf) # manipulación de datos espaciales
+
 # rnaturalearth
 library(rnaturalearth)
-
-esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf")
+esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") %>%
+  st_transform(3857)
 
 # mapSpain
+esp_mapspain <- esp_get_country(epsg = 4326) %>%
+  st_transform(3857)
 
-esp_mapspain <- esp_get_country(epsg = 4326)
+# geodata (GADM)
+library(geodata)
+esp_geodata <- geodata::gadm("ES", path = tempdir(), level = 0) %>%
+  # Convertimos de SpatVector a objecto sf
+  sf::st_as_sf() %>%
+  st_transform(3857)
+
+# geoboundaries
+library(rgeoboundaries)
+
+esp_rgeob <- gb_adm0("ESP") %>%
+  st_transform(3857)
 
 # Imagen Ria Ferrol
 tile <- esp_get_munic(munic = "Ferrol", epsg = 3857) %>%
-  esp_getTiles("IGNBase.Gris", bbox_expand = 0.5, zoommin = 1)
+  esp_getTiles("IDErioja.Claro", bbox_expand = 0.5, zoommin = 1)
+
 
 # Prepara el plot
 library(tidyterra)
 
 
-esp_all <- bind_rows(esp_rnat, esp_mapspain)
+esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata, esp_rgeob)
 
-esp_all$source <- c("rnaturalearth", "mapSpain")
+esp_all$source <- as_factor(c(
+  "rnaturalearth", "mapSpain", "geodata (GADM)",
+  "rgeoboundaries"
+))
 
 ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
-  geom_sf(aes(color = source),
+  geom_sf(aes(color = source, linetype = source),
     fill = NA, show.legend = "line",
     linewidth = 1.2
   ) +
@@ -149,13 +168,16 @@ ggplot(esp_all) +
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "black")) +
+  scale_color_manual(values = c("red", "black", "green", "orange")) +
+  scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
 ```
 
 -   **rnaturalearth**: No capta bien el contorno.
 -   **mapSpain**: Resultados satisfactorios.
+-   **GADM** (libería **geodata**) y **rgeoboundaries**: Resultados muy
+    precisos.
 
 ### Almacenamiento
 
@@ -444,7 +466,7 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IGNBase.Gris",
+madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
   mask = TRUE, crop = TRUE,
   zoommin = 2
 )
@@ -473,7 +495,7 @@ leaflet(stations,
   width = "100%",
   height = "60vh"
 ) %>%
-  addProviderEspTiles("IGNBase.Gris", group = "Base") %>%
+  addProviderEspTiles("IDErioja.Claro", group = "Base") %>%
   addProviderEspTiles("MTN", group = "MTN") %>%
   addProviderEspTiles("RedTransporte.Ferroviario",
     group = "Lineas Ferroviarias"

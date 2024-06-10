@@ -48,12 +48,24 @@ Include tiles of public Spanish organisms to a \code{\link[leaflet:leaflet]{leaf
 }
 \examples{
 library(leaflet)
-PuertadelSol <- leaflet() \%>\%
-  setView(lat = 40.4166, lng = -3.7038400, zoom = 18) \%>\%
-  addProviderEspTiles(provider = "IGNBase.Gris") \%>\%
-  addProviderEspTiles(provider = "RedTransporte.Carreteras")
+leafmap <- leaflet() \%>\%
+  setView(lat = 40.4166, lng = -3.7038400, zoom = 6) \%>\%
+  addTiles(group = "Default (OSM)") \%>\%
+  addProviderEspTiles(
+    provider = "IDErioja.Claro",
+    group = "IDErioja Claro"
+  ) \%>\%
+  addProviderEspTiles(
+    provider = "RedTransporte.Carreteras",
+    group = "Carreteras"
+  ) \%>\%
+  addLayersControl(
+    baseGroups = c("IDErioja Claro", "Default (OSM)"),
+    overlayGroups = "Carreteras",
+    options = layersControlOptions(collapsed = FALSE)
+  )
 
-PuertadelSol
+leafmap
 }
 \seealso{
 \code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:map-layers]{leaflet::addTiles()}}

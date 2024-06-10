@@ -29,12 +29,24 @@ leafletprovidersESP_v <- "v1.3.3"
 #'
 #' @examples
 #' library(leaflet)
-#' PuertadelSol <- leaflet() %>%
-#'   setView(lat = 40.4166, lng = -3.7038400, zoom = 18) %>%
-#'   addProviderEspTiles(provider = "IGNBase.Gris") %>%
-#'   addProviderEspTiles(provider = "RedTransporte.Carreteras")
+#' leafmap <- leaflet() %>%
+#'   setView(lat = 40.4166, lng = -3.7038400, zoom = 6) %>%
+#'   addTiles(group = "Default (OSM)") %>%
+#'   addProviderEspTiles(
+#'     provider = "IDErioja.Claro",
+#'     group = "IDErioja Claro"
+#'   ) %>%
+#'   addProviderEspTiles(
+#'     provider = "RedTransporte.Carreteras",
+#'     group = "Carreteras"
+#'   ) %>%
+#'   addLayersControl(
+#'     baseGroups = c("IDErioja Claro", "Default (OSM)"),
+#'     overlayGroups = "Carreteras",
+#'     options = layersControlOptions(collapsed = FALSE)
+#'   )
 #'
-#' PuertadelSol
+#' leafmap
 addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
                                 options = providerEspTileOptions()) {
   # A. Check providers
