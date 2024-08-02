@@ -8,7 +8,6 @@ output:
 ---
 
 ```{r config, message=FALSE, warning=FALSE, include=FALSE}
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   tidy = "styler",
@@ -131,7 +130,6 @@ Full reference of each dataset in the [source](./source/) folder.
 There are `r length(list.files("dist/", ".gpkg"))` files available:
 
 ```{r echo=FALSE, message=FALSE}
-
 library(dplyr)
 
 files <-
@@ -151,7 +149,6 @@ knitr::kable(df)
 ## Preview
 
 ```{r preview, echo=FALSE, fig.keep="all", message=FALSE, warning=FALSE, out.width="33%"}
-
 par(mar = c(2, 2, 2, 2))
 for (i in seq_len(nrow(df))) {
   path <- file.path("dist", df[i, "file"])

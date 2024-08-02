@@ -21,7 +21,6 @@ zip <- zip[grep("zip$", zip)]
 for (i in seq_len(length(zip))) {
   path <- file.path("source/zip", zip[i])
   unzip(path, overwrite = TRUE, junkpaths = TRUE, exdir = "source")
-
 }
 
 
@@ -84,5 +83,3 @@ for (i in seq_len(length(shp))) {
 setwd(initwd)
 
 rm(list = ls())
-
-
