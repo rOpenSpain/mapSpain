@@ -235,6 +235,11 @@ esp_hlp_get_siane <- function(type,
     # Transform and bind
     data_sf2 <- sf::st_transform(data_sf2, sf::st_crs(data_sf1))
 
+    if (ncol(data_sf1) != ncol(data_sf2)) {
+      data_sf2[, setdiff(names(data_sf1), names(data_sf2))] <- NA
+    }
+
+
     data_sf <- rbind(data_sf1, data_sf2)
   } else {
     if (verbose) {
@@ -243,6 +248,14 @@ esp_hlp_get_siane <- function(type,
     data_sf <- data_sf1
   }
   # Date management
+  # Need to adjust on 2024 dist
+  if (type %in% c(
+    "roads", "riverline", "riverarea",
+    "orogarea", "orogline"
+  )) {
+    data_sf$fecha_baja <- NA
+  }
+
   mindate <- min(data_sf$fecha_alta)
   maxdate <- Sys.Date()
   year <- as.character(year)
