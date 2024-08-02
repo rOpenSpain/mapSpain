@@ -154,4 +154,5 @@ esp_get_hypsobath <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
   )
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf
 }

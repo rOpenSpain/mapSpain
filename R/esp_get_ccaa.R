@@ -194,7 +194,7 @@ esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
   initcols <- colnames(sf::st_drop_geometry(data_sf))
 
   # Add codauto
-  data_sf$lab <- data_sf$nombres_f
+  data_sf$lab <- data_sf$rotulo
 
   data_sf$lab <- gsub("Ciudad de ", "", data_sf$lab, fixed = TRUE)
   data_sf$lab <- gsub("/Catalunya", "", data_sf$lab)
