@@ -16,7 +16,10 @@ test_that("Testing dict", {
         "Ciudad Autónoma de Ceuta",
         "Ciudad Autónoma de Melilla",
         "Región de Murcia",
-        "Principado de Asturias"
+        "Principado de Asturias",
+        "Ciudad de Ceuta",
+        "Ciudad de Melilla",
+        "Sta. Cruz de Tenerife"
       ),
       destination = "cpro"
     )
@@ -73,4 +76,18 @@ test_that("Testing dict", {
 
   expect_false(all(vals == test))
   expect_true(all(vals == esp_dict_translate(test, "es")))
+  expect_silent(
+    esp_dict_translate(
+      c(
+        "Ciudad Autónoma de Ceuta",
+        "Ciudad Autónoma de Melilla",
+        "Región de Murcia",
+        "Principado de Asturias",
+        "Ciudad de Ceuta",
+        "Ciudad de Melilla",
+        "Sta. Cruz de Tenerife"
+      ),
+      lang = "eu"
+    )
+  )
 })

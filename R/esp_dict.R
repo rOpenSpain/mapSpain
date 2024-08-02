@@ -61,6 +61,20 @@
 #'
 esp_dict_region_code <- function(sourcevar, origin = "text",
                                  destination = "text") {
+  # Manually replace
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+
   initsourcevar <- sourcevar
 
   validvars <- c("text", "nuts", "iso2", "codauto", "cpro")
@@ -243,6 +257,20 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
 
   names_dict <- unique(
     names_full[grep("name", dict$variable), c("key", "value")]
+  )
+
+  # Manually replace
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
   )
 
   tokeys <- countrycode::countrycode(sourcevar,
