@@ -21,7 +21,8 @@ test_that("munic local", {
   skip_if_gisco_offline()
 
   expect_silent(esp_get_munic(year = 2013, region = "Alava"))
-  expect_silent(esp_get_munic(year = 2017, region = "Alava"))
+  a2 <- esp_get_munic(year = 2018, region = "Alava")
+  expect_s3_class(a2, "sf")
 })
 
 # SIANE
