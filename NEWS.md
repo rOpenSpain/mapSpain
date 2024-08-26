@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 0.9.2
 
 -   **SIANE 2024 Update**: Adapt functions to new databases.
 -   Improve dictionaries: `esp_dict_region_code()` and `esp_dict_translate()`.
