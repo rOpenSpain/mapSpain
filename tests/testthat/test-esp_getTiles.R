@@ -239,7 +239,7 @@ test_that("Custom WMS", {
   skip_on_cran()
   skip_if_offline()
 
-  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  segovia <- esp_get_prov("segovia", epsg = 3857)
   custom_wms <- list(
     id = "new_cached_test",
     q = paste0(
@@ -267,7 +267,7 @@ test_that("Custom WMTS", {
   skip_on_cran()
   skip_if_offline()
 
-  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  segovia <- esp_get_prov("segovia", epsg = 3857)
   custom_wmts <- list(
     id = "cyl_wmts",
     q = paste0(

@@ -8,7 +8,7 @@ test_that("Custom WMTS provider", {
   skip_on_cran()
   skip_if_offline()
 
-  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  segovia <- esp_get_prov("segovia", epsg = 3857)
   custom_wmts <- esp_make_provider(
     id = "wmts_test",
     q = "https://www.ign.es/wmts/ign-base?",
@@ -30,7 +30,7 @@ test_that("Custom WMS provider", {
   # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
-  segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+  segovia <- esp_get_prov("segovia", epsg = 3857)
 
   custom_wms_11 <- esp_make_provider(
     id = "wms_1.1",
