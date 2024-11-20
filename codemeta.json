@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.9.2",
+  "version": "0.9.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.1 (2024-06-14 ucrt)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -245,7 +245,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["rOpenSpain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "Spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "spain", "cran", "ropenspain", "ggplot2", "gis"],
-  "fileSize": "2436.548KB",
+  "fileSize": "2424.001KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -266,6 +266,6 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions?query=workflow%3AR-CMD-check", "https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/mapSpain"],
+  "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml", "https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/mapSpain"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }
