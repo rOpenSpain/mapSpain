@@ -349,11 +349,18 @@ esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
     colnames(esp_get_prov())
   ))
 
+  # Review this error, can't fully reproduce
+
+  namesend <- namesend[namesend %in% names(data_sf)]
+
   data_sf <- data_sf[, namesend]
 
 
   if (isFALSE(rawcols)) {
-    data_sf <- data_sf[, colnames(esp_get_prov())]
+    nm <- colnames(esp_get_prov())
+    nm <- nm[nm %in% colnames(data_sf)]
+
+    data_sf <- data_sf[, nm]
   }
 
   return(data_sf)

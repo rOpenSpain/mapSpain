@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Fix a bug on `esp_get_prov_siane()` when selecting columns #115.
+
 # mapSpain 0.9.2
 
 -   **SIANE 2024 Update**: Adapt functions to new databases.
