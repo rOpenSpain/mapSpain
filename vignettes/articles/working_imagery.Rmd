@@ -77,7 +77,7 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IGNBase.Gris", zoommin = 1)
+basemap <- esp_getTiles(madrid, "IDErioja.Claro", zoommin = 1)
 tile_opaque <- esp_getTiles(madrid, "UnidadesAdm.Limites", transparent = FALSE)
 
 ggplot() +
@@ -110,9 +110,9 @@ can be plotted:
 ```{r static3}
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-basemap <- esp_getTiles(rioja, "IGNBase.Gris", bbox_expand = 0.1, zoommin = 1)
+basemap <- esp_getTiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
-masked <- esp_getTiles(rioja, "IGNBase.Todo", mask = TRUE, zoommin = 1)
+masked <- esp_getTiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap, maxcell = 10e6) +

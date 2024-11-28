@@ -79,7 +79,7 @@ ggplot(country) +
 ```
 
 <div class="figure">
-<img src="./basic-1.png" alt="Example: Map of Spain" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./basic-1.png" alt="Example: Map of Spain" width="100%" />
 <p class="caption">Example: Map of Spain</p>
 </div>
 
@@ -95,7 +95,7 @@ ggplot(Andalucia) +
 ```
 
 <div class="figure">
-<img src="./basic2-1.png" alt="Example: Provinces of Andalucia" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./basic2-1.png" alt="Example: Provinces of Andalucia" width="100%" />
 <p class="caption">Example: Provinces of Andalucia</p>
 </div>
 
@@ -127,7 +127,7 @@ ggplot(Euskadi_CCAA) +
 ```
 
 <div class="figure">
-<img src="./basic3-1.png" alt="Example: Municipalities of the Basque Country" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./basic3-1.png" alt="Example: Municipalities of the Basque Country" width="100%" />
 <p class="caption">Example: Municipalities of the Basque Country</p>
 </div>
 
@@ -183,7 +183,7 @@ ggplot(CCAA_sf) +
 ```
 
 <div class="figure">
-<img src="./choro-1.png" alt="Percentage of women by Autonomous Community (2019)" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./choro-1.png" alt="Percentage of women by Autonomous Community (2019)" width="100%" />
 <p class="caption">Percentage of women by Autonomous Community (2019)</p>
 </div>
 
@@ -237,7 +237,7 @@ ggplot(munic.pop) +
 ```
 
 <div class="figure">
-<img src="./thematic-1.png" alt="Population density in Spain (2019)" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./thematic-1.png" alt="Population density in Spain (2019)" width="100%" />
 <p class="caption">Population density in Spain (2019)</p>
 </div>
 
@@ -288,7 +288,7 @@ ggplot(all_countries) +
 ```
 
 <div class="figure">
-<img src="./giscoR-1.png" alt="mapSpain and giscoR example" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/./giscoR-1.png" alt="mapSpain and giscoR example" width="100%" />
 <p class="caption">mapSpain and giscoR example</p>
 </div>
 

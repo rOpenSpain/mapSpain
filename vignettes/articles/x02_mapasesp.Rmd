@@ -34,7 +34,7 @@ esp_set_cache_dir(cache_dir_here, verbose = FALSE)
 
 ### Motivación
 
-<!-- <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" align="right" width="170" style="margin-top: 25vh;margin-right: 2rem;"/> -->
+<img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" align="right" width="170" style="margin-top: 25vh;margin-right: 2rem;"/>
 
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
@@ -149,7 +149,7 @@ esp_rgeob <- gb_adm0("ESP") %>%
 
 # Imagen Ria Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
-  esp_getTiles("IGNBase.Gris", bbox_expand = 0.5, zoommin = 1)
+  esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
 library(tidyterra)
@@ -163,7 +163,7 @@ esp_all$source <- as_factor(c(
 ))
 
 ggplot(esp_all) +
-  geom_spatraster_rgb(data = tile, maxcell = Inf) +
+  geom_spatraster_rgb(data = tile, maxcell = Inf, alpha = 0.5) +
   geom_sf(aes(color = source, linetype = source),
     fill = NA, show.legend = "line",
     linewidth = 0.5, alpha = 0.7
@@ -451,7 +451,7 @@ Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ```{r imagesestaticos}
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
-base_pnoa <- esp_getTiles(madrid_munis, "IGNBase.Todo",
+base_pnoa <- esp_getTiles(madrid_munis, "PNOA",
   bbox_expand = 0.1,
   zoommin = 1
 )
@@ -471,7 +471,7 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IGNBase.Gris",
+madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
   mask = TRUE, crop = TRUE, zoommin = 2
 )
 
@@ -481,7 +481,7 @@ ggplot() +
   theme_void() +
   labs(
     title = "Mapa Base de Madrid",
-    caption = "CC BY 4.0 scne.es. Sistema Geográfico Nacional IGN"
+    caption = "CC BY 4.0 www.iderioja.org"
   )
 ```
 
@@ -521,7 +521,7 @@ leaflet(stations,
 
 ## Otros recursos
 
-mapSpain incluye otras [funciones
+**mapSpain** incluye otras [funciones
 adicionales](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
 que permiten extraer información sobre altitud, rios y cuencas hidrográficas de
 España, así líneas y puntos de

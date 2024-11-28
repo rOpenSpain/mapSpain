@@ -52,7 +52,7 @@ contact:
   orcid: https://orcid.org/0000-0001-8457-4658
   affiliation: rOpenSpain
 keywords:
-- rOpenSpain
+- ropenspain
 - tiles
 - r
 - maps
@@ -60,7 +60,7 @@ keywords:
 - rstats
 - r-package
 - municipalities
-- Spain
+- spain
 - gisco
 - provinces
 - ign
@@ -70,8 +70,6 @@ keywords:
 - cran
 - ggplot2
 - gis
-- ropenspain
-- spain
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
