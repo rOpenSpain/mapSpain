@@ -290,6 +290,10 @@ esp_hlp_get_siane <- function(type,
   }
 
   # Filter
+  if (type %in% c("ffccline", "ffccpoint")) {
+    return(data_sf)
+  }
+
   df <- data_sf
   # By date
   df$fecha_bajamod <- as.character(df$fecha_baja)

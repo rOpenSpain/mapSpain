@@ -4,13 +4,14 @@
 \alias{esp_get_comarca}
 \title{Get 'comarcas' of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON}}
 \source{
-INE: PC_Axis files.
+INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
 }
 \usage{
 esp_get_comarca(
   region = NULL,
   comarca = NULL,
   moveCAN = TRUE,
+  type = c("INE", "IGN", "AGR", "LIV"),
   epsg = "4258",
   update_cache = FALSE,
   cache_dir = NULL,
@@ -28,6 +29,9 @@ the required comarcas. \code{NULL} would return all the possible comarcas.}
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands}.}
+
+\item{type}{One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}. Type of comarca to
+return, see \strong{Details}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -50,14 +54,38 @@ default is \code{FALSE}.}
 A \code{\link[sf:sf]{sf}} polygon object.
 }
 \description{
-Returns 'comarcas' of Spain as \code{sf} \code{POLYGON} objects, as provided by the
-\strong{INE} (Instituto Nacional de Estadistica).
+Returns 'comarcas' of Spain as \code{sf} \code{POLYGON} objects.
 }
 \details{
+\subsection{About comarcas}{
+
 'Comarcas' (English equivalent: district, county, area or zone) does not
 always have a formal legal status. They correspond mainly to natural areas
 (valleys, river basins etc.) or even to historical regions or ancient
 kingdoms.
+
+In the case of Spain, comarcas only have an administrative character legally
+recognized in Catalonia, the Basque Country, Navarra (named merindades
+instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
+the Principality of Asturias, and Andalusia have functional comarcas.
+}
+
+\subsection{Types}{
+
+\code{esp_get_comarcas()} can retrieve several types of comarcas, each one
+provided under different classification criteria.
+\itemize{
+\item \code{"INE"}: Comarcas as defined by the National Statistics Institute (INE).
+\item \code{"IGN"}: Official comarcas, only available on some Autonomous Communities,
+provided by the National Geographic Institute.
+\item \code{"AGR"}: Agrarian comarcas defined by the Ministry of Agriculture,
+Fisheries and Food (MAPA).
+\item \code{"LIV"}: Livestock comarcas defined by the Ministry of Agriculture,
+Fisheries and Food (MAPA).
+}
+}
+
+\subsection{Misc}{
 
 When using \code{region} you can use and mix names and NUTS codes
 (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
@@ -65,6 +93,8 @@ When using \code{region} you can use and mix names and NUTS codes
 
 When calling a higher level (Province, Autonomous Community or NUTS1),
 all the comarcas of that level would be added.
+}
+
 \subsection{Legal Notice}{
 
 The use of the information contained on the
@@ -104,18 +134,26 @@ library(ggplot2)
 ggplot(comarcas) +
   geom_sf()
 
-# Comarcas of Castille and Leon
+# IGN provides recognized comarcas
 
-comarcas_cyl <- esp_get_comarca("Castilla y Leon")
+rec <- esp_get_comarca(type = "IGN")
 
-ggplot(comarcas_cyl) +
+ggplot(rec) +
+  geom_sf(aes(fill = t_comarca))
+
+# Legal Comarcas of Catalunya
+
+comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
+
+ggplot(comarcas_cat) +
   geom_sf(aes(fill = ine.prov.name)) +
   labs(fill = "Province")
 
-# Comarcas with Mountains or Alt(o,a) in the name
+# Livestock Comarcas with Mountains or Alt(o,a) in the name
 
 comarcas_alto <- esp_get_comarca(
   comarca = "Montaña|Monte|Sierra|Alt",
+  type = "LIV",
   epsg = 3857
 )
 

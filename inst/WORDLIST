@@ -1,16 +1,17 @@
 ANE
 Alboran
-Andalucia
 BDN
 Baleares
 Banco
 Bathymetry
+Bierzo
 CCAA
 CDN
 CLDR
 CRS
 Canarias
 CartoBase
+Castilla
 Centre
 Ceuta
 Comarcas
@@ -19,10 +20,12 @@ EEA
 EPSG
 ESDAC
 ETRS
+El
 Estadistica
 Eurostat
 FID
 GISCO
+Galicia
 Galician
 Geografico
 Hexbin
@@ -34,6 +37,7 @@ Instituto
 LAEA
 LAU
 Liedekerke
+MAPA
 MITECO
 MTN
 Mapa
@@ -41,6 +45,7 @@ Melilla
 Montanarella
 Nacional
 Naturaleza
+Navarra
 OGC
 ORCID
 OpenStreetMap
@@ -63,7 +68,7 @@ ceuta
 choropleth
 choropleths
 cmun
-codauto
+comarca
 comarcas
 config
 cpro
@@ -82,6 +87,7 @@ javascript
 jrc
 kms
 melilla
+merindades
 pre
 providersESP
 spanish
