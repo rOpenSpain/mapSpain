@@ -77,8 +77,13 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IDErioja.Claro", zoommin = 1, crop = TRUE, bbox_expand = 0)
-tile_opaque <- esp_getTiles(madrid, "RedTransporte.Carreteras", transparent = FALSE, crop = TRUE, bbox_expand = 0)
+basemap <- esp_getTiles(madrid, "IDErioja.Claro",
+  zoommin = 1,
+  crop = TRUE, bbox_expand = 0
+)
+tile_opaque <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+  transparent = FALSE, crop = TRUE, bbox_expand = 0
+)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap) +
@@ -91,7 +96,9 @@ Now let's check the same code using the `tranparent = TRUE` option:
 ```{r static_transp, fig.alt="Example on how to use alpha value for combining different types of basemaps."}
 # Example with transparency
 
-tile_alpha <- esp_getTiles(madrid, "RedTransporte.Carreteras", transparent = TRUE, crop = TRUE, bbox_expand = 0)
+tile_alpha <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+  transparent = TRUE, crop = TRUE, bbox_expand = 0
+)
 
 # Same code than above for plotting
 ggplot() +

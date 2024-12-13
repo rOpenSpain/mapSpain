@@ -495,11 +495,13 @@ stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 library(leaflet)
 # Creamos icono
 
-train_icon <- makeIcon(
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_icons_by_Scott_de_Jonge_-_train-station.svg.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_icons_by_Scott_de_Jonge_-_train-station.svg.png",
-  18, 18
+iconurl <- paste0(
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/",
+  "Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_",
+  "icons_by_Scott_de_Jonge_-_train-station.svg.png"
 )
+
+train_icon <- makeIcon(iconurl, iconurl, 18, 18)
 
 
 leaflet(stations,
@@ -526,10 +528,10 @@ leaflet(stations,
   ) %>%
   addLayersControl(
     baseGroups = c("Base", "MTN"),
-    overlayGroups = c("Carreteras", "Lineas Ferroviarias", "Estaciones"),
+    overlayGroups = c("Estaciones", "Lineas Ferroviarias", "Carreteras"),
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
-  hideGroup(c("Carreteras", "Lineas Ferroviarias", "Estaciones"))
+  hideGroup(c("Lineas Ferroviarias", "Carreteras"))
 ```
 
 ## Otros recursos
