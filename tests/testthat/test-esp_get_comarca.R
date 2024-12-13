@@ -24,4 +24,12 @@ test_that("comarcas online", {
 
   s <- esp_get_comarca(region = n)
   expect_equal(length(unique(s$cpro)), 52)
+
+  # Types
+  ine <- esp_get_comarca()
+  ign <- esp_get_comarca(type = "IGN")
+  agr <- esp_get_comarca(type = "AGR")
+  liv <- esp_get_comarca(type = "LIV")
+
+  expect_length(unique(c(nrow(ine), nrow(ign), nrow(agr), nrow(liv))), 4)
 })

@@ -1,10 +1,10 @@
 #' Get 'comarcas' of Spain as [`sf`][sf::st_sf] `POLYGON`
 #'
 #' @description
-#' Returns 'comarcas' of Spain as `sf` `POLYGON` objects, as provided by the
-#' **INE** (Instituto Nacional de Estadistica).
+#' Returns 'comarcas' of Spain as `sf` `POLYGON` objects.
 #'
-#' @source INE: PC_Axis files.
+#' @source
+#' INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
 #'
 #' @return A [`sf`][sf::st_sf] polygon object.
 #'
@@ -16,6 +16,9 @@
 #' @param comarca A name or [`regex`][base::grep()] expression with the names of
 #'   the required comarcas. `NULL` would return all the possible comarcas.
 #'
+#' @param type One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of comarca to
+#'   return, see **Details**.
+#'
 #' @inheritParams esp_get_munic
 #'
 #' @inheritSection  esp_get_nuts About caching
@@ -26,10 +29,32 @@
 #'
 #' @details
 #'
+#' ## About comarcas
 #' 'Comarcas' (English equivalent: district, county, area or zone) does not
 #' always have a formal legal status. They correspond mainly to natural areas
 #' (valleys, river basins etc.) or even to historical regions or ancient
 #' kingdoms.
+#'
+#' In the case of Spain, comarcas only have an administrative character legally
+#' recognized in Catalonia, the Basque Country, Navarra (named merindades
+#' instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
+#' the Principality of Asturias, and Andalusia have functional comarcas.
+#'
+#' ## Types
+#'
+#' `esp_get_comarcas()` can retrieve several types of comarcas, each one
+#' provided under different classification criteria.
+#'
+#' - `"INE"`: Comarcas as defined by the National Statistics Institute (INE).
+#' - `"IGN"`: Official comarcas, only available on some Autonomous Communities,
+#'   provided by the National Geographic Institute.
+#' - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
+#'   Fisheries and Food (MAPA).
+#'
+#' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
+#'   Fisheries and Food (MAPA).
+#'
+#' ## Misc
 #'
 #' When using `region` you can use and mix names and NUTS codes
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
@@ -56,18 +81,26 @@
 #' ggplot(comarcas) +
 #'   geom_sf()
 #'
-#' # Comarcas of Castille and Leon
+#' # IGN provides recognized comarcas
 #'
-#' comarcas_cyl <- esp_get_comarca("Castilla y Leon")
+#' rec <- esp_get_comarca(type = "IGN")
 #'
-#' ggplot(comarcas_cyl) +
+#' ggplot(rec) +
+#'   geom_sf(aes(fill = t_comarca))
+#'
+#' # Legal Comarcas of Catalunya
+#'
+#' comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
+#'
+#' ggplot(comarcas_cat) +
 #'   geom_sf(aes(fill = ine.prov.name)) +
 #'   labs(fill = "Province")
 #'
-#' # Comarcas with Mountains or Alt(o,a) in the name
+#' # Livestock Comarcas with Mountains or Alt(o,a) in the name
 #'
 #' comarcas_alto <- esp_get_comarca(
 #'   comarca = "Montaña|Monte|Sierra|Alt",
+#'   type = "LIV",
 #'   epsg = 3857
 #' )
 #'
@@ -78,18 +111,31 @@
 #' }
 #'
 esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
+                            type = c("INE", "IGN", "AGR", "LIV"),
                             epsg = "4258", update_cache = FALSE,
                             cache_dir = NULL, verbose = FALSE) {
   init_epsg <- as.character(epsg)
-
+  type <- match.arg(type)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
   }
 
-
   # Url
-  api_entry <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/"
-  filename <- "esp_com_99.gpkg"
+  api_entry <- switch(type,
+    "INE" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/",
+    "IGN" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/IGNComarcas/",
+    "AGR" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MITECO/dist/",
+    "LIV" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MITECO/dist/",
+  )
+
+
+  filename <- switch(type,
+    "INE" = "esp_com_99.gpkg",
+    "IGN" = "comarcas_ign.gpkg",
+    "AGR" = "comarcas_agrarias.gpkg",
+    "LIV" = "comarcas_ganaderas.gpkg"
+  )
+
 
 
   data_sf <- esp_hlp_dwnload_sianedata(
@@ -100,7 +146,6 @@ esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
     update_cache = update_cache,
     cache = TRUE
   )
-
 
   if (!is.null(comarca)) {
     comarca <- paste(comarca, collapse = "|")
@@ -151,7 +196,6 @@ esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
   }
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
-  data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$COMAGR), ]
 
   return(data_sf)
 }

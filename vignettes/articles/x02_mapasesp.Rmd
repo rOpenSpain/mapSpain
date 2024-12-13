@@ -91,7 +91,7 @@ remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 
 ### Un ejemplo rápido
 
-```{r intro}
+```{r intro, fig.alt="Mapa de los municipios de Galicia"}
 library(mapSpain)
 library(tidyverse)
 
@@ -123,7 +123,7 @@ reactable(galicia,
 Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` o
 `SpatVector` de distintos paises:
 
-```{r compara}
+```{r compara, fig.alt="Comparación de la resolución de diferentes fuentes de mapas; se muestran bordes de los datos comparados con ortofoto de la Ria de Ferrol"}
 library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
@@ -493,6 +493,14 @@ Estas capas se pueden usar también como fondo en mapas estáticos
 stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 
 library(leaflet)
+# Creamos icono
+
+train_icon <- makeIcon(
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_icons_by_Scott_de_Jonge_-_train-station.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_icons_by_Scott_de_Jonge_-_train-station.svg.png",
+  18, 18
+)
+
 
 leaflet(stations,
   elementId = "railway",
@@ -501,10 +509,14 @@ leaflet(stations,
 ) %>%
   addProviderEspTiles("IDErioja.Claro", group = "Base") %>%
   addProviderEspTiles("MTN", group = "MTN") %>%
+  addProviderEspTiles("RedTransporte.Carreteras",
+    group = "Carreteras"
+  ) %>%
   addProviderEspTiles("RedTransporte.Ferroviario",
     group = "Lineas Ferroviarias"
   ) %>%
   addMarkers(
+    icon = train_icon,
     group = "Estaciones",
     popup = sprintf(
       "<strong>%s</strong>",
@@ -514,9 +526,10 @@ leaflet(stations,
   ) %>%
   addLayersControl(
     baseGroups = c("Base", "MTN"),
-    overlayGroups = c("Lineas Ferroviarias", "Estaciones"),
+    overlayGroups = c("Carreteras", "Lineas Ferroviarias", "Estaciones"),
     options = layersControlOptions(collapsed = FALSE)
-  )
+  ) %>%
+  hideGroup(c("Carreteras", "Lineas Ferroviarias", "Estaciones"))
 ```
 
 ## Otros recursos

@@ -1,6 +1,9 @@
 # mapSpain (development version)
 
 -   Fix a bug on `esp_get_prov_siane()` when selecting columns #115.
+-   New argument `type` in `esp_get_comarcas()`. Now it is possible to extract
+    different types of comarcas: Official (IGN), statistical (INE), agrarian or
+    livestock comarcas (MAPA).
 
 # mapSpain 0.9.2
 
