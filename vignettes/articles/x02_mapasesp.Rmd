@@ -142,11 +142,6 @@ esp_geodata <- geodata::gadm("ES", path = ".", level = 0) %>%
   sf::st_as_sf() %>%
   st_transform(3857)
 
-# geoboundaries
-library(rgeoboundaries)
-esp_rgeob <- gb_adm0("ESP") %>%
-  st_transform(3857)
-
 # Imagen Ria Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
   esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
@@ -155,11 +150,11 @@ tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
 library(tidyterra)
 
 
-esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata, esp_rgeob)
+esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata)
 
 esp_all$source <- as_factor(c(
-  "rnaturalearth", "mapSpain", "geodata (GADM)",
-  "rgeoboundaries"
+  "rnaturalearth",
+  "mapSpain", "geodata (GADM)"
 ))
 
 ggplot(esp_all) +
@@ -172,16 +167,15 @@ ggplot(esp_all) +
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "black", "blue", "orange")) +
-  scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
+  scale_color_manual(values = c("red", "black", "blue")) +
+  scale_linetype_manual(values = c("solid", "dotted", "dashed")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
 ```
 
 -   **rnaturalearth**: No capta bien el contorno.
 -   **mapSpain**: Resultados satisfactorios.
--   **GADM** (libería **geodata**) y **rgeoboundaries**: Resultados muy
-    precisos.
+-   **GADM** (libería **geodata**): Resultados muy precisos.
 
 ### Almacenamiento
 
