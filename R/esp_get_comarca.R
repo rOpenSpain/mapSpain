@@ -42,7 +42,7 @@
 #'
 #' ## Types
 #'
-#' `esp_get_comarcas()` can retrieve several types of comarcas, each one
+#' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
 #'
 #' - `"INE"`: Comarcas as defined by the National Statistics Institute (INE).
@@ -95,19 +95,6 @@
 #' ggplot(comarcas_cat) +
 #'   geom_sf(aes(fill = ine.prov.name)) +
 #'   labs(fill = "Province")
-#'
-#' # Livestock Comarcas with Mountains or Alt(o,a) in the name
-#'
-#' comarcas_alto <- esp_get_comarca(
-#'   comarca = "Montaña|Monte|Sierra|Alt",
-#'   type = "LIV",
-#'   epsg = 3857
-#' )
-#'
-#' ggplot(comarcas_alto) +
-#'   geom_sf(aes(fill = ine.ccaa.name)) +
-#'   geom_sf_text(aes(label = name), check_overlap = TRUE) +
-#'   labs(fill = "CCAA")
 #' }
 #'
 esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
