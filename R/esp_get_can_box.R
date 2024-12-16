@@ -1,78 +1,115 @@
-#' @title Get complementary lines when plotting Canary Islands.
-#' @name esp_get_can_box
-#' @description When plotting Spain, it is usual to represent the Canary
-#' Islands as an inset (see \code{moveCAN} on \link{esp_get_nuts}). These
-#' functions provides complementary borders when Canary Islands are displaces.
+#' Get [`sf`][sf::st_sf] lines and polygons for insetting the Canary Islands
 #'
-#' \code{esp_get_can_box} is used to draw lines around the displaced
-#' Canary Islands.
-#' @return A \code{LINESTRING} or \code{POLYGON} object if
-#' \code{style = 'poly'}.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_nuts}, \link{esp_get_ccaa}.
+#' @description
+#' When plotting Spain, it is usual to represent the Canary Islands as an inset
+#' (see `moveCAN` on [esp_get_nuts()]). These functions provides complementary
+#' lines and polygons to be used when the Canary Islands are displayed
+#' as an inset.
+#'
+#' - [esp_get_can_box()] is used to draw lines around the displaced Canary
+#'   Islands.
+#'
+#' @family political
+#' @family Canary Islands
+#'
+#' @rdname esp_get_can_box
+#'
+#' @name esp_get_can_box
+#'
+#' @return A [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` depending of `style`
+#'   parameter.
+#'
 #' @export
 #'
 #' @param style Style of line around Canary Islands. Four options available:
-#' \code{'left', 'right', 'box'} or \code{'poly'}.
-#' @param moveCAN,epsg See \link{esp_get_nuts}
-#' @examples
-#' library(sf)
+#'   `"left"`, `"right"`, `"box"` or `"poly"`.
 #'
-#' Provs <-  esp_get_prov()
+#' @inheritParams esp_get_nuts
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
+#'
+#' @examples
+#'
+#' Provs <- esp_get_prov()
 #' Box <- esp_get_can_box()
 #' Line <- esp_get_can_provinces()
 #'
+#' # Plot
+#' library(ggplot2)
 #'
-#' plot(st_geometry(Provs), col = hcl.colors(4, palette = "Grays"))
-#' plot(Box, add = TRUE)
-#' plot(Line, add = TRUE)
-#'
-#'
+#' ggplot(Provs) +
+#'   geom_sf() +
+#'   geom_sf(data = Box) +
+#'   geom_sf(data = Line) +
+#'   theme_linedraw()
+#' \donttest{
 #' # Displacing Canary
 #'
-#' Provs_D <-  esp_get_prov(moveCAN = c(15, 0))
-#' Box_D <- esp_get_can_box(style = "left", moveCAN = c(15, 0))
-#' Line_D <- esp_get_can_provinces(moveCAN = c(15, 0))
+#' # By same factor
 #'
+#' displace <- c(15, 0)
 #'
+#' Provs_D <- esp_get_prov(moveCAN = displace)
 #'
-#' plot(st_geometry(Provs_D), col = hcl.colors(4, palette = "Grays"))
-#' plot(Box_D, add = TRUE)
-#' plot(Line_D, add = TRUE)
+#' Box_D <- esp_get_can_box(style = "left", moveCAN = displace)
+#'
+#' Line_D <- esp_get_can_provinces(moveCAN = displace)
+#'
+#' ggplot(Provs_D) +
+#'   geom_sf() +
+#'   geom_sf(data = Box_D) +
+#'   geom_sf(data = Line_D) +
+#'   theme_linedraw()
+#'
 #'
 #' # Example with poly option
 #'
+#' # Get countries with giscoR
+#'
 #' library(giscoR)
 #'
+#' # Low resolution map
+#' res <- "20"
+#'
 #' Countries <-
-#'   gisco_get_countries(res = "20",
-#'                       epsg = "4326",
-#'                       region = c("Europe", "Africa"))
+#'   gisco_get_countries(
+#'     res = res,
+#'     epsg = "4326",
+#'     country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
+#'   )
 #' CANbox <-
-#'   esp_get_can_box(style = "poly",
-#'                   epsg = "4326",
-#'                   moveCAN = c(12.5, 0))
-#' CCAA <- esp_get_ccaa(res = "20",
-#'                      epsg = "4326",
-#'                      moveCAN = c(12.5, 0))
+#'   esp_get_can_box(
+#'     style = "poly",
+#'     epsg = "4326",
+#'     moveCAN = c(12.5, 0)
+#'   )
 #'
+#' CCAA <- esp_get_ccaa(
+#'   res = res,
+#'   epsg = "4326",
+#'   moveCAN = c(12.5, 0) # Same displacement factor)
+#' )
 #'
-#' plot_sf(CCAA, axes = TRUE, bgc = "skyblue1")
-#' plot(st_geometry(Countries), col = "grey80", add = TRUE)
-#' plot(st_geometry(CANbox),
-#'      border = "black",
-#'      col = "skyblue",
-#'      add = TRUE)
-#' plot(st_geometry(CCAA), add = TRUE, col = "beige")
-#' box()
-esp_get_can_box <- function(style = "right",
-                            moveCAN = TRUE,
-                            epsg = "4258") {
+#' # Plot
+#'
+#' ggplot(Countries) +
+#'   geom_sf(fill = "#DFDFDF") +
+#'   geom_sf(data = CANbox, fill = "#C7E7FB", linewidth = 1) +
+#'   geom_sf(data = CCAA, fill = "#FDFBEA") +
+#'   coord_sf(
+#'     xlim = c(-10, 4.3),
+#'     ylim = c(34.6, 44)
+#'   ) +
+#'   theme(
+#'     panel.background = element_rect(fill = "#C7E7FB"),
+#'     panel.grid = element_blank()
+#'   )
+#' }
+esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
   # checks
   if (!style %in% c("left", "right", "box", "poly")) {
     stop("style should be one of 'right','left','box'")
   }
-
 
   epsg <- as.character(epsg)
 
@@ -80,20 +117,17 @@ esp_get_can_box <- function(style = "right",
     stop("epsg should be one of '4258','4326','3035', '3857'")
   }
 
-
-  CAN <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
-
-  bbox <- sf::st_bbox(CAN)
+  can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
+  bbox <- sf::st_bbox(can)
 
 
-  if (style == "box" | style == "poly") {
-    bbox <- bbox + c(-0.5,-0.3, 0.5, 0.3)
+  if (style == "box" || style == "poly") {
+    bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 
-    lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(CAN))
+    lall <- sf::st_as_sfc(bbox, crs = sf::st_crs(can))
     if (style == "box") {
       lall <- sf::st_cast(lall, "LINESTRING")
     }
-
   } else if (style == "right") {
     bbox <- bbox + c(0, 0, 0.5, 0.3)
 
@@ -105,7 +139,7 @@ esp_get_can_box <- function(style = "right",
 
     pall <- c(p1, p2, p3, p4)
     lall <- sf::st_linestring(sf::st_coordinates(pall))
-    lall <- sf::st_sfc(lall, crs = sf::st_crs(CAN))
+    lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   } else if (style == "left") {
     bbox <- bbox + c(-0.5, 0, 0, 0.3)
 
@@ -116,28 +150,14 @@ esp_get_can_box <- function(style = "right",
 
     pall <- c(p1, p2, p3, p4)
     lall <- sf::st_linestring(sf::st_coordinates(pall))
-    lall <- sf::st_sfc(lall, crs = sf::st_crs(CAN))
-
+    lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   }
 
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    offset <- c(550000, 920000)
-
-    if (length(moveCAN) > 1) {
-      coords <- sf::st_point(moveCAN)
-      coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
-      coords <- sf::st_transform(coords, 3857)
-      coords <- sf::st_coordinates(coords)
-      offset <- offset + as.double(coords)
-    }
-
-    CAN <- sf::st_transform(lall, 3857) + offset
-    CAN <- sf::st_sfc(CAN, crs = 3857)
-    CAN <- sf::st_transform(CAN, sf::st_crs(lall))
-    lall <- CAN
+    lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
   # Transform
@@ -145,25 +165,37 @@ esp_get_can_box <- function(style = "right",
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
   return(lall)
-
 }
 
 #' @rdname esp_get_can_box
-#' @description \code{esp_get_can_provinces} is used to draw a separator
-#' line between the two provinces of the Canary Islands.
-#' @return \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
+#'
+#'
+#' @description
+#' - [esp_get_can_provinces()] is used to draw a separator line between the two
+#'   provinces of the Canary Islands.
+#'
+#' See also [esp_move_can()] to displace stand-alone objects on the Canary
+#' Islands.
+#'
+#' @return `esp_get_can_provinces` returns a `LINESTRING` object.
+#'
+#' @source
+#' `esp_get_can_provinces` extracted from CartoBase ANE,
+#' `se89_mult_admin_provcan_l.shp` file.
+#'
 #' @export
-esp_get_can_provinces <- function(moveCAN = TRUE,
-                                  epsg = "4258") {
+esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   epsg <- as.character(epsg)
 
   if (!epsg %in% c("4258", "4326", "3035", "3857")) {
     stop("epsg should be one of '4258','4326','3035', '3857'")
   }
 
-
-  m <- c(sf::st_point(c(-15.25274, 29.20)),
-         sf::st_point(c(-16.4, 27.639)))
+  # From CartoBase ANE: se89_mult_admin_provcan_l
+  m <- c(
+    sf::st_point(c(-16.29902, 27.71454)),
+    sf::st_point(c(-15.69362, 28.78078))
+  )
 
   lall <- sf::st_linestring(sf::st_coordinates(m))
   lall <- sf::st_sfc(lall, crs = sf::st_crs(4326))
@@ -172,20 +204,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
 
   if (moving) {
-    offset <- c(550000, 920000)
-
-    if (length(moveCAN) > 1) {
-      coords <- sf::st_point(moveCAN)
-      coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
-      coords <- sf::st_transform(coords, 3857)
-      coords <- sf::st_coordinates(coords)
-      offset <- offset + as.double(coords)
-    }
-
-    CAN <- sf::st_transform(lall, 3857) + offset
-    CAN <- sf::st_sfc(CAN, crs = 3857)
-    CAN <- sf::st_transform(CAN, sf::st_crs(lall))
-    lall <- CAN
+    lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
   # Transform
@@ -193,5 +212,4 @@ esp_get_can_provinces <- function(moveCAN = TRUE,
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
   return(lall)
-
 }

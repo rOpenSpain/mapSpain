@@ -4,52 +4,75 @@
 \encoding{UTF-8}
 \name{esp_munic.sf}
 \alias{esp_munic.sf}
-\title{All Municipalities \code{POLYGON} object of Spain}
+\title{\code{\link[sf:sf]{sf}} object with all the municipalities of Spain (2019)}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-object:
+A \code{\link[sf:sf]{sf}} object (resolution: 1:1 million, EPSG:4258) object with
+8,131 rows and columns:
 \describe{
-  \item{codauto}{INE code of each autonomous community.}
-  \item{ine.ccaa.name}{INE name of each autonomous community.}
-  \item{cpro}{INE code of each province.}
-  \item{ine.prov.name}{INE name of each province.}
-  \item{cmun}{INE code of each municipality.}
-  \item{name}{Name of the municipality}
-  \item{LAU_CODE}{LAU Code (GISCO) of the municipality}
-  \item{geometry}{geometry field}
+\item{codauto}{INE code of the autonomous community.}
+\item{ine.ccaa.name}{INE name of the autonomous community.}
+\item{cpro}{INE code of the province.}
+\item{ine.prov.name}{INE name of the province.}
+\item{cmun}{INE code of the municipality.}
+\item{name}{Name of the municipality.}
+\item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
+combination of \strong{cpro} and \strong{cmun} fields, aligned with INE coding
+scheme.}
+\item{geometry}{geometry field.}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/LAU_RG_01M_2019_4326.geojson}{GISCO .geojson source}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/local-administrative-units},
+LAU 2019 data.
 }
 \description{
-A \code{sf} object including all
-municipalities of Spain as provided by GISCO (2019 version).
+A \code{\link[sf:sf]{sf}} object including all municipalities of Spain as provided
+by GISCO (2019 version).
 }
 \examples{
-library(sf)
-
 data("esp_munic.sf")
-data("esp_nuts.sf")
 
-Teruel.cpro <- esp_dict_region_code("Teruel", destination = "cpro")
-Teruel.NUTS <- esp_dict_region_code(Teruel.cpro,
-   origin = "cpro",
-   destination = "nuts")
+teruel_cpro <- esp_dict_region_code("Teruel", destination = "cpro")
 
-Teruel.sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel.cpro, ]
-Teruel.city <- Teruel.sf[Teruel.sf$name == "Teruel", ]
+teruel_sf <- esp_munic.sf[esp_munic.sf$cpro == teruel_cpro, ]
+teruel_city <- teruel_sf[teruel_sf$name == "Teruel", ]
 
-NUTS <-
-  esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3 &
-             esp_nuts.sf$NUTS_ID != Teruel.NUTS,]
+# Plot
 
+library(ggplot2)
 
-plot(st_geometry(Teruel.sf), col = "cornsilk")
-plot(st_geometry(Teruel.city), col = "firebrick3", add = TRUE)
-plot(st_geometry(NUTS), col = "wheat", add = TRUE)
-title(main = "Municipalities of Teruel",  line = 1)
+ggplot(teruel_sf) +
+  geom_sf(fill = "#FDFBEA") +
+  geom_sf(data = teruel_city, aes(fill = name)) +
+  scale_fill_manual(
+    values = "#C12838",
+    labels = "City of Teruel"
+  ) +
+  guides(fill = guide_legend(position = "inside")) +
+  labs(
+    fill = "",
+    title = "Municipalities of Teruel"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(face = "bold"),
+    panel.background = element_rect(colour = "black"),
+    panel.grid = element_blank(),
+    legend.position.inside = c(.2, .95)
+  )
 }
 \seealso{
-\link{esp_get_munic}
+\code{\link[=esp_get_munic]{esp_get_munic()}}.
+
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_nuts.sf}},
+\code{\link{esp_tiles_providers}},
+\code{\link{pobmun19}}
+
+Other municipalities: 
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_munic}()}
 }
+\concept{datasets}
+\concept{municipalities}

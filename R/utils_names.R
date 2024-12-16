@@ -1,28 +1,7 @@
-#' @name esp_hlp_cachedir
-#' @noRd
-esp_hlp_cachedir <- function(cache_dir = NULL) {
-  # Check cache dir from options if not set
-  if (is.null(cache_dir)) {
-    cache_dir <- getOption("mapSpain_cache_dir", NULL)
-  }
-
-  # Check cache dir from options if not set
-  if (is.null(cache_dir)) {
-    cache_dir <- getOption("gisco_cache_dir", NULL)
-  }
-  # Reevaluate
-  if (is.null(cache_dir)) {
-    cache_dir <- file.path(tempdir(), "mapSpain")
-  }
-
-  #Create cache dir if needed
-  if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir)
-  }
-  return(cache_dir)
-}
-
-#' @name esp_hlp_all2nuts
+#' Transform region to NUTS code
+#'
+#' @param region A name or code of a Spanish region
+#'
 #' @noRd
 esp_hlp_all2nuts <- function(region) {
   region <- unique(region[!is.na(region)])
@@ -56,11 +35,11 @@ esp_hlp_all2nuts <- function(region) {
     nuts_id[nuts] <- out
 
     if (any(is.na(out))) {
-      warning(paste0(nutstoval[is.na(out)], collapse = ", "),
-              " are not valid nuts codes")
+      warning(
+        paste0(nutstoval[is.na(out)], collapse = ", "),
+        " are not valid nuts codes"
+      )
     }
-
-
   }
 
   if (length(key) > 0) {
@@ -73,7 +52,10 @@ esp_hlp_all2nuts <- function(region) {
 }
 
 
-#' @name esp_hlp_all2ccaa
+#' Transform region to CCAA
+#'
+#' @inheritParams esp_hlp_all2nuts
+#'
 #' @noRd
 esp_hlp_all2ccaa <- function(region) {
   dfall <- mapSpain::esp_codelist
@@ -109,8 +91,10 @@ esp_hlp_all2ccaa <- function(region) {
   novalid <- nchar(nuts_init) > 4
 
   if (any(novalid)) {
-    warning(paste0(region[novalid], collapse = ", "),
-            " does not return a Autonomous Community")
+    warning(
+      paste0(region[novalid], collapse = ", "),
+      " does not return a Autonomous Community"
+    )
   }
 
   # Get NUTS2 from NUTS1
@@ -119,16 +103,18 @@ esp_hlp_all2ccaa <- function(region) {
 
   if (any(lev1)) {
     nutslev1 <-
-      dfall[dfall$nuts1.code %in% nuts_init[lev1],]$nuts2.code
+      dfall[dfall$nuts1.code %in% nuts_init[lev1], ]$nuts2.code
     nuts_init <- nuts_init[lev1 == FALSE]
     nuts_init <- unique(c(nuts_init, nutslev1))
   }
 
   return(nuts_init)
-
 }
 
-#' @name esp_hlp_all2prov
+#' Transform region to province
+#'
+#' @inheritParams esp_hlp_all2nuts
+#'
 #' @noRd
 esp_hlp_all2prov <- function(region) {
   cod2cod <- code2code
@@ -150,22 +136,21 @@ esp_hlp_all2prov <- function(region) {
 
   if (length(collectcode) > 0) {
     key <- key[-collectcode]
-
   }
   if (length(key) > 0) {
     # Get names
     key2names <- esp_dict_translate(region[key], "es")
 
     # See if Canary Islands are here
-    nGC <- key[key2names == "Las Palmas"]
-    nTF <- key[key2names == "Santa Cruz de Tenerife"]
+    ngc <- key[key2names == "Las Palmas"]
+    ntf <- key[key2names == "Santa Cruz de Tenerife"]
 
-    if (length(nGC) > 0) {
-      region[nGC] <- "35"
+    if (length(ngc) > 0) {
+      region[ngc] <- "35"
     }
 
-    if (length(nTF) > 0) {
-      region[nTF] <- "38"
+    if (length(ntf) > 0) {
+      region[ntf] <- "38"
     }
   }
 
@@ -216,50 +201,54 @@ esp_hlp_all2prov <- function(region) {
 
 
   if (length(arenuts) > 0) {
-    NUTSEND <- nuts_init[grep("^ES[[:digit:]]", nuts_init)]
-    CPROEND <- nuts_init[-grep("^ES[[:digit:]]", nuts_init)]
+    nutsend <- nuts_init[grep("^ES[[:digit:]]", nuts_init)]
+    cproend <- nuts_init[-grep("^ES[[:digit:]]", nuts_init)]
 
-    ORIGINALNAMES <- region[grep("^ES[[:digit:]]", nuts_init)]
+    originalnames <- region[grep("^ES[[:digit:]]", nuts_init)]
 
     # Modify NUTS
 
     noprovs <-
-      dfall[c(grep("ES53", dfall$nuts3.code),
-              grep("ES7", dfall$nuts3.code)), ]$nuts3.code
+      dfall[c(
+        grep("ES53", dfall$nuts3.code),
+        grep("ES7", dfall$nuts3.code)
+      ), ]$nuts3.code
 
-    novalid <- NUTSEND %in% noprovs
+    novalid <- nutsend %in% noprovs
 
 
     if (any(novalid)) {
-      warning(paste0(ORIGINALNAMES[novalid], collapse = ", "),
-              " does not return a province")
+      warning(
+        paste0(originalnames[novalid], collapse = ", "),
+        " does not return a province"
+      )
     }
 
-    NUTSEND <- NUTSEND[!novalid]
+    nutsend <- nutsend[!novalid]
 
     # Get NUTS3 from NUTS1
-    lev1 <- nchar(NUTSEND) == 3
+    lev1 <- nchar(nutsend) == 3
 
 
     if (any(lev1)) {
       nutslev1 <-
-        dfall[dfall$nuts1.code %in% NUTSEND[lev1], ]$nuts3.code
-      NUTSEND <- NUTSEND[lev1 == FALSE]
-      NUTSEND <- unique(c(NUTSEND, nutslev1))
+        dfall[dfall$nuts1.code %in% nutsend[lev1], ]$nuts3.code
+      nutsend <- nutsend[lev1 == FALSE]
+      nutsend <- unique(c(nutsend, nutslev1))
     }
 
     # Get NUTS3 from NUTS2
-    lev2 <- nchar(NUTSEND) == 4
+    lev2 <- nchar(nutsend) == 4
 
 
     if (any(lev2)) {
       nutslev2 <-
-        dfall[dfall$nuts2.code %in% NUTSEND[lev2], ]$nuts3.code
-      NUTSEND <- NUTSEND[lev2 == FALSE]
-      NUTSEND <- unique(c(NUTSEND, nutslev2))
+        dfall[dfall$nuts2.code %in% nutsend[lev2], ]$nuts3.code
+      nutsend <- nutsend[lev2 == FALSE]
+      nutsend <- unique(c(nutsend, nutslev2))
     }
 
-    final <- unique(c(NUTSEND, CPROEND))
+    final <- unique(c(nutsend, cproend))
   } else {
     final <- nuts_init
   }
@@ -273,7 +262,6 @@ esp_hlp_all2prov <- function(region) {
     nutscpro <- dfall[dfall$cpro %in% cpro, ]$nuts3.code
 
     final <- unique(c(final[-arecpro], nutscpro))
-
   }
   return(final)
 }

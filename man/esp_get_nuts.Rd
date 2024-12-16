@@ -2,7 +2,7 @@
 % Please edit documentation in R/esp_get_nuts.R
 \name{esp_get_nuts}
 \alias{esp_get_nuts}
-\title{Get NUTS boundaries of Spain}
+\title{Get NUTS of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 }
@@ -22,114 +22,176 @@ esp_get_nuts(
 )
 }
 \arguments{
-\item{year}{Release year. One of \code{"2003", "2006",}
-\code{"2010", "2013", "2016"} or \code{"2021"}}
+\item{year}{Release year of the file. One of \code{"2003"}, \code{"2006"},
+\code{"2010"}, \code{"2013"}, \code{"2016"}  or \code{"2021"}.}
 
-\item{epsg}{projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
 \itemize{
-\item \code{"4258"} - \href{https://epsg.io/4258}{ETRS89}
-\item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
-\item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-\item \code{"3857"} - \href{https://epsg.io/3857}{Pseudo-Mercator}
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
-\item{update_cache}{A logical whether to update cache.
-Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh
-download of the source \code{.geojson} file.}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. See Details.}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-   \item \code{"60"} (1:60million),
-   \item \code{"20"} (1:20million)
-   \item \code{"10"} (1:10million)
-   \item \code{"03"} (1:3million) or
-   \item \code{"01"} (1:1million).
-   }}
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
+}}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
- \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
- \item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{POLYGON} object.
 }}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
-(see \link{esp_dict_region_code}).}
+(see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
-\item{nuts_level}{NUTS level. One of \code{"0"} (Country-level),
-\code{"1", "2"} or \code{"3"}.
-See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
+\item{nuts_level}{NUTS level. One of \code{"0"} (Country-level), \code{"1"}, \code{"2"} or
+\code{"3"}. See \strong{Description}.}
 
-\item{moveCAN}{A logical \code{TRUE,FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Island close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.
-See Note.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
 }
 \value{
-A \code{POLYGON/POINT} object.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-NUTS boundaries of Spain.
-}
-\details{
-\code{cache_dir = NULL} (default) uses and creates
-\code{/mapSpain} directory in the temporary directory from
-\code{\link{tempdir}}. The directory can also be set with
-\code{options(mapSpain = "path/to/dir")} or
-\code{options(gisco_cache_dir = "path/to/dir")}
-(see \code{\link[giscoR]{gisco_get}})
+Returns \href{https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Spain}{NUTS regions of Spain}
+as \code{POLYGON} or \code{POINT} at a specified scale, as provided by
+\href{https://ec.europa.eu/eurostat/web/gisco}{GISCO}
+(Geographic Information System of the Commission, depending of Eurostat).
 
-Sometimes cached files may be corrupt. On that case, try redownloading
-the data setting \code{update_cache = TRUE}.
+NUTS are provided at three different levels:
+\itemize{
+\item \strong{"0"}: Country level.
+\item \strong{"1"}: Groups of autonomous communities.
+\item \strong{"2"}: Autonomous communities (CCAA).
+\item \strong{"3"}: Roughly matches the provinces, but providing specific individual
+objects for each major island.
+}
 }
 \note{
 Please check the download and usage provisions on
-\code{\link[giscoR]{gisco_attributions}}.
-
-While \code{moveCAN} is useful for visualization, it would alter the
-actual geographical position of the Canary Islands. When using the output
-for spatial analysis or using tiles (\link{esp_getTiles},
-\link{addProviderEspTiles}) this option should be set to \code{FALSE} in
-order to get the actual coordinates.
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones. See also
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
+}
+
 \examples{
 
-library(sf)
-
-pal <- hcl.colors(5, palette = "Lisbon")
-
 NUTS1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
-plot(st_geometry(NUTS1), col = pal)
+
+library(ggplot2)
+
+ggplot(NUTS1) +
+  geom_sf() +
+  labs(
+    title = "NUTS1: Displacing Canary Islands",
+    caption = giscoR::gisco_attributions()
+  )
+
 
 NUTS1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
-plot(st_geometry(NUTS1_alt), col = pal)
+
+
+ggplot(NUTS1_alt) +
+  geom_sf() +
+  labs(
+    title = "NUTS1: Displacing Canary Islands",
+    subtitle = "to the right",
+    caption = giscoR::gisco_attributions()
+  )
+
 
 NUTS1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
-plot(st_geometry(NUTS1_orig), col = pal)
 
-AndOriental <-
-  esp_get_nuts(region = c("Almeria", "Granada", "Jaen", "Malaga"))
-plot(st_geometry(AndOriental), col = pal)
+ggplot(NUTS1_orig) +
+  geom_sf() +
+  labs(
+    title = "NUTS1",
+    subtitle = "Canary Islands on the true location",
+    caption = giscoR::gisco_attributions()
+  )
+
+
+AndOriental <- esp_get_nuts(region = c(
+  "Almeria", "Granada",
+  "Jaen", "Malaga"
+))
+
+
+ggplot(AndOriental) +
+  geom_sf()
+
+
 
 RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
-plot(st_geometry(RandomRegions), col = pal)
+
+ggplot(RandomRegions) +
+  geom_sf() +
+  labs(title = "Random Regions")
+
 
 MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
-plot(st_geometry(MixingCodes), col = pal)
 
+
+ggplot(MixingCodes) +
+  geom_sf() +
+  labs(title = "Mixing Codes")
 }
 \seealso{
-\link{esp_nuts.sf}, \link{esp_dict_region_code},
-\link{esp_codelist}, \link[giscoR]{gisco_get}.
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
+
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
+
+Other nuts: 
+\code{\link{esp_nuts.sf}}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{nuts}
+\concept{political}

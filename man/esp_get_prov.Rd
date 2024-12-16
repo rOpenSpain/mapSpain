@@ -2,65 +2,195 @@
 % Please edit documentation in R/esp_get_prov.R
 \name{esp_get_prov}
 \alias{esp_get_prov}
-\title{Get Provinces boundaries of Spain}
+\alias{esp_get_prov_siane}
+\title{Get Provinces of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
+\source{
+IGN data via a custom CDN (see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+}
 \usage{
-esp_get_prov(prov = NULL, ...)
+esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
+
+esp_get_prov_siane(
+  prov = NULL,
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  moveCAN = TRUE,
+  rawcols = FALSE
+)
 }
 \arguments{
-\item{prov}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the provinces. See Details.}
+\item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
+the provinces. See \strong{Details}.}
 
-\item{...}{Additional parameters from \link{esp_get_nuts}.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
+
+\item{...}{
+  Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
+  \describe{
+    \item{\code{spatialtype}}{Type of geometry to be returned:
+\itemize{
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{POLYGON} object.
+}}
+  }}
+
+\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_prov]{esp_get_prov()}} and
+\strong{Details} for \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}.}
+
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source file.}
+
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+
+\item{verbose}{Logical, displays information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
+\code{3}, \code{6.5} or \code{10}.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the resulting object as provided by IGN.}
 }
 \value{
-A \code{POLYGON/POINT} object.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-province boundaries of Spain.
+Returns
+\href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
+as \code{POLYGON} or \code{POINT} at a specified scale.
+\itemize{
+\item \code{\link[=esp_get_prov]{esp_get_prov()}} uses GISCO (Eurostat) as source. Please use
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
+}
+
+\itemize{
+\item \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}} uses CartoBase ANE as source, provided by Instituto
+Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}. Years
+available are 2005 up to today.
+}
 }
 \details{
-When using \code{prov} you can use and mix names and NUTS codes
-(levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-\code{cpro}.
+When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
+3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+\link{esp_codelist}).
 
 Ceuta and Melilla are considered as provinces on this dataset.
 
-When calling a superior level (Autonomous Community or NUTS1) , all the
- provinces of that level would be added.
+When calling a higher level (Autonomous Community or NUTS1), all the
+provinces of that level would be added.
+
+On \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}, \code{year} could be passed as a single year ("YYYY"
+format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+Historical information starts as of 2005.
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones. See also
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
+}
+
 \examples{
+prov <- esp_get_prov()
 
-library(sf)
+library(ggplot2)
 
+ggplot(prov) +
+  geom_sf() +
+  theme_void()
+
+\donttest{
 # Random Provinces
 
-Random <-
-  esp_get_prov(prov = c("Zamora",
-                        "Palencia",
-                        "ES-GR",
-                        "ES521",
-                        "01"))
-plot(st_geometry(Random), col = hcl.colors(6))
+Random <- esp_get_prov(prov = c(
+  "Zamora", "Palencia", "ES-GR",
+  "ES521", "01"
+))
+
+
+ggplot(Random) +
+  geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
+  scale_fill_manual(values = hcl.colors(
+    nrow(Random), "Spectral"
+  )) +
+  theme_minimal()
+
 
 # All Provinces of a Zone plus an addition
 
-Mix <-
-  esp_get_prov(prov = c("Noroeste",
-                        "Castilla y Leon", "La Rioja"),
-               resolution = "20")
-plot(
-  Mix[, "nuts1.code"],
-  pal = hcl.colors(3),
-  key.pos = NULL,
-  main = NULL,
-  border = "white"
+Mix <- esp_get_prov(prov = c(
+  "Noroeste",
+  "Castilla y Leon", "La Rioja"
+))
+
+Mix$CCAA <- esp_dict_region_code(
+  Mix$codauto,
+  origin = "codauto"
 )
+
+ggplot(Mix) +
+  geom_sf(aes(fill = CCAA), alpha = 0.5) +
+  scale_fill_discrete(type = hcl.colors(5, "Temps")) +
+  theme_classic()
+
+# ISO codes available
+
+allprovs <- esp_get_prov()
+
+ggplot(allprovs) +
+  geom_sf(fill = NA) +
+  geom_sf_text(aes(label = iso2.prov.code),
+    check_overlap = TRUE,
+    fontface = "bold"
+  ) +
+  theme_void()
+}
 }
 \seealso{
-\link{esp_get_hex_prov}, \link{esp_get_nuts}, \link{esp_get_ccaa},
-\link{esp_get_munic}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_simpl_prov}()}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{political}

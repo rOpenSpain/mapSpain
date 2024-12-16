@@ -1,21 +1,30 @@
-#' @title Convert and translate Subdivision Names
+#' Convert and translate subdivision names
+#'
+#' @description
+#' Converts long subdivision names into different coding schemes and languages.
+#'
+#' @family dictionary
+#'
 #' @rdname esp_dict
-#' @description Converts long subdivision names into different coding schemes
-#' and languages.
-#' @return \code{esp_dict_region_code} returns a vector of characters.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
+#'
+#' @name esp_dict_region_code
+#'
+#' @return [esp_dict_region_code()] returns a vector of characters.
+#'
 #' @export
 #'
 #'
 #' @param sourcevar Vector which contains the subdivision names to be converted.
-#' @param origin,destination One of \code{'text', 'nuts', 'iso2', 'codauto'}
-#' and \code{'cpro'}.
 #'
-#' @details If no match is found for any value, the function displays a warning
-#' and returns \code{NA} for those values.
+#' @param origin,destination One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"`
+#'   and `"cpro"`.
 #'
-#' Note that mixing names of different administrative levels (e.g. Catalonia
-#' and Barcelona) may return empty values, depending on the \code{destination}
+#' @details
+#' If no match is found for any value, the function displays a warning and
+#' returns `NA` for those values.
+#'
+#' Note that mixing names of different administrative levels (e.g. "Catalonia"
+#' and "Barcelona") may return empty values, depending on the `destination`
 #' values.
 #'
 #' @examples
@@ -30,15 +39,18 @@
 #'
 #' iso2vals <- c("ES-M", "ES-S", "ES-SG")
 #' esp_dict_region_code(iso2vals, origin = "iso2")
-#' esp_dict_region_code(iso2vals, origin = "iso2",
-#'                      destination = "nuts")
-#' esp_dict_region_code(iso2vals, origin = "iso2",
-#'                      destination = "cpro")
+#' esp_dict_region_code(iso2vals,
+#'   origin = "iso2",
+#'   destination = "nuts"
+#' )
+#' esp_dict_region_code(iso2vals,
+#'   origin = "iso2",
+#'   destination = "cpro"
+#' )
 #'
 #' # Mixing levels
 #' valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 #' esp_dict_region_code(valsmix, destination = "nuts")
-#'
 #' \dontrun{
 #'
 #' # Warning
@@ -46,25 +58,36 @@
 #' esp_dict_region_code(valsmix, destination = "codauto")
 #' esp_dict_region_code(valsmix, destination = "iso2")
 #' }
-
-esp_dict_region_code <- function(sourcevar,
-                                 origin = "text",
+#'
+esp_dict_region_code <- function(sourcevar, origin = "text",
                                  destination = "text") {
+  # Manually replace
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+
   initsourcevar <- sourcevar
 
   validvars <- c("text", "nuts", "iso2", "codauto", "cpro")
 
   if (!(origin %in% validvars)) {
-    stop("origin should be ",
-         paste0("'", validvars, "'", collapse = ", "))
+    stop("origin should be ", paste0("'", validvars, "'", collapse = ", "))
   }
 
   if (!(destination %in% validvars)) {
-    stop("destination should be ",
-         paste0("'", validvars, "'", collapse = ", "))
+    stop("destination should be ", paste0("'", validvars, "'", collapse = ", "))
   }
 
-  if (origin == destination & origin == "text") {
+  if (origin == destination && origin == "text") {
     message("No conversion - origin equal to destination")
     return(initsourcevar)
   }
@@ -72,15 +95,14 @@ esp_dict_region_code <- function(sourcevar,
   # Create dict
   dict <- names_full
 
-  names_dict <-
-    unique(names_full[grep("name", dict$variable),
-                      c("key", "value")])
+  names_dict <- unique(
+    names_full[grep("name", dict$variable), c("key", "value")]
+  )
 
   # If text convert to nuts
 
   if (origin == "text") {
-    sourcevar <- countrycode::countrycode(
-      sourcevar,
+    sourcevar <- countrycode::countrycode(tolower(sourcevar),
       origin = "value",
       destination = "key",
       custom_dict = names_dict,
@@ -88,8 +110,7 @@ esp_dict_region_code <- function(sourcevar,
     )
 
     # Translate to nuts
-    sourcevar <- countrycode::countrycode(
-      sourcevar,
+    sourcevar <- countrycode::countrycode(sourcevar,
       origin = "key",
       destination = "nuts",
       custom_dict = names2nuts,
@@ -97,8 +118,7 @@ esp_dict_region_code <- function(sourcevar,
     )
 
     # Replace NOMATCH
-    sourcevar[sourcevar == "NOMATCH"] <-
-      initsourcevar[sourcevar == "NOMATCH"]
+    sourcevar[sourcevar == "NOMATCH"] <- initsourcevar[sourcevar == "NOMATCH"]
     origin <- "nuts"
 
     # By name, perform some replacements
@@ -118,31 +138,23 @@ esp_dict_region_code <- function(sourcevar,
 
     if (destination == "cpro") {
       nchar <- nchar(sourcevar)
-      sourcevar[nchar == 4] <-  paste0(sourcevar[nchar == 4], "0")
+      sourcevar[nchar == 4] <- paste0(sourcevar[nchar == 4], "0")
     }
-
   }
-
-
 
   # Destination
   if (destination == "text") {
-    sourcevar <-
-      countrycode::countrycode(sourcevar,
-                               origin,
-                               "nuts",
-                               custom_dict = code2code,
-                               nomatch = "NOMATCH")
+    sourcevar <- countrycode::countrycode(sourcevar, origin, "nuts",
+      custom_dict = code2code,
+      nomatch = "NOMATCH"
+    )
 
     dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts.sf)
 
-    out <-
-      countrycode::countrycode(sourcevar,
-                               "NUTS_ID",
-                               "NUTS_NAME",
-                               custom_dict = dict_nutsall,
-                               nomatch = "NOMATCH")
-
+    out <- countrycode::countrycode(sourcevar, "NUTS_ID", "NUTS_NAME",
+      custom_dict = dict_nutsall,
+      nomatch = "NOMATCH"
+    )
   } else {
     # Solve problems
     if (origin == "nuts") {
@@ -161,64 +173,61 @@ esp_dict_region_code <- function(sourcevar,
       sourcevar[sourcevar == "ES630"] <- "ES63"
     }
 
-
-
-    out <-
-      countrycode::countrycode(sourcevar,
-                               origin,
-                               destination,
-                               custom_dict = code2code,
-                               nomatch = "NOMATCH")
+    out <- countrycode::countrycode(sourcevar, origin, destination,
+      custom_dict = code2code, nomatch = "NOMATCH"
+    )
 
     # Baleares
     if (destination == "cpro") {
       out[sourcevar == "ES530"] <- "07"
     }
     # Ceuta
-    if (origin == "iso2" & destination == "codauto") {
+    if (origin == "iso2" && destination == "codauto") {
       out[sourcevar == "ES-CE"] <- "18"
       out[sourcevar == "ES-ML"] <- "19"
     }
-
-
   }
   out[out %in% c("XXXXX", "YYYYY")] <- "NOMATCH"
 
   # Sanitize
   if (length(out[!(out == "NOMATCH")]) != length(sourcevar)) {
-    warning("No match on ",
-            destination,
-            " found for ",
-            paste0(initsourcevar[out == "NOMATCH"], collapse = ", "))
+    warning(
+      "No match on ", destination, " found for ",
+      paste0(initsourcevar[out == "NOMATCH"], collapse = ", ")
+    )
   }
   out[out == "NOMATCH"] <- NA
-
 
   return(out)
 }
 
+#' @family dictionary
+#'
 #' @rdname esp_dict
-#' @return \code{esp_dict_translate} returns a character vector or a named list
-#' with each of the possible names of each \code{sourcevar} on the required
-#' language \code{lang}.
+#'
+#' @name esp_dict_translate
+#'
+#' @return
+#' [esp_dict_translate()] returns a `character` vector or a named `list` with
+#' each of the possible names of each `sourcevar` on the required language
+#' `lang`.
+#'
 #' @export
 #'
 #' @param lang Language of translation. Available languages are:
-#' \itemize{
-#'   \item{\code{es}: }{Spanish}
-#'   \item{\code{en}: }{English}
-#'   \item{\code{ca}: }{Catalan}
-#'   \item{\code{ga}: }{Galician}
-#'   \item{\code{eu}: }{Basque}
-#' }
-#' @param all Logical. Should the function return all names or not?
-#' On \code{FALSE} it returns a character vector. See Value
+#'   - `"es"`: Spanish
+#'   - `"en"`: English
+#'   - `"ca"`: Catalan
+#'   - `"ga"`: Galician
+#'   - `"eu"`: Basque
 #'
+#' @param all Logical. Should the function return all names or not?
+#'   On `FALSE` it returns a character vector. See **Value**.
 #'
 #' @examples
 #'
-#' vals <-  c("La Rioja", "Sevilla", "Madrid",
-#'            "Jaen", "Orense", "Baleares")
+#' vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
+#'
 #' esp_dict_translate(vals)
 #' esp_dict_translate(vals, lang = "es")
 #' esp_dict_translate(vals, lang = "ca")
@@ -226,67 +235,86 @@ esp_dict_region_code <- function(sourcevar,
 #' esp_dict_translate(vals, lang = "ga")
 #'
 #' esp_dict_translate(vals, lang = "ga", all = TRUE)
-
-esp_dict_translate <-
-  function(sourcevar,
-           lang = "en",
-           all = FALSE) {
-    avlang <- c("es", "en", "ca", "ga", "eu")
-    if (!(lang %in% avlang)) {
-      stop("lang sould be one of ", paste0("'", avlang,
-                                           "'", collapse = ", "))
-    }
-
-    # Create dict
-    dict <- names_full
-
-    names_dict <-
-      unique(names_full[grep("name", dict$variable), c("key", "value")])
-
-    tokeys <- countrycode::countrycode(
-      sourcevar,
-      origin = "value",
-      destination = "key",
-      custom_dict = names_dict,
-      nomatch = "NOMATCH"
+esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
+  avlang <- c("es", "en", "ca", "ga", "eu")
+  if (!(lang %in% avlang)) {
+    stop(
+      "lang sould be one of ",
+      paste0("'", avlang, "'", collapse = ", ")
     )
-
-    # Create lang dict
-    dict_tolang <-
-      unique(dict[grep(paste0("name.", lang),
-                       dict$variable), ])
-
-    # Order using short
-
-    shrt <- grep("short", dict_tolang$variable)
-
-    dict_tolang[shrt, ]$variable <-
-      paste0("aa", dict_tolang[shrt, ]$variable)
-
-    dict_tolang <-
-      unique(dict_tolang[order(dict_tolang$variable), c("key", "value")])
-
-
-    namestrans <-
-      lapply(seq(1, length(tokeys)), function(x) {
-        dict_tolang[dict_tolang$key == tokeys[x], "value"]
-      })
-
-    namestrans[tokeys == "NOMATCH"] <- NA
-
-    if (isTRUE(all)) {
-      names(namestrans) <- sourcevar
-    }
-
-    if (isFALSE(all)) {
-      namestrans <-
-        unlist(lapply(namestrans, `[[`, 1))
-    }
-
-    if (any(tokeys == "NOMATCH")) {
-      warning("No match found for ",
-              paste0(sourcevar[tokeys == "NOMATCH"], collapse = ", "))
-    }
-
-    return(namestrans)
   }
+
+  # Create dict
+  dict <- names_full
+
+  # Arrange prelation for results:
+  # - First: prov (a_prov)
+  # - Second: ccaa (b_ccaa)
+  # - Last: nuts (c_nuts)
+  dict$variable <- gsub("prov", "a_prov", dict$variable) # Upgrade provs
+  dict$variable <- gsub("ccaa", "b_ccaa", dict$variable) # Upgrade nuts
+  dict$variable <- gsub("nuts", "c_nuts", dict$variable) # Upgrade nuts
+
+  names_dict <- unique(
+    names_full[grep("name", dict$variable), c("key", "value")]
+  )
+
+  # Manually replace
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
+    ignore.case = TRUE
+  )
+
+  tokeys <- countrycode::countrycode(sourcevar,
+    origin = "value",
+    destination = "key",
+    custom_dict = names_dict,
+    nomatch = "NOMATCH"
+  )
+
+  # Create lang dict
+  dict_tolang <- unique(
+    dict[grep(paste0("name.", lang), dict$variable), ]
+  )
+
+  # Order using short
+  shrt <- grep("short", dict_tolang$variable)
+
+  dict_tolang[shrt, ]$variable <- paste0("aa", dict_tolang[shrt, ]$variable)
+
+  dict_tolang <- unique(
+    dict_tolang[order(dict_tolang$variable), c("key", "value")]
+  )
+
+
+  namestrans <- lapply(seq(1, length(tokeys)), function(x) {
+    dict_tolang[dict_tolang$key == tokeys[x], "value"]
+  })
+
+  namestrans[tokeys == "NOMATCH"] <- NA
+
+  if (isTRUE(all)) {
+    names(namestrans) <- sourcevar
+  }
+
+  if (isFALSE(all)) {
+    namestrans <- unlist(lapply(namestrans, `[[`, 1))
+  }
+
+  if (any(tokeys == "NOMATCH")) {
+    warning(
+      "No match found for ",
+      paste0(sourcevar[tokeys == "NOMATCH"], collapse = ", ")
+    )
+  }
+
+  return(namestrans)
+}

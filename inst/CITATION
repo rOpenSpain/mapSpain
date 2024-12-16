@@ -1,14 +1,18 @@
-citHeader("To cite the 'mapSpain' package in publications use:")
+year <- format(Sys.time(), "%Y")
+abs <- trimws(gsub("\\s+", " ", meta$Description))
+abs <- gsub("'", "", abs)
+title <- gsub("'", "", meta$Title)
 
-year = format(Sys.time(), "%Y")
-vers = paste('R package version', meta$Version)
-url = 'https://CRAN.R-project.org/package=mapSpain'
-citEntry(
-  entry = 'manual',
-  title = paste('mapSpain:', meta$Title),
-  author = "Diego Hernangómez",
+
+bibentry(
+  "Manual",
+  header = "To cite the 'mapSpain' package in publications use:",
+  title = paste("{mapSpain}:", title),
   year = year,
-  note = vers,
-  url = url,
-  textVersion = paste0('Hernangomez, D. (', year, '). mapSpain: ', meta$Title, '. ', vers, '. Package url: ', url)
+  version = meta$Version,
+  author = person("Diego", "Hernangómez"),
+  doi = "10.5281/zenodo.5366622",
+  url = unlist(strsplit(meta$URL, ","))[1],
+  abstract = abs,
+  key = "R-mapspain"
 )

@@ -4,64 +4,113 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Spanish Code Translation Data Frame}
+\title{Database with codes and names of spanish regions}
 \format{
-data frame with codes as columns
-\itemize{
-  \item{\strong{nuts*.code}: }{NUTS code of each subdivision.}
-  \item{\strong{nuts*.code}: }{NUTS name of each subdivision.}
-  \item{\strong{codauto}: }{INE code of each autonomous community.}
-  \item{\strong{iso2.*.code}: }{ISO2 code of each autonomous
-  community and province.}
-  \item{\strong{ine.*.name}: }{INE name of each autonomous community
-  and province.}
-  \item{\strong{iso2.*.name.*}: }{ISO2 name of each autonomous community
-  and province. Several languages available.}
-  \item{\strong{cldr.*.name.*}: }{CLDR name of each autonomous community and
-  province. Several languages available.}
-  \item{\strong{ccaa.short.*}: }{Short (common) name of each autonomous
-  community. Several languages available.}
-  \item{\strong{cpro}: }{INE code of each province.}
-  \item{\strong{prov.shortname.*}: }{Short (common) name of each province.
-  Several languages available.}
+A \code{\link[base:data.frame]{data.frame}} with 59 rows
+codes and columns:
+
+\describe{
+\item{nuts1.code}{NUTS 1 code}
+\item{nuts1.name}{NUTS 1 name}
+\item{nuts1.name.alt}{NUTS 1 alternative name}
+\item{nuts1.shortname.es}{NUTS1 1 short (common) name (Spanish)}
+\item{codauto}{INE code of the autonomous community}
+\item{iso2.ccaa.code}{ISO2 code of the autonomous community}
+\item{nuts2.code}{NUTS 2 Code}
+\item{ine.ccaa.name}{INE name of the autonomous community}
+\item{iso2.ccaa.name.es}{ISO2 name of the autonomous community (Spanish)}
+\item{iso2.ccaa.name.ca}{ISO2 name of the autonomous community (Catalan)}
+\item{iso2.ccaa.name.gl}{ISO2 name of the autonomous community (Galician)}
+\item{iso2.ccaa.name.eu}{ISO2 name of the autonomous community (Basque)}
+\item{nuts2.name}{NUTS 2 name}
+\item{cldr.ccaa.name.en}{CLDR name of the autonomous community (English)}
+\item{cldr.ccaa.name.es}{CLDR name of the autonomous community (Spanish)}
+\item{cldr.ccaa.name.ca}{CLDR name of the autonomous community (Catalan)}
+\item{cldr.ccaa.name.ga}{CLDR name of the autonomous community (Galician)}
+\item{cldr.ccaa.name.eu}{CLDR name of the autonomous community (Basque)}
+\item{ccaa.shortname.en}{Short (common) name of the autonomous community
+(English)}
+\item{ccaa.shortname.es}{Short (common) name of the autonomous community
+(Spanish)}
+\item{ccaa.shortname.ca}{Short (common) name of the autonomous community
+(Catalan)}
+\item{ccaa.shortname.ga}{Short (common) name of the autonomous community
+(Galician)}
+\item{ccaa.shortname.eu}{Short (common) name of the autonomous community
+(Basque)}
+\item{cpro}{INE code of the province}
+\item{iso2.prov.code}{ISO2 code of the province}
+\item{nuts.prov.code}{NUTS code of the province}
+\item{ine.prov.name}{INE name of the province}
+\item{iso2.prov.name.es}{ISO2 name of the province (Spanish)}
+\item{iso2.prov.name.ca}{ISO2 name of the province (Catalan)}
+\item{iso2.prov.name.ga}{ISO2 name of the province (Galician)}
+\item{iso2.prov.name.eu}{ISO2 name of the province (Basque)}
+\item{cldr.prov.name.en}{CLDR name of the province (English)}
+\item{cldr.prov.name.es}{CLDR name of the province (Spanish)}
+\item{cldr.prov.name.ca}{CLDR name of the province (Catalan)}
+\item{cldr.prov.name.ga}{CLDR name of the province (Galician)}
+\item{cldr.prov.name.eu}{CLDR name of the province (Basque)}
+\item{prov.shortname.en}{Short (common) name of the province (English)}
+\item{prov.shortname.es}{Short (common) name of the province (Spanish)}
+\item{prov.shortname.ca}{Short (common) name of the province (Catalan)}
+\item{prov.shortname.ga}{Short (common) name of the province (Galician)}
+\item{prov.shortname.eu}{Short (common) name of the province (Basque)}
+\item{nuts3.code}{NUTS 3 code}
+\item{nuts3.name}{NUTS 3 name}
+\item{nuts3.shortname.es}{NUTS 3 short (common) name}
 }
 }
 \source{
 \itemize{
- \item{INE: Instituto Nacional de Estadistica: }{\url{https://www.ine.es/}}
- \item{Eurostat (NUTS): }
- {\url{https://ec.europa.eu/eurostat/web/nuts/background}}
- \item{ISO: }{\url{https://www.iso.org/obp/ui/#iso:code:3166:ES}}
- \item{CLDR: }
- {\url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}}
+\item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
+\item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/overview}
+\item \strong{ISO}: \url{https://www.iso.org/home.html}
+\item \strong{CLDR}: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
 }
 }
 \description{
-A data frame used internally for translating codes and
-names of the different subdivisions of Spain. The data frame provides
-the hierarchy of the subdivisions including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-level. See Note.
+A \code{data.frame} object used internally for translating codes and names of the
+different subdivisions of Spain. The \code{data.frame} provides the hierarchy of
+the subdivisions including NUTS1 level, autonomous communities (equivalent
+to NUTS2), provinces and NUTS3 level. See \strong{Note}.
 }
 \note{
-Languages available are:
-\itemize{
-  \item{\code{en}: }{English}
-  \item{\code{es}: }{Spanish}
-  \item{\code{ca}: }{Catalan}
-  \item{\code{ga}: }{Galician}
-  \item{\code{eu}: }{Basque}
-}
-
 Although NUTS2 matches the first subdivision level of Spain
 (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
 match the second subdivision level of Spain (Provinces). NUTS3 provides a
-dedicated code for major islands whereas the Provinces doesn't.
+dedicated code for major islands whereas the provinces doesn't.
 
 Ceuta and Melilla has an specific status (Autonomous Cities) but are
-considered as communities with a single province (as Madrid, Asturias
-or Murcia) on this dataset.
+considered as autonomous communities with a single province (as Madrid,
+Asturias or Murcia) on this database.
 }
 \examples{
-data(esp_codelist)
+
+data("esp_codelist")
 }
+\seealso{
+Other datasets: 
+\code{\link{esp_munic.sf}},
+\code{\link{esp_nuts.sf}},
+\code{\link{esp_tiles_providers}},
+\code{\link{pobmun19}}
+
+Other political: 
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
+
+Other dictionary: 
+\code{\link{esp_dict_region_code}()}
+}
+\concept{datasets}
+\concept{dictionary}
+\concept{political}

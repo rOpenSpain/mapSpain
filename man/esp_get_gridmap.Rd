@@ -6,7 +6,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get an hexbin or a map of squares of Spain}
+\title{Get a \code{\link[sf:sf]{sf}} hexbin or squared \code{POLYGON} of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 
@@ -17,16 +17,18 @@ esp_get_grid_prov(prov = NULL)
 esp_get_grid_ccaa(ccaa = NULL)
 }
 \arguments{
-\item{prov}{See \link{esp_get_prov}}
+\item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
+the provinces. See \strong{Details}.}
 
-\item{ccaa}{See \link{esp_get_ccaa}}
+\item{ccaa}{A vector of names and/or codes for autonomous communities
+or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }
 \value{
-A \code{POLYGON} object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Loads a hexbin map (\code{sf} object) or a map of squares
-with the boundaries of the provinces or autonomous communities of Spain.
+Loads a hexbin map (\code{\link[sf:sf]{sf}} object) or a map of squares with the
+boundaries of the provinces or autonomous communities of Spain.
 }
 \details{
 Hexbin or grid map has an advantage over usual choropleth maps.
@@ -34,71 +36,86 @@ In choropleths, a large polygon data looks more emphasized just because
 of its size, what introduces a bias. Here with hexbin, each region is
 represented equally dismissing the bias.
 
-Results are provided in \strong{EPSG:4258}, use \link[sf]{st_transform} 
+You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
+\link{esp_codelist}) and NUTS codes of different levels.
+
+When using a code corresponding of a higher level (e.g.
+\code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
+provided (in this case , all the provinces of Andalusia).
+
+Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf::st_transform()}}
 to change the projection.
 }
 \examples{
-library(sf)
-library(cartography)
+esp <- esp_get_country()
+hexccaa <- esp_get_hex_ccaa()
 
-esp <- st_transform(esp_get_country(), 3857)
+library(ggplot2)
 
-hexccaa <- st_transform(esp_get_hex_ccaa(), 3857)
-
-plot_sf(hexccaa)
-plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
-plot(st_geometry(hexccaa),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
-labelLayer(hexccaa, txt = "label")
+ggplot(hexccaa) +
+  geom_sf(data = esp) +
+  geom_sf(aes(fill = codauto),
+    alpha = 0.3,
+    show.legend = FALSE
+  ) +
+  geom_sf_text(aes(label = label), check_overlap = TRUE) +
+  theme_void() +
+  labs(title = "Hexbin: CCAA")
 
 
 
-hexprov <- st_transform(esp_get_hex_prov(), 3857)
-
-plot_sf(hexprov)
-plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
-plot(st_geometry(hexprov),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
-labelLayer(hexprov, txt = "label")
 
 
+hexprov <- esp_get_hex_prov()
 
-gridccaa <- st_transform(esp_get_grid_ccaa(), 3857)
+ggplot(hexprov) +
+  geom_sf(data = esp) +
+  geom_sf(aes(fill = codauto),
+    alpha = 0.3,
+    show.legend = FALSE
+  ) +
+  geom_sf_text(aes(label = label), check_overlap = TRUE) +
+  theme_void() +
+  labs(title = "Hexbin: Provinces")
 
-plot_sf(gridccaa)
-plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
-plot(st_geometry(gridccaa),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
-labelLayer(gridccaa, txt = "label")
 
-gridprov <- st_transform(esp_get_grid_prov(), 3857)
 
-plot_sf(gridprov)
-plot(st_geometry(esp),
-     col = "grey80",
-     border = NA,
-     add = TRUE)
-plot(st_geometry(gridprov),
-     col = hcl.colors(19, alpha = 0.5),
-     add = TRUE)
-labelLayer(gridprov, txt = "label")
+gridccaa <- esp_get_grid_ccaa()
+
+ggplot(gridccaa) +
+  geom_sf(data = esp) +
+  geom_sf(aes(fill = codauto),
+    alpha = 0.3,
+    show.legend = FALSE
+  ) +
+  geom_sf_text(aes(label = label), check_overlap = TRUE) +
+  theme_void() +
+  labs(title = "Grid: CCAA")
+
+
+gridprov <- esp_get_grid_prov()
+
+ggplot(gridprov) +
+  geom_sf(data = esp) +
+  geom_sf(aes(fill = codauto),
+    alpha = 0.3,
+    show.legend = FALSE
+  ) +
+  geom_sf_text(aes(label = label), check_overlap = TRUE) +
+  theme_void() +
+  labs(title = "Grid: Provinces")
 }
 \seealso{
-\link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},
-\link{esp_get_munic}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{political}

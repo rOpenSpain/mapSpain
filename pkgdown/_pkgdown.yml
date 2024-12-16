@@ -1,0 +1,122 @@
+url: 'https://ropenspain.github.io/mapSpain'
+
+repo:
+  branch: main
+
+reference:
+  - title: Political
+    desc: >
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with
+      political boundaries.
+    contents:
+      - has_concept("political")
+      - giscoR::gisco_get_nuts()
+  - title: Natural
+    desc: >
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with natural
+      features.
+    contents:
+      - has_concept("natural")
+  - title: Infrastructures
+    desc: >
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with
+      man-made features.
+    contents:
+      - has_concept("infrastructure")
+  - title: Tiles
+    desc: >
+      Return static tiles or create a <a
+      href="https://CRAN.R-project.org/package=leaflet"
+      class="external-link"><span class="pkg">leaflet</span></a> map.
+    contents:
+      - has_concept("imagery utilities")
+      - ggplot2::geom_sf()
+      - tidyterra::geom_spatraster_rgb()
+  - title: Geographic grids
+    contents:
+      - has_concept("grids")
+  - title: Cache management
+    contents:
+      - has_concept("cache utilities")
+  - title: Dictionary
+    desc: >
+      Translation across languages and coding systems.
+    contents:
+      - esp_dict_region_code
+  - title: Datasets
+    desc: >
+      These objects are datasets already included in the package.
+    contents:
+      - has_concept("datasets")
+  - title: Helpers
+    desc: >
+      A collection of helper functions.
+    contents:
+      - has_concept("helper")
+  - title: About the package
+    contents:
+      - mapSpain-package
+
+template:
+  bootstrap: 5
+  package: rostemplate
+  params:
+    ganalytics: "G-5N21Z0YYJJ"
+    docsearch:
+      api_key: "2621bfcaa3de971834f4026466317ee7"
+      index_name: mapSpain
+  opengraph:
+    twitter:
+      creator: '@dhernangomez'
+      site: '@rOpenSpain'
+      card: summary_large_image
+
+home:
+  title: >-
+    mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
+    Municipalities
+  description: >-
+    Administrative Boundaries of Spain based on the GISCO (Geographic
+    Information System of the Commission) Eurostat database. It also provides a
+    leaflet plugin and the ability of downloading and processing static tiles.
+
+navbar:
+  structure:
+    right:
+    - search
+    - twitter
+    - github
+  components:
+    home: ~
+    articles:
+      text: Articles
+      menu:
+        - text: Working with imagery
+          href: articles/articles/working_imagery.html
+        - text: 'Annex: Codes and names of the Spanish regions'
+          href: articles/articles/x01_regioncodes.html
+        - text: -----
+        - text: Other materials
+        - text: 'mapSpain: Mapas de España en R (xaringan)'
+          href: 'https://dieghernan.github.io/rpubs/mapSpain_slides/'
+        - text: 'mapSpain: Mapas de España en R (.Rmd)'
+          href: articles/articles/x02_mapasesp.html
+        - text: 'Grupo de Usuarios R Madrid 25-nov-2021 (video)'
+          href: 'http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/'
+    twitter:
+      icon: fa-twitter
+      href: 'http://twitter.com/dhernangomez'
+      aria-label: Twitter
+
+authors:
+  Diego Hernangómez:
+    href: 'https://dieghernan.github.io/'
+  EuroGeographics:
+    href: >-
+      https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
+  Instituto Geográfico Nacional:
+    href: 'https://www.ign.es/'
+

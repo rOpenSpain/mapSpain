@@ -1,242 +1,329 @@
-#' @title Spanish Code Translation Data Frame
+#' Database with codes and names of spanish regions
+#'
+#' @family datasets
+#' @family political
+#' @family dictionary
+#'
 #' @name esp_codelist
+#'
 #' @docType data
-#' @description A data frame used internally for translating codes and
-#' names of the different subdivisions of Spain. The data frame provides
-#' the hierarchy of the subdivisions including NUTS1 level,
-#' Autonomous Communities (equivalent to NUTS2), Provinces and NUTS3
-#' level. See Note.
+#'
+#' @description
+#' A `data.frame` object used internally for translating codes and names of the
+#' different subdivisions of Spain. The `data.frame` provides the hierarchy of
+#' the subdivisions including NUTS1 level, autonomous communities (equivalent
+#' to NUTS2), provinces and NUTS3 level. See **Note**.
+#'
 #' @source
-#' \itemize{
-#'  \item{INE: Instituto Nacional de Estadistica: }{\url{https://www.ine.es/}}
-#'  \item{Eurostat (NUTS): }
-#'  {\url{https://ec.europa.eu/eurostat/web/nuts/background}}
-#'  \item{ISO: }{\url{https://www.iso.org/obp/ui/#iso:code:3166:ES}}
-#'  \item{CLDR: }
-#'  {\url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}}
-#' }
+#' - **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
+#' - **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>
+#' - **ISO**: <https://www.iso.org/home.html>
+#' - **CLDR**: <https://unicode-org.github.io/cldr-staging/charts/38/index.html>
+#'
 #' @encoding UTF-8
-#' @format data frame with codes as columns
-#' \itemize{
-#'   \item{\strong{nuts*.code}: }{NUTS code of each subdivision.}
-#'   \item{\strong{nuts*.code}: }{NUTS name of each subdivision.}
-#'   \item{\strong{codauto}: }{INE code of each autonomous community.}
-#'   \item{\strong{iso2.*.code}: }{ISO2 code of each autonomous
-#'   community and province.}
-#'   \item{\strong{ine.*.name}: }{INE name of each autonomous community
-#'   and province.}
-#'   \item{\strong{iso2.*.name.*}: }{ISO2 name of each autonomous community
-#'   and province. Several languages available.}
-#'   \item{\strong{cldr.*.name.*}: }{CLDR name of each autonomous community and
-#'   province. Several languages available.}
-#'   \item{\strong{ccaa.short.*}: }{Short (common) name of each autonomous
-#'   community. Several languages available.}
-#'   \item{\strong{cpro}: }{INE code of each province.}
-#'   \item{\strong{prov.shortname.*}: }{Short (common) name of each province.
-#'   Several languages available.}
+#'
+#' @format
+#' A [`data.frame`][base::data.frame] with `r nrow(mapSpain::esp_codelist)` rows
+#' codes and columns:
+#'
+#' \describe{
+#'  \item{nuts1.code}{NUTS 1 code}
+#'  \item{nuts1.name}{NUTS 1 name}
+#'  \item{nuts1.name.alt}{NUTS 1 alternative name}
+#'  \item{nuts1.shortname.es}{NUTS1 1 short (common) name (Spanish)}
+#'  \item{codauto}{INE code of the autonomous community}
+#'  \item{iso2.ccaa.code}{ISO2 code of the autonomous community}
+#'  \item{nuts2.code}{NUTS 2 Code}
+#'  \item{ine.ccaa.name}{INE name of the autonomous community}
+#'  \item{iso2.ccaa.name.es}{ISO2 name of the autonomous community (Spanish)}
+#'  \item{iso2.ccaa.name.ca}{ISO2 name of the autonomous community (Catalan)}
+#'  \item{iso2.ccaa.name.gl}{ISO2 name of the autonomous community (Galician)}
+#'  \item{iso2.ccaa.name.eu}{ISO2 name of the autonomous community (Basque)}
+#'  \item{nuts2.name}{NUTS 2 name}
+#'  \item{cldr.ccaa.name.en}{CLDR name of the autonomous community (English)}
+#'  \item{cldr.ccaa.name.es}{CLDR name of the autonomous community (Spanish)}
+#'  \item{cldr.ccaa.name.ca}{CLDR name of the autonomous community (Catalan)}
+#'  \item{cldr.ccaa.name.ga}{CLDR name of the autonomous community (Galician)}
+#'  \item{cldr.ccaa.name.eu}{CLDR name of the autonomous community (Basque)}
+#'  \item{ccaa.shortname.en}{Short (common) name of the autonomous community
+#'     (English)}
+#'  \item{ccaa.shortname.es}{Short (common) name of the autonomous community
+#'     (Spanish)}
+#'  \item{ccaa.shortname.ca}{Short (common) name of the autonomous community
+#'     (Catalan)}
+#'  \item{ccaa.shortname.ga}{Short (common) name of the autonomous community
+#'     (Galician)}
+#'  \item{ccaa.shortname.eu}{Short (common) name of the autonomous community
+#'     (Basque)}
+#'  \item{cpro}{INE code of the province}
+#'  \item{iso2.prov.code}{ISO2 code of the province}
+#'  \item{nuts.prov.code}{NUTS code of the province}
+#'  \item{ine.prov.name}{INE name of the province}
+#'  \item{iso2.prov.name.es}{ISO2 name of the province (Spanish)}
+#'  \item{iso2.prov.name.ca}{ISO2 name of the province (Catalan)}
+#'  \item{iso2.prov.name.ga}{ISO2 name of the province (Galician)}
+#'  \item{iso2.prov.name.eu}{ISO2 name of the province (Basque)}
+#'  \item{cldr.prov.name.en}{CLDR name of the province (English)}
+#'  \item{cldr.prov.name.es}{CLDR name of the province (Spanish)}
+#'  \item{cldr.prov.name.ca}{CLDR name of the province (Catalan)}
+#'  \item{cldr.prov.name.ga}{CLDR name of the province (Galician)}
+#'  \item{cldr.prov.name.eu}{CLDR name of the province (Basque)}
+#'  \item{prov.shortname.en}{Short (common) name of the province (English)}
+#'  \item{prov.shortname.es}{Short (common) name of the province (Spanish)}
+#'  \item{prov.shortname.ca}{Short (common) name of the province (Catalan)}
+#'  \item{prov.shortname.ga}{Short (common) name of the province (Galician)}
+#'  \item{prov.shortname.eu}{Short (common) name of the province (Basque)}
+#'  \item{nuts3.code}{NUTS 3 code}
+#'  \item{nuts3.name}{NUTS 3 name}
+#'  \item{nuts3.shortname.es}{NUTS 3 short (common) name}
 #' }
-#' @note Languages available are:
-#' \itemize{
-#'   \item{\code{en}: }{English}
-#'   \item{\code{es}: }{Spanish}
-#'   \item{\code{ca}: }{Catalan}
-#'   \item{\code{ga}: }{Galician}
-#'   \item{\code{eu}: }{Basque}
-#' }
+#'
+#' @note
 #'
 #' Although NUTS2 matches the first subdivision level of Spain
 #' (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
 #' match the second subdivision level of Spain (Provinces). NUTS3 provides a
-#' dedicated code for major islands whereas the Provinces doesn't.
+#' dedicated code for major islands whereas the provinces doesn't.
 #'
 #' Ceuta and Melilla has an specific status (Autonomous Cities) but are
-#' considered as communities with a single province (as Madrid, Asturias
-#' or Murcia) on this dataset.
+#' considered as autonomous communities with a single province (as Madrid,
+#' Asturias or Murcia) on this database.
+#'
 #' @examples
-#' data(esp_codelist)
+#'
+#' data("esp_codelist")
 NULL
 
 
-#' @title All NUTS \code{POLYGON} object of Spain
+#' [`sf`][sf::st_sf] object with all the NUTS levels of Spain (2016)
+#'
+#' @family datasets
+#' @family nuts
+#'
 #' @name esp_nuts.sf
+#'
 #' @docType data
-#' @description A \code{sf} object including all
-#' NUTS levels of Spain as provided by GISCO (2016 version).
+#'
+#' @description
+#' A [`sf`][sf::st_sf] object including all NUTS levels of Spain as provided by
+#' GISCO (2016 version).
+#'
 #' @source
-#' \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/>, file
+#' `NUTS_RG_20M_2016_4326.geojson`.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_get_nuts}
-#' @format A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-#' object with 86 rows and fields:
+#'
+#'
+#' @format
+#' A [`sf`][sf::st_sf] object (resolution: 1:1million, EPSG:4258) with
+#' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and columns:
 #' \describe{
-#'   \item{COAST_TYPE}{COAST_TYPE}
-#'   \item{FID}{FID}
-#'   \item{NUTS_NAME}{NUTS name on local alphabet}
-#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
-#'   \item{NAME_LATN}{Name on Latin characters}
-#'   \item{CNTR_CODE}{Eurostat Country code}
-#'   \item{URBN_TYPE}{URBN_TYPE}
-#'   \item{NUTS_ID}{NUTS identifier}
 #'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+#'   \item{NUTS_ID}{NUTS identifier}
+#'   \item{URBN_TYPE}{Urban Type, see Details}
+#'   \item{CNTR_CODE}{Eurostat Country code `ES`}
+#'   \item{NAME_LATN}{NUTS name on Latin characters}
+#'   \item{NUTS_NAME}{NUTS name on local alphabet}
+#'   \item{MOUNT_TYPE}{Mount Type, see Details}
+#'   \item{COAST_TYPE}{Coast Type, see Details}
+#'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
-#' @examples
-#' library(sf)
+#' @example inst/examples/esp_nuts_sf.R
 #'
-#' nuts <- esp_nuts.sf
-#' nuts3 <- subset(nuts, LEVL_CODE == 3)
+#' @details
 #'
-#' unique(nuts3$MOUNT_TYPE)
+#' **MOUNT_TYPE**: Mountain typology:
+#'  - 1: More than 50 % of the surface is covered by topographic mountain areas.
+#'  - 2: More than 50 % of the regional population lives in topographic
+#'    mountain areas.
+#'  - 3: More than 50 % of the surface is covered by topographic mountain areas
+#'    and where more than 50 % of the regional population lives in these
+#'    mountain areas.
+#'  - 4: Non-mountain region / other regions.
+#'  - 0: No classification provided
 #'
-#' plot(
-#'   nuts3[, "URBN_TYPE"],
-#'   pal = hcl.colors(3, palette = "Viridis"),
-#'   main = "Urban type -  NUTS3 levels of Spain",
-#'   key.pos = NULL
-#' )
+#' **URBN_TYPE**: Urban-rural typology:
+#'  - 1: Predominantly urban region.
+#'  - 2: Intermediate region.
+#'  - 3: Predominantly rural region.
+#'  - 0: No classification provided
+#'
+#' **COAST_TYPE**: Coastal typology:
+#'   - 1: Coastal (on coast).
+#'   - 2: Coastal (less than 50% of population living within 50 km. of the
+#'        coastline).
+#'   - 3: Non-coastal region.
+#'   - 0: No classification provided
+#'
 NULL
 
-#' @title All Municipalities \code{POLYGON} object of Spain
+#' [`sf`][sf::st_sf] object with all the municipalities of Spain (2019)
+#' @family datasets
+#' @family municipalities
+#'
 #' @name esp_munic.sf
-#' @description A \code{sf} object including all
-#' municipalities of Spain as provided by GISCO (2019 version).
+#'
+#' @description
+#' A [`sf`][sf::st_sf] object including all municipalities of Spain as provided
+#' by GISCO (2019 version).
+#'
 #' @docType data
+#'
 #' @source
-#' \href{https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/LAU_RG_01M_2019_4326.geojson}{GISCO .geojson source}
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/",
+#'            "statistical-units/local-administrative-units>, "))
+#'
+#'
+#' ```
+#' LAU 2019 data.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_get_munic}
-#' @format A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-#' object:
+#'
+#' @seealso [esp_get_munic()].
+#' @format
+#' A [`sf`][sf::st_sf] object (resolution: 1:1 million, EPSG:4258) object with
+#' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and columns:
 #' \describe{
-#'   \item{codauto}{INE code of each autonomous community.}
-#'   \item{ine.ccaa.name}{INE name of each autonomous community.}
-#'   \item{cpro}{INE code of each province.}
-#'   \item{ine.prov.name}{INE name of each province.}
-#'   \item{cmun}{INE code of each municipality.}
-#'   \item{name}{Name of the municipality}
-#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality}
-#'   \item{geometry}{geometry field}
+#'   \item{codauto}{INE code of the autonomous community.}
+#'   \item{ine.ccaa.name}{INE name of the autonomous community.}
+#'   \item{cpro}{INE code of the province.}
+#'   \item{ine.prov.name}{INE name of the province.}
+#'   \item{cmun}{INE code of the municipality.}
+#'   \item{name}{Name of the municipality.}
+#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
+#'     combination of **cpro** and **cmun** fields, aligned with INE coding
+#'     scheme.}
+#'   \item{geometry}{geometry field.}
 #' }
-#' @examples
-#' library(sf)
-#'
-#' data("esp_munic.sf")
-#' data("esp_nuts.sf")
-#'
-#' Teruel.cpro <- esp_dict_region_code("Teruel", destination = "cpro")
-#' Teruel.NUTS <- esp_dict_region_code(Teruel.cpro,
-#'    origin = "cpro",
-#'    destination = "nuts")
-#'
-#' Teruel.sf <- esp_munic.sf[esp_munic.sf$cpro == Teruel.cpro, ]
-#' Teruel.city <- Teruel.sf[Teruel.sf$name == "Teruel", ]
-#'
-#' NUTS <-
-#'   esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3 &
-#'              esp_nuts.sf$NUTS_ID != Teruel.NUTS,]
-#'
-#'
-#' plot(st_geometry(Teruel.sf), col = "cornsilk")
-#' plot(st_geometry(Teruel.city), col = "firebrick3", add = TRUE)
-#' plot(st_geometry(NUTS), col = "wheat", add = TRUE)
-#' title(main = "Municipalities of Teruel",  line = 1)
+#' @example inst/examples/esp_munic_sf.R
 NULL
 
 
-#' @title Population by municipality (2019)
+#' Database with the population of Spain by municipality (2019)
+#'
+#' @family datasets
+#'
 #' @name pobmun19
+#'
 #' @docType data
-#' @description A data frame with 8131 rows containing the population
-#' data by municipality in Spain (2019).
-#' @source \href{https://www.ine.es/}{INE: Instituto Nacional de Estadistica}
+#'
+#' @format
+#' An example `data.frame` object with
+#' `r prettyNum(nrow(mapSpain::pobmun19), big.mark=",")` rows containing the
+#' population data by municipality in Spain (2019).
+#'
+#' \describe{
+#'   \item{cpro}{INE code of the province.}
+#'   \item{provincia}{name of the province.}
+#'   \item{cmun}{INE code of the municipality.}
+#'   \item{name}{Name of the municipality.}
+#'   \item{pob19}{Overall population (2019)}
+#'   \item{men}{Men population (2019)}
+#'   \item{women}{Women population (2019)}
+#' }
+#'
+#' @source INE: Instituto Nacional de Estadistica <https://www.ine.es/>
+#'
+#' @examples
+#' data("pobmun19")
 NULL
 
 
-#' @title Public WMS and WMTS of Spain
+#' (Superseded) Database of public WMS and WMTS of Spain
+#'
+#' @keywords internal
+#'
 #' @name leaflet.providersESP.df
-#' @description A data frame containing information of different public
-#' WMS and WMTS providers of Spain
 #'
-#' This function is a implementation of the javascript plugin
-#' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' \strong{v1.2.0}
+#' @description
+#' `r lifecycle::badge('superseded')`
+#'
+#' This `data.frame` is not longer in use by \CRANpkg{mapSpain}. See
+#' [esp_tiles_providers] instead.
+#'
+#' A `data.frame` containing information of different public WMS and WMTS
+#' providers of Spain
+#'
+#'
 #' @docType data
-#' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' leaflet plugin, \strong{v1.2.0}.
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#' **`r leafletprovidersESP_v`**.
+#'
 #' @encoding UTF-8
-#' @seealso \link{esp_getTiles},
-#' \link{addProviderEspTiles}.
 #'
-#' @format A data frame object with a list of the required parameters
-#' for calling the service:
+#' @format
+#' A `data.frame` object with a list of the required parameters for calling
+#' the service:
 #' \describe{
-#'   \item{provider}{Provider name}
-#'   \item{field}{Description of \code{value}}
-#'   \item{value}{INE code of each province.}
+#'   \item{provider}{Provider name}.
+#'   \item{field}{Description of `value`}.
+#'   \item{value}{INE code of each province}.
 #' }
 #'
-#' @details Providers available to be passed to \code{type} are:
-#' \itemize{
-#'  \item{\bold{IDErioja}: }{\code{IDErioja}}
-#'  \item{\bold{IGNBase}: }{\code{IGNBase.Todo}, \code{IGNBase.Gris},
-#'  \code{IGNBase.TodoNoFondo}, \code{IGNBase.Orto}}
-#'  \item{\bold{MDT}: }{\code{MDT.Elevaciones}, \code{MDT.Relieve},
-#'  \code{MDT.CurvasNivel}}
-#'  \item{\bold{PNOA}: }{\code{PNOA.MaximaActualidad}, \code{PNOA.Mosaico}}
-#'  \item{\bold{OcupacionSuelo}: }{\code{OcupacionSuelo.Ocupacion},
-#'  \code{OcupacionSuelo.Usos}}
-#'  \item{\bold{LiDAR}: }{\code{LiDAR}}
-#'  \item{\bold{MTN}: }{\code{MTN}}
-#'  \item{\bold{Geofisica}: }{\code{Geofisica.Terremotos10dias},
-#'  \code{Geofisica.Terremotos30dias}, \code{Geofisica.Terremotos365dias},
-#'  \code{Geofisica.VigilanciaVolcanica}}
-#'  \item{\bold{CaminoDeSantiago}: }{\code{CaminoDeSantiago.CaminoFrances},
-#'  \code{CaminoDeSantiago.CaminosTuronensis},
-#'  \code{CaminoDeSantiago.CaminosGalicia},
-#'  \code{CaminoDeSantiago.CaminosDelNorte},
-#'  \code{CaminoDeSantiago.CaminosAndaluces},
-#'  \code{CaminoDeSantiago.CaminosCentro},
-#'  \code{CaminoDeSantiago.CaminosEste},
-#'  \code{CaminoDeSantiago.CaminosCatalanes},
-#'  \code{CaminoDeSantiago.CaminosSureste},
-#'  \code{CaminoDeSantiago.CaminosInsulares},
-#'  \code{CaminoDeSantiago.CaminosPiemonts},
-#'  \code{CaminoDeSantiago.CaminosTolosana},
-#'  \code{CaminoDeSantiago.CaminosPortugueses}}
-#'  \item{\bold{Catastro}: }{\code{Catastro.Catastro},
-#'  \code{Catastro.Parcela}, \code{Catastro.CadastralParcel},
-#'  \code{Catastro.CadastralZoning}, \code{Catastro.Address},
-#'  \code{Catastro.Building}}
-#'  \item{\bold{RedTransporte}: }{\code{RedTransporte.Carreteras},
-#'  \code{RedTransporte.Ferroviario}, \code{RedTransporte.Aerodromo},
-#'  \code{RedTransporte.AreaServicio},
-#'  \code{RedTransporte.EstacionesFerroviario},
-#'  \code{RedTransporte.Puertos}}
-#'  \item{\bold{Cartociudad}: }{\code{Cartociudad.CodigosPostales},
-#'  \code{Cartociudad.Direcciones}}
-#'  \item{\bold{NombresGeograficos}: }{\code{NombresGeograficos}}
-#'  \item{\bold{UnidadesAdm}: }{\code{UnidadesAdm.Limites},
-#'  \code{UnidadesAdm.Unidades}}
-#'  \item{\bold{Hidrografia}: }{\code{Hidrografia.MasaAgua},
-#'  \code{Hidrografia.Cuencas}, \code{Hidrografia.Subcuencas},
-#'  \code{Hidrografia.POI}, \code{Hidrografia.ManMade},
-#'  \code{Hidrografia.LineaCosta}, \code{Hidrografia.Rios},
-#'  \code{Hidrografia.Humedales}}
-#'  \item{\bold{Militar}: }{\code{Militar.CEGET1M},
-#'  \code{Militar.CEGETM7814}, \code{Militar.CEGETM7815},
-#'  \code{Militar.CEGETM682}, \code{Militar.CECAF1M}}
-#'  \item{\bold{ADIF}: }{\code{ADIF.Vias}, \code{ADIF.Nodos},
-#'  \code{ADIF.Estaciones}}
-#'  \item{\bold{LimitesMaritimos}: }{\code{LimitesMaritimos.LimitesMaritimos},
-#'  \code{LimitesMaritimos.LineasBase}}
-#'  \item{\bold{Copernicus}: }{\code{Copernicus.LandCover},
-#'  \code{Copernicus.Forest}, \code{Copernicus.ForestLeaf},
-#'  \code{Copernicus.WaterWet}, \code{Copernicus.SoilSeal},
-#'  \code{Copernicus.GrassLand}, \code{Copernicus.Local},
-#'  \code{Copernicus.RiparianGreen}, \code{Copernicus.RiparianLandCover},
-#'  \code{Copernicus.Natura2k}, \code{Copernicus.UrbanAtlas}}
-#'  \item{\bold{ParquesNaturales}: }{\code{ParquesNaturales.Limites},
-#'  \code{ParquesNaturales.ZonasPerifericas}}
-#' }
+#' @examples
+#' data("leaflet.providersESP.df")
+NULL
+
+#' Database of public WMS and WMTS of Spain
+#'
+#' @family datasets
+#' @family imagery utilities
+#'
+#' @name esp_tiles_providers
+#'
+#' @description
+#' A named [`list`][base::list] of length `r length(esp_tiles_providers)`
+#' containing the parameters of the url information of different public WMS and
+#' WMTSproviders of Spain.
+#'
+#' Implementation of javascript plugin
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **`r leafletprovidersESP_v`**.
+#'
+#' @docType data
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#' **`r leafletprovidersESP_v`**.
+#'
+#' @encoding UTF-8
+#'
+#' @format
+#' A named `list` of the providers available with the following structure:
+#' - Each item of the list is named with the provider alias.
+#' - Each element of the list contains two nested named lists:
+#'   - `static` with the parameters to get static tiles plus an additional item
+#'     named `attribution`.
+#'   - `leaflet` with additional parameters to be passed onto
+#'     [addProviderEspTiles()].
+#'
+#' @details
+#' Providers available to be passed to `type` on [esp_getTiles()] are:
+#'
+#' ```{r, echo=FALSE, comment="", results="asis"}
+#'
+#' t <- names(mapSpain::esp_tiles_providers)
+#' t <- paste0('\n - `"', t, '"`')
+#'
+#'
+#' cat(t)
+#'
+#'
+#' ```
+#' @examples
+#' data("esp_tiles_providers")
+#' # Get a single provider
+#'
+#' single <- esp_tiles_providers[["IGNBase.Todo"]]
+#' single$static
+#'
+#' single$leaflet
 #'
 NULL

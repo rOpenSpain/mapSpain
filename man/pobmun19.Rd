@@ -3,11 +3,36 @@
 \docType{data}
 \name{pobmun19}
 \alias{pobmun19}
-\title{Population by municipality (2019)}
+\title{Database with the population of Spain by municipality (2019)}
+\format{
+An example \code{data.frame} object with
+8,131 rows containing the
+population data by municipality in Spain (2019).
+
+\describe{
+\item{cpro}{INE code of the province.}
+\item{provincia}{name of the province.}
+\item{cmun}{INE code of the municipality.}
+\item{name}{Name of the municipality.}
+\item{pob19}{Overall population (2019)}
+\item{men}{Men population (2019)}
+\item{women}{Women population (2019)}
+}
+}
 \source{
-\href{https://www.ine.es/}{INE: Instituto Nacional de Estadistica}
+INE: Instituto Nacional de Estadistica \url{https://www.ine.es/}
 }
 \description{
-A data frame with 8131 rows containing the population
-data by municipality in Spain (2019).
+Database with the population of Spain by municipality (2019)
 }
+\examples{
+data("pobmun19")
+}
+\seealso{
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_munic.sf}},
+\code{\link{esp_nuts.sf}},
+\code{\link{esp_tiles_providers}}
+}
+\concept{datasets}

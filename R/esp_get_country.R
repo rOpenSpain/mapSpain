@@ -1,57 +1,81 @@
-#' @title Get boundaries of Spain
-#' @name esp_get_country
-#' @description Loads a single \code{sf} object containing the
-#' boundaries of Spain.
-#' @return A \code{MULTIPOLYGON/MULTIPOINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{esp_get_nuts}, \link{esp_get_ccaa}, \link{esp_get_prov},
-#' \link{esp_get_munic}, \link{esp_codelist}
+#' Get [`sf`][sf::st_sf] `POLYGON` representing Spain
+#'
+#' @description
+#' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON` at a
+#' specified scale.
+#'
+#' @family political
+#'
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
+#'
+#'
 #' @export
 #'
+#' @inheritParams esp_get_nuts
+#' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
-#' @param ... Additional parameters from \link{esp_get_nuts}.
+#' @inheritSection  esp_get_nuts  About caching
+#'
+#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
+#'
 #' @examples
-#'
-#' library(sf)
 #'
 #' OriginalCan <- esp_get_country(moveCAN = FALSE)
 #'
-#' plot(OriginalCan$geometry, col = hcl.colors(5))
+#' # One row only
 #'
-#' MovedCan <- esp_get_country(moveCAN = TRUE)
+#' nrow(OriginalCan)
 #'
-#' plot(MovedCan$geometry, col = hcl.colors(5))
+#' library(ggplot2)
 #'
-
-esp_get_country <- function(...) {
+#' ggplot(OriginalCan) +
+#'   geom_sf(fill = "grey70")
+#'
+#'
+#' # Less resolution
+#'
+#' MovedCan <- esp_get_country(moveCAN = TRUE, resolution = "20")
+#'
+#' library(ggplot2)
+#'
+#' ggplot(MovedCan) +
+#'   geom_sf(fill = "grey70")
+esp_get_country <- function(moveCAN = TRUE, ...) {
   params <- list(...)
   params$nuts_level <- 1
   params$region <- NULL
-  data.sf <- do.call(mapSpain::esp_get_nuts,  params)
+  params$moveCAN <- moveCAN
+
+  data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   # Extract geom column
-  names <- names(data.sf)
+  names <- names(data_sf)
 
-  which.geom <-
-    which(vapply(data.sf, function(f)
-      inherits(f, "sfc"), TRUE))
+  which_geom <- which(
+    vapply(data_sf, function(f) {
+      inherits(f, "sfc")
+    }, TRUE)
+  )
 
-  nm <- names(which.geom)
+  nm <- names(which_geom)
 
   # Join all
-  g <- sf::st_union(data.sf)
+  init <- sf::st_crs(data_sf)
+  data_sf <- sf::st_transform(data_sf, 3035)
+  g <- sf::st_union(data_sf)
+  g <- sf::st_transform(g, init)
+
 
   # Get df
   df <- sf::st_drop_geometry(esp_get_nuts(nuts_level = 0))
 
   # Generate sf object
-  data.sf <- sf::st_as_sf(df, g)
+  data_sf <- sf::st_as_sf(df, g)
   # Rename geometry to original value
-  newnames <- names(data.sf)
+  newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
-  colnames(data.sf) <- newnames
-  data.sf <- sf::st_set_geometry(data.sf, nm)
+  colnames(data_sf) <- newnames
+  data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  return(data.sf)
-
+  return(data_sf)
 }

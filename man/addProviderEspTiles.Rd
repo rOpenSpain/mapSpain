@@ -3,10 +3,11 @@
 \name{addProviderEspTiles}
 \alias{addProviderEspTiles}
 \alias{providerEspTileOptions}
-\title{Leaflet plugin - Spanish providers}
+\title{Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
+map}
 \source{
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-leaflet plugin, \strong{v1.2.0}.
+\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
+\strong{v1.3.3}.
 }
 \usage{
 addProviderEspTiles(
@@ -20,43 +21,60 @@ addProviderEspTiles(
 providerEspTileOptions(...)
 }
 \arguments{
-\item{map, layerId, group, options}{See \link[leaflet]{addTiles}}
+\item{map}{the map to add the tile layer to}
 
-\item{provider}{Name of the provider, see \link{leaflet.providersESP.df}.}
+\item{provider}{Name of the provider, see \link{esp_tiles_providers} for
+values available.}
 
-\item{...}{Additional options. See \link[leaflet]{providerTileOptions}.}
+\item{layerId}{the layer id to assign}
+
+\item{group}{the name of the group the newly created layers should belong to
+(for \code{\link[leaflet]{clearGroup}} and \code{\link[leaflet]{addLayersControl}} purposes).
+Human-friendly group names are permitted--they need not be short,
+identifier-style names.}
+
+\item{options}{tile options}
+
+\item{...}{Arguments passed on to \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}.}
 }
 \value{
-Modified \code{map} object.
+A modified \code{\link[leaflet:leaflet]{leaflet::leaflet()}} \code{map} object.
 }
 \description{
-Add tiles of
-\href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-to a \strong{R} \link[leaflet]{leaflet} map.
+Include tiles of public Spanish organisms to a \code{\link[leaflet:leaflet]{leaflet::leaflet()}} map.
 }
 \details{
-\code{providerEspTileOptions} is a wrapper of
-\code{leaflet::providerTileOptions}
+\code{\link[=providerEspTileOptions]{providerEspTileOptions()}} is a wrapper of \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}.
 }
 \examples{
 library(leaflet)
-  PuertadelSol <-
-    leaflet() \%>\% setView(lat = 40.4166,
-                          lng = -3.7038400,
-                          zoom = 18) \%>\%
-    addProviderEspTiles(provider = "IGNBase.Gris") \%>\%
-    addProviderEspTiles(provider = "RedTransporte.Carreteras")
+leafmap <- leaflet(width = "100\%", height = "60vh") \%>\%
+  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) \%>\%
+  addTiles(group = "Default (OSM)") \%>\%
+  addProviderEspTiles(
+    provider = "IDErioja.Claro",
+    group = "IDErioja Claro"
+  ) \%>\%
+  addProviderEspTiles(
+    provider = "RedTransporte.Carreteras",
+    group = "Carreteras"
+  ) \%>\%
+  addLayersControl(
+    baseGroups = c("IDErioja Claro", "Default (OSM)"),
+    overlayGroups = "Carreteras",
+    options = layersControlOptions(collapsed = FALSE)
+  )
 
-    PuertadelSol
-
-
-
+leafmap
 }
 \seealso{
-\link{leaflet.providersESP.df}, \link{esp_getTiles}
+\code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:map-layers]{leaflet::addTiles()}}
 
-\link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
+\code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
+
+Other imagery utilities: 
+\code{\link{esp_getTiles}()},
+\code{\link{esp_make_provider}()},
+\code{\link{esp_tiles_providers}}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{imagery utilities}

@@ -4,45 +4,101 @@
 \encoding{UTF-8}
 \name{esp_nuts.sf}
 \alias{esp_nuts.sf}
-\title{All NUTS \code{POLYGON} object of Spain}
+\title{\code{\link[sf:sf]{sf}} object with all the NUTS levels of Spain (2016)}
 \format{
-A \code{POLYGON} data frame (resolution: 1:1million, EPSG:4258)
-object with 86 rows and fields:
+A \code{\link[sf:sf]{sf}} object (resolution: 1:1million, EPSG:4258) with
+86 rows and columns:
 \describe{
-  \item{COAST_TYPE}{COAST_TYPE}
-  \item{FID}{FID}
-  \item{NUTS_NAME}{NUTS name on local alphabet}
-  \item{MOUNT_TYPE}{MOUNT_TYPE}
-  \item{NAME_LATN}{Name on Latin characters}
-  \item{CNTR_CODE}{Eurostat Country code}
-  \item{URBN_TYPE}{URBN_TYPE}
-  \item{NUTS_ID}{NUTS identifier}
-  \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-  \item{geometry}{geometry field}
+\item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+\item{NUTS_ID}{NUTS identifier}
+\item{URBN_TYPE}{Urban Type, see Details}
+\item{CNTR_CODE}{Eurostat Country code \code{ES}}
+\item{NAME_LATN}{NUTS name on Latin characters}
+\item{NUTS_NAME}{NUTS name on local alphabet}
+\item{MOUNT_TYPE}{Mount Type, see Details}
+\item{COAST_TYPE}{Coast Type, see Details}
+\item{FID}{FID}
+\item{geometry}{geometry field}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}, file
+\code{NUTS_RG_20M_2016_4326.geojson}.
 }
 \description{
-A \code{sf} object including all
-NUTS levels of Spain as provided by GISCO (2016 version).
+A \code{\link[sf:sf]{sf}} object including all NUTS levels of Spain as provided by
+GISCO (2016 version).
+}
+\details{
+\strong{MOUNT_TYPE}: Mountain typology:
+\itemize{
+\item 1: More than 50 \% of the surface is covered by topographic mountain areas.
+\item 2: More than 50 \% of the regional population lives in topographic
+mountain areas.
+\item 3: More than 50 \% of the surface is covered by topographic mountain areas
+and where more than 50 \% of the regional population lives in these
+mountain areas.
+\item 4: Non-mountain region / other regions.
+\item 0: No classification provided
+}
+
+\strong{URBN_TYPE}: Urban-rural typology:
+\itemize{
+\item 1: Predominantly urban region.
+\item 2: Intermediate region.
+\item 3: Predominantly rural region.
+\item 0: No classification provided
+}
+
+\strong{COAST_TYPE}: Coastal typology:
+\itemize{
+\item 1: Coastal (on coast).
+\item 2: Coastal (less than 50\% of population living within 50 km. of the
+coastline).
+\item 3: Non-coastal region.
+\item 0: No classification provided
+}
 }
 \examples{
-library(sf)
+data("esp_nuts.sf")
 
 nuts <- esp_nuts.sf
-nuts3 <- subset(nuts, LEVL_CODE == 3)
 
-unique(nuts3$MOUNT_TYPE)
+# Select NUTS 3
+nuts3 <- esp_nuts.sf[esp_nuts.sf$LEVL_CODE == 3, ]
 
-plot(
-  nuts3[, "URBN_TYPE"],
-  pal = hcl.colors(3, palette = "Viridis"),
-  main = "Urban type -  NUTS3 levels of Spain",
-  key.pos = NULL
-)
+# Combine with full shape
+
+spain <- esp_get_country(moveCAN = FALSE)
+
+# Plot Urban Type: See
+# https://ec.europa.eu/eurostat/web/rural-development/methodology
+
+library(ggplot2)
+
+nuts3$URBN_TYPE_cat <- as.factor(nuts3$URBN_TYPE)
+
+levels(nuts3$URBN_TYPE_cat)
+levels(nuts3$URBN_TYPE_cat) <- c("Urban", "Intermediate", "Rural")
+
+ggplot(nuts3) +
+  geom_sf(aes(fill = URBN_TYPE_cat), linewidth = .1) +
+  scale_fill_manual(values = c("grey80", "#FFC183", "#68AC20")) +
+  labs(
+    title = "NUTS3 levels of Spain",
+    fill = "Urban topology"
+  ) +
+  theme_linedraw()
 }
 \seealso{
-\link{esp_get_nuts}
+Other datasets: 
+\code{\link{esp_codelist}},
+\code{\link{esp_munic.sf}},
+\code{\link{esp_tiles_providers}},
+\code{\link{pobmun19}}
+
+Other nuts: 
+\code{\link{esp_get_nuts}()}
 }
+\concept{datasets}
+\concept{nuts}

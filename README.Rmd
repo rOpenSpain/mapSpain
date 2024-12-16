@@ -1,216 +1,303 @@
 ---
 output: github_document
 always_allow_html: true
+editor_options: 
+  markdown: 
+    wrap: 80
 ---
 
 ```{r, include = FALSE}
-knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://raw.githubusercontent.com/dieghernan/mapSpain/master/")
+knitr::opts_knit$set(
+  progress = TRUE,
+  base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/main/"
+)
 
-knitr::opts_chunk$set(collapse = TRUE,
-                      tidy = "styler",
-                      comment = "#>",
-                      fig.path = "README-")
-
-
-knitr::knit_hooks$set(
-  margin = function(before, options, envir) {
-    if (before) {
-      par(mar = c(0, 0, 0, 0))
-    }
-  }
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "img/README-",
+  warning = FALSE,
+  message = FALSE,
+  dev = "ragg_png",
+  dpi = 300,
+  out.width = "100%"
 )
 ```
 
-# mapSpain <img src="man/figures/logo.png" align="right" width="120" />
+# mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
-[![CRAN results](https://cranchecks.info/badges/worst/mapSpain)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
-![R-CMD-check](https://github.com/dieghernan/mapSpain/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/dieghernan/mapSpain/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/mapSpain)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
+[![CRAN-status](https://www.r-pkg.org/badges/version/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+[![CRAN-results](https://badges.cranchecks.info/worst/mapSpain.svg)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
+[![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+[![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/mapSpain)
+[![R-CMD-check](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml)
+[![R-hub](https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml)
+[![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/main/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/mapSpain)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5366622-blue)](https://doi.org/10.5281/zenodo.5366622)
+[![Project-Status:Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![status](https://tinyverse.netlify.app/badge/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
+
 <!-- badges: end -->
 
-**[mapSpain](https://dieghernan.github.io/mapSpain/)** is a package that provides spatial `sf` objects of the administrative boundaries of Spain, including CCAA, provinces and municipalities. 
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
+provides spatial **sf** objects of the administrative boundaries of Spain,
+including CCAA, provinces and municipalities.
 
-**mapSpain** also provides a leaflet plugin to be used with the [`leaflet` package](https://rstudio.github.io/leaflet/), that loads several basemap of public institutions of Spain, and the ability of downloading and processing static tiles.
+**mapSpain** also provides a leaflet plugin to be used with the [**leaflet**
+package](https://rstudio.github.io/leaflet/), that loads several base maps of
+public institutions of Spain, and the ability of downloading and processing
+static tiles.
 
-Full site with examples and vignettes on <https://dieghernan.github.io/mapSpain/>
+Full site with examples and vignettes on
+<https://ropenspain.github.io/mapSpain/>
 
 ## Installation
 
-Install `mapSpain` from [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
+Install **mapSpain** from
+[**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
-``` r
-install.packages("mapSpain")
+```{r, eval = FALSE}
+install.packages("mapSpain", dependencies = TRUE)
 ```
 
-You can install the developing version of `mapSpain` with:
+You can install the developing version of **mapSpain** using the
+[r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
-``` r
-library(remotes)
-install_github("dieghernan/mapSpain")
+```{r, eval = FALSE}
+# Install mapSpain in R:
+install.packages("mapSpain",
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  ),
+  dependencies = TRUE
+)
+```
+
+Alternatively, you can install the developing version of **mapSpain** with:
+
+```{r, eval = FALSE}
+remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ## Usage
 
-This script highlights some features of `mapSpain`:
+This script highlights some features of **mapSpain** :
 
-```{r static, dev='svg'}
+```{r static}
 library(mapSpain)
 library(sf)
-
+library(dplyr)
 census <- mapSpain::pobmun19
 
-# Paste CCAA
-census <-
-  unique(merge(census, esp_codelist[, c("cpro", "codauto")], all.x = TRUE))
+# Extract CCAA from base dataset
 
-# Summarize
-census_ccaa <-
-  aggregate(cbind(pob19, men, women)  ~ codauto, data = census, sum)
+codelist <- mapSpain::esp_codelist %>%
+  select(cpro, codauto) %>%
+  distinct()
 
-census_ccaa$porc_women <- census_ccaa$women / census_ccaa$pob19
+census_ccaa <- census %>%
+  left_join(codelist) %>%
+  # Summarize by CCAA
+  group_by(codauto) %>%
+  summarise(pob19 = sum(pob19), men = sum(men), women = sum(women)) %>%
+  mutate(
+    porc_women = women / pob19,
+    porc_women_lab = paste0(round(100 * porc_women, 2), "%")
+  )
 
-CCAA.sf <- esp_get_ccaa()
 
-# Merge data
-CCAA.sf <- merge(CCAA.sf, census_ccaa)
+# Merge into spatial data
+
+ccaa_sf <- esp_get_ccaa() %>%
+  left_join(census_ccaa)
+can <- esp_get_can_box()
 
 
+# Plot with ggplot
+library(ggplot2)
 
-# Choropleth map
 
-library(cartography)
-br <- getBreaks(CCAA.sf$porc_women, method = "pretty")
-pal <- hcl.colors(length(br) - 1,
-                  palette = "Blues 3",
-                  rev = TRUE,
-                  alpha = 0.8)
-choroLayer(
-  CCAA.sf,
-  var = "porc_women",
-  breaks = br,
-  legend.values.rnd = 3,
-  legend.pos = "bottomright",
-  col = pal ,
-  border = NA,
-  legend.title.txt = "% women"
-)
-
-# Add lines
-
-CCAAbox <- esp_get_can_box()
-
-plot(CCAAbox, add = TRUE, col = pal[length(pal)] )
-
+ggplot(ccaa_sf) +
+  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
+  geom_sf(data = can, color = "grey70") +
+  geom_sf_label(aes(label = porc_women_lab),
+    fill = "white", alpha = 0.5,
+    size = 3, label.size = 0
+  ) +
+  scale_fill_gradientn(
+    colors = hcl.colors(10, "Blues", rev = TRUE),
+    n.breaks = 10, labels = scales::label_percent(),
+    guide = guide_legend(title = "Porc. women", position = "inside")
+  ) +
+  theme_void() +
+  theme(legend.position.inside = c(0.1, 0.6))
 ```
 
-You can combine `POLYGONS` with static tiles
+You can combine `sf` objects with static tiles
 
-```{r tile, warning=FALSE, fig.asp=0.7, dev='svg'}
-library(mapSpain)
-library(sf)
+```{r tile}
+# Get census
+census <- mapSpain::pobmun19 %>%
+  mutate(porc_women = women / pob19) %>%
+  select(cpro, cmun, porc_women)
 
-census <- mapSpain::pobmun19
-census$porc_women <- census$women / census$pob19
+# Get shapes
+shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
+provs <- esp_get_prov_siane(epsg = 3857)
 
-census$municode <- paste0(census$cpro, census$cmun)
+shape_pop <- shape %>% left_join(census)
 
-Asturias.sf <- esp_get_munic(region = "Asturias")
 
-Asturias.pop <-
-  merge(Asturias.sf, census, by.x = "LAU_CODE", by.y = "municode")
-
-# Get tiles
-
-Asturias.pop <- st_transform(Asturias.pop, 3857)
-
-tile <-
-  esp_getTiles(Asturias.pop,
-               type = "IGNBase.Todo",
-               zoom = 8)
-
+tile <- esp_getTiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
 # Plot
-par(mar = c(0, 0, 0, 0))
-library(cartography)
 
-tilesLayer(tile)
-br <- getBreaks(Asturias.pop$porc_women, method = "kmeans")
+library(ggplot2)
+library(tidyterra)
 
+lims <- as.vector(terra::ext(tile))
 
-choroLayer(
-  Asturias.pop,
-  var = "porc_women",
-  breaks = br,
-  col = hcl.colors(
-    n = length(br) - 1,
-    palette = "inferno",
-    rev = TRUE,
-    alpha = 0.4
-  ),
-  add = TRUE,
-  legend.values.rnd = 2,
-  border = NA,
-  legend.pos = "n"
-)
-
-legendChoro(
-  pos = "bottomright",
-  breaks = br,
-  values.rnd = 2,
-  horiz = TRUE,
-  nodata = FALSE,
-  col = hcl.colors(
-    n = length(br) - 1,
-    palette = "inferno",
-    rev = TRUE
-  ),
-  title.txt = "% women"
-)
-
+ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
+  geom_spatraster_rgb(data = tile, maxcell = 10e6) +
+  geom_sf(aes(fill = porc_women), color = NA) +
+  geom_sf(data = provs, fill = NA) +
+  scale_fill_gradientn(
+    colours = hcl.colors(10, "RdYlBu", alpha = .5),
+    n.breaks = 8,
+    labels = function(x) {
+      sprintf("%1.0f%%", 100 * x)
+    },
+    guide = guide_legend(title = "", )
+  ) +
+  coord_sf(
+    xlim = lims[c(1, 2)],
+    ylim = lims[c(3, 4)],
+    expand = FALSE
+  ) +
+  labs(
+    title = "Share of women in Segovia by town (2019)",
+    caption = "Source: INE, CC BY 4.0 www.iderioja.org"
+  ) +
+  theme_void() +
+  theme(
+    title = element_text(face = "bold")
+  )
 ```
 
-### A note on caching
+## mapSpain and giscoR
 
-Some data sets and tiles may have a size larger than 50MB. You can use `mapSpain` to create your own local repository at a given local directory passing the following option:
+If you need to plot Spain along with another countries, consider using
+[**giscoR**](https://ropengov.github.io/giscoR/) package, that is installed as a
+dependency when you installed **mapSpain**. A basic example:
 
-```r
-options(mapSpain_cache_dir = "./path/to/location")
+```{r giscoR, fig.asp=1}
+library(giscoR)
+
+# Set the same resolution for a perfect fit
+
+res <- "20"
+
+all_countries <- gisco_get_countries(resolution = res) %>%
+  st_transform(3035)
+
+eu_countries <- gisco_get_countries(resolution = res, region = "EU") %>%
+  st_transform(3035)
+
+ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res) %>%
+  st_transform(3035)
+
+library(ggplot2)
+
+ggplot(all_countries) +
+  geom_sf(fill = "#DFDFDF", color = "#656565") +
+  geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = .1) +
+  # Center in Europe: EPSG 3035
+  coord_sf(xlim = c(2377294, 7453440), ylim = c(1313597, 5628510)) +
+  theme(
+    panel.background = element_blank(),
+    panel.grid = element_line(colour = "#DFDFDF", linetype = "dotted")
+  )
 ```
 
-When this option is set, `mapSpain` would look for the cached file and it will load it, speeding up the process.
+## A note on caching
 
-### Plotting `sf` objects
+Some data sets and tiles may have a size larger than 50MB. You can use
+**mapSpain** to create your own local repository at a given local directory
+passing the following option:
+
+```{r, eval = FALSE}
+esp_set_cache_dir("./path/to/location")
+```
+
+When this option is set, **mapSpain** would look for the cached file and it will
+load it, speeding up the process.
+
+## Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
-* [`tmap`](https://mtennekes.github.io/tmap/)    
-* [`cartography`](http://riatelab.github.io/cartography/docs/)
-* [`ggplot2`](https://github.com/tidyverse/ggplot2) + [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-* [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [**tmap**](https://github.com/r-tmap/tmap)
+-   [**mapsf**](https://riatelab.github.io/mapsf/)
+-   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+    [**tidyterra**](https://github.com/dieghernan/tidyterra).
+-   [**leaflet**](https://rstudio.github.io/leaflet/)
+
+## Citation
+
+```{r echo=FALSE, results='asis'}
+print(citation("mapSpain"), style = "html")
+```
+
+A BibTeX entry for LaTeX users is:
+
+```{r echo=FALSE, comment=''}
+toBibtex(citation("mapSpain"))
+```
 
 ## Contribute
 
-Check the Github page for [source code](https://github.com/dieghernan/mapSpain/).
-
+Check the GitHub page for [source
+code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
-This package uses data from **GISCO**. GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial open data repository including several data sets at several resolution levels.
+This package uses data from CartoBase SIANE, provided by Instituto Geográfico
+Nacional:
 
-*From GISCO > Geodata > Reference data > Administrative Units / Statistical Units*
+> Atlas Nacional de España (ANE) [CC BY
+> 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+> [ign.es](https://www.ign.es/)
 
-When data downloaded from this page is used in any printed or electronic publication, in addition to any other provisions applicable to the whole Eurostat website, data source will have to be acknowledged in the legend of the map and in the introductory page of the publication with the following copyright notice:
+See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
-EN: &copy; EuroGeographics for the administrative boundaries
+This package uses data from **GISCO**. GISCO
+[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open data
+repository including several data sets at several resolution levels.
 
-FR: &copy; EuroGeographics pour les limites administratives
+*From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
+Units*
 
-DE: &copy; EuroGeographics bez&uuml;glich der Verwaltungsgrenzen
+> When data downloaded from this page is used in any printed or electronic
+> publication, in addition to any other provisions applicable to the whole
+> Eurostat website, data source will have to be acknowledged in the legend of
+> the map and in the introductory page of the publication with the following
+> copyright notice:
+>
+> EN: © EuroGeographics for the administrative boundaries
+>
+> FR: © EuroGeographics pour les limites administratives
+>
+> DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+>
+> For publications in languages other than English, French or German, the
+> translation of the copyright notice in the language of the publication shall
+> be used.
 
-For publications in languages other than English, French or German, the translation of the copyright notice in the language of the publication shall be used.
-
-If you intend to use the data commercially, please contact EuroGeographics for information regarding their license agreements.
+If you intend to use the data commercially, please contact EuroGeographics for
+information regarding their license agreements.

@@ -1,148 +1,178 @@
-#' @title Leaflet plugin - Spanish providers
+# Leaflet plugin version
+leafletprovidersESP_v <- "v1.3.3"
+
+
+#' Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
+#' map
+#'
+#' @description
+#' Include tiles of public Spanish organisms to a [leaflet::leaflet()] map.
+#'
+#' @family imagery utilities
+#' @seealso [leaflet::leaflet()], [leaflet::addTiles()]
+#'
+#' @rdname addProviderEspTiles
 #' @name addProviderEspTiles
-#' @description Add tiles of
-#' \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' to a \strong{R} \link[leaflet]{leaflet} map.
-#' @source \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-#' leaflet plugin, \strong{v1.2.0}.
-#' @return Modified \code{map} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @seealso \link{leaflet.providersESP.df}, \link{esp_getTiles}
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#'  **`r leafletprovidersESP_v`**.
+#'
+#' @return A modified [leaflet::leaflet()] `map` object.
+#'
 #' @export
 #'
-#' @param provider Name of the provider, see \link{leaflet.providersESP.df}.
-#' @param map,layerId,group,options See \link[leaflet]{addTiles}
+#' @param provider Name of the provider, see [esp_tiles_providers] for
+#'   values available.
+#' @inheritParams leaflet::addProviderTiles
+#' @inheritParams leaflet::addTiles
+#'
 #' @examples
 #' library(leaflet)
-#'   PuertadelSol <-
-#'     leaflet() %>% setView(lat = 40.4166,
-#'                           lng = -3.7038400,
-#'                           zoom = 18) %>%
-#'     addProviderEspTiles(provider = "IGNBase.Gris") %>%
-#'     addProviderEspTiles(provider = "RedTransporte.Carreteras")
+#' leafmap <- leaflet(width = "100%", height = "60vh") %>%
+#'   setView(lat = 40.4166, lng = -3.7038400, zoom = 10) %>%
+#'   addTiles(group = "Default (OSM)") %>%
+#'   addProviderEspTiles(
+#'     provider = "IDErioja.Claro",
+#'     group = "IDErioja Claro"
+#'   ) %>%
+#'   addProviderEspTiles(
+#'     provider = "RedTransporte.Carreteras",
+#'     group = "Carreteras"
+#'   ) %>%
+#'   addLayersControl(
+#'     baseGroups = c("IDErioja Claro", "Default (OSM)"),
+#'     overlayGroups = "Carreteras",
+#'     options = layersControlOptions(collapsed = FALSE)
+#'   )
 #'
-#'     PuertadelSol
-#'
-#'
-#'
-addProviderEspTiles <- function(map,
-                                provider,
-                                layerId = NULL,
-                                group = NULL,
+#' leafmap
+addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
                                 options = providerEspTileOptions()) {
   # A. Check providers
-  leafletProvidersESP <-
-    as.data.frame(mapSpain::leaflet.providersESP.df)
-  provs <-
-    leafletProvidersESP[leafletProvidersESP$provider == provider, ]
+  prov_list <- mapSpain::esp_tiles_providers
 
-  if (nrow(provs) == 0) {
+  allprovs <- names(prov_list)
+
+
+  if (!provider %in% allprovs) {
     stop(
-      "No match for provider = '",
-      provider,
-      "' found. Available providers are:\n\n",
-      paste0("'",
-             unique(leafletProvidersESP$provider), "'",
-             collapse = ", ")
+      "No match for provider = '", provider,
+      "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
     )
   }
+
+  # Check type of provider
+  thisprov <- prov_list[[provider]]
 
   # Get url
-
-  templurl <- provs[provs$field == "url", "value"]
-  attribution <- provs[provs$field == "attribution", "value"]
-
-  isWMTS <- provs[provs$field == "type", "value"] == "WMTS"
-
-  # Work with options
-  if (isFALSE(isWMTS)) {
-    layers <- provs[provs$field == "layers", "value"]
+  # Special case for IDErioja
+  if (grepl("rioja", provider, ignore.case = TRUE)) {
+    iswmts <- TRUE
+  } else {
+    type_prov <- tolower(thisprov$static$service)
+    iswmts <- type_prov == "wmts"
   }
 
-  opts <-
-    provs[!(
-      provs$field %in% c(
-        "url",
-        "type",
-        "url_static",
-        "attribution",
-        "attribution_static",
-        "bounds",
-        "layers"
-      )
-    ), c(2, 3)]
+  # Prepare each provider
+  if (iswmts) {
+    # Build template
+    # Get requested options and merge with the current ones
+    def_opts <- thisprov$leaflet
 
+    # Extract attribution
+    attribution <- def_opts$attribution
+    # Remove
+    def_opts <- modifyList(def_opts, list(attribution = NULL))
 
+    # Normalize names
+    names(def_opts) <- tolower(names(def_opts))
+    names(options) <- tolower(names(options))
 
-  # Clean if the option was already set
-  opts <- opts[!(opts$field %in% names(options)),]
+    optionend <- modifyList(def_opts, options)
 
-  # Pass to list
+    # Build template url
+    temp_pieces <- thisprov$static
+    q <- temp_pieces$q
+    # Remove
+    rest <- modifyList(temp_pieces, list(attribution = NULL, q = NULL))
 
-  opinit <- list()
+    rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
 
-  for (j in seq_len(nrow(opts))) {
-    name <- paste(opts[j, 1])
-    value <- paste(opts[j, 2])
+    templurl <- paste0(q, rest_temp)
 
-    opinit[[name]] <- value
-
-  }
-
-  options <- c(options, opinit)
-  rm(opts, provs, leafletProvidersESP, opinit)
-
-  # Replace on template
-
-  optionend <- list()
-
-  for (i in seq_len(length(options))) {
-    n <- names(options[i])
-    v <- options[i][[1]]
-
-    needreplace <-
-      grepl(paste0("{", n, "}"), templurl, fixed = TRUE)
-
-    if (needreplace) {
-      templurl <- gsub(paste0("{", n, "}"), v, templurl, fixed = TRUE)
-    } else {
-      optionend <- c(optionend, options[i])
+    # Special case for IDErioja
+    if (grepl("rioja", provider, ignore.case = TRUE)) {
+      templurl <- q
     }
-  }
 
+    # Modify default leaflet::tileOptions() with our options
+    # Normalize names
+    tileops <- leaflet::tileOptions()
+    names(tileops) <- tolower(names(tileops))
 
+    optionend <- modifyList(tileops, optionend)
+    optionend <- do.call(leaflet::tileOptions, optionend)
 
-  if (isWMTS) {
-    options <- do.call(leaflet::tileOptions, options)
-
-    leaflet::addTiles(
-      map,
-      urlTemplate = templurl,
-      attribution = attribution,
-      layerId = layerId,
-      group = group,
-      options = optionend
+    leaflet::addTiles(map,
+      urlTemplate = templurl, attribution = attribution,
+      layerId = layerId, group = group, options = optionend
     )
   } else {
-    options <- do.call(leaflet::WMSTileOptions, options)
+    # Build template
+    # Get requested options and merge with the current ones
+    def_opts <- thisprov$leaflet
 
-    leaflet::addWMSTiles(
-      map,
-      baseUrl = templurl,
-      layers = layers,
-      attribution = attribution,
-      layerId = layerId,
-      group = group,
-      options = optionend
+    # Extract attribution
+    attribution <- def_opts$attribution
+    # Remove
+    def_opts <- modifyList(def_opts, list(attribution = NULL))
+
+    # Get important params
+    temp_pieces <- thisprov$static
+    names(temp_pieces) <- tolower(names(temp_pieces))
+
+    templurl <- gsub("\\?$", "", temp_pieces$q)
+    layers <- temp_pieces$layers
+
+    # Remove parameters only affecting static urls
+    todel <- names(temp_pieces) %in% c(
+      "attribution", "q", "service", "request",
+      "layers", "srs", "width", "height",
+      "bbox"
+    )
+
+    names(def_opts) <- tolower(names(def_opts))
+
+    def_opts <- modifyList(def_opts, temp_pieces[!todel])
+
+    # Add custom options
+    names(options) <- tolower(names(options))
+    optionend <- modifyList(def_opts, options)
+
+    # Modify default leaflet::WMSTileOptions() with our options
+    wmsopts <- leaflet::WMSTileOptions()
+    names(wmsopts) <- tolower(names(wmsopts))
+
+    optionend <- modifyList(wmsopts, optionend)
+
+    leaflet::addWMSTiles(map,
+      baseUrl = templurl, layers = layers,
+      attribution = attribution, layerId = layerId,
+      group = group, options = optionend
     )
   }
 }
 
 #' @rdname addProviderEspTiles
-#' @details \code{providerEspTileOptions} is a wrapper of
-#' \code{leaflet::providerTileOptions}
-#' @param ...  Additional options. See \link[leaflet]{providerTileOptions}.
-#' @seealso \link[leaflet]{tileOptions}, \link[leaflet]{providerTileOptions}
+#' @name providerEspTileOptions
+#'
+#' @details
+#' [providerEspTileOptions()] is a wrapper of [leaflet::providerTileOptions()].
+#'
+#' @param ... Arguments passed on to [leaflet::providerTileOptions()].
+#' @seealso [leaflet::providerTileOptions()], [leaflet::tileOptions()]
+#'
 #' @export
 providerEspTileOptions <- function(...) {
   ops <- leaflet::providerTileOptions(...)

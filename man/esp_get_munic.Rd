@@ -2,9 +2,13 @@
 % Please edit documentation in R/esp_get_munic.R
 \name{esp_get_munic}
 \alias{esp_get_munic}
-\title{Get municipalities boundaries of Spain}
+\alias{esp_get_munic_siane}
+\title{Get municipalities of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON}}
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
+
+IGN data via a custom CDN (see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
 }
 \usage{
 esp_get_munic(
@@ -18,52 +22,175 @@ esp_get_munic(
   munic = NULL,
   moveCAN = TRUE
 )
+
+esp_get_munic_siane(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = 3,
+  region = NULL,
+  munic = NULL,
+  moveCAN = TRUE,
+  rawcols = FALSE
+)
 }
 \arguments{
-\item{year, epsg, cache, update_cache, cache_dir, verbose, moveCAN}{See \link{esp_get_nuts}. Years from 2016 to 2019 available.}
+\item{year}{Release year. See \strong{Details} for years available.}
+
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source file.}
+
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+
+\item{verbose}{Logical, displays information. Useful for debugging,
+default is \code{FALSE}.}
 
 \item{region}{A vector of names and/or codes for provinces
-or \code{NULL} to get all the municipalities. See Details.}
+or \code{NULL} to get all the municipalities. See \strong{Details}.}
 
-\item{munic}{A name or regex expression with the names of the required
-municipalities. \code{NULL} would not produce any filtering.}
+\item{munic}{A name or \code{\link[base:grep]{regex}} expression with the names of
+the required municipalities. \code{NULL} would return all municipalities.}
+
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
+
+\item{resolution}{Resolution of the polygon. Values available are
+\code{"3"}, \code{"6.5"} or  \code{"10"}.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the resulting object as provided by IGN.}
 }
 \value{
-A \code{POLYGON} object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON}.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-municipalities boundaries of Spain.
+Returns municipalities of Spain \code{sf} POLYGON` at a specified scale.
+\itemize{
+\item \code{\link[=esp_get_munic]{esp_get_munic()}} uses GISCO (Eurostat) as source. Please use
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
+}
+
+\itemize{
+\item \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}} uses CartoBase ANE as source, provided by
+Instituto Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}.
+Years available are 2005 up to today.
+}
 }
 \details{
-When using \code{region} you can use and mix names and NUTS codes
-(levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-\code{cpro}.
-
-When calling a superior level (Province, Autonomous Community or NUTS1) ,
-all the municipalities of that level would be added.
+The years available are:
+\itemize{
+\item \code{\link[=esp_get_munic]{esp_get_munic()}}:  \code{year} could be one of "2001", "2004", "2006", "2008",
+"2010", "2013" and any year between 2016 and 2019.
+See \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_communes()}}.
+\item \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}: \code{year} could be passed as a single year ("YYYY"
+format, as end of year) or as a specific date ("YYYY-MM-DD" format).
+Historical information starts as of 2005.
 }
+
+When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 or
+3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
+(see \link{esp_codelist}).
+
+When calling a higher level (Province, Autonomous Community or NUTS1), all
+the municipalities of that level would be added.
+}
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones. See also
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
+}
+
 \examples{
+\donttest{
+# Get munics
+Base <- esp_get_munic(year = "2019", region = "Castilla y Leon")
+
+# Provs for delimiting
+provs <- esp_get_prov(prov = "Castilla y Leon")
+
+# Load population data
+data("pobmun19")
+
+# Arrange and create breaks
+
+Base_pop <- merge(Base, pobmun19,
+  by = c("cpro", "cmun"),
+  all.x = TRUE
+)
+
+br <- sort(c(
+  0, 50, 100, 200, 500,
+  1000, 5000, 50000, 100000,
+  Inf
+))
+
+Base_pop$cuts <- cut(Base_pop$pob19, br, dig.lab = 20)
+
+# Plot
+library(ggplot2)
 
 
-library(sf)
-
-Base <- esp_get_munic(region = c("Castilla y Leon"))
-SAN <-
-  esp_get_munic(
-    region = c("Castilla y Leon"),
-    munic = c("^San ", "^Santa ")
-  )
-
-plot(st_geometry(Base), col = "cornsilk", border = "grey80")
-plot(st_geometry(SAN),
-     col = "firebrick3",
-     border = NA,
-     add = TRUE)
+ggplot(Base_pop) +
+  geom_sf(aes(fill = cuts), color = NA) +
+  geom_sf(data = provs, fill = NA, color = "grey70") +
+  scale_fill_manual(values = hcl.colors(length(br), "cividis")) +
+  labs(
+    title = "Population in Castilla y Leon",
+    subtitle = "INE, 2019",
+    fill = "Persons"
+  ) +
+  theme_void()
+}
 }
 \seealso{
-\link{esp_get_nuts},\link{esp_munic.sf}, \link{esp_codelist}
+\code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[base:regex]{base::regex()}}.
+
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
+
+Other municipalities: 
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_munic.sf}}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{municipalities}
+\concept{political}

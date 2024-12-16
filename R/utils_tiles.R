@@ -1,59 +1,81 @@
-#' @name getWMS
+#' Get tiles from WMS
+#'
+#' @param transparent Transparency
+#'
+#' @param bbox_expand Expansion of the bbox
+#'
+#' @param url_pieces Provider
+#'
+#' @inheritParams esp_getTiles
+#'
 #' @noRd
-getWMS <- function(x,
-                   provs,
+getwms <- function(newbbox,
+                   url_pieces,
                    update_cache,
                    cache_dir,
                    verbose,
                    res,
-                   transparent,
-                   bbox_expand) {
-  bbox_expand <- max(1 + bbox_expand, 1.1)
-
+                   transparent) {
   # Get squared bbox
-  bbox <- as.double(sf::st_bbox(x))
+  bbox <- as.double(sf::st_bbox(newbbox))
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
-  maxdist <- max(dimx, dimy) * bbox_expand # Expand bbox
+  maxdist <- max(dimx, dimy)
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
-  bboxsquare <- c(center[1] - maxdist / 2,
-                  center[2] - maxdist / 2,
-                  center[1] + maxdist / 2,
-                  center[2] + maxdist / 2)
+  bboxsquare <- c(
+    center[1] - maxdist / 2,
+    center[2] - maxdist / 2,
+    center[1] + maxdist / 2,
+    center[2] + maxdist / 2
+  )
+
+
 
 
   class(bboxsquare) <- "bbox"
 
-
   # Compose params
-  q <- provs[provs$field == "url_static", "value"]
-  q <-
-    gsub("{bbox}", paste0(bboxsquare, collapse = ","), q, fixed = TRUE)
+  url_pieces$bbox <- paste0(bboxsquare, collapse = ",")
+  url_pieces$width <- as.character(res)
+  url_pieces$height <- as.character(res)
 
-  q <- gsub("512", as.character(res), q)
-  src <- unique(provs$provider)
-
-
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
+  # Compose
+  ext <- tolower(gsub("image/", "", url_pieces$format))
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
+    )
   }
 
-  filename <-
-    paste0(src,
-           "_bbox3857_res",
-           res,
-           "_",
-           paste0(bboxsquare, collapse = "_"),
-           ".",
-           ext)
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+  q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
 
+  crs <- unlist(
+    url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")]
+  )
+
+  filename <-
+    paste0(
+      "tile_",
+      "_bbox_", crs,
+      "_res",
+      res,
+      "_",
+      paste0(bboxsquare, collapse = "_"),
+      ".",
+      ext
+    )
+
+  filename <- paste0(esp_get_md5(filename), ".", ext)
   filename <- file.path(cache_dir, filename)
 
-  if (isFALSE(file.exists(filename)) | isTRUE(update_cache)) {
+  if (isFALSE(file.exists(filename)) || isTRUE(update_cache)) {
     if (verbose) {
       message("Downloading from \n", q, "\n to cache dir \n", cache_dir)
     }
@@ -65,7 +87,6 @@ getWMS <- function(x,
       mode = "wb",
       quiet = !verbose
     )
-
   } else {
     if (verbose) {
       message("Requested tile already cached on \n", cache_dir)
@@ -75,84 +96,125 @@ getWMS <- function(x,
   # Read png and geotag
 
   # Only png
-
-  img <- png::readPNG(filename) * 255
-  # Give transparency if available
-  if (dim(img)[3] == 4 & transparent) {
-    nrow <- dim(img)[1]
-
-    for (i in seq_len(nrow)) {
-      row <- img[i, ,]
-      alpha <- row[, 4] == 0
-      row[alpha,] <- NA
-      img[i, ,] <- row
-    }
+  if (ext == "png") {
+    img <- png::readPNG(filename) * 255
+  } else {
+    img <- filename
   }
 
 
   # compose brick raster
-  rout <-
-    raster::brick(img, crs = sf::st_crs(3857)$proj4string)
+  r_img <- suppressWarnings(terra::rast(img))
 
-  raster::extent(rout) <-
-    raster::extent(bboxsquare[c(1, 3, 2, 4)])
+  # Provide transparency if available
+  if (terra::nlyr(r_img) == 4 && transparent) {
+    tomask <- terra::subset(r_img, 4)
+    tomask[tomask == 0] <- NA
 
-  #End WMS
+    r_img <- terra::mask(r_img, tomask)
+  }
 
-  return(rout)
+  # Check if need extent, some tiffs dont
+  if (all(as.vector(terra::ext(r_img)) == c(0, res, 0, res))) {
+    terra::ext(r_img) <- terra::ext(bboxsquare[c(1, 3, 2, 4)])
+  }
+
+  # Check if need a CRS
+  if (terra::crs(r_img) == "") {
+    terra::crs(r_img) <- crs
+  }
+  # End WMS
+
+  return(r_img)
 }
 
-#' @name getWMTS
+#' Get tiles from WMTS
+#'
+#' @inheritParams esp_getTiles
+#'
+#' @inheritParams getWMS
+#'
 #' @noRd
-getWMTS <- function(x,
-                    provs,
+getwmts <- function(newbbox,
+                    type,
+                    url_pieces,
                     update_cache,
                     cache_dir,
                     verbose,
-                    res,
                     zoom,
-                    type,
-                    transparent) {
-  # New fun
-
-  x <- sf::st_transform(x, 4326)
-  bbx <- sf::st_bbox(x)
+                    zoommin,
+                    transparent,
+                    extra_opts) {
+  newbbox <- sf::st_transform(newbbox, 4326)
+  bbx <- sf::st_bbox(newbbox)
 
   # select a default zoom level
+
   if (is.null(zoom)) {
     gz <- slippymath::bbox_tile_query(bbx)
-    zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"])
+    zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"]) + zoommin
 
     if (verbose) {
       message("Auto zoom level: ", zoom)
     }
   }
 
-  # Check zoom
-  if ("minZoom" %in% provs$field) {
-    minZoom <- as.numeric(provs[provs$field == "minZoom", "value"])
 
-    if (zoom < minZoom) {
-      zoom <- max(zoom, minZoom)
+  # Check zoom
+  if ("minzoom" %in% names(extra_opts)) {
+    minzoom <- as.double(extra_opts$minzoom)
+
+    if (zoom < minzoom) {
+      zoom <- max(zoom, minzoom)
       if (verbose) {
-        message("\nSwicthing. Minimum zoom for this provider is ",
-                zoom,
-                "\n")
+        message(
+          "\nSwitching. Minimum zoom for this provider is ",
+          zoom,
+          "\n"
+        )
       }
     }
   }
 
   # get tile list
-  tile_grid <-
-    slippymath::bbox_to_tile_grid(bbox = bbx, zoom = zoom)
+  tile_grid <- slippymath::bbox_to_tile_grid(
+    bbox = bbx,
+    zoom = as.numeric(zoom)
+  )
 
-  # Compose params
-  q <- provs[provs$field == "url_static", "value"]
-  ext <- "jpeg"
-  if (length(grep("png", q)) > 0) {
-    ext <- "png"
-  } else if (length(grep("jpg", q)) > 0) {
-    ext <- "jpg"
+  # Compose
+  # Special case for non INSPIRE serves
+  if (is.null(url_pieces$format)) {
+    ext <- tools::file_ext(url_pieces$q)
+  } else {
+    ext <- tolower(gsub("image/", "", url_pieces$format))
+  }
+
+
+
+  if (!ext %in% c(
+    "png", "jpeg", "jpg", "tiff",
+    "geotiff"
+  )) {
+    stop(
+      "Can't handle ", ext,
+      " files"
+    )
+  }
+
+  url_pieces$tilematrixset <- "GoogleMapsCompatible"
+  url_pieces$tilematrix <- "{z}"
+  url_pieces$tilerow <- "{y}"
+  url_pieces$tilecol <- "{x}"
+
+  q <- url_pieces$q
+  rest <- url_pieces[names(url_pieces) != "q"]
+
+  # Special case WMTS
+  if (isFALSE(grepl("?", url_pieces$q, fixed = TRUE))) {
+    q <- url_pieces$q
+  } else {
+    q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
   }
 
   if (verbose) {
@@ -173,101 +235,95 @@ getWMTS <- function(x,
     update_cache = update_cache
   )
 
-  rout <- compose_tile_grid(tile_grid, ext, images, transparent)
+  rout <- compose_tile_grid(tile_grid, ext, images, transparent, "epsg:3857")
   return(rout)
 }
 
 
 #' @name compose_tile_grid
 #' @noRd
-compose_tile_grid <- function(tile_grid, ext, images, transparent) {
+compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
+  # Based on https://github.com/riatelab/maptiles/blob/main/R/get_tiles.R
+
   bricks <- vector("list", nrow(tile_grid$tiles))
+
+
   for (i in seq_along(bricks)) {
-    bbox <-
-      slippymath::tile_bbox(tile_grid$tiles$x[i], tile_grid$tiles$y[i],
-                            tile_grid$zoom)
+    bbox <- slippymath::tile_bbox(
+      tile_grid$tiles$x[i], tile_grid$tiles$y[i],
+      tile_grid$zoom
+    )
     img <- images[i]
-    # special for png tiles
+
+    # Read png and geotag
+
+    # Only png
     if (ext == "png") {
       img <- png::readPNG(img) * 255
-
-      if (dim(img)[3] == 4 & transparent) {
-        nrow <- dim(img)[1]
-
-        for (j in seq_len(nrow)) {
-          row <- img[j, ,]
-          alpha <- row[, 4] == 0
-          row[alpha,] <- NA
-          img[j, ,] <- row
-        }
-      }
     }
 
+
     # compose brick raster
-    r_img <-
-      raster::brick(img, crs = sf::st_crs(3857)$proj4string)
-    raster::extent(r_img) <-
-      raster::extent(bbox[c("xmin", "xmax",
-                            "ymin", "ymax")])
+    r_img <- suppressWarnings(terra::rast(img))
+
+    # Provide transparency if available
+    if (terra::nlyr(r_img) == 4 && transparent) {
+      tomask <- terra::subset(r_img, 4)
+      tomask[tomask == 0] <- NA
+
+      r_img <- terra::mask(r_img, tomask)
+    }
+
+    terra::ext(r_img) <- terra::ext(bbox[c(
+      "xmin", "xmax",
+      "ymin", "ymax"
+    )])
+
+    # Check if need a CRS
+    if (terra::crs(r_img) == "") {
+      terra::crs(r_img) <- crs
+    }
+
+
     bricks[[i]] <- r_img
   }
+
   # if only one tile is needed
   if (length(bricks) == 1) {
-    return(bricks[[1]])
+    rout <- bricks[[1]]
+    rout <- terra::merge(rout, rout)
+  } else {
+    # all tiles together
+    rout <- do.call(terra::merge, bricks)
   }
-  # all tiles together
-  rout <- do.call(raster::merge, bricks)
+
   return(rout)
 }
 
 
 #' @name dl_t
 #' @noRd
-dl_t <-
-  function(x,
-           z,
-           ext,
-           src,
-           q,
-           verbose,
-           cache_dir,
-           update_cache) {
-    outfile <-
-      paste0(cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".", ext)
+dl_t <- function(x, z, ext, src, q, verbose, cache_dir, update_cache) {
+  outfile <- paste0(
+    cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".",
+    ext
+  )
 
-    if (!file.exists(outfile) |
-        isTRUE(update_cache)) {
-      q <-
-        gsub(
-          pattern = "{x}",
-          replacement = x[1],
-          x = q,
-          fixed = TRUE
-        )
-      q <-
-        gsub(
-          pattern = "{y}",
-          replacement = x[2],
-          x = q,
-          fixed = TRUE
-        )
-      q <- gsub(
-        pattern = "{z}",
-        replacement = z,
-        x = q,
-        fixed = TRUE
-      )
-      if (verbose) {
-        message("Downloading ", q, "\n")
-      }
-      download.file(
-        url = q,
-        destfile = outfile,
-        quiet = TRUE,
-        mode = "wb"
-      )
-    } else if (verbose) {
-      message("Tile cached on", outfile)
+  if (!file.exists(outfile) || isTRUE(update_cache)) {
+    q <- gsub(pattern = "{x}", replacement = x[1], x = q, fixed = TRUE)
+    q <- gsub(pattern = "{y}", replacement = x[2], x = q, fixed = TRUE)
+    q <- gsub(pattern = "{z}", replacement = z, x = q, fixed = TRUE)
+    if (verbose) {
+      message("Downloading ", q, "\n")
     }
-    return(outfile)
+    download.file(
+      url = q,
+      destfile = outfile,
+      quiet = TRUE,
+      mode = "wb"
+    )
+  } else if (verbose) {
+    message("Tile cached on ", outfile)
   }
+  return(outfile)
+}

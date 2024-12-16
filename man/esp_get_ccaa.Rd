@@ -2,63 +2,193 @@
 % Please edit documentation in R/esp_get_ccaa.R
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
-\title{Get Autonomous Communities boundaries of Spain}
+\alias{esp_get_ccaa_siane}
+\title{Get Autonomous Communities of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
+\source{
+IGN data via a custom CDN (see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
+}
 \usage{
-esp_get_ccaa(ccaa = NULL, ...)
+esp_get_ccaa(ccaa = NULL, moveCAN = TRUE, ...)
+
+esp_get_ccaa_siane(
+  ccaa = NULL,
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  moveCAN = TRUE,
+  rawcols = FALSE
+)
 }
 \arguments{
 \item{ccaa}{A vector of names and/or codes for autonomous communities
-or \code{NULL} to get all the autonomous communities. See Details.}
+or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 
-\item{...}{Additional parameters from \link{esp_get_nuts}.}
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands}.}
+
+\item{...}{
+  Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
+  \describe{
+    \item{\code{spatialtype}}{Type of geometry to be returned:
+\itemize{
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{POLYGON} object.
+}}
+  }}
+
+\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} and
+\strong{Details} for \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}.}
+
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item \code{"4258"}: ETRS89.
+\item \code{"4326"}: WGS84.
+\item \code{"3035"}: ETRS89 / ETRS-LAEA.
+\item \code{"3857"}: Pseudo-Mercator.
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source file.}
+
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+
+\item{verbose}{Logical, displays information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{resolution}{Resolution of the \code{POLYGON}. Values available are
+\code{3}, \code{6.5} or \code{10}.}
+
+\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+the resulting object as provided by IGN.}
 }
 \value{
-A \code{POLYGON/POINT} object.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
-Loads a simple feature (\code{sf}) object containing the
-autonomous communities boundaries of Spain.
+Returns
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} as
+\code{sf} \code{POLYGON} or \code{POINT} at a specified scale.
+\itemize{
+\item \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} uses GISCO (Eurostat) as source. Please use
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
+}
+
+\itemize{
+\item \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}} uses CartoBase ANE as source, provided by
+Instituto Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}.
+Years available are 2005 up to today.
+}
 }
 \details{
-When using \code{ccaa} you can use and mix names and NUTS codes
-(levels 1 or 2), ISO codes (corresponding to level 2) or \code{codauto}.
-Ceuta and Melilla are considered as Autonomous Communities on this dataset.
+When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
+ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
+Ceuta and Melilla are considered as Autonomous Communities on this function.
 
 When calling a NUTS1 level, all the Autonomous Communities of that level
 would be added.
-}
-\examples{
 
-library(sf)
+On \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}, \code{year} could be passed as a single year (\code{YYYY}
+format, as end of year) or as a specific date (\code{YYYY-MM-DD} format).
+Historical information starts as of 2005.
+}
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+}
+
+\section{Displacing the Canary Islands}{
+While \code{moveCAN} is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+get the actual coordinates, instead of the modified ones. See also
+\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
+}
+
+\examples{
+ccaa <- esp_get_ccaa()
+
+library(ggplot2)
+
+ggplot(ccaa) +
+  geom_sf()
 
 # Random CCAA
+Random <- esp_get_ccaa(ccaa = c(
+  "Euskadi",
+  "Catalunya",
+  "ES-EX",
+  "Canarias",
+  "ES52",
+  "01"
+))
 
-Random <-
-  esp_get_ccaa(ccaa = c("Euskadi",
-                        "Catalunya",
-                        "ES-EX",
-                        "Canarias",
-                        "ES52",
-                        "01"))
-plot(st_geometry(Random), col = hcl.colors(6))
+
+ggplot(Random) +
+  geom_sf(aes(fill = codauto), show.legend = FALSE) +
+  geom_sf_label(aes(label = codauto), alpha = 0.3)
 
 # All CCAA of a Zone plus an addition
 
 Mix <-
-  esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"),
-               resolution = "20")
-plot(
-  Mix[, "nuts1.code"],
-  pal = hcl.colors(2),
-  key.pos = NULL,
-  main = NULL,
-  border = "white"
-)
+  esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
+
+ggplot(Mix) +
+  geom_sf()
+
+# Combine with giscoR to get countries
+\donttest{
+
+library(giscoR)
+library(sf)
+
+res <- 20 # Set same resoluion
+
+europe <- gisco_get_countries(resolution = res)
+ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
+
+# Transform to same CRS
+europe <- st_transform(europe, 3035)
+ccaa <- st_transform(ccaa, 3035)
+
+ggplot(europe) +
+  geom_sf(fill = "#DFDFDF", color = "#656565") +
+  geom_sf(data = ccaa, fill = "#FDFBEA", color = "#656565") +
+  coord_sf(
+    xlim = c(23, 74) * 10e4,
+    ylim = c(14, 55) * 10e4
+  ) +
+  theme(panel.background = element_rect(fill = "#C7E7FB"))
+}
 }
 \seealso{
-\link{esp_get_hex_ccaa}, \link{esp_get_nuts}, \link{esp_get_prov},
-\link{esp_get_munic}, \link{esp_codelist}
+Other political: 
+\code{\link{esp_codelist}},
+\code{\link{esp_get_can_box}()},
+\code{\link{esp_get_capimun}()},
+\code{\link{esp_get_comarca}()},
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_gridmap}},
+\code{\link{esp_get_munic}()},
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()},
+\code{\link{esp_get_simpl_prov}()}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
+\concept{political}

@@ -1,0 +1,25 @@
+---
+title: "Imagery and mapSpain"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Imagery and mapSpain}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Visit <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> for
+learning how to download imagery of Spain.
+
+Note also that you would need a bunch of extra packages. Make sure that you
+install the packages needed running:
+
+``` r
+install.packages("mapSpain", dependencies = TRUE)
+```
