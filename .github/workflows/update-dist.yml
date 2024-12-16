@@ -1,7 +1,6 @@
 on:
-  push:
-   branches:
-      - sianedata
+  workflow_dispatch:
+
 name: update-dist
 
 jobs:

@@ -6,172 +6,164 @@ output:
     toc: true
     toc_depth: 3
 params:
-  last_year: 2020
+  last_year: 2024
 ---
 
-
-
-
 ```{r config, message=FALSE, warning=FALSE, include=FALSE}
-
-knitr::opts_chunk$set(collapse = TRUE,
-                      tidy = "styler",
-                      comment = "#>",
-                      fig.path = "img/README-")
-
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "img/README-",
+  dev = "ragg_png",
+  dpi = 300
+)
 ```
 
+![Data](https://img.shields.io/badge/last%20data%20available-%60r%20params$last_year%60-green)
+![Last
+Update](https://img.shields.io/badge/updated-%60r%20gsub(%22-%22,%22--%22,Sys.Date())%60-blue)
 
-![Data](https://img.shields.io/badge/last%20data%20available-`r params$last_year`-green)
-![Last Update](https://img.shields.io/badge/updated-`r gsub("-","--",Sys.Date())`-blue)
+This branch is used as CDN to distribute CartoBase ANE data to **mapSpain**.
 
-
-This branch is used as CDN to distribute CartoBase ANE data to `mapSpain`.
-
-Due to poor API, data is not easily reachable, so this branch would be used as 
+Due to poor API, data is not easily reachable, so this branch would be used as
 API endpoint.
 
-Last update : **`r Sys.Date()`**, containing 
-**data up to `r params$last_year`**.
+Last update : **`r Sys.Date()`**, containing **data up to
+`r params$last_year`**.
 
 ## Source data
 
-Atlas Nacional de España (ANE) [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) [ign.es](http://www.ign.es).
+Atlas Nacional de España (ANE) [CC BY
+4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+[ign.es](http://www.ign.es).
 
 <http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE>
 
-
 ## Structure
 
-Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected files) are 
-provided.
+Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected
+files) are provided.
 
 ## Distribution
 
-The `dist` folder contains a distribution of 
-[**CartoBase ANE**](https://www.ign.es/web/ane-area-ane) on [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
+The `dist` folder contains a distribution of [**CartoBase
+ANE**](https://www.ign.es/web/ane-area-ane) on
+[**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
 
 ```{r include=FALSE}
-
 size <- file.size("dist/CartoBase.zip")
 class(size) <- "object_size"
-
 ```
 
-
-A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip), `r format(size, units = "auto")` ) is also provided, including all the data on `dist`.
-
-Updates are made running the `R/create_dist.R` script after proper
-download of new information on `data-raw`.
-
-
+A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip),
+`r format(size, units = "auto")` ) is also provided, including all the data on
+`dist`.
 
 ## Files included
 
-The files provided on `dist` come from the folder `todo` from each 
-distribution. These
-file contains the whole history on each dataset, with two relevant fields, 
+The files provided on `dist` come from the folder `todo` from each distribution.
+These file contains the whole history on each dataset, with two relevant fields,
 allowing to track historical changes between data sets:
 
-* `fecha_alta`: Start validity date
-* `fecha_baja`: End validity date
-
+-   `fecha_alta`: Start validity date
+-   `fecha_baja`: End validity date
 
 It is necessary to apply some filtering depending on the date requested:
 
 ```{r message=FALSE, warning=FALSE}
 library(sf)
 library(dplyr)
+library(ggplot2)
 
-munic <- st_read("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>% 
+munic <- read_sf("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>%
   filter(rotulo == "Arenas del Rey")
 
-# Grey area = Initial
-# Green line = Second row
-# Blue line = Third row
 
-plot(
-  st_geometry(munic),
-  col = c("grey50", NA, NA),
-  border = c(NA, "green", "blue"),
-  lty = c(1, 1, 5)
-)
+ggplot(munic) +
+  geom_sf() +
+  facet_wrap(~fecha_alta, nrow = 1)
 
 
-keepcols <- c("fecha_alta","fecha_baja","rotulo")
-
-knitr::kable(st_drop_geometry(munic[,keepcols]))
-
+munic %>%
+  st_drop_geometry() %>%
+  select(fecha_alta, fecha_baja, rotulo) %>%
+  knitr::kable()
 ```
-
-
 
 An example of filtering:
 
-
 ```{r message=FALSE, warning=FALSE, out.width="33%", fig.show="hold", fig.asp=1.5}
-
 # 2010 shape
 year <- 2010
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
 shp2010 <- munic %>%
   # If fecha_baja is NA means it is the current valid shape
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
-plot(st_geometry(shp2010), main = year, cex.main = 3)
+ggplot(shp2010) +
+  geom_sf() +
+  labs(title = year)
 
 # 2017 shape
 year <- 2017
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
 shp2017 <- munic %>%
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja))  %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
-plot(st_geometry(shp2017), main = year, cex.main = 3)
+ggplot(shp2017) +
+  geom_sf() +
+  labs(title = year)
 
 # Current value
 
 shpcurrent <- munic %>% filter(is.na(fecha_baja))
 
 
-plot(st_geometry(shpcurrent), main = "Current", cex.main = 3)
-
+ggplot(shpcurrent) +
+  geom_sf() +
+  labs(title = "Current")
 ```
-
 
 ### Table of files
 
-Full reference of each dataset in the 
-[data-raw](`r paste0("data-raw/",params$last_year)`) folder.
+Full reference of each dataset in the
+[data-raw](%60r%20paste0(%22data-raw/%22,params$last_year)%60) folder.
 
 There are `r length(list.files("dist/", ".gpkg"))` files available:
 
 ```{r echo=FALSE}
-
 library(dplyr)
 
-files <-
-  list.files("dist/", ".gpkg")
+files <- list.files("dist/", ".gpkg")
 
 
-df <- data.frame(file = files,
-                 res = NA,
-                 stringsAsFactors = FALSE)
+df <- data.frame(
+  file = files,
+  res = NA,
+  stringsAsFactors = FALSE
+)
 
 
-if (length(grep("3", df$file)) > 0)
-  df[grep("3", df$file),]$res <- "3"
-if (length(grep("6m5", df$file) > 0))
-  df[grep("6m5", df$file),]$res <- "6.5"
-if (length(grep("10", df$file)) > 0)
-  df[grep("10", df$file),]$res <- "10"
-if (length(grep("14", df$file)) > 0)
-  df[grep("14", df$file),]$res <- "14"
-if (length(grep("60", df$file)) > 0)
-  df[grep("60", df$file),]$res <- "60"
+if (length(grep("3", df$file)) > 0) {
+  df[grep("3", df$file), ]$res <- "3"
+}
+if (length(grep("6m5", df$file) > 0)) {
+  df[grep("6m5", df$file), ]$res <- "6.5"
+}
+if (length(grep("10", df$file)) > 0) {
+  df[grep("10", df$file), ]$res <- "10"
+}
+if (length(grep("14", df$file)) > 0) {
+  df[grep("14", df$file), ]$res <- "14"
+}
+if (length(grep("60", df$file)) > 0) {
+  df[grep("60", df$file), ]$res <- "60"
+}
 
 df <- df %>% arrange(as.double(res), file)
 
@@ -191,30 +183,18 @@ df$size <- size
 
 
 knitr::kable(df)
-
 ```
-
 
 ## Preview
 
 ```{r preview, echo=FALSE, fig.keep="all", message=FALSE, warning=FALSE, out.width="33%"}
-
 par(mar = c(2, 2, 2, 2))
 for (i in seq_len(nrow(df))) {
   path <- file.path("dist", df[i, "file"])
-  
-  input <-  st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
-  
+
+  input <- st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
+
+
   plot(st_geometry(input), axes = TRUE, main = df[i, "file"])
-  
 }
-
-
-
 ```
-
-
-
-
-
-

@@ -1,0 +1,40 @@
+DESCRIPCIÓN DE LOS DISTINTOS JUEGOS DE CUADRÍCULAS CARTOGRÁFICAS:
+
+
+- MTN25_ED50_Peninsula_Baleares.shp
+
+	Cuadrícula del MTN25 correspondiente a la Península e Islas Baleares, en ED50 y coordenadas geográficas (longitud, latitud)
+	Se trata de la cuadrícula real del MTN25, es decir, aquella que divide a la serie impresa actual del mapa, teniendo en cuenta hojas especiales e irregularidades.
+
+
+- MTN50_ED50_Peninsula_Baleares.shp
+
+	Cuadrícula del MTN50 correspondiente a la Península e Islas Baleares, en ED50 y coordenadas geográficas (longitud, latitud)
+	Se trata de la cuadrícula real del MTN50, es decir, aquella que divide a la serie impresa actual del mapa, teniendo en cuenta hojas especiales e irregularidades.
+
+
+- MTN25_ETRS89_ceuta_melilla_alboran.shp
+
+	Cuadrícula del MTN25 correspondiente a Ceuta, Melilla, Alborán y posesiones españolas en el Norte de África, ajustada al nuevo sistema geodésico de referencia oficial ETRS89, en coordenadas geográficas (longitud, latitud).
+
+
+- MTN25_ETRS89_Peninsula_Baleares_Canarias.shp 
+
+	Cuadrícula real del MTN25 correspondiente a la Península, Baleares y Canarias, ajustada al nuevo sistema geodésico de referencia oficial ETRS89, en coordenadas geográficas (longitud, latitud).
+
+
+- MTN50_ETRS89_Peninsula_Baleares_Canarias.shp
+	
+	Cuadrícula real del MTN50 correspondiente a la Península, Baleares y Canarias, ajustada al nuevo sistema geodésico de referencia oficial ETRS89, en coordenadas geográficas (longitud, latitud).
+
+
+- MTN25_RegCan95_Canarias.shp
+
+	Cuadrícula del MTN25 correspondiente a Canarias, en REGCAN95 (compatible WGS84) y coordenadas geográficas (longitud, latitud).
+	Se trata de la cuadrícula real del MTN25, es decir, aquella que divide a la serie impresa actual del mapa, teniendo en cuenta la distribución especial de las hojas de Canarias. 
+
+
+- MTN50_RegCan95_Canarias.shp
+
+	Cuadrícula del MTN50 correspondiente a Canarias, en REGCAN95 (compatible WGS84) y coordenadas geográficas (longitud, latitud).
+	Se trata de la cuadrícula real del MTN50, es decir, aquella que divide a la serie impresa actual del mapa, teniendo en cuenta la distribución especial de las hojas de Canarias. 

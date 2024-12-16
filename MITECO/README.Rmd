@@ -1,0 +1,61 @@
+---
+title: "MITECO Grids"
+output:
+  github_document:
+    html_preview: false
+    toc: true
+    toc_depth: 3
+---
+
+```{r config, message=FALSE, warning=FALSE, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "MITECO/img/grid-"
+)
+
+library(sf)
+library(dplyr)
+```
+
+**Updated: `r Sys.Date()`**
+
+Data Source: <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.aspx>
+
+
+## Table of files
+
+Full reference of each dataset in the [source](./source/) folder.
+
+There are `r length(list.files("dist/", ".gpkg"))` files available:
+
+```{r echo=FALSE, message=FALSE}
+library(dplyr)
+
+files <-
+  list.files("dist/", ".gpkg")
+
+
+df <- data.frame(
+  file = files,
+  stringsAsFactors = FALSE
+)
+
+
+knitr::kable(df)
+```
+
+
+## Preview
+
+```{r preview, echo=FALSE, fig.keep="all", message=FALSE, warning=FALSE, out.width="33%"}
+par(mar = c(2, 2, 2, 2))
+for (i in seq_len(nrow(df))) {
+  path <- file.path("dist", df[i, "file"])
+
+  input <- st_read(path, stringsAsFactors = FALSE, quiet = TRUE)
+
+  plot(st_geometry(input), axes = TRUE, main = df[i, "file"])
+}
+```
