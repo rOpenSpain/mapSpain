@@ -302,83 +302,71 @@ EuroGeographics for information regarding their license agreements.
 
 All contributions to this project are gratefully acknowledged using the
 [`allcontributors` package](https://github.com/ropensci/allcontributors)
-following the [all-contributors](https://allcontributors.org)
+following the [allcontributors](https://allcontributors.org)
 specification. Contributions of any kind are welcome!
 
 ### Code
 
-<table>
+<table class="table allctb-table">
 <tr>
 <td align="center">
 <a href="https://github.com/dieghernan">
-<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/commits?author=dieghernan">dieghernan</a>
-</td>
-<td align="center">
-<a href="https://github.com/actions-user">
-<img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="100px;" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/mapSpain/commits?author=actions-user">actions-user</a>
-</td>
-<td align="center">
-<a href="https://github.com/ImgBotApp">
-<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/mapSpain/commits?author=ImgBotApp">ImgBotApp</a>
 </td>
 </tr>
 </table>
 
 ### Issue Authors
 
-<table>
+<table class="table allctb-table">
 <tr>
 <td align="center">
 <a href="https://github.com/jesbrz">
-<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
 </td>
 <td align="center">
 <a href="https://github.com/pedrotercero3">
-<img src="https://avatars.githubusercontent.com/u/90156958?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/90156958?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Apedrotercero3">pedrotercero3</a>
 </td>
 <td align="center">
 <a href="https://github.com/ajcanepa">
-<img src="https://avatars.githubusercontent.com/u/10628672?u=f474ccb4da200b642706382fa2a7e946454af9ab&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/10628672?u=f474ccb4da200b642706382fa2a7e946454af9ab&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Aajcanepa">ajcanepa</a>
 </td>
 <td align="center">
 <a href="https://github.com/fgoerlich">
-<img src="https://avatars.githubusercontent.com/u/6486324?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/6486324?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Afgoerlich">fgoerlich</a>
 </td>
 <td align="center">
 <a href="https://github.com/perezcalderon">
-<img src="https://avatars.githubusercontent.com/u/8152544?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/8152544?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Aperezcalderon">perezcalderon</a>
 </td>
 <td align="center">
 <a href="https://github.com/Cidree">
-<img src="https://avatars.githubusercontent.com/u/96820235?u=473cfd139b57545c3f9fc8ddb070ac1909db7b22&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/96820235?u=473cfd139b57545c3f9fc8ddb070ac1909db7b22&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3ACidree">Cidree</a>
 </td>
 <td align="center">
 <a href="https://github.com/catbru">
-<img src="https://avatars.githubusercontent.com/u/2419189?u=d8fd560c3e349236450bdd9669f9d2ef1176d8d9&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/2419189?u=d8fd560c3e349236450bdd9669f9d2ef1176d8d9&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Acatbru">catbru</a>
 </td>
 <td align="center">
 <a href="https://github.com/ana-m-m">
-<img src="https://avatars.githubusercontent.com/u/78867570?u=e82579f7b35ca989a167342ad18e5c003980943a&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/78867570?u=e82579f7b35ca989a167342ad18e5c003980943a&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Aana-m-m">ana-m-m</a>
 </td>
@@ -387,11 +375,11 @@ specification. Contributions of any kind are welcome!
 
 ### Issue Contributors
 
-<table>
+<table class="table allctb-table">
 <tr>
 <td align="center">
 <a href="https://github.com/mpizarrotig">
-<img src="https://avatars.githubusercontent.com/u/18368413?u=a85f35a53cf336f532b6e939b68ebf430669d2f5&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/18368413?u=a85f35a53cf336f532b6e939b68ebf430669d2f5&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+commenter%3Ampizarrotig">mpizarrotig</a>
 </td>
