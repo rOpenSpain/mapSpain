@@ -83,10 +83,11 @@ install.packages("mapSpain",
 )
 ```
 
-#### Remotes
+#### Con pak (desde GitHub)
 
 ```{r instremotes, eval=FALSE}
-remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
+# install.packages("pak")
+pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ### Un ejemplo rápido

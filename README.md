@@ -56,7 +56,8 @@ Alternatively, you can install the developing version of **mapSpain**
 with:
 
 ``` r
-remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
+# install.packages("pak")
+pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ## Usage
@@ -322,12 +323,6 @@ specification. Contributions of any kind are welcome!
 
 <table class="table allctb-table">
 <tr>
-<td align="center">
-<a href="https://github.com/jesbrz">
-<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
-</td>
 <td align="center">
 <a href="https://github.com/pedrotercero3">
 <img src="https://avatars.githubusercontent.com/u/90156958?v=4" width="100px;" class="allctb-avatar" alt=""/>

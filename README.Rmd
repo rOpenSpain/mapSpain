@@ -23,6 +23,9 @@ knitr::opts_chunk$set(
   dpi = 300,
   out.width = "100%"
 )
+
+initcach <- mapSpain::esp_detect_cache_dir()
+mapSpain::esp_set_cache_dir("img/", verbose = FALSE)
 ```
 
 # mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
@@ -81,7 +84,8 @@ install.packages("mapSpain",
 Alternatively, you can install the developing version of **mapSpain** with:
 
 ```{r, eval = FALSE}
-remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
+# install.packages("pak")
+pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ## Usage
@@ -302,8 +306,11 @@ Units*
 If you intend to use the data commercially, please contact EuroGeographics for
 information regarding their license agreements.
 
-## Contributors
+```{r include=FALSE}
+mapSpain::esp_set_cache_dir(initcach, verbose = FALSE)
+```
 
+## Contributors
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -333,12 +340,6 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <table class="table allctb-table" >
 
 <tr>
-<td align="center">
-<a href="https://github.com/jesbrz">
-<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
-</td>
 <td align="center">
 <a href="https://github.com/pedrotercero3">
 <img src="https://avatars.githubusercontent.com/u/90156958?v=4" width="100px;" class="allctb-avatar" alt=""/>
@@ -404,5 +405,4 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
 
