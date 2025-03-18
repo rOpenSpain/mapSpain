@@ -217,8 +217,6 @@ get the actual coordinates, instead of the modified ones. See also
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get a tile to check</span></span></span>
 <span class="r-in"><span><span class="va">tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_getTiles.html">esp_getTiles</a></span><span class="op">(</span><span class="va">area</span>, <span class="st">"IGNBase.Todo"</span>, zoommin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open URL 'https://www.ign.es/wmts/ign-base?service=WMTS&amp;request=GetTile&amp;version=1.0.0&amp;format=image/png&amp;layer=IGNBaseTodo&amp;style=default&amp;tilematrixset=GoogleMapsCompatible&amp;tilematrix=12&amp;tilerow=1525&amp;tilecol=1991': HTTP status was '502 Bad Gateway'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in download.file(url = q, destfile = outfile, quiet = TRUE, mode = "wb"):</span> cannot open URL 'https://www.ign.es/wmts/ign-base?service=WMTS&amp;request=GetTile&amp;version=1.0.0&amp;format=image/png&amp;layer=IGNBaseTodo&amp;style=default&amp;tilematrixset=GoogleMapsCompatible&amp;tilematrix=12&amp;tilerow=1525&amp;tilecol=1991'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Join both point geometries</span></span></span>
 <span class="r-in"><span><span class="va">points</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span></span></span>
@@ -238,7 +236,7 @@ get the actual coordinates, instead of the modified ones. See also
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"green"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Centroid vs. capimun"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'tile' not found</span>
+<span class="r-plt img"><img src="esp_get_capimun-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
