@@ -337,7 +337,7 @@ specification. Contributions of any kind are welcome!
 </td>
 <td align="center">
 <a href="https://github.com/fgoerlich">
-<img src="https://avatars.githubusercontent.com/u/6486324?v=4" width="100px;" class="allctb-avatar" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/6486324?u=e04fd58f9dcc4c4e092895594eb70d7b5960b50b&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3Afgoerlich">fgoerlich</a>
 </td>
