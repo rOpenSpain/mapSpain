@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.0 (2025-04-11 ucrt)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -245,7 +245,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "2441.987KB",
+  "fileSize": "2439.027KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -264,7 +264,7 @@
       "sameAs": "https://doi.org/10.5281/zenodo.5366622"
     }
   ],
-  "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/rOpenSpain/mapSpain/blob/main/NEWS.md",
   "readme": "https://github.com/rOpenSpain/mapSpain/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml", "https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/mapSpain"],
   "developmentStatus": "https://www.repostatus.org/#active"
