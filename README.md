@@ -349,7 +349,7 @@ specification. Contributions of any kind are welcome!
 </td>
 <td align="center">
 <a href="https://github.com/Cidree">
-<img src="https://avatars.githubusercontent.com/u/96820235?u=473cfd139b57545c3f9fc8ddb070ac1909db7b22&v=4" width="100px;" class="allctb-avatar" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/96820235?u=dce53cf1dedbfbb89dc55bc2472fa2493a2c9281&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/mapSpain/issues?q=is%3Aissue+author%3ACidree">Cidree</a>
 </td>

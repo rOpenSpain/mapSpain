@@ -62,7 +62,7 @@ Metadata available on
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
 \examples{
-\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 # Use of regex
 

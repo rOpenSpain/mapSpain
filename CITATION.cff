@@ -234,6 +234,10 @@ references:
     given-names: Bhaskar
   - family-names: Xie
     given-names: Yihui
+  - family-names: Aden-Buie
+    given-names: Garrick
+    email: garrick@posit.co
+    orcid: https://orcid.org/0000-0002-7111-0077
   year: '2025'
   doi: 10.32614/CRAN.package.leaflet
   version: '>= 2.0.0'

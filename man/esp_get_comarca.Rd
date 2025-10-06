@@ -125,7 +125,7 @@ get the actual coordinates, instead of the modified ones. See also
 }
 
 \examples{
-\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 comarcas <- esp_get_comarca(moveCAN = FALSE)
 

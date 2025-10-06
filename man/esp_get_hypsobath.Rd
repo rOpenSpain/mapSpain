@@ -75,7 +75,7 @@ corresponding .geojson file by any other method and save it on your
 }
 
 \examples{
-\dontshow{if (esp_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 # This code would produce a nice plot - It will take a few seconds to run
 library(ggplot2)

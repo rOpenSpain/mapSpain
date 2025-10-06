@@ -29,9 +29,8 @@ values available.}
 \item{layerId}{the layer id to assign}
 
 \item{group}{the name of the group the newly created layers should belong to
-(for \code{\link[leaflet]{clearGroup}} and \code{\link[leaflet]{addLayersControl}} purposes).
-Human-friendly group names are permitted--they need not be short,
-identifier-style names.}
+(for \code{\link[leaflet:clearGroup]{clearGroup()}} and \code{\link[leaflet:addLayersControl]{addLayersControl()}} purposes). Human-friendly
+group names are permitted--they need not be short, identifier-style names.}
 
 \item{options}{tile options}
 
