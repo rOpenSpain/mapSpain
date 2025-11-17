@@ -322,6 +322,19 @@ pre code span.wa
 	background-color: #cab3dd;
 }
 
+.navbar .nav-item .nav-link {
+	padding-left: .5rem;
+	padding-right: .5rem;
+	margin-left: .5rem;
+	margin-right: .5rem;
+}
+
+#navbar .dropdown-menu,
+#navbar .form-inline {
+	margin-left: .5rem;
+	margin-right: .5rem;
+}
+
 .navbar small {
 	font-size: 0.75rem;
 	padding-top: 0.65rem;
