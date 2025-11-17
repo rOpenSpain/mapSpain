@@ -93,7 +93,6 @@ dict_nuts3all <- melt(
 ) %>% unique()
 
 
-
 names_full <-
   bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) %>%
   unique() %>%
@@ -154,7 +153,6 @@ ret <-
     custom_dict = names_dict,
     nomatch = NULL
   )
-
 
 
 toen <- names_full[names_full$key == "Madrid", ]

@@ -63,9 +63,6 @@ ggplot(hexccaa) +
   labs(title = "Hexbin: CCAA")
 
 
-
-
-
 hexprov <- esp_get_hex_prov()
 
 ggplot(hexprov) +
@@ -77,7 +74,6 @@ ggplot(hexprov) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
   labs(title = "Hexbin: Provinces")
-
 
 
 gridccaa <- esp_get_grid_ccaa()

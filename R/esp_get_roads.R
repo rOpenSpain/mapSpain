@@ -73,8 +73,6 @@ esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   data_sf[can_logic, ]$codauto <- "05"
 
 
-
-
   # Move can
   # Checks
   moving <- FALSE

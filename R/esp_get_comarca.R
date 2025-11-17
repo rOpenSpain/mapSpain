@@ -124,7 +124,6 @@ esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
   )
 
 
-
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
     filename = filename,

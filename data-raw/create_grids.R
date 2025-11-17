@@ -7,9 +7,6 @@ library(cartography)
 library(dplyr)
 
 
-
-
-
 # CCAA - Hex----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
 PENIN <- CCAA[!CCAA$iso2.ccaa.code %in%
@@ -214,7 +211,6 @@ newgrid <- sf::st_sf(
 ) %>% st_transform(3857)
 
 
-
 plot(st_geometry(newgrid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")
 plot(st_geometry(REST), col = "blue", add = TRUE)
@@ -276,7 +272,6 @@ rm(list = ls()[!(ls() %in% c(
 plot(st_geometry(esp_hexbin_prov))
 typoLayer(esp_hexbin_prov, var = "codauto")
 labelLayer(esp_hexbin_prov, txt = "label")
-
 
 
 # CCAA Squares----
@@ -350,7 +345,6 @@ plot(st_geometry(newgrid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")
 plot(st_geometry(REST), col = "blue", add = TRUE)
 labelLayer(newgrid, txt = "id")
-
 
 
 df <-

@@ -59,7 +59,6 @@ test_that("sfc", {
   mat2 <- sf::st_coordinates(a2)
 
 
-
   expect_equal(sort(unique(as.integer(mat2))), c(9L, 14L))
 })
 

@@ -13,9 +13,7 @@ df <- esp_get_munic(
 plot(df$geometry)
 
 
-
 esp_munic.sf <- df
-
 
 
 usethis::use_data(esp_munic.sf, overwrite = TRUE, compress = "xz")

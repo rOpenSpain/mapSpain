@@ -511,7 +511,6 @@ plot(st_geometry(esp_get_prov()), add = TRUE)
 dev.off()
 
 
-
 # Overwrite----
 
 esp_hexbin_ccaa_new <- esp_hexbin_ccaa

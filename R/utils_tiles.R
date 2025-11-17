@@ -31,8 +31,6 @@ getwms <- function(newbbox,
   )
 
 
-
-
   class(bboxsquare) <- "bbox"
 
   # Compose params
@@ -189,7 +187,6 @@ getwmts <- function(newbbox,
   } else {
     ext <- tolower(gsub("image/", "", url_pieces$format))
   }
-
 
 
   if (!ext %in% c(

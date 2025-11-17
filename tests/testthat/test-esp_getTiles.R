@@ -152,7 +152,6 @@ test_that("tiles online", {
   p <- esp_getTiles(point, "IGNBase.Todo", verbose = TRUE)
 
 
-
   expect_snapshot_file(save_png(opaque), "opaque.png")
   expect_snapshot_file(save_png(n), "transp.png")
   expect_snapshot_file(save_png(s), "silent.png")

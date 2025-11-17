@@ -205,7 +205,6 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
   }
 
 
-
   if (!is.null(region)) {
     tonuts <- esp_hlp_all2prov(region)
 
@@ -223,7 +222,6 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
       "not return any result"
     )
   }
-
 
 
   # Move CAN

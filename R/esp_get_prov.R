@@ -201,7 +201,6 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   }
 
 
-
   # Get df
   df <- dict_prov
   df <- df[, names(df) != "key"]

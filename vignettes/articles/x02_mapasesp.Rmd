@@ -420,7 +420,6 @@ ggplot(cuad) +
   theme_void()
 
 
-
 ggplot(hex) +
   geom_sf() +
   geom_sf_text(aes(label = iso2.prov.code)) +

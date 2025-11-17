@@ -128,7 +128,6 @@ esp_get_simpl_ccaa <- function(ccaa = NULL, update_cache = FALSE,
   )
 
 
-
   region <- unique(region)
 
 

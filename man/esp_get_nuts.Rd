@@ -160,7 +160,6 @@ ggplot(AndOriental) +
   geom_sf()
 
 
-
 RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
 
 ggplot(RandomRegions) +

@@ -120,7 +120,6 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf <- data_sf[, "nuts2.code"]
 
 
-
   # Get df
   df <- dict_ccaa
   df <- df[, names(df) != "key"]
@@ -140,7 +139,6 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 
   return(data_sf)
 }
-
 
 
 #' @rdname esp_get_ccaa

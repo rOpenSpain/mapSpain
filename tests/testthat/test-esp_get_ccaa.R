@@ -67,7 +67,6 @@ test_that("ccaa online", {
   )
 
 
-
   # Test all
 
   f <- mapSpain::esp_codelist

@@ -52,7 +52,6 @@ ggplot(esp) +
   )
 
 
-
 # But we can
 
 teide_sf_disp <- esp_move_can(teide_sf, moveCAN = c(13, 0))

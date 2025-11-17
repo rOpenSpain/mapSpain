@@ -51,8 +51,6 @@ test_that("Testing dict", {
   expect_silent(esp_dict_region_code(f, "iso2", "codauto"))
 
 
-
-
   # Mixing levels
   valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
   expect_silent(esp_dict_region_code(valsmix, destination = "nuts"))
@@ -60,7 +58,6 @@ test_that("Testing dict", {
 
   expect_warning(esp_dict_region_code(valsmix, destination = "codauto"))
   expect_warning(esp_dict_region_code(valsmix, destination = "iso2"))
-
 
 
   vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

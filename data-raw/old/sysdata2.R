@@ -17,7 +17,6 @@ names(data.sf) <- c("iso2.prov.code", "geometry")
 st_geometry(data.sf) <- "geometry"
 
 
-
 # Get df
 df <- dict_prov
 df <- df[, names(df) != "key"]
