@@ -18,7 +18,6 @@ test_that("comarcas online", {
   expect_silent(esp_get_comarca(comarca = "Rioja"))
   expect_silent(esp_get_comarca(region = "Alava"))
 
-
   a <- mapSpain::esp_codelist
   n <- a$nuts1.name
 

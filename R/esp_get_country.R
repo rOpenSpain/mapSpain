@@ -52,9 +52,13 @@ esp_get_country <- function(moveCAN = TRUE, ...) {
   names <- names(data_sf)
 
   which_geom <- which(
-    vapply(data_sf, function(f) {
-      inherits(f, "sfc")
-    }, TRUE)
+    vapply(
+      data_sf,
+      function(f) {
+        inherits(f, "sfc")
+      },
+      TRUE
+    )
   )
 
   nm <- names(which_geom)
@@ -64,7 +68,6 @@ esp_get_country <- function(moveCAN = TRUE, ...) {
   data_sf <- sf::st_transform(data_sf, 3035)
   g <- sf::st_union(data_sf)
   g <- sf::st_transform(g, init)
-
 
   # Get df
   df <- sf::st_drop_geometry(esp_get_nuts(nuts_level = 0))

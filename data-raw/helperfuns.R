@@ -29,7 +29,9 @@ esp_hlp_rm_accent <- function(str, pattern = "all") {
 
   accentTypes <- c("´", "`", "^", "~", "¨", "ç")
 
-  if (any(c("all", "al", "a", "todos", "t", "to", "tod", "todo") %in% pattern)) {
+  if (
+    any(c("all", "al", "a", "todos", "t", "to", "tod", "todo") %in% pattern)
+  ) {
     # opcao retirar todos
     return(chartr(
       paste(symbols, collapse = ""),
@@ -103,7 +105,6 @@ esp_hlp_code2code <- function() {
 
   nt1 <- unique(df$nuts1.code)
 
-
   # Second level - NUTS2 - CCAA
   nt2 <- unique(df[, c("nuts2.code", "iso2.ccaa.code", "codauto")])
 
@@ -127,7 +128,6 @@ esp_hlp_code2code <- function() {
   colnames(l3) <- c("iso2", "cpro", "nuts")
   base.df <- unique(merge(base.df, l3, all.x = TRUE, all.y = TRUE))
 
-
   # Add missing NUTS3
   missnuts <- data.frame(
     nuts = nt3[!nt3 %in% base.df$nuts],
@@ -142,17 +142,26 @@ esp_hlp_code2code <- function() {
   dict_codes.df$iso2 == "ES-GC"
 
   # Fake NUTS for Canary Islands
-  dict_codes.df[dict_codes.df$iso2 == "ES-GC" &
-    !is.na(dict_codes.df$iso2), ]$nuts <- "XXXXX"
+  dict_codes.df[
+    dict_codes.df$iso2 == "ES-GC" &
+      !is.na(dict_codes.df$iso2),
+  ]$nuts <- "XXXXX"
 
-
-  dict_codes.df[dict_codes.df$iso2 == "ES-TF" &
-    !is.na(dict_codes.df$iso2), ]$nuts <- "YYYYY"
+  dict_codes.df[
+    dict_codes.df$iso2 == "ES-TF" &
+      !is.na(dict_codes.df$iso2),
+  ]$nuts <- "YYYYY"
 
   # Remove dups on Ceuta y Melilla
-  dict_codes.df[dict_codes.df$nuts == "ES64" & !is.na(dict_codes.df$nuts), "iso2"] <- NA
+  dict_codes.df[
+    dict_codes.df$nuts == "ES64" & !is.na(dict_codes.df$nuts),
+    "iso2"
+  ] <- NA
 
-  dict_codes.df[dict_codes.df$nuts == "ES63" & !is.na(dict_codes.df$nuts), "iso2"] <- NA
+  dict_codes.df[
+    dict_codes.df$nuts == "ES63" & !is.na(dict_codes.df$nuts),
+    "iso2"
+  ] <- NA
 
   return(dict_codes.df)
 }

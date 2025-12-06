@@ -80,7 +80,6 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
 
   region <- unique(region)
 
-
   if (!is.null(region)) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
@@ -146,14 +145,14 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
 
   region <- unique(region)
 
-
   if (!is.null(region)) {
     nuts_id <- esp_hlp_all2ccaa(region)
 
     nuts_id <- unique(nuts_id)
     if (length(nuts_id) == 0) {
       stop(
-        "region ", paste0("'", region, "'", collapse = ", "),
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }

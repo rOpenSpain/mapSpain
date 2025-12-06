@@ -3,7 +3,6 @@ test_that("Custom WMTS provider", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
-
   # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
@@ -16,7 +15,6 @@ test_that("Custom WMTS provider", {
     layer = "IGNBaseTodo-nofondo"
   )
 
-
   tile <- esp_getTiles(segovia, type = custom_wmts)
   expect_s4_class(tile, "SpatRaster")
 })
@@ -25,7 +23,6 @@ test_that("Custom WMS provider", {
   skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
-
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()

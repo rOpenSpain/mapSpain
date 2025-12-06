@@ -18,13 +18,11 @@ test_that("Test cache online", {
   # Cache dir should be deleted now
   expect_false(dir.exists(testdir))
 
-
   # Reset just for testing all cases
   testdir <- file.path(tempdir(), "mapSpain", "testthat")
   expect_message(esp_set_cache_dir(testdir))
 
   cat("Testing cache dir is ", Sys.getenv("MAPSPAIN_CACHE_DIR"), "\n")
-
 
   skip_on_cran()
   skip_if_siane_offline()

@@ -1,10 +1,18 @@
-esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
-                                      verbose, update_cache, cache) {
+esp_hlp_dwnload_sianedata <- function(
+  api_entry,
+  filename,
+  cache_dir,
+  verbose,
+  update_cache,
+  cache
+) {
   url <- file.path(api_entry, filename)
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  if (verbose) message("Cache dir is ", cache_dir)
+  if (verbose) {
+    message("Cache dir is ", cache_dir)
+  }
 
   # Create filepath
   filepath <- file.path(cache_dir, filename)
@@ -39,20 +47,16 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
   # Downloading
   if (dwnload) {
     err_dwnload <- try(
-      download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
-      if (verbose) message("Retrying query")
+      if (verbose) {
+        message("Retrying query")
+      }
       err_dwnload <- try(
-        download.file(url, filepath,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       )
     }
@@ -103,6 +107,8 @@ esp_hlp_dwnload_sianedata <- function(api_entry, filename, cache_dir,
   }
   # nocov end
 
-  if (verbose) message("File loaded")
+  if (verbose) {
+    message("File loaded")
+  }
   return(err_onload)
 }

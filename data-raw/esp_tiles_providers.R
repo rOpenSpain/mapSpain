@@ -33,21 +33,28 @@ esp_hlp_split_url <- function(url_static) {
   }
   opts <- unlist(strsplit(split[2], "&"))
 
-  names_opts <- vapply(opts, function(x) {
-    n <- strsplit(x, "=", fixed = TRUE)
-    return(unlist(n)[1])
-  }, FUN.VALUE = character(1))
+  names_opts <- vapply(
+    opts,
+    function(x) {
+      n <- strsplit(x, "=", fixed = TRUE)
+      return(unlist(n)[1])
+    },
+    FUN.VALUE = character(1)
+  )
 
-  values_opts <- vapply(opts, function(x) {
-    n <- strsplit(x, "=", fixed = TRUE)
+  values_opts <- vapply(
+    opts,
+    function(x) {
+      n <- strsplit(x, "=", fixed = TRUE)
 
-    unl <- unlist(n)
-    if (length(unl) == 2) {
-      return(unl[2])
-    }
-    return("")
-  }, FUN.VALUE = character(1))
-
+      unl <- unlist(n)
+      if (length(unl) == 2) {
+        return(unl[2])
+      }
+      return("")
+    },
+    FUN.VALUE = character(1)
+  )
 
   names(values_opts) <- tolower(names_opts)
 
@@ -99,7 +106,6 @@ usethis::use_data(esp_tiles_providers, overwrite = TRUE)
 rm(list = ls())
 # Try
 
-
 esp_set_cache_dir("~/R/maplibs/GISCO", install = TRUE, overwrite = TRUE)
 
 esp_hlp_detect_cache_dir()
@@ -122,7 +128,10 @@ leaflet() %>%
     zoom = 10
   ) %>%
   addProviderEspTiles(provider = "IDErioja.Claro") %>%
-  addProviderEspTiles(provider = "CaminoDeSantiago", options = list(transparent = TRUE))
+  addProviderEspTiles(
+    provider = "CaminoDeSantiago",
+    options = list(transparent = TRUE)
+  )
 
 names(mapSpain::esp_tiles_providers)
 

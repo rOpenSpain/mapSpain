@@ -9,7 +9,6 @@ library(ggplot2)
 
 # sysfonts::font_add_google("Open Sans")
 
-
 map <- esp_get_munic()
 map2 <- esp_get_prov()
 l <- esp_get_can_box()
@@ -38,7 +37,6 @@ library(hexSticker)
 # fontinit <- as.character(windowsFonts("serif"))
 # windowsFonts(serif = windowsFont("Noto Serif"))
 
-
 sticker(
   a,
   package = "mapSpain",
@@ -57,7 +55,6 @@ sticker(
   # p_family = "serif",
   p_size = 15
 )
-
 
 # windowsFonts(serif = fontinit)
 # windowsFonts("serif")

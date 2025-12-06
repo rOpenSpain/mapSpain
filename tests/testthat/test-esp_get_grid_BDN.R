@@ -32,7 +32,8 @@ test_that("BDN grid online", {
     )
   )
   expect_silent(esp_get_grid_BDN(
-    resolution = 5, type = "canary",
+    resolution = 5,
+    type = "canary",
     cache_dir = tempdir()
   ))
 })
@@ -43,21 +44,17 @@ test_that("BDN grid online CCAA", {
   skip_if_siane_offline()
 
   expect_message(
-    esp_get_grid_BDN_ccaa("Ceuta",
-      cache_dir = tempdir(),
-      verbose = TRUE
-    )
+    esp_get_grid_BDN_ccaa("Ceuta", cache_dir = tempdir(), verbose = TRUE)
   )
 
   expect_message(
-    esp_get_grid_BDN_ccaa("Ceuta",
+    esp_get_grid_BDN_ccaa(
+      "Ceuta",
       cache_dir = tempdir(),
       update_cache = TRUE,
       verbose = TRUE
     )
   )
 
-  expect_silent(esp_get_grid_BDN_ccaa("Melilla",
-    cache_dir = tempdir()
-  ))
+  expect_silent(esp_get_grid_BDN_ccaa("Melilla", cache_dir = tempdir()))
 })

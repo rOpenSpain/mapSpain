@@ -154,10 +154,21 @@
 #' autoplot(cartodb, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
 #' }
-esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
-                         crop = TRUE, res = 512, bbox_expand = 0.05,
-                         transparent = TRUE, mask = FALSE, update_cache = FALSE,
-                         cache_dir = NULL, verbose = FALSE, options = NULL) {
+esp_getTiles <- function(
+  x,
+  type = "IDErioja",
+  zoom = NULL,
+  zoommin = 0,
+  crop = TRUE,
+  res = 512,
+  bbox_expand = 0.05,
+  transparent = TRUE,
+  mask = FALSE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  options = NULL
+) {
   # Only sf and sfc objects allowed
 
   if (!inherits(x, "sf") && !inherits(x, "sfc")) {
@@ -169,14 +180,12 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
     x <- sf::st_as_sf(data.frame(x = 1), x)
   }
 
-
   # Some transformations
   res <- as.numeric(res)
 
   # Keep initial
   xinit <- x
   x <- sf::st_geometry(x)
-
 
   # A. Check providers
   if (is.list(type)) {
@@ -205,7 +214,6 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
       )
     }
 
-
     # Split url
     url_pieces <- provs[[type]]$static
     # And get extra optios
@@ -217,7 +225,6 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
   # Create cache dir
   cache_dir <- esp_hlp_cachedir(cache_dir)
   cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
-
 
   # Attribution
   attr <- url_pieces$attribution
@@ -243,10 +250,8 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
         list(v = options$version)
       ))
 
-
       # Assess version
       v_wms <- unlist(strsplit(v_wms, ".", fixed = TRUE))
-
 
       if (v_wms[1] >= "1" && v_wms[2] >= "3") {
         names(url_pieces) <- gsub("srs", "crs", names(url_pieces))
@@ -277,12 +282,15 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
     url_pieces[names(url_pieces) %in% c("crs", "srs", "tilematrixset")]
   )
   # Caso some WMTS
-  if (is.null(crs)) crs <- "epsg:3857"
+  if (is.null(crs)) {
+    crs <- "epsg:3857"
+  }
 
-  if (tolower(crs) == tolower("GoogleMapsCompatible")) crs <- "epsg:3857"
+  if (tolower(crs) == tolower("GoogleMapsCompatible")) {
+    crs <- "epsg:3857"
+  }
 
   crs_sf <- sf::st_crs(crs)
-
 
   # Transform to crs of tile
 
@@ -305,13 +313,26 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
 
   if (typeprov == "WMS") {
     rout <- getwms(
-      newbbox, url_pieces, update_cache, cache_dir, verbose,
-      res, transparent
+      newbbox,
+      url_pieces,
+      update_cache,
+      cache_dir,
+      verbose,
+      res,
+      transparent
     )
   } else {
     rout <- getwmts(
-      newbbox, type, url_pieces, update_cache, cache_dir, verbose,
-      zoom, zoommin, transparent, extra_opts
+      newbbox,
+      type,
+      url_pieces,
+      update_cache,
+      cache_dir,
+      verbose,
+      zoom,
+      zoommin,
+      transparent,
+      extra_opts
     )
   }
 
@@ -332,7 +353,9 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
     rout_end <- try(terra::project(rout, terra::crs(x_terra)), silent = TRUE)
 
     if (inherits(rout_end, "try-error")) {
-      if (verbose) message("Tile not reprojected.")
+      if (verbose) {
+        message("Tile not reprojected.")
+      }
       rout <- rout
     } else {
       rout <- rout_end
@@ -340,7 +363,6 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
   }
 
   rout <- terra::clamp(rout, lower = 0, upper = 255, values = TRUE)
-
 
   # crop management
   if (crop == TRUE) {
@@ -366,7 +388,6 @@ esp_getTiles <- function(x, type = "IDErioja", zoom = NULL, zoommin = 0,
     terra::RGB(rout) <- seq_len(terra::nlyr(rout))
   }
 
-
   # Result
   return(rout)
 }
@@ -380,7 +401,6 @@ esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
 
   bbox_expand <- 1 + bbox_expand
-
 
   if (typeprov == "WMS") {
     maxdist <- max(dimx, dimy)
@@ -417,21 +437,28 @@ esp_hlp_split_url <- function(url_static) {
 
   opts <- unlist(strsplit(split[2], "&"))
 
-  names_opts <- vapply(opts, function(x) {
-    n <- strsplit(x, "=", fixed = TRUE)
-    return(unlist(n)[1])
-  }, FUN.VALUE = character(1))
+  names_opts <- vapply(
+    opts,
+    function(x) {
+      n <- strsplit(x, "=", fixed = TRUE)
+      return(unlist(n)[1])
+    },
+    FUN.VALUE = character(1)
+  )
 
-  values_opts <- vapply(opts, function(x) {
-    n <- strsplit(x, "=", fixed = TRUE)
+  values_opts <- vapply(
+    opts,
+    function(x) {
+      n <- strsplit(x, "=", fixed = TRUE)
 
-    unl <- unlist(n)
-    if (length(unl) == 2) {
-      return(unl[2])
-    }
-    return("")
-  }, FUN.VALUE = character(1))
-
+      unl <- unlist(n)
+      if (length(unl) == 2) {
+        return(unl[2])
+      }
+      return("")
+    },
+    FUN.VALUE = character(1)
+  )
 
   names(values_opts) <- tolower(names_opts)
 

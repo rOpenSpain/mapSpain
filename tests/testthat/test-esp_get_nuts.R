@@ -34,7 +34,6 @@ test_that("Test local NUTS", {
   ff <- esp_get_nuts(region = l1)
   expect_equal(length(l1), nrow(ff))
 
-
   # Check all iso codes
   b <- unique(c(
     esp_codelist$iso2.ccaa.code,

@@ -84,10 +84,18 @@
 #'   theme_void() +
 #'   labs(title = "Centroid vs. capimun")
 #' }
-esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
-                            update_cache = FALSE, cache_dir = NULL,
-                            verbose = FALSE, region = NULL, munic = NULL,
-                            moveCAN = TRUE, rawcols = FALSE) {
+esp_get_capimun <- function(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  region = NULL,
+  munic = NULL,
+  moveCAN = TRUE,
+  rawcols = FALSE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -97,8 +105,13 @@ esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "capimun", 3, cache, cache_dir,
-    update_cache, verbose, year
+    "capimun",
+    3,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
   )
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
@@ -110,7 +123,8 @@ esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   df$cpro <- substr(df$id_ine, 1, 2)
 
   idprov <- sort(unique(mapSpain::esp_codelist$cpro))
-  df$cmun <- ifelse(substr(df$LAU_CODE, 1, 2) %in% idprov,
+  df$cmun <- ifelse(
+    substr(df$LAU_CODE, 1, 2) %in% idprov,
     substr(df$LAU_CODE, 3, 8),
     NA
   )
@@ -171,8 +185,13 @@ esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   namesend <- unique(c(
     colnames_init,
     c(
-      "codauto", "ine.ccaa.name", "cpro", "ine.prov.name",
-      "cmun", "name", "LAU_CODE"
+      "codauto",
+      "ine.ccaa.name",
+      "cpro",
+      "ine.prov.name",
+      "cmun",
+      "name",
+      "LAU_CODE"
     ),
     colnames(data_sf)
   ))
@@ -181,8 +200,13 @@ esp_get_capimun <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
 
   if (isFALSE(rawcols)) {
     data_sf <- data_sf[, c(
-      "codauto", "ine.ccaa.name", "cpro",
-      "ine.prov.name", "cmun", "name", "LAU_CODE"
+      "codauto",
+      "ine.ccaa.name",
+      "cpro",
+      "ine.prov.name",
+      "cmun",
+      "name",
+      "LAU_CODE"
     )]
   }
   return(data_sf)

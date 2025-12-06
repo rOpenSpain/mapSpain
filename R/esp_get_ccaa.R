@@ -99,7 +99,6 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 
   ccaa <- ccaa[!is.na(ccaa)]
 
-
   region <- ccaa
   if (is.null(region)) {
     nuts_id <- NULL
@@ -113,12 +112,10 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   params$nuts_level <- 2
   params$moveCAN <- moveCAN
 
-
   data_sf <- do.call(mapSpain::esp_get_nuts, params)
 
   data_sf$nuts2.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts2.code"]
-
 
   # Get df
   df <- dict_ccaa
@@ -170,14 +167,20 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 #' On [esp_get_ccaa_siane()], `year` could be passed as a single year (`YYYY`
 #' format, as end of year) or as a specific date (`YYYY-MM-DD` format).
 #' Historical information starts as of 2005.
-esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
-                               cache = TRUE, update_cache = FALSE,
-                               cache_dir = NULL, verbose = FALSE,
-                               resolution = "3", moveCAN = TRUE,
-                               rawcols = FALSE) {
+esp_get_ccaa_siane <- function(
+  ccaa = NULL,
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  moveCAN = TRUE,
+  rawcols = FALSE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
-
 
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
@@ -185,8 +188,13 @@ esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "ccaa", resolution, cache, cache_dir,
-    update_cache, verbose, year
+    "ccaa",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
   )
 
   initcols <- colnames(sf::st_drop_geometry(data_sf))
@@ -218,7 +226,6 @@ esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
     # Filter
     data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
   }
-
 
   # Get df final with vars
   df <- dict_ccaa
@@ -258,7 +265,6 @@ esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
   # Transform
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
@@ -267,7 +273,9 @@ esp_get_ccaa_siane <- function(ccaa = NULL, year = Sys.Date(), epsg = "4258",
     data_sf <- data_sf[
       ,
       unique(c(
-        initcols, colnames(df), "nuts1.code",
+        initcols,
+        colnames(df),
+        "nuts1.code",
         "nuts1.name"
       ))
     ]

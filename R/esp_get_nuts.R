@@ -153,10 +153,19 @@
 #' ggplot(MixingCodes) +
 #'   geom_sf() +
 #'   labs(title = "Mixing Codes")
-esp_get_nuts <- function(year = "2016", epsg = "4258", cache = TRUE,
-                         update_cache = FALSE, cache_dir = NULL,
-                         verbose = FALSE, resolution = "01", spatialtype = "RG",
-                         region = NULL, nuts_level = "all", moveCAN = TRUE) {
+esp_get_nuts <- function(
+  year = "2016",
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "01",
+  spatialtype = "RG",
+  region = NULL,
+  nuts_level = "all",
+  moveCAN = TRUE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
   resolution <- as.character(resolution)
@@ -205,7 +214,8 @@ esp_get_nuts <- function(year = "2016", epsg = "4258", cache = TRUE,
 
     if (length(nuts_id) == 0) {
       stop(
-        "region ", paste0("'", region, "'", collapse = ", "),
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }
@@ -213,10 +223,15 @@ esp_get_nuts <- function(year = "2016", epsg = "4258", cache = TRUE,
 
   dwnload <- TRUE
 
-  if (all(
-    year == "2016", resolution == "01", epsg == "4326", spatialtype == "RG",
-    isFALSE(update_cache)
-  )) {
+  if (
+    all(
+      year == "2016",
+      resolution == "01",
+      epsg == "4326",
+      spatialtype == "RG",
+      isFALSE(update_cache)
+    )
+  ) {
     if (verbose) {
       message("Reading from esp_nuts.sf")
     }
@@ -236,13 +251,16 @@ esp_get_nuts <- function(year = "2016", epsg = "4258", cache = TRUE,
 
   if (dwnload) {
     data_sf <- giscoR::gisco_get_nuts(
-      resolution = resolution, year = year,
-      epsg = epsg, nuts_level = nuts_level,
+      resolution = resolution,
+      year = year,
+      epsg = epsg,
+      nuts_level = nuts_level,
       cache = cache,
       update_cache = update_cache,
       cache_dir = cache_dir,
       spatialtype = spatialtype,
-      nuts_id = nuts_id, country = "ES",
+      nuts_id = nuts_id,
+      country = "ES",
       verbose = verbose
     )
   }

@@ -9,14 +9,19 @@ library(dplyr)
 
 # CCAA - Hex----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
-PENIN <- CCAA[!CCAA$iso2.ccaa.code %in%
-  c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
+PENIN <- CCAA[
+  !CCAA$iso2.ccaa.code %in%
+    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+]
 
-REST <- CCAA[CCAA$iso2.ccaa.code %in%
-  c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
+REST <- CCAA[
+  CCAA$iso2.ccaa.code %in%
+    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+]
 
 # Grid for penin
-cells <- calculate_grid(PENIN,
+cells <- calculate_grid(
+  PENIN,
   grid_type = "hexagonal",
   seed = 100,
   learning_rate = 0.5
@@ -74,7 +79,8 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>% st_transform(3857)
+) %>%
+  st_transform(3857)
 
 plot(st_geometry(newgrid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")
@@ -117,16 +123,19 @@ plot(st_geometry(esp_get_ccaa()))
 plot(st_geometry(esp_hexbin_ccaa), add = TRUE)
 labelLayer(esp_hexbin_ccaa, txt = "label")
 
-st_write(esp_hexbin_ccaa, "data-raw/esp_hexbin_ccaa.gpkg",
-  delete_layer = TRUE
-)
+st_write(esp_hexbin_ccaa, "data-raw/esp_hexbin_ccaa.gpkg", delete_layer = TRUE)
 
-rm(list = ls()[!(ls() %in% c(
-  "esp_grid_ccaa",
-  "esp_grid_prov",
-  "esp_hexbin_ccaa",
-  "esp_hexbin_prov"
-))])
+rm(
+  list = ls()[
+    !(ls() %in%
+      c(
+        "esp_grid_ccaa",
+        "esp_grid_prov",
+        "esp_hexbin_ccaa",
+        "esp_hexbin_prov"
+      ))
+  ]
+)
 
 plot(st_geometry(esp_hexbin_ccaa))
 labelLayer(esp_hexbin_ccaa, txt = "label")
@@ -137,15 +146,23 @@ labelLayer(esp_hexbin_ccaa, txt = "label")
 PROV <- st_transform(esp_get_prov(), 3857)
 
 ncod <-
-  esp_dict_region_code(c("Canarias", "Ceuta", "Melilla", "Baleares"), destination = "codauto")
+  esp_dict_region_code(
+    c("Canarias", "Ceuta", "Melilla", "Baleares"),
+    destination = "codauto"
+  )
 
-PENIN <- PROV[!PROV$codauto %in%
-  ncod, ]
+PENIN <- PROV[
+  !PROV$codauto %in%
+    ncod,
+]
 
-REST <- PROV[PROV$codauto %in%
-  ncod, ]
+REST <- PROV[
+  PROV$codauto %in%
+    ncod,
+]
 
-cells <- calculate_grid(PENIN,
+cells <- calculate_grid(
+  PENIN,
   grid_type = "hexagonal",
   seed = 50,
   learning_rate = 0.2
@@ -208,7 +225,8 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>% st_transform(3857)
+) %>%
+  st_transform(3857)
 
 
 plot(st_geometry(newgrid))
@@ -257,17 +275,20 @@ plot(esp_get_prov() %>% st_transform(4258) %>% st_geometry(), add = TRUE)
 esp_hexbin_prov <- st_make_valid(final)
 
 
-st_write(esp_hexbin_prov, "data-raw/esp_hexbin_prov.gpkg",
-  delete_layer = TRUE
+st_write(esp_hexbin_prov, "data-raw/esp_hexbin_prov.gpkg", delete_layer = TRUE)
+
+
+rm(
+  list = ls()[
+    !(ls() %in%
+      c(
+        "esp_grid_ccaa",
+        "esp_grid_prov",
+        "esp_hexbin_ccaa",
+        "esp_hexbin_prov"
+      ))
+  ]
 )
-
-
-rm(list = ls()[!(ls() %in% c(
-  "esp_grid_ccaa",
-  "esp_grid_prov",
-  "esp_hexbin_ccaa",
-  "esp_hexbin_prov"
-))])
 
 plot(st_geometry(esp_hexbin_prov))
 typoLayer(esp_hexbin_prov, var = "codauto")
@@ -276,12 +297,17 @@ labelLayer(esp_hexbin_prov, txt = "label")
 
 # CCAA Squares----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
-PENIN <- CCAA[!CCAA$iso2.ccaa.code %in%
-  c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
+PENIN <- CCAA[
+  !CCAA$iso2.ccaa.code %in%
+    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+]
 
-REST <- CCAA[CCAA$iso2.ccaa.code %in%
-  c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
-cells <- calculate_grid(PENIN,
+REST <- CCAA[
+  CCAA$iso2.ccaa.code %in%
+    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+]
+cells <- calculate_grid(
+  PENIN,
   grid_type = "regular",
   seed = 59,
   learning_rate = 0.5
@@ -338,7 +364,8 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>% st_transform(3857)
+) %>%
+  st_transform(3857)
 
 
 plot(st_geometry(newgrid))
@@ -375,16 +402,19 @@ final <- final[, names(final)]
 
 esp_grid_ccaa <- final
 
-st_write(esp_grid_ccaa, "data-raw/esp_grid_ccaa.gpkg",
-  delete_layer = TRUE
-)
+st_write(esp_grid_ccaa, "data-raw/esp_grid_ccaa.gpkg", delete_layer = TRUE)
 
-rm(list = ls()[!(ls() %in% c(
-  "esp_grid_ccaa",
-  "esp_grid_prov",
-  "esp_hexbin_ccaa",
-  "esp_hexbin_prov"
-))])
+rm(
+  list = ls()[
+    !(ls() %in%
+      c(
+        "esp_grid_ccaa",
+        "esp_grid_prov",
+        "esp_hexbin_ccaa",
+        "esp_hexbin_prov"
+      ))
+  ]
+)
 
 plot(st_geometry(esp_grid_ccaa))
 labelLayer(esp_grid_ccaa, txt = "label")
@@ -394,16 +424,24 @@ labelLayer(esp_grid_ccaa, txt = "label")
 PROV <- st_transform(esp_get_prov(), 3857)
 
 ncod <-
-  esp_dict_region_code(c("Canarias", "Ceuta", "Melilla", "Baleares"), destination = "codauto")
+  esp_dict_region_code(
+    c("Canarias", "Ceuta", "Melilla", "Baleares"),
+    destination = "codauto"
+  )
 
-PENIN <- PROV[!PROV$codauto %in%
-  ncod, ]
+PENIN <- PROV[
+  !PROV$codauto %in%
+    ncod,
+]
 
-REST <- PROV[PROV$codauto %in%
-  ncod, ]
+REST <- PROV[
+  PROV$codauto %in%
+    ncod,
+]
 
 
-cells <- calculate_grid(PENIN,
+cells <- calculate_grid(
+  PENIN,
   grid_type = "regular",
   seed = 42,
   learning_rate = 0.5
@@ -461,7 +499,8 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>% st_transform(3857)
+) %>%
+  st_transform(3857)
 
 par(mar = c(0, 0, 0, 0))
 plot(st_geometry(newgrid))
@@ -509,9 +548,7 @@ final <- final[, names(final)]
 
 esp_grid_prov <- final
 
-st_write(esp_grid_prov, "data-raw/esp_grid_prov.gpkg",
-  delete_layer = TRUE
-)
+st_write(esp_grid_prov, "data-raw/esp_grid_prov.gpkg", delete_layer = TRUE)
 
 
 rm(list = ls())

@@ -118,9 +118,15 @@
 #'     keyheight = .8
 #'   ))
 #' }
-esp_get_hypsobath <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
-                              cache_dir = NULL, verbose = FALSE,
-                              resolution = "3", spatialtype = "area") {
+esp_get_hypsobath <- function(
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  spatialtype = "area"
+) {
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
@@ -131,7 +137,8 @@ esp_get_hypsobath <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
 
   if (!resolution %in% validres) {
     stop(
-      "resolution should be one of '", paste0(validres, collapse = "', "),
+      "resolution should be one of '",
+      paste0(validres, collapse = "', "),
       "'"
     )
   }
@@ -142,13 +149,19 @@ esp_get_hypsobath <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
   if (!spatialtype %in% validspatialtype) {
     stop(
       "spatialtype should be one of '",
-      paste0(validspatialtype, collapse = "', "), "'"
+      paste0(validspatialtype, collapse = "', "),
+      "'"
     )
   }
 
   type <- paste0("orog", spatialtype)
 
-  data_sf <- esp_hlp_get_siane(type, resolution, cache, cache_dir, update_cache,
+  data_sf <- esp_hlp_get_siane(
+    type,
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
     verbose,
     year = Sys.Date()
   )

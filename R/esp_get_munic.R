@@ -88,31 +88,49 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
-                          update_cache = FALSE, cache_dir = NULL,
-                          verbose = FALSE, region = NULL, munic = NULL,
-                          moveCAN = TRUE) {
+esp_get_munic <- function(
+  year = "2019",
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  region = NULL,
+  munic = NULL,
+  moveCAN = TRUE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
   yearsav <- c(
-    "2001", "2004", "2006", "2008", "2010", "2013", "2016", "2017",
-    "2018", "2019"
+    "2001",
+    "2004",
+    "2006",
+    "2008",
+    "2010",
+    "2013",
+    "2016",
+    "2017",
+    "2018",
+    "2019"
   )
 
   if (!year %in% yearsav) {
     stop(
-      "year ", year, " not available, try ",
+      "year ",
+      year,
+      " not available, try ",
       paste0("'", yearsav, "'", collapse = ", ")
     )
   }
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  if (init_epsg == "4258") epsg <- "4326"
+  if (init_epsg == "4258") {
+    epsg <- "4326"
+  }
 
   dwnload <- TRUE
-
 
   if (all(year == "2019", epsg == "4326", isFALSE(update_cache))) {
     if (verbose) {
@@ -120,22 +138,24 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
     }
     data_sf <- mapSpain::esp_munic.sf
 
-
     dwnload <- FALSE
   }
 
   if (dwnload) {
     if (year >= "2016") {
       data_sf <- giscoR::gisco_get_lau(
-        year = year, epsg = epsg,
+        year = year,
+        epsg = epsg,
         cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
-        verbose = verbose, country = "ES"
+        verbose = verbose,
+        country = "ES"
       )
     } else {
       data_sf <- giscoR::gisco_get_communes(
-        year = year, epsg = epsg,
+        year = year,
+        epsg = epsg,
         cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
@@ -173,7 +193,6 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
 
     df <- df[, c("LAU_CODE", "name")]
 
-
     df$LAU_CODE <- gsub("ES", "", df$LAU_CODE)
 
     df$cpro <- substr(df$LAU_CODE, 1, 2)
@@ -184,17 +203,21 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
     cod <- unique(mapSpain::esp_codelist[, c(
       "codauto",
       "ine.ccaa.name",
-      "cpro", "ine.prov.name"
+      "cpro",
+      "ine.prov.name"
     )])
 
     df2 <- merge(df, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
 
-
     df2 <- df2[, c(
-      "codauto", "ine.ccaa.name", "cpro", "ine.prov.name",
-      "cmun", "name", "LAU_CODE"
+      "codauto",
+      "ine.ccaa.name",
+      "cpro",
+      "ine.prov.name",
+      "cmun",
+      "name",
+      "LAU_CODE"
     )]
-
 
     data_sf <- df2
   }
@@ -203,7 +226,6 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
     munic <- paste(munic, collapse = "|")
     data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
   }
-
 
   if (!is.null(region)) {
     tonuts <- esp_hlp_all2prov(region)
@@ -223,14 +245,12 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
     )
   }
 
-
   # Move CAN
 
   # Checks
 
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
 
   if (moving) {
     if (length(grep("05", data_sf$codauto)) > 0) {
@@ -276,10 +296,19 @@ esp_get_munic <- function(year = "2019", epsg = "4258", cache = TRUE,
 #'
 #'
 #' @export
-esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
-                                update_cache = FALSE, cache_dir = NULL,
-                                verbose = FALSE, resolution = 3, region = NULL,
-                                munic = NULL, moveCAN = TRUE, rawcols = FALSE) {
+esp_get_munic_siane <- function(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = 3,
+  region = NULL,
+  munic = NULL,
+  moveCAN = TRUE,
+  rawcols = FALSE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -289,8 +318,13 @@ esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "munic", resolution, cache, cache_dir,
-    update_cache, verbose, year
+    "munic",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
   )
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
@@ -302,7 +336,8 @@ esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   df$cpro <- df$id_prov
 
   idprov <- sort(unique(mapSpain::esp_codelist$cpro))
-  df$cmun <- ifelse(substr(df$LAU_CODE, 1, 2) %in% idprov,
+  df$cmun <- ifelse(
+    substr(df$LAU_CODE, 1, 2) %in% idprov,
     substr(df$LAU_CODE, 3, 8),
     NA
   )
@@ -310,7 +345,8 @@ esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   cod <- unique(mapSpain::esp_codelist[, c(
     "codauto",
     "ine.ccaa.name",
-    "cpro", "ine.prov.name"
+    "cpro",
+    "ine.prov.name"
   )])
 
   df2 <- merge(df, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
@@ -366,7 +402,12 @@ esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   namesend <- unique(c(
     colnames_init,
     c(
-      "codauto", "ine.ccaa.name", "cpro", "ine.prov.name", "cmun", "name",
+      "codauto",
+      "ine.ccaa.name",
+      "cpro",
+      "ine.prov.name",
+      "cmun",
+      "name",
       "LAU_CODE"
     ),
     colnames(data_sf)
@@ -378,8 +419,13 @@ esp_get_munic_siane <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
     data_sf <- data_sf[
       ,
       c(
-        "codauto", "ine.ccaa.name", "cpro", "ine.prov.name",
-        "cmun", "name", "LAU_CODE"
+        "codauto",
+        "ine.ccaa.name",
+        "cpro",
+        "ine.prov.name",
+        "cmun",
+        "name",
+        "LAU_CODE"
       )
     ]
   }

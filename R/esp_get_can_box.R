@@ -120,7 +120,6 @@ esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
   can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
   bbox <- sf::st_bbox(can)
 
-
   if (style == "box" || style == "poly") {
     bbox <- bbox + c(-0.5, -0.3, 0.5, 0.3)
 

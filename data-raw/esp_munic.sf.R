@@ -7,7 +7,9 @@ library(sf)
 library(giscoR)
 
 df <- esp_get_munic(
-  verbose = TRUE, moveCAN = FALSE, epsg = 4258,
+  verbose = TRUE,
+  moveCAN = FALSE,
+  epsg = 4258,
   update_cache = TRUE
 )
 plot(df$geometry)

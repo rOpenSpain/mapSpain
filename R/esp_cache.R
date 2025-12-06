@@ -40,8 +40,12 @@
 #'
 #' Sys.getenv("MAPSPAIN_CACHE_DIR")
 #' @export
-esp_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
-                              verbose = TRUE) {
+esp_set_cache_dir <- function(
+  cache_dir,
+  overwrite = FALSE,
+  install = FALSE,
+  verbose = TRUE
+) {
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     if (verbose) {
@@ -57,7 +61,6 @@ esp_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
   } else {
     is_temp <- FALSE
   }
-
 
   # Validate
   stopifnot(is.character(cache_dir), is.logical(overwrite), is.logical(install))
@@ -110,8 +113,11 @@ esp_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
   return(invisible(cache_dir))
 }
 
-esp_clear_cache <- function(config = TRUE, cached_data = TRUE,
-                            verbose = FALSE) {
+esp_clear_cache <- function(
+  config = TRUE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("mapSpain", "R")
   data_dir <- esp_hlp_detect_cache_dir()
   if (config && dir.exists(config_dir)) {
@@ -124,7 +130,6 @@ esp_clear_cache <- function(config = TRUE, cached_data = TRUE,
     if (verbose) message("mapSpain cached data deleted: ", data_dir)
   }
 
-
   Sys.setenv(MAPSPAIN_CACHE_DIR = "")
   options(mapSpain_cache_dir = NULL)
   return(invisible())
@@ -136,7 +141,6 @@ esp_clear_cache <- function(config = TRUE, cached_data = TRUE,
 esp_hlp_detect_cache_dir <- function() {
   # Try from getenv
   getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
-
 
   # 1. Get from option - This is from backwards compatibility only
 

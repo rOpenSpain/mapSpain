@@ -69,20 +69,28 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   if (toupper(service) == "WMS") {
     def_params <- list(
-      q = q, request = "GetMap", service = "WMS",
-      format = "image/png", layers = layers, styles = ""
+      q = q,
+      request = "GetMap",
+      service = "WMS",
+      format = "image/png",
+      layers = layers,
+      styles = ""
     )
   } else {
     def_params <- list(
-      q = q, request = "GetTile", service = "WMTS",
-      version = "1.0.0", format = "image/png", layer = layers,
-      style = "", tilematrixset = "GoogleMapsCompatible"
+      q = q,
+      request = "GetTile",
+      service = "WMTS",
+      version = "1.0.0",
+      format = "image/png",
+      layer = layers,
+      style = "",
+      tilematrixset = "GoogleMapsCompatible"
     )
   }
 
   # Modify
   end <- modifyList(def_params, dots)
-
 
   # Here adjust crs values
 
@@ -96,7 +104,6 @@ esp_make_provider <- function(id, q, service, layers, ...) {
     }
   }
 
-
   # Create final list
   final <- list(id = id)
 
@@ -106,7 +113,6 @@ esp_make_provider <- function(id, q, service, layers, ...) {
   q_end <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
 
   final$q <- q_end
-
 
   return(final)
 }

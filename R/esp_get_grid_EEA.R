@@ -35,9 +35,13 @@
 #'   theme_light() +
 #'   labs(title = "EEA Grid for Spain")
 #' }
-esp_get_grid_EEA <- function(resolution = 100, type = "main",
-                             update_cache = FALSE, cache_dir = NULL,
-                             verbose = FALSE) {
+esp_get_grid_EEA <- function(
+  resolution = 100,
+  type = "main",
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   # Check grid
   res <- as.numeric(resolution)
 
@@ -72,7 +76,9 @@ esp_get_grid_EEA <- function(resolution = 100, type = "main",
 
   localfile <- file.exists(init_grid)
 
-  if (verbose) message("Cache dir is ", cache_dir)
+  if (verbose) {
+    message("Cache dir is ", cache_dir)
+  }
 
   if (update_cache || isFALSE(localfile)) {
     dwnload <- TRUE
@@ -97,7 +103,9 @@ esp_get_grid_EEA <- function(resolution = 100, type = "main",
     )
     # nocov start
     if (inherits(err_dwnload, "try-error")) {
-      if (verbose) message("Retrying query")
+      if (verbose) {
+        message("Retrying query")
+      }
       err_dwnload <- try(
         download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
@@ -105,7 +113,6 @@ esp_get_grid_EEA <- function(resolution = 100, type = "main",
     }
 
     # If not then message
-
 
     if (inherits(err_dwnload, "try-error")) {
       message(
@@ -123,7 +130,9 @@ esp_get_grid_EEA <- function(resolution = 100, type = "main",
       message("Download succesful")
     }
 
-    if (verbose) message("Unzipping ", filepath, " on ", cache_dir)
+    if (verbose) {
+      message("Unzipping ", filepath, " on ", cache_dir)
+    }
     unzip(filepath, exdir = cache_dir, overwrite = TRUE)
   }
 
@@ -140,6 +149,8 @@ esp_get_grid_EEA <- function(resolution = 100, type = "main",
     stop("\nExecution halted")
   }
   # nocov end
-  if (verbose) message("File loaded")
+  if (verbose) {
+    message("File loaded")
+  }
   return(err_onload)
 }

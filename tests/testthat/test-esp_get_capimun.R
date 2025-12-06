@@ -23,7 +23,6 @@ test_that("capimun online", {
   expect_silent(esp_get_capimun(munic = "Nieva"))
   expect_silent(esp_get_capimun(region = "Alava"))
 
-
   a <- mapSpain::esp_codelist
   n <- a$nuts1.name
 

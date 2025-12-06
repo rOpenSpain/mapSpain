@@ -44,7 +44,6 @@ test_that("ccaa online", {
 
   expect_message(esp_get_ccaa_siane(cache = FALSE, verbose = TRUE))
 
-
   expect_silent(esp_get_ccaa_siane("Canarias"))
   expect_silent(esp_get_ccaa_siane(rawcols = TRUE))
   expect_silent(esp_get_ccaa_siane(ccaa = c("Galicia", "ES7", "Centro")))
@@ -55,7 +54,6 @@ test_that("ccaa online", {
   expect_warning(esp_get_ccaa_siane(ccaa = "Menorca"))
   expect_warning(expect_error(esp_get_ccaa_siane(ccaa = "ES6x")))
 
-
   expect_equal(
     sf::st_crs(esp_get_ccaa_siane(epsg = 3035)),
     sf::st_crs(3035)
@@ -65,7 +63,6 @@ test_that("ccaa online", {
     sf::st_crs(esp_get_ccaa_siane(epsg = 3857)),
     sf::st_crs(3857)
   )
-
 
   # Test all
 

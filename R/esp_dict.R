@@ -59,21 +59,21 @@
 #' esp_dict_region_code(valsmix, destination = "iso2")
 #' }
 #'
-esp_dict_region_code <- function(sourcevar, origin = "text",
-                                 destination = "text") {
+esp_dict_region_code <- function(
+  sourcevar,
+  origin = "text",
+  destination = "text"
+) {
   # Manually replace
-  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
+  sourcevar <- gsub(
+    "Ciudad de melilla",
+    "Melilla",
+    sourcevar,
     ignore.case = TRUE
   )
-  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
-    ignore.case = TRUE
-  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
 
   initsourcevar <- sourcevar
 
@@ -102,7 +102,8 @@ esp_dict_region_code <- function(sourcevar, origin = "text",
   # If text convert to nuts
 
   if (origin == "text") {
-    sourcevar <- countrycode::countrycode(tolower(sourcevar),
+    sourcevar <- countrycode::countrycode(
+      tolower(sourcevar),
       origin = "value",
       destination = "key",
       custom_dict = names_dict,
@@ -110,7 +111,8 @@ esp_dict_region_code <- function(sourcevar, origin = "text",
     )
 
     # Translate to nuts
-    sourcevar <- countrycode::countrycode(sourcevar,
+    sourcevar <- countrycode::countrycode(
+      sourcevar,
       origin = "key",
       destination = "nuts",
       custom_dict = names2nuts,
@@ -144,14 +146,20 @@ esp_dict_region_code <- function(sourcevar, origin = "text",
 
   # Destination
   if (destination == "text") {
-    sourcevar <- countrycode::countrycode(sourcevar, origin, "nuts",
+    sourcevar <- countrycode::countrycode(
+      sourcevar,
+      origin,
+      "nuts",
       custom_dict = code2code,
       nomatch = "NOMATCH"
     )
 
     dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts.sf)
 
-    out <- countrycode::countrycode(sourcevar, "NUTS_ID", "NUTS_NAME",
+    out <- countrycode::countrycode(
+      sourcevar,
+      "NUTS_ID",
+      "NUTS_NAME",
       custom_dict = dict_nutsall,
       nomatch = "NOMATCH"
     )
@@ -173,8 +181,12 @@ esp_dict_region_code <- function(sourcevar, origin = "text",
       sourcevar[sourcevar == "ES630"] <- "ES63"
     }
 
-    out <- countrycode::countrycode(sourcevar, origin, destination,
-      custom_dict = code2code, nomatch = "NOMATCH"
+    out <- countrycode::countrycode(
+      sourcevar,
+      origin,
+      destination,
+      custom_dict = code2code,
+      nomatch = "NOMATCH"
     )
 
     # Baleares
@@ -192,7 +204,9 @@ esp_dict_region_code <- function(sourcevar, origin = "text",
   # Sanitize
   if (length(out[!(out == "NOMATCH")]) != length(sourcevar)) {
     warning(
-      "No match on ", destination, " found for ",
+      "No match on ",
+      destination,
+      " found for ",
       paste0(initsourcevar[out == "NOMATCH"], collapse = ", ")
     )
   }
@@ -260,20 +274,18 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   )
 
   # Manually replace
-  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar,
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
+  sourcevar <- gsub(
+    "Ciudad de melilla",
+    "Melilla",
+    sourcevar,
     ignore.case = TRUE
   )
-  sourcevar <- gsub("Ciudad de melilla", "Melilla", sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar,
-    ignore.case = TRUE
-  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
+  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
 
-  tokeys <- countrycode::countrycode(sourcevar,
+  tokeys <- countrycode::countrycode(
+    sourcevar,
     origin = "value",
     destination = "key",
     custom_dict = names_dict,
@@ -293,7 +305,6 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   dict_tolang <- unique(
     dict_tolang[order(dict_tolang$variable), c("key", "value")]
   )
-
 
   namestrans <- lapply(seq(1, length(tokeys)), function(x) {
     dict_tolang[dict_tolang$key == tokeys[x], "value"]

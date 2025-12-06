@@ -59,25 +59,28 @@
 #'   geom_sf() +
 #'   geom_sf_text(aes(label = ine.ccaa.name), check_overlap = TRUE)
 #' }
-esp_get_simpl_prov <- function(prov = NULL, update_cache = FALSE,
-                               cache_dir = NULL, verbose = FALSE) {
+esp_get_simpl_prov <- function(
+  prov = NULL,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   region <- prov
 
   # Url
   api_entry <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/"
   filename <- "ine_prov_simplified.gpkg"
 
-
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
     filename = filename,
-    cache_dir = cache_dir, verbose = verbose,
+    cache_dir = cache_dir,
+    verbose = verbose,
     update_cache = update_cache,
     cache = TRUE
   )
 
   region <- unique(region)
-
 
   if (!is.null(region)) {
     region <- esp_hlp_all2prov(region)
@@ -103,48 +106,50 @@ esp_get_simpl_prov <- function(prov = NULL, update_cache = FALSE,
 
   sf::st_crs(data_sf) <- NA
 
-
   return(data_sf)
 }
 
 #' @rdname esp_get_simplified
 #'
 #' @export
-esp_get_simpl_ccaa <- function(ccaa = NULL, update_cache = FALSE,
-                               cache_dir = NULL, verbose = FALSE) {
+esp_get_simpl_ccaa <- function(
+  ccaa = NULL,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   region <- ccaa
 
   # Url
   api_entry <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/"
   filename <- "ine_ccaa_simplified.gpkg"
 
-
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
     filename = filename,
-    cache_dir = cache_dir, verbose = verbose,
+    cache_dir = cache_dir,
+    verbose = verbose,
     update_cache = update_cache,
     cache = TRUE
   )
 
-
   region <- unique(region)
-
 
   if (!is.null(region)) {
     nuts_id <- esp_hlp_all2ccaa(region)
     # to codauto
-    codauto <- esp_dict_region_code(nuts_id,
+    codauto <- esp_dict_region_code(
+      nuts_id,
       origin = "nuts",
       destination = "codauto"
     )
-
 
     codauto <- unique(codauto)
     codauto <- codauto[!is.na(codauto)]
     if (length(codauto) == 0) {
       stop(
-        "region ", paste0("'", region, "'", collapse = ", "),
+        "region ",
+        paste0("'", region, "'", collapse = ", "),
         " is not a valid name"
       )
     }

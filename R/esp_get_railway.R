@@ -59,16 +59,21 @@
 #'   )) +
 #'   theme_minimal()
 #' }
-esp_get_railway <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
-                            update_cache = FALSE, cache_dir = NULL,
-                            verbose = FALSE, spatialtype = "line") {
+esp_get_railway <- function(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  spatialtype = "line"
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
   }
-
 
   # Valid spatialtype
   validspatialtype <- c("line", "point")
@@ -83,8 +88,12 @@ esp_get_railway <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
 
   type <- paste0("ffcc", spatialtype)
 
-
-  data_sf <- esp_hlp_get_siane(type, "3", cache, cache_dir, update_cache,
+  data_sf <- esp_hlp_get_siane(
+    type,
+    "3",
+    cache,
+    cache_dir,
+    update_cache,
     verbose,
     year = Sys.Date()
   )

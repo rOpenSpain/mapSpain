@@ -75,9 +75,16 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_rivers <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
-                           cache_dir = NULL, verbose = FALSE, resolution = "3",
-                           spatialtype = "line", name = NULL) {
+esp_get_rivers <- function(
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  spatialtype = "line",
+  name = NULL
+) {
   # Check epsg
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
@@ -99,14 +106,24 @@ esp_get_rivers <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
 
   # Get shape
   rivers_sf <- esp_hlp_get_siane(
-    type, resolution, cache, cache_dir,
-    update_cache, verbose, Sys.Date()
+    type,
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    Sys.Date()
   )
 
   # Get river names
   rivernames <- esp_hlp_get_siane(
-    "rivernames", resolution, cache, cache_dir,
-    update_cache, verbose, Sys.Date()
+    "rivernames",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    Sys.Date()
   )
 
   # Merge names
@@ -123,17 +140,24 @@ esp_get_rivers <- function(epsg = "4258", cache = TRUE, update_cache = FALSE,
 
     if (nrow(rivers_sf_merge) == 0) {
       stop(
-        "Your value '", name, "' for name does not produce any result ",
-        "for spatialtype = '", spatialtype, "'"
+        "Your value '",
+        name,
+        "' for name does not produce any result ",
+        "for spatialtype = '",
+        spatialtype,
+        "'"
       )
     }
   }
 
   if (spatialtype == "area") {
-    rivers_sf_merge <- rivers_sf_merge[, -match(
-      "NOM_RIO",
-      colnames(rivers_sf_merge)
-    )]
+    rivers_sf_merge <- rivers_sf_merge[
+      ,
+      -match(
+        "NOM_RIO",
+        colnames(rivers_sf_merge)
+      )
+    ]
   }
 
   rivers_sf_merge <- sf::st_transform(rivers_sf_merge, as.double(init_epsg))

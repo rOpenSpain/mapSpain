@@ -4,8 +4,6 @@ load("./R/sysdata.rda")
 list <- ls()
 
 
-
-
 library(sf)
 data.sf <-
   st_read("./data-raw/input/esp_prov_hexgrid.gpkg", stringsAsFactors = FALSE)

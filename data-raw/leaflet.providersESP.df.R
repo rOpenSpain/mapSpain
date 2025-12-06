@@ -18,7 +18,6 @@ usethis::use_data(leaflet.providersESP.df, overwrite = TRUE, compress = "xz")
 rm(list = ls())
 # Try
 
-
 devtools::load_all()
 
 # Try MDT

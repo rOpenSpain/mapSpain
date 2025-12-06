@@ -97,10 +97,16 @@
 #'   labs(fill = "Province")
 #' }
 #'
-esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
-                            type = c("INE", "IGN", "AGR", "LIV"),
-                            epsg = "4258", update_cache = FALSE,
-                            cache_dir = NULL, verbose = FALSE) {
+esp_get_comarca <- function(
+  region = NULL,
+  comarca = NULL,
+  moveCAN = TRUE,
+  type = c("INE", "IGN", "AGR", "LIV"),
+  epsg = "4258",
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   init_epsg <- as.character(epsg)
   type <- match.arg(type)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
@@ -115,14 +121,12 @@ esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
     "LIV" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MITECO/dist/",
   )
 
-
   filename <- switch(type,
     "INE" = "esp_com_99.gpkg",
     "IGN" = "comarcas_ign.gpkg",
     "AGR" = "comarcas_agrarias.gpkg",
     "LIV" = "comarcas_ganaderas.gpkg"
   )
-
 
   data_sf <- esp_hlp_dwnload_sianedata(
     api_entry = api_entry,
@@ -162,7 +166,6 @@ esp_get_comarca <- function(region = NULL, comarca = NULL, moveCAN = TRUE,
 
   moving <- FALSE
   moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
 
   if (moving) {
     if (length(grep("05", data_sf$codauto)) > 0) {

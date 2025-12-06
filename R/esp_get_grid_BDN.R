@@ -41,9 +41,13 @@
 #'   theme_light() +
 #'   labs(title = "BDN Grid for Spain")
 #' }
-esp_get_grid_BDN <- function(resolution = 10, type = "main",
-                             update_cache = FALSE, cache_dir = NULL,
-                             verbose = FALSE) {
+esp_get_grid_BDN <- function(
+  resolution = 10,
+  type = "main",
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   # Check grid
   res <- as.numeric(resolution)
 
@@ -91,8 +95,12 @@ esp_get_grid_BDN <- function(resolution = 10, type = "main",
 #'   See **Details** on [esp_get_ccaa()].
 #' @seealso [esp_get_ccaa()]
 
-esp_get_grid_BDN_ccaa <- function(ccaa, update_cache = FALSE, cache_dir = NULL,
-                                  verbose = FALSE) {
+esp_get_grid_BDN_ccaa <- function(
+  ccaa,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   # Get region id
 
   ccaa <- ccaa[!is.na(ccaa)]
@@ -110,12 +118,12 @@ esp_get_grid_BDN_ccaa <- function(ccaa, update_cache = FALSE, cache_dir = NULL,
 
   data <- mapSpain::esp_codelist
 
-  if (!nuts_id %in% data$nuts2.code) stop(ccaa, " is not a CCAA")
-
+  if (!nuts_id %in% data$nuts2.code) {
+    stop(ccaa, " is not a CCAA")
+  }
 
   # Switch name. The ids are the same than the NUTS code removing the "ES" part
   id <- gsub("ES", "", nuts_id)
-
 
   api_entry <- paste0(
     "https://github.com/rOpenSpain/mapSpain/",
@@ -131,7 +139,6 @@ esp_get_grid_BDN_ccaa <- function(ccaa, update_cache = FALSE, cache_dir = NULL,
     update_cache = update_cache,
     cache = TRUE
   )
-
 
   return(result)
 }

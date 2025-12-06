@@ -6,7 +6,6 @@ source("./data-raw/helperfuns.R")
 
 # Load ----
 
-
 NUTS1 <-
   read.csv(
     "./data-raw/espNUTS1.csv",

@@ -6,7 +6,8 @@ test_that("Errors", {
   )
 
   expect_error(
-    esp_move_can(teide), "should be an `sf` or `sfc`"
+    esp_move_can(teide),
+    "should be an `sf` or `sfc`"
   )
 })
 
@@ -50,14 +51,12 @@ test_that("sfc", {
     data.frame(X = 550000, Y = 920000)
   )
 
-
   # Mov with params
 
   moved4 <- esp_move_can(teide_sfc, moveCAN = c(5, 10))
 
   a2 <- sf::st_geometry(moved4) - sf::st_geometry(teide_sfc)
   mat2 <- sf::st_coordinates(a2)
-
 
   expect_equal(sort(unique(as.integer(mat2))), c(9L, 14L))
 })
@@ -73,7 +72,8 @@ test_that("sf", {
   teide_sf <- sf::st_as_sf(teide, coords = c("lon", "lat"), crs = 4326)
 
   # Col with other name
-  teide_sf2 <- sf::st_sf(sf::st_drop_geometry(teide_sf),
+  teide_sf2 <- sf::st_sf(
+    sf::st_drop_geometry(teide_sf),
     mygeomcol = sf::st_geometry(teide_sf)
   )
   # Do nothing
@@ -85,13 +85,11 @@ test_that("sf", {
 
   expect_true(all(sf::st_is_valid(moved_n)))
 
-
   # Moved
   moved2 <- esp_move_can(teide_sf, moveCAN = TRUE)
 
   expect_identical(nrow(moved2), nrow(teide_sf))
   expect_identical(sf::st_crs(moved2), sf::st_crs(teide_sf))
-
 
   # Moved with another CRS
   teide_sf_3857 <- sf::st_transform(teide_sf2, 3857)
@@ -119,7 +117,5 @@ test_that("Empty", {
   # sfc
   teide_null_sfc <- sf::st_geometry(teide_null)
   expect_equal(length(teide_null_sfc), 0)
-  expect_identical(teide_null_sfc, esp_move_can(teide_null_sfc,
-    moveCAN = TRUE
-  ))
+  expect_identical(teide_null_sfc, esp_move_can(teide_null_sfc, moveCAN = TRUE))
 })

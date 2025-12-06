@@ -9,13 +9,15 @@
 #' @inheritParams esp_getTiles
 #'
 #' @noRd
-getwms <- function(newbbox,
-                   url_pieces,
-                   update_cache,
-                   cache_dir,
-                   verbose,
-                   res,
-                   transparent) {
+getwms <- function(
+  newbbox,
+  url_pieces,
+  update_cache,
+  cache_dir,
+  verbose,
+  res,
+  transparent
+) {
   # Get squared bbox
   bbox <- as.double(sf::st_bbox(newbbox))
   dimx <- (bbox[3] - bbox[1])
@@ -30,7 +32,6 @@ getwms <- function(newbbox,
     center[2] + maxdist / 2
   )
 
-
   class(bboxsquare) <- "bbox"
 
   # Compose params
@@ -40,12 +41,19 @@ getwms <- function(newbbox,
 
   # Compose
   ext <- tolower(gsub("image/", "", url_pieces$format))
-  if (!ext %in% c(
-    "png", "jpeg", "jpg", "tiff",
-    "geotiff"
-  )) {
+  if (
+    !ext %in%
+      c(
+        "png",
+        "jpeg",
+        "jpg",
+        "tiff",
+        "geotiff"
+      )
+  ) {
     stop(
-      "Can't handle ", ext,
+      "Can't handle ",
+      ext,
       " files"
     )
   }
@@ -61,7 +69,8 @@ getwms <- function(newbbox,
   filename <-
     paste0(
       "tile_",
-      "_bbox_", crs,
+      "_bbox_",
+      crs,
       "_res",
       res,
       "_",
@@ -77,7 +86,6 @@ getwms <- function(newbbox,
     if (verbose) {
       message("Downloading from \n", q, "\n to cache dir \n", cache_dir)
     }
-
 
     download.file(
       url = q,
@@ -99,7 +107,6 @@ getwms <- function(newbbox,
   } else {
     img <- filename
   }
-
 
   # compose brick raster
   r_img <- suppressWarnings(terra::rast(img))
@@ -133,16 +140,18 @@ getwms <- function(newbbox,
 #' @inheritParams getWMS
 #'
 #' @noRd
-getwmts <- function(newbbox,
-                    type,
-                    url_pieces,
-                    update_cache,
-                    cache_dir,
-                    verbose,
-                    zoom,
-                    zoommin,
-                    transparent,
-                    extra_opts) {
+getwmts <- function(
+  newbbox,
+  type,
+  url_pieces,
+  update_cache,
+  cache_dir,
+  verbose,
+  zoom,
+  zoommin,
+  transparent,
+  extra_opts
+) {
   newbbox <- sf::st_transform(newbbox, 4326)
   bbx <- sf::st_bbox(newbbox)
 
@@ -156,7 +165,6 @@ getwmts <- function(newbbox,
       message("Auto zoom level: ", zoom)
     }
   }
-
 
   # Check zoom
   if ("minzoom" %in% names(extra_opts)) {
@@ -188,13 +196,19 @@ getwmts <- function(newbbox,
     ext <- tolower(gsub("image/", "", url_pieces$format))
   }
 
-
-  if (!ext %in% c(
-    "png", "jpeg", "jpg", "tiff",
-    "geotiff"
-  )) {
+  if (
+    !ext %in%
+      c(
+        "png",
+        "jpeg",
+        "jpg",
+        "tiff",
+        "geotiff"
+      )
+  ) {
     stop(
-      "Can't handle ", ext,
+      "Can't handle ",
+      ext,
       " files"
     )
   }
@@ -244,10 +258,10 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
 
   bricks <- vector("list", nrow(tile_grid$tiles))
 
-
   for (i in seq_along(bricks)) {
     bbox <- slippymath::tile_bbox(
-      tile_grid$tiles$x[i], tile_grid$tiles$y[i],
+      tile_grid$tiles$x[i],
+      tile_grid$tiles$y[i],
       tile_grid$zoom
     )
     img <- images[i]
@@ -258,7 +272,6 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
     if (ext == "png") {
       img <- png::readPNG(img) * 255
     }
-
 
     # compose brick raster
     r_img <- suppressWarnings(terra::rast(img))
@@ -272,15 +285,16 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
     }
 
     terra::ext(r_img) <- terra::ext(bbox[c(
-      "xmin", "xmax",
-      "ymin", "ymax"
+      "xmin",
+      "xmax",
+      "ymin",
+      "ymax"
     )])
 
     # Check if need a CRS
     if (terra::crs(r_img) == "") {
       terra::crs(r_img) <- crs
     }
-
 
     bricks[[i]] <- r_img
   }
@@ -302,7 +316,16 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
 #' @noRd
 dl_t <- function(x, z, ext, src, q, verbose, cache_dir, update_cache) {
   outfile <- paste0(
-    cache_dir, "/", src, "_", z, "_", x[1], "_", x[2], ".",
+    cache_dir,
+    "/",
+    src,
+    "_",
+    z,
+    "_",
+    x[1],
+    "_",
+    x[2],
+    ".",
     ext
   )
 

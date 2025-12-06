@@ -100,7 +100,6 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   prov <- prov[!is.na(prov)]
 
-
   region <- prov
   if (is.null(region)) {
     nuts_id <- NULL
@@ -127,7 +126,6 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   initcrs <- sf::st_crs(data_sf)
   data_sf <- sf::st_transform(data_sf, 3035)
 
-
   data_sf$nuts3.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts3.code"]
 
@@ -144,9 +142,13 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   names <- names(data_sf)
 
   which.geom <-
-    which(vapply(data_sf, function(f) {
-      inherits(f, "sfc")
-    }, TRUE))
+    which(vapply(
+      data_sf,
+      function(f) {
+        inherits(f, "sfc")
+      },
+      TRUE
+    ))
 
   nm <- names(which.geom)
 
@@ -200,7 +202,6 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
     data_sf <- rbind(clean, new)
   }
 
-
   # Get df
   df <- dict_prov
   df <- df[, names(df) != "key"]
@@ -219,8 +220,11 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
     )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
   data_sf <- data_sf[, c(
-    colnames(df), "nuts2.code", "nuts2.name",
-    "nuts1.code", "nuts1.name"
+    colnames(df),
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
   )]
 
   # Order
@@ -258,14 +262,20 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 #' On [esp_get_prov_siane()], `year` could be passed as a single year ("YYYY"
 #' format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 #' Historical information starts as of 2005.
-esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
-                               cache = TRUE, update_cache = FALSE,
-                               cache_dir = NULL, verbose = FALSE,
-                               resolution = "3", moveCAN = TRUE,
-                               rawcols = FALSE) {
+esp_get_prov_siane <- function(
+  prov = NULL,
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  moveCAN = TRUE,
+  rawcols = FALSE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
-
 
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
     stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
@@ -273,13 +283,16 @@ esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "prov", resolution, cache, cache_dir,
-    update_cache, verbose, year
+    "prov",
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
   )
 
-
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
-
 
   data_sf$cpro <- data_sf$id_prov
 
@@ -309,11 +322,13 @@ esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
   dfnuts <- unique(dfnuts[, c(
-    "cpro", "nuts2.code", "nuts2.name", "nuts1.code",
+    "cpro",
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
     "nuts1.name"
   )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
-
 
   # Move can
 
@@ -339,7 +354,6 @@ esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
@@ -353,7 +367,6 @@ esp_get_prov_siane <- function(prov = NULL, year = Sys.Date(), epsg = "4258",
   namesend <- namesend[namesend %in% names(data_sf)]
 
   data_sf <- data_sf[, namesend]
-
 
   if (isFALSE(rawcols)) {
     nm <- colnames(esp_get_prov())

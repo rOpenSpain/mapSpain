@@ -33,8 +33,11 @@
 #'
 #' Sys.getenv("MAPSPAIN_CACHE_DIR")
 #' @export
-esp_clear_cache <- function(config = FALSE, cached_data = TRUE,
-                            verbose = FALSE) {
+esp_clear_cache <- function(
+  config = FALSE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("mapSpain", "R")
   data_dir <- esp_hlp_detect_cache_dir()
 

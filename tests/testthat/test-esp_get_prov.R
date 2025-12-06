@@ -5,13 +5,15 @@ test_that("prov offline", {
   expect_warning(expect_error(esp_get_prov(prov = "Menorca")))
   expect_warning(expect_error(esp_get_prov(prov = "ES6x")))
 
-  expect_silent(esp_get_prov(prov = c(
-    "Euskadi",
-    "Catalunya",
-    "ES-EX",
-    "ES52",
-    "01"
-  )))
+  expect_silent(esp_get_prov(
+    prov = c(
+      "Euskadi",
+      "Catalunya",
+      "ES-EX",
+      "ES52",
+      "01"
+    )
+  ))
 
   # Test all
 
@@ -65,7 +67,6 @@ test_that("prov online", {
   expect_warning(expect_error(esp_get_prov_siane(prov = "Menorca")))
   expect_warning(expect_error(esp_get_prov_siane(prov = "ES6x")))
 
-
   expect_identical(
     sf::st_crs(esp_get_prov_siane(epsg = 3035)),
     sf::st_crs(3035)
@@ -76,14 +77,15 @@ test_that("prov online", {
     sf::st_crs(3857)
   )
 
-
-  expect_silent(esp_get_prov_siane(prov = c(
-    "Euskadi",
-    "Catalunya",
-    "ES-EX",
-    "ES52",
-    "01"
-  )))
+  expect_silent(esp_get_prov_siane(
+    prov = c(
+      "Euskadi",
+      "Catalunya",
+      "ES-EX",
+      "ES52",
+      "01"
+    )
+  ))
 
   # Test all
 

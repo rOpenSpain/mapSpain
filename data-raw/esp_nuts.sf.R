@@ -1,6 +1,5 @@
 ## code to prepare `esp_nuts.sf` dataset goes here
 
-
 library(giscoR)
 
 esp_nuts.sf %>% sf::st_crs()

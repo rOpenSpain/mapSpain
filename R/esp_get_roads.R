@@ -44,9 +44,15 @@
 #'   labs(color = "Road type") +
 #'   theme(legend.position = "bottom")
 #' }
-esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
-                          update_cache = FALSE, cache_dir = NULL,
-                          verbose = FALSE, moveCAN = TRUE) {
+esp_get_roads <- function(
+  year = Sys.Date(),
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  moveCAN = TRUE
+) {
   init_epsg <- as.character(epsg)
   year <- as.character(year)
 
@@ -56,10 +62,14 @@ esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
 
   # Get Data from SIANE
   data_sf <- esp_hlp_get_siane(
-    "roads", 3, cache, cache_dir, update_cache,
-    verbose, year
+    "roads",
+    3,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    year
   )
-
 
   colnames_init <- colnames(sf::st_drop_geometry(data_sf))
 
@@ -71,7 +81,6 @@ esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
   can_logic <- sf::st_intersects(data_sf2, canbuff, sparse = FALSE)
   data_sf$codauto <- "XX"
   data_sf[can_logic, ]$codauto <- "05"
-
 
   # Move can
   # Checks
@@ -92,12 +101,13 @@ esp_get_roads <- function(year = Sys.Date(), epsg = "4258", cache = TRUE,
       )
 
       # Move can
-      can <- sf::st_sf(sf::st_drop_geometry(can),
-        geometry = sf::st_geometry(can), crs = sf::st_crs(can)
+      can <- sf::st_sf(
+        sf::st_drop_geometry(can),
+        geometry = sf::st_geometry(can),
+        crs = sf::st_crs(can)
       )
 
       can <- esp_move_can(can, moveCAN = moveCAN)
-
 
       # Regenerate
       data_sf <- rbind(penin, can)

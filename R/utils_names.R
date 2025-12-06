@@ -47,7 +47,6 @@ esp_hlp_all2nuts <- function(region) {
     nuts_id[key] <- keyname
   }
 
-
   return(nuts_id)
 }
 
@@ -99,7 +98,6 @@ esp_hlp_all2ccaa <- function(region) {
 
   # Get NUTS2 from NUTS1
   lev1 <- nchar(nuts_init) == 3
-
 
   if (any(lev1)) {
     nutslev1 <-
@@ -179,7 +177,6 @@ esp_hlp_all2prov <- function(region) {
     nuts_init[cpro] <- cproname
   }
 
-
   if (length(iso) > 0) {
     isoname <- esp_dict_region_code(region[iso], "iso2", "nuts")
     nuts_init[iso] <- isoname
@@ -193,12 +190,10 @@ esp_hlp_all2prov <- function(region) {
     nuts_init[newkey] <- newkeyname
   }
 
-
   # So far all are cpro or NUTS
   arenuts <- grep("^ES[[:digit:]]", nuts_init)
 
   dfall <- mapSpain::esp_codelist
-
 
   if (length(arenuts) > 0) {
     nutsend <- nuts_init[grep("^ES[[:digit:]]", nuts_init)]
@@ -209,13 +204,14 @@ esp_hlp_all2prov <- function(region) {
     # Modify NUTS
 
     noprovs <-
-      dfall[c(
-        grep("ES53", dfall$nuts3.code),
-        grep("ES7", dfall$nuts3.code)
-      ), ]$nuts3.code
+      dfall[
+        c(
+          grep("ES53", dfall$nuts3.code),
+          grep("ES7", dfall$nuts3.code)
+        ),
+      ]$nuts3.code
 
     novalid <- nutsend %in% noprovs
-
 
     if (any(novalid)) {
       warning(
@@ -229,7 +225,6 @@ esp_hlp_all2prov <- function(region) {
     # Get NUTS3 from NUTS1
     lev1 <- nchar(nutsend) == 3
 
-
     if (any(lev1)) {
       nutslev1 <-
         dfall[dfall$nuts1.code %in% nutsend[lev1], ]$nuts3.code
@@ -239,7 +234,6 @@ esp_hlp_all2prov <- function(region) {
 
     # Get NUTS3 from NUTS2
     lev2 <- nchar(nutsend) == 4
-
 
     if (any(lev2)) {
       nutslev2 <-

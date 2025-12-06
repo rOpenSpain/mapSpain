@@ -91,7 +91,9 @@ esp_move_can <- function(x, moveCAN = TRUE) {
     }
 
     data_3857 <- sf::st_transform(x, 3857)
-    if (is_sfc) data_3857 <- sf::st_sf(x = 1, geometry = data_3857)
+    if (is_sfc) {
+      data_3857 <- sf::st_sf(x = 1, geometry = data_3857)
+    }
 
     # Move can
     geom_mov <- sf::st_geometry(data_3857) + offset
@@ -100,7 +102,6 @@ esp_move_can <- function(x, moveCAN = TRUE) {
 
     # Regenerate CRS
     x_out <- sf::st_transform(can, sf::st_crs(x))
-
 
     if (is_sfc) {
       x_out <- sf::st_geometry(x_out)

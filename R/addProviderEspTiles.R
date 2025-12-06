@@ -47,17 +47,22 @@ leafletprovidersESP_v <- "v1.3.3"
 #'   )
 #'
 #' leafmap
-addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
-                                options = providerEspTileOptions()) {
+addProviderEspTiles <- function(
+  map,
+  provider,
+  layerId = NULL,
+  group = NULL,
+  options = providerEspTileOptions()
+) {
   # A. Check providers
   prov_list <- mapSpain::esp_tiles_providers
 
   allprovs <- names(prov_list)
 
-
   if (!provider %in% allprovs) {
     stop(
-      "No match for provider = '", provider,
+      "No match for provider = '",
+      provider,
       "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
     )
   }
@@ -114,9 +119,13 @@ addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
     optionend <- modifyList(tileops, optionend)
     optionend <- do.call(leaflet::tileOptions, optionend)
 
-    leaflet::addTiles(map,
-      urlTemplate = templurl, attribution = attribution,
-      layerId = layerId, group = group, options = optionend
+    leaflet::addTiles(
+      map,
+      urlTemplate = templurl,
+      attribution = attribution,
+      layerId = layerId,
+      group = group,
+      options = optionend
     )
   } else {
     # Build template
@@ -136,11 +145,18 @@ addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
     layers <- temp_pieces$layers
 
     # Remove parameters only affecting static urls
-    todel <- names(temp_pieces) %in% c(
-      "attribution", "q", "service", "request",
-      "layers", "srs", "width", "height",
-      "bbox"
-    )
+    todel <- names(temp_pieces) %in%
+      c(
+        "attribution",
+        "q",
+        "service",
+        "request",
+        "layers",
+        "srs",
+        "width",
+        "height",
+        "bbox"
+      )
 
     names(def_opts) <- tolower(names(def_opts))
 
@@ -156,10 +172,14 @@ addProviderEspTiles <- function(map, provider, layerId = NULL, group = NULL,
 
     optionend <- modifyList(wmsopts, optionend)
 
-    leaflet::addWMSTiles(map,
-      baseUrl = templurl, layers = layers,
-      attribution = attribution, layerId = layerId,
-      group = group, options = optionend
+    leaflet::addWMSTiles(
+      map,
+      baseUrl = templurl,
+      layers = layers,
+      attribution = attribution,
+      layerId = layerId,
+      group = group,
+      options = optionend
     )
   }
 }

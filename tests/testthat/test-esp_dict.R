@@ -26,17 +26,19 @@ test_that("Testing dict", {
   )
 
   # test different casing of strings
-  expect_silent(esp_dict_region_code(c(
-    "AlBaceTe",
-    "albacete",
-    "ALBACETE"
-  ), destination = "cpro"))
+  expect_silent(esp_dict_region_code(
+    c(
+      "AlBaceTe",
+      "albacete",
+      "ALBACETE"
+    ),
+    destination = "cpro"
+  ))
   # From ISO2 to another codes
 
   iso2vals <- c("ES-M", "ES-S", "ES-SG")
 
   expect_silent(esp_dict_region_code(iso2vals, origin = "iso2"))
-
 
   # Test all ISO2 prov
 
@@ -50,15 +52,12 @@ test_that("Testing dict", {
 
   expect_silent(esp_dict_region_code(f, "iso2", "codauto"))
 
-
   # Mixing levels
   valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
   expect_silent(esp_dict_region_code(valsmix, destination = "nuts"))
 
-
   expect_warning(esp_dict_region_code(valsmix, destination = "codauto"))
   expect_warning(esp_dict_region_code(valsmix, destination = "iso2"))
-
 
   vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
   expect_error(esp_dict_translate(vals, "xx"))

@@ -53,7 +53,6 @@ test_that("munic online", {
   expect_silent(esp_get_munic_siane(munic = "Nieva"))
   expect_silent(esp_get_munic_siane(region = "Alava"))
 
-
   a <- mapSpain::esp_codelist
   n <- a$nuts1.name
 

@@ -51,10 +51,15 @@
 #'   ) +
 #'   theme_void()
 #' }
-esp_get_hydrobasin <- function(epsg = "4258", cache = TRUE,
-                               update_cache = FALSE, cache_dir = NULL,
-                               verbose = FALSE, resolution = "3",
-                               domain = "land") {
+esp_get_hydrobasin <- function(
+  epsg = "4258",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "3",
+  domain = "land"
+) {
   # Check epsg
   init_epsg <- as.character(epsg)
   if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
@@ -74,8 +79,13 @@ esp_get_hydrobasin <- function(epsg = "4258", cache = TRUE,
 
   type <- paste0("basin", domain)
   basin_sf <- esp_hlp_get_siane(
-    type, resolution, cache, cache_dir,
-    update_cache, verbose, Sys.Date()
+    type,
+    resolution,
+    cache,
+    cache_dir,
+    update_cache,
+    verbose,
+    Sys.Date()
   )
 
   basin_sf <- sf::st_transform(basin_sf, as.double(init_epsg))

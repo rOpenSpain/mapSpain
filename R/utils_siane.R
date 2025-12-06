@@ -5,13 +5,15 @@
 #' @inheritParams esp_hlp_get_siane
 #'
 #' @noRd
-esp_hlp_download_siane <- function(type,
-                                   resolution,
-                                   cache,
-                                   cache_dir,
-                                   update_cache,
-                                   verbose,
-                                   sub) {
+esp_hlp_download_siane <- function(
+  type,
+  resolution,
+  cache,
+  cache_dir,
+  update_cache,
+  verbose,
+  sub
+) {
   resolution <- as.character(resolution)
   # Valid res
   validres <- c("3", "6.5", "10")
@@ -28,7 +30,6 @@ esp_hlp_download_siane <- function(type,
   api_entry <-
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist"
 
-
   # If requesting riversname need to change api entry
 
   if (type == "rivernames") {
@@ -40,8 +41,11 @@ esp_hlp_download_siane <- function(type,
 
   filename <- switch(type,
     "munic" = paste0(
-      "se89_", resolution,
-      "_admin_muni_a_", sub, ".gpkg"
+      "se89_",
+      resolution,
+      "_admin_muni_a_",
+      sub,
+      ".gpkg"
     ),
     "prov" = paste0("se89_", resolution, "_admin_prov_a_", sub, ".gpkg"),
     "ccaa" = paste0("se89_", resolution, "_admin_ccaa_a_", sub, ".gpkg"),
@@ -52,8 +56,11 @@ esp_hlp_download_siane <- function(type,
     "rivernames" = "rivernames.rda",
     "basinland" = paste0("se89_", resolution, "_hidro_demt_a_", sub, ".gpkg"),
     "basinlandsea" = paste0(
-      "se89_", resolution,
-      "_hidro_demc_a_", sub, ".gpkg"
+      "se89_",
+      resolution,
+      "_hidro_demc_a_",
+      sub,
+      ".gpkg"
     ),
     "capimun" = paste0("se89_3_urban_capimuni_p_", sub, ".gpkg"),
     "roads" = paste0("se89_3_vias_ctra_l_", sub, ".gpkg"),
@@ -67,7 +74,9 @@ esp_hlp_download_siane <- function(type,
 
   cache_dir <- esp_hlp_cachedir(cache_dir)
 
-  if (verbose) message("Cache dir is ", cache_dir)
+  if (verbose) {
+    message("Cache dir is ", cache_dir)
+  }
 
   # Create filepath
   filepath <- file.path(cache_dir, filename)
@@ -102,20 +111,16 @@ esp_hlp_download_siane <- function(type,
   # Downloading
   if (dwnload) {
     err_dwnload <- try(
-      download.file(url, filepath,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     )
 
     if (inherits(err_dwnload, "try-error")) {
-      if (verbose) message("Retrying query")
+      if (verbose) {
+        message("Retrying query")
+      }
       err_dwnload <- try(
-        download.file(url, filepath,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
+        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       )
     }
@@ -169,7 +174,9 @@ esp_hlp_download_siane <- function(type,
     stop("\nExecution halted")
   }
 
-  if (verbose) message("File loaded")
+  if (verbose) {
+    message("File loaded")
+  }
   return(err_onload)
 }
 
@@ -182,19 +189,26 @@ esp_hlp_download_siane <- function(type,
 #' @inheritParams esp_get_ccaa_siane
 #'
 #' @noRd
-esp_hlp_get_siane <- function(type,
-                              resolution,
-                              cache,
-                              cache_dir,
-                              update_cache,
-                              verbose,
-                              year) {
+esp_hlp_get_siane <- function(
+  type,
+  resolution,
+  cache,
+  cache_dir,
+  update_cache,
+  verbose,
+  year
+) {
   # Rivers names
   if (type == "rivernames") {
     df <-
       esp_hlp_download_siane(
-        type, 3, cache, cache_dir, update_cache,
-        verbose, "x"
+        type,
+        3,
+        cache,
+        cache_dir,
+        update_cache,
+        verbose,
+        "x"
       )
     return(df)
   }
@@ -202,8 +216,13 @@ esp_hlp_get_siane <- function(type,
   # Mainland
   data_sf1 <-
     esp_hlp_download_siane(
-      type, resolution, cache, cache_dir, update_cache,
-      verbose, "x"
+      type,
+      resolution,
+      cache,
+      cache_dir,
+      update_cache,
+      verbose,
+      "x"
     )
   # Canary Islands
   if (type == "riverline" && as.character(resolution) != "3") {
@@ -239,7 +258,6 @@ esp_hlp_get_siane <- function(type,
       data_sf2[, setdiff(names(data_sf1), names(data_sf2))] <- NA
     }
 
-
     data_sf <- rbind(data_sf1, data_sf2)
   } else {
     if (verbose) {
@@ -249,10 +267,16 @@ esp_hlp_get_siane <- function(type,
   }
   # Date management
   # Need to adjust on 2024 dist
-  if (type %in% c(
-    "roads", "riverline", "riverarea",
-    "orogarea", "orogline"
-  )) {
+  if (
+    type %in%
+      c(
+        "roads",
+        "riverline",
+        "riverarea",
+        "orogarea",
+        "orogline"
+      )
+  ) {
     data_sf$fecha_baja <- NA
   }
 

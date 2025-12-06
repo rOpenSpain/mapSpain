@@ -18,7 +18,6 @@ test_that("simplified prov online", {
   expect_silent(esp_get_simpl_prov(prov = "La Rioja"))
   expect_silent(esp_get_simpl_prov(prov = "Alava"))
 
-
   a <- mapSpain::esp_codelist
   n <- a$nuts1.name
 
@@ -46,7 +45,6 @@ test_that("simplified ccaa online", {
 
   expect_silent(esp_get_simpl_ccaa(ccaa = "La Rioja"))
   expect_silent(esp_get_simpl_ccaa(ccaa = "Pais Vasco"))
-
 
   a <- mapSpain::esp_codelist
   n <- a$nuts1.name

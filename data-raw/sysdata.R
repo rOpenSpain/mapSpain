@@ -17,7 +17,8 @@ NUTS1 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>%
+  esp_hlp_utf8()
 
 CCAA <-
   read.csv(
@@ -25,7 +26,8 @@ CCAA <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>%
+  esp_hlp_utf8()
 
 PROV <-
   read.csv(
@@ -33,7 +35,8 @@ PROV <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>%
+  esp_hlp_utf8()
 
 NUTS3 <-
   read.csv(
@@ -41,7 +44,8 @@ NUTS3 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>% esp_hlp_utf8()
+  ) %>%
+  esp_hlp_utf8()
 
 # names_full----
 
@@ -69,20 +73,23 @@ dict_nuts1all <- melt(
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_nuts1)
-) %>% unique()
+) %>%
+  unique()
 dict_ccaaall <- melt(
   dict_ccaa,
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_ccaa)
-) %>% unique()
+) %>%
+  unique()
 
 dict_provall <- melt(
   dict_prov,
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_prov)
-) %>% unique()
+) %>%
+  unique()
 
 
 dict_nuts3all <- melt(
@@ -90,7 +97,8 @@ dict_nuts3all <- melt(
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_nuts3)
-) %>% unique()
+) %>%
+  unique()
 
 
 names_full <-
@@ -100,9 +108,9 @@ names_full <-
 
 # Add versions without accents, etc.
 
-
 names_alt <-
-  names_full %>% mutate(
+  names_full %>%
+  mutate(
     value = iconv(value, from = "UTF-8", to = "ASCII//TRANSLIT"),
     variable = paste0("clean.", variable)
   )
@@ -111,16 +119,16 @@ names_full <- rbind(names_full, names_alt) %>% distinct()
 
 # Version UPCASE and lowercase
 
-upcase <- names_full %>% mutate(
-  value = toupper(value),
-  variable =
-    paste0("upcase.", variable)
-)
-locase <- names_full %>% mutate(
-  value = tolower(value),
-  variable =
-    paste0("locase.", variable)
-)
+upcase <- names_full %>%
+  mutate(
+    value = toupper(value),
+    variable = paste0("upcase.", variable)
+  )
+locase <- names_full %>%
+  mutate(
+    value = tolower(value),
+    variable = paste0("locase.", variable)
+  )
 
 names_full <-
   rbind(names_full, upcase) %>%
@@ -160,28 +168,32 @@ unique(toen[grep("name.ca", toen$variable), "value"])
 
 # Translate all
 
-countrycode::countrycode(ret,
+countrycode::countrycode(
+  ret,
   "key",
   "nuts1.code",
   custom_dict = dict_nuts1,
   nomatch = "XXX"
 )
 
-countrycode::countrycode(ret,
+countrycode::countrycode(
+  ret,
   "key",
   "nuts2.code",
   custom_dict = dict_ccaa,
   nomatch = "XX"
 )
 
-countrycode::countrycode(ret,
+countrycode::countrycode(
+  ret,
   "key",
   "nuts.prov.code",
   custom_dict = dict_prov,
   nomatch = "XX"
 )
 
-countrycode::countrycode(ret,
+countrycode::countrycode(
+  ret,
   "key",
   "nuts3.code",
   custom_dict = dict_nuts3,
@@ -207,14 +219,16 @@ var <-
     "Andalucía"
   )
 
-f <- countrycode::countrycode(var,
+f <- countrycode::countrycode(
+  var,
   "key",
   "nuts",
   custom_dict = names2nuts,
   nomatch = "XX"
 )
 f
-countrycode::countrycode(f,
+countrycode::countrycode(
+  f,
   "nuts",
   "key",
   custom_dict = names2nuts,
@@ -229,27 +243,31 @@ code2code <- esp_hlp_code2code()
 
 # Test
 
-countrycode::countrycode(f,
+countrycode::countrycode(
+  f,
   "nuts",
   "iso2",
   custom_dict = code2code,
   nomatch = "XX"
 )
-countrycode::countrycode(f,
+countrycode::countrycode(
+  f,
   "nuts",
   "codauto",
   custom_dict = code2code,
   nomatch = "XX"
 )
 
-countrycode::countrycode(f,
+countrycode::countrycode(
+  f,
   "nuts",
   "cpro",
   custom_dict = code2code,
   nomatch = "XX"
 )
 
-countrycode::countrycode(c("ES-AN"),
+countrycode::countrycode(
+  c("ES-AN"),
   "iso2",
   "nuts",
   custom_dict = code2code,
@@ -267,28 +285,20 @@ names_full <- names_full %>% as.data.frame()
 
 library(sf)
 esp_hexbin_prov <-
-  st_read("./data-raw/esp_hexbin_prov.gpkg",
-    stringsAsFactors = FALSE
-  ) %>%
+  st_read("./data-raw/esp_hexbin_prov.gpkg", stringsAsFactors = FALSE) %>%
   st_make_valid()
 
 esp_hexbin_ccaa <-
-  st_read("./data-raw/esp_hexbin_ccaa.gpkg",
-    stringsAsFactors = FALSE
-  ) %>%
+  st_read("./data-raw/esp_hexbin_ccaa.gpkg", stringsAsFactors = FALSE) %>%
   st_make_valid()
 
 
 esp_grid_prov <-
-  st_read("./data-raw/esp_grid_prov.gpkg",
-    stringsAsFactors = FALSE
-  ) %>%
+  st_read("./data-raw/esp_grid_prov.gpkg", stringsAsFactors = FALSE) %>%
   st_make_valid()
 
 esp_grid_ccaa <-
-  st_read("./data-raw/esp_grid_ccaa.gpkg",
-    stringsAsFactors = FALSE
-  ) %>%
+  st_read("./data-raw/esp_grid_ccaa.gpkg", stringsAsFactors = FALSE) %>%
   st_make_valid()
 
 usethis::use_data(
