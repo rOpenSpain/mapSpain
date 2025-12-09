@@ -143,6 +143,12 @@ esp_geodata <- geodata::gadm("ES", path = ".", level = 0) %>%
   sf::st_as_sf() %>%
   st_transform(3857)
 
+# geobounds
+# https://github.com/dieghernan/geobounds
+library(geobounds)
+esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") %>%
+  st_transform(3857)
+
 # Imagen Ria Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
   esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
@@ -151,11 +157,11 @@ tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
 library(tidyterra)
 
 
-esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata)
+esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata, esp_geobounds)
 
 esp_all$source <- as_factor(c(
   "rnaturalearth",
-  "mapSpain", "geodata (GADM)"
+  "mapSpain", "geodata (GADM)", "geoBoundaries"
 ))
 
 ggplot(esp_all) +
@@ -168,8 +174,8 @@ ggplot(esp_all) +
     crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
-  scale_color_manual(values = c("red", "black", "blue")) +
-  scale_linetype_manual(values = c("solid", "dotted", "dashed")) +
+  scale_color_manual(values = c("red", "black", "blue", "orange")) +
+  scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
   theme_void() +
   labs(title = "Ría de Ferrol")
 ```
@@ -177,6 +183,7 @@ ggplot(esp_all) +
 -   **rnaturalearth**: No capta bien el contorno.
 -   **mapSpain**: Resultados satisfactorios.
 -   **GADM** (libería **geodata**): Resultados muy precisos.
+-   **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
 
 ### Almacenamiento
 

@@ -17,7 +17,6 @@ test_that("tiles error", {
 
 
 test_that("tiles online", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
@@ -135,7 +134,6 @@ test_that("tiles online", {
 
 
 test_that("tiles masks and crops", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
@@ -168,7 +166,6 @@ test_that("tiles masks and crops", {
 
 
 test_that("tiles options", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
@@ -202,7 +199,6 @@ test_that("tiles options", {
 })
 
 test_that("Custom WMS", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
@@ -229,7 +225,6 @@ test_that("Custom WMS", {
 
 
 test_that("Custom WMTS", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 

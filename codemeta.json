@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/mapSpain",
   "issueTracker": "https://github.com/rOpenSpain/mapSpain/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.10.0",
+  "version": "0.10.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -126,19 +126,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "slippymath",
-      "name": "slippymath",
-      "version": ">= 0.3.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=slippymath"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
       "version": ">= 1.1-4",
@@ -245,7 +232,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "2435.828KB",
+  "fileSize": "2607.38KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

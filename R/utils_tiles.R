@@ -158,7 +158,7 @@ getwmts <- function(
   # select a default zoom level
 
   if (is.null(zoom)) {
-    gz <- slippymath::bbox_tile_query(bbx)
+    gz <- bbox_tile_query(bbx)
     zoom <- min(gz[gz$total_tiles %in% 4:10, "zoom"]) + zoommin
 
     if (verbose) {
@@ -183,7 +183,7 @@ getwmts <- function(
   }
 
   # get tile list
-  tile_grid <- slippymath::bbox_to_tile_grid(
+  tile_grid <- bbox_to_tile_grid(
     bbox = bbx,
     zoom = as.numeric(zoom)
   )
@@ -259,7 +259,7 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
   bricks <- vector("list", nrow(tile_grid$tiles))
 
   for (i in seq_along(bricks)) {
-    bbox <- slippymath::tile_bbox(
+    bbox <- tile_bbox(
       tile_grid$tiles$x[i],
       tile_grid$tiles$y[i],
       tile_grid$zoom
