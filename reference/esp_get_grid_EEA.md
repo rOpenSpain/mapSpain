@@ -76,8 +76,8 @@ Other grids:
 # \dontrun{
 
 grid <- esp_get_grid_EEA(type = "main", resolution = 100)
-#> Warning: cannot open URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file': HTTP status was '504 Gateway Timeout'
-#> Warning: cannot open URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/download': HTTP status was '503 Service Unavailable'
+#> Warning: cannot open URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file': HTTP status was '503 Service Unavailable'
+#> Warning: URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file': Timeout of 60 seconds was reached
 #> Download failed
 #> 
 #> url 
@@ -88,17 +88,6 @@ grid <- esp_get_grid_EEA(type = "main", resolution = 100)
 #> Error in esp_get_grid_EEA(type = "main", resolution = 100): 
 #> Execution halted
 grid_can <- esp_get_grid_EEA(type = "canary", resolution = 100)
-#> Warning: cannot open URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file': HTTP status was '503 Service Unavailable'
-#> Warning: cannot open URL 'https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file': HTTP status was '503 Service Unavailable'
-#> Download failed
-#> 
-#> url 
-#>  https://www.eea.europa.eu/data-and-maps/data/eea-reference-grids-2/gis-files/spain-shapefile/at_download/file not reachable.
-#> 
-#> Please try with another options. If you think this is a bug please consider opening an issue on:
-#> https://github.com/rOpenSpain/mapSpain/issues
-#> Error in esp_get_grid_EEA(type = "canary", resolution = 100): 
-#> Execution halted
 esp <- esp_get_country(moveCAN = FALSE)
 
 library(ggplot2)
