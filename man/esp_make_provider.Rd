@@ -27,7 +27,7 @@ Helper function for \code{\link[=esp_getTiles]{esp_getTiles()}} that helps to cr
 }
 \details{
 This function is meant to work with services provided as of the
-\href{http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap}{OGC Standard}.
+\href{https://www.ogc.org/standards/wms/}{OGC Standard}.
 
 Note that:
 \itemize{

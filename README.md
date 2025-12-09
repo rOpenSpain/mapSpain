@@ -234,6 +234,7 @@ Some packages recommended for visualization are:
 ## Citation
 
 <p>
+
 Hernangómez D (2025). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,
@@ -245,7 +246,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2025},
-      version = {0.10.0},
+      version = {0.10.0.9000},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},

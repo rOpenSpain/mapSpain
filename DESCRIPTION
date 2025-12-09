@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.10.0
+Version: 0.10.0.9000
 Authors@R: 
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658"))
@@ -30,7 +30,6 @@ Suggests:
     leaflet (>= 2.0.0),
     png (>= 0.1-5),
     rmarkdown,
-    slippymath (>= 0.3.1),
     terra (>= 1.1-4),
     testthat (>= 3.0.0),
     tidyterra
@@ -40,7 +39,8 @@ Config/Needs/check: curl
 Config/Needs/coverage: covr
 Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse, devtools,
     remotes, ropenspain/rostemplate, ropensci/rnaturalearthhires, geodata,
-    sessioninfo, sfheaders, rapidjsonr, jsonify, geometries
+    sessioninfo, sfheaders, rapidjsonr, jsonify, geometries,
+    dieghernan/geobounds
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas

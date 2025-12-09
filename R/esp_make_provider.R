@@ -29,8 +29,7 @@
 #'
 #' @details
 #' This function is meant to work with services provided as of the
-#' [OGC
-#' Standard](http://opengeospatial.github.io/e-learning/wms/text/operations.html#getmap).
+#' [OGC Standard](https://www.ogc.org/standards/wms/).
 #'
 #' Note that:
 #' - \CRANpkg{mapSpain} would not provide advice on the parameter `q` to be

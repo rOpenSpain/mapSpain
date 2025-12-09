@@ -1,5 +1,4 @@
 test_that("Custom WMTS provider", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 
@@ -20,7 +19,6 @@ test_that("Custom WMTS provider", {
 })
 
 test_that("Custom WMS provider", {
-  skip_if_not_installed("slippymath")
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
 

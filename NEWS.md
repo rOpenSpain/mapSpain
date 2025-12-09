@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+-   Remove **slippymath** dependency (#126).
+
 # mapSpain 0.10.0
 
 -   Fix a bug on `esp_get_prov_siane()` when selecting columns #115.
