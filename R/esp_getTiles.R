@@ -283,12 +283,13 @@ esp_getTiles <- function(
   )
   # Caso some WMTS
   if (is.null(crs)) {
-    crs <- "epsg:3857"
+    crs <- "EPSG:3857"
   }
 
   if (tolower(crs) == tolower("GoogleMapsCompatible")) {
-    crs <- "epsg:3857"
+    crs <- "EPSG:3857"
   }
+  crs <- toupper(crs)
 
   crs_sf <- sf::st_crs(crs)
 

@@ -246,7 +246,7 @@ getwmts <- function(
     update_cache = update_cache
   )
 
-  rout <- compose_tile_grid(tile_grid, ext, images, transparent, "epsg:3857")
+  rout <- compose_tile_grid(tile_grid, ext, images, transparent, "EPSG:3857")
   return(rout)
 }
 

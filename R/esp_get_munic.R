@@ -146,7 +146,6 @@ esp_get_munic <- function(
       data_sf <- giscoR::gisco_get_lau(
         year = year,
         epsg = epsg,
-        cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
         verbose = verbose,
@@ -156,7 +155,6 @@ esp_get_munic <- function(
       data_sf <- giscoR::gisco_get_communes(
         year = year,
         epsg = epsg,
-        cache = cache,
         update_cache = update_cache,
         cache_dir = cache_dir,
         verbose = verbose,
