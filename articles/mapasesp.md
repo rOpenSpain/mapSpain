@@ -610,7 +610,7 @@ Details
     #>  forcats            * 1.0.1       2025-09-25 [1] RSPM
     #>  fs                   1.6.6       2025-04-12 [1] RSPM
     #>  generics             0.1.4       2025-05-09 [1] RSPM
-    #>  geobounds          * 0.0.1.9000  2025-12-09 [1] Github (dieghernan/geobounds@72f1507)
+    #>  geobounds          * 0.0.1.9000  2025-12-10 [1] Github (dieghernan/geobounds@72f1507)
     #>  geodata            * 0.6-6       2025-09-30 [1] RSPM
     #>  geojsonsf            2.0.5       2025-11-26 [1] CRAN (R 4.5.2)
     #>  ggplot2            * 4.0.1       2025-11-14 [1] RSPM
@@ -653,7 +653,7 @@ Details
     #>  rlang                1.1.6       2025-04-11 [1] RSPM
     #>  rmarkdown            2.30        2025-09-28 [1] RSPM
     #>  rnaturalearth      * 1.1.0       2025-07-28 [1] RSPM
-    #>  rnaturalearthhires   1.0.0.9000  2025-12-06 [1] Github (ropensci/rnaturalearthhires@e4736f6)
+    #>  rnaturalearthhires   1.0.0.9000  2025-12-10 [1] Github (ropensci/rnaturalearthhires@e4736f6)
     #>  S7                   0.2.1       2025-11-14 [1] RSPM
     #>  sass                 0.4.10      2025-04-11 [1] RSPM
     #>  scales               1.4.0       2025-04-24 [1] RSPM
