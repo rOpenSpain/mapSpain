@@ -7,13 +7,27 @@
         "id": "https://orcid.org/0000-0001-8457-4658"
       },
       "codeRepository": "https://github.com/rOpenSpain/mapSpain",
-      "copyrightHolder": {
-        "id": "https://orcid.org/0000-0001-8457-4658",
+      "contributor": {
+        "id": "https://orcid.org/0000-0002-1932-3323",
         "type": "Person",
-        "email": "diego.hernangomezherrero@gmail.com",
-        "familyName": "Hernangómez",
-        "givenName": "Diego"
+        "email": "timothee.giraud@cnrs.fr",
+        "familyName": "Giraud",
+        "givenName": "Timothée"
       },
+      "copyrightHolder": [
+        {
+          "id": "https://orcid.org/0000-0001-8457-4658",
+          "type": "Person",
+          "email": "diego.hernangomezherrero@gmail.com",
+          "familyName": "Hernangómez",
+          "givenName": "Diego"
+        },
+        {
+          "type": "Person",
+          "familyName": "McBain",
+          "givenName": "Miles"
+        }
+      ],
       "description": "Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.",
       "license": "https://spdx.org/licenses/GPL-3.0",
       "name": "mapSpain: Administrative Boundaries of Spain",

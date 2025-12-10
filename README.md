@@ -234,7 +234,6 @@ Some packages recommended for visualization are:
 ## Citation
 
 <p>
-
 Hernangómez D (2025). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,

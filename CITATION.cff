@@ -78,7 +78,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2025'
-  version: '>= 3.6.0'
+  version: '>= 4.1.0'
 - type: software
   title: countrycode
   abstract: 'countrycode: Convert Country Names and Country Codes'

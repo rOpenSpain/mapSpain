@@ -30,6 +30,15 @@
       "@id": "https://orcid.org/0000-0001-8457-4658"
     }
   ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Timothée",
+      "familyName": "Giraud",
+      "email": "timothee.giraud@cnrs.fr",
+      "@id": "https://orcid.org/0000-0002-1932-3323"
+    }
+  ],
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -37,6 +46,11 @@
       "familyName": "Hernangómez",
       "email": "diego.hernangomezherrero@gmail.com",
       "@id": "https://orcid.org/0000-0001-8457-4658"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Miles",
+      "familyName": "McBain"
     }
   ],
   "maintainer": [
@@ -168,7 +182,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.6.0"
+      "version": ">= 4.1.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -232,7 +246,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "2607.38KB",
+  "fileSize": "2610.538KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
