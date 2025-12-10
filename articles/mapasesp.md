@@ -58,7 +58,7 @@ install.packages("mapSpain",
 #### Con pak (desde GitHub)
 
 ``` r
-# install.packages("pak")
+install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
@@ -68,7 +68,7 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 library(mapSpain)
 library(tidyverse)
 
-galicia <- esp_get_munic_siane(region = "Galicia") %>%
+galicia <- esp_get_munic_siane(region = "Galicia") |>
   # Homogeinizo labels
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
@@ -81,7 +81,7 @@ ggplot(galicia) +
 ```
 
 ![Mapa de los municipios de
-Galicia](x02_mapasesp_files/figure-html/intro-1.png)
+Galicia](mapasesp_files/figure-html/intro-1.png)
 
 Si exploramos el dataset:
 
@@ -104,28 +104,28 @@ library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
 library(rnaturalearth)
-esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") %>%
+esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") |>
   st_transform(3857)
 
 # mapSpain
-esp_mapspain <- esp_get_country(epsg = 4326) %>%
+esp_mapspain <- esp_get_country(epsg = 4326) |>
   st_transform(3857)
 
 # geodata (GADM)
 library(geodata)
-esp_geodata <- geodata::gadm("ES", path = ".", level = 0) %>%
+esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
   # Convertimos de SpatVector a objecto sf
-  sf::st_as_sf() %>%
+  sf::st_as_sf() |>
   st_transform(3857)
 
 # geobounds
 # https://github.com/dieghernan/geobounds
 library(geobounds)
-esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") %>%
+esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
   st_transform(3857)
 
 # Imagen Ria Ferrol
-tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
+tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
@@ -157,7 +157,7 @@ ggplot(esp_all) +
 
 ![Comparación de la resolución de diferentes fuentes de mapas; se
 muestran bordes de los datos comparados con ortofoto de la Ria de
-Ferrol](x02_mapasesp_files/figure-html/compara-1.png)
+Ferrol](mapasesp_files/figure-html/compara-1.png)
 
 - **rnaturalearth**: No capta bien el contorno.
 - **mapSpain**: Resultados satisfactorios.
@@ -304,7 +304,7 @@ ggplot(esp) +
   theme_light()
 ```
 
-![](x02_mapasesp_files/figure-html/pais-1.png)
+![](mapasesp_files/figure-html/pais-1.png)
 
 ### El caso Canarias
 
@@ -327,7 +327,7 @@ ggplot(esp_can) +
   geom_sf(data = can_box)
 ```
 
-![](x02_mapasesp_files/figure-html/can-1.png)
+![](mapasesp_files/figure-html/can-1.png)
 
 **Cuando se trabaja con imágenes, mapas interactivos o se desean
 realizar analisis espaciales, se debe usar `moveCAN = FALSE`**
@@ -342,7 +342,7 @@ ggplot(nuts1) +
   labs(title = "NUTS1: Baja Resolución")
 ```
 
-![](x02_mapasesp_files/figure-html/nuts-1.png)
+![](mapasesp_files/figure-html/nuts-1.png)
 
 ``` r
 # Baleares NUTS3
@@ -359,7 +359,7 @@ ggplot(nuts3_sf) +
   theme_minimal()
 ```
 
-![](x02_mapasesp_files/figure-html/unnamed-chunk-3-1.png)
+![](mapasesp_files/figure-html/unnamed-chunk-3-1.png)
 
 ### CCAA
 
@@ -369,7 +369,7 @@ ccaa <- esp_get_ccaa(ccaa = c(
   "Baleares"
 ))
 
-ccaa <- ccaa %>%
+ccaa <- ccaa |>
   mutate(ccaa_cat = esp_dict_translate(ine.ccaa.name, "ca"))
 
 ggplot(ccaa) +
@@ -379,7 +379,7 @@ ggplot(ccaa) +
   scale_fill_discrete(type = hcl.colors(4, "Plasma"))
 ```
 
-![](x02_mapasesp_files/figure-html/ccaa-1.png)
+![](mapasesp_files/figure-html/ccaa-1.png)
 
 ### Provincias (usando versión `*_siane`)
 
@@ -399,12 +399,12 @@ ggplot(provs) +
   labs(fill = "Provincias")
 ```
 
-![](x02_mapasesp_files/figure-html/prov-1.png)
+![](mapasesp_files/figure-html/prov-1.png)
 
 ### Municipios
 
 ``` r
-munic <- esp_get_munic(region = "Segovia") %>%
+munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
   left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
 
@@ -428,7 +428,7 @@ ggplot(munic) +
   )
 ```
 
-![](x02_mapasesp_files/figure-html/munic-1.png)
+![](mapasesp_files/figure-html/munic-1.png)
 
 ### Hexbin maps
 
@@ -450,7 +450,7 @@ ggplot(hex) +
   theme_void()
 ```
 
-![](x02_mapasesp_files/figure-html/hex-1.png)![](x02_mapasesp_files/figure-html/hex-2.png)
+![](mapasesp_files/figure-html/hex-1.png)![](mapasesp_files/figure-html/hex-2.png)
 
 ## Imágenes
 
@@ -488,7 +488,7 @@ ggplot() +
   labs(title = "Municipios en Madrid")
 ```
 
-![](x02_mapasesp_files/figure-html/imagesestaticos-1.png)
+![](mapasesp_files/figure-html/imagesestaticos-1.png)
 
 ``` r
 
@@ -510,7 +510,7 @@ ggplot() +
   )
 ```
 
-![](x02_mapasesp_files/figure-html/imagesestaticos-2.png)
+![](mapasesp_files/figure-html/imagesestaticos-2.png)
 
 ### Mapas dinámicos usando mapSpain
 
@@ -535,29 +535,29 @@ leaflet(stations,
   elementId = "railway",
   width = "100%",
   height = "60vh"
-) %>%
-  addProviderEspTiles("IDErioja.Claro", group = "Base") %>%
-  addProviderEspTiles("MTN", group = "MTN") %>%
+) |>
+  addProviderEspTiles("IDErioja.Claro", group = "Base") |>
+  addProviderEspTiles("MTN", group = "MTN") |>
   addProviderEspTiles("RedTransporte.Carreteras",
     group = "Carreteras"
-  ) %>%
+  ) |>
   addProviderEspTiles("RedTransporte.Ferroviario",
     group = "Lineas Ferroviarias"
-  ) %>%
+  ) |>
   addMarkers(
     icon = train_icon,
     group = "Estaciones",
     popup = sprintf(
       "<strong>%s</strong>",
       stations$rotulo
-    ) %>%
+    ) |>
       lapply(htmltools::HTML)
-  ) %>%
+  ) |>
   addLayersControl(
     baseGroups = c("Base", "MTN"),
     overlayGroups = c("Estaciones", "Lineas Ferroviarias", "Carreteras"),
     options = layersControlOptions(collapsed = FALSE)
-  ) %>%
+  ) |>
   hideGroup(c("Lineas Ferroviarias", "Carreteras"))
 ```
 
@@ -584,7 +584,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-09
+    #>  date     2025-12-10
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -630,7 +630,7 @@ Details
     #>  lifecycle            1.0.4       2023-11-07 [1] RSPM
     #>  lubridate          * 1.9.4       2024-12-08 [1] RSPM
     #>  magrittr             2.0.4       2025-09-12 [1] RSPM
-    #>  mapSpain           * 0.10.0.9000 2025-12-09 [1] local
+    #>  mapSpain           * 0.10.0.9000 2025-12-10 [1] local
     #>  otel                 0.2.0       2025-08-29 [1] RSPM
     #>  pillar               1.11.1      2025-09-17 [1] RSPM
     #>  pkgconfig            2.0.3       2019-09-22 [1] RSPM
