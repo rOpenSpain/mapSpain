@@ -50,7 +50,16 @@
     {
       "@type": "Person",
       "givenName": "Miles",
-      "familyName": "McBain"
+      "familyName": "McBain",
+      "@id": "https://orcid.org/0000-0003-2865-2548"
+    },
+    {
+      "@type": "Organization",
+      "name": "Eurostat"
+    },
+    {
+      "@type": "Organization",
+      "name": "Instituto Geográfico Nacional"
     }
   ],
   "maintainer": [
@@ -258,7 +267,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "2625.194KB",
+  "fileSize": "2624.897KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

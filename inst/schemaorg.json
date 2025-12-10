@@ -23,9 +23,18 @@
           "givenName": "Diego"
         },
         {
+          "id": "https://orcid.org/0000-0003-2865-2548",
           "type": "Person",
           "familyName": "McBain",
           "givenName": "Miles"
+        },
+        {
+          "type": "Organization",
+          "name": "Eurostat"
+        },
+        {
+          "type": "Organization",
+          "name": "Instituto Geográfico Nacional"
         }
       ],
       "description": "Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.",
