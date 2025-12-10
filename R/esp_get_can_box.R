@@ -163,7 +163,7 @@ esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
 
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
-  return(lall)
+  lall
 }
 
 #' @rdname esp_get_can_box
@@ -210,5 +210,5 @@ esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
 
   lall <- sf::st_transform(lall, as.numeric(epsg))
 
-  return(lall)
+  lall
 }

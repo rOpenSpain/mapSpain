@@ -62,15 +62,15 @@ labelLayer(grid, txt = "id")
 # Align visually Galicia
 
 init <-
-  grid %>%
-  filter(id == 39) %>%
-  st_centroid() %>%
+  grid |>
+  filter(id == 39) |>
+  st_centroid() |>
   st_coordinates()
 
 end <-
-  PENINNEW %>%
-  filter(iso2.ccaa.code == "ES-GA") %>%
-  st_centroid() %>%
+  PENINNEW |>
+  filter(iso2.ccaa.code == "ES-GA") |>
+  st_centroid() |>
   st_coordinates()
 
 offset <- c(init[1] - end[1], end[2] - init[2])
@@ -79,7 +79,7 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>%
+) |>
   st_transform(3857)
 
 plot(st_geometry(newgrid))
@@ -93,8 +93,8 @@ df <-
     id = c(22, 47, 57, 83)
   )
 
-finalgrid <- newgrid %>%
-  inner_join(df) %>%
+finalgrid <- newgrid |>
+  inner_join(df) |>
   select(iso2.ccaa.code)
 
 CCAA_END <- rbind(
@@ -169,8 +169,8 @@ cells <- calculate_grid(
 )
 
 PENINNEW <-
-  assign_polygons(PENIN, cells) %>%
-  st_transform(3857) %>%
+  assign_polygons(PENIN, cells) |>
+  st_transform(3857) |>
   select(cpro)
 
 
@@ -208,15 +208,15 @@ labelLayer(grid, txt = "id")
 # Align visually Galicia
 
 init <-
-  grid %>%
-  filter(id == 46) %>%
-  st_centroid() %>%
+  grid |>
+  filter(id == 46) |>
+  st_centroid() |>
   st_coordinates()
 
 end <-
-  PENINNEW %>%
-  filter(iso2.prov.code == "ES-C") %>%
-  st_centroid() %>%
+  PENINNEW |>
+  filter(iso2.prov.code == "ES-C") |>
+  st_centroid() |>
   st_coordinates()
 
 offset <- c(init[1] - end[1], end[2] - init[2])
@@ -225,7 +225,7 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>%
+) |>
   st_transform(3857)
 
 
@@ -249,8 +249,8 @@ df <- data.frame(
   stringsAsFactors = FALSE
 )
 
-REST <- newgrid %>%
-  inner_join(df) %>%
+REST <- newgrid |>
+  inner_join(df) |>
   select(cpro)
 
 PROVNEW <- rbind(PENINNEW[, "cpro"], REST)
@@ -271,7 +271,7 @@ final <- st_make_valid(final)
 final <- st_transform(final, 4258)
 
 plot(st_geometry(final))
-plot(esp_get_prov() %>% st_transform(4258) %>% st_geometry(), add = TRUE)
+plot(esp_get_prov() |> st_transform(4258) |> st_geometry(), add = TRUE)
 esp_hexbin_prov <- st_make_valid(final)
 
 
@@ -346,15 +346,15 @@ labelLayer(grid, txt = "id")
 # Align visually Galicia
 
 init <-
-  grid %>%
-  filter(id == 59) %>%
-  st_centroid() %>%
+  grid |>
+  filter(id == 59) |>
+  st_centroid() |>
   st_coordinates()
 
 end <-
-  PENINNEW %>%
-  filter(iso2.ccaa.code == "ES-GA") %>%
-  st_centroid() %>%
+  PENINNEW |>
+  filter(iso2.ccaa.code == "ES-GA") |>
+  st_centroid() |>
   st_coordinates()
 
 
@@ -364,7 +364,7 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>%
+) |>
   st_transform(3857)
 
 
@@ -381,8 +381,8 @@ df <-
   )
 
 
-finalgrid <- newgrid %>%
-  inner_join(df) %>%
+finalgrid <- newgrid |>
+  inner_join(df) |>
   select(iso2.ccaa.code)
 
 CCAA_END <- rbind(
@@ -449,8 +449,8 @@ cells <- calculate_grid(
 
 
 PENINNEW <-
-  assign_polygons(PENIN, cells) %>%
-  st_transform(3857) %>%
+  assign_polygons(PENIN, cells) |>
+  st_transform(3857) |>
   select(cpro)
 
 
@@ -482,15 +482,15 @@ plot(st_geometry(PENINNEW), add = TRUE, col = "red")
 labelLayer(grid, txt = "id")
 
 init <-
-  grid %>%
-  filter(id == 164) %>%
-  st_centroid() %>%
+  grid |>
+  filter(id == 164) |>
+  st_centroid() |>
   st_coordinates()
 
 end <-
-  PENINNEW %>%
-  filter(iso2.prov.code == "ES-C") %>%
-  st_centroid() %>%
+  PENINNEW |>
+  filter(iso2.prov.code == "ES-C") |>
+  st_centroid() |>
   st_coordinates()
 
 offset <- c(init[1] - end[1], init[2] - end[2])
@@ -499,7 +499,7 @@ newgrid <- sf::st_sf(
   sf::st_drop_geometry(grid),
   geometry = sf::st_geometry(grid) - offset,
   crs = sf::st_crs(grid)
-) %>%
+) |>
   st_transform(3857)
 
 par(mar = c(0, 0, 0, 0))
@@ -525,8 +525,8 @@ df <- data.frame(
 )
 
 
-finalgrid <- newgrid %>%
-  inner_join(df) %>%
+finalgrid <- newgrid |>
+  inner_join(df) |>
   select(cpro)
 
 PROV_END <- rbind(

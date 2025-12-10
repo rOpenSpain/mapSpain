@@ -273,7 +273,7 @@ esp_get_munic <- function(
   data_sf <-
     data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
 
-  return(data_sf)
+  data_sf
 }
 
 
@@ -429,5 +429,5 @@ esp_get_munic_siane <- function(
       )
     ]
   }
-  return(data_sf)
+  data_sf
 }

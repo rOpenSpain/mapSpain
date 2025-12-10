@@ -152,5 +152,5 @@ esp_get_grid_EEA <- function(
   if (verbose) {
     message("File loaded")
   }
-  return(err_onload)
+  err_onload
 }

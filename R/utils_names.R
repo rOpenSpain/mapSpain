@@ -9,7 +9,7 @@ esp_hlp_all2nuts <- function(region) {
   iso <- grep("^ES-", region)
   nuts <- grep("^ES[[:digit:]]", region)
   collectcode <- c(iso, nuts)
-  key <- seq_len(length(region))
+  key <- seq_along(region)
 
   if (length(collectcode) > 0) {
     key <- key[-collectcode]
@@ -65,7 +65,7 @@ esp_hlp_all2ccaa <- function(region) {
 
   codauto <- grep("^[[:digit:]]", region)
 
-  key <- seq_len(length(region))
+  key <- seq_along(region)
 
   if (length(codauto) > 0) {
     key <- key[-codauto]
@@ -130,7 +130,7 @@ esp_hlp_all2prov <- function(region) {
   nuts <- grep("^ES[[:digit:]]", region)
   iso <- grep("^ES-", region)
   collectcode <- c(cpro, nuts, iso)
-  key <- seq_len(length(region))
+  key <- seq_along(region)
 
   if (length(collectcode) > 0) {
     key <- key[-collectcode]
@@ -157,7 +157,7 @@ esp_hlp_all2prov <- function(region) {
   nuts <- grep("^ES[[:digit:]]", region)
   iso <- grep("^ES-", region)
   collectcode <- c(cpro, nuts, iso)
-  key <- seq_len(length(region))
+  key <- seq_along(region)
 
   if (length(collectcode) > 0) {
     key <- key[-collectcode]

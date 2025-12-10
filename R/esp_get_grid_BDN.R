@@ -86,7 +86,7 @@ esp_get_grid_BDN <- function(
     cache = TRUE
   )
 
-  return(result)
+  result
 }
 
 #' @rdname esp_get_grid_BDN
@@ -140,5 +140,5 @@ esp_get_grid_BDN_ccaa <- function(
     cache = TRUE
   )
 
-  return(result)
+  result
 }

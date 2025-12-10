@@ -152,19 +152,19 @@ m <- leaflet(tenerife_leaf,
 )
 
 # Add layers
-m <- m %>%
-  addProviderEspTiles("IDErioja.Relieve") %>%
-  addPolygons(color = NA, fillColor = "red", group = "Polygon") %>%
+m <- m |>
+  addProviderEspTiles("IDErioja.Relieve") |>
+  addPolygons(color = NA, fillColor = "red", group = "Polygon") |>
   addProviderEspTiles("Geofisica.Terremotos365dias",
     group = "Earthquakes"
   )
 
 # Add additional options
-m %>%
+m |>
   addLayersControl(
     overlayGroups = c("Polygon", "Earthquakes"),
     options = layersControlOptions(collapsed = FALSE)
-  ) %>%
+  ) |>
   setMaxBounds(bbox[1], bbox[2], bbox[3], bbox[4])
 ```
 
@@ -212,12 +212,12 @@ labels <- sprintf(
   munic_pop$rotulo,
   munic_pop$ine.prov.name,
   munic_pop$dens_label
-) %>% lapply(htmltools::HTML)
+) |> lapply(htmltools::HTML)
 
 
-leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
-  setView(lng = -3.684444, lat = 40.308611, zoom = 5) %>%
-  addProviderEspTiles("IDErioja") %>%
+leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
+  setView(lng = -3.684444, lat = 40.308611, zoom = 5) |>
+  addProviderEspTiles("IDErioja") |>
   addPolygons(
     data = munic_pop,
     fillColor = ~ pal(dens),
@@ -232,7 +232,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") %>%
       bringToFront = TRUE
     ),
     popup = labels
-  ) %>%
+  ) |>
   addLegend(
     pal = pal, values = bins, opacity = 0.7,
     title = paste0(

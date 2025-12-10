@@ -86,7 +86,7 @@ install.packages("mapSpain",
 #### Con pak (desde GitHub)
 
 ```{r instremotes, eval=FALSE}
-# install.packages("pak")
+install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
@@ -96,7 +96,7 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 library(mapSpain)
 library(tidyverse)
 
-galicia <- esp_get_munic_siane(region = "Galicia") %>%
+galicia <- esp_get_munic_siane(region = "Galicia") |>
   # Homogeinizo labels
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
@@ -129,28 +129,28 @@ library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
 library(rnaturalearth)
-esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") %>%
+esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") |>
   st_transform(3857)
 
 # mapSpain
-esp_mapspain <- esp_get_country(epsg = 4326) %>%
+esp_mapspain <- esp_get_country(epsg = 4326) |>
   st_transform(3857)
 
 # geodata (GADM)
 library(geodata)
-esp_geodata <- geodata::gadm("ES", path = ".", level = 0) %>%
+esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
   # Convertimos de SpatVector a objecto sf
-  sf::st_as_sf() %>%
+  sf::st_as_sf() |>
   st_transform(3857)
 
 # geobounds
 # https://github.com/dieghernan/geobounds
 library(geobounds)
-esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") %>%
+esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
   st_transform(3857)
 
 # Imagen Ria Ferrol
-tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) %>%
+tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
@@ -358,7 +358,7 @@ ccaa <- esp_get_ccaa(ccaa = c(
   "Baleares"
 ))
 
-ccaa <- ccaa %>%
+ccaa <- ccaa |>
   mutate(ccaa_cat = esp_dict_translate(ine.ccaa.name, "ca"))
 
 ggplot(ccaa) +
@@ -389,7 +389,7 @@ ggplot(provs) +
 ### Municipios
 
 ```{r munic}
-munic <- esp_get_munic(region = "Segovia") %>%
+munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
   left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
 
@@ -509,29 +509,29 @@ leaflet(stations,
   elementId = "railway",
   width = "100%",
   height = "60vh"
-) %>%
-  addProviderEspTiles("IDErioja.Claro", group = "Base") %>%
-  addProviderEspTiles("MTN", group = "MTN") %>%
+) |>
+  addProviderEspTiles("IDErioja.Claro", group = "Base") |>
+  addProviderEspTiles("MTN", group = "MTN") |>
   addProviderEspTiles("RedTransporte.Carreteras",
     group = "Carreteras"
-  ) %>%
+  ) |>
   addProviderEspTiles("RedTransporte.Ferroviario",
     group = "Lineas Ferroviarias"
-  ) %>%
+  ) |>
   addMarkers(
     icon = train_icon,
     group = "Estaciones",
     popup = sprintf(
       "<strong>%s</strong>",
       stations$rotulo
-    ) %>%
+    ) |>
       lapply(htmltools::HTML)
-  ) %>%
+  ) |>
   addLayersControl(
     baseGroups = c("Base", "MTN"),
     overlayGroups = c("Estaciones", "Lineas Ferroviarias", "Carreteras"),
     options = layersControlOptions(collapsed = FALSE)
-  ) %>%
+  ) |>
   hideGroup(c("Lineas Ferroviarias", "Carreteras"))
 ```
 

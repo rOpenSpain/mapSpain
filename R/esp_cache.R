@@ -110,7 +110,7 @@ esp_set_cache_dir <- function(
   }
 
   Sys.setenv(MAPSPAIN_CACHE_DIR = cache_dir)
-  return(invisible(cache_dir))
+  invisible(cache_dir)
 }
 
 esp_clear_cache <- function(
@@ -132,7 +132,7 @@ esp_clear_cache <- function(
 
   Sys.setenv(MAPSPAIN_CACHE_DIR = "")
   options(mapSpain_cache_dir = NULL)
-  return(invisible())
+  invisible()
 }
 
 #' Detect cache dir for mapSpain
@@ -172,16 +172,16 @@ esp_hlp_detect_cache_dir <- function() {
 
       # 3. Return from cached path
       Sys.setenv(MAPSPAIN_CACHE_DIR = cached_path)
-      return(cached_path)
+      cached_path
       # nocov end
     } else {
       # 4. Default cache location
 
       cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
-      return(cache_dir)
+      cache_dir
     }
   } else {
-    return(getvar)
+    getvar
   }
 }
 
@@ -200,7 +200,7 @@ esp_hlp_cachedir <- function(cache_dir = NULL) {
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }
-  return(cache_dir)
+  cache_dir
 }
 
 #' Detect cache dir for \CRANpkg{mapSpain}

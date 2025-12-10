@@ -212,7 +212,7 @@ esp_dict_region_code <- function(
   }
   out[out == "NOMATCH"] <- NA
 
-  return(out)
+  out
 }
 
 #' @family dictionary
@@ -327,5 +327,5 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
     )
   }
 
-  return(namestrans)
+  namestrans
 }

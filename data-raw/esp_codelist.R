@@ -12,8 +12,8 @@ NUTS1 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
-  esp_hlp_utf8() %>%
+  ) |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 CCAA <-
@@ -22,8 +22,8 @@ CCAA <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
-  esp_hlp_utf8() %>%
+  ) |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 PROV <-
@@ -32,8 +32,8 @@ PROV <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
-  esp_hlp_utf8() %>%
+  ) |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 NUTS3 <-
@@ -42,17 +42,17 @@ NUTS3 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
-  esp_hlp_utf8() %>%
+  ) |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 
 # Create full table
 esp_codelist <-
-  NUTS1 %>%
-  left_join(CCAA) %>%
-  left_join(PROV) %>%
-  left_join(NUTS3) %>%
+  NUTS1 |>
+  left_join(CCAA) |>
+  left_join(PROV) |>
+  left_join(NUTS3) |>
   as.data.frame()
 
 usethis::use_data(esp_codelist, overwrite = TRUE, compress = "xz")

@@ -209,5 +209,5 @@ esp_get_capimun <- function(
       "LAU_CODE"
     )]
   }
-  return(data_sf)
+  data_sf
 }

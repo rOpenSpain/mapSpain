@@ -142,13 +142,13 @@ tilenum_to_lonlat <- function(x, y, zoom) {
 }
 
 lonlat_to_merc <- function(ll) {
-  A <- 6378137
-  MAXEXTENT <- 20037508.342789244
+  a <- 6378137
+  maxextent <- 20037508.342789244
   xy <- cbind(
-    A * radians(ll[, 1]),
-    A * log(tan((pi * 0.25) + (0.5 * radians(ll[, 2]))))
+    a * radians(ll[, 1]),
+    a * log(tan((pi * 0.25) + (0.5 * radians(ll[, 2]))))
   )
-  xy[, 1] <- sm_clamp(xy[, 1], -MAXEXTENT, MAXEXTENT)
-  xy[, 2] <- sm_clamp(xy[, 2], -MAXEXTENT, MAXEXTENT)
+  xy[, 1] <- sm_clamp(xy[, 1], -maxextent, maxextent)
+  xy[, 2] <- sm_clamp(xy[, 2], -maxextent, maxextent)
   xy
 }

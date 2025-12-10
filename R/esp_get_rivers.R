@@ -161,5 +161,5 @@ esp_get_rivers <- function(
   }
 
   rivers_sf_merge <- sf::st_transform(rivers_sf_merge, as.double(init_epsg))
-  return(rivers_sf_merge)
+  rivers_sf_merge
 }

@@ -17,7 +17,7 @@ NUTS1 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
+  ) |>
   esp_hlp_utf8()
 
 CCAA <-
@@ -26,7 +26,7 @@ CCAA <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
+  ) |>
   esp_hlp_utf8()
 
 PROV <-
@@ -35,7 +35,7 @@ PROV <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
+  ) |>
   esp_hlp_utf8()
 
 NUTS3 <-
@@ -44,25 +44,25 @@ NUTS3 <-
     stringsAsFactors = FALSE,
     fileEncoding = "UTF-8",
     colClasses = "character"
-  ) %>%
+  ) |>
   esp_hlp_utf8()
 
 # names_full----
 
 # Create individual dictionaries
 dict_nuts1 <-
-  NUTS1 %>%
-  mutate(key = nuts1.shortname.es) %>%
+  NUTS1 |>
+  mutate(key = nuts1.shortname.es) |>
   distinct()
-dict_ccaa <- CCAA %>%
-  mutate(key = ccaa.shortname.es) %>%
+dict_ccaa <- CCAA |>
+  mutate(key = ccaa.shortname.es) |>
   distinct()
-dict_prov <- PROV %>%
-  mutate(key = prov.shortname.es) %>%
+dict_prov <- PROV |>
+  mutate(key = prov.shortname.es) |>
   distinct()
 dict_nuts3 <-
-  NUTS3 %>%
-  mutate(key = nuts3.shortname.es) %>%
+  NUTS3 |>
+  mutate(key = nuts3.shortname.es) |>
   distinct()
 
 
@@ -73,14 +73,14 @@ dict_nuts1all <- melt(
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_nuts1)
-) %>%
+) |>
   unique()
 dict_ccaaall <- melt(
   dict_ccaa,
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_ccaa)
-) %>%
+) |>
   unique()
 
 dict_provall <- melt(
@@ -88,7 +88,7 @@ dict_provall <- melt(
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_prov)
-) %>%
+) |>
   unique()
 
 
@@ -97,42 +97,42 @@ dict_nuts3all <- melt(
   id = "key",
   na.rm = TRUE,
   measure.vars = colnames(dict_nuts3)
-) %>%
+) |>
   unique()
 
 
 names_full <-
-  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) %>%
-  unique() %>%
+  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) |>
+  unique() |>
   mutate(variable = as.character(variable))
 
 # Add versions without accents, etc.
 
 names_alt <-
-  names_full %>%
+  names_full |>
   mutate(
     value = iconv(value, from = "UTF-8", to = "ASCII//TRANSLIT"),
     variable = paste0("clean.", variable)
   )
 
-names_full <- rbind(names_full, names_alt) %>% distinct()
+names_full <- rbind(names_full, names_alt) |> distinct()
 
 # Version UPCASE and lowercase
 
-upcase <- names_full %>%
+upcase <- names_full |>
   mutate(
     value = toupper(value),
     variable = paste0("upcase.", variable)
   )
-locase <- names_full %>%
+locase <- names_full |>
   mutate(
     value = tolower(value),
     variable = paste0("locase.", variable)
   )
 
 names_full <-
-  rbind(names_full, upcase) %>%
-  rbind(locase) %>%
+  rbind(names_full, upcase) |>
+  rbind(locase) |>
   distinct()
 
 # Tests names_full
@@ -275,30 +275,30 @@ countrycode::countrycode(
 )
 
 
-dict_ccaa <- dict_ccaa %>% as.data.frame()
-dict_prov <- dict_prov %>% as.data.frame()
-code2code <- code2code %>% as.data.frame()
-names2nuts <- names2nuts %>% as.data.frame()
-names_full <- names_full %>% as.data.frame()
+dict_ccaa <- dict_ccaa |> as.data.frame()
+dict_prov <- dict_prov |> as.data.frame()
+code2code <- code2code |> as.data.frame()
+names2nuts <- names2nuts |> as.data.frame()
+names_full <- names_full |> as.data.frame()
 
 # Add grid files
 
 library(sf)
 esp_hexbin_prov <-
-  st_read("./data-raw/esp_hexbin_prov.gpkg", stringsAsFactors = FALSE) %>%
+  st_read("./data-raw/esp_hexbin_prov.gpkg", stringsAsFactors = FALSE) |>
   st_make_valid()
 
 esp_hexbin_ccaa <-
-  st_read("./data-raw/esp_hexbin_ccaa.gpkg", stringsAsFactors = FALSE) %>%
+  st_read("./data-raw/esp_hexbin_ccaa.gpkg", stringsAsFactors = FALSE) |>
   st_make_valid()
 
 
 esp_grid_prov <-
-  st_read("./data-raw/esp_grid_prov.gpkg", stringsAsFactors = FALSE) %>%
+  st_read("./data-raw/esp_grid_prov.gpkg", stringsAsFactors = FALSE) |>
   st_make_valid()
 
 esp_grid_ccaa <-
-  st_read("./data-raw/esp_grid_ccaa.gpkg", stringsAsFactors = FALSE) %>%
+  st_read("./data-raw/esp_grid_ccaa.gpkg", stringsAsFactors = FALSE) |>
   st_make_valid()
 
 usethis::use_data(

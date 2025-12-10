@@ -2,7 +2,7 @@
 
 library(giscoR)
 
-esp_nuts.sf %>% sf::st_crs()
+esp_nuts.sf |> sf::st_crs()
 
 esp_nuts <-
   gisco_get_nuts(

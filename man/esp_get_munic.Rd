@@ -98,7 +98,7 @@ The years available are:
 \itemize{
 \item \code{\link[=esp_get_munic]{esp_get_munic()}}:  \code{year} could be one of "2001", "2004", "2006", "2008",
 "2010", "2013" and any year between 2016 and 2019.
-See \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_communes()}}.
+See \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}}.
 \item \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}: \code{year} could be passed as a single year ("YYYY"
 format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 Historical information starts as of 2005.

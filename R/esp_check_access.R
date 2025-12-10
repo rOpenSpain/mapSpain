@@ -25,17 +25,17 @@ esp_check_access <- function() {
     tryCatch(
       download.file(url, destfile = tempfile(), quiet = TRUE),
       warning = function(e) {
-        return(FALSE)
+        FALSE
       },
       error = function(e) {
-        return(FALSE)
+        FALSE
       }
     )
 
   if (isFALSE(access)) {
-    return(FALSE)
+    FALSE
   } else {
-    return(TRUE)
+    TRUE
   }
   # nocov end
 }
@@ -50,7 +50,7 @@ skip_if_siane_offline <- function() {
   if (requireNamespace("testthat", quietly = TRUE)) {
     testthat::skip("SIANE API not reachable")
   }
-  return(invisible())
+  invisible()
   # nocov end
 }
 
@@ -64,6 +64,6 @@ skip_if_gisco_offline <- function() {
   if (requireNamespace("testthat", quietly = TRUE)) {
     testthat::skip("GISCO API not reachable")
   }
-  return(invisible())
+  invisible()
   # nocov end
 }

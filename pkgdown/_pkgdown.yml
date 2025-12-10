@@ -1,4 +1,4 @@
-url: 'https://ropenspain.github.io/mapSpain'
+url: https://ropenspain.github.io/mapSpain
 
 repo:
   branch: main
@@ -42,17 +42,17 @@ reference:
     contents:
       - has_concept("cache utilities")
   - title: Dictionary
-    desc: >
+    desc: |
       Translation across languages and coding systems.
     contents:
       - esp_dict_region_code
   - title: Datasets
-    desc: >
+    desc: |
       These objects are datasets already included in the package.
     contents:
       - has_concept("datasets")
   - title: Helpers
-    desc: >
+    desc: |
       A collection of helper functions.
     contents:
       - has_concept("helper")
@@ -64,56 +64,68 @@ template:
   bootstrap: 5
   package: rostemplate
   params:
-    ganalytics: "G-5N21Z0YYJJ"
+    ganalytics: G-5N21Z0YYJJ
   opengraph:
     twitter:
-      creator: '@dhernangomez'
-      site: '@rOpenSpain'
+      creator: "@dhernangomez"
+      site: "@rOpenSpain"
       card: summary_large_image
 
 home:
-  title: >-
-    mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
-    Municipalities
-  description: >-
-    Administrative Boundaries of Spain based on the GISCO (Geographic
+  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces
+    and Municipalities
+  description: Administrative Boundaries of Spain based on the GISCO (Geographic
     Information System of the Commission) Eurostat database. It also provides a
     leaflet plugin and the ability of downloading and processing static tiles.
 
 navbar:
   structure:
     right:
-    - search
-    - twitter
-    - github
+      - search
+      - twitter
+      - github
   components:
-    home: ~
+    home: null
     articles:
       text: Articles
       menu:
         - text: Working with imagery
           href: articles/articles/working_imagery.html
-        - text: 'Annex: Codes and names of the Spanish regions'
-          href: articles/articles/x01_regioncodes.html
+        - text: "Annex: Codes and names of the Spanish regions"
+          href: articles/articles/regioncodes.html
         - text: -----
         - text: Other materials
-        - text: 'mapSpain: Mapas de España en R (xaringan)'
-          href: 'https://dieghernan.github.io/rpubs/mapSpain_slides/'
-        - text: 'mapSpain: Mapas de España en R (.Rmd)'
-          href: articles/articles/x02_mapasesp.html
-        - text: 'Grupo de Usuarios R Madrid 25-nov-2021 (video)'
-          href: 'http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/'
+        - text: "mapSpain: Mapas de España en R (xaringan)"
+          href: https://dieghernan.github.io/rpubs/mapSpain_slides/
+        - text: "mapSpain: Mapas de España en R (.Rmd)"
+          href: articles/articles/mapasesp.html
+        - text: Grupo de Usuarios R Madrid 25-nov-2021 (video)
+          href: http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/
     twitter:
       icon: fa-twitter
-      href: 'http://twitter.com/dhernangomez'
+      href: http://twitter.com/dhernangomez
       aria-label: Twitter
+
+articles:
+- title: All articles
+  contents:
+  - articles/working_imagery
+  - articles/mapasesp
+  - articles/regioncodes
+- title: internal
+  contents:
+  - imagery
 
 authors:
   Diego Hernangómez:
-    href: 'https://dieghernan.github.io/'
+    href: https://dieghernan.github.io/
   EuroGeographics:
-    href: >-
-      https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
+    href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Instituto Geográfico Nacional:
-    href: 'https://www.ign.es/'
+    href: https://www.ign.es/
+  Miles McBain:
+    href: https://milesmcbain.xyz/
+  Timothée Giraud:
+    href: https://rcarto.github.io/
+
 

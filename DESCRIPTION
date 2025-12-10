@@ -2,9 +2,14 @@ Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
 Version: 0.10.0.9000
-Authors@R: 
+Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
-           comment = c(ORCID = "0000-0001-8457-4658"))
+           comment = c(ORCID = "0000-0001-8457-4658")),
+    person("Miles", "McBain", role = "cph",
+           comment = "Slippy map tiles functions, from slippymath package"),
+    person("Timothée", "Giraud", , "timothee.giraud@cnrs.fr", role = "ctb",
+           comment = c(ORCID = "0000-0002-1932-3323", "Adaptation of slippymath functions"))
+  )
 Description: Administrative Boundaries of Spain at several levels
     (Autonomous Communities, Provinces, Municipalities) based on the
     'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
@@ -16,7 +21,7 @@ URL: https://ropenspain.github.io/mapSpain/,
     https://github.com/rOpenSpain/mapSpain
 BugReports: https://github.com/rOpenSpain/mapSpain/issues
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.1.0)
 Imports: 
     countrycode (>= 1.2.0),
     giscoR (>= 0.2.4),

@@ -186,5 +186,5 @@ esp_get_comarca <- function(
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  return(data_sf)
+  data_sf
 }

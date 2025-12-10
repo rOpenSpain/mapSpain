@@ -22,5 +22,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) [copyright holder]
 
+Other contributors:
+\itemize{
+  \item Miles McBain (Slippy map tiles functions, from slippymath package) [copyright holder]
+  \item Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID}) (Adaptation of slippymath functions) [contributor]
+}
+
 }
 \keyword{internal}

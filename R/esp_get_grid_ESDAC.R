@@ -159,5 +159,5 @@ esp_get_grid_ESDAC <- function(
   if (verbose) {
     message("File loaded")
   }
-  return(err_onload)
+  err_onload
 }

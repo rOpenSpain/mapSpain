@@ -134,7 +134,7 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data_sf)
+  data_sf
 }
 
 
@@ -283,5 +283,5 @@ esp_get_ccaa_siane <- function(
     data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
   }
 
-  return(data_sf)
+  data_sf
 }

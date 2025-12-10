@@ -58,5 +58,5 @@ esp_clear_cache <- function(
   options(mapSpain_cache_dir = NULL)
 
   # Reset cache dir
-  return(invisible())
+  invisible()
 }

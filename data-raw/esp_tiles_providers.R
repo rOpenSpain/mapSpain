@@ -7,13 +7,13 @@ library(tidyverse)
 library(readxl)
 
 df <-
-  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") %>%
-  esp_hlp_utf8() %>%
+  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 unique(df$field)
 
-df_pivoted <- df %>%
+df_pivoted <- df |>
   pivot_wider(
     values_from = value,
     names_from = field
@@ -121,13 +121,13 @@ ggplot2::ggplot() +
 
 library(leaflet)
 
-leaflet() %>%
+leaflet() |>
   setView(
     lat = 40.4166,
     lng = -3.7038400,
     zoom = 10
-  ) %>%
-  addProviderEspTiles(provider = "IDErioja.Claro") %>%
+  ) |>
+  addProviderEspTiles(provider = "IDErioja.Claro") |>
   addProviderEspTiles(
     provider = "CaminoDeSantiago",
     options = list(transparent = TRUE)

@@ -6,8 +6,8 @@ source("./data-raw/helperfuns.R")
 
 library(readxl)
 library(dplyr)
-pobmun19 <- read_xlsx("./data-raw/input/pobmun19.xlsx", range = "A2:G8133") %>%
-  esp_hlp_utf8() %>%
+pobmun19 <- read_xlsx("./data-raw/input/pobmun19.xlsx", range = "A2:G8133") |>
+  esp_hlp_utf8() |>
   as.data.frame()
 
 names(pobmun19) <-

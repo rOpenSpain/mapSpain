@@ -80,5 +80,5 @@ esp_get_country <- function(moveCAN = TRUE, ...) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  return(data_sf)
+  data_sf
 }
