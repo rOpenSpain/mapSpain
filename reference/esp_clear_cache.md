@@ -56,7 +56,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 esp_clear_cache(verbose = TRUE)
-#> mapSpain cached data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkdS5p5/mapSpain
+#> mapSpain cached data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpGGrDTW/mapSpain
 # }
 
 Sys.getenv("MAPSPAIN_CACHE_DIR")
