@@ -223,8 +223,8 @@ esp_getTiles <- function(
     names(extra_opts) <- tolower(names(extra_opts))
   }
   # Create cache dir
-  cache_dir <- esp_hlp_cachedir(cache_dir)
-  cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
+  cache_dir <- create_cache_dir(cache_dir)
+  cache_dir <- create_cache_dir(paste0(cache_dir, "/", type))
 
   # Attribution
   attr <- url_pieces$attribution
@@ -274,7 +274,7 @@ esp_getTiles <- function(
     newdir <- esp_get_md5(newdir)
 
     cache_dir <- file.path(cache_dir, newdir)
-    cache_dir <- esp_hlp_cachedir(cache_dir)
+    cache_dir <- create_cache_dir(cache_dir)
   }
 
   # Get CRS of Tile

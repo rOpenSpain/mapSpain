@@ -1,7 +1,7 @@
 Type: Package
 Package: mapSpain
 Title: Administrative Boundaries of Spain
-Version: 0.10.0.9000
+Version: 0.9.9.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658")),
@@ -23,6 +23,7 @@ BugReports: https://github.com/rOpenSpain/mapSpain/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
+    cli,
     countrycode (>= 1.2.0),
     giscoR (>= 0.2.4),
     rappdirs (>= 0.3.0),

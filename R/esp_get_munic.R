@@ -124,7 +124,7 @@ esp_get_munic <- function(
     )
   }
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   if (init_epsg == "4258") {
     epsg <- "4326"

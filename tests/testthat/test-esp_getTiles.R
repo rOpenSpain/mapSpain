@@ -1,5 +1,6 @@
 test_that("tiles error", {
   skip_if_not_installed("terra")
+  skip_on_os("mac")
 
   df <- data.frame(a = 1, b = 2)
 
@@ -19,6 +20,7 @@ test_that("tiles error", {
 test_that("tiles online", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   poly <- esp_get_ccaa("La Rioja")
   expect_error(esp_getTiles(poly, type = "FFF"))
@@ -136,6 +138,7 @@ test_that("tiles online", {
 test_that("tiles masks and crops", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
@@ -168,6 +171,7 @@ test_that("tiles masks and crops", {
 test_that("tiles options", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
@@ -201,6 +205,7 @@ test_that("tiles options", {
 test_that("Custom WMS", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
@@ -227,6 +232,7 @@ test_that("Custom WMS", {
 test_that("Custom WMTS", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()

@@ -142,7 +142,7 @@ esp_get_grid_MTN <- function(
     "MTN/dist/MTN_grids.zip"
   )
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   # Create filepath
   filename <- "MTN_grids.zip"

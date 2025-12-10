@@ -171,7 +171,7 @@ esp_get_nuts <- function(
   resolution <- as.character(resolution)
   nuts_level <- as.character(nuts_level)
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   if (nchar(resolution) == 1) {
     resolution <- paste0("0", resolution)
@@ -181,7 +181,7 @@ esp_get_nuts <- function(
     stop("spatial type should be '01', '03','10','20','60'")
   }
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   if (init_epsg == "4258") {
     epsg <- "4326"

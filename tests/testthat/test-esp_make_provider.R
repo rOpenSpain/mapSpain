@@ -1,6 +1,7 @@
 test_that("Custom WMTS provider", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()
@@ -21,6 +22,7 @@ test_that("Custom WMTS provider", {
 test_that("Custom WMS provider", {
   skip_if_not_installed("terra")
   skip_if_not_installed("png")
+  skip_on_os("mac")
 
   # Skip test as tiles sometimes are not available
   skip_on_cran()

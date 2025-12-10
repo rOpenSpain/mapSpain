@@ -8,7 +8,7 @@ esp_hlp_dwnload_sianedata <- function(
 ) {
   url <- file.path(api_entry, filename)
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   if (verbose) {
     message("Cache dir is ", cache_dir)
