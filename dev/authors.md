@@ -6,12 +6,20 @@
   maintainer, copyright holder.
   [](https://orcid.org/0000-0001-8457-4658)
 
-- **[Miles McBain](https://milesmcbain.xyz/)**. Copyright holder.  
-  Slippy map tiles functions, from slippymath package
-
 - **[Timothée Giraud](https://rcarto.github.io/)**. Contributor.
   [](https://orcid.org/0000-0002-1932-3323)  
   Adaptation of slippymath functions
+
+- **[Miles McBain](https://milesmcbain.xyz/)**. Copyright holder.
+  [](https://orcid.org/0000-0003-2865-2548)  
+  Slippy map tiles functions, from slippymath package
+
+- **[Eurostat](https://ec.europa.eu/eurostat)**. Copyright holder.
+  [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/033d3q980)
+
+- **[Instituto Geográfico Nacional](https://www.ign.es/)**. Copyright
+  holder.
+  [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/03yycdv57)
 
 ## Citation
 

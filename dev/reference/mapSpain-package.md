@@ -24,9 +24,14 @@ Useful links:
 
 Other contributors:
 
-- Miles McBain (Slippy map tiles functions, from slippymath package)
-  \[copyright holder\]
-
 - Timothée Giraud <timothee.giraud@cnrs.fr>
   ([ORCID](https://orcid.org/0000-0002-1932-3323)) (Adaptation of
   slippymath functions) \[contributor\]
+
+- Miles McBain ([ORCID](https://orcid.org/0000-0003-2865-2548)) (Slippy
+  map tiles functions, from slippymath package) \[copyright holder\]
+
+- Eurostat ([ROR](https://ror.org/033d3q980)) \[copyright holder\]
+
+- Instituto Geográfico Nacional ([ROR](https://ror.org/03yycdv57))
+  \[copyright holder\]

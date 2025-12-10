@@ -614,7 +614,7 @@ Details
     #>  geodata            * 0.6-6      2025-09-30 [1] RSPM
     #>  geojsonsf            2.0.5      2025-11-26 [1] CRAN (R 4.5.2)
     #>  ggplot2            * 4.0.1      2025-11-14 [1] RSPM
-    #>  giscoR               0.6.1      2025-01-27 [1] RSPM
+    #>  giscoR               0.6.1      2025-01-27 [1] CRAN (R 4.5.2)
     #>  glue                 1.8.0      2024-09-30 [1] RSPM
     #>  gtable               0.3.6      2024-10-25 [1] RSPM
     #>  hms                  1.1.4      2025-10-17 [1] RSPM
@@ -677,7 +677,7 @@ Details
     #>  viridisLite          0.4.2      2023-05-02 [1] RSPM
     #>  withr                3.0.2      2024-10-28 [1] RSPM
     #>  xfun                 0.54       2025-10-30 [1] RSPM
-    #>  yaml                 2.3.11     2025-11-28 [1] RSPM
+    #>  yaml                 2.3.12     2025-12-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library
     #>  [2] C:/R/site-library
