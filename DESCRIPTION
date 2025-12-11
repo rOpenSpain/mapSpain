@@ -30,11 +30,11 @@ Imports:
     cli,
     countrycode (>= 1.2.0),
     giscoR (>= 0.2.4),
+    httr2,
     rappdirs (>= 0.3.0),
     sf (>= 0.9.0),
     utils
 Suggests:
-    curl,
     ggplot2 (>= 3.0.0),
     knitr,
     leaflet (>= 2.0.0),

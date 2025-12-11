@@ -66,9 +66,6 @@ ggplot(esp) +
 
 }
 \seealso{
-Other helper: 
-\code{\link{esp_check_access}()}
-
 Other Canary Islands: 
 \code{\link{esp_get_can_box}()}
 }
