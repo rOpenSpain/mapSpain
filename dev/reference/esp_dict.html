@@ -43,7 +43,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Convert and translate subdivision names</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp_dict.R" class="external-link"><code>R/esp_dict.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-dict.R" class="external-link"><code>R/esp-dict.R</code></a></small>
       <div class="d-none name"><code>esp_dict.Rd</code></div>
     </div>
 
@@ -113,7 +113,7 @@ values.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Errioxa"</span>, <span class="st">"Coruna"</span>, <span class="st">"Gerona"</span>, <span class="st">"Madrid"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">vals</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> No conversion - origin equal to destination</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No conversion. `origin` equal to `destination` ("text")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" </span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">vals</span>, destination <span class="op">=</span> <span class="st">"nuts"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES23"  "ES111" "ES512" "ES30" </span>

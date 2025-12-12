@@ -34,7 +34,7 @@ lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
 lgn_borders <- st_transform(lgn_borders, 3857)
 
-tile_lgn <- esp_getTiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
+tile_lgn <- esp_get_tiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
 
 ggplot(lgn_borders) +
   geom_spatraster_rgb(data = tile_lgn) +
@@ -54,11 +54,11 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IDErioja.Claro",
+basemap <- esp_get_tiles(madrid, "IDErioja.Claro",
   zoommin = 1,
   crop = TRUE, bbox_expand = 0
 )
-tile_opaque <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+tile_opaque <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
   transparent = FALSE, crop = TRUE, bbox_expand = 0
 )
 
@@ -76,7 +76,7 @@ Now let’s check the same code using the `tranparent = TRUE` option:
 ``` r
 # Example with transparency
 
-tile_alpha <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+tile_alpha <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
   transparent = TRUE, crop = TRUE, bbox_expand = 0
 )
 
@@ -100,9 +100,9 @@ advanced maps can be plotted:
 ``` r
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-basemap <- esp_getTiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
+basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
-masked <- esp_getTiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
+masked <- esp_get_tiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap, maxcell = 10e6) +
@@ -250,7 +250,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-10
+    #>  date     2025-12-12
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -264,6 +264,7 @@ Details
     #>  codetools      0.2-20     2024-03-31 [3] CRAN (R 4.5.2)
     #>  countrycode    1.6.1      2025-03-31 [1] RSPM
     #>  crosstalk      1.2.2      2025-08-26 [1] RSPM
+    #>  curl           7.0.0      2025-08-19 [1] RSPM
     #>  DBI            1.2.3      2024-06-02 [1] RSPM
     #>  desc           1.4.3      2023-12-10 [1] RSPM
     #>  digest         0.6.39     2025-11-19 [1] RSPM
@@ -274,13 +275,13 @@ Details
     #>  fastmap        1.2.0      2024-05-15 [1] RSPM
     #>  fs             1.6.6      2025-04-12 [1] RSPM
     #>  generics       0.1.4      2025-05-09 [1] RSPM
-    #>  geojsonsf      2.0.5      2025-11-26 [1] CRAN (R 4.5.2)
     #>  ggplot2      * 4.0.1      2025-11-14 [1] RSPM
-    #>  giscoR         0.6.1      2025-01-27 [1] CRAN (R 4.5.2)
+    #>  giscoR         1.0.0      2025-12-10 [1] RSPM
     #>  glue           1.8.0      2024-09-30 [1] RSPM
     #>  gtable         0.3.6      2024-10-25 [1] RSPM
     #>  htmltools      0.5.9      2025-12-04 [1] RSPM
     #>  htmlwidgets    1.6.4      2023-12-06 [1] RSPM
+    #>  httr2          1.2.2      2025-12-08 [1] RSPM
     #>  jquerylib      0.1.4      2021-04-26 [1] RSPM
     #>  jsonlite       2.0.0      2025-03-27 [1] RSPM
     #>  KernSmooth     2.23-26    2025-01-01 [3] CRAN (R 4.5.2)
@@ -288,12 +289,13 @@ Details
     #>  leaflet      * 2.2.3      2025-09-04 [1] RSPM
     #>  lifecycle      1.0.4      2023-11-07 [1] RSPM
     #>  magrittr       2.0.4      2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.9.9.9000 2025-12-10 [1] local
+    #>  mapSpain     * 0.9.9.9000 2025-12-12 [1] local
+    #>  otel           0.2.0      2025-08-29 [1] RSPM
     #>  pillar         1.11.1     2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3      2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0      2025-11-06 [1] any (@2.2.0)
     #>  png            0.1-8      2022-11-29 [1] RSPM
-    #>  proxy          0.4-27     2022-06-09 [1] RSPM
+    #>  proxy          0.4-28     2025-12-11 [1] RSPM
     #>  purrr          1.2.0      2025-11-04 [1] RSPM
     #>  R.cache        0.17.0     2025-05-02 [1] RSPM
     #>  R.methodsS3    1.8.2      2022-06-13 [1] RSPM

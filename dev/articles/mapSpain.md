@@ -16,7 +16,7 @@ Canary Islands.
 
 **mapSpain** provides access to map tiles of public organisms of Spain,
 that can be represented on static maps via
-[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+[`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or on a **R** **leaflet** map using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 

@@ -5,6 +5,10 @@
 - Minimal **R** version required is **4.1.0**.
 - Remove **slippymath** dependency
   ([\#126](https://github.com/rOpenSpain/mapSpain/issues/126)).
+- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  renamed to
+  [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
+  Both versions work so far.
 
 ## mapSpain 0.10.0
 
@@ -63,7 +67,7 @@ CRAN release: 2023-07-12
   - `IDErioja.Relieve`
   - `IDErioja.Claro`
   - `IDErioja.Oscuro`
-- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   now supports non-OGC compliant WMTS providers, such as Stamen or
   OpenStreetMaps (see examples).
 
@@ -77,7 +81,7 @@ CRAN release: 2022-12-22
   - `leaflet.providersESP.df` is superseded in favor of
     `esp_tiles_providers`.
   - You can use a custom url with the `type` argument in
-    [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+    [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
     ([\#88](https://github.com/rOpenSpain/mapSpain/issues/88)).
   - Add new function
     [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
@@ -106,7 +110,7 @@ CRAN release: 2022-08-13
 CRAN release: 2022-02-25
 
 - HOTFIX: Bug on
-  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   when `mask = TRUE`.
 
 ## mapSpain 0.6.0
@@ -120,7 +124,7 @@ CRAN release: 2022-02-18
   - `Catastro.AdministrativeBoundary`
   - `Catastro.AdministrativeUnit`
 - Add new param `options` to
-  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md).
+  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
 - Improve regex search on municipalities: Now the casing of the word is
   ignored.
 
@@ -167,7 +171,7 @@ CRAN release: 2021-09-01
   Now the cache_dir path is stored and it is not necessary to set it up
   again on a new session.
 - Add a new parameter `zoommin` on
-  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md).
+  [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
 - New tests with **testthat**.
 - Update on docs. New examples
 - Precompute vignette.

@@ -71,7 +71,7 @@ Other dictionary:
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 esp_dict_region_code(vals)
-#> No conversion - origin equal to destination
+#> ℹ No conversion. `origin` equal to `destination` ("text")
 #> [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" 
 esp_dict_region_code(vals, destination = "nuts")
 #> [1] "ES23"  "ES111" "ES512" "ES30" 

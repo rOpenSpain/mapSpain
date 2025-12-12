@@ -126,7 +126,7 @@ query.
 While `moveCAN` is useful for visualization, it would alter the actual
 geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md))
 this option should be set to `FALSE` in order to get the actual
@@ -180,7 +180,7 @@ capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 capimun$type <- "Capimun"
 
 # Get a tile to check
-tile <- esp_getTiles(area, "IGNBase.Todo", zoommin = 2)
+tile <- esp_get_tiles(area, "IGNBase.Todo", zoommin = 2)
 
 # Join both point geometries
 points <- rbind(
@@ -192,6 +192,11 @@ points <- rbind(
 # Check on plot
 library(ggplot2)
 library(tidyterra)
+#> 
+#> Attaching package: 'tidyterra'
+#> The following object is masked from 'package:stats':
+#> 
+#>     filter
 
 ggplot(points) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +

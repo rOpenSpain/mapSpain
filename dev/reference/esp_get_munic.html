@@ -181,7 +181,7 @@ the resulting object as provided by IGN.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The years available are:</p><ul><li><p><code>esp_get_munic()</code>:  <code>year</code> could be one of "2001", "2004", "2006", "2008",
 "2010", "2013" and any year between 2016 and 2019.
-See <code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_lau.html" class="external-link">giscoR::gisco_get_lau()</a></code>, <code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_lau.html" class="external-link">giscoR::gisco_get_communes()</a></code>.</p></li>
+See <code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_lau.html" class="external-link">giscoR::gisco_get_lau()</a></code>, <code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_communes.html" class="external-link">giscoR::gisco_get_communes()</a></code>.</p></li>
 <li><p><code>esp_get_munic_siane()</code>: <code>year</code> could be passed as a single year ("YYYY"
 format, as end of year) or as a specific date ("YYYY-MM-DD" format).
 Historical information starts as of 2005.</p></li>
@@ -204,7 +204,7 @@ corresponding .geojson file by any other method and save it on your
     <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
     <p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with <code><a href="esp_getTiles.html">esp_getTiles()</a></code> or
+spatial analysis or using tiles (e.g. with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>)  this option should be set to <code>FALSE</code> in order to
 get the actual coordinates, instead of the modified ones. See also
 <code><a href="esp_move_can.html">esp_move_can()</a></code> for displacing stand-alone <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> objects.</p>

@@ -50,6 +50,8 @@
 <h2 class="pkg-version" data-toc-text="development version" id="mapspain-development-version">mapSpain (development version)<a class="anchor" aria-label="anchor" href="#mapspain-development-version"></a></h2>
 <ul><li>Minimal <strong>R</strong> version required is <strong>4.1.0</strong>.</li>
 <li>Remove <strong>slippymath</strong> dependency (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
+<li>
+<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> renamed to <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code>. Both versions work so far.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.10.0" id="mapspain-0100">mapSpain 0.10.0<a class="anchor" aria-label="anchor" href="#mapspain-0100"></a></h2><p class="text-muted">CRAN release: 2024-12-15</p>
@@ -87,7 +89,7 @@
 <li><code>IDErioja.Oscuro</code></li>
 </ul></li>
 <li>
-<code><a href="../reference/esp_getTiles.html">esp_getTiles()</a></code> now supports non-OGC compliant WMTS providers, such as Stamen or OpenStreetMaps (see examples).</li>
+<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> now supports non-OGC compliant WMTS providers, such as Stamen or OpenStreetMaps (see examples).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.0" id="mapspain-070">mapSpain 0.7.0<a class="anchor" aria-label="anchor" href="#mapspain-070"></a></h2><p class="text-muted">CRAN release: 2022-12-22</p>
@@ -95,7 +97,7 @@
 <li>Changes on how to package manages tiles providers:
 <ul><li>
 <code>leaflet.providersESP.df</code> is superseded in favor of <code>esp_tiles_providers</code>.</li>
-<li>You can use a custom url with the <code>type</code> argument in <code><a href="../reference/esp_getTiles.html">esp_getTiles()</a></code> (<a href="https://github.com/rOpenSpain/mapSpain/issues/88" class="external-link">#88</a>).</li>
+<li>You can use a custom url with the <code>type</code> argument in <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> (<a href="https://github.com/rOpenSpain/mapSpain/issues/88" class="external-link">#88</a>).</li>
 <li>Add new function <code><a href="../reference/esp_make_provider.html">esp_make_provider()</a></code> that helps to create custom providers.</li>
 </ul></li>
 </ul></div>
@@ -114,7 +116,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.1" id="mapspain-061">mapSpain 0.6.1<a class="anchor" aria-label="anchor" href="#mapspain-061"></a></h2><p class="text-muted">CRAN release: 2022-02-25</p>
-<ul><li>HOTFIX: Bug on <code><a href="../reference/esp_getTiles.html">esp_getTiles()</a></code> when <code>mask = TRUE</code>.</li>
+<ul><li>HOTFIX: Bug on <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> when <code>mask = TRUE</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.0" id="mapspain-060">mapSpain 0.6.0<a class="anchor" aria-label="anchor" href="#mapspain-060"></a></h2><p class="text-muted">CRAN release: 2022-02-18</p>
@@ -123,7 +125,7 @@
 <li><code>Catastro.AdministrativeBoundary</code></li>
 <li><code>Catastro.AdministrativeUnit</code></li>
 </ul></li>
-<li>Add new param <code>options</code> to <code><a href="../reference/esp_getTiles.html">esp_getTiles()</a></code>.</li>
+<li>Add new param <code>options</code> to <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code>.</li>
 <li>Improve regex search on municipalities: Now the casing of the word is ignored.</li>
 </ul></div>
     <div class="section level2">
@@ -155,7 +157,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="mapspain-030">mapSpain 0.3.0<a class="anchor" aria-label="anchor" href="#mapspain-030"></a></h2><p class="text-muted">CRAN release: 2021-09-01</p>
 <ul><li>Caching improvements: new function <code><a href="../reference/esp_set_cache_dir.html">esp_set_cache_dir()</a></code> based on <code><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">rappdirs::user_cache_dir()</a></code>. Now the cache_dir path is stored and it is not necessary to set it up again on a new session.</li>
-<li>Add a new parameter <code>zoommin</code> on <code><a href="../reference/esp_getTiles.html">esp_getTiles()</a></code>.</li>
+<li>Add a new parameter <code>zoommin</code> on <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code>.</li>
 <li>New tests with <strong>testthat</strong>.</li>
 <li>Update on docs. New examples</li>
 <li>Precompute vignette.</li>

@@ -110,7 +110,7 @@ provides hexbin shapefiles and other complementary shapes, as the usual
 lines around the Canary Islands.</p>
 <p><strong>mapSpain</strong> provides access to map tiles of public
 organisms of Spain, that can be represented on static maps via
-<code><a href="../reference/esp_getTiles.html">mapSpain::esp_getTiles()</a></code> or on a <strong>R</strong>
+<code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on a <strong>R</strong>
 <strong>leaflet</strong> map using
 <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
 <p>On top of that, <strong>mapSpain</strong> also has a powerful
@@ -324,10 +324,10 @@ package, that is installed as a dependency when you installed
 <span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="st">"20"</span></span>
 <span></span>
-<span><span class="va">all_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">all_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get_countries.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3035</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">eu_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span></span>
+<span><span class="va">eu_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get_countries.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span></span>
 <span>  resolution <span class="op">=</span> <span class="va">res</span>, region <span class="op">=</span> <span class="st">"EU"</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3035</span><span class="op">)</span></span>

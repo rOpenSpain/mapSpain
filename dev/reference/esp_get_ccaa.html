@@ -201,7 +201,7 @@ corresponding .geojson file by any other method and save it on your
     <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
     <p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with <code><a href="esp_getTiles.html">esp_getTiles()</a></code> or
+spatial analysis or using tiles (e.g. with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>)  this option should be set to <code>FALSE</code> in order to
 get the actual coordinates, instead of the modified ones. See also
 <code><a href="esp_move_can.html">esp_move_can()</a></code> for displacing stand-alone <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> objects.</p>
@@ -265,7 +265,7 @@ get the actual coordinates, instead of the modified ones. See also
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fl">20</span> <span class="co"># Set same resoluion</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">europe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">europe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get_countries.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ccaa</span> <span class="op">&lt;-</span> <span class="fu">esp_get_ccaa</span><span class="op">(</span>moveCAN <span class="op">=</span> <span class="cn">FALSE</span>, resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Transform to same CRS</span></span></span>

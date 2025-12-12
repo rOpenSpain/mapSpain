@@ -1,6 +1,6 @@
 # Check access to SIANE data
 
-Check if R has access to resources at
+Check if **R** has access to resources at
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Usage
@@ -11,14 +11,11 @@ esp_check_access()
 
 ## Value
 
-a logical.
+A logical.
 
 ## See also
 
-[`giscoR::gisco_check_access()`](https://ropengov.github.io/giscoR/reference/gisco_check_access.html)
-
-Other helper:
-[`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
+[`giscoR::gisco_check_access()`](https://ropengov.github.io/giscoR/reference/gisco_check_access.html).
 
 ## Examples
 

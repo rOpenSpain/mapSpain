@@ -126,7 +126,7 @@ esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
 
 # Imagen Ria Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
-  esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
+  esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
 library(tidyterra)
@@ -471,7 +471,7 @@ Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ``` r
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
-base_pnoa <- esp_getTiles(madrid_munis, "PNOA",
+base_pnoa <- esp_get_tiles(madrid_munis, "PNOA",
   bbox_expand = 0.1,
   zoommin = 1
 )
@@ -496,7 +496,7 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
+madrid_mask <- esp_get_tiles(madrid, "IDErioja.Claro",
   mask = TRUE, crop = TRUE, zoommin = 2
 )
 
@@ -584,7 +584,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-10
+    #>  date     2025-12-12
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -612,9 +612,8 @@ Details
     #>  generics             0.1.4      2025-05-09 [1] RSPM
     #>  geobounds          * 0.0.1.9000 2025-12-10 [1] Github (dieghernan/geobounds@72f1507)
     #>  geodata            * 0.6-6      2025-09-30 [1] RSPM
-    #>  geojsonsf            2.0.5      2025-11-26 [1] CRAN (R 4.5.2)
     #>  ggplot2            * 4.0.1      2025-11-14 [1] RSPM
-    #>  giscoR               0.6.1      2025-01-27 [1] CRAN (R 4.5.2)
+    #>  giscoR               1.0.0      2025-12-10 [1] RSPM
     #>  glue                 1.8.0      2024-09-30 [1] RSPM
     #>  gtable               0.3.6      2024-10-25 [1] RSPM
     #>  hms                  1.1.4      2025-10-17 [1] RSPM
@@ -630,13 +629,13 @@ Details
     #>  lifecycle            1.0.4      2023-11-07 [1] RSPM
     #>  lubridate          * 1.9.4      2024-12-08 [1] RSPM
     #>  magrittr             2.0.4      2025-09-12 [1] RSPM
-    #>  mapSpain           * 0.9.9.9000 2025-12-10 [1] local
+    #>  mapSpain           * 0.9.9.9000 2025-12-12 [1] local
     #>  otel                 0.2.0      2025-08-29 [1] RSPM
     #>  pillar               1.11.1     2025-09-17 [1] RSPM
     #>  pkgconfig            2.0.3      2019-09-22 [1] RSPM
     #>  pkgdown              2.2.0      2025-11-06 [1] any (@2.2.0)
     #>  png                  0.1-8      2022-11-29 [1] RSPM
-    #>  proxy                0.4-27     2022-06-09 [1] RSPM
+    #>  proxy                0.4-28     2025-12-11 [1] RSPM
     #>  purrr              * 1.2.0      2025-11-04 [1] RSPM
     #>  R.cache              0.17.0     2025-05-02 [1] RSPM
     #>  R.methodsS3          1.8.2      2022-06-13 [1] RSPM

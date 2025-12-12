@@ -30,7 +30,7 @@ A named `list` of the providers available with the following structure:
 ## Details
 
 Providers available to be passed to `type` on
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 are:
 
 - `"IDErioja"`
@@ -247,7 +247,7 @@ Other datasets:
 
 Other imagery utilities:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md),
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
 ## Examples

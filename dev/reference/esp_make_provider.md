@@ -1,7 +1,7 @@
 # Create a custom tile provider
 
 Helper function for
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 that helps to create a custom provider.
 
 ## Usage
@@ -53,14 +53,14 @@ Note that:
 
 ## See also
 
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md).
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
 
 For a list of potential providers from Spain check [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).
 
 Other imagery utilities:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md),
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
 
 ## Examples
@@ -80,7 +80,7 @@ custom_wms <- esp_make_provider(
 
 x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 
-mytile <- esp_getTiles(x, type = custom_wms)
+mytile <- esp_get_tiles(x, type = custom_wms)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)

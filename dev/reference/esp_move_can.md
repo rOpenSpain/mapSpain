@@ -38,9 +38,6 @@ sources rather than the package
 
 ## See also
 
-Other helper:
-[`esp_check_access()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_check_access.md)
-
 Other Canary Islands:
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
 

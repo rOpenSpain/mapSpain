@@ -78,11 +78,7 @@ objects with political boundaries.
   Spain
 
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
-  :
-
-  Get GISCO NUTS
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
-  points and lines (from giscoR)
+  : Territorial units for statistics (NUTS) dataset (from giscoR)
 
 ## Natural
 
@@ -136,7 +132,7 @@ Return static tiles or create a
   Include base tiles of Spanish public administrations on a
   [leaflet](https://CRAN.R-project.org/package=leaflet) map
 
-- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md)
+- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   : Get static tiles from public administrations of Spain
 
 - [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
@@ -235,9 +231,6 @@ These objects are datasets already included in the package.
 ## Helpers
 
 A collection of helper functions.
-
-- [`esp_check_access()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_check_access.md)
-  : Check access to SIANE data
 
 - [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
   :

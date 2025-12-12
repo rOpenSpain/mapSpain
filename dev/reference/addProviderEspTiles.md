@@ -77,7 +77,7 @@ A modified
 [`leaflet::tileOptions()`](https://rstudio.github.io/leaflet/reference/map-options.html)
 
 Other imagery utilities:
-[`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_getTiles.md),
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
 
