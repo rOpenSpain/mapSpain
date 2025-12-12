@@ -1,5 +1,5 @@
 # Leaflet plugin version
-leafletprovidersESP_v <- "v1.3.3"
+leaf_providers_esp_v <- "v1.3.3"
 
 
 #' Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
@@ -16,7 +16,7 @@ leafletprovidersESP_v <- "v1.3.3"
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **`r leafletprovidersESP_v`**.
+#'  **`r leaf_providers_esp_v`**.
 #'
 #' @return A modified [leaflet::leaflet()] `map` object.
 #'
@@ -59,13 +59,7 @@ addProviderEspTiles <- function(
 
   allprovs <- names(prov_list)
 
-  if (!provider %in% allprovs) {
-    stop(
-      "No match for provider = '",
-      provider,
-      "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
-    )
-  }
+  provider <- match_arg_pretty(provider, allprovs)
 
   # Check type of provider
   thisprov <- prov_list[[provider]]

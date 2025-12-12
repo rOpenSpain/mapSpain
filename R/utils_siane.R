@@ -177,7 +177,7 @@ esp_hlp_download_siane <- function(
   if (verbose) {
     message("File loaded")
   }
-  return(err_onload)
+  err_onload
 }
 
 #' Return data from SIANE
@@ -332,5 +332,5 @@ esp_hlp_get_siane <- function(
     colnames(data_sf)
   ]
 
-  return(df)
+  df
 }

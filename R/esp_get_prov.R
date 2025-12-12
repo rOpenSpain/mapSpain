@@ -234,7 +234,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   data_sf <- sf::st_transform(data_sf, initcrs)
 
-  return(data_sf)
+  data_sf
 }
 
 
@@ -375,5 +375,5 @@ esp_get_prov_siane <- function(
     data_sf <- data_sf[, nm]
   }
 
-  return(data_sf)
+  data_sf
 }

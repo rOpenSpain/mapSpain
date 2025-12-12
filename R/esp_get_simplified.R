@@ -106,7 +106,7 @@ esp_get_simpl_prov <- function(
 
   sf::st_crs(data_sf) <- NA
 
-  return(data_sf)
+  data_sf
 }
 
 #' @rdname esp_get_simplified
@@ -162,5 +162,5 @@ esp_get_simpl_ccaa <- function(
 
   sf::st_crs(data_sf) <- NA
 
-  return(data_sf)
+  data_sf
 }

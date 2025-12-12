@@ -2,6 +2,7 @@
 
 -   Minimal **R** version required is **4.1.0**.
 -   Remove **slippymath** dependency (#126).
+-   `esp_getTiles()` renamed to `esp_get_tiles()`. Both versions work so far.
 
 # mapSpain 0.10.0
 

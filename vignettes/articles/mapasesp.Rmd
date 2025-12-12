@@ -151,7 +151,7 @@ esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
 
 # Imagen Ria Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
-  esp_getTiles("PNOA", bbox_expand = 0.5, zoommin = 1)
+  esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
 # Prepara el plot
 library(tidyterra)
@@ -452,7 +452,7 @@ Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ```{r imagesestaticos}
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
-base_pnoa <- esp_getTiles(madrid_munis, "PNOA",
+base_pnoa <- esp_get_tiles(madrid_munis, "PNOA",
   bbox_expand = 0.1,
   zoommin = 1
 )
@@ -472,7 +472,7 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_getTiles(madrid, "IDErioja.Claro",
+madrid_mask <- esp_get_tiles(madrid, "IDErioja.Claro",
   mask = TRUE, crop = TRUE, zoommin = 2
 )
 

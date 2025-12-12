@@ -1,10 +1,10 @@
 #' Create a custom tile provider
 #'
 #' @description
-#' Helper function for [esp_getTiles()] that helps to create a custom provider.
+#' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
 #' @family imagery utilities
-#' @seealso [esp_getTiles()].
+#' @seealso [esp_get_tiles()].
 #'
 #' For a list of potential providers from Spain check
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
@@ -52,7 +52,7 @@
 #'
 #' x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 #'
-#' mytile <- esp_getTiles(x, type = custom_wms)
+#' mytile <- esp_get_tiles(x, type = custom_wms)
 #'
 #' tidyterra::autoplot(mytile) +
 #'   ggplot2::geom_sf(data = x, fill = NA)
@@ -113,5 +113,5 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   final$q <- q_end
 
-  return(final)
+  final
 }

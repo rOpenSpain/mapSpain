@@ -15,7 +15,7 @@ test_that("Custom WMTS provider", {
     layer = "IGNBaseTodo-nofondo"
   )
 
-  tile <- esp_getTiles(segovia, type = custom_wmts)
+  tile <- esp_get_tiles(segovia, type = custom_wmts)
   expect_s4_class(tile, "SpatRaster")
 })
 
@@ -49,8 +49,8 @@ test_that("Custom WMS provider", {
 
   # Both works
 
-  tilewms1 <- esp_getTiles(segovia, custom_wms_11, cache_dir = tempdir())
+  tilewms1 <- esp_get_tiles(segovia, custom_wms_11, cache_dir = tempdir())
   expect_s4_class(tilewms1, "SpatRaster")
-  tilewms13 <- esp_getTiles(segovia, custom_wms_13, cache_dir = tempdir())
+  tilewms13 <- esp_get_tiles(segovia, custom_wms_13, cache_dir = tempdir())
   expect_s4_class(tilewms13, "SpatRaster")
 })

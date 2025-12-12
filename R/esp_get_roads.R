@@ -118,5 +118,5 @@ esp_get_roads <- function(
 
   data_sf <- data_sf[, colnames_init]
 
-  return(data_sf)
+  data_sf
 }

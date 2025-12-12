@@ -131,7 +131,7 @@ provs <- esp_get_prov_siane(epsg = 3857)
 shape_pop <- shape |> left_join(census)
 
 
-tile <- esp_getTiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
+tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
 # Plot
 

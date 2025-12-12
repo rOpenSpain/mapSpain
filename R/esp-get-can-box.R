@@ -105,17 +105,18 @@
 #'     panel.grid = element_blank()
 #'   )
 #' }
-esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
+esp_get_can_box <- function(
+  style = c("right", "left", "box", "poly"),
+  moveCAN = TRUE,
+  epsg = "4258"
+) {
   # checks
-  if (!style %in% c("left", "right", "box", "poly")) {
-    stop("style should be one of 'right','left','box'")
-  }
+
+  style <- match_arg_pretty(style)
 
   epsg <- as.character(epsg)
 
-  if (!epsg %in% c("4258", "4326", "3035", "3857")) {
-    stop("epsg should be one of '4258','4326','3035', '3857'")
-  }
+  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
 
   can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
   bbox <- sf::st_bbox(can)
@@ -186,9 +187,7 @@ esp_get_can_box <- function(style = "right", moveCAN = TRUE, epsg = "4258") {
 esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   epsg <- as.character(epsg)
 
-  if (!epsg %in% c("4258", "4326", "3035", "3857")) {
-    stop("epsg should be one of '4258','4326','3035', '3857'")
-  }
+  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
 
   # From CartoBase ANE: se89_mult_admin_provcan_l
   m <- c(

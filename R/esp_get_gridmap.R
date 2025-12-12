@@ -67,7 +67,7 @@ esp_get_hex_prov <- function(prov = NULL) {
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
-  return(data_sf)
+  data_sf
 }
 
 #' @rdname esp_get_gridmap
@@ -98,7 +98,7 @@ esp_get_hex_ccaa <- function(ccaa = NULL) {
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data_sf)
+  data_sf
 }
 
 #' @rdname esp_get_gridmap
@@ -132,7 +132,7 @@ esp_get_grid_prov <- function(prov = NULL) {
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
-  return(data_sf)
+  data_sf
 }
 
 #' @rdname esp_get_gridmap
@@ -163,5 +163,5 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  return(data_sf)
+  data_sf
 }

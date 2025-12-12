@@ -60,7 +60,7 @@ lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
 lgn_borders <- st_transform(lgn_borders, 3857)
 
-tile_lgn <- esp_getTiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
+tile_lgn <- esp_get_tiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
 
 ggplot(lgn_borders) +
   geom_spatraster_rgb(data = tile_lgn) +
@@ -77,11 +77,11 @@ madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
 
-basemap <- esp_getTiles(madrid, "IDErioja.Claro",
+basemap <- esp_get_tiles(madrid, "IDErioja.Claro",
   zoommin = 1,
   crop = TRUE, bbox_expand = 0
 )
-tile_opaque <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+tile_opaque <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
   transparent = FALSE, crop = TRUE, bbox_expand = 0
 )
 
@@ -96,7 +96,7 @@ Now let's check the same code using the `tranparent = TRUE` option:
 ```{r static_transp, fig.alt="Example on how to use alpha value for combining different types of basemaps."}
 # Example with transparency
 
-tile_alpha <- esp_getTiles(madrid, "RedTransporte.Carreteras",
+tile_alpha <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
   transparent = TRUE, crop = TRUE, bbox_expand = 0
 )
 
@@ -117,9 +117,9 @@ can be plotted:
 ```{r static3, fig.alt="Example of combining types of tiles by masking to a shapefile."}
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
-basemap <- esp_getTiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
+basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
-masked <- esp_getTiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
+masked <- esp_get_tiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap, maxcell = 10e6) +

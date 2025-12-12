@@ -6,7 +6,7 @@
 #'
 #' @param url_pieces Provider
 #'
-#' @inheritParams esp_getTiles
+#' @inheritParams esp_get_tiles
 #'
 #' @noRd
 getwms <- function(
@@ -135,7 +135,7 @@ getwms <- function(
 
 #' Get tiles from WMTS
 #'
-#' @inheritParams esp_getTiles
+#' @inheritParams esp_get_tiles
 #'
 #' @inheritParams getWMS
 #'
