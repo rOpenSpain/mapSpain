@@ -39,8 +39,7 @@ Alternatively, you can install the developing version of **mapSpain**
 with:
 
 ``` r
-# install.packages("pak")
-pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
+remotes::install_github("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ## Usage
@@ -55,15 +54,15 @@ census <- mapSpain::pobmun19
 
 # Extract CCAA from base dataset
 
-codelist <- mapSpain::esp_codelist |>
-  select(cpro, codauto) |>
+codelist <- mapSpain::esp_codelist %>%
+  select(cpro, codauto) %>%
   distinct()
 
-census_ccaa <- census |>
-  left_join(codelist) |>
+census_ccaa <- census %>%
+  left_join(codelist) %>%
   # Summarize by CCAA
-  group_by(codauto) |>
-  summarise(pob19 = sum(pob19), men = sum(men), women = sum(women)) |>
+  group_by(codauto) %>%
+  summarise(pob19 = sum(pob19), men = sum(men), women = sum(women)) %>%
   mutate(
     porc_women = women / pob19,
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
@@ -72,7 +71,7 @@ census_ccaa <- census |>
 
 # Merge into spatial data
 
-ccaa_sf <- esp_get_ccaa() |>
+ccaa_sf <- esp_get_ccaa() %>%
   left_join(census_ccaa)
 can <- esp_get_can_box()
 
@@ -103,15 +102,15 @@ You can combine `sf` objects with static tiles
 
 ``` r
 # Get census
-census <- mapSpain::pobmun19 |>
-  mutate(porc_women = women / pob19) |>
+census <- mapSpain::pobmun19 %>%
+  mutate(porc_women = women / pob19) %>%
   select(cpro, cmun, porc_women)
 
 # Get shapes
 shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
 provs <- esp_get_prov_siane(epsg = 3857)
 
-shape_pop <- shape |> left_join(census)
+shape_pop <- shape %>% left_join(census)
 
 
 tile <- esp_getTiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
@@ -166,13 +165,13 @@ library(giscoR)
 
 res <- "20"
 
-all_countries <- gisco_get_countries(resolution = res) |>
+all_countries <- gisco_get_countries(resolution = res) %>%
   st_transform(3035)
 
-eu_countries <- gisco_get_countries(resolution = res, region = "EU") |>
+eu_countries <- gisco_get_countries(resolution = res, region = "EU") %>%
   st_transform(3035)
 
-ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res) |>
+ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res) %>%
   st_transform(3035)
 
 library(ggplot2)
@@ -216,7 +215,7 @@ Some packages recommended for visualization are:
 
 ## Citation
 
-Hernangómez D (2025). *mapSpain: Administrative Boundaries of Spain*.
+Hernangómez D (2024). *mapSpain: Administrative Boundaries of Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622),
 <https://ropenspain.github.io/mapSpain/>.
 
@@ -225,8 +224,8 @@ A BibTeX entry for LaTeX users is:
 ``` R
 @Manual{R-mapspain,
   title = {{mapSpain}: Administrative Boundaries of Spain},
-  year = {2025},
-  version = {0.10.0.9000},
+  year = {2024},
+  version = {0.10.0},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},

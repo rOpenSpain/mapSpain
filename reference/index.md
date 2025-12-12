@@ -78,11 +78,7 @@ objects with political boundaries.
   Spain
 
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
-  :
-
-  Get GISCO NUTS
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
-  points and lines (from giscoR)
+  : Territorial units for statistics (NUTS) dataset (from giscoR)
 
 ## Natural
 

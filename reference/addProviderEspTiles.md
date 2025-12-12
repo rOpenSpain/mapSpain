@@ -42,9 +42,9 @@ providerEspTileOptions(...)
 - group:
 
   the name of the group the newly created layers should belong to (for
-  [`clearGroup()`](https://rstudio.github.io/leaflet/reference/remove.html)
+  [`clearGroup`](https://rstudio.github.io/leaflet/reference/remove.html)
   and
-  [`addLayersControl()`](https://rstudio.github.io/leaflet/reference/addLayersControl.html)
+  [`addLayersControl`](https://rstudio.github.io/leaflet/reference/addLayersControl.html)
   purposes). Human-friendly group names are permitted–they need not be
   short, identifier-style names.
 
@@ -85,17 +85,17 @@ Other imagery utilities:
 
 ``` r
 library(leaflet)
-leafmap <- leaflet(width = "100%", height = "60vh") |>
-  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) |>
-  addTiles(group = "Default (OSM)") |>
+leafmap <- leaflet(width = "100%", height = "60vh") %>%
+  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) %>%
+  addTiles(group = "Default (OSM)") %>%
   addProviderEspTiles(
     provider = "IDErioja.Claro",
     group = "IDErioja Claro"
-  ) |>
+  ) %>%
   addProviderEspTiles(
     provider = "RedTransporte.Carreteras",
     group = "Carreteras"
-  ) |>
+  ) %>%
   addLayersControl(
     baseGroups = c("IDErioja Claro", "Default (OSM)"),
     overlayGroups = "Carreteras",
