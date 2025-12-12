@@ -348,6 +348,6 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2025'
   doi: 10.32614/CRAN.package.tidyterra
+  year: '2025'
 

@@ -445,7 +445,7 @@ esp_hlp_split_url <- function(url_static) {
     opts,
     function(x) {
       n <- strsplit(x, "=", fixed = TRUE)
-      return(unlist(n)[1])
+      unlist(n)[1]
     },
     FUN.VALUE = character(1)
   )
@@ -459,7 +459,8 @@ esp_hlp_split_url <- function(url_static) {
       if (length(unl) == 2) {
         return(unl[2])
       }
-      return("")
+      x <- ""
+      x
     },
     FUN.VALUE = character(1)
   )

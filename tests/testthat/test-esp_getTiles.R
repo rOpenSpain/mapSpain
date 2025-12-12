@@ -77,8 +77,18 @@ test_that("tiles online", {
     type = "IGNBase.Orto"
   ))
 
-  expect_message(esp_get_tiles(poly, type = "PNOA", verbose = TRUE, mask = TRUE))
-  expect_message(esp_get_tiles(poly, type = "PNOA", verbose = TRUE, mask = TRUE))
+  expect_message(esp_get_tiles(
+    poly,
+    type = "PNOA",
+    verbose = TRUE,
+    mask = TRUE
+  ))
+  expect_message(esp_get_tiles(
+    poly,
+    type = "PNOA",
+    verbose = TRUE,
+    mask = TRUE
+  ))
 
   # Try with jpg
   provs <- leaflet.providersESP.df
