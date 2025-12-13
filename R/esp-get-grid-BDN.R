@@ -42,22 +42,15 @@
 #'   labs(title = "BDN Grid for Spain")
 #' }
 esp_get_grid_BDN <- function(
-  resolution = 10,
-  type = "main",
+  resolution = c(10, 5),
+  type = c("main", "canary"),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
   # Check grid
-  res <- as.numeric(resolution)
-
-  if (!res %in% c(5, 10)) {
-    stop("resolution should be one of 5, 10")
-  }
-
-  if (!type %in% c("main", "canary")) {
-    stop("type should be one of 'main', 'canary'")
-  }
+  res <- match_arg_pretty(resolution)
+  type <- match_arg_pretty(type)
 
   # Url
   api_entry <- paste0(
@@ -77,16 +70,23 @@ esp_get_grid_BDN <- function(
       "Malla_5x5_tierra_c.gpkg"
     )
   }
-  result <- esp_hlp_dwnload_sianedata(
-    api_entry = api_entry,
-    filename = filename,
+
+  url <- paste0(api_entry, filename)
+
+  data_sf <- download_url(
+    url,
+    name = filename,
     cache_dir = cache_dir,
-    verbose = verbose,
+    subdir = "grids",
     update_cache = update_cache,
-    cache = TRUE
+    verbose = verbose
   )
 
-  result
+  if (is.null(data_sf)) {
+    return(NULL)
+  }
+
+  read_geo_file_sf(data_sf)
 }
 
 #' @rdname esp_get_grid_BDN
@@ -101,25 +101,23 @@ esp_get_grid_BDN_ccaa <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  # Get region id
+  if (missing(ccaa)) {
+    cli::cli_abort("{.arg ccaa} can't be missing value.")
+  }
 
   ccaa <- ccaa[!is.na(ccaa)]
 
   region <- ccaa
-  if (is.null(region)) {
-    stop("ccaa can't be null")
-  } else {
-    nuts_id <- esp_hlp_all2ccaa(region)
+  nuts_id <- esp_hlp_all2ccaa(region)
 
-    nuts_id <- unique(nuts_id)
-  }
+  nuts_id <- unique(nuts_id)
 
   # Check if it is a valid NUTS, if not throws an error
 
   data <- mapSpain::esp_codelist
 
   if (!nuts_id %in% data$nuts2.code) {
-    stop(ccaa, " is not a CCAA")
+    cli::cli_abort("{.arg ccaa = {ccaa}} not mapped to a known CCAA.")
   }
 
   # Switch name. The ids are the same than the NUTS code removing the "ES" part
@@ -131,14 +129,20 @@ esp_get_grid_BDN_ccaa <- function(
   )
   filename <- paste0("malla1x1_", id, ".gpkg")
 
-  result <- esp_hlp_dwnload_sianedata(
-    api_entry = api_entry,
-    filename = filename,
+  url <- paste0(api_entry, filename)
+
+  data_sf <- download_url(
+    url,
+    name = filename,
     cache_dir = cache_dir,
-    verbose = verbose,
+    subdir = "grids",
     update_cache = update_cache,
-    cache = TRUE
+    verbose = verbose
   )
 
-  result
+  if (is.null(data_sf)) {
+    return(NULL)
+  }
+
+  read_geo_file_sf(data_sf)
 }
