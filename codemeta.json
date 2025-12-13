@@ -233,6 +233,18 @@
     },
     "6": {
       "@type": "SoftwareApplication",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+    },
+    "7": {
+      "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
       "version": ">= 0.3.0",
@@ -244,7 +256,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -257,7 +269,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "8": {
+    "9": {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -267,7 +291,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "2631.415KB",
+  "fileSize": "2640.644KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
