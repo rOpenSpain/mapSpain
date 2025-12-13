@@ -56,7 +56,7 @@ esp_get_grid_ESDAC <- function(
     )
   }
 
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   # Url
   if (res == 10) {

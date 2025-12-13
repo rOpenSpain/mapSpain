@@ -6,7 +6,8 @@ test_that("Testing leaflet", {
 
   expect_silent(providerEspTileOptions())
 
-  expect_error(
+  expect_snapshot(
+    error = TRUE,
     puertadelsol <- leaflet() |>
       setView(
         lat = 40.4166,

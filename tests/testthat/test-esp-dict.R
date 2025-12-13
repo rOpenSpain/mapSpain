@@ -1,10 +1,10 @@
 test_that("Testing dict", {
   vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
-  expect_error(esp_dict_region_code(vals, "aa"))
-  expect_error(esp_dict_region_code(vals, destination = "aa"))
+  expect_snapshot(error = TRUE, esp_dict_region_code(vals, "aa"))
+  expect_snapshot(error = TRUE, esp_dict_region_code(vals, destination = "aa"))
 
-  expect_message(esp_dict_region_code(vals))
+  expect_snapshot(esp_dict_region_code(vals))
   expect_silent(esp_dict_region_code(vals, destination = "nuts"))
   expect_silent(esp_dict_region_code(vals, destination = "cpro"))
   expect_silent(esp_dict_region_code(vals, destination = "iso2"))
@@ -60,7 +60,7 @@ test_that("Testing dict", {
   expect_warning(esp_dict_region_code(valsmix, destination = "iso2"))
 
   vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
-  expect_error(esp_dict_translate(vals, "xx"))
+  expect_snapshot(error = TRUE, esp_dict_translate(vals, "xx"))
   expect_silent(esp_dict_translate(vals))
   expect_true(class(esp_dict_translate(vals, all = TRUE)) == "list")
   expect_warning(esp_dict_translate(c(vals, "pepe")))

@@ -254,7 +254,7 @@ NULL
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @encoding UTF-8
 #'
@@ -285,13 +285,13 @@ NULL
 #'
 #' Implementation of javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @docType data
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @encoding UTF-8
 #'
@@ -305,7 +305,7 @@ NULL
 #'     [addProviderEspTiles()].
 #'
 #' @details
-#' Providers available to be passed to `type` on [esp_getTiles()] are:
+#' Providers available to be passed to `type` on [esp_get_tiles()] are:
 #'
 #' ```{r, echo=FALSE, comment="", results="asis"}
 #'

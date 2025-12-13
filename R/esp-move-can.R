@@ -64,7 +64,12 @@
 #'
 esp_move_can <- function(x, moveCAN = TRUE) {
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
-    stop("`x` should be an `sf` or `sfc` object")
+    cli::cli_abort(
+      paste0(
+        "{.arg x} should be an {.cls sf} ",
+        "or {.cls sfc} object, not {.obj_type_friendly {x}}."
+      )
+    )
   }
 
   is_sfc <- inherits(x, "sfc")

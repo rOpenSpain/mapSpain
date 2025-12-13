@@ -32,7 +32,7 @@ Implementation of javascript plugin
 \strong{v1.3.3}.
 }
 \details{
-Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:
+Providers available to be passed to \code{type} on \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
 \itemize{
 \item \code{"IDErioja"}
 \item \code{"IDErioja.Base"}
@@ -157,7 +157,7 @@ Other datasets:
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()},
+\code{\link{esp_get_tiles}()},
 \code{\link{esp_make_provider}()}
 }
 \concept{datasets}

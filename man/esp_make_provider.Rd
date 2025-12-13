@@ -23,7 +23,7 @@ cached tiles.}
 A named list with two elements \code{id} and \code{q}.
 }
 \description{
-Helper function for \code{\link[=esp_getTiles]{esp_getTiles()}} that helps to create a custom provider.
+Helper function for \code{\link[=esp_get_tiles]{esp_get_tiles()}} that helps to create a custom provider.
 }
 \details{
 This function is meant to work with services provided as of the
@@ -52,21 +52,21 @@ custom_wms <- esp_make_provider(
 
 x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 
-mytile <- esp_getTiles(x, type = custom_wms)
+mytile <- esp_get_tiles(x, type = custom_wms)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)
 }
 }
 \seealso{
-\code{\link[=esp_getTiles]{esp_getTiles()}}.
+\code{\link[=esp_get_tiles]{esp_get_tiles()}}.
 
 For a list of potential providers from Spain check
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 
 Other imagery utilities: 
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()},
+\code{\link{esp_get_tiles}()},
 \code{\link{esp_tiles_providers}}
 }
 \concept{imagery utilities}

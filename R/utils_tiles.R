@@ -6,7 +6,7 @@
 #'
 #' @param url_pieces Provider
 #'
-#' @inheritParams esp_getTiles
+#' @inheritParams esp_get_tiles
 #'
 #' @noRd
 getwms <- function(
@@ -130,12 +130,12 @@ getwms <- function(
   }
   # End WMS
 
-  return(r_img)
+  r_img
 }
 
 #' Get tiles from WMTS
 #'
-#' @inheritParams esp_getTiles
+#' @inheritParams esp_get_tiles
 #'
 #' @inheritParams getWMS
 #'
@@ -247,7 +247,7 @@ getwmts <- function(
   )
 
   rout <- compose_tile_grid(tile_grid, ext, images, transparent, "EPSG:3857")
-  return(rout)
+  rout
 }
 
 
@@ -308,7 +308,7 @@ compose_tile_grid <- function(tile_grid, ext, images, transparent, crs) {
     rout <- do.call(terra::merge, bricks)
   }
 
-  return(rout)
+  rout
 }
 
 
@@ -345,5 +345,5 @@ dl_t <- function(x, z, ext, src, q, verbose, cache_dir, update_cache) {
   } else if (verbose) {
     message("Tile cached on ", outfile)
   }
-  return(outfile)
+  outfile
 }

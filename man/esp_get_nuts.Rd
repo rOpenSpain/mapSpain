@@ -107,7 +107,7 @@ corresponding .geojson file by any other method and save it on your
 \section{Displacing the Canary Islands}{
 While \code{moveCAN} is useful for visualization, it would alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with \code{\link[=esp_getTiles]{esp_getTiles()}} or
+spatial analysis or using tiles (e.g. with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones. See also
 \code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.

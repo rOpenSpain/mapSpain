@@ -6,10 +6,13 @@
 #'
 #' This function is a implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @family imagery utilities
 #' @seealso [terra::rast()].
+#'
+#' @rdname esp_get_tiles
+#' @name esp_get_tiles
 #'
 #' @return
 #' A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
@@ -17,7 +20,7 @@
 #' .
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **`r leafletprovidersESP_v`**.
+#'  **`r leaf_providers_esp_v`**.
 #'
 #' @export
 #'
@@ -97,7 +100,7 @@
 #' # Run only if you are online
 #'
 #' segovia <- esp_get_prov_siane("segovia", epsg = 3857)
-#' tile <- esp_getTiles(segovia, "IGNBase.Todo")
+#' tile <- esp_get_tiles(segovia, "IGNBase.Todo")
 #'
 #' library(ggplot2)
 #' library(tidyterra)
@@ -108,7 +111,7 @@
 #'
 #' # Another provider
 #'
-#' tile2 <- esp_getTiles(segovia, type = "MDT")
+#' tile2 <- esp_get_tiles(segovia, type = "MDT")
 #'
 #' ggplot(segovia) +
 #'   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
@@ -125,7 +128,7 @@
 #'   layers = "geolog_cyl_litologia"
 #' )
 #'
-#' custom_wms_tile <- esp_getTiles(segovia, custom_wms)
+#' custom_wms_tile <- esp_get_tiles(segovia, custom_wms)
 #'
 #' autoplot(custom_wms_tile, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "red")
@@ -139,7 +142,7 @@
 #'   layer = "OI.OrthoimageCoverage"
 #' )
 #'
-#' custom_wmts_tile <- esp_getTiles(segovia, custom_wmts)
+#' custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
 #'
 #' autoplot(custom_wmts_tile, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
@@ -149,12 +152,12 @@
 #'   id = "CartoDB_Voyager",
 #'   q = "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
 #' )
-#' cartodb <- esp_getTiles(segovia, cartodb_voyager, zoommin = 1)
+#' cartodb <- esp_get_tiles(segovia, cartodb_voyager, zoommin = 1)
 #'
 #' autoplot(cartodb, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
 #' }
-esp_getTiles <- function(
+esp_get_tiles <- function(
   x,
   type = "IDErioja",
   zoom = NULL,
@@ -223,8 +226,8 @@ esp_getTiles <- function(
     names(extra_opts) <- tolower(names(extra_opts))
   }
   # Create cache dir
-  cache_dir <- esp_hlp_cachedir(cache_dir)
-  cache_dir <- esp_hlp_cachedir(paste0(cache_dir, "/", type))
+  cache_dir <- create_cache_dir(cache_dir)
+  cache_dir <- create_cache_dir(paste0(cache_dir, "/", type))
 
   # Attribution
   attr <- url_pieces$attribution
@@ -274,7 +277,7 @@ esp_getTiles <- function(
     newdir <- esp_get_md5(newdir)
 
     cache_dir <- file.path(cache_dir, newdir)
-    cache_dir <- esp_hlp_cachedir(cache_dir)
+    cache_dir <- create_cache_dir(cache_dir)
   }
 
   # Get CRS of Tile
@@ -390,7 +393,7 @@ esp_getTiles <- function(
   }
 
   # Result
-  return(rout)
+  rout
 }
 
 #' Helper to get bboxes
@@ -422,7 +425,7 @@ esp_hlp_get_bbox <- function(x, bbox_expand = 0.05, typeprov = "WMS") {
 
   sf::st_crs(newbbox) <- sf::st_crs(x)
 
-  return(newbbox)
+  newbbox
 }
 
 # Helper to split urls
@@ -442,7 +445,7 @@ esp_hlp_split_url <- function(url_static) {
     opts,
     function(x) {
       n <- strsplit(x, "=", fixed = TRUE)
-      return(unlist(n)[1])
+      unlist(n)[1]
     },
     FUN.VALUE = character(1)
   )
@@ -456,7 +459,8 @@ esp_hlp_split_url <- function(url_static) {
       if (length(unl) == 2) {
         return(unl[2])
       }
-      return("")
+      x <- ""
+      x
     },
     FUN.VALUE = character(1)
   )
@@ -465,7 +469,7 @@ esp_hlp_split_url <- function(url_static) {
 
   urlsplit <- modifyList(urlsplit, as.list(values_opts))
 
-  return(urlsplit)
+  urlsplit
 }
 
 esp_get_md5 <- function(x) {
@@ -474,5 +478,10 @@ esp_get_md5 <- function(x) {
 
   md5 <- unname(tools::md5sum(tmp))
 
-  return(md5)
+  md5
 }
+
+#' @export
+#' @rdname esp_get_tiles
+#' @usage NULL
+esp_getTiles <- esp_get_tiles

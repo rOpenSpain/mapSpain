@@ -5,10 +5,7 @@ test_that("Errors", {
     lat = 28.2722883
   )
 
-  expect_error(
-    esp_move_can(teide),
-    "should be an `sf` or `sfc`"
-  )
+  expect_snapshot(error = TRUE, esp_move_can(teide))
 })
 
 test_that("sfc", {

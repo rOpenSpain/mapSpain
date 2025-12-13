@@ -114,7 +114,7 @@ devtools::load_all()
 # Try MDT
 library(tidyterra)
 ccaa <- esp_get_ccaa(c("LA Rioja"), epsg = 3857)
-tile <- esp_getTiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
+tile <- esp_get_tiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
 
 ggplot2::ggplot() +
   geom_spatraster_rgb(data = tile)

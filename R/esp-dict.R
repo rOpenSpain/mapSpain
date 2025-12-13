@@ -64,6 +64,10 @@ esp_dict_region_code <- function(
   origin = "text",
   destination = "text"
 ) {
+  validvars <- c("text", "nuts", "iso2", "codauto", "cpro")
+  origin <- match_arg_pretty(origin, validvars)
+  destination <- match_arg_pretty(destination, validvars)
+
   # Manually replace
   sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
   sourcevar <- gsub(
@@ -77,18 +81,14 @@ esp_dict_region_code <- function(
 
   initsourcevar <- sourcevar
 
-  validvars <- c("text", "nuts", "iso2", "codauto", "cpro")
-
-  if (!(origin %in% validvars)) {
-    stop("origin should be ", paste0("'", validvars, "'", collapse = ", "))
-  }
-
-  if (!(destination %in% validvars)) {
-    stop("destination should be ", paste0("'", validvars, "'", collapse = ", "))
-  }
-
   if (origin == destination && origin == "text") {
-    message("No conversion - origin equal to destination")
+    make_msg(
+      "info",
+      TRUE,
+      "No conversion. {.arg origin}",
+      "equal to {.arg destination}",
+      paste0("({.str ", origin, "})")
+    )
     return(initsourcevar)
   }
 
@@ -251,12 +251,7 @@ esp_dict_region_code <- function(
 #' esp_dict_translate(vals, lang = "ga", all = TRUE)
 esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   avlang <- c("es", "en", "ca", "ga", "eu")
-  if (!(lang %in% avlang)) {
-    stop(
-      "lang sould be one of ",
-      paste0("'", avlang, "'", collapse = ", ")
-    )
-  }
+  lang <- match_arg_pretty(lang, avlang)
 
   # Create dict
   dict <- names_full

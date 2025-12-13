@@ -1,0 +1,144 @@
+test_that("Messages", {
+  skip_on_cran()
+  expect_silent(make_msg(verbose = FALSE))
+  expect_snapshot(make_msg(
+    "generic",
+    TRUE,
+    "Hi",
+    "I am a generic.",
+    "See {.var avar}."
+  ))
+  expect_snapshot(make_msg("info", TRUE, "Info here.", "See {.pkg igoR}."))
+
+  expect_snapshot(make_msg(
+    "warning",
+    TRUE,
+    "Caution! A warning.",
+    "But still OK."
+  ))
+
+  expect_snapshot(make_msg("danger", TRUE, "OOPS!", "I did it again :("))
+
+  expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
+})
+
+
+test_that("Pretty match", {
+  skip_on_cran()
+  my_fun <- function(
+    arg_one = c(10, 1000, 3000, 5000)
+  ) {
+    match_arg_pretty(arg_one)
+  }
+
+  # OK, returns character
+  expect_identical(my_fun(1000), "1000")
+  expect_identical(my_fun("1000"), "1000")
+  expect_identical(my_fun(NULL), "10")
+  expect_identical(my_fun(), "10")
+  # Some errors here
+  # Single value no match
+  expect_snapshot(
+    my_fun("error here"),
+    error = TRUE
+  )
+
+  # Several values no match
+  expect_snapshot(
+    my_fun(c("an", "error")),
+    error = TRUE
+  )
+
+  # One value regex
+  expect_snapshot(
+    my_fun("5"),
+    error = TRUE
+  )
+  # Several value regex
+  expect_snapshot(
+    my_fun("00"),
+    error = TRUE
+  )
+
+  my_fun2 <- function(year = 20) {
+    match_arg_pretty(year)
+  }
+
+  # Pass more options than expected
+  expect_snapshot(
+    my_fun2(c(1, 2)),
+    error = TRUE
+  )
+
+  # With custom options
+  my_fun3 <- function(an_arg = 20) {
+    match_arg_pretty(an_arg, c("30", "20"))
+  }
+  expect_identical(my_fun3(), "20")
+  expect_snapshot(my_fun3("3"), error = TRUE)
+  # Pass more options than expected
+  expect_snapshot(
+    my_fun2(c(1, 2)),
+    error = TRUE
+  )
+})
+
+test_that("Bind and fill sf", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts.sf[1, ]
+  cos <- mapSpain::esp_munic.sf[1, ]
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "data.frame")
+
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill tibbles", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- sf::st_drop_geometry(cos)
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "data.frame")
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill sf removes NULL", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts.sf[1, ]
+  cos <- mapSpain::esp_munic.sf[1, ]
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "data.frame")
+
+  expect_equal(nrow(binded), 3)
+})
+
+test_that("Bind and fill tibble removes NULL", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- sf::st_drop_geometry(cos)
+
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "data.frame")
+  expect_equal(nrow(binded), 3)
+
+  # All NULLs return NULL
+  new_l <- list(a = NULL, b = NULL)
+
+  expect_null(rbind_fill(new_l))
+})

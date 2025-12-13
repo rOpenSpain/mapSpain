@@ -47,7 +47,7 @@ esp_hlp_all2nuts <- function(region) {
     nuts_id[key] <- keyname
   }
 
-  return(nuts_id)
+  nuts_id
 }
 
 
@@ -106,7 +106,7 @@ esp_hlp_all2ccaa <- function(region) {
     nuts_init <- unique(c(nuts_init, nutslev1))
   }
 
-  return(nuts_init)
+  nuts_init
 }
 
 #' Transform region to province
@@ -257,5 +257,5 @@ esp_hlp_all2prov <- function(region) {
 
     final <- unique(c(final[-arecpro], nutscpro))
   }
-  return(final)
+  final
 }

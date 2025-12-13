@@ -63,7 +63,7 @@ esp_get_grid_EEA <- function(
     "https://www.eea.europa.eu/data-and-maps/data/",
     "eea-reference-grids-2/gis-files/spain-shapefile/at_download/file"
   )
-  cache_dir <- esp_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   # Create filepath
   filename <- "Spain_shapefile.zip"
