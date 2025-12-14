@@ -94,6 +94,7 @@ ggplot(nuts3) +
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_munic.sf}},
+\code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 

@@ -35,7 +35,6 @@
 #'
 #' @inheritParams esp_get_nuts
 #'
-#' @inheritSection esp_get_nuts About caching
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' grid <- esp_get_grid_BDN(resolution = "10", type = "main")

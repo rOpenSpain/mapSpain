@@ -14,9 +14,6 @@
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
-#' @inheritSection  esp_get_nuts  About caching
-#'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #' \donttest{

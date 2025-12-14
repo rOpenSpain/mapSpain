@@ -26,7 +26,6 @@
 #'
 #' @inheritParams esp_get_grid_BDN
 #'
-#' @inheritSection esp_get_nuts About caching
 #' @examplesIf esp_check_access()
 #' \dontrun{
 #'

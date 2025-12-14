@@ -93,6 +93,7 @@ data("esp_codelist")
 Other datasets: 
 \code{\link{esp_munic.sf}},
 \code{\link{esp_nuts.sf}},
+\code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 

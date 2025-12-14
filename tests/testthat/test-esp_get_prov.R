@@ -1,9 +1,11 @@
 test_that("prov offline", {
-  expect_warning(expect_warning(expect_error(esp_get_prov("FFF"))))
+  expect_snapshot(error = TRUE, esp_get_prov(prov = "FFF"))
+  expect_snapshot(error = TRUE, esp_get_prov(prov = "Menorca"))
+  expect_snapshot(error = TRUE, esp_get_prov(prov = "ES6x"))
+
   expect_silent(esp_get_prov())
   expect_silent(esp_get_prov(prov = c("Galicia", "ES7", "Centro")))
   expect_warning(expect_error(esp_get_prov(prov = "Menorca")))
-  expect_warning(expect_error(esp_get_prov(prov = "ES6x")))
 
   expect_silent(esp_get_prov(
     prov = c(

@@ -8,7 +8,8 @@
 #'
 #' @param x An [`sf`][sf::st_sf] object. It may be `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
-#'   `c(lat, lon)`.
+#'   `c(lat, lon)`.  It places the Canary Islands close to Spain's mainland.
+#'   Initial position can be adjusted using the vector of coordinates.
 #'
 #' @return A [`sf`][sf::st_sf] object of the same class and same CRS than `x`
 #' but displaced accordingly.
@@ -17,6 +18,14 @@
 #' This is a helper function that intends to ease the representation of objects
 #' located in the Canary Islands that have been obtained from other sources
 #' rather than the package \CRANpkg{mapSpain}.
+#'
+#' # Displacing the Canary Islands
+#'
+#' While `moveCAN` is useful for visualization, it would alter the actual
+#' geographic position of the Canary Islands. When using the output for
+#' spatial analysis or using tiles (e.g. with [esp_get_tiles()] or
+#' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
+#' get the actual coordinates, instead of the modified ones.
 #'
 #' @family helper
 #' @family Canary Islands

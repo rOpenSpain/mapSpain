@@ -17,7 +17,6 @@
 #'
 #' @inheritParams esp_get_ccaa
 #'
-#' @inheritSection  esp_get_nuts About caching
 #'
 #' @seealso [esp_get_hex_prov()], [esp_get_hex_ccaa()]
 #'

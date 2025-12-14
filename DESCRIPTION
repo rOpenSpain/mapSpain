@@ -29,7 +29,7 @@ Depends:
 Imports: 
     cli,
     countrycode (>= 1.2.0),
-    giscoR (>= 0.2.4),
+    giscoR (>= 1.0.0),
     httr2,
     jsonlite,
     lifecycle,

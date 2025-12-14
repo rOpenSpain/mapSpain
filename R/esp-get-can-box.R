@@ -26,7 +26,6 @@
 #'
 #' @inheritParams esp_get_nuts
 #'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #'

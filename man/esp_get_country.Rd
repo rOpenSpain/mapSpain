@@ -10,35 +10,38 @@ esp_get_country(moveCAN = TRUE, ...)
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands}.}
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
   \describe{
-    \item{\code{year}}{Release year of the file. One of \code{"2003"}, \code{"2006"},
-\code{"2010"}, \code{"2013"}, \code{"2016"}  or \code{"2021"}.}
-    \item{\code{epsg}}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
-One of:
+    \item{\code{year}}{year character string or number. Release year of the file. See
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
+    \item{\code{epsg}}{character string or number. Projection of the map: 4-digit
+\href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: ETRS89.
-\item \code{"4326"}: WGS84.
-\item \code{"3035"}: ETRS89 / ETRS-LAEA.
-\item \code{"3857"}: Pseudo-Mercator.
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
-    \item{\code{update_cache}}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
-    \item{\code{cache_dir}}{A path to a cache directory. See \strong{About caching}.}
-    \item{\code{verbose}}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
-    \item{\code{resolution}}{Resolution of the geospatial data. One of
+    \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+    \item{\code{update_cache}}{logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+    \item{\code{cache_dir}}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+    \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
+    \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
+    \item{\code{resolution}}{character string or number. Resolution of the geospatial
+data. One of:
 \itemize{
-\item \code{"60"}: 1:60million
-\item \code{"20"}: 1:20million
-\item \code{"10"}: 1:10million
-\item \code{"03"}: 1:3million
-\item \code{"01"}: 1:1million
+\item \code{"60"}: 1:60 million.
+\item \code{"20"}: 1:20 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"03"}: 1:3 million.
+\item \code{"01"}: 1:1 million.
 }}
   }}
 }
@@ -49,26 +52,6 @@ A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 Returns the boundaries of Spain as a single \code{\link[sf:sf]{sf}} \code{POLYGON} at a
 specified scale.
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-}
-
-\section{Displacing the Canary Islands}{
-While \code{moveCAN} is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
-get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
-}
-
 \examples{
 \donttest{
 OriginalCan <- esp_get_country(moveCAN = FALSE)

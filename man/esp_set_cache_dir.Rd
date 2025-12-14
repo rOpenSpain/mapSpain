@@ -25,8 +25,7 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
 this argument is set to \code{FALSE} automatically.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 \code{esp_set_cache_dir()} returns an (invisible) character with the path to

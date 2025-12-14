@@ -59,13 +59,13 @@ Depends on the selected provider on \code{type}.}
 
 \item{mask}{\code{TRUE} if the result should be masked to \code{x}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{options}{A named list containing additional options to pass to the
 query.}
@@ -106,17 +106,6 @@ looks deformed, try projecting first \code{x}:
 
 \code{x <- sf::st_transform(x, 3857)}
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-}
-
 \examples{
 \dontrun{
 # This script downloads tiles to your local machine

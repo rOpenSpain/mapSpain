@@ -40,25 +40,25 @@ esp_get_munic_siane(
 \arguments{
 \item{year}{Release year. See \strong{Details} for years available.}
 
-\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
-One of:
+\item{epsg}{character string or number. Projection of the map: 4-digit
+\href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: ETRS89.
-\item \code{"4326"}: WGS84.
-\item \code{"3035"}: ETRS89 / ETRS-LAEA.
-\item \code{"3857"}: Pseudo-Mercator.
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
+\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{region}{A vector of names and/or codes for provinces
 or \code{NULL} to get all the municipalities. See \strong{Details}.}
@@ -69,7 +69,7 @@ the required municipalities. \code{NULL} would return all municipalities.}
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands}.}
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
 \item{resolution}{Resolution of the polygon. Values available are
 \code{"3"}, \code{"6.5"} or  \code{"10"}.}
@@ -111,26 +111,6 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 When calling a higher level (Province, Autonomous Community or NUTS1), all
 the municipalities of that level would be added.
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-}
-
-\section{Displacing the Canary Islands}{
-While \code{moveCAN} is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
-get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
-}
-
 \examples{
 \donttest{
 # Get munics

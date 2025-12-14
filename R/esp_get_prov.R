@@ -34,9 +34,6 @@
 #' When calling a higher level (Autonomous Community or NUTS1), all the
 #' provinces of that level would be added.
 #'
-#' @inheritSection  esp_get_nuts  About caching
-#'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #' prov <- esp_get_prov()
@@ -107,11 +104,10 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
     nuts_id <- esp_hlp_all2prov(region)
 
     nuts_id <- unique(nuts_id)
+    nuts_id <- nuts_id[!is.na(nuts_id)]
     if (length(nuts_id) == 0) {
-      stop(
-        "region ",
-        paste0("'", region, "'", collapse = ", "),
-        " is not a valid name"
+      cli::cli_abort(
+        "{.arg prov = {prov}} {?is/are} not valid."
       )
     }
   }

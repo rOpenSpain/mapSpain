@@ -22,7 +22,6 @@
 #'
 #' @inheritParams esp_get_nuts
 #'
-#' @inheritSection  esp_get_nuts  About caching
 #'
 #'
 #' @details

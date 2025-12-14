@@ -23,10 +23,6 @@
 #' @inheritParams esp_get_nuts
 #'
 #'
-#' @inheritSection  esp_get_nuts  About caching
-#'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
-#'
 #' @details
 #' `year` could be passed as a single year (`YYYY` format, as end of year) or
 #' as a specific date (`YYYY-MM-DD` format). Historical information starts as

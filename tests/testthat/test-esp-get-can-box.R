@@ -1,4 +1,7 @@
 test_that("Testing can bbox", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   expect_snapshot(error = TRUE, esp_get_can_box(style = "ee"))
   expect_snapshot(error = TRUE, esp_get_can_box(epsg = "ee"))
   expect_silent(esp_get_can_box())

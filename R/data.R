@@ -327,3 +327,80 @@ NULL
 #' single$leaflet
 #'
 NULL
+
+
+#' NUTS 2024 for Spain [`sf`][sf::st_sf] object
+#'
+#'
+#' @docType data
+#' @name esp_nuts_2024
+#' @family datasets
+#' @encoding UTF-8
+#'
+#' @seealso [esp_get_nuts()]
+#'
+#' @description
+#' This dataset represents the spanish regions for levels 0, 1, 2 and 3 of the
+#' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+#'
+#'
+#' @format
+#' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
+#' 1:1 million and [EPSG:4258](https://epsg.io/4258). with
+#' `r nrow(mapSpain::esp_nuts_2024)` rows and 10 variables:
+#' \describe{
+#'   \item{`NUTS_ID`}{NUTS identifier.}
+#'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
+#'   \item{`CNTR_CODE`}{Eurostat Country code.}
+#'   \item{`NAME_LATN`}{NUTS name on Latin characters.}
+#'   \item{`NUTS_NAME`}{NUTS name on local alphabet.}
+#'   \item{`MOUNT_TYPE`}{Mount Type, see **Details**.}
+#'   \item{`URBN_TYPE`}{Urban Type, see **Details**.}
+#'   \item{`COAST_TYPE`}{Coast Type, see **Details**.}
+#'   \item{`geo`}{Same as `NUTS_ID`, provided for compatibility with
+#'     \CRANpkg{eurostat}.}
+#'   \item{`geometry`}{geometry field.}
+#' }
+#'
+#' @details
+#'
+#' `MOUNT_TYPE`: Mountain typology:
+#'  - `1`: More than 50 % of the surface is covered by topographic mountain
+#'    areas.
+#'  - `2`: More than 50 % of the regional population lives in topographic
+#'    mountain areas.
+#'  - `3`: More than 50 % of the surface is covered by topographic mountain
+#'    areas and where more than 50 % of the regional population lives in these
+#'    mountain areas.
+#'  - `4`: Non-mountain region / other regions.
+#'  - `0`: No classification provided.
+#'
+#' `URBN_TYPE`: Urban-rural typology:
+#'  - `1`: Predominantly urban region.
+#'  - `2`: Intermediate region.
+#'  - `3`: Predominantly rural region.
+#'  - `0`: No classification provided.
+#'
+#' `COAST_TYPE`: Coastal typology:
+#'   - `1`: Coastal (on coast).
+#'   - `2`: Coastal (less than 50% of population living within 50 km. of the
+#'        coastline).
+#'   - `3`: Non-coastal region.
+#'   - `0`: No classification provided.
+#'
+#'
+#' @source
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[NUTS_RG_01M_2024_4326.gpkg]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "nuts/gpkg/) file."))
+#'
+#' ```
+#'
+#' @examples
+#' data("esp_nuts_2024")
+#' head(esp_nuts_2024)
+#'
+NULL

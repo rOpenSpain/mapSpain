@@ -24,15 +24,15 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands}.}
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
-One of:
+\item{epsg}{character string or number. Projection of the map: 4-digit
+\href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: ETRS89.
-\item \code{"4326"}: WGS84.
-\item \code{"3035"}: ETRS89 / ETRS-LAEA.
-\item \code{"3857"}: Pseudo-Mercator.
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 }
 \value{
@@ -59,15 +59,6 @@ provinces of the Canary Islands.
 See also \code{\link[=esp_move_can]{esp_move_can()}} to displace stand-alone objects on the Canary
 Islands.
 }
-\section{Displacing the Canary Islands}{
-While \code{moveCAN} is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
-get the actual coordinates, instead of the modified ones. See also
-\code{\link[=esp_move_can]{esp_move_can()}} for displacing stand-alone \code{\link[sf:sf]{sf}} objects.
-}
-
 \examples{
 
 Provs <- esp_get_prov()

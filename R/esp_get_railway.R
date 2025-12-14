@@ -21,7 +21,6 @@
 #'
 #' @inheritParams esp_get_roads
 #'
-#' @inheritSection  esp_get_nuts  About caching
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

@@ -21,9 +21,6 @@
 #'
 #' @inheritParams esp_get_munic
 #'
-#' @inheritSection  esp_get_nuts About caching
-#'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @export
 #'

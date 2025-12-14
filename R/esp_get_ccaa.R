@@ -33,9 +33,6 @@
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' would be added.
 #'
-#' @inheritSection  esp_get_nuts  About caching
-#'
-#' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
 #' ccaa <- esp_get_ccaa()

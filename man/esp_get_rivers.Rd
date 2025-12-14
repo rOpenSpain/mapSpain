@@ -21,25 +21,25 @@ esp_get_rivers(
 )
 }
 \arguments{
-\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
-One of:
+\item{epsg}{character string or number. Projection of the map: 4-digit
+\href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: ETRS89.
-\item \code{"4326"}: WGS84.
-\item \code{"3035"}: ETRS89 / ETRS-LAEA.
-\item \code{"3857"}: Pseudo-Mercator.
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
+\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
