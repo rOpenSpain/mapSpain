@@ -83,7 +83,7 @@ esp_get_grid_BDN <- function(
     url,
     name = filename,
     cache_dir = cache_dir,
-    subdir = "grids",
+    subdir = "grid",
     update_cache = update_cache,
     verbose = verbose
   )

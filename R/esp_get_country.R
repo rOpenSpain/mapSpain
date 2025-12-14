@@ -19,7 +19,7 @@
 #' @inheritSection  esp_get_nuts  Displacing the Canary Islands
 #'
 #' @examples
-#'
+#' \donttest{
 #' OriginalCan <- esp_get_country(moveCAN = FALSE)
 #'
 #' # One row only
@@ -40,6 +40,7 @@
 #'
 #' ggplot(MovedCan) +
 #'   geom_sf(fill = "grey70")
+#' }
 esp_get_country <- function(moveCAN = TRUE, ...) {
   params <- list(...)
   params$nuts_level <- 1

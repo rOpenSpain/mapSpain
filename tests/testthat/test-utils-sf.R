@@ -64,6 +64,7 @@ test_that("Read gpkg", {
     verbose = FALSE
   )
 
+  expect_null(get_col_name(fake_local, c("a_non_existing_col")))
   nms1 <- get_col_name(fake_local, c("ccaa", "id_ccaa"))
   expect_identical(nms1, "id_ccaa")
   nm <- get_geo_file_colnames(fake_local)

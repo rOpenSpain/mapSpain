@@ -70,7 +70,7 @@ get the actual coordinates, instead of the modified ones. See also
 }
 
 \examples{
-
+\donttest{
 OriginalCan <- esp_get_country(moveCAN = FALSE)
 
 # One row only
@@ -91,6 +91,7 @@ library(ggplot2)
 
 ggplot(MovedCan) +
   geom_sf(fill = "grey70")
+}
 }
 \seealso{
 Other political: 

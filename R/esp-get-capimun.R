@@ -142,7 +142,9 @@ esp_get_capimun <- function(
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)
-    if (is.null(data_sf)) return(NULL)
+    if (is.null(data_sf)) {
+      return(NULL)
+    }
   }
 
   data_sf <- siane_filter_year(data_sf = data_sf, year = year)
@@ -159,7 +161,8 @@ esp_get_capimun <- function(
   )
 
   cod <- unique(
-    mapSpain::esp_codelist[,
+    mapSpain::esp_codelist[
+      ,
       c("codauto", "ine.ccaa.name", "cpro", "ine.prov.name")
     ]
   )
