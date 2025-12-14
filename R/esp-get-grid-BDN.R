@@ -19,7 +19,13 @@
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
 #' See original metadata and source on
-#' <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html>
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(" <https://www.miteco.gob.es/es/biodiversidad/servicios/",
+#'       "banco-datos-naturaleza/informacion-disponible/",
+#'       "bdn-cart-aux-descargas-ccaa.html>"))
+#'
+#' ```
 #'
 #' @export
 #'
@@ -60,14 +66,12 @@ esp_get_grid_BDN <- function(
 
   # Filename
   if (res == 10) {
-    filename <- switch(
-      type,
+    filename <- switch(type,
       "main" = "Malla10x10_Ter_p.gpkg",
       "Malla10x10_Ter_c.gpkg"
     )
   } else {
-    filename <- switch(
-      type,
+    filename <- switch(type,
       "main" = "Malla_5x5_tierra_p.gpkg",
       "Malla_5x5_tierra_c.gpkg"
     )

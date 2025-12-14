@@ -3,6 +3,8 @@
 -   Minimal **R** version required is **4.1.0**.
 -   Remove **slippymath** dependency (#126).
 -   `esp_getTiles()` renamed to `esp_get_tiles()`. Both versions work so far.
+-   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
+    available any more.
 
 # mapSpain 0.10.0
 

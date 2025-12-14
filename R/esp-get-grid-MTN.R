@@ -117,7 +117,6 @@ esp_get_grid_MTN <- function(
   verbose = FALSE
 ) {
   # Check grid
-  init_grid <- grid
   valid_grid <- c(
     "MTN25_ED50_Peninsula_Baleares",
     "MTN25_ETRS89_ceuta_melilla_alboran",
@@ -127,111 +126,24 @@ esp_get_grid_MTN <- function(
     "MTN50_ETRS89_Peninsula_Baleares_Canarias",
     "MTN50_RegCan95_Canarias"
   )
-
-  if (!init_grid %in% valid_grid) {
-    stop(
-      "grid should be one of '",
-      paste0(valid_grid, collapse = "', "),
-      "'"
-    )
-  }
+  init_grid <- match_arg_pretty(grid, valid_grid)
 
   # Url
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "MTN/dist/MTN_grids.zip"
   )
-
-  cache_dir <- create_cache_dir(cache_dir)
-
-  # Create filepath
-  filename <- "MTN_grids.zip"
-
-  filepath <- file.path(cache_dir, filename)
-
-  gpkgpath <- file.path(cache_dir, paste0(init_grid, ".gpkg"))
-  localfile <- file.exists(gpkgpath)
-
-  if (verbose) {
-    message("Cache dir is ", cache_dir)
-  }
-
-  if (update_cache || isFALSE(localfile)) {
-    dwnload <- TRUE
-    if (verbose) {
-      message(
-        "Downloading file from ",
-        url,
-        "\n\nSee https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN ",
-        "for more info"
-      )
-    }
-    if (verbose && update_cache) {
-      message("\nUpdating cache")
-    }
-  } else {
-    dwnload <- FALSE
-    if (verbose && isFALSE(update_cache)) {
-      message("File already available on ", filepath)
-    }
-  }
-
-  # Downloading
-  if (dwnload) {
-    err_dwnload <- try(
-      download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
-      silent = TRUE
-    )
-    # nocov start
-    if (inherits(err_dwnload, "try-error")) {
-      if (verbose) {
-        message("Retrying query")
-      }
-      err_dwnload <- try(
-        download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb"),
-        silent = TRUE
-      )
-    }
-
-    # If not then message
-
-    if (inherits(err_dwnload, "try-error")) {
-      message(
-        "Download failed",
-        "\n\nurl \n ",
-        url,
-        " not reachable.\n\nPlease try with another options. ",
-        "If you think this ",
-        "is a bug please consider opening an issue on:",
-        "\nhttps://github.com/rOpenSpain/mapSpain/issues"
-      )
-      stop("\nExecution halted")
-      # nocov end
-    } else if (verbose) {
-      message("Download succesful")
-    }
-
-    if (verbose) {
-      message("Unzipping ", filepath, " on ", cache_dir)
-    }
-    unzip(filepath, exdir = cache_dir, overwrite = TRUE)
-  }
-
-  err_onload <- try(
-    sf::st_read(gpkgpath, quiet = isFALSE(verbose), stringsAsFactors = FALSE),
-    silent = TRUE
+  file_local <- download_url(
+    url,
+    cache_dir = cache_dir,
+    subdir = "grid",
+    update_cache = update_cache,
+    verbose = verbose
   )
-  # nocov start
-  if (inherits(err_onload, "try-error")) {
-    message(
-      "File may be corrupt. Please try again using cache = TRUE ",
-      "and update_cache = TRUE"
-    )
-    stop("\nExecution halted")
+  if (is.null(file_local)) {
+    return(file_local)
   }
-  # nocov end
-  if (verbose) {
-    message("File loaded")
-  }
-  err_onload
+  path <- gsub(basename(file_local), "", file_local)
+  unzip(file_local, exdir = path, junkpaths = TRUE)
+  read_geo_file_sf(paste0(path, init_grid, ".gpkg"))
 }

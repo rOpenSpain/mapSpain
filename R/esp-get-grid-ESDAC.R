@@ -56,14 +56,12 @@ esp_get_grid_ESDAC <- function(
       "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
       "Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
     )
-    filename <- "grids_for_single_eu25_countries_etrs_laea_10k.zip"
     shp_hint <- "spain"
   } else {
     url <- paste0(
       "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
       "Grids/grid_spain_etrs_laea_1k.zip"
     )
-    filename <- "grid_spain_etrs_laea_1k.zip"
     shp_hint <- NULL
   }
 

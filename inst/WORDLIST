@@ -8,7 +8,6 @@ Bierzo
 CCAA
 CDN
 CLDR
-CRS
 Canarias
 CartoBase
 Castilla
@@ -22,12 +21,12 @@ ESDAC
 ETRS
 El
 Estadistica
-Eurostat
 FID
 GISCO
 Galicia
 Galician
 Geografico
+Geográfico
 Hexbin
 Hypsometry
 IDEE
@@ -52,12 +51,11 @@ OpenStreetMap
 Panagos
 REGCAN
 RGBA
+ROR
 RegCan
-Renviron
 SIANE
 Topografico
 URBN
-WGS
 WMS
 WMTS
 WMTSproviders
@@ -70,10 +68,8 @@ choropleths
 cmun
 comarca
 comarcas
-config
 cpro
 de
-dir
 ec
 esdac
 eu
@@ -90,4 +86,5 @@ melilla
 merindades
 pre
 providersESP
+slippymath
 spanish
