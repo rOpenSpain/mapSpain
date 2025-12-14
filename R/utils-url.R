@@ -118,7 +118,7 @@ download_url <- function(
     cli::cli_alert_warning(
       c(
         "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/https://github.com/rOpenSpain/mapSpain/issues}"
+        "{.url https://github.com/rOpenSpain/mapSpain/issues}"
       )
     )
     cli::cli_alert("Returning {.val NULL}")

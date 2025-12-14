@@ -7,7 +7,7 @@
 #' @return An `sf` object containing the geospatial data.
 #'
 #' @noRd
-read_geo_file_sf <- function(file_local, q = NULL, ...) {
+read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
   # Warn if file size is huge and no query
 
   if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
@@ -27,7 +27,19 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl("shp$", shp_zip)]
+    if (!is.null(shp_hint)) {
+      shp_zip <- shp_zip[grepl(shp_hint, shp_zip)]
+    }
     shp_end <- shp_zip[1]
+    if (any(is.na(shp_end), is.null(shp_end))) {
+      cli::cli_alert_warning("Can't read file {.file {file_local}}")
+      cli::cli_abort(
+        paste0(
+          "Please open an issue: ",
+          "{.url https://github.com/rOpenSpain/mapSpain/issues}."
+        )
+      )
+    }
 
     # Read with vszip
     file_local <- file.path("/vsizip/", file_local, shp_end)

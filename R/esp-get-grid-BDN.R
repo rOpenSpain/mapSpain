@@ -60,12 +60,14 @@ esp_get_grid_BDN <- function(
 
   # Filename
   if (res == 10) {
-    filename <- switch(type,
+    filename <- switch(
+      type,
       "main" = "Malla10x10_Ter_p.gpkg",
       "Malla10x10_Ter_c.gpkg"
     )
   } else {
-    filename <- switch(type,
+    filename <- switch(
+      type,
       "main" = "Malla_5x5_tierra_p.gpkg",
       "Malla_5x5_tierra_c.gpkg"
     )
@@ -135,7 +137,7 @@ esp_get_grid_BDN_ccaa <- function(
     url,
     name = filename,
     cache_dir = cache_dir,
-    subdir = "grids",
+    subdir = "grid",
     update_cache = update_cache,
     verbose = verbose
   )
