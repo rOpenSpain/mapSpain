@@ -45,7 +45,7 @@ provided by the European Soil Data Centre (ESDAC)."><meta property="og:image" co
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> of the national geographic grids from ESDAC</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp_get_grid_ESDAC.R" class="external-link"><code>R/esp_get_grid_ESDAC.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-grid-ESDAC.R" class="external-link"><code>R/esp-get-grid-ESDAC.R</code></a></small>
       <div class="d-none name"><code>esp_get_grid_ESDAC.Rd</code></div>
     </div>
 
@@ -57,7 +57,7 @@ provided by the European Soil Data Centre (ESDAC).</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">esp_get_grid_ESDAC</span><span class="op">(</span></span>
-<span>  resolution <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  resolution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -117,7 +117,6 @@ Commission, Joint Research Centre.</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other grids:
 <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code>,
-<code><a href="esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code>,
 <code><a href="esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code></p></div>
     </div>
 

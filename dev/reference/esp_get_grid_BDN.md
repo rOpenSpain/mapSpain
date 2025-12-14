@@ -15,8 +15,8 @@ Environment (MITECO):
 
 ``` r
 esp_get_grid_BDN(
-  resolution = 10,
-  type = "main",
+  resolution = c(10, 5),
+  type = c("main", "canary"),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -91,7 +91,6 @@ query.
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
 
 Other grids:
-[`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md),
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 

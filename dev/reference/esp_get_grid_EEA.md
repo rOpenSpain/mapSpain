@@ -1,8 +1,8 @@
 # Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` of the national geographic grids from EEA
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` with the geographic grids of Spain as provided by the European
-Environment Agency (EEA).
+**\[defunct\]**
+
+This function is defunct as the source file is not available any more.
 
 ## Usage
 
@@ -63,20 +63,19 @@ corresponding .geojson file by any other method and save it on your
 `cache_dir`. Use the option `verbose = TRUE` for debugging the API
 query.
 
-## See also
-
-Other grids:
-[`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
-[`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md),
-[`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
-
 ## Examples
 
 ``` r
 # \dontrun{
 
 grid <- esp_get_grid_EEA(type = "main", resolution = 100)
+#> Error: `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
+#> defunct.
+#> ℹ The source file is not available for download any more
 grid_can <- esp_get_grid_EEA(type = "canary", resolution = 100)
+#> Error: `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
+#> defunct.
+#> ℹ The source file is not available for download any more
 esp <- esp_get_country(moveCAN = FALSE)
 
 library(ggplot2)
@@ -87,6 +86,7 @@ ggplot(grid) +
   geom_sf(data = esp, fill = NA) +
   theme_light() +
   labs(title = "EEA Grid for Spain")
-
+#> Error in ggplot(grid): `data` cannot be a function.
+#> ℹ Have you misspelled the `data` argument in `ggplot()`?
 # }
 ```

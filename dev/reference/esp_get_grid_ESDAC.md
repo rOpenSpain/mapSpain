@@ -8,7 +8,7 @@ Soil Data Centre (ESDAC).
 
 ``` r
 esp_get_grid_ESDAC(
-  resolution = 10,
+  resolution = c(10, 1),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -71,7 +71,6 @@ query.
 
 Other grids:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
-[`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 
 ## Examples

@@ -162,12 +162,6 @@ Return static tiles or create a
   Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
   with the national geographic grids from BDN
 
-- [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  of the national geographic grids from EEA
-
 - [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md)
   :
 
@@ -243,3 +237,11 @@ A collection of helper functions.
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
   : mapSpain: Administrative Boundaries of Spain
+
+## Deprecated functions
+
+- [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
+  **\[defunct\]** :
+
+  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+  of the national geographic grids from EEA
