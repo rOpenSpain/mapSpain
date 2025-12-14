@@ -47,19 +47,21 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
   A logical `TRUE/FALSE` or a vector of coordinates `c(lat, lon)`. It
   places the Canary Islands close to Spain's mainland. Initial position
   can be adjusted using the vector of coordinates. See **Displacing the
-  Canary Islands**.
+  Canary Islands** in
+  [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89.
+  - `"4258"`: [ETRS89](https://epsg.io/4258)
 
-  - `"4326"`: WGS84.
+  - `"4326"`: [WGS84](https://epsg.io/4326).
 
-  - `"3035"`: ETRS89 / ETRS-LAEA.
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-  - `"3857"`: Pseudo-Mercator.
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
 ## Value
 
@@ -67,20 +69,6 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
 `LINESTRING` depending of `style` parameter.
 
 `esp_get_can_provinces` returns a `LINESTRING` object.
-
-## Displacing the Canary Islands
-
-While `moveCAN` is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with
-[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-or
-[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md))
-this option should be set to `FALSE` in order to get the actual
-coordinates, instead of the modified ones. See also
-[`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
-for displacing stand-alone
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects.
 
 ## See also
 

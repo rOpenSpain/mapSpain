@@ -116,15 +116,15 @@ Islands.</p>
 <dd><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
 <code>c(lat, lon)</code>. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
-<strong>Displacing the Canary Islands</strong>.</p></dd>
+<strong>Displacing the Canary Islands</strong> in <code><a href="esp_move_can.html">esp_move_can()</a></code>.</p></dd>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p><code>"4258"</code>: ETRS89.</p></li>
-<li><p><code>"4326"</code>: WGS84.</p></li>
-<li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA.</p></li>
-<li><p><code>"3857"</code>: Pseudo-Mercator.</p></li>
+<dd><p>character string or number. Projection of the map: 4-digit
+<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a></p></li>
+<li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
+<li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
+<li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
 </ul></dd>
 
 </dl></div>
@@ -133,15 +133,6 @@ One of:</p><ul><li><p><code>"4258"</code>: ETRS89.</p></li>
     <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> or <code>LINESTRING</code> depending of <code>style</code>
 parameter.</p>
 <p><code>esp_get_can_provinces</code> returns a <code>LINESTRING</code> object.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
-    <p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
-<code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>)  this option should be set to <code>FALSE</code> in order to
-get the actual coordinates, instead of the modified ones. See also
-<code><a href="esp_move_can.html">esp_move_can()</a></code> for displacing stand-alone <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> objects.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

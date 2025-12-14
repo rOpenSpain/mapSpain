@@ -72,7 +72,8 @@ provided by <code><a href="https://r-spatial.github.io/sf/reference/sf.html" cla
 
 <dt id="arg-movecan">moveCAN<a class="anchor" aria-label="anchor" href="#arg-movecan"></a></dt>
 <dd><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
-<code>c(lat, lon)</code>.</p></dd>
+<code>c(lat, lon)</code>.  It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -85,6 +86,14 @@ but displaced accordingly.</p>
     <p>This is a helper function that intends to ease the representation of objects
 located in the Canary Islands that have been obtained from other sources
 rather than the package <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
+    <p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
+<code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>)  this option should be set to <code>FALSE</code> in order to
+get the actual coordinates, instead of the modified ones.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

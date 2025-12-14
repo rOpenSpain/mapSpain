@@ -39,8 +39,7 @@ esp_detect_cache_dir()
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -112,29 +111,29 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/mapSpain
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/example/cachenew.
+#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/example/cachenew
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp4YFbaf/example/cachenew"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/example/cachenew
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpQdYmtn/example/cachenew"
 
 # Restore initial cache
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/mapSpain.
+#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4YFbaf/mapSpain
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp4YFbaf/mapSpain"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQdYmtn/mapSpain
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpQdYmtn/mapSpain"
 ```

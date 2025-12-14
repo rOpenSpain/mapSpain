@@ -97,6 +97,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 Other datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_munic.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_munic.sf.md),
+[`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md),
 [`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
 

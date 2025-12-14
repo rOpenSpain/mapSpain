@@ -17,7 +17,8 @@ esp_get_country(moveCAN = TRUE, ...)
   A logical `TRUE/FALSE` or a vector of coordinates `c(lat, lon)`. It
   places the Canary Islands close to Spain's mainland. Initial position
   can be adjusted using the vector of coordinates. See **Displacing the
-  Canary Islands**.
+  Canary Islands** in
+  [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).
 
 - ...:
 
@@ -26,86 +27,68 @@ esp_get_country(moveCAN = TRUE, ...)
 
   `year`
 
-  :   Release year of the file. One of `"2003"`, `"2006"`, `"2010"`,
-      `"2013"`, `"2016"` or `"2021"`.
+  :   year character string or number. Release year of the file. See
+      [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
+      for valid values.
 
   `epsg`
 
-  :   projection of the map: 4-digit [EPSG code](https://epsg.io/). One
-      of:
+  :   character string or number. Projection of the map: 4-digit [EPSG
+      code](https://epsg.io/). One of:
 
-      - `"4258"`: ETRS89.
+      - `"4258"`: [ETRS89](https://epsg.io/4258)
 
-      - `"4326"`: WGS84.
+      - `"4326"`: [WGS84](https://epsg.io/4326).
 
-      - `"3035"`: ETRS89 / ETRS-LAEA.
+      - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-      - `"3857"`: Pseudo-Mercator.
+      - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
   `cache`
 
-  :   A logical whether to do caching. Default is `TRUE`. See **About
-      caching**.
+  :   logical. Whether to do caching. Default is `TRUE`. See **Caching
+      strategies** section in
+      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   A logical whether to update cache. Default is `FALSE`. When set to
-      `TRUE` it would force a fresh download of the source file.
+  :   logical. Should the cached file be refreshed?. Default is `FALSE`.
+      When set to `TRUE` it would force a new download.
 
   `cache_dir`
 
-  :   A path to a cache directory. See **About caching**.
+  :   character string. A path to a cache directory. See **Caching
+      strategies** section in
+      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+
+  `ext`
+
+  :   character. Extension of the file (default `"gpkg"`). See
+      [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
   `verbose`
 
-  :   Logical, displays information. Useful for debugging, default is
-      `FALSE`.
+  :   logical. If `TRUE` displays informational messages.
 
   `resolution`
 
-  :   Resolution of the geospatial data. One of
+  :   character string or number. Resolution of the geospatial data. One
+      of:
 
-      - `"60"`: 1:60million
+      - `"60"`: 1:60 million.
 
-      - `"20"`: 1:20million
+      - `"20"`: 1:20 million.
 
-      - `"10"`: 1:10million
+      - `"10"`: 1:10 million.
 
-      - `"03"`: 1:3million
+      - `"03"`: 1:3 million.
 
-      - `"01"`: 1:1million
+      - `"01"`: 1:1 million.
 
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
 object.
-
-## About caching
-
-You can set your `cache_dir` with
-[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-## Displacing the Canary Islands
-
-While `moveCAN` is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with
-[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-or
-[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md))
-this option should be set to `FALSE` in order to get the actual
-coordinates, instead of the modified ones. See also
-[`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
-for displacing stand-alone
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects.
 
 ## See also
 
@@ -124,6 +107,7 @@ Other political:
 ## Examples
 
 ``` r
+# \donttest{
 OriginalCan <- esp_get_country(moveCAN = FALSE)
 
 # One row only
@@ -146,4 +130,6 @@ library(ggplot2)
 
 ggplot(MovedCan) +
   geom_sf(fill = "grey70")
+
+# }
 ```

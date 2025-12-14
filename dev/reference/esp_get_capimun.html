@@ -49,7 +49,7 @@ municipality, returned by esp_get_munic()."><meta property="og:image" content="h
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POINT</code> of the municipalities of Spain</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp_get_capimun.R" class="external-link"><code>R/esp_get_capimun.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-capimun.R" class="external-link"><code>R/esp-get-capimun.R</code></a></small>
       <div class="d-none name"><code>esp_get_capimun.Rd</code></div>
     </div>
 
@@ -64,7 +64,7 @@ municipality, returned by <code><a href="esp_get_munic.html">esp_get_munic()</a>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">esp_get_capimun</span><span class="op">(</span></span>
 <span>  year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  epsg <span class="op">=</span> <span class="st">"4258"</span>,</span>
+<span>  epsg <span class="op">=</span> <span class="fl">4258</span>,</span>
 <span>  cache <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -90,31 +90,31 @@ municipality, returned by <code><a href="esp_get_munic.html">esp_get_munic()</a>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p><code>"4258"</code>: ETRS89.</p></li>
-<li><p><code>"4326"</code>: WGS84.</p></li>
-<li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA.</p></li>
-<li><p><code>"3857"</code>: Pseudo-Mercator.</p></li>
+<dd><p>character string or number. Projection of the map: 4-digit
+<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a></p></li>
+<li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
+<li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
+<li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
 </ul></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
-<strong>About caching</strong>.</p></dd>
+<dd><p>logical. Whether to do caching. Default is <code>TRUE</code>. See
+<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
-When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+<dd><p>logical. Should the cached file be refreshed?. Default
+is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
-<dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+<dd><p>character string. A path to a cache directory. See
+<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical, displays information. Useful for debugging,
-default is <code>FALSE</code>.</p></dd>
+<dd><p>logical. If <code>TRUE</code> displays informational messages.</p></dd>
 
 
 <dt id="arg-region">region<a class="anchor" aria-label="anchor" href="#arg-region"></a></dt>
@@ -131,7 +131,7 @@ the required municipalities. <code>NULL</code> would return all municipalities.<
 <dd><p>A logical <code>TRUE/FALSE</code> or a vector of coordinates
 <code>c(lat, lon)</code>. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
-<strong>Displacing the Canary Islands</strong>.</p></dd>
+<strong>Displacing the Canary Islands</strong> in <code><a href="esp_move_can.html">esp_move_can()</a></code>.</p></dd>
 
 
 <dt id="arg-rawcols">rawcols<a class="anchor" aria-label="anchor" href="#arg-rawcols"></a></dt>
@@ -153,24 +153,6 @@ of 2005.</p>
 <a href="esp_codelist.html">esp_codelist</a></p>
 <p>When calling a higher level (province, CCAA or NUTS1), all the municipalities
 of that level would be added.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
-    <p>You can set your <code>cache_dir</code> with <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p>
-<p>Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting <code>update_cache = TRUE</code>.</p>
-<p>If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-<code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a></h2>
-    <p>While <code>moveCAN</code> is useful for visualization, it would alter the actual
-geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
-<code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>)  this option should be set to <code>FALSE</code> in order to
-get the actual coordinates, instead of the modified ones. See also
-<code><a href="esp_move_can.html">esp_move_can()</a></code> for displacing stand-alone <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> objects.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -223,6 +205,7 @@ get the actual coordinates, instead of the modified ones. See also
 <span class="r-in"><span>  <span class="va">centroid</span><span class="op">[</span>, <span class="st">"type"</span><span class="op">]</span>,</span></span>
 <span class="r-in"><span>  <span class="va">capimun</span><span class="op">[</span>, <span class="st">"type"</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.names(clabs, names(xi)):</span> names do not match previous names</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Check on plot</span></span></span>
@@ -241,7 +224,8 @@ get the actual coordinates, instead of the modified ones. See also
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"green"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Centroid vs. capimun"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="esp_get_capimun-1.png" alt="" width="2188" height="1352"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ggplot(points):</span> `data` cannot be a function.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Have you misspelled the `data` argument in `ggplot()`?</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

@@ -91,17 +91,18 @@ esp_get_tiles(
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - options:
 
@@ -139,19 +140,6 @@ Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the
 tile looks deformed, try projecting first `x`:
 
 `x <- sf::st_transform(x, 3857)`
-
-## About caching
-
-You can set your `cache_dir` with
-[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
 
 ## See also
 

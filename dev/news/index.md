@@ -12,6 +12,9 @@
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   deprecated and defunct, since the source file is not available any
   more.
+- Add
+  [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
+  (replaces `esp_nuts.sf`).
 
 ## mapSpain 0.10.0
 

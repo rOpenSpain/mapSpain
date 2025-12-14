@@ -111,17 +111,17 @@ the Canary Islands (<code>"canary"</code>).</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
-When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+<dd><p>logical. Should the cached file be refreshed?. Default
+is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
-<dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+<dd><p>character string. A path to a cache directory. See
+<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical, displays information. Useful for debugging,
-default is <code>FALSE</code>.</p></dd>
+<dd><p>logical. If <code>TRUE</code> displays informational messages.</p></dd>
 
 
 <dt id="arg-ccaa">ccaa<a class="anchor" aria-label="anchor" href="#arg-ccaa"></a></dt>
@@ -132,15 +132,6 @@ See <strong>Details</strong> on <code><a href="esp_get_ccaa.html">esp_get_ccaa()
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code>.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
-    <p>You can set your <code>cache_dir</code> with <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p>
-<p>Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting <code>update_cache = TRUE</code>.</p>
-<p>If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-<code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

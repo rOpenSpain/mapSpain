@@ -33,34 +33,37 @@ IGN data via a custom CDN (see
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89.
+  - `"4258"`: [ETRS89](https://epsg.io/4258)
 
-  - `"4326"`: WGS84.
+  - `"4326"`: [WGS84](https://epsg.io/4326).
 
-  - `"3035"`: ETRS89 / ETRS-LAEA.
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-  - `"3857"`: Pseudo-Mercator.
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  strategies** section in
+  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - resolution:
 
@@ -80,19 +83,6 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
 
 Metadata available on
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
-
-## About caching
-
-You can set your `cache_dir` with
-[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
 
 ## See also
 

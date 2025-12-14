@@ -337,11 +337,7 @@ objects with political boundaries.
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
 
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
-  :
-
-  Get NUTS of Spain as
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-  `POINT`
+  : Territorial spanish units for statistics (NUTS) dataset
 
 - [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
@@ -494,6 +490,12 @@ These objects are datasets already included in the package.
 
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
   all the NUTS levels of Spain (2016)
+
+- [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
+  :
+
+  NUTS 2024 for Spain
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
   : Database of public WMS and WMTS of Spain

@@ -22,7 +22,9 @@ esp_move_can(x, moveCAN = TRUE)
 
 - moveCAN:
 
-  A logical `TRUE/FALSE` or a vector of coordinates `c(lat, lon)`.
+  A logical `TRUE/FALSE` or a vector of coordinates `c(lat, lon)`. It
+  places the Canary Islands close to Spain's mainland. Initial position
+  can be adjusted using the vector of coordinates.
 
 ## Value
 
@@ -35,6 +37,17 @@ This is a helper function that intends to ease the representation of
 objects located in the Canary Islands that have been obtained from other
 sources rather than the package
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
+
+## Displacing the Canary Islands
+
+While `moveCAN` is useful for visualization, it would alter the actual
+geographic position of the Canary Islands. When using the output for
+spatial analysis or using tiles (e.g. with
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+or
+[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md))
+this option should be set to `FALSE` in order to get the actual
+coordinates, instead of the modified ones.
 
 ## See also
 
