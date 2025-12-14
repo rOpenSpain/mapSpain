@@ -19,8 +19,7 @@
 #' @family political
 #' @family nuts
 #' @inheritParams giscoR::gisco_get_nuts
-#' @inheritSection giscoR::gisco_get_nuts Note
-#' @inherit giscoR::gisco_get_nuts source return
+#' @inherit giscoR::gisco_get_nuts
 #' @export
 #'
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
