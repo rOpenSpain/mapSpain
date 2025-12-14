@@ -187,7 +187,7 @@ esp_get_capimun <- function(
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(
       paste0(
-        "The combination of {.arg region} and/or {.arg muni}c does not ",
+        "The combination of {.arg region} and/or {.arg munic} does not ",
         "return any result"
       )
     )
@@ -198,22 +198,21 @@ esp_get_capimun <- function(
 
   # Checks
   moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
+  prepare_can <- data_sf
+  prepare_can$is_can <- prepare_can$codauto == "05"
+
+  moving <- (isTRUE(moveCAN) | length(moveCAN) > 1) & any(prepare_can$is_can)
 
   if (moving) {
-    if (length(grep("05", data_sf$codauto)) > 0) {
-      penin <- data_sf[-grep("05", data_sf$codauto), ]
-      can <- data_sf[grep("05", data_sf$codauto), ]
+    penin <- prepare_can[prepare_can$is_can == FALSE, ]
+    can <- prepare_can[prepare_can$is_can == TRUE, ]
 
-      can <- esp_move_can(can, moveCAN = moveCAN)
+    can <- esp_move_can(can, moveCAN = moveCAN)
 
-      # Regenerate
-      if (nrow(penin) > 0) {
-        data_sf <- rbind(penin, can)
-      } else {
-        data_sf <- can
-      }
-    }
+    # Regenerate
+    keep_n <- names(data_sf)
+    data_sf <- rbind_fill(list(penin, can))
+    data_sf <- data_sf[, keep_n]
   }
 
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
