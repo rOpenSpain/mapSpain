@@ -142,3 +142,40 @@ test_that("Bind and fill tibble removes NULL", {
 
   expect_null(rbind_fill(new_l))
 })
+
+
+test_that("Filter dates", {
+  skip_on_cran()
+  skip_if_siane_offline()
+
+  url_prov <- paste0(
+    "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
+    "se89_3_urban_capimuni_p_x.gpkg"
+  )
+
+  data_sf <- read_geo_file_sf(url_prov)
+
+  year_1 <- siane_filter_year(data_sf, year = 2010)
+  year_today <- siane_filter_year(data_sf)
+  expect_false(nrow(year_1) == nrow(year_today))
+
+  # Errors
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "1900"),
+    transform = function(x) {
+      gsub(Sys.Date() + 1, "<current date>", x)
+    }
+  )
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "2050"),
+    transform = function(x) {
+      gsub(Sys.Date() + 1, "<current date>", x)
+    }
+  )
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "1900-12"),
+  )
+})

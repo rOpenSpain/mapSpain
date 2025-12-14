@@ -139,3 +139,48 @@ rbind_fill <- function(a_list) {
   binded <- do.call(rbind, a_list)
   binded
 }
+
+
+siane_filter_year <- function(data_sf, year = Sys.Date()) {
+  mindate <- min(data_sf$fecha_alta)
+  maxdate <- Sys.Date() + 1
+  year <- as.character(year)
+  sel_date <- as.character(year)
+
+  if (nchar(year) != 10) {
+    sel_date <- paste(year, "12", "31", sep = "-")
+  }
+
+  if (nchar(sel_date) != 10) {
+    cli::cli_abort(
+      paste0(
+        "Date {.val {sel_date}} doesn't seem to be valid. ",
+        "Use {.val YYYY} or {.val YYYY-MM-DD} format. ",
+        "See {.fn base::as.Date}."
+      )
+    )
+  }
+
+  sel_date <- as.Date(sel_date, tryFormats = "%Y-%m-%d")
+
+  check_date_range <- mindate <= sel_date & sel_date <= maxdate
+
+  if (!check_date_range) {
+    cli::cli_abort(
+      paste0(
+        "Year {.val {year}} not available. Select a year/date between ",
+        "{.val {mindate}} and {.val {maxdate}}."
+      )
+    )
+  }
+
+  df <- data_sf
+  # By date
+  fecha_alta <- df$fecha_alta
+  fecha_bajamod <- df$fecha_baja
+  fecha_bajamod[is.na(fecha_bajamod)] <- maxdate
+
+  df <- df[fecha_alta <= sel_date & sel_date <= fecha_bajamod, ]
+
+  df
+}

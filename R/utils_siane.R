@@ -39,7 +39,8 @@ esp_hlp_download_siane <- function(
 
   # Switch name
 
-  filename <- switch(type,
+  filename <- switch(
+    type,
     "munic" = paste0(
       "se89_",
       resolution,

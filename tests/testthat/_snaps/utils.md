@@ -91,3 +91,27 @@
       Error:
       ! `year` should be "20", not "1" or "2".
 
+# Filter dates
+
+    Code
+      siane_filter_year(data_sf, "1900")
+    Condition
+      Error in `siane_filter_year()`:
+      ! Year "1900" not available. Select a year/date between 2005-12-31 and <current date>.
+
+---
+
+    Code
+      siane_filter_year(data_sf, "2050")
+    Condition
+      Error in `siane_filter_year()`:
+      ! Year "2050" not available. Select a year/date between 2005-12-31 and <current date>.
+
+---
+
+    Code
+      siane_filter_year(data_sf, "1900-12")
+    Condition
+      Error in `siane_filter_year()`:
+      ! Date "1900-12-12-31" doesn't seem to be valid. Use "YYYY" or "YYYY-MM-DD" format. See `base::as.Date()`.
+
