@@ -135,6 +135,25 @@ Copyright:
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
+## Details
+
+The NUTS nomenclature is a hierarchical classification of statistical
+regions and subdivides the EU economic territory into regions of three
+different levels (NUTS 1, 2 and 3, moving respectively from larger to
+smaller territorial units). NUTS 1 is the most aggregated level. An
+additional Country level (NUTS 0) is also available for countries where
+the nation at statistical level does not coincide with the
+administrative boundaries.
+
+The NUTS classification has been officially established through
+Commission Delegated Regulation 2019/1755. A non-official NUTS-like
+classification has been defined for the EFTA countries, candidate
+countries and potential candidates based on a bilateral agreement
+between Eurostat and the respective statistical agencies.
+
+An introduction to the NUTS classification is available here:
+<https://ec.europa.eu/eurostat/web/nuts/overview>.
+
 ## Note
 
 Please check the download and usage provisions on
