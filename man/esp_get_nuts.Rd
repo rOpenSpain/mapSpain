@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_nuts}
 \alias{esp_get_nuts}
-\title{Territorial spanish units for statistics (NUTS) dataset}
+\title{Territorial Spanish units for statistics (NUTS) dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -125,12 +125,11 @@ Please check the download and usage provisions on \code{\link[giscoR:gisco_attri
 }
 
 \examples{
-
-NUTS1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
+nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 
 library(ggplot2)
 
-ggplot(NUTS1) +
+ggplot(nuts1) +
   geom_sf() +
   labs(
     title = "NUTS1: Displacing Canary Islands",
@@ -138,10 +137,10 @@ ggplot(NUTS1) +
   )
 
 
-NUTS1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
+nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 
 
-ggplot(NUTS1_alt) +
+ggplot(nuts1_alt) +
   geom_sf() +
   labs(
     title = "NUTS1: Displacing Canary Islands",
@@ -150,9 +149,9 @@ ggplot(NUTS1_alt) +
   )
 
 
-NUTS1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
+nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 
-ggplot(NUTS1_orig) +
+ggplot(nuts1_orig) +
   geom_sf() +
   labs(
     title = "NUTS1",
@@ -161,27 +160,27 @@ ggplot(NUTS1_orig) +
   )
 
 
-AndOriental <- esp_get_nuts(region = c(
+and_orient <- esp_get_nuts(region = c(
   "Almeria", "Granada",
   "Jaen", "Malaga"
 ))
 
 
-ggplot(AndOriental) +
+ggplot(and_orient) +
   geom_sf()
 
 
-RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
+random_regions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
 
-ggplot(RandomRegions) +
+ggplot(random_regions) +
   geom_sf() +
   labs(title = "Random Regions")
 
 
-MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
+mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 
 
-ggplot(MixingCodes) +
+ggplot(mixing_codes) +
   geom_sf() +
   labs(title = "Mixing Codes")
 }
@@ -201,7 +200,12 @@ Other political:
 \code{\link{esp_get_simpl_prov}()}
 
 Other nuts: 
+\code{\link{esp_get_country}()},
 \code{\link{esp_nuts.sf}}
+
+Other gisco: 
+\code{\link{esp_get_country}()}
 }
+\concept{gisco}
 \concept{nuts}
 \concept{political}

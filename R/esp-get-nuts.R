@@ -1,4 +1,4 @@
-#' Territorial spanish units for statistics (NUTS) dataset
+#' Territorial Spanish units for statistics (NUTS) dataset
 #'
 #' @description
 #' The GISCO statistical unit dataset represents the NUTS (nomenclature of
@@ -18,6 +18,7 @@
 #' @encoding UTF-8
 #' @family political
 #' @family nuts
+#' @family gisco
 #' @inheritParams giscoR::gisco_get_nuts
 #' @inherit giscoR::gisco_get_nuts
 #' @export
@@ -54,12 +55,11 @@
 #'   [giscoR::gisco_get_nuts()].
 #'
 #' @examples
-#'
-#' NUTS1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
+#' nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 #'
 #' library(ggplot2)
 #'
-#' ggplot(NUTS1) +
+#' ggplot(nuts1) +
 #'   geom_sf() +
 #'   labs(
 #'     title = "NUTS1: Displacing Canary Islands",
@@ -67,10 +67,10 @@
 #'   )
 #'
 #'
-#' NUTS1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
+#' nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 #'
 #'
-#' ggplot(NUTS1_alt) +
+#' ggplot(nuts1_alt) +
 #'   geom_sf() +
 #'   labs(
 #'     title = "NUTS1: Displacing Canary Islands",
@@ -79,9 +79,9 @@
 #'   )
 #'
 #'
-#' NUTS1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
+#' nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 #'
-#' ggplot(NUTS1_orig) +
+#' ggplot(nuts1_orig) +
 #'   geom_sf() +
 #'   labs(
 #'     title = "NUTS1",
@@ -90,27 +90,27 @@
 #'   )
 #'
 #'
-#' AndOriental <- esp_get_nuts(region = c(
+#' and_orient <- esp_get_nuts(region = c(
 #'   "Almeria", "Granada",
 #'   "Jaen", "Malaga"
 #' ))
 #'
 #'
-#' ggplot(AndOriental) +
+#' ggplot(and_orient) +
 #'   geom_sf()
 #'
 #'
-#' RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
+#' random_regions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
 #'
-#' ggplot(RandomRegions) +
+#' ggplot(random_regions) +
 #'   geom_sf() +
 #'   labs(title = "Random Regions")
 #'
 #'
-#' MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
+#' mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 #'
 #'
-#' ggplot(MixingCodes) +
+#' ggplot(mixing_codes) +
 #'   geom_sf() +
 #'   labs(title = "Mixing Codes")
 esp_get_nuts <- function(
@@ -193,7 +193,6 @@ esp_get_nuts <- function(
     data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_info(region)
       cli::cli_alert_warning(
         paste0(
           "No matches for {.arg region = {region}}."

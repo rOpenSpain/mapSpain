@@ -29,3 +29,12 @@
       Error:
       ! `spatialtype` should be one of "RG" or "LB", not "BN".
 
+# Test NUTS online
+
+    Code
+      a3 <- esp_get_nuts(resolution = "60", year = 2016, cache_dir = cdir,
+        nuts_level = 2, region = "Segovia")
+    Message
+      ! No matches for `region = Segovia`.
+      i Returning empty <sf> object.
+

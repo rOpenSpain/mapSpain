@@ -99,6 +99,7 @@ Other datasets:
 \code{\link{pobmun19}}
 
 Other nuts: 
+\code{\link{esp_get_country}()},
 \code{\link{esp_get_nuts}()}
 }
 \concept{datasets}

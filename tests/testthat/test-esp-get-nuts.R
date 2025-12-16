@@ -23,7 +23,7 @@ test_that("Test 404", {
   options(gisco_test_404 = TRUE)
   options(mapspain_test_404 = TRUE)
   expect_message(
-    n <- esp_get_capimun(update_cache = TRUE),
+    n <- esp_get_nuts(update_cache = TRUE),
     "Error"
   )
   expect_null(n)
@@ -241,11 +241,29 @@ test_that("Test NUTS online", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_silent(a1 <- esp_get_nuts(resolution = "60", year = 2021))
-  expect_silent(a2 <- esp_get_nuts(resolution = "60", year = 2016))
+  expect_silent(
+    a1 <- esp_get_nuts(resolution = "60", year = 2021, cache_dir = cdir)
+  )
+  expect_silent(
+    a2 <- esp_get_nuts(resolution = "60", year = 2016, cache_dir = cdir)
+  )
+
   expect_s3_class(a1, "sf")
   expect_s3_class(a1, "tbl_df")
   expect_s3_class(a2, "sf")
   expect_s3_class(a2, "tbl_df")
+
+  expect_snapshot(
+    a3 <- esp_get_nuts(
+      resolution = "60",
+      year = 2016,
+      cache_dir = cdir,
+      nuts_level = 2,
+      region = "Segovia"
+    )
+  )
+  expect_s3_class(a3, "sf")
+  expect_s3_class(a3, "tbl_df")
+  expect_lt(nrow(a3), 1)
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
