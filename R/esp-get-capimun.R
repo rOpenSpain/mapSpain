@@ -157,7 +157,8 @@ esp_get_capimun <- function(
   )
 
   cod <- unique(
-    mapSpain::esp_codelist[,
+    mapSpain::esp_codelist[
+      ,
       c("codauto", "ine.ccaa.name", "cpro", "ine.prov.name")
     ]
   )

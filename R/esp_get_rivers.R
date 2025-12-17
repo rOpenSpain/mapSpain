@@ -151,7 +151,8 @@ esp_get_rivers <- function(
   }
 
   if (spatialtype == "area") {
-    rivers_sf_merge <- rivers_sf_merge[,
+    rivers_sf_merge <- rivers_sf_merge[
+      ,
       -match(
         "NOM_RIO",
         colnames(rivers_sf_merge)

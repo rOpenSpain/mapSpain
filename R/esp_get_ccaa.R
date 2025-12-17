@@ -267,7 +267,8 @@ esp_get_ccaa_siane <- function(
 
   # Select columns
   if (rawcols) {
-    data_sf <- data_sf[,
+    data_sf <- data_sf[
+      ,
       unique(c(
         initcols,
         colnames(df),

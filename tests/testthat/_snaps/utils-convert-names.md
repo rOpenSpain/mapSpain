@@ -144,3 +144,107 @@
       ! No match on `destination = "nuts"` found for "XX".
       ! No Spanish NUTS codes found for "XX". Return NULL.
 
+# convert_to_nuts_prov
+
+    Code
+      n <- convert_to_nuts_prov(NULL)
+    Message
+      ! Empty `region`. No province codes found, returning NULL.
+
+---
+
+    Code
+      n <- convert_to_nuts_prov(NA)
+    Message
+      ! Empty `region`. No province codes found, returning NULL.
+
+---
+
+    Code
+      n <- convert_to_nuts_prov(c(NA, NULL))
+    Message
+      ! Empty `region`. No province codes found, returning NULL.
+
+---
+
+    Code
+      convert_to_nuts_prov(c("Asturies", "Zaporilla", "Euskadi", "Madrid"))
+    Message
+      ! No match found for "Zaporilla".
+      ! Empty `region`. No NUTS codes found, returning NULL.
+    Output
+      [1] "ES120" "ES211" "ES212" "ES213" "ES300"
+
+---
+
+    Code
+      convert_to_nuts_prov(c("Aama", "ES888", "FR12", "ES9"))
+    Message
+      ! No match found for "Aama".
+      ! No match found for "FR12".
+      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! No match on `destination = "nuts"` found for "ES888".
+      ! No Spanish NUTS codes found for "ES888". Return NULL.
+      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! No match on `destination = "nuts"` found for "ES9".
+      ! No Spanish NUTS codes found for "ES9". Return NULL.
+    Output
+      NULL
+
+---
+
+    Code
+      all
+    Output
+       [1] "ES211" "ES212" "ES213" "ES411" "ES416" "ES431" "ES432" "ES531" "ES532"
+      [10] "ES533" "ES620" "ES630" "ES640" "ES703" "ES704" "ES705" "ES706" "ES707"
+      [19] "ES708" "ES709"
+
+---
+
+    Code
+      esp_dict_region_code(all, origin = "nuts", destination = "text")
+    Output
+       [1] "Araba/Álava"          "Gipuzkoa"             "Bizkaia"             
+       [4] "Ávila"                "Segovia"              "Badajoz"             
+       [7] "Cáceres"              "Eivissa y Formentera" "Mallorca"            
+      [10] "Menorca"              "Murcia"               "Ceuta"               
+      [13] "Melilla"              "El Hierro"            "Fuerteventura"       
+      [16] "Gran Canaria"         "La Gomera"            "La Palma"            
+      [19] "Lanzarote"            "Tenerife"            
+
+---
+
+    Code
+      convert_to_nuts_prov(c("Murcia", "Almeria"))
+    Output
+      [1] "ES611" "ES620"
+
+---
+
+    Code
+      is_null <- convert_to_nuts_prov(c("La Gomera", "El Hierro", "Formentera",
+        "Mallorca"))
+    Message
+      ! No match found for "Formentera".
+      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! "La Gomera", "El Hierro", and "Mallorca" do not return a province.
+      ! No Spanish province codes found for "La Gomera", "El Hierro", "Formentera", and "Mallorca". Return NULL.
+
+---
+
+    Code
+      is_null <- convert_to_nuts_ccaa(c("AA", "XX"))
+    Message
+      ! No match on `destination = "nuts"` found for "AA".
+      ! No Spanish NUTS codes found for "AA". Return NULL.
+      ! No match on `destination = "nuts"` found for "XX".
+      ! No Spanish NUTS codes found for "XX". Return NULL.
+
+---
+
+    Code
+      n <- convert_to_nuts_prov(nm)
+    Message
+      ! "Eivissa y Formentera", "Mallorca", "Menorca", "Fuerteventura", "Gran Canaria", "Lanzarote", "El Hierro", "La Gomera", "La Palma", and "Tenerife" do not return a province.
+

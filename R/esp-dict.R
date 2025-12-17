@@ -275,8 +275,9 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
   sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
 
+  sourcevar_lower <- tolower(sourcevar)
   tokeys <- countrycode::countrycode(
-    sourcevar,
+    sourcevar_lower,
     origin = "value",
     destination = "key",
     custom_dict = names_dict,
