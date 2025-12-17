@@ -20,8 +20,8 @@
 #'   and `"cpro"`.
 #'
 #' @details
-#' If no match is found for any value, the function displays a warning and
-#' returns `NA` for those values.
+#' If no match is found for any value, the function displays a [
+#' cli::cli_alert_warning()] and returns `NA` for those values.
 #'
 #' Note that mixing names of different administrative levels (e.g. "Catalonia"
 #' and "Barcelona") may return empty values, depending on the `destination`
@@ -51,13 +51,9 @@
 #' # Mixing levels
 #' valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 #' esp_dict_region_code(valsmix, destination = "nuts")
-#' \dontrun{
-#'
-#' # Warning
 #'
 #' esp_dict_region_code(valsmix, destination = "codauto")
 #' esp_dict_region_code(valsmix, destination = "iso2")
-#' }
 #'
 esp_dict_region_code <- function(
   sourcevar,
@@ -203,11 +199,11 @@ esp_dict_region_code <- function(
 
   # Sanitize
   if (length(out[!(out == "NOMATCH")]) != length(sourcevar)) {
-    warning(
-      "No match on ",
-      destination,
-      " found for ",
-      paste0(initsourcevar[out == "NOMATCH"], collapse = ", ")
+    cli::cli_alert_warning(
+      paste0(
+        "No match on {.arg destination = {.str destination}} found ",
+        "for {.str {initsourcevar[out == 'NOMATCH']}}."
+      )
     )
   }
   out[out == "NOMATCH"] <- NA
@@ -316,9 +312,11 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   }
 
   if (any(tokeys == "NOMATCH")) {
-    warning(
-      "No match found for ",
-      paste0(sourcevar[tokeys == "NOMATCH"], collapse = ", ")
+    cli::cli_alert_warning(
+      paste0(
+        "No match found ",
+        "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
+      )
     )
   }
 

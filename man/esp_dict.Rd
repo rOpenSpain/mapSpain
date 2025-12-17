@@ -38,8 +38,7 @@ each of the possible names of each \code{sourcevar} on the required language
 Converts long subdivision names into different coding schemes and languages.
 }
 \details{
-If no match is found for any value, the function displays a warning and
-returns \code{NA} for those values.
+If no match is found for any value, the function displays a \link[cli:cli_alert]{ cli::cli_alert_warning()} and returns \code{NA} for those values.
 
 Note that mixing names of different administrative levels (e.g. "Catalonia"
 and "Barcelona") may return empty values, depending on the \code{destination}
@@ -69,13 +68,9 @@ esp_dict_region_code(iso2vals,
 # Mixing levels
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
-\dontrun{
-
-# Warning
 
 esp_dict_region_code(valsmix, destination = "codauto")
 esp_dict_region_code(valsmix, destination = "iso2")
-}
 
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
