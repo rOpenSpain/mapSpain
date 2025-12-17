@@ -201,7 +201,7 @@ esp_dict_region_code <- function(
   if (length(out[!(out == "NOMATCH")]) != length(sourcevar)) {
     cli::cli_alert_warning(
       paste0(
-        "No match on {.arg destination = {.str destination}} found ",
+        "No match on {.arg destination = {.str {destination}}} found ",
         "for {.str {initsourcevar[out == 'NOMATCH']}}."
       )
     )

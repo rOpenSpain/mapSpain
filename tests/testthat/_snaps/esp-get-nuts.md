@@ -1,7 +1,14 @@
+# Test local NUTS
+
+    Code
+      s1 <- esp_get_nuts(region = b)
+    Message
+      ! No match on `destination = "nuts"` found for "ES-PM", "ES-GC", and "ES-TF".
+
 # Valid inputs
 
     Code
-      esp_get_nuts(ext = "docx")
+      esp_get_nuts(ext = "docx", cache_dir = cdir)
     Condition
       Error:
       ! `ext` should be one of "geojson", "gpkg" or "shp", not "docx".
@@ -9,7 +16,7 @@
 ---
 
     Code
-      esp_get_nuts(nuts_level = "docx")
+      esp_get_nuts(nuts_level = "docx", cache_dir = cdir)
     Condition
       Error:
       ! `nuts_level` should be one of "all", "0", "1", "2" or "3", not "docx".
@@ -24,7 +31,7 @@
 # Spatial types
 
     Code
-      bn <- esp_get_nuts(spatialtype = "BN", resolution = "60")
+      bn <- esp_get_nuts(spatialtype = "BN", resolution = "60", cache_dir = cdir)
     Condition
       Error:
       ! `spatialtype` should be one of "RG" or "LB", not "BN".

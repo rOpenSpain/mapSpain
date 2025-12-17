@@ -411,8 +411,7 @@ esp_get_munic_siane <- function(
   data_sf <- data_sf[, namesend]
 
   if (isFALSE(rawcols)) {
-    data_sf <- data_sf[
-      ,
+    data_sf <- data_sf[,
       c(
         "codauto",
         "ine.ccaa.name",

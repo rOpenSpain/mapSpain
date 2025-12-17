@@ -72,7 +72,7 @@ test_that("Test local NUTS", {
     esp_codelist$iso2.ccaa.code,
     esp_codelist$iso2.prov.code
   ))
-  expect_warning(esp_get_nuts(region = b))
+  expect_snapshot(s1 <- esp_get_nuts(region = b))
 
   # Check names
 
@@ -86,17 +86,25 @@ test_that("Valid inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
+  cdir <- file.path(tempdir(), "testnuts")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
   # validate ext
-  expect_snapshot(esp_get_nuts(ext = "docx"), error = TRUE)
+  expect_snapshot(esp_get_nuts(ext = "docx", cache_dir = cdir), error = TRUE)
 
   # validate level
-  expect_snapshot(esp_get_nuts(nuts_level = "docx"), error = TRUE)
+  expect_snapshot(
+    esp_get_nuts(nuts_level = "docx", cache_dir = cdir),
+    error = TRUE
+  )
 
   # But rest of levels should work
-  all <- esp_get_nuts(nuts_level = "all")
-  l1 <- esp_get_nuts(nuts_level = "1")
-  l2 <- esp_get_nuts(nuts_level = "2")
-  l3 <- esp_get_nuts(nuts_level = "3")
+  all <- esp_get_nuts(nuts_level = "all", cache_dir = cdir)
+  l1 <- esp_get_nuts(nuts_level = "1", cache_dir = cdir)
+  l2 <- esp_get_nuts(nuts_level = "2", cache_dir = cdir)
+  l3 <- esp_get_nuts(nuts_level = "3", cache_dir = cdir)
   expect_identical(
     nrow(all[all$LEVL_CODE == 1, ]),
     nrow(l1)
@@ -111,6 +119,8 @@ test_that("Valid inputs", {
     nrow(all[all$LEVL_CODE == 3, ]),
     nrow(l3)
   )
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Cached dataset vs updated", {
@@ -172,18 +182,29 @@ test_that("Spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
+  cdir <- file.path(tempdir(), "testnuts")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
   # LB
-  lb <- esp_get_nuts(spatialtype = "LB")
+  lb <- esp_get_nuts(spatialtype = "LB", cache_dir = cdir)
   expect_true(unique(sf::st_geometry_type(lb)) == "POINT") # Can filter
   expect_true("CNTR_CODE" %in% names(lb))
-  lb_filter <- esp_get_nuts(spatialtype = "LB", region = "Segovia")
+  lb_filter <- esp_get_nuts(
+    spatialtype = "LB",
+    region = "Segovia",
+    cache_dir = cdir
+  )
   expect_true(all(lb_filter$NUTS_ID == "ES416"))
 
   # BN
   expect_snapshot(
     error = TRUE,
-    bn <- esp_get_nuts(spatialtype = "BN", resolution = "60")
+    bn <- esp_get_nuts(spatialtype = "BN", resolution = "60", cache_dir = cdir)
   )
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Extensions", {

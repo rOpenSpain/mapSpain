@@ -2,9 +2,9 @@ test_that("munic local", {
   expect_silent(esp_get_munic())
   expect_silent(esp_get_munic(moveCAN = FALSE))
   expect_silent(esp_get_munic(moveCAN = c(0, 10)))
-  expect_warning(expect_error(expect_warning(
+  expect_error(expect_warning(
     esp_get_munic(region = "XX")
-  )))
+  ))
   expect_error(esp_get_munic(year = "2040"))
   expect_error(esp_get_munic(munic = "XX"))
   expect_silent(esp_get_munic(munic = "Nieva"))
@@ -39,9 +39,9 @@ test_that("munic online", {
 
   expect_error(esp_get_munic_siane(year = "2019-15-23"))
   expect_error(esp_get_munic_siane(year = "2019-15"))
-  expect_warning(expect_error(expect_warning(
+  expect_error(expect_warning(
     esp_get_munic_siane(region = "XX")
-  )))
+  ))
   expect_error(esp_get_munic_siane(epsg = "5689"))
   expect_error(esp_get_munic_siane(resolution = 5.6))
   expect_error(esp_get_munic_siane(year = "2040"))

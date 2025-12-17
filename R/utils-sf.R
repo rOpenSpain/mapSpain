@@ -110,7 +110,7 @@ sanitize_sf <- function(data_sf) {
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
-    sf::st_crs(data_sf) <- sf::st_crs(epsg_num)
+    data_sf <- sf::st_transform(data_sf, sf::st_crs(epsg_num))
   }
 
   data_sf <- sf::st_make_valid(data_sf)

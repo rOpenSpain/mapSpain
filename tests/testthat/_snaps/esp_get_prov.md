@@ -2,11 +2,10 @@
 
     Code
       esp_get_prov(prov = "FFF")
+    Message
+      ! No match found for "FFF".
+      ! No match on `destination = "nuts"` found for "FFF".
     Condition
-      Warning in `esp_dict_translate()`:
-      No match found for FFF
-      Warning in `esp_dict_region_code()`:
-      No match on nuts found for FFF
       Error in `esp_get_prov()`:
       ! `prov = FFF` is not valid.
 

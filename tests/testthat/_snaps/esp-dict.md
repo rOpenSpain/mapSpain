@@ -79,7 +79,7 @@
     Code
       esp_dict_region_code(valsmix, destination = "codauto")
     Message
-      ! No match on `destination = "destination"` found for "Centro", "Seville", and "Menorca".
+      ! No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".
     Output
       [1] NA   "01" NA   NA  
 
@@ -88,7 +88,7 @@
     Code
       esp_dict_region_code(valsmix, destination = "iso2")
     Message
-      ! No match on `destination = "destination"` found for "Centro" and "Menorca".
+      ! No match on `destination = "iso2"` found for "Centro" and "Menorca".
     Output
       [1] NA      "ES-AN" "ES-SE" NA     
 

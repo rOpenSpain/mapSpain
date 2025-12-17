@@ -58,9 +58,9 @@ test_that("prov online", {
   expect_equal(nrow(n), 52)
   expect_s3_class(n, "sf")
 
-  expect_warning(expect_warning(expect_error(
+  expect_error(
     esp_get_prov_siane("FFF")
-  )))
+  )
   expect_error(esp_get_prov_siane(epsg = 39823))
   expect_silent(esp_get_prov_siane())
   expect_silent(esp_get_prov_siane(rawcols = TRUE))

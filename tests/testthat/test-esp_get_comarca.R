@@ -9,7 +9,7 @@ test_that("comarcas online", {
   expect_message(esp_get_comarca(verbose = TRUE, update_cache = TRUE))
   expect_message(esp_get_comarca(region = "Canarias", verbose = TRUE))
 
-  expect_warning(expect_error(expect_warning(esp_get_comarca(region = "XX"))))
+  expect_error(expect_warning(esp_get_comarca(region = "XX")))
   expect_error(esp_get_comarca(epsg = "5689"))
   expect_error(expect_warning(esp_get_comarca(comarca = "XX")))
 
