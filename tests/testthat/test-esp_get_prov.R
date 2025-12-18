@@ -71,8 +71,8 @@ test_that("prov online", {
   expect_silent(esp_get_prov_siane(rawcols = TRUE))
   expect_silent(esp_get_prov_siane(moveCAN = c(1, 2)))
   expect_silent(esp_get_prov_siane(prov = c("Galicia", "ES7", "Centro")))
-  expect_warning(expect_error(esp_get_prov_siane(prov = "Menorca")))
-  expect_warning(expect_error(esp_get_prov_siane(prov = "ES6x")))
+  expect_error(esp_get_prov_siane(prov = "Menorca"))
+  expect_error(esp_get_prov_siane(prov = "ES6x"))
 
   expect_identical(
     sf::st_crs(esp_get_prov_siane(epsg = 3035)),
