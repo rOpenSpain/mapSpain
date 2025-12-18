@@ -57,12 +57,17 @@ test_that("prov online", {
   n <- expect_silent(esp_get_prov(resolution = 60, year = 2006))
   expect_equal(nrow(n), 52)
   expect_s3_class(n, "sf")
-
   expect_error(
     esp_get_prov_siane("FFF")
   )
   expect_error(esp_get_prov_siane(epsg = 39823))
-  expect_silent(esp_get_prov_siane())
+  expect_silent(n <- esp_get_prov_siane())
+
+  expect_equal(nrow(n), 52)
+  expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
+
+
   expect_silent(esp_get_prov_siane(rawcols = TRUE))
   expect_silent(esp_get_prov_siane(moveCAN = c(1, 2)))
   expect_silent(esp_get_prov_siane(prov = c("Galicia", "ES7", "Centro")))

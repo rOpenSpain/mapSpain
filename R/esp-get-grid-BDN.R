@@ -113,17 +113,7 @@ esp_get_grid_BDN_ccaa <- function(
   ccaa <- ccaa[!is.na(ccaa)]
 
   region <- ccaa
-  nuts_id <- esp_hlp_all2ccaa(region)
-
-  nuts_id <- unique(nuts_id)
-
-  # Check if it is a valid NUTS, if not throws an error
-
-  data <- mapSpain::esp_codelist
-
-  if (!nuts_id %in% data$nuts2.code) {
-    cli::cli_abort("{.arg ccaa = {ccaa}} not mapped to a known CCAA.")
-  }
+  nuts_id <- convert_to_nuts_ccaa(region)
 
   # Switch name. The ids are the same than the NUTS code removing the "ES" part
   id <- gsub("ES", "", nuts_id)

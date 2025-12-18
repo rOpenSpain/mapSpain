@@ -19,10 +19,8 @@
     Code
       esp_get_grid_BDN_ccaa("Sevilla")
     Condition
-      Warning in `esp_hlp_all2ccaa()`:
-      Sevilla does not return a Autonomous Community
-      Error in `esp_get_grid_BDN_ccaa()`:
-      ! `ccaa = Sevilla` not mapped to a known CCAA.
+      Error in `convert_to_nuts_ccaa()`:
+      ! No Spanish CCAA codes found for "Sevilla".
 
 ---
 

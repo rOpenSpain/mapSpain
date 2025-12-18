@@ -2,54 +2,20 @@
 % Please edit documentation in R/esp_get_prov.R
 \name{esp_get_prov}
 \alias{esp_get_prov}
-\alias{esp_get_prov_siane}
-\title{Get Provinces of Spain as \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{POINT}}
-\source{
-IGN data via a custom CDN (see
-\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}).
-}
+\title{Provinces of Spain - GISCO}
 \usage{
 esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
-
-esp_get_prov_siane(
-  prov = NULL,
-  year = Sys.Date(),
-  epsg = "4258",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  resolution = "3",
-  moveCAN = TRUE,
-  rawcols = FALSE
-)
 }
 \arguments{
 \item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
 the provinces. See \strong{Details}.}
 
-\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
-
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
   \describe{
-    \item{\code{spatialtype}}{character string. Type of geometry to be returned.
-Options available are:
-\itemize{
-\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item "LB": Labels - \code{POINT} object.
-}}
-    \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
-\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
-  }}
-
-\item{year}{Release year. See \code{\link[=esp_get_nuts]{esp_get_nuts()}} for \code{\link[=esp_get_prov]{esp_get_prov()}} and
-\strong{Details} for \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}.}
-
-\item{epsg}{character string or number. Projection of the map: 4-digit
+    \item{\code{year}}{year character string or number. Release year of the file. See
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
+    \item{\code{epsg}}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -57,28 +23,35 @@ Options available are:
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+    \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+    \item{\code{update_cache}}{logical. Should the cached file be refreshed?. Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
-
-\item{cache_dir}{character string. A path to a cache directory. See
+    \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
-
-\item{resolution}{character string or number. Resolution of the geospatial
+    \item{\code{spatialtype}}{character string. Type of geometry to be returned.
+Options available are:
+\itemize{
+\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item "LB": Labels - \code{POINT} object.
+}}
+    \item{\code{moveCAN}}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
+    \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
+\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
+    \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
+    \item{\code{resolution}}{character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item "10": 1:10 million.
-\item "6.5": 1:6.5 million.
-\item "6.5": 1:3 million.
+\item \code{"60"}: 1:60 million.
+\item \code{"20"}: 1:20 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"03"}: 1:3 million.
+\item \code{"01"}: 1:1 million.
 }}
-
-\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
-the resulting object as provided by IGN.}
+  }}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
@@ -87,16 +60,6 @@ A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 Returns
 \href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
 as \code{POLYGON} or \code{POINT} at a specified scale.
-\itemize{
-\item \code{\link[=esp_get_prov]{esp_get_prov()}} uses GISCO (Eurostat) as source. Please use
-\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
-}
-
-\itemize{
-\item \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}} uses CartoBase ANE as source, provided by Instituto
-Geografico Nacional (IGN), \url{http://www.ign.es/web/ign/portal}. Years
-available are 2005 up to today.
-}
 }
 \details{
 When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
@@ -107,10 +70,6 @@ Ceuta and Melilla are considered as provinces on this dataset.
 
 When calling a higher level (Autonomous Community or NUTS1), all the
 provinces of that level would be added.
-
-On \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}, \code{year} could be passed as a single year ("YYYY"
-format, as end of year) or as a specific date ("YYYY-MM-DD" format).
-Historical information starts as of 2005.
 }
 \examples{
 prov <- esp_get_prov()
@@ -180,6 +139,7 @@ Other political:
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_simpl_prov}()}
 }
 \concept{political}

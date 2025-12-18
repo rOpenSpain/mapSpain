@@ -1,50 +1,23 @@
-#' Autonomous Communities of Spain - SIANE
+#' Provinces of Spain - SIANE
 #'
-#' @source
-#' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-#' <http://www.ign.es/web/ign/portal>. Years available are 2005 up to today.
-#'
-#
 #' @encoding UTF-8
 #' @family political
 #' @family siane
-#' @inheritParams esp_get_nuts
-#' @inheritParams esp_get_ccaa
-#' @inherit esp_get_ccaa description return details
+#' @inheritParams esp_get_ccaa_siane
+#' @inheritParams esp_get_prov
+#' @inherit esp_get_prov description details
+#' @inherit esp_get_ccaa_siane source return
 #' @export
 #'
-#'
-#' @param year character string or number. Release year, it must presents
-#'   formats `YYYY` (asssuming end of year) or `YYYY-MM-DD`. Historical
-#'   information starts as of 2005.
-#' @param resolution character string or number. Resolution of the geospatial
-#'   data. One of:
-#'   * "10": 1:10 million.
-#'   * "6.5": 1:6.5 million.
-#'   * "6.5": 1:3 million.
-#'
-#' @param rawcols logical. Setting this to `TRUE` would add the raw columns of
-#'   the resulting object as provided by IGN.
-#'
 #' @examplesIf esp_check_access()
-#' ccaas1 <- esp_get_ccaa_siane()
-#' dplyr::glimpse(ccaas1)
-#'
-#' # Low res
-#' ccaas_low <- esp_get_ccaa_siane(
-#'   rawcols = TRUE, moveCAN = FALSE,
-#'   resolution = 10, epsg = 3035
-#' )
-#'
-#'
 #' library(ggplot2)
 #'
-#' ggplot(ccaas_low) +
-#'   geom_sf(aes(fill = nuts1.name)) +
-#'   scale_fill_viridis_d(option = "cividis")
-#'
-esp_get_ccaa_siane <- function(
-  ccaa = NULL,
+#' esp_get_ccaa_siane() |>
+#'   dplyr::glimpse() |>
+#'   ggplot() +
+#'   geom_sf()
+esp_get_prov_siane <- function(
+  prov = NULL,
   year = Sys.Date(),
   epsg = 4258,
   cache = TRUE,
@@ -63,14 +36,14 @@ esp_get_ccaa_siane <- function(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_",
     res,
-    "_admin_ccaa_a_x.gpkg"
+    "_admin_prov_a_x.gpkg"
   )
 
   url_can <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_",
     res,
-    "_admin_ccaa_a_y.gpkg"
+    "_admin_prov_a_y.gpkg"
   )
 
   # Not cached are read from url
@@ -115,42 +88,31 @@ esp_get_ccaa_siane <- function(
   data_sf <- siane_filter_year(data_sf = data_sf, year = year)
 
   initcols <- colnames(sf::st_drop_geometry(data_sf))
+  data_sf$cpro <- data_sf$id_prov
 
-  # Add codauto
-  data_sf$lab <- data_sf$rotulo
+  if (!is.null(prov)) {
+    tonuts <- convert_to_nuts_prov(prov)
 
-  data_sf$lab <- gsub("Ciudad de ", "", data_sf$lab, fixed = TRUE)
-  data_sf$lab <- gsub("/Catalunya", "", data_sf$lab)
-  data_sf$lab <- gsub("/Euskadi", "", data_sf$lab)
-  data_sf$codauto <- esp_dict_region_code(data_sf$lab, destination = "codauto")
-
-  # Filter CCAA
-
-  region <- ccaa
-  if (is.null(region)) {
-    nuts_id <- NULL
-  } else {
-    nuts_id <- convert_to_nuts_ccaa(region)
-    # Get df
-    df <- mapSpain::esp_codelist
-    dfl2 <- df[df$nuts2.code %in% nuts_id, "codauto"]
-    dfl3 <- df[df$nuts3.code %in% nuts_id, "codauto"]
-
-    finalcodauto <- c(dfl2, dfl3)
-
-    # Filter
-    data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
+    df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
+    df <- df[df$nuts3.code %in% tonuts, "cpro"]
+    toprov <- unique(df)
+    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-  # Get df final with vars
-  df <- get_ccaa_codes_df()
 
-  # Merge
+  # Get df
+  df <- get_prov_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Paste nuts1
+  # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
-  dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
+  dfnuts <- unique(dfnuts[, c(
+    "cpro",
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
+  )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
   # Checks
@@ -178,21 +140,42 @@ esp_get_ccaa_siane <- function(
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  # Select columns
-  if (rawcols) {
-    data_sf <- data_sf[
-      ,
-      unique(c(
-        initcols,
-        colnames(df),
-        "nuts1.code",
-        "nuts1.name"
-      ))
-    ]
-  } else {
-    data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
-  }
-  data_sf <- sanitize_sf(data_sf)
+  namesend <- unique(c(
+    initcols,
+    colnames(esp_get_prov())
+  ))
 
+  # Review this error, can't fully reproduce
+
+  namesend <- namesend[namesend %in% names(data_sf)]
+
+  data_sf <- data_sf[, namesend]
+
+  if (isFALSE(rawcols)) {
+    nm <- colnames(esp_get_prov())
+    nm <- nm[nm %in% colnames(data_sf)]
+
+    data_sf <- data_sf[, nm]
+  }
+
+  data_sf <- sanitize_sf(data_sf)
   data_sf
+}
+
+
+get_prov_codes_df <- function() {
+  getnames <- c(
+    "codauto", "cpro", "iso2.prov.code", "nuts.prov.code", "ine.prov.name",
+    "iso2.prov.name.es", "iso2.prov.name.ca", "iso2.prov.name.ga",
+    "iso2.prov.name.eu", "cldr.prov.name.en", "cldr.prov.name.es",
+    "cldr.prov.name.ca", "cldr.prov.name.ga", "cldr.prov.name.eu",
+    "prov.shortname.en", "prov.shortname.es", "prov.shortname.ca",
+    "prov.shortname.ga", "prov.shortname.eu"
+  )
+
+  df_prov <- mapSpain::esp_codelist
+  df_prov <- df_prov[, getnames]
+  df_end <- unique(df_prov)
+  df_end <- df_end[order(df_end$codauto), ]
+  df_end
 }
