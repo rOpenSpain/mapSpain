@@ -111,29 +111,29 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/mapSpain
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/example/cachenew.
+#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/example/cachenew
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpkzCblp/example/cachenew"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/example/cachenew
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpYNC2jA/example/cachenew"
 
 # Restore initial cache
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/mapSpain.
+#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkzCblp/mapSpain
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpkzCblp/mapSpain"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYNC2jA/mapSpain
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpYNC2jA/mapSpain"
 ```

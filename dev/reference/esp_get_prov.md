@@ -1,14 +1,21 @@
 # Provinces of Spain - GISCO
 
 Returns [provinces of
-Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) as `POLYGON` or
-`POINT` at a specified scale.
+Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
+scale.
 
 ## Usage
 
 ``` r
 esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
+
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Arguments
 
@@ -28,6 +35,7 @@ esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 - ...:
 
   Arguments passed on to
+  [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
   [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
   `year`
@@ -101,8 +109,7 @@ esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -114,6 +121,11 @@ Ceuta and Melilla are considered as provinces on this dataset.
 
 When calling a higher level (Autonomous Community or NUTS1), all the
 provinces of that level would be added.
+
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
@@ -131,6 +143,11 @@ Other political:
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
 
+Other gisco:
+[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+
 ## Examples
 
 ``` r
@@ -140,41 +157,37 @@ library(ggplot2)
 
 ggplot(prov) +
   geom_sf() +
-  theme_void()
+  theme_minimal()
 
 
 # \donttest{
 # Random Provinces
-
-Random <- esp_get_prov(prov = c(
+random <- esp_get_prov(prov = c(
   "Zamora", "Palencia", "ES-GR",
   "ES521", "01"
 ))
 
 
-ggplot(Random) +
+ggplot(random) +
   geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
-  scale_fill_manual(values = hcl.colors(
-    nrow(Random), "Spectral"
-  )) +
+  scale_fill_manual(values = hcl.colors(nrow(random), "Spectral")) +
   theme_minimal()
 
 
 
 # All Provinces of a Zone plus an addition
-
-Mix <- esp_get_prov(prov = c(
+mix <- esp_get_prov(prov = c(
   "Noroeste",
   "Castilla y Leon", "La Rioja"
 ))
 
-Mix$CCAA <- esp_dict_region_code(
-  Mix$codauto,
+mix$ccaa <- esp_dict_region_code(
+  mix$codauto,
   origin = "codauto"
 )
 
-ggplot(Mix) +
-  geom_sf(aes(fill = CCAA), alpha = 0.5) +
+ggplot(mix) +
+  geom_sf(aes(fill = ccaa), alpha = 0.5) +
   scale_fill_discrete(type = hcl.colors(5, "Temps")) +
   theme_classic()
 
@@ -189,8 +202,8 @@ ggplot(allprovs) +
     check_overlap = TRUE,
     fontface = "bold"
   ) +
+  coord_sf(crs = 3857) +
   theme_void()
-#> Warning: st_point_on_surface may not give correct results for longitude/latitude data
 
 # }
 ```

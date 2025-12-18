@@ -1,8 +1,8 @@
 # Provinces of Spain - SIANE
 
 Returns [provinces of
-Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) as `POLYGON` or
-`POINT` at a specified scale.
+Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
+scale.
 
 ## Usage
 
