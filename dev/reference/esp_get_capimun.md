@@ -27,8 +27,9 @@ esp_get_capimun(
 
 ## Source
 
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
+today.
 
 ## Arguments
 
@@ -91,7 +92,7 @@ IGN data via a custom CDN (see
 
 - rawcols:
 
-  Logical. Setting this to `TRUE` would add the raw columns of the
+  logical. Setting this to `TRUE` would add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value
@@ -118,6 +119,7 @@ Other political:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
@@ -125,6 +127,9 @@ Other political:
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+
+Other siane:
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
 
 Other municipalities:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),

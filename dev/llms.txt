@@ -301,12 +301,10 @@ objects with political boundaries.
   of the municipalities of Spain
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
-  [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
-  :
+  : Autonomous Communities of Spain - GISCO
 
-  Get Autonomous Communities of Spain as
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-  `POINT`
+- [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
+  : Autonomous Communities of Spain - SIANE
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md)
   :
@@ -315,10 +313,7 @@ objects with political boundaries.
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
 
 - [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  representing Spain
+  : Boundaries of Spain - GISCO
 
 - [`esp_get_hex_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md)
   [`esp_get_hex_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md)
@@ -337,7 +332,7 @@ objects with political boundaries.
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
 
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
-  : Territorial spanish units for statistics (NUTS) dataset
+  : Territorial Spanish units for statistics (NUTS) dataset
 
 - [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)

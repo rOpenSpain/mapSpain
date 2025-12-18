@@ -1,4 +1,4 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` representing Spain
+# Boundaries of Spain - GISCO
 
 Returns the boundaries of Spain as a single
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` at a
@@ -9,6 +9,13 @@ specified scale.
 ``` r
 esp_get_country(moveCAN = TRUE, ...)
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
+
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Arguments
 
@@ -90,6 +97,17 @@ esp_get_country(moveCAN = TRUE, ...)
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
 object.
 
+## Details
+
+Dataset derived of NUTS data provided by GISCO. Check
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+for details.
+
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+
 ## See also
 
 Other political:
@@ -97,6 +115,7 @@ Other political:
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
@@ -104,31 +123,44 @@ Other political:
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
 
+Other nuts:
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
+[`esp_nuts.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts.sf.md)
+
+Other gisco:
+[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+
 ## Examples
 
 ``` r
 # \donttest{
-OriginalCan <- esp_get_country(moveCAN = FALSE)
+original_can <- esp_get_country(moveCAN = FALSE)
 
 # One row only
+original_can
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -18.15996 ymin: 27.63846 xmax: 4.320228 ymax: 43.78924
+#> Geodetic CRS:  ETRS89
+#> # A tibble: 1 × 10
+#>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
+#> * <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
+#> 1 ES              0 ES        España    España            NA        NA
+#> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 
-nrow(OriginalCan)
-#> [1] 1
 
 library(ggplot2)
 
-ggplot(OriginalCan) +
+ggplot(original_can) +
   geom_sf(fill = "grey70")
 
 
-
 # Less resolution
+moved_can <- esp_get_country(moveCAN = TRUE, resolution = "20")
 
-MovedCan <- esp_get_country(moveCAN = TRUE, resolution = "20")
-
-library(ggplot2)
-
-ggplot(MovedCan) +
+ggplot(moved_can) +
   geom_sf(fill = "grey70")
 
 # }

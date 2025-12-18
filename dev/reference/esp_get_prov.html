@@ -169,12 +169,15 @@ is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new downlo
 
 
 <dt id="arg-resolution">resolution<a class="anchor" aria-label="anchor" href="#arg-resolution"></a></dt>
-<dd><p>Resolution of the <code>POLYGON</code>. Values available are
-<code>3</code>, <code>6.5</code> or <code>10</code>.</p></dd>
+<dd><p>character string or number. Resolution of the geospatial
+data. One of:</p><ul><li><p>"10": 1:10 million.</p></li>
+<li><p>"6.5": 1:6.5 million.</p></li>
+<li><p>"6.5": 1:3 million.</p></li>
+</ul></dd>
 
 
 <dt id="arg-rawcols">rawcols<a class="anchor" aria-label="anchor" href="#arg-rawcols"></a></dt>
-<dd><p>Logical. Setting this to <code>TRUE</code> would add the raw columns of
+<dd><p>logical. Setting this to <code>TRUE</code> would add the raw columns of
 the resulting object as provided by IGN.</p></dd>
 
 </dl></div>
@@ -201,6 +204,7 @@ Historical information starts as of 2005.</p>
 <code><a href="esp_get_can_box.html">esp_get_can_box()</a></code>,
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>,
+<code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
 <code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>,
 <code><a href="esp_get_country.html">esp_get_country()</a></code>,
 <code><a href="esp_get_gridmap.html">esp_get_gridmap</a></code>,

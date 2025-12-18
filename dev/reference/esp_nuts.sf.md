@@ -102,6 +102,7 @@ Other datasets:
 [`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
 
 Other nuts:
+[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
 ## Examples

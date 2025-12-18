@@ -94,8 +94,7 @@ each of the possible names of each <code>sourcevar</code> on the required langua
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>If no match is found for any value, the function displays a warning and
-returns <code>NA</code> for those values.</p>
+    <p>If no match is found for any value, the function displays a <a href="https://cli.r-lib.org/reference/cli_alert.html" class="external-link"> cli::cli_alert_warning()</a> and returns <code>NA</code> for those values.</p>
 <p>Note that mixing names of different administrative levels (e.g. "Catalonia"
 and "Barcelona") may return empty values, depending on the <code>destination</code>
 values.</p>
@@ -142,17 +141,13 @@ values.</p>
 <span class="r-in"><span><span class="va">valsmix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Centro"</span>, <span class="st">"Andalucia"</span>, <span class="st">"Seville"</span>, <span class="st">"Menorca"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"nuts"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES4"   "ES61"  "ES618" "ES533"</span>
-<span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Warning</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"codauto"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No match on codauto found for Centro, Seville, Menorca</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA   "01" NA   NA  </span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>No match on iso2 found for Centro, Menorca</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match on `destination = "iso2"` found for "Centro" and "Menorca".</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA      "ES-AN" "ES-SE" NA     </span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"La Rioja"</span>, <span class="st">"Sevilla"</span>, <span class="st">"Madrid"</span>, <span class="st">"Jaen"</span>, <span class="st">"Orense"</span>, <span class="st">"Baleares"</span><span class="op">)</span></span></span>

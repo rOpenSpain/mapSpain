@@ -50,8 +50,9 @@ language `lang`.
 
 ## Details
 
-If no match is found for any value, the function displays a warning and
-returns `NA` for those values.
+If no match is found for any value, the function displays a
+[cli::cli_alert_warning()](https://cli.r-lib.org/reference/cli_alert.html)
+and returns `NA` for those values.
 
 Note that mixing names of different administrative levels (e.g.
 "Catalonia" and "Barcelona") may return empty values, depending on the
@@ -100,17 +101,13 @@ esp_dict_region_code(iso2vals,
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
-# \dontrun{
-
-# Warning
 
 esp_dict_region_code(valsmix, destination = "codauto")
-#> Warning: No match on codauto found for Centro, Seville, Menorca
+#> ! No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".
 #> [1] NA   "01" NA   NA  
 esp_dict_region_code(valsmix, destination = "iso2")
-#> Warning: No match on iso2 found for Centro, Menorca
+#> ! No match on `destination = "iso2"` found for "Centro" and "Menorca".
 #> [1] NA      "ES-AN" "ES-SE" NA     
-# }
 
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

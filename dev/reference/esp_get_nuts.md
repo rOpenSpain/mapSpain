@@ -1,4 +1,4 @@
-# Territorial spanish units for statistics (NUTS) dataset
+# Territorial Spanish units for statistics (NUTS) dataset
 
 The GISCO statistical unit dataset represents the NUTS (nomenclature of
 territorial units for statistics) and statistical regions by means of
@@ -169,6 +169,7 @@ Other political:
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
@@ -177,16 +178,21 @@ Other political:
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
 
 Other nuts:
+[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_nuts.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts.sf.md)
+
+Other gisco:
+[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md)
 
 ## Examples
 
 ``` r
-NUTS1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
+nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 
 library(ggplot2)
 
-ggplot(NUTS1) +
+ggplot(nuts1) +
   geom_sf() +
   labs(
     title = "NUTS1: Displacing Canary Islands",
@@ -195,10 +201,10 @@ ggplot(NUTS1) +
 
 
 
-NUTS1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
+nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 
 
-ggplot(NUTS1_alt) +
+ggplot(nuts1_alt) +
   geom_sf() +
   labs(
     title = "NUTS1: Displacing Canary Islands",
@@ -208,9 +214,9 @@ ggplot(NUTS1_alt) +
 
 
 
-NUTS1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
+nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 
-ggplot(NUTS1_orig) +
+ggplot(nuts1_orig) +
   geom_sf() +
   labs(
     title = "NUTS1",
@@ -220,29 +226,29 @@ ggplot(NUTS1_orig) +
 
 
 
-AndOriental <- esp_get_nuts(region = c(
+and_orient <- esp_get_nuts(region = c(
   "Almeria", "Granada",
   "Jaen", "Malaga"
 ))
 
 
-ggplot(AndOriental) +
+ggplot(and_orient) +
   geom_sf()
 
 
 
-RandomRegions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
+random_regions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
 
-ggplot(RandomRegions) +
+ggplot(random_regions) +
   geom_sf() +
   labs(title = "Random Regions")
 
 
 
-MixingCodes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
+mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 
 
-ggplot(MixingCodes) +
+ggplot(mixing_codes) +
   geom_sf() +
   labs(title = "Mixing Codes")
 ```

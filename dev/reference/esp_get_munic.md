@@ -115,7 +115,7 @@ IGN data via a custom CDN (see
 
 - rawcols:
 
-  Logical. Setting this to `TRUE` would add the raw columns of the
+  logical. Setting this to `TRUE` would add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value
@@ -152,6 +152,7 @@ Other political:
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),

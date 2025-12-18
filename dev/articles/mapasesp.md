@@ -584,7 +584,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-15
+    #>  date     2025-12-18
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -610,7 +610,7 @@ Details
     #>  forcats            * 1.0.1        2025-09-25 [1] RSPM
     #>  fs                   1.6.6        2025-04-12 [1] RSPM
     #>  generics             0.1.4        2025-05-09 [1] RSPM
-    #>  geobounds          * 0.0.1.9000   2025-12-15 [1] Github (dieghernan/geobounds@89e5366)
+    #>  geobounds          * 0.0.1.9000   2025-12-18 [1] Github (dieghernan/geobounds@89e5366)
     #>  geodata            * 0.6-6        2025-09-30 [1] RSPM
     #>  ggplot2            * 4.0.1        2025-11-14 [1] RSPM
     #>  giscoR               1.0.0        2025-12-10 [1] RSPM
@@ -629,7 +629,7 @@ Details
     #>  lifecycle            1.0.4        2023-11-07 [1] RSPM
     #>  lubridate          * 1.9.4        2024-12-08 [1] RSPM
     #>  magrittr             2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain           * 0.99.99.9000 2025-12-15 [1] local
+    #>  mapSpain           * 0.99.99.9000 2025-12-18 [1] local
     #>  otel                 0.2.0        2025-08-29 [1] RSPM
     #>  pillar               1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig            2.0.3        2019-09-22 [1] RSPM
@@ -652,7 +652,7 @@ Details
     #>  rlang                1.1.6        2025-04-11 [1] RSPM
     #>  rmarkdown            2.30         2025-09-28 [1] RSPM
     #>  rnaturalearth      * 1.1.0        2025-07-28 [1] RSPM
-    #>  rnaturalearthhires   1.0.0.9000   2025-12-10 [1] Github (ropensci/rnaturalearthhires@e4736f6)
+    #>  rnaturalearthhires   1.0.0.9000   2025-12-18 [1] Github (ropensci/rnaturalearthhires@e4736f6)
     #>  s2                   1.1.9        2025-05-23 [1] CRAN (R 4.5.2)
     #>  S7                   0.2.1        2025-11-14 [1] RSPM
     #>  sass                 0.4.10       2025-04-11 [1] RSPM
@@ -677,7 +677,7 @@ Details
     #>  viridisLite          0.4.2        2023-05-02 [1] RSPM
     #>  withr                3.0.2        2024-10-28 [1] RSPM
     #>  wk                   0.9.4        2024-10-11 [1] RSPM
-    #>  xfun                 0.54         2025-10-30 [1] RSPM
+    #>  xfun                 0.55         2025-12-16 [1] RSPM
     #>  yaml                 2.3.12       2025-12-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library
