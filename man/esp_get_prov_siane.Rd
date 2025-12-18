@@ -72,7 +72,7 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 Returns
 \href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
-as \code{POLYGON} or \code{POINT} at a specified scale.
+at a specified scale.
 }
 \details{
 When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or

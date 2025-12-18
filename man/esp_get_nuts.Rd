@@ -207,7 +207,8 @@ Other nuts:
 
 Other gisco: 
 \code{\link{esp_get_ccaa}()},
-\code{\link{esp_get_country}()}
+\code{\link{esp_get_country}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{gisco}
 \concept{nuts}

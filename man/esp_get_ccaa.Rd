@@ -154,7 +154,8 @@ Other political:
 
 Other gisco: 
 \code{\link{esp_get_country}()},
-\code{\link{esp_get_nuts}()}
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{gisco}
 \concept{political}

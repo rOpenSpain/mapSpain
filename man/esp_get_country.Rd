@@ -110,7 +110,8 @@ Other nuts:
 
 Other gisco: 
 \code{\link{esp_get_ccaa}()},
-\code{\link{esp_get_nuts}()}
+\code{\link{esp_get_nuts}()},
+\code{\link{esp_get_prov}()}
 }
 \concept{gisco}
 \concept{nuts}
