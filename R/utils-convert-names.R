@@ -57,7 +57,7 @@ convert_to_nuts <- function(region) {
 
 #' Transform region to NUTS code for CCAA (NUTS 2)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE codauto).
-#' @return A vector of NUTS codes for CCAA (level 2) or `NULL` if no valid
+#' @return A vector of NUTS codes for CCAA (level 2) or an error if no valid
 #'   code found.
 #'
 #' @noRd
@@ -65,9 +65,6 @@ convert_to_nuts_ccaa <- function(region) {
   # Clean up
   clean_region <- unique(region)
   if (any(is.null(region), all(is.na(clean_region)))) {
-    cli::cli_alert_warning(
-      "Empty {.arg region}. No CCAA codes found, returning NULL."
-    )
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]
@@ -103,10 +100,9 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   if (all(is.na(ccaa_id))) {
-    cli::cli_alert_warning(
+    cli::cli_abort(
       "No Spanish CCAA codes found for {.str {clean_region}}."
     )
-    return(NULL)
   }
 
   # Fix Ceuta and Melilla
@@ -116,10 +112,9 @@ convert_to_nuts_ccaa <- function(region) {
   novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
 
   if (all(novalid)) {
-    cli::cli_alert_warning(
+    cli::cli_abort(
       "No Spanish CCAA codes found for {.str {clean_region}}."
     )
-    return(NULL)
   }
 
   if (any(novalid)) {
@@ -150,17 +145,14 @@ convert_to_nuts_ccaa <- function(region) {
 
 #' Transform region to NUTS code for Provinces (NUTS 3 but not exactly)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE cpro).
-#' @return A vector of NUTS codes for Provinces (level 3) or `NULL` if no valid
-#'   code found.
+#' @return A vector of NUTS codes for Provinces (level 3) or an error if no
+#'   valid code found.
 #'
 #' @noRd
 convert_to_nuts_prov <- function(region) {
   # Clean up
   clean_region <- unique(region)
   if (any(is.null(region), all(is.na(clean_region)))) {
-    cli::cli_alert_warning(
-      "Empty {.arg region}. No province codes found, returning NULL."
-    )
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]
@@ -262,10 +254,9 @@ convert_to_nuts_prov <- function(region) {
   }
 
   if (all(is.na(nuts_cpros))) {
-    cli::cli_alert_warning(
+    cli::cli_abort(
       "No Spanish province codes found for {.str {clean_region}}."
     )
-    return(NULL)
   }
 
   # Case of Islands, are not a province, shouldn't be here yet
@@ -279,6 +270,12 @@ convert_to_nuts_prov <- function(region) {
   nuts_cpros[is.na(nuts_cpros)] <- "NOMATCH"
 
   nomatch <- nuts_cpros == "NOMATCH"
+  if (all(nomatch)) {
+    cli::cli_abort(
+      "No Spanish province codes found for {.str {clean_region}}."
+    )
+  }
+
   if (any(nomatch)) {
     cli::cli_alert_warning(
       paste0(
@@ -288,10 +285,6 @@ convert_to_nuts_prov <- function(region) {
   }
 
   nuts_cpros[nomatch] <- NA
-
-  if (all(is.na(nuts_cpros))) {
-    return(NULL)
-  }
 
   nuts_cpros <- nuts_cpros[!is.na(nuts_cpros)]
 

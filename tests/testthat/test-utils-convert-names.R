@@ -34,12 +34,12 @@ test_that("convert_to_nuts", {
 
 
 test_that("convert_to_nuts_ccaa", {
-  expect_snapshot(n <- convert_to_nuts_ccaa(NULL))
+  expect_silent(n <- convert_to_nuts_ccaa(NULL))
   expect_null(n)
 
-  expect_snapshot(n <- convert_to_nuts_ccaa(NA))
+  expect_silent(n <- convert_to_nuts_ccaa(NA))
   expect_null(n)
-  expect_snapshot(n <- convert_to_nuts_ccaa(c(NA, NULL)))
+  expect_silent(n <- convert_to_nuts_ccaa(c(NA, NULL)))
   expect_null(n)
 
   expect_silent(n <- convert_to_nuts_ccaa(c("Madrid", NA, NULL)))
@@ -51,7 +51,10 @@ test_that("convert_to_nuts_ccaa", {
     "ES1",
     "ES-CL"
   )))
-  expect_snapshot(convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9")))
+  expect_snapshot(
+    error = TRUE,
+    convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9"))
+  )
   expect_silent(
     all <- convert_to_nuts_ccaa(c(
       "NOROESTE",
@@ -74,13 +77,13 @@ test_that("convert_to_nuts_ccaa", {
     convert_to_nuts_ccaa(c("Murcia", "Almeria"))
   )
   expect_snapshot(
-    is_null <- convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
+    error = TRUE,
+    convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
   )
-  expect_null(is_null)
   expect_snapshot(
-    is_null <- convert_to_nuts_ccaa(c("AA", "XX"))
+    error = TRUE,
+    convert_to_nuts_ccaa(c("AA", "XX"))
   )
-  expect_null(is_null)
 
   # Check everything
 
@@ -135,7 +138,10 @@ test_that("convert_to_nuts_prov", {
     "Euskadi",
     "Madrid"
   )))
-  expect_snapshot(convert_to_nuts_prov(c("Aama", "ES888", "FR12", "ES9")))
+  expect_snapshot(
+    error = TRUE,
+    convert_to_nuts_prov(c("Aama", "ES888", "FR12", "ES9"))
+  )
   expect_silent(
     all <- convert_to_nuts_prov(c(
       "ES-PV",
@@ -163,18 +169,18 @@ test_that("convert_to_nuts_prov", {
     convert_to_nuts_prov(c("Murcia", "Almeria"))
   )
   expect_snapshot(
-    is_null <- convert_to_nuts_prov(c(
+    error = TRUE,
+    convert_to_nuts_prov(c(
       "La Gomera",
       "El Hierro",
       "Formentera",
       "Mallorca"
     ))
   )
-  expect_null(is_null)
   expect_snapshot(
-    is_null <- convert_to_nuts_prov(c("AA", "XX"))
+    error = TRUE,
+    convert_to_nuts_prov(c("AA", "XX"))
   )
-  expect_null(is_null)
 
   # Check everything
 

@@ -134,12 +134,6 @@ esp_get_ccaa_siane <- function(
     nuts_id <- NULL
   } else {
     nuts_id <- convert_to_nuts_ccaa(region)
-    if (is.null(nuts_id)) {
-      cli::cli_abort(
-        "Can't provide CCAA {.cls sf} objects for {.str {region}}."
-      )
-    }
-
     # Get df
     df <- mapSpain::esp_codelist
     dfl2 <- df[df$nuts2.code %in% nuts_id, "codauto"]
