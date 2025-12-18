@@ -10,7 +10,7 @@ a specified scale.
 esp_get_ccaa_siane(
   ccaa = NULL,
   year = Sys.Date(),
-  epsg = "4258",
+  epsg = 4258,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -36,7 +36,9 @@ today.
 
 - year:
 
-  character string or number. Release year. See **Details**.
+  character string or number. Release year, it must presents formats
+  `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical information
+  starts as of 2005.
 
 - epsg:
 
@@ -101,9 +103,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-`year` could be passed as a single year (`YYYY` format, as end of year)
-or as a specific date (`YYYY-MM-DD` format). Historical information
-starts as of 2005.
+When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
+2), ISO codes (corresponding to level 2) or `codauto` (see
+[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
+Ceuta and Melilla are considered as Autonomous Communities on this
+function.
+
+When calling a NUTS1 level, all the Autonomous Communities of that level
+would be added.
 
 ## See also
 
@@ -118,10 +125,12 @@ Other political:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
 
 Other siane:
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
+[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
 
 ## Examples
 

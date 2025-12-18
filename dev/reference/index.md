@@ -56,12 +56,10 @@ objects with political boundaries.
   : Territorial Spanish units for statistics (NUTS) dataset
 
 - [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
-  [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
-  :
+  : Provinces of Spain - GISCO
 
-  Get Provinces of Spain as
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-  `POINT`
+- [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
+  : Provinces of Spain - SIANE
 
 - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)

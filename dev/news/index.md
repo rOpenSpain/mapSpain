@@ -21,7 +21,7 @@
 CRAN release: 2024-12-15
 
 - Fix a bug on
-  [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
+  [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   when selecting columns
   [\#115](https://github.com/rOpenSpain/mapSpain/issues/115).
 - New argument `type` in
@@ -224,7 +224,7 @@ CRAN release: 2021-02-25
 - Include CartoBase ANE data
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>:
   - [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
-  - [`mapSpain::esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
+  - [`mapSpain::esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   - [`mapSpain::esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
   - [`mapSpain::esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
   - [`mapSpain::esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_rivers.md)

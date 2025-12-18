@@ -1,42 +1,14 @@
-# Get Provinces of Spain as [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or `POINT`
+# Provinces of Spain - GISCO
 
 Returns [provinces of
 Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) as `POLYGON` or
 `POINT` at a specified scale.
 
-- `esp_get_prov()` uses GISCO (Eurostat) as source. Please use
-  [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
-
-&nbsp;
-
-- `esp_get_prov_siane()` uses CartoBase ANE as source, provided by
-  Instituto Geografico Nacional (IGN),
-  <http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-  today.
-
 ## Usage
 
 ``` r
 esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
-
-esp_get_prov_siane(
-  prov = NULL,
-  year = Sys.Date(),
-  epsg = "4258",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  resolution = "3",
-  moveCAN = TRUE,
-  rawcols = FALSE
-)
 ```
-
-## Source
-
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
 
 ## Arguments
 
@@ -58,6 +30,42 @@ IGN data via a custom CDN (see
   Arguments passed on to
   [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
+  `year`
+
+  :   year character string or number. Release year of the file. See
+      [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
+      for valid values.
+
+  `epsg`
+
+  :   character string or number. Projection of the map: 4-digit [EPSG
+      code](https://epsg.io/). One of:
+
+      - `"4258"`: [ETRS89](https://epsg.io/4258)
+
+      - `"4326"`: [WGS84](https://epsg.io/4326).
+
+      - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+
+      - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
+
+  `cache`
+
+  :   logical. Whether to do caching. Default is `TRUE`. See **Caching
+      strategies** section in
+      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+
+  `update_cache`
+
+  :   logical. Should the cached file be refreshed?. Default is `FALSE`.
+      When set to `TRUE` it would force a new download.
+
+  `cache_dir`
+
+  :   character string. A path to a cache directory. See **Caching
+      strategies** section in
+      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+
   `spatialtype`
 
   :   character string. Type of geometry to be returned. Options
@@ -72,60 +80,24 @@ IGN data via a custom CDN (see
   :   character. Extension of the file (default `"gpkg"`). See
       [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
-- year:
+  `verbose`
 
-  Release year. See
-  [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
-  for `esp_get_prov()` and **Details** for `esp_get_prov_siane()`.
+  :   logical. If `TRUE` displays informational messages.
 
-- epsg:
+  `resolution`
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  :   character string or number. Resolution of the geospatial data. One
+      of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"60"`: 1:60 million.
 
-  - `"4326"`: [WGS84](https://epsg.io/4326).
+      - `"20"`: 1:20 million.
 
-  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+      - `"10"`: 1:10 million.
 
-  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
+      - `"03"`: 1:3 million.
 
-- cache:
-
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
-
-- update_cache:
-
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
-
-- cache_dir:
-
-  character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
-
-- verbose:
-
-  logical. If `TRUE` displays informational messages.
-
-- resolution:
-
-  character string or number. Resolution of the geospatial data. One of:
-
-  - "10": 1:10 million.
-
-  - "6.5": 1:6.5 million.
-
-  - "6.5": 1:3 million.
-
-- rawcols:
-
-  logical. Setting this to `TRUE` would add the raw columns of the
-  resulting object as provided by IGN.
+      - `"01"`: 1:1 million.
 
 ## Value
 
@@ -143,10 +115,6 @@ Ceuta and Melilla are considered as provinces on this dataset.
 When calling a higher level (Autonomous Community or NUTS1), all the
 provinces of that level would be added.
 
-On `esp_get_prov_siane()`, `year` could be passed as a single year
-("YYYY" format, as end of year) or as a specific date ("YYYY-MM-DD"
-format). Historical information starts as of 2005.
-
 ## See also
 
 Other political:
@@ -160,6 +128,7 @@ Other political:
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
 
 ## Examples
