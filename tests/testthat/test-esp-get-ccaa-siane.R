@@ -1,0 +1,172 @@
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_siane_offline()
+  skip_if_gisco_offline()
+
+  options(gisco_test_offline = TRUE)
+  options(mapspain_test_offline = TRUE)
+  expect_message(
+    n <- esp_get_ccaa_siane(update_cache = TRUE, verbose = FALSE),
+    "Offline"
+  )
+  expect_null(n)
+
+  options(mapspain_test_offline = FALSE)
+  options(gisco_test_offline = FALSE)
+})
+
+test_that("Test 404", {
+  skip_on_cran()
+  skip_if_siane_offline()
+  skip_if_gisco_offline()
+
+  options(gisco_test_404 = TRUE)
+  options(mapspain_test_404 = TRUE)
+  expect_message(
+    n <- esp_get_ccaa_siane(update_cache = TRUE),
+    "Error"
+  )
+  expect_null(n)
+
+  options(mapspain_test_404 = FALSE)
+  options(gisco_test_404 = FALSE)
+})
+
+test_that("Cache vs non-cached", {
+  skip_on_cran()
+  skip_if_siane_offline()
+
+  cdir <- file.path(tempdir(), "testccaa")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+  expect_message(
+    db_online <- esp_get_ccaa_siane(
+      cache = FALSE,
+      verbose = TRUE,
+      cache_dir = cdir
+    ),
+    "Reading from"
+  )
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  # vs cache TRUE
+  expect_silent(
+    db_cached <- esp_get_ccaa_siane(
+      cache = TRUE,
+      cache_dir = cdir
+    )
+  )
+
+  expect_identical(db_online, db_cached)
+  expect_s3_class(db_online, "sf")
+  expect_s3_class(db_online, "tbl_df")
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    c(
+      "siane/se89_3_admin_ccaa_a_x.gpkg",
+      "siane/se89_3_admin_ccaa_a_y.gpkg"
+    )
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+
+# Test siane
+test_that("ccaa online", {
+  skip_on_cran()
+  skip_if_siane_offline()
+  skip_if_gisco_offline()
+
+  cdir <- file.path(tempdir(), "testcapimun")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_error(esp_get_ccaa_siane(epsg = "FFF", cache_dir = cdir))
+
+  expect_silent(esp_get_ccaa_siane(cache_dir = cdir))
+
+  expect_message(esp_get_ccaa_siane(
+    cache = FALSE,
+    verbose = TRUE,
+    cache_dir = cdir
+  ))
+
+  expect_silent(esp_get_ccaa_siane("Canarias", cache_dir = cdir))
+  expect_silent(esp_get_ccaa_siane(rawcols = TRUE, cache_dir = cdir))
+  expect_silent(esp_get_ccaa_siane(
+    ccaa = c("Galicia", "ES7", "Centro"),
+    cache_dir = cdir
+  ))
+  expect_error(esp_get_ccaa_siane(epsg = 39823, cache_dir = cdir))
+  expect_silent(esp_get_ccaa_siane(cache_dir = cdir, resolution = 10, ))
+  expect_silent(esp_get_ccaa_siane(
+    moveCAN = c(1, 2),
+    resolution = 6.5,
+    cache_dir = cdir
+  ))
+  expect_silent(esp_get_ccaa_siane(
+    ccaa = c("Galicia", "ES7", "Centro"),
+    cache_dir = cdir
+  ))
+  expect_snapshot(
+    error = TRUE,
+    esp_get_ccaa_siane(ccaa = "Menorca", cache_dir = cdir)
+  )
+  expect_snapshot(
+    error = TRUE,
+    esp_get_ccaa_siane(
+      ccaa = "ES6x",
+      cache_dir = cdir
+    )
+  )
+
+  expect_equal(
+    sf::st_crs(esp_get_ccaa_siane(epsg = 3035, cache_dir = cdir)),
+    sf::st_crs(3035)
+  )
+
+  expect_equal(
+    sf::st_crs(esp_get_ccaa_siane(epsg = 3857, cache_dir = cdir)),
+    sf::st_crs(3857)
+  )
+
+  # Test all
+
+  f <- mapSpain::esp_codelist
+
+  n <- esp_get_ccaa_siane(ccaa = f$nuts1.code, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  n <- esp_get_ccaa_siane(ccaa = "Melilla", cache_dir = cdir)
+  expect_equal(nrow(n), 1)
+
+  n <- esp_get_ccaa_siane(ccaa = f$nuts1.name.alt, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  n <- esp_get_ccaa_siane(ccaa = f$iso2.ccaa.code, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  n <- esp_get_ccaa_siane(ccaa = f$nuts2.code, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  n <- esp_get_ccaa_siane(ccaa = f$nuts2.name, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  n <- esp_get_ccaa_siane(ccaa = f$codauto, cache_dir = cdir)
+  expect_equal(nrow(n), 19)
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})

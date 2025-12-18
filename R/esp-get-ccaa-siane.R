@@ -29,6 +29,23 @@
 #' `year` could be passed as a single year (`YYYY` format, as end of year) or
 #' as a specific date (`YYYY-MM-DD` format). Historical information starts as
 #' of 2005.
+#' @examplesIf esp_check_access()
+#' ccaas1 <- esp_get_ccaa_siane()
+#' dplyr::glimpse(ccaas1)
+#'
+#' # Low res
+#' ccaas_low <- esp_get_ccaa_siane(
+#'   rawcols = TRUE, moveCAN = FALSE,
+#'   resolution = 10, epsg = 3035
+#' )
+#'
+#'
+#' library(ggplot2)
+#'
+#' ggplot(ccaas_low) +
+#'   geom_sf(aes(fill = nuts1.name)) +
+#'   scale_fill_viridis_d(option = "cividis")
+#'
 esp_get_ccaa_siane <- function(
   ccaa = NULL,
   year = Sys.Date(),
@@ -37,27 +54,68 @@ esp_get_ccaa_siane <- function(
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "3",
+  resolution = c(3, 6.5, 10),
   moveCAN = TRUE,
   rawcols = FALSE
 ) {
-  init_epsg <- as.character(epsg)
-  year <- as.character(year)
+  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  res <- match_arg_pretty(resolution)
+  res <- gsub("6.5", "6m5", res)
 
-  if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
-    stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
+  url_penin <- paste0(
+    "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
+    "se89_",
+    res,
+    "_admin_ccaa_a_x.gpkg"
+  )
+
+  url_can <- paste0(
+    "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
+    "se89_",
+    res,
+    "_admin_ccaa_a_y.gpkg"
+  )
+
+  # Not cached are read from url
+  if (!cache) {
+    msg <- paste0("{.url ", url_penin, "}.")
+    make_msg("info", verbose, "Reading from", msg)
+
+    data_sf_penin <- read_geo_file_sf(url_penin)
+
+    msg <- paste0("{.url ", url_can, "}.")
+    make_msg("info", verbose, "Reading from", msg)
+
+    data_sf_can <- read_geo_file_sf(url_can)
+
+    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
+  } else {
+    file_local_penin <- download_url(
+      url_penin,
+      cache_dir = cache_dir,
+      subdir = "siane",
+      update_cache = update_cache,
+      verbose = verbose
+    )
+
+    file_local_can <- download_url(
+      url_can,
+      cache_dir = cache_dir,
+      subdir = "siane",
+      update_cache = update_cache,
+      verbose = verbose
+    )
+
+    # Download
+    data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
+
+    data_sf <- rbind_fill(data_sf)
+    if (is.null(data_sf)) {
+      return(NULL)
+    }
   }
 
-  # Get Data from SIANE
-  data_sf <- esp_hlp_get_siane(
-    "ccaa",
-    resolution,
-    cache,
-    cache_dir,
-    update_cache,
-    verbose,
-    year
-  )
+  data_sf <- siane_filter_year(data_sf = data_sf, year = year)
 
   initcols <- colnames(sf::st_drop_geometry(data_sf))
 
@@ -75,8 +133,12 @@ esp_get_ccaa_siane <- function(
   if (is.null(region)) {
     nuts_id <- NULL
   } else {
-    nuts_id <- esp_hlp_all2ccaa(region)
-    nuts_id <- unique(nuts_id)
+    nuts_id <- convert_to_nuts_ccaa(region)
+    if (is.null(nuts_id)) {
+      cli::cli_abort(
+        "Can't provide CCAA {.cls sf} objects for {.str {region}}."
+      )
+    }
 
     # Get df
     df <- mapSpain::esp_codelist
@@ -90,8 +152,7 @@ esp_get_ccaa_siane <- function(
   }
 
   # Get df final with vars
-  df <- dict_ccaa
-  df <- df[, names(df) != "key"]
+  df <- get_ccaa_codes_df()
 
   # Merge
   data_sf <- merge(data_sf, df, all.x = TRUE)
@@ -101,27 +162,23 @@ esp_get_ccaa_siane <- function(
   dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  # Move CAN
-
   # Checks
   moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
+  prepare_can <- data_sf
+  prepare_can$is_can <- prepare_can$codauto == "05"
+
+  moving <- (isTRUE(moveCAN) | length(moveCAN) > 1) & any(prepare_can$is_can)
 
   if (moving) {
-    if (length(grep("05", data_sf$codauto)) > 0) {
-      penin <- data_sf[-grep("05", data_sf$codauto), ]
-      can <- data_sf[grep("05", data_sf$codauto), ]
+    penin <- prepare_can[prepare_can$is_can == FALSE, ]
+    can <- prepare_can[prepare_can$is_can == TRUE, ]
 
-      # Move CAN
-      can <- esp_move_can(can, moveCAN = moveCAN)
+    can <- esp_move_can(can, moveCAN = moveCAN)
 
-      # Regenerate
-      if (nrow(penin) > 0) {
-        data_sf <- rbind(penin, can)
-      } else {
-        data_sf <- can
-      }
-    }
+    # Regenerate
+    keep_n <- names(data_sf)
+    data_sf <- rbind_fill(list(penin, can))
+    data_sf <- data_sf[, keep_n]
   }
 
   # Transform
@@ -144,6 +201,7 @@ esp_get_ccaa_siane <- function(
   } else {
     data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
   }
+  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }
