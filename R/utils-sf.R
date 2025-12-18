@@ -105,7 +105,7 @@ sanitize_sf <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS are not properly defined (i.e may have additionalm properties)
+  # Some CRS are not properly defined (i.e may have additional properties)
   # Normalize with the EPSG number
 
   epsg_num <- sf::st_crs(data_sf)$epsg
@@ -113,6 +113,7 @@ sanitize_sf <- function(data_sf) {
     data_sf <- sf::st_transform(data_sf, sf::st_crs(epsg_num))
   }
 
+  data_sf <- sf::st_zm(data_sf)
   data_sf <- sf::st_make_valid(data_sf)
 
   data_sf
