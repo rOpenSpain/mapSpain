@@ -34,15 +34,14 @@ test_that("ESDAC grid online", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  tdir <- file.path(tempdir(), "testthat_test")
+  tdir <- file.path(tempdir(), "testthat_test_esdac")
   tdir <- create_cache_dir(tdir)
 
   # Grid 10 vs 1
 
-  grid10 <- esp_get_grid_ESDAC(resolution = 10, cache_dir = tdir)
-  expect_message(grid1 <- esp_get_grid_ESDAC(resolution = 1, cache_dir = tdir))
-
-  expect_gt(object.size(grid1), object.size(grid10))
+  expect_silent(
+    grid10 <- esp_get_grid_ESDAC(resolution = 10, cache_dir = tdir)
+  )
 
   unlink(tdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(tdir))

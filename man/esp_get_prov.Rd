@@ -10,6 +10,11 @@ esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 \item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
 the provinces. See \strong{Details}.}
 
+\item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
+
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_nuts]{esp_get_nuts}}
   \describe{
@@ -35,10 +40,6 @@ Options available are:
 \item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item "LB": Labels - \code{POINT} object.
 }}
-    \item{\code{moveCAN}}{A logical \code{TRUE/FALSE} or a vector of coordinates
-\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates. See
-\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
     \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
     \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}

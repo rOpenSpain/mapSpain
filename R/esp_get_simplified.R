@@ -14,8 +14,8 @@
 #' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @inheritParams esp_get_prov
-#'
 #' @inheritParams esp_get_ccaa
+#' @inheritParams esp_get_nuts
 #'
 #'
 #' @seealso [esp_get_hex_prov()], [esp_get_hex_ccaa()]

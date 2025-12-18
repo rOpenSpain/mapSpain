@@ -26,6 +26,14 @@ esp_get_simpl_ccaa(
 \item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
 the provinces. See \strong{Details}.}
 
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+
 \item{ccaa}{A vector of names and/or codes for autonomous communities
 or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
 }

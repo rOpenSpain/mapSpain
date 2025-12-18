@@ -16,6 +16,7 @@ Ceuta
 Comarcas
 Datos
 EEA
+EFTA
 EPSG
 ESDAC
 ETRS
@@ -50,6 +51,7 @@ ORCID
 OpenStreetMap
 Panagos
 REGCAN
+RG
 RGBA
 ROR
 RegCan
@@ -74,8 +76,9 @@ ec
 esdac
 eu
 europa
-geojson
 geospatial
+gisco
+gpkg
 hexbin
 hydrographic
 hypsometry
@@ -84,7 +87,11 @@ jrc
 kms
 melilla
 merindades
+polyline
 pre
 providersESP
+siane
 slippymath
+socio
 spanish
+visualise

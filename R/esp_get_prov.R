@@ -12,6 +12,7 @@
 #' @rdname esp_get_prov
 #' @name esp_get_prov
 #'
+#'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #'
@@ -20,6 +21,7 @@
 #' @param prov A vector of names and/or codes for provinces or `NULL` to get all
 #'   the provinces. See **Details**.
 #'
+#' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @details

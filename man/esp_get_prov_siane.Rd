@@ -27,7 +27,7 @@ esp_get_prov_siane(
 the provinces. See \strong{Details}.}
 
 \item{year}{character string or number. Release year, it must presents
-formats \code{YYYY} (asssuming end of year) or \code{YYYY-MM-DD}. Historical
+formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit

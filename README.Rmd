@@ -23,9 +23,6 @@ knitr::opts_chunk$set(
   dpi = 300,
   out.width = "100%"
 )
-
-initcach <- mapSpain::esp_detect_cache_dir()
-mapSpain::esp_set_cache_dir("img/", verbose = FALSE)
 ```
 
 # mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
@@ -305,8 +302,3 @@ Units*
 
 If you intend to use the data commercially, please contact EuroGeographics for
 information regarding their license agreements.
-
-```{r include=FALSE}
-mapSpain::esp_set_cache_dir(initcach, verbose = FALSE)
-```
-

@@ -15,7 +15,7 @@
 #'
 #'
 #' @param year character string or number. Release year, it must presents
-#'   formats `YYYY` (asssuming end of year) or `YYYY-MM-DD`. Historical
+#'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
 #'   information starts as of 2005.
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:

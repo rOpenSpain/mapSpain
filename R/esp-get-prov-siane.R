@@ -99,7 +99,6 @@ esp_get_prov_siane <- function(
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-
   # Get df
   df <- get_prov_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
@@ -165,12 +164,25 @@ esp_get_prov_siane <- function(
 
 get_prov_codes_df <- function() {
   getnames <- c(
-    "codauto", "cpro", "iso2.prov.code", "nuts.prov.code", "ine.prov.name",
-    "iso2.prov.name.es", "iso2.prov.name.ca", "iso2.prov.name.ga",
-    "iso2.prov.name.eu", "cldr.prov.name.en", "cldr.prov.name.es",
-    "cldr.prov.name.ca", "cldr.prov.name.ga", "cldr.prov.name.eu",
-    "prov.shortname.en", "prov.shortname.es", "prov.shortname.ca",
-    "prov.shortname.ga", "prov.shortname.eu"
+    "codauto",
+    "cpro",
+    "iso2.prov.code",
+    "nuts.prov.code",
+    "ine.prov.name",
+    "iso2.prov.name.es",
+    "iso2.prov.name.ca",
+    "iso2.prov.name.ga",
+    "iso2.prov.name.eu",
+    "cldr.prov.name.en",
+    "cldr.prov.name.es",
+    "cldr.prov.name.ca",
+    "cldr.prov.name.ga",
+    "cldr.prov.name.eu",
+    "prov.shortname.en",
+    "prov.shortname.es",
+    "prov.shortname.ca",
+    "prov.shortname.ga",
+    "prov.shortname.eu"
   )
 
   df_prov <- mapSpain::esp_codelist
