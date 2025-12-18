@@ -74,7 +74,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{resolution}{Resolution of the polygon. Values available are
 \code{"3"}, \code{"6.5"} or  \code{"10"}.}
 
-\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -161,6 +161,7 @@ Other political:
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},

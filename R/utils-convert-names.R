@@ -34,13 +34,22 @@ convert_to_nuts <- function(region) {
     code <- clean_region[i]
     type <- code_type[i]
 
-    nuts_id[i] <- esp_dict_region_code(code, type, "nuts")
+    suppressMessages(
+      nuts_id[i] <- esp_dict_region_code(code, type, "nuts"),
+      "cliMessage"
+    )
   }
   if (all(is.na(nuts_id))) {
     cli::cli_alert_warning(
-      "No Spanish NUTS codes found for {.str {clean_region}}. Return NULL."
+      "No Spanish NUTS codes found for {.str {clean_region}}."
     )
     return(NULL)
+  }
+
+  if (any(is.na(nuts_id))) {
+    cli::cli_alert_warning(
+      "No Spanish NUTS codes found for {.str {clean_region[is.na(nuts_id)]}}."
+    )
   }
 
   sort(nuts_id[!is.na(nuts_id)])
@@ -80,10 +89,13 @@ convert_to_nuts_ccaa <- function(region) {
     code <- clean_region[i]
     type <- code_type[i]
     if (type == "codauto") {
-      code <- esp_dict_region_code(code, "codauto", "nuts")
+      suppressMessages(
+        code <- esp_dict_region_code(code, "codauto", "nuts"),
+        "cliMessage"
+      )
     }
 
-    res <- convert_to_nuts(code)
+    suppressMessages(res <- convert_to_nuts(code), "cliMessage")
     if (is.null(res)) {
       res <- NA
     }
@@ -91,34 +103,32 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   if (all(is.na(ccaa_id))) {
+    cli::cli_alert_warning(
+      "No Spanish CCAA codes found for {.str {clean_region}}."
+    )
     return(NULL)
   }
-
-  clean_region <- clean_region[!is.na(ccaa_id)]
-  ccaa_id <- ccaa_id[!is.na(ccaa_id)]
 
   # Fix Ceuta and Melilla
   ccaa_id[grep("ES640", ccaa_id)] <- "ES64"
   ccaa_id[grep("ES630", ccaa_id)] <- "ES63"
 
-  novalid <- nchar(ccaa_id) > 4
+  novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
+
+  if (all(novalid)) {
+    cli::cli_alert_warning(
+      "No Spanish CCAA codes found for {.str {clean_region}}."
+    )
+    return(NULL)
+  }
 
   if (any(novalid)) {
     cli::cli_alert_warning(
       paste0(
-        "{.str {clean_region[novalid]}} {?does/do} not return ",
-        "a Autonomous Community."
+        "No Spanish CCAA codes found for ",
+        "{.str {clean_region[novalid]}}."
       )
     )
-  }
-
-  ccaa_id[novalid] <- NA
-
-  if (all(is.na(ccaa_id))) {
-    cli::cli_alert_warning(
-      "No Spanish CCAA codes found for {.str {clean_region}}. Return NULL."
-    )
-    return(NULL)
   }
 
   ccaa_id <- ccaa_id[!novalid]
@@ -186,7 +196,10 @@ convert_to_nuts_prov <- function(region) {
 
     # Need this to convert Canarias to Provinces
     if (type == "text") {
-      name_es <- esp_dict_translate(code, "es")
+      suppressMessages(
+        name_es <- esp_dict_translate(code, "es"),
+        "cliMessage"
+      )
 
       if (is.na(name_es)) {
         nuts_cpros[i] <- NA
@@ -237,7 +250,10 @@ convert_to_nuts_prov <- function(region) {
       nuts_cpros[i] <- cpro_nuts
     } else {
       # To NUTS
-      res <- convert_to_nuts(code)
+      suppressMessages(
+        res <- convert_to_nuts(code),
+        "cliMessage"
+      )
       if (is.null(res)) {
         res <- NA
       }
@@ -246,6 +262,9 @@ convert_to_nuts_prov <- function(region) {
   }
 
   if (all(is.na(nuts_cpros))) {
+    cli::cli_alert_warning(
+      "No Spanish province codes found for {.str {clean_region}}."
+    )
     return(NULL)
   }
 
@@ -257,12 +276,13 @@ convert_to_nuts_prov <- function(region) {
   ]$nuts3.code
 
   nuts_cpros[nuts_cpros %in% not_provs] <- "NOMATCH"
-  nomatch <- !is.na(nuts_cpros) & nuts_cpros == "NOMATCH"
+  nuts_cpros[is.na(nuts_cpros)] <- "NOMATCH"
+
+  nomatch <- nuts_cpros == "NOMATCH"
   if (any(nomatch)) {
     cli::cli_alert_warning(
       paste0(
-        "{.str {clean_region[nomatch]}} {?does/do} not return ",
-        "a province."
+        "No Spanish province codes found for {.str {clean_region[nomatch]}}."
       )
     )
   }
@@ -270,9 +290,6 @@ convert_to_nuts_prov <- function(region) {
   nuts_cpros[nomatch] <- NA
 
   if (all(is.na(nuts_cpros))) {
-    cli::cli_alert_warning(
-      "No Spanish province codes found for {.str {clean_region}}. Return NULL."
-    )
     return(NULL)
   }
 

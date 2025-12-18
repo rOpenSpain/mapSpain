@@ -24,7 +24,7 @@
     Code
       convert_to_nuts(c("Lugo", "Zaporilla", "ES1", "ES-CL"))
     Message
-      ! No match on `destination = "nuts"` found for "Zaporilla".
+      ! No Spanish NUTS codes found for "Zaporilla".
     Output
       [1] "ES1"   "ES112" "ES41" 
 
@@ -33,11 +33,7 @@
     Code
       convert_to_nuts(c("Aama", "ES888", "FR12", "ES9"))
     Message
-      ! No match on `destination = "nuts"` found for "Aama".
-      ! No match on `destination = "nuts"` found for "ES888".
-      ! No match on `destination = "nuts"` found for "FR12".
-      ! No match on `destination = "nuts"` found for "ES9".
-      ! No Spanish NUTS codes found for "Aama", "ES888", "FR12", and "ES9". Return NULL.
+      ! No Spanish NUTS codes found for "Aama", "ES888", "FR12", and "ES9".
     Output
       NULL
 
@@ -82,21 +78,16 @@
     Code
       convert_to_nuts_ccaa(c("Asturies", "Zaporilla", "ES1", "ES-CL"))
     Message
-      ! No match on `destination = "nuts"` found for "Zaporilla".
-      ! No Spanish NUTS codes found for "Zaporilla". Return NULL.
+      ! No Spanish CCAA codes found for "Zaporilla".
     Output
       [1] "ES11" "ES12" "ES13" "ES41"
 
 ---
 
     Code
-      convert_to_nuts(c("Aama", "ES888", "FR12", "ES9"))
+      convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9"))
     Message
-      ! No match on `destination = "nuts"` found for "Aama".
-      ! No match on `destination = "nuts"` found for "ES888".
-      ! No match on `destination = "nuts"` found for "FR12".
-      ! No match on `destination = "nuts"` found for "ES9".
-      ! No Spanish NUTS codes found for "Aama", "ES888", "FR12", and "ES9". Return NULL.
+      ! No Spanish CCAA codes found for "Aama", "ES888", "FR12", and "ES9".
     Output
       NULL
 
@@ -122,7 +113,7 @@
     Code
       convert_to_nuts_ccaa(c("Murcia", "Almeria"))
     Message
-      ! "Almeria" does not return a Autonomous Community.
+      ! No Spanish CCAA codes found for "Almeria".
     Output
       [1] "ES62"
 
@@ -131,18 +122,14 @@
     Code
       is_null <- convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
     Message
-      ! "La Gomera", "Almeria", and "Soria" do not return a Autonomous Community.
-      ! No Spanish CCAA codes found for "La Gomera", "Almeria", and "Soria". Return NULL.
+      ! No Spanish CCAA codes found for "La Gomera", "Almeria", and "Soria".
 
 ---
 
     Code
       is_null <- convert_to_nuts_ccaa(c("AA", "XX"))
     Message
-      ! No match on `destination = "nuts"` found for "AA".
-      ! No Spanish NUTS codes found for "AA". Return NULL.
-      ! No match on `destination = "nuts"` found for "XX".
-      ! No Spanish NUTS codes found for "XX". Return NULL.
+      ! No Spanish CCAA codes found for "AA" and "XX".
 
 # convert_to_nuts_prov
 
@@ -170,8 +157,7 @@
     Code
       convert_to_nuts_prov(c("Asturies", "Zaporilla", "Euskadi", "Madrid"))
     Message
-      ! No match found for "Zaporilla".
-      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! No Spanish province codes found for "Zaporilla".
     Output
       [1] "ES120" "ES211" "ES212" "ES213" "ES300"
 
@@ -180,14 +166,7 @@
     Code
       convert_to_nuts_prov(c("Aama", "ES888", "FR12", "ES9"))
     Message
-      ! No match found for "Aama".
-      ! No match found for "FR12".
-      ! Empty `region`. No NUTS codes found, returning NULL.
-      ! No match on `destination = "nuts"` found for "ES888".
-      ! No Spanish NUTS codes found for "ES888". Return NULL.
-      ! Empty `region`. No NUTS codes found, returning NULL.
-      ! No match on `destination = "nuts"` found for "ES9".
-      ! No Spanish NUTS codes found for "ES9". Return NULL.
+      ! No Spanish province codes found for "Aama", "ES888", "FR12", and "ES9".
     Output
       NULL
 
@@ -226,25 +205,19 @@
       is_null <- convert_to_nuts_prov(c("La Gomera", "El Hierro", "Formentera",
         "Mallorca"))
     Message
-      ! No match found for "Formentera".
-      ! Empty `region`. No NUTS codes found, returning NULL.
-      ! "La Gomera", "El Hierro", and "Mallorca" do not return a province.
-      ! No Spanish province codes found for "La Gomera", "El Hierro", "Formentera", and "Mallorca". Return NULL.
+      ! No Spanish province codes found for "La Gomera", "El Hierro", "Formentera", and "Mallorca".
 
 ---
 
     Code
-      is_null <- convert_to_nuts_ccaa(c("AA", "XX"))
+      is_null <- convert_to_nuts_prov(c("AA", "XX"))
     Message
-      ! No match on `destination = "nuts"` found for "AA".
-      ! No Spanish NUTS codes found for "AA". Return NULL.
-      ! No match on `destination = "nuts"` found for "XX".
-      ! No Spanish NUTS codes found for "XX". Return NULL.
+      ! No Spanish province codes found for "AA" and "XX".
 
 ---
 
     Code
       n <- convert_to_nuts_prov(nm)
     Message
-      ! "Eivissa y Formentera", "Mallorca", "Menorca", "Fuerteventura", "Gran Canaria", "Lanzarote", "El Hierro", "La Gomera", "La Palma", and "Tenerife" do not return a province.
+      ! No Spanish province codes found for "Eivissa y Formentera", "Mallorca", "Menorca", "Fuerteventura", "Gran Canaria", "Lanzarote", "El Hierro", "La Gomera", "La Palma", and "Tenerife".
 

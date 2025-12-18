@@ -69,10 +69,15 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{Resolution of the \code{POLYGON}. Values available are
-\code{3}, \code{6.5} or \code{10}.}
+\item{resolution}{character string or number. Resolution of the geospatial
+data. One of:
+\itemize{
+\item "10": 1:10 million.
+\item "6.5": 1:6.5 million.
+\item "6.5": 1:3 million.
+}}
 
-\item{rawcols}{Logical. Setting this to \code{TRUE} would add the raw columns of
+\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -169,6 +174,7 @@ Other political:
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},

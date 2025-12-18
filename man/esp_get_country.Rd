@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_country}
 \alias{esp_get_country}
-\title{Boundaries of Spain}
+\title{Boundaries of Spain - GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -95,6 +95,7 @@ Other political:
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
@@ -107,6 +108,7 @@ Other nuts:
 \code{\link{esp_nuts.sf}}
 
 Other gisco: 
+\code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_nuts}()}
 }
 \concept{gisco}

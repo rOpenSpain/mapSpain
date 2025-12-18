@@ -7,21 +7,19 @@
 #' Note that this differs of the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic()].
 #'
+#' @encoding UTF-8
 #' @family political
+#' @family siane
 #' @family municipalities
+#' @inheritParams esp_get_ccaa_siane
+#' @inheritParams esp_get_munic
+#' @inheritParams esp_get_nuts
+#' @inherit esp_get_ccaa_siane
+#' @export
 #'
 #' @return A [`sf`][sf::st_sf] `POINT` object.
 #'
-#' @source IGN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
-#'
-#'
 #' @param year Release year. See **Details** for years available.
-#'
-#' @inheritParams esp_get_munic
-#'
-#' @inheritParams esp_get_nuts
-#'
 #'
 #' @details
 #' `year` could be passed as a single year (`YYYY` format, as end of year) or
@@ -34,8 +32,6 @@
 #'
 #' When calling a higher level (province, CCAA or NUTS1), all the municipalities
 #' of that level would be added.
-#'
-#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -172,7 +168,7 @@ esp_get_capimun <- function(
   }
 
   if (!is.null(region)) {
-    tonuts <- esp_hlp_all2prov(region)
+    tonuts <- convert_to_nuts_prov(region)
     # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]

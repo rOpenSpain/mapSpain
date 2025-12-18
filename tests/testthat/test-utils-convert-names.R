@@ -51,7 +51,7 @@ test_that("convert_to_nuts_ccaa", {
     "ES1",
     "ES-CL"
   )))
-  expect_snapshot(convert_to_nuts(c("Aama", "ES888", "FR12", "ES9")))
+  expect_snapshot(convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9")))
   expect_silent(
     all <- convert_to_nuts_ccaa(c(
       "NOROESTE",
@@ -172,7 +172,7 @@ test_that("convert_to_nuts_prov", {
   )
   expect_null(is_null)
   expect_snapshot(
-    is_null <- convert_to_nuts_ccaa(c("AA", "XX"))
+    is_null <- convert_to_nuts_prov(c("AA", "XX"))
   )
   expect_null(is_null)
 

@@ -10,7 +10,7 @@
 #' would load it for future sessions. Type `Sys.getenv("MAPSPAIN_CACHE_DIR")` to
 #' find your cached path or use [esp_detect_cache_dir()].
 #'
-#' @inheritParams esp_get_ccaa
+#' @inheritParams esp_get_nuts
 #' @param cache_dir A path to a cache directory. On missing value the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for

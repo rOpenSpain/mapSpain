@@ -252,7 +252,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 #' @param year Release year. See [esp_get_nuts()] for [esp_get_prov()] and
 #'   **Details** for [esp_get_prov_siane()].
 #'
-#' @inheritParams esp_get_ccaa
+#' @inheritParams esp_get_ccaa_siane
 #'
 #' @details
 #' On [esp_get_prov_siane()], `year` could be passed as a single year ("YYYY"
