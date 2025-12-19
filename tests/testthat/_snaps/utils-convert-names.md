@@ -49,7 +49,7 @@
     Code
       esp_dict_region_code(all, origin = "nuts", destination = "text")
     Output
-      [1] "Ourense"    "Asturias"   "País Vasco" "Aragón"     "SUR"       
+      [1] "Ourense"    "Asturias"   "País Vasco" "Aragón"     "Sur"       
       [6] "Granada"    "La Gomera" 
 
 # convert_to_nuts_ccaa
@@ -81,10 +81,9 @@
     Code
       esp_dict_region_code(all, origin = "nuts", destination = "text")
     Output
-      [1] "Galicia"                    "Principado de Asturias"    
-      [3] "Cantabria"                  "País Vasco"                
-      [5] "Extremadura"                "Ciudad Autónoma de Ceuta"  
-      [7] "Ciudad Autónoma de Melilla" "Canarias"                  
+      [1] "Galicia"                "Principado de Asturias" "Cantabria"             
+      [4] "País Vasco"             "Extremadura"            "Ciudad de Ceuta"       
+      [7] "Ciudad de Melilla"      "Canarias"              
 
 ---
 

@@ -117,7 +117,9 @@ esp_get_can_box <- function(
 
   epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
 
-  can <- esp_get_ccaa("Canarias", epsg = "4326", moveCAN = FALSE)
+  df <- mapSpain::esp_nuts_2024
+  can <- df[df$NUTS_ID == "ES7", ]
+  can <- sf::st_transform(can, 4326)
   bbox <- sf::st_bbox(can)
 
   if (style == "box" || style == "poly") {

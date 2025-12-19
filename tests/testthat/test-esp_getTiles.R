@@ -91,16 +91,13 @@ test_that("tiles online", {
   ))
 
   # Try with jpg
-  provs <- leaflet.providersESP.df
-  jpeg <- provs[provs$value == "jpeg", ]
-
   expect_message(esp_get_tiles(
     poly,
-    type = as.character(jpeg$provider[1]),
+    type = "IGNBase.Gris",
     verbose = TRUE
   ))
 
-  s <- esp_get_tiles(poly, type = jpeg$provider)
+  s <- esp_get_tiles(poly, type = "IGNBase.Gris")
 
   expect_s4_class(s, "SpatRaster")
 

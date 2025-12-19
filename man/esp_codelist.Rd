@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Database with codes and names of spanish regions}
+\title{Database with codes and names of Spanish regions}
 \format{
 A \code{\link[base:data.frame]{data.frame}} with 59 rows
 codes and columns:
