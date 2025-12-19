@@ -4,7 +4,6 @@
 #' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 #' <http://www.ign.es/web/ign/portal>. Years available are 2005 up to today.
 #'
-#
 #' @encoding UTF-8
 #' @family political
 #' @family siane

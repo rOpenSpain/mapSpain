@@ -22,7 +22,6 @@ ESDAC
 ETRS
 El
 Estadistica
-FID
 GISCO
 Galicia
 Galician
@@ -57,7 +56,6 @@ ROR
 RegCan
 SIANE
 Topografico
-URBN
 WMS
 WMTS
 WMTSproviders
@@ -79,14 +77,15 @@ europa
 geospatial
 gisco
 gpkg
+groundwaters
 hexbin
-hydrographic
 hypsometry
 javascript
 jrc
 kms
 melilla
 merindades
+neighbouring
 polyline
 pre
 providersESP
