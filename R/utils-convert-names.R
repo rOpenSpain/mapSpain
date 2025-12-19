@@ -291,12 +291,12 @@ convert_to_nuts_prov <- function(region) {
   # Fix GC and TF
   if ("ES-TF" %in% nuts_cpros) {
     nuts <- mapSpain::esp_codelist
-    vec_codes <- nuts[nuts$iso2.prov.code == "ES-TF", "nuts3.code"]
+    vec_codes <- nuts[nuts$iso2.prov.code == "ES-TF", ]$nuts3.code
     nuts_cpros <- c(nuts_cpros[!nuts_cpros == "ES-TF"], vec_codes)
   }
   if ("ES-GC" %in% nuts_cpros) {
     nuts <- mapSpain::esp_codelist
-    vec_codes <- nuts[nuts$iso2.prov.code == "ES-GC", "nuts3.code"]
+    vec_codes <- nuts[nuts$iso2.prov.code == "ES-GC", ]$nuts3.code
     nuts_cpros <- c(nuts_cpros[!nuts_cpros == "ES-GC"], vec_codes)
   }
 

@@ -1,59 +1,20 @@
 ## code to prepare `esp_codelist` dataset goes here
 
-library(dplyr)
-source("./data-raw/helperfuns.R")
-
+library(tidyverse)
 
 # Load ----
 
-NUTS1 <-
-  read.csv(
-    "./data-raw/espNUTS1.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
-CCAA <-
-  read.csv(
-    "./data-raw/espCCAA.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
-PROV <-
-  read.csv(
-    "./data-raw/espPROV.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
-NUTS3 <-
-  read.csv(
-    "./data-raw/espNUTS3.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
+nuts1 <- read_csv("./data-raw/dict/esp_nuts1.csv")
+ccaa <- read_csv("./data-raw/dict/esp_ccaa.csv")
+prov <- read_csv("./data-raw/dict/esp_prov.csv")
+nuts3 <- read_csv("./data-raw/dict/esp_nuts3.csv")
 
 # Create full table
-esp_codelist <-
-  NUTS1 |>
-  left_join(CCAA) |>
-  left_join(PROV) |>
-  left_join(NUTS3) |>
-  as.data.frame()
+esp_codelist <- nuts1 |>
+  left_join(ccaa) |>
+  left_join(prov) |>
+  left_join(nuts3) |>
+  as_tibble()
 
 usethis::use_data(esp_codelist, overwrite = TRUE, compress = "xz")
 tools::checkRdaFiles("./data")

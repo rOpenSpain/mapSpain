@@ -1,32 +1,42 @@
-#' Get 'comarcas' of Spain as [`sf`][sf::st_sf] `POLYGON`
+#' 'Comarcas' of Spain
 #'
 #' @description
-#' Returns 'comarcas' of Spain as `sf` `POLYGON` objects.
+#' Returns
+#' [Comarcas of
+#' Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
+#' traditional informal territorial division, comprising several municipalities
+#' sharing geographical, economic or cultural traits, typically with not well
+#' defined limits.
 #'
 #' @source
 #' INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
 #'
-#' @return A [`sf`][sf::st_sf] polygon object.
 #'
+#' @encoding UTF-8
 #' @family political
-#'
-#' @param region A vector of names and/or codes for provinces or `NULL` to get
-#'   all the comarcas. See **Details**.
-#'
-#' @param comarca A name or [`regex`][base::grep()] expression with the names of
-#'   the required comarcas. `NULL` would return all the possible comarcas.
-#'
-#' @param type One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of comarca to
-#'   return, see **Details**.
-#'
-#' @inheritParams esp_get_munic
-#'
-#'
+#' @inheritParams esp_get_prov
+#' @inheritParams esp_get_prov
+#' @inherit esp_get_nuts
 #' @export
 #'
-#' @details
+#' @param region character. A vector of names and/or codes for provinces or
+#'   `NULL` to get all the comarcas. See **Details**.
+#' @param comarca character. A name or [`regex`][base::grep()] expression with
+#'   the names of the required comarcas. `NULL` would return all the possible
+#'   comarcas.
+#' @param type character. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
+#'   comarca to return, see **Details**.
 #'
-#' ## About comarcas
+#' @details
+#' When using `region` you can use and mix names and NUTS codes
+#' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
+#' "cpro" (see [esp_codelist]).
+#'
+#' When calling a higher level (Province, Autonomous Community or NUTS1),
+#' all the comarcas of that level would be added.
+#'
+#' # About comarcas
+#'
 #' 'Comarcas' (English equivalent: district, county, area or zone) does not
 #' always have a formal legal status. They correspond mainly to natural areas
 #' (valleys, river basins etc.) or even to historical regions or ancient
@@ -37,7 +47,7 @@
 #' instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
 #' the Principality of Asturias, and Andalusia have functional comarcas.
 #'
-#' ## Types
+#' # Types
 #'
 #' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
@@ -51,17 +61,8 @@
 #' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
 #'
-#' ## Misc
 #'
-#' When using `region` you can use and mix names and NUTS codes
-#' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' "cpro" (see [esp_codelist]).
-#'
-#' When calling a higher level (Province, Autonomous Community or NUTS1),
-#' all the comarcas of that level would be added.
-#'
-#' ## Legal Notice
-#'
+#' @note
 #' The use of the information contained on the
 #' [INE website](https://www.ine.es/en/index.htm) may be carried out by users or
 #' re-use agents, at their own risk, and they will be the sole liable parties
@@ -99,18 +100,15 @@ esp_get_comarca <- function(
   comarca = NULL,
   moveCAN = TRUE,
   type = c("INE", "IGN", "AGR", "LIV"),
-  epsg = "4258",
+  epsg = 4258,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  init_epsg <- as.character(epsg)
-  type <- match.arg(type)
-  if (!init_epsg %in% c("4326", "4258", "3035", "3857")) {
-    stop("epsg value not valid. It should be one of 4326, 4258, 3035 or 3857")
-  }
+  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  type <- match_arg_pretty(type)
 
-  # Url
+  # url
   api_entry <- switch(type,
     "INE" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/",
     "IGN" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/IGNComarcas/",
@@ -125,14 +123,22 @@ esp_get_comarca <- function(
     "LIV" = "comarcas_ganaderas.gpkg"
   )
 
-  data_sf <- esp_hlp_dwnload_sianedata(
-    api_entry = api_entry,
-    filename = filename,
+  url <- paste0(api_entry, filename)
+
+  file_local <- download_url(
+    url,
     cache_dir = cache_dir,
-    verbose = verbose,
+    subdir = "comarcas",
     update_cache = update_cache,
-    cache = TRUE
+    verbose = verbose
   )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  # Download
+  data_sf <- read_geo_file_sf(file_local)
 
   if (!is.null(comarca)) {
     comarca <- paste(comarca, collapse = "|")
@@ -140,48 +146,33 @@ esp_get_comarca <- function(
   }
 
   if (!is.null(region)) {
-    tonuts <- esp_hlp_all2prov(region)
+    tonuts <- convert_to_nuts_prov(region)
 
     # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df)
+    toprov <- unique(df$cpro)
 
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
   if (nrow(data_sf) == 0) {
-    stop(
-      "The combination of region and/or comarca does ",
-      "not return any result"
+    cli::cli_alert_warning(
+      paste0(
+        "The combination of {.arg region} and/or {.arg comarca} does not ",
+        "return any result"
+      )
     )
+    cli::cli_alert_info("Returning empty {.cls sf} object.")
+    return(data_sf)
   }
 
   # Move CAN
+  data_sf <- move_can(data_sf, moveCAN)
 
-  # Checks
-
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
-    if (length(grep("05", data_sf$codauto)) > 0) {
-      penin <- data_sf[-grep("05", data_sf$codauto), ]
-      can <- data_sf[grep("05", data_sf$codauto), ]
-
-      # Move CAN
-      can <- esp_move_can(can, moveCAN = moveCAN)
-
-      # Regenerate
-      if (nrow(penin) > 0) {
-        data_sf <- rbind(penin, can)
-      } else {
-        data_sf <- can
-      }
-    }
-  }
-
+  # Remathc
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }

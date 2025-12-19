@@ -3,6 +3,7 @@
 rm(list = ls())
 
 
+library(tidyverse)
 library(dplyr)
 library(reshape2)
 library(gsubfn)
@@ -11,57 +12,38 @@ source("./data-raw/helperfuns.R")
 
 # Load ----
 
-NUTS1 <-
-  read.csv(
-    "./data-raw/espNUTS1.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8()
+nuts1 <- read_csv("./data-raw/dict/esp_nuts1.csv")
+# write_csv(nuts,"./data-raw/dict/esp_nuts1.csv")
 
-CCAA <-
-  read.csv(
-    "./data-raw/espCCAA.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8()
+ccaa <- read_csv("./data-raw/dict/esp_ccaa.csv")
 
-PROV <-
-  read.csv(
-    "./data-raw/espPROV.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8()
+# write_csv(ccaa,"./data-raw/dict/esp_ccaa.csv", na = "")
 
-NUTS3 <-
-  read.csv(
-    "./data-raw/espNUTS3.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
-  esp_hlp_utf8()
+# prov <- readxl::read_xlsx("./data-raw/dict/helper.xlsx", sheet = "provs")
+# prov$cpro <- str_pad(prov$cpro, width = 2, pad = "0")
+# prov$codauto <- str_pad(prov$codauto, width = 2, pad = "0")
+# write_csv(prov,"./data-raw/dict/esp_prov.csv", na = "")
+
+prov <- read_csv("./data-raw/dict/esp_prov.csv")
+
+nuts3 <- read_csv("./data-raw/dict/esp_nuts3.csv")
 
 # names_full----
 
 # Create individual dictionaries
-dict_nuts1 <-
-  NUTS1 |>
+dict_nuts1 <- nuts1 |>
   mutate(key = nuts1.shortname.es) |>
   distinct()
-dict_ccaa <- CCAA |>
+
+dict_ccaa <- ccaa |>
   mutate(key = ccaa.shortname.es) |>
   distinct()
-dict_prov <- PROV |>
+
+dict_prov <- prov |>
   mutate(key = prov.shortname.es) |>
   distinct()
-dict_nuts3 <-
-  NUTS3 |>
+
+dict_nuts3 <- nuts3 |>
   mutate(key = nuts3.shortname.es) |>
   distinct()
 
@@ -101,21 +83,25 @@ dict_nuts3all <- melt(
   unique()
 
 
-names_full <-
-  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) |>
+names_full <- bind_rows(
+  dict_ccaaall,
+  dict_nuts1all,
+  dict_provall,
+  dict_nuts3all
+) |>
   unique() |>
-  mutate(variable = as.character(variable))
+  mutate(variable = as.character(variable)) |>
+  as_tibble()
 
 # Add versions without accents, etc.
 
-names_alt <-
-  names_full |>
+names_alt <- names_full |>
   mutate(
     value = iconv(value, from = "UTF-8", to = "ASCII//TRANSLIT"),
     variable = paste0("clean.", variable)
   )
 
-names_full <- rbind(names_full, names_alt) |> distinct()
+names_full <- bind_rows(names_full, names_alt) |> distinct()
 
 # Version UPCASE and lowercase
 
@@ -130,37 +116,37 @@ locase <- names_full |>
     variable = paste0("locase.", variable)
   )
 
-names_full <-
-  rbind(names_full, upcase) |>
-  rbind(locase) |>
+names_full <- bind_rows(names_full, upcase) |>
+  bind_rows(locase) |>
   distinct()
+
 
 # Tests names_full
 
-names_dict <-
-  unique(names_full[grep("name", names_full$variable), c("key", "value")])
+names_dict <- unique(names_full[
+  grep("name", names_full$variable),
+  c("key", "value")
+])
 
 
-test <-
-  c(
-    "Xaén",
-    "Jaen",
-    "Leon",
-    "Girona",
-    "Errioxa",
-    "Madril",
-    "Vizcaya",
-    "Andalusia",
-    "Kanariak"
-  )
-ret <-
-  countrycode::countrycode(
-    test,
-    origin = "value",
-    destination = "key",
-    custom_dict = names_dict,
-    nomatch = NULL
-  )
+test <- c(
+  "Xaén",
+  "Jaen",
+  "Leon",
+  "Girona",
+  "Errioxa",
+  "Madril",
+  "Vizcaya",
+  "Andalusia",
+  "Kanariak"
+)
+ret <- countrycode::countrycode(
+  test,
+  origin = "value",
+  destination = "key",
+  custom_dict = names_dict,
+  nomatch = NULL
+)
 
 
 toen <- names_full[names_full$key == "Madrid", ]
@@ -207,17 +193,16 @@ names2nuts <- esp_hlp_names2nuts()
 
 # Test
 
-var <-
-  c(
-    "Madrid",
-    "Valencia",
-    "Menorca",
-    "Tenerife",
-    "Las Palmas",
-    "Santa Cruz de Tenerife",
-    "Madrid",
-    "Andalucía"
-  )
+var <- c(
+  "Madrid",
+  "Valencia",
+  "Menorca",
+  "Tenerife",
+  "Las Palmas",
+  "Santa Cruz de Tenerife",
+  "Madrid",
+  "Andalucía"
+)
 
 f <- countrycode::countrycode(
   var,
@@ -284,27 +269,22 @@ names_full <- names_full |> as.data.frame()
 # Add grid files
 
 library(sf)
-esp_hexbin_prov <-
-  st_read("./data-raw/esp_hexbin_prov.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_hexbin_prov <- read_geo_file_sf("./data-raw/esp_hexbin_prov.gpkg") |>
+  sanitize_sf()
 
-esp_hexbin_ccaa <-
-  st_read("./data-raw/esp_hexbin_ccaa.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_hexbin_ccaa <- read_geo_file_sf("./data-raw/esp_hexbin_ccaa.gpkg") |>
+  sanitize_sf()
 
 
-esp_grid_prov <-
-  st_read("./data-raw/esp_grid_prov.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_grid_prov <- read_geo_file_sf("./data-raw/esp_grid_prov.gpkg")
 
-esp_grid_ccaa <-
-  st_read("./data-raw/esp_grid_ccaa.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_grid_ccaa <- read_geo_file_sf("./data-raw/esp_grid_ccaa.gpkg")
+
 
 usethis::use_data(
   # dict_nuts1,
-  dict_ccaa,
-  dict_prov,
+  # dict_ccaa,
+  # dict_prov,
   # dict_nuts3,
   code2code,
   names2nuts,

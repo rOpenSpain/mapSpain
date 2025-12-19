@@ -55,7 +55,7 @@ data. One of:
 \itemize{
 \item "10": 1:10 million.
 \item "6.5": 1:6.5 million.
-\item "6.5": 1:3 million.
+\item "3": 1:3 million.
 }}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates

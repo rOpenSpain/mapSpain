@@ -95,7 +95,7 @@ esp_get_prov_siane <- function(
 
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df)
+    toprov <- unique(df$cpro)
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
@@ -114,24 +114,8 @@ esp_get_prov_siane <- function(
   )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  # Checks
-  moving <- FALSE
-  prepare_can <- data_sf
-  prepare_can$is_can <- prepare_can$codauto == "05"
-
-  moving <- (isTRUE(moveCAN) | length(moveCAN) > 1) & any(prepare_can$is_can)
-
-  if (moving) {
-    penin <- prepare_can[prepare_can$is_can == FALSE, ]
-    can <- prepare_can[prepare_can$is_can == TRUE, ]
-
-    can <- esp_move_can(can, moveCAN = moveCAN)
-
-    # Regenerate
-    keep_n <- names(data_sf)
-    data_sf <- rbind_fill(list(penin, can))
-    data_sf <- data_sf[, keep_n]
-  }
+  # Move CAN
+  data_sf <- move_can(data_sf, moveCAN)
 
   # Transform
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))

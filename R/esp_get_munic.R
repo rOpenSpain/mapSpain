@@ -228,7 +228,7 @@ esp_get_munic <- function(
     # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df)
+    toprov <- unique(df$cpro)
 
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
@@ -358,7 +358,7 @@ esp_get_munic_siane <- function(
     # toprov
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df)
+    toprov <- unique(df$cpro)
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 

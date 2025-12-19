@@ -203,26 +203,8 @@ esp_get_nuts <- function(
     }
   }
 
-  # Checks
-  moving <- FALSE
-  prepare_can <- data_sf
-  prepare_can$is_can <- FALSE
-  if ("NUTS_ID" %in% colnames(data_sf)) {
-    prepare_can$is_can <- grepl("^ES7", data_sf$NUTS_ID)
-  }
-  moving <- (isTRUE(moveCAN) | length(moveCAN) > 1) & any(prepare_can$is_can)
-
-  if (moving) {
-    penin <- prepare_can[prepare_can$is_can == FALSE, ]
-    can <- prepare_can[prepare_can$is_can == TRUE, ]
-
-    can <- esp_move_can(can, moveCAN = moveCAN)
-
-    # Regenerate
-    keep_n <- names(data_sf)
-    data_sf <- rbind_fill(list(penin, can))
-    data_sf <- data_sf[, keep_n]
-  }
+  # Move CAN
+  data_sf <- move_can(data_sf, moveCAN)
 
   data_sf <- sanitize_sf(data_sf)
   data_sf

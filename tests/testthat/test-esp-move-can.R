@@ -116,3 +116,97 @@ test_that("Empty", {
   expect_equal(length(teide_null_sfc), 0)
   expect_identical(teide_null_sfc, esp_move_can(teide_null_sfc, moveCAN = TRUE))
 })
+
+test_that("Internal", {
+  test <- data.frame(
+    name = "test",
+    lon = 0,
+    lat = 0
+  )
+
+  test_sf <- sf::st_as_sf(test, coords = c("lon", "lat"), crs = 3857)
+
+  # Same
+  expect_identical(move_can(test_sf, moveCAN = FALSE), test_sf)
+  expect_identical(move_can(test_sf, moveCAN = TRUE), test_sf)
+  expect_identical(move_can(test_sf, moveCAN = c(1, 4)), test_sf)
+
+  # With nuts
+  test_sf2 <- test_sf
+  test_sf2$NUTS_ID <- "ES24"
+  expect_identical(move_can(test_sf2, moveCAN = FALSE), test_sf2)
+
+  #  But
+  test_sf2$NUTS_ID <- "ES765"
+  res <- move_can(test_sf2, moveCAN = TRUE)
+  expect_snapshot(sf::st_coordinates(res))
+
+  test_sf2_lonlat <- sf::st_transform(test_sf2, 4326)
+  res2 <- move_can(test_sf2_lonlat, moveCAN = c(-10, 10))
+  res3 <- esp_move_can(test_sf2_lonlat, moveCAN = c(-10, 10))
+  expect_identical(sf::st_coordinates(res2), sf::st_coordinates(res3))
+
+  # With codauto
+  test_sf_codauto <- test_sf
+  test_sf_codauto$codauto <- NA
+  expect_identical(move_can(test_sf_codauto, moveCAN = FALSE), test_sf_codauto)
+
+  test_sf_codauto$codauto <- "20"
+  expect_identical(move_can(test_sf_codauto, moveCAN = FALSE), test_sf_codauto)
+
+  #  But
+  test_sf_codauto$codauto <- "05"
+  res <- move_can(test_sf_codauto, moveCAN = TRUE)
+  expect_snapshot(sf::st_coordinates(res))
+
+  test_sf_codauto_lonlat <- sf::st_transform(test_sf_codauto, 4326)
+  res2 <- move_can(test_sf_codauto_lonlat, moveCAN = c(-10, 10))
+  res3 <- esp_move_can(test_sf_codauto_lonlat, moveCAN = c(-10, 10))
+  expect_identical(sf::st_coordinates(res2), sf::st_coordinates(res3))
+})
+
+test_that("Several", {
+  test <- data.frame(
+    name = c("test", "2"),
+    lon = c(0, 0),
+    lat = c(0, 0)
+  )
+
+  test_sf <- sf::st_as_sf(test, coords = c("lon", "lat"), crs = 3857)
+
+  # Same
+  expect_identical(move_can(test_sf, moveCAN = FALSE), test_sf)
+  expect_identical(move_can(test_sf, moveCAN = TRUE), test_sf)
+  expect_identical(move_can(test_sf, moveCAN = c(1, 4)), test_sf)
+
+  # With nuts
+  test_sf2 <- test_sf
+  test_sf2$NUTS_ID <- "ES24"
+  expect_identical(move_can(test_sf2, moveCAN = FALSE), test_sf2)
+
+  #  But
+  test_sf2$NUTS_ID[1] <- "ES765"
+  res <- move_can(test_sf2, moveCAN = TRUE)
+  expect_snapshot(sf::st_coordinates(res))
+
+  test_sf2_lonlat <- sf::st_transform(test_sf2, 4326)
+  res2 <- move_can(test_sf2_lonlat, moveCAN = c(-10, 10))
+  expect_snapshot(sf::st_coordinates(res2))
+
+  # With codauto
+  test_sf_codauto <- test_sf
+  test_sf_codauto$codauto <- NA
+  expect_identical(move_can(test_sf_codauto, moveCAN = FALSE), test_sf_codauto)
+
+  test_sf_codauto$codauto <- "20"
+  expect_identical(move_can(test_sf_codauto, moveCAN = FALSE), test_sf_codauto)
+
+  #  But
+  test_sf_codauto$codauto[1] <- "05"
+  res <- move_can(test_sf_codauto, moveCAN = TRUE)
+  expect_snapshot(sf::st_coordinates(res))
+
+  test_sf_codauto_lonlat <- sf::st_transform(test_sf_codauto, 4326)
+  res2 <- move_can(test_sf_codauto_lonlat, moveCAN = c(-10, 10))
+  expect_snapshot(sf::st_coordinates(res2))
+})

@@ -21,7 +21,7 @@
 #'   data. One of:
 #'   * "10": 1:10 million.
 #'   * "6.5": 1:6.5 million.
-#'   * "6.5": 1:3 million.
+#'   * "3": 1:3 million.
 #'
 #' @param rawcols logical. Setting this to `TRUE` would add the raw columns of
 #'   the resulting object as provided by IGN.
@@ -133,10 +133,10 @@ esp_get_ccaa_siane <- function(
     nuts_id <- convert_to_nuts_ccaa(region)
     # Get df
     df <- mapSpain::esp_codelist
-    dfl2 <- df[df$nuts2.code %in% nuts_id, "codauto"]
-    dfl3 <- df[df$nuts3.code %in% nuts_id, "codauto"]
+    dfl2 <- df[df$nuts2.code %in% nuts_id, ]$codauto
+    dfl3 <- df[df$nuts3.code %in% nuts_id, ]$codauto
 
-    finalcodauto <- c(dfl2, dfl3)
+    finalcodauto <- as.vector(c(dfl2, dfl3))
 
     # Filter
     data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
@@ -153,25 +153,10 @@ esp_get_ccaa_siane <- function(
   dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  # Checks
-  moving <- FALSE
-  prepare_can <- data_sf
-  prepare_can$is_can <- prepare_can$codauto == "05"
+  # Move CAN
+  data_sf <- move_can(data_sf, moveCAN)
 
-  moving <- (isTRUE(moveCAN) | length(moveCAN) > 1) & any(prepare_can$is_can)
-
-  if (moving) {
-    penin <- prepare_can[prepare_can$is_can == FALSE, ]
-    can <- prepare_can[prepare_can$is_can == TRUE, ]
-
-    can <- esp_move_can(can, moveCAN = moveCAN)
-
-    # Regenerate
-    keep_n <- names(data_sf)
-    data_sf <- rbind_fill(list(penin, can))
-    data_sf <- data_sf[, keep_n]
-  }
-
+  # Back and finish
   # Transform
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 

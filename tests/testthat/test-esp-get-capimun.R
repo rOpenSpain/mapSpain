@@ -91,6 +91,9 @@ test_that("Filter munis and regions", {
   expect_identical(db_cached$ine.prov.name, "Segovia")
 
   db_cached <- esp_get_capimun(munic = "Nieva", cache_dir = cdir)
+  expect_shape(db_cached, nrow = 3)
+  expect_s3_class(db_cached, "sf")
+  expect_s3_class(db_cached, "tbl_df")
   db_cached_reg <- esp_get_capimun(
     munic = "Nieva",
     region = "La Rioja",

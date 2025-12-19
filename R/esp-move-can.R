@@ -97,7 +97,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
     offset <- c(550000, 920000)
 
     if (length(moveCAN) > 1) {
-      coords <- sf::st_point(moveCAN)
+      coords <- sf::st_point(moveCAN[1:2])
       coords <- sf::st_sfc(coords, crs = sf::st_crs(4326))
       coords <- sf::st_transform(coords, 3857)
       coords <- sf::st_coordinates(coords)
@@ -127,4 +127,36 @@ esp_move_can <- function(x, moveCAN = TRUE) {
     x_out <- x
   }
   x_out
+}
+
+# Internal version, helper fun
+move_can <- function(data_sf, moveCAN = TRUE) {
+  if (isFALSE(moveCAN)) {
+    return(data_sf)
+  }
+  # Checks
+  moving <- FALSE
+  prepare_can <- data_sf
+  if ("codauto" %in% names(data_sf)) {
+    prepare_can$is_can <- prepare_can$codauto == "05"
+  }
+  if ("NUTS_ID" %in% colnames(data_sf)) {
+    prepare_can$is_can <- grepl("^ES7", data_sf$NUTS_ID)
+  }
+
+  moving <- (isTRUE(moveCAN) | length(moveCAN) >= 2) & any(prepare_can$is_can)
+
+  if (moving) {
+    penin <- prepare_can[prepare_can$is_can == FALSE, ]
+    can <- prepare_can[prepare_can$is_can == TRUE, ]
+
+    can <- esp_move_can(can, moveCAN = moveCAN)
+
+    # Regenerate
+    keep_n <- names(data_sf)
+    data_sf <- rbind_fill(list(penin, can))
+    data_sf <- data_sf[, keep_n]
+  }
+
+  data_sf
 }

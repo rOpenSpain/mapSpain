@@ -42,6 +42,7 @@ test_that("Check country", {
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
+  expect_shape(s, nrow = 1)
 
   # EPSG work
   expect_silent(s <- esp_get_country(epsg = 3035, resolution = 20))

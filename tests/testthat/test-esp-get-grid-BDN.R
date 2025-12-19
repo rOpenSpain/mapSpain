@@ -88,8 +88,9 @@ test_that("BDN grid online CCAA", {
   tdir <- file.path(tempdir(), "testthat_test")
   tdir <- create_cache_dir(tdir)
   expect_message(
-    esp_get_grid_BDN_ccaa("Ceuta", cache_dir = tdir, verbose = TRUE)
+    s <- esp_get_grid_BDN_ccaa("Ceuta", cache_dir = tdir, verbose = TRUE)
   )
+  expect_gte(nrow(s), 1)
 
   expect_silent(esp_get_grid_BDN_ccaa("Melilla", cache_dir = tdir))
   unlink(tdir, recursive = TRUE, force = TRUE)
