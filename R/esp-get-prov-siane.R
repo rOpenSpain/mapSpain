@@ -90,6 +90,7 @@ esp_get_prov_siane <- function(
   initcols <- colnames(sf::st_drop_geometry(data_sf))
   data_sf$cpro <- data_sf$id_prov
 
+  prov <- ensure_null(prov)
   if (!is.null(prov)) {
     tonuts <- convert_to_nuts_prov(prov)
 

@@ -87,12 +87,9 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   params <- list(...)
 
   # Get region id
-  prov <- prov[!is.na(prov)]
-  region <- prov
-  if (is.null(region)) {
-    nuts_id <- NULL
-  } else {
-    nuts_id <- convert_to_nuts_prov(region)
+  nuts_id <- ensure_null(prov)
+  if (!is.null(nuts_id)) {
+    nuts_id <- convert_to_nuts_prov(nuts_id)
   }
 
   params$region <- nuts_id
@@ -136,10 +133,14 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   # Paste nuts2
   dfnuts <- mapSpain::esp_codelist
-  dfnuts <- unique(dfnuts[
-    ,
-    c("cpro", "nuts2.code", "nuts2.name", "nuts1.code", "nuts1.name")
-  ])
+  dfnuts <- dfnuts[, c(
+    "cpro",
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
+  )]
+  dfnuts <- unique(dfnuts)
 
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 

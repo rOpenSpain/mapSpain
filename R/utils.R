@@ -184,3 +184,15 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
 
   df
 }
+ensure_null <- function(x) {
+  x_init <- x
+  x <- as.vector(x)
+  x[is.null(x)] <- NA
+  x[is.na(x)] <- NA
+  x[nchar(as.character(x)) == 0] <- NA
+  if (all(is.na(x))) {
+    return(NULL)
+  }
+
+  x_init
+}

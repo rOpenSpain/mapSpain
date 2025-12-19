@@ -5,8 +5,8 @@
 #' @noRd
 convert_to_nuts <- function(region) {
   # Clean up
-  clean_region <- unique(region)
-  if (any(is.null(region), all(is.na(clean_region)))) {
+  clean_region <- unique(ensure_null(region))
+  if (is.null(clean_region)) {
     cli::cli_alert_warning(
       "Empty {.arg region}. No NUTS codes found, returning NULL."
     )
@@ -63,8 +63,8 @@ convert_to_nuts <- function(region) {
 #' @noRd
 convert_to_nuts_ccaa <- function(region) {
   # Clean up
-  clean_region <- unique(region)
-  if (any(is.null(region), all(is.na(clean_region)))) {
+  clean_region <- unique(ensure_null(region))
+  if (is.null(clean_region)) {
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]
@@ -151,8 +151,8 @@ convert_to_nuts_ccaa <- function(region) {
 #' @noRd
 convert_to_nuts_prov <- function(region) {
   # Clean up
-  clean_region <- unique(region)
-  if (any(is.null(region), all(is.na(clean_region)))) {
+  clean_region <- unique(ensure_null(region))
+  if (is.null(clean_region)) {
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]

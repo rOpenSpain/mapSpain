@@ -115,7 +115,7 @@ esp_hlp_all2ccaa <- function(region) {
 #'
 #' @noRd
 esp_hlp_all2prov <- function(region) {
-  cod2cod <- code2code
+  cod2cod <- get_master_codes()
   cod2cod <- cod2cod[!is.na(cod2cod$cpro), ]
 
   region <- unique(region)

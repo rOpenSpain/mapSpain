@@ -27,11 +27,13 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl("shp$", shp_zip)]
+    shp_hint <- ensure_null(shp_hint)
     if (!is.null(shp_hint)) {
       shp_zip <- shp_zip[grepl(shp_hint, shp_zip)]
     }
     shp_end <- shp_zip[1]
-    if (any(is.na(shp_end), is.null(shp_end))) {
+    shp_end <- ensure_null(shp_end)
+    if (is.null(shp_end)) {
       cli::cli_alert_warning("Can't read file {.file {file_local}}")
       cli::cli_abort(
         paste0(
@@ -45,7 +47,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local)
   }
-
+  q <- ensure_null(q)
   if (!is.null(q)) {
     data_sf <- sf::read_sf(file_local, query = q)
   } else {

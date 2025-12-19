@@ -260,8 +260,9 @@ detect_cache_dir_muted <- function() {
 
   # Try from getenv
   getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
+  getvar <- ensure_null(getvar)
 
-  if (is.null(getvar) || is.na(getvar) || getvar == "") {
+  if (is.null(getvar)) {
     # Not set - tries to retrieve from cache
     cache_config <- file.path(
       tools::R_user_dir("mapSpain", "config"),
@@ -271,15 +272,10 @@ detect_cache_dir_muted <- function() {
     # nocov start
     if (file.exists(cache_config)) {
       cached_path <- readLines(cache_config)
+      cached_path <- ensure_null(cached_path)
 
       # Case on empty cached path - would default
-      if (
-        any(
-          is.null(cached_path),
-          is.na(cached_path),
-          cached_path == ""
-        )
-      ) {
+      if (is.null(cached_path)) {
         cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
@@ -307,6 +303,8 @@ detect_cache_dir_muted <- function() {
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
+  cache_dir <- ensure_null(cache_dir)
+
   # Check cache dir from options if not set
   if (is.null(cache_dir)) {
     cache_dir <- detect_cache_dir_muted()

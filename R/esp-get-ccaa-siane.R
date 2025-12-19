@@ -125,12 +125,10 @@ esp_get_ccaa_siane <- function(
   data_sf$codauto <- esp_dict_region_code(data_sf$lab, destination = "codauto")
 
   # Filter CCAA
+  nuts_id <- ensure_null(ccaa)
 
-  region <- ccaa
-  if (is.null(region)) {
-    nuts_id <- NULL
-  } else {
-    nuts_id <- convert_to_nuts_ccaa(region)
+  if (!is.null(nuts_id)) {
+    nuts_id <- convert_to_nuts_ccaa(nuts_id)
     # Get df
     df <- mapSpain::esp_codelist
     dfl2 <- df[df$nuts2.code %in% nuts_id, ]$codauto

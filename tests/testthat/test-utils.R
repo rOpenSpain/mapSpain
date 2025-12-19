@@ -179,3 +179,11 @@ test_that("Filter dates", {
     siane_filter_year(data_sf, "1900-12"),
   )
 })
+test_that("Ensure NULL", {
+  expect_null(ensure_null(NULL))
+  expect_null(ensure_null(c(NULL, NA)))
+  expect_null(ensure_null(c(NULL, NA, "")))
+  expect_null(ensure_null(c("", character(0))))
+  expect_identical(ensure_null(c(1, 2)), c(1, 2))
+  expect_identical(letters, letters)
+})

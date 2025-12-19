@@ -47,11 +47,11 @@
 ---
 
     Code
-      esp_dict_region_code(c("Ciudad Autónoma de Ceuta", "Ciudad Autónoma de Melilla",
-        "Región de Murcia", "Principado de Asturias", "Ciudad de Ceuta",
-        "Ciudad de Melilla", "Sta. Cruz de Tenerife"), destination = "cpro")
+      esp_dict_region_code(c("Región de Murcia", "Principado de Asturias",
+        "Ciudad de Ceuta", "Ciudad de Melilla", "Sta. Cruz de Tenerife"),
+      destination = "cpro")
     Output
-      [1] "51" "52" "30" "33" "51" "52" "38"
+      [1] "30" "33" "51" "52" "38"
 
 ---
 
@@ -103,6 +103,43 @@
 ---
 
     Code
+      esp_dict_translate(c("Ceuta", "Melilla", vals), all = TRUE)
+    Output
+      $Ceuta
+      [1] "Ceuta"           "Ciudad de Ceuta" "ceuta"           "ciudad de ceuta"
+      [5] "CEUTA"           "CIUDAD DE CEUTA"
+      
+      $Melilla
+      [1] "Melilla"           "Ciudad de Melilla" "melilla"          
+      [4] "ciudad de melilla" "MELILLA"           "CIUDAD DE MELILLA"
+      
+      $`La Rioja`
+      [1] "La Rioja" "la rioja" "LA RIOJA"
+      
+      $Sevilla
+      [1] "Seville" "seville" "SEVILLE"
+      
+      $Madrid
+      [1] "Madrid"                      "madrid"                     
+      [3] "MADRID"                      "Madrid Province"            
+      [5] "Madrid Autonomous Community" "madrid province"            
+      [7] "madrid autonomous community" "MADRID PROVINCE"            
+      [9] "MADRID AUTONOMOUS COMMUNITY"
+      
+      $Jaen
+      [1] "Jaén" "Jaen" "jaén" "jaen" "JAÉN" "JAEN"
+      
+      $Orense
+      [1] "Ourense" "ourense" "OURENSE"
+      
+      $Baleares
+      [1] "Balearic Islands" "balearic islands" "BALEARIC ISLANDS" "Balears Province"
+      [5] "balears province" "BALEARS PROVINCE"
+      
+
+---
+
+    Code
       esp_dict_translate(c(vals, "pepe"))
     Message
       ! No match found for "pepe".
@@ -113,11 +150,9 @@
 ---
 
     Code
-      esp_dict_translate(c("Ciudad Autónoma de Ceuta", "Ciudad Autónoma de Melilla",
-        "Región de Murcia", "Principado de Asturias", "Ciudad de Ceuta",
-        "Ciudad de Melilla", "Sta. Cruz de Tenerife"), lang = "eu")
+      esp_dict_translate(c("Región de Murcia", "Principado de Asturias",
+        "Ciudad de Ceuta", "Ciudad de Melilla", "Sta. Cruz de Tenerife"), lang = "eu")
     Output
-      [1] "Ceuta"                  "Melilla"                "Murtzia"               
-      [4] "Asturias"               "Ceuta"                  "Melilla"               
-      [7] "Santa Cruz Tenerifekoa"
+      [1] "Murtzia"                "Asturias"               "Ceuta"                 
+      [4] "Melilla"                "Santa Cruz Tenerifekoa"
 

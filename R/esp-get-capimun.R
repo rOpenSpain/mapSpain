@@ -162,10 +162,13 @@ esp_get_capimun <- function(
   data_sf <- merge(data_sf, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
   data_sf <- sanitize_sf(data_sf)
 
+  munic <- ensure_null(munic)
+
   if (!is.null(munic)) {
     munic <- paste(munic, collapse = "|")
     data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
   }
+  region <- ensure_null(region)
 
   if (!is.null(region)) {
     tonuts <- convert_to_nuts_prov(region)

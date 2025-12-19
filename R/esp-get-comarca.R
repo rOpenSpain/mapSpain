@@ -139,11 +139,13 @@ esp_get_comarca <- function(
 
   # Download
   data_sf <- read_geo_file_sf(file_local)
+  comarca <- ensure_null(comarca)
 
   if (!is.null(comarca)) {
     comarca <- paste(comarca, collapse = "|")
     data_sf <- data_sf[grep(comarca, data_sf$name, ignore.case = TRUE), ]
   }
+  region <- ensure_null(region)
 
   if (!is.null(region)) {
     tonuts <- convert_to_nuts_prov(region)

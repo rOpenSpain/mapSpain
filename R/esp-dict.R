@@ -89,10 +89,10 @@ esp_dict_region_code <- function(
   }
 
   # Create dict
-  dict <- names_full
+  dict <- get_master_names()
 
   names_dict <- unique(
-    names_full[grep("name", dict$variable), c("key", "value")]
+    dict[grep("name", dict$variable), c("key", "value")]
   )
 
   # If text convert to nuts
@@ -111,7 +111,7 @@ esp_dict_region_code <- function(
       sourcevar,
       origin = "key",
       destination = "nuts",
-      custom_dict = names2nuts,
+      custom_dict = get_master_nuts_nm(),
       nomatch = "NOMATCH"
     )
 
@@ -146,7 +146,7 @@ esp_dict_region_code <- function(
       sourcevar,
       origin,
       "nuts",
-      custom_dict = code2code,
+      custom_dict = get_master_codes(),
       nomatch = "NOMATCH"
     )
 
@@ -181,7 +181,7 @@ esp_dict_region_code <- function(
       sourcevar,
       origin,
       destination,
-      custom_dict = code2code,
+      custom_dict = get_master_codes(),
       nomatch = "NOMATCH"
     )
 
@@ -250,7 +250,7 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   lang <- match_arg_pretty(lang, avlang)
 
   # Create dict
-  dict <- names_full
+  dict <- get_master_names()
 
   # Arrange prelation for results:
   # - First: prov (a_prov)
@@ -261,19 +261,8 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   dict$variable <- gsub("nuts", "c_nuts", dict$variable) # Upgrade nuts
 
   names_dict <- unique(
-    names_full[grep("name", dict$variable), c("key", "value")]
+    dict[grep("name", dict$variable), c("key", "value")]
   )
-
-  # Manually replace
-  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
-  sourcevar <- gsub(
-    "Ciudad de melilla",
-    "Melilla",
-    sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
-  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
 
   sourcevar_lower <- tolower(sourcevar)
   tokeys <- countrycode::countrycode(
@@ -283,6 +272,15 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
     custom_dict = names_dict,
     nomatch = "NOMATCH"
   )
+
+  if (any(tokeys == "NOMATCH")) {
+    cli::cli_alert_warning(
+      paste0(
+        "No match found ",
+        "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
+      )
+    )
+  }
 
   # Create lang dict
   dict_tolang <- unique(
@@ -297,28 +295,23 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   dict_tolang <- unique(
     dict_tolang[order(dict_tolang$variable), c("key", "value")]
   )
+  namestrans <- lapply(seq_along(tokeys), function(x) {
+    if (tokeys[x] == "NOMATCH") {
+      return(NA)
+    }
 
-  namestrans <- lapply(seq(1, length(tokeys)), function(x) {
-    dict_tolang[dict_tolang$key == tokeys[x], "value"]
+    all_trans <- dict_tolang[dict_tolang$key == tokeys[x], "value"]
+    all_trans <- unlist(all_trans)
+    if (isFALSE(all)) {
+      all_trans <- all_trans[1]
+    }
+    unname(all_trans)
   })
 
-  namestrans[tokeys == "NOMATCH"] <- NA
-
-  if (isTRUE(all)) {
+  if (all) {
     names(namestrans) <- sourcevar
-  }
-
-  if (isFALSE(all)) {
-    namestrans <- unlist(lapply(namestrans, `[[`, 1))
-  }
-
-  if (any(tokeys == "NOMATCH")) {
-    cli::cli_alert_warning(
-      paste0(
-        "No match found ",
-        "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
-      )
-    )
+  } else {
+    namestrans <- unlist(namestrans)
   }
 
   namestrans

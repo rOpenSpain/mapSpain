@@ -13,8 +13,6 @@ test_that("Testing dict", {
   expect_snapshot(
     esp_dict_region_code(
       c(
-        "Ciudad Autónoma de Ceuta",
-        "Ciudad Autónoma de Melilla",
         "Región de Murcia",
         "Principado de Asturias",
         "Ciudad de Ceuta",
@@ -62,7 +60,8 @@ test_that("Testing dict", {
   vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
   expect_snapshot(error = TRUE, esp_dict_translate(vals, "xx"))
   expect_silent(esp_dict_translate(vals))
-  expect_true(class(esp_dict_translate(vals, all = TRUE)) == "list")
+
+  expect_snapshot(esp_dict_translate(c("Ceuta", "Melilla", vals), all = TRUE))
   expect_snapshot(esp_dict_translate(c(vals, "pepe")))
 
   # Check results
@@ -75,8 +74,6 @@ test_that("Testing dict", {
   expect_snapshot(
     esp_dict_translate(
       c(
-        "Ciudad Autónoma de Ceuta",
-        "Ciudad Autónoma de Melilla",
         "Región de Murcia",
         "Principado de Asturias",
         "Ciudad de Ceuta",

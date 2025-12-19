@@ -130,11 +130,10 @@ esp_hlp_code2code <- function() {
 
   # Add missing NUTS3
   missnuts <- data.frame(
-    nuts = nt3[!nt3 %in% base.df$nuts],
+    nuts = nt3[!nt3 %in% base.df$nuts]$nuts3.code,
     iso2 = NA,
     codauto = NA,
-    cpro = NA,
-    stringsAsFactors = FALSE
+    cpro = NA
   )
 
   dict_codes.df <- rbind(base.df, missnuts)
