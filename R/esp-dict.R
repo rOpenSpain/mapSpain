@@ -150,7 +150,7 @@ esp_dict_region_code <- function(
       nomatch = "NOMATCH"
     )
 
-    dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts.sf)
+    dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts_2024)
 
     out <- countrycode::countrycode(
       sourcevar,

@@ -105,8 +105,7 @@ Other political:
 \code{\link{esp_get_simpl_prov}()}
 
 Other nuts: 
-\code{\link{esp_get_nuts}()},
-\code{\link{esp_nuts.sf}}
+\code{\link{esp_get_nuts}()}
 
 Other gisco: 
 \code{\link{esp_get_ccaa}()},

@@ -85,7 +85,7 @@ test_that("Pretty match", {
 
 test_that("Bind and fill sf", {
   skip_on_cran()
-  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_munic.sf[1, ]
   a_list <- list(gb, cos, gb, cos)
   expect_error(err <- do.call(rbind, a_list))
@@ -98,7 +98,7 @@ test_that("Bind and fill sf", {
 
 test_that("Bind and fill tibbles", {
   skip_on_cran()
-  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
   cos <- mapSpain::esp_munic.sf[1, ]
   cos <- sf::st_drop_geometry(cos)
@@ -111,7 +111,7 @@ test_that("Bind and fill tibbles", {
 
 test_that("Bind and fill sf removes NULL", {
   skip_on_cran()
-  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_munic.sf[1, ]
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
@@ -125,7 +125,7 @@ test_that("Bind and fill sf removes NULL", {
 
 test_that("Bind and fill tibble removes NULL", {
   skip_on_cran()
-  gb <- mapSpain::esp_nuts.sf[1, ]
+  gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
   cos <- mapSpain::esp_munic.sf[1, ]
   cos <- sf::st_drop_geometry(cos)

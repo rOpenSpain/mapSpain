@@ -5,7 +5,9 @@
 -   `esp_getTiles()` renamed to `esp_get_tiles()`. Both versions work so far.
 -   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
     available any more.
--   Add `?esp_nuts_2024` (replaces `esp_nuts.sf`).
+-   Add `?esp_nuts_2024` (replaces `?esp_nuts.sf`).
+-   `?leaflet.providersESP.df` has been removed. It was superseded in
+    **mapSpain** v0.8.0.
 
 # mapSpain 0.10.0
 

@@ -152,7 +152,6 @@ single$leaflet
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_munic.sf}},
-\code{\link{esp_nuts.sf}},
 \code{\link{esp_nuts_2024}},
 \code{\link{pobmun19}}
 

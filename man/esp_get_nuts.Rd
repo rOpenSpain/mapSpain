@@ -202,8 +202,7 @@ Other political:
 \code{\link{esp_get_simpl_prov}()}
 
 Other nuts: 
-\code{\link{esp_get_country}()},
-\code{\link{esp_nuts.sf}}
+\code{\link{esp_get_country}()}
 
 Other gisco: 
 \code{\link{esp_get_ccaa}()},
