@@ -105,7 +105,7 @@ spanish_laplad$dens_breaks <- cut(spanish_laplad$POP_DENS_2023, breaks,
 cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 cut_labs[length(breaks)] <- "> 1000"
 
-
+library(ggplot2)
 ggplot(spanish_laplad) +
   geom_sf(aes(fill = dens_breaks), color = "grey30", linewidth = 0.1) +
   scale_fill_manual(
