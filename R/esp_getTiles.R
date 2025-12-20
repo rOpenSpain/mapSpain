@@ -26,11 +26,11 @@
 #'
 #' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #'
-#' @param type This parameter could be either:
+#' @param type This argument could be either:
 #'   - The name of one of the  pre-defined providers
 #'     (see [esp_tiles_providers()]).
-#'   - A list with two named elements `id` and `q` with your own parameters.
-#'     See [esp_make_provider()] and examples.
+#'   - A list with two named elements `id` and `q` with your own arguments. See
+#'     [esp_make_provider()] and examples.
 #' @param zoom Zoom level. If `NULL`, it is determined automatically. If set,
 #'   it overrides `zoommin`. Only valid for WMTS tiles. On a single point it
 #'   applies a buffer to the point and on `zoom = NULL` the function set a zoom

@@ -8,6 +8,12 @@
 #'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
+  # Secure nulls
+  file_local <- ensure_null(file_local)
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
   # Warn if file size is huge and no query
 
   if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
@@ -114,7 +120,10 @@ sanitize_sf <- function(data_sf) {
   # Normalize with the EPSG number
 
   epsg_num <- sf::st_crs(data_sf)$epsg
-  if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
+  epsg_num <- ensure_null(epsg_num)
+  if (is.null(epsg_num)) {
+    data_sf <- sf::st_set_crs(data_sf, sf::st_crs(NA))
+  } else if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
     data_sf <- sf::st_transform(data_sf, sf::st_crs(epsg_num))
   }
 

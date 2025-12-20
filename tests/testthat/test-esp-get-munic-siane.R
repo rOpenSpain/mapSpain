@@ -139,6 +139,14 @@ test_that("Filter munis and regions", {
   expect_identical(ten_move[1, ], ten_move_par[1, ])
   expect_false(identical(ten_move[1, ], ten_nomove[, 1]))
 
+  db_3035 <- esp_get_munic_siane(
+    munic = "Nieva",
+    region = "La Rioja",
+    epsg = 3035,
+    cache_dir = cdir
+  )
+  expect_identical(sf::st_crs(3035), sf::st_crs(db_3035))
+
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

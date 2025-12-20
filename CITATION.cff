@@ -192,6 +192,16 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 0.9.0'
 - type: software
+  title: stats
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2025'
+- type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
   notes: Imports

@@ -28,12 +28,12 @@ esp_get_tiles(
 \arguments{
 \item{x}{An \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object.}
 
-\item{type}{This parameter could be either:
+\item{type}{This argument could be either:
 \itemize{
 \item The name of one of the  pre-defined providers
 (see \code{\link[=esp_tiles_providers]{esp_tiles_providers()}}).
-\item A list with two named elements \code{id} and \code{q} with your own parameters.
-See \code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
+\item A list with two named elements \code{id} and \code{q} with your own arguments. See
+\code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
 }}
 
 \item{zoom}{Zoom level. If \code{NULL}, it is determined automatically. If set,

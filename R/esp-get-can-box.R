@@ -17,7 +17,7 @@
 #' @name esp_get_can_box
 #'
 #' @return A [`sf`][sf::st_sf] `POLYGON` or `LINESTRING` depending of `style`
-#'   parameter.
+#'   argument.
 #'
 #' @export
 #'

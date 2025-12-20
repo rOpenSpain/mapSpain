@@ -34,7 +34,6 @@ IGN
 INE
 Instituto
 LAEA
-LAU
 Liedekerke
 MAPA
 MITECO
@@ -47,6 +46,7 @@ Naturaleza
 Navarra
 OGC
 ORCID
+Obra
 OpenStreetMap
 Panagos
 REGCAN
@@ -58,18 +58,17 @@ SIANE
 Topografico
 WMS
 WMTS
-WMTSproviders
 YYYY
 alboran
 bathymetry
 ceuta
 choropleth
 choropleths
-cmun
 comarca
 comarcas
 cpro
 de
+derivada
 ec
 esdac
 eu
@@ -80,6 +79,7 @@ gpkg
 groundwaters
 hexbin
 hypsometry
+ign
 javascript
 jrc
 kms

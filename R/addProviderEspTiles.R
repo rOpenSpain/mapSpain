@@ -138,7 +138,7 @@ addProviderEspTiles <- function(
     templurl <- gsub("\\?$", "", temp_pieces$q)
     layers <- temp_pieces$layers
 
-    # Remove parameters only affecting static urls
+    # Remove arguments only affecting static urls
     todel <- names(temp_pieces) %in%
       c(
         "attribution",

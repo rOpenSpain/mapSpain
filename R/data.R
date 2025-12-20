@@ -133,8 +133,8 @@ NULL
 #'
 #' @description
 #' A named [`list`][base::list] of length `r length(esp_tiles_providers)`
-#' containing the parameters of the url information of different public WMS and
-#' WMTSproviders of Spain.
+#' containing the argument of the url information of different public WMS and
+#' WMTS providers of Spain.
 #'
 #' Implementation of javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -152,9 +152,9 @@ NULL
 #' A named `list` of the providers available with the following structure:
 #' - Each item of the list is named with the provider alias.
 #' - Each element of the list contains two nested named lists:
-#'   - `static` with the parameters to get static tiles plus an additional item
+#'   - `static` with the arguments to get static tiles plus an additional item
 #'     named `attribution`.
-#'   - `leaflet` with additional parameters to be passed onto
+#'   - `leaflet` with additional arguments to be passed onto
 #'     [addProviderEspTiles()].
 #'
 #' @details

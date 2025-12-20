@@ -37,7 +37,7 @@ Initial position can be adjusted using the vector of coordinates. See
 }
 \value{
 A \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} depending of \code{style}
-parameter.
+argument.
 
 \code{esp_get_can_provinces} returns a \code{LINESTRING} object.
 }

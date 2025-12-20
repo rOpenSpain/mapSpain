@@ -6,16 +6,14 @@
 #'
 #' @rdname esp_get_gridmap
 #' @name  esp_get_gridmap
-#'
 #' @family political
-#'
-#' @return A [`sf`][sf::st_sf] `POLYGON` object.
+#' @export
+#' @inherit esp_get_nuts return
 #'
 #' @param prov,ccaa character. A vector of names and/or codes for provinces
 #'   and autonomous communities or` `NULL to get all the data. See **Details**.
 #'
-#' @export
-#'
+#' @seealso [`esp_get_simpl`][esp_get_simpl].
 #'
 #' @details
 #'

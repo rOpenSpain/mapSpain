@@ -114,7 +114,7 @@ ggplot(ccaa_sf) +
   theme(legend.position.inside = c(0.1, 0.6))
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" alt="" width="100%" />
 
 You can combine `sf` objects with static tiles
 
@@ -167,7 +167,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png" alt="" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -206,7 +206,7 @@ ggplot(all_countries) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" alt="" width="100%" />
 
 ## A note on caching
 

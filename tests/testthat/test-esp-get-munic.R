@@ -119,5 +119,13 @@ test_that("Test munic online", {
   expect_identical(ten_move, ten_move_par)
   expect_false(identical(ten_move, ten_nomove))
 
+  db_3035 <- esp_get_munic(
+    munic = "Nieva",
+    region = "La Rioja",
+    epsg = 3035,
+    cache_dir = cdir
+  )
+  expect_identical(sf::st_crs(3035), sf::st_crs(db_3035))
+
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

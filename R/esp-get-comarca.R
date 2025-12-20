@@ -139,6 +139,8 @@ esp_get_comarca <- function(
 
   # Download
   data_sf <- read_geo_file_sf(file_local)
+  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+
   comarca <- ensure_null(comarca)
 
   if (!is.null(comarca)) {
@@ -172,8 +174,7 @@ esp_get_comarca <- function(
   # Move CAN
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Remathc
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  # Rematch
   data_sf <- sanitize_sf(data_sf)
 
   data_sf

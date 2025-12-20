@@ -4,6 +4,21 @@
 #' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 #' <http://www.ign.es/web/ign/portal>. Years available are 2005 up to today.
 #'
+#' Copyright:
+#' <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+#'
+#' It's necessary to always acknowledge authorship using the following formulas:
+#'
+#'  1. When the original digital product is not modified or altered, it can
+#'     be expressed in one of the following ways:
+#'     -  CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+#'     -  CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+#'  2. When a new product is generated:
+#'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+#'
+#' Data distributed via a custom CDN, see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+#'
 #' @encoding UTF-8
 #' @family political
 #' @family siane

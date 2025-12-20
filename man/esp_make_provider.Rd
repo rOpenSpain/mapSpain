@@ -16,8 +16,8 @@ cached tiles.}
 
 \item{layers}{The name of the layer to retrieve.}
 
-\item{...}{Additional parameters to the query, like \code{version}, \code{format},
-\code{crs/srs}, \code{style}, ... depending on the capabilities of the service.}
+\item{...}{Additional arguments to the query, like \code{version}, \code{format},
+\code{crs/srs}, \code{style}, etc. depending on the capabilities of the service.}
 }
 \value{
 A named list with two elements \code{id} and \code{q}.
@@ -31,7 +31,7 @@ This function is meant to work with services provided as of the
 
 Note that:
 \itemize{
-\item \CRANpkg{mapSpain} would not provide advice on the parameter \code{q} to be
+\item \CRANpkg{mapSpain} would not provide advice on the argument \code{q} to be
 provided.
 \item Currently, on \strong{WMTS} requests only services with
 \code{tilematrixset=GoogleMapsCompatible} are supported.

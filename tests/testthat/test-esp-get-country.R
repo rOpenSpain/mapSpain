@@ -38,23 +38,32 @@ test_that("Check country", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  expect_silent(s <- esp_get_country())
+  cdir <- file.path(tempdir(), "testcntry")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+  expect_silent(s <- esp_get_country(cache_dir = cdir))
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
   expect_shape(s, nrow = 1)
 
   # EPSG work
-  expect_silent(s <- esp_get_country(epsg = 3035, resolution = 20))
+  expect_silent(
+    s <- esp_get_country(epsg = 3035, resolution = 20, cache_dir = cdir)
+  )
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
   expect_identical(sf::st_crs(s)$epsg, 3035L)
 
   # Resolution work
-  expect_silent(s2 <- esp_get_country(epsg = 3035, resolution = 60))
+  expect_silent(
+    s2 <- esp_get_country(epsg = 3035, resolution = 60, cache_dir = cdir)
+  )
   expect_s3_class(s2, "sf")
   expect_s3_class(s2, "tbl_df")
 
   expect_lt(object.size(s2), object.size(s))
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -246,7 +246,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 ## Providers available
 
 The list `esp_tiles_providers` includes the data of the available providers you
-can use on functions described above. This list includes all the parameters
+can use on functions described above. This list includes all the arguments
 needed to replicate the API request. See the static url of each provider:
 
 ```{r providers, echo=FALSE}

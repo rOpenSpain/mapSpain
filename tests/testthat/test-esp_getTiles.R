@@ -184,7 +184,11 @@ test_that("tiles options", {
   skip_on_cran()
   skip_if_offline()
 
-  poly <- esp_get_capimun(munic = "^Santiago de compos", epsg = 3857)
+  poly <- esp_get_capimun(
+    munic = "^Santiago de compos",
+    epsg = 3857,
+    cache = FALSE
+  )
   poly <- sf::st_buffer(poly, 2000)
 
   tile2 <- esp_get_tiles(

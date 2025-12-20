@@ -7,6 +7,26 @@
 \source{
 CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+
+Copyright:
+\url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
+
+It's necessary to always acknowledge authorship using the following formulas:
+\enumerate{
+\item When the original digital product is not modified or altered, it can
+be expressed in one of the following ways:
+\itemize{
+\item CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+\item CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+}
+\item When a new product is generated:
+}
+\itemize{
+\item Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+}
+
+Data distributed via a custom CDN, see
+\url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{
 esp_get_prov_siane(
@@ -115,7 +135,8 @@ Other siane:
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_hydrobasin}()},
 \code{\link{esp_get_hypsobath}()},
-\code{\link{esp_get_munic_siane}()}
+\code{\link{esp_get_munic_siane}()},
+\code{\link{esp_get_railway}()}
 }
 \concept{political}
 \concept{siane}

@@ -102,6 +102,14 @@ test_that("Filter munis and regions", {
 
   expect_lt(nrow(db_cached_reg), nrow(db_cached))
 
+  db_3035 <- esp_get_capimun(
+    munic = "Nieva",
+    region = "La Rioja",
+    epsg = 3035,
+    cache_dir = cdir
+  )
+  expect_identical(sf::st_crs(3035), sf::st_crs(db_3035))
+
   expect_snapshot(
     null_res <- esp_get_capimun(
       region = "Galicia",

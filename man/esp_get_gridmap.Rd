@@ -21,7 +21,7 @@ esp_get_grid_ccaa(ccaa = NULL)
 and autonomous communities or\verb{ }NULL to get all the data. See \strong{Details}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Loads a hexbin map (\code{\link[sf:sf]{sf}} object) or a map of squares with the
@@ -87,6 +87,8 @@ ggplot(gridprov) +
   labs(title = "Grid: Provinces")
 }
 \seealso{
+\code{\link{esp_get_simpl}}.
+
 Other political: 
 \code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},

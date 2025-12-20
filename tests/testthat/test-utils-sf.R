@@ -90,3 +90,17 @@ test_that("Read gpkg", {
   unlink(cdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(cdir))
 })
+
+test_that("NULLs and no CRS", {
+  skip_on_cran()
+  skip_if_siane_offline()
+
+  expect_null(read_geo_file_sf(NULL))
+
+  a_sf <- mapSpain::esp_nuts_2024[1, ]
+  no_crs <- sf::st_set_crs(a_sf, NA)
+
+  expect_false(identical(sf::st_crs(a_sf), sf::st_crs(no_crs)))
+
+  expect_no_error(sanitize_sf(no_crs))
+})

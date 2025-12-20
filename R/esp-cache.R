@@ -235,10 +235,19 @@ esp_clear_cache <- function(
   }
   # nocov end
   if (cached_data && dir.exists(data_dir)) {
+    siz <- file.size(list.files(
+      data_dir,
+      recursive = TRUE,
+      full.names = TRUE
+    ))
+    siz <- sum(siz, na.rm = TRUE)
+    class(siz) <- class(object.size("a"))
+
+    siz <- format(siz, unit = "auto")
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
-      cli::cli_alert_warning(
-        "{.pkg mapSpain} data deleted: {.file {data_dir}}"
+      cli::cli_alert_success(
+        "{.pkg mapSpain} data deleted: {.file {data_dir}} ({siz})"
       )
     }
   }

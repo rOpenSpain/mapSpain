@@ -11,9 +11,9 @@ A named \code{list} of the providers available with the following structure:
 \item Each item of the list is named with the provider alias.
 \item Each element of the list contains two nested named lists:
 \itemize{
-\item \code{static} with the parameters to get static tiles plus an additional item
+\item \code{static} with the arguments to get static tiles plus an additional item
 named \code{attribution}.
-\item \code{leaflet} with additional parameters to be passed onto
+\item \code{leaflet} with additional arguments to be passed onto
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 }
@@ -24,8 +24,8 @@ named \code{attribution}.
 }
 \description{
 A named \code{\link[base:list]{list}} of length 102
-containing the parameters of the url information of different public WMS and
-WMTSproviders of Spain.
+containing the argument of the url information of different public WMS and
+WMTS providers of Spain.
 
 Implementation of javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}

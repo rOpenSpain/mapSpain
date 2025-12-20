@@ -15,7 +15,7 @@
 #' @param year year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
-#' @param cache `r lifecycle::badge("deprecated")`. This parameter is
+#' @param cache `r lifecycle::badge("deprecated")`. This argument is
 #'   deprecated, the dataset would be always downloaded to the `cache_dir`.
 #' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
 #' @details

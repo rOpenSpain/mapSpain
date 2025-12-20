@@ -24,15 +24,15 @@
 #'
 #' @param layers The name of the layer to retrieve.
 #'
-#' @param ... Additional parameters to the query, like `version`, `format`,
-#'   `crs/srs`, `style`, ... depending on the capabilities of the service.
+#' @param ... Additional arguments to the query, like `version`, `format`,
+#'   `crs/srs`, `style`, etc. depending on the capabilities of the service.
 #'
 #' @details
 #' This function is meant to work with services provided as of the
 #' [OGC Standard](https://www.ogc.org/standards/wms/).
 #'
 #' Note that:
-#' - \CRANpkg{mapSpain} would not provide advice on the parameter `q` to be
+#' - \CRANpkg{mapSpain} would not provide advice on the argument `q` to be
 #'   provided.
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.

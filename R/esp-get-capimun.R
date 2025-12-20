@@ -17,16 +17,7 @@
 #' @inherit esp_get_ccaa_siane
 #' @export
 #'
-#' @return A [`sf`][sf::st_sf] `POINT` object.
-#'
-#' @param year Release year. See **Details** for years available.
-#'
 #' @details
-#'
-#' `year` could be passed as a single year (`YYYY` format, as end of year) or
-#' as a specific date (`YYYY-MM-DD` format). Historical information starts as
-#' of 2005.
-#'
 #' When using `region` you can use and mix names and NUTS codes (levels 1,
 #' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
 #' [esp_codelist]
