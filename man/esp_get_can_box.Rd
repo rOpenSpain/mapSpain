@@ -12,7 +12,7 @@
 esp_get_can_box(
   style = c("right", "left", "box", "poly"),
   moveCAN = TRUE,
-  epsg = "4258"
+  epsg = 4258
 )
 
 esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
@@ -147,6 +147,7 @@ Other political:
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
+\code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},

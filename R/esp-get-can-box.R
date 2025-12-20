@@ -107,7 +107,7 @@
 esp_get_can_box <- function(
   style = c("right", "left", "box", "poly"),
   moveCAN = TRUE,
-  epsg = "4258"
+  epsg = 4258
 ) {
   # checks
 

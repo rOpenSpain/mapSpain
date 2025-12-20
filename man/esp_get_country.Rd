@@ -83,7 +83,7 @@ ggplot(original_can) +
   geom_sf(fill = "grey70")
 
 # Less resolution
-moved_can <- esp_get_country(moveCAN = TRUE, resolution = "20")
+moved_can <- esp_get_country(moveCAN = TRUE, resolution = 20)
 
 ggplot(moved_can) +
   geom_sf(fill = "grey70")
@@ -99,6 +99,7 @@ Other political:
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
+\code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
@@ -109,6 +110,7 @@ Other nuts:
 
 Other gisco: 
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()}
 }

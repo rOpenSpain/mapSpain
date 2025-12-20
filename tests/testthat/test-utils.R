@@ -86,7 +86,7 @@ test_that("Pretty match", {
 test_that("Bind and fill sf", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
-  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
   expect_error(err <- do.call(rbind, a_list))
   expect_silent(binded <- rbind_fill(a_list))
@@ -100,7 +100,7 @@ test_that("Bind and fill tibbles", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
-  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
   cos <- sf::st_drop_geometry(cos)
   a_list <- list(gb, cos, gb, cos)
   expect_error(err <- do.call(rbind, a_list))
@@ -112,7 +112,7 @@ test_that("Bind and fill tibbles", {
 test_that("Bind and fill sf removes NULL", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
-  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
   expect_error(err <- do.call(rbind, a_list))
@@ -127,7 +127,7 @@ test_that("Bind and fill tibble removes NULL", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
-  cos <- mapSpain::esp_munic.sf[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
   cos <- sf::st_drop_geometry(cos)
 
   a_list <- list(gb, cos, gb, cos)
@@ -156,7 +156,13 @@ test_that("Filter dates", {
   data_sf <- read_geo_file_sf(url_prov)
 
   year_1 <- siane_filter_year(data_sf, year = 2010)
+  expect_true(all(year_1$fecha_alta < "2010-12-31"))
+  expect_false(all(is.na(year_1$fecha_baja)))
+
   year_today <- siane_filter_year(data_sf)
+  expect_true(all(is.na(year_today$fecha_baja)))
+  expect_false(all(year_today$fecha_alta < "2010-12-31"))
+
   expect_false(nrow(year_1) == nrow(year_today))
 
   # Errors

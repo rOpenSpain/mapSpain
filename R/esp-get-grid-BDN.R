@@ -37,7 +37,7 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' grid <- esp_get_grid_BDN(resolution = "10", type = "main")
+#' grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 #'
 #' library(ggplot2)
 #'

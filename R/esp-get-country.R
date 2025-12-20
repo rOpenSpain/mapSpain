@@ -35,7 +35,7 @@
 #'   geom_sf(fill = "grey70")
 #'
 #' # Less resolution
-#' moved_can <- esp_get_country(moveCAN = TRUE, resolution = "20")
+#' moved_can <- esp_get_country(moveCAN = TRUE, resolution = 20)
 #'
 #' ggplot(moved_can) +
 #'   geom_sf(fill = "grey70")

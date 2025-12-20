@@ -94,50 +94,6 @@
 #' data("esp_codelist")
 NULL
 
-#' [`sf`][sf::st_sf] object with all the municipalities of Spain (2019)
-#' @family datasets
-#' @family municipalities
-#'
-#' @name esp_munic.sf
-#'
-#' @description
-#' A [`sf`][sf::st_sf] object including all municipalities of Spain as provided
-#' by GISCO (2019 version).
-#'
-#' @docType data
-#'
-#' @source
-#'
-#' ```{r, echo=FALSE, results='asis'}
-#'
-#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/",
-#'            "statistical-units/local-administrative-units>, "))
-#'
-#'
-#' ```
-#' LAU 2019 data.
-#'
-#' @encoding UTF-8
-#'
-#' @seealso [esp_get_munic()].
-#' @format
-#' A [`sf`][sf::st_sf] object (resolution: 1:1 million, EPSG:4258) object with
-#' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and columns:
-#' \describe{
-#'   \item{codauto}{INE code of the autonomous community.}
-#'   \item{ine.ccaa.name}{INE name of the autonomous community.}
-#'   \item{cpro}{INE code of the province.}
-#'   \item{ine.prov.name}{INE name of the province.}
-#'   \item{cmun}{INE code of the municipality.}
-#'   \item{name}{Name of the municipality.}
-#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
-#'     combination of **cpro** and **cmun** fields, aligned with INE coding
-#'     scheme.}
-#'   \item{geometry}{geometry field.}
-#' }
-#' @example inst/examples/esp_munic_sf.R
-NULL
-
 
 #' Database with the population of Spain by municipality (2019)
 #'

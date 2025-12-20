@@ -91,7 +91,6 @@ data("esp_codelist")
 }
 \seealso{
 Other datasets: 
-\code{\link{esp_munic.sf}},
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
@@ -105,6 +104,7 @@ Other political:
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
+\code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},

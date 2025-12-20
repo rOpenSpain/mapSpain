@@ -147,6 +147,7 @@ Other political:
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
+\code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
@@ -154,6 +155,7 @@ Other political:
 
 Other gisco: 
 \code{\link{esp_get_country}()},
+\code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()}
 }

@@ -61,7 +61,7 @@ resolution 1x1 km.
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-grid <- esp_get_grid_BDN(resolution = "10", type = "main")
+grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 
 library(ggplot2)
 

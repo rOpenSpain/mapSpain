@@ -1,98 +1,82 @@
-#' City where the municipal public authorities are based - SIANE
-#'
-#' @description
-#' Get a [`sf`][sf::st_sf] `POINT` with the location of the political powers for
-#' each municipality.
-#'
-#' Note that this differs of the centroid of the boundaries of the
-#' municipality, returned by [esp_get_munic_siane()].
+#' Municipalities of Spain - SIANE
 #'
 #' @encoding UTF-8
 #' @family political
 #' @family siane
 #' @family municipalities
 #' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_munic
+#' @inheritParams esp_get_capimun
 #' @inheritParams esp_get_nuts
-#' @inherit esp_get_ccaa_siane
+#' @inherit esp_get_munic description
+#' @inherit esp_get_capimun details return source
 #' @export
-#'
-#' @return A [`sf`][sf::st_sf] `POINT` object.
-#'
-#' @param year Release year. See **Details** for years available.
-#'
-#' @details
-#'
-#' `year` could be passed as a single year (`YYYY` format, as end of year) or
-#' as a specific date (`YYYY-MM-DD` format). Historical information starts as
-#' of 2005.
-#'
-#' When using `region` you can use and mix names and NUTS codes (levels 1,
-#' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
-#' [esp_codelist]
-#'
-#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
-#' of that level would be added.
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # This code compares centroids of municipalities against esp_get_capimun
-#' # It also download tiles, make sure you are online
+#' # Municipalities that have changed in the past: three cuts
+#' munis2005 <- esp_get_munic_siane(year = 2005, rawcols = TRUE)
+#' munis2015 <- esp_get_munic_siane(year = 2015, rawcols = TRUE)
+#' munis2024 <- esp_get_munic_siane(year = 2024, rawcols = TRUE)
 #'
-#' # Get shape
-#' area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
+#' # manipulate
+#' library(dplyr)
+#' allmunis_unique <- bind_rows(munis2005, munis2015, munis2024) |>
+#'   distinct()
 #'
-#' # Area in km2
-#' print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
+#' id_all <- allmunis_unique |>
+#'   sf::st_drop_geometry() |>
+#'   group_by(id_ine, name) |>
+#'   count() |>
+#'   ungroup() |>
+#'   arrange(desc(n)) |>
+#'   slice_head(n = 1) |>
+#'   glimpse()
 #'
-#' # Extract centroid
-#' centroid <- sf::st_centroid(area)
-#' centroid$type <- "Centroid"
-#'
-#' # Compare with capimun
-#' capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
-#' capimun$type <- "Capimun"
-#'
-#' # Get a tile to check
-#' tile <- esp_get_tiles(area, "IGNBase.Todo", zoommin = 2)
-#'
-#' # Join both point geometries
-#' points <- dplyr::bind_rows(centroid, capimun)
-#'
-#' # Check on plot
 #' library(ggplot2)
-#' library(tidyterra)
-#'
-#' ggplot(points) +
-#'   geom_spatraster_rgb(data = tile, maxcell = Inf) +
-#'   geom_sf(data = area, fill = NA, color = "blue") +
-#'   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
-#'   scale_fill_manual(values = c("green", "red")) +
-#'   theme_void() +
-#'   labs(title = "Centroid vs. capimun")
+#' allmunis_unique |>
+#'   filter(id_ine == id_all$id_ine) |>
+#'   ggplot() +
+#'   geom_sf(aes(fill = as.factor(fecha_alta)),
+#'     alpha = 0.7,
+#'     show.legend = FALSE
+#'   ) +
+#'   scale_fill_viridis_d() +
+#'   facet_wrap(~fecha_alta) +
+#'   labs(
+#'     title = id_all$name,
+#'     subtitle = "Changes on boundaries over time",
+#'     fill = ""
+#'   )
 #' }
-esp_get_capimun <- function(
+esp_get_munic_siane <- function(
   year = Sys.Date(),
   epsg = 4258,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
+  resolution = c(3, 6.5, 10),
   region = NULL,
   munic = NULL,
   moveCAN = TRUE,
   rawcols = FALSE
 ) {
   init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  res <- match_arg_pretty(resolution)
+  res <- gsub("6.5", "6m5", res)
 
   url_penin <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
-    "se89_3_urban_capimuni_p_x.gpkg"
+    "se89_",
+    res,
+    "_admin_muni_a_x.gpkg"
   )
 
   url_can <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
-    "se89_3_urban_capimuni_p_y.gpkg"
+    "se89_",
+    res,
+    "_admin_muni_a_y.gpkg"
   )
 
   # Not cached are read from url
