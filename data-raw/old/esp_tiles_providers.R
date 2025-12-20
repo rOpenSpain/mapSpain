@@ -6,11 +6,7 @@ library(dplyr)
 library(tidyverse)
 library(readxl)
 
-df <-
-  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
+df <- read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx")
 unique(df$field)
 
 df_pivoted <- df |>

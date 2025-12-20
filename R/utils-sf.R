@@ -85,6 +85,9 @@ sanitize_sf <- function(data_sf) {
   }
   # end
 
+  # Remove empty geoms silently...
+  data_sf <- data_sf[!sf::st_is_empty(data_sf), ]
+
   # To UTF-8
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)

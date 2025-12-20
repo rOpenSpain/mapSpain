@@ -7,6 +7,7 @@
 #'
 #' @encoding UTF-8
 #' @family natural
+#' @family siane
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_ccaa_siane
 #' @export

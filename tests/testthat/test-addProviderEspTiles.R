@@ -27,4 +27,5 @@ test_that("Testing leaflet", {
       addProviderEspTiles(provider = "IDErioja.Claro") |>
       addProviderEspTiles(provider = "RedTransporte.Carreteras")
   )
+  expect_s3_class(puertadelsol, "leaflet")
 })

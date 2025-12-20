@@ -44,8 +44,8 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{resolution}{Resolution of the \code{POLYGON}. Values available are
 \code{"3"}, \code{"6.5"} or \code{"10"}.}
 
-\item{spatialtype}{Spatial type of the output. Use \code{"area"} for \code{POLYGON} or
-\code{"line"} for \code{LINESTRING}.}
+\item{spatialtype}{character string. Spatial type of the output. Use
+\code{"area"} for \code{POLYGON} or \code{"line"} for \code{LINESTRING}.}
 
 \item{name}{Optional. A character or  \code{\link[base:grep]{regex}} expression
 with the name of the element(s) to be extracted.}

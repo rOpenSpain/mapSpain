@@ -65,6 +65,12 @@ home:
     leaflet plugin and the ability of downloading and processing static tiles.
 
 reference:
+  - title: GISCO
+    contents:
+      - has_concept("gisco")
+  - title: SIANE
+    contents:
+      - has_concept("siane")
   - title: Political
     desc: |
       These functions return <a href="https://CRAN.R-project.org/package=sf"

@@ -111,7 +111,8 @@ Other political:
 
 Other siane: 
 \code{\link{esp_get_capimun}()},
-\code{\link{esp_get_ccaa_siane}()}
+\code{\link{esp_get_ccaa_siane}()},
+\code{\link{esp_get_hydrobasin}()}
 }
 \concept{political}
 \concept{siane}
