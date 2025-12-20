@@ -119,6 +119,7 @@ Other political:
 Other siane: 
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_hydrobasin}()},
+\code{\link{esp_get_hypsobath}()},
 \code{\link{esp_get_prov_siane}()}
 }
 \concept{political}

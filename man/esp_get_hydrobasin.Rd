@@ -98,6 +98,7 @@ Other natural:
 Other siane: 
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa_siane}()},
+\code{\link{esp_get_hypsobath}()},
 \code{\link{esp_get_prov_siane}()}
 }
 \concept{natural}
