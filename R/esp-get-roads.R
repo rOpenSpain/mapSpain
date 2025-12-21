@@ -101,7 +101,7 @@ esp_get_roads <- function(
 
   # Move can
   data_sf <- move_can(data_sf, moveCAN)
-  data_sf <- data_sf[, setdiff(names(ss), "codauto")]
+  data_sf <- data_sf[, setdiff(names(data_sf), "codauto")]
 
   data_sf <- data_sf[order(data_sf$t_ctra, data_sf$orden, data_sf$rotulo), ]
 
