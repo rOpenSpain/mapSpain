@@ -166,6 +166,7 @@ Other siane:
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_hydrobasin}()},
 \code{\link{esp_get_hypsobath}()},
+\code{\link{esp_get_landwater}},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_railway}()},
 \code{\link{esp_get_roads}()}

@@ -38,11 +38,5 @@ A \code{\link[sf:sf]{sf}} \code{POLYGON}.
 
 This function is defunct as the source file is not available any more.
 }
-\examples{
-\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
-\dontrun{
-try(esp_get_grid_EEA())
-}
-\dontshow{\}) # examplesIf}
-}
 \concept{deprecated functions}
+\keyword{internal}

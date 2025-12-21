@@ -85,7 +85,6 @@ nodes and railway lines of Spain.
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-
 provs <- esp_get_prov()
 ccaa <- esp_get_ccaa()
 
@@ -103,20 +102,16 @@ ggplot(provs) +
   geom_sf(fill = "grey99", color = "grey50") +
   geom_sf(data = ccaa, fill = NA) +
   geom_sf(
-    data = rails, aes(color = tipo),
-    show.legend = FALSE, linewidth = 1.5
+    data = rails, aes(color = t_ffcc_desc),
+    show.legend = FALSE,
+    linewidth = 1.5
   ) +
   geom_sf(
     data = stations,
     color = "red", alpha = 0.5
   ) +
-  coord_sf(
-    xlim = c(-7.5, -2.5),
-    ylim = c(38, 41)
-  ) +
-  scale_color_manual(values = hcl.colors(
-    length(unique(rails$tipo)), "viridis"
-  )) +
+  scale_colour_viridis_d() +
+  facet_wrap(~t_ffcc_desc) +
   theme_minimal()
 }
 \dontshow{\}) # examplesIf}
@@ -130,6 +125,7 @@ Other siane:
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_hydrobasin}()},
 \code{\link{esp_get_hypsobath}()},
+\code{\link{esp_get_landwater}},
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_roads}()}

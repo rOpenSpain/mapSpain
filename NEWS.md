@@ -7,6 +7,9 @@
     `esp_get_railway(..., spatialtype = "point")`.
 -   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
     available any more.
+-   `esp_get_rivers()`: new `moveCAN` argument. Also arguments `resolution` and
+    `spatialtype` are deprecated, the latter replaced by the new function
+    `esp_get_wetlands()`.
 
 ## Changes in datasets
 

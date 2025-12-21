@@ -6,6 +6,7 @@
 #' This function is defunct as the source file is not available any more.
 #'
 #' @family deprecated functions
+#' @keywords internal
 #' @encoding UTF-8
 #' @export
 #'
@@ -25,11 +26,6 @@
 #' @param resolution Resolution of the grid in kms. Could be `1`, `10` or `100`.
 #'
 #' @inheritParams esp_get_grid_BDN
-#'
-#' @examplesIf esp_check_access()
-#' \dontrun{
-#' try(esp_get_grid_EEA())
-#' }
 esp_get_grid_EEA <- function(
   resolution = 100,
   type = "main",

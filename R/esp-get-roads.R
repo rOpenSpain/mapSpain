@@ -15,13 +15,13 @@
 #' \donttest{
 #'
 #' country <- esp_get_country()
-#' Roads <- esp_get_roads()
+#' roads <- esp_get_roads()
 #'
 #' library(ggplot2)
 #'
 #' ggplot(country) +
 #'   geom_sf(fill = "grey90") +
-#'   geom_sf(data = Roads, aes(color = tipo), show.legend = "line") +
+#'   geom_sf(data = roads, aes(color = t_ctra_desc), show.legend = "line") +
 #'   scale_color_manual(
 #'     values = c("#003399", "#003399", "#ff0000", "#ffff00")
 #'   ) +
@@ -99,11 +99,34 @@ esp_get_roads <- function(
     data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
   }
 
+  # Add descriptions
+  # Tipo de carretera
+  tip <- db_valores[db_valores$campo == "tipocarretera", 2:3]
+  names(tip) <- c("t_ctra", "t_ctra_desc")
+  data_sf <- merge(data_sf, tip, all.x = TRUE)
+
+  # Estado fisico
+  est <- db_valores[db_valores$campo == "estadofisico", 2:3]
+  names(est) <- c("estado_fis", "estado_fis_desc")
+  data_sf <- merge(data_sf, est, all.x = TRUE)
+
+  # Orden
+  ord <- db_valores[db_valores$campo == "orden", 2:3]
+  names(ord) <- c("orden", "orden_desc")
+  data_sf <- merge(data_sf, ord, all.x = TRUE)
+
+  # Acceso
+  acc <- db_valores[db_valores$campo == "acceso", 2:3]
+  names(acc) <- c("acceso", "acceso_desc")
+  data_sf <- merge(data_sf, acc, all.x = TRUE)
+
   # Move can
   data_sf <- move_can(data_sf, moveCAN)
   data_sf <- data_sf[, setdiff(names(data_sf), "codauto")]
 
   data_sf <- data_sf[order(data_sf$t_ctra, data_sf$orden, data_sf$rotulo), ]
+
+  data_sf <- sanitize_sf(data_sf)
 
   # Transform
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
