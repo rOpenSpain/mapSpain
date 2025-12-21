@@ -23,6 +23,9 @@
   : River basin districts of Spain - SIANE
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
   : Hypsometry and bathymetry of Spain - SIANE
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  : Rivers and wetlands of Spain - SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
   : Municipalities of Spain - SIANE
 - [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
@@ -30,6 +33,8 @@
 - [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   : Railways of Spain - SIANE
+- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
+  : Roads of Spain - SIANE
 
 ## Political
 
@@ -99,15 +104,11 @@ objects with natural features.
 
 - [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
   : River basin districts of Spain - SIANE
-
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
   : Hypsometry and bathymetry of Spain - SIANE
-
-- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_rivers.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  or `LINESTRING` of rivers, channels and other wetlands of Spain
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  : Rivers and wetlands of Spain - SIANE
 
 ## Infrastructures
 
@@ -117,12 +118,8 @@ objects with man-made features.
 - [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   : Railways of Spain - SIANE
-
 - [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  `LINESTRING` of the roads of Spain
+  : Roads of Spain - SIANE
 
 ## Tiles
 
@@ -237,9 +234,3 @@ A collection of helper functions.
   : mapSpain: Administrative Boundaries of Spain
 
 ## Deprecated functions
-
-- [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
-  **\[defunct\]** :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  of the national geographic grids from EEA

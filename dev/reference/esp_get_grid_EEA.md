@@ -50,14 +50,3 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
-
-## Examples
-
-``` r
-# \dontrun{
-try(esp_get_grid_EEA())
-#> Error : `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
-#> defunct.
-#> ℹ The source file is not available for download any more
-# }
-```

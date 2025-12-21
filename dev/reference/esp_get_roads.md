@@ -1,7 +1,6 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `LINESTRING` of the roads of Spain
+# Roads of Spain - SIANE
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`LINESTRING` object representing the main roads of Spain.
+Object representing the main roads of Spain.
 
 ## Usage
 
@@ -19,14 +18,35 @@ esp_get_roads(
 
 ## Source
 
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
+today.
+
+Copyright:
+<https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+
+It's necessary to always acknowledge authorship using the following
+formulas:
+
+1.  When the original digital product is not modified or altered, it can
+    be expressed in one of the following ways:
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+
+2.  When a new product is generated:
+
+- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+Data distributed via a custom CDN, see
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - year:
 
-  Release year. See **Details** for years available.
+  Ignored.
 
 - epsg:
 
@@ -72,17 +92,21 @@ IGN data via a custom CDN (see
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `LINESTRING`
-object.
-
-## Details
-
-`year` could be passed as a single year ("YYYY" format, as end of year)
-or as a specific date ("YYYY-MM-DD" format).
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## See also
 
 Other infrastructure:
+[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+
+Other siane:
+[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
+[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
+[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
+[`esp_get_landwater`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
 
 ## Examples
@@ -91,13 +115,13 @@ Other infrastructure:
 # \donttest{
 
 country <- esp_get_country()
-Roads <- esp_get_roads()
+roads <- esp_get_roads()
 
 library(ggplot2)
 
 ggplot(country) +
   geom_sf(fill = "grey90") +
-  geom_sf(data = Roads, aes(color = tipo), show.legend = "line") +
+  geom_sf(data = roads, aes(color = t_ctra_desc), show.legend = "line") +
   scale_color_manual(
     values = c("#003399", "#003399", "#ff0000", "#ffff00")
   ) +

@@ -15,6 +15,10 @@
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   deprecated and defunct, since the source file is not available any
   more.
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md):
+  new `moveCAN` argument. Also arguments `resolution` and `spatialtype`
+  are deprecated, the latter replaced by the new function
+  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md).
 
 ### Changes in datasets
 
@@ -236,7 +240,7 @@ CRAN release: 2021-02-25
   - [`mapSpain::esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   - [`mapSpain::esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
   - [`mapSpain::esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
-  - [`mapSpain::esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_rivers.md)
+  - [`mapSpain::esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
   - [`mapSpain::esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
   - [`mapSpain::esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
   - [`mapSpain::esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)

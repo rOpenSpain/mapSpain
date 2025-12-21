@@ -283,11 +283,12 @@ Details
     #>  jquerylib      0.1.4        2021-04-26 [1] RSPM
     #>  jsonlite       2.0.0        2025-03-27 [1] RSPM
     #>  KernSmooth     2.23-26      2025-01-01 [3] CRAN (R 4.5.2)
-    #>  knitr          1.50         2025-03-16 [1] RSPM
+    #>  knitr          1.51         2025-12-20 [1] RSPM
     #>  leaflet      * 2.2.3        2025-09-04 [1] RSPM
     #>  lifecycle      1.0.4        2023-11-07 [1] RSPM
     #>  magrittr       2.0.4        2025-09-12 [1] RSPM
     #>  mapSpain     * 0.99.99.9000 2025-12-21 [1] local
+    #>  otel           0.2.0        2025-08-29 [1] RSPM
     #>  pillar         1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3        2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0        2025-11-06 [1] any (@2.2.0)
