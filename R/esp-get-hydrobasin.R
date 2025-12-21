@@ -87,28 +87,43 @@ esp_get_hydrobasin <- function(
     )
   }
 
-  file_local_penin <- download_url(
-    url_penin,
-    cache_dir = cache_dir,
-    subdir = "siane",
-    update_cache = update_cache,
-    verbose = verbose
-  )
+  # Not cached are read from url
+  if (!cache) {
+    msg <- paste0("{.url ", url_penin, "}.")
+    make_msg("info", verbose, "Reading from", msg)
 
-  file_local_can <- download_url(
-    url_can,
-    cache_dir = cache_dir,
-    subdir = "siane",
-    update_cache = update_cache,
-    verbose = verbose
-  )
+    data_sf_penin <- read_geo_file_sf(url_penin)
 
-  # Download
-  data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
+    msg <- paste0("{.url ", url_can, "}.")
+    make_msg("info", verbose, "Reading from", msg)
 
-  data_sf <- rbind_fill(data_sf)
-  if (is.null(data_sf)) {
-    return(NULL)
+    data_sf_can <- read_geo_file_sf(url_can)
+
+    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
+  } else {
+    file_local_penin <- download_url(
+      url_penin,
+      cache_dir = cache_dir,
+      subdir = "siane",
+      update_cache = update_cache,
+      verbose = verbose
+    )
+
+    file_local_can <- download_url(
+      url_can,
+      cache_dir = cache_dir,
+      subdir = "siane",
+      update_cache = update_cache,
+      verbose = verbose
+    )
+
+    # Download
+    data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
+
+    data_sf <- rbind_fill(data_sf)
+    if (is.null(data_sf)) {
+      return(NULL)
+    }
   }
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 

@@ -1,41 +1,37 @@
 test_that("Test offline", {
   skip_on_cran()
   skip_if_siane_offline()
-  skip_if_gisco_offline()
 
-  options(gisco_test_offline = TRUE)
   options(mapspain_test_offline = TRUE)
   expect_message(
-    n <- esp_get_hypsobath(update_cache = TRUE, verbose = FALSE),
+    n <- esp_get_roads(update_cache = TRUE),
     "Offline"
   )
   expect_null(n)
 
   options(mapspain_test_offline = FALSE)
-  options(gisco_test_offline = FALSE)
 })
+
 test_that("Test 404", {
   skip_on_cran()
   skip_if_siane_offline()
-  skip_if_gisco_offline()
 
-  options(gisco_test_404 = TRUE)
   options(mapspain_test_404 = TRUE)
   expect_message(
-    n <- esp_get_hypsobath(update_cache = TRUE),
+    n <- esp_get_roads(update_cache = TRUE),
     "Error"
   )
   expect_null(n)
 
   options(mapspain_test_404 = FALSE)
-  options(gisco_test_404 = FALSE)
 })
+
 
 test_that("Cache vs non-cached", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testhypsocache")
+  cdir <- file.path(tempdir(), "testcacheroads")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
@@ -45,7 +41,7 @@ test_that("Cache vs non-cached", {
     character(0)
   )
   expect_message(
-    db_online <- esp_get_hypsobath(
+    db_online <- esp_get_roads(
       cache = FALSE,
       verbose = TRUE,
       cache_dir = cdir
@@ -60,7 +56,7 @@ test_that("Cache vs non-cached", {
 
   # vs cache TRUE
   expect_silent(
-    db_cached <- esp_get_hypsobath(
+    db_cached <- esp_get_roads(
       cache = TRUE,
       cache_dir = cdir
     )
@@ -72,8 +68,8 @@ test_that("Cache vs non-cached", {
   expect_identical(
     list.files(cdir, recursive = TRUE),
     c(
-      "siane/se89_3_orog_hipso_a_x.gpkg",
-      "siane/se89_3_orog_hipso_a_y.gpkg"
+      "siane/se89_3_vias_ctra_l_x.gpkg",
+      "siane/se89_3_vias_ctra_l_y.gpkg"
     )
   )
 
@@ -81,37 +77,29 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("hypsobath online", {
-  expect_error(esp_get_hypsobath(epsg = 3367))
-  expect_error(esp_get_hypsobath(spatialtype = "f"))
-  expect_error(esp_get_hypsobath(resolution = "10"))
+test_that("roads online", {
+  expect_error(esp_get_roads(epsg = 3367))
 
   skip_on_cran()
   skip_if_siane_offline()
-  skip_if_gisco_offline()
-  cdir <- file.path(tempdir(), "testhypsobath")
+
+  cdir <- file.path(tempdir(), "testroads")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_silent(esp_get_hypsobath(
-    spatialtype = "line",
-    resolution = 6.5,
-    epsg = 3857,
-    cache_dir = cdir
-  ))
 
-  l <- esp_get_hypsobath(
-    spatialtype = "line",
-    resolution = "6.5",
-    epsg = 3857,
-    cache_dir = cdir
+  expect_silent(regular <- esp_get_roads(cache_dir = cdir))
+
+  l <- esp_get_roads(epsg = 3857, cache_dir = cdir)
+
+  expect_identical(sf::st_crs(l), sf::st_crs(3857))
+  expect_silent(nomov <- esp_get_roads(moveCAN = FALSE, cache_dir = cdir))
+
+  expect_false(
+    identical(sf::st_bbox(regular), sf::st_bbox(nomov))
   )
+  expect_silent(moved <- esp_get_roads(moveCAN = TRUE, cache_dir = cdir))
+  expect_identical(sf::st_bbox(regular), sf::st_bbox(moved))
 
-  expect_true(sf::st_crs(l) == sf::st_crs(3857))
-  expect_silent(esp_get_hypsobath(
-    spatialtype = "area",
-    resolution = "6.5",
-    cache_dir = cdir
-  ))
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

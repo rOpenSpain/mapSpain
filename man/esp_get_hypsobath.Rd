@@ -159,7 +159,8 @@ Other siane:
 \code{\link{esp_get_hydrobasin}()},
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_railway}()}
+\code{\link{esp_get_railway}()},
+\code{\link{esp_get_roads}()}
 }
 \concept{natural}
 \concept{siane}
