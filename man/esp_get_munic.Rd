@@ -52,6 +52,10 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
+\item{munic}{character string. A name or \code{\link[base:grep]{regex}} expression
+with the names of the required municipalities. \code{NULL} would return all
+municipalities.}
+
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
@@ -156,7 +160,7 @@ Other political:
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_simpl_prov}()}
+\code{\link{esp_get_simpl}}
 
 Other municipalities: 
 \code{\link{esp_get_capimun}()},

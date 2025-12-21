@@ -5,10 +5,9 @@
 #' @family siane
 #' @family municipalities
 #' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_capimun
-#' @inheritParams esp_get_nuts
-#' @inherit esp_get_munic description
-#' @inherit esp_get_capimun details return source
+#' @inheritParams esp_get_munic
+#' @inherit esp_get_munic description details return
+#' @inherit esp_get_ccaa_siane source
 #' @export
 #'
 #' @examplesIf esp_check_access()

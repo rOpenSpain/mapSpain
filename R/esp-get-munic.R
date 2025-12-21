@@ -7,7 +7,6 @@
 #' @family political
 #' @family municipalities
 #' @family gisco
-#' @inheritParams esp_get_capimun
 #' @inheritParams esp_get_nuts
 #' @inherit giscoR::gisco_get_lau
 #' @export
@@ -15,9 +14,13 @@
 #' @param year year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
+#' @param munic character string. A name or [`regex`][base::grep()] expression
+#'   with the names of the required municipalities. `NULL` would return all
+#'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
 #'   deprecated, the dataset would be always downloaded to the `cache_dir`.
 #' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
+#'
 #' @details
 #' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
 #' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`

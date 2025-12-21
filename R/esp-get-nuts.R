@@ -186,7 +186,7 @@ esp_get_nuts <- function(
   # Get region id
   region <- ensure_null(region)
   if (all(!is.null(region), "NUTS_ID" %in% names(data_sf))) {
-    nuts_id <- esp_hlp_all2nuts(region)
+    nuts_id <- convert_to_nuts(region)
 
     nuts_id <- nuts_id[!is.na(nuts_id)]
     nuts_id <- unique(nuts_id)

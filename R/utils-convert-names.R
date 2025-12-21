@@ -15,14 +15,13 @@ convert_to_nuts <- function(region) {
   clean_region <- region[!is.na(clean_region)]
 
   # Guess type of code for convert: recognize nuts, isos and free text
-  is_iso <- grepl("^ES-", clean_region)
-  is_nuts <- grepl("^ES[[:digit:]]", clean_region)
-  is_text <- !grepl("^ES-|^ES[[:digit:]]", clean_region)
+  code_type <- rep("text", length(clean_region))
 
-  code_type <- clean_region
+  is_iso <- grepl("^ES-", clean_region)
+  is_nuts <- clean_region %in% get_all_nuts_codes()
+
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
-  code_type[is_text] <- "text"
 
   # Made conversions
   n_codes <- seq_along(clean_region)
@@ -33,6 +32,10 @@ convert_to_nuts <- function(region) {
   for (i in n_codes) {
     code <- clean_region[i]
     type <- code_type[i]
+    if (type == "nuts") {
+      nuts_id[i] <- code
+      next
+    }
 
     suppressMessages(
       nuts_id[i] <- esp_dict_region_code(code, type, "nuts"),
@@ -70,11 +73,13 @@ convert_to_nuts_ccaa <- function(region) {
   clean_region <- region[!is.na(clean_region)]
 
   # Guess type of code for convert: recognize nuts, isos and free text
-  is_codauto <- grepl("^[[:digit:]]", region)
 
-  code_type <- clean_region
+  code_type <- rep("text", length(clean_region))
+  is_codauto <- grepl("^[[:digit:]]", region)
+  is_nuts <- region %in% get_all_nuts_codes()
+
   code_type[is_codauto] <- "codauto"
-  code_type[!is_codauto] <- "text"
+  code_type[is_nuts] <- "nuts"
 
   # Made conversions
   n_codes <- seq_along(clean_region)
@@ -85,6 +90,12 @@ convert_to_nuts_ccaa <- function(region) {
   for (i in n_codes) {
     code <- clean_region[i]
     type <- code_type[i]
+
+    if (type == "nuts") {
+      ccaa_id[i] <- code
+      next
+    }
+
     if (type == "codauto") {
       suppressMessages(
         code <- esp_dict_region_code(code, "codauto", "nuts"),
@@ -163,17 +174,16 @@ convert_to_nuts_prov <- function(region) {
   clean_region[clean_region == "ES-PM"] <- "ES53"
   clean_region[clean_region == "ES-IB"] <- "ES53"
   clean_region[clean_region == "07"] <- "ES53"
+
   # Guess type of code for convert: recognize cpro, nuts, isos and free text
+  code_type <- rep("text", length(clean_region))
   is_cpro <- grepl("^[[:digit:]]", clean_region)
   is_iso <- grepl("^ES-", clean_region)
-  is_nuts <- grepl("^ES[[:digit:]]", clean_region)
-  is_text <- !grepl("^ES-|^ES[[:digit:]]|^[[:digit:]]", clean_region)
+  is_nuts <- clean_region %in% get_all_nuts_codes()
 
-  code_type <- clean_region
   code_type[is_cpro] <- "cpro"
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
-  code_type[is_text] <- "text"
 
   # Made conversions
   n_codes <- seq_along(clean_region)
@@ -213,16 +223,15 @@ convert_to_nuts_prov <- function(region) {
   }
 
   # Re-assess
+  code_type <- rep("text", length(nuts_cpros))
+
   is_cpro <- grepl("^[[:digit:]]", nuts_cpros)
   is_iso <- grepl("^ES-", nuts_cpros)
-  is_nuts <- grepl("^ES[[:digit:]]", nuts_cpros)
-  is_text <- !grepl("^ES-|^ES[[:digit:]]|^[[:digit:]]", nuts_cpros)
+  is_nuts <- nuts_cpros %in% get_all_nuts_codes()
 
-  code_type <- nuts_cpros
   code_type[is_cpro] <- "cpro"
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
-  code_type[is_text] <- "text"
 
   # Prepare dict
   cpro_to_nuts <- get_prov_to_nuts_df()
@@ -339,4 +348,13 @@ get_prov_to_nuts_df <- function() {
   l3 <- l3[!is.na(l3$nuts), ]
 
   l3
+}
+
+get_all_nuts_codes <- function() {
+  df <- mapSpain::esp_codelist
+
+  nuts <- c(df$nuts1.code, df$nuts2.code, df$nuts3.code)
+  allcodes <- unique(sort(nuts[!is.na(nuts)]))
+
+  allcodes
 }

@@ -3,7 +3,7 @@
     Code
       s1 <- esp_get_nuts(region = b)
     Message
-      ! No match on `destination = "nuts"` found for "ES-PM", "ES-GC", and "ES-TF".
+      ! No Spanish NUTS codes found for "ES-PM", "ES-GC", and "ES-TF".
 
 # Valid inputs
 

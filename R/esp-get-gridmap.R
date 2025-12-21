@@ -5,7 +5,7 @@
 #' boundaries of the provinces or autonomous communities of Spain.
 #'
 #' @rdname esp_get_gridmap
-#' @name  esp_get_gridmap
+#' @name esp_get_gridmap
 #' @family political
 #' @export
 #' @inherit esp_get_nuts return

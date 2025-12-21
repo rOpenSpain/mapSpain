@@ -11,19 +11,10 @@
 #' @family political
 #' @family siane
 #' @family municipalities
-#' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_munic
-#' @inheritParams esp_get_nuts
-#' @inherit esp_get_ccaa_siane
+#' @inheritParams esp_get_munic_siane
+#' @inherit esp_get_munic_siane
 #' @export
 #'
-#' @details
-#' When using `region` you can use and mix names and NUTS codes (levels 1,
-#' 2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
-#' [esp_codelist]
-#'
-#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
-#' of that level would be added.
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

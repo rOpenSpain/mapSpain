@@ -79,6 +79,10 @@ data. One of:
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
+\item{munic}{character string. A name or \code{\link[base:grep]{regex}} expression
+with the names of the required municipalities. \code{NULL} would return all
+municipalities.}
+
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
@@ -94,9 +98,9 @@ A \code{\link[sf:sf]{sf}} object.
 This dataset shows boundaries of municipalities in Spain.
 }
 \details{
-When using \code{region} you can use and mix names and NUTS codes (levels 1,
-2 or 3), ISO codes (corresponding to level 2 or 3) or \code{cpro}. See
-\link{esp_codelist}
+When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 or
+3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
+(see \link{esp_codelist}).
 
 When calling a higher level (province, CCAA or NUTS1), all the municipalities
 of that level would be added.
@@ -155,7 +159,7 @@ Other political:
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_simpl_prov}()}
+\code{\link{esp_get_simpl}}
 
 Other siane: 
 \code{\link{esp_get_capimun}()},

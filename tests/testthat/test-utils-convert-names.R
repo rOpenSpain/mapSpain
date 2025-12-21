@@ -30,6 +30,23 @@ test_that("convert_to_nuts", {
     origin = "nuts",
     destination = "text"
   ))
+
+  # Consistency on levels
+  cds <- esp_codelist
+  # Level 1
+  n1 <- unique(cds$nuts1.code)
+  id_ccaa <- convert_to_nuts_ccaa(n1)
+  expect_identical(id_ccaa, convert_to_nuts(id_ccaa))
+
+  id_prov <- convert_to_nuts_prov(n1)
+  expect_identical(id_prov, convert_to_nuts(id_prov))
+
+  # Level 2
+  n1 <- unique(cds$nuts2.code)
+  id_ccaa <- convert_to_nuts_ccaa(n1)
+  expect_identical(id_ccaa, convert_to_nuts(id_ccaa))
+  id_prov <- convert_to_nuts_prov(n1)
+  expect_identical(id_prov, convert_to_nuts(id_prov))
 })
 
 

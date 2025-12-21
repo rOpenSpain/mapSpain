@@ -57,7 +57,7 @@ Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse, devtools,
     sessioninfo, sfheaders, rapidjsonr, jsonify, geometries,
     dieghernan/geobounds
 Config/testthat/edition: 3
-Config/testthat/parallel: false
+Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas
     Nacional de España (ANE) CC BY 4.0 <http://www.ign.es>. INE
     <https://www.ine.es/en/index.htm>

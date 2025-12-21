@@ -103,7 +103,7 @@ Other political:
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_simpl_prov}()}
+\code{\link{esp_get_simpl}}
 
 Other nuts: 
 \code{\link{esp_get_nuts}()}

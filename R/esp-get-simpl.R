@@ -7,6 +7,7 @@
 #' (Instituto Nacional de Estadistica).
 #'
 #' @rdname esp_get_simpl
+#' @name esp_get_simpl
 #'
 #' @encoding UTF-8
 #' @family political
