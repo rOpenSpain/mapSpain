@@ -44,6 +44,8 @@ Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf:
 to change the projection.
 }
 \examples{
+\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
+\donttest{
 esp <- esp_get_country()
 hexccaa <- esp_get_hex_ccaa()
 
@@ -85,6 +87,8 @@ ggplot(gridprov) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
   labs(title = "Grid: Provinces")
+}
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link{esp_get_simpl}}.
