@@ -1,59 +1,40 @@
-# Get municipalities of Spain as [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+# Municipalities of Spain - GISCO
 
-Returns municipalities of Spain `sf` POLYGON\` at a specified scale.
-
-- `esp_get_munic()` uses GISCO (Eurostat) as source. Please use
-  [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
-
-&nbsp;
-
-- `esp_get_munic_siane()` uses CartoBase ANE as source, provided by
-  Instituto Geografico Nacional (IGN),
-  <http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-  today.
+This dataset shows boundaries of municipalities in Spain.
 
 ## Usage
 
 ``` r
 esp_get_munic(
-  year = "2019",
-  epsg = "4258",
-  cache = TRUE,
+  year = 2024,
+  epsg = 4258,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  region = NULL,
-  munic = NULL,
-  moveCAN = TRUE
-)
-
-esp_get_munic_siane(
-  year = Sys.Date(),
-  epsg = "4258",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  resolution = 3,
   region = NULL,
   munic = NULL,
   moveCAN = TRUE,
-  rawcols = FALSE
+  ext = "gpkg"
 )
 ```
 
 ## Source
 
-[GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/)
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
 
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Arguments
 
 - year:
 
-  Release year. See **Details** for years available.
+  year character string or number. Release year of the file. See
+  [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html)
+  and
+  [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html)
+  for valid values.
 
 - epsg:
 
@@ -70,9 +51,8 @@ IGN data via a custom CDN (see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  **\[deprecated\]**. This argument is deprecated, the dataset would be
+  always downloaded to the `cache_dir`.
 
 - update_cache:
 
@@ -91,13 +71,14 @@ IGN data via a custom CDN (see
 
 - region:
 
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  municipalities. See **Details**.
+  Optional. A vector of region names, NUTS or ISO codes (see
+  [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)).
 
 - munic:
 
-  A name or [`regex`](https://rdrr.io/r/base/grep.html) expression with
-  the names of the required municipalities. `NULL` would return all
+  character string. A name or
+  [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
+  of the required municipalities. `NULL` would return all
   municipalities.
 
 - moveCAN:
@@ -108,44 +89,33 @@ IGN data via a custom CDN (see
   Canary Islands** in
   [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).
 
-- resolution:
+- ext:
 
-  Resolution of the polygon. Values available are `"3"`, `"6.5"` or
-  `"10"`.
-
-- rawcols:
-
-  logical. Setting this to `TRUE` would add the raw columns of the
-  resulting object as provided by IGN.
+  character. Extension of the file (default `"gpkg"`). See
+  [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
-
-The years available are:
-
-- `esp_get_munic()`: `year` could be one of "2001", "2004", "2006",
-  "2008", "2010", "2013" and any year between 2016 and 2019. See
-  [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html),
-  [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
-
-- `esp_get_munic_siane()`: `year` could be passed as a single year
-  ("YYYY" format, as end of year) or as a specific date ("YYYY-MM-DD"
-  format). Historical information starts as of 2005.
 
 When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (Province, Autonomous Community or NUTS1),
-all the municipalities of that level would be added.
+When calling a higher level (province, CCAA or NUTS1), all the
+municipalities of that level would be added.
+
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
 [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html),
-[`base::regex()`](https://rdrr.io/r/base/regex.html).
+[`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
 
 Other political:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
@@ -156,57 +126,81 @@ Other political:
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 Other municipalities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_munic.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_munic.sf.md)
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
+
+Other gisco:
+[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
+[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
+[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
 
 ## Examples
 
 ``` r
 # \donttest{
+# The Spanish Lapland:
+# https://en.wikipedia.org/wiki/Celtiberian_Range
+
 # Get munics
-Base <- esp_get_munic(year = "2019", region = "Castilla y Leon")
+spanish_laplad <- esp_get_munic(
+  year = 2023,
+  region = c(
+    "Cuenca", "Teruel",
+    "Zaragoza", "Guadalajara",
+    "Soria", "Burgos",
+    "La Rioja"
+  )
+)
+#> ! The file to be downloaded has size 61 Mb.
 
-# Provs for delimiting
-provs <- esp_get_prov(prov = "Castilla y Leon")
-
-# Load population data
-data("pobmun19")
-
-# Arrange and create breaks
-
-Base_pop <- merge(Base, pobmun19,
-  by = c("cpro", "cmun"),
-  all.x = TRUE
+breaks <- sort(c(0, 5, 10, 50, 100, 200, 500, 1000, Inf))
+spanish_laplad$dens_breaks <- cut(spanish_laplad$POP_DENS_2023, breaks,
+  dig.lab = 20
 )
 
-br <- sort(c(
-  0, 50, 100, 200, 500,
-  1000, 5000, 50000, 100000,
-  Inf
-))
+cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
+cut_labs[length(breaks)] <- "> 1000"
 
-Base_pop$cuts <- cut(Base_pop$pob19, br, dig.lab = 20)
-
-# Plot
 library(ggplot2)
-
-
-ggplot(Base_pop) +
-  geom_sf(aes(fill = cuts), color = NA) +
-  geom_sf(data = provs, fill = NA, color = "grey70") +
-  scale_fill_manual(values = hcl.colors(length(br), "cividis")) +
-  labs(
-    title = "Population in Castilla y Leon",
-    subtitle = "INE, 2019",
-    fill = "Persons"
+ggplot(spanish_laplad) +
+  geom_sf(aes(fill = dens_breaks), color = "grey30", linewidth = 0.1) +
+  scale_fill_manual(
+    values = hcl.colors(length(breaks) - 1, "Spectral"), na.value = "black",
+    name = "people per sq. kilometer",
+    labels = cut_labs,
+    guide = guide_legend(
+      direction = "horizontal",
+      nrow = 1
+    )
   ) +
-  theme_void()
+  theme_void() +
+  labs(
+    title = "The Spanish Lapland",
+    caption = giscoR::gisco_attributions()
+  ) +
+  theme(
+    text = element_text(colour = "white"),
+    plot.background = element_rect(fill = "grey2"),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, face = "bold"),
+    plot.caption = element_text(
+      color = "grey60", hjust = 0.5, vjust = 0,
+      margin = margin(t = 5, b = 10)
+    ),
+    legend.position = "bottom",
+    legend.title.position = "top",
+    legend.text.position = "bottom",
+    legend.key.height = unit(0.5, "lines"),
+    legend.key.width = unit(1, "lines")
+  )
 
 # }
 ```

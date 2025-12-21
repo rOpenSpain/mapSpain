@@ -19,27 +19,22 @@ esp_get_grid_ccaa(ccaa = NULL)
 
 ## Arguments
 
-- prov:
+- prov, ccaa:
 
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  provinces. See **Details**.
-
-- ccaa:
-
-  A vector of names and/or codes for autonomous communities or `NULL` to
-  get all the autonomous communities. See **Details**.
+  character. A vector of names and/or codes for provinces and autonomous
+  communities or` `NULL to get all the data. See **Details**.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Hexbin or grid map has an advantage over usual choropleth maps. In
-choropleths, a large polygon data looks more emphasized just because of
-its size, what introduces a bias. Here with hexbin, each region is
-represented equally dismissing the bias.
+Hexbin (or grid) maps have an advantage over traditional choropleth
+maps. In choropleths, regions with larger polygons tend to appear more
+prominent simply because of their size, which introduces visual bias.
+With hexbin maps, each region is represented equally, reducing this
+bias.
 
 You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md))
@@ -55,6 +50,8 @@ to change the projection.
 
 ## See also
 
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md).
+
 Other political:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
@@ -64,14 +61,16 @@ Other political:
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 ## Examples
 
 ``` r
+# \donttest{
 esp <- esp_get_country()
 hexccaa <- esp_get_hex_ccaa()
 
@@ -120,4 +119,6 @@ ggplot(gridprov) +
   theme_void() +
   labs(title = "Grid: Provinces")
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
+
+# }
 ```

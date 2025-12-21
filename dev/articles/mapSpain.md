@@ -89,7 +89,7 @@ Example: Provinces of Andalucia
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
-Euskadi <- esp_get_munic(region = "Euskadi")
+Euskadi <- esp_get_munic_siane(region = "Euskadi")
 
 # Use dictionary
 
@@ -183,7 +183,7 @@ package that handles `sf` objects (e.g. **tmap**, **mapsf**,
 library(sf)
 
 pop <- mapSpain::pobmun19
-munic <- esp_get_munic()
+munic <- esp_get_munic_siane()
 
 # Get area (km2) - Use LAEA projection
 municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)

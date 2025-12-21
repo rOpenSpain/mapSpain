@@ -31,8 +31,8 @@ esp_make_provider(id, q, service, layers, ...)
 
 - ...:
 
-  Additional parameters to the query, like `version`, `format`,
-  `crs/srs`, `style`, ... depending on the capabilities of the service.
+  Additional arguments to the query, like `version`, `format`,
+  `crs/srs`, `style`, etc. depending on the capabilities of the service.
 
 ## Value
 
@@ -46,7 +46,7 @@ Standard](https://www.ogc.org/standards/wms/).
 Note that:
 
 - [mapSpain](https://CRAN.R-project.org/package=mapSpain) would not
-  provide advice on the parameter `q` to be provided.
+  provide advice on the argument `q` to be provided.
 
 - Currently, on **WMTS** requests only services with
   `tilematrixset=GoogleMapsCompatible` are supported.

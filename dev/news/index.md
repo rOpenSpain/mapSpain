@@ -9,12 +9,21 @@
   renamed to
   [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
   Both versions work so far.
+- New function
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
+  replacing `esp_get_railway(..., spatialtype = "point")`.
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   deprecated and defunct, since the source file is not available any
   more.
+
+### Changes in datasets
+
 - Add
   [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
-  (replaces `esp_nuts.sf`).
+  (replaces `?esp_nuts.sf`).
+- `?leaflet.providersESP.df` has been removed. It was superseded in
+  **mapSpain** v0.8.0.
+- `?esp_munic.sf` has been removed.
 
 ## mapSpain 0.10.0
 
@@ -97,7 +106,7 @@ CRAN release: 2022-12-22
 
 CRAN release: 2022-08-13
 
-- Now `moveCAN` is a explicit parameter in the relevant functions.
+- Now `moveCAN` is a explicit argument in the relevant functions.
 - Deprecate `layer_spatraster().` Use
   [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   instead.
@@ -108,8 +117,8 @@ CRAN release: 2022-08-13
 - Add new function to get comarcas from INE:
   [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md).
 - Add new functions to get simplified maps from INE:
-  - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md).
-  - [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md).
+  - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md).
+  - [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md).
 
 ## mapSpain 0.6.1
 
@@ -176,7 +185,7 @@ CRAN release: 2021-09-01
   [`rappdirs::user_cache_dir()`](https://rappdirs.r-lib.org/reference/user_cache_dir.html).
   Now the cache_dir path is stored and it is not necessary to set it up
   again on a new session.
-- Add a new parameter `zoommin` on
+- Add a new argument `zoommin` on
   [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
 - New tests with **testthat**.
 - Update on docs. New examples
@@ -223,7 +232,7 @@ CRAN release: 2021-02-25
 - Documentation ported to **roxygen2**.
 - Include CartoBase ANE data
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>:
-  - [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
+  - [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
   - [`mapSpain::esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   - [`mapSpain::esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
   - [`mapSpain::esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)

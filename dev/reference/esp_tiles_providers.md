@@ -1,8 +1,8 @@
 # Database of public WMS and WMTS of Spain
 
 A named [`list`](https://rdrr.io/r/base/list.html) of length 102
-containing the parameters of the url information of different public WMS
-and WMTSproviders of Spain.
+containing the argument of the url information of different public WMS
+and WMTS providers of Spain.
 
 Implementation of javascript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -16,10 +16,10 @@ A named `list` of the providers available with the following structure:
 
 - Each element of the list contains two nested named lists:
 
-  - `static` with the parameters to get static tiles plus an additional
+  - `static` with the arguments to get static tiles plus an additional
     item named `attribution`.
 
-  - `leaflet` with additional parameters to be passed onto
+  - `leaflet` with additional arguments to be passed onto
     [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
 ## Source
@@ -241,8 +241,6 @@ are:
 
 Other datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
-[`esp_munic.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_munic.sf.md),
-[`esp_nuts.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts.sf.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
 

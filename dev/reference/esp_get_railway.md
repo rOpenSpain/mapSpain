@@ -1,4 +1,4 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `LINESTRING` or `POINT` with the railways of Spain
+# Railways of Spain - SIANE
 
 Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 `LINESTRING` or `POINT` object representing the nodes and railway lines
@@ -9,25 +9,55 @@ of Spain.
 ``` r
 esp_get_railway(
   year = Sys.Date(),
-  epsg = "4258",
+  epsg = 4258,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  spatialtype = "line"
+  spatialtype = c("line", "point")
+)
+
+esp_get_stations(
+  year = Sys.Date(),
+  epsg = 4258,
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
 )
 ```
 
 ## Source
 
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
+today.
+
+Copyright:
+<https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+
+It's necessary to always acknowledge authorship using the following
+formulas:
+
+1.  When the original digital product is not modified or altered, it can
+    be expressed in one of the following ways:
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+
+2.  When a new product is generated:
+
+- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+Data distributed via a custom CDN, see
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - year:
 
-  Release year.
+  Ignored.
 
 - epsg:
 
@@ -65,18 +95,25 @@ IGN data via a custom CDN (see
 
 - spatialtype:
 
-  Spatial type of the output. Use `"line"` for extracting the railway as
-  lines and `"point"` for extracting stations.
+  **\[deprecated\]** character string. Use `esp_get_stations()` instead
+  of `"point"` for stations.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `LINESTRING`
-or `POINT` object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## See also
 
 Other infrastructure:
 [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
+
+Other siane:
+[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
+[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
+[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
 
 ## Examples
 
@@ -90,7 +127,7 @@ ccaa <- esp_get_ccaa()
 rails <- esp_get_railway()
 
 # Stations
-stations <- esp_get_railway(spatialtype = "point")
+stations <- esp_get_stations()
 
 # Map
 

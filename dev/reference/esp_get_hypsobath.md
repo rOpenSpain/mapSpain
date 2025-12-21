@@ -1,8 +1,6 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or `LINESTRING` with hypsometry and bathymetry of Spain
+# Hypsometry and bathymetry of Spain - SIANE
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` or `LINESTRING` object representing the hypsometry and
-bathymetry of Spain.
+Dataset representing the hypsometry and bathymetry of Spain.
 
 - **Hypsometry** represents the the elevation and depth of features of
   the Earth's surface relative to mean sea level.
@@ -14,20 +12,41 @@ bathymetry of Spain.
 
 ``` r
 esp_get_hypsobath(
-  epsg = "4258",
+  epsg = 4258,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "3",
-  spatialtype = "area"
+  resolution = c(3, 6.5),
+  spatialtype = c("area", "line")
 )
 ```
 
 ## Source
 
-IGN data via a custom CDN (see
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata>).
+CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
+today.
+
+Copyright:
+<https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+
+It's necessary to always acknowledge authorship using the following
+formulas:
+
+1.  When the original digital product is not modified or altered, it can
+    be expressed in one of the following ways:
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+
+2.  When a new product is generated:
+
+- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+Data distributed via a custom CDN, see
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
@@ -67,17 +86,20 @@ IGN data via a custom CDN (see
 
 - resolution:
 
-  Resolution of the shape. Values available are `"3"` or `"6.5"`.
+  character string or number. Resolution of the geospatial data. One of:
+
+  - "6.5": 1:6.5 million.
+
+  - "3": 1:3 million.
 
 - spatialtype:
 
-  Spatial type of the output. Use `"area"` for `POLYGON` or `"line"` for
-  `LINESTRING`.
+  character string. Spatial type of the output. Use `"area"` for
+  `POLYGON` or `"line"` for `LINESTRING`.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-`LINESTRING` object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -90,6 +112,14 @@ Other natural:
 [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
 [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_rivers.md)
 
+Other siane:
+[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
+[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
+[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+
 ## Examples
 
 ``` r
@@ -99,45 +129,20 @@ library(ggplot2)
 
 hypsobath <- esp_get_hypsobath()
 
-# Error on the data provided - There is an empty shape
-# Remove:
-
-hypsobath <- hypsobath[!sf::st_is_empty(hypsobath), ]
-
 # Tints from Wikipedia
 # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/
 # Topographic_maps
 
-bath_tints <- colorRampPalette(
-  rev(
-    c(
-      "#D8F2FE", "#C6ECFF", "#B9E3FF",
-      "#ACDBFB", "#A1D2F7", "#96C9F0",
-      "#8DC1EA", "#84B9E3", "#79B2DE",
-      "#71ABD8"
-    )
-  )
-)
-
-hyps_tints <- colorRampPalette(
-  rev(
-    c(
-      "#F5F4F2", "#E0DED8", "#CAC3B8", "#BAAE9A",
-      "#AC9A7C", "#AA8753", "#B9985A", "#C3A76B",
-      "#CAB982", "#D3CA9D", "#DED6A3", "#E8E1B6",
-      "#EFEBC0", "#E1E4B5", "#D1D7AB", "#BDCC96",
-      "#A8C68F", "#94BF8B", "#ACD0A5"
-    )
-  )
-)
 
 levels <- sort(unique(hypsobath$val_inf))
 
-# Create palette
+# Create Manual pal
 br_bath <- length(levels[levels < 0])
 br_terrain <- length(levels) - br_bath
-
-pal <- c(bath_tints((br_bath)), hyps_tints((br_terrain)))
+pal <- c(
+  tidyterra::hypso.colors(br_bath, "wiki-2.0_bathy"),
+  tidyterra::hypso.colors(br_terrain, "wiki-2.0_hypso")
+)
 
 
 # Plot Canary Islands

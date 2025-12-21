@@ -137,7 +137,8 @@ esp_dict_translate(vals, lang = "ga", all = TRUE)
 #> 
 #> $Madrid
 #> [1] "Madrid"               "madrid"               "MADRID"              
-#> [4] "Comunidade de Madrid" "comunidade de madrid" "COMUNIDADE DE MADRID"
+#> [4] "Provincia de Madrid"  "Comunidade de Madrid" "provincia de madrid" 
+#> [7] "comunidade de madrid" "PROVINCIA DE MADRID"  "COMUNIDADE DE MADRID"
 #> 
 #> $Jaen
 #>  [1] "Xaén"              "Xaen"              "xaén"             

@@ -55,26 +55,9 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
 
 ``` r
 # \dontrun{
-
-grid <- esp_get_grid_EEA(type = "main", resolution = 100)
-#> Error: `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
+try(esp_get_grid_EEA())
+#> Error : `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
 #> defunct.
 #> ℹ The source file is not available for download any more
-grid_can <- esp_get_grid_EEA(type = "canary", resolution = 100)
-#> Error: `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now
-#> defunct.
-#> ℹ The source file is not available for download any more
-esp <- esp_get_country(moveCAN = FALSE)
-
-library(ggplot2)
-
-ggplot(grid) +
-  geom_sf() +
-  geom_sf(data = grid_can) +
-  geom_sf(data = esp, fill = NA) +
-  theme_light() +
-  labs(title = "EEA Grid for Spain")
-#> Error in ggplot(grid): `data` cannot be a function.
-#> ℹ Have you misspelled the `data` argument in `ggplot()`?
 # }
 ```

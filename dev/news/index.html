@@ -52,10 +52,18 @@
 <li>Remove <strong>slippymath</strong> dependency (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
 <li>
 <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> renamed to <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code>. Both versions work so far.</li>
+<li>New function <code><a href="../reference/esp_get_railway.html">esp_get_stations()</a></code>, replacing <code>esp_get_railway(..., spatialtype = "point")</code>.</li>
 <li>
 <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> deprecated and defunct, since the source file is not available any more.</li>
-<li>Add <code><a href="../reference/esp_nuts_2024.html">?esp_nuts_2024</a></code> (replaces <code>esp_nuts.sf</code>).</li>
+</ul><div class="section level3">
+<h3 id="changes-in-datasets-development-version">Changes in datasets<a class="anchor" aria-label="anchor" href="#changes-in-datasets-development-version"></a></h3>
+<ul><li>Add <code><a href="../reference/esp_nuts_2024.html">?esp_nuts_2024</a></code> (replaces <code>?esp_nuts.sf</code>).</li>
+<li>
+<code>?leaflet.providersESP.df</code> has been removed. It was superseded in <strong>mapSpain</strong> v0.8.0.</li>
+<li>
+<code>?esp_munic.sf</code> has been removed.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.10.0" id="mapspain-0100">mapSpain 0.10.0<a class="anchor" aria-label="anchor" href="#mapspain-0100"></a></h2><p class="text-muted">CRAN release: 2024-12-15</p>
 <ul><li>Fix a bug on <code><a href="../reference/esp_get_prov_siane.html">esp_get_prov_siane()</a></code> when selecting columns <a href="https://github.com/rOpenSpain/mapSpain/issues/115" class="external-link">#115</a>.</li>
@@ -106,15 +114,15 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.2" id="mapspain-062">mapSpain 0.6.2<a class="anchor" aria-label="anchor" href="#mapspain-062"></a></h2><p class="text-muted">CRAN release: 2022-08-13</p>
-<ul><li>Now <code>moveCAN</code> is a explicit parameter in the relevant functions.</li>
+<ul><li>Now <code>moveCAN</code> is a explicit argument in the relevant functions.</li>
 <li>Deprecate <code>layer_spatraster().</code> Use <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code> instead.</li>
 <li>Fix geometries on <code><a href="../reference/esp_get_gridmap.html">esp_get_hex_prov()</a></code> and <code><a href="../reference/esp_get_gridmap.html">esp_get_hex_ccaa()</a></code>.</li>
 <li>Add new function to get comarcas from INE: <code><a href="../reference/esp_get_comarca.html">esp_get_comarca()</a></code>.</li>
 <li>Add new functions to get simplified maps from INE:
 <ul><li>
-<code><a href="../reference/esp_get_simplified.html">esp_get_simpl_prov()</a></code>.</li>
+<code><a href="../reference/esp_get_simpl.html">esp_get_simpl_prov()</a></code>.</li>
 <li>
-<code><a href="../reference/esp_get_simplified.html">esp_get_simpl_ccaa()</a></code>.</li>
+<code><a href="../reference/esp_get_simpl.html">esp_get_simpl_ccaa()</a></code>.</li>
 </ul></li>
 </ul></div>
     <div class="section level2">
@@ -160,7 +168,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="mapspain-030">mapSpain 0.3.0<a class="anchor" aria-label="anchor" href="#mapspain-030"></a></h2><p class="text-muted">CRAN release: 2021-09-01</p>
 <ul><li>Caching improvements: new function <code><a href="../reference/esp_set_cache_dir.html">esp_set_cache_dir()</a></code> based on <code><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">rappdirs::user_cache_dir()</a></code>. Now the cache_dir path is stored and it is not necessary to set it up again on a new session.</li>
-<li>Add a new parameter <code>zoommin</code> on <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code>.</li>
+<li>Add a new argument <code>zoommin</code> on <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code>.</li>
 <li>New tests with <strong>testthat</strong>.</li>
 <li>Update on docs. New examples</li>
 <li>Precompute vignette.</li>
@@ -196,7 +204,7 @@
 </li>
 <li>Documentation ported to <strong>roxygen2</strong>.</li>
 <li>Include CartoBase ANE data <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>:
-<ul><li><code><a href="../reference/esp_get_munic.html">mapSpain::esp_get_munic_siane()</a></code></li>
+<ul><li><code><a href="../reference/esp_get_munic_siane.html">mapSpain::esp_get_munic_siane()</a></code></li>
 <li><code><a href="../reference/esp_get_prov_siane.html">mapSpain::esp_get_prov_siane()</a></code></li>
 <li><code><a href="../reference/esp_get_ccaa_siane.html">mapSpain::esp_get_ccaa_siane()</a></code></li>
 <li><code><a href="../reference/esp_get_hypsobath.html">mapSpain::esp_get_hypsobath()</a></code></li>

@@ -1,6 +1,10 @@
-# Get 'comarcas' of Spain as [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+# 'Comarcas' of Spain
 
-Returns 'comarcas' of Spain as `sf` `POLYGON` objects.
+Returns [Comarcas of
+Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
+traditional informal territorial division, comprising several
+municipalities sharing geographical, economic or cultural traits,
+typically with not well defined limits.
 
 ## Usage
 
@@ -10,7 +14,7 @@ esp_get_comarca(
   comarca = NULL,
   moveCAN = TRUE,
   type = c("INE", "IGN", "AGR", "LIV"),
-  epsg = "4258",
+  epsg = 4258,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -26,14 +30,14 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - region:
 
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  comarcas. See **Details**.
+  character. A vector of names and/or codes for provinces or `NULL` to
+  get all the comarcas. See **Details**.
 
 - comarca:
 
-  A name or [`regex`](https://rdrr.io/r/base/grep.html) expression with
-  the names of the required comarcas. `NULL` would return all the
-  possible comarcas.
+  character. A name or [`regex`](https://rdrr.io/r/base/grep.html)
+  expression with the names of the required comarcas. `NULL` would
+  return all the possible comarcas.
 
 - moveCAN:
 
@@ -45,8 +49,8 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - type:
 
-  One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of comarca to return,
-  see **Details**.
+  character. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of comarca
+  to return, see **Details**.
 
 - epsg:
 
@@ -78,12 +82,26 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygon
-object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-### About comarcas
+When using `region` you can use and mix names and NUTS codes (levels 1,
+2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
+
+When calling a higher level (Province, Autonomous Community or NUTS1),
+all the comarcas of that level would be added.
+
+## Note
+
+The use of the information contained on the [INE
+website](https://www.ine.es/en/index.htm) may be carried out by users or
+re-use agents, at their own risk, and they will be the sole liable
+parties in the case of having to answer to third parties due to damages
+arising from such use.
+
+## About comarcas
 
 'Comarcas' (English equivalent: district, county, area or zone) does not
 always have a formal legal status. They correspond mainly to natural
@@ -96,7 +114,7 @@ merindades instead), in the region of El Bierzo (Castilla y Leon) and
 Aragon. Galicia, the Principality of Asturias, and Andalusia have
 functional comarcas.
 
-### Types
+## Types
 
 `esp_get_comarca()` can retrieve several types of comarcas, each one
 provided under different classification criteria.
@@ -113,22 +131,10 @@ provided under different classification criteria.
 - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
   Fisheries and Food (MAPA).
 
-### Misc
+## Note
 
-When using `region` you can use and mix names and NUTS codes (levels 1,
-2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
-[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
-
-When calling a higher level (Province, Autonomous Community or NUTS1),
-all the comarcas of that level would be added.
-
-### Legal Notice
-
-The use of the information contained on the [INE
-website](https://www.ine.es/en/index.htm) may be carried out by users or
-re-use agents, at their own risk, and they will be the sole liable
-parties in the case of having to answer to third parties due to damages
-arising from such use.
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
@@ -141,10 +147,11 @@ Other political:
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 ## Examples
 

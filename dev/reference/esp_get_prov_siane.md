@@ -27,6 +27,26 @@ CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 <http://www.ign.es/web/ign/portal>. Years available are 2005 up to
 today.
 
+Copyright:
+<https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+
+It's necessary to always acknowledge authorship using the following
+formulas:
+
+1.  When the original digital product is not modified or altered, it can
+    be expressed in one of the following ways:
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+
+2.  When a new product is generated:
+
+- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+Data distributed via a custom CDN, see
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+
 ## Arguments
 
 - prov:
@@ -82,7 +102,7 @@ today.
 
   - "6.5": 1:6.5 million.
 
-  - "6.5": 1:3 million.
+  - "3": 1:3 million.
 
 - moveCAN:
 
@@ -124,13 +144,18 @@ Other political:
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 Other siane:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
+[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
+[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
+[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
 
 ## Examples
 
@@ -155,7 +180,7 @@ esp_get_ccaa_siane() |>
 #> $ nuts2.name        <chr> "Andalucía", "Aragón", "Principado de Asturias", "Il…
 #> $ cldr.ccaa.name.en <chr> "Andalusia", "Aragon", "Asturias", "Balearic Islands…
 #> $ cldr.ccaa.name.es <chr> "Andalucía", "Aragón", "Principado de Asturias", "Is…
-#> $ cldr.ccaa.name.ca <chr> "Andalusia", "Aragó", "Astúries", "Illes Balears", N…
+#> $ cldr.ccaa.name.ca <chr> "Andalusia", "Aragó", "Astúries", "Illes Balears", "…
 #> $ cldr.ccaa.name.ga <chr> "Andalucía", "Aragón", "Principado de Asturias", "Il…
 #> $ cldr.ccaa.name.eu <chr> "Andaluzia", "Aragoi", "Asturiesko Printzerria", "Ba…
 #> $ ccaa.shortname.en <chr> "Andalusia", "Aragon", "Asturias", "Balearic Islands…
@@ -163,6 +188,6 @@ esp_get_ccaa_siane() |>
 #> $ ccaa.shortname.ca <chr> "Andalusia", "Aragó", "Astúries", "Illes Balears", "…
 #> $ ccaa.shortname.ga <chr> "Andalucía", "Aragón", "Asturias", "Illas Baleares",…
 #> $ ccaa.shortname.eu <chr> "Andaluzia", "Aragoi", "Asturias", "Balear Uharteak"…
-#> $ nuts1.name        <chr> "SUR", "NORESTE", "NOROESTE", "ESTE", "CANARIAS", "N…
+#> $ nuts1.name        <chr> "Sur", "Noreste", "Noroeste", "Este", "Canarias", "N…
 #> $ geometry          <MULTIPOLYGON [°]> MULTIPOLYGON (((-5.024684 3..., MULTIPO…
 ```

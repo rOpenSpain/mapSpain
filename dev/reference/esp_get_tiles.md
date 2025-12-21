@@ -41,13 +41,13 @@ esp_get_tiles(
 
 - type:
 
-  This parameter could be either:
+  This argument could be either:
 
   - The name of one of the pre-defined providers (see
     [`esp_tiles_providers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)).
 
-  - A list with two named elements `id` and `q` with your own
-    parameters. See
+  - A list with two named elements `id` and `q` with your own arguments.
+    See
     [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
     and examples.
 

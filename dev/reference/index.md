@@ -1,12 +1,43 @@
 # Package index
 
+## GISCO
+
+- [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
+  : Autonomous Communities of Spain - GISCO
+- [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md)
+  : Boundaries of Spain - GISCO
+- [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
+  : Municipalities of Spain - GISCO
+- [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+  : Territorial Spanish units for statistics (NUTS) dataset
+- [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
+  : Provinces of Spain - GISCO
+
+## SIANE
+
+- [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
+  : City where the municipal public authorities are based - SIANE
+- [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
+  : Autonomous Communities of Spain - SIANE
+- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
+  : River basin districts of Spain - SIANE
+- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
+  : Hypsometry and bathymetry of Spain - SIANE
+- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
+  : Municipalities of Spain - SIANE
+- [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
+  : Provinces of Spain - SIANE
+- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+  : Railways of Spain - SIANE
+
 ## Political
 
 These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects with political boundaries.
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of spanish regions
+  : Database with codes and names of Spanish regions
 
 - [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
   [`esp_get_can_provinces()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
@@ -16,10 +47,7 @@ objects with political boundaries.
   polygons for insetting the Canary Islands
 
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
-  of the municipalities of Spain
+  : City where the municipal public authorities are based - SIANE
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
   : Autonomous Communities of Spain - GISCO
@@ -28,10 +56,7 @@ objects with political boundaries.
   : Autonomous Communities of Spain - SIANE
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md)
-  :
-
-  Get 'comarcas' of Spain as
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+  : 'Comarcas' of Spain
 
 - [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md)
   : Boundaries of Spain - GISCO
@@ -46,11 +71,10 @@ objects with political boundaries.
   or squared `POLYGON` of Spain
 
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
-  [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
-  :
+  : Municipalities of Spain - GISCO
 
-  Get municipalities of Spain as
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
+  : Municipalities of Spain - SIANE
 
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
   : Territorial Spanish units for statistics (NUTS) dataset
@@ -61,10 +85,9 @@ objects with political boundaries.
 - [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   : Provinces of Spain - SIANE
 
-- [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
-  [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
-  : Get a simplified map of provinces and autonomous communities of
-  Spain
+- [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
+  [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
+  : Simplified map of provinces and autonomous communities of Spain
 
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
   : Territorial units for statistics (NUTS) dataset (from giscoR)
@@ -75,16 +98,10 @@ These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects with natural features.
 
 - [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  of the drainage basin demarcations of Spain
+  : River basin districts of Spain - SIANE
 
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-  or `LINESTRING` with hypsometry and bathymetry of Spain
+  : Hypsometry and bathymetry of Spain - SIANE
 
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_rivers.md)
   :
@@ -98,10 +115,8 @@ These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects with man-made features.
 
 - [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  :
-
-  Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  `LINESTRING` or `POINT` with the railways of Spain
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+  : Railways of Spain - SIANE
 
 - [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
   :
@@ -191,19 +206,7 @@ Translation across languages and coding systems.
 These objects are datasets already included in the package.
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of spanish regions
-
-- [`esp_munic.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_munic.sf.md)
-  :
-
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  all the municipalities of Spain (2019)
-
-- [`esp_nuts.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts.sf.md)
-  :
-
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  all the NUTS levels of Spain (2016)
+  : Database with codes and names of Spanish regions
 
 - [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
   :

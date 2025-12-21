@@ -67,8 +67,8 @@ IGN data via a custom CDN (see
 
 - spatialtype:
 
-  Spatial type of the output. Use `"area"` for `POLYGON` or `"line"` for
-  `LINESTRING`.
+  character string. Spatial type of the output. Use `"area"` for
+  `POLYGON` or `"line"` for `LINESTRING`.
 
 - name:
 

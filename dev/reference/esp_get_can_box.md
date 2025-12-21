@@ -24,7 +24,7 @@ to displace stand-alone objects on the Canary Islands.
 esp_get_can_box(
   style = c("right", "left", "box", "poly"),
   moveCAN = TRUE,
-  epsg = "4258"
+  epsg = 4258
 )
 
 esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
@@ -66,7 +66,7 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-`LINESTRING` depending of `style` parameter.
+`LINESTRING` depending of `style` argument.
 
 `esp_get_can_provinces` returns a `LINESTRING` object.
 
@@ -81,10 +81,11 @@ Other political:
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 Other Canary Islands:
 [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)

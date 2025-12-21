@@ -1,12 +1,11 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT` of the municipalities of Spain
+# City where the municipal public authorities are based - SIANE
 
 Get a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
-with the location of the political powers for each municipality
-(possibly the center of the municipality).
+with the location of the political powers for each municipality.
 
 Note that this differs of the centroid of the boundaries of the
 municipality, returned by
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md).
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md).
 
 ## Usage
 
@@ -31,11 +30,33 @@ CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 <http://www.ign.es/web/ign/portal>. Years available are 2005 up to
 today.
 
+Copyright:
+<https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
+
+It's necessary to always acknowledge authorship using the following
+formulas:
+
+1.  When the original digital product is not modified or altered, it can
+    be expressed in one of the following ways:
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+
+2.  When a new product is generated:
+
+- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+
+Data distributed via a custom CDN, see
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
+
 ## Arguments
 
 - year:
 
-  Release year. See **Details** for years available.
+  character string or number. Release year, it must presents formats
+  `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical information
+  starts as of 2005.
 
 - epsg:
 
@@ -73,13 +94,14 @@ today.
 
 - region:
 
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  municipalities. See **Details**.
+  Optional. A vector of region names, NUTS or ISO codes (see
+  [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)).
 
 - munic:
 
-  A name or [`regex`](https://rdrr.io/r/base/grep.html) expression with
-  the names of the required municipalities. `NULL` would return all
+  character string. A name or
+  [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
+  of the required municipalities. `NULL` would return all
   municipalities.
 
 - moveCAN:
@@ -97,18 +119,13 @@ today.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
-object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-`year` could be passed as a single year (`YYYY` format, as end of year)
-or as a specific date (`YYYY-MM-DD` format). Historical information
-starts as of 2005.
-
 When using `region` you can use and mix names and NUTS codes (levels 1,
-2 or 3), ISO codes (corresponding to level 2 or 3) or `cpro`. See
-[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
+2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
+[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
 When calling a higher level (province, CCAA or NUTS1), all the
 municipalities of that level would be added.
@@ -124,28 +141,30 @@ Other political:
 [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simplified.md)
+[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
 
 Other siane:
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
+[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
+[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
+[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
 
 Other municipalities:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
-[`esp_munic.sf`](https://ropenspain.github.io/mapSpain/dev/reference/esp_munic.sf.md)
+[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
 
 ## Examples
 
 ``` r
-# \dontrun{
+# \donttest{
 # This code compares centroids of municipalities against esp_get_capimun
 # It also download tiles, make sure you are online
-
-library(sf)
-#> Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE
 
 # Get shape
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
@@ -167,12 +186,7 @@ capimun$type <- "Capimun"
 tile <- esp_get_tiles(area, "IGNBase.Todo", zoommin = 2)
 
 # Join both point geometries
-points <- rbind(
-  centroid[, "type"],
-  capimun[, "type"]
-)
-#> Error in match.names(clabs, names(xi)): names do not match previous names
-
+points <- dplyr::bind_rows(centroid, capimun)
 
 # Check on plot
 library(ggplot2)
@@ -190,7 +204,6 @@ ggplot(points) +
   scale_fill_manual(values = c("green", "red")) +
   theme_void() +
   labs(title = "Centroid vs. capimun")
-#> Error in ggplot(points): `data` cannot be a function.
-#> ℹ Have you misspelled the `data` argument in `ggplot()`?
+
 # }
 ```

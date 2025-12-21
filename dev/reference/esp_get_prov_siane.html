@@ -77,6 +77,16 @@ at a specified scale.</p>
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
     <p>CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 <a href="http://www.ign.es/web/ign/portal" class="external-link">http://www.ign.es/web/ign/portal</a>. Years available are 2005 up to today.</p>
+<p>Copyright:
+<a href="https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane" class="external-link">https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane</a></p>
+<p>It's necessary to always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
+be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
+<li><p>CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional</p></li>
+</ul></li>
+<li><p>When a new product is generated:</p></li>
+</ol><ul><li><p>Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
+</ul><p>Data distributed via a custom CDN, see
+<a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
@@ -125,7 +135,7 @@ is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new downlo
 <dd><p>character string or number. Resolution of the geospatial
 data. One of:</p><ul><li><p>"10": 1:10 million.</p></li>
 <li><p>"6.5": 1:6.5 million.</p></li>
-<li><p>"6.5": 1:3 million.</p></li>
+<li><p>"3": 1:3 million.</p></li>
 </ul></dd>
 
 
@@ -166,12 +176,17 @@ provinces of that level would be added.</p>
 <code><a href="esp_get_country.html">esp_get_country()</a></code>,
 <code><a href="esp_get_gridmap.html">esp_get_gridmap</a></code>,
 <code><a href="esp_get_munic.html">esp_get_munic()</a></code>,
+<code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,
 <code><a href="esp_get_nuts.html">esp_get_nuts()</a></code>,
 <code><a href="esp_get_prov.html">esp_get_prov()</a></code>,
-<code><a href="esp_get_simplified.html">esp_get_simpl_prov()</a></code></p>
+<code><a href="esp_get_simpl.html">esp_get_simpl</a></code></p>
 <p>Other siane:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
-<code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code></p></div>
+<code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
+<code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>,
+<code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>,
+<code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,
+<code><a href="esp_get_railway.html">esp_get_railway()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -196,7 +211,7 @@ provinces of that level would be added.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ nuts2.name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalucía"<span style="color: #949494;">, </span>"Aragón"<span style="color: #949494;">, </span>"Principado de Asturias"<span style="color: #949494;">, </span>"Il…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.en <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalusia"<span style="color: #949494;">, </span>"Aragon"<span style="color: #949494;">, </span>"Asturias"<span style="color: #949494;">, </span>"Balearic Islands…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.es <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalucía"<span style="color: #949494;">, </span>"Aragón"<span style="color: #949494;">, </span>"Principado de Asturias"<span style="color: #949494;">, </span>"Is…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.ca <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalusia"<span style="color: #949494;">, </span>"Aragó"<span style="color: #949494;">, </span>"Astúries"<span style="color: #949494;">, </span>"Illes Balears"<span style="color: #949494;">, </span><span style="color: #BB0000;">N</span>…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.ca <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalusia"<span style="color: #949494;">, </span>"Aragó"<span style="color: #949494;">, </span>"Astúries"<span style="color: #949494;">, </span>"Illes Balears"<span style="color: #949494;">, </span>"…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.ga <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalucía"<span style="color: #949494;">, </span>"Aragón"<span style="color: #949494;">, </span>"Principado de Asturias"<span style="color: #949494;">, </span>"Il…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ cldr.ccaa.name.eu <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andaluzia"<span style="color: #949494;">, </span>"Aragoi"<span style="color: #949494;">, </span>"Asturiesko Printzerria"<span style="color: #949494;">, </span>"Ba…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ccaa.shortname.en <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalusia"<span style="color: #949494;">, </span>"Aragon"<span style="color: #949494;">, </span>"Asturias"<span style="color: #949494;">, </span>"Balearic Islands…</span>
@@ -204,7 +219,7 @@ provinces of that level would be added.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ccaa.shortname.ca <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalusia"<span style="color: #949494;">, </span>"Aragó"<span style="color: #949494;">, </span>"Astúries"<span style="color: #949494;">, </span>"Illes Balears"<span style="color: #949494;">, </span>"…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ccaa.shortname.ga <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andalucía"<span style="color: #949494;">, </span>"Aragón"<span style="color: #949494;">, </span>"Asturias"<span style="color: #949494;">, </span>"Illas Baleares"<span style="color: #949494;">,</span>…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ccaa.shortname.eu <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Andaluzia"<span style="color: #949494;">, </span>"Aragoi"<span style="color: #949494;">, </span>"Asturias"<span style="color: #949494;">, </span>"Balear Uharteak"…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ nuts1.name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "SUR"<span style="color: #949494;">, </span>"NORESTE"<span style="color: #949494;">, </span>"NOROESTE"<span style="color: #949494;">, </span>"ESTE"<span style="color: #949494;">, </span>"CANARIAS"<span style="color: #949494;">, </span>"N…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ nuts1.name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Sur"<span style="color: #949494;">, </span>"Noreste"<span style="color: #949494;">, </span>"Noroeste"<span style="color: #949494;">, </span>"Este"<span style="color: #949494;">, </span>"Canarias"<span style="color: #949494;">, </span>"N…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ geometry          <span style="color: #949494; font-style: italic;">&lt;MULTIPOLYGON [°]&gt;</span> MULTIPOLYGON (((-5.024684 3...<span style="color: #949494;">, </span>MULTIPO…</span>
 <span class="r-plt img"><img src="esp_get_prov_siane-1.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>

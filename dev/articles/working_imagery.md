@@ -233,7 +233,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 
 The list `esp_tiles_providers` includes the data of the available
 providers you can use on functions described above. This list includes
-all the parameters needed to replicate the API request. See the static
+all the arguments needed to replicate the API request. See the static
 url of each provider:
 
 ## Session info
@@ -250,7 +250,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-18
+    #>  date     2025-12-21
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -264,12 +264,11 @@ Details
     #>  codetools      0.2-20       2024-03-31 [3] CRAN (R 4.5.2)
     #>  countrycode    1.6.1        2025-03-31 [1] RSPM
     #>  crosstalk      1.2.2        2025-08-26 [1] RSPM
-    #>  curl           7.0.0        2025-08-19 [1] RSPM
     #>  DBI            1.2.3        2024-06-02 [1] RSPM
     #>  desc           1.4.3        2023-12-10 [1] RSPM
     #>  digest         0.6.39       2025-11-19 [1] RSPM
     #>  dplyr          1.1.4        2023-11-17 [1] RSPM
-    #>  e1071          1.7-16       2024-09-16 [1] RSPM
+    #>  e1071          1.7-17       2025-12-18 [1] RSPM
     #>  evaluate       1.0.5        2025-08-27 [1] RSPM
     #>  farver         2.1.2        2024-05-13 [1] RSPM
     #>  fastmap        1.2.0        2024-05-15 [1] RSPM
@@ -281,7 +280,6 @@ Details
     #>  gtable         0.3.6        2024-10-25 [1] RSPM
     #>  htmltools      0.5.9        2025-12-04 [1] RSPM
     #>  htmlwidgets    1.6.4        2023-12-06 [1] RSPM
-    #>  httr2          1.2.2        2025-12-08 [1] RSPM
     #>  jquerylib      0.1.4        2021-04-26 [1] RSPM
     #>  jsonlite       2.0.0        2025-03-27 [1] RSPM
     #>  KernSmooth     2.23-26      2025-01-01 [3] CRAN (R 4.5.2)
@@ -289,8 +287,7 @@ Details
     #>  leaflet      * 2.2.3        2025-09-04 [1] RSPM
     #>  lifecycle      1.0.4        2023-11-07 [1] RSPM
     #>  magrittr       2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.99.99.9000 2025-12-18 [1] local
-    #>  otel           0.2.0        2025-08-29 [1] RSPM
+    #>  mapSpain     * 0.99.99.9000 2025-12-21 [1] local
     #>  pillar         1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3        2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0        2025-11-06 [1] any (@2.2.0)
@@ -321,14 +318,14 @@ Details
     #>  terra          1.8-86       2025-11-28 [1] CRAN (R 4.5.2)
     #>  textshaping    1.0.4        2025-10-10 [1] RSPM
     #>  tibble         3.3.0        2025-06-08 [1] RSPM
-    #>  tidyr          1.3.1        2024-01-24 [1] RSPM
+    #>  tidyr          1.3.2        2025-12-19 [1] RSPM
     #>  tidyselect     1.2.1        2024-03-11 [1] RSPM
     #>  tidyterra    * 0.7.2        2025-04-14 [1] RSPM
     #>  units          1.0-0        2025-10-09 [1] CRAN (R 4.5.2)
     #>  vctrs          0.6.5        2023-12-01 [1] RSPM
     #>  viridisLite    0.4.2        2023-05-02 [1] RSPM
     #>  withr          3.0.2        2024-10-28 [1] RSPM
-    #>  wk             0.9.4        2024-10-11 [1] RSPM
+    #>  wk             0.9.5        2025-12-18 [1] RSPM
     #>  xfun           0.55         2025-12-16 [1] RSPM
     #>  yaml           2.3.12       2025-12-10 [1] RSPM
     #> 
