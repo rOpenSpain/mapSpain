@@ -248,6 +248,8 @@ test_that("Custom WMTS", {
   # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
+  skip_if_gisco_offline()
+  skip_if_siane_offline()
 
   segovia <- esp_get_prov("segovia", epsg = 3857)
   custom_wmts <- list(
@@ -272,6 +274,13 @@ test_that("Custom WMTS", {
 
   tile2 <- esp_get_tiles(segovia, type = another_wms)
   expect_s4_class(tile2, "SpatRaster")
+
+  # Can extract whole world
+  world <- giscoR::gisco_get_countries(epsg = 3857)
+  expect_silent(
+    tileworld <- esp_get_tiles(world, type = another_wms, crop = FALSE)
+  )
+  expect_s4_class(tileworld, "SpatRaster")
 
   # With another extension
   esri_wsm <- list(

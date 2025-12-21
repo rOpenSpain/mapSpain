@@ -24,8 +24,6 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID}) (Adaptation of slippymath functions) [contributor]
-  \item Miles McBain (\href{https://orcid.org/0000-0003-2865-2548}{ORCID}) (Slippy map tiles functions, from slippymath package) [copyright holder]
   \item Eurostat (\href{https://ror.org/033d3q980}{ROR}) [copyright holder]
   \item Instituto Geográfico Nacional (\href{https://ror.org/03yycdv57}{ROR}) [copyright holder]
 }
