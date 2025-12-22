@@ -115,3 +115,19 @@
       Error in `siane_filter_year()`:
       ! Date "1900-12-12-31" doesn't seem to be valid. Use "YYYY" or "YYYY-MM-DD" format. See `base::as.Date()`.
 
+# Not empty
+
+    Code
+      a_fun()
+    Condition
+      Error in `a_fun()`:
+      ! `a` can't be missing.
+
+---
+
+    Code
+      a_fun(a = 1)
+    Condition
+      Error in `a_fun()`:
+      ! `b` can't be missing.
+

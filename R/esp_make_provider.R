@@ -58,6 +58,11 @@
 #'   ggplot2::geom_sf(data = x, fill = NA)
 #' }
 esp_make_provider <- function(id, q, service, layers, ...) {
+  id <- validate_non_empty_arg(id)
+  q <- validate_non_empty_arg(q)
+  service <- validate_non_empty_arg(service)
+  layers <- validate_non_empty_arg(layers)
+
   dots <- list(...)
   names(dots) <- tolower(names(dots))
 

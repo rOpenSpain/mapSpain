@@ -106,9 +106,7 @@ esp_get_grid_BDN_ccaa <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  if (missing(ccaa)) {
-    cli::cli_abort("{.arg ccaa} can't be missing value.")
-  }
+  ccaa <- validate_non_empty_arg(ccaa)
 
   ccaa <- ccaa[!is.na(ccaa)]
 

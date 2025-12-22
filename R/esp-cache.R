@@ -11,7 +11,7 @@
 #' find your cached path or use [esp_detect_cache_dir()].
 #'
 #' @inheritParams esp_get_nuts
-#' @param cache_dir A path to a cache directory. On missing value the function
+#' @param cache_dir A path to a cache directory. On `NULL` value the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
@@ -83,13 +83,15 @@
 #'
 #' @export
 esp_set_cache_dir <- function(
-  cache_dir,
+  cache_dir = NULL,
   overwrite = FALSE,
   install = FALSE,
   verbose = TRUE
 ) {
+  cache_dir <- ensure_null(cache_dir)
+
   # Default if not provided
-  if (missing(cache_dir) || cache_dir == "") {
+  if (is.null(cache_dir)) {
     make_msg(
       "info",
       verbose,
@@ -104,13 +106,6 @@ esp_set_cache_dir <- function(
   } else {
     is_temp <- FALSE
   }
-
-  # Validate
-  stopifnot(
-    is.character(cache_dir),
-    is.logical(overwrite),
-    is.logical(install)
-  )
 
   # Create and expand
   cache_dir <- create_cache_dir(cache_dir)

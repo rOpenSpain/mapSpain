@@ -196,3 +196,13 @@ ensure_null <- function(x) {
 
   x_init
 }
+
+validate_non_empty_arg <- function(arg, call = parent.frame(1)) {
+  arg_name <- as.character(substitute(arg)) # nolint
+
+  if (missing(arg)) {
+    cli::cli_abort("{.arg {arg_name}} can't be missing.", call = call)
+  }
+
+  arg
+}

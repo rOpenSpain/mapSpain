@@ -6,6 +6,7 @@ test_that("Errors", {
   )
 
   expect_snapshot(error = TRUE, esp_move_can(teide))
+  expect_snapshot(error = TRUE, esp_move_can())
 })
 
 test_that("sfc", {

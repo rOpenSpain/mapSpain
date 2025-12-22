@@ -6,6 +6,14 @@
       Error in `esp_move_can()`:
       ! `x` should be an <sf> or <sfc> object, not a data frame.
 
+---
+
+    Code
+      esp_move_can()
+    Condition
+      Error in `esp_move_can()`:
+      ! `x` can't be missing.
+
 # Internal
 
     Code

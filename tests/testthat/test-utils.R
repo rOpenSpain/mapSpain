@@ -193,3 +193,14 @@ test_that("Ensure NULL", {
   expect_identical(ensure_null(c(1, 2)), c(1, 2))
   expect_identical(letters, letters)
 })
+test_that("Not empty", {
+  a_fun <- function(a, b) {
+    a <- validate_non_empty_arg(a)
+    b <- validate_non_empty_arg(b)
+    c(a, b)
+  }
+
+  expect_snapshot(error = TRUE, a_fun())
+  expect_snapshot(error = TRUE, a_fun(a = 1))
+  expect_identical(a_fun(a = 1, b = 1), c(1, 1))
+})

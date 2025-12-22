@@ -72,6 +72,8 @@
 #'   )
 #'
 esp_move_can <- function(x, moveCAN = TRUE) {
+  x <- validate_non_empty_arg(x)
+
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
     cli::cli_abort(
       paste0(
