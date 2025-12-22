@@ -89,7 +89,7 @@ esp_dict_region_code <- function(
   }
 
   # Create dict
-  dict <- get_master_names()
+  dict <- names_full
 
   names_dict <- unique(
     dict[grep("name", dict$variable), c("key", "value")]
@@ -250,7 +250,7 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   lang <- match_arg_pretty(lang, avlang)
 
   # Create dict
-  dict <- get_master_names()
+  dict <- names_full
 
   # Arrange prelation for results:
   # - First: prov (a_prov)

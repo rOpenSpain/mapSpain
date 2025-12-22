@@ -101,7 +101,7 @@ esp_hlp_code2code <- function() {
 
   # First level - NUTS1
 
-  df <- mapSpain::esp_codelist
+  df <- mapSpain::esp_codelist |> as.data.frame()
 
   nt1 <- unique(df$nuts1.code)
 
@@ -130,10 +130,11 @@ esp_hlp_code2code <- function() {
 
   # Add missing NUTS3
   missnuts <- data.frame(
-    nuts = nt3[!nt3 %in% base.df$nuts]$nuts3.code,
+    nuts = nt3[!nt3 %in% base.df$nuts],
     iso2 = NA,
     codauto = NA,
-    cpro = NA
+    cpro = NA,
+    stringsAsFactors = FALSE
   )
 
   dict_codes.df <- rbind(base.df, missnuts)
