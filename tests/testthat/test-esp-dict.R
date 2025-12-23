@@ -1,4 +1,6 @@
 test_that("Testing dict", {
+  skip_on_cran()
+
   vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
   expect_snapshot(error = TRUE, esp_dict_region_code(vals, "aa"))

@@ -1,4 +1,6 @@
 test_that("convert_to_nuts", {
+  skip_on_cran()
+
   expect_snapshot(n <- convert_to_nuts(NULL))
   expect_null(n)
 
@@ -51,6 +53,8 @@ test_that("convert_to_nuts", {
 
 
 test_that("convert_to_nuts_ccaa", {
+  skip_on_cran()
+
   expect_silent(n <- convert_to_nuts_ccaa(NULL))
   expect_null(n)
 
@@ -138,6 +142,8 @@ test_that("convert_to_nuts_ccaa", {
 })
 
 test_that("convert_to_nuts_prov", {
+  skip_on_cran()
+
   expect_snapshot(n <- convert_to_nuts_prov(NULL))
   expect_null(n)
 

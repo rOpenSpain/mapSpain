@@ -1,4 +1,6 @@
 test_that("Get codes", {
+  skip_on_cran()
+
   names2nuts <- get_master_nuts_nm()
 
   var <- c(
