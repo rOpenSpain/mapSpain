@@ -108,7 +108,10 @@ try projecting first \code{x}:
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
+\dontrun{
+
+# This example downloads data to your local computer!
+
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
 

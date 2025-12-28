@@ -98,6 +98,9 @@ test_that("Colorize", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
+  # Known problem on SSH certificate of catastro on ci
+  skip_on_ci()
+
   cdir <- file.path(tempdir(), "wms_test")
   unlink(cdir, recursive = TRUE, force = TRUE)
 
@@ -290,18 +293,23 @@ test_that("WMS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   expect_length(
-    list.files(file.path(cdir, "Catastro")),
+    list.files(file.path(cdir, "Cartociudad")),
     0
   )
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
   expect_silent(
-    res <- esp_get_tiles(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
+    res <- esp_get_tiles(
+      point,
+      "Cartociudad",
+      cache_dir = cdir,
+      bbox_expand = 0
+    )
   )
 
   expect_length(
-    list.files(file.path(cdir, "Catastro")),
+    list.files(file.path(cdir, "Cartociudad")),
     1
   )
 
@@ -313,18 +321,18 @@ test_that("WMS", {
   expect_equal(rel_x, 50)
 
   # See if cache is modified
-  res2 <- esp_get_tiles(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
+  res2 <- esp_get_tiles(point, "Cartociudad", cache_dir = cdir, bbox_expand = 0)
 
   expect_identical(terra::crs(res2), terra::crs(point))
   expect_length(
-    list.files(file.path(cdir, "Catastro")),
+    list.files(file.path(cdir, "Cartociudad")),
     1
   )
 
   # Modify res
   res3 <- esp_get_tiles(
     point,
-    "Catastro",
+    "Cartociudad",
     cache_dir = cdir,
     bbox_expand = 0,
     res = 256
@@ -333,6 +341,9 @@ test_that("WMS", {
   expect_equal(terra::ncol(res2), 512)
 
   expect_equal(terra::ncol(res3), 256)
+
+  # Known problem on SSH certificate of catastro on ci
+  skip_on_ci()
 
   # Test Catastro
   bbox <- c(222500, 4019500, 222700, 4019700)

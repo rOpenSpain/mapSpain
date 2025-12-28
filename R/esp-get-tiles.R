@@ -95,7 +95,10 @@
 #'
 #'
 #' @examplesIf esp_check_access()
-#' \donttest{
+#' \dontrun{
+#'
+#' # This example downloads data to your local computer!
+#'
 #' segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 #' tile <- esp_get_tiles(segovia, "IGNBase.Todo")
 #'
@@ -226,7 +229,7 @@ esp_get_tiles <- function(
       make_msg(
         "info",
         prov_type == "WMTS",
-        "Autozoom in single {.str POINT} set to {.val 18}"
+        "Autozoom in single {.str POINT} set to {.val 18}."
       )
     }
   }
@@ -359,7 +362,7 @@ get_wmts_tile <- function(
   # Need bbox in 4326
   bbox_4326 <- sf::st_transform(bbox, 4326)
   bbox_4326 <- sf::st_bbox(bbox_4326)
-  as.numeric(NULL)
+
   # Zoom management
   zoom <- ensure_null(as.numeric(zoom))
   zoommin <- ensure_null(as.numeric(zoommin))
@@ -383,7 +386,7 @@ get_wmts_tile <- function(
       "info",
       TRUE,
       paste0(
-        "Minimum {.arg zoom} admitted by this provider is ",
+        "Minimum {.arg zoom} supported by this provider is ",
         "{.val ",
         min_zoom,
         "}. Increasing {.arg zoom} (it was {.val ",
