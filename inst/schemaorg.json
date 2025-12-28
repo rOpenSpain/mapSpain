@@ -7,13 +7,6 @@
         "id": "https://orcid.org/0000-0001-8457-4658"
       },
       "codeRepository": "https://github.com/rOpenSpain/mapSpain",
-      "contributor": {
-        "id": "https://orcid.org/0000-0002-1932-3323",
-        "type": "Person",
-        "email": "timothee.giraud@cnrs.fr",
-        "familyName": "Giraud",
-        "givenName": "Timothée"
-      },
       "copyrightHolder": [
         {
           "id": "https://orcid.org/0000-0001-8457-4658",
@@ -21,12 +14,6 @@
           "email": "diego.hernangomezherrero@gmail.com",
           "familyName": "Hernangómez",
           "givenName": "Diego"
-        },
-        {
-          "id": "https://orcid.org/0000-0003-2865-2548",
-          "type": "Person",
-          "familyName": "McBain",
-          "givenName": "Miles"
         },
         {
           "type": "Organization",

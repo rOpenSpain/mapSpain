@@ -30,15 +30,6 @@
       "@id": "https://orcid.org/0000-0001-8457-4658"
     }
   ],
-  "contributor": [
-    {
-      "@type": "Person",
-      "givenName": "Timothée",
-      "familyName": "Giraud",
-      "email": "timothee.giraud@cnrs.fr",
-      "@id": "https://orcid.org/0000-0002-1932-3323"
-    }
-  ],
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -46,12 +37,6 @@
       "familyName": "Hernangómez",
       "email": "diego.hernangomezherrero@gmail.com",
       "@id": "https://orcid.org/0000-0001-8457-4658"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Miles",
-      "familyName": "McBain",
-      "@id": "https://orcid.org/0000-0003-2865-2548"
     },
     {
       "@type": "Organization",
@@ -88,7 +73,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
-      "version": ">= 3.0.0",
+      "version": ">= 3.5.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -121,19 +106,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=leaflet"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "png",
-      "name": "png",
-      "version": ">= 0.1-5",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=png"
     },
     {
       "@type": "SoftwareApplication",
@@ -197,6 +169,7 @@
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
+      "version": ">= 3.6.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -284,7 +257,7 @@
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
-      "version": ">= 0.9.0",
+      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -320,7 +293,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "1587.31KB",
+  "fileSize": "1648.056KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -4,6 +4,9 @@
 #' This dataset contains the administrative boundaries at country level of the
 #' world.
 #'
+#' The data included in this cartographic database do not imply any opinion of
+#' the IGN regarding its legal status.
+#'
 #' @encoding UTF-8
 #' @family political
 #' @family siane

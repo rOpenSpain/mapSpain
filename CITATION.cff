@@ -91,6 +91,7 @@ references:
     email: gabor@posit.co
   year: '2025'
   doi: 10.32614/CRAN.package.cli
+  version: '>= 3.6.0'
 - type: software
   title: countrycode
   abstract: 'countrycode: Convert Country Names and Country Codes'
@@ -190,7 +191,7 @@ references:
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2025'
   doi: 10.32614/CRAN.package.sf
-  version: '>= 0.9.0'
+  version: '>= 1.0.0'
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -292,7 +293,7 @@ references:
     orcid: https://orcid.org/0000-0002-9335-7468
   year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
-  version: '>= 3.0.0'
+  version: '>= 3.5.0'
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -332,19 +333,6 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.leaflet
   version: '>= 2.0.0'
-- type: software
-  title: png
-  abstract: 'png: Read and write PNG images'
-  notes: Suggests
-  url: http://www.rforge.net/png/
-  repository: https://CRAN.R-project.org/package=png
-  authors:
-  - family-names: Urbanek
-    given-names: Simon
-    email: Simon.Urbanek@r-project.org
-  year: '2025'
-  doi: 10.32614/CRAN.package.png
-  version: '>= 0.1-5'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
