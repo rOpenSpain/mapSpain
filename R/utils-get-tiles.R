@@ -120,9 +120,9 @@ get_tile_crs <- function(prov_list) {
   if (tolower(crs) == tolower("GoogleMapsCompatible")) {
     crs <- "EPSG:3857"
   }
-  crs <- toupper(crs)
+  crs <- unname(toupper(crs))
 
-  sf::st_crs(crs)
+  crs
 }
 
 modify_provider_list <- function(prov_list, options = NULL) {

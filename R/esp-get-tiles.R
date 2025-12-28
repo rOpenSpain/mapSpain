@@ -343,7 +343,7 @@ get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
   # Extension and crs
   terra::ext(r) <- terra::ext(terra::vect(bbox))
   crs_tile <- get_tile_crs(prov_list)
-  terra::crs(r) <- terra::crs(crs_tile$input)
+  terra::crs(r) <- crs_tile
   r
 }
 
@@ -466,7 +466,7 @@ get_wmts_tile <- function(
 
     terra::ext(r) <- terra::ext(ext_tile)
     crs_tile <- get_tile_crs(prov_list)
-    terra::crs(r) <- terra::crs(crs_tile$input)
+    terra::crs(r) <- crs_tile
     r
   })
 

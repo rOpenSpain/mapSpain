@@ -27,6 +27,7 @@ test_that("Test WMTS png", {
   all_n <- names(all_wmts)
 
   rioja <- esp_get_ccaa_siane(ccaa = "La Rioja", epsg = 3857, cache_dir = cdir)
+  fails <- c(NULL)
 
   for (n in all_n) {
     tile <- try(
@@ -34,8 +35,14 @@ test_that("Test WMTS png", {
       silent = TRUE
     )
     if (!inherits(tile, "try-error")) {
+      expect_true(!is.null(ensure_null(terra::crs(tile))))
+
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
+    } else {
+      fails <- c(fails, n)
     }
   }
+  expect_snapshot(fails)
+
   unlink(cdir, force = TRUE, recursive = TRUE)
 })

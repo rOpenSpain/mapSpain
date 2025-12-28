@@ -19,7 +19,7 @@ test_that("Validate external", {
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
   cartodb_voyager <- list(
@@ -31,7 +31,7 @@ test_that("Validate external", {
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
   # And a Custom OGR WMTS
@@ -49,7 +49,7 @@ test_that("Validate external", {
   expect_identical(res$tilematrix, "{z}")
   expect_identical(res$tilerow, "{y}")
   expect_identical(res$tilecol, "{x}")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
 })
 
 test_that("Validate internal", {
@@ -60,7 +60,7 @@ test_that("Validate internal", {
   expect_true(all(c("id", "q", "attribution") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
   # WMTS
@@ -69,7 +69,7 @@ test_that("Validate internal", {
   expect_true(all(c("id", "q", "attribution", "tilematrixset") %in% names(res)))
   expect_true("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # WMS v1.0.0
   expect_silent(res <- validate_provider("Catastro"))
@@ -78,7 +78,7 @@ test_that("Validate internal", {
   expect_true("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
   expect_true(res$version < "1.3.0")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # WMS v1.3.0
   expect_silent(res <- validate_provider("ADIF"))
@@ -87,7 +87,7 @@ test_that("Validate internal", {
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
   expect_true(res$version >= "1.3.0")
-  expect_equal(get_tile_crs(res)$epsg, 3857)
+  expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # JPG
   expect_silent(res <- validate_provider("MTN"))
@@ -114,7 +114,7 @@ test_that("Validate all internals", {
     in_epsg <- vapply(
       validated,
       function(x) {
-        ensure_null(get_tile_crs(x)$input)
+        ensure_null(get_tile_crs(x))
       },
       FUN.VALUE = character(1)
     )
@@ -163,7 +163,7 @@ test_that("Validate options", {
 
   expect_false(prov_list$id == catastro_mod$id)
 
-  expect_true(get_tile_crs(catastro_mod)$input == "EPSG:25830")
+  expect_true(get_tile_crs(catastro_mod) == "EPSG:25830")
 
   # Make url
   q <- catastro_mod$q

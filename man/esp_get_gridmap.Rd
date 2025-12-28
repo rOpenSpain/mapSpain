@@ -46,7 +46,7 @@ to change the projection.
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-esp <- esp_get_country()
+esp <- esp_get_spain()
 hexccaa <- esp_get_hex_ccaa()
 
 library(ggplot2)
@@ -101,13 +101,14 @@ Other political:
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_countries_siane}()},
-\code{\link{esp_get_country}()},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_simpl}},
+\code{\link{esp_get_spain}()},
+\code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 }
 \concept{political}

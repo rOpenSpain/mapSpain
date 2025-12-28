@@ -3,6 +3,7 @@
 -   Minimal **R** version required is **4.1.0**.
 -   Remove **slippymath** dependency (#126).
 -   `esp_getTiles()` renamed to `esp_get_tiles()`. Both versions work so far.
+-   `esp_get_country()` renamed to `esp_get_spain()`. Both versions work so far.
 -   New function `esp_get_stations()`, replacing
     `esp_get_railway(..., spatialtype = "point")`.
 -   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
@@ -15,8 +16,8 @@
 
 -   `esp_siane_bulk_download()` allows to download all the SIANE data to the
     desired `cache_dir` at once.
-
 -   `esp_get_countries_siane()` returns all countries at a given date.
+-   `esp_get_spain_siane()`, `similar to esp_get_spain()` using SIANE data.
 
 ## Changes in datasets
 

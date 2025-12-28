@@ -45,7 +45,7 @@
 #'
 #' # If we use any mapSpain produced object with moveCAN = TRUE...
 #'
-#' esp <- esp_get_country(moveCAN = c(13, 0))
+#' esp <- esp_get_spain(moveCAN = c(13, 0))
 #'
 #' library(ggplot2)
 #'

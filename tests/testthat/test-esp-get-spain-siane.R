@@ -6,7 +6,7 @@ test_that("Test offline", {
   options(gisco_test_offline = TRUE)
   options(mapspain_test_offline = TRUE)
   expect_message(
-    n <- esp_get_country(update_cache = TRUE, verbose = TRUE),
+    n <- esp_get_spain_siane(update_cache = TRUE, verbose = TRUE),
     "Offline"
   )
   expect_null(n)
@@ -23,7 +23,7 @@ test_that("Test 404", {
   options(gisco_test_404 = TRUE)
   options(mapspain_test_404 = TRUE)
   expect_message(
-    n <- esp_get_country(update_cache = TRUE),
+    n <- esp_get_spain_siane(update_cache = TRUE),
     "Error"
   )
   expect_null(n)
@@ -38,11 +38,11 @@ test_that("Check country", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcntry")
+  cdir <- file.path(tempdir(), "testcntry_siane")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_silent(s <- esp_get_country(cache_dir = cdir))
+  expect_silent(s <- esp_get_spain_siane(cache_dir = cdir))
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
@@ -50,7 +50,7 @@ test_that("Check country", {
 
   # EPSG work
   expect_silent(
-    s <- esp_get_country(epsg = 3035, resolution = 20, cache_dir = cdir)
+    s <- esp_get_spain_siane(epsg = 3035, resolution = 6.5, cache_dir = cdir)
   )
 
   expect_s3_class(s, "sf")
@@ -59,7 +59,7 @@ test_that("Check country", {
 
   # Resolution work
   expect_silent(
-    s2 <- esp_get_country(epsg = 3035, resolution = 60, cache_dir = cdir)
+    s2 <- esp_get_spain_siane(epsg = 3035, resolution = 10, cache_dir = cdir)
   )
   expect_s3_class(s2, "sf")
   expect_s3_class(s2, "tbl_df")

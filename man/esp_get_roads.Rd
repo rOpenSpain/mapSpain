@@ -77,7 +77,7 @@ Object representing the main roads of Spain.
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 
-country <- esp_get_country()
+country <- esp_get_spain()
 roads <- esp_get_roads()
 
 library(ggplot2)
@@ -109,6 +109,7 @@ Other siane:
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_railway}()},
+\code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 }
 \concept{infrastructure}

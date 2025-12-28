@@ -36,7 +36,7 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' esp <- esp_get_country()
+#' esp <- esp_get_spain()
 #' hexccaa <- esp_get_hex_ccaa()
 #'
 #' library(ggplot2)

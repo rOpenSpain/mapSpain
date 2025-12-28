@@ -12,6 +12,9 @@
 #' @inherit esp_get_nuts
 #' @export
 #'
+#' @rdname esp_get_spain
+#' @name esp_get_spain
+#'
 #' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @details
@@ -21,9 +24,9 @@
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
-#' @examples
+#' @examplesIf esp_check_access()
 #' \donttest{
-#' original_can <- esp_get_country(moveCAN = FALSE)
+#' original_can <- esp_get_spain(moveCAN = FALSE)
 #'
 #' # One row only
 #' original_can
@@ -35,12 +38,12 @@
 #'   geom_sf(fill = "grey70")
 #'
 #' # Less resolution
-#' moved_can <- esp_get_country(moveCAN = TRUE, resolution = 20)
+#' moved_can <- esp_get_spain(moveCAN = TRUE, resolution = 20)
 #'
 #' ggplot(moved_can) +
 #'   geom_sf(fill = "grey70")
 #' }
-esp_get_country <- function(moveCAN = TRUE, ...) {
+esp_get_spain <- function(moveCAN = TRUE, ...) {
   params <- list(...)
   params$nuts_level <- 1
   params$region <- NULL
@@ -73,3 +76,9 @@ esp_get_country <- function(moveCAN = TRUE, ...) {
 
   data_sf
 }
+
+
+#' @export
+#' @rdname esp_get_spain
+#' @usage NULL
+esp_get_country <- esp_get_spain

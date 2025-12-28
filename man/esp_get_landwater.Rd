@@ -161,6 +161,7 @@ Other siane:
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_railway}()},
 \code{\link{esp_get_roads}()},
+\code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 }
 \concept{natural}

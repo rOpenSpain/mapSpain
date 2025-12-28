@@ -97,7 +97,6 @@ Other political:
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
-\code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_munic_siane}()},
@@ -105,6 +104,8 @@ Other political:
 \code{\link{esp_get_prov}()},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_simpl}},
+\code{\link{esp_get_spain}()},
+\code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 
 Other siane: 
@@ -117,6 +118,7 @@ Other siane:
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_railway}()},
 \code{\link{esp_get_roads}()},
+\code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 }
 \concept{political}

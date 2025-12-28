@@ -36,7 +36,7 @@ provided by the European Soil Data Centre (ESDAC).
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
 grid <- esp_get_grid_ESDAC()
-esp <- esp_get_country(moveCAN = FALSE)
+esp <- esp_get_spain(moveCAN = FALSE)
 
 library(ggplot2)
 

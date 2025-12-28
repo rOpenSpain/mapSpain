@@ -70,7 +70,7 @@ Some examples of what **mapSpain** can do:
 library(mapSpain)
 library(ggplot2)
 
-country <- esp_get_country()
+country <- esp_get_spain()
 lines <- esp_get_can_box()
 
 ggplot(country) +

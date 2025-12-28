@@ -29,14 +29,20 @@ test_that("Test WMS png", {
   santiago <- esp_get_capimun(munic = "Santiago de Compostela", epsg = 3857)
   santiago <- santiago |> sf::st_buffer(dist = 1000)
 
+  n <- all_n[1]
+  fails <- c(NULL)
   for (n in all_n) {
     tile <- try(
       esp_get_tiles(santiago, type = n, cache_dir = cdir),
       silent = TRUE
     )
     if (!inherits(tile, "try-error")) {
+      expect_true(!is.null(ensure_null(terra::crs(tile))))
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
+    } else {
+      fails <- c(fails, n)
     }
   }
+  expect_snapshot(fails)
   unlink(cdir, force = TRUE, recursive = TRUE)
 })

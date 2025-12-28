@@ -14,7 +14,7 @@
 #' @examplesIf esp_check_access()
 #' \donttest{
 #'
-#' country <- esp_get_country()
+#' country <- esp_get_spain()
 #' roads <- esp_get_roads()
 #'
 #' library(ggplot2)
