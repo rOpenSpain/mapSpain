@@ -72,7 +72,7 @@ leafmap
 \code{\link[leaflet:addProviderTiles]{leaflet::providerTileOptions()}}, \code{\link[leaflet:map-options]{leaflet::tileOptions()}}
 
 Other imagery utilities: 
-\code{\link{esp_getTiles}()},
+\code{\link{esp_get_tiles}()},
 \code{\link{esp_make_provider}()},
 \code{\link{esp_tiles_providers}}
 }

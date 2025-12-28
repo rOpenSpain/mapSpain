@@ -101,7 +101,7 @@ esp_hlp_code2code <- function() {
 
   # First level - NUTS1
 
-  df <- mapSpain::esp_codelist
+  df <- mapSpain::esp_codelist |> as.data.frame()
 
   nt1 <- unique(df$nuts1.code)
 

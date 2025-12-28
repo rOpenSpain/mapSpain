@@ -1,4 +1,4 @@
-#' Database with codes and names of spanish regions
+#' Database with codes and names of Spanish regions
 #'
 #' @family datasets
 #' @family political
@@ -95,115 +95,6 @@
 NULL
 
 
-#' [`sf`][sf::st_sf] object with all the NUTS levels of Spain (2016)
-#'
-#' @family datasets
-#' @family nuts
-#'
-#' @name esp_nuts.sf
-#'
-#' @docType data
-#'
-#' @description
-#' A [`sf`][sf::st_sf] object including all NUTS levels of Spain as provided by
-#' GISCO (2016 version).
-#'
-#' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/>, file
-#' `NUTS_RG_20M_2016_4326.geojson`.
-#'
-#' @encoding UTF-8
-#'
-#'
-#' @format
-#' A [`sf`][sf::st_sf] object (resolution: 1:1million, EPSG:4258) with
-#' `r prettyNum(nrow(mapSpain::esp_nuts.sf), big.mark=",")` rows and columns:
-#' \describe{
-#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-#'   \item{NUTS_ID}{NUTS identifier}
-#'   \item{URBN_TYPE}{Urban Type, see Details}
-#'   \item{CNTR_CODE}{Eurostat Country code `ES`}
-#'   \item{NAME_LATN}{NUTS name on Latin characters}
-#'   \item{NUTS_NAME}{NUTS name on local alphabet}
-#'   \item{MOUNT_TYPE}{Mount Type, see Details}
-#'   \item{COAST_TYPE}{Coast Type, see Details}
-#'   \item{FID}{FID}
-#'   \item{geometry}{geometry field}
-#' }
-#' @example inst/examples/esp_nuts_sf.R
-#'
-#' @details
-#'
-#' **MOUNT_TYPE**: Mountain typology:
-#'  - 1: More than 50 % of the surface is covered by topographic mountain areas.
-#'  - 2: More than 50 % of the regional population lives in topographic
-#'    mountain areas.
-#'  - 3: More than 50 % of the surface is covered by topographic mountain areas
-#'    and where more than 50 % of the regional population lives in these
-#'    mountain areas.
-#'  - 4: Non-mountain region / other regions.
-#'  - 0: No classification provided
-#'
-#' **URBN_TYPE**: Urban-rural typology:
-#'  - 1: Predominantly urban region.
-#'  - 2: Intermediate region.
-#'  - 3: Predominantly rural region.
-#'  - 0: No classification provided
-#'
-#' **COAST_TYPE**: Coastal typology:
-#'   - 1: Coastal (on coast).
-#'   - 2: Coastal (less than 50% of population living within 50 km. of the
-#'        coastline).
-#'   - 3: Non-coastal region.
-#'   - 0: No classification provided
-#'
-NULL
-
-#' [`sf`][sf::st_sf] object with all the municipalities of Spain (2019)
-#' @family datasets
-#' @family municipalities
-#'
-#' @name esp_munic.sf
-#'
-#' @description
-#' A [`sf`][sf::st_sf] object including all municipalities of Spain as provided
-#' by GISCO (2019 version).
-#'
-#' @docType data
-#'
-#' @source
-#'
-#' ```{r, echo=FALSE, results='asis'}
-#'
-#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/",
-#'            "statistical-units/local-administrative-units>, "))
-#'
-#'
-#' ```
-#' LAU 2019 data.
-#'
-#' @encoding UTF-8
-#'
-#' @seealso [esp_get_munic()].
-#' @format
-#' A [`sf`][sf::st_sf] object (resolution: 1:1 million, EPSG:4258) object with
-#' `r prettyNum(nrow(mapSpain::esp_munic.sf), big.mark=",")` rows and columns:
-#' \describe{
-#'   \item{codauto}{INE code of the autonomous community.}
-#'   \item{ine.ccaa.name}{INE name of the autonomous community.}
-#'   \item{cpro}{INE code of the province.}
-#'   \item{ine.prov.name}{INE name of the province.}
-#'   \item{cmun}{INE code of the municipality.}
-#'   \item{name}{Name of the municipality.}
-#'   \item{LAU_CODE}{LAU Code (GISCO) of the municipality. This is a
-#'     combination of **cpro** and **cmun** fields, aligned with INE coding
-#'     scheme.}
-#'   \item{geometry}{geometry field.}
-#' }
-#' @example inst/examples/esp_munic_sf.R
-NULL
-
-
 #' Database with the population of Spain by municipality (2019)
 #'
 #' @family datasets
@@ -233,44 +124,6 @@ NULL
 #' data("pobmun19")
 NULL
 
-
-#' (Superseded) Database of public WMS and WMTS of Spain
-#'
-#' @keywords internal
-#'
-#' @name leaflet.providersESP.df
-#'
-#' @description
-#' `r lifecycle::badge('superseded')`
-#'
-#' This `data.frame` is not longer in use by \CRANpkg{mapSpain}. See
-#' [esp_tiles_providers] instead.
-#'
-#' A `data.frame` containing information of different public WMS and WMTS
-#' providers of Spain
-#'
-#'
-#' @docType data
-#'
-#' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **`r leafletprovidersESP_v`**.
-#'
-#' @encoding UTF-8
-#'
-#' @format
-#' A `data.frame` object with a list of the required parameters for calling
-#' the service:
-#' \describe{
-#'   \item{provider}{Provider name}.
-#'   \item{field}{Description of `value`}.
-#'   \item{value}{INE code of each province}.
-#' }
-#'
-#' @examples
-#' data("leaflet.providersESP.df")
-NULL
-
 #' Database of public WMS and WMTS of Spain
 #'
 #' @family datasets
@@ -280,18 +133,18 @@ NULL
 #'
 #' @description
 #' A named [`list`][base::list] of length `r length(esp_tiles_providers)`
-#' containing the parameters of the url information of different public WMS and
-#' WMTSproviders of Spain.
+#' containing the argument of the url information of different public WMS and
+#' WMTS providers of Spain.
 #'
 #' Implementation of javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @docType data
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#' **`r leafletprovidersESP_v`**.
+#' **`r leaf_providers_esp_v`**.
 #'
 #' @encoding UTF-8
 #'
@@ -299,13 +152,13 @@ NULL
 #' A named `list` of the providers available with the following structure:
 #' - Each item of the list is named with the provider alias.
 #' - Each element of the list contains two nested named lists:
-#'   - `static` with the parameters to get static tiles plus an additional item
+#'   - `static` with the arguments to get static tiles plus an additional item
 #'     named `attribution`.
-#'   - `leaflet` with additional parameters to be passed onto
+#'   - `leaflet` with additional arguments to be passed onto
 #'     [addProviderEspTiles()].
 #'
 #' @details
-#' Providers available to be passed to `type` on [esp_getTiles()] are:
+#' Providers available to be passed to `type` on [esp_get_tiles()] are:
 #'
 #' ```{r, echo=FALSE, comment="", results="asis"}
 #'
@@ -325,5 +178,82 @@ NULL
 #' single$static
 #'
 #' single$leaflet
+#'
+NULL
+
+
+#' NUTS 2024 for Spain [`sf`][sf::st_sf] object
+#'
+#'
+#' @docType data
+#' @name esp_nuts_2024
+#' @family datasets
+#' @encoding UTF-8
+#'
+#' @seealso [esp_get_nuts()]
+#'
+#' @description
+#' This dataset represents the spanish regions for levels 0, 1, 2 and 3 of the
+#' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+#'
+#'
+#' @format
+#' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
+#' 1:1 million and [EPSG:4258](https://epsg.io/4258). with
+#' `r nrow(mapSpain::esp_nuts_2024)` rows and 10 variables:
+#' \describe{
+#'   \item{`NUTS_ID`}{NUTS identifier.}
+#'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
+#'   \item{`CNTR_CODE`}{Eurostat Country code.}
+#'   \item{`NAME_LATN`}{NUTS name on Latin characters.}
+#'   \item{`NUTS_NAME`}{NUTS name on local alphabet.}
+#'   \item{`MOUNT_TYPE`}{Mount Type, see **Details**.}
+#'   \item{`URBN_TYPE`}{Urban Type, see **Details**.}
+#'   \item{`COAST_TYPE`}{Coast Type, see **Details**.}
+#'   \item{`geo`}{Same as `NUTS_ID`, provided for compatibility with
+#'     \CRANpkg{eurostat}.}
+#'   \item{`geometry`}{geometry field.}
+#' }
+#'
+#' @details
+#'
+#' `MOUNT_TYPE`: Mountain typology:
+#'  - `1`: More than 50 % of the surface is covered by topographic mountain
+#'    areas.
+#'  - `2`: More than 50 % of the regional population lives in topographic
+#'    mountain areas.
+#'  - `3`: More than 50 % of the surface is covered by topographic mountain
+#'    areas and where more than 50 % of the regional population lives in these
+#'    mountain areas.
+#'  - `4`: Non-mountain region / other regions.
+#'  - `0`: No classification provided.
+#'
+#' `URBN_TYPE`: Urban-rural typology:
+#'  - `1`: Predominantly urban region.
+#'  - `2`: Intermediate region.
+#'  - `3`: Predominantly rural region.
+#'  - `0`: No classification provided.
+#'
+#' `COAST_TYPE`: Coastal typology:
+#'   - `1`: Coastal (on coast).
+#'   - `2`: Coastal (less than 50% of population living within 50 km. of the
+#'        coastline).
+#'   - `3`: Non-coastal region.
+#'   - `0`: No classification provided.
+#'
+#'
+#' @source
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[NUTS_RG_01M_2024_4326.gpkg]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "nuts/gpkg/) file."))
+#'
+#' ```
+#'
+#' @examples
+#' data("esp_nuts_2024")
+#' head(esp_nuts_2024)
 #'
 NULL

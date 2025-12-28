@@ -1,10 +1,10 @@
 #' Create a custom tile provider
 #'
 #' @description
-#' Helper function for [esp_getTiles()] that helps to create a custom provider.
+#' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
 #' @family imagery utilities
-#' @seealso [esp_getTiles()].
+#' @seealso [esp_get_tiles()].
 #'
 #' For a list of potential providers from Spain check
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
@@ -24,15 +24,15 @@
 #'
 #' @param layers The name of the layer to retrieve.
 #'
-#' @param ... Additional parameters to the query, like `version`, `format`,
-#'   `crs/srs`, `style`, ... depending on the capabilities of the service.
+#' @param ... Additional arguments to the query, like `version`, `format`,
+#'   `crs/srs`, `style`, etc. depending on the capabilities of the service.
 #'
 #' @details
 #' This function is meant to work with services provided as of the
 #' [OGC Standard](https://www.ogc.org/standards/wms/).
 #'
 #' Note that:
-#' - \CRANpkg{mapSpain} would not provide advice on the parameter `q` to be
+#' - \CRANpkg{mapSpain} would not provide advice on the argument `q` to be
 #'   provided.
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
@@ -52,12 +52,17 @@
 #'
 #' x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 #'
-#' mytile <- esp_getTiles(x, type = custom_wms)
+#' mytile <- esp_get_tiles(x, type = custom_wms)
 #'
 #' tidyterra::autoplot(mytile) +
 #'   ggplot2::geom_sf(data = x, fill = NA)
 #' }
 esp_make_provider <- function(id, q, service, layers, ...) {
+  id <- validate_non_empty_arg(id)
+  q <- validate_non_empty_arg(q)
+  service <- validate_non_empty_arg(service)
+  layers <- validate_non_empty_arg(layers)
+
   dots <- list(...)
   names(dots) <- tolower(names(dots))
 
@@ -113,5 +118,5 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   final$q <- q_end
 
-  return(final)
+  final
 }

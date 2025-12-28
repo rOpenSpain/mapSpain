@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Database with codes and names of spanish regions}
+\title{Database with codes and names of Spanish regions}
 \format{
 A \code{\link[base:data.frame]{data.frame}} with 59 rows
 codes and columns:
@@ -91,8 +91,7 @@ data("esp_codelist")
 }
 \seealso{
 Other datasets: 
-\code{\link{esp_munic.sf}},
-\code{\link{esp_nuts.sf}},
+\code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun19}}
 
@@ -100,13 +99,16 @@ Other political:
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
+\code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
 \code{\link{esp_get_country}()},
 \code{\link{esp_get_gridmap}},
 \code{\link{esp_get_munic}()},
+\code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},
-\code{\link{esp_get_simpl_prov}()}
+\code{\link{esp_get_prov_siane}()},
+\code{\link{esp_get_simpl}}
 
 Other dictionary: 
 \code{\link{esp_dict_region_code}()}

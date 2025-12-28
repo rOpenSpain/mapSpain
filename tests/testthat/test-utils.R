@@ -1,0 +1,206 @@
+test_that("Messages", {
+  skip_on_cran()
+  expect_silent(make_msg(verbose = FALSE))
+  expect_snapshot(make_msg(
+    "generic",
+    TRUE,
+    "Hi",
+    "I am a generic.",
+    "See {.var avar}."
+  ))
+  expect_snapshot(make_msg("info", TRUE, "Info here.", "See {.pkg igoR}."))
+
+  expect_snapshot(make_msg(
+    "warning",
+    TRUE,
+    "Caution! A warning.",
+    "But still OK."
+  ))
+
+  expect_snapshot(make_msg("danger", TRUE, "OOPS!", "I did it again :("))
+
+  expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
+})
+
+
+test_that("Pretty match", {
+  skip_on_cran()
+  my_fun <- function(
+    arg_one = c(10, 1000, 3000, 5000)
+  ) {
+    match_arg_pretty(arg_one)
+  }
+
+  # OK, returns character
+  expect_identical(my_fun(1000), "1000")
+  expect_identical(my_fun("1000"), "1000")
+  expect_identical(my_fun(NULL), "10")
+  expect_identical(my_fun(), "10")
+  # Some errors here
+  # Single value no match
+  expect_snapshot(
+    my_fun("error here"),
+    error = TRUE
+  )
+
+  # Several values no match
+  expect_snapshot(
+    my_fun(c("an", "error")),
+    error = TRUE
+  )
+
+  # One value regex
+  expect_snapshot(
+    my_fun("5"),
+    error = TRUE
+  )
+  # Several value regex
+  expect_snapshot(
+    my_fun("00"),
+    error = TRUE
+  )
+
+  my_fun2 <- function(year = 20) {
+    match_arg_pretty(year)
+  }
+
+  # Pass more options than expected
+  expect_snapshot(
+    my_fun2(c(1, 2)),
+    error = TRUE
+  )
+
+  # With custom options
+  my_fun3 <- function(an_arg = 20) {
+    match_arg_pretty(an_arg, c("30", "20"))
+  }
+  expect_identical(my_fun3(), "20")
+  expect_snapshot(my_fun3("3"), error = TRUE)
+  # Pass more options than expected
+  expect_snapshot(
+    my_fun2(c(1, 2)),
+    error = TRUE
+  )
+})
+
+test_that("Bind and fill sf", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts_2024[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "data.frame")
+
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill tibbles", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts_2024[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
+  cos <- sf::st_drop_geometry(cos)
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "data.frame")
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill sf removes NULL", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts_2024[1, ]
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "data.frame")
+
+  expect_equal(nrow(binded), 3)
+})
+
+test_that("Bind and fill tibble removes NULL", {
+  skip_on_cran()
+  gb <- mapSpain::esp_nuts_2024[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- mapSpain::esp_nuts_2024[1, 1:7]
+  cos <- sf::st_drop_geometry(cos)
+
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "data.frame")
+  expect_equal(nrow(binded), 3)
+
+  # All NULLs return NULL
+  new_l <- list(a = NULL, b = NULL)
+
+  expect_null(rbind_fill(new_l))
+})
+
+
+test_that("Filter dates", {
+  skip_on_cran()
+  skip_if_siane_offline()
+
+  url_prov <- paste0(
+    "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
+    "se89_3_urban_capimuni_p_x.gpkg"
+  )
+
+  data_sf <- read_geo_file_sf(url_prov)
+
+  year_1 <- siane_filter_year(data_sf, year = 2010)
+  expect_true(all(year_1$fecha_alta < "2010-12-31"))
+  expect_false(all(is.na(year_1$fecha_baja)))
+
+  year_today <- siane_filter_year(data_sf)
+  expect_true(all(is.na(year_today$fecha_baja)))
+  expect_false(all(year_today$fecha_alta < "2010-12-31"))
+
+  expect_false(nrow(year_1) == nrow(year_today))
+
+  # Errors
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "1900"),
+    transform = function(x) {
+      gsub(Sys.Date() + 1, "<current date>", x)
+    }
+  )
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "2050"),
+    transform = function(x) {
+      gsub(Sys.Date() + 1, "<current date>", x)
+    }
+  )
+  expect_snapshot(
+    error = TRUE,
+    siane_filter_year(data_sf, "1900-12"),
+  )
+})
+test_that("Ensure NULL", {
+  expect_null(ensure_null(NULL))
+  expect_null(ensure_null(c(NULL, NA)))
+  expect_null(ensure_null(c(NULL, NA, "")))
+  expect_null(ensure_null(c("", character(0))))
+  expect_identical(ensure_null(c(1, 2)), c(1, 2))
+  expect_identical(letters, letters)
+})
+test_that("Not empty", {
+  a_fun <- function(a, b) {
+    a <- validate_non_empty_arg(a)
+    b <- validate_non_empty_arg(b)
+    c(a, b)
+  }
+
+  expect_snapshot(error = TRUE, a_fun())
+  expect_snapshot(error = TRUE, a_fun(a = 1))
+  expect_identical(a_fun(a = 1, b = 1), c(1, 1))
+})

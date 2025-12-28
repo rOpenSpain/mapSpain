@@ -6,11 +6,7 @@ library(dplyr)
 library(tidyverse)
 library(readxl)
 
-df <-
-  read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx") |>
-  esp_hlp_utf8() |>
-  as.data.frame()
-
+df <- read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx")
 unique(df$field)
 
 df_pivoted <- df |>
@@ -114,7 +110,7 @@ devtools::load_all()
 # Try MDT
 library(tidyterra)
 ccaa <- esp_get_ccaa(c("LA Rioja"), epsg = 3857)
-tile <- esp_getTiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
+tile <- esp_get_tiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
 
 ggplot2::ggplot() +
   geom_spatraster_rgb(data = tile)

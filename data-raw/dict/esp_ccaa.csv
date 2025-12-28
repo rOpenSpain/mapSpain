@@ -1,0 +1,20 @@
+codauto,iso2.ccaa.code,nuts1.code,nuts2.code,ine.ccaa.name,iso2.ccaa.name.es,iso2.ccaa.name.ca,iso2.ccaa.name.gl,iso2.ccaa.name.eu,nuts2.name,cldr.ccaa.name.en,cldr.ccaa.name.es,cldr.ccaa.name.ca,cldr.ccaa.name.ga,cldr.ccaa.name.eu,ccaa.shortname.en,ccaa.shortname.es,ccaa.shortname.ca,ccaa.shortname.ga,ccaa.shortname.eu
+01,ES-AN,ES6,ES61,Andalucía,Andalucía,,,,Andalucía,Andalusia,Andalucía,Andalusia,Andalucía,Andaluzia,Andalusia,Andalucía,Andalusia,Andalucía,Andaluzia
+02,ES-AR,ES2,ES24,Aragón,Aragón,,,,Aragón,Aragon,Aragón,Aragó,Aragón,Aragoi,Aragon,Aragón,Aragó,Aragón,Aragoi
+03,ES-AS,ES1,ES12,"Asturias, Principado de","Asturias, Principado de",,,,Principado de Asturias,Asturias,Principado de Asturias,Astúries,Principado de Asturias,Asturiesko Printzerria,Asturias,Asturias,Astúries,Asturias,Asturias
+04,ES-IB,ES5,ES53,"Balears, Illes",Islas Baleares,Illes Balears,,,Illes Balears,Balearic Islands,Islas Baleares,Illes Balears,Illas Baleares - Illes Balears,Balear Uharteak,Balearic Islands,Baleares,Illes Balears,Illas Baleares,Balear Uharteak
+05,ES-CN,ES7,ES70,Canarias,Canarias,,,,Canarias,Canary Islands,Canarias,Illes Canàries,Illas Canarias,Kanariak,Canary Islands,Canarias,Canàries,Canarias,Kanariak
+06,ES-CB,ES1,ES13,Cantabria,Cantabria,,,,Cantabria,Cantabria,Cantabria,Cantàbria,Cantabria,Kantabria,Cantabria,Cantabria,Cantàbria,Cantabria,Kantabria
+07,ES-CL,ES4,ES41,Castilla y León,Castilla y León,,,,Castilla y León,Castile and León,Castilla y León,Castella i Lleó,Castela e León,Gaztela eta Leon,Castile and León,Castilla y León,Castella i Lleó,Castela e León,Gaztela eta Leon
+08,ES-CM,ES4,ES42,Castilla - La Mancha,Castilla-La Mancha,,,,Castilla-La Mancha,Castile-La Mancha,Castilla-La Mancha,Castella - la Manxa,Castela-A Mancha,Gaztela-Mantxa,Castile-La Mancha,Castilla-La Mancha,Castella - la Manxa,Castela-A Mancha,Gaztela-Mantxa
+09,ES-CT,ES5,ES51,Cataluña,Cataluña,Catalunya,,,Cataluña,Catalonia,Cataluña,Catalunya,Cataluña,Katalunia,Catalonia,Cataluña,Catalunya,Cataluña,Katalunia
+10,ES-VC,ES5,ES52,Comunitat Valenciana,"Valenciana, Comunidad","Valenciana, Comunitat",,,Comunidad Valenciana,Valencian Community,Comunidad Valenciana,País Valencià,Comunidade Valenciana,Valentziako Erkidegoa,Valencian Community,Comunidad Valenciana,País Valencià,Comunidade Valenciana,Valentziako Erkidegoa
+11,ES-EX,ES4,ES43,Extremadura,Extremadura,,,,Extremadura,Extremadura,Extremadura,Extremadura,Estremadura - Extremadura,Extremadura,Extremadura,Extremadura,Extremadura,Extremadura,Extremadura
+12,ES-GA,ES1,ES11,Galicia,Galicia,,Galicia,,Galicia,Galicia,Galicia,Galícia,Galicia,Galizia,Galicia,Galicia,Galícia,Galicia,Galizia
+13,ES-MD,ES3,ES30,"Madrid, Comunidad de","Madrid, Comunidad de",,,,Comunidad de Madrid,Madrid Autonomous Community,Comunidad de Madrid,Comunitat de Madrid,Comunidade de Madrid,Madrilgo Erkidegoa,Madrid,Madrid,Madrid,Madrid,Madril
+14,ES-MC,ES6,ES62,"Murcia, Región de","Murcia, Región de",,,,Región de Murcia,Murcia,Región de Murcia,Regió de Múrcia,Rexión de Murcia,Murtziako Eskualdea,Murcia,Murcia,Múrcia,Murcia,Murtzia
+15,ES-NC,ES2,ES22,"Navarra, Comunidad Foral de","Navarra, Comunidad Foral de",,,Nafarroako Foru Komunitatea,Comunidad Foral de Navarra,Navarra Chartered Community,Navarra,Navarra,Navarra,Nafarroako Foru Erkidegoa,Navarra,Navarra,Navarra,Navarra,Nafarroa
+16,ES-PV,ES2,ES21,País Vasco,País Vasco,,,Euskal Herria,País Vasco,Basque Country,País Vasco,Comunitat autònoma del País Basc,País Vasco,Euskal Autonomia Erkidegoa,Basque Country,País Vasco,País Basc,País Vasco,Euskadi
+17,ES-RI,ES2,ES23,"Rioja, La",La Rioja,,,,La Rioja,La Rioja,La Rioja,La Rioja,A Rioxa,Errioxako Autonomia Erkidegoa,La Rioja,La Rioja,La Rioja,A Rioxa,Errioxa
+18,ES-CE,ES6,ES63,Ceuta,Ceuta,,,,Ciudad de Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta,Ceuta
+19,ES-ML,ES6,ES64,Melilla,Melilla,,,,Ciudad de Melilla,Melilla,Melilla,Melilla,Melilla,Melilla,Melilla,Melilla,Melilla,Melilla,Melilla

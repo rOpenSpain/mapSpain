@@ -27,7 +27,7 @@ communities and NUTS levels of Spain. It also provides hexbin shapefiles and
 other complementary shapes, as the usual lines around the Canary Islands.
 
 **mapSpain** provides access to map tiles of public organisms of Spain, that can
-be represented on static maps via `mapSpain::esp_getTiles()` or on a **R**
+be represented on static maps via `mapSpain::esp_get_tiles()` or on a **R**
 **leaflet** map using `mapSpain::addProviderEspTiles()`.
 
 On top of that, **mapSpain** also has a powerful dictionary that translate
@@ -104,7 +104,7 @@ ggplot(Andalucia) +
 # Plot municipalities
 
 Euskadi_CCAA <- esp_get_ccaa("Euskadi")
-Euskadi <- esp_get_munic(region = "Euskadi")
+Euskadi <- esp_get_munic_siane(region = "Euskadi")
 
 # Use dictionary
 
@@ -202,7 +202,7 @@ used).
 library(sf)
 
 pop <- mapSpain::pobmun19
-munic <- esp_get_munic()
+munic <- esp_get_munic_siane()
 
 # Get area (km2) - Use LAEA projection
 municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)

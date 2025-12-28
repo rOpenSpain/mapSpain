@@ -2,6 +2,21 @@
 
 -   Minimal **R** version required is **4.1.0**.
 -   Remove **slippymath** dependency (#126).
+-   `esp_getTiles()` renamed to `esp_get_tiles()`. Both versions work so far.
+-   New function `esp_get_stations()`, replacing
+    `esp_get_railway(..., spatialtype = "point")`.
+-   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
+    available any more.
+-   `esp_get_rivers()`: new `moveCAN` argument. Also arguments `resolution` and
+    `spatialtype` are deprecated, the latter replaced by the new function
+    `esp_get_wetlands()`.
+
+## Changes in datasets
+
+-   Add `?esp_nuts_2024` (replaces `?esp_nuts.sf`).
+-   `?leaflet.providersESP.df` has been removed. It was superseded in
+    **mapSpain** v0.8.0.
+-   `?esp_munic.sf` has been removed.
 
 # mapSpain 0.10.0
 
@@ -57,7 +72,7 @@
 
 # mapSpain 0.6.2
 
--   Now `moveCAN` is a explicit parameter in the relevant functions.
+-   Now `moveCAN` is a explicit argument in the relevant functions.
 -   Deprecate `layer_spatraster().` Use `tidyterra::geom_spatraster_rgb()`
     instead.
 -   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
@@ -109,7 +124,7 @@
 -   Caching improvements: new function `esp_set_cache_dir()` based on
     `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is not
     necessary to set it up again on a new session.
--   Add a new parameter `zoommin` on `esp_getTiles()`.
+-   Add a new argument `zoommin` on `esp_getTiles()`.
 -   New tests with **testthat**.
 -   Update on docs. New examples
 -   Precompute vignette.

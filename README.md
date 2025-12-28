@@ -114,7 +114,7 @@ ggplot(ccaa_sf) +
   theme(legend.position.inside = c(0.1, 0.6))
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png" alt="" width="100%" />
 
 You can combine `sf` objects with static tiles
 
@@ -131,7 +131,7 @@ provs <- esp_get_prov_siane(epsg = 3857)
 shape_pop <- shape |> left_join(census)
 
 
-tile <- esp_getTiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
+tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
 # Plot
 
@@ -167,7 +167,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png" alt="" width="100%" />
 
 ## mapSpain and giscoR
 
@@ -206,7 +206,7 @@ ggplot(all_countries) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png" alt="" width="100%" />
 
 ## A note on caching
 
@@ -246,7 +246,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2025},
-      version = {0.10.0.9000},
+      version = {0.99.99.9000},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
