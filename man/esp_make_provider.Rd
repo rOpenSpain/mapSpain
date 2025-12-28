@@ -39,7 +39,7 @@ provided.
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
+\dontrun{
 custom_wms <- esp_make_provider(
   id = "an_id_for_caching",
   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",

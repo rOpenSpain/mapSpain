@@ -34,7 +34,7 @@
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
 #'
 #' @examplesIf esp_check_access()
-#' \donttest{
+#' \dontrun{
 #' custom_wms <- esp_make_provider(
 #'   id = "an_id_for_caching",
 #'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
