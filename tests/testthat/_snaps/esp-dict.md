@@ -114,7 +114,7 @@
       [4] "ciudad de melilla" "MELILLA"           "CIUDAD DE MELILLA"
       
       $`La Rioja`
-      [1] "La Rioja" "la rioja" "LA RIOJA"
+      [1] "La Rioja" "Rioja"    "la rioja" "rioja"    "LA RIOJA" "RIOJA"   
       
       $Sevilla
       [1] "Seville" "seville" "SEVILLE"
@@ -155,4 +155,11 @@
     Output
       [1] "Murtzia"                "Asturias"               "Ceuta"                 
       [4] "Melilla"                "Santa Cruz Tenerifekoa"
+
+---
+
+    Code
+      esp_dict_translate(c("Rioja", "Coruña", "Palmas"), lang = "en")
+    Output
+      [1] "La Rioja"   "A Coruña"   "Las Palmas"
 

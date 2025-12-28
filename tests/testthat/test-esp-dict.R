@@ -85,4 +85,15 @@ test_that("Testing dict", {
       lang = "eu"
     )
   )
+
+  expect_snapshot(
+    esp_dict_translate(
+      c(
+        "Rioja",
+        "Coruña",
+        "Palmas"
+      ),
+      lang = "en"
+    )
+  )
 })

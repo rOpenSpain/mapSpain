@@ -160,7 +160,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
 
   # Modify id
   newdir <- paste0(names(options), "=", options, collapse = "&")
-  new_id <- file.path(prov_list$id, tools::md5sum(bytes = charToRaw(newdir)))
+  new_id <- file.path(prov_list$id, cli::hash_raw_md5(charToRaw(newdir)))
 
   prov_list$id <- new_id
   prov_list

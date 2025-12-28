@@ -96,6 +96,7 @@ names_full <- dict_ccaaall |>
   unique() |>
   mutate(variable = as.character(variable))
 
+
 # Add extra used names
 # Ciudad de Ceuta
 ceuta <- names_full[grepl("^ceuta", names_full$value, ignore.case = TRUE), ]
@@ -112,7 +113,14 @@ tfe <- names_full[grepl("^santa cruz", names_full$value, ignore.case = TRUE), ]
 tfe$variable <- paste0("alt.", tfe$variable)
 tfe$value <- gsub("Santa", "Sta.", tfe$value)
 
-names_full <- unique(rbind(names_full, ceuta, melilla, tfe))
+las <- names_full[grepl("^la |^las ", names_full$value, ignore.case = TRUE), ]
+las$variable <- paste0("alt.las.", las$variable)
+
+las$value <- gsub("^la |^las ", "", las$value, ignore.case = TRUE)
+
+
+names_full <- unique(rbind(names_full, ceuta, melilla, tfe, las))
+names_full$value <- trimws(names_full$value)
 
 # Add versions without accents, etc.
 

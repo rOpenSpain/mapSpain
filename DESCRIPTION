@@ -23,20 +23,20 @@ BugReports: https://github.com/rOpenSpain/mapSpain/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
-    cli,
+    cli (>= 3.6.0),
     countrycode (>= 1.2.0),
     giscoR (>= 1.0.0),
     httr2,
     jsonlite,
     lifecycle,
     rappdirs (>= 0.3.0),
-    sf (>= 0.9.0),
+    sf (>= 1.0.0),
     stats,
     tibble,
     utils
 Suggests:
     dplyr,
-    ggplot2 (>= 3.0.0),
+    ggplot2 (>= 3.5.0),
     knitr,
     leaflet (>= 2.0.0),
     png (>= 0.1-5),
