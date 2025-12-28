@@ -31,7 +31,6 @@ Imports:
     lifecycle,
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
-    stats,
     tibble,
     utils
 Suggests:

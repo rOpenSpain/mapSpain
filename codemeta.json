@@ -268,11 +268,6 @@
     },
     "10": {
       "@type": "SoftwareApplication",
-      "identifier": "stats",
-      "name": "stats"
-    },
-    "11": {
-      "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
       "provider": {
@@ -283,7 +278,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -293,7 +288,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "1648.056KB",
+  "fileSize": "1696.473KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

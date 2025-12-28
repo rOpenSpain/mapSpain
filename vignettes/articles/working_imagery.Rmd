@@ -17,13 +17,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-# Cache for articles
 library(mapSpain)
-initcache <- mapSpain::esp_detect_cache_dir()
-
-cache_dir_here <- file.path(getwd(), "artcache")
-
-esp_set_cache_dir(cache_dir_here, verbose = FALSE)
 ```
 
 **mapSpain** provides a powerful interface for working with imagery.
@@ -290,10 +284,7 @@ reactable(df,
 )
 ```
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-# Restore cache
-esp_set_cache_dir(initcache, verbose = TRUE)
-```
+
 
 ## Session info
 

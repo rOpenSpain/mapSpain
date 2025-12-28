@@ -104,7 +104,6 @@ of that level would be added.
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 # This code compares centroids of municipalities against esp_get_capimun
-# It also download tiles, make sure you are online
 
 # Get shape
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
@@ -120,22 +119,16 @@ centroid$type <- "Centroid"
 capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 capimun$type <- "Capimun"
 
-# Get a tile to check
-tile <- esp_get_tiles(area, "IGNBase.Todo", zoommin = 2)
-
 # Join both point geometries
 points <- dplyr::bind_rows(centroid, capimun)
 
 # Check on plot
 library(ggplot2)
-library(tidyterra)
 
 ggplot(points) +
-  geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(data = area, fill = NA, color = "blue") +
   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
   scale_fill_manual(values = c("green", "red")) +
-  theme_void() +
   labs(title = "Centroid vs. capimun")
 }
 \dontshow{\}) # examplesIf}

@@ -21,13 +21,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-# Cache for articles
 library(mapSpain)
-initcache <- mapSpain::esp_detect_cache_dir()
-
-cache_dir_here <- file.path(getwd(), "artcache")
-
-esp_set_cache_dir(cache_dir_here, verbose = FALSE)
 ```
 
 ## Bienvenidos a mapSpain
@@ -543,11 +537,6 @@ que permiten extraer información sobre altitud, rios y cuencas hidrográficas d
 España, así líneas y puntos de
 [infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
 de España, como carreteras y líneas ferroviarias.
-
-```{r message=FALSE, warning=FALSE, include=FALSE}
-# Restore cache
-esp_set_cache_dir(initcache, verbose = TRUE)
-```
 
 ## Session info
 
