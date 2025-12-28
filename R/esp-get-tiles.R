@@ -1,4 +1,163 @@
-esp_get_tiles2 <- function(
+#' Get static tiles from public administrations of Spain
+#'
+#' @description
+#' Get static map tiles based on a spatial object. Maps can be fetched from
+#' various open map servers.
+#'
+#' This function is a implementation of the javascript plugin
+#' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+#' **`r leaf_providers_esp_v`**.
+#'
+#' @family imagery utilities
+#' @seealso [terra::rast()].
+#'
+#' @rdname esp_get_tiles
+#' @name esp_get_tiles
+#'
+#' @return
+#' A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on
+#' the provider. See [terra::rast()].
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#'  **`r leaf_providers_esp_v`**.
+#'
+#' @export
+#'
+#' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
+#'
+#' @param type This argument could be either:
+#'   - The name of one of the  pre-defined providers (see
+#'     [esp_tiles_providers()]).
+#'   - A list with two named elements `id` and `q` with your own arguments. See
+#'     [esp_make_provider()] and examples.
+#' @param zoom character string or number. Only valid for WMTS providers, zoom
+#'   level to be downloaded. If `NULL`, it is determined automatically. If set,
+#'   it overrides `zoommin`. On a single `sf` `POINT` and `zoom = NULL` the
+#'   function set a zoom level of 18. See **Details**.
+#' @param zoommin character string or number. Delta on default `zoom`.
+#'   The default value is designed to download fewer tiles than you probably
+#'   want. Use `1` or `2` to increase the resolution.
+#' @param crop logical. On `TRUE` the results would be cropped to the specified
+#'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
+#'   `crop` is set to `FALSE`. See [terra::crop()].
+#' @param res character string or number. Only valid for WMS providers.
+#'   Resolution (in pixels) of the final tile.
+#' @param bbox_expand number. Expansion percentage of the bounding box of `x`.
+#' @param transparent logical. Provides transparent background, if supported.
+#' @param mask logical. `TRUE` if the result should be masked to `x`, See
+#'   [terra::mask()].
+#' @param options A named list containing additional options to pass to the
+#'   query.
+#'
+#' @inheritParams esp_get_nuts
+#'
+#'
+#' @details
+#' Zoom levels are described on the
+#' [OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
+#'
+#' ```{r, echo=FALSE}
+#'
+#'
+#' df <- data.frame(
+#'   zoom = c(0, 3, 5, 8, 10, 11, 13, 16, 18),
+#'   represents = c(
+#'     "whole world",
+#'     "large country",
+#'     "state",
+#'     "county",
+#'     "metropolitan area",
+#'     "city",
+#'     "village or suburb",
+#'     "streets",
+#'     "some buildings, trees"
+#'   )
+#' )
+#'
+#'
+#' knitr::kable(df,
+#'              col.names = c("zoom",
+#'                            "area to represent")
+#'                            )
+#'
+#'
+#' ```
+#'
+#' For a complete list of providers see [esp_tiles_providers].
+#'
+#'
+#' Most WMS/WMTS providers provide tiles on
+#' [`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks deformed,
+#' try projecting first `x`:
+#'
+#' `x <- sf::st_transform(x, 3857)`
+#'
+#'
+#' @examplesIf esp_check_access()
+#' \donttest{
+#' segovia <- esp_get_prov_siane("segovia", epsg = 3857)
+#' tile <- esp_get_tiles(segovia, "IGNBase.Todo")
+#'
+#' library(ggplot2)
+#' library(tidyterra)
+#'
+#' ggplot(segovia) +
+#'   geom_spatraster_rgb(data = tile, maxcell = Inf) +
+#'   geom_sf(fill = NA, linewidth = 1)
+#'
+#' # Another provider
+#'
+#' tile2 <- esp_get_tiles(segovia, type = "MDT")
+#'
+#' ggplot(segovia) +
+#'   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
+#'   geom_sf(fill = NA, linewidth = 1, color = "red")
+#'
+#' # A custom WMS provided
+#'
+#' custom_wms <- esp_make_provider(
+#'   id = "an_id_for_caching",
+#'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
+#'   service = "WMS",
+#'   version = "1.3.0",
+#'   format = "image/png",
+#'   layers = "geolog_cyl_litologia"
+#' )
+#'
+#' custom_wms_tile <- esp_get_tiles(segovia, custom_wms)
+#'
+#' autoplot(custom_wms_tile, maxcell = Inf) +
+#'   geom_sf(data = segovia, fill = NA, color = "red", linewidth = 1)
+#'
+#' # A custom WMTS provider
+#'
+#' custom_wmts <- esp_make_provider(
+#'   id = "cyl_wmts",
+#'   q = "https://www.ign.es/wmts/pnoa-ma?",
+#'   service = "WMTS",
+#'   layer = "OI.OrthoimageCoverage"
+#' )
+#'
+#' custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
+#'
+#' autoplot(custom_wmts_tile, maxcell = Inf) +
+#'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#'
+#' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+#' cartodb_dark <- list(
+#'   id = "CartoDB_DarkMatter",
+#'   q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+#' )
+#' cartodb_dark_tile <- esp_get_tiles(segovia, cartodb_dark,
+#'   zoommin = 1,
+#'   update_cache = TRUE
+#' )
+#'
+#' autoplot(cartodb_dark_tile, maxcell = Inf) +
+#'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#' }
+esp_get_tiles <- function(
   x,
   type = "IDErioja",
   zoom = NULL,
@@ -328,3 +487,9 @@ get_wmts_tile <- function(
 
   r_all
 }
+
+
+#' @export
+#' @rdname esp_get_tiles
+#' @usage NULL
+esp_getTiles <- esp_get_tiles

@@ -156,12 +156,14 @@ Other natural:
 Other siane: 
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa_siane}()},
+\code{\link{esp_get_countries_siane}()},
 \code{\link{esp_get_hydrobasin}()},
 \code{\link{esp_get_landwater}},
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_prov_siane}()},
 \code{\link{esp_get_railway}()},
-\code{\link{esp_get_roads}()}
+\code{\link{esp_get_roads}()},
+\code{\link{esp_siane_bulk_download}()}
 }
 \concept{natural}
 \concept{siane}

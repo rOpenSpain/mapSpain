@@ -11,6 +11,13 @@
     `spatialtype` are deprecated, the latter replaced by the new function
     `esp_get_wetlands()`.
 
+## New functions
+
+-   `esp_siane_bulk_download()` allows to download all the SIANE data to the
+    desired `cache_dir` at once.
+
+-   `esp_get_countries_siane()` returns all countries at a given date.
+
 ## Changes in datasets
 
 -   Add `?esp_nuts_2024` (replaces `?esp_nuts.sf`).

@@ -9,7 +9,7 @@ test_that("Test offline", {
 
   # WMTS
   expect_message(
-    n <- esp_get_tiles2(
+    n <- esp_get_tiles(
       x,
       type = "IGNBase",
       update_cache = TRUE,
@@ -21,7 +21,7 @@ test_that("Test offline", {
 
   # WMS
   expect_message(
-    n <- esp_get_tiles2(
+    n <- esp_get_tiles(
       x,
       type = "RedTransporte",
       update_cache = TRUE,
@@ -44,7 +44,7 @@ test_that("Test 404", {
   options(mapspain_test_404 = TRUE)
   x <- esp_nuts_2024[1, ]
   expect_message(
-    n <- esp_get_tiles2(
+    n <- esp_get_tiles(
       x,
       type = list(
         id = "errors",
@@ -56,7 +56,7 @@ test_that("Test 404", {
   expect_null(n)
 
   expect_message(
-    n <- esp_get_tiles2(
+    n <- esp_get_tiles(
       x,
       type = list(
         id = "errors",
@@ -80,13 +80,13 @@ test_that("tiles error", {
 
   df <- data.frame(a = 1, b = 2)
 
-  expect_snapshot(error = TRUE, esp_get_tiles2(df))
+  expect_snapshot(error = TRUE, esp_get_tiles(df))
 
   ff <- esp_nuts_2024[1, ]
 
   expect_snapshot(
     error = TRUE,
-    esp_get_tiles2(
+    esp_get_tiles(
       ff,
       type = "IGNBase",
       options = list(format = "image/aabbcc")
@@ -112,7 +112,7 @@ test_that("Colorize", {
   point <- sf::st_buffer(point, dist = 50)
 
   expect_silent(
-    res <- esp_get_tiles2(point, "Catastro", cache_dir = cdir)
+    res <- esp_get_tiles(point, "Catastro", cache_dir = cdir)
   )
   expect_length(
     list.files(file.path(cdir, "Catastro")),
@@ -147,7 +147,7 @@ test_that("Crop and mask", {
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
 
-  res <- esp_get_tiles2(
+  res <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -159,7 +159,7 @@ test_that("Crop and mask", {
   expect_identical(dim(res), c(512, 512, 4))
 
   # Crop
-  res2 <- esp_get_tiles2(
+  res2 <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -173,7 +173,7 @@ test_that("Crop and mask", {
   expect_false(any(is.na(terra::values(res2))))
 
   # Masking...
-  res3 <- esp_get_tiles2(
+  res3 <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -190,7 +190,7 @@ test_that("Crop and mask", {
   expect_true(any(is.na(terra::values(res3))))
 
   # Crop and mask
-  res4 <- esp_get_tiles2(
+  res4 <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -215,7 +215,7 @@ test_that("Re-project", {
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
 
-  res_3857 <- esp_get_tiles2(
+  res_3857 <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -228,7 +228,7 @@ test_that("Re-project", {
 
   poly_4258 <- esp_get_nuts(cache_dir = cdir, epsg = 4258, region = "Segovia")
 
-  res_4258 <- esp_get_tiles2(
+  res_4258 <- esp_get_tiles(
     poly_4258,
     "IGNBase",
     cache_dir = cdir,
@@ -252,7 +252,7 @@ test_that("Transparency", {
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
 
-  res <- esp_get_tiles2(
+  res <- esp_get_tiles(
     poly,
     "RedTransporte",
     cache_dir = cdir,
@@ -266,7 +266,7 @@ test_that("Transparency", {
   expect_true(any(is.na(terra::values(res))))
 
   # No transparency...
-  res2 <- esp_get_tiles2(
+  res2 <- esp_get_tiles(
     poly,
     "RedTransporte",
     cache_dir = cdir,
@@ -297,7 +297,7 @@ test_that("WMS", {
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
   expect_silent(
-    res <- esp_get_tiles2(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
+    res <- esp_get_tiles(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
   )
 
   expect_length(
@@ -313,7 +313,7 @@ test_that("WMS", {
   expect_equal(rel_x, 50)
 
   # See if cache is modified
-  res2 <- esp_get_tiles2(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
+  res2 <- esp_get_tiles(point, "Catastro", cache_dir = cdir, bbox_expand = 0)
 
   expect_identical(terra::crs(res2), terra::crs(point))
   expect_length(
@@ -322,7 +322,7 @@ test_that("WMS", {
   )
 
   # Modify res
-  res3 <- esp_get_tiles2(
+  res3 <- esp_get_tiles(
     point,
     "Catastro",
     cache_dir = cdir,
@@ -341,7 +341,7 @@ test_that("WMS", {
   bbox <- sf::st_as_sfc(bbox)
   bbox <- sf::st_set_crs(bbox, 25830)
 
-  cat_styles <- esp_get_tiles2(
+  cat_styles <- esp_get_tiles(
     bbox,
     type = "Catastro",
     options = list(
@@ -356,7 +356,7 @@ test_that("WMS", {
   expect_s4_class(cat_styles, "SpatRaster")
   expect_identical(names(cat_styles), c("red", "green", "blue", "alpha"))
 
-  cat_styles_noalpha <- esp_get_tiles2(
+  cat_styles_noalpha <- esp_get_tiles(
     bbox,
     type = "Catastro",
     transparent = FALSE,
@@ -389,7 +389,7 @@ test_that("WMTS", {
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
   expect_snapshot(
-    res <- esp_get_tiles2(
+    res <- esp_get_tiles(
       point,
       "IGNBase",
       cache_dir = cdir,
@@ -402,7 +402,7 @@ test_that("WMTS", {
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
 
-  res1 <- esp_get_tiles2(
+  res1 <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -410,7 +410,7 @@ test_that("WMTS", {
     zoom = 0,
     crop = TRUE
   )
-  res_auto <- esp_get_tiles2(
+  res_auto <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -418,7 +418,7 @@ test_that("WMTS", {
     crop = TRUE
   )
 
-  res_delta <- esp_get_tiles2(
+  res_delta <- esp_get_tiles(
     poly,
     "IGNBase",
     cache_dir = cdir,
@@ -431,8 +431,8 @@ test_that("WMTS", {
 
   # With auto zoom...
   my_prov <- validate_provider("PNOA")
-  auto <- esp_get_tiles2(poly, "PNOA", zoom = 1)
-  min <- esp_get_tiles2(poly, "PNOA", zoom = my_prov$min_zoom)
+  auto <- esp_get_tiles(poly, "PNOA", zoom = 1)
+  min <- esp_get_tiles(poly, "PNOA", zoom = my_prov$min_zoom)
   expect_identical(terra::ncell(auto), terra::ncell(min))
   expect_false(1 == my_prov$min_zoom)
 
@@ -455,7 +455,7 @@ test_that("Old tests", {
   )
   poly <- sf::st_buffer(poly, 2000)
 
-  tile2 <- esp_get_tiles2(
+  tile2 <- esp_get_tiles(
     poly,
     type = "CaminoDeSantiago",
     options = list(
@@ -470,7 +470,7 @@ test_that("Old tests", {
 
   # Known problem on SSH certificate of catastro on ci
   skip_on_ci()
-  tile <- esp_get_tiles2(
+  tile <- esp_get_tiles(
     poly,
     type = "Catastro.Building",
     options = list(styles = "elfcadastre"),
@@ -502,7 +502,7 @@ test_that("Custom WMS", {
     )
   )
 
-  tile <- esp_get_tiles2(segovia, type = custom_wms, cache_dir = cdir)
+  tile <- esp_get_tiles(segovia, type = custom_wms, cache_dir = cdir)
   expect_s4_class(tile, "SpatRaster")
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
@@ -527,7 +527,7 @@ test_that("Custom WMTS", {
     )
   )
 
-  tile <- esp_get_tiles2(segovia, type = custom_wmts, cache_dir = cdir)
+  tile <- esp_get_tiles(segovia, type = custom_wmts, cache_dir = cdir)
   expect_s4_class(tile, "SpatRaster")
 
   # Non-INSPIRE e.g OSM
@@ -536,13 +536,13 @@ test_that("Custom WMTS", {
     q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
   )
 
-  tile2 <- esp_get_tiles2(segovia, type = another_wms, cache_dir = cdir)
+  tile2 <- esp_get_tiles(segovia, type = another_wms, cache_dir = cdir)
   expect_s4_class(tile2, "SpatRaster")
 
   # Can extract whole world
   world <- giscoR::gisco_get_countries(epsg = 3857, cache_dir = cdir)
   expect_silent(
-    tileworld <- esp_get_tiles2(
+    tileworld <- esp_get_tiles(
       world,
       type = another_wms,
       crop = FALSE,
@@ -560,7 +560,7 @@ test_that("Custom WMTS", {
     )
   )
 
-  tile3 <- esp_get_tiles2(segovia, type = esri_wsm, cache_dir = cdir)
+  tile3 <- esp_get_tiles(segovia, type = esri_wsm, cache_dir = cdir)
   expect_s4_class(tile3, "SpatRaster")
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

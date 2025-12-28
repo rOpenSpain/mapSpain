@@ -2,8 +2,7 @@
 "_PACKAGE"
 
 # import stuffs
-#' @importFrom utils download.file unzip modifyList object.size
+#' @importFrom utils unzip modifyList object.size
 #' @importFrom sf st_transform
 #' @importFrom lifecycle deprecated
-#' @importFrom stats reshape
 NULL

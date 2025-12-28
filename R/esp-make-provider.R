@@ -17,13 +17,9 @@
 #'
 #' @param id An identifier for the user. Would be used also for identifying
 #'   cached tiles.
-#'
 #' @param q The base url of the service.
-#'
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
-#'
 #' @param layers The name of the layer to retrieve.
-#'
 #' @param ... Additional arguments to the query, like `version`, `format`,
 #'   `crs/srs`, `style`, etc. depending on the capabilities of the service.
 #'
@@ -37,11 +33,8 @@
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
 #'
-#' @examples
-#' \dontrun{
-#' # This script downloads tiles to your local machine
-#' # Run only if you are online
-#'
+#' @examplesIf esp_check_access()
+#' \donttest{
 #' custom_wms <- esp_make_provider(
 #'   id = "an_id_for_caching",
 #'   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",

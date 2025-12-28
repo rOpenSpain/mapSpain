@@ -31,7 +31,7 @@ test_that("Test WMTS png", {
 
   for (n in all_n) {
     tile <- try(
-      esp_get_tiles2(cala, type = n, cache_dir = cdir),
+      esp_get_tiles(cala, type = n, cache_dir = cdir),
       silent = TRUE
     )
     if (!inherits(tile, "try-error")) {

@@ -39,7 +39,6 @@ Suggests:
     ggplot2 (>= 3.5.0),
     knitr,
     leaflet (>= 2.0.0),
-    png (>= 0.1-5),
     rmarkdown,
     terra (>= 1.1-4),
     testthat (>= 3.0.0),
