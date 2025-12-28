@@ -19,6 +19,8 @@
   : City where the municipal public authorities are based - SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
   : Autonomous Communities of Spain - SIANE
+- [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
+  : Countries of the World - SIANE
 - [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
   : River basin districts of Spain - SIANE
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
@@ -35,6 +37,8 @@
   : Railways of Spain - SIANE
 - [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
   : Roads of Spain - SIANE
+- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+  : SIANE bulk download
 
 ## Political
 
@@ -62,6 +66,9 @@ objects with political boundaries.
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md)
   : 'Comarcas' of Spain
+
+- [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
+  : Countries of the World - SIANE
 
 - [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md)
   : Boundaries of Spain - GISCO
@@ -93,6 +100,9 @@ objects with political boundaries.
 - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
   : Simplified map of provinces and autonomous communities of Spain
+
+- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+  : SIANE bulk download
 
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
   : Territorial units for statistics (NUTS) dataset (from giscoR)

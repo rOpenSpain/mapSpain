@@ -20,6 +20,15 @@
   are deprecated, the latter replaced by the new function
   [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md).
 
+### New functions
+
+- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+  allows to download all the SIANE data to the desired `cache_dir` at
+  once.
+
+- [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
+  returns all countries at a given date.
+
 ### Changes in datasets
 
 - Add

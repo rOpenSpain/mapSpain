@@ -51,7 +51,7 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get static tiles from public administrations of Spain</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp_getTiles.R" class="external-link"><code>R/esp_getTiles.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a></small>
       <div class="d-none name"><code>esp_get_tiles.Rd</code></div>
     </div>
 
@@ -96,48 +96,48 @@ various open map servers.</p>
 
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
-<dd><p>This argument could be either:</p><ul><li><p>The name of one of the  pre-defined providers
-(see <code><a href="esp_tiles_providers.html">esp_tiles_providers()</a></code>).</p></li>
+<dd><p>This argument could be either:</p><ul><li><p>The name of one of the  pre-defined providers (see
+<code><a href="esp_tiles_providers.html">esp_tiles_providers()</a></code>).</p></li>
 <li><p>A list with two named elements <code>id</code> and <code>q</code> with your own arguments. See
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code> and examples.</p></li>
 </ul></dd>
 
 
 <dt id="arg-zoom">zoom<a class="anchor" aria-label="anchor" href="#arg-zoom"></a></dt>
-<dd><p>Zoom level. If <code>NULL</code>, it is determined automatically. If set,
-it overrides <code>zoommin</code>. Only valid for WMTS tiles. On a single point it
-applies a buffer to the point and on <code>zoom = NULL</code> the function set a zoom
-level of 18. See <strong>Details</strong>.</p></dd>
+<dd><p>character string or number. Only valid for WMTS providers, zoom
+level to be downloaded. If <code>NULL</code>, it is determined automatically. If set,
+it overrides <code>zoommin</code>. On a single <code>sf</code> <code>POINT</code> and <code>zoom = NULL</code> the
+function set a zoom level of 18. See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-zoommin">zoommin<a class="anchor" aria-label="anchor" href="#arg-zoommin"></a></dt>
-<dd><p>Delta on default <code>zoom</code>. The default value is designed to
-download fewer tiles than you probably want. Use <code>1</code> or <code>2</code> to
-increase the resolution.</p></dd>
+<dd><p>character string or number. Delta on default <code>zoom</code>.
+The default value is designed to download fewer tiles than you probably
+want. Use <code>1</code> or <code>2</code> to increase the resolution.</p></dd>
 
 
 <dt id="arg-crop">crop<a class="anchor" aria-label="anchor" href="#arg-crop"></a></dt>
-<dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
-<code>FALSE</code> otherwise. If <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>,
-<code>crop</code> is set to <code>FALSE</code>.</p></dd>
+<dd><p>logical. On <code>TRUE</code> the results would be cropped to the specified
+<code>x</code> extent. If <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>,
+<code>crop</code> is set to <code>FALSE</code>. See <code><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">terra::crop()</a></code>.</p></dd>
 
 
 <dt id="arg-res">res<a class="anchor" aria-label="anchor" href="#arg-res"></a></dt>
-<dd><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></dd>
+<dd><p>character string or number. Only valid for WMS providers.
+Resolution (in pixels) of the final tile.</p></dd>
 
 
 <dt id="arg-bbox-expand">bbox_expand<a class="anchor" aria-label="anchor" href="#arg-bbox-expand"></a></dt>
-<dd><p>A numeric value that indicates the expansion percentage
-of the bounding box of <code>x</code>.</p></dd>
+<dd><p>number. Expansion percentage of the bounding box of <code>x</code>.</p></dd>
 
 
 <dt id="arg-transparent">transparent<a class="anchor" aria-label="anchor" href="#arg-transparent"></a></dt>
-<dd><p>Logical. Provides transparent background, if supported.
-Depends on the selected provider on <code>type</code>.</p></dd>
+<dd><p>logical. Provides transparent background, if supported.</p></dd>
 
 
 <dt id="arg-mask">mask<a class="anchor" aria-label="anchor" href="#arg-mask"></a></dt>
-<dd><p><code>TRUE</code> if the result should be masked to <code>x</code>.</p></dd>
+<dd><p>logical. <code>TRUE</code> if the result should be masked to <code>x</code>, See
+<code><a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">terra::mask()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -161,16 +161,16 @@ query.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers, depending on
-the provider. See <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.
-.</p>
+    <p>A <code>SpatRaster</code> with 3 (RGB) or 4 (RGBA) layers, depending on
+the provider. See <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Zoom levels are described on the
 <a href="https://wiki.openstreetmap.org/wiki/Zoom_levels" class="external-link">OpenStreetMap wiki</a>:</p><table class="table table"><tr><td>zoom</td><td>area to represent</td></tr><tr><td>0</td><td>whole world</td></tr><tr><td>3</td><td>large country</td></tr><tr><td>5</td><td>state</td></tr><tr><td>8</td><td>county</td></tr><tr><td>10</td><td>metropolitan area</td></tr><tr><td>11</td><td>city</td></tr><tr><td>13</td><td>village or suburb</td></tr><tr><td>16</td><td>streets</td></tr><tr><td>18</td><td>some buildings, trees</td></tr></table><p>For a complete list of providers see <a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p>
-<p>Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the tile
-looks deformed, try projecting first <code>x</code>:</p>
+<p>Most WMS/WMTS providers provide tiles on
+<a href="https://epsg.io/3857" class="external-link"><code>"EPSG:3857"</code></a>. In case that the tile looks deformed,
+try projecting first <code>x</code>:</p>
 <p><code>x &lt;- sf::st_transform(x, 3857)</code></p>
     </div>
     <div class="section level2">
@@ -184,10 +184,7 @@ looks deformed, try projecting first <code>x</code>:</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="co"># This script downloads tiles to your local machine</span></span></span>
-<span class="r-in"><span><span class="co"># Run only if you are online</span></span></span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">segovia</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_get_prov_siane.html">esp_get_prov_siane</a></span><span class="op">(</span><span class="st">"segovia"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">tile</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="st">"IGNBase.Todo"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -196,7 +193,7 @@ looks deformed, try projecting first <code>x</code>:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Another provider</span></span></span>
@@ -205,7 +202,7 @@ looks deformed, try projecting first <code>x</code>:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile2</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMS provided</span></span></span>
@@ -222,7 +219,7 @@ looks deformed, try projecting first <code>x</code>:</p>
 <span class="r-in"><span><span class="va">custom_wms_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wms</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wms_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-3.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMTS provider</span></span></span>
@@ -237,18 +234,21 @@ looks deformed, try projecting first <code>x</code>:</p>
 <span class="r-in"><span><span class="va">custom_wmts_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wmts</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wmts_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-4.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example from https://leaflet-extras.github.io/leaflet-providers/preview/</span></span></span>
-<span class="r-in"><span><span class="va">cartodb_voyager</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"CartoDB_Voyager"</span>,</span></span>
-<span class="r-in"><span>  q <span class="op">=</span> <span class="st">"https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"</span></span></span>
+<span class="r-in"><span><span class="va">cartodb_dark</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"CartoDB_DarkMatter"</span>,</span></span>
+<span class="r-in"><span>  q <span class="op">=</span> <span class="st">"https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">cartodb</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">cartodb_voyager</span>, zoommin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cartodb_dark_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">cartodb_dark</span>,</span></span>
+<span class="r-in"><span>  zoommin <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  update_cache <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">cartodb</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">cartodb_dark_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-5.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

@@ -53,41 +53,42 @@ esp_get_tiles(
 
 - zoom:
 
-  Zoom level. If `NULL`, it is determined automatically. If set, it
-  overrides `zoommin`. Only valid for WMTS tiles. On a single point it
-  applies a buffer to the point and on `zoom = NULL` the function set a
-  zoom level of 18. See **Details**.
+  character string or number. Only valid for WMTS providers, zoom level
+  to be downloaded. If `NULL`, it is determined automatically. If set,
+  it overrides `zoommin`. On a single `sf` `POINT` and `zoom = NULL` the
+  function set a zoom level of 18. See **Details**.
 
 - zoommin:
 
-  Delta on default `zoom`. The default value is designed to download
-  fewer tiles than you probably want. Use `1` or `2` to increase the
-  resolution.
+  character string or number. Delta on default `zoom`. The default value
+  is designed to download fewer tiles than you probably want. Use `1` or
+  `2` to increase the resolution.
 
 - crop:
 
-  `TRUE` if results should be cropped to the specified `x` extent,
-  `FALSE` otherwise. If `x` is an
+  logical. On `TRUE` the results would be cropped to the specified `x`
+  extent. If `x` is an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  one `POINT`, `crop` is set to `FALSE`.
+  one `POINT`, `crop` is set to `FALSE`. See
+  [`terra::crop()`](https://rspatial.github.io/terra/reference/crop.html).
 
 - res:
 
-  Resolution (in pixels) of the final tile. Only valid for WMS.
+  character string or number. Only valid for WMS providers. Resolution
+  (in pixels) of the final tile.
 
 - bbox_expand:
 
-  A numeric value that indicates the expansion percentage of the
-  bounding box of `x`.
+  number. Expansion percentage of the bounding box of `x`.
 
 - transparent:
 
-  Logical. Provides transparent background, if supported. Depends on the
-  selected provider on `type`.
+  logical. Provides transparent background, if supported.
 
 - mask:
 
-  `TRUE` if the result should be masked to `x`.
+  logical. `TRUE` if the result should be masked to `x`, See
+  [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 - update_cache:
 
@@ -110,10 +111,9 @@ esp_get_tiles(
 
 ## Value
 
-A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers, depending
-on the provider. See
+A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on the
+provider. See
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
-.
 
 ## Details
 
@@ -136,8 +136,9 @@ wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
 For a complete list of providers see
 [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
-Most WMS/WMTS providers provide tiles on "EPSG:3857". In case that the
-tile looks deformed, try projecting first `x`:
+Most WMS/WMTS providers provide tiles on
+[`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks
+deformed, try projecting first `x`:
 
 `x <- sf::st_transform(x, 3857)`
 
@@ -153,10 +154,7 @@ Other imagery utilities:
 ## Examples
 
 ``` r
-# \dontrun{
-# This script downloads tiles to your local machine
-# Run only if you are online
-
+# \donttest{
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
 
@@ -165,7 +163,7 @@ library(tidyterra)
 
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
-  geom_sf(fill = NA)
+  geom_sf(fill = NA, linewidth = 1)
 
 
 # Another provider
@@ -174,7 +172,7 @@ tile2 <- esp_get_tiles(segovia, type = "MDT")
 
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
-  geom_sf(fill = NA)
+  geom_sf(fill = NA, linewidth = 1, color = "red")
 
 
 # A custom WMS provided
@@ -191,7 +189,7 @@ custom_wms <- esp_make_provider(
 custom_wms_tile <- esp_get_tiles(segovia, custom_wms)
 
 autoplot(custom_wms_tile, maxcell = Inf) +
-  geom_sf(data = segovia, fill = NA, color = "red")
+  geom_sf(data = segovia, fill = NA, color = "red", linewidth = 1)
 
 
 # A custom WMTS provider
@@ -206,18 +204,21 @@ custom_wmts <- esp_make_provider(
 custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
 
 autoplot(custom_wmts_tile, maxcell = Inf) +
-  geom_sf(data = segovia, fill = NA, color = "white", linewidth = 2)
+  geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 
 
 # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
-cartodb_voyager <- list(
-  id = "CartoDB_Voyager",
-  q = "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+cartodb_dark <- list(
+  id = "CartoDB_DarkMatter",
+  q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
 )
-cartodb <- esp_get_tiles(segovia, cartodb_voyager, zoommin = 1)
+cartodb_dark_tile <- esp_get_tiles(segovia, cartodb_dark,
+  zoommin = 1,
+  update_cache = TRUE
+)
 
-autoplot(cartodb, maxcell = Inf) +
-  geom_sf(data = segovia, fill = NA, color = "black", linewidth = 1)
+autoplot(cartodb_dark_tile, maxcell = Inf) +
+  geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 
 # }
 ```

@@ -66,10 +66,7 @@ Other imagery utilities:
 ## Examples
 
 ``` r
-# \dontrun{
-# This script downloads tiles to your local machine
-# Run only if you are online
-
+# \donttest{
 custom_wms <- esp_make_provider(
   id = "an_id_for_caching",
   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
