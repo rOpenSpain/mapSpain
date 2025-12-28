@@ -40,3 +40,4 @@
 ^Rplots\.pdf$
 ^[.]?air[.]toml$
 ^\.vscode$
+^tests/testthat/test_local$

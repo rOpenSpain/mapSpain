@@ -80,6 +80,15 @@ provider_to_list <- function(type) {
 
   urlsplit <- modifyList(urlsplit, parts)
 
+  if (guess_provider_type(urlsplit) == "WMTS") {
+    # Ensure these parameters
+
+    urlsplit$tilematrixset <- "GoogleMapsCompatible"
+    urlsplit$tilematrix <- "{z}"
+    urlsplit$tilerow <- "{y}"
+    urlsplit$tilecol <- "{x}"
+  }
+
   urlsplit
 }
 
@@ -88,11 +97,13 @@ guess_provider_type <- function(prov_list) {
 
   serv <- ensure_null(serv)
   # Asumming WMTS: e.g.
-  # "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+  # https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png
   if (is.null(serv)) {
     return("WMTS")
   }
   toupper(serv)
+  serv <- unname(unlist(serv))
+  serv
 }
 
 get_tile_crs <- function(prov_list) {
@@ -112,4 +123,89 @@ get_tile_crs <- function(prov_list) {
   crs <- toupper(crs)
 
   sf::st_crs(crs)
+}
+
+modify_provider_list <- function(prov_list, options = NULL) {
+  options <- ensure_null(options)
+  if (is.null(options)) {
+    return(prov_list)
+  }
+
+  names(options) <- tolower(names(options))
+  type_prov <- guess_provider_type(prov_list)
+
+  if (type_prov == "WMS" && "version" %in% names(options)) {
+    # Exception: need to change names depending on the version of WMS
+
+    v_wms <- unlist(modifyList(
+      list(v = prov_list$version),
+      list(v = options$version)
+    ))
+
+    if (v_wms >= "1.3.0") {
+      names(prov_list) <- gsub("srs", "crs", names(prov_list))
+      names(options) <- gsub("srs", "crs", names(options))
+    } else {
+      names(prov_list) <- gsub("crs", "srs", names(prov_list))
+      names(options) <- gsub("crs", "srs", names(options))
+    }
+  }
+
+  # Ignore TileMatrix fields in WMTS
+  if (type_prov == "WMTS") {
+    options <- options[names(options) != "tilematrix"]
+  }
+
+  prov_list <- modifyList(prov_list, options)
+
+  # Modify id
+  newdir <- paste0(names(options), "=", options, collapse = "&")
+  new_id <- file.path(prov_list$id, tools::md5sum(bytes = charToRaw(newdir)))
+
+  prov_list$id <- new_id
+  prov_list
+}
+
+get_tile_ext <- function(prov_list) {
+  fmt <- ensure_null(prov_list$format)
+
+  # Caso of non OGC WMTS
+  if (is.null(fmt)) {
+    ext <- tools::file_ext(prov_list$q)
+  } else {
+    ext <- basename(fmt)
+  }
+
+  ext
+}
+get_tile_bbox <- function(geom, bbox_expand = 0.05, prov_type = "WMS") {
+  bbox <- as.double(sf::st_bbox(geom))
+
+  # Expand in planar coordinates
+  dimx <- (bbox[3] - bbox[1])
+  dimy <- (bbox[4] - bbox[2])
+  center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)
+
+  bbox_expand <- 1 + bbox_expand
+
+  if (prov_type == "WMS") {
+    maxdist <- max(dimx, dimy)
+    dimy <- maxdist
+    dimx <- dimy
+  }
+
+  newbbox <- c(
+    center[1] - bbox_expand * dimx / 2,
+    center[2] - bbox_expand * dimy / 2,
+    center[1] + bbox_expand * dimx / 2,
+    center[2] + bbox_expand * dimy / 2
+  )
+
+  class(newbbox) <- "bbox"
+
+  newbbox <- sf::st_as_sfc(newbbox)
+
+  sf::st_crs(newbbox) <- sf::st_crs(geom)
+
+  newbbox
 }
