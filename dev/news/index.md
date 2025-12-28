@@ -9,6 +9,10 @@
   renamed to
   [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
   Both versions work so far.
+- [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+  renamed to
+  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md).
+  Both versions work so far.
 - New function
   [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
   replacing `esp_get_railway(..., spatialtype = "point")`.
@@ -25,9 +29,10 @@
 - [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
   allows to download all the SIANE data to the desired `cache_dir` at
   once.
-
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
   returns all countries at a given date.
+- [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
+  `similar to esp_get_spain()` using SIANE data.
 
 ### Changes in datasets
 

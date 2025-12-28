@@ -154,12 +154,20 @@ Other imagery utilities:
 ## Examples
 
 ``` r
-# \donttest{
+# \dontrun{
+
+# This example downloads data to your local computer!
+
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
 
 library(ggplot2)
 library(tidyterra)
+#> 
+#> Attaching package: 'tidyterra'
+#> The following object is masked from 'package:stats':
+#> 
+#>     filter
 
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +

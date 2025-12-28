@@ -1,13 +1,13 @@
-# Provinces of Spain - GISCO
+# Boundaries of Spain - GISCO
 
-Returns [provinces of
-Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
-scale.
+Returns the boundaries of Spain as a single
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` at a
+specified scale.
 
 ## Usage
 
 ``` r
-esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
+esp_get_spain(moveCAN = TRUE, ...)
 ```
 
 ## Source
@@ -18,11 +18,6 @@ Copyright:
 <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Arguments
-
-- prov:
-
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  provinces. See **Details**.
 
 - moveCAN:
 
@@ -35,7 +30,6 @@ Copyright:
 - ...:
 
   Arguments passed on to
-  [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
   [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
   `year`
@@ -74,15 +68,6 @@ Copyright:
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
-  `spatialtype`
-
-  :   character string. Type of geometry to be returned. Options
-      available are:
-
-      - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
-
-      - "LB": Labels - `POINT` object.
-
   `ext`
 
   :   character. Extension of the file (default `"gpkg"`). See
@@ -109,18 +94,14 @@ Copyright:
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Details
 
-When using `prov` you can use and mix names and NUTS codes (levels 1, 2
-or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
-[esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
-
-Ceuta and Melilla are considered as provinces on this dataset.
-
-When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level would be added.
+Dataset derived of NUTS data provided by GISCO. Check
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+for details.
 
 ## Note
 
@@ -141,74 +122,52 @@ Other political:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
+[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+
+Other nuts:
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
 Other gisco:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
 
 ## Examples
 
 ``` r
-prov <- esp_get_prov()
+# \donttest{
+original_can <- esp_get_spain(moveCAN = FALSE)
+
+# One row only
+original_can
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -18.15996 ymin: 27.63846 xmax: 4.320228 ymax: 43.78924
+#> Geodetic CRS:  ETRS89
+#> # A tibble: 1 × 10
+#>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
+#> * <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
+#> 1 ES              0 ES        España    España            NA        NA
+#> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
+
 
 library(ggplot2)
 
-ggplot(prov) +
-  geom_sf() +
-  theme_minimal()
+ggplot(original_can) +
+  geom_sf(fill = "grey70")
 
 
-# \donttest{
-# Random Provinces
-random <- esp_get_prov(prov = c(
-  "Zamora", "Palencia", "ES-GR",
-  "ES521", "01"
-))
+# Less resolution
+moved_can <- esp_get_spain(moveCAN = TRUE, resolution = 20)
 
-
-ggplot(random) +
-  geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
-  scale_fill_manual(values = hcl.colors(nrow(random), "Spectral")) +
-  theme_minimal()
-
-
-
-# All Provinces of a Zone plus an addition
-mix <- esp_get_prov(prov = c(
-  "Noroeste",
-  "Castilla y Leon", "La Rioja"
-))
-
-mix$ccaa <- esp_dict_region_code(
-  mix$codauto,
-  origin = "codauto"
-)
-
-ggplot(mix) +
-  geom_sf(aes(fill = ccaa), alpha = 0.5) +
-  scale_fill_discrete(type = hcl.colors(5, "Temps")) +
-  theme_classic()
-
-
-# ISO codes available
-
-allprovs <- esp_get_prov()
-
-ggplot(allprovs) +
-  geom_sf(fill = NA) +
-  geom_sf_text(aes(label = iso2.prov.code),
-    check_overlap = TRUE,
-    fontface = "bold"
-  ) +
-  coord_sf(crs = 3857) +
-  theme_void()
+ggplot(moved_can) +
+  geom_sf(fill = "grey70")
 
 # }
 ```

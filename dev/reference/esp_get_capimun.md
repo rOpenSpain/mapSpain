@@ -139,7 +139,6 @@ Other political:
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.md),
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
@@ -147,6 +146,8 @@ Other political:
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
+[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
+[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
 Other siane:
@@ -159,6 +160,7 @@ Other siane:
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
 [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md),
+[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
 Other municipalities:
@@ -170,7 +172,6 @@ Other municipalities:
 ``` r
 # \donttest{
 # This code compares centroids of municipalities against esp_get_capimun
-# It also download tiles, make sure you are online
 
 # Get shape
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
@@ -188,27 +189,16 @@ centroid$type <- "Centroid"
 capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 capimun$type <- "Capimun"
 
-# Get a tile to check
-tile <- esp_get_tiles(area, "IGNBase.Todo", zoommin = 2)
-
 # Join both point geometries
 points <- dplyr::bind_rows(centroid, capimun)
 
 # Check on plot
 library(ggplot2)
-library(tidyterra)
-#> 
-#> Attaching package: 'tidyterra'
-#> The following object is masked from 'package:stats':
-#> 
-#>     filter
 
 ggplot(points) +
-  geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(data = area, fill = NA, color = "blue") +
   geom_sf(data = points, aes(fill = type), size = 5, shape = 21) +
   scale_fill_manual(values = c("green", "red")) +
-  theme_void() +
   labs(title = "Centroid vs. capimun")
 
 # }

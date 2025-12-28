@@ -109,6 +109,7 @@ Other siane:
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
 [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
+[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
 ## Examples
@@ -116,7 +117,7 @@ Other siane:
 ``` r
 # \donttest{
 
-country <- esp_get_country()
+country <- esp_get_spain()
 roads <- esp_get_roads()
 
 library(ggplot2)

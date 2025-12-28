@@ -52,6 +52,8 @@
 <li>Remove <strong>slippymath</strong> dependency (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
 <li>
 <code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> renamed to <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code>. Both versions work so far.</li>
+<li>
+<code><a href="../reference/esp_get_spain.html">esp_get_country()</a></code> renamed to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code>. Both versions work so far.</li>
 <li>New function <code><a href="../reference/esp_get_railway.html">esp_get_stations()</a></code>, replacing <code>esp_get_railway(..., spatialtype = "point")</code>.</li>
 <li>
 <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> deprecated and defunct, since the source file is not available any more.</li>
@@ -59,8 +61,12 @@
 <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>: new <code>moveCAN</code> argument. Also arguments <code>resolution</code> and <code>spatialtype</code> are deprecated, the latter replaced by the new function <code><a href="../reference/esp_get_landwater.html">esp_get_wetlands()</a></code>.</li>
 </ul><div class="section level3">
 <h3 id="new-functions-development-version">New functions<a class="anchor" aria-label="anchor" href="#new-functions-development-version"></a></h3>
-<ul><li><p><code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> allows to download all the SIANE data to the desired <code>cache_dir</code> at once.</p></li>
-<li><p><code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> returns all countries at a given date.</p></li>
+<ul><li>
+<code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> allows to download all the SIANE data to the desired <code>cache_dir</code> at once.</li>
+<li>
+<code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> returns all countries at a given date.</li>
+<li>
+<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code>, <code>similar to esp_get_spain()</code> using SIANE data.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-datasets-development-version">Changes in datasets<a class="anchor" aria-label="anchor" href="#changes-in-datasets-development-version"></a></h3>

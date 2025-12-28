@@ -22,7 +22,6 @@
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.html</loc></url>
-<url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_country.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.html</loc></url>
@@ -39,6 +38,8 @@
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.html</loc></url>
+<url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.html</loc></url>
+<url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.html</loc></url>
 <url><loc>https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.html</loc></url>

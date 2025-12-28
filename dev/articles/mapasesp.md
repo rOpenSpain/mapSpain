@@ -108,7 +108,7 @@ esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") |>
   st_transform(3857)
 
 # mapSpain
-esp_mapspain <- esp_get_country(epsg = 4326) |>
+esp_mapspain <- esp_get_spain(epsg = 4326) |>
   st_transform(3857)
 
 # geodata (GADM)
@@ -297,7 +297,7 @@ La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
 ``` r
-esp <- esp_get_country(moveCAN = FALSE)
+esp <- esp_get_spain(moveCAN = FALSE)
 
 ggplot(esp) +
   geom_sf(fill = "#f9cd94") +
@@ -317,7 +317,7 @@ alrededor de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
 ``` r
-esp_can <- esp_get_country()
+esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
 
