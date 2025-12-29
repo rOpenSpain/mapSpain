@@ -1,30 +1,27 @@
 #' Database with codes and names of Spanish regions
 #'
-#' @family datasets
-#' @family political
-#' @family dictionary
-#'
-#' @name esp_codelist
+#' @description
+#' A [tibble][tibble::tbl_df] object used internally for translating codes and
+#' names of the different subdivisions of Spain. The tibble provides the
+#' hierarchy of the subdivisions including NUTS1 level, autonomous communities
+#' (equivalent to NUTS2), provinces and NUTS3 level. See **Note**.
 #'
 #' @docType data
-#'
-#' @description
-#' A `data.frame` object used internally for translating codes and names of the
-#' different subdivisions of Spain. The `data.frame` provides the hierarchy of
-#' the subdivisions including NUTS1 level, autonomous communities (equivalent
-#' to NUTS2), provinces and NUTS3 level. See **Note**.
+#' @encoding UTF-8
+#' @family datasets
+#' @name esp_codelist
 #'
 #' @source
 #' - **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
 #' - **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>
-#' - **ISO**: <https://www.iso.org/home.html>
-#' - **CLDR**: <https://unicode-org.github.io/cldr-staging/charts/38/index.html>
+#' - **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
+#' - **CLDR**:
+#'   <https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html>
 #'
-#' @encoding UTF-8
 #'
 #' @format
-#' A [`data.frame`][base::data.frame] with `r nrow(mapSpain::esp_codelist)` rows
-#' codes and columns:
+#' A [tibble][tibble::tbl_df] with `r nrow(mapSpain::esp_codelist)` rows and
+#' columns:
 #'
 #' \describe{
 #'  \item{nuts1.code}{NUTS 1 code}
@@ -79,7 +76,6 @@
 #' }
 #'
 #' @note
-#'
 #' Although NUTS2 matches the first subdivision level of Spain
 #' (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
 #' match the second subdivision level of Spain (Provinces). NUTS3 provides a
@@ -92,42 +88,51 @@
 #' @examples
 #'
 #' data("esp_codelist")
+#' esp_codelist
 NULL
 
 
-#' Database with the population of Spain by municipality (2019)
-#'
-#' @family datasets
-#'
-#' @name pobmun19
+#' Database with the population of Spain by municipality (2025)
 #'
 #' @docType data
+#' @encoding UTF-8
+#' @family datasets
+#' @name pobmun25
 #'
 #' @format
-#' An example `data.frame` object with
-#' `r prettyNum(nrow(mapSpain::pobmun19), big.mark=",")` rows containing the
-#' population data by municipality in Spain (2019).
+#' An example [tibble][tibble::tbl_df] object with
+#' `r prettyNum(nrow(mapSpain::pobmun25), big.mark=",")` rows containing the
+#' population data by municipality in Spain (2025).
 #'
 #' \describe{
 #'   \item{cpro}{INE code of the province.}
 #'   \item{provincia}{name of the province.}
 #'   \item{cmun}{INE code of the municipality.}
 #'   \item{name}{Name of the municipality.}
-#'   \item{pob19}{Overall population (2019)}
-#'   \item{men}{Men population (2019)}
-#'   \item{women}{Women population (2019)}
+#'   \item{pob25}{Overall population (2025)}
+#'   \item{men}{Men population (2025)}
+#'   \item{women}{Women population (2025)}
 #' }
 #'
-#' @source INE: Instituto Nacional de Estadistica <https://www.ine.es/>
+#' @source
+#' INE: Instituto Nacional de Estadistica
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(
+#'    " <https://www.ine.es/dyngs/INEbase/categoria.htm?c=Estadistica_P",
+#'      "&cid=1254734710990>.")
+#'      )
+#'
+#' ```
 #'
 #' @examples
-#' data("pobmun19")
+#' data("pobmun25")
 NULL
 
 #' Database of public WMS and WMTS of Spain
 #'
 #' @family datasets
-#' @family imagery utilities
+#' @family images
 #'
 #' @name esp_tiles_providers
 #'

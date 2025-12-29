@@ -139,7 +139,6 @@ ggplot(Countries) +
 }
 \seealso{
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},

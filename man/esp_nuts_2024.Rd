@@ -72,6 +72,6 @@ head(esp_nuts_2024)
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_tiles_providers}},
-\code{\link{pobmun19}}
+\code{\link{pobmun25}}
 }
 \concept{datasets}

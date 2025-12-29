@@ -135,7 +135,6 @@ ggplot(points) +
 }
 \seealso{
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},

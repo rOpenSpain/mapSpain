@@ -8,7 +8,7 @@
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
 #'
-#' @family imagery utilities
+#' @family images
 #' @seealso [terra::rast()].
 #'
 #' @rdname esp_get_tiles

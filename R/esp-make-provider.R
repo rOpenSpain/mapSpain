@@ -3,7 +3,7 @@
 #' @description
 #' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
-#' @family imagery utilities
+#' @family images
 #' @seealso [esp_get_tiles()].
 #'
 #' For a list of potential providers from Spain check

@@ -178,9 +178,9 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 \seealso{
 \code{\link[terra:rast]{terra::rast()}}.
 
-Other imagery utilities: 
+Other functions for creating maps with images:
 \code{\link{addProviderEspTiles}()},
 \code{\link{esp_make_provider}()},
 \code{\link{esp_tiles_providers}}
 }
-\concept{imagery utilities}
+\concept{images}

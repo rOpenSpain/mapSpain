@@ -83,11 +83,4 @@ esp_dict_translate(vals, lang = "ga")
 
 esp_dict_translate(vals, lang = "ga", all = TRUE)
 }
-\seealso{
-Other dictionary: 
-\code{\link{esp_codelist}}
-
-Other dictionary: 
-\code{\link{esp_codelist}}
-}
 \concept{dictionary}

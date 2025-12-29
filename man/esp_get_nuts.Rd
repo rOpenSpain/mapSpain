@@ -188,7 +188,6 @@ ggplot(mixing_codes) +
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
 
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},

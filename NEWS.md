@@ -8,6 +8,8 @@
     `esp_get_railway(..., spatialtype = "point")`.
 -   `esp_get_grid_EEA()` deprecated and defunct, since the source file is not
     available any more.
+-   `providerEspTileOptions()` removed, use `leaflet::providerTileOptions()`
+    instead.
 -   `esp_get_rivers()`: new `moveCAN` argument. Also arguments `resolution` and
     `spatialtype` are deprecated, the latter replaced by the new function
     `esp_get_wetlands()`.
@@ -25,6 +27,7 @@
 -   `?leaflet.providersESP.df` has been removed. It was superseded in
     **mapSpain** v0.8.0.
 -   `?esp_munic.sf` has been removed.
+-   `?pobmun25` replaces `?pobmun19`, that have been removed.
 
 # mapSpain 0.10.0
 

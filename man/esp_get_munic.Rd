@@ -148,7 +148,6 @@ ggplot(spanish_laplad) +
 \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}}.
 
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},

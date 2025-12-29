@@ -152,12 +152,12 @@ single$leaflet
 Other datasets: 
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts_2024}},
-\code{\link{pobmun19}}
+\code{\link{pobmun25}}
 
-Other imagery utilities: 
+Other functions for creating maps with images:
 \code{\link{addProviderEspTiles}()},
 \code{\link{esp_get_tiles}()},
 \code{\link{esp_make_provider}()}
 }
 \concept{datasets}
-\concept{imagery utilities}
+\concept{images}

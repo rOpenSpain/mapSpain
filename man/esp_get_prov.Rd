@@ -140,7 +140,6 @@ ggplot(allprovs) +
 }
 \seealso{
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},

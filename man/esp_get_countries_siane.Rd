@@ -91,7 +91,6 @@ ggplot(cntries) +
 \code{\link[giscoR:gisco_get_countries]{giscoR::gisco_get_countries()}}.
 
 Other political: 
-\code{\link{esp_codelist}},
 \code{\link{esp_get_can_box}()},
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},

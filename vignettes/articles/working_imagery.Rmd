@@ -167,33 +167,34 @@ m |>
 A map showing the population density of Spain as of 2019:
 
 ```{r leaflet2}
+library(leaflet)
+library(dplyr)
 munic <- esp_get_munic_siane(
-  year = 2019,
+  year = "2025-01-01",
   epsg = 4326,
   moveCAN = FALSE,
   rawcols = TRUE
-)
+) |>
+  # Get area in km2 from siane munic
+  # Already on the shapefile
+  mutate(area_km2 = st_area_sh * 10000)
 
-# Get area in km2 from siane munic
-# Already on the shapefile
-
-munic$area_km2 <- munic$st_area_sh * 10000
 
 # Get population
 
-pop <- mapSpain::pobmun19
+pop <- mapSpain::pobmun25 |>
+  select(-name)
 
 # Paste
-munic_pop <- merge(munic, pop[, c("cmun", "cpro", "pob19")],
-  by = c("cmun", "cpro"),
-  all.x = TRUE
-)
-
-munic_pop$dens <- munic_pop$pob19 / munic_pop$area_km2
-munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
-  big.mark = ".",
-  decimal.mark = ","
-)
+munic_pop <- munic |>
+  left_join(pop) |>
+  mutate(
+    dens = pob25 / area_km2,
+    dens_label = prettyNum(round(dens, 2),
+      big.mark = ".",
+      decimal.mark = ","
+    )
+  )
 
 # Create leaflet
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
@@ -231,7 +232,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
     pal = pal, values = bins, opacity = 0.7,
     title = paste0(
       "<small>Pop. Density km<sup>2</sup></small><br><small>",
-      "(2019)</small>"
+      "(2025)</small>"
     ),
     position = "bottomright"
   )

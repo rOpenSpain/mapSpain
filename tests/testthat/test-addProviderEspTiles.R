@@ -4,8 +4,6 @@ test_that("Testing leaflet", {
 
   library(leaflet)
 
-  expect_silent(providerEspTileOptions())
-
   expect_snapshot(
     error = TRUE,
     puertadelsol <- leaflet() |>

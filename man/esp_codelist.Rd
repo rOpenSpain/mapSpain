@@ -6,8 +6,8 @@
 \alias{esp_codelist}
 \title{Database with codes and names of Spanish regions}
 \format{
-A \code{\link[base:data.frame]{data.frame}} with 59 rows
-codes and columns:
+A \link[tibble:tbl_df-class]{tibble} with 59 rows and
+columns:
 
 \describe{
 \item{nuts1.code}{NUTS 1 code}
@@ -65,15 +65,16 @@ codes and columns:
 \itemize{
 \item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
 \item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/overview}
-\item \strong{ISO}: \url{https://www.iso.org/home.html}
-\item \strong{CLDR}: \url{https://unicode-org.github.io/cldr-staging/charts/38/index.html}
+\item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
+\item \strong{CLDR}:
+\url{https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html}
 }
 }
 \description{
-A \code{data.frame} object used internally for translating codes and names of the
-different subdivisions of Spain. The \code{data.frame} provides the hierarchy of
-the subdivisions including NUTS1 level, autonomous communities (equivalent
-to NUTS2), provinces and NUTS3 level. See \strong{Note}.
+A \link[tibble:tbl_df-class]{tibble} object used internally for translating codes and
+names of the different subdivisions of Spain. The tibble provides the
+hierarchy of the subdivisions including NUTS1 level, autonomous communities
+(equivalent to NUTS2), provinces and NUTS3 level. See \strong{Note}.
 }
 \note{
 Although NUTS2 matches the first subdivision level of Spain
@@ -88,34 +89,12 @@ Asturias or Murcia) on this database.
 \examples{
 
 data("esp_codelist")
+esp_codelist
 }
 \seealso{
 Other datasets: 
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
-\code{\link{pobmun19}}
-
-Other political: 
-\code{\link{esp_get_can_box}()},
-\code{\link{esp_get_capimun}()},
-\code{\link{esp_get_ccaa}()},
-\code{\link{esp_get_ccaa_siane}()},
-\code{\link{esp_get_comarca}()},
-\code{\link{esp_get_countries_siane}()},
-\code{\link{esp_get_gridmap}},
-\code{\link{esp_get_munic}()},
-\code{\link{esp_get_munic_siane}()},
-\code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()},
-\code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_simpl}},
-\code{\link{esp_get_spain}()},
-\code{\link{esp_get_spain_siane}()},
-\code{\link{esp_siane_bulk_download}()}
-
-Other dictionary: 
-\code{\link{esp_dict_region_code}()}
+\code{\link{pobmun25}}
 }
 \concept{datasets}
-\concept{dictionary}
-\concept{political}

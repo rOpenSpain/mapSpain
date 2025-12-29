@@ -28,13 +28,11 @@ library(mapSpain)
 
 ### Motivación
 
-<img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" align="right" width="170" style="margin-top: 25vh;margin-right: 2rem;"/>
-
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
 
 Además, proporciona también la posibilidad de usar imágenes de servicios
-WMS/WMTS de manera estática (como imagen georeferenciada) o dinámica (en mapas
+WMS/WMTS de manera estática (como imagen georreferenciada) o dinámica (en mapas
 leaflet).
 
 Adicionalmente, **mapSpain** dispone de funciones que permiten normalizar
@@ -192,21 +190,14 @@ esta configuración persistente se puede emplear el parámetro `install = TRUE`
 ``` r
 esp_set_cache_dir("~/R/mapslib/mapSpain", install = TRUE, verbose = TRUE)
 
-#> mapSpain cache dir is: C:/Users/xxxxx/Documents/R/mapslib/mapSpain
+#> ℹ mapSpain cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain.
 
 munic <- esp_get_munic_siane(verbose = TRUE)
 
-#> Cache dir is C:/Users/xxxxx/Documents/R/mapslib/mapSpain
-#> Downloading file from https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg
-
-#> See https://github.com/rOpenSpain/mapSpain/tree/sianedata/ for more info
-#> trying URL 'https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg'
-#> Content type 'application/octet-stream' length 5570560 bytes (5.3 MB)
-#> downloaded 5.3 MB
-
-#> Download succesful
-#> Reading from local file #> C:/Users/xxxxx/Documents/R/mapslib/mapSpain/se89_3_admin_muni_a_x.gpkg
-#> 5.3 Mb
+#> ℹ Cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
+#> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache dir is C:/Users/diego/Documents/R/mapslib/GISCO/siane.
+#> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_y.gpkg
 ```
 
 ## Diccionario
@@ -288,8 +279,8 @@ GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
 La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
-```{r pais}
-esp <- esp_get_spain(moveCAN = FALSE)
+```{r pais, fig.alt="Mapa de España"}
+esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
   geom_sf(fill = "#f9cd94") +
@@ -306,7 +297,7 @@ Proporcionamos funciones adicionales que permiten representar lineas alrededor
 de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
-```{r can}
+```{r can, fig.alt="Mapa de España con Canarias desplazadas"}
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -322,7 +313,7 @@ analisis espaciales, se debe usar `moveCAN = FALSE`**
 
 ### NUTS
 
-```{r nuts}
+```{r nuts, fig.alt="NUTS 1 de España"}
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
@@ -330,7 +321,7 @@ ggplot(nuts1) +
   labs(title = "NUTS1: Baja Resolución")
 ```
 
-```{r}
+```{r nuts3, fig.alt="NUTS3 de España"}
 # Baleares NUTS3
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
@@ -346,7 +337,7 @@ ggplot(nuts3_sf) +
 
 ### CCAA
 
-```{r ccaa}
+```{r ccaa ,fig.alt="Ejemplo: CCAA de España"}
 ccaa <- esp_get_ccaa(ccaa = c(
   "Catalunya", "Comunidad Valenciana", "Aragón",
   "Baleares"
@@ -385,10 +376,14 @@ ggplot(provs) +
 ```{r munic}
 munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
-  left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
+  left_join(
+    mapSpain::pobmun25 |>
+      select(-name),
+    by = c("cpro", "cmun")
+  )
 
 ggplot(munic) +
-  geom_sf(aes(fill = pob19), alpha = 0.9, color = NA) +
+  geom_sf(aes(fill = pob25), alpha = 0.9, color = NA) +
   scale_fill_gradientn(
     colors = hcl.colors(100, "Inferno"),
     n.breaks = 10, labels = scales::label_comma(),
@@ -396,7 +391,7 @@ ggplot(munic) +
   ) +
   labs(
     fill = "Habitantes", title = "Población en Segovia",
-    subtitle = "Datos INE (2019)"
+    subtitle = "Datos INE (2025)"
   ) +
   theme_void() +
   theme(
