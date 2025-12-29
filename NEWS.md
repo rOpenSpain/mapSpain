@@ -17,7 +17,7 @@
 -   `esp_siane_bulk_download()` allows to download all the SIANE data to the
     desired `cache_dir` at once.
 -   `esp_get_countries_siane()` returns all countries at a given date.
--   `esp_get_spain_siane()`, `similar to esp_get_spain()` using SIANE data.
+-   `esp_get_spain_siane()`, similar to `esp_get_spain()` using SIANE data.
 
 ## Changes in datasets
 
