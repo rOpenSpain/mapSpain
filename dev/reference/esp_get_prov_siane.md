@@ -135,7 +135,6 @@ provinces of that level would be added.
 ## See also
 
 Other political:
-[`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),

@@ -4,14 +4,12 @@
 
 ### Motivación
 
-![mapSpain-logo](https://ropenspain.github.io/mapSpain/logo.png)
-
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
 
 Además, proporciona también la posibilidad de usar imágenes de servicios
-WMS/WMTS de manera estática (como imagen georeferenciada) o dinámica (en
-mapas leaflet).
+WMS/WMTS de manera estática (como imagen georreferenciada) o dinámica
+(en mapas leaflet).
 
 Adicionalmente, **mapSpain** dispone de funciones que permiten
 normalizar nombres de las CCAA y provincias, lo que facilita el proceso
@@ -180,21 +178,14 @@ persistente se puede emplear el parámetro `install = TRUE`
 ``` r
 esp_set_cache_dir("~/R/mapslib/mapSpain", install = TRUE, verbose = TRUE)
 
-#> mapSpain cache dir is: C:/Users/xxxxx/Documents/R/mapslib/mapSpain
+#> ℹ mapSpain cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain.
 
 munic <- esp_get_munic_siane(verbose = TRUE)
 
-#> Cache dir is C:/Users/xxxxx/Documents/R/mapslib/mapSpain
-#> Downloading file from https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg
-
-#> See https://github.com/rOpenSpain/mapSpain/tree/sianedata/ for more info
-#> trying URL 'https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg'
-#> Content type 'application/octet-stream' length 5570560 bytes (5.3 MB)
-#> downloaded 5.3 MB
-
-#> Download succesful
-#> Reading from local file #> C:/Users/xxxxx/Documents/R/mapslib/mapSpain/se89_3_admin_muni_a_x.gpkg
-#> 5.3 Mb
+#> ℹ Cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
+#> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache dir is C:/Users/diego/Documents/R/mapslib/GISCO/siane.
+#> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_y.gpkg
 ```
 
 ## Diccionario
@@ -297,14 +288,14 @@ La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
 ``` r
-esp <- esp_get_spain(moveCAN = FALSE)
+esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
   geom_sf(fill = "#f9cd94") +
   theme_light()
 ```
 
-![](mapasesp_files/figure-html/pais-1.png)
+![Mapa de España](mapasesp_files/figure-html/pais-1.png)
 
 ### El caso Canarias
 
@@ -327,7 +318,8 @@ ggplot(esp_can) +
   geom_sf(data = can_box)
 ```
 
-![](mapasesp_files/figure-html/can-1.png)
+![Mapa de España con Canarias
+desplazadas](mapasesp_files/figure-html/can-1.png)
 
 **Cuando se trabaja con imágenes, mapas interactivos o se desean
 realizar analisis espaciales, se debe usar `moveCAN = FALSE`**
@@ -342,7 +334,7 @@ ggplot(nuts1) +
   labs(title = "NUTS1: Baja Resolución")
 ```
 
-![](mapasesp_files/figure-html/nuts-1.png)
+![NUTS 1 de España](mapasesp_files/figure-html/nuts-1.png)
 
 ``` r
 # Baleares NUTS3
@@ -359,7 +351,7 @@ ggplot(nuts3_sf) +
   theme_minimal()
 ```
 
-![](mapasesp_files/figure-html/unnamed-chunk-3-1.png)
+![NUTS3 de España](mapasesp_files/figure-html/nuts3-1.png)
 
 ### CCAA
 
@@ -379,7 +371,7 @@ ggplot(ccaa) +
   scale_fill_discrete(type = hcl.colors(4, "Plasma"))
 ```
 
-![](mapasesp_files/figure-html/ccaa-1.png)
+![Ejemplo: CCAA de España](mapasesp_files/figure-html/ccaa%20-1.png)
 
 ### Provincias (usando versión `*_siane`)
 
@@ -406,10 +398,14 @@ ggplot(provs) +
 ``` r
 munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
-  left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
+  left_join(
+    mapSpain::pobmun25 |>
+      select(-name),
+    by = c("cpro", "cmun")
+  )
 
 ggplot(munic) +
-  geom_sf(aes(fill = pob19), alpha = 0.9, color = NA) +
+  geom_sf(aes(fill = pob25), alpha = 0.9, color = NA) +
   scale_fill_gradientn(
     colors = hcl.colors(100, "Inferno"),
     n.breaks = 10, labels = scales::label_comma(),
@@ -417,7 +413,7 @@ ggplot(munic) +
   ) +
   labs(
     fill = "Habitantes", title = "Población en Segovia",
-    subtitle = "Datos INE (2019)"
+    subtitle = "Datos INE (2025)"
   ) +
   theme_void() +
   theme(
@@ -584,7 +580,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-28
+    #>  date     2025-12-29
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -629,7 +625,7 @@ Details
     #>  lifecycle            1.0.4        2023-11-07 [1] RSPM
     #>  lubridate          * 1.9.4        2024-12-08 [1] RSPM
     #>  magrittr             2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain           * 0.99.99.9000 2025-12-28 [1] local
+    #>  mapSpain           * 0.99.99.9000 2025-12-29 [1] local
     #>  otel                 0.2.0        2025-08-29 [1] RSPM
     #>  pillar               1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig            2.0.3        2019-09-22 [1] RSPM

@@ -1,8 +1,7 @@
-# Include base tiles of Spanish public administrations on a [leaflet](https://CRAN.R-project.org/package=leaflet) map
+# Add a tile layer from Spanish public administrations on a [leaflet](https://CRAN.R-project.org/package=leaflet) map
 
-Include tiles of public Spanish organisms to a
-[`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html)
-map.
+Add a tile layer from Spanish public administrations on a
+[leaflet](https://CRAN.R-project.org/package=leaflet) map
 
 ## Usage
 
@@ -12,10 +11,8 @@ addProviderEspTiles(
   provider,
   layerId = NULL,
   group = NULL,
-  options = providerEspTileOptions()
+  options = leaflet::providerTileOptions()
 )
-
-providerEspTileOptions(...)
 ```
 
 ## Source
@@ -31,9 +28,9 @@ providerEspTileOptions(...)
 
 - provider:
 
-  Name of the provider, see
+  the name of the provider, see
   [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
-  for values available.
+  or <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 
 - layerId:
 
@@ -52,31 +49,17 @@ providerEspTileOptions(...)
 
   tile options
 
-- ...:
-
-  Arguments passed on to
-  [`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html).
-
 ## Value
 
-A modified
-[`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html)
-`map` object.
-
-## Details
-
-`providerEspTileOptions()` is a wrapper of
-[`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html).
+modified map object
 
 ## See also
 
 [`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html),
-[`leaflet::addTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html)
+[`leaflet::addTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
+[`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html).
 
-[`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html),
-[`leaflet::tileOptions()`](https://rstudio.github.io/leaflet/reference/map-options.html)
-
-Other imagery utilities:
+Other functions for creating maps with images:
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)

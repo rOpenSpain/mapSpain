@@ -74,9 +74,9 @@ Example: Map of Spain
 ``` r
 # Plot provinces
 
-Andalucia <- esp_get_prov("Andalucia")
+andalucia <- esp_get_prov("Andalucia")
 
-ggplot(Andalucia) +
+ggplot(andalucia) +
   geom_sf(fill = "darkgreen", color = "white") +
   theme_bw()
 ```
@@ -88,16 +88,16 @@ Example: Provinces of Andalucia
 ``` r
 # Plot municipalities
 
-Euskadi_CCAA <- esp_get_ccaa("Euskadi")
-Euskadi <- esp_get_munic_siane(region = "Euskadi")
+euskadi_ccaa <- esp_get_ccaa("Euskadi")
+euskadi <- esp_get_munic_siane(region = "Euskadi")
 
 # Use dictionary
 
-Euskadi$name_eu <- esp_dict_translate(Euskadi$ine.prov.name, lang = "eu")
+euskadi$name_eu <- esp_dict_translate(euskadi$ine.prov.name, lang = "eu")
 
-ggplot(Euskadi_CCAA) +
+ggplot(euskadi_ccaa) +
   geom_sf(fill = "grey50") +
-  geom_sf(data = Euskadi, aes(fill = name_eu)) +
+  geom_sf(data = euskadi, aes(fill = name_eu)) +
   scale_fill_manual(values = c("red2", "darkgreen", "ivory2")) +
   labs(
     fill = "",
@@ -118,56 +118,62 @@ Example: Municipalities of the Basque Country
 ## Choropleth and label maps
 
 Let’s analyze the distribution of women in each autonomous community
-with `ggplot`:
+with **ggplot2**:
 
 ``` r
-census <- mapSpain::pobmun19
+library(dplyr)
+
+census <- mapSpain::pobmun25 |>
+  select(-name)
 
 # Extract CCAA from base dataset
 
-codelist <- mapSpain::esp_codelist
+codelist <- mapSpain::esp_codelist |>
+  select(cpro, codauto) |>
+  distinct()
 
-census <- unique(merge(census, codelist[, c("cpro", "codauto")], all.x = TRUE))
+census_ccaa <- census |>
+  left_join(codelist) |>
+  # Summarize by CCAA
+  group_by(codauto) |>
+  summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
+  mutate(
+    porc_women = women / pob25,
+    porc_women_lab = paste0(round(100 * porc_women, 2), "%")
+  )
 
-# Summarize by CCAA
-census_ccaa <- aggregate(cbind(pob19, men, women) ~ codauto, data = census, sum)
-
-census_ccaa$porc_women <- census_ccaa$women / census_ccaa$pob19
-census_ccaa$porc_women_lab <- paste0(
-  round(100 * census_ccaa$porc_women, 2),
-  "%"
-)
 
 # Merge into spatial data
 
-CCAA_sf <- esp_get_ccaa()
-CCAA_sf <- merge(CCAA_sf, census_ccaa)
-Can <- esp_get_can_box()
+ccaa_sf <- esp_get_ccaa() |>
+  left_join(census_ccaa)
+can <- esp_get_can_box()
 
-ggplot(CCAA_sf) +
-  geom_sf(aes(fill = porc_women),
-    color = "grey70",
-    linewidth = .3
-  ) +
-  geom_sf(data = Can, color = "grey70") +
+
+# Plot with ggplot
+library(ggplot2)
+
+
+ggplot(ccaa_sf) +
+  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
+  geom_sf(data = can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5, size = 3, label.size = 0
+    fill = "white", alpha = 0.5,
+    size = 3, linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
-    n.breaks = 10,
-    labels = function(x) {
-      sprintf("%1.1f%%", 100 * x)
-    },
-    guide = guide_legend(title = "Porc. women", position = "inside")
+    n.breaks = 10, labels = scales::label_percent(),
+    guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
-  theme(legend.position.inside = c(0.1, 0.6))
+  theme(legend.position.inside = c(0.1, 0.6)) +
+  labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community (2019)](choro-1.png)
+![Percentage of women by Autonomous Community (2025)](choro-1.png)
 
-Percentage of women by Autonomous Community (2019)
+Percentage of women by Autonomous Community (2025)
 
 ## Thematic maps
 
@@ -182,29 +188,32 @@ package that handles `sf` objects (e.g. **tmap**, **mapsf**,
 
 library(sf)
 
-pop <- mapSpain::pobmun19
-munic <- esp_get_munic_siane()
+pop <- mapSpain::pobmun25 |>
+  select(-name)
 
-# Get area (km2) - Use LAEA projection
-municarea <- as.double(st_area(st_transform(munic, 3035)) / 1000000)
-munic$area <- municarea
+munic <- esp_get_munic_siane(rawcols = TRUE) |>
+  # Get area in km2 from siane munic
+  # Already on the shapefile
+  mutate(area_km2 = st_area_sh * 10000)
 
-munic.pop <- merge(munic, pop, all.x = TRUE, by = c("cpro", "cmun"))
-munic.pop$dens <- munic.pop$pob19 / munic.pop$area
+
+munic_pop <- munic |>
+  left_join(pop) |>
+  mutate(dens = pob25 / area_km2)
+
 
 br <- c(-Inf, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
+munic_pop$cuts <- cut(munic_pop$dens, br)
 
-munic.pop$cuts <- cut(munic.pop$dens, br)
-
-ggplot(munic.pop) +
+ggplot(munic_pop) +
   geom_sf(aes(fill = cuts), color = NA, linewidth = 0) +
   scale_fill_manual(
     values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(title = "Pop. per km2", direction = "horizontal", nrow = 1)
   ) +
-  labs(title = "Population density in Spain (2019)") +
+  labs(title = "Population density in Spain (2025)") +
   theme_void() +
   theme(
     plot.title = element_text(hjust = .5),
@@ -214,12 +223,13 @@ ggplot(munic.pop) +
     legend.title.position = "top",
     legend.text.position = "bottom",
     legend.key.width = unit(30, "pt")
-  )
+  ) +
+  labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Population density in Spain (2019)](thematic-1.png)
+![Population density in Spain (2025)](thematic-1.png)
 
-Population density in Spain (2019)
+Population density in Spain (2025)
 
 ## mapSpain and giscoR
 
@@ -264,7 +274,8 @@ ggplot(all_countries) +
       colour = "#DFDFDF",
       linetype = "dotted"
     )
-  )
+  ) +
+  labs(caption = giscoR::gisco_attributions("es"))
 ```
 
 ![mapSpain and giscoR example](giscoR-1.png)

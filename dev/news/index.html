@@ -58,6 +58,8 @@
 <li>
 <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> deprecated and defunct, since the source file is not available any more.</li>
 <li>
+<code>providerEspTileOptions()</code> removed, use <code><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">leaflet::providerTileOptions()</a></code> instead.</li>
+<li>
 <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>: new <code>moveCAN</code> argument. Also arguments <code>resolution</code> and <code>spatialtype</code> are deprecated, the latter replaced by the new function <code><a href="../reference/esp_get_landwater.html">esp_get_wetlands()</a></code>.</li>
 </ul><div class="section level3">
 <h3 id="new-functions-development-version">New functions<a class="anchor" aria-label="anchor" href="#new-functions-development-version"></a></h3>
@@ -66,7 +68,7 @@
 <li>
 <code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> returns all countries at a given date.</li>
 <li>
-<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code>, <code>similar to esp_get_spain()</code> using SIANE data.</li>
+<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code>, similar to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code> using SIANE data.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-datasets-development-version">Changes in datasets<a class="anchor" aria-label="anchor" href="#changes-in-datasets-development-version"></a></h3>
@@ -75,6 +77,8 @@
 <code>?leaflet.providersESP.df</code> has been removed. It was superseded in <strong>mapSpain</strong> v0.8.0.</li>
 <li>
 <code>?esp_munic.sf</code> has been removed.</li>
+<li>
+<code><a href="../reference/pobmun25.html">?pobmun25</a></code> replaces <code>?pobmun19</code>, that have been removed.</li>
 </ul></div>
 </div>
     <div class="section level2">

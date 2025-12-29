@@ -19,6 +19,9 @@
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   deprecated and defunct, since the source file is not available any
   more.
+- `providerEspTileOptions()` removed, use
+  [`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
+  instead.
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md):
   new `moveCAN` argument. Also arguments `resolution` and `spatialtype`
   are deprecated, the latter replaced by the new function
@@ -32,7 +35,9 @@
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
   returns all countries at a given date.
 - [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-  `similar to esp_get_spain()` using SIANE data.
+  similar to
+  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+  using SIANE data.
 
 ### Changes in datasets
 
@@ -42,6 +47,8 @@
 - `?leaflet.providersESP.df` has been removed. It was superseded in
   **mapSpain** v0.8.0.
 - `?esp_munic.sf` has been removed.
+- [`?pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
+  replaces `?pobmun19`, that have been removed.
 
 ## mapSpain 0.10.0
 

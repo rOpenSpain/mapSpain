@@ -46,9 +46,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="gisco">GISCO<a class="anchor" aria-label="anchor" href="#gisco"></a></h2>
+      <h2 id="maps-with-images">Maps with images<a class="anchor" aria-label="anchor" href="#maps-with-images"></a></h2>
 
-
+      <div class="section-desc"><p>Return static tiles or create an interactive <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> map.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -57,40 +57,64 @@
 
       <dl><dt>
 
-          <code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>
+          <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>
 
         </dt>
-        <dd>Autonomous Communities of Spain - GISCO</dd>
+        <dd>Add a tile layer from Spanish public administrations on a <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> map</dd>
 
         <dt>
 
-          <code><a href="esp_get_munic.html">esp_get_munic()</a></code>
+          <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code>
 
         </dt>
-        <dd>Municipalities of Spain - GISCO</dd>
+        <dd>Get static tiles from public administrations of Spain</dd>
 
         <dt>
 
-          <code><a href="esp_get_nuts.html">esp_get_nuts()</a></code>
+          <code><a href="esp_make_provider.html">esp_make_provider()</a></code>
 
         </dt>
-        <dd>Territorial Spanish units for statistics (NUTS) dataset</dd>
+        <dd>Create a custom tile provider</dd>
 
         <dt>
 
-          <code><a href="esp_get_prov.html">esp_get_prov()</a></code>
+          <code><a href="esp_tiles_providers.html">esp_tiles_providers</a></code>
 
         </dt>
-        <dd>Provinces of Spain - GISCO</dd>
+        <dd>Database of public WMS and WMTS of Spain</dd>
 
         <dt>
 
-          <code><a href="esp_get_spain.html">esp_get_spain()</a></code>
+          <code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">plotRGB(<i>&lt;SpatRaster&gt;</i>)</a></code>
 
         </dt>
-        <dd>Boundaries of Spain - GISCO</dd>
+        <dd>Red-Green-Blue plot of a multi-layered SpatRaster (from terra)</dd>
+
+        <dt>
+
+          <code><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">addProviderTiles()</a></code> <code><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">providerTileOptions()</a></code>
+
+        </dt>
+        <dd>Add a tile layer from a known map provider (from leaflet)</dd>
+
+        <dt>
+
+          <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb()</a></code>
+
+        </dt>
+        <dd>Visualise <code>SpatRaster</code> objects as images (from tidyterra)</dd>
       </dl></div><div class="section level2">
-      <h2 id="siane">SIANE<a class="anchor" aria-label="anchor" href="#siane"></a></h2>
+      <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl></dl></div><div class="section level2">
+      <h2 id="missing">Missing<a class="anchor" aria-label="anchor" href="#missing"></a></h2>
 
 
 
@@ -101,103 +125,24 @@
 
       <dl><dt>
 
-          <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>
+          <code><a href="esp_clear_cache.html">esp_clear_cache()</a></code>
 
         </dt>
-        <dd>City where the municipal public authorities are based - SIANE</dd>
+        <dd>Clear your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache dir</dd>
 
         <dt>
-
-          <code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>
-
-        </dt>
-        <dd>Autonomous Communities of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>
-
-        </dt>
-        <dd>Countries of the World - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
-
-        </dt>
-        <dd>River basin districts of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
-
-        </dt>
-        <dd>Hypsometry and bathymetry of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
-
-        </dt>
-        <dd>Rivers and wetlands of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>
-
-        </dt>
-        <dd>Municipalities of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_prov_siane.html">esp_get_prov_siane()</a></code>
-
-        </dt>
-        <dd>Provinces of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
-
-        </dt>
-        <dd>Railways of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
-
-        </dt>
-        <dd>Roads of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code>
-
-        </dt>
-        <dd>Boundaries of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code>
-
-        </dt>
-        <dd>SIANE bulk download</dd>
-      </dl></div><div class="section level2">
-      <h2 id="political">Political<a class="anchor" aria-label="anchor" href="#political"></a></h2>
-
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with political boundaries.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
 
           <code><a href="esp_codelist.html">esp_codelist</a></code>
 
         </dt>
         <dd>Database with codes and names of Spanish regions</dd>
+
+        <dt>
+
+          <code><a href="esp_dict.html">esp_dict_region_code()</a></code> <code><a href="esp_dict.html">esp_dict_translate()</a></code>
+
+        </dt>
+        <dd>Convert and translate subdivision names</dd>
 
         <dt>
 
@@ -250,6 +195,48 @@
 
         <dt>
 
+          <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code> <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN_ccaa()</a></code>
+
+        </dt>
+        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> with the national geographic grids from BDN</dd>
+
+        <dt>
+
+          <code><a href="esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code>
+
+        </dt>
+        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> of the national geographic grids from ESDAC</dd>
+
+        <dt>
+
+          <code><a href="esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>
+
+        </dt>
+        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> of the national geographic grids from IGN</dd>
+
+        <dt>
+
+          <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
+
+        </dt>
+        <dd>River basin districts of Spain - SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
+
+        </dt>
+        <dd>Hypsometry and bathymetry of Spain - SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
+
+        </dt>
+        <dd>Rivers and wetlands of Spain - SIANE</dd>
+
+        <dt>
+
           <code><a href="esp_get_munic.html">esp_get_munic()</a></code>
 
         </dt>
@@ -285,6 +272,20 @@
 
         <dt>
 
+          <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
+
+        </dt>
+        <dd>Railways of Spain - SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
+
+        </dt>
+        <dd>Roads of Spain - SIANE</dd>
+
+        <dt>
+
           <code><a href="esp_get_simpl.html">esp_get_simpl_prov()</a></code> <code><a href="esp_get_simpl.html">esp_get_simpl_ccaa()</a></code>
 
         </dt>
@@ -306,206 +307,10 @@
 
         <dt>
 
-          <code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code>
+          <code><a href="esp_move_can.html">esp_move_can()</a></code>
 
         </dt>
-        <dd>SIANE bulk download</dd>
-
-        <dt>
-
-          <code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html" class="external-link">gisco_get_nuts()</a></code>
-
-        </dt>
-        <dd>Territorial units for statistics (NUTS) dataset (from giscoR)</dd>
-      </dl></div><div class="section level2">
-      <h2 id="natural">Natural<a class="anchor" aria-label="anchor" href="#natural"></a></h2>
-
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with natural features.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
-
-        </dt>
-        <dd>River basin districts of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
-
-        </dt>
-        <dd>Hypsometry and bathymetry of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
-
-        </dt>
-        <dd>Rivers and wetlands of Spain - SIANE</dd>
-      </dl></div><div class="section level2">
-      <h2 id="infrastructures">Infrastructures<a class="anchor" aria-label="anchor" href="#infrastructures"></a></h2>
-
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with man-made features.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
-
-        </dt>
-        <dd>Railways of Spain - SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
-
-        </dt>
-        <dd>Roads of Spain - SIANE</dd>
-      </dl></div><div class="section level2">
-      <h2 id="tiles">Tiles<a class="anchor" aria-label="anchor" href="#tiles"></a></h2>
-
-      <div class="section-desc"><p>Return static tiles or create a <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> map.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code> <code><a href="addProviderEspTiles.html">providerEspTileOptions()</a></code>
-
-        </dt>
-        <dd>Include base tiles of Spanish public administrations on a <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> map</dd>
-
-        <dt>
-
-          <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code>
-
-        </dt>
-        <dd>Get static tiles from public administrations of Spain</dd>
-
-        <dt>
-
-          <code><a href="esp_make_provider.html">esp_make_provider()</a></code>
-
-        </dt>
-        <dd>Create a custom tile provider</dd>
-
-        <dt>
-
-          <code><a href="esp_tiles_providers.html">esp_tiles_providers</a></code>
-
-        </dt>
-        <dd>Database of public WMS and WMTS of Spain</dd>
-
-        <dt>
-
-          <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf()</a></code> <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf()</a></code> <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_label()</a></code> <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text()</a></code> <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">stat_sf()</a></code>
-
-        </dt>
-        <dd>Visualise sf objects (from ggplot2)</dd>
-
-        <dt>
-
-          <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb()</a></code>
-
-        </dt>
-        <dd>Visualise <code>SpatRaster</code> objects as images (from tidyterra)</dd>
-      </dl></div><div class="section level2">
-      <h2 id="geographic-grids">Geographic grids<a class="anchor" aria-label="anchor" href="#geographic-grids"></a></h2>
-
-
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code> <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN_ccaa()</a></code>
-
-        </dt>
-        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> with the national geographic grids from BDN</dd>
-
-        <dt>
-
-          <code><a href="esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code>
-
-        </dt>
-        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> of the national geographic grids from ESDAC</dd>
-
-        <dt>
-
-          <code><a href="esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>
-
-        </dt>
-        <dd>Get <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POLYGON</code> of the national geographic grids from IGN</dd>
-      </dl></div><div class="section level2">
-      <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
-
-
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_clear_cache.html">esp_clear_cache()</a></code>
-
-        </dt>
-        <dd>Clear your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache dir</dd>
-
-        <dt>
-
-          <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> <code><a href="esp_set_cache_dir.html">esp_detect_cache_dir()</a></code>
-
-        </dt>
-        <dd>Set your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache dir</dd>
-      </dl></div><div class="section level2">
-      <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
-
-      <div class="section-desc"><p>Translation across languages and coding systems.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_dict.html">esp_dict_region_code()</a></code> <code><a href="esp_dict.html">esp_dict_translate()</a></code>
-
-        </dt>
-        <dd>Convert and translate subdivision names</dd>
-      </dl></div><div class="section level2">
-      <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
-
-      <div class="section-desc"><p>These objects are datasets already included in the package.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_codelist.html">esp_codelist</a></code>
-
-        </dt>
-        <dd>Database with codes and names of Spanish regions</dd>
+        <dd>Displace a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object located in the Canary Islands</dd>
 
         <dt>
 
@@ -516,60 +321,25 @@
 
         <dt>
 
-          <code><a href="esp_tiles_providers.html">esp_tiles_providers</a></code>
+          <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> <code><a href="esp_set_cache_dir.html">esp_detect_cache_dir()</a></code>
 
         </dt>
-        <dd>Database of public WMS and WMTS of Spain</dd>
+        <dd>Set your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache dir</dd>
 
         <dt>
 
-          <code><a href="pobmun19.html">pobmun19</a></code>
+          <code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code>
 
         </dt>
-        <dd>Database with the population of Spain by municipality (2019)</dd>
-      </dl></div><div class="section level2">
-      <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
+        <dd>SIANE bulk download</dd>
 
-      <div class="section-desc"><p>A collection of helper functions.</p></div>
+        <dt>
 
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_move_can.html">esp_move_can()</a></code>
+          <code><a href="pobmun25.html">pobmun25</a></code>
 
         </dt>
-        <dd>Displace a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object located in the Canary Islands</dd>
-      </dl></div><div class="section level2">
-      <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
-
-
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="mapSpain-package.html">mapSpain</a></code> <code><a href="mapSpain-package.html">mapSpain-package</a></code>
-
-        </dt>
-        <dd>mapSpain: Administrative Boundaries of Spain</dd>
-      </dl></div><div class="section level2">
-      <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
-
-
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl></dl></div>
+        <dd>Database with the population of Spain by municipality (2025)</dd>
+      </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

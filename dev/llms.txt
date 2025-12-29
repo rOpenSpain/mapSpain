@@ -51,7 +51,8 @@ This script highlights some features of **mapSpain** :
 library(mapSpain)
 library(sf)
 library(dplyr)
-census <- mapSpain::pobmun19
+census <- mapSpain::pobmun25 |>
+  select(-name)
 
 # Extract CCAA from base dataset
 
@@ -63,9 +64,9 @@ census_ccaa <- census |>
   left_join(codelist) |>
   # Summarize by CCAA
   group_by(codauto) |>
-  summarise(pob19 = sum(pob19), men = sum(men), women = sum(women)) |>
+  summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
-    porc_women = women / pob19,
+    porc_women = women / pob25,
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
@@ -86,25 +87,27 @@ ggplot(ccaa_sf) +
   geom_sf(data = can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
     fill = "white", alpha = 0.5,
-    size = 3, label.size = 0
+    size = 3, linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
     n.breaks = 10, labels = scales::label_percent(),
-    guide = guide_legend(title = "Porc. women", position = "inside")
+    guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
-  theme(legend.position.inside = c(0.1, 0.6))
+  theme(legend.position.inside = c(0.1, 0.6)) +
+  labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-static-1.png)
+![Porc. of women by CCAA in Spain
+(2025)](reference/figures/README-static-1.png)
 
 You can combine `sf` objects with static tiles
 
 ``` r
 # Get census
-census <- mapSpain::pobmun19 |>
-  mutate(porc_women = women / pob19) |>
+census <- mapSpain::pobmun25 |>
+  mutate(porc_women = women / pob25) |>
   select(cpro, cmun, porc_women)
 
 # Get shapes
@@ -141,8 +144,11 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     expand = FALSE
   ) +
   labs(
-    title = "Share of women in Segovia by town (2019)",
-    caption = "Source: INE, CC BY 4.0 www.iderioja.org"
+    title = "% women in Segovia by town (2025)",
+    caption = paste0(
+      "Source: INE, CC BY 4.0 www.iderioja.org, ",
+      "CartoBase ANE 2006-2024 CC-BY 4.0 ign.es"
+    )
   ) +
   theme_void() +
   theme(
@@ -150,7 +156,8 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-tile-1.png)
+![Perc. of women in Segovia by town
+(2025)](reference/figures/README-tile-1.png)
 
 ## mapSpain and giscoR
 
@@ -186,10 +193,11 @@ ggplot(all_countries) +
   theme(
     panel.background = element_blank(),
     panel.grid = element_line(colour = "#DFDFDF", linetype = "dotted")
-  )
+  ) +
+  labs(caption = giscoR::gisco_attributions("es"))
 ```
 
-![](https://raw.githubusercontent.com/ropenspain/mapSpain/main/img/README-giscoR-1.png)
+![Locator map of Spain](reference/figures/README-giscoR-1.png)
 
 ## A note on caching
 
@@ -203,16 +211,6 @@ esp_set_cache_dir("./path/to/location")
 
 When this option is set, **mapSpain** would look for the cached file and
 it will load it, speeding up the process.
-
-## Plotting `sf` objects
-
-Some packages recommended for visualization are:
-
-- [**tmap**](https://github.com/r-tmap/tmap)
-- [**mapsf**](https://riatelab.github.io/mapsf/)
-- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-  [**tidyterra**](https://github.com/dieghernan/tidyterra).
-- [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Citation
 
@@ -279,55 +277,54 @@ EuroGeographics for information regarding their license agreements.
 
 # Package index
 
-## GISCO
+## Maps with images
 
-- [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain - GISCO
-- [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
-  : Municipalities of Spain - GISCO
-- [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
-  : Territorial Spanish units for statistics (NUTS) dataset
-- [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
-  : Provinces of Spain - GISCO
-- [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
-  : Boundaries of Spain - GISCO
+Return static tiles or create an interactive
+[leaflet](https://CRAN.R-project.org/package=leaflet) map.
 
-## SIANE
+- [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)
+  :
 
-- [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
-  : City where the municipal public authorities are based - SIANE
-- [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain - SIANE
-- [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
-  : Countries of the World - SIANE
-- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
-  : River basin districts of Spain - SIANE
-- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
-  : Hypsometry and bathymetry of Spain - SIANE
-- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
-  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
-  : Rivers and wetlands of Spain - SIANE
-- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
-  : Municipalities of Spain - SIANE
-- [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
-  : Provinces of Spain - SIANE
-- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  : Railways of Spain - SIANE
-- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
-  : Roads of Spain - SIANE
-- [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
-  : Boundaries of Spain - SIANE
-- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-  : SIANE bulk download
+  Add a tile layer from Spanish public administrations on a
+  [leaflet](https://CRAN.R-project.org/package=leaflet) map
 
-## Political
+- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  : Get static tiles from public administrations of Spain
 
-These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with political boundaries.
+- [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
+  : Create a custom tile provider
+
+- [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
+  : Database of public WMS and WMTS of Spain
+
+- [`plotRGB(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plotRGB.html)
+  : Red-Green-Blue plot of a multi-layered SpatRaster (from terra)
+
+- [`addProviderTiles()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
+  [`providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
+  : Add a tile layer from a known map provider (from leaflet)
+
+- [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
+  :
+
+  Visualise `SpatRaster` objects as images (from tidyterra)
+
+## Deprecated functions
+
+## Missing
+
+- [`esp_clear_cache()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_clear_cache.md)
+  :
+
+  Clear your [mapSpain](https://CRAN.R-project.org/package=mapSpain)
+  cache dir
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
   : Database with codes and names of Spanish regions
+
+- [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
+  [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
+  : Convert and translate subdivision names
 
 - [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
   [`esp_get_can_provinces()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
@@ -360,96 +357,6 @@ objects with political boundaries.
   Get a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) hexbin
   or squared `POLYGON` of Spain
 
-- [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
-  : Municipalities of Spain - GISCO
-
-- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
-  : Municipalities of Spain - SIANE
-
-- [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
-  : Territorial Spanish units for statistics (NUTS) dataset
-
-- [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
-  : Provinces of Spain - GISCO
-
-- [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
-  : Provinces of Spain - SIANE
-
-- [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
-  [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
-  : Simplified map of provinces and autonomous communities of Spain
-
-- [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
-  : Boundaries of Spain - GISCO
-
-- [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
-  : Boundaries of Spain - SIANE
-
-- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-  : SIANE bulk download
-
-- [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
-  : Territorial units for statistics (NUTS) dataset (from giscoR)
-
-## Natural
-
-These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with natural features.
-
-- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
-  : River basin districts of Spain - SIANE
-- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
-  : Hypsometry and bathymetry of Spain - SIANE
-- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
-  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
-  : Rivers and wetlands of Spain - SIANE
-
-## Infrastructures
-
-These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with man-made features.
-
-- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  : Railways of Spain - SIANE
-- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
-  : Roads of Spain - SIANE
-
-## Tiles
-
-Return static tiles or create a
-[leaflet](https://CRAN.R-project.org/package=leaflet) map.
-
-- [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)
-  [`providerEspTileOptions()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)
-  :
-
-  Include base tiles of Spanish public administrations on a
-  [leaflet](https://CRAN.R-project.org/package=leaflet) map
-
-- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-  : Get static tiles from public administrations of Spain
-
-- [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
-  : Create a custom tile provider
-
-- [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
-  : Database of public WMS and WMTS of Spain
-
-- [`coord_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html)
-  [`geom_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html)
-  [`geom_sf_label()`](https://ggplot2.tidyverse.org/reference/ggsf.html)
-  [`geom_sf_text()`](https://ggplot2.tidyverse.org/reference/ggsf.html)
-  [`stat_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html) :
-  Visualise sf objects (from ggplot2)
-
-- [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
-  :
-
-  Visualise `SpatRaster` objects as images (from tidyterra)
-
-## Geographic grids
-
 - [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md)
   [`esp_get_grid_BDN_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md)
   :
@@ -469,13 +376,59 @@ Return static tiles or create a
   Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
   of the national geographic grids from IGN
 
-## Cache management
+- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
+  : River basin districts of Spain - SIANE
 
-- [`esp_clear_cache()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_clear_cache.md)
+- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
+  : Hypsometry and bathymetry of Spain - SIANE
+
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  : Rivers and wetlands of Spain - SIANE
+
+- [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
+  : Municipalities of Spain - GISCO
+
+- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
+  : Municipalities of Spain - SIANE
+
+- [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
+  : Territorial Spanish units for statistics (NUTS) dataset
+
+- [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
+  : Provinces of Spain - GISCO
+
+- [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
+  : Provinces of Spain - SIANE
+
+- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
+  : Railways of Spain - SIANE
+
+- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
+  : Roads of Spain - SIANE
+
+- [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
+  [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
+  : Simplified map of provinces and autonomous communities of Spain
+
+- [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+  : Boundaries of Spain - GISCO
+
+- [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
+  : Boundaries of Spain - SIANE
+
+- [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
   :
 
-  Clear your [mapSpain](https://CRAN.R-project.org/package=mapSpain)
-  cache dir
+  Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+  object located in the Canary Islands
+
+- [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
+  :
+
+  NUTS 2024 for Spain
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
   [`esp_detect_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
@@ -484,50 +437,11 @@ Return static tiles or create a
   Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache
   dir
 
-## Dictionary
+- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+  : SIANE bulk download
 
-Translation across languages and coding systems.
-
-- [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
-  [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
-  : Convert and translate subdivision names
-
-## Datasets
-
-These objects are datasets already included in the package.
-
-- [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of Spanish regions
-
-- [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
-  :
-
-  NUTS 2024 for Spain
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-
-- [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
-  : Database of public WMS and WMTS of Spain
-
-- [`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
-  : Database with the population of Spain by municipality (2019)
-
-## Helpers
-
-A collection of helper functions.
-
-- [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
-  :
-
-  Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  object located in the Canary Islands
-
-## About the package
-
-- [`mapSpain`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
-  [`mapSpain-package`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
-  : mapSpain: Administrative Boundaries of Spain
-
-## Deprecated functions
+- [`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
+  : Database with the population of Spain by municipality (2025)
 
 # Articles
 

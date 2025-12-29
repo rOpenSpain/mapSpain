@@ -1,15 +1,15 @@
 # Database with codes and names of Spanish regions
 
-A `data.frame` object used internally for translating codes and names of
-the different subdivisions of Spain. The `data.frame` provides the
-hierarchy of the subdivisions including NUTS1 level, autonomous
-communities (equivalent to NUTS2), provinces and NUTS3 level. See
-**Note**.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+object used internally for translating codes and names of the different
+subdivisions of Spain. The tibble provides the hierarchy of the
+subdivisions including NUTS1 level, autonomous communities (equivalent
+to NUTS2), provinces and NUTS3 level. See **Note**.
 
 ## Format
 
-A [`data.frame`](https://rdrr.io/r/base/data.frame.html) with 59 rows
-codes and columns:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with 59 rows and columns:
 
 - nuts1.code:
 
@@ -193,10 +193,10 @@ codes and columns:
 
 - **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>
 
-- **ISO**: <https://www.iso.org/home.html>
+- **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
 
 - **CLDR**:
-  <https://unicode-org.github.io/cldr-staging/charts/38/index.html>
+  <https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html>
 
 ## Note
 
@@ -214,31 +214,31 @@ Asturias or Murcia) on this database.
 Other datasets:
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md),
-[`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
-
-Other political:
-[`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
-[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-[`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-
-Other dictionary:
-[`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
+[`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
 
 ## Examples
 
 ``` r
 data("esp_codelist")
+esp_codelist
+#> # A tibble: 59 × 44
+#>    nuts1.code nuts1.name nuts1.name.alt nuts1.shortname.es codauto
+#>    <chr>      <chr>      <chr>          <chr>              <chr>  
+#>  1 ES1        Noroeste   Noroeste       Noroeste           03     
+#>  2 ES1        Noroeste   Noroeste       Noroeste           06     
+#>  3 ES1        Noroeste   Noroeste       Noroeste           12     
+#>  4 ES1        Noroeste   Noroeste       Noroeste           12     
+#>  5 ES1        Noroeste   Noroeste       Noroeste           12     
+#>  6 ES1        Noroeste   Noroeste       Noroeste           12     
+#>  7 ES2        Noreste    Noreste        Noreste            02     
+#>  8 ES2        Noreste    Noreste        Noreste            02     
+#>  9 ES2        Noreste    Noreste        Noreste            02     
+#> 10 ES2        Noreste    Noreste        Noreste            15     
+#> # ℹ 49 more rows
+#> # ℹ 39 more variables: iso2.ccaa.code <chr>, nuts2.code <chr>,
+#> #   ine.ccaa.name <chr>, iso2.ccaa.name.es <chr>, iso2.ccaa.name.ca <chr>,
+#> #   iso2.ccaa.name.gl <chr>, iso2.ccaa.name.eu <chr>, nuts2.name <chr>,
+#> #   cldr.ccaa.name.en <chr>, cldr.ccaa.name.es <chr>, cldr.ccaa.name.ca <chr>,
+#> #   cldr.ccaa.name.ga <chr>, cldr.ccaa.name.eu <chr>, ccaa.shortname.en <chr>,
+#> #   ccaa.shortname.es <chr>, ccaa.shortname.ca <chr>, …
 ```

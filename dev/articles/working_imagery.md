@@ -159,33 +159,34 @@ m |>
 A map showing the population density of Spain as of 2019:
 
 ``` r
+library(leaflet)
+library(dplyr)
 munic <- esp_get_munic_siane(
-  year = 2019,
+  year = "2025-01-01",
   epsg = 4326,
   moveCAN = FALSE,
   rawcols = TRUE
-)
+) |>
+  # Get area in km2 from siane munic
+  # Already on the shapefile
+  mutate(area_km2 = st_area_sh * 10000)
 
-# Get area in km2 from siane munic
-# Already on the shapefile
-
-munic$area_km2 <- munic$st_area_sh * 10000
 
 # Get population
 
-pop <- mapSpain::pobmun19
+pop <- mapSpain::pobmun25 |>
+  select(-name)
 
 # Paste
-munic_pop <- merge(munic, pop[, c("cmun", "cpro", "pob19")],
-  by = c("cmun", "cpro"),
-  all.x = TRUE
-)
-
-munic_pop$dens <- munic_pop$pob19 / munic_pop$area_km2
-munic_pop$dens_label <- prettyNum(round(munic_pop$dens, 2),
-  big.mark = ".",
-  decimal.mark = ","
-)
+munic_pop <- munic |>
+  left_join(pop) |>
+  mutate(
+    dens = pob25 / area_km2,
+    dens_label = prettyNum(round(dens, 2),
+      big.mark = ".",
+      decimal.mark = ","
+    )
+  )
 
 # Create leaflet
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
@@ -223,7 +224,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
     pal = pal, values = bins, opacity = 0.7,
     title = paste0(
       "<small>Pop. Density km<sup>2</sup></small><br><small>",
-      "(2019)</small>"
+      "(2025)</small>"
     ),
     position = "bottomright"
   )
@@ -250,7 +251,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-28
+    #>  date     2025-12-29
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -268,7 +269,7 @@ Details
     #>  DBI            1.2.3        2024-06-02 [1] RSPM
     #>  desc           1.4.3        2023-12-10 [1] RSPM
     #>  digest         0.6.39       2025-11-19 [1] RSPM
-    #>  dplyr          1.1.4        2023-11-17 [1] RSPM
+    #>  dplyr        * 1.1.4        2023-11-17 [1] RSPM
     #>  e1071          1.7-17       2025-12-18 [1] RSPM
     #>  evaluate       1.0.5        2025-08-27 [1] RSPM
     #>  farver         2.1.2        2024-05-13 [1] RSPM
@@ -289,7 +290,7 @@ Details
     #>  leaflet      * 2.2.3        2025-09-04 [1] RSPM
     #>  lifecycle      1.0.4        2023-11-07 [1] RSPM
     #>  magrittr       2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.99.99.9000 2025-12-28 [1] local
+    #>  mapSpain     * 0.99.99.9000 2025-12-29 [1] local
     #>  otel           0.2.0        2025-08-29 [1] RSPM
     #>  pillar         1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3        2019-09-22 [1] RSPM

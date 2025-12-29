@@ -69,7 +69,6 @@ are provided (in this case , all the provinces of Andalusia).
 [`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md).
 
 Other political:
-[`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),

@@ -58,14 +58,6 @@ Note that mixing names of different administrative levels (e.g.
 "Catalonia" and "Barcelona") may return empty values, depending on the
 `destination` values.
 
-## See also
-
-Other dictionary:
-[`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-
-Other dictionary:
-[`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-
 ## Examples
 
 ``` r

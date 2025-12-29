@@ -146,7 +146,7 @@ deformed, try projecting first `x`:
 
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
 
-Other imagery utilities:
+Other functions for creating maps with images:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)

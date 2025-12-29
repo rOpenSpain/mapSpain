@@ -242,9 +242,9 @@ are:
 Other datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
-[`pobmun19`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun19.md)
+[`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
 
-Other imagery utilities:
+Other functions for creating maps with images:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)

@@ -58,7 +58,7 @@ Note that:
 For a list of potential providers from Spain check [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).
 
-Other imagery utilities:
+Other functions for creating maps with images:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
@@ -66,7 +66,7 @@ Other imagery utilities:
 ## Examples
 
 ``` r
-# \donttest{
+# \dontrun{
 custom_wms <- esp_make_provider(
   id = "an_id_for_caching",
   q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
