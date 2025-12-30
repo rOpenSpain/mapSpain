@@ -1,43 +1,54 @@
 # Platform
 
-|field    |value                                      |
-|:--------|:------------------------------------------|
-|version  |R version 4.4.2 (2024-10-31 ucrt)          |
-|os       |Windows 11 x64 (build 26100)               |
-|system   |x86_64, mingw32                            |
-|ui       |RStudio                                    |
-|language |(EN)                                       |
-|collate  |Spanish_Spain.utf8                         |
-|ctype    |Spanish_Spain.utf8                         |
-|tz       |Europe/Madrid                              |
-|date     |2024-12-15                                 |
-|rstudio  |2024.09.1+394 Cranberry Hibiscus (desktop) |
-|pandoc   |3.1.12.2 @ C:\PROGRA~1\Pandoc\pandoc.exe   |
+|field    |value                                                  |
+|:--------|:------------------------------------------------------|
+|version  |R version 4.5.2 (2025-10-31)                           |
+|os       |Ubuntu 24.04.3 LTS                                     |
+|system   |x86_64, linux-gnu                                      |
+|ui       |X11                                                    |
+|language |(EN)                                                   |
+|collate  |C.UTF-8                                                |
+|ctype    |C.UTF-8                                                |
+|tz       |UTC                                                    |
+|date     |2025-12-28                                             |
+|pandoc   |3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc |
+|quarto   |NA                                                     |
 
 # Dependencies
 
-|package     |old      |new      |Δ  |
-|:-----------|:--------|:--------|:--|
-|mapSpain    |0.9.2    |0.10.0   |*  |
-|classInt    |0.4-10   |0.4-10   |   |
-|countrycode |1.6.0    |1.6.0    |   |
-|DBI         |1.2.3    |1.2.3    |   |
-|e1071       |1.7-16   |1.7-16   |   |
-|geojsonsf   |2.0.3    |2.0.3    |   |
-|geometries  |0.2.4    |0.2.4    |   |
-|giscoR      |0.6.0    |0.6.0    |   |
-|jsonify     |1.2.2    |1.2.2    |   |
-|jsonlite    |1.8.9    |1.8.9    |   |
-|magrittr    |2.0.3    |2.0.3    |   |
-|proxy       |0.4-27   |0.4-27   |   |
-|rapidjsonr  |1.2.0    |1.2.0    |   |
-|rappdirs    |0.3.3    |0.3.3    |   |
-|Rcpp        |1.0.13-1 |1.0.13-1 |   |
-|s2          |1.1.7    |1.1.7    |   |
-|sf          |1.0-19   |1.0-19   |   |
-|sfheaders   |0.4.4    |0.4.4    |   |
-|units       |0.8-5    |0.8-5    |   |
-|wk          |0.9.4    |0.9.4    |   |
+|package     |old    |new          |Δ  |
+|:-----------|:------|:------------|:--|
+|mapSpain    |0.10.0 |0.99.99.9000 |*  |
+|askpass     |1.2.1  |1.2.1        |   |
+|classInt    |0.4-11 |0.4-11       |   |
+|cli         |3.6.5  |3.6.5        |   |
+|countrycode |1.6.1  |1.6.1        |   |
+|curl        |7.0.0  |7.0.0        |   |
+|DBI         |1.2.3  |1.2.3        |   |
+|e1071       |1.7-17 |1.7-17       |   |
+|giscoR      |1.0.0  |1.0.0        |   |
+|glue        |1.8.0  |1.8.0        |   |
+|httr2       |1.2.2  |1.2.2        |   |
+|jsonlite    |2.0.0  |2.0.0        |   |
+|lifecycle   |1.0.4  |1.0.4        |   |
+|magrittr    |2.0.4  |2.0.4        |   |
+|openssl     |2.3.4  |2.3.4        |   |
+|pillar      |1.11.1 |1.11.1       |   |
+|pkgconfig   |2.0.3  |2.0.3        |   |
+|proxy       |0.4-28 |0.4-28       |   |
+|R6          |2.6.1  |2.6.1        |   |
+|rappdirs    |0.3.3  |0.3.3        |   |
+|Rcpp        |1.1.0  |1.1.0        |   |
+|rlang       |1.1.6  |1.1.6        |   |
+|s2          |1.1.9  |1.1.9        |   |
+|sf          |1.0-23 |1.0-23       |   |
+|sys         |3.4.3  |3.4.3        |   |
+|tibble      |3.3.0  |3.3.0        |   |
+|units       |1.0-0  |1.0-0        |   |
+|utf8        |1.2.6  |1.2.6        |   |
+|vctrs       |0.6.5  |0.6.5        |   |
+|withr       |3.0.2  |3.0.2        |   |
+|wk          |0.9.5  |0.9.5        |   |
 
 # Revdeps
 

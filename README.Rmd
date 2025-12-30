@@ -7,25 +7,17 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-knitr::opts_knit$set(
-  progress = TRUE,
-  base.url = "https://raw.githubusercontent.com/ropenspain/mapSpain/main/"
-)
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   tidy = "styler",
   comment = "#>",
-  fig.path = "img/README-",
+  fig.path = "man/figures/README-",
   warning = FALSE,
   message = FALSE,
   dev = "ragg_png",
-  dpi = 300,
+  dpi = 150,
   out.width = "100%"
 )
-
-initcach <- mapSpain::esp_detect_cache_dir()
-mapSpain::esp_set_cache_dir("img/", verbose = FALSE)
 ```
 
 # mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
@@ -47,13 +39,13 @@ mapSpain::esp_set_cache_dir("img/", verbose = FALSE)
 <!-- badges: end -->
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial **sf** objects of the administrative boundaries of Spain,
-including CCAA, provinces and municipalities.
+provides spatial **sf** objects of Spain's administrative boundaries, including
+Autonomous Communities, provinces, and municipalities.
 
-**mapSpain** also provides a leaflet plugin to be used with the [**leaflet**
-package](https://rstudio.github.io/leaflet/), that loads several base maps of
-public institutions of Spain, and the ability of downloading and processing
-static tiles.
+**mapSpain** also provides a Leaflet plugin to be used with the [**leaflet**
+package](https://rstudio.github.io/leaflet/), which loads several base maps from
+Spain's public institutions and enables downloading and processing of static
+tiles.
 
 Full site with examples and vignettes on
 <https://ropenspain.github.io/mapSpain/>
@@ -90,13 +82,15 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 
 ## Usage
 
-This script highlights some features of **mapSpain** :
+This script highlights some features of **mapSpain** : key features of
+**mapSpain**
 
-```{r static}
+```{r static, fig.alt="Porc. of women by CCAA in Spain (2025)"}
 library(mapSpain)
 library(sf)
 library(dplyr)
-census <- mapSpain::pobmun19
+census <- mapSpain::pobmun25 |>
+  select(-name)
 
 # Extract CCAA from base dataset
 
@@ -108,9 +102,9 @@ census_ccaa <- census |>
   left_join(codelist) |>
   # Summarize by CCAA
   group_by(codauto) |>
-  summarise(pob19 = sum(pob19), men = sum(men), women = sum(women)) |>
+  summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
-    porc_women = women / pob19,
+    porc_women = women / pob25,
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
@@ -131,23 +125,24 @@ ggplot(ccaa_sf) +
   geom_sf(data = can, color = "grey70") +
   geom_sf_label(aes(label = porc_women_lab),
     fill = "white", alpha = 0.5,
-    size = 3, label.size = 0
+    size = 3, linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
     n.breaks = 10, labels = scales::label_percent(),
-    guide = guide_legend(title = "Porc. women", position = "inside")
+    guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
-  theme(legend.position.inside = c(0.1, 0.6))
+  theme(legend.position.inside = c(0.1, 0.6)) +
+  labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
 You can combine `sf` objects with static tiles
 
-```{r tile}
+```{r tile, fig.alt="Perc. of women in Segovia by town (2025)", dpi = 100}
 # Get census
-census <- mapSpain::pobmun19 |>
-  mutate(porc_women = women / pob19) |>
+census <- mapSpain::pobmun25 |>
+  mutate(porc_women = women / pob25) |>
   select(cpro, cmun, porc_women)
 
 # Get shapes
@@ -157,7 +152,7 @@ provs <- esp_get_prov_siane(epsg = 3857)
 shape_pop <- shape |> left_join(census)
 
 
-tile <- esp_getTiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
+tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
 # Plot
 
@@ -184,8 +179,11 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     expand = FALSE
   ) +
   labs(
-    title = "Share of women in Segovia by town (2019)",
-    caption = "Source: INE, CC BY 4.0 www.iderioja.org"
+    title = "% women in Segovia by town (2025)",
+    caption = paste0(
+      "Source: INE, CC BY 4.0 www.iderioja.org, ",
+      "CartoBase ANE 2006-2024 CC-BY 4.0 ign.es"
+    )
   ) +
   theme_void() +
   theme(
@@ -195,11 +193,11 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
 
 ## mapSpain and giscoR
 
-If you need to plot Spain along with another countries, consider using
-[**giscoR**](https://ropengov.github.io/giscoR/) package, that is installed as a
-dependency when you installed **mapSpain**. A basic example:
+If you need to plot Spain alongside other countries, consider using the
+[**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
+a dependency with **mapSpain**. Here's a basic example:
 
-```{r giscoR, fig.asp=1}
+```{r giscoR, fig.alt="Locator map of Spain"}
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -226,7 +224,8 @@ ggplot(all_countries) +
   theme(
     panel.background = element_blank(),
     panel.grid = element_line(colour = "#DFDFDF", linetype = "dotted")
-  )
+  ) +
+  labs(caption = giscoR::gisco_attributions("es"))
 ```
 
 ## A note on caching
@@ -239,18 +238,8 @@ passing the following option:
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** would look for the cached file and it will
-load it, speeding up the process.
-
-## Plotting `sf` objects
-
-Some packages recommended for visualization are:
-
--   [**tmap**](https://github.com/r-tmap/tmap)
--   [**mapsf**](https://riatelab.github.io/mapsf/)
--   [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-    [**tidyterra**](https://github.com/dieghernan/tidyterra).
--   [**leaflet**](https://rstudio.github.io/leaflet/)
+When this option is set, **mapSpain** will look for the cached file and load it,
+which speeds up the process.
 
 ## Citation
 
@@ -280,9 +269,9 @@ Nacional:
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
-This package uses data from **GISCO**. GISCO
+This package also uses data from **GISCO**. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open data
-repository including several data sets at several resolution levels.
+repository containing multiple datasets at various resolution levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
 Units*
@@ -305,8 +294,3 @@ Units*
 
 If you intend to use the data commercially, please contact EuroGeographics for
 information regarding their license agreements.
-
-```{r include=FALSE}
-mapSpain::esp_set_cache_dir(initcach, verbose = FALSE)
-```
-

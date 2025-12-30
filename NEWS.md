@@ -1,7 +1,62 @@
 # mapSpain (development version)
 
--   Minimal **R** version required is **4.1.0**.
--   Remove **slippymath** dependency (#126).
+This major release introduces a full overhaul of the codebase and test suite.
+Requests now use **httr2**, and cached files are reorganized into topic-based
+subfolders for easier management.
+
+> Because of internal changes, **existing caches are not compatible** with this
+> release and must be rebuilt.
+
+We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
+for managing your persistent cache directory. If you are a heavy **mapSpain**
+user and already have a cache directory in place, you'll receive a one-time
+friendly message informing you about this migration. Consider it a warm welcome
+to **mapSpain** 1.0.0 😉.
+
+The package now requires **R ≥ 4.1**, and dependency updates improve both
+performance and maintainability. All functions return tidy objects (tibbles or
+`sf` objects with tibble data).
+
+Several new functions and arguments have been added, some functions renamed, and
+some others deprecated. All bundled datasets have been updated to their latest
+versions.
+
+## Breaking changes
+
+-   Minimum required R version is now **4.1.0**.
+-   Removed dependency on **slippymath** (#126).
+-   `providerEspTileOptions()` has been removed; use
+    `leaflet::providerTileOptions()` instead.
+-   Removed dataset `?esp_munic.sf`.
+-   Removed dataset `?leaflet.providersESP.df` (superseded in mapSpain
+    **v0.8.0**).
+-   Removed dataset `?pobmun19`; it has been replaced by `?pobmun25`.
+-   `esp_get_grid_EEA()` is deprecated and defunct, as the source file is no
+    longer available.
+
+## Deprecations and new function names
+
+-   `esp_getTiles()` has been renamed to `esp_get_tiles()` (old name still
+    works).
+-   `esp_get_country()` has been renamed to `esp_get_spain()` (old name still
+    works).
+-   In `esp_get_rivers()`:
+    -   Arguments `resolution` and `spatialtype` are deprecated.
+    -   Wetlands support has been moved to the new `esp_get_wetlands()`
+        function.
+
+## New features
+
+-   Added `esp_get_stations()`, replacing
+    `esp_get_railway(..., spatialtype = "point")`.
+-   Added `esp_siane_bulk_download()` to download all SIANE datasets to a
+    specified `cache_dir` in a single step.
+-   Added `esp_get_countries_siane()` to retrieve all countries available in
+    SIANE at a given date.
+-   Added `esp_get_spain_siane()`, analogous to `esp_get_spain()`, using SIANE
+    data.
+-   Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
+-   `esp_get_rivers()` gains a new `moveCAN` argument.
 
 # mapSpain 0.10.0
 
@@ -57,7 +112,7 @@
 
 # mapSpain 0.6.2
 
--   Now `moveCAN` is a explicit parameter in the relevant functions.
+-   Now `moveCAN` is a explicit argument in the relevant functions.
 -   Deprecate `layer_spatraster().` Use `tidyterra::geom_spatraster_rgb()`
     instead.
 -   Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
@@ -109,7 +164,7 @@
 -   Caching improvements: new function `esp_set_cache_dir()` based on
     `rappdirs::user_cache_dir()`. Now the cache_dir path is stored and it is not
     necessary to set it up again on a new session.
--   Add a new parameter `zoommin` on `esp_getTiles()`.
+-   Add a new argument `zoommin` on `esp_getTiles()`.
 -   New tests with **testthat**.
 -   Update on docs. New examples
 -   Precompute vignette.

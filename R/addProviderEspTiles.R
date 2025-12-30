@@ -1,31 +1,26 @@
 # Leaflet plugin version
-leafletprovidersESP_v <- "v1.3.3"
+leaf_providers_esp_v <- "v1.3.3"
 
-
-#' Include base tiles of Spanish public administrations on a \CRANpkg{leaflet}
+#' Add a tile layer from Spanish public administrations on a \CRANpkg{leaflet}
 #' map
 #'
-#' @description
-#' Include tiles of public Spanish organisms to a [leaflet::leaflet()] map.
+#' @encoding UTF-8
+#' @inheritParams leaflet::addProviderTiles
+#' @inherit leaflet::addProviderTiles return
+#' @family images
+#' @export
 #'
-#' @family imagery utilities
-#' @seealso [leaflet::leaflet()], [leaflet::addTiles()]
-#'
-#' @rdname addProviderEspTiles
-#' @name addProviderEspTiles
+#' @seealso
+#' [leaflet::leaflet()], [leaflet::addTiles()], [leaflet::addWMSTiles()],
+#' [esp_tiles_providers].
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **`r leafletprovidersESP_v`**.
+#'  **`r leaf_providers_esp_v`**.
 #'
-#' @return A modified [leaflet::leaflet()] `map` object.
+#' @param provider the name of the provider, see [esp_tiles_providers] or
+#'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 #'
-#' @export
-#'
-#' @param provider Name of the provider, see [esp_tiles_providers] for
-#'   values available.
-#' @inheritParams leaflet::addProviderTiles
-#' @inheritParams leaflet::addTiles
 #'
 #' @examples
 #' library(leaflet)
@@ -52,32 +47,24 @@ addProviderEspTiles <- function(
   provider,
   layerId = NULL,
   group = NULL,
-  options = providerEspTileOptions()
+  options = leaflet::providerTileOptions()
 ) {
+  map <- validate_non_empty_arg(map)
+  provider <- validate_non_empty_arg(provider)
+
   # A. Check providers
   prov_list <- mapSpain::esp_tiles_providers
 
   allprovs <- names(prov_list)
 
-  if (!provider %in% allprovs) {
-    stop(
-      "No match for provider = '",
-      provider,
-      "' found.\n\nCheck available providers in mapSpain::esp_tiles_providers."
-    )
-  }
+  provider <- match_arg_pretty(provider, allprovs)
 
   # Check type of provider
+  prov_pieces <- validate_provider(provider)
+  iswmts <- guess_provider_type(prov_pieces) == "WMTS"
   thisprov <- prov_list[[provider]]
 
   # Get url
-  # Special case for IDErioja
-  if (grepl("rioja", provider, ignore.case = TRUE)) {
-    iswmts <- TRUE
-  } else {
-    type_prov <- tolower(thisprov$static$service)
-    iswmts <- type_prov == "wmts"
-  }
 
   # Prepare each provider
   if (iswmts) {
@@ -144,7 +131,7 @@ addProviderEspTiles <- function(
     templurl <- gsub("\\?$", "", temp_pieces$q)
     layers <- temp_pieces$layers
 
-    # Remove parameters only affecting static urls
+    # Remove arguments only affecting static urls
     todel <- names(temp_pieces) %in%
       c(
         "attribution",
@@ -182,19 +169,4 @@ addProviderEspTiles <- function(
       options = optionend
     )
   }
-}
-
-#' @rdname addProviderEspTiles
-#' @name providerEspTileOptions
-#'
-#' @details
-#' [providerEspTileOptions()] is a wrapper of [leaflet::providerTileOptions()].
-#'
-#' @param ... Arguments passed on to [leaflet::providerTileOptions()].
-#' @seealso [leaflet::providerTileOptions()], [leaflet::tileOptions()]
-#'
-#' @export
-providerEspTileOptions <- function(...) {
-  ops <- leaflet::providerTileOptions(...)
-  ops
 }

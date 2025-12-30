@@ -3,62 +3,9 @@ url: https://ropenspain.github.io/mapSpain
 repo:
   branch: main
 
-reference:
-  - title: Political
-    desc: >
-      These functions return <a href="https://CRAN.R-project.org/package=sf"
-      class="external-link"><span class="pkg">sf</span></a> objects with
-      political boundaries.
-    contents:
-      - has_concept("political")
-      - giscoR::gisco_get_nuts()
-  - title: Natural
-    desc: >
-      These functions return <a href="https://CRAN.R-project.org/package=sf"
-      class="external-link"><span class="pkg">sf</span></a> objects with natural
-      features.
-    contents:
-      - has_concept("natural")
-  - title: Infrastructures
-    desc: >
-      These functions return <a href="https://CRAN.R-project.org/package=sf"
-      class="external-link"><span class="pkg">sf</span></a> objects with
-      man-made features.
-    contents:
-      - has_concept("infrastructure")
-  - title: Tiles
-    desc: >
-      Return static tiles or create a <a
-      href="https://CRAN.R-project.org/package=leaflet"
-      class="external-link"><span class="pkg">leaflet</span></a> map.
-    contents:
-      - has_concept("imagery utilities")
-      - ggplot2::geom_sf()
-      - tidyterra::geom_spatraster_rgb()
-  - title: Geographic grids
-    contents:
-      - has_concept("grids")
-  - title: Cache management
-    contents:
-      - has_concept("cache utilities")
-  - title: Dictionary
-    desc: |
-      Translation across languages and coding systems.
-    contents:
-      - esp_dict_region_code
-  - title: Datasets
-    desc: |
-      These objects are datasets already included in the package.
-    contents:
-      - has_concept("datasets")
-  - title: Helpers
-    desc: |
-      A collection of helper functions.
-    contents:
-      - has_concept("helper")
-  - title: About the package
-    contents:
-      - mapSpain-package
+figures:
+  dpi: 300
+  fig.retina: 2
 
 template:
   bootstrap: 5
@@ -71,12 +18,16 @@ template:
       site: "@rOpenSpain"
       card: summary_large_image
 
-home:
-  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces
-    and Municipalities
-  description: Administrative Boundaries of Spain based on the GISCO (Geographic
-    Information System of the Commission) Eurostat database. It also provides a
-    leaflet plugin and the ability of downloading and processing static tiles.
+development:
+  mode: auto
+
+authors:
+  Diego Hernangómez:
+    href: https://dieghernan.github.io/
+  Eurostat:
+    href: https://ec.europa.eu/eurostat
+  Instituto Geográfico Nacional:
+    href: https://www.ign.es/
 
 navbar:
   structure:
@@ -94,11 +45,11 @@ navbar:
         - text: "Annex: Codes and names of the Spanish regions"
           href: articles/articles/regioncodes.html
         - text: -----
-        - text: Other materials
-        - text: "mapSpain: Mapas de España en R (xaringan)"
-          href: https://dieghernan.github.io/rpubs/mapSpain_slides/
-        - text: "mapSpain: Mapas de España en R (.Rmd)"
+        - text: Grupo de Usuarios R Madrid 25-nov-2021
+        - text: "mapSpain: Mapas de España en R (artículo)"
           href: articles/articles/mapasesp.html
+        - text: "mapSpain: Mapas de España en R (slides)"
+          href: https://dieghernan.github.io/rpubs/mapSpain_slides/
         - text: Grupo de Usuarios R Madrid 25-nov-2021 (video)
           href: http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/
     twitter:
@@ -106,26 +57,89 @@ navbar:
       href: http://twitter.com/dhernangomez
       aria-label: Twitter
 
+home:
+  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces
+    and Municipalities
+  description: Administrative Boundaries of Spain based on the GISCO (Geographic
+    Information System of the Commission) Eurostat database. It also provides a
+    leaflet plugin and the ability of downloading and processing static tiles.
+
+reference:
+  - title: Political borders of Spain
+    desc: |
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects representing
+      political borders.
+  - subtitle: CartoBase ANE
+    description: |
+      Datasets from IGN / CartoBase ANE.
+    contents:
+      - has_concept("siane")
+  - subtitle: GISCO
+    description: |
+      Datasets from GISCO / Eurostat.
+    contents:
+      - has_concept("gisco")
+  - subtitle: Other helpers and political objects
+    contents:
+      - has_concept("can_helpers")
+      - esp_get_comarca
+      - esp_get_hex_prov
+      - esp_get_simpl
+  - title: Maps with images
+    desc: |
+      Return static tiles or create an interactive <a
+      href="https://CRAN.R-project.org/package=leaflet"
+      class="external-link"><span class="pkg">leaflet</span></a> map.
+    contents:
+      - has_concept("images")
+      - terra::plotRGB()
+      - leaflet::addProviderTiles()
+      - tidyterra::geom_spatraster_rgb()
+  - title: Natural
+    desc: |
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with natural
+      features.
+    contents:
+      - has_concept("natural")
+  - title: Infrastructures
+    desc: |
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with
+      man-made features.
+    contents:
+      - has_concept("infrastructure")
+  - title: Cache management
+    contents: has_concept("cache utilities")
+  - title: Dictionary
+    desc: |
+      Translation across languages and coding systems.
+    contents:
+      - has_concept("dictionary")
+  - title: Datasets
+    desc: |
+      Datasets included with <a href="https://CRAN.R-project.org/package=mapSpain"
+      class="external-link"><span class="pkg">mapSpain</span></a>.
+    contents:
+      - has_concept("datasets")
+  - title: Geographical grids
+    desc: |
+      Geographical grids are agreed, defined and harmonised grid nets with
+      standardised location and size of grid cells.
+    contents:
+      - has_concept("grids")
+  - title: About the package
+    contents:
+      - mapSpain-package
+
 articles:
-- title: All articles
-  contents:
-  - articles/working_imagery
-  - articles/mapasesp
-  - articles/regioncodes
-- title: internal
-  contents:
-  - imagery
-
-authors:
-  Diego Hernangómez:
-    href: https://dieghernan.github.io/
-  EuroGeographics:
-    href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
-  Instituto Geográfico Nacional:
-    href: https://www.ign.es/
-  Miles McBain:
-    href: https://milesmcbain.xyz/
-  Timothée Giraud:
-    href: https://rcarto.github.io/
-
+  - title: All articles
+    contents:
+      - articles/working_imagery
+      - articles/mapasesp
+      - articles/regioncodes
+  - title: internal
+    contents:
+      - imagery
 

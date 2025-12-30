@@ -4,17 +4,17 @@
 \encoding{UTF-8}
 \name{esp_tiles_providers}
 \alias{esp_tiles_providers}
-\title{Database of public WMS and WMTS of Spain}
+\title{Public WMS and WMTS providers for Spain}
 \format{
-A named \code{list} of the providers available with the following structure:
+A named \code{\link[base:list]{list}} of available providers with the following
+structure:
 \itemize{
-\item Each item of the list is named with the provider alias.
-\item Each element of the list contains two nested named lists:
+\item Each list item is named with the provider alias.
+\item Each element contains two nested named lists:
 \itemize{
-\item \code{static} with the parameters to get static tiles plus an additional item
-named \code{attribution}.
-\item \code{leaflet} with additional parameters to be passed onto
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+\item \code{static} with the parameters required to obtain static tiles, plus an
+additional item named \code{attribution}.
+\item \code{leaflet} with additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 }
 }
@@ -24,15 +24,15 @@ named \code{attribution}.
 }
 \description{
 A named \code{\link[base:list]{list}} of length 102
-containing the parameters of the url information of different public WMS and
-WMTSproviders of Spain.
+containing URL information for different public WMS and WMTS tile providers
+of Spain.
 
-Implementation of javascript plugin
+Implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 }
 \details{
-Providers available to be passed to \code{type} on \code{\link[=esp_getTiles]{esp_getTiles()}} are:
+Providers available to be passed to \code{type} on \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
 \itemize{
 \item \code{"IDErioja"}
 \item \code{"IDErioja.Base"}
@@ -151,14 +151,7 @@ single$leaflet
 \seealso{
 Other datasets: 
 \code{\link{esp_codelist}},
-\code{\link{esp_munic.sf}},
-\code{\link{esp_nuts.sf}},
-\code{\link{pobmun19}}
-
-Other imagery utilities: 
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_getTiles}()},
-\code{\link{esp_make_provider}()}
+\code{\link{esp_nuts_2024}},
+\code{\link{pobmun25}}
 }
 \concept{datasets}
-\concept{imagery utilities}

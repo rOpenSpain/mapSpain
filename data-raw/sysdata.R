@@ -2,69 +2,59 @@
 
 rm(list = ls())
 
-
 library(dplyr)
 library(reshape2)
 library(gsubfn)
 source("./data-raw/helperfuns.R")
 
 
-# Load ----
-
-NUTS1 <-
-  read.csv(
-    "./data-raw/espNUTS1.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
+nuts1 <- read.csv(
+  "./data-raw/dict/esp_nuts1.csv",
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8",
+  colClasses = "character"
+) |>
   esp_hlp_utf8()
 
-CCAA <-
-  read.csv(
-    "./data-raw/espCCAA.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
+ccaa <- read.csv(
+  "./data-raw/dict/esp_ccaa.csv",
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8",
+  colClasses = "character"
+) |>
   esp_hlp_utf8()
 
-PROV <-
-  read.csv(
-    "./data-raw/espPROV.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
+prov <- read.csv(
+  "./data-raw/dict/esp_prov.csv",
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8",
+  colClasses = "character"
+) |>
   esp_hlp_utf8()
 
-NUTS3 <-
-  read.csv(
-    "./data-raw/espNUTS3.csv",
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-8",
-    colClasses = "character"
-  ) |>
+nuts3 <- read.csv(
+  "./data-raw/dict/esp_nuts3.csv",
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8",
+  colClasses = "character"
+) |>
   esp_hlp_utf8()
 
 # names_full----
 
 # Create individual dictionaries
-dict_nuts1 <-
-  NUTS1 |>
+dict_nuts1 <- nuts1 |>
   mutate(key = nuts1.shortname.es) |>
   distinct()
-dict_ccaa <- CCAA |>
+dict_ccaa <- ccaa |>
   mutate(key = ccaa.shortname.es) |>
   distinct()
-dict_prov <- PROV |>
+dict_prov <- prov |>
   mutate(key = prov.shortname.es) |>
   distinct()
-dict_nuts3 <-
-  NUTS3 |>
+dict_nuts3 <- nuts3 |>
   mutate(key = nuts3.shortname.es) |>
   distinct()
-
 
 # Create full translator
 
@@ -101,15 +91,40 @@ dict_nuts3all <- melt(
   unique()
 
 
-names_full <-
-  bind_rows(dict_ccaaall, dict_nuts1all, dict_provall, dict_nuts3all) |>
+names_full <- dict_ccaaall |>
+  bind_rows(dict_nuts1all, dict_provall, dict_nuts3all) |>
   unique() |>
   mutate(variable = as.character(variable))
 
+
+# Add extra used names
+# Ciudad de Ceuta
+ceuta <- names_full[grepl("^ceuta", names_full$value, ignore.case = TRUE), ]
+ceuta$variable <- paste0("alt.", ceuta$variable)
+ceuta$value <- paste0("Ciudad de ", ceuta$value)
+
+# Ciudad de Melilla
+melilla <- names_full[grepl("^melilla", names_full$value, ignore.case = TRUE), ]
+melilla$variable <- paste0("alt.", melilla$variable)
+melilla$value <- paste0("Ciudad de ", melilla$value)
+
+# Santa Cruz de Tenerife
+tfe <- names_full[grepl("^santa cruz", names_full$value, ignore.case = TRUE), ]
+tfe$variable <- paste0("alt.", tfe$variable)
+tfe$value <- gsub("Santa", "Sta.", tfe$value)
+
+las <- names_full[grepl("^la |^las ", names_full$value, ignore.case = TRUE), ]
+las$variable <- paste0("alt.las.", las$variable)
+
+las$value <- gsub("^la |^las ", "", las$value, ignore.case = TRUE)
+
+
+names_full <- unique(rbind(names_full, ceuta, melilla, tfe, las))
+names_full$value <- trimws(names_full$value)
+
 # Add versions without accents, etc.
 
-names_alt <-
-  names_full |>
+names_alt <- names_full |>
   mutate(
     value = iconv(value, from = "UTF-8", to = "ASCII//TRANSLIT"),
     variable = paste0("clean.", variable)
@@ -130,184 +145,62 @@ locase <- names_full |>
     variable = paste0("locase.", variable)
   )
 
-names_full <-
-  rbind(names_full, upcase) |>
+names_full <- rbind(names_full, upcase) |>
   rbind(locase) |>
-  distinct()
+  unique()
 
-# Tests names_full
-
-names_dict <-
-  unique(names_full[grep("name", names_full$variable), c("key", "value")])
-
-
-test <-
-  c(
-    "Xaén",
-    "Jaen",
-    "Leon",
-    "Girona",
-    "Errioxa",
-    "Madril",
-    "Vizcaya",
-    "Andalusia",
-    "Kanariak"
-  )
-ret <-
-  countrycode::countrycode(
-    test,
-    origin = "value",
-    destination = "key",
-    custom_dict = names_dict,
-    nomatch = NULL
-  )
-
-
-toen <- names_full[names_full$key == "Madrid", ]
-unique(toen[grep("name.ca", toen$variable), "value"])
-
-# Translate all
-
-countrycode::countrycode(
-  ret,
-  "key",
-  "nuts1.code",
-  custom_dict = dict_nuts1,
-  nomatch = "XXX"
-)
-
-countrycode::countrycode(
-  ret,
-  "key",
-  "nuts2.code",
-  custom_dict = dict_ccaa,
-  nomatch = "XX"
-)
-
-countrycode::countrycode(
-  ret,
-  "key",
-  "nuts.prov.code",
-  custom_dict = dict_prov,
-  nomatch = "XX"
-)
-
-countrycode::countrycode(
-  ret,
-  "key",
-  "nuts3.code",
-  custom_dict = dict_nuts3,
-  nomatch = "XX"
-)
-
-
-# names2nuts----
-
-names2nuts <- esp_hlp_names2nuts()
-
-# Test
-
-var <-
-  c(
-    "Madrid",
-    "Valencia",
-    "Menorca",
-    "Tenerife",
-    "Las Palmas",
-    "Santa Cruz de Tenerife",
-    "Madrid",
-    "Andalucía"
-  )
-
-f <- countrycode::countrycode(
-  var,
-  "key",
-  "nuts",
-  custom_dict = names2nuts,
-  nomatch = "XX"
-)
-f
-countrycode::countrycode(
-  f,
-  "nuts",
-  "key",
-  custom_dict = names2nuts,
-  nomatch = "XX"
-)
-
-
-# code2code----
-
-code2code <- esp_hlp_code2code()
-
-
-# Test
-
-countrycode::countrycode(
-  f,
-  "nuts",
-  "iso2",
-  custom_dict = code2code,
-  nomatch = "XX"
-)
-countrycode::countrycode(
-  f,
-  "nuts",
-  "codauto",
-  custom_dict = code2code,
-  nomatch = "XX"
-)
-
-countrycode::countrycode(
-  f,
-  "nuts",
-  "cpro",
-  custom_dict = code2code,
-  nomatch = "XX"
-)
-
-countrycode::countrycode(
-  c("ES-AN"),
-  "iso2",
-  "nuts",
-  custom_dict = code2code,
-  nomatch = "XX"
-)
-
-
-dict_ccaa <- dict_ccaa |> as.data.frame()
-dict_prov <- dict_prov |> as.data.frame()
-code2code <- code2code |> as.data.frame()
-names2nuts <- names2nuts |> as.data.frame()
-names_full <- names_full |> as.data.frame()
+names_full <- names_full |>
+  filter(value != "") |>
+  as.data.frame()
 
 # Add grid files
 
 library(sf)
-esp_hexbin_prov <-
-  st_read("./data-raw/esp_hexbin_prov.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_hexbin_prov <- mapSpain:::read_geo_file_sf(
+  "./data-raw/esp_hexbin_prov.gpkg"
+) |>
+  mapSpain:::sanitize_sf()
 
-esp_hexbin_ccaa <-
-  st_read("./data-raw/esp_hexbin_ccaa.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_hexbin_ccaa <- mapSpain:::read_geo_file_sf(
+  "./data-raw/esp_hexbin_ccaa.gpkg"
+) |>
+  mapSpain:::sanitize_sf()
 
 
-esp_grid_prov <-
-  st_read("./data-raw/esp_grid_prov.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_grid_prov <- mapSpain:::read_geo_file_sf(
+  "./data-raw/esp_grid_prov.gpkg"
+) |>
+  mapSpain:::sanitize_sf()
 
-esp_grid_ccaa <-
-  st_read("./data-raw/esp_grid_ccaa.gpkg", stringsAsFactors = FALSE) |>
-  st_make_valid()
+esp_grid_ccaa <- mapSpain:::read_geo_file_sf(
+  "./data-raw/esp_grid_ccaa.gpkg"
+) |>
+  mapSpain:::sanitize_sf()
+
+
+# Databases
+dbs <- list.files(
+  "data-raw/listas_de_valores_enumerados/",
+  pattern = "dbf",
+  full.names = TRUE
+)
+
+
+db_valores <- lapply(dbs, function(x) {
+  f <- tibble::as_tibble(foreign::read.dbf(x))
+  clean_x <- gsub("lve_", "", basename(x))
+  clean_x <- gsub(".dbf", "", clean_x)
+  clean_x <- tolower(clean_x)
+  f$campo <- clean_x
+  f[, unique(c("campo", colnames(f)))]
+}) |>
+  dplyr::bind_rows() |>
+  dplyr::as_tibble() |>
+  dplyr::mutate(descrip = as.character(descrip))
+
 
 usethis::use_data(
-  # dict_nuts1,
-  dict_ccaa,
-  dict_prov,
-  # dict_nuts3,
-  code2code,
-  names2nuts,
+  db_valores,
   names_full,
   esp_hexbin_ccaa,
   esp_hexbin_prov,
@@ -319,3 +212,6 @@ usethis::use_data(
 )
 
 tools::checkRdaFiles("./R")
+tools::resaveRdaFiles("./R")
+
+rm(list = ls())

@@ -7,13 +7,6 @@
         "id": "https://orcid.org/0000-0001-8457-4658"
       },
       "codeRepository": "https://github.com/rOpenSpain/mapSpain",
-      "contributor": {
-        "id": "https://orcid.org/0000-0002-1932-3323",
-        "type": "Person",
-        "email": "timothee.giraud@cnrs.fr",
-        "familyName": "Giraud",
-        "givenName": "Timothée"
-      },
       "copyrightHolder": [
         {
           "id": "https://orcid.org/0000-0001-8457-4658",
@@ -23,9 +16,12 @@
           "givenName": "Diego"
         },
         {
-          "type": "Person",
-          "familyName": "McBain",
-          "givenName": "Miles"
+          "type": "Organization",
+          "name": "Eurostat"
+        },
+        {
+          "type": "Organization",
+          "name": "Instituto Geográfico Nacional"
         }
       ],
       "description": "Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.",
@@ -43,7 +39,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.5.2 (2025-10-31 ucrt)",
-      "version": "0.10.0.9000"
+      "version": "0.99.99.9000"
     },
     {
       "id": "https://doi.org/10.5281/zenodo.5366622",
