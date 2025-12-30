@@ -60,9 +60,9 @@
 <li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul>
 </li>
@@ -105,31 +105,31 @@ Hernangómez
 is a package designed to provide geographical information of Spain at
 different levels.</p>
 <p><strong>mapSpain</strong> provides shapefiles of municipalities,
-provinces, autonomous communities and NUTS levels of Spain. It also
-provides hexbin shapefiles and other complementary shapes, as the usual
-lines around the Canary Islands.</p>
-<p><strong>mapSpain</strong> provides access to map tiles of public
-organisms of Spain, that can be represented on static maps via
-<code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on a <strong>R</strong>
-<strong>leaflet</strong> map using
+provinces, autonomous communities, and NUTS levels of Spain. It also
+provides hexbin shapefiles and other complementary shapes, such as the
+demarcation lines around the Canary Islands.</p>
+<p><strong>mapSpain</strong> provides access to map tiles from Spain’s
+public institutions, which can be represented on static maps via
+<code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an <strong>R</strong>
+<strong>Leaflet</strong> map using
 <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
-<p>On top of that, <strong>mapSpain</strong> also has a powerful
-dictionary that translate provinces and other regions to English,
-Spanish, Catalan, Basque language or Galician, and also converts those
-names to different coding standards, as NUTS, ISO2 or the coding system
-used by the INE, that is the official statistic agency of Spain.</p>
+<p>Additionally, <strong>mapSpain</strong> includes a powerful
+dictionary that translates province and region names to English,
+Spanish, Catalan, Basque, and Galician, and converts them to various
+coding standards such as NUTS, ISO2, and the INE (the official Spanish
+statistical agency) coding system.</p>
 </div>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p><strong>mapSpain</strong> provides a dataset and tile caching
-capability, that could be set as:</p>
+<p><strong>mapSpain</strong> provides dataset and tile caching
+capabilities, which can be set as:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/esp_set_cache_dir.html">esp_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>mapSpain</strong> relies on <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a>
-for downloading some files, and both packages are well synchronized.
-Setting the same caching directory on both would speed up the data load
-on your session.</p>
+for downloading certain files, and both packages are well synchronized.
+Setting the same caching directory for both packages will speed up data
+loading in your session.</p>
 </div>
 <div class="section level2">
 <h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
@@ -267,11 +267,11 @@ Percentage of women by Autonomous Community (2025)
 <div class="section level2">
 <h2 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h2>
-<p>This is an example on how <strong>mapSpain</strong> can be used to
-beautiful thematic maps. For plotting purposes we would use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot</strong></a>
-package, however any package that handles <code>sf</code> objects
-(e.g. <strong>tmap</strong>, <strong>mapsf</strong>,
-<strong>leaflet</strong>, etc. could be used).</p>
+<p>This example demonstrates how <strong>mapSpain</strong> can be used
+to create beautiful thematic maps. For plotting, we use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot2</strong></a>
+package, though any package that handles <code>sf</code> objects (e.g.,
+<strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>,
+etc.) could also be used.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Population density of Spain</span></span>
 <span></span>
@@ -323,10 +323,10 @@ Population density in Spain (2025)
 <div class="section level2">
 <h2 id="mapspain-and-giscor">mapSpain and giscoR<a class="anchor" aria-label="anchor" href="#mapspain-and-giscor"></a>
 </h2>
-<p>If you need to plot Spain along with another countries, consider
-using <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a>
-package, that is installed as a dependency when you installed
-<strong>mapSpain</strong>. A basic example:</p>
+<p>If you need to plot Spain alongside other countries, consider using
+the <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a>
+package, which is installed as a dependency with
+<strong>mapSpain</strong>. Here’s a basic example:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
 <span></span>
@@ -375,18 +375,18 @@ mapSpain and giscoR example
 <h2 id="working-with-tiles">Working with tiles<a class="anchor" aria-label="anchor" href="#working-with-tiles"></a>
 </h2>
 <p><strong>mapSpain</strong> provides a powerful interface for working
-with imagery. <strong>mapSpain</strong> can download static files as
-<code>.png</code> or<code>jpeg</code> files (depending on the Web Map
-Service) and use them along your shapefiles.</p>
-<p><strong>mapSpain</strong> also includes a plugin for
-<strong>R</strong> <a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a> package, that
+with imagery. It can download static files as <code>.png</code> or
+<code>.jpeg</code> files (depending on the Web Map Service) and use them
+alongside your shapefiles.</p>
+<p><strong>mapSpain</strong> also includes a plugin for the
+<strong>R</strong> <a href="https://rstudio.github.io/leaflet/" class="external-link">Leaflet</a> package, which
 allows you to include several basemaps on your interactive maps.</p>
-<p>The services are implemented via the leaflet plugin <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>.
-You can check a display of each provider on the previous link.</p>
-<p><strong>Note that</strong> When working with imagery, it is important
-to set <code>moveCAN = FALSE</code> on the <code>esp_get_*</code>
-functions. See <strong>Displacing the Canary Islands</strong> on
-<code><a href="../reference/esp_get_ccaa.html">help("esp_get_ccaa", package = "mapSpain")</a></code>.</p>
+<p>The services are implemented via the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>
+Leaflet plugin. You can view each provider option at that link.</p>
+<p><strong>Note:</strong> When working with imagery, it is important to
+set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code>
+functions. See <strong>Displacing the Canary Islands</strong> in
+<code><a href="../reference/esp_move_can.html">help("esp_move_can", package = "mapSpain")</a></code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

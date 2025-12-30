@@ -1,13 +1,12 @@
-# Database with the population of Spain by municipality (2025)
+# Population of Spain by municipality (2025)
 
-Database with the population of Spain by municipality (2025)
+Population of Spain by municipality (2025)
 
 ## Format
 
-An example
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-object with 8,132 rows containing the population data by municipality in
-Spain (2025).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+object with 8,132 rows containing population data by municipality in
+Spain for 2025.
 
 - cpro:
 
@@ -15,7 +14,7 @@ Spain (2025).
 
 - provincia:
 
-  name of the province.
+  Name of the province.
 
 - cmun:
 
@@ -27,15 +26,15 @@ Spain (2025).
 
 - pob25:
 
-  Overall population (2025)
+  Total population (2025)
 
 - men:
 
-  Men population (2025)
+  Male population (2025)
 
 - women:
 
-  Women population (2025)
+  Female population (2025)
 
 ## Source
 

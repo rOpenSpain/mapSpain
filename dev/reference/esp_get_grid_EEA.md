@@ -29,13 +29,16 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
 - type:
 
-  The scope of the grid. It could be mainland Spain (`"main"`) or the
-  Canary Islands (`"canary"`).
+  character. The geographic scope of the grid:
+
+  - `"main"`: Mainland Spain (default)
+
+  - `"canary"`: Canary Islands
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 

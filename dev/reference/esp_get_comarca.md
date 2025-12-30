@@ -30,14 +30,15 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - region:
 
-  character. A vector of names and/or codes for provinces or `NULL` to
-  get all the comarcas. See **Details**.
+  character string. A vector of names and/or codes for provinces or
+  `NULL` to get all the comarcas. See **Details**.
 
 - comarca:
 
-  character. A name or [`regex`](https://rdrr.io/r/base/grep.html)
-  expression with the names of the required comarcas. `NULL` would
-  return all the possible comarcas.
+  character string. A name or
+  [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
+  of the required comarcas. `NULL` would return all the possible
+  comarcas.
 
 - moveCAN:
 
@@ -49,8 +50,8 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - type:
 
-  character. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of comarca
-  to return, see **Details**.
+  character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
+  comarca to return, see **Details**.
 
 - epsg:
 
@@ -67,8 +68,8 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -105,7 +106,7 @@ arising from such use.
 
 'Comarcas' (English equivalent: district, county, area or zone) does not
 always have a formal legal status. They correspond mainly to natural
-areas (valleys, river basins etc.) or even to historical regions or
+areas (valleys, river basins, etc.) or even to historical regions or
 ancient kingdoms.
 
 In the case of Spain, comarcas only have an administrative character
@@ -138,8 +139,7 @@ Please check the download and usage provisions on
 
 ## See also
 
-Other political:
-[`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
+Other datasets representing political borders:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),

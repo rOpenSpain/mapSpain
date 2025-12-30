@@ -16,9 +16,9 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="mapSpain: Mapas de España en R [Spanish]">
-<meta name="description" content="Mapas de España en R de manera rápida y sencilla.
+<meta name="description" content="Mapas de España en R de forma rápida y sencilla.
 ">
-<meta property="og:description" content="Mapas de España en R de manera rápida y sencilla.
+<meta property="og:description" content="Mapas de España en R de forma rápida y sencilla.
 ">
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -60,9 +60,9 @@
 <li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul>
 </li>
@@ -107,9 +107,8 @@ Hernangómez
 </h3>
 <p><strong>mapSpain</strong> facilita la creación de mapas de los
 diferentes niveles administrativos de España.</p>
-<p>Además, proporciona también la posibilidad de usar imágenes de
-servicios WMS/WMTS de manera estática (como imagen georreferenciada) o
-dinámica (en mapas leaflet).</p>
+<p>Además, permite usar imágenes de servicios WMS/WMTS de forma estática
+(como imagen georreferenciada) o dinámica (en mapas Leaflet).</p>
 <p>Adicionalmente, <strong>mapSpain</strong> dispone de funciones que
 permiten normalizar nombres de las CCAA y provincias, lo que facilita el
 proceso de manipulación y transformación de datos (no necesariamente
@@ -119,15 +118,15 @@ espaciales).</p>
 <ul>
 <li>
 <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a>
-(Eurostat) via el paquete <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a>.</li>
+(Eurostat), vía el paquete <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a>.</li>
 <li>
-<a href="https://www.ign.es/" class="external-link">Instituto Geografico Nacional</a>
+<a href="https://www.ign.es/" class="external-link">Instituto Geográfico Nacional</a>
 (IGN)</li>
 <li>Distintos organismos públicos de España que proporcionan servicios
 de teselas WMTS/WMS (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</li>
 </ul>
 <p>Los objetos resultantes se proporcionan en formato <code>sf</code>
-(librería <strong>sf)</strong> o <code>SpatRaster</code>(librería
+(librería <strong>sf</strong>) o <code>SpatRaster</code> (librería
 <strong>terra</strong>).</p>
 <p>Página web: <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a></p>
 </div>
@@ -170,7 +169,7 @@ de teselas WMTS/WMS (<a href="https://www.idee.es/web/idee/segun-tipo-de-servici
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">galicia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Galicia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Homogeinizo labels</span></span>
+<span>  <span class="co"># Homogeneizo etiquetas</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Provincia <span class="op">=</span> <span class="fu"><a href="../reference/esp_dict.html">esp_dict_translate</a></span><span class="op">(</span><span class="va">ine.prov.name</span>, <span class="st">"es"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -212,7 +211,7 @@ distintos paises:</p>
 <span><span class="co"># geodata (GADM)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">geodata</span><span class="op">)</span></span>
 <span><span class="va">esp_geodata</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geodata/man/gadm.html" class="external-link">gadm</a></span><span class="op">(</span><span class="st">"ES"</span>, path <span class="op">=</span> <span class="st">"."</span>, level <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Convertimos de SpatVector a objecto sf</span></span>
+<span>  <span class="co"># Convertimos de SpatVector a objeto sf</span></span>
 <span>  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
@@ -222,7 +221,7 @@ distintos paises:</p>
 <span><span class="va">esp_geobounds</span> <span class="op">&lt;-</span> <span class="fu">geobounds</span><span class="fu">::</span><span class="fu"><a href="https://dieghernan.github.io/geobounds/reference/gb_get_adm.html" class="external-link">gb_get_adm0</a></span><span class="op">(</span><span class="st">"ESP"</span>, cache_dir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Imagen Ria Ferrol</span></span>
+<span><span class="co"># Imagen Ría Ferrol</span></span>
 <span><span class="va">tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"Ferrol"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/esp_get_tiles.html">esp_get_tiles</a></span><span class="op">(</span><span class="st">"PNOA"</span>, bbox_expand <span class="op">=</span> <span class="fl">0.5</span>, zoommin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -258,8 +257,8 @@ distintos paises:</p>
 <li>
 <strong>mapSpain</strong>: Resultados satisfactorios.</li>
 <li>
-<strong>GADM</strong> (libería <strong>geodata</strong>): Resultados
-muy precisos.</li>
+<strong>GADM</strong> (librería <strong>geodata</strong>):
+Resultados muy precisos.</li>
 <li>
 <strong>geoBoundaries</strong> (librería
 <strong>geobounds</strong>): Resultados satisfactorios.</li>
@@ -396,7 +395,7 @@ obtener límites políticos a diferentes niveles:</p>
 <li>Provincias</li>
 <li>Municipios</li>
 </ul>
-<p>Para CCAA, Provinicas y Municipios hay dos versiones:
+<p>Para CCAA, Provincias y Municipios hay dos versiones:
 <code>esp_get_xxxx()</code> (fuente: GISCO) y
 <code>esp_get_xxxx_siane()</code> (fuente: IGN).</p>
 <p>La información se proporciona en diferentes proyecciones y niveles de
@@ -415,7 +414,7 @@ resolución.</p>
 mejor visualización en la mayoría de sus funciones. Este comportamiento
 se puede desactivar usando <code>moveCAN = FALSE</code>(ver anterior
 ejemplo).</p>
-<p>Proporcionamos funciones adicionales que permiten representar lineas
+<p>Proporcionamos funciones adicionales que permiten representar líneas
 alrededor de la inserción del mapa (<a href="https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples">ejemplos</a>).</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">esp_can</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_spain.html">esp_get_spain</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -428,8 +427,8 @@ alrededor de la inserción del mapa (<a href="https://ropenspain.github.io/mapSp
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">can_box</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mapasesp_files/figure-html/can-1.png" class="r-plt" alt="Mapa de España con Canarias desplazadas" width="100%"></p>
 <p><strong>Cuando se trabaja con imágenes, mapas interactivos o se
-desean realizar analisis espaciales, se debe usar
-<code>moveCAN = FALSE</code></strong></p>
+realizan análisis espaciales, debe usarse
+<code>moveCAN = FALSE</code>.</strong></p>
 </div>
 <div class="section level3">
 <h3 id="nuts">NUTS<a class="anchor" aria-label="anchor" href="#nuts"></a>
@@ -673,7 +672,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2025-12-29</span></span>
+<span><span class="co">#&gt;  date     2025-12-30</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt;  quarto   NA</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -699,7 +698,7 @@ Details
 <span><span class="co">#&gt;  forcats            * 1.0.1        <span style="color: #555555;">2025-09-25</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  fs                   1.6.6        <span style="color: #555555;">2025-04-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  generics             0.1.4        <span style="color: #555555;">2025-05-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  geobounds          * <span style="color: #BB00BB; font-weight: bold;">0.0.1.9000  </span> <span style="color: #555555;">2025-12-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (dieghernan/geobounds@89e5366)</span></span></span>
+<span><span class="co">#&gt;  geobounds          * <span style="color: #BB00BB; font-weight: bold;">0.0.1.9000  </span> <span style="color: #555555;">2025-12-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (dieghernan/geobounds@89e5366)</span></span></span>
 <span><span class="co">#&gt;  geodata            * 0.6-6        <span style="color: #555555;">2025-09-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  ggplot2            * 4.0.1        <span style="color: #555555;">2025-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  giscoR               1.0.0        <span style="color: #555555;">2025-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -718,12 +717,12 @@ Details
 <span><span class="co">#&gt;  lifecycle            1.0.4        <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  lubridate          * 1.9.4        <span style="color: #555555;">2024-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  magrittr             2.0.4        <span style="color: #555555;">2025-09-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  mapSpain           * <span style="color: #BB00BB; font-weight: bold;">0.99.99.9000</span> <span style="color: #555555;">2025-12-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  mapSpain           * <span style="color: #BB00BB; font-weight: bold;">0.99.99.9000</span> <span style="color: #555555;">2025-12-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  otel                 0.2.0        <span style="color: #555555;">2025-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pillar               1.11.1       <span style="color: #555555;">2025-09-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pkgconfig            2.0.3        <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pkgdown              2.2.0        <span style="color: #555555;">2025-11-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@2.2.0)</span></span></span>
-<span><span class="co">#&gt;  proxy                0.4-28       <span style="color: #555555;">2025-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  proxy                0.4-29       <span style="color: #555555;">2025-12-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  purrr              * 1.2.0        <span style="color: #555555;">2025-11-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  R.cache              0.17.0       <span style="color: #555555;">2025-05-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  R.methodsS3          1.8.2        <span style="color: #555555;">2022-06-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -740,7 +739,7 @@ Details
 <span><span class="co">#&gt;  rlang                1.1.6        <span style="color: #555555;">2025-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rmarkdown            2.30         <span style="color: #555555;">2025-09-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rnaturalearth      * 1.1.0        <span style="color: #555555;">2025-07-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  rnaturalearthhires   <span style="color: #BB00BB; font-weight: bold;">1.0.0.9000  </span> <span style="color: #555555;">2025-12-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (ropensci/rnaturalearthhires@e4736f6)</span></span></span>
+<span><span class="co">#&gt;  rnaturalearthhires   <span style="color: #BB00BB; font-weight: bold;">1.0.0.9000  </span> <span style="color: #555555;">2025-12-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (ropensci/rnaturalearthhires@e4736f6)</span></span></span>
 <span><span class="co">#&gt;  s2                   1.1.9        <span style="color: #555555;">2025-05-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  S7                   0.2.1        <span style="color: #555555;">2025-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sass                 0.4.10       <span style="color: #555555;">2025-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>

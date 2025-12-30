@@ -2,53 +2,84 @@
 
 ## mapSpain (development version)
 
-- Minimal **R** version required is **4.1.0**.
-- Remove **slippymath** dependency
+This major release introduces a full overhaul of the codebase and test
+suite. Requests now use **httr2**, and cached files are reorganized into
+topic-based subfolders for easier management.
+
+> Because of internal changes, **existing caches are not compatible**
+> with this release and must be rebuilt.
+
+We have transitioned from
+[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
+managing your persistent cache directory. If you are a heavy
+**mapSpain** user and already have a cache directory in place, you’ll
+receive a one-time friendly message informing you about this migration.
+Consider it a warm welcome to **mapSpain** 1.0.0 😉.
+
+The package now requires **R ≥ 4.1**, and dependency updates improve
+both performance and maintainability. All functions return tidy objects
+(tibbles or `sf` objects with tibble data).
+
+Several new functions and arguments have been added, some functions
+renamed, and some others deprecated. All bundled datasets have been
+updated to their latest versions.
+
+### Breaking changes
+
+- Minimum required R version is now **4.1.0**.
+- Removed dependency on **slippymath**
   ([\#126](https://github.com/rOpenSpain/mapSpain/issues/126)).
-- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-  renamed to
-  [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
-  Both versions work so far.
-- [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
-  renamed to
-  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md).
-  Both versions work so far.
-- New function
-  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
-  replacing `esp_get_railway(..., spatialtype = "point")`.
-- [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
-  deprecated and defunct, since the source file is not available any
-  more.
-- `providerEspTileOptions()` removed, use
+- `providerEspTileOptions()` has been removed; use
   [`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
   instead.
-- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md):
-  new `moveCAN` argument. Also arguments `resolution` and `spatialtype`
-  are deprecated, the latter replaced by the new function
-  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md).
+- Removed dataset `?esp_munic.sf`.
+- Removed dataset `?leaflet.providersESP.df` (superseded in mapSpain
+  **v0.8.0**).
+- Removed dataset `?pobmun19`; it has been replaced by
+  [`?pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md).
+- [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
+  is deprecated and defunct, as the source file is no longer available.
 
-### New functions
+### Deprecations and new function names
 
-- [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-  allows to download all the SIANE data to the desired `cache_dir` at
-  once.
-- [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
-  returns all countries at a given date.
-- [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-  similar to
+- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  has been renamed to
+  [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  (old name still works).
+- [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+  has been renamed to
   [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
+  (old name still works).
+- In
+  [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md):
+  - Arguments `resolution` and `spatialtype` are deprecated.
+  - Wetlands support has been moved to the new
+    [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+    function.
+
+### New features
+
+- Added
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
+  replacing `esp_get_railway(..., spatialtype = "point")`.
+- Added
+  [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
+  to download all SIANE datasets to a specified `cache_dir` in a single
+  step.
+- Added
+  [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
+  to retrieve all countries available in SIANE at a given date.
+- Added
+  [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
+  analogous to
+  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
   using SIANE data.
-
-### Changes in datasets
-
-- Add
-  [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
-  (replaces `?esp_nuts.sf`).
-- `?leaflet.providersESP.df` has been removed. It was superseded in
-  **mapSpain** v0.8.0.
-- `?esp_munic.sf` has been removed.
-- [`?pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
-  replaces `?pobmun19`, that have been removed.
+- Added dataset
+  [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
+  replacing `?esp_nuts.sf`.
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
+  gains a new `moveCAN` argument.
 
 ## mapSpain 0.10.0
 

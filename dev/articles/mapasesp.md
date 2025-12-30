@@ -7,9 +7,8 @@
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
 
-Además, proporciona también la posibilidad de usar imágenes de servicios
-WMS/WMTS de manera estática (como imagen georreferenciada) o dinámica
-(en mapas leaflet).
+Además, permite usar imágenes de servicios WMS/WMTS de forma estática
+(como imagen georreferenciada) o dinámica (en mapas Leaflet).
 
 Adicionalmente, **mapSpain** dispone de funciones que permiten
 normalizar nombres de las CCAA y provincias, lo que facilita el proceso
@@ -18,15 +17,15 @@ espaciales).
 
 Las **fuentes de información** empleadas en **mapSpain** son:
 
-- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat) via el
+- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), vía el
   paquete [**giscoR**](https://ropengov.github.io/giscoR/).
-- [Instituto Geografico Nacional](https://www.ign.es/) (IGN)
+- [Instituto Geográfico Nacional](https://www.ign.es/) (IGN)
 - Distintos organismos públicos de España que proporcionan servicios de
   teselas WMTS/WMS
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
 Los objetos resultantes se proporcionan en formato `sf` (librería
-**sf)** o `SpatRaster`(librería **terra**).
+**sf**) o `SpatRaster` (librería **terra**).
 
 Página web: <https://ropenspain.github.io/mapSpain/>
 
@@ -67,7 +66,7 @@ library(mapSpain)
 library(tidyverse)
 
 galicia <- esp_get_munic_siane(region = "Galicia") |>
-  # Homogeinizo labels
+  # Homogeneizo etiquetas
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
 
@@ -112,7 +111,7 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 # geodata (GADM)
 library(geodata)
 esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
-  # Convertimos de SpatVector a objecto sf
+  # Convertimos de SpatVector a objeto sf
   sf::st_as_sf() |>
   st_transform(3857)
 
@@ -122,7 +121,7 @@ library(geobounds)
 esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
   st_transform(3857)
 
-# Imagen Ria Ferrol
+# Imagen Ría Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
@@ -159,7 +158,7 @@ Ferrol](mapasesp_files/figure-html/compara-1.png)
 
 - **rnaturalearth**: No capta bien el contorno.
 - **mapSpain**: Resultados satisfactorios.
-- **GADM** (libería **geodata**): Resultados muy precisos.
+- **GADM** (librería **geodata**): Resultados muy precisos.
 - **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
 
 ### Almacenamiento
@@ -281,7 +280,7 @@ políticos a diferentes niveles:
 - Provincias
 - Municipios
 
-Para CCAA, Provinicas y Municipios hay dos versiones: `esp_get_xxxx()`
+Para CCAA, Provincias y Municipios hay dos versiones: `esp_get_xxxx()`
 (fuente: GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
 
 La información se proporciona en diferentes proyecciones y niveles de
@@ -303,7 +302,7 @@ Por defecto, **mapSpain** “desplaza” Canarias para una mejor
 visualización en la mayoría de sus funciones. Este comportamiento se
 puede desactivar usando `moveCAN = FALSE`(ver anterior ejemplo).
 
-Proporcionamos funciones adicionales que permiten representar lineas
+Proporcionamos funciones adicionales que permiten representar líneas
 alrededor de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
@@ -321,8 +320,8 @@ ggplot(esp_can) +
 ![Mapa de España con Canarias
 desplazadas](mapasesp_files/figure-html/can-1.png)
 
-**Cuando se trabaja con imágenes, mapas interactivos o se desean
-realizar analisis espaciales, se debe usar `moveCAN = FALSE`**
+**Cuando se trabaja con imágenes, mapas interactivos o se realizan
+análisis espaciales, debe usarse `moveCAN = FALSE`.**
 
 ### NUTS
 
@@ -580,7 +579,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-29
+    #>  date     2025-12-30
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -606,7 +605,7 @@ Details
     #>  forcats            * 1.0.1        2025-09-25 [1] RSPM
     #>  fs                   1.6.6        2025-04-12 [1] RSPM
     #>  generics             0.1.4        2025-05-09 [1] RSPM
-    #>  geobounds          * 0.0.1.9000   2025-12-28 [1] Github (dieghernan/geobounds@89e5366)
+    #>  geobounds          * 0.0.1.9000   2025-12-30 [1] Github (dieghernan/geobounds@89e5366)
     #>  geodata            * 0.6-6        2025-09-30 [1] RSPM
     #>  ggplot2            * 4.0.1        2025-11-14 [1] RSPM
     #>  giscoR               1.0.0        2025-12-10 [1] RSPM
@@ -625,12 +624,12 @@ Details
     #>  lifecycle            1.0.4        2023-11-07 [1] RSPM
     #>  lubridate          * 1.9.4        2024-12-08 [1] RSPM
     #>  magrittr             2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain           * 0.99.99.9000 2025-12-29 [1] local
+    #>  mapSpain           * 0.99.99.9000 2025-12-30 [1] local
     #>  otel                 0.2.0        2025-08-29 [1] RSPM
     #>  pillar               1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig            2.0.3        2019-09-22 [1] RSPM
     #>  pkgdown              2.2.0        2025-11-06 [1] any (@2.2.0)
-    #>  proxy                0.4-28       2025-12-11 [1] RSPM
+    #>  proxy                0.4-29       2025-12-29 [1] RSPM
     #>  purrr              * 1.2.0        2025-11-04 [1] RSPM
     #>  R.cache              0.17.0       2025-05-02 [1] RSPM
     #>  R.methodsS3          1.8.2        2022-06-13 [1] RSPM
@@ -647,7 +646,7 @@ Details
     #>  rlang                1.1.6        2025-04-11 [1] RSPM
     #>  rmarkdown            2.30         2025-09-28 [1] RSPM
     #>  rnaturalearth      * 1.1.0        2025-07-28 [1] RSPM
-    #>  rnaturalearthhires   1.0.0.9000   2025-12-28 [1] Github (ropensci/rnaturalearthhires@e4736f6)
+    #>  rnaturalearthhires   1.0.0.9000   2025-12-30 [1] Github (ropensci/rnaturalearthhires@e4736f6)
     #>  s2                   1.1.9        2025-05-23 [1] RSPM
     #>  S7                   0.2.1        2025-11-14 [1] RSPM
     #>  sass                 0.4.10       2025-04-11 [1] RSPM

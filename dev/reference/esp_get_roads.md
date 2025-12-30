@@ -69,8 +69,8 @@ Data distributed via a custom CDN, see
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -96,21 +96,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## See also
 
-Other infrastructure:
+Other man-made infrastructures:
 [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-
-Other siane:
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
-[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
-[`esp_get_landwater`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-[`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
 ## Examples
 

@@ -56,8 +56,8 @@ Copyright:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -117,8 +117,7 @@ Please check the download and usage provisions on
 [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html),
 [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
 
-Other political:
-[`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
+Other datasets representing political borders:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -134,11 +133,11 @@ Other political:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Other municipalities:
+Datasets representing municipalities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
 
-Other gisco:
+Datasets provided by GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),

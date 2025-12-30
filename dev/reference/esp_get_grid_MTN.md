@@ -1,4 +1,4 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` of the national geographic grids from IGN
+# National geographic grids from IGN MTN ((Mapa Topografico Nacional)
 
 Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 `POLYGON` with the geographic grids of Spain.
@@ -27,8 +27,8 @@ IGN data via a custom CDN (see
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -118,7 +118,7 @@ of the Canary Islands sheets.
 
 ## See also
 
-Other grids:
+Other geographical grids:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md)
 

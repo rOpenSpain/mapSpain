@@ -1,7 +1,8 @@
-# Convert and translate subdivision names
+# Convert and translate Spanish subdivision names and codes
 
-Converts long subdivision names into different coding schemes and
-languages.
+Convert Spanish subdivision names or identifiers between different
+coding schemes (NUTS, ISO2, province codes, etc.) or obtain
+human-readable names.
 
 ## Usage
 
@@ -15,48 +16,58 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 
 - sourcevar:
 
-  Vector which contains the subdivision names to be converted.
+  character string. Vector which contains the codes or names to be
+  converted.
 
 - origin, destination:
 
-  One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` and `"cpro"`.
+  character string. Coding scheme of origin and destination. One of
+  `"text"`, `"nuts"`, `"iso2"`, `"codauto"`, or `"cpro"`.
 
 - lang:
 
-  Language of translation. Available languages are:
+  character string. Target language code, available values:
 
-  - `"es"`: Spanish
+  - `"es"`: Spanish.
 
-  - `"en"`: English
+  - `"en"`: English.
 
-  - `"ca"`: Catalan
+  - `"ca"`: Catalan.
 
-  - `"ga"`: Galician
+  - `"ga"`: Galician.
 
-  - `"eu"`: Basque
+  - `"eu"`: Basque.
 
 - all:
 
-  Logical. Should the function return all names or not? On `FALSE` it
-  returns a character vector. See **Value**.
+  logical. If `TRUE` the function returns all possible translations for
+  each input as a named list. When `FALSE` (default) a single preferred
+  translation per input is returned as a character vector.
 
 ## Value
 
-`esp_dict_region_code()` returns a vector of characters.
+`esp_dict_region_code()` returns a character vector with converted
+subdivision identifiers or names. If a value cannot be matched the
+corresponding element will be `NA` and a warning is emitted via
+[`cli::cli_alert_warning()`](https://cli.r-lib.org/reference/cli_alert.html).
 
-`esp_dict_translate()` returns a `character` vector or a named `list`
-with each of the possible names of each `sourcevar` on the required
-language `lang`.
+`esp_dict_translate()` translates a vector of names from one language to
+another :
+
+- If `all = FALSE`, a character vector with the translated name for each
+  element of `sourcevar`.
+
+- If `all = TRUE`, a named `list` is returned where each element
+  contains all available translations for the corresponding input value.
 
 ## Details
 
-If no match is found for any value, the function displays a
-[cli::cli_alert_warning()](https://cli.r-lib.org/reference/cli_alert.html)
-and returns `NA` for those values.
-
-Note that mixing names of different administrative levels (e.g.
-"Catalonia" and "Barcelona") may return empty values, depending on the
-`destination` values.
+The function uses internal dictionaries together with
+[countrycode](https://CRAN.R-project.org/package=countrycode) to map
+between schemes. When `origin == destination == "text"` the input is
+returned unchanged. Mixing names from different administrative levels
+(for example autonomous community and province) may produce `NA` values
+for some entries.
 
 ## Examples
 
@@ -100,7 +111,6 @@ esp_dict_region_code(valsmix, destination = "codauto")
 esp_dict_region_code(valsmix, destination = "iso2")
 #> ! No match on `destination = "iso2"` found for "Centro" and "Menorca".
 #> [1] NA      "ES-AN" "ES-SE" NA     
-
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 

@@ -27,9 +27,9 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -48,37 +48,45 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mapspain-development-version">mapSpain (development version)<a class="anchor" aria-label="anchor" href="#mapspain-development-version"></a></h2>
-<ul><li>Minimal <strong>R</strong> version required is <strong>4.1.0</strong>.</li>
-<li>Remove <strong>slippymath</strong> dependency (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
+<p>This major release introduces a full overhaul of the codebase and test suite. Requests now use <strong>httr2</strong>, and cached files are reorganized into topic-based subfolders for easier management.</p>
+<blockquote>
+<p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
+</blockquote>
+<p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing your persistent cache directory. If you are a heavy <strong>mapSpain</strong> user and already have a cache directory in place, you’ll receive a one-time friendly message informing you about this migration. Consider it a warm welcome to <strong>mapSpain</strong> 1.0.0 😉.</p>
+<p>The package now requires <strong>R ≥ 4.1</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
+<p>Several new functions and arguments have been added, some functions renamed, and some others deprecated. All bundled datasets have been updated to their latest versions.</p>
+<div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>Minimum required R version is now <strong>4.1.0</strong>.</li>
+<li>Removed dependency on <strong>slippymath</strong> (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
 <li>
-<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> renamed to <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code>. Both versions work so far.</li>
+<code>providerEspTileOptions()</code> has been removed; use <code><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">leaflet::providerTileOptions()</a></code> instead.</li>
+<li>Removed dataset <code>?esp_munic.sf</code>.</li>
+<li>Removed dataset <code>?leaflet.providersESP.df</code> (superseded in mapSpain <strong>v0.8.0</strong>).</li>
+<li>Removed dataset <code>?pobmun19</code>; it has been replaced by <code><a href="../reference/pobmun25.html">?pobmun25</a></code>.</li>
 <li>
-<code><a href="../reference/esp_get_spain.html">esp_get_country()</a></code> renamed to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code>. Both versions work so far.</li>
-<li>New function <code><a href="../reference/esp_get_railway.html">esp_get_stations()</a></code>, replacing <code>esp_get_railway(..., spatialtype = "point")</code>.</li>
-<li>
-<code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> deprecated and defunct, since the source file is not available any more.</li>
-<li>
-<code>providerEspTileOptions()</code> removed, use <code><a href="https://rstudio.github.io/leaflet/reference/addProviderTiles.html" class="external-link">leaflet::providerTileOptions()</a></code> instead.</li>
-<li>
-<code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>: new <code>moveCAN</code> argument. Also arguments <code>resolution</code> and <code>spatialtype</code> are deprecated, the latter replaced by the new function <code><a href="../reference/esp_get_landwater.html">esp_get_wetlands()</a></code>.</li>
-</ul><div class="section level3">
-<h3 id="new-functions-development-version">New functions<a class="anchor" aria-label="anchor" href="#new-functions-development-version"></a></h3>
-<ul><li>
-<code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> allows to download all the SIANE data to the desired <code>cache_dir</code> at once.</li>
-<li>
-<code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> returns all countries at a given date.</li>
-<li>
-<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code>, similar to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code> using SIANE data.</li>
+<code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> is deprecated and defunct, as the source file is no longer available.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-datasets-development-version">Changes in datasets<a class="anchor" aria-label="anchor" href="#changes-in-datasets-development-version"></a></h3>
-<ul><li>Add <code><a href="../reference/esp_nuts_2024.html">?esp_nuts_2024</a></code> (replaces <code>?esp_nuts.sf</code>).</li>
+<h3 id="deprecations-and-new-function-names-development-version">Deprecations and new function names<a class="anchor" aria-label="anchor" href="#deprecations-and-new-function-names-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> has been renamed to <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code> (old name still works).</li>
 <li>
-<code>?leaflet.providersESP.df</code> has been removed. It was superseded in <strong>mapSpain</strong> v0.8.0.</li>
+<code><a href="../reference/esp_get_spain.html">esp_get_country()</a></code> has been renamed to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code> (old name still works).</li>
+<li>In <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>:
+<ul><li>Arguments <code>resolution</code> and <code>spatialtype</code> are deprecated.</li>
+<li>Wetlands support has been moved to the new <code><a href="../reference/esp_get_landwater.html">esp_get_wetlands()</a></code> function.</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>Added <code><a href="../reference/esp_get_railway.html">esp_get_stations()</a></code>, replacing <code>esp_get_railway(..., spatialtype = "point")</code>.</li>
+<li>Added <code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> to download all SIANE datasets to a specified <code>cache_dir</code> in a single step.</li>
+<li>Added <code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> to retrieve all countries available in SIANE at a given date.</li>
+<li>Added <code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code>, analogous to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code>, using SIANE data.</li>
+<li>Added dataset <code><a href="../reference/esp_nuts_2024.html">?esp_nuts_2024</a></code>, replacing <code>?esp_nuts.sf</code>.</li>
 <li>
-<code>?esp_munic.sf</code> has been removed.</li>
-<li>
-<code><a href="../reference/pobmun25.html">?pobmun25</a></code> replaces <code>?pobmun19</code>, that have been removed.</li>
+<code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code> gains a new <code>moveCAN</code> argument.</li>
 </ul></div>
 </div>
     <div class="section level2">

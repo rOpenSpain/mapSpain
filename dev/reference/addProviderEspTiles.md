@@ -57,12 +57,12 @@ modified map object
 
 [`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html),
 [`leaflet::addTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
-[`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html).
+[`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
+[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
 Other functions for creating maps with images:
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
-[`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md),
-[`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
+[`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
 ## Examples
 

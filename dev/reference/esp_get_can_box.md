@@ -1,22 +1,14 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) lines and polygons for insetting the Canary Islands
+# Canary Islands inset box and outline
 
-When plotting Spain, it is usual to represent the Canary Islands as an
-inset (see `moveCAN` on
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)).
-These functions provides complementary lines and polygons to be used
-when the Canary Islands are displayed as an inset.
-
-- `esp_get_can_box()` is used to draw lines around the displaced Canary
-  Islands.
-
-&nbsp;
-
-- `esp_get_can_provinces()` is used to draw a separator line between the
-  two provinces of the Canary Islands.
-
-See also
+Create an `sf` `POLYGON` or `LINESTRING` that can be used to mark or
+frame the Canary Islands when they are displayed as an inset on maps of
+Spain. This object is useful together with
 [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
-to displace stand-alone objects on the Canary Islands.
+and the `moveCAN` arguments available in other `mapSpain` getters.
+
+`esp_get_can_provinces()` returns a small `LINESTRING` used to mark the
+separator between the two provinces of the Canary Islands. This helper
+is intended for cartographic use when composing inset maps of Spain.
 
 ## Usage
 
@@ -32,15 +24,15 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 
 ## Source
 
-`esp_get_can_provinces` extracted from CartoBase ANE,
-`se89_mult_admin_provcan_l.shp` file.
+Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
+(`se89_mult_admin_provcan_l.shp`).
 
 ## Arguments
 
 - style:
 
-  Style of line around Canary Islands. Four options available: `"left"`,
-  `"right"`, `"box"` or `"poly"`.
+  character string. One of `"right"`, `"left"`, `"box"` or `"poly"`.
+  Default is `"right"`, see **Details**.
 
 - moveCAN:
 
@@ -65,108 +57,71 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` or
-`LINESTRING` depending of `style` argument.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object: a
+`POLYGON` (when `style = "poly"`) or a `LINESTRING` (other styles).
 
-`esp_get_can_provinces` returns a `LINESTRING` object.
+## Details
+
+The `style` parameter controls the geometry returned:
+
+- `"box"`: a rectangular boundary returned as a `LINESTRING`.
+
+- `"poly"`: a slightly expanded rectangle returned as a filled
+  `POLYGON`.
+
+- `"left"` / `"right"`: decorative `LINESTRING` variants that follow the
+  western or eastern side of the islands respectively.
 
 ## See also
 
-Other political:
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
-[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-[`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-
-Other Canary Islands:
+Other helpers for the Canary Islands:
 [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
 
 ## Examples
 
 ``` r
-Provs <- esp_get_prov()
-Box <- esp_get_can_box()
-Line <- esp_get_can_provinces()
+provs <- esp_get_prov()
+box <- esp_get_can_box()
+line <- esp_get_can_provinces()
 
-# Plot
 library(ggplot2)
-
-ggplot(Provs) +
+ggplot(provs) +
   geom_sf() +
-  geom_sf(data = Box) +
-  geom_sf(data = Line) +
+  geom_sf(data = box, linewidth = 0.15) +
+  geom_sf(data = line, linewidth = 0.15) +
   theme_linedraw()
+
 
 # \donttest{
-# Displacing Canary
-
-# By same factor
-
+# Displacing the Canary Islands by a custom offset
 displace <- c(15, 0)
-
-Provs_D <- esp_get_prov(moveCAN = displace)
-
-Box_D <- esp_get_can_box(style = "left", moveCAN = displace)
-
-Line_D <- esp_get_can_provinces(moveCAN = displace)
-
-ggplot(Provs_D) +
+provs_disp <- esp_get_prov(moveCAN = displace)
+box_disp <- esp_get_can_box(style = "left", moveCAN = displace)
+line_disp <- esp_get_can_provinces(moveCAN = displace)
+ggplot(provs_disp) +
   geom_sf() +
-  geom_sf(data = Box_D) +
-  geom_sf(data = Line_D) +
+  geom_sf(data = box_disp, linewidth = 0.15) +
+  geom_sf(data = line_disp, linewidth = 0.15) +
   theme_linedraw()
 
 
-
-# Example with poly option
-
-# Get countries with giscoR
-
+# Example using the polygon style together with other layers
 library(giscoR)
-
-# Low resolution map
 res <- "20"
-
-Countries <-
-  gisco_get_countries(
-    res = res,
-    epsg = "4326",
-    country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
-  )
-CANbox <-
-  esp_get_can_box(
-    style = "poly",
-    epsg = "4326",
-    moveCAN = c(12.5, 0)
-  )
-
-CCAA <- esp_get_ccaa(
-  res = res,
-  epsg = "4326",
-  moveCAN = c(12.5, 0) # Same displacement factor)
+countries <- gisco_get_countries(
+  res = res, epsg = "4326",
+  country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
 )
-
-# Plot
-
-ggplot(Countries) +
+can_box <- esp_get_can_box(
+  style = "poly", epsg = "4326",
+  moveCAN = c(12.5, 0)
+)
+ccaa <- esp_get_ccaa(res = res, epsg = "4326", moveCAN = c(12.5, 0))
+ggplot(countries) +
   geom_sf(fill = "#DFDFDF") +
-  geom_sf(data = CANbox, fill = "#C7E7FB", linewidth = 1) +
-  geom_sf(data = CCAA, fill = "#FDFBEA") +
-  coord_sf(
-    xlim = c(-10, 4.3),
-    ylim = c(34.6, 44)
-  ) +
+  geom_sf(data = can_box, fill = "#C7E7FB", linewidth = 1) +
+  geom_sf(data = ccaa, fill = "#FDFBEA") +
+  coord_sf(xlim = c(-10, 4.3), ylim = c(34.6, 44)) +
   theme(
     panel.background = element_rect(fill = "#C7E7FB"),
     panel.grid = element_blank()

@@ -29,9 +29,9 @@ and extract the relevant ones."><meta property="og:image" content="https://ropen
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -88,7 +88,7 @@ be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical. Should the cached file be refreshed?. Default
+<dd><p>logical. Should the cached file be refreshed? Default
 is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
@@ -103,8 +103,7 @@ See <strong>Examples</strong>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Other political:
-<code><a href="esp_get_can_box.html">esp_get_can_box()</a></code>,
+    <div class="dont-index"><p>Other datasets representing political borders:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>,
 <code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
@@ -119,17 +118,12 @@ See <strong>Examples</strong>.</p>
 <code><a href="esp_get_simpl.html">esp_get_simpl</a></code>,
 <code><a href="esp_get_spain.html">esp_get_spain()</a></code>,
 <code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code></p>
-<p>Other siane:
+<p>Political borders from CartoBase ANE:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
 <code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>,
-<code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>,
-<code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>,
-<code><a href="esp_get_landwater.html">esp_get_landwater</a></code>,
 <code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,
 <code><a href="esp_get_prov_siane.html">esp_get_prov_siane()</a></code>,
-<code><a href="esp_get_railway.html">esp_get_railway()</a></code>,
-<code><a href="esp_get_roads.html">esp_get_roads()</a></code>,
 <code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code></p></div>
     </div>
 
@@ -161,10 +155,10 @@ See <strong>Examples</strong>.</p>
 <span class="r-in"><span><span class="co"># Now we can connect the function with the downloaded data like:</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">connect</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>cache_dir <span class="op">=</span> <span class="va">tmp</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache dir is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane/se89_3_admin_muni_a_x.gpkg</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache dir is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane/se89_3_admin_muni_a_y.gpkg</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache dir is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane/se89_3_admin_muni_a_x.gpkg</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache dir is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane/se89_3_admin_muni_a_y.gpkg</span>.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Message shows that file is already cached ;)</span></span></span>
 <span class="r-in"><span></span></span>

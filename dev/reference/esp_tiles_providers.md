@@ -1,25 +1,26 @@
-# Database of public WMS and WMTS of Spain
+# Public WMS and WMTS providers for Spain
 
 A named [`list`](https://rdrr.io/r/base/list.html) of length 102
-containing the argument of the url information of different public WMS
-and WMTS providers of Spain.
+containing URL information for different public WMS and WMTS tile
+providers of Spain.
 
-Implementation of javascript plugin
+Implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
 ## Format
 
-A named `list` of the providers available with the following structure:
+A named [`list`](https://rdrr.io/r/base/list.html) of available
+providers with the following structure:
 
-- Each item of the list is named with the provider alias.
+- Each list item is named with the provider alias.
 
-- Each element of the list contains two nested named lists:
+- Each element contains two nested named lists:
 
-  - `static` with the arguments to get static tiles plus an additional
-    item named `attribution`.
+  - `static` with the parameters required to obtain static tiles, plus
+    an additional item named `attribution`.
 
-  - `leaflet` with additional arguments to be passed onto
+  - `leaflet` with additional parameters to pass to
     [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
 ## Source
@@ -243,11 +244,6 @@ Other datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
-
-Other functions for creating maps with images:
-[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
-[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
-[`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
 ## Examples
 

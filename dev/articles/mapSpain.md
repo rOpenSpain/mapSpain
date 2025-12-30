@@ -10,25 +10,25 @@ designed to provide geographical information of Spain at different
 levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces,
-autonomous communities and NUTS levels of Spain. It also provides hexbin
-shapefiles and other complementary shapes, as the usual lines around the
-Canary Islands.
+autonomous communities, and NUTS levels of Spain. It also provides
+hexbin shapefiles and other complementary shapes, such as the
+demarcation lines around the Canary Islands.
 
-**mapSpain** provides access to map tiles of public organisms of Spain,
-that can be represented on static maps via
+**mapSpain** provides access to map tiles from Spain’s public
+institutions, which can be represented on static maps via
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-or on a **R** **leaflet** map using
+or on an **R** **Leaflet** map using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
-On top of that, **mapSpain** also has a powerful dictionary that
-translate provinces and other regions to English, Spanish, Catalan,
-Basque language or Galician, and also converts those names to different
-coding standards, as NUTS, ISO2 or the coding system used by the INE,
-that is the official statistic agency of Spain.
+Additionally, **mapSpain** includes a powerful dictionary that
+translates province and region names to English, Spanish, Catalan,
+Basque, and Galician, and converts them to various coding standards such
+as NUTS, ISO2, and the INE (the official Spanish statistical agency)
+coding system.
 
 ## Caching
 
-**mapSpain** provides a dataset and tile caching capability, that could
+**mapSpain** provides dataset and tile caching capabilities, which can
 be set as:
 
 ``` r
@@ -36,9 +36,9 @@ esp_set_cache_dir("./path/to/location")
 ```
 
 **mapSpain** relies on [**giscoR**](https://ropengov.github.io/giscoR/)
-for downloading some files, and both packages are well synchronized.
-Setting the same caching directory on both would speed up the data load
-on your session.
+for downloading certain files, and both packages are well synchronized.
+Setting the same caching directory for both packages will speed up data
+loading in your session.
 
 ## Basic example
 
@@ -177,11 +177,11 @@ Percentage of women by Autonomous Community (2025)
 
 ## Thematic maps
 
-This is an example on how **mapSpain** can be used to beautiful thematic
-maps. For plotting purposes we would use the
-[**ggplot**](https://ggplot2.tidyverse.org/) package, however any
-package that handles `sf` objects (e.g. **tmap**, **mapsf**,
-**leaflet**, etc. could be used).
+This example demonstrates how **mapSpain** can be used to create
+beautiful thematic maps. For plotting, we use the
+[**ggplot2**](https://ggplot2.tidyverse.org/) package, though any
+package that handles `sf` objects (e.g., **tmap**, **mapsf**,
+**leaflet**, etc.) could also be used.
 
 ``` r
 # Population density of Spain
@@ -233,10 +233,9 @@ Population density in Spain (2025)
 
 ## mapSpain and giscoR
 
-If you need to plot Spain along with another countries, consider using
-[**giscoR**](https://ropengov.github.io/giscoR/) package, that is
-installed as a dependency when you installed **mapSpain**. A basic
-example:
+If you need to plot Spain alongside other countries, consider using the
+[**giscoR**](https://ropengov.github.io/giscoR/) package, which is
+installed as a dependency with **mapSpain**. Here’s a basic example:
 
 ``` r
 library(giscoR)
@@ -284,19 +283,19 @@ mapSpain and giscoR example
 
 ## Working with tiles
 
-**mapSpain** provides a powerful interface for working with imagery.
-**mapSpain** can download static files as `.png` or`jpeg` files
-(depending on the Web Map Service) and use them along your shapefiles.
+**mapSpain** provides a powerful interface for working with imagery. It
+can download static files as `.png` or `.jpeg` files (depending on the
+Web Map Service) and use them alongside your shapefiles.
 
-**mapSpain** also includes a plugin for **R**
-[leaflet](https://rstudio.github.io/leaflet/) package, that allows you
+**mapSpain** also includes a plugin for the **R**
+[Leaflet](https://rstudio.github.io/leaflet/) package, which allows you
 to include several basemaps on your interactive maps.
 
-The services are implemented via the leaflet plugin
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
-You can check a display of each provider on the previous link.
+The services are implemented via the
+[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+Leaflet plugin. You can view each provider option at that link.
 
-**Note that** When working with imagery, it is important to set
-`moveCAN = FALSE` on the `esp_get_*` functions. See **Displacing the
-Canary Islands** on
-[`help("esp_get_ccaa", package = "mapSpain")`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md).
+**Note:** When working with imagery, it is important to set
+`moveCAN = FALSE` in the `esp_get_*` functions. See **Displacing the
+Canary Islands** in
+[`help("esp_move_can", package = "mapSpain")`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).

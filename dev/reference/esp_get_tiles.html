@@ -35,9 +35,9 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -97,7 +97,7 @@ various open map servers.</p>
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>This argument could be either:</p><ul><li><p>The name of one of the  pre-defined providers (see
-<code><a href="esp_tiles_providers.html">esp_tiles_providers()</a></code>).</p></li>
+<a href="esp_tiles_providers.html">esp_tiles_providers</a>).</p></li>
 <li><p>A list with two named elements <code>id</code> and <code>q</code> with your own arguments. See
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code> and examples.</p></li>
 </ul></dd>
@@ -141,7 +141,7 @@ Resolution (in pixels) of the final tile.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical. Should the cached file be refreshed?. Default
+<dd><p>logical. Should the cached file be refreshed? Default
 is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
@@ -175,11 +175,10 @@ try projecting first <code>x</code>:</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p>
+    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>, <a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p>
 <p>Other functions for creating maps with images:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
-<code><a href="esp_make_provider.html">esp_make_provider()</a></code>,
-<code><a href="esp_tiles_providers.html">esp_tiles_providers</a></code></p></div>
+<code><a href="esp_make_provider.html">esp_make_provider()</a></code></p></div>
     </div>
 
     <div class="section level2">

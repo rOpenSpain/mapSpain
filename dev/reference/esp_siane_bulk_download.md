@@ -50,8 +50,8 @@ Data distributed via a custom CDN, see
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - verbose:
 
@@ -64,8 +64,7 @@ extracted. See **Examples**.
 
 ## See also
 
-Other political:
-[`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md),
+Other datasets representing political borders:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -81,17 +80,12 @@ Other political:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
 
-Other siane:
+Political borders from CartoBase ANE:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md),
-[`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
-[`esp_get_landwater`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
 [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md),
-[`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
 
 ## Examples
@@ -123,10 +117,10 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane.
-#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane.
-#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # Message shows that file is already cached ;)
 

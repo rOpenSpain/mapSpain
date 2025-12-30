@@ -58,9 +58,9 @@
 <li><a class="dropdown-item" href="articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul>
 </li>
@@ -85,8 +85,8 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> is a package that provides spatial <strong>sf</strong> objects of the administrative boundaries of Spain, including CCAA, provinces and municipalities.</p>
-<p><strong>mapSpain</strong> also provides a leaflet plugin to be used with the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong> package</a>, that loads several base maps of public institutions of Spain, and the ability of downloading and processing static tiles.</p>
+<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> is a package that provides spatial <strong>sf</strong> objects of Spain’s administrative boundaries, including Autonomous Communities, provinces, and municipalities.</p>
+<p><strong>mapSpain</strong> also provides a Leaflet plugin to be used with the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong> package</a>, which loads several base maps from Spain’s public institutions and enables downloading and processing of static tiles.</p>
 <p>Full site with examples and vignettes on <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -112,7 +112,7 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>This script highlights some features of <strong>mapSpain</strong> :</p>
+<p>This script highlights some features of <strong>mapSpain</strong> : key features of <strong>mapSpain</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -220,7 +220,7 @@
 <div class="section level2">
 <h2 id="mapspain-and-giscor">mapSpain and giscoR<a class="anchor" aria-label="anchor" href="#mapspain-and-giscor"></a>
 </h2>
-<p>If you need to plot Spain along with another countries, consider using <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> package, that is installed as a dependency when you installed <strong>mapSpain</strong>. A basic example:</p>
+<p>If you need to plot Spain alongside other countries, consider using the <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> package, which is installed as a dependency with <strong>mapSpain</strong>. Here’s a basic example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
 <span></span>
@@ -258,7 +258,7 @@
 <p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>mapSpain</strong> to create your own local repository at a given local directory passing the following option:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/esp_set_cache_dir.html">esp_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>When this option is set, <strong>mapSpain</strong> would look for the cached file and it will load it, speeding up the process.</p>
+<p>When this option is set, <strong>mapSpain</strong> will look for the cached file and load it, which speeds up the process.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -290,7 +290,7 @@ Hernangómez D (2025). <em>mapSpain: Administrative Boundaries of Spain</em>. <a
 <p>Atlas Nacional de España (ANE) <a href="https://creativecommons.org/licenses/by/4.0/deed.en" class="external-link">CC BY 4.0</a> <a href="https://www.ign.es/" class="external-link">ign.es</a></p>
 </blockquote>
 <p>See <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a></p>
-<p>This package uses data from <strong>GISCO</strong>. GISCO <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">(FAQ)</a> is a geospatial open data repository including several data sets at several resolution levels.</p>
+<p>This package also uses data from <strong>GISCO</strong>. GISCO <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">(FAQ)</a> is a geospatial open data repository containing multiple datasets at various resolution levels.</p>
 <p><em>From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units / Statistical Units</em></p>
 <blockquote>
 <p>When data downloaded from this page is used in any printed or electronic publication, in addition to any other provisions applicable to the whole Eurostat website, data source will have to be acknowledged in the legend of the map and in the introductory page of the publication with the following copyright notice:</p>

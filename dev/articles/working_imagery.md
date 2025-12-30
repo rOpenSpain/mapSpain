@@ -1,25 +1,25 @@
 # Working with imagery
 
-**mapSpain** provides a powerful interface for working with imagery.
-**mapSpain** can download static files as `.png` or `.jpeg` files
-(depending on the Web Map Service) and use them along your shapefiles.
+**mapSpain** provides a powerful interface for working with imagery. It
+can download static files as `.png` or `.jpeg` (depending on the Web Map
+Service) and use them alongside your shapefiles.
 
-**mapSpain** also includes a plugin for **R**
-[leaflet](https://rstudio.github.io/leaflet/) package, that allows you
-to include several basemaps on your interactive maps.
+**mapSpain** also provides a plugin for the **R**
+[Leaflet](https://rstudio.github.io/leaflet/) package, which allows
+adding multiple basemaps to interactive maps.
 
-The services are implemented via the leaflet plugin
-[leaflet-providersESP](https://ropenspain.github.io/mapSpain/dev/articles/dieghernan.github.io/leaflet-providersESP/).
-You can check a display of each provider on the previous link.
+The services are implemented via the Leaflet plugin
+[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
+You can view each provider option at that link.
 
 ## Static tiles
 
-An example of how you can include several tiles to create a static map.
-We focus here on layer provided by La Rioja’s [Infraestructura de Datos
+An example showing how to include multiple tiles to create a static map.
+We focus on layers provided by La Rioja’s [Infraestructura de Datos
 Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
-**When working with imagery, it is important to set `moveCAN = FALSE`,
-otherwise the images for the Canary Islands won’t be accurate.**
+**When working with imagery, set `moveCAN = FALSE`; otherwise images for
+the Canary Islands may be inaccurate.**
 
 ``` r
 library(mapSpain)
@@ -46,8 +46,8 @@ basemap](working_imagery_files/figure-html/static1-1.png)
 
 ### Alpha value on tiles
 
-Some tiles could be loaded with or without an alpha value, that controls
-the transparency of the object:
+Some tiles can be loaded with or without an alpha (transparency) value,
+which controls layer transparency:
 
 ``` r
 madrid <- esp_get_ccaa("Madrid", epsg = 3857)
@@ -71,7 +71,7 @@ ggplot() +
 ![Map of the roads of Autonomous Communities surrouding
 Madrid](working_imagery_files/figure-html/static2-1.png)
 
-Now let’s check the same code using the `tranparent = TRUE` option:
+Now let’s check the same code using the `transparent = TRUE` option:
 
 ``` r
 # Example with transparency
@@ -90,12 +90,12 @@ ggplot() +
 ![Example on how to use alpha value for combining different types of
 basemaps.](working_imagery_files/figure-html/static_transp-1.png)
 
-Now the two tiles overlaps with the desired alpha value.
+Now the two tiles overlap with the desired transparency.
 
 ### Masking tiles
 
-Another nice feature is the ability of masking the tiles, so more
-advanced maps can be plotted:
+Another useful feature is the ability to mask tiles, allowing more
+advanced maps to be plotted:
 
 ``` r
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
@@ -114,8 +114,8 @@ shapefile.](working_imagery_files/figure-html/static3-1.png)
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin to be used with the **leaflet** package.
-Here you can find some quick examples:
+**mapSpain** provides a plugin for the **Leaflet** package. Below are
+some quick examples:
 
 ### Earthquakes in Tenerife (last year)
 
@@ -230,12 +230,11 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
   )
 ```
 
-## Providers available
+## Available providers
 
-The list `esp_tiles_providers` includes the data of the available
-providers you can use on functions described above. This list includes
-all the arguments needed to replicate the API request. See the static
-url of each provider:
+The `esp_tiles_providers` list contains metadata for the tile providers
+available to the functions above. It includes all arguments required to
+reproduce the API request. Below is the static URL for each provider:
 
 ## Session info
 
@@ -251,7 +250,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-29
+    #>  date     2025-12-30
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -290,12 +289,12 @@ Details
     #>  leaflet      * 2.2.3        2025-09-04 [1] RSPM
     #>  lifecycle      1.0.4        2023-11-07 [1] RSPM
     #>  magrittr       2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.99.99.9000 2025-12-29 [1] local
+    #>  mapSpain     * 0.99.99.9000 2025-12-30 [1] local
     #>  otel           0.2.0        2025-08-29 [1] RSPM
     #>  pillar         1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3        2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0        2025-11-06 [1] any (@2.2.0)
-    #>  proxy          0.4-28       2025-12-11 [1] RSPM
+    #>  proxy          0.4-29       2025-12-29 [1] RSPM
     #>  purrr          1.2.0        2025-11-04 [1] RSPM
     #>  R.cache        0.17.0       2025-05-02 [1] RSPM
     #>  R.methodsS3    1.8.2        2022-06-13 [1] RSPM

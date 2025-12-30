@@ -1,13 +1,15 @@
 # NUTS 2024 for Spain [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-This dataset represents the spanish regions for levels 0, 1, 2 and 3 of
-the Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+according to the Nomenclature of Territorial Units for Statistics (NUTS)
+classification for 2024.
 
 ## Format
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-`MULTIPOLYGON` geometries, resolution: 1:1 million and
-[EPSG:4258](https://epsg.io/4258). with 86 rows and 10 variables:
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+`MULTIPOLYGON` geometries at 1:1 million resolution in
+[EPSG:4258](https://epsg.io/4258) projection, containing 86 rows and 10
+variables:
 
 - `NUTS_ID`:
 
@@ -59,17 +61,17 @@ file.
 
 `MOUNT_TYPE`: Mountain typology:
 
-- `1`: More than 50 % of the surface is covered by topographic mountain
+- `1`: More than 50% of the surface is covered by topographic mountain
   areas.
 
-- `2`: More than 50 % of the regional population lives in topographic
+- `2`: More than 50% of the regional population lives in topographic
   mountain areas.
 
-- `3`: More than 50 % of the surface is covered by topographic mountain
-  areas and where more than 50 % of the regional population lives in
-  these mountain areas.
+- `3`: More than 50% of the surface is covered by topographic mountain
+  areas and more than 50% of the regional population lives in these
+  mountain areas.
 
-- `4`: Non-mountain region / other regions.
+- `4`: Non-mountain region or other regions.
 
 - `0`: No classification provided.
 
@@ -85,10 +87,10 @@ file.
 
 `COAST_TYPE`: Coastal typology:
 
-- `1`: Coastal (on coast).
+- `1`: Coastal region (on the coast).
 
-- `2`: Coastal (less than 50% of population living within 50 km. of the
-  coastline).
+- `2`: Coastal region (less than 50% of the population living within 50
+  km of the coastline).
 
 - `3`: Non-coastal region.
 

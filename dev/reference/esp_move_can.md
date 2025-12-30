@@ -51,7 +51,7 @@ coordinates, instead of the modified ones.
 
 ## See also
 
-Other Canary Islands:
+Other helpers for the Canary Islands:
 [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_can_box.md)
 
 ## Examples

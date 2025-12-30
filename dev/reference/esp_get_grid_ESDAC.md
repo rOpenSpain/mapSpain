@@ -1,4 +1,4 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` of the national geographic grids from ESDAC
+# National geographic grids from the European Soil Data Centre (ESDAC)
 
 Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 `POLYGON` with the geographic grids of Spain as provided by the European
@@ -24,12 +24,13 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - resolution:
 
-  Resolution of the grid in kms. Could be `1` or `10`.
+  numeric. Resolution of the grid in kilometres. It could be `1` or
+  `10`.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -57,7 +58,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
 
 ## See also
 
-Other grids:
+Other geographical grids:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 

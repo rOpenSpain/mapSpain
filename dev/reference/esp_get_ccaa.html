@@ -31,9 +31,9 @@ specified scale."><meta property="og:image" content="https://ropenspain.github.i
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Other materials</h6></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (xaringan)</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (.Rmd)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
+    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -73,8 +73,9 @@ specified scale.</p>
 
 
 <dl><dt id="arg-ccaa">ccaa<a class="anchor" aria-label="anchor" href="#arg-ccaa"></a></dt>
-<dd><p>A vector of names and/or codes for autonomous communities
-or <code>NULL</code> to get all the autonomous communities. See <strong>Details</strong>.</p></dd>
+<dd><p>character string. A vector of names and/or codes for Autonomous
+Communities or <code>NULL</code> to get all the autonomous communities. See
+<strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-movecan">moveCAN<a class="anchor" aria-label="anchor" href="#arg-movecan"></a></dt>
@@ -102,7 +103,7 @@ Initial position can be adjusted using the vector of coordinates. See
 <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
     <dt><code>update_cache</code></dt>
-<dd><p>logical. Should the cached file be refreshed?. Default
+<dd><p>logical. Should the cached file be refreshed? Default
 is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
     <dt><code>cache_dir</code></dt>
@@ -155,8 +156,7 @@ would be added.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Other political:
-<code><a href="esp_get_can_box.html">esp_get_can_box()</a></code>,
+    <div class="dont-index"><p>Other datasets representing political borders:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
 <code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>,
@@ -171,7 +171,7 @@ would be added.</p>
 <code><a href="esp_get_spain.html">esp_get_spain()</a></code>,
 <code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code>,
 <code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code></p>
-<p>Other gisco:
+<p>Datasets provided by GISCO:
 <code><a href="esp_get_munic.html">esp_get_munic()</a></code>,
 <code><a href="esp_get_nuts.html">esp_get_nuts()</a></code>,
 <code><a href="esp_get_prov.html">esp_get_prov()</a></code>,

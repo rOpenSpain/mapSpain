@@ -1,14 +1,14 @@
 # Clear your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache dir
 
-**Use this function with caution**. This function would clear your
-cached data and configuration, specifically:
+**Use this function with caution.** It clears your cached data and
+configuration, specifically:
 
 - Deletes the [mapSpain](https://CRAN.R-project.org/package=mapSpain)
-  config directory (`tools::R_user_dir("mapSpain", "config")`).
+  configuration directory (`tools::R_user_dir("mapSpain", "config")`).
 
-- Deletes the `cache_dir` directory.
+- Deletes the `cache_dir` directory and its contents.
 
-- Deletes the values on stored on `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
+- Clears the value stored in `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
 
 ## Usage
 
@@ -20,13 +20,12 @@ esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - config:
 
-  if `TRUE`, will delete the configuration folder of
+  logical. If `TRUE`, deletes the configuration folder of
   [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - cached_data:
 
-  If this is set to `TRUE`, it will delete your `cache_dir` and all its
-  content.
+  logical. If `TRUE`, deletes your `cache_dir` and all its contents.
 
 - verbose:
 
@@ -38,8 +37,8 @@ Invisible. This function is called for its side effects.
 
 ## Details
 
-This is an overkill function that is intended to reset your status as it
-you would never have installed and/or used
+This is an aggressive function intended to reset your installation as if
+you had never installed or used
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 ## See also
@@ -55,7 +54,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/mapSpain
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +62,13 @@ esp_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 esp_clear_cache(verbose = TRUE)
-#> ✔ mapSpain data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/example/cache (0 bytes)
+#> ✔ mapSpain data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/example/cache (0 bytes)
 
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/mapSpain.
+#> ℹ mapSpain cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQNViPq/mapSpain
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEXsquo/mapSpain
 #> [1] TRUE
 # }
 ```

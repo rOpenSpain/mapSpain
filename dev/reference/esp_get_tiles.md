@@ -44,7 +44,7 @@ esp_get_tiles(
   This argument could be either:
 
   - The name of one of the pre-defined providers (see
-    [`esp_tiles_providers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)).
+    [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)).
 
   - A list with two named elements `id` and `q` with your own arguments.
     See
@@ -92,8 +92,8 @@ esp_get_tiles(
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -144,12 +144,12 @@ deformed, try projecting first `x`:
 
 ## See also
 
-[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
+[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
+[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
 Other functions for creating maps with images:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
-[`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md),
-[`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
+[`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
 ## Examples
 
