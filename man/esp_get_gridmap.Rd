@@ -93,8 +93,7 @@ ggplot(gridprov) +
 \seealso{
 \code{\link{esp_get_simpl}}.
 
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},

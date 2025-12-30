@@ -9,7 +9,7 @@
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @family images
-#' @seealso [terra::rast()].
+#' @seealso [terra::rast()], [esp_tiles_providers].
 #'
 #' @rdname esp_get_tiles
 #' @name esp_get_tiles
@@ -28,7 +28,7 @@
 #'
 #' @param type This argument could be either:
 #'   - The name of one of the  pre-defined providers (see
-#'     [esp_tiles_providers()]).
+#'     [esp_tiles_providers]).
 #'   - A list with two named elements `id` and `q` with your own arguments. See
 #'     [esp_make_provider()] and examples.
 #' @param zoom character string or number. Only valid for WMTS providers, zoom

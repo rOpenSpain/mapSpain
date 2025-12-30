@@ -27,10 +27,8 @@
 #' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
 #' get the actual coordinates, instead of the modified ones.
 #'
-#' @family helper
-#' @family Canary Islands
 #'
-#'
+#' @family can_helpers
 #' @export
 #'
 #' @examples

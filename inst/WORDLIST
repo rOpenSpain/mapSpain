@@ -73,6 +73,7 @@ esdac
 eu
 europa
 geospatial
+getters
 gisco
 gpkg
 groundwaters
@@ -81,6 +82,8 @@ hypsometry
 ign
 javascript
 jrc
+kilometre
+kilometres
 kms
 melilla
 merindades
@@ -90,5 +93,5 @@ pre
 providersESP
 siane
 socio
-spanish
+tibble
 visualise

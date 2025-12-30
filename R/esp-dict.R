@@ -1,31 +1,35 @@
-#' Convert and translate subdivision names
+#' Convert and translate Spanish subdivision names and codes
 #'
 #' @description
-#' Converts long subdivision names into different coding schemes and languages.
+#' Convert Spanish subdivision names or identifiers between different coding
+#' schemes (NUTS, ISO2, province codes, etc.) or obtain human-readable
+#' names.
 #'
+#' @encoding UTF-8
 #' @family dictionary
-#'
 #' @rdname esp_dict
-#'
 #' @name esp_dict_region_code
-#'
-#' @return [esp_dict_region_code()] returns a vector of characters.
-#'
 #' @export
 #'
+#' @return
 #'
-#' @param sourcevar Vector which contains the subdivision names to be converted.
+#' `esp_dict_region_code()` returns a character vector with converted
+#' subdivision identifiers or names. If a value cannot be matched the
+#' corresponding element will be `NA` and a warning is emitted via
+#' [cli::cli_alert_warning()].
 #'
-#' @param origin,destination One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"`
-#'   and `"cpro"`.
+#'
+#' @param sourcevar character string. Vector which contains the codes or names
+#'   to be converted.
+#' @param origin,destination character string. Coding scheme of origin and
+#'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"`, or `"cpro"`.
 #'
 #' @details
-#' If no match is found for any value, the function displays a [
-#' cli::cli_alert_warning()] and returns `NA` for those values.
-#'
-#' Note that mixing names of different administrative levels (e.g. "Catalonia"
-#' and "Barcelona") may return empty values, depending on the `destination`
-#' values.
+#' The function uses internal dictionaries together with \CRANpkg{countrycode}
+#' to map between schemes. When `origin == destination == "text"` the input is
+#' returned unchanged. Mixing names from different administrative levels
+#' (for example autonomous community and province) may produce
+#' `NA` values for some entries.
 #'
 #' @examples
 #' vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
@@ -211,31 +215,34 @@ esp_dict_region_code <- function(
   out
 }
 
-#' @family dictionary
+
 #'
 #' @rdname esp_dict
-#'
 #' @name esp_dict_translate
 #'
 #' @return
-#' [esp_dict_translate()] returns a `character` vector or a named `list` with
-#' each of the possible names of each `sourcevar` on the required language
-#' `lang`.
+#'
+#' `esp_dict_translate()` translates a vector of names from one language to
+#'  another :
+#'   - If `all = FALSE`, a character vector with the translated name for each
+#'     element of `sourcevar`.
+#'   - If `all = TRUE`, a named `list` is returned where each element contains
+#'     all available translations for the corresponding input value.
 #'
 #' @export
 #'
-#' @param lang Language of translation. Available languages are:
-#'   - `"es"`: Spanish
-#'   - `"en"`: English
-#'   - `"ca"`: Catalan
-#'   - `"ga"`: Galician
-#'   - `"eu"`: Basque
+#' @param lang character string. Target language code, available values:
+#'   - `"es"`: Spanish.
+#'   - `"en"`: English.
+#'   - `"ca"`: Catalan.
+#'   - `"ga"`: Galician.
+#'   - `"eu"`: Basque.
 #'
-#' @param all Logical. Should the function return all names or not?
-#'   On `FALSE` it returns a character vector. See **Value**.
+#' @param all logical. If `TRUE` the function returns all possible translations
+#'   for each input as a named list. When `FALSE` (default) a single preferred
+#'   translation per input is returned as a character vector.
 #'
 #' @examples
-#'
 #' vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 #'
 #' esp_dict_translate(vals)
@@ -257,7 +264,7 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   # - Second: ccaa (b_ccaa)
   # - Last: nuts (c_nuts)
   dict$variable <- gsub("prov", "a_prov", dict$variable) # Upgrade provs
-  dict$variable <- gsub("ccaa", "b_ccaa", dict$variable) # Upgrade nuts
+  dict$variable <- gsub("ccaa", "b_ccaa", dict$variable) # Upgrade ccaa
   dict$variable <- gsub("nuts", "c_nuts", dict$variable) # Upgrade nuts
 
   names_dict <- unique(

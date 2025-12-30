@@ -4,17 +4,17 @@
 \encoding{UTF-8}
 \name{esp_tiles_providers}
 \alias{esp_tiles_providers}
-\title{Database of public WMS and WMTS of Spain}
+\title{Public WMS and WMTS providers for Spain}
 \format{
-A named \code{list} of the providers available with the following structure:
+A named \code{\link[base:list]{list}} of available providers with the following
+structure:
 \itemize{
-\item Each item of the list is named with the provider alias.
-\item Each element of the list contains two nested named lists:
+\item Each list item is named with the provider alias.
+\item Each element contains two nested named lists:
 \itemize{
-\item \code{static} with the arguments to get static tiles plus an additional item
-named \code{attribution}.
-\item \code{leaflet} with additional arguments to be passed onto
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+\item \code{static} with the parameters required to obtain static tiles, plus an
+additional item named \code{attribution}.
+\item \code{leaflet} with additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 }
 }
@@ -24,10 +24,10 @@ named \code{attribution}.
 }
 \description{
 A named \code{\link[base:list]{list}} of length 102
-containing the argument of the url information of different public WMS and
-WMTS providers of Spain.
+containing URL information for different public WMS and WMTS tile providers
+of Spain.
 
-Implementation of javascript plugin
+Implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 }
@@ -153,11 +153,5 @@ Other datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts_2024}},
 \code{\link{pobmun25}}
-
-Other functions for creating maps with images:
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_get_tiles}()},
-\code{\link{esp_make_provider}()}
 }
 \concept{datasets}
-\concept{images}

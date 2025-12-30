@@ -17,8 +17,9 @@
 #' @rdname esp_get_ccaa
 #' @name esp_get_ccaa
 #'
-#' @param ccaa A vector of names and/or codes for autonomous communities
-#'   or `NULL` to get all the autonomous communities. See **Details**.
+#' @param ccaa character string. A vector of names and/or codes for Autonomous
+#'   Communities or `NULL` to get all the autonomous communities. See
+#'   **Details**.
 #'
 #'
 #' @details

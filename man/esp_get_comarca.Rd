@@ -20,20 +20,20 @@ esp_get_comarca(
 )
 }
 \arguments{
-\item{region}{character. A vector of names and/or codes for provinces or
-\code{NULL} to get all the comarcas. See \strong{Details}.}
+\item{region}{character string. A vector of names and/or codes for provinces
+or \code{NULL} to get all the comarcas. See \strong{Details}.}
 
-\item{comarca}{character. A name or \code{\link[base:grep]{regex}} expression with
-the names of the required comarcas. \code{NULL} would return all the possible
-comarcas.}
+\item{comarca}{character string. A name or \code{\link[base:grep]{regex}} expression
+with the names of the required comarcas. \code{NULL} would return all the
+possible comarcas.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{type}{character. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}. Type of
-comarca to return, see \strong{Details}.}
+\item{type}{character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}.
+Type of comarca to return, see \strong{Details}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
@@ -44,7 +44,7 @@ comarca to return, see \strong{Details}.}
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -80,7 +80,7 @@ from such use.
 \section{About comarcas}{
 'Comarcas' (English equivalent: district, county, area or zone) does not
 always have a formal legal status. They correspond mainly to natural areas
-(valleys, river basins etc.) or even to historical regions or ancient
+(valleys, river basins, etc.) or even to historical regions or ancient
 kingdoms.
 
 In the case of Spain, comarcas only have an administrative character legally
@@ -137,8 +137,7 @@ ggplot(comarcas_cat) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},

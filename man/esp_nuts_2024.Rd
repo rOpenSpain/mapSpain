@@ -6,8 +6,8 @@
 \alias{esp_nuts_2024}
 \title{NUTS 2024 for Spain \code{\link[sf:sf]{sf}} object}
 \format{
-A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
-1:1 million and \href{https://epsg.io/4258}{EPSG:4258}. with
+An \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries at 1:1 million
+resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
 86 rows and 10 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
@@ -27,20 +27,21 @@ A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution
 \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/}{NUTS_RG_01M_2024_4326.gpkg} file.
 }
 \description{
-This dataset represents the spanish regions for levels 0, 1, 2 and 3 of the
-Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+according to the Nomenclature of Territorial Units for Statistics (NUTS)
+classification for 2024.
 }
 \details{
 \code{MOUNT_TYPE}: Mountain typology:
 \itemize{
-\item \code{1}: More than 50 \% of the surface is covered by topographic mountain
+\item \code{1}: More than 50\% of the surface is covered by topographic mountain
 areas.
-\item \code{2}: More than 50 \% of the regional population lives in topographic
+\item \code{2}: More than 50\% of the regional population lives in topographic
 mountain areas.
-\item \code{3}: More than 50 \% of the surface is covered by topographic mountain
-areas and where more than 50 \% of the regional population lives in these
-mountain areas.
-\item \code{4}: Non-mountain region / other regions.
+\item \code{3}: More than 50\% of the surface is covered by topographic mountain
+areas and more than 50\% of the regional population lives in these mountain
+areas.
+\item \code{4}: Non-mountain region or other regions.
 \item \code{0}: No classification provided.
 }
 
@@ -54,9 +55,9 @@ mountain areas.
 
 \code{COAST_TYPE}: Coastal typology:
 \itemize{
-\item \code{1}: Coastal (on coast).
-\item \code{2}: Coastal (less than 50\% of population living within 50 km. of the
-coastline).
+\item \code{1}: Coastal region (on the coast).
+\item \code{2}: Coastal region (less than 50\% of the population living within 50 km
+of the coastline).
 \item \code{3}: Non-coastal region.
 \item \code{0}: No classification provided.
 }

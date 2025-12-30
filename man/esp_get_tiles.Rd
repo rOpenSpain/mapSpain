@@ -31,7 +31,7 @@ esp_get_tiles(
 \item{type}{This argument could be either:
 \itemize{
 \item The name of one of the  pre-defined providers (see
-\code{\link[=esp_tiles_providers]{esp_tiles_providers()}}).
+\link{esp_tiles_providers}).
 \item A list with two named elements \code{id} and \code{q} with your own arguments. See
 \code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
 }}
@@ -59,7 +59,7 @@ Resolution (in pixels) of the final tile.}
 \item{mask}{logical. \code{TRUE} if the result should be masked to \code{x}, See
 \code{\link[terra:mask]{terra::mask()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -176,11 +176,10 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[terra:rast]{terra::rast()}}.
+\code{\link[terra:rast]{terra::rast()}}, \link{esp_tiles_providers}.
 
 Other functions for creating maps with images:
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_make_provider}()},
-\code{\link{esp_tiles_providers}}
+\code{\link{esp_make_provider}()}
 }
 \concept{images}

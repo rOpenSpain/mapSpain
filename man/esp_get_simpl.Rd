@@ -28,7 +28,7 @@ esp_get_simpl_ccaa(
 \item{prov, ccaa}{character. A vector of names and/or codes for provinces
 and autonomous communities or\verb{ }NULL to get all the data. See \strong{Details}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -85,8 +85,7 @@ ggplot(ccaa_simp) +
 \seealso{
 \code{\link{esp_get_gridmap}}.
 
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},

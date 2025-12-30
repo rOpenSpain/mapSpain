@@ -19,10 +19,13 @@ esp_get_grid_EEA(
 \arguments{
 \item{resolution}{Resolution of the grid in kms. Could be \code{1}, \code{10} or \code{100}.}
 
-\item{type}{The scope of the grid. It could be mainland Spain (\code{"main"}) or
-the Canary Islands (\code{"canary"}).}
+\item{type}{character. The geographic scope of the grid:
+\itemize{
+\item \code{"main"}: Mainland Spain (default)
+\item \code{"canary"}: Canary Islands
+}}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See

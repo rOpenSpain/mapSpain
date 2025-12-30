@@ -61,11 +61,11 @@ leafmap <- leaflet(width = "100\%", height = "60vh") |>
 leafmap
 }
 \seealso{
-\code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:map-layers]{leaflet::addTiles()}}, \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}}.
+\code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:map-layers]{leaflet::addTiles()}}, \code{\link[leaflet:map-layers]{leaflet::addWMSTiles()}},
+\link{esp_tiles_providers}.
 
 Other functions for creating maps with images:
 \code{\link{esp_get_tiles}()},
-\code{\link{esp_make_provider}()},
-\code{\link{esp_tiles_providers}}
+\code{\link{esp_make_provider}()}
 }
 \concept{images}

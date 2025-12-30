@@ -65,7 +65,6 @@ For a list of potential providers from Spain check
 
 Other functions for creating maps with images:
 \code{\link{addProviderEspTiles}()},
-\code{\link{esp_get_tiles}()},
-\code{\link{esp_tiles_providers}}
+\code{\link{esp_get_tiles}()}
 }
 \concept{images}

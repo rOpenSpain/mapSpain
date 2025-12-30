@@ -18,13 +18,13 @@
 <!-- badges: end -->
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial **sf** objects of the administrative boundaries of
-Spain, including CCAA, provinces and municipalities.
+provides spatial **sf** objects of Spain’s administrative boundaries,
+including Autonomous Communities, provinces, and municipalities.
 
-**mapSpain** also provides a leaflet plugin to be used with the
-[**leaflet** package](https://rstudio.github.io/leaflet/), that loads
-several base maps of public institutions of Spain, and the ability of
-downloading and processing static tiles.
+**mapSpain** also provides a Leaflet plugin to be used with the
+[**leaflet** package](https://rstudio.github.io/leaflet/), which loads
+several base maps from Spain’s public institutions and enables
+downloading and processing of static tiles.
 
 Full site with examples and vignettes on
 <https://ropenspain.github.io/mapSpain/>
@@ -62,7 +62,8 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 
 ## Usage
 
-This script highlights some features of **mapSpain** :
+This script highlights some features of **mapSpain** : key features of
+**mapSpain**
 
 ``` r
 library(mapSpain)
@@ -176,10 +177,9 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
 
 ## mapSpain and giscoR
 
-If you need to plot Spain along with another countries, consider using
-[**giscoR**](https://ropengov.github.io/giscoR/) package, that is
-installed as a dependency when you installed **mapSpain**. A basic
-example:
+If you need to plot Spain alongside other countries, consider using the
+[**giscoR**](https://ropengov.github.io/giscoR/) package, which is
+installed as a dependency with **mapSpain**. Here’s a basic example:
 
 ``` r
 library(giscoR)
@@ -224,8 +224,8 @@ directory passing the following option:
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** would look for the cached file and
-it will load it, speeding up the process.
+When this option is set, **mapSpain** will look for the cached file and
+load it, which speeds up the process.
 
 ## Citation
 
@@ -265,9 +265,9 @@ Geográfico Nacional:
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
-This package uses data from **GISCO**. GISCO
+This package also uses data from **GISCO**. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository including several data sets at several resolution
+data repository containing multiple datasets at various resolution
 levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /

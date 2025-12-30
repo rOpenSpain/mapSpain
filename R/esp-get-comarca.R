@@ -15,17 +15,16 @@
 #' @encoding UTF-8
 #' @family political
 #' @inheritParams esp_get_prov
-#' @inheritParams esp_get_prov
 #' @inherit esp_get_nuts
 #' @export
 #'
-#' @param region character. A vector of names and/or codes for provinces or
-#'   `NULL` to get all the comarcas. See **Details**.
-#' @param comarca character. A name or [`regex`][base::grep()] expression with
-#'   the names of the required comarcas. `NULL` would return all the possible
-#'   comarcas.
-#' @param type character. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
-#'   comarca to return, see **Details**.
+#' @param region character string. A vector of names and/or codes for provinces
+#'   or `NULL` to get all the comarcas. See **Details**.
+#' @param comarca character string. A name or [`regex`][base::grep()] expression
+#'   with the names of the required comarcas. `NULL` would return all the
+#'   possible comarcas.
+#' @param type character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
+#'   Type of comarca to return, see **Details**.
 #'
 #' @details
 #' When using `region` you can use and mix names and NUTS codes
@@ -39,7 +38,7 @@
 #'
 #' 'Comarcas' (English equivalent: district, county, area or zone) does not
 #' always have a formal legal status. They correspond mainly to natural areas
-#' (valleys, river basins etc.) or even to historical regions or ancient
+#' (valleys, river basins, etc.) or even to historical regions or ancient
 #' kingdoms.
 #'
 #' In the case of Spain, comarcas only have an administrative character legally
@@ -51,13 +50,11 @@
 #'
 #' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
-#'
 #' - `"INE"`: Comarcas as defined by the National Statistics Institute (INE).
 #' - `"IGN"`: Official comarcas, only available on some Autonomous Communities,
 #'   provided by the National Geographic Institute.
 #' - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
-#'
 #' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
 #'

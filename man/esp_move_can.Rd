@@ -75,8 +75,7 @@ ggplot(esp) +
 
 }
 \seealso{
-Other Canary Islands: 
+Other helpers for the Canary Islands:
 \code{\link{esp_get_can_box}()}
 }
-\concept{Canary Islands}
-\concept{helper}
+\concept{can_helpers}

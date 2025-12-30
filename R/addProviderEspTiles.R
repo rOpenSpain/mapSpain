@@ -11,7 +11,8 @@ leaf_providers_esp_v <- "v1.3.3"
 #' @export
 #'
 #' @seealso
-#' [leaflet::leaflet()], [leaflet::addTiles()], [leaflet::addWMSTiles()].
+#' [leaflet::leaflet()], [leaflet::addTiles()], [leaflet::addWMSTiles()],
+#' [esp_tiles_providers].
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,

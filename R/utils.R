@@ -79,7 +79,7 @@ match_arg_pretty <- function(arg, choices) {
       l_choices <- length(choices)
       msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
       msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add one of at the begining
+      # Add one of at the beginning
       msg <- paste0("one of ", msg)
     }
 

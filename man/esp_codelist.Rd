@@ -13,7 +13,7 @@ columns:
 \item{nuts1.code}{NUTS 1 code}
 \item{nuts1.name}{NUTS 1 name}
 \item{nuts1.name.alt}{NUTS 1 alternative name}
-\item{nuts1.shortname.es}{NUTS1 1 short (common) name (Spanish)}
+\item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish)}
 \item{codauto}{INE code of the autonomous community}
 \item{iso2.ccaa.code}{ISO2 code of the autonomous community}
 \item{nuts2.code}{NUTS 2 Code}
@@ -72,19 +72,20 @@ columns:
 }
 \description{
 A \link[tibble:tbl_df-class]{tibble} object used internally for translating codes and
-names of the different subdivisions of Spain. The tibble provides the
-hierarchy of the subdivisions including NUTS1 level, autonomous communities
-(equivalent to NUTS2), provinces and NUTS3 level. See \strong{Note}.
+names of the different subdivisions of Spain. This tibble provides a
+hierarchical representation of Spain's subdivisions, including NUTS1 level,
+autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
+See \strong{Note}.
 }
 \note{
-Although NUTS2 matches the first subdivision level of Spain
-(CCAA - Autonomous Communities), it should be noted that NUTS3 does not
-match the second subdivision level of Spain (Provinces). NUTS3 provides a
-dedicated code for major islands whereas the provinces doesn't.
+Although NUTS2 aligns with the first subdivision level of Spain
+(CCAA - Autonomous Communities), it is important to note that NUTS3 does not
+correspond to the second subdivision level of Spain (Provinces). NUTS3
+provides dedicated codes for major islands, whereas provinces do not.
 
-Ceuta and Melilla has an specific status (Autonomous Cities) but are
-considered as autonomous communities with a single province (as Madrid,
-Asturias or Murcia) on this database.
+Ceuta and Melilla have a special status as Autonomous Cities but are
+treated as autonomous communities with a single province (like Madrid,
+Asturias, or Murcia) in this database.
 }
 \examples{
 

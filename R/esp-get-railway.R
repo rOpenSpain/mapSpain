@@ -7,7 +7,6 @@
 #' @rdname esp_get_railway
 #' @encoding UTF-8
 #' @family infrastructure
-#' @family siane
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_ccaa_siane return source
 #' @export

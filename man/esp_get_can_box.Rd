@@ -3,10 +3,10 @@
 \name{esp_get_can_box}
 \alias{esp_get_can_box}
 \alias{esp_get_can_provinces}
-\title{Get \code{\link[sf:sf]{sf}} lines and polygons for insetting the Canary Islands}
+\title{Canary Islands inset box and outline}
 \source{
-\code{esp_get_can_provinces} extracted from CartoBase ANE,
-\code{se89_mult_admin_provcan_l.shp} file.
+Coordinates of \code{esp_get_can_provinces()} derived from CartoBase ANE
+(\code{se89_mult_admin_provcan_l.shp}).
 }
 \usage{
 esp_get_can_box(
@@ -18,8 +18,8 @@ esp_get_can_box(
 esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 }
 \arguments{
-\item{style}{Style of line around Canary Islands. Four options available:
-\code{"left"}, \code{"right"}, \code{"box"} or \code{"poly"}.}
+\item{style}{character string. One of \code{"right"}, \code{"left"}, \code{"box"} or
+\code{"poly"}. Default is \code{"right"}, see \strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -36,101 +36,69 @@ Initial position can be adjusted using the vector of coordinates. See
 }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} \code{POLYGON} or \code{LINESTRING} depending of \code{style}
-argument.
-
-\code{esp_get_can_provinces} returns a \code{LINESTRING} object.
+An \code{\link[sf:sf]{sf}} object: a \code{POLYGON} (when \code{style = "poly"}) or a
+\code{LINESTRING} (other styles).
 }
 \description{
-When plotting Spain, it is usual to represent the Canary Islands as an inset
-(see \code{moveCAN} on \code{\link[=esp_get_nuts]{esp_get_nuts()}}). These functions provides complementary
-lines and polygons to be used when the Canary Islands are displayed
-as an inset.
-\itemize{
-\item \code{\link[=esp_get_can_box]{esp_get_can_box()}} is used to draw lines around the displaced Canary
-Islands.
-}
+Create an \code{sf} \code{POLYGON} or \code{LINESTRING} that can be used to mark or
+frame the Canary Islands when they are displayed as an inset on maps of
+Spain. This object is useful together with \code{\link[=esp_move_can]{esp_move_can()}} and the
+\code{moveCAN} arguments available in other \code{mapSpain} getters.
 
-\itemize{
-\item \code{\link[=esp_get_can_provinces]{esp_get_can_provinces()}} is used to draw a separator line between the two
-provinces of the Canary Islands.
+\code{esp_get_can_provinces()} returns a small \code{LINESTRING} used to mark the
+separator between the two provinces of the Canary Islands. This helper is
+intended for cartographic use when composing inset maps of Spain.
 }
-
-See also \code{\link[=esp_move_can]{esp_move_can()}} to displace stand-alone objects on the Canary
-Islands.
+\details{
+The \code{style} parameter controls the geometry returned:
+\itemize{
+\item \code{"box"}: a rectangular boundary returned as a \code{LINESTRING}.
+\item \code{"poly"}: a slightly expanded rectangle returned as a filled \code{POLYGON}.
+\item \code{"left"} / \code{"right"}: decorative \code{LINESTRING} variants that follow
+the western or eastern side of the islands respectively.
+}
 }
 \examples{
+provs <- esp_get_prov()
+box <- esp_get_can_box()
+line <- esp_get_can_provinces()
 
-Provs <- esp_get_prov()
-Box <- esp_get_can_box()
-Line <- esp_get_can_provinces()
-
-# Plot
 library(ggplot2)
-
-ggplot(Provs) +
+ggplot(provs) +
   geom_sf() +
-  geom_sf(data = Box) +
-  geom_sf(data = Line) +
+  geom_sf(data = box, linewidth = 0.15) +
+  geom_sf(data = line, linewidth = 0.15) +
   theme_linedraw()
+
 \donttest{
-# Displacing Canary
-
-# By same factor
-
+# Displacing the Canary Islands by a custom offset
 displace <- c(15, 0)
-
-Provs_D <- esp_get_prov(moveCAN = displace)
-
-Box_D <- esp_get_can_box(style = "left", moveCAN = displace)
-
-Line_D <- esp_get_can_provinces(moveCAN = displace)
-
-ggplot(Provs_D) +
+provs_disp <- esp_get_prov(moveCAN = displace)
+box_disp <- esp_get_can_box(style = "left", moveCAN = displace)
+line_disp <- esp_get_can_provinces(moveCAN = displace)
+ggplot(provs_disp) +
   geom_sf() +
-  geom_sf(data = Box_D) +
-  geom_sf(data = Line_D) +
+  geom_sf(data = box_disp, linewidth = 0.15) +
+  geom_sf(data = line_disp, linewidth = 0.15) +
   theme_linedraw()
 
-
-# Example with poly option
-
-# Get countries with giscoR
-
+# Example using the polygon style together with other layers
 library(giscoR)
-
-# Low resolution map
 res <- "20"
-
-Countries <-
-  gisco_get_countries(
-    res = res,
-    epsg = "4326",
-    country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
-  )
-CANbox <-
-  esp_get_can_box(
-    style = "poly",
-    epsg = "4326",
-    moveCAN = c(12.5, 0)
-  )
-
-CCAA <- esp_get_ccaa(
-  res = res,
-  epsg = "4326",
-  moveCAN = c(12.5, 0) # Same displacement factor)
+countries <- gisco_get_countries(
+  res = res, epsg = "4326",
+  country = c("France", "Portugal", "Andorra", "Morocco", "Argelia")
 )
-
-# Plot
-
-ggplot(Countries) +
+can_box <- esp_get_can_box(
+  style = "poly", epsg = "4326",
+  moveCAN = c(12.5, 0)
+)
+ccaa <- esp_get_ccaa(res = res, epsg = "4326", moveCAN = c(12.5, 0))
+ggplot(countries) +
   geom_sf(fill = "#DFDFDF") +
-  geom_sf(data = CANbox, fill = "#C7E7FB", linewidth = 1) +
-  geom_sf(data = CCAA, fill = "#FDFBEA") +
-  coord_sf(
-    xlim = c(-10, 4.3),
-    ylim = c(34.6, 44)
-  ) +
+  geom_sf(data = can_box, fill = "#C7E7FB", linewidth = 1) +
+  geom_sf(data = ccaa, fill = "#FDFBEA") +
+  coord_sf(xlim = c(-10, 4.3), ylim = c(34.6, 44)) +
   theme(
     panel.background = element_rect(fill = "#C7E7FB"),
     panel.grid = element_blank()
@@ -138,25 +106,7 @@ ggplot(Countries) +
 }
 }
 \seealso{
-Other political: 
-\code{\link{esp_get_capimun}()},
-\code{\link{esp_get_ccaa}()},
-\code{\link{esp_get_ccaa_siane}()},
-\code{\link{esp_get_comarca}()},
-\code{\link{esp_get_countries_siane}()},
-\code{\link{esp_get_gridmap}},
-\code{\link{esp_get_munic}()},
-\code{\link{esp_get_munic_siane}()},
-\code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()},
-\code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_simpl}},
-\code{\link{esp_get_spain}()},
-\code{\link{esp_get_spain_siane}()},
-\code{\link{esp_siane_bulk_download}()}
-
-Other Canary Islands: 
+Other helpers for the Canary Islands:
 \code{\link{esp_move_can}()}
 }
-\concept{Canary Islands}
-\concept{political}
+\concept{can_helpers}

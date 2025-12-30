@@ -15,45 +15,43 @@ esp_set_cache_dir(
 esp_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On \code{NULL} value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. When \code{NULL}, the function
+stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 
-\item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
-\code{MAPSPAIN_CACHE_DIR} that you already have in local machine.}
+\item{overwrite}{logical. If \code{TRUE}, overwrites an existing
+\code{MAPSPAIN_CACHE_DIR} on your local machine.}
 
-\item{install}{If \code{TRUE}, will install the key in your local machine for
-use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
-this argument is set to \code{FALSE} automatically.}
+\item{install}{logical- If \code{TRUE}, installs the key on your local machine for
+use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
+this argument is automatically set to \code{FALSE}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-\code{esp_set_cache_dir()} returns an (invisible) character with the path to
-your \code{cache_dir}, but it is mainly called for its side effect.
+\code{esp_set_cache_dir()} returns an (invisible) character string with the path
+to your \code{cache_dir}. It is primarily called for its side effect.
 
-\code{esp_detect_cache_dir()} returns the path to the \code{cache_dir} used in this
-session.
+\code{esp_detect_cache_dir()} returns the path to the \code{cache_dir} used in the
+current session.
 }
 \description{
-This function will store your \code{cache_dir} path on your local machine and
-would load it for future sessions. Type \code{Sys.getenv("MAPSPAIN_CACHE_DIR")} to
-find your cached path or use \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}}.
+This function stores your \code{cache_dir} path on your local machine and
+loads it for future sessions. Type \code{Sys.getenv("MAPSPAIN_CACHE_DIR")} to
+find your cached path, or use \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}}.
 }
 \details{
-By default, when no cache \code{cache_dir} is set the package uses a folder inside
-\code{\link[base:tempfile]{base::tempdir()}} (so files are temporary and are removed when the \strong{R}
-session ends). To persist a cache across \strong{R} sessions, use
-\code{esp_set_cache_dir(cache_dir, install = TRUE)} which writes the chosen
-path to a small configuration file under
-\code{tools::R_user_dir("mapSpain", "config")}.
+By default, when no \code{cache_dir} is set, the package uses a folder inside
+\code{\link[base:tempfile]{base::tempdir()}} (files are temporary and removed when the \strong{R} session
+ends). To persist a cache across \strong{R} sessions, use
+\code{esp_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen
+path to a configuration file under \code{tools::R_user_dir("mapSpain", "config")}.
 }
 \note{
-In \CRANpkg{mapSpain} >= 1.0.0 the location of the configuration file has
+In \CRANpkg{mapSpain} >= 1.0.0, the configuration file location has
 moved from \code{rappdirs::user_config_dir("mapSpain", "R")} to
-\code{tools::R_user_dir("mapSpain", "config")}. We have implemented a
-functionality that would migrate previous configuration files from one
-location to another with a message. This message would appear only once
-informing of the migration.
+\code{tools::R_user_dir("mapSpain", "config")}. A migration function automatically
+transfers previous configuration files from the old to the new location.
+A message appears once during this migration.
 }
 \section{Caching strategies}{
 
@@ -64,22 +62,21 @@ your computer. \CRANpkg{mapSpain} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
 install).
-\item Modify the cache for a single session setting
-\verb{esp_set_cache_dir(cache_dir = "a/path/here)}.
+\item Modify the cache for a single session by setting
+\code{esp_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
-\verb{esp_set_cache_dir(cache_dir = "a/path/here, install = TRUE)} that would
-be kept across \strong{R} sessions.
+\code{esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that
+persists across \strong{R} sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function.
 }
 
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE} in the corresponding function.
+Sometimes cached files may be corrupted. In that case, try re-downloading
+the data by setting \code{update_cache = TRUE} in the corresponding function.
 
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query
-and \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}} to identify your cached path.
+If you experience download problems, try downloading the file by another
+method and save it to your \code{cache_dir}. Use \code{verbose = TRUE} to debug the
+API query and \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}} to identify your cache path.
 }
 
 \examples{

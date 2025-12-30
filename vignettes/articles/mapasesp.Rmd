@@ -2,7 +2,7 @@
 title: "mapSpain: Mapas de España en R [Spanish]"
 author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 description: >
-  Mapas de España en R de manera rápida y sencilla.
+  Mapas de España en R de forma rápida y sencilla.
 output:
   html_document:
     toc: true
@@ -31,9 +31,8 @@ library(mapSpain)
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
 
-Además, proporciona también la posibilidad de usar imágenes de servicios
-WMS/WMTS de manera estática (como imagen georreferenciada) o dinámica (en mapas
-leaflet).
+Además, permite usar imágenes de servicios WMS/WMTS de forma estática (como
+imagen georreferenciada) o dinámica (en mapas Leaflet).
 
 Adicionalmente, **mapSpain** dispone de funciones que permiten normalizar
 nombres de las CCAA y provincias, lo que facilita el proceso de manipulación y
@@ -41,14 +40,14 @@ transformación de datos (no necesariamente espaciales).
 
 Las **fuentes de información** empleadas en **mapSpain** son:
 
--   [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat) via el paquete
+-   [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), vía el paquete
     [**giscoR**](https://ropengov.github.io/giscoR/).
--   [Instituto Geografico Nacional](https://www.ign.es/) (IGN)
+-   [Instituto Geográfico Nacional](https://www.ign.es/) (IGN)
 -   Distintos organismos públicos de España que proporcionan servicios de
     teselas WMTS/WMS (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Los objetos resultantes se proporcionan en formato `sf` (librería **sf)** o
-`SpatRaster`(librería **terra**).
+Los objetos resultantes se proporcionan en formato `sf` (librería **sf**) o
+`SpatRaster` (librería **terra**).
 
 Página web: <https://ropenspain.github.io/mapSpain/>
 
@@ -89,7 +88,7 @@ library(mapSpain)
 library(tidyverse)
 
 galicia <- esp_get_munic_siane(region = "Galicia") |>
-  # Homogeinizo labels
+  # Homogeneizo etiquetas
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
 
@@ -131,7 +130,7 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 # geodata (GADM)
 library(geodata)
 esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
-  # Convertimos de SpatVector a objecto sf
+  # Convertimos de SpatVector a objeto sf
   sf::st_as_sf() |>
   st_transform(3857)
 
@@ -141,7 +140,7 @@ library(geobounds)
 esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
   st_transform(3857)
 
-# Imagen Ria Ferrol
+# Imagen Ría Ferrol
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
@@ -174,7 +173,7 @@ ggplot(esp_all) +
 
 -   **rnaturalearth**: No capta bien el contorno.
 -   **mapSpain**: Resultados satisfactorios.
--   **GADM** (libería **geodata**): Resultados muy precisos.
+-   **GADM** (librería **geodata**): Resultados muy precisos.
 -   **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
 
 ### Almacenamiento
@@ -273,7 +272,7 @@ a diferentes niveles:
 -   Provincias
 -   Municipios
 
-Para CCAA, Provinicas y Municipios hay dos versiones: `esp_get_xxxx()` (fuente:
+Para CCAA, Provincias y Municipios hay dos versiones: `esp_get_xxxx()` (fuente:
 GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
 
 La información se proporciona en diferentes proyecciones y niveles de
@@ -293,7 +292,7 @@ Por defecto, **mapSpain** "desplaza" Canarias para una mejor visualización en l
 mayoría de sus funciones. Este comportamiento se puede desactivar usando
 `moveCAN = FALSE`(ver anterior ejemplo).
 
-Proporcionamos funciones adicionales que permiten representar lineas alrededor
+Proporcionamos funciones adicionales que permiten representar líneas alrededor
 de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
@@ -308,8 +307,8 @@ ggplot(esp_can) +
   geom_sf(data = can_box)
 ```
 
-**Cuando se trabaja con imágenes, mapas interactivos o se desean realizar
-analisis espaciales, se debe usar `moveCAN = FALSE`**
+**Cuando se trabaja con imágenes, mapas interactivos o se realizan análisis
+espaciales, debe usarse `moveCAN = FALSE`.**
 
 ### NUTS
 

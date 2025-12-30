@@ -42,7 +42,7 @@ esp_get_nuts(
 \item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -187,8 +187,7 @@ ggplot(mixing_codes) +
 \seealso{
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
 
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},
@@ -207,7 +206,7 @@ Other political:
 Other nuts: 
 \code{\link{esp_get_spain}()}
 
-Other gisco: 
+Datasets provided by GISCO:
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_prov}()},

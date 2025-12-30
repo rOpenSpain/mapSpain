@@ -2,9 +2,10 @@
 #'
 #' @description
 #' A [tibble][tibble::tbl_df] object used internally for translating codes and
-#' names of the different subdivisions of Spain. The tibble provides the
-#' hierarchy of the subdivisions including NUTS1 level, autonomous communities
-#' (equivalent to NUTS2), provinces and NUTS3 level. See **Note**.
+#' names of the different subdivisions of Spain. This tibble provides a
+#' hierarchical representation of Spain's subdivisions, including NUTS1 level,
+#' autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
+#' See **Note**.
 #'
 #' @docType data
 #' @encoding UTF-8
@@ -27,7 +28,7 @@
 #'  \item{nuts1.code}{NUTS 1 code}
 #'  \item{nuts1.name}{NUTS 1 name}
 #'  \item{nuts1.name.alt}{NUTS 1 alternative name}
-#'  \item{nuts1.shortname.es}{NUTS1 1 short (common) name (Spanish)}
+#'  \item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish)}
 #'  \item{codauto}{INE code of the autonomous community}
 #'  \item{iso2.ccaa.code}{ISO2 code of the autonomous community}
 #'  \item{nuts2.code}{NUTS 2 Code}
@@ -76,14 +77,14 @@
 #' }
 #'
 #' @note
-#' Although NUTS2 matches the first subdivision level of Spain
-#' (CCAA - Autonomous Communities), it should be noted that NUTS3 does not
-#' match the second subdivision level of Spain (Provinces). NUTS3 provides a
-#' dedicated code for major islands whereas the provinces doesn't.
+#' Although NUTS2 aligns with the first subdivision level of Spain
+#' (CCAA - Autonomous Communities), it is important to note that NUTS3 does not
+#' correspond to the second subdivision level of Spain (Provinces). NUTS3
+#' provides dedicated codes for major islands, whereas provinces do not.
 #'
-#' Ceuta and Melilla has an specific status (Autonomous Cities) but are
-#' considered as autonomous communities with a single province (as Madrid,
-#' Asturias or Murcia) on this database.
+#' Ceuta and Melilla have a special status as Autonomous Cities but are
+#' treated as autonomous communities with a single province (like Madrid,
+#' Asturias, or Murcia) in this database.
 #'
 #' @examples
 #'
@@ -92,7 +93,7 @@
 NULL
 
 
-#' Database with the population of Spain by municipality (2025)
+#' Population of Spain by municipality (2025)
 #'
 #' @docType data
 #' @encoding UTF-8
@@ -100,18 +101,18 @@ NULL
 #' @name pobmun25
 #'
 #' @format
-#' An example [tibble][tibble::tbl_df] object with
-#' `r prettyNum(nrow(mapSpain::pobmun25), big.mark=",")` rows containing the
-#' population data by municipality in Spain (2025).
+#' A [tibble][tibble::tbl_df] object with
+#' `r prettyNum(nrow(mapSpain::pobmun25), big.mark=",")` rows containing
+#' population data by municipality in Spain for 2025.
 #'
 #' \describe{
 #'   \item{cpro}{INE code of the province.}
-#'   \item{provincia}{name of the province.}
+#'   \item{provincia}{Name of the province.}
 #'   \item{cmun}{INE code of the municipality.}
 #'   \item{name}{Name of the municipality.}
-#'   \item{pob25}{Overall population (2025)}
-#'   \item{men}{Men population (2025)}
-#'   \item{women}{Women population (2025)}
+#'   \item{pob25}{Total population (2025)}
+#'   \item{men}{Male population (2025)}
+#'   \item{women}{Female population (2025)}
 #' }
 #'
 #' @source
@@ -129,38 +130,35 @@ NULL
 #' data("pobmun25")
 NULL
 
-#' Database of public WMS and WMTS of Spain
+#' Public WMS and WMTS providers for Spain
 #'
+#' @docType data
+#' @encoding UTF-8
 #' @family datasets
-#' @family images
-#'
 #' @name esp_tiles_providers
 #'
 #' @description
 #' A named [`list`][base::list] of length `r length(esp_tiles_providers)`
-#' containing the argument of the url information of different public WMS and
-#' WMTS providers of Spain.
+#' containing URL information for different public WMS and WMTS tile providers
+#' of Spain.
 #'
-#' Implementation of javascript plugin
+#' Implementation of the JavaScript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
-#'
-#' @docType data
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
 #' **`r leaf_providers_esp_v`**.
 #'
-#' @encoding UTF-8
-#'
 #' @format
-#' A named `list` of the providers available with the following structure:
-#' - Each item of the list is named with the provider alias.
-#' - Each element of the list contains two nested named lists:
-#'   - `static` with the arguments to get static tiles plus an additional item
-#'     named `attribution`.
-#'   - `leaflet` with additional arguments to be passed onto
-#'     [addProviderEspTiles()].
+#' A named [`list`][base::list] of available providers with the following
+#' structure:
+#'
+#' - Each list item is named with the provider alias.
+#' - Each element contains two nested named lists:
+#'   - `static` with the parameters required to obtain static tiles, plus an
+#'     additional item named `attribution`.
+#'   - `leaflet` with additional parameters to pass to [addProviderEspTiles()].
 #'
 #' @details
 #' Providers available to be passed to `type` on [esp_get_tiles()] are:
@@ -189,22 +187,22 @@ NULL
 
 #' NUTS 2024 for Spain [`sf`][sf::st_sf] object
 #'
-#'
 #' @docType data
-#' @name esp_nuts_2024
-#' @family datasets
 #' @encoding UTF-8
+#' @family datasets
+#' @name esp_nuts_2024
 #'
 #' @seealso [esp_get_nuts()]
 #'
 #' @description
-#' This dataset represents the spanish regions for levels 0, 1, 2 and 3 of the
-#' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+#' This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+#' according to the Nomenclature of Territorial Units for Statistics (NUTS)
+#' classification for 2024.
 #'
 #'
 #' @format
-#' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
-#' 1:1 million and [EPSG:4258](https://epsg.io/4258). with
+#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries at 1:1 million
+#' resolution in [EPSG:4258](https://epsg.io/4258) projection, containing
 #' `r nrow(mapSpain::esp_nuts_2024)` rows and 10 variables:
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}
@@ -223,14 +221,14 @@ NULL
 #' @details
 #'
 #' `MOUNT_TYPE`: Mountain typology:
-#'  - `1`: More than 50 % of the surface is covered by topographic mountain
+#'  - `1`: More than 50% of the surface is covered by topographic mountain
 #'    areas.
-#'  - `2`: More than 50 % of the regional population lives in topographic
+#'  - `2`: More than 50% of the regional population lives in topographic
 #'    mountain areas.
-#'  - `3`: More than 50 % of the surface is covered by topographic mountain
-#'    areas and where more than 50 % of the regional population lives in these
-#'    mountain areas.
-#'  - `4`: Non-mountain region / other regions.
+#'  - `3`: More than 50% of the surface is covered by topographic mountain
+#'    areas and more than 50% of the regional population lives in these mountain
+#'    areas.
+#'  - `4`: Non-mountain region or other regions.
 #'  - `0`: No classification provided.
 #'
 #' `URBN_TYPE`: Urban-rural typology:
@@ -240,9 +238,9 @@ NULL
 #'  - `0`: No classification provided.
 #'
 #' `COAST_TYPE`: Coastal typology:
-#'   - `1`: Coastal (on coast).
-#'   - `2`: Coastal (less than 50% of population living within 50 km. of the
-#'        coastline).
+#'   - `1`: Coastal region (on the coast).
+#'   - `2`: Coastal region (less than 50% of the population living within 50 km
+#'        of the coastline).
 #'   - `3`: Non-coastal region.
 #'   - `0`: No classification provided.
 #'

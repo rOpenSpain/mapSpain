@@ -1,50 +1,63 @@
-#' Get [`sf`][sf::st_sf] `POLYGON` with the national geographic grids from BDN
+#' National geographic grids from BDN (Nature Data Bank)
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
-#' provided on the Banco de Datos de la Naturaleza (Nature Data Bank), by the
-#' Ministry of Environment (MITECO):
-#'   - [esp_get_grid_BDN()] extracts country-wide grids with resolutions
-#'     5x5 or 10x10 kms.
-#'   - [esp_get_grid_BDN_ccaa()] extracts grids by Autonomous Community with
-#'     resolution 1x1 km.
+#' Loads a [`sf`][sf::st_sf] `POLYGON` object with the geographic grids of
+#' Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
+#' under the Ministry of Environment (MITECO).
 #'
+#' This dataset provides:
+#'   - [esp_get_grid_BDN()] extracts country-wide regular grids with resolutions
+#'     of 5x5 or 10x10 kilometres (mainland Spain or Canary Islands).
+#'   - [esp_get_grid_BDN_ccaa()] extracts 1x1 kilometre resolution grids for
+#'     individual Autonomous Communities.
+#'
+#' These grids are useful for biodiversity analysis, environmental monitoring,
+#' and spatial statistical applications.
+#'
+#' @encoding UTF-8
 #' @family grids
+#' @inheritParams esp_get_nuts
+#' @inherit esp_get_nuts return
+#' @export
 #'
-#' @return A [`sf`][sf::st_sf] `POLYGON`.
-#'
+#' @details
+#' The BDN provides standardized geographic grids for Spain that follow the
+#' Nature Data Bank's specifications. The data is maintained via a custom CDN
+#' and is regularly updated.
 #'
 #' @source
-#' BDN data via a custom CDN (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
+#' Data sourced from the Banco de Datos de la Naturaleza (BDN) via a custom
+#' CDN. See the repository structure:
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>
 #'
-#' See original metadata and source on
+#' For more information about BDN grids and other resources, visit:
 #'
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(" <https://www.miteco.gob.es/es/biodiversidad/servicios/",
 #'       "banco-datos-naturaleza/informacion-disponible/",
-#'       "bdn-cart-aux-descargas-ccaa.html>"))
-#'
+#'       "bdn-cart-aux-descargas-ccaa.html>."))
 #' ```
 #'
-#' @export
-#'
-#' @param resolution Resolution of the grid in kms. Could be `5` or `10`.
-#' @param type The scope of the grid. It could be mainland Spain (`"main"`) or
-#'   the Canary Islands (`"canary"`).
-#'
-#' @inheritParams esp_get_nuts
+#' @param resolution numeric. Resolution of the grid in kilometres.
+#'   Must be one of:
+#'   * `5`: 5x5 kilometre cells
+#'   * `10`: 10x10 kilometre cells (default)
+#' @param type character. The geographic scope of the grid:
+#'   * `"main"`: Mainland Spain (default)
+#'   * `"canary"`: Canary Islands
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
+#' # Load a 10x10 km grid for mainland Spain
 #' grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 #'
+#' # Visualize the grid
 #' library(ggplot2)
 #'
 #' ggplot(grid) +
-#'   geom_sf() +
+#'   geom_sf(fill = NA, color = "steelblue") +
 #'   theme_light() +
-#'   labs(title = "BDN Grid for Spain")
+#'   labs(title = "BDN Geographic Grid: 10x10 km Spain")
 #' }
 esp_get_grid_BDN <- function(
   resolution = c(10, 5),
@@ -96,10 +109,18 @@ esp_get_grid_BDN <- function(
 
 #' @rdname esp_get_grid_BDN
 #' @export
-#' @param ccaa A vector of names and/or codes for autonomous communities.
-#'   See **Details** on [esp_get_ccaa()].
-#' @seealso [esp_get_ccaa()]
-
+#'
+#' @description
+#' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometre grids
+#' for specific Autonomous Communities, useful for regional analysis with
+#' finer spatial detail.
+#'
+#' @param ccaa character string. A vector of names and/or codes for Autonomous
+#'   Communities. See **Details** on [esp_get_ccaa()] for accepted formats.
+#'
+#' @seealso
+#' [esp_get_ccaa()]
+#'
 esp_get_grid_BDN_ccaa <- function(
   ccaa,
   update_cache = FALSE,

@@ -7,11 +7,11 @@
 esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{if \code{TRUE}, will delete the configuration folder of
+\item{config}{logical. If \code{TRUE}, deletes the configuration folder of
 \CRANpkg{mapSpain}.}
 
-\item{cached_data}{If this is set to \code{TRUE}, it will delete your
-\code{cache_dir} and all its content.}
+\item{cached_data}{logical. If \code{TRUE}, deletes your \code{cache_dir} and all
+its contents.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
@@ -19,18 +19,18 @@ esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 Invisible. This function is called for its side effects.
 }
 \description{
-\strong{Use this function with caution}. This function would clear your cached
-data and configuration, specifically:
+\strong{Use this function with caution.} It clears your cached data and
+configuration, specifically:
 \itemize{
-\item Deletes the \CRANpkg{mapSpain} config directory
+\item Deletes the \CRANpkg{mapSpain} configuration directory
 (\code{tools::R_user_dir("mapSpain", "config")}).
-\item Deletes the \code{cache_dir} directory.
-\item Deletes the values on stored on \code{Sys.getenv("MAPSPAIN_CACHE_DIR")}.
+\item Deletes the \code{cache_dir} directory and its contents.
+\item Clears the value stored in \code{Sys.getenv("MAPSPAIN_CACHE_DIR")}.
 }
 }
 \details{
-This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used \CRANpkg{mapSpain}.
+This is an aggressive function intended to reset your installation as if you
+had never installed or used \CRANpkg{mapSpain}.
 }
 \examples{
 

@@ -5,7 +5,6 @@
 #'
 #' @encoding UTF-8
 #' @family infrastructure
-#' @family siane
 #' @inheritParams esp_get_railway
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_railway

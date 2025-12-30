@@ -1,22 +1,19 @@
-#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from IGN
+#' National geographic grids from IGN MTN ((Mapa Topografico Nacional)
 #'
 #' @description
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain.
 #'
-#' @family grids
-#'
-#' @return A [`sf`][sf::st_sf] `POLYGON`.
-#'
-#'
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
+#'
+#' @encoding UTF-8
+#' @family grids
+#' @inheritParams esp_get_grid_EEA
+#' @inherit esp_get_grid_EEA return
 #' @export
 #'
 #' @param grid Name of the grid to be loaded. See **Details**.
-#'
-#' @inheritParams esp_get_nuts
-#'
 #'
 #' @details
 #' Metadata available on
@@ -37,12 +34,7 @@
 #'   "MTN50_RegCan95_Canarias"
 #' ))
 #'
-#'
-#' knitr::kable(df,
-#'              col.names = "**grid_name**")
-#'
-#'
-#'
+#' knitr::kable(df, col.names = "**grid_name**")
 #' ```
 #'
 #' ## MTN Grids

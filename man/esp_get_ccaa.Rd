@@ -14,8 +14,9 @@ Copyright:
 esp_get_ccaa(ccaa = NULL, moveCAN = TRUE, ...)
 }
 \arguments{
-\item{ccaa}{A vector of names and/or codes for autonomous communities
-or \code{NULL} to get all the autonomous communities. See \strong{Details}.}
+\item{ccaa}{character string. A vector of names and/or codes for Autonomous
+Communities or \code{NULL} to get all the autonomous communities. See
+\strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -37,7 +38,7 @@ Initial position can be adjusted using the vector of coordinates. See
 }}
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{logical. Should the cached file be refreshed?. Default
+    \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -138,8 +139,7 @@ ggplot(europe) +
 }
 }
 \seealso{
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_comarca}()},
@@ -155,7 +155,7 @@ Other political:
 \code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 
-Other gisco: 
+Datasets provided by GISCO:
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},
 \code{\link{esp_get_prov}()},

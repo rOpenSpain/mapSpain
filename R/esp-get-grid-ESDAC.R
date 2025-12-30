@@ -1,13 +1,8 @@
-#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from ESDAC
+#' National geographic grids from the European Soil Data Centre (ESDAC)
 #'
 #' @description
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
 #' provided by the European Soil Data Centre (ESDAC).
-#'
-#' @family grids
-#'
-#' @return A [`sf`][sf::st_sf] `POLYGON`.
-#'
 #'
 #' @source
 #' [EEA reference
@@ -21,10 +16,14 @@
 #' - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
 #'   Commission, Joint Research Centre.
 #'
-#' @export
-#' @param resolution Resolution of the grid in kms. Could be `1` or `10`.
-#'
+#' @encoding UTF-8
+#' @family grids
 #' @inheritParams esp_get_grid_EEA
+#' @inherit esp_get_grid_EEA return
+#' @export
+#'
+#' @param resolution numeric. Resolution of the grid in kilometres. It could be
+#'   `1` or `10`.
 #'
 #' @examplesIf esp_check_access()
 #' \dontrun{

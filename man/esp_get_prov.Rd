@@ -37,7 +37,7 @@ Initial position can be adjusted using the vector of coordinates. See
 }}
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{logical. Should the cached file be refreshed?. Default
+    \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -139,8 +139,7 @@ ggplot(allprovs) +
 }
 }
 \seealso{
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},
@@ -156,7 +155,7 @@ Other political:
 \code{\link{esp_get_spain_siane}()},
 \code{\link{esp_siane_bulk_download}()}
 
-Other gisco: 
+Datasets provided by GISCO:
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_munic}()},
 \code{\link{esp_get_nuts}()},

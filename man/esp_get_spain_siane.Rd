@@ -60,7 +60,7 @@ data. One of:
 }}
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{logical. Should the cached file be refreshed?. Default
+    \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -96,8 +96,7 @@ ggplot(moved_can) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other political: 
-\code{\link{esp_get_can_box}()},
+Other datasets representing political borders:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa}()},
 \code{\link{esp_get_ccaa_siane}()},
@@ -113,17 +112,12 @@ Other political:
 \code{\link{esp_get_spain}()},
 \code{\link{esp_siane_bulk_download}()}
 
-Other siane: 
+Political borders from CartoBase ANE:
 \code{\link{esp_get_capimun}()},
 \code{\link{esp_get_ccaa_siane}()},
 \code{\link{esp_get_countries_siane}()},
-\code{\link{esp_get_hydrobasin}()},
-\code{\link{esp_get_hypsobath}()},
-\code{\link{esp_get_landwater}},
 \code{\link{esp_get_munic_siane}()},
 \code{\link{esp_get_prov_siane}()},
-\code{\link{esp_get_railway}()},
-\code{\link{esp_get_roads}()},
 \code{\link{esp_siane_bulk_download}()}
 }
 \concept{political}

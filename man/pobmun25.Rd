@@ -4,20 +4,20 @@
 \encoding{UTF-8}
 \name{pobmun25}
 \alias{pobmun25}
-\title{Database with the population of Spain by municipality (2025)}
+\title{Population of Spain by municipality (2025)}
 \format{
-An example \link[tibble:tbl_df-class]{tibble} object with
-8,132 rows containing the
-population data by municipality in Spain (2025).
+A \link[tibble:tbl_df-class]{tibble} object with
+8,132 rows containing
+population data by municipality in Spain for 2025.
 
 \describe{
 \item{cpro}{INE code of the province.}
-\item{provincia}{name of the province.}
+\item{provincia}{Name of the province.}
 \item{cmun}{INE code of the municipality.}
 \item{name}{Name of the municipality.}
-\item{pob25}{Overall population (2025)}
-\item{men}{Men population (2025)}
-\item{women}{Women population (2025)}
+\item{pob25}{Total population (2025)}
+\item{men}{Male population (2025)}
+\item{women}{Female population (2025)}
 }
 }
 \source{
@@ -25,7 +25,7 @@ INE: Instituto Nacional de Estadistica
 \url{https://www.ine.es/dyngs/INEbase/categoria.htm?c=Estadistica_P&cid=1254734710990}.
 }
 \description{
-Database with the population of Spain by municipality (2025)
+Population of Spain by municipality (2025)
 }
 \examples{
 data("pobmun25")
