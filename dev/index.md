@@ -214,7 +214,7 @@ load it, which speeds up the process.
 
 ## Citation
 
-Hernangómez D (2025). *mapSpain: Administrative Boundaries of Spain*.
+Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622),
 <https://ropenspain.github.io/mapSpain/>.
 
@@ -223,7 +223,7 @@ A BibTeX entry for LaTeX users is:
 ``` R
 @Manual{R-mapspain,
   title = {{mapSpain}: Administrative Boundaries of Spain},
-  year = {2025},
+  year = {2026},
   version = {0.99.99.9000},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
