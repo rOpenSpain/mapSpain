@@ -139,7 +139,7 @@ ggplot(ccaa_sf) +
 
 You can combine `sf` objects with static tiles
 
-```{r tile, fig.alt="Perc. of women in Segovia by town (2025)", dpi = 100}
+```{r tile, fig.alt="Perc. of women in Segovia by town (2025)"}
 # Get census
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>

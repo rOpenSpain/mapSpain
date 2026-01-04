@@ -231,7 +231,7 @@ load it, which speeds up the process.
 
 <p>
 
-Hernangómez D (2025). <em>mapSpain: Administrative Boundaries of
+Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,
 <a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
@@ -241,7 +241,7 @@ A BibTeX entry for LaTeX users is:
 
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
-      year = {2025},
+      year = {2026},
       version = {0.99.99.9000},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},

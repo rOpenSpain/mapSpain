@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   tidy = "styler",
   dev = "ragg_png",
-  dpi = 120,
+  dpi = 150,
   fig.path = "./",
   out.width = "100%"
 )
@@ -190,7 +190,7 @@ thematic maps. For plotting, we use the
 handles `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**, etc.) could also
 be used.
 
-```{r thematic, fig.cap="Population density in Spain (2025)", crop=TRUE, dpi=120}
+```{r thematic, fig.cap="Population density in Spain (2025)", crop=TRUE, dpi=150}
 # Population density of Spain
 
 library(sf)
