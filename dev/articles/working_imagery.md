@@ -112,6 +112,50 @@ ggplot() +
 ![Example of combining types of tiles by masking to a
 shapefile.](working_imagery_files/figure-html/static3-1.png)
 
+## Custom providers
+
+You can use
+[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+to get tiles of any other provider, for example OpenStreetMap:
+
+``` r
+osm_spec <- list(
+  id = "OSM",
+  q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+)
+
+madrid_city <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
+madrid_osm <- esp_get_tiles(madrid_city, type = osm_spec, zoommin = 1)
+
+ggplot() +
+  geom_spatraster_rgb(data = madrid_osm) +
+  geom_sf(data = madrid_city, fill = NA)
+```
+
+![Example of base map using
+OpenStreetMap](working_imagery_files/figure-html/osm-1.png)
+
+Another example using a provider that needs an API Key (ThunderForest):
+
+``` r
+# Skip if not API KEY
+apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
+if (apikey != "") {
+  thunder_spec <- list(
+    id = "ThunderForest",
+    q = paste0(
+      "https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=",
+      apikey
+    )
+  )
+  madrid_thunder <- esp_get_tiles(madrid_city, type = thunder_spec, zoommin = 1)
+
+  ggplot() +
+    geom_spatraster_rgb(data = madrid_thunder) +
+    geom_sf(data = madrid_city, fill = NA)
+}
+```
+
 ## Dynamic maps with Leaflet
 
 **mapSpain** provides a plugin for the **Leaflet** package. Below are
@@ -250,7 +294,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2026-01-04
+    #>  date     2026-01-09
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -287,9 +331,9 @@ Details
     #>  KernSmooth     2.23-26      2025-01-01 [3] CRAN (R 4.5.2)
     #>  knitr          1.51         2025-12-20 [1] RSPM
     #>  leaflet      * 2.2.3        2025-09-04 [1] RSPM
-    #>  lifecycle      1.0.4        2023-11-07 [1] RSPM
+    #>  lifecycle      1.0.5        2026-01-08 [1] RSPM
     #>  magrittr       2.0.4        2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.99.99.9000 2026-01-04 [1] local
+    #>  mapSpain     * 0.99.99.9000 2026-01-09 [1] local
     #>  otel           0.2.0        2025-08-29 [1] RSPM
     #>  pillar         1.11.1       2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3        2019-09-22 [1] RSPM

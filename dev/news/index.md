@@ -80,6 +80,8 @@ updated to their latest versions.
   replacing `?esp_nuts.sf`.
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
   gains a new `moveCAN` argument.
+- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  can be used with providers that needs an API key.
 
 ## mapSpain 0.10.0
 
