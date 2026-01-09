@@ -252,3 +252,38 @@ test_that("bbox WMS", {
     sf::st_coordinates()
   expect_identical(coords_init, coords_expand)
 })
+
+test_that("External with apikeys", {
+  skip_on_cran()
+
+  url_thunder <- paste0(
+    "https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=",
+    "A_FAKE_API_KEY"
+  )
+  custom_wmts <- list(id = "ThunderTransport", q = url_thunder)
+
+  expect_silent(res <- validate_provider(custom_wmts))
+  expect_true(is.list(res))
+  expect_true(all(c("id", "q") %in% names(res)))
+  expect_false("min_zoom" %in% names(res))
+  expect_true(guess_provider_type(res) == "WMTS")
+  expect_identical(get_tile_crs(res), "EPSG:3857")
+  expect_identical(get_tile_ext(res), "png")
+
+  # MapBox case
+  custom_wmts <- list(
+    id = "MadridMapBox",
+    q = paste0(
+      "https://api.mapbox.com/styles/v1/dieghernan/cmk2cz3wm00ds01sidzuoanfn/",
+      "tiles/{z}/{x}/{y}?access_token=A_FAKE_API_KEY"
+    )
+  )
+
+  expect_silent(res <- validate_provider(custom_wmts))
+  expect_true(is.list(res))
+  expect_true(all(c("id", "q") %in% names(res)))
+  expect_false("min_zoom" %in% names(res))
+  expect_true(guess_provider_type(res) == "WMTS")
+  expect_identical(get_tile_crs(res), "EPSG:3857")
+  expect_identical(get_tile_ext(res), "png")
+})

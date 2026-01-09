@@ -56,7 +56,7 @@ provider_to_list <- function(type) {
 
   split <- unlist(strsplit(q, "?", fixed = TRUE))
 
-  if (length(split) == 1) {
+  if (!any(grepl("service=WM", split))) {
     return(type)
   }
 
@@ -167,14 +167,26 @@ modify_provider_list <- function(prov_list, options = NULL) {
 }
 
 get_tile_ext <- function(prov_list) {
+  # Special case for MapBox
+  if (grepl("mapbox", prov_list$q)) {
+    return("png")
+  }
+
   fmt <- ensure_null(prov_list$format)
 
   # Caso of non OGC WMTS
   if (is.null(fmt)) {
+    # Maybe ?
+    if (grepl("?", prov_list$q, fixed = TRUE)) {
+      no_api_key <- unlist(strsplit(prov_list$q, "?", fixed = TRUE))[1]
+      ext <- tools::file_ext(no_api_key)
+      return(ext)
+    }
+
     ext <- tools::file_ext(prov_list$q)
-  } else {
-    ext <- basename(fmt)
+    return(ext)
   }
+  ext <- basename(fmt)
 
   ext
 }

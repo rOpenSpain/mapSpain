@@ -24,19 +24,22 @@ library(mapSpain)
 download static files as `.png` or `.jpeg` (depending on the Web Map Service)
 and use them alongside your shapefiles.
 
-**mapSpain** also provides a plugin for the **R** [Leaflet](https://rstudio.github.io/leaflet/)
-package, which allows adding multiple basemaps to interactive maps.
+**mapSpain** also provides a plugin for the **R**
+[Leaflet](https://rstudio.github.io/leaflet/) package, which allows adding
+multiple basemaps to interactive maps.
 
-The services are implemented via the Leaflet plugin [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
-You can view each provider option at that link.
+The services are implemented via the Leaflet plugin
+[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/). You
+can view each provider option at that link.
 
 ## Static tiles
 
-An example showing how to include multiple tiles to create a static map. We focus
-on layers provided by La Rioja's [Infraestructura de Datos Espaciales
+An example showing how to include multiple tiles to create a static map. We
+focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
-**When working with imagery, set `moveCAN = FALSE`; otherwise images for the Canary Islands may be inaccurate.**
+**When working with imagery, set `moveCAN = FALSE`; otherwise images for the
+Canary Islands may be inaccurate.**
 
 ```{r static1, fig.alt="Map of the limits of city of Logroño using a tile as a basemap"}
 library(mapSpain)
@@ -117,9 +120,50 @@ ggplot() +
   geom_spatraster_rgb(data = masked, maxcell = 10e6)
 ```
 
+## Custom providers
+
+You can use `esp_get_tiles()` to get tiles of any other provider, for example
+OpenStreetMap:
+
+```{r osm, fig.alt="Example of base map using OpenStreetMap"}
+osm_spec <- list(
+  id = "OSM",
+  q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+)
+
+madrid_city <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
+madrid_osm <- esp_get_tiles(madrid_city, type = osm_spec, zoommin = 1)
+
+ggplot() +
+  geom_spatraster_rgb(data = madrid_osm) +
+  geom_sf(data = madrid_city, fill = NA)
+```
+
+Another example using a provider that needs an API Key (ThunderForest):
+
+```{r thunder, fig.alt="Example of base map using ThunderForest"}
+# Skip if not API KEY
+apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
+if (apikey != "") {
+  thunder_spec <- list(
+    id = "ThunderForest",
+    q = paste0(
+      "https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=",
+      apikey
+    )
+  )
+  madrid_thunder <- esp_get_tiles(madrid_city, type = thunder_spec, zoommin = 1)
+
+  ggplot() +
+    geom_spatraster_rgb(data = madrid_thunder) +
+    geom_sf(data = madrid_city, fill = NA)
+}
+```
+
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin for the **Leaflet** package. Below are some quick examples:
+**mapSpain** provides a plugin for the **Leaflet** package. Below are some quick
+examples:
 
 ### Earthquakes in Tenerife (last year)
 
@@ -236,9 +280,9 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 
 ## Available providers
 
-The `esp_tiles_providers` list contains metadata for the tile providers available
-to the functions above. It includes all arguments required to reproduce the
-API request. Below is the static URL for each provider:
+The `esp_tiles_providers` list contains metadata for the tile providers
+available to the functions above. It includes all arguments required to
+reproduce the API request. Below is the static URL for each provider:
 
 ```{r providers, echo=FALSE}
 library(reactable)
@@ -280,8 +324,6 @@ reactable(df,
   elementId = "leaflet-prov-summ"
 )
 ```
-
-
 
 ## Session info
 

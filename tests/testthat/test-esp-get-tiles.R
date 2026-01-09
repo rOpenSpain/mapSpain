@@ -58,10 +58,6 @@ test_that("Test 404", {
   expect_message(
     n <- esp_get_tiles(
       x,
-      type = list(
-        id = "errors",
-        q = "https://idecyl.jcyl.es/geoserver/ge/wms?format=image/png"
-      ),
       update_cache = TRUE,
       verbose = TRUE
     ),
@@ -573,5 +569,62 @@ test_that("Custom WMTS", {
 
   tile3 <- esp_get_tiles(segovia, type = esri_wsm, cache_dir = cdir)
   expect_s4_class(tile3, "SpatRaster")
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+
+test_that("External API (Thunder)", {
+  skip_on_cran()
+  skip_if_not_installed("terra")
+  skip_on_os("mac")
+
+  # Skip if not API KEY
+  apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
+  if (apikey == "") {
+    skip("Need a ThunderForest API KEY")
+  }
+
+  cdir <- file.path(tempdir(), "custom_thunder")
+  unlink(cdir, recursive = TRUE, force = TRUE)
+
+  segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
+  thunder <- list(
+    id = "ThunderForest",
+    q = paste0(
+      "https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=",
+      apikey
+    )
+  )
+
+  tile <- esp_get_tiles(segovia, type = thunder, cache_dir = cdir, zoom = 2)
+  expect_s4_class(tile, "SpatRaster")
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+
+test_that("External API (Mapbox)", {
+  skip_on_cran()
+  skip_if_not_installed("terra")
+  skip_on_os("mac")
+
+  # Skip if not API KEY
+  apikey <- Sys.getenv("MAPBOX_API_KEY", "")
+  if (apikey == "") {
+    skip("Need a MapBox API KEY")
+  }
+
+  cdir <- file.path(tempdir(), "custom_mapbox")
+  unlink(cdir, recursive = TRUE, force = TRUE)
+
+  segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
+  mapbox <- list(
+    id = "MadridMapBox",
+    q = paste0(
+      "https://api.mapbox.com/styles/v1/dieghernan/cmk2cz3wm00ds01sidzuoanfn/",
+      "tiles/{z}/{x}/{y}?access_token=",
+      apikey
+    )
+  )
+
+  tile <- esp_get_tiles(segovia, type = mapbox, cache_dir = cdir, zoom = 2)
+  expect_s4_class(tile, "SpatRaster")
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

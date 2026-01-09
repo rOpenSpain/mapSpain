@@ -57,6 +57,7 @@ versions.
     data.
 -   Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
 -   `esp_get_rivers()` gains a new `moveCAN` argument.
+-   `esp_get_tiles()` can be used with providers that needs an API key.
 
 # mapSpain 0.10.0
 
