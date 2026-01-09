@@ -156,6 +156,9 @@ if (apikey != "") {
 }
 ```
 
+![Example of base map using
+ThunderForest](working_imagery_files/figure-html/thunder-1.png)
+
 ## Dynamic maps with Leaflet
 
 **mapSpain** provides a plugin for the **Leaflet** package. Below are
