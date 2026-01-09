@@ -7,6 +7,9 @@ This function is a implementation of the javascript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
+`esp_get_attributions` get the attribution of a tile provider defined as
+as the `type` argument.
+
 ## Usage
 
 ``` r
@@ -25,6 +28,8 @@ esp_get_tiles(
   verbose = FALSE,
   options = NULL
 )
+
+esp_get_attributions(type, options = NULL)
 ```
 
 ## Source
@@ -145,7 +150,10 @@ deformed, try projecting first `x`:
 ## See also
 
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
+[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md),
+`maptiles::get_tiles()`
+
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
 
 Other functions for creating maps with images:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),

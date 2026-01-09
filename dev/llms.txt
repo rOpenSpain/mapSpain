@@ -356,6 +356,7 @@ Return static tiles or create an interactive
   [leaflet](https://CRAN.R-project.org/package=leaflet) map
 
 - [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   : Get static tiles from public administrations of Spain
 
 - [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)

@@ -3,11 +3,15 @@
 various open map servers.
 This function is a implementation of the javascript plugin
 leaflet-providersESP
-v1.3.3."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
+v1.3.3.
+esp_get_attributions get the attribution of a tile provider defined as
+as the type argument."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 This function is a implementation of the javascript plugin
 leaflet-providersESP
-v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
+v1.3.3.
+esp_get_attributions get the attribution of a tile provider defined as
+as the type argument."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -51,7 +55,7 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get static tiles from public administrations of Spain</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a>, <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-attributions.R" class="external-link"><code>R/esp-get-attributions.R</code></a></small>
       <div class="d-none name"><code>esp_get_tiles.Rd</code></div>
     </div>
 
@@ -61,6 +65,8 @@ various open map servers.</p>
 <p>This function is a implementation of the javascript plugin
 <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>
 <strong>v1.3.3</strong>.</p>
+<p><code>esp_get_attributions</code> get the attribution of a tile provider defined as
+as the <code>type</code> argument.</p>
     </div>
 
     <div class="section level2">
@@ -79,7 +85,9 @@ various open map servers.</p>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  options <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">esp_get_attributions</span><span class="op">(</span><span class="va">type</span>, options <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -175,7 +183,8 @@ try projecting first <code>x</code>:</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>, <a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p>
+    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>, <a href="esp_tiles_providers.html">esp_tiles_providers</a>, <code>maptiles::get_tiles()</code></p>
+<p><code><a href="https://ropengov.github.io/giscoR/reference/gisco_attributions.html" class="external-link">giscoR::gisco_attributions()</a></code></p>
 <p>Other functions for creating maps with images:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code></p></div>

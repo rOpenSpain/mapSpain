@@ -75,6 +75,9 @@ updated to their latest versions.
   analogous to
   [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
   using SIANE data.
+- Added
+  [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+  to retrieve the attributions of a tile provider.
 - Added dataset
   [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
   replacing `?esp_nuts.sf`.
