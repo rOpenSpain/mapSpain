@@ -8,6 +8,8 @@ jobs:
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      THUNDERFOREST_API_KEY: ${{ secrets.THUNDERFOREST_API_KEY }}
+      MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
       CURL_SSL_BACKEND: "openssl"
     steps:
       - uses: actions/checkout@v6
