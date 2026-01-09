@@ -9,10 +9,11 @@
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @family images
-#' @seealso [terra::rast()], [esp_tiles_providers].
+#' @seealso [terra::rast()], [esp_tiles_providers], [maptiles::get_tiles()]
 #'
 #' @rdname esp_get_tiles
 #' @name esp_get_tiles
+#' @order 1
 #'
 #' @return
 #' A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on

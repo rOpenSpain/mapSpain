@@ -1,18 +1,19 @@
 # Platform
 
-|field    |value                                                  |
-|:--------|:------------------------------------------------------|
-|version  |R version 4.5.2 (2025-10-31)                           |
-|os       |Ubuntu 24.04.3 LTS                                     |
-|system   |x86_64, linux-gnu                                      |
-|ui       |X11                                                    |
-|language |(EN)                                                   |
-|collate  |C.UTF-8                                                |
-|ctype    |C.UTF-8                                                |
-|tz       |UTC                                                    |
-|date     |2025-12-28                                             |
-|pandoc   |3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc |
-|quarto   |NA                                                     |
+|field    |value                                                                                                                                                                                       |
+|:--------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|version  |R version 4.5.2 (2025-10-31 ucrt)                                                                                                                                                           |
+|os       |Windows 11 x64 (build 26200)                                                                                                                                                                |
+|system   |x86_64, mingw32                                                                                                                                                                             |
+|ui       |RStudio                                                                                                                                                                                     |
+|language |(EN)                                                                                                                                                                                        |
+|collate  |Spanish_Spain.utf8                                                                                                                                                                          |
+|ctype    |Spanish_Spain.utf8                                                                                                                                                                          |
+|tz       |Europe/Madrid                                                                                                                                                                               |
+|date     |2026-01-09                                                                                                                                                                                  |
+|rstudio  |2025.09.2+418 Cucumberleaf Sunflower (desktop)                                                                                                                                              |
+|pandoc   |3.1.12.2 @ C:\PROGRA~1\Pandoc\pandoc.exe                                                                                                                                                    |
+|quarto   |ERROR: Unknown command "TMPDIR=C:/Users/diego/AppData/Local/Temp/Rtmp0e8w30/file4fdc23d67197". Did you mean command "create"? @ C:\Users\diego\AppData\Local\Programs\Quarto\bin\quarto.exe |
 
 # Dependencies
 
@@ -30,16 +31,16 @@
 |glue        |1.8.0  |1.8.0        |   |
 |httr2       |1.2.2  |1.2.2        |   |
 |jsonlite    |2.0.0  |2.0.0        |   |
-|lifecycle   |1.0.4  |1.0.4        |   |
+|lifecycle   |1.0.5  |1.0.5        |   |
 |magrittr    |2.0.4  |2.0.4        |   |
 |openssl     |2.3.4  |2.3.4        |   |
 |pillar      |1.11.1 |1.11.1       |   |
 |pkgconfig   |2.0.3  |2.0.3        |   |
-|proxy       |0.4-28 |0.4-28       |   |
+|proxy       |0.4-29 |0.4-29       |   |
 |R6          |2.6.1  |2.6.1        |   |
 |rappdirs    |0.3.3  |0.3.3        |   |
 |Rcpp        |1.1.0  |1.1.0        |   |
-|rlang       |1.1.6  |1.1.6        |   |
+|rlang       |1.1.7  |1.1.7        |   |
 |s2          |1.1.9  |1.1.9        |   |
 |sf          |1.0-23 |1.0-23       |   |
 |sys         |3.4.3  |3.4.3        |   |

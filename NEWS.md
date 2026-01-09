@@ -55,6 +55,8 @@ versions.
     SIANE at a given date.
 -   Added `esp_get_spain_siane()`, analogous to `esp_get_spain()`, using SIANE
     data.
+-   Added `esp_get_attributions()` to retrieve the attributions of a tile
+    provider.
 -   Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
 -   `esp_get_rivers()` gains a new `moveCAN` argument.
 -   `esp_get_tiles()` can be used with providers that needs an API key.
