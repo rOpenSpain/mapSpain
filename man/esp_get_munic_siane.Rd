@@ -105,6 +105,18 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 When calling a higher level (province, CCAA or NUTS1), all the municipalities
 of that level would be added.
 }
+\note{
+Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
+a historical database of Spanish municipal boundaries is also available,
+offering higher‑resolution geometries that may be more appropriate for
+GIS‑oriented workflows:
+\itemize{
+\item Goerlich, F. J., & Pérez Vázquez, P. (2025). \emph{Base de datos histórica de
+contornos municipales de España –LAU2boundaries4Spain–} [Data set].
+Zenodo. \doi{10.5281/zenodo.15345101},
+\url{https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html}.
+}
+}
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

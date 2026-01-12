@@ -10,6 +10,22 @@
 #' @inherit esp_get_ccaa_siane source
 #' @export
 #'
+#' @note
+#'
+#' Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
+#' a historical database of Spanish municipal boundaries is also available,
+#' offering higher‑resolution geometries that may be more appropriate for
+#' GIS‑oriented workflows:
+#'
+#' - Goerlich, F. J., & Pérez Vázquez, P. (2025). *Base de datos histórica de
+#'   contornos municipales de España –LAU2boundaries4Spain–* \[Data set\].
+#'   Zenodo. \doi{10.5281/zenodo.15345101},
+#'   <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
+#'
+#'
+#'
+#'
+#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' # Municipalities that have changed in the past: three cuts

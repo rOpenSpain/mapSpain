@@ -26,6 +26,7 @@ Other contributors:
 \itemize{
   \item Eurostat (\href{https://ror.org/033d3q980}{ROR}) [copyright holder]
   \item Instituto Geográfico Nacional (\href{https://ror.org/03yycdv57}{ROR}) [copyright holder]
+  \item Francisco J. Goerlich (\href{https://orcid.org/0000-0003-1626-525X}{ORCID}) [contributor]
 }
 
 }
