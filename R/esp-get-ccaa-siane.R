@@ -134,8 +134,8 @@ esp_get_ccaa_siane <- function(
   data_sf$lab <- data_sf$rotulo
 
   data_sf$lab <- gsub("Ciudad de ", "", data_sf$lab, fixed = TRUE)
-  data_sf$lab <- gsub("/Catalunya", "", data_sf$lab)
-  data_sf$lab <- gsub("/Euskadi", "", data_sf$lab)
+  data_sf$lab <- gsub("/Catalunya", "", data_sf$lab, fixed = TRUE)
+  data_sf$lab <- gsub("/Euskadi", "", data_sf$lab, fixed = TRUE)
   data_sf$codauto <- esp_dict_region_code(data_sf$lab, destination = "codauto")
 
   # Filter CCAA

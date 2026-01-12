@@ -209,7 +209,7 @@ test_that("bbox WMTS", {
     sf::st_bbox(sf_obj) |> sf::st_as_sfc()
   )
   # With a factor
-  b2 <- get_tile_bbox(sf_obj, bbox_expand = .75, prov_type = "WMTS")
+  b2 <- get_tile_bbox(sf_obj, bbox_expand = 0.75, prov_type = "WMTS")
   b2_bbox <- as.double(sf::st_bbox(b2))
 
   x_rel <- diff(b2_bbox[c(1, 3)]) / diff(init_bbox[c(1, 3)])
@@ -237,7 +237,7 @@ test_that("bbox WMS", {
   expect_true(new_rel == 1)
   # With a factor
 
-  b2 <- get_tile_bbox(sf_obj, bbox_expand = .75, prov_type = "WMS")
+  b2 <- get_tile_bbox(sf_obj, bbox_expand = 0.75, prov_type = "WMS")
   b2_bbox <- as.double(sf::st_bbox(b2))
   new_rel <- diff(b2_bbox[c(1, 3)]) / diff(b2_bbox[c(2, 4)])
   expect_true(new_rel == 1)

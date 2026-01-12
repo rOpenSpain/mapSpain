@@ -169,7 +169,7 @@ test_that("Crop and mask", {
   expect_identical(dim(res)[1:2] <= dim(res2)[1:2], c(FALSE, FALSE))
 
   # No NAs here
-  expect_false(any(is.na(terra::values(res2))))
+  expect_false(anyNA(terra::values(res2)))
 
   # Masking...
   res3 <- esp_get_tiles(
@@ -183,10 +183,10 @@ test_that("Crop and mask", {
   expect_identical(dim(res), dim(res3))
 
   # No NAs here
-  expect_false(any(is.na(terra::values(res))))
+  expect_false(anyNA(terra::values(res)))
 
   # But in mask...
-  expect_true(any(is.na(terra::values(res3))))
+  expect_true(anyNA(terra::values(res3)))
 
   # Crop and mask
   res4 <- esp_get_tiles(
@@ -199,7 +199,7 @@ test_that("Crop and mask", {
   )
   expect_identical(dim(res2), dim(res4))
   # But in mask...
-  expect_true(any(is.na(terra::values(res4))))
+  expect_true(anyNA(terra::values(res4)))
 
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
@@ -262,7 +262,7 @@ test_that("Transparency", {
   expect_identical(dim(res), c(512, 512, 4))
 
   expect_identical(names(res), c("red", "green", "blue", "alpha"))
-  expect_true(any(is.na(terra::values(res))))
+  expect_true(anyNA(terra::values(res)))
 
   # No transparency...
   res2 <- esp_get_tiles(
@@ -276,7 +276,7 @@ test_that("Transparency", {
   expect_identical(dim(res2), c(512, 512, 3))
 
   expect_identical(names(res2), c("red", "green", "blue"))
-  expect_false(any(is.na(terra::values(res2))))
+  expect_false(anyNA(terra::values(res2)))
 
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -66,7 +66,7 @@ get_master_names <- function() {
   # Santa Cruz de Tenerife
   tfe <- names_all[grepl("^santa cruz", names_all$value, ignore.case = TRUE), ]
   tfe$variable <- paste0("alt.", tfe$variable)
-  tfe$value <- gsub("Santa", "Sta.", tfe$value)
+  tfe$value <- gsub("Santa", "Sta.", tfe$value, fixed = TRUE)
 
   names_all <- unique(rbind(names_all, ceuta, melilla, tfe))
 

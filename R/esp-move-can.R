@@ -147,8 +147,8 @@ move_can <- function(data_sf, moveCAN = TRUE) {
   moving <- (isTRUE(moveCAN) | length(moveCAN) >= 2) & any(prepare_can$is_can)
 
   if (moving) {
-    penin <- prepare_can[prepare_can$is_can == FALSE, ]
-    can <- prepare_can[prepare_can$is_can == TRUE, ]
+    penin <- prepare_can[!prepare_can$is_can, ]
+    can <- prepare_can[prepare_can$is_can, ]
 
     can <- esp_move_can(can, moveCAN = moveCAN)
 

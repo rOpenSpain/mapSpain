@@ -52,7 +52,7 @@ grid <-
     square = FALSE
   )
 
-grid <- st_sf(id = 1:length(grid), geometry = grid)
+grid <- st_sf(id = seq_along(grid), geometry = grid)
 
 
 plot(st_geometry(grid))
@@ -199,7 +199,7 @@ grid <-
     square = FALSE
   )
 
-grid <- st_sf(id = 1:length(grid), geometry = grid)
+grid <- st_sf(id = seq_along(grid), geometry = grid)
 
 plot(st_geometry(grid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")
@@ -335,7 +335,7 @@ grid <-
     square = TRUE
   )
 
-grid <- st_sf(id = 1:length(grid), geometry = grid)
+grid <- st_sf(id = seq_along(grid), geometry = grid)
 
 
 plot(st_geometry(grid))
@@ -474,7 +474,7 @@ grid <-
     square = TRUE
   )
 
-grid <- st_sf(id = 1:length(grid), geometry = grid)
+grid <- st_sf(id = seq_along(grid), geometry = grid)
 
 
 plot(st_geometry(grid))

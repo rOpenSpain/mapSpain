@@ -56,7 +56,7 @@ provider_to_list <- function(type) {
 
   split <- unlist(strsplit(q, "?", fixed = TRUE))
 
-  if (!any(grepl("service=WM", split))) {
+  if (!any(grepl("service=WM", split, fixed = TRUE))) {
     return(type)
   }
 
@@ -143,11 +143,11 @@ modify_provider_list <- function(prov_list, options = NULL) {
     ))
 
     if (v_wms >= "1.3.0") {
-      names(prov_list) <- gsub("srs", "crs", names(prov_list))
-      names(options) <- gsub("srs", "crs", names(options))
+      names(prov_list) <- gsub("srs", "crs", names(prov_list), fixed = TRUE)
+      names(options) <- gsub("srs", "crs", names(options), fixed = TRUE)
     } else {
-      names(prov_list) <- gsub("crs", "srs", names(prov_list))
-      names(options) <- gsub("crs", "srs", names(options))
+      names(prov_list) <- gsub("crs", "srs", names(prov_list), fixed = TRUE)
+      names(options) <- gsub("crs", "srs", names(options), fixed = TRUE)
     }
   }
 
@@ -168,7 +168,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
 
 get_tile_ext <- function(prov_list) {
   # Special case for MapBox
-  if (grepl("mapbox", prov_list$q)) {
+  if (grepl("mapbox", prov_list$q, fixed = TRUE)) {
     return("png")
   }
 

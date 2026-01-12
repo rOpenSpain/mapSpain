@@ -49,7 +49,7 @@ convert_to_nuts <- function(region) {
     return(NULL)
   }
 
-  if (any(is.na(nuts_id))) {
+  if (anyNA(nuts_id)) {
     cli::cli_alert_warning(
       "No Spanish NUTS codes found for {.str {clean_region[is.na(nuts_id)]}}."
     )
@@ -117,8 +117,8 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   # Fix Ceuta and Melilla
-  ccaa_id[grep("ES640", ccaa_id)] <- "ES64"
-  ccaa_id[grep("ES630", ccaa_id)] <- "ES63"
+  ccaa_id[grep("ES640", ccaa_id, fixed = TRUE)] <- "ES64"
+  ccaa_id[grep("ES630", ccaa_id, fixed = TRUE)] <- "ES63"
 
   novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
 
@@ -145,7 +145,7 @@ convert_to_nuts_ccaa <- function(region) {
     dfall <- mapSpain::esp_codelist
 
     nutslev1 <- dfall[dfall$nuts1.code %in% ccaa_id[lev1], ]$nuts2.code
-    ccaa_id <- ccaa_id[lev1 == FALSE]
+    ccaa_id <- ccaa_id[!lev1]
     ccaa_id <- unique(c(ccaa_id, nutslev1))
   }
 
@@ -317,7 +317,7 @@ convert_to_nuts_prov <- function(region) {
     dfall <- mapSpain::esp_codelist
 
     nutslev1 <- dfall[dfall$nuts1.code %in% nuts_id[lev1], ]$nuts3.code
-    nuts_id <- nuts_id[lev1 == FALSE]
+    nuts_id <- nuts_id[!lev1]
     nuts_id <- sort(unique(c(nuts_id, nutslev1)))
   }
 
@@ -327,7 +327,7 @@ convert_to_nuts_prov <- function(region) {
     dfall <- mapSpain::esp_codelist
 
     nutslev2 <- dfall[dfall$nuts2.code %in% nuts_id[lev2], ]$nuts3.code
-    nuts_id <- nuts_id[lev2 == FALSE]
+    nuts_id <- nuts_id[!lev2]
     nuts_id <- sort(unique(c(nuts_id, nutslev2)))
   }
 

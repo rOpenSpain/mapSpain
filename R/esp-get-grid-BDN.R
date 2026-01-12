@@ -135,7 +135,7 @@ esp_get_grid_BDN_ccaa <- function(
   nuts_id <- convert_to_nuts_ccaa(region)
 
   # Switch name. The ids are the same than the NUTS code removing the "ES" part
-  id <- gsub("ES", "", nuts_id)
+  id <- gsub("ES", "", nuts_id, fixed = TRUE)
 
   api_entry <- paste0(
     "https://github.com/rOpenSpain/mapSpain/",

@@ -111,7 +111,7 @@ melilla$value <- paste0("Ciudad de ", melilla$value)
 # Santa Cruz de Tenerife
 tfe <- names_full[grepl("^santa cruz", names_full$value, ignore.case = TRUE), ]
 tfe$variable <- paste0("alt.", tfe$variable)
-tfe$value <- gsub("Santa", "Sta.", tfe$value)
+tfe$value <- gsub("Santa", "Sta.", tfe$value, fixed = TRUE)
 
 las <- names_full[grepl("^la |^las ", names_full$value, ignore.case = TRUE), ]
 las$variable <- paste0("alt.las.", las$variable)
@@ -188,7 +188,7 @@ dbs <- list.files(
 
 db_valores <- lapply(dbs, function(x) {
   f <- tibble::as_tibble(foreign::read.dbf(x))
-  clean_x <- gsub("lve_", "", basename(x))
+  clean_x <- gsub("lve_", "", basename(x), fixed = TRUE)
   clean_x <- gsub(".dbf", "", clean_x)
   clean_x <- tolower(clean_x)
   f$campo <- clean_x

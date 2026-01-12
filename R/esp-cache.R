@@ -120,7 +120,7 @@ esp_set_cache_dir <- function(
 
     mapspain_file <- file.path(config_dir, "mapSpain_cache_dir")
 
-    if (!file.exists(mapspain_file) || overwrite == TRUE) {
+    if (!file.exists(mapspain_file) || overwrite) {
       # Create file if it doesn't exist
       writeLines(cache_dir, con = mapspain_file)
     } else {

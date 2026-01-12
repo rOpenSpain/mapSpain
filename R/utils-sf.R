@@ -51,7 +51,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
 
     # Read with vszip
     file_local <- file.path("/vsizip/", file_local, shp_end)
-    file_local <- gsub("//", "/", file_local)
+    file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }
   q <- ensure_null(q)
   if (!is.null(q)) {

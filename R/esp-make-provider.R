@@ -93,10 +93,10 @@ esp_make_provider <- function(id, q, service, layers, ...) {
 
   if (end$service == "WMS") {
     if (all(!is.null(end$version), end$version < "1.3.0")) {
-      names(end) <- gsub("crs", "srs", names(end))
+      names(end) <- gsub("crs", "srs", names(end), fixed = TRUE)
       end$srs <- ifelse(is.null(end$srs), "EPSG:3857", end$srs)
     } else {
-      names(end) <- gsub("srs", "crs", names(end))
+      names(end) <- gsub("srs", "crs", names(end), fixed = TRUE)
       end$crs <- ifelse(is.null(end$crs), "EPSG:3857", end$crs)
     }
   }

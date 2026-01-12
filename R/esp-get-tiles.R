@@ -281,7 +281,7 @@ esp_get_tiles <- function(
   )
 
   # crop management
-  if (crop == TRUE) {
+  if (crop) {
     bbox_terra <- terra::project(bbox_terra, terra::crs(tile_map))
 
     tile_map <- terra::crop(tile_map, bbox_terra)
