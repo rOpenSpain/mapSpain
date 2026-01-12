@@ -7,6 +7,12 @@
         "id": "https://orcid.org/0000-0001-8457-4658"
       },
       "codeRepository": "https://github.com/rOpenSpain/mapSpain",
+      "contributor": {
+        "id": "https://orcid.org/0000-0003-1626-525X",
+        "type": "Person",
+        "familyName": "Goerlich",
+        "givenName": "Francisco J."
+      },
       "copyrightHolder": [
         {
           "id": "https://orcid.org/0000-0001-8457-4658",
