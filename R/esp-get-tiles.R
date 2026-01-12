@@ -463,6 +463,11 @@ get_wmts_tile <- function(
 
     r <- terra::rast(file_local, noflip = TRUE)
 
+    # In some cases need to colorize before merge (e.g.MapBox)
+    if (all(terra::nlyr(r) == 1)) {
+      r <- terra::colorize(r, to = "rgb", alpha = TRUE)
+    }
+
     # Extension and crs
     ext_tile <- tile_bbox(xtile, ytile, ztile)
     ext_tile <- sf::st_as_sfc(ext_tile)

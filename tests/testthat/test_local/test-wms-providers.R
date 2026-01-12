@@ -2,7 +2,7 @@ test_that("Test WMS png", {
   # test with png
   cdir <- file.path(tempdir(), "test_png2")
 
-  save_png <- function(code, width = 200, height = 200) {
+  save_png <- function(code, width = 256, height = 256) {
     path <- tempfile(fileext = ".png")
     png(path, width = width, height = height)
     on.exit(dev.off())
