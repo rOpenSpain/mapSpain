@@ -25,10 +25,10 @@
 #' 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
 #' [esp_codelist]).
 #'
-#' Ceuta and Melilla are considered as provinces on this dataset.
+#' Ceuta and Melilla are considered as provinces in this dataset.
 #'
 #' When calling a higher level (Autonomous Community or NUTS1), all the
-#' provinces of that level would be added.
+#' provinces of that level will be added.
 #'
 #'
 #' @examples

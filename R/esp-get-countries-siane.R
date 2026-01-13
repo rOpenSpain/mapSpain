@@ -17,7 +17,7 @@
 #'
 #' @seealso [giscoR::gisco_get_countries()].
 #'
-#' @param country character vector of country codes. It could be either a
+#' @param country character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   ISO2 country codes. See also [countrycode::countrycode()].
 #'

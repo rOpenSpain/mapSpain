@@ -1,4 +1,5 @@
 #' Rivers and wetlands of Spain - SIANE
+#'
 #' @description
 #' Object representing rivers, lagoons, reservoirs and wetlands of Spain.
 #'
@@ -12,7 +13,7 @@
 #' @name esp_get_landwater
 #'
 #' @param resolution `r lifecycle::badge("deprecated")` character string.
-#'   Ignored, resolution `3` (the most detailed) would be always provided.
+#'   Ignored, resolution `3` (the most detailed) will always be provided.
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
 #'   Use [mapSpain::esp_get_wetlands()] instead of `"spatialtype"` for
 #'   wetlands.
@@ -33,7 +34,7 @@
 #' regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 #' unique(regex2$rotulo)
 #'
-#' # See the diference
+#' # See the difference
 #'
 #' # Rivers in Spain
 #' iberian <- giscoR::gisco_get_countries(
@@ -84,7 +85,7 @@ esp_get_rivers <- function(
     lifecycle::deprecate_soft(
       when = "1.0.0",
       what = "mapSpain::esp_get_rivers(resolution)",
-      details = "Resolution `3` (most detailed) would be always used."
+      details = "Resolution `3` (most detailed) will always be used."
     )
   }
 

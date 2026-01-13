@@ -43,7 +43,7 @@ esp_get_nuts(
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -86,7 +86,7 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions by means of
+territorial units for statistics) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualise multipart polygonal regions.

@@ -2,7 +2,7 @@
 #'
 #' @description
 #' The GISCO statistical unit dataset represents the NUTS (nomenclature of
-#' territorial units for statistics) and statistical regions by means of
+#' territorial units for statistics) and statistical regions using
 #' multipart polygon, polyline and point topology. The NUTS geographical
 #' information is completed by attribute tables and a set of cartographic
 #' help lines to better visualise multipart polygonal regions.
@@ -37,7 +37,7 @@
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
 #' @param update_cache logical. Should the cached file be refreshed? Default
-#'   is `FALSE`. When set to `TRUE` it would force a new download.
+#'   is `FALSE`. When set to `TRUE`, it will force a new download.
 #' @param cache_dir character string. A path to a cache directory. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
 #' @param region Optional. A vector of region names, NUTS or ISO codes

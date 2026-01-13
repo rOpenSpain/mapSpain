@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @param prov,ccaa character. A vector of names and/or codes for provinces
-#'   and autonomous communities or` `NULL to get all the data. See **Details**.
+#'   and autonomous communities or `NULL` to get all the data. See **Details**.
 #'
 #' @seealso [`esp_get_gridmap`][esp_get_gridmap].
 #'
@@ -26,14 +26,14 @@
 #'
 #' @details
 #'
-#' Results are provided **without CRS**, as provided on source.
+#' Results are provided **without CRS**, as provided by source.
 #'
 #' You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
-#' When using a code corresponding of a higher level (e.g.
+#' When using a code corresponding to a higher level (e.g.
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
-#' provided (in this case , all the provinces of Andalusia).
+#' provided (in this case, all the provinces of Andalusia).
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

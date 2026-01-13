@@ -18,7 +18,7 @@ esp_get_grid_ccaa(ccaa = NULL)
 }
 \arguments{
 \item{prov, ccaa}{character. A vector of names and/or codes for provinces
-and autonomous communities or\verb{ }NULL to get all the data. See \strong{Details}.}
+and autonomous communities or \code{NULL} to get all the data. See \strong{Details}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
@@ -36,9 +36,9 @@ maps, each region is represented equally, reducing this bias.
 You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
-When using a code corresponding of a higher level (e.g.
+When using a code corresponding to a higher level (e.g.
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
-provided (in this case , all the provinces of Andalusia).
+provided (in this case, all the provinces of Andalusia).
 
 Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf::st_transform()}}
 to change the projection.

@@ -47,7 +47,7 @@ esp_get_ccaa_siane(
 Communities or \code{NULL} to get all the autonomous communities. See
 \strong{Details}.}
 
-\item{year}{character string or number. Release year, it must presents
+\item{year}{character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
@@ -64,7 +64,7 @@ information starts as of 2005.}
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -84,7 +84,7 @@ data. One of:
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
+\item{rawcols}{logical. Setting this to \code{TRUE} will add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -98,10 +98,10 @@ specified scale.
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities on this function.
+Ceuta and Melilla are considered as Autonomous Communities in this function.
 
 When calling a NUTS1 level, all the Autonomous Communities of that level
-would be added.
+will be added.
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}

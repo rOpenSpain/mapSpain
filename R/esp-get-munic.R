@@ -15,10 +15,10 @@
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
 #' @param munic character string. A name or [`regex`][base::grep()] expression
-#'   with the names of the required municipalities. `NULL` would return all
+#'   with the names of the required municipalities. `NULL` will return all
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
-#'   deprecated, the dataset would be always downloaded to the `cache_dir`.
+#'   deprecated, the dataset will always be downloaded to the `cache_dir`.
 #' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
 #'
 #' @details
@@ -27,7 +27,7 @@
 #' (see [esp_codelist]).
 #'
 #' When calling a higher level (province, CCAA or NUTS1), all the municipalities
-#' of that level would be added.
+#' of that level will be added.
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

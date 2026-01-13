@@ -6,12 +6,12 @@
 #' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
 #'
 #'
-#' @param x An [`sf`][sf::st_sf] object. It may be `sf` or `sfc` object.
+#' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`.  It places the Canary Islands close to Spain's mainland.
 #'   Initial position can be adjusted using the vector of coordinates.
 #'
-#' @return A [`sf`][sf::st_sf] object of the same class and same CRS than `x`
+#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`
 #' but displaced accordingly.
 #'
 #' @details
@@ -21,7 +21,7 @@
 #'
 #' # Displacing the Canary Islands
 #'
-#' While `moveCAN` is useful for visualization, it would alter the actual
+#' While `moveCAN` is useful for visualization, it will alter the actual
 #' geographic position of the Canary Islands. When using the output for
 #' spatial analysis or using tiles (e.g. with [esp_get_tiles()] or
 #' [addProviderEspTiles()])  this option should be set to `FALSE` in order to

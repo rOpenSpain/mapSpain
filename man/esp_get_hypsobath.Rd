@@ -53,7 +53,7 @@ esp_get_hypsobath(
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -76,7 +76,7 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 Dataset representing the hypsometry and bathymetry of Spain.
 \itemize{
-\item \strong{Hypsometry} represents the  the elevation and depth of features of the
+\item \strong{Hypsometry} represents the elevation and depth of features of the
 Earth's surface relative to mean sea level.
 \item \strong{Bathymetry} is the measurement of the depth of water in oceans, rivers,
 or lakes.
@@ -89,7 +89,7 @@ Metadata available on
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# This code would produce a nice plot - It will take a few seconds to run
+# This code will produce a nice plot - It will take a few seconds to run
 library(ggplot2)
 
 hypsobath <- esp_get_hypsobath()

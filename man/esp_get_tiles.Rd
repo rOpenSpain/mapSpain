@@ -31,9 +31,9 @@ esp_get_attributions(type, options = NULL)
 \arguments{
 \item{x}{An \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object.}
 
-\item{type}{This argument could be either:
+\item{type}{This argument can be either:
 \itemize{
-\item The name of one of the  pre-defined providers (see
+\item The name of one of the pre-defined providers (see
 \link{esp_tiles_providers}).
 \item A list with two named elements \code{id} and \code{q} with your own arguments. See
 \code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
@@ -41,14 +41,14 @@ esp_get_attributions(type, options = NULL)
 
 \item{zoom}{character string or number. Only valid for WMTS providers, zoom
 level to be downloaded. If \code{NULL}, it is determined automatically. If set,
-it overrides \code{zoommin}. On a single \code{sf} \code{POINT} and \code{zoom = NULL} the
-function set a zoom level of 18. See \strong{Details}.}
+it overrides \code{zoommin}. If a single \code{sf} \code{POINT} and \code{zoom = NULL}, the
+function sets a zoom level of 18. See \strong{Details}.}
 
 \item{zoommin}{character string or number. Delta on default \code{zoom}.
 The default value is designed to download fewer tiles than you probably
 want. Use \code{1} or \code{2} to increase the resolution.}
 
-\item{crop}{logical. On \code{TRUE} the results would be cropped to the specified
+\item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
 \code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
 \code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
@@ -59,11 +59,11 @@ Resolution (in pixels) of the final tile.}
 
 \item{transparent}{logical. Provides transparent background, if supported.}
 
-\item{mask}{logical. \code{TRUE} if the result should be masked to \code{x}, See
+\item{mask}{logical. \code{TRUE} if the result should be masked to \code{x}. See
 \code{\link[terra:mask]{terra::mask()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -81,12 +81,12 @@ the provider. See \code{\link[terra:rast]{terra::rast()}}.
 Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 
-This function is a implementation of the javascript plugin
+This function is an implementation of the javascript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 
-\code{esp_get_attributions} get the attribution of a tile provider defined as
-as the \code{type} argument.
+\code{esp_get_attributions} gets the attribution of a tile provider defined as
+the \code{type} argument.
 }
 \details{
 Zoom levels are described on the

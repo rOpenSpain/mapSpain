@@ -3,8 +3,8 @@
 #' @order 2
 #' @description
 #'
-#' `esp_get_attributions` get the attribution of a tile provider defined as
-#' as the `type` argument.
+#' `esp_get_attributions` gets the attribution of a tile provider defined as
+#' the `type` argument.
 #'
 #' @seealso [giscoR::gisco_attributions()]
 #'

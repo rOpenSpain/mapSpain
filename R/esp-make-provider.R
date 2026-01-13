@@ -15,7 +15,7 @@
 #'
 #' @export
 #'
-#' @param id An identifier for the user. Would be used also for identifying
+#' @param id An identifier for the user. It will be used for identifying
 #'   cached tiles.
 #' @param q The base url of the service.
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
@@ -28,7 +28,7 @@
 #' [OGC Standard](https://www.ogc.org/standards/wms/).
 #'
 #' Note that:
-#' - \CRANpkg{mapSpain} would not provide advice on the argument `q` to be
+#' - \CRANpkg{mapSpain} will not provide advice on the argument `q` to be
 #'   provided.
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.

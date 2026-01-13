@@ -25,10 +25,10 @@
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
 #' ISO codes (corresponding to level 2) or `codauto` (see [esp_codelist]).
-#' Ceuta and Melilla are considered as Autonomous Communities on this function.
+#' Ceuta and Melilla are considered as Autonomous Communities in this function.
 #'
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
-#' would be added.
+#' will be added.
 #'
 #'
 #' @examples

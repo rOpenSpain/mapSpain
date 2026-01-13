@@ -67,7 +67,7 @@ esp_get_wetlands(
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -75,7 +75,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{resolution}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character string.
-Ignored, resolution \code{3} (the most detailed) would be always provided.}
+Ignored, resolution \code{3} (the most detailed) will always be provided.}
 
 \item{spatialtype}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character string.
 Use \code{\link[=esp_get_wetlands]{esp_get_wetlands()}} instead of \code{"spatialtype"} for
@@ -111,7 +111,7 @@ unique(regex1$rotulo)
 regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 unique(regex2$rotulo)
 
-# See the diference
+# See the difference
 
 # Rivers in Spain
 iberian <- giscoR::gisco_get_countries(

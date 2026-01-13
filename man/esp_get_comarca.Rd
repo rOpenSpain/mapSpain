@@ -24,7 +24,7 @@ esp_get_comarca(
 or \code{NULL} to get all the comarcas. See \strong{Details}.}
 
 \item{comarca}{character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required comarcas. \code{NULL} would return all the
+with the names of the required comarcas. \code{NULL} will return all the
 possible comarcas.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -45,7 +45,7 @@ Type of comarca to return, see \strong{Details}.}
 }}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -68,7 +68,7 @@ When using \code{region} you can use and mix names and NUTS codes
 "cpro" (see \link{esp_codelist}).
 
 When calling a higher level (Province, Autonomous Community or NUTS1),
-all the comarcas of that level would be added.
+all the comarcas of that level will be added.
 }
 \note{
 The use of the information contained on the

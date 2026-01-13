@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{addProviderEspTiles}
 \alias{addProviderEspTiles}
-\title{Add a tile layer from Spanish public administrations on a \CRANpkg{leaflet}
+\title{Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 map}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
@@ -36,7 +36,7 @@ group names are permitted--they need not be short, identifier-style names.}
 modified map object
 }
 \description{
-Add a tile layer from Spanish public administrations on a \CRANpkg{leaflet}
+Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 map
 }
 \examples{

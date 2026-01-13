@@ -46,7 +46,7 @@ esp_get_prov_siane(
 \item{prov}{A vector of names and/or codes for provinces or \code{NULL} to get all
 the provinces. See \strong{Details}.}
 
-\item{year}{character string or number. Release year, it must presents
+\item{year}{character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
@@ -63,7 +63,7 @@ information starts as of 2005.}
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -83,7 +83,7 @@ data. One of:
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
+\item{rawcols}{logical. Setting this to \code{TRUE} will add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -99,10 +99,10 @@ When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
 \link{esp_codelist}).
 
-Ceuta and Melilla are considered as provinces on this dataset.
+Ceuta and Melilla are considered as provinces in this dataset.
 
 When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level would be added.
+provinces of that level will be added.
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}

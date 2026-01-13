@@ -13,7 +13,7 @@
 #' @inheritParams esp_get_nuts
 #' @param cache_dir A path to a cache directory. When `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install logical- If `TRUE`, installs the key on your local machine for
+#' @param install logical. If `TRUE`, installs the key on your local machine for
 #'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
 #'   this argument is automatically set to `FALSE`.
 #' @param overwrite logical. If `TRUE`, overwrites an existing
@@ -33,7 +33,7 @@
 #' @section Caching strategies:
 #'
 #' Some files can be read from its online source without caching using the
-#' option `cache = FALSE`. Otherwise the source file would be downloaded to
+#' option `cache = FALSE`. Otherwise the source file will be downloaded to
 #' your computer. \CRANpkg{mapSpain} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
@@ -92,7 +92,7 @@ esp_set_cache_dir <- function(
       "info",
       verbose,
       "Using a temporary cache dir (see {.fn base::tempdir}). ",
-      "Set {.arg cache_dir} to a value for store permanently."
+      "Set {.arg cache_dir} to a value to store permanently."
     )
 
     # Create a folder on tempdir

@@ -39,10 +39,10 @@ values.}
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This argument is
-deprecated, the dataset would be always downloaded to the \code{cache_dir}.}
+deprecated, the dataset will always be downloaded to the \code{cache_dir}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -53,7 +53,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
 \item{munic}{character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required municipalities. \code{NULL} would return all
+with the names of the required municipalities. \code{NULL} will return all
 municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -76,7 +76,7 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 (see \link{esp_codelist}).
 
 When calling a higher level (province, CCAA or NUTS1), all the municipalities
-of that level would be added.
+of that level will be added.
 }
 \section{Note}{
 

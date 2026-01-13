@@ -4,7 +4,7 @@
 #' Get a [`sf`][sf::st_sf] `POINT` with the location of the political powers for
 #' each municipality.
 #'
-#' Note that this differs of the centroid of the boundaries of the
+#' Note that this differs from the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic_siane()].
 #'
 #' @encoding UTF-8

@@ -38,7 +38,7 @@ Initial position can be adjusted using the vector of coordinates. See
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{spatialtype}}{character string. Type of geometry to be returned.
@@ -74,10 +74,10 @@ When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
 \link{esp_codelist}).
 
-Ceuta and Melilla are considered as provinces on this dataset.
+Ceuta and Melilla are considered as provinces in this dataset.
 
 When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level would be added.
+provinces of that level will be added.
 }
 \section{Note}{
 

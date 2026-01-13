@@ -43,7 +43,7 @@ esp_get_capimun(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year, it must presents
+\item{year}{character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
@@ -60,7 +60,7 @@ information starts as of 2005.}
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -71,7 +71,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
 \item{munic}{character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required municipalities. \code{NULL} would return all
+with the names of the required municipalities. \code{NULL} will return all
 municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -79,7 +79,7 @@ municipalities.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{rawcols}{logical. Setting this to \code{TRUE} would add the raw columns of
+\item{rawcols}{logical. Setting this to \code{TRUE} will add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -89,7 +89,7 @@ A \code{\link[sf:sf]{sf}} object.
 Get a \code{\link[sf:sf]{sf}} \code{POINT} with the location of the political powers for
 each municipality.
 
-Note that this differs of the centroid of the boundaries of the
+Note that this differs from the centroid of the boundaries of the
 municipality, returned by \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}.
 }
 \details{
@@ -98,7 +98,7 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 (see \link{esp_codelist}).
 
 When calling a higher level (province, CCAA or NUTS1), all the municipalities
-of that level would be added.
+of that level will be added.
 }
 \note{
 Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,

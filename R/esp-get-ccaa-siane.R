@@ -28,7 +28,7 @@
 #' @export
 #'
 #'
-#' @param year character string or number. Release year, it must presents
+#' @param year character string or number. Release year, it must be in
 #'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
 #'   information starts as of 2005.
 #' @param resolution character string or number. Resolution of the geospatial
@@ -37,7 +37,7 @@
 #'   * "6.5": 1:6.5 million.
 #'   * "3": 1:3 million.
 #'
-#' @param rawcols logical. Setting this to `TRUE` would add the raw columns of
+#' @param rawcols logical. Setting this to `TRUE` will add the raw columns of
 #'   the resulting object as provided by IGN.
 #'
 #' @examplesIf esp_check_access()

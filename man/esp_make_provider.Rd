@@ -7,7 +7,7 @@
 esp_make_provider(id, q, service, layers, ...)
 }
 \arguments{
-\item{id}{An identifier for the user. Would be used also for identifying
+\item{id}{An identifier for the user. It will be used for identifying
 cached tiles.}
 
 \item{q}{The base url of the service.}
@@ -31,7 +31,7 @@ This function is meant to work with services provided as of the
 
 Note that:
 \itemize{
-\item \CRANpkg{mapSpain} would not provide advice on the argument \code{q} to be
+\item \CRANpkg{mapSpain} will not provide advice on the argument \code{q} to be
 provided.
 \item Currently, on \strong{WMTS} requests only services with
 \code{tilematrixset=GoogleMapsCompatible} are supported.

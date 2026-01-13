@@ -36,7 +36,7 @@ Initial position can be adjusted using the vector of coordinates. See
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
@@ -61,7 +61,7 @@ Returns the boundaries of Spain as a single \code{\link[sf:sf]{sf}} \code{POLYGO
 specified scale.
 }
 \details{
-Dataset derived of NUTS data provided by GISCO. Check \code{\link[=esp_get_nuts]{esp_get_nuts()}} for
+Dataset derived from NUTS data provided by GISCO. Check \code{\link[=esp_get_nuts]{esp_get_nuts()}} for
 details.
 }
 \section{Note}{

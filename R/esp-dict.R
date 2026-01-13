@@ -263,9 +263,13 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   # - First: prov (a_prov)
   # - Second: ccaa (b_ccaa)
   # - Last: nuts (c_nuts)
-  dict$variable <- gsub("prov", "a_prov", dict$variable, fixed = TRUE) # Upgrade provs
-  dict$variable <- gsub("ccaa", "b_ccaa", dict$variable, fixed = TRUE) # Upgrade ccaa
-  dict$variable <- gsub("nuts", "c_nuts", dict$variable, fixed = TRUE) # Upgrade nuts
+
+  # Upgrade provs
+  dict$variable <- gsub("prov", "a_prov", dict$variable, fixed = TRUE)
+  # Upgrade ccaa
+  dict$variable <- gsub("ccaa", "b_ccaa", dict$variable, fixed = TRUE)
+  # Upgrade nuts
+  dict$variable <- gsub("nuts", "c_nuts", dict$variable, fixed = TRUE)
 
   names_dict <- unique(
     dict[grep("name", dict$variable, fixed = TRUE), c("key", "value")]

@@ -23,7 +23,7 @@
 #'
 #' ```
 #'
-#' @param resolution Resolution of the grid in kms. Could be `1`, `10` or `100`.
+#' @param resolution Resolution of the grid in kms. Can be `1`, `10` or `100`.
 #'
 #' @inheritParams esp_get_grid_BDN
 esp_get_grid_EEA <- function(

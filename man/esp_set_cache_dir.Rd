@@ -21,7 +21,7 @@ stores cached files in a temporary directory (see \code{\link[base:tempfile]{bas
 \item{overwrite}{logical. If \code{TRUE}, overwrites an existing
 \code{MAPSPAIN_CACHE_DIR} on your local machine.}
 
-\item{install}{logical- If \code{TRUE}, installs the key on your local machine for
+\item{install}{logical. If \code{TRUE}, installs the key on your local machine for
 use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
 this argument is automatically set to \code{FALSE}.}
 
@@ -57,7 +57,7 @@ A message appears once during this migration.
 
 
 Some files can be read from its online source without caching using the
-option \code{cache = FALSE}. Otherwise the source file would be downloaded to
+option \code{cache = FALSE}. Otherwise the source file will be downloaded to
 your computer. \CRANpkg{mapSpain} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no

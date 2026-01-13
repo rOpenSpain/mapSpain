@@ -7,8 +7,8 @@
 #'
 #' This dataset provides:
 #'   - [esp_get_grid_BDN()] extracts country-wide regular grids with resolutions
-#'     of 5x5 or 10x10 kilometres (mainland Spain or Canary Islands).
-#'   - [esp_get_grid_BDN_ccaa()] extracts 1x1 kilometre resolution grids for
+#'     of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
+#'   - [esp_get_grid_BDN_ccaa()] extracts 1x1 kilometer resolution grids for
 #'     individual Autonomous Communities.
 #'
 #' These grids are useful for biodiversity analysis, environmental monitoring,
@@ -38,10 +38,9 @@
 #'       "bdn-cart-aux-descargas-ccaa.html>."))
 #' ```
 #'
-#' @param resolution numeric. Resolution of the grid in kilometres.
-#'   Must be one of:
-#'   * `5`: 5x5 kilometre cells
-#'   * `10`: 10x10 kilometre cells (default)
+#' @param resolution numeric. Resolution of the grid in kms. Must be one of:
+#'   * `5`: 5x5 kilometer cells
+#'   * `10`: 10x10 kilometer cells (default)
 #' @param type character. The geographic scope of the grid:
 #'   * `"main"`: Mainland Spain (default)
 #'   * `"canary"`: Canary Islands
@@ -111,7 +110,7 @@ esp_get_grid_BDN <- function(
 #' @export
 #'
 #' @description
-#' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometre grids
+#' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
 #' for specific Autonomous Communities, useful for regional analysis with
 #' finer spatial detail.
 #'

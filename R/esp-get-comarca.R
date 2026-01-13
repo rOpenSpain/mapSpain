@@ -21,7 +21,7 @@
 #' @param region character string. A vector of names and/or codes for provinces
 #'   or `NULL` to get all the comarcas. See **Details**.
 #' @param comarca character string. A name or [`regex`][base::grep()] expression
-#'   with the names of the required comarcas. `NULL` would return all the
+#'   with the names of the required comarcas. `NULL` will return all the
 #'   possible comarcas.
 #' @param type character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
 #'   Type of comarca to return, see **Details**.
@@ -32,7 +32,7 @@
 #' "cpro" (see [esp_codelist]).
 #'
 #' When calling a higher level (Province, Autonomous Community or NUTS1),
-#' all the comarcas of that level would be added.
+#' all the comarcas of that level will be added.
 #'
 #' # About comarcas
 #'

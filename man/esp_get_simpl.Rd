@@ -26,10 +26,10 @@ esp_get_simpl_ccaa(
 }
 \arguments{
 \item{prov, ccaa}{character. A vector of names and/or codes for provinces
-and autonomous communities or\verb{ }NULL to get all the data. See \strong{Details}.}
+and autonomous communities or \code{NULL} to get all the data. See \strong{Details}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -45,14 +45,14 @@ provinces or autonomous communities of Spain, as provided by the \strong{INE}
 (Instituto Nacional de Estadistica).
 }
 \details{
-Results are provided \strong{without CRS}, as provided on source.
+Results are provided \strong{without CRS}, as provided by source.
 
 You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
-When using a code corresponding of a higher level (e.g.
+When using a code corresponding to a higher level (e.g.
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
-provided (in this case , all the provinces of Andalusia).
+provided (in this case, all the provinces of Andalusia).
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}

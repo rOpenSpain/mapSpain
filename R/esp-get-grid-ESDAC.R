@@ -22,8 +22,7 @@
 #' @inherit esp_get_grid_EEA return
 #' @export
 #'
-#' @param resolution numeric. Resolution of the grid in kilometres. It could be
-#'   `1` or `10`.
+#' @param resolution numeric. Resolution of the grid in kms Can be `1` or `10`.
 #'
 #' @examplesIf esp_check_access()
 #' \dontrun{

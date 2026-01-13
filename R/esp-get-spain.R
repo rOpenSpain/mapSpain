@@ -18,7 +18,7 @@
 #' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @details
-#' Dataset derived of NUTS data provided by GISCO. Check [esp_get_nuts()] for
+#' Dataset derived from NUTS data provided by GISCO. Check [esp_get_nuts()] for
 #' details.
 #'
 #' @inheritParams esp_get_nuts

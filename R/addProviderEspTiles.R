@@ -1,7 +1,7 @@
 # Leaflet plugin version
 leaf_providers_esp_v <- "v1.3.3"
 
-#' Add a tile layer from Spanish public administrations on a \CRANpkg{leaflet}
+#' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 #' map
 #'
 #' @encoding UTF-8

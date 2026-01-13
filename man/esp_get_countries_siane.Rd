@@ -40,7 +40,7 @@ esp_get_countries_siane(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year, it must presents
+\item{year}{character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
@@ -57,14 +57,14 @@ information starts as of 2005.}
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{country}{character vector of country codes. It could be either a
+\item{country}{character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 ISO2 country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }

@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Dataset representing the hypsometry and bathymetry of Spain.
-#' - **Hypsometry** represents the  the elevation and depth of features of the
+#' - **Hypsometry** represents the elevation and depth of features of the
 #'   Earth's surface relative to mean sea level.
 #' - **Bathymetry** is the measurement of the depth of water in oceans, rivers,
 #'   or lakes.
@@ -27,7 +27,7 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # This code would produce a nice plot - It will take a few seconds to run
+#' # This code will produce a nice plot - It will take a few seconds to run
 #' library(ggplot2)
 #'
 #' hypsobath <- esp_get_hypsobath()

@@ -11,7 +11,7 @@
 #' @inherit esp_get_nuts return
 #'
 #' @param prov,ccaa character. A vector of names and/or codes for provinces
-#'   and autonomous communities or` `NULL to get all the data. See **Details**.
+#'   and autonomous communities or `NULL` to get all the data. See **Details**.
 #'
 #' @seealso [`esp_get_simpl`][esp_get_simpl].
 #'
@@ -25,9 +25,9 @@
 #' You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
-#' When using a code corresponding of a higher level (e.g.
+#' When using a code corresponding to a higher level (e.g.
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
-#' provided (in this case , all the provinces of Andalusia).
+#' provided (in this case, all the provinces of Andalusia).
 #'
 #'
 #' Results are provided in **EPSG:4258**, use [sf::st_transform()]

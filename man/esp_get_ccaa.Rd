@@ -39,7 +39,7 @@ Initial position can be adjusted using the vector of coordinates. See
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{spatialtype}}{character string. Type of geometry to be returned.
@@ -73,10 +73,10 @@ specified scale.
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities on this function.
+Ceuta and Melilla are considered as Autonomous Communities in this function.
 
 When calling a NUTS1 level, all the Autonomous Communities of that level
-would be added.
+will be added.
 }
 \section{Note}{
 

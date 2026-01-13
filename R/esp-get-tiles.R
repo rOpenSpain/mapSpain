@@ -4,7 +4,7 @@
 #' Get static map tiles based on a spatial object. Maps can be fetched from
 #' various open map servers.
 #'
-#' This function is a implementation of the javascript plugin
+#' This function is an implementation of the javascript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
 #'
@@ -27,26 +27,26 @@
 #'
 #' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #'
-#' @param type This argument could be either:
-#'   - The name of one of the  pre-defined providers (see
+#' @param type This argument can be either:
+#'   - The name of one of the pre-defined providers (see
 #'     [esp_tiles_providers]).
 #'   - A list with two named elements `id` and `q` with your own arguments. See
 #'     [esp_make_provider()] and examples.
 #' @param zoom character string or number. Only valid for WMTS providers, zoom
 #'   level to be downloaded. If `NULL`, it is determined automatically. If set,
-#'   it overrides `zoommin`. On a single `sf` `POINT` and `zoom = NULL` the
-#'   function set a zoom level of 18. See **Details**.
+#'   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`, the
+#'   function sets a zoom level of 18. See **Details**.
 #' @param zoommin character string or number. Delta on default `zoom`.
 #'   The default value is designed to download fewer tiles than you probably
 #'   want. Use `1` or `2` to increase the resolution.
-#' @param crop logical. On `TRUE` the results would be cropped to the specified
+#' @param crop logical. If `TRUE`, the results will be cropped to the specified
 #'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
 #'   `crop` is set to `FALSE`. See [terra::crop()].
 #' @param res character string or number. Only valid for WMS providers.
 #'   Resolution (in pixels) of the final tile.
 #' @param bbox_expand number. Expansion percentage of the bounding box of `x`.
 #' @param transparent logical. Provides transparent background, if supported.
-#' @param mask logical. `TRUE` if the result should be masked to `x`, See
+#' @param mask logical. `TRUE` if the result should be masked to `x`. See
 #'   [terra::mask()].
 #' @param options A named list containing additional options to pass to the
 #'   query.

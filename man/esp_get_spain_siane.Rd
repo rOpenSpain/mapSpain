@@ -40,7 +40,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{...}{
   Arguments passed on to \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane}}
   \describe{
-    \item{\code{year}}{character string or number. Release year, it must presents
+    \item{\code{year}}{character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
     \item{\code{resolution}}{character string or number. Resolution of the geospatial
@@ -61,7 +61,7 @@ data. One of:
     \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
