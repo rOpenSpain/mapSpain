@@ -21,7 +21,7 @@
     Condition
       Warning:
       The `resolution` argument of `esp_get_rivers()` is deprecated as of mapSpain 1.0.0.
-      i Resolution `3` (most detailed) would be always used.
+      i Resolution `3` (most detailed) will be always used.
 
 ---
 
