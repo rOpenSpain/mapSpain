@@ -41,3 +41,4 @@
 ^[.]?air[.]toml$
 ^\.vscode$
 ^tests/testthat/test_local$
+^jarl\.toml$
