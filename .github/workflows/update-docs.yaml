@@ -1,7 +1,6 @@
 on:
   workflow_dispatch:
 
-
 name: update-docs
 permissions: write-all
 # This will cancel running jobs once a new run is triggered
@@ -37,7 +36,7 @@ jobs:
           ropensci/rnaturalearthhires
           any::reactable
           any::pkgdown
-      needs: website
+        needs: website
 
     - name: Run jarl
       uses: etiennebacher/setup-jarl@v0.1.0
