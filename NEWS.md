@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
 Requests now use **httr2**, and cached files are reorganized into topic-based

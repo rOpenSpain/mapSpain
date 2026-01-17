@@ -230,6 +230,7 @@ load it, which speeds up the process.
 ## Citation
 
 <p>
+
 Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,
@@ -241,7 +242,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2026},
-      version = {0.99.99.9000},
+      version = {1.0.0},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
