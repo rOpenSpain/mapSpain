@@ -91,7 +91,7 @@ versions.
 # mapSpain 0.8.0
 
 -   Improve download of NUTS data from **giscoR**.
--   Upgrade `esp_tiles_providers` to
+-   Upgrade `?esp_tiles_providers` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.3. New providers
     included:
     -   `IDErioja.Base`
@@ -103,11 +103,11 @@ versions.
 
 # mapSpain 0.7.0
 
--   Upgrade `leaflet.providersESP.df` to
+-   Upgrade `?leaflet.providersESP.df` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.2.
 -   Changes on how to package manages tiles providers:
-    -   `leaflet.providersESP.df` is superseded in favor of
-        `esp_tiles_providers`.
+    -   `?leaflet.providersESP.df` is superseded in favor of
+        `?esp_tiles_providers`.
     -   You can use a custom url with the `type` argument in `esp_getTiles()`
         (#88).
     -   Add new function `esp_make_provider()` that helps to create custom
@@ -130,7 +130,7 @@ versions.
 
 # mapSpain 0.6.0
 
--   Upgrade `leaflet.providersESP.df` to
+-   Upgrade `?leaflet.providersESP.df` to
     <https://dieghernan.github.io/leaflet-providersESP/> v1.3.0. New providers:
     -   `Catastro.BuildingPart`
     -   `Catastro.AdministrativeBoundary`
