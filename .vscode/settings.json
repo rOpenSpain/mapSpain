@@ -1,10 +1,17 @@
 {
-    "[r]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "Posit.air-vscode"
-    },
-    "[quarto]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "quarto.quarto"
-    }
+  "[r]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Posit.air-vscode"
+  },
+  "[quarto]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "quarto.quarto"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "redhat.telemetry.enabled": true,
+  "yaml.completion": true,
+  "yaml.format.printWidth": 80,
+  "yaml.validate": true
 }

@@ -1,5 +1,3 @@
 {
-    "recommendations": [
-        "Posit.air-vscode"
-    ]
+  "recommendations": ["Posit.air-vscode", "redhat.vscode-yaml", "quarto.quarto", "github.vscode-github-actions", "GitHub.vscode-pull-request-github"]
 }
