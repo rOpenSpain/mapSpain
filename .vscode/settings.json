@@ -16,8 +16,8 @@
   "better-yaml.directives": false,
   "better-yaml.flowCollectionPadding": false,
   "better-yaml.lineWidth": 80,
+  "positron.r.pipe": "|>",
   "yaml.completion": true,
   "yaml.format.printWidth": 80,
-  "yaml.validate": true,
-  "positron.r.pipe": "|>"
+  "yaml.validate": true
 }
