@@ -1,11 +1,11 @@
 url: https://ropenspain.github.io/mapSpain
 
-repo:
-  branch: main
-
 figures:
   dpi: 300
   fig.retina: 2
+
+development:
+  mode: auto
 
 template:
   bootstrap: 5
@@ -17,9 +17,6 @@ template:
       creator: "@dhernangomez"
       site: "@rOpenSpain"
       card: summary_large_image
-
-development:
-  mode: auto
 
 authors:
   Diego Hernangómez:

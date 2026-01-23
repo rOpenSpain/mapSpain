@@ -18,5 +18,6 @@
   "better-yaml.lineWidth": 80,
   "yaml.completion": true,
   "yaml.format.printWidth": 80,
-  "yaml.validate": true
+  "yaml.validate": true,
+  "positron.r.pipe": "|>"
 }
