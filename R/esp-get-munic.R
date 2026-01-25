@@ -104,7 +104,7 @@ esp_get_munic <- function(
   cache_dir <- create_cache_dir(cache_dir)
 
   if (as.character(year) >= "2011") {
-    data_sf <- giscoR::gisco_get_lau(
+    data_sf <- giscor_get_lau(
       year = year,
       epsg = gisco_epsg,
       cache = cache, # Deprecated...
@@ -217,4 +217,11 @@ esp_get_munic <- function(
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
   data_sf <- sanitize_sf(data_sf)
   data_sf
+}
+
+
+#' Wrap for mocking
+#' @noRd
+giscor_get_lau <- function(...) {
+  giscoR::gisco_get_lau(...)
 }

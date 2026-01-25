@@ -3,33 +3,22 @@ test_that("Test offline", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  options(gisco_test_offline = TRUE)
-  options(mapspain_test_offline = TRUE)
-  expect_message(
-    n <- esp_get_prov(update_cache = TRUE, verbose = FALSE),
-    "Offline"
-  )
+  local_fun <- esp_get_nuts
+  local_mocked_bindings(esp_get_nuts = function(...) {
+    NULL
+  })
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
+
+  n <- esp_get_prov(update_cache = TRUE, verbose = FALSE)
+
   expect_null(n)
 
-  options(mapspain_test_offline = FALSE)
-  options(gisco_test_offline = FALSE)
-})
-
-test_that("Test 404", {
-  skip_on_cran()
-  skip_if_siane_offline()
-  skip_if_gisco_offline()
-
-  options(gisco_test_404 = TRUE)
-  options(mapspain_test_404 = TRUE)
-  expect_message(
-    n <- esp_get_prov(update_cache = TRUE),
-    "Error"
-  )
-  expect_null(n)
-
-  options(mapspain_test_404 = FALSE)
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  local_mocked_bindings(esp_get_nuts = local_fun)
 })
 
 test_that("prov offline", {

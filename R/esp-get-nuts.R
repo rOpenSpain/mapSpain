@@ -156,7 +156,7 @@ esp_get_nuts <- function(
       "Use {.arg update_cache = TRUE} to re-load from file"
     )
   } else {
-    data_sf <- giscoR::gisco_get_nuts(
+    data_sf <- giscor_get_nuts(
       year = year,
       epsg = gisco_epsg,
       cache = cache,
@@ -209,4 +209,10 @@ esp_get_nuts <- function(
 
   data_sf <- sanitize_sf(data_sf)
   data_sf
+}
+
+#' Wrapper for mock
+#' @noRd
+giscor_get_nuts <- function(...) {
+  giscoR::gisco_get_nuts(...)
 }

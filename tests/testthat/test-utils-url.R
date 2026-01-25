@@ -1,7 +1,9 @@
 test_that("Test offline", {
   skip_on_cran()
   skip_if_siane_offline()
-  options(mapspain_test_offline = TRUE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
 
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
@@ -24,7 +26,9 @@ test_that("Test offline", {
   expect_length(list.files(cdir, recursive = TRUE), 0)
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  options(mapspain_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
 })
 
 
@@ -37,7 +41,9 @@ test_that("Test 404", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  options(mapspain_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_3_urban_capimuni_p_y.gpkg"
@@ -53,7 +59,9 @@ test_that("Test 404", {
   )
   expect_null(s)
 
-  options(mapspain_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 
   # Otherwise work
   expect_silent(
