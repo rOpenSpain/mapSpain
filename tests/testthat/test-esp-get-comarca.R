@@ -3,16 +3,18 @@ test_that("Test offline", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  options(gisco_test_offline = TRUE)
-  options(mapspain_test_offline = TRUE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
   expect_message(
     n <- esp_get_comarca(update_cache = TRUE, verbose = FALSE),
     "Offline"
   )
   expect_null(n)
 
-  options(mapspain_test_offline = FALSE)
-  options(gisco_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
 })
 
 test_that("Test 404", {
@@ -20,16 +22,18 @@ test_that("Test 404", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  options(gisco_test_404 = TRUE)
-  options(mapspain_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   expect_message(
     n <- esp_get_comarca(update_cache = TRUE),
     "Error"
   )
   expect_null(n)
 
-  options(mapspain_test_404 = FALSE)
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 })
 
 test_that("comarcas online", {

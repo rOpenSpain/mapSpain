@@ -1,36 +1,26 @@
-test_that("Test offline", {
+test_that("Test null", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  options(gisco_test_offline = TRUE)
-  options(mapspain_test_offline = TRUE)
-  expect_message(
-    n <- esp_get_nuts(update_cache = TRUE, verbose = TRUE),
-    "Offline"
-  )
+  the_fun <- giscor_get_nuts
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
+  local_mocked_bindings(giscor_get_nuts = function(...) {
+    NULL
+  })
+
+  n <- esp_get_nuts(update_cache = TRUE, verbose = TRUE)
   expect_null(n)
 
-  options(mapspain_test_offline = FALSE)
-  options(gisco_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  local_mocked_bindings(giscor_get_nuts = the_fun)
 })
 
-test_that("Test 404", {
-  skip_on_cran()
-  skip_if_siane_offline()
-  skip_if_gisco_offline()
-
-  options(gisco_test_404 = TRUE)
-  options(mapspain_test_404 = TRUE)
-  expect_message(
-    n <- esp_get_nuts(update_cache = TRUE),
-    "Error"
-  )
-  expect_null(n)
-
-  options(mapspain_test_404 = FALSE)
-  options(gisco_test_404 = FALSE)
-})
 
 test_that("Test local NUTS", {
   expect_silent(esp_get_nuts())

@@ -230,6 +230,7 @@ load it, which speeds up the process.
 ## Citation
 
 <p>
+
 Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,

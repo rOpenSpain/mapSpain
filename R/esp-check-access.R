@@ -42,7 +42,7 @@ esp_check_access <- function() {
 #' @noRd
 skip_if_siane_offline <- function() {
   # nocov start
-  test_offline <- getOption("mapspain_test_404", FALSE)
+  test_offline <- is_404()
   if (test_offline) {
     return(invisible(TRUE))
   }
@@ -65,7 +65,7 @@ skip_if_siane_offline <- function() {
 #' @noRd
 skip_if_gisco_offline <- function() {
   # nocov start
-  test_offline <- getOption("gisco_test_404", FALSE)
+  test_offline <- is_404()
   if (test_offline) {
     return(invisible(TRUE))
   }
