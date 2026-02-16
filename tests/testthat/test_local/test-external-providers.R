@@ -79,7 +79,6 @@ test_that("Test Thunderforest", {
   unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-
 test_that("Test OSM", {
   # test with png
   cdir <- file.path(tempdir(), "test_ext")

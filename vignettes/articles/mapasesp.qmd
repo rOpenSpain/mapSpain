@@ -1,30 +1,23 @@
 ---
 title: "mapSpain: Mapas de España en R [Spanish]"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
-description: >
-  Mapas de España en R de forma rápida y sencilla.
-output:
-  html_document:
-    toc: true
-    toc_depth: 2
+author:
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
+description: Mapas de España en R de forma rápida y sencilla.
+toc: true
+toc-depth: 2
+lang: es-ES
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| label: setup
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  dpi = 300,
-  tidy = "styler",
-  dev = "ragg_png",
-  out.width = "100%"
-)
-
-library(mapSpain)
-```
 
 ## Bienvenidos a mapSpain
 
@@ -71,7 +64,8 @@ Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 #| label: instruniverse
 #| eval: false
 # Enable this universe
-install.packages("mapSpain",
+install.packages(
+  "mapSpain",
   repos = c(
     "https://ropenspain.r-universe.dev",
     "https://cloud.r-project.org"
@@ -92,15 +86,14 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ### Un ejemplo rápido
 
 ```{r}
-#| label: intro
-#| fig-alt: Mapa de los municipios de Galicia
+#| label: fig-intro
+#| fig-cap: Mapa de los municipios de Galicia
 library(mapSpain)
 library(tidyverse)
 
 galicia <- esp_get_munic_siane(region = "Galicia") |>
   # Homogeneizo etiquetas
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
-
 
 ggplot(galicia) +
   geom_sf(aes(fill = Provincia), color = "grey70") +
@@ -115,8 +108,12 @@ Si exploramos el dataset:
 #| label: galicia_data
 library(reactable)
 
-reactable(galicia,
-  searchable = TRUE, striped = TRUE, filterable = TRUE, height = 350,
+reactable(
+  galicia,
+  searchable = TRUE,
+  striped = TRUE,
+  filterable = TRUE,
+  height = 350,
   elementId = "munis-galicia"
 )
 ```
@@ -127,9 +124,9 @@ Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` o
 `SpatVector` de distintos paises:
 
 ```{r}
-#| label: compara
-#| fig-alt: Comparación de la resolución de diferentes fuentes de mapas; se muestran
-#|   bordes de los datos comparados con ortofoto de la Ria de Ferrol
+#| label: fig-compara
+#| fig-cap: Comparación de la resolución de diferentes fuentes de mapas; se
+#|   muestran bordes de los datos comparados con ortofoto de la Ria de Ferrol
 library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
@@ -149,7 +146,6 @@ esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
   st_transform(3857)
 
 # geobounds
-# https://github.com/dieghernan/geobounds
 library(geobounds)
 esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
   st_transform(3857)
@@ -161,22 +157,28 @@ tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
 # Prepara el plot
 library(tidyterra)
 
-
 esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata, esp_geobounds)
 
 esp_all$source <- as_factor(c(
   "rnaturalearth",
-  "mapSpain", "geodata (GADM)", "geoBoundaries"
+  "mapSpain",
+  "geodata (GADM)",
+  "geoBoundaries"
 ))
 
 ggplot(esp_all) +
   geom_spatraster_rgb(data = tile, maxcell = Inf, alpha = 0.5) +
-  geom_sf(aes(color = source, linetype = source),
-    fill = NA, show.legend = "line",
-    linewidth = 0.5, alpha = 0.7
+  geom_sf(
+    aes(color = source, linetype = source),
+    fill = NA,
+    show.legend = "line",
+    linewidth = 0.5,
+    alpha = 0.7
   ) +
   coord_sf(
-    crs = 4326, xlim = c(-8.384421, -8.154413), ylim = c(43.43201, 43.59545),
+    crs = 4326,
+    xlim = c(-8.384421, -8.154413),
+    ylim = c(43.43201, 43.59545),
     expand = FALSE
   ) +
   scale_color_manual(values = c("red", "black", "blue", "orange")) +
@@ -293,8 +295,8 @@ La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
 ```{r}
-#| label: pais
-#| fig-alt: Mapa de España
+#| label: fig-pais
+#| fig-cap: Mapa de España
 esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
@@ -313,8 +315,8 @@ de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
 ```{r}
-#| label: can
-#| fig-alt: Mapa de España con Canarias desplazadas
+#| label: fig-can
+#| fig-cap: Mapa de España con Canarias desplazadas
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -331,8 +333,8 @@ espaciales, debe usarse `moveCAN = FALSE`.**
 ### NUTS
 
 ```{r}
-#| label: nuts
-#| fig-alt: NUTS 1 de España
+#| label: fig-nuts
+#| fig-cap: NUTS 1 de España
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
@@ -341,8 +343,8 @@ ggplot(nuts1) +
 ```
 
 ```{r}
-#| label: nuts3
-#| fig-alt: NUTS3 de España
+#| label: fig-nuts3
+#| fig-cap: NUTS3 de España
 # Baleares NUTS3
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
@@ -359,12 +361,16 @@ ggplot(nuts3_sf) +
 ### CCAA
 
 ```{r}
-#| label: 'ccaa '
-#| fig-alt: 'Ejemplo: CCAA de España'
-ccaa <- esp_get_ccaa(ccaa = c(
-  "Catalunya", "Comunidad Valenciana", "Aragón",
-  "Baleares"
-))
+#| label: fig-ccaa
+#| fig-cap: 'Ejemplo: CCAA de España'
+ccaa <- esp_get_ccaa(
+  ccaa = c(
+    "Catalunya",
+    "Comunidad Valenciana",
+    "Aragón",
+    "Baleares"
+  )
+)
 
 ccaa <- ccaa |>
   mutate(ccaa_cat = esp_dict_translate(ine.ccaa.name, "ca"))
@@ -382,9 +388,13 @@ Si pasamos una entidad de orden superior (e.g. Andalucia) obtenemos todas las
 provincias de esa entidad.
 
 ```{r}
-#| label: prov
+#| label: fig-prov
+#| fig-cap: "Extracción de varias provincias usando CCAA"
 provs <- esp_get_prov_siane(c(
-  "Andalucía", "Ciudad Real", "Murcia", "Ceuta",
+  "Andalucía",
+  "Ciudad Real",
+  "Murcia",
+  "Ceuta",
   "Melilla"
 ))
 
@@ -398,7 +408,8 @@ ggplot(provs) +
 ### Municipios
 
 ```{r}
-#| label: munic
+#| label: fig-munic
+#| fig-cap: "Extracción de municipios"
 munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
   left_join(
@@ -411,11 +422,13 @@ ggplot(munic) +
   geom_sf(aes(fill = pob25), alpha = 0.9, color = NA) +
   scale_fill_gradientn(
     colors = hcl.colors(100, "Inferno"),
-    n.breaks = 10, labels = scales::label_comma(),
+    n.breaks = 10,
+    labels = scales::label_comma(),
     guide = guide_legend()
   ) +
   labs(
-    fill = "Habitantes", title = "Población en Segovia",
+    fill = "Habitantes",
+    title = "Población en Segovia",
     subtitle = "Datos INE (2025)"
   ) +
   theme_void() +
@@ -432,9 +445,12 @@ ggplot(munic) +
 Disponibles como cuadrados y hexágonos, para provincias y CCAA.
 
 ```{r}
-#| label: hex
-#| out-width: 50%
-#| fig-show: hold
+#| label: fig-hex
+#| layout-ncol: 2
+#| fig-cap: Hexbin maps con mapSpain
+#| fig-subcap:
+#|   - Cuadrados
+#|   - Hexágonos
 cuad <- esp_get_hex_ccaa()
 hex <- esp_get_grid_prov()
 
@@ -468,20 +484,23 @@ Los proveedores se han extraido del plugin para leaflet
 Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ```{r}
-#| label: imagesestaticos
+#| label: fig-imagesestaticos
+#| fig-cap:
+#|   - Ejemplo de extracción de mapas base
+#|   - Mapa base con máscara
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
-base_pnoa <- esp_get_tiles(madrid_munis, "PNOA",
-  bbox_expand = 0.1,
-  zoommin = 1
-)
+base_pnoa <- esp_get_tiles(madrid_munis, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
 library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = base_pnoa) +
   geom_sf(
-    data = madrid_munis, color = "blue", fill = "blue",
-    alpha = 0.25, linewidth = 0.5
+    data = madrid_munis,
+    color = "blue",
+    fill = "blue",
+    alpha = 0.25,
+    linewidth = 0.5
   ) +
   theme_minimal() +
   labs(title = "Municipios en Madrid")
@@ -490,10 +509,13 @@ ggplot() +
 # Usando la opción mask
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
-madrid_mask <- esp_get_tiles(madrid, "IDErioja.Claro",
-  mask = TRUE, crop = TRUE, zoommin = 2
+madrid_mask <- esp_get_tiles(
+  madrid,
+  "IDErioja.Claro",
+  mask = TRUE,
+  crop = TRUE,
+  zoommin = 2
 )
-
 
 ggplot() +
   geom_spatraster_rgb(data = madrid_mask) +
@@ -515,26 +537,16 @@ stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 library(leaflet)
 # Creamos icono
 
-iconurl <- paste0(
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/",
-  "Map_icons_by_Scott_de_Jonge_-_train-station.svg/480px-Map_",
-  "icons_by_Scott_de_Jonge_-_train-station.svg.png"
-)
+iconurl <- "https://ropenspain.github.io/mapSpain/img/icon/train.png"
 
 train_icon <- makeIcon(iconurl, iconurl, 18, 18)
 
-
-leaflet(stations,
-  elementId = "railway",
-  width = "100%",
-  height = "60vh"
-) |>
+leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addProviderEspTiles("IDErioja.Claro", group = "Base") |>
   addProviderEspTiles("MTN", group = "MTN") |>
-  addProviderEspTiles("RedTransporte.Carreteras",
-    group = "Carreteras"
-  ) |>
-  addProviderEspTiles("RedTransporte.Ferroviario",
+  addProviderEspTiles("RedTransporte.Carreteras", group = "Carreteras") |>
+  addProviderEspTiles(
+    "RedTransporte.Ferroviario",
     group = "Lineas Ferroviarias"
   ) |>
   addMarkers(
@@ -562,20 +574,3 @@ que permiten extraer información sobre altitud, rios y cuencas hidrográficas d
 España, así líneas y puntos de
 [infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
 de España, como carreteras y líneas ferroviarias.
-
-## Session info
-
-<details>
-
-<summary>Details</summary>
-
-```{r}
-#| label: session
-#| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
-sessioninfo::session_info()
-```
-
-</details>

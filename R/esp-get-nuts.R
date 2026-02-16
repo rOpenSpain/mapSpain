@@ -25,7 +25,6 @@
 #'
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#'
 #' @param year year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_nuts()] for valid values.
 #' @param epsg character string or number. Projection of the map: 4-digit
@@ -66,9 +65,7 @@
 #'     caption = giscoR::gisco_attributions()
 #'   )
 #'
-#'
 #' nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
-#'
 #'
 #' ggplot(nuts1_alt) +
 #'   geom_sf() +
@@ -77,7 +74,6 @@
 #'     subtitle = "to the right",
 #'     caption = giscoR::gisco_attributions()
 #'   )
-#'
 #'
 #' nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 #'
@@ -89,16 +85,13 @@
 #'     caption = giscoR::gisco_attributions()
 #'   )
 #'
-#'
 #' and_orient <- esp_get_nuts(region = c(
 #'   "Almeria", "Granada",
 #'   "Jaen", "Malaga"
 #' ))
 #'
-#'
 #' ggplot(and_orient) +
 #'   geom_sf()
-#'
 #'
 #' random_regions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
 #'
@@ -106,9 +99,7 @@
 #'   geom_sf() +
 #'   labs(title = "Random Regions")
 #'
-#'
 #' mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
-#'
 #'
 #' ggplot(mixing_codes) +
 #'   geom_sf() +

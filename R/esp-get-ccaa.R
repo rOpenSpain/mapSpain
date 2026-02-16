@@ -21,7 +21,6 @@
 #'   Communities or `NULL` to get all the autonomous communities. See
 #'   **Details**.
 #'
-#'
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
 #' ISO codes (corresponding to level 2) or `codauto` (see [esp_codelist]).
@@ -29,7 +28,6 @@
 #'
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' will be added.
-#'
 #'
 #' @examples
 #' ccaa <- esp_get_ccaa()
@@ -48,7 +46,6 @@
 #'   "ES52",
 #'   "01"
 #' ))
-#'
 #'
 #' ggplot(random_ccaa) +
 #'   geom_sf(aes(fill = codauto), show.legend = FALSE) +
@@ -72,7 +69,6 @@
 #'
 #' europe <- gisco_get_countries(resolution = res)
 #' ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
-#'
 #'
 #' ggplot(europe) +
 #'   geom_sf(fill = "#DFDFDF", color = "#656565") +

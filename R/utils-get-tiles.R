@@ -48,7 +48,6 @@ validate_provider <- function(type = "PNOA") {
   db_prov
 }
 
-
 provider_to_list <- function(type) {
   id <- type$id
 

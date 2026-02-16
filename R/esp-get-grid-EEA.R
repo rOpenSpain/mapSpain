@@ -12,7 +12,6 @@
 #'
 #' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
-#'
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}

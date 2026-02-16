@@ -128,7 +128,6 @@ download_url <- function(
   file_local
 }
 
-
 #' Allows to use jsonlite in Imports
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the

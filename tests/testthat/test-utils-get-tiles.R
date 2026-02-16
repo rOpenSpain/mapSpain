@@ -193,7 +193,6 @@ test_that("Validate options", {
   expect_identical(end[-2], res[-2])
 })
 
-
 test_that("bbox WMTS", {
   skip_on_cran()
 

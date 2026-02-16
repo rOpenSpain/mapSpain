@@ -15,7 +15,6 @@
 #' @inherit esp_get_munic_siane
 #' @export
 #'
-#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' # This code compares centroids of municipalities against esp_get_capimun

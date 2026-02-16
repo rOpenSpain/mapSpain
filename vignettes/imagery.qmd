@@ -1,19 +1,10 @@
 ---
 title: "Imagery and mapSpain"
-output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Imagery and mapSpain}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
-
-```{r}
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
 Visit <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> for
 learning how to download imagery of Spain.

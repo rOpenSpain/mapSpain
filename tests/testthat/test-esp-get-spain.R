@@ -21,7 +21,6 @@ test_that("Test null", {
   local_mocked_bindings(esp_get_nuts = local_fun)
 })
 
-
 test_that("Check country", {
   skip_on_cran()
   skip_if_siane_offline()

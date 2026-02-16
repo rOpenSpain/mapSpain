@@ -5,7 +5,6 @@
 #' representing a location in the Canary Islands) to align it with the objects
 #' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
 #'
-#'
 #' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`.  It places the Canary Islands close to Spain's mainland.
@@ -27,7 +26,6 @@
 #' [addProviderEspTiles()])  this option should be set to `FALSE` in order to
 #' get the actual coordinates, instead of the modified ones.
 #'
-#'
 #' @family can_helpers
 #' @export
 #'
@@ -47,7 +45,6 @@
 #'
 #' library(ggplot2)
 #'
-#'
 #' ggplot(esp) +
 #'   geom_sf() +
 #'   geom_sf(data = teide_sf, color = "red") +
@@ -55,7 +52,6 @@
 #'     title = "Canary Islands displaced",
 #'     subtitle = "But not the external Teide object"
 #'   )
-#'
 #'
 #' # But we can
 #'

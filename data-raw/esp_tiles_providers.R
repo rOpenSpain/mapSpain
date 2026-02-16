@@ -15,7 +15,6 @@ df_pivoted <- df |>
     names_from = field
   )
 
-
 url_static <- "https://rts.larioja.org/mapa-base/rioja/{z}/{x}/{y}.png"
 # Helper to split urls
 esp_hlp_split_url <- function(url_static) {

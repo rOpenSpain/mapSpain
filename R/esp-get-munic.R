@@ -219,7 +219,6 @@ esp_get_munic <- function(
   data_sf
 }
 
-
 #' Wrap for mocking
 #' @noRd
 giscor_get_lau <- function(...) {

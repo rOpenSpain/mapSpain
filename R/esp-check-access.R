@@ -81,7 +81,6 @@ skip_if_gisco_offline <- function() {
   # nocov end
 }
 
-
 #' Internal function to check if we are on CRAN
 #' @return logical
 #' @noRd

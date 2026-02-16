@@ -51,7 +51,6 @@ test_that("convert_to_nuts", {
   expect_identical(id_prov, convert_to_nuts(id_prov))
 })
 
-
 test_that("convert_to_nuts_ccaa", {
   skip_on_cran()
 

@@ -22,9 +22,9 @@ License: GPL-3
 URL: https://ropenspain.github.io/mapSpain/,
     https://github.com/rOpenSpain/mapSpain
 BugReports: https://github.com/rOpenSpain/mapSpain/issues
-Depends: 
+Depends:
     R (>= 4.1.0)
-Imports: 
+Imports:
     cli (>= 3.6.0),
     countrycode (>= 1.2.0),
     giscoR (>= 1.0.0),
@@ -40,18 +40,17 @@ Suggests:
     ggplot2 (>= 3.5.0),
     knitr,
     leaflet (>= 2.0.0),
-    rmarkdown,
+    quarto,
     terra (>= 1.1-4),
     testthat (>= 3.0.0),
     tidyterra
-VignetteBuilder: 
-    knitr
+VignetteBuilder:
+    quarto
 Config/Needs/check: curl
 Config/Needs/coverage: covr
 Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse, devtools,
     remotes, ropenspain/rostemplate, ropensci/rnaturalearthhires, geodata,
-    sessioninfo, sfheaders, rapidjsonr, jsonify, geometries,
-    dieghernan/geobounds
+    sessioninfo, sfheaders, rapidjsonr, jsonify, geometries, geobounds
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas

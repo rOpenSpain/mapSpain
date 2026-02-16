@@ -27,7 +27,6 @@
 #' @inherit esp_get_ccaa description return details
 #' @export
 #'
-#'
 #' @param year character string or number. Release year, it must be in
 #'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
 #'   information starts as of 2005.
@@ -49,7 +48,6 @@
 #'   rawcols = TRUE, moveCAN = FALSE,
 #'   resolution = 10, epsg = 3035
 #' )
-#'
 #'
 #' library(ggplot2)
 #'

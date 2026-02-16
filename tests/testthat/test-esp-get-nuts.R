@@ -21,7 +21,6 @@ test_that("Test null", {
   local_mocked_bindings(giscor_get_nuts = the_fun)
 })
 
-
 test_that("Test local NUTS", {
   expect_silent(esp_get_nuts())
   expect_silent(esp_get_nuts(resolution = 1))

@@ -47,7 +47,6 @@ esp_hlp_rm_accent <- function(str, pattern = "all") {
   return(str)
 }
 
-
 esp_hlp_utf8 <- function(data.sf) {
   f <- data.sf
   ncol <- length(colnames(f))
@@ -59,7 +58,6 @@ esp_hlp_utf8 <- function(data.sf) {
   }
   return(f)
 }
-
 
 esp_hlp_names2nuts <- function() {
   # Create base codes

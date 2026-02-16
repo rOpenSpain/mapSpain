@@ -46,7 +46,6 @@ test_that("Test 404", {
   })
 })
 
-
 test_that("simplified online", {
   skip_on_cran()
   skip_if_siane_offline()

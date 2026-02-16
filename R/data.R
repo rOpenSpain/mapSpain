@@ -19,7 +19,6 @@
 #' - **CLDR**:
 #'   <https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html>
 #'
-#'
 #' @format
 #' A [tibble][tibble::tbl_df] with `r nrow(mapSpain::esp_codelist)` rows and
 #' columns:
@@ -91,7 +90,6 @@
 #' data("esp_codelist")
 #' esp_codelist
 NULL
-
 
 #' Population of Spain by municipality (2025)
 #'
@@ -168,9 +166,7 @@ NULL
 #' t <- names(mapSpain::esp_tiles_providers)
 #' t <- paste0('\n - `"', t, '"`')
 #'
-#'
 #' cat(t)
-#'
 #'
 #' ```
 #' @examples
@@ -198,7 +194,6 @@ NULL
 #' This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
 #' according to the Nomenclature of Territorial Units for Statistics (NUTS)
 #' classification for 2024.
-#'
 #'
 #' @format
 #' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries at 1:1 million
@@ -243,7 +238,6 @@ NULL
 #'        of the coastline).
 #'   - `3`: Non-coastal region.
 #'   - `0`: No classification provided.
-#'
 #'
 #' @source
 #'

@@ -46,7 +46,6 @@ bbox_to_tile_grid <- function(bbox, zoom = NULL, max_tiles = NULL) {
   list(tiles = tiles, zoom = zoom)
 }
 
-
 tile_bbox <- function(x, y, zoom) {
   n <- 2^zoom
 

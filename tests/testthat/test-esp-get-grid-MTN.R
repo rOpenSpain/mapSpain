@@ -34,11 +34,9 @@ test_that("Test 404", {
   })
 })
 
-
 test_that("Errors", {
   expect_error(esp_get_grid_MTN("abcde"))
 })
-
 
 test_that("MTN grid online", {
   skip_on_cran()

@@ -107,7 +107,6 @@ match_arg_pretty <- function(arg, choices) {
   choices[lmatch]
 }
 
-
 #' Row bind data frames or lists with different columns, filling missing
 #' columns with `NA`.
 #'

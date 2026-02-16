@@ -295,7 +295,6 @@ detect_cache_dir_muted <- function() {
   }
 }
 
-
 #' Creates `cache_dir` if not exists
 #'
 #' @param cache_dir path to cache dir

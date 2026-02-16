@@ -107,7 +107,6 @@ Metadata available on
 regex1 <- esp_get_rivers(name = "Tajo|Segura")
 unique(regex1$rotulo)
 
-
 regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 unique(regex2$rotulo)
 
@@ -130,7 +129,6 @@ ggplot(iberian) +
     xlim = c(-10, 5),
     ylim = c(35, 44)
   )
-
 
 # Wetlands in South-West Andalucia
 and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))

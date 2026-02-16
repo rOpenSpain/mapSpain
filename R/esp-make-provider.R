@@ -9,7 +9,6 @@
 #' For a list of potential providers from Spain check
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
 #'
-#'
 #' @return
 #' A named list with two elements `id` and `q`.
 #'

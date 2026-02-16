@@ -1,16 +1,16 @@
 ---
 title: "Get Started"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
-description: >
-  First steps with `mapSpain`.
-output: rmarkdown::html_vignette
+author:
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
+description: First steps with mapSpain
 vignette: >
   %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
 ---
 
-<!-- mapSpain.Rmd is generated from mapSpain.Rmd.orig. Please edit that file -->
+<!-- mapSpain.qmd is generated from mapSpain.qmd.orig. Please edit that file -->
 
 ```{r}
 #| include: false
@@ -152,7 +152,6 @@ census <- mapSpain::pobmun25 |>
   select(-name)
 
 # Extract CCAA from base dataset
-
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
@@ -167,28 +166,29 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-
 # Merge into spatial data
-
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
-can <- esp_get_can_box()
 
+can <- esp_get_can_box()
 
 # Plot with ggplot
 library(ggplot2)
 
-
 ggplot(ccaa_sf) +
   geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
   geom_sf(data = can, color = "grey70") +
-  geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5,
-    size = 3, linewidth = 0
+  geom_sf_label(
+    aes(label = porc_women_lab),
+    fill = "white",
+    alpha = 0.5,
+    size = 3,
+    linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
-    n.breaks = 10, labels = scales::label_percent(),
+    n.breaks = 10,
+    labels = scales::label_percent(),
     guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
@@ -210,7 +210,6 @@ be used.
 #| fig-cap: Population density in Spain (2025)
 #| fig-dpi: 150
 # Population density of Spain
-
 library(sf)
 
 pop <- mapSpain::pobmun25 |>
@@ -221,11 +220,9 @@ munic <- esp_get_munic_siane(rawcols = TRUE) |>
   # Already on the shapefile
   mutate(area_km2 = st_area_sh * 10000)
 
-
 munic_pop <- munic |>
   left_join(pop) |>
   mutate(dens = pob25 / area_km2)
-
 
 br <- c(-Inf, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
@@ -236,7 +233,11 @@ ggplot(munic_pop) +
   scale_fill_manual(
     values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
-    guide = guide_legend(title = "Pop. per km2", direction = "horizontal", nrow = 1)
+    guide = guide_legend(
+      title = "Pop. per km2",
+      direction = "horizontal",
+      nrow = 1
+    )
   ) +
   labs(title = "Population density in Spain (2025)") +
   theme_void() +
@@ -265,19 +266,20 @@ a dependency with **mapSpain**. Here's a basic example:
 library(giscoR)
 
 # Set the same resolution for a perfect fit
-
 res <- "20"
 
 all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
 
 eu_countries <- gisco_get_countries(
-  resolution = res, region = "EU"
+  resolution = res,
+  region = "EU"
 ) |>
   st_transform(3035)
 
 ccaa <- esp_get_ccaa(
-  moveCAN = FALSE, resolution = res
+  moveCAN = FALSE,
+  resolution = res
 ) |>
   st_transform(3035)
 

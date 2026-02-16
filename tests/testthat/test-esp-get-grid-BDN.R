@@ -51,7 +51,6 @@ test_that("Errors", {
   expect_snapshot(error = TRUE, esp_get_grid_BDN_ccaa())
 })
 
-
 test_that("BDN grid online", {
   skip_on_cran()
   skip_if_siane_offline()

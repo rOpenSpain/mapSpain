@@ -81,7 +81,6 @@ esp_get_countries_siane <- function(
   data_sf
 }
 
-
 #' Filter data sf by country
 #'
 #' @param data_sf sf object

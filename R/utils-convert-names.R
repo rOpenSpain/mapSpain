@@ -153,7 +153,6 @@ convert_to_nuts_ccaa <- function(region) {
   end
 }
 
-
 #' Transform region to NUTS code for Provinces (NUTS 3 but not exactly)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE cpro).
 #' @return A vector of NUTS codes for Provinces (level 3) or an error if no

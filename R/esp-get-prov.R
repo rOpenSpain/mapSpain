@@ -13,7 +13,6 @@
 #' @inherit esp_get_nuts
 #' @export
 #'
-#'
 #' @param prov A vector of names and/or codes for provinces or `NULL` to get all
 #'   the provinces. See **Details**.
 #'
@@ -29,7 +28,6 @@
 #'
 #' When calling a higher level (Autonomous Community or NUTS1), all the
 #' provinces of that level will be added.
-#'
 #'
 #' @examples
 #' prov <- esp_get_prov()
@@ -47,12 +45,10 @@
 #'   "ES521", "01"
 #' ))
 #'
-#'
 #' ggplot(random) +
 #'   geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
 #'   scale_fill_manual(values = hcl.colors(nrow(random), "Spectral")) +
 #'   theme_minimal()
-#'
 #'
 #' # All Provinces of a Zone plus an addition
 #' mix <- esp_get_prov(prov = c(

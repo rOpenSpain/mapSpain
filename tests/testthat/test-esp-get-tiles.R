@@ -293,7 +293,7 @@ test_that("WMS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   expect_length(
-    list.files(file.path(cdir, "Cartociudad")),
+    list.files(file.path(cdir, "CaminoDeSantiago")),
     0
   )
   # Single point
@@ -302,14 +302,14 @@ test_that("WMS", {
   expect_silent(
     res <- esp_get_tiles(
       point,
-      "Cartociudad",
+      "CaminoDeSantiago",
       cache_dir = cdir,
       bbox_expand = 0
     )
   )
 
   expect_length(
-    list.files(file.path(cdir, "Cartociudad")),
+    list.files(file.path(cdir, "CaminoDeSantiago")),
     1
   )
 
@@ -321,18 +321,23 @@ test_that("WMS", {
   expect_equal(rel_x, 50)
 
   # See if cache is modified
-  res2 <- esp_get_tiles(point, "Cartociudad", cache_dir = cdir, bbox_expand = 0)
+  res2 <- esp_get_tiles(
+    point,
+    "CaminoDeSantiago",
+    cache_dir = cdir,
+    bbox_expand = 0
+  )
 
   expect_identical(terra::crs(res2), terra::crs(point))
   expect_length(
-    list.files(file.path(cdir, "Cartociudad")),
+    list.files(file.path(cdir, "CaminoDeSantiago")),
     1
   )
 
   # Modify res
   res3 <- esp_get_tiles(
     point,
-    "Cartociudad",
+    "CaminoDeSantiago",
     cache_dir = cdir,
     bbox_expand = 0,
     res = 256
@@ -383,7 +388,6 @@ test_that("WMS", {
 
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-
 
 test_that("WMTS", {
   skip_on_cran()

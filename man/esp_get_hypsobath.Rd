@@ -98,7 +98,6 @@ hypsobath <- esp_get_hypsobath()
 # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/
 # Topographic_maps
 
-
 levels <- sort(unique(hypsobath$val_inf))
 
 # Create Manual pal
@@ -108,7 +107,6 @@ pal <- c(
   tidyterra::hypso.colors(br_bath, "wiki-2.0_bathy"),
   tidyterra::hypso.colors(br_terrain, "wiki-2.0_hypso")
 )
-
 
 # Plot Canary Islands
 ggplot(hypsobath) +
@@ -128,7 +126,6 @@ ggplot(hypsobath) +
     nrow = 1
   )) +
   theme(legend.position = "bottom")
-
 
 # Plot Mainland
 ggplot(hypsobath) +

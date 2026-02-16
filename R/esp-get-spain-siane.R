@@ -18,7 +18,6 @@
 #' # One row only
 #' original_can
 #'
-#'
 #' library(ggplot2)
 #'
 #' ggplot(original_can) +

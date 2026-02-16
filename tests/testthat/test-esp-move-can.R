@@ -59,7 +59,6 @@ test_that("sfc", {
   expect_equal(sort(unique(as.integer(mat2))), c(9L, 14L))
 })
 
-
 test_that("sf", {
   teide <- data.frame(
     name = rep("test", 20),

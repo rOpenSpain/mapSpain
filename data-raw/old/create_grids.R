@@ -6,7 +6,6 @@ library(mapSpain)
 library(cartography)
 library(dplyr)
 
-
 # CCAA - Hex----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
 PENIN <- CCAA[
@@ -53,7 +52,6 @@ grid <-
   )
 
 grid <- st_sf(id = seq_along(grid), geometry = grid)
-
 
 plot(st_geometry(grid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")

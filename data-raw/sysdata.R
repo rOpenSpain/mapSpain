@@ -7,7 +7,6 @@ library(reshape2)
 library(gsubfn)
 source("./data-raw/helperfuns.R")
 
-
 nuts1 <- read.csv(
   "./data-raw/dict/esp_nuts1.csv",
   stringsAsFactors = FALSE,
@@ -89,7 +88,6 @@ dict_nuts3all <- melt(
   measure.vars = colnames(dict_nuts3)
 ) |>
   unique()
-
 
 names_full <- dict_ccaaall |>
   bind_rows(dict_nuts1all, dict_provall, dict_nuts3all) |>

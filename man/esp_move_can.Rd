@@ -51,7 +51,6 @@ esp <- esp_get_spain(moveCAN = c(13, 0))
 
 library(ggplot2)
 
-
 ggplot(esp) +
   geom_sf() +
   geom_sf(data = teide_sf, color = "red") +
@@ -59,7 +58,6 @@ ggplot(esp) +
     title = "Canary Islands displaced",
     subtitle = "But not the external Teide object"
   )
-
 
 # But we can
 

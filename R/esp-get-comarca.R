@@ -11,7 +11,6 @@
 #' @source
 #' INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
 #'
-#'
 #' @encoding UTF-8
 #' @family political
 #' @inheritParams esp_get_prov
@@ -58,14 +57,12 @@
 #' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
 #'
-#'
 #' @note
 #' The use of the information contained on the
 #' [INE website](https://www.ine.es/en/index.htm) may be carried out by users or
 #' re-use agents, at their own risk, and they will be the sole liable parties
 #' in the case of having to answer to third parties due to damages arising
 #' from such use.
-#'
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

@@ -53,7 +53,6 @@ test_that("Test 404", {
   })
 })
 
-
 test_that("Cache vs non-cached rivers", {
   skip_on_cran()
   skip_if_siane_offline()

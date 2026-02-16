@@ -1,23 +1,17 @@
 ---
 title: "Annex: Codes and names of the Spanish regions"
-description: >
-  Interactive explorer of the data included in the package.
+description: Interactive explorer of the data included in the package.
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| label: knitropts
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  dpi = 300,
-  tidy = "styler",
-  dev = "ragg_png",
-  out.width = "100%"
-)
-```
 
 This annex shows an interactive version of the `mapSpain::esp_codelist` data
 frame. That dataset contains the Spanish region codes under different schemes,
@@ -33,8 +27,8 @@ library(reactable)
 
 data(esp_codelist)
 
-
-reactable(esp_codelist,
+reactable(
+  esp_codelist,
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,

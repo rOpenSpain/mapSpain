@@ -53,13 +53,11 @@
 #'
 #' @inheritParams esp_get_nuts
 #'
-#'
 #' @details
 #' Zoom levels are described on the
 #' [OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
 #'
 #' ```{r, echo=FALSE}
-#'
 #'
 #' df <- data.frame(
 #'   zoom = c(0, 3, 5, 8, 10, 11, 13, 16, 18),
@@ -76,24 +74,20 @@
 #'   )
 #' )
 #'
-#'
 #' knitr::kable(df,
 #'              col.names = c("zoom",
 #'                            "area to represent")
 #'                            )
 #'
-#'
 #' ```
 #'
 #' For a complete list of providers see [esp_tiles_providers].
-#'
 #'
 #' Most WMS/WMTS providers provide tiles on
 #' [`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks deformed,
 #' try projecting first `x`:
 #'
 #' `x <- sf::st_transform(x, 3857)`
-#'
 #'
 #' @examplesIf esp_check_access()
 #' \dontrun{
@@ -311,7 +305,6 @@ esp_get_tiles <- function(
 
   tile_map
 }
-
 
 get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
   # Prepare call

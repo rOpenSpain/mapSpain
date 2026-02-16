@@ -78,7 +78,6 @@ original_can <- esp_get_spain(moveCAN = FALSE)
 # One row only
 original_can
 
-
 library(ggplot2)
 
 ggplot(original_can) +

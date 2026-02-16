@@ -22,10 +22,6 @@
 #'   Zenodo. \doi{10.5281/zenodo.15345101},
 #'   <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
 #'
-#'
-#'
-#'
-#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' # Municipalities that have changed in the past: three cuts

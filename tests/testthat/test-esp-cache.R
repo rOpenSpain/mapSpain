@@ -97,7 +97,6 @@ test_that("Mock restart", {
   Sys.setenv("MAPSPAIN_CACHE_DIR" = getvar)
 })
 
-
 test_that("Mock migration", {
   skip_on_cran()
 

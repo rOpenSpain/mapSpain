@@ -37,7 +37,6 @@ for (i in seq_len(ncol)) {
 
 esp_codelist <- f
 
-
 usethis::use_data(esp_codelist, overwrite = TRUE, compress = "xz")
 tools::checkRdaFiles("./data")
 

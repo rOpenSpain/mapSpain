@@ -1,5 +1,6 @@
 
-# mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
+
+# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -30,6 +31,8 @@ Full site with examples and vignettes on
 
 ## Installation
 
+<div class="pkgdown-release">
+
 Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
@@ -37,12 +40,20 @@ Install **mapSpain** from
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
+</div>
+
+<div class="pkgdown-devel">
+
+Check the docs of the developing version in
+<https://ropenspain.github.io/mapSpain/dev/>.
+
 You can install the developing version of **mapSpain** using the
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
 ``` r
 # Install mapSpain in R:
-install.packages("mapSpain",
+install.packages(
+  "mapSpain",
   repos = c(
     "https://ropenspain.r-universe.dev",
     "https://cloud.r-project.org"
@@ -59,6 +70,8 @@ with:
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
+</div>
+
 ## Usage
 
 This script highlights some features of **mapSpain** : key features of
@@ -72,7 +85,6 @@ census <- mapSpain::pobmun25 |>
   select(-name)
 
 # Extract CCAA from base dataset
-
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
@@ -87,28 +99,29 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-
 # Merge into spatial data
-
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
-can <- esp_get_can_box()
 
+can <- esp_get_can_box()
 
 # Plot with ggplot
 library(ggplot2)
 
-
 ggplot(ccaa_sf) +
   geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
   geom_sf(data = can, color = "grey70") +
-  geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5,
-    size = 3, linewidth = 0
+  geom_sf_label(
+    aes(label = porc_women_lab),
+    fill = "white",
+    alpha = 0.5,
+    size = 3,
+    linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
-    n.breaks = 10, labels = scales::label_percent(),
+    n.breaks = 10,
+    labels = scales::label_percent(),
     guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
@@ -116,7 +129,8 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-<img src="man/figures/README-static-1.png" alt="Porc. of women by CCAA in Spain (2025)" width="100%" />
+<img src="man/figures/README-static-1.png" style="width:100.0%"
+alt="Porc. of women by CCAA in Spain (2025)" />
 
 You can combine `sf` objects with static tiles
 
@@ -131,7 +145,6 @@ shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
 provs <- esp_get_prov_siane(epsg = 3857)
 
 shape_pop <- shape |> left_join(census)
-
 
 tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
@@ -172,7 +185,8 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-<img src="man/figures/README-tile-1.png" alt="Perc. of women in Segovia by town (2025)" width="100%" />
+<img src="man/figures/README-tile-1.png" style="width:100.0%"
+alt="Perc. of women in Segovia by town (2025)" />
 
 ## mapSpain and giscoR
 
@@ -211,7 +225,8 @@ ggplot(all_countries) +
   labs(caption = giscoR::gisco_attributions("es"))
 ```
 
-<img src="man/figures/README-giscoR-1.png" alt="Locator map of Spain" width="100%" />
+<img src="man/figures/README-giscoR-1.png" style="width:100.0%"
+alt="Locator map of Spain" />
 
 ## A note on caching
 
@@ -229,6 +244,7 @@ load it, which speeds up the process.
 ## Citation
 
 <p>
+
 Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,

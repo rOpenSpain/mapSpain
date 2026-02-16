@@ -146,7 +146,6 @@ esp_get_prov_siane <- function(
   data_sf
 }
 
-
 get_prov_codes_df <- function() {
   getnames <- c(
     "codauto",

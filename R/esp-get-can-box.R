@@ -26,7 +26,6 @@
 #' An [`sf`][sf::st_sf] object: a `POLYGON` (when `style = "poly"`) or a
 #' `LINESTRING` (other styles).
 #'
-#'
 #' @examples
 #' provs <- esp_get_prov()
 #' box <- esp_get_can_box()

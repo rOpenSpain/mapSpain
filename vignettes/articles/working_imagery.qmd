@@ -1,25 +1,20 @@
 ---
 title: "Working with imagery"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
-description: >
-  Learn how to include images on your maps.
+author:
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
+description: Learn how to include images on your maps.
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  dpi = 300,
-  tidy = "styler",
-  dev = "ragg_png",
-  out.width = "100%"
-)
-
-library(mapSpain)
-```
 
 **mapSpain** provides a powerful interface for working with imagery. It can
 download static files as `.png` or `.jpeg` (depending on the Web Map Service)
@@ -39,19 +34,18 @@ An example showing how to include multiple tiles to create a static map. We
 focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
-**When working with imagery, set `moveCAN = FALSE`; otherwise images for the
-Canary Islands may be inaccurate.**
+-   **When working with imagery, set `moveCAN = FALSE`; otherwise images for the
+    Canary Islands may be inaccurate.**
 
 ```{r}
-#| label: static1
-#| fig-alt: Map of the limits of city of Logroño using a tile as a basemap
+#| label: fig-static1
+#| fig-cap: Map of the limits of city of Logroño using a tile as a basemap
 library(mapSpain)
 library(sf)
 library(ggplot2)
 library(tidyterra)
 
 # Logroño
-
 lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 
 # Convert to Mercator (EPSG:3857) as a general advice when working with tiles
@@ -70,18 +64,25 @@ Some tiles can be loaded with or without an alpha (transparency) value, which
 controls layer transparency:
 
 ```{r}
-#| label: static2
-#| fig-alt: Map of the roads of Autonomous Communities surrouding Madrid
-madrid <- esp_get_ccaa("Madrid", epsg = 3857)
+#| label: fig-static2
+#| fig-cap: Map of the Way of St. James in Galicia
+galicia <- esp_get_ccaa("Galicia", epsg = 3857)
 
 # Example without transparency
-
-basemap <- esp_get_tiles(madrid, "IDErioja.Claro",
+basemap <- esp_get_tiles(
+  galicia,
+  "IDErioja.Claro",
   zoommin = 1,
-  crop = TRUE, bbox_expand = 0
+  crop = TRUE,
+  bbox_expand = 0
 )
-tile_opaque <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
-  transparent = FALSE, crop = TRUE, bbox_expand = 0
+tile_opaque <- esp_get_tiles(
+  galicia,
+  "CaminoDeSantiago",
+  verbose = TRUE,
+  transparent = FALSE,
+  crop = TRUE,
+  bbox_expand = 0
 )
 
 ggplot() +
@@ -93,12 +94,16 @@ ggplot() +
 Now let's check the same code using the `transparent = TRUE` option:
 
 ```{r}
-#| label: static_transp
-#| fig-alt: Example on how to use alpha value for combining different types of basemaps.
+#| label: fig-static_transp
+#| fig-cap: Example on how to use alpha value for combining different types of
+#|   basemaps.
 # Example with transparency
-
-tile_alpha <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
-  transparent = TRUE, crop = TRUE, bbox_expand = 0
+tile_alpha <- esp_get_tiles(
+  galicia,
+  "CaminoDeSantiago",
+  transparent = TRUE,
+  crop = TRUE,
+  bbox_expand = 0
 )
 
 # Same code than above for plotting
@@ -116,8 +121,8 @@ Another useful feature is the ability to mask tiles, allowing more advanced maps
 to be plotted:
 
 ```{r}
-#| label: static3
-#| fig-alt: Example of combining types of tiles by masking to a shapefile.
+#| label: fig-static3
+#| fig-cap: Example of combining types of tiles by masking to a shapefile.
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -135,8 +140,8 @@ You can use `esp_get_tiles()` to get tiles of any other provider, for example
 OpenStreetMap:
 
 ```{r}
-#| label: osm
-#| fig-alt: Example of base map using OpenStreetMap
+#| label: fig-osm
+#| fig-cap: Example of base map using OpenStreetMap
 osm_spec <- list(
   id = "OSM",
   q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -153,8 +158,8 @@ ggplot() +
 Another example using a provider that needs an API Key (ThunderForest):
 
 ```{r}
-#| label: thunder
-#| fig-alt: Example of base map using ThunderForest
+#| fig-label: fig-thunder
+#| fig-cap: Example of base map using ThunderForest
 # Skip if not API KEY
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
 if (apikey != "") {
@@ -185,17 +190,19 @@ examples:
 library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
-  region = "Tenerife", epsg = 4326,
+  region = "Tenerife",
+  epsg = 4326,
   moveCAN = FALSE
 )
-
 
 bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
 
 # Start leaflet
-m <- leaflet(tenerife_leaf,
+m <- leaflet(
+  tenerife_leaf,
   elementId = "tenerife-earthquakes",
-  width = "100%", height = "60vh",
+  width = "100%",
+  height = "60vh",
   options = leafletOptions(minZoom = 9, maxZoom = 18)
 )
 
@@ -203,9 +210,7 @@ m <- leaflet(tenerife_leaf,
 m <- m |>
   addProviderEspTiles("IDErioja.Relieve") |>
   addPolygons(color = NA, fillColor = "red", group = "Polygon") |>
-  addProviderEspTiles("Geofisica.Terremotos365dias",
-    group = "Earthquakes"
-  )
+  addProviderEspTiles("Geofisica.Terremotos365dias", group = "Earthquakes")
 
 # Add additional options
 m |>
@@ -234,9 +239,7 @@ munic <- esp_get_munic_siane(
   # Already on the shapefile
   mutate(area_km2 = st_area_sh * 10000)
 
-
 # Get population
-
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
@@ -245,15 +248,11 @@ munic_pop <- munic |>
   left_join(pop) |>
   mutate(
     dens = pob25 / area_km2,
-    dens_label = prettyNum(round(dens, 2),
-      big.mark = ".",
-      decimal.mark = ","
-    )
+    dens_label = prettyNum(round(dens, 2), big.mark = ".", decimal.mark = ",")
   )
 
 # Create leaflet
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
-
 
 pal <- colorBin("inferno", domain = munic_pop$dens, bins = bins, reverse = TRUE)
 
@@ -262,8 +261,8 @@ labels <- sprintf(
   munic_pop$rotulo,
   munic_pop$ine.prov.name,
   munic_pop$dens_label
-) |> lapply(htmltools::HTML)
-
+) |>
+  lapply(htmltools::HTML)
 
 leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
   setView(lng = -3.684444, lat = 40.308611, zoom = 5) |>
@@ -284,7 +283,9 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
     popup = labels
   ) |>
   addLegend(
-    pal = pal, values = bins, opacity = 0.7,
+    pal = pal,
+    values = bins,
+    opacity = 0.7,
     title = paste0(
       "<small>Pop. Density km<sup>2</sup></small><br><small>",
       "(2025)</small>"
@@ -306,25 +307,29 @@ library(reactable)
 
 prov_names <- names(esp_tiles_providers)
 
-urls <- vapply(esp_tiles_providers, function(x) {
-  # Create url
-  allpars <- x$static
-  q <- allpars$q
-  rest <- modifyList(
-    allpars,
-    list(
-      attribution = NULL,
-      q = NULL
+urls <- vapply(
+  esp_tiles_providers,
+  function(x) {
+    # Create url
+    allpars <- x$static
+    q <- allpars$q
+    rest <- modifyList(
+      allpars,
+      list(
+        attribution = NULL,
+        q = NULL
+      )
     )
-  )
-  rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
-  templurl <- paste0(q, rest_temp)
+    rest_temp <- paste0(names(rest), "=", rest, collapse = "&")
+    templurl <- paste0(q, rest_temp)
 
-  if (grepl("rioja", q, ignore.case = TRUE)) {
-    templurl <- q
-  }
-  templurl
-}, FUN.VALUE = character(1))
+    if (grepl("rioja", q, ignore.case = TRUE)) {
+      templurl <- q
+    }
+    templurl
+  },
+  FUN.VALUE = character(1)
+)
 
 df <- data.frame(
   provider = prov_names,
@@ -332,7 +337,8 @@ df <- data.frame(
 )
 
 rownames(df) <- NULL
-reactable(df,
+reactable(
+  df,
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
@@ -341,20 +347,3 @@ reactable(df,
   elementId = "leaflet-prov-summ"
 )
 ```
-
-## Session info
-
-<details>
-
-<summary>Details</summary>
-
-```{r}
-#| label: session
-#| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
-sessioninfo::session_info()
-```
-
-</details>

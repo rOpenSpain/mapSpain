@@ -114,7 +114,6 @@ ccaas_low <- esp_get_ccaa_siane(
   resolution = 10, epsg = 3035
 )
 
-
 library(ggplot2)
 
 ggplot(ccaas_low) +

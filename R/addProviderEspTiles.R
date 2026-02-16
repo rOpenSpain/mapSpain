@@ -21,7 +21,6 @@ leaf_providers_esp_v <- "v1.3.3"
 #' @param provider the name of the provider, see [esp_tiles_providers] or
 #'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 #'
-#'
 #' @examples
 #' library(leaflet)
 #' leafmap <- leaflet(width = "100%", height = "60vh") |>

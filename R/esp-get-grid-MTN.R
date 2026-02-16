@@ -6,7 +6,6 @@
 #' @source IGN data via a custom CDN (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
-#'
 #' @encoding UTF-8
 #' @family grids
 #' @inheritParams esp_get_grid_EEA
@@ -22,7 +21,6 @@
 #' Possible values of `grid` are:
 #'
 #' ```{r, echo=FALSE}
-#'
 #'
 #' df <- data.frame(grid_name = c(
 #'   "MTN25_ED50_Peninsula_Baleares",
@@ -40,7 +38,6 @@
 #' ## MTN Grids
 #'
 #' A description of the MTN (Mapa Topografico Nacional) grids available:
-#'
 #'
 #' **MTN25_ED50_Peninsula_Baleares**
 #'

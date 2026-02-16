@@ -26,7 +26,6 @@
 #'
 #' library(ggplot2)
 #'
-#'
 #' ggplot(hydroland) +
 #'   geom_sf(data = hydrolandsea, fill = "skyblue4", alpha = .4) +
 #'   geom_sf(fill = "skyblue", alpha = .5) +

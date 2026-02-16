@@ -148,7 +148,6 @@ get_geo_file_colnames <- function(file_local) {
   names(get_cols)
 }
 
-
 #' Get column name for filtering from a geospatial file
 #'
 #' @param file_local Local file path or URL to the geospatial file.

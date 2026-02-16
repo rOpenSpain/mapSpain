@@ -18,7 +18,6 @@
 #' corresponding element will be `NA` and a warning is emitted via
 #' [cli::cli_alert_warning()].
 #'
-#'
 #' @param sourcevar character string. Vector which contains the codes or names
 #'   to be converted.
 #' @param origin,destination character string. Coding scheme of origin and
@@ -214,7 +213,6 @@ esp_dict_region_code <- function(
 
   out
 }
-
 
 #'
 #' @rdname esp_dict

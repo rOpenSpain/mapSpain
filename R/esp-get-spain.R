@@ -31,7 +31,6 @@
 #' # One row only
 #' original_can
 #'
-#'
 #' library(ggplot2)
 #'
 #' ggplot(original_can) +
@@ -76,7 +75,6 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
 
   data_sf
 }
-
 
 #' @export
 #' @rdname esp_get_spain

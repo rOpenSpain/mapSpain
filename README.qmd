@@ -1,27 +1,20 @@
 ---
-output: github_document
-always_allow_html: true
-editor_options: 
-  markdown: 
-    wrap: 80
+format: gfm
+default-image-extension: ''
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dev: "ragg_png"
+    tidy: "styler"
+    fig.path: "man/figures/README-"
+    dpi: 150
+    out.width: "100%"
 ---
 
-```{r}
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  tidy = "styler",
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  warning = FALSE,
-  message = FALSE,
-  dev = "ragg_png",
-  dpi = 150,
-  out.width = "100%"
-)
-```
-
-# mapSpain <img src="man/figures/logo.png" align="right" width="120"/>
+# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -52,6 +45,7 @@ Full site with examples and vignettes on
 
 ## Installation
 
+::: pkgdown-release
 Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
@@ -59,6 +53,11 @@ Install **mapSpain** from
 #| eval: false
 install.packages("mapSpain", dependencies = TRUE)
 ```
+:::
+
+::: pkgdown-devel
+Check the docs of the developing version in
+<https://ropenspain.github.io/mapSpain/dev/>.
 
 You can install the developing version of **mapSpain** using the
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
@@ -66,7 +65,8 @@ You can install the developing version of **mapSpain** using the
 ```{r}
 #| eval: false
 # Install mapSpain in R:
-install.packages("mapSpain",
+install.packages(
+  "mapSpain",
   repos = c(
     "https://ropenspain.r-universe.dev",
     "https://cloud.r-project.org"
@@ -83,6 +83,8 @@ Alternatively, you can install the developing version of **mapSpain** with:
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
+:::
+
 ## Usage
 
 This script highlights some features of **mapSpain** : key features of
@@ -90,7 +92,7 @@ This script highlights some features of **mapSpain** : key features of
 
 ```{r}
 #| label: static
-#| fig-alt: Porc. of women by CCAA in Spain (2025)
+#| fig-cap: Porc. of women by CCAA in Spain (2025)
 library(mapSpain)
 library(sf)
 library(dplyr)
@@ -98,7 +100,6 @@ census <- mapSpain::pobmun25 |>
   select(-name)
 
 # Extract CCAA from base dataset
-
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
@@ -113,28 +114,29 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-
 # Merge into spatial data
-
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
-can <- esp_get_can_box()
 
+can <- esp_get_can_box()
 
 # Plot with ggplot
 library(ggplot2)
 
-
 ggplot(ccaa_sf) +
   geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
   geom_sf(data = can, color = "grey70") +
-  geom_sf_label(aes(label = porc_women_lab),
-    fill = "white", alpha = 0.5,
-    size = 3, linewidth = 0
+  geom_sf_label(
+    aes(label = porc_women_lab),
+    fill = "white",
+    alpha = 0.5,
+    size = 3,
+    linewidth = 0
   ) +
   scale_fill_gradientn(
     colors = hcl.colors(10, "Blues", rev = TRUE),
-    n.breaks = 10, labels = scales::label_percent(),
+    n.breaks = 10,
+    labels = scales::label_percent(),
     guide = guide_legend(title = "% women", position = "inside")
   ) +
   theme_void() +
@@ -146,7 +148,7 @@ You can combine `sf` objects with static tiles
 
 ```{r}
 #| label: tile
-#| fig-alt: Perc. of women in Segovia by town (2025)
+#| fig-cap: Perc. of women in Segovia by town (2025)
 # Get census
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
@@ -157,7 +159,6 @@ shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
 provs <- esp_get_prov_siane(epsg = 3857)
 
 shape_pop <- shape |> left_join(census)
-
 
 tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
@@ -206,7 +207,7 @@ a dependency with **mapSpain**. Here's a basic example:
 
 ```{r}
 #| label: giscoR
-#| fig-alt: Locator map of Spain
+#| fig-cap: Locator map of Spain
 library(giscoR)
 
 # Set the same resolution for a perfect fit

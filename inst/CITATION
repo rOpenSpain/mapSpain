@@ -3,7 +3,6 @@ abs <- trimws(gsub("\\s+", " ", meta$Description))
 abs <- gsub("'", "", abs)
 title <- gsub("'", "", meta$Title)
 
-
 bibentry(
   "Manual",
   header = "To cite the 'mapSpain' package in publications use:",
