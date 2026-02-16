@@ -42,3 +42,17 @@
 ^\.vscode$
 ^tests/testthat/test_local$
 ^jarl\.toml$
+/.quarto/
+[.]quarto_ipynb$
+^vignettes/\.quarto$
+^vignettes/_quarto\.yaml$
+^vignettes/_quarto\.yml$
+^\.quarto$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$
+^vignettes/mapSpain\.qmd\.orig$
+^vignettes/*_files$
+^README\.qmd$
+^inst/README\.qmd$
+^README_files$
+^README\.html$

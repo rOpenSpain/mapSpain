@@ -7,6 +7,9 @@ figures:
 development:
   mode: auto
 
+repo:
+  branch: release
+
 template:
   bootstrap: 5
   package: rostemplate
