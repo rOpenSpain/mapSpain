@@ -1,4 +1,18 @@
-
+---
+format: gfm
+default-image-extension: ''
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dev: "ragg_png"
+    tidy: "styler"
+    fig.path: "man/figures/README-"
+    dpi: 150
+    out.width: "100%"
+---
 
 # mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain website" align="right" height="139"/></a>
 
@@ -18,39 +32,38 @@
 <!-- badges: end -->
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial **sf** objects of Spain’s administrative boundaries,
-including Autonomous Communities, provinces, and municipalities.
+provides spatial **sf** objects of Spain's administrative boundaries, including
+Autonomous Communities, provinces, and municipalities.
 
-**mapSpain** also provides a Leaflet plugin to be used with the
-[**leaflet** package](https://rstudio.github.io/leaflet/), which loads
-several base maps from Spain’s public institutions and enables
-downloading and processing of static tiles.
+**mapSpain** also provides a Leaflet plugin to be used with the [**leaflet**
+package](https://rstudio.github.io/leaflet/), which loads several base maps from
+Spain's public institutions and enables downloading and processing of static
+tiles.
 
 Full site with examples and vignettes on
 <https://ropenspain.github.io/mapSpain/>
 
 ## Installation
 
-<div class="pkgdown-release">
-
+::: pkgdown-release
 Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
-``` r
+```{r}
+#| eval: false
 install.packages("mapSpain", dependencies = TRUE)
 ```
+:::
 
-</div>
-
-<div class="pkgdown-devel">
-
+::: pkgdown-devel
 Check the docs of the developing version in
 <https://ropenspain.github.io/mapSpain/dev/>.
 
 You can install the developing version of **mapSpain** using the
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
-``` r
+```{r}
+#| eval: false
 # Install mapSpain in R:
 install.packages(
   "mapSpain",
@@ -62,22 +75,24 @@ install.packages(
 )
 ```
 
-Alternatively, you can install the developing version of **mapSpain**
-with:
+Alternatively, you can install the developing version of **mapSpain** with:
 
-``` r
+```{r}
+#| eval: false
 # install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
-</div>
+:::
 
 ## Usage
 
 This script highlights some features of **mapSpain** : key features of
 **mapSpain**
 
-``` r
+```{r}
+#| label: static
+#| fig-cap: Porc. of women by CCAA in Spain (2025)
 library(mapSpain)
 library(sf)
 library(dplyr)
@@ -129,12 +144,11 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-<img src="man/figures/README-static-1.png" style="width:100.0%"
-alt="Porc. of women by CCAA in Spain (2025)" />
-
 You can combine `sf` objects with static tiles
 
-``` r
+```{r}
+#| label: tile
+#| fig-cap: Perc. of women in Segovia by town (2025)
 # Get census
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
@@ -185,16 +199,15 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-<img src="man/figures/README-tile-1.png" style="width:100.0%"
-alt="Perc. of women in Segovia by town (2025)" />
-
 ## mapSpain and giscoR
 
 If you need to plot Spain alongside other countries, consider using the
-[**giscoR**](https://ropengov.github.io/giscoR/) package, which is
-installed as a dependency with **mapSpain**. Here’s a basic example:
+[**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
+a dependency with **mapSpain**. Here's a basic example:
 
-``` r
+```{r}
+#| label: giscoR
+#| fig-cap: Locator map of Spain
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -225,43 +238,35 @@ ggplot(all_countries) +
   labs(caption = giscoR::gisco_attributions("es"))
 ```
 
-<img src="man/figures/README-giscoR-1.png" style="width:100.0%"
-alt="Locator map of Spain" />
-
 ## A note on caching
 
 Some data sets and tiles may have a size larger than 50MB. You can use
-**mapSpain** to create your own local repository at a given local
-directory passing the following option:
+**mapSpain** to create your own local repository at a given local directory
+passing the following option:
 
-``` r
+```{r}
+#| eval: false
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** will look for the cached file and
-load it, which speeds up the process.
+When this option is set, **mapSpain** will look for the cached file and load it,
+which speeds up the process.
 
 ## Citation
 
-<p>
-
-Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
-Spain</em>.
-<a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,
-<a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
-</p>
+```{r}
+#| echo: false
+#| results: asis
+print(citation("mapSpain"), style = "html")
+```
 
 A BibTeX entry for LaTeX users is:
 
-    @Manual{R-mapspain,
-      title = {{mapSpain}: Administrative Boundaries of Spain},
-      year = {2026},
-      version = {1.0.0.9000},
-      author = {Diego Hernangómez},
-      doi = {10.5281/zenodo.5366622},
-      url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE from Instituto Geografico Nacional <https://www.ign.es/>. It also provides a leaflet plugin and the ability of downloading and processing static tiles.},
-    }
+```{r}
+#| echo: false
+#| comment: ''
+toBibtex(citation("mapSpain"))
+```
 
 ## Contribute
 
@@ -270,8 +275,8 @@ code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
-This package uses data from CartoBase SIANE, provided by Instituto
-Geográfico Nacional:
+This package uses data from CartoBase SIANE, provided by Instituto Geográfico
+Nacional:
 
 > Atlas Nacional de España (ANE) [CC BY
 > 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
@@ -280,18 +285,17 @@ Geográfico Nacional:
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
 This package also uses data from **GISCO**. GISCO
-[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository containing multiple datasets at various resolution
-levels.
+[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open data
+repository containing multiple datasets at various resolution levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
-Statistical Units*
+*From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
+Units*
 
-> When data downloaded from this page is used in any printed or
-> electronic publication, in addition to any other provisions applicable
-> to the whole Eurostat website, data source will have to be
-> acknowledged in the legend of the map and in the introductory page of
-> the publication with the following copyright notice:
+> When data downloaded from this page is used in any printed or electronic
+> publication, in addition to any other provisions applicable to the whole
+> Eurostat website, data source will have to be acknowledged in the legend of
+> the map and in the introductory page of the publication with the following
+> copyright notice:
 >
 > EN: © EuroGeographics for the administrative boundaries
 >
@@ -299,9 +303,9 @@ Statistical Units*
 >
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
 >
-> For publications in languages other than English, French or German,
-> the translation of the copyright notice in the language of the
-> publication shall be used.
+> For publications in languages other than English, French or German, the
+> translation of the copyright notice in the language of the publication shall
+> be used.
 
-If you intend to use the data commercially, please contact
-EuroGeographics for information regarding their license agreements.
+If you intend to use the data commercially, please contact EuroGeographics for
+information regarding their license agreements.

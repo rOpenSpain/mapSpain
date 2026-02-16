@@ -1,11 +1,11 @@
 url: https://ropenspain.github.io/mapSpain
 
-repo:
-  branch: main
-
 figures:
   dpi: 300
   fig.retina: 2
+
+development:
+  mode: auto
 
 template:
   bootstrap: 5
@@ -17,9 +17,6 @@ template:
       creator: "@dhernangomez"
       site: "@rOpenSpain"
       card: summary_large_image
-
-development:
-  mode: auto
 
 authors:
   Diego Hernangómez:
@@ -37,8 +34,8 @@ navbar:
     - search
     - twitter
     - github
+    - lightswitch
   components:
-    home: null
     articles:
       text: Articles
       menu:
@@ -60,12 +57,13 @@ navbar:
       aria-label: Twitter
 
 home:
-  title: mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces
-    and Municipalities
+  title: |
+    mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
+    Municipalities
   description: |
-    Administrative Boundaries of Spain based on the GISCO (Geographic Information
-    System of the Commission) Eurostat database. It also provides a leaflet
-    plugin and the ability of downloading and processing static tiles.
+    Administrative Boundaries of Spain based on the GISCO (Geographic
+    Information System of the Commission) Eurostat database. It also provides a
+    leaflet plugin and the ability of downloading and processing static tiles.
 
 reference:
 - title: Political borders of Spain
