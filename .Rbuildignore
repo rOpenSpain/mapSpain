@@ -44,3 +44,9 @@
 ^jarl\.toml$
 /.quarto/
 [.]quarto_ipynb$
+^vignettes/\.quarto$
+^vignettes/_quarto\.yaml$
+^vignettes/_quarto\.yml$
+^\.quarto$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$

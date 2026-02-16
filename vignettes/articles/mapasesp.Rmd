@@ -9,7 +9,9 @@ output:
     toc_depth: 2
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -55,7 +57,9 @@ Página web: <https://ropenspain.github.io/mapSpain/>
 
 #### CRAN
 
-```{r instcran, eval=FALSE}
+```{r}
+#| label: instcran
+#| eval: false
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
@@ -63,7 +67,9 @@ install.packages("mapSpain", dependencies = TRUE)
 
 Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
-```{r instruniverse, eval=FALSE}
+```{r}
+#| label: instruniverse
+#| eval: false
 # Enable this universe
 install.packages("mapSpain",
   repos = c(
@@ -76,14 +82,18 @@ install.packages("mapSpain",
 
 #### Con pak (desde GitHub)
 
-```{r instremotes, eval=FALSE}
+```{r}
+#| label: instremotes
+#| eval: false
 install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
 ### Un ejemplo rápido
 
-```{r intro, fig.alt="Mapa de los municipios de Galicia"}
+```{r}
+#| label: intro
+#| fig-alt: Mapa de los municipios de Galicia
 library(mapSpain)
 library(tidyverse)
 
@@ -101,7 +111,8 @@ ggplot(galicia) +
 
 Si exploramos el dataset:
 
-```{r galicia_data}
+```{r}
+#| label: galicia_data
 library(reactable)
 
 reactable(galicia,
@@ -115,7 +126,10 @@ reactable(galicia,
 Comparamos ahora **mapSpain** con otro paquete que proporciona objetos `sf` o
 `SpatVector` de distintos paises:
 
-```{r compara, fig.alt="Comparación de la resolución de diferentes fuentes de mapas; se muestran bordes de los datos comparados con ortofoto de la Ria de Ferrol"}
+```{r}
+#| label: compara
+#| fig-alt: Comparación de la resolución de diferentes fuentes de mapas; se muestran
+#|   bordes de los datos comparados con ortofoto de la Ria de Ferrol
 library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
@@ -278,7 +292,9 @@ GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
 La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
-```{r pais, fig.alt="Mapa de España"}
+```{r}
+#| label: pais
+#| fig-alt: Mapa de España
 esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
@@ -296,7 +312,9 @@ Proporcionamos funciones adicionales que permiten representar líneas alrededor
 de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
-```{r can, fig.alt="Mapa de España con Canarias desplazadas"}
+```{r}
+#| label: can
+#| fig-alt: Mapa de España con Canarias desplazadas
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -312,7 +330,9 @@ espaciales, debe usarse `moveCAN = FALSE`.**
 
 ### NUTS
 
-```{r nuts, fig.alt="NUTS 1 de España"}
+```{r}
+#| label: nuts
+#| fig-alt: NUTS 1 de España
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
@@ -320,7 +340,9 @@ ggplot(nuts1) +
   labs(title = "NUTS1: Baja Resolución")
 ```
 
-```{r nuts3, fig.alt="NUTS3 de España"}
+```{r}
+#| label: nuts3
+#| fig-alt: NUTS3 de España
 # Baleares NUTS3
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
@@ -336,7 +358,9 @@ ggplot(nuts3_sf) +
 
 ### CCAA
 
-```{r ccaa ,fig.alt="Ejemplo: CCAA de España"}
+```{r}
+#| label: 'ccaa '
+#| fig-alt: 'Ejemplo: CCAA de España'
 ccaa <- esp_get_ccaa(ccaa = c(
   "Catalunya", "Comunidad Valenciana", "Aragón",
   "Baleares"
@@ -357,7 +381,8 @@ ggplot(ccaa) +
 Si pasamos una entidad de orden superior (e.g. Andalucia) obtenemos todas las
 provincias de esa entidad.
 
-```{r prov}
+```{r}
+#| label: prov
 provs <- esp_get_prov_siane(c(
   "Andalucía", "Ciudad Real", "Murcia", "Ceuta",
   "Melilla"
@@ -372,7 +397,8 @@ ggplot(provs) +
 
 ### Municipios
 
-```{r munic}
+```{r}
+#| label: munic
 munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
   left_join(
@@ -405,7 +431,10 @@ ggplot(munic) +
 
 Disponibles como cuadrados y hexágonos, para provincias y CCAA.
 
-```{r hex, out.width="50%", fig.show='hold'}
+```{r}
+#| label: hex
+#| out-width: 50%
+#| fig-show: hold
 cuad <- esp_get_hex_ccaa()
 hex <- esp_get_grid_prov()
 
@@ -438,7 +467,8 @@ Los proveedores se han extraido del plugin para leaflet
 
 Tenemos varias opciones que podemos emplear para componer mapas base:
 
-```{r imagesestaticos}
+```{r}
+#| label: imagesestaticos
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
 base_pnoa <- esp_get_tiles(madrid_munis, "PNOA",
   bbox_expand = 0.1,
@@ -478,7 +508,8 @@ ggplot() +
 
 Estas capas se pueden usar también como fondo en mapas estáticos
 
-```{r leaflet}
+```{r}
+#| label: leaflet
 stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 
 library(leaflet)
@@ -538,7 +569,9 @@ de España, como carreteras y líneas ferroviarias.
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }

@@ -12,7 +12,8 @@ vignette: >
 
 <!-- mapSpain.Rmd is generated from mapSpain.Rmd.orig. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -54,7 +55,8 @@ and converts them to various coding standards such as NUTS, ISO2, and the INE
 **mapSpain** provides dataset and tile caching capabilities, which can be set
 as:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -67,7 +69,10 @@ session.
 
 Some examples of what **mapSpain** can do:
 
-```{r basic, fig.cap="Example: Map of Spain", fig.asp=0.7}
+```{r}
+#| label: basic
+#| fig-cap: 'Example: Map of Spain'
+#| fig-asp: 0.7
 library(mapSpain)
 library(ggplot2)
 
@@ -90,7 +95,10 @@ ggplot(country) +
   )
 ```
 
-```{r basic2, fig.cap="Example: Provinces of Andalucia", fig.asp=0.55}
+```{r}
+#| label: basic2
+#| fig-cap: 'Example: Provinces of Andalucia'
+#| fig-asp: 0.55
 # Plot provinces
 
 andalucia <- esp_get_prov("Andalucia")
@@ -100,7 +108,10 @@ ggplot(andalucia) +
   theme_bw()
 ```
 
-```{r basic3, fig.cap="Example: Municipalities of the Basque Country", fig.asp=0.8}
+```{r}
+#| label: basic3
+#| fig-cap: 'Example: Municipalities of the Basque Country'
+#| fig-asp: 0.8
 # Plot municipalities
 
 euskadi_ccaa <- esp_get_ccaa("Euskadi")
@@ -131,7 +142,10 @@ ggplot(euskadi_ccaa) +
 Let's analyze the distribution of women in each autonomous community with
 **ggplot2**:
 
-```{r choro, fig.cap="Percentage of women by Autonomous Community (2025)", fig.asp=0.7}
+```{r}
+#| label: choro
+#| fig-cap: Percentage of women by Autonomous Community (2025)
+#| fig-asp: 0.7
 library(dplyr)
 
 census <- mapSpain::pobmun25 |>
@@ -190,7 +204,11 @@ thematic maps. For plotting, we use the
 handles `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**, etc.) could also
 be used.
 
-```{r thematic, fig.cap="Population density in Spain (2025)", crop=TRUE, dpi=150}
+```{r}
+#| label: thematic
+#| crop: true
+#| fig-cap: Population density in Spain (2025)
+#| fig-dpi: 150
 # Population density of Spain
 
 library(sf)
@@ -240,7 +258,10 @@ If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
 a dependency with **mapSpain**. Here's a basic example:
 
-```{r giscoR, fig.cap="mapSpain and giscoR example", fig.asp=0.9}
+```{r}
+#| label: giscoR
+#| fig-cap: mapSpain and giscoR example
+#| fig-asp: 0.9
 library(giscoR)
 
 # Set the same resolution for a perfect fit

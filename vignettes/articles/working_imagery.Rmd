@@ -5,7 +5,8 @@ description: >
   Learn how to include images on your maps.
 ---
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -41,7 +42,9 @@ focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
 **When working with imagery, set `moveCAN = FALSE`; otherwise images for the
 Canary Islands may be inaccurate.**
 
-```{r static1, fig.alt="Map of the limits of city of Logroño using a tile as a basemap"}
+```{r}
+#| label: static1
+#| fig-alt: Map of the limits of city of Logroño using a tile as a basemap
 library(mapSpain)
 library(sf)
 library(ggplot2)
@@ -66,7 +69,9 @@ ggplot(lgn_borders) +
 Some tiles can be loaded with or without an alpha (transparency) value, which
 controls layer transparency:
 
-```{r static2, fig.alt="Map of the roads of Autonomous Communities surrouding Madrid"}
+```{r}
+#| label: static2
+#| fig-alt: Map of the roads of Autonomous Communities surrouding Madrid
 madrid <- esp_get_ccaa("Madrid", epsg = 3857)
 
 # Example without transparency
@@ -87,7 +92,9 @@ ggplot() +
 
 Now let's check the same code using the `transparent = TRUE` option:
 
-```{r static_transp, fig.alt="Example on how to use alpha value for combining different types of basemaps."}
+```{r}
+#| label: static_transp
+#| fig-alt: Example on how to use alpha value for combining different types of basemaps.
 # Example with transparency
 
 tile_alpha <- esp_get_tiles(madrid, "RedTransporte.Carreteras",
@@ -108,7 +115,9 @@ Now the two tiles overlap with the desired transparency.
 Another useful feature is the ability to mask tiles, allowing more advanced maps
 to be plotted:
 
-```{r static3, fig.alt="Example of combining types of tiles by masking to a shapefile."}
+```{r}
+#| label: static3
+#| fig-alt: Example of combining types of tiles by masking to a shapefile.
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -125,7 +134,9 @@ ggplot() +
 You can use `esp_get_tiles()` to get tiles of any other provider, for example
 OpenStreetMap:
 
-```{r osm, fig.alt="Example of base map using OpenStreetMap"}
+```{r}
+#| label: osm
+#| fig-alt: Example of base map using OpenStreetMap
 osm_spec <- list(
   id = "OSM",
   q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -141,7 +152,9 @@ ggplot() +
 
 Another example using a provider that needs an API Key (ThunderForest):
 
-```{r thunder, fig.alt="Example of base map using ThunderForest"}
+```{r}
+#| label: thunder
+#| fig-alt: Example of base map using ThunderForest
 # Skip if not API KEY
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
 if (apikey != "") {
@@ -167,7 +180,8 @@ examples:
 
 ### Earthquakes in Tenerife (last year)
 
-```{r leaflet1}
+```{r}
+#| label: leaflet1
 library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
@@ -206,7 +220,8 @@ m |>
 
 A map showing the population density of Spain as of 2019:
 
-```{r leaflet2}
+```{r}
+#| label: leaflet2
 library(leaflet)
 library(dplyr)
 munic <- esp_get_munic_siane(
@@ -284,7 +299,9 @@ The `esp_tiles_providers` list contains metadata for the tile providers
 available to the functions above. It includes all arguments required to
 reproduce the API request. Below is the static URL for each provider:
 
-```{r providers, echo=FALSE}
+```{r}
+#| label: providers
+#| echo: false
 library(reactable)
 
 prov_names <- names(esp_tiles_providers)
@@ -331,7 +348,9 @@ reactable(df,
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }

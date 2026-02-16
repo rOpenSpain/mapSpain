@@ -4,7 +4,9 @@ description: >
   Interactive explorer of the data included in the package.
 ---
 
-```{r knitropts, include=FALSE}
+```{r}
+#| label: knitropts
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -23,7 +25,9 @@ and different naming versions on several languages.
 
 ## Names and codes of the spanish regions
 
-```{r esp_codelist, echo=FALSE}
+```{r}
+#| label: esp_codelist
+#| echo: false
 library(mapSpain)
 library(reactable)
 

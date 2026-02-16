@@ -7,7 +7,10 @@ on:
   schedule:
   - cron: "03 03 03 * *"
   workflow_dispatch:
-
+  workflow_run:
+    workflows: [update-docs]
+    types: completed
+    branches: [main, master, release]
 
 name: rostemplate-gh-pages
 permissions: write-all
@@ -18,7 +21,10 @@ concurrency:
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       THUNDERFOREST_API_KEY: ${{ secrets.THUNDERFOREST_API_KEY }}

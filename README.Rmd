@@ -6,7 +6,8 @@ editor_options:
     wrap: 80
 ---
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   tidy = "styler",
@@ -29,8 +30,7 @@ knitr::opts_chunk$set(
 [![CRAN-results](https://badges.cranchecks.info/worst/mapSpain.svg)](https://cran.r-project.org/web/checks/check_results_mapSpain.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mapSpain)](https://CRAN.R-project.org/package=mapSpain)
 [![r-universe](https://ropenspain.r-universe.dev/badges/mapSpain)](https://ropenspain.r-universe.dev/mapSpain)
-[![R-CMD-check](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yaml)
-[![R-hub](https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions/workflows/rhub.yaml)
+[![R-CMD-check](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yml/badge.svg)](https://github.com/rOpenSpain/mapSpain/actions/workflows/check-full.yml)
 [![codecov](https://codecov.io/gh/rOpenSpain/mapSpain/branch/main/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/mapSpain)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5366622-blue)](https://doi.org/10.5281/zenodo.5366622)
 [![Project-Status:Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -55,14 +55,16 @@ Full site with examples and vignettes on
 Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
 You can install the developing version of **mapSpain** using the
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 # Install mapSpain in R:
 install.packages("mapSpain",
   repos = c(
@@ -75,7 +77,8 @@ install.packages("mapSpain",
 
 Alternatively, you can install the developing version of **mapSpain** with:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
@@ -85,7 +88,9 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 This script highlights some features of **mapSpain** : key features of
 **mapSpain**
 
-```{r static, fig.alt="Porc. of women by CCAA in Spain (2025)"}
+```{r}
+#| label: static
+#| fig-alt: Porc. of women by CCAA in Spain (2025)
 library(mapSpain)
 library(sf)
 library(dplyr)
@@ -139,7 +144,9 @@ ggplot(ccaa_sf) +
 
 You can combine `sf` objects with static tiles
 
-```{r tile, fig.alt="Perc. of women in Segovia by town (2025)"}
+```{r}
+#| label: tile
+#| fig-alt: Perc. of women in Segovia by town (2025)
 # Get census
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
@@ -197,7 +204,9 @@ If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
 a dependency with **mapSpain**. Here's a basic example:
 
-```{r giscoR, fig.alt="Locator map of Spain"}
+```{r}
+#| label: giscoR
+#| fig-alt: Locator map of Spain
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -234,7 +243,8 @@ Some data sets and tiles may have a size larger than 50MB. You can use
 **mapSpain** to create your own local repository at a given local directory
 passing the following option:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -243,13 +253,17 @@ which speeds up the process.
 
 ## Citation
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("mapSpain"), style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
 
-```{r echo=FALSE, comment=''}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("mapSpain"))
 ```
 
