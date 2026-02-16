@@ -52,6 +52,14 @@ jobs:
           any::pkgdown
         needs: website
 
+    # https://github.com/r-lib/pkgdown/issues/2832
+    # Translate on web
+    - name: Set locale to Spanish
+      run: |
+        sudo locale-gen es_ES.UTF-8
+        sudo update-locale LANG=es_ES.UTF-8
+      shell: bash
+
     - name: Deploy package
       run: |
         git config --local user.name "github-actions[bot]"
