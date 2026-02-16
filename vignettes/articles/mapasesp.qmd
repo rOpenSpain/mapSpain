@@ -537,7 +537,7 @@ stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 library(leaflet)
 # Creamos icono
 
-iconurl <- "https://ropenspain.github.io/mapSpain/img/icon/train.png"
+iconurl <- "https://ropenspain.github.io/mapSpain/icons/train.png"
 
 train_icon <- makeIcon(iconurl, iconurl, 18, 18)
 
