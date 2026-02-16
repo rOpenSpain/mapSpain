@@ -6,7 +6,9 @@ author:
 description: Mapas de España en R de forma rápida y sencilla.
 toc: true
 toc-depth: 2
-lang: es-ES
+lang: es
+language:
+  crossref-fig-title: "Gráfico"
 knitr:
   opts_chunk:
     collapse: true
