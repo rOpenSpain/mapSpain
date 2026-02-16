@@ -4,8 +4,8 @@ figures:
   dpi: 300
   fig.retina: 2
 
-# development:
-#   mode: auto
+development:
+  mode: auto
 
 template:
   bootstrap: 5
@@ -36,7 +36,6 @@ navbar:
     - github
     - lightswitch
   components:
-    home: null
     articles:
       text: Articles
       menu:
