@@ -28,6 +28,7 @@ jobs:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       THUNDERFOREST_API_KEY: ${{ secrets.THUNDERFOREST_API_KEY }}
       MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+
     steps:
     - uses: actions/checkout@v6
 

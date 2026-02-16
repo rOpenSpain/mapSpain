@@ -2,7 +2,7 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, release]
     tags: ["*"]
   schedule:
   - cron: "03 03 03 * *"
@@ -29,6 +29,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       THUNDERFOREST_API_KEY: ${{ secrets.THUNDERFOREST_API_KEY }}
       MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+
     steps:
     - uses: actions/checkout@v6
 
