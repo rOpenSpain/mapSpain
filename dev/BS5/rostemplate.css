@@ -415,10 +415,13 @@ img.logo {
 	font-weight: 300;
 }
 
-blockquote {
+blockquote,
+.blockquote {
 	padding: 10px 20px;
-	margin: 0 0 20px;
+	margin: 0 0 1rem;
 	border-left: 5px solid var(--brand-ros_violet);
+	margin-bottom: 1rem;
+	font-size: 1.09375rem;
 }
 
 .pkg {
