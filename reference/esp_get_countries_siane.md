@@ -93,7 +93,7 @@ Data distributed via a custom CDN, see
   character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of ISO2
   country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
+  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 ## Value
 
