@@ -6,6 +6,9 @@
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   on API error testing.
 - Migrate vignettes to Quarto.
+- Query timeout can be controlled with `options(mapspain_timeout)` using
+  [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
+  Default value is `httr2::req_timeout(..., seconds = 300)` (5 minutes).
 
 ## mapSpain 1.0.0
 
