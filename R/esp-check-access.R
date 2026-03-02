@@ -22,6 +22,7 @@ esp_check_access <- function() {
   }
 
   req <- httr2::request("https://github.com/rOpenSpain/mapSpain/raw/sianedata/")
+  req <- httr2::req_timeout(req, getOption("mapspain_timeout", 300L))
   req <- httr2::req_url_path_append(req, "dist/se89_3_admin_ccaa_a_y.gpkg")
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
