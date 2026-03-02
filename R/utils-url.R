@@ -47,6 +47,7 @@ download_url <- function(
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
+  req <- httr2::req_timeout(req, getOption("mapspain_timeout", 300L))
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
@@ -62,7 +63,6 @@ download_url <- function(
     max_age = 3600
   )
 
-  req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
     req <- httr2::req_progress(req)
