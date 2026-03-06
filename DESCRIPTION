@@ -28,7 +28,7 @@ Imports:
     cli (>= 3.6.0),
     countrycode (>= 1.2.0),
     giscoR (>= 1.0.0),
-    httr2,
+    httr2 (>= 1.2.0),
     jsonlite,
     leaflet (>= 2.0.0),
     lifecycle,
