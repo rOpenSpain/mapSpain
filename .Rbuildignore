@@ -56,3 +56,7 @@
 ^inst/README\.qmd$
 ^README_files$
 ^README\.html$
+^index\.qmd$
+^index_files$
+^index\.html$
+^index\.md$

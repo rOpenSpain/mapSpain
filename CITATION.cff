@@ -132,6 +132,7 @@ references:
     email: hadley@posit.co
   year: '2026'
   doi: 10.32614/CRAN.package.httr2
+  version: '>= 1.2.0'
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
@@ -145,6 +146,32 @@ references:
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2026'
   doi: 10.32614/CRAN.package.jsonlite
+- type: software
+  title: leaflet
+  abstract: 'leaflet: Create Interactive Web Maps with the JavaScript ''Leaflet''
+    Library'
+  notes: Imports
+  url: https://rstudio.github.io/leaflet/
+  repository: https://CRAN.R-project.org/package=leaflet
+  authors:
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Schloerke
+    given-names: Barret
+    email: barret@posit.co
+    orcid: https://orcid.org/0000-0001-9986-114X
+  - family-names: Karambelkar
+    given-names: Bhaskar
+  - family-names: Xie
+    given-names: Yihui
+  - family-names: Aden-Buie
+    given-names: Garrick
+    email: garrick@posit.co
+    orcid: https://orcid.org/0000-0002-7111-0077
+  year: '2026'
+  doi: 10.32614/CRAN.package.leaflet
+  version: '>= 2.0.0'
 - type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
@@ -194,6 +221,33 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
+  title: terra
+  abstract: 'terra: Spatial Data Analysis'
+  notes: Imports
+  url: https://rspatial.org/
+  repository: https://CRAN.R-project.org/package=terra
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+    email: r.hijmans@gmail.com
+    orcid: https://orcid.org/0000-0001-5872-2872
+  year: '2026'
+  doi: 10.32614/CRAN.package.terra
+  version: '>= 1.1-4'
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Imports
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.testthat
+  version: '>= 3.0.0'
+- type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
   notes: Imports
@@ -209,6 +263,16 @@ references:
     email: hadley@rstudio.com
   year: '2026'
   doi: 10.32614/CRAN.package.tibble
+- type: software
+  title: tools
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -299,32 +363,6 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
-  title: leaflet
-  abstract: 'leaflet: Create Interactive Web Maps with the JavaScript ''Leaflet''
-    Library'
-  notes: Suggests
-  url: https://rstudio.github.io/leaflet/
-  repository: https://CRAN.R-project.org/package=leaflet
-  authors:
-  - family-names: Cheng
-    given-names: Joe
-    email: joe@posit.co
-  - family-names: Schloerke
-    given-names: Barret
-    email: barret@posit.co
-    orcid: https://orcid.org/0000-0001-9986-114X
-  - family-names: Karambelkar
-    given-names: Bhaskar
-  - family-names: Xie
-    given-names: Yihui
-  - family-names: Aden-Buie
-    given-names: Garrick
-    email: garrick@posit.co
-    orcid: https://orcid.org/0000-0002-7111-0077
-  year: '2026'
-  doi: 10.32614/CRAN.package.leaflet
-  version: '>= 2.0.0'
-- type: software
   title: quarto
   abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
@@ -342,33 +380,6 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
 - type: software
-  title: terra
-  abstract: 'terra: Spatial Data Analysis'
-  notes: Suggests
-  url: https://rspatial.org/
-  repository: https://CRAN.R-project.org/package=terra
-  authors:
-  - family-names: Hijmans
-    given-names: Robert J.
-    email: r.hijmans@gmail.com
-    orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2026'
-  doi: 10.32614/CRAN.package.terra
-  version: '>= 1.1-4'
-- type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
-  notes: Suggests
-  url: https://testthat.r-lib.org
-  repository: https://CRAN.R-project.org/package=testthat
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2026'
-  doi: 10.32614/CRAN.package.testthat
-  version: '>= 3.0.0'
-- type: software
   title: tidyterra
   abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
     Objects'
@@ -382,4 +393,29 @@ references:
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2026'
   doi: 10.32614/CRAN.package.tidyterra
+- type: software
+  title: withr
+  abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
+  notes: Suggests
+  url: https://withr.r-lib.org
+  repository: https://CRAN.R-project.org/package=withr
+  authors:
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevinushey@gmail.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Chang
+    given-names: Winston
+  year: '2026'
+  doi: 10.32614/CRAN.package.withr
 

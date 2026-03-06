@@ -104,19 +104,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "leaflet",
-      "name": "leaflet",
-      "version": ">= 2.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=leaflet"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "quarto",
       "name": "quarto",
       "provider": {
@@ -129,32 +116,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "terra",
-      "name": "terra",
-      "version": ">= 1.1-4",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=terra"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "version": ">= 3.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "tidyterra",
       "name": "tidyterra",
       "provider": {
@@ -164,6 +125,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyterra"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
   "softwareRequirements": {
@@ -216,6 +189,7 @@
       "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
+      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -238,6 +212,19 @@
     },
     "7": {
       "@type": "SoftwareApplication",
+      "identifier": "leaflet",
+      "name": "leaflet",
+      "version": ">= 2.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=leaflet"
+    },
+    "8": {
+      "@type": "SoftwareApplication",
       "identifier": "lifecycle",
       "name": "lifecycle",
       "provider": {
@@ -248,7 +235,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lifecycle"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -261,7 +248,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -274,7 +261,33 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "10": {
+    "11": {
+      "@type": "SoftwareApplication",
+      "identifier": "terra",
+      "name": "terra",
+      "version": ">= 1.1-4",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=terra"
+    },
+    "12": {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -286,7 +299,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "11": {
+    "14": {
+      "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -296,7 +314,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "administrative-boundaries", "ccaa", "static-tiles", "cran", "ggplot2", "gis"],
-  "fileSize": "1814.314KB",
+  "fileSize": "1814.397KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
