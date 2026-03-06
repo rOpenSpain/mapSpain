@@ -54,7 +54,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpK7AqyL/mapSpain
+#> ℹ /tmp/RtmpL56fHm/mapSpain
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -62,13 +62,13 @@ esp_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 esp_clear_cache(verbose = TRUE)
-#> ✔ mapSpain data deleted: /tmp/RtmpK7AqyL/example/cache (0 bytes)
+#> ✔ mapSpain data deleted: /tmp/RtmpL56fHm/example/cache (0 bytes)
 
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is /tmp/RtmpK7AqyL/mapSpain.
+#> ℹ mapSpain cache dir is /tmp/RtmpL56fHm/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpK7AqyL/mapSpain
+#> ℹ /tmp/RtmpL56fHm/mapSpain
 #> [1] TRUE
 # }
 ```
