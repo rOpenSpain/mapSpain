@@ -6,6 +6,8 @@
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   on API error testing.
 - Migrate vignettes to Quarto.
+- Minimal **httr2** version is now **1.2.0** to ensure compatibility
+  with **giscoR**.
 - Query timeout can be controlled with `options(mapspain_timeout)` using
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
   Default value is `httr2::req_timeout(..., seconds = 300)` (5 minutes).
