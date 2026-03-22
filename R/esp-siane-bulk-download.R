@@ -27,7 +27,7 @@
 #'
 #' connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
 #'
-#' # Message shows that file is already cached ;)
+#' # Message shows file is already cached :)
 #'
 #' # Clean
 #' unlink(tmp, force = TRUE, recursive = TRUE)

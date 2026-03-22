@@ -95,7 +95,7 @@ guess_provider_type <- function(prov_list) {
   serv <- unlist(prov_list[tolower(names(prov_list)) == "service"])
 
   serv <- ensure_null(serv)
-  # Asumming WMTS: e.g.
+  # Assuming WMTS, e.g.
   # https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png
   if (is.null(serv)) {
     return("WMTS")

@@ -11,7 +11,7 @@
 #' @references
 #' - Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
 #'   Data Centre: Response to European policy support and public data
-#'   requirements"; (2012) _Land Use Policy_, 29 (2), pp. 329-338.
+#'   requirements", (2012) _Land Use Policy_, 29 (2), pp. 329-338.
 #'   \doi{10.1016/j.landusepol.2011.07.003}
 #' - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
 #'   Commission, Joint Research Centre.

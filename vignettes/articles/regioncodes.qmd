@@ -1,5 +1,5 @@
 ---
-title: "Annex: Codes and names of the Spanish regions"
+title: "Appendix: Codes and names of the Spanish regions"
 description: Interactive explorer of the data included in the package.
 knitr:
   opts_chunk:

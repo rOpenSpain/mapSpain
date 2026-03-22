@@ -190,8 +190,8 @@ ggplot(ccaa_sf) +
 ```
 
 <div class="figure">
-<img src="./choro-1.png" alt="Percentage of women by Autonomous Community (2025)" width="100%" />
-<p class="caption">Percentage of women by Autonomous Community (2025)</p>
+<img src="./choro-1.png" alt="Percentage of women by Autonomous Communities (2025)" width="100%" />
+<p class="caption">Percentage of women by Autonomous Communities (2025)</p>
 </div>
 
 ## Thematic maps

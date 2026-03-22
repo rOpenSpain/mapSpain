@@ -144,7 +144,7 @@ Let's analyze the distribution of women in each autonomous community with
 
 ```{r}
 #| label: choro
-#| fig-cap: Percentage of women by Autonomous Community (2025)
+#| fig-cap: Percentage of women by Autonomous Communities (2025)
 #| fig-asp: 0.7
 library(dplyr)
 

@@ -53,7 +53,7 @@ ggplot(grid) +
 \itemize{
 \item Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
 Data Centre: Response to European policy support and public data
-requirements"; (2012) \emph{Land Use Policy}, 29 (2), pp. 329-338.
+requirements", (2012) \emph{Land Use Policy}, 29 (2), pp. 329-338.
 \doi{10.1016/j.landusepol.2011.07.003}
 \item European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
 Commission, Joint Research Centre.

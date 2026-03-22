@@ -34,8 +34,8 @@ An example showing how to include multiple tiles to create a static map. We
 focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
--   **When working with imagery, set `moveCAN = FALSE`; otherwise images for the
-    Canary Islands may be inaccurate.**
+- **When working with imagery, set `moveCAN = FALSE`; otherwise images for the
+  Canary Islands may be inaccurate.**
 
 ```{r}
 #| label: fig-static1

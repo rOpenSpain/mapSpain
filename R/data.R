@@ -221,8 +221,8 @@ NULL
 #'  - `2`: More than 50% of the regional population lives in topographic
 #'    mountain areas.
 #'  - `3`: More than 50% of the surface is covered by topographic mountain
-#'    areas and more than 50% of the regional population lives in these mountain
-#'    areas.
+#'    areas and more than 50% of the regional population lives in these
+#'    mountain areas.
 #'  - `4`: Non-mountain region or other regions.
 #'  - `0`: No classification provided.
 #'

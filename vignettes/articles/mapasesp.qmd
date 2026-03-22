@@ -37,11 +37,11 @@ transformación de datos (no necesariamente espaciales).
 
 Las **fuentes de información** empleadas en **mapSpain** son:
 
--   [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), vía el paquete
-    [**giscoR**](https://ropengov.github.io/giscoR/).
--   [Instituto Geográfico Nacional](https://www.ign.es/) (IGN)
--   Distintos organismos públicos de España que proporcionan servicios de
-    teselas WMTS/WMS (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
+- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), vía el paquete
+  [**giscoR**](https://ropengov.github.io/giscoR/).
+- [Instituto Geográfico Nacional](https://www.ign.es/) (IGN)
+- Distintos organismos públicos de España que proporcionan servicios de teselas
+  WMTS/WMS (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
 Los objetos resultantes se proporcionan en formato `sf` (librería **sf**) o
 `SpatRaster` (librería **terra**).
@@ -189,10 +189,10 @@ ggplot(esp_all) +
   labs(title = "Ría de Ferrol")
 ```
 
--   **rnaturalearth**: No capta bien el contorno.
--   **mapSpain**: Resultados satisfactorios.
--   **GADM** (librería **geodata**): Resultados muy precisos.
--   **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
+- **rnaturalearth**: No capta bien el contorno.
+- **mapSpain**: Resultados satisfactorios.
+- **GADM** (librería **geodata**): Resultados muy precisos.
+- **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
 
 ### Almacenamiento
 
@@ -224,17 +224,17 @@ munic <- esp_get_munic_siane(verbose = TRUE)
 **mapSpain** proporciona dos funciones relacionadas para trabajar con textos y
 códigos:
 
--   `esp_dict_region_code()` convierte textos en códigos de CCAA y provincias.
-    Esquemas de codificación soportados:
-    -   ISO2
-    -   NUTS
-    -   INE (codauto y cpro)
--   `esp_dict_translate()` traduce textos a diferentes idiomas:
-    -   Castellano
-    -   Inglés
-    -   Catalán
-    -   Gallego
-    -   Vasco
+- `esp_dict_region_code()` convierte textos en códigos de CCAA y provincias.
+  Esquemas de codificación soportados:
+  - ISO2
+  - NUTS
+  - INE (codauto y cpro)
+- `esp_dict_translate()` traduce textos a diferentes idiomas:
+  - Castellano
+  - Inglés
+  - Catalán
+  - Gallego
+  - Vasco
 
 Estas funciones pueden ser de utilidad en ámbitos más amplios que necesiten
 homogeneizar códigos de CCAA y Provincias (Datos COVID ISCII, etc).
@@ -283,12 +283,12 @@ esp_dict_translate(vals, lang = "ga")
 **mapSpain** contiene un set de funciones que permiten obtener límites políticos
 a diferentes niveles:
 
--   Todo el país
--   [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat):
-    Clasificación estadística de Eurostat. Niveles 0 (país), 1, 2 (CCAA) y 3.
--   CCAA
--   Provincias
--   Municipios
+- Todo el país
+- [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat):
+  Clasificación estadística de Eurostat. Niveles 0 (país), 1, 2 (CCAA) y 3.
+- CCAA
+- Provincias
+- Municipios
 
 Para CCAA, Provincias y Municipios hay dos versiones: `esp_get_xxxx()` (fuente:
 GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
