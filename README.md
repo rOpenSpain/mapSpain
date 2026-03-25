@@ -109,7 +109,7 @@ can <- esp_get_can_box()
 library(ggplot2)
 
 ggplot(ccaa_sf) +
-  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
+  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = 0.3) +
   geom_sf(data = can, color = "grey70") +
   geom_sf_label(
     aes(label = porc_women_lab),
@@ -160,7 +160,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   geom_sf(aes(fill = porc_women), color = NA) +
   geom_sf(data = provs, fill = NA) +
   scale_fill_gradientn(
-    colours = hcl.colors(10, "RdYlBu", alpha = .5),
+    colours = hcl.colors(10, "RdYlBu", alpha = 0.5),
     n.breaks = 8,
     labels = function(x) {
       sprintf("%1.0f%%", 100 * x)
@@ -215,7 +215,7 @@ library(ggplot2)
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
-  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = .1) +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = 0.1) +
   # Center in Europe: EPSG 3035
   coord_sf(xlim = c(2377294, 7453440), ylim = c(1313597, 5628510)) +
   theme(

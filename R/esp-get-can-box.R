@@ -13,6 +13,7 @@
 #' - `"left"` / `"right"`: decorative `LINESTRING` variants that follow
 #'   the western or eastern side of the islands respectively.
 #'
+#' @encoding UTF-8
 #' @family can_helpers
 #' @rdname esp_get_can_box
 #' @name esp_get_can_box

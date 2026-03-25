@@ -3,6 +3,7 @@
 #' @description
 #' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
+#' @encoding UTF-8
 #' @family images
 #' @seealso [esp_get_tiles()].
 #'

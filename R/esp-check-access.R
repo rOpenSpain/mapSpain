@@ -1,5 +1,6 @@
 #' Check access to SIANE data
 #'
+#' @encoding UTF-8
 #' @keywords internal
 #' @description
 #' Check if **R** has access to resources at

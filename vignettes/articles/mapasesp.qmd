@@ -437,8 +437,8 @@ ggplot(munic) +
   theme(
     plot.background = element_rect("grey80"),
     text = element_text(face = "bold"),
-    plot.title = element_text(hjust = .5),
-    plot.subtitle = element_text(hjust = .5)
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
   )
 ```
 

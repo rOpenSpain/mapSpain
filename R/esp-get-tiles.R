@@ -8,6 +8,7 @@
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
 #'
+#' @encoding UTF-8
 #' @family images
 #' @seealso [terra::rast()], [esp_tiles_providers], [maptiles::get_tiles()]
 #'

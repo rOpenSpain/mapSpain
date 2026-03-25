@@ -4,6 +4,7 @@
 #' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with the
 #' boundaries of the provinces or autonomous communities of Spain.
 #'
+#' @encoding UTF-8
 #' @rdname esp_get_gridmap
 #' @name esp_get_gridmap
 #' @family political

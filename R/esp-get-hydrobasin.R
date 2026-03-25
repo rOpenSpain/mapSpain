@@ -27,8 +27,8 @@
 #' library(ggplot2)
 #'
 #' ggplot(hydroland) +
-#'   geom_sf(data = hydrolandsea, fill = "skyblue4", alpha = .4) +
-#'   geom_sf(fill = "skyblue", alpha = .5) +
+#'   geom_sf(data = hydrolandsea, fill = "skyblue4", alpha = 0.4) +
+#'   geom_sf(fill = "skyblue", alpha = 0.5) +
 #'   geom_sf_text(aes(label = rotulo),
 #'     size = 2, check_overlap = TRUE,
 #'     fontface = "bold",

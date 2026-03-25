@@ -1,5 +1,6 @@
 #' Set your \CRANpkg{mapSpain} cache dir
 #'
+#' @encoding UTF-8
 #' @family cache utilities
 #' @seealso [tools::R_user_dir()]
 #'
@@ -165,6 +166,7 @@ esp_detect_cache_dir <- function() {
 #'
 #' @rdname esp_clear_cache
 #' @family cache utilities
+#' @encoding UTF-8
 #'
 #' @return Invisible. This function is called for its side effects.
 #'
