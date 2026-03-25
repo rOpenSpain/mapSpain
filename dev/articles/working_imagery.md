@@ -268,7 +268,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
     fillOpacity = 0.6,
     color = "#44444",
     weight = 0.5,
-    smoothFactor = .1,
+    smoothFactor = 0.1,
     opacity = 1,
     highlightOptions = highlightOptions(
       color = "white",

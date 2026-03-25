@@ -1,4 +1,4 @@
-# Annex: Codes and names of the Spanish regions
+# Appendix: Codes and names of the Spanish regions
 
 This annex shows an interactive version of the
 [`mapSpain::esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)

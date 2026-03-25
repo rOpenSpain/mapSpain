@@ -12,7 +12,7 @@
 
   Mapas de España en R de forma rápida y sencilla.
 
-- [Annex: Codes and names of the Spanish
+- [Appendix: Codes and names of the Spanish
   regions](https://ropenspain.github.io/mapSpain/dev/articles/regioncodes.md):
 
   Interactive explorer of the data included in the package.

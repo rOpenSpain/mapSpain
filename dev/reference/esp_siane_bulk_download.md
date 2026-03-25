@@ -117,12 +117,12 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache dir is /tmp/RtmpL56fHm/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpL56fHm/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is /tmp/RtmpL56fHm/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpL56fHm/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache dir is /tmp/RtmpOCDaSK/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpOCDaSK/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache dir is /tmp/RtmpOCDaSK/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpOCDaSK/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
-# Message shows that file is already cached ;)
+# Message shows file is already cached :)
 
 # Clean
 unlink(tmp, force = TRUE, recursive = TRUE)
