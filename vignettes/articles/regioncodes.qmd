@@ -13,11 +13,11 @@ knitr:
     out.width: "100%"
 ---
 
-This annex shows an interactive version of the `mapSpain::esp_codelist` data
-frame. That dataset contains the Spanish region codes under different schemes,
-and different naming versions on several languages.
+This appendix shows an interactive version of the `mapSpain::esp_codelist` data
+frame. That dataset contains the Spanish region codes under different schemes
+and naming versions in several languages.
 
-## Names and codes of the spanish regions
+## Names and codes of the Spanish regions
 
 ```{r}
 #| label: esp_codelist

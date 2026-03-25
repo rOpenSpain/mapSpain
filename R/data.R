@@ -5,7 +5,7 @@
 #' names of the different subdivisions of Spain. This tibble provides a
 #' hierarchical representation of Spain's subdivisions, including NUTS1 level,
 #' autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
-#' See **Note**.
+#' See the note section below for important coverage details.
 #'
 #' @docType data
 #' @encoding UTF-8

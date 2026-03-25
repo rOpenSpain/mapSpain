@@ -69,9 +69,9 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
 #'
 #' Convert to UTF-8
 #'
-#' @param data_sf data_sf
+#' @param data_sf Input object to convert to UTF-8.
 #'
-#' @return data_sf with UTF-8 encoding.
+#' @return An `sf` object with UTF-8 encoding set for all columns.
 #'
 #' @source Extracted from [`sf`][sf::st_sf] package.
 #'

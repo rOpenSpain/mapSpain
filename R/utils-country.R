@@ -1,10 +1,10 @@
 #' Convert country names or codes to desired code
 #'
-#' @param names vector of names or codes
+#' @param names Character vector of country names or codes.
 #'
-#' @param out out code
+#' @param out Output code
 #'
-#' @return a vector of names
+#' @return A character vector with converted country names or codes.
 #'
 #' @noRd
 convert_country_code <- function(names, out = "iso3c") {

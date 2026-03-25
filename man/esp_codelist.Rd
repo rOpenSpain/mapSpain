@@ -75,7 +75,7 @@ A \link[tibble:tbl_df-class]{tibble} object used internally for translating code
 names of the different subdivisions of Spain. This tibble provides a
 hierarchical representation of Spain's subdivisions, including NUTS1 level,
 autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
-See \strong{Note}.
+See the note section below for important coverage details.
 }
 \note{
 Although NUTS2 aligns with the first subdivision level of Spain

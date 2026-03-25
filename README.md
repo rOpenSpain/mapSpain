@@ -74,8 +74,7 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 
 ## Usage
 
-This script highlights some features of **mapSpain** : key features of
-**mapSpain**
+This script highlights some key features of **mapSpain**.
 
 ``` r
 library(mapSpain)

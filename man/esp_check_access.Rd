@@ -3,15 +3,15 @@
 \encoding{UTF-8}
 \name{esp_check_access}
 \alias{esp_check_access}
-\title{Check access to SIANE data}
+\title{Check access to SIANE data resources}
 \usage{
 esp_check_access()
 }
 \value{
-A logical.
+Logical scalar, \code{TRUE} if accessible and \code{FALSE} otherwise.
 }
 \description{
-Check if \strong{R} has access to resources at
+Check whether \strong{R} has access to resources at
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \examples{

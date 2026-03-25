@@ -34,7 +34,7 @@ knitr::opts_chunk$set(
 <https://ropenspain.github.io/mapSpain/>**
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package designed to
-provide geographical information of Spain at different levels.
+provide geographical information about Spain at different levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces, autonomous
 communities, and NUTS levels of Spain. It also provides hexbin shapefiles and
