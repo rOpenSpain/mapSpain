@@ -6,7 +6,7 @@
 <https://ropenspain.github.io/mapSpain/>**
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package
-designed to provide geographical information of Spain at different
+designed to provide geographical information about Spain at different
 levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces,

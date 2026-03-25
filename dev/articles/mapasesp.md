@@ -7,8 +7,8 @@
 **mapSpain** facilita la creación de mapas de los diferentes niveles
 administrativos de España.
 
-Además, permite usar imágenes de servicios WMS/WMTS de forma estática
-(como imagen georreferenciada) o dinámica (en mapas Leaflet).
+Además, permite utilizar imágenes de servicios WMS/WMTS de forma
+estática (como imagen georreferenciada) o dinámica (en mapas Leaflet).
 
 Adicionalmente, **mapSpain** dispone de funciones que permiten
 normalizar nombres de las CCAA y provincias, lo que facilita el proceso
@@ -168,10 +168,10 @@ Gráfico 2: Comparación de la resolución de diferentes fuentes de mapas;
 se muestran bordes de los datos comparados con ortofoto de la Ria de
 Ferrol
 
-- **rnaturalearth**: No capta bien el contorno.
-- **mapSpain**: Resultados satisfactorios.
-- **GADM** (librería **geodata**): Resultados muy precisos.
-- **geoBoundaries** (librería **geobounds**): Resultados satisfactorios.
+- **rnaturalearth**: interpretación del contorno menos precisa.
+- **mapSpain**: resultados satisfactorios.
+- **GADM** (librería **geodata**): resultados muy precisos.
+- **geoBoundaries** (librería **geobounds**): resultados satisfactorios.
 
 ### Almacenamiento
 

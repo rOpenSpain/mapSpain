@@ -104,10 +104,10 @@ updated to their latest versions.
 
 CRAN release: 2024-12-15
 
-- Fix a bug on
+- Fix a bug in
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   when selecting columns
-  [\#115](https://github.com/rOpenSpain/mapSpain/issues/115).
+  ([\#115](https://github.com/rOpenSpain/mapSpain/issues/115)).
 - New argument `type` in
   [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md).
   Now it is possible to extract different types of comarcas: Official
