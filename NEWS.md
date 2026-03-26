@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 1.1.0
 
 - Use `testthat::local_mocked_bindings()` on API error testing.
 - Migrate vignettes to Quarto.
