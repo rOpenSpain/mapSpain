@@ -170,12 +170,10 @@ random <- esp_get_prov(prov = c(
   "ES521", "01"
 ))
 
-
 ggplot(random) +
   geom_sf(aes(fill = codauto), show.legend = FALSE, alpha = 0.5) +
   scale_fill_manual(values = hcl.colors(nrow(random), "Spectral")) +
   theme_minimal()
-
 
 
 # All Provinces of a Zone plus an addition

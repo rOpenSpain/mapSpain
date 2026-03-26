@@ -1,6 +1,6 @@
-# Check access to SIANE data
+# Check access to SIANE data resources
 
-Check if **R** has access to resources at
+Check whether **R** has access to resources at
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Usage
@@ -11,7 +11,7 @@ esp_check_access()
 
 ## Value
 
-A logical.
+Logical scalar, `TRUE` if accessible and `FALSE` otherwise.
 
 ## See also
 

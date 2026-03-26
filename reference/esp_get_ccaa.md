@@ -172,7 +172,6 @@ random_ccaa <- esp_get_ccaa(ccaa = c(
   "01"
 ))
 
-
 ggplot(random_ccaa) +
   geom_sf(aes(fill = codauto), show.legend = FALSE) +
   geom_sf_label(aes(label = codauto), alpha = 0.3) +
@@ -198,7 +197,6 @@ res <- 20 # Set same resoluion
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)
-
 
 ggplot(europe) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +

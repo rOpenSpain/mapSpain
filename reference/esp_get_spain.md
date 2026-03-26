@@ -154,7 +154,6 @@ original_can
 #> 1 ES              0 ES        España    España            NA        NA
 #> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 
-
 library(ggplot2)
 
 ggplot(original_can) +

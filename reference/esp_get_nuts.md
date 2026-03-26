@@ -204,9 +204,7 @@ ggplot(nuts1) +
   )
 
 
-
 nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
-
 
 ggplot(nuts1_alt) +
   geom_sf() +
@@ -215,7 +213,6 @@ ggplot(nuts1_alt) +
     subtitle = "to the right",
     caption = giscoR::gisco_attributions()
   )
-
 
 
 nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
@@ -229,16 +226,13 @@ ggplot(nuts1_orig) +
   )
 
 
-
 and_orient <- esp_get_nuts(region = c(
   "Almeria", "Granada",
   "Jaen", "Malaga"
 ))
 
-
 ggplot(and_orient) +
   geom_sf()
-
 
 
 random_regions <- esp_get_nuts(region = c("ES1", "ES300", "ES51"))
@@ -248,9 +242,7 @@ ggplot(random_regions) +
   labs(title = "Random Regions")
 
 
-
 mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
-
 
 ggplot(mixing_codes) +
   geom_sf() +

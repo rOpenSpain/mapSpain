@@ -139,7 +139,6 @@ unique(regex1$rotulo)
 #> [1] "Río Tajo"                        "Río Segura"                     
 #> [3] "Canal del Transvase Tajo-Segura"
 
-
 regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 unique(regex2$rotulo)
 #> [1] "Río Tajo"   "Río Segura"
@@ -163,7 +162,6 @@ ggplot(iberian) +
     xlim = c(-10, 5),
     ylim = c(35, 44)
   )
-
 
 
 # Wetlands in South-West Andalucia

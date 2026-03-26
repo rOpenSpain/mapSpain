@@ -1,5 +1,17 @@
 # Changelog
 
+## mapSpain 1.1.0
+
+- Use
+  [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
+  on API error testing.
+- Migrate vignettes to Quarto.
+- Minimal **httr2** version is now **1.2.0** to ensure compatibility
+  with **giscoR**.
+- Query timeout can be controlled with `options(mapspain_timeout)` using
+  [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
+  Default value is `httr2::req_timeout(..., seconds = 300)` (5 minutes).
+
 ## mapSpain 1.0.0
 
 CRAN release: 2026-01-17
@@ -92,10 +104,10 @@ updated to their latest versions.
 
 CRAN release: 2024-12-15
 
-- Fix a bug on
+- Fix a bug in
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov_siane.md)
   when selecting columns
-  [\#115](https://github.com/rOpenSpain/mapSpain/issues/115).
+  ([\#115](https://github.com/rOpenSpain/mapSpain/issues/115)).
 - New argument `type` in
   [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md).
   Now it is possible to extract different types of comarcas: Official
@@ -138,8 +150,9 @@ CRAN release: 2024-01-23
 CRAN release: 2023-07-12
 
 - Improve download of NUTS data from **giscoR**.
-- Upgrade `esp_tiles_providers` to
-  <https://dieghernan.github.io/leaflet-providersESP/> v1.3.3. New
+- Upgrade
+  [`?esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md)
+  to <https://dieghernan.github.io/leaflet-providersESP/> v1.3.3. New
   providers included:
   - `IDErioja.Base`
   - `IDErioja.Relieve`
@@ -153,11 +166,11 @@ CRAN release: 2023-07-12
 
 CRAN release: 2022-12-22
 
-- Upgrade `leaflet.providersESP.df` to
+- Upgrade `?leaflet.providersESP.df` to
   <https://dieghernan.github.io/leaflet-providersESP/> v1.3.2.
 - Changes on how to package manages tiles providers:
-  - `leaflet.providersESP.df` is superseded in favor of
-    `esp_tiles_providers`.
+  - `?leaflet.providersESP.df` is superseded in favor of
+    [`?esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md).
   - You can use a custom url with the `type` argument in
     [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
     ([\#88](https://github.com/rOpenSpain/mapSpain/issues/88)).
@@ -195,7 +208,7 @@ CRAN release: 2022-02-25
 
 CRAN release: 2022-02-18
 
-- Upgrade `leaflet.providersESP.df` to
+- Upgrade `?leaflet.providersESP.df` to
   <https://dieghernan.github.io/leaflet-providersESP/> v1.3.0. New
   providers:
   - `Catastro.BuildingPart`

@@ -11,7 +11,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -43,7 +44,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +96,7 @@
       <p class="author">Diego Hernangómez</p>
 
 
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/release/vignettes/articles/mapasesp.qmd" class="external-link"><code>vignettes/articles/mapasesp.qmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/vignettes/articles/mapasesp.qmd" class="external-link"><code>vignettes/articles/mapasesp.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
     </div>
 
@@ -109,7 +110,7 @@
 <section class="level3"><h3 id="motivación">Motivación<a class="anchor" aria-label="anchor" href="#motivaci%C3%B3n"></a>
 </h3>
 <p><strong>mapSpain</strong> facilita la creación de mapas de los diferentes niveles administrativos de España.</p>
-<p>Además, permite usar imágenes de servicios WMS/WMTS de forma estática (como imagen georreferenciada) o dinámica (en mapas Leaflet).</p>
+<p>Además, permite utilizar imágenes de servicios WMS/WMTS de forma estática (como imagen georreferenciada) o dinámica (en mapas Leaflet).</p>
 <p>Adicionalmente, <strong>mapSpain</strong> dispone de funciones que permiten normalizar nombres de las CCAA y provincias, lo que facilita el proceso de manipulación y transformación de datos (no necesariamente espaciales).</p>
 <p>Las <strong>fuentes de información</strong> empleadas en <strong>mapSpain</strong> son:</p>
 <ul>
@@ -272,13 +273,13 @@ Gráfico 2: Comparación de la resolución de diferentes fuentes de mapas; se m
 </div>
 <ul>
 <li>
-<strong>rnaturalearth</strong>: No capta bien el contorno.</li>
+<strong>rnaturalearth</strong>: interpretación del contorno menos precisa.</li>
 <li>
-<strong>mapSpain</strong>: Resultados satisfactorios.</li>
+<strong>mapSpain</strong>: resultados satisfactorios.</li>
 <li>
-<strong>GADM</strong> (librería <strong>geodata</strong>): Resultados muy precisos.</li>
+<strong>GADM</strong> (librería <strong>geodata</strong>): resultados muy precisos.</li>
 <li>
-<strong>geoBoundaries</strong> (librería <strong>geobounds</strong>): Resultados satisfactorios.</li>
+<strong>geoBoundaries</strong> (librería <strong>geobounds</strong>): resultados satisfactorios.</li>
 </ul></section><section class="level3"><h3 id="almacenamiento">Almacenamiento<a class="anchor" aria-label="anchor" href="#almacenamiento"></a>
 </h3>
 <p><strong>mapSpain</strong> es un paquete API que usa recursos web. El comportamiento por defecto consiste en descargar archivos al directorio temporal <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> para su uso posterior durante la sesión.</p>
@@ -569,8 +570,8 @@ Gráfico 8: Extracción de varias provincias usando CCAA
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
 <span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span><span class="st">"grey80"</span><span class="op">)</span>,</span>
 <span>    text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
-<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>,</span>
-<span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-munic" class="quarto-float quarto-figure quarto-figure-center">

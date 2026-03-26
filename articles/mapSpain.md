@@ -6,7 +6,7 @@
 <https://ropenspain.github.io/mapSpain/>**
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package
-designed to provide geographical information of Spain at different
+designed to provide geographical information about Spain at different
 levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces,
@@ -151,7 +151,7 @@ can <- esp_get_can_box()
 library(ggplot2)
 
 ggplot(ccaa_sf) +
-  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = .3) +
+  geom_sf(aes(fill = porc_women), color = "grey70", linewidth = 0.3) +
   geom_sf(data = can, color = "grey70") +
   geom_sf_label(
     aes(label = porc_women_lab),
@@ -171,9 +171,9 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community (2025)](./choro-1.png)
+![Percentage of women by Autonomous Communities (2025)](./choro-1.png)
 
-Percentage of women by Autonomous Community (2025)
+Percentage of women by Autonomous Communities (2025)
 
 ## Thematic maps
 
@@ -217,7 +217,7 @@ ggplot(munic_pop) +
   labs(title = "Population density in Spain (2025)") +
   theme_void() +
   theme(
-    plot.title = element_text(hjust = .5),
+    plot.title = element_text(hjust = 0.5),
     plot.background = element_rect(fill = "black"),
     text = element_text(colour = "white"),
     legend.position = "bottom",
@@ -263,7 +263,7 @@ ccaa <- esp_get_ccaa(
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
-  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = .1) +
+  geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = 0.1) +
   # Center in Europe: EPSG 3035
   coord_sf(
     xlim = c(2377294, 7453440),

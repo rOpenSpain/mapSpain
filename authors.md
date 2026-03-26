@@ -19,7 +19,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rOpenSpain/mapSpain/blob/release/inst/CITATION)
+[`inst/CITATION`](https://github.com/rOpenSpain/mapSpain/blob/main/inst/CITATION)
 
 Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622),
@@ -28,7 +28,7 @@ Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries of Spain},
       year = {2026},
-      version = {1.0.0},
+      version = {1.1.0},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},

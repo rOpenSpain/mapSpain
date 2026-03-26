@@ -86,7 +86,6 @@ ggplot(hexccaa) +
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
 
 
-
 hexprov <- esp_get_hex_prov()
 
 ggplot(hexprov) +
@@ -98,7 +97,6 @@ ggplot(hexprov) +
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
 
 
-
 gridccaa <- esp_get_grid_ccaa()
 
 ggplot(gridccaa) +
@@ -108,7 +106,6 @@ ggplot(gridccaa) +
   theme_void() +
   labs(title = "Grid: CCAA")
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
-
 
 
 gridprov <- esp_get_grid_prov()
