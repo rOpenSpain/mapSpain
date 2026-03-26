@@ -2,6 +2,8 @@
 
 ## mapSpain 1.1.0
 
+CRAN release: 2026-03-26
+
 - Use
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   on API error testing.
