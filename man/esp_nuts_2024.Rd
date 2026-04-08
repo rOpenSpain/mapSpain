@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{esp_nuts_2024}
 \alias{esp_nuts_2024}
-\title{NUTS 2024 for Spain \code{\link[sf:sf]{sf}} object}
+\title{NUTS 2024 for Spain \code{\link[sf:st_sf]{sf}} object}
 \format{
-An \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries at 1:1 million
+An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries at 1:1 million
 resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
 86 rows and 10 variables:
 \describe{
@@ -70,7 +70,7 @@ head(esp_nuts_2024)
 \seealso{
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 
-Other datasets: 
+Other datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun25}}

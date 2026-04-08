@@ -111,7 +111,7 @@ ggplot(hydroland) +
 }
 \seealso{
 Other natural features:
-\code{\link{esp_get_hypsobath}()},
+\code{\link[=esp_get_hypsobath]{esp_get_hypsobath()}},
 \code{\link{esp_get_landwater}}
 }
 \concept{natural}

@@ -17,7 +17,7 @@ esp_detect_cache_dir()
 }
 \arguments{
 \item{cache_dir}{A path to a cache directory. When \code{NULL}, the function
-stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{overwrite}{logical. If \code{TRUE}, overwrites an existing
 \code{MAPSPAIN_CACHE_DIR} on your local machine.}
@@ -42,7 +42,7 @@ find your cached path, or use \code{\link[=esp_detect_cache_dir]{esp_detect_cach
 }
 \details{
 By default, when no \code{cache_dir} is set, the package uses a folder inside
-\code{\link[base:tempfile]{base::tempdir()}} (files are temporary and removed when the \strong{R} session
+\code{\link[base:tempdir]{base::tempdir()}} (files are temporary and removed when the \strong{R} session
 ends). To persist a cache across \strong{R} sessions, use
 \code{esp_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen
 path to a configuration file under \code{tools::R_user_dir("mapSpain", "config")}.
@@ -102,9 +102,9 @@ esp_detect_cache_dir()
 
 }
 \seealso{
-\code{\link[tools:userdir]{tools::R_user_dir()}}
+\code{\link[tools:R_user_dir]{tools::R_user_dir()}}
 
-Other cache utilities: 
-\code{\link{esp_clear_cache}()}
+Other cache utilities:
+\code{\link[=esp_clear_cache]{esp_clear_cache()}}
 }
 \concept{cache utilities}

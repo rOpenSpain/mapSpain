@@ -37,7 +37,7 @@ Initial position can be adjusted using the vector of coordinates. See
 }}
 }
 \value{
-An \code{\link[sf:sf]{sf}} object: a \code{POLYGON} (when \code{style = "poly"}) or a
+An \code{\link[sf:st_sf]{sf}} object: a \code{POLYGON} (when \code{style = "poly"}) or a
 \code{LINESTRING} (other styles).
 }
 \description{
@@ -108,6 +108,6 @@ ggplot(countries) +
 }
 \seealso{
 Other helpers for the Canary Islands:
-\code{\link{esp_move_can}()}
+\code{\link[=esp_move_can]{esp_move_can()}}
 }
 \concept{can_helpers}

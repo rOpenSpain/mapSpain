@@ -7,7 +7,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get a \code{\link[sf:sf]{sf}} hexbin or squared \code{POLYGON} of Spain}
+\title{Get a \code{\link[sf:st_sf]{sf}} hexbin or squared \code{POLYGON} of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 
@@ -25,7 +25,7 @@ and autonomous communities or \code{NULL} to get all the data. See \strong{Detai
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Loads a hexbin map (\code{\link[sf:sf]{sf}} object) or a map of squares with the
+Loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of squares with the
 boundaries of the provinces or autonomous communities of Spain.
 }
 \details{
@@ -92,19 +92,19 @@ ggplot(gridprov) +
 \code{\link{esp_get_simpl}}.
 
 Other datasets representing political borders:
-\code{\link{esp_get_capimun}()},
-\code{\link{esp_get_ccaa}()},
-\code{\link{esp_get_ccaa_siane}()},
-\code{\link{esp_get_comarca}()},
-\code{\link{esp_get_countries_siane}()},
-\code{\link{esp_get_munic}()},
-\code{\link{esp_get_munic_siane}()},
-\code{\link{esp_get_nuts}()},
-\code{\link{esp_get_prov}()},
-\code{\link{esp_get_prov_siane}()},
+\code{\link[=esp_get_capimun]{esp_get_capimun()}},
+\code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
+\code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
+\code{\link[=esp_get_comarca]{esp_get_comarca()}},
+\code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
+\code{\link[=esp_get_munic]{esp_get_munic()}},
+\code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},
+\code{\link[=esp_get_nuts]{esp_get_nuts()}},
+\code{\link[=esp_get_prov]{esp_get_prov()}},
+\code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}},
 \code{\link{esp_get_simpl}},
-\code{\link{esp_get_spain}()},
-\code{\link{esp_get_spain_siane}()},
-\code{\link{esp_siane_bulk_download}()}
+\code{\link[=esp_get_spain]{esp_get_spain()}},
+\code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
+\code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 }
 \concept{political}

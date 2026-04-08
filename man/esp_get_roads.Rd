@@ -97,6 +97,6 @@ ggplot(country) +
 }
 \seealso{
 Other man-made infrastructures:
-\code{\link{esp_get_railway}()}
+\code{\link[=esp_get_railway]{esp_get_railway()}}
 }
 \concept{infrastructure}

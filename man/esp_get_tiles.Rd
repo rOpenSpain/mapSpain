@@ -30,7 +30,7 @@ esp_get_tiles(
 esp_get_attributions(type, options = NULL)
 }
 \arguments{
-\item{x}{An \code{\link[sf:sf]{sf}} or \code{\link[sf:sfc]{sfc}} object.}
+\item{x}{An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object.}
 
 \item{type}{This argument can be either:
 \itemize{
@@ -50,7 +50,7 @@ The default value is designed to download fewer tiles than you probably
 want. Use \code{1} or \code{2} to increase the resolution.}
 
 \item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
-\code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
+\code{x} extent. If \code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT},
 \code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
 \item{res}{character string or number. Only valid for WMS providers.
@@ -188,7 +188,7 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 
 Other functions for creating maps with images:
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_make_provider}()}
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
+\code{\link[=esp_make_provider]{esp_make_provider()}}
 }
 \concept{images}

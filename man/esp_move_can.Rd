@@ -3,25 +3,25 @@
 \encoding{UTF-8}
 \name{esp_move_can}
 \alias{esp_move_can}
-\title{Displace a \code{\link[sf:sf]{sf}} object located in the Canary Islands}
+\title{Displace a \code{\link[sf:st_sf]{sf}} object located in the Canary Islands}
 \usage{
 esp_move_can(x, moveCAN = TRUE)
 }
 \arguments{
-\item{x}{An \code{\link[sf:sf]{sf}} object. It can be an \code{sf} or \code{sfc} object.}
+\item{x}{An \code{\link[sf:st_sf]{sf}} object. It can be an \code{sf} or \code{sfc} object.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}.  It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object of the same class and same CRS as \code{x}
+A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x}
 but displaced accordingly.
 }
 \description{
-Helper function to displace an external \code{\link[sf:sf]{sf}} object (potentially
+Helper function to displace an external \code{\link[sf:st_sf]{sf}} object (potentially
 representing a location in the Canary Islands) to align it with the objects
-provided by \code{\link[sf:sf]{sf}} with the option \code{moveCAN = TRUE}.
+provided by \code{\link[sf:st_sf]{sf}} with the option \code{moveCAN = TRUE}.
 }
 \details{
 This is a helper function that intends to ease the representation of objects
@@ -75,6 +75,6 @@ ggplot(esp) +
 }
 \seealso{
 Other helpers for the Canary Islands:
-\code{\link{esp_get_can_box}()}
+\code{\link[=esp_get_can_box]{esp_get_can_box()}}
 }
 \concept{can_helpers}

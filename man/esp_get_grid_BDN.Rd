@@ -57,7 +57,7 @@ Communities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} object with the geographic grids of
+Loads a \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the geographic grids of
 Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
 under the Ministry of Environment (MITECO).
 
@@ -101,7 +101,7 @@ ggplot(grid) +
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 
 Other geographical grids:
-\code{\link{esp_get_grid_ESDAC}()},
-\code{\link{esp_get_grid_MTN}()}
+\code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}},
+\code{\link[=esp_get_grid_MTN]{esp_get_grid_MTN()}}
 }
 \concept{grids}

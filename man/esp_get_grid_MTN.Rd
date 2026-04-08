@@ -28,10 +28,10 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} \code{POLYGON}.
+A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
 }
 \description{
-Loads a \code{\link[sf:sf]{sf}} \code{POLYGON} with the geographic grids of Spain.
+Loads a \code{\link[sf:st_sf]{sf}} \code{POLYGON} with the geographic grids of Spain.
 }
 \details{
 Metadata available on
@@ -117,7 +117,7 @@ ggplot(grid) +
 }
 \seealso{
 Other geographical grids:
-\code{\link{esp_get_grid_BDN}()},
-\code{\link{esp_get_grid_ESDAC}()}
+\code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}},
+\code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}}
 }
 \concept{grids}

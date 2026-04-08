@@ -149,7 +149,7 @@ single$leaflet
 
 }
 \seealso{
-Other datasets: 
+Other datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts_2024}},
 \code{\link{pobmun25}}

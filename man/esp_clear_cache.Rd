@@ -51,9 +51,9 @@ identical(my_cache, esp_detect_cache_dir())
 }
 }
 \seealso{
-\code{\link[tools:userdir]{tools::R_user_dir()}}
+\code{\link[tools:R_user_dir]{tools::R_user_dir()}}
 
-Other cache utilities: 
-\code{\link{esp_set_cache_dir}()}
+Other cache utilities:
+\code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}
 }
 \concept{cache utilities}

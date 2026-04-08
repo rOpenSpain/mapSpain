@@ -65,7 +65,7 @@ For a list of potential providers from Spain check
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 
 Other functions for creating maps with images:
-\code{\link{addProviderEspTiles}()},
-\code{\link{esp_get_tiles}()}
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
+\code{\link[=esp_get_tiles]{esp_get_tiles()}}
 }
 \concept{images}

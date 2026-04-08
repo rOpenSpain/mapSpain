@@ -6,7 +6,7 @@
 \alias{pobmun25}
 \title{Population of Spain by municipality (2025)}
 \format{
-A \link[tibble:tbl_df-class]{tibble} object with
+A \link[tibble:tbl_df]{tibble} object with
 8,132 rows containing
 population data by municipality in Spain for 2025.
 
@@ -31,7 +31,7 @@ Population of Spain by municipality (2025)
 data("pobmun25")
 }
 \seealso{
-Other datasets: 
+Other datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}}

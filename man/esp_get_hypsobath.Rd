@@ -147,7 +147,7 @@ ggplot(hypsobath) +
 }
 \seealso{
 Other natural features:
-\code{\link{esp_get_hydrobasin}()},
+\code{\link[=esp_get_hydrobasin]{esp_get_hydrobasin()}},
 \code{\link{esp_get_landwater}}
 }
 \concept{natural}

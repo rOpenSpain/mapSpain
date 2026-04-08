@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_grid_EEA}
 \alias{esp_get_grid_EEA}
-\title{Get \code{\link[sf:sf]{sf}} \code{POLYGON} of the national geographic grids from EEA}
+\title{Get \code{\link[sf:st_sf]{sf}} \code{POLYGON} of the national geographic grids from EEA}
 \source{
 \href{https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8c16-aaadfb1a003b}{EEA reference grid}.
 }
@@ -34,7 +34,7 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} \code{POLYGON}.
+A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}

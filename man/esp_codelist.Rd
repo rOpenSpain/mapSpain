@@ -6,7 +6,7 @@
 \alias{esp_codelist}
 \title{Database with codes and names of Spanish regions}
 \format{
-A \link[tibble:tbl_df-class]{tibble} with 59 rows and
+A \link[tibble:tbl_df]{tibble} with 59 rows and
 columns:
 
 \describe{
@@ -71,7 +71,7 @@ columns:
 }
 }
 \description{
-A \link[tibble:tbl_df-class]{tibble} object used internally for translating codes and
+A \link[tibble:tbl_df]{tibble} object used internally for translating codes and
 names of the different subdivisions of Spain. This tibble provides a
 hierarchical representation of Spain's subdivisions, including NUTS1 level,
 autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
@@ -93,7 +93,7 @@ data("esp_codelist")
 esp_codelist
 }
 \seealso{
-Other datasets: 
+Other datasets:
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun25}}
