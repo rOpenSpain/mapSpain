@@ -41,17 +41,16 @@ provided.
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
-custom_wms <- esp_make_provider(
-  id = "an_id_for_caching",
-  q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
-  service = "WMS",
-  version = "1.3.0",
-  layers = "geolog_cyl_litologia"
+custom_wmts <- esp_make_provider(
+  id = "example",
+  q = "https://www.ign.es/wmts/ign-base?",
+  service = "WMTS",
+  layer = "IGNBaseTodo"
 )
 
 x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 
-mytile <- esp_get_tiles(x, type = custom_wms)
+mytile <- esp_get_tiles(x, type = custom_wmts)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)

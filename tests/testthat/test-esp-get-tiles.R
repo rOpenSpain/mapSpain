@@ -505,15 +505,13 @@ test_that("Custom WMS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
+
   custom_wms <- list(
     id = "new_cached_test",
     q = paste0(
-      "https://idecyl.jcyl.es/geoserver/ge/wms?request=GetMap",
-      "&service=WMS&version=1.3.0",
-      "&format=image/png",
-      "&CRS=epsg:3857",
-      "&layers=geolog_cyl_litologia",
-      "&styles="
+      "https://servicios.idee.es/wms-inspire/hidrografia?",
+      "service=WMS&version=1.1.1&request=GetMap&format=image/png&",
+      "transparent=true&layers=HY.PhysicalWaters.Catchments&srs=EPSG:3857"
     )
   )
 
