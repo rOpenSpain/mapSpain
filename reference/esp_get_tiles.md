@@ -150,8 +150,7 @@ deformed, try projecting first `x`:
 ## See also
 
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md),
-`maptiles::get_tiles()`
+[esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md)
 
 [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
 
@@ -189,23 +188,6 @@ tile2 <- esp_get_tiles(segovia, type = "MDT")
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
-
-
-# A custom WMS provided
-
-custom_wms <- esp_make_provider(
-  id = "an_id_for_caching",
-  q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
-  service = "WMS",
-  version = "1.3.0",
-  format = "image/png",
-  layers = "geolog_cyl_litologia"
-)
-
-custom_wms_tile <- esp_get_tiles(segovia, custom_wms)
-
-autoplot(custom_wms_tile, maxcell = Inf) +
-  geom_sf(data = segovia, fill = NA, color = "red", linewidth = 1)
 
 
 # A custom WMTS provider

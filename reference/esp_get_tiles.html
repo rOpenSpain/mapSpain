@@ -192,7 +192,7 @@ try projecting first <code>x</code>:</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>, <a href="esp_tiles_providers.html">esp_tiles_providers</a>, <code>maptiles::get_tiles()</code></p>
+    <div class="dont-index"><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>, <a href="esp_tiles_providers.html">esp_tiles_providers</a></p>
 <p><code><a href="https://ropengov.github.io/giscoR/reference/gisco_attributions.html" class="external-link">giscoR::gisco_attributions()</a></code></p>
 <p>Other functions for creating maps with images:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
@@ -230,23 +230,6 @@ try projecting first <code>x</code>:</p>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_tiles-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># A custom WMS provided</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">custom_wms</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_make_provider.html">esp_make_provider</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"an_id_for_caching"</span>,</span></span>
-<span class="r-in"><span>  q <span class="op">=</span> <span class="st">"https://idecyl.jcyl.es/geoserver/ge/wms?"</span>,</span></span>
-<span class="r-in"><span>  service <span class="op">=</span> <span class="st">"WMS"</span>,</span></span>
-<span class="r-in"><span>  version <span class="op">=</span> <span class="st">"1.3.0"</span>,</span></span>
-<span class="r-in"><span>  format <span class="op">=</span> <span class="st">"image/png"</span>,</span></span>
-<span class="r-in"><span>  layers <span class="op">=</span> <span class="st">"geolog_cyl_litologia"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">custom_wms_tile</span> <span class="op">&lt;-</span> <span class="fu">esp_get_tiles</span><span class="op">(</span><span class="va">segovia</span>, <span class="va">custom_wms</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wms_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="esp_get_tiles-3.png" alt="" width="2188" height="1352"></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMTS provider</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">custom_wmts</span> <span class="op">&lt;-</span> <span class="fu"><a href="esp_make_provider.html">esp_make_provider</a></span><span class="op">(</span></span></span>
@@ -260,7 +243,7 @@ try projecting first <code>x</code>:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wmts_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="esp_get_tiles-4.png" alt="" width="2188" height="1352"></span>
+<span class="r-plt img"><img src="esp_get_tiles-3.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example from https://leaflet-extras.github.io/leaflet-providers/preview/</span></span></span>
 <span class="r-in"><span><span class="va">cartodb_dark</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
@@ -274,7 +257,7 @@ try projecting first <code>x</code>:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">cartodb_dark_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="esp_get_tiles-5.png" alt="" width="2188" height="1352"></span>
+<span class="r-plt img"><img src="esp_get_tiles-4.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
