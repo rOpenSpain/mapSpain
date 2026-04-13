@@ -109,7 +109,7 @@ download_url <- function(
 
     cli::cli_alert_danger(
       c(
-        "{.strong Error {.num {get_status_code}}} ({get_status_desc}):",
+        "{.strong Error {get_status_code}} ({get_status_desc}):",
         " {.url {url}}."
       )
     )
