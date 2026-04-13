@@ -186,7 +186,7 @@ CRAN release: 2022-08-13
 
 - Now `moveCAN` is a explicit argument in the relevant functions.
 - Deprecate `layer_spatraster().` Use
-  [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
+  [`tidyterra::geom_spatraster_rgb()`](https://rdrr.io/pkg/tidyterra/man/geom_spatraster_rgb.html)
   instead.
 - Fix geometries on
   [`esp_get_hex_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
