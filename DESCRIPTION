@@ -53,7 +53,8 @@ Config/Needs/coverage: covr
 Config/Needs/website: ragg, reactable, rnaturalearth, tidyverse, devtools,
     remotes, ropenspain/rostemplate, ropensci/rnaturalearthhires, geodata,
     sessioninfo, sfheaders, rapidjsonr, jsonify, geometries, geobounds
-Config/roxygen2/version: 8.0.0.9000
+Config/roxygen2/markdown: TRUE
+Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas
@@ -61,7 +62,6 @@ Copyright: © EuroGeographics for the administrative boundaries. Atlas
     <https://www.ine.es/en/index.htm>
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: https://ropenspain.es/
 X-schema.org-keywords: ropenspain, tiles, r, maps, spatial, rstats,
