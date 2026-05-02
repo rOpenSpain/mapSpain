@@ -246,7 +246,7 @@ load it, which speeds up the process.
 
 Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of
 Spain</em>.
-<a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>,
+<a href="https://doi.org/10.5281/zenodo.5366622">doi:10.5281/zenodo.5366622</a>.
 <a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
 </p>
 
