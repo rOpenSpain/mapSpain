@@ -32,6 +32,7 @@ coding system.
 be set as:
 
 ``` r
+
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -45,6 +46,7 @@ loading in your session.
 Some examples of what **mapSpain** can do:
 
 ``` r
+
 library(mapSpain)
 library(ggplot2)
 
@@ -72,6 +74,7 @@ ggplot(country) +
 Example: Map of Spain
 
 ``` r
+
 # Plot provinces
 
 andalucia <- esp_get_prov("Andalucia")
@@ -86,6 +89,7 @@ ggplot(andalucia) +
 Example: Provinces of Andalucia
 
 ``` r
+
 # Plot municipalities
 
 euskadi_ccaa <- esp_get_ccaa("Euskadi")
@@ -121,6 +125,7 @@ Let’s analyze the distribution of women in each autonomous community
 with **ggplot2**:
 
 ``` r
+
 library(dplyr)
 
 census <- mapSpain::pobmun25 |>
@@ -184,6 +189,7 @@ package that handles `sf` objects (e.g., **tmap**, **mapsf**,
 **leaflet**, etc.) could also be used.
 
 ``` r
+
 # Population density of Spain
 library(sf)
 
@@ -239,6 +245,7 @@ If you need to plot Spain alongside other countries, consider using the
 installed as a dependency with **mapSpain**. Here’s a basic example:
 
 ``` r
+
 library(giscoR)
 
 # Set the same resolution for a perfect fit

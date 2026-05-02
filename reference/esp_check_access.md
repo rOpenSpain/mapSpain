@@ -20,6 +20,7 @@ Logical scalar, `TRUE` if accessible and `FALSE` otherwise.
 ## Examples
 
 ``` r
+
 esp_check_access()
 #> [1] TRUE
 ```

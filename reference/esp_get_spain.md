@@ -143,16 +143,18 @@ original_can <- esp_get_spain(moveCAN = FALSE)
 
 # One row only
 original_can
-#> Simple feature collection with 1 feature and 9 fields
+#> Simple feature collection with 1 feature and 18 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -18.15996 ymin: 27.63846 xmax: 4.320228 ymax: 43.78924
 #> Geodetic CRS:  ETRS89
-#> # A tibble: 1 × 10
+#> # A tibble: 1 × 19
 #>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
 #> * <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
 #> 1 ES              0 ES        España    España            NA        NA
-#> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#> # ℹ 12 more variables: COAST_TYPE <int>, NAME_ENGL <chr>, NAME_FREN <chr>,
+#> #   ISO3_CODE <chr>, SVRG_UN <chr>, CAPT <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
+#> #   CC_STAT <chr>, NAME_GERM <chr>, geo <chr>, geometry <MULTIPOLYGON [°]>
 
 library(ggplot2)
 

@@ -18,6 +18,7 @@ Install **mapSpain** from
 [**CRAN**](https://CRAN.R-project.org/package=mapSpain):
 
 ``` r
+
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
@@ -26,6 +27,7 @@ install.packages("mapSpain", dependencies = TRUE)
 This script highlights some key features of **mapSpain**.
 
 ``` r
+
 library(mapSpain)
 library(sf)
 library(dplyr)
@@ -83,6 +85,7 @@ ggplot(ccaa_sf) +
 You can combine `sf` objects with static tiles
 
 ``` r
+
 # Get census
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
@@ -143,6 +146,7 @@ If you need to plot Spain alongside other countries, consider using the
 installed as a dependency with **mapSpain**. Here’s a basic example:
 
 ``` r
+
 library(giscoR)
 
 # Set the same resolution for a perfect fit
@@ -182,6 +186,7 @@ Some data sets and tiles may have a size larger than 50MB. You can use
 directory passing the following option:
 
 ``` r
+
 esp_set_cache_dir("./path/to/location")
 ```
 
@@ -191,7 +196,7 @@ load it, which speeds up the process.
 ## Citation
 
 Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
-[doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622),
+[doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
 A BibTeX entry for LaTeX users is:

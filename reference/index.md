@@ -92,7 +92,7 @@ Return static tiles or create an interactive
   [`providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
   : Add a tile layer from a known map provider (from leaflet)
 
-- [`geom_spatraster_rgb()`](https://rdrr.io/pkg/tidyterra/man/geom_spatraster_rgb.html)
+- [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
   Visualise `SpatRaster` objects as images (from tidyterra)

@@ -34,6 +34,7 @@ Página web: <https://ropenspain.github.io/mapSpain/>
 #### CRAN
 
 ``` r
+
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
@@ -42,6 +43,7 @@ install.packages("mapSpain", dependencies = TRUE)
 Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
+
 # Enable this universe
 install.packages(
   "mapSpain",
@@ -56,6 +58,7 @@ install.packages(
 #### Con pak (desde GitHub)
 
 ``` r
+
 install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
@@ -63,6 +66,7 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ### Un ejemplo rápido
 
 ``` r
+
 library(mapSpain)
 library(tidyverse)
 
@@ -84,6 +88,7 @@ Gráfico 1: Mapa de los municipios de Galicia
 Si exploramos el dataset:
 
 ``` r
+
 library(reactable)
 
 reactable(
@@ -102,6 +107,7 @@ Comparamos ahora **mapSpain** con otro paquete que proporciona objetos
 `sf` o `SpatVector` de distintos paises:
 
 ``` r
+
 library(sf) # manipulación de datos espaciales
 
 # rnaturalearth
@@ -187,6 +193,7 @@ descarga específico para el usuario. Para hacer esta configuración
 persistente se puede emplear el parámetro `install = TRUE`
 
 ``` r
+
 esp_set_cache_dir("~/R/mapslib/mapSpain", install = TRUE, verbose = TRUE)
 
 #> ℹ mapSpain cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain.
@@ -227,6 +234,7 @@ etc).
 #### `esp_dict_region_code()`
 
 ``` r
+
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 esp_dict_region_code(vals, destination = "nuts")
@@ -259,6 +267,7 @@ esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"), destination = "iso2")
 #### `esp_dict_translate()`
 
 ``` r
+
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 
 esp_dict_translate(vals, lang = "en")
@@ -299,6 +308,7 @@ La información se proporciona en diferentes proyecciones y niveles de
 resolución.
 
 ``` r
+
 esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
@@ -321,6 +331,7 @@ alrededor de la inserción del mapa
 ([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
 
 ``` r
+
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -341,6 +352,7 @@ análisis espaciales, debe usarse `moveCAN = FALSE`.**
 ### NUTS
 
 ``` r
+
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
@@ -353,6 +365,7 @@ ggplot(nuts1) +
 Gráfico 5: NUTS 1 de España
 
 ``` r
+
 # Baleares NUTS3
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
@@ -374,6 +387,7 @@ Gráfico 6: NUTS3 de España
 ### CCAA
 
 ``` r
+
 ccaa <- esp_get_ccaa(
   ccaa = c(
     "Catalunya",
@@ -403,6 +417,7 @@ Si pasamos una entidad de orden superior (e.g. Andalucia) obtenemos
 todas las provincias de esa entidad.
 
 ``` r
+
 provs <- esp_get_prov_siane(c(
   "Andalucía",
   "Ciudad Real",
@@ -425,6 +440,7 @@ Gráfico 8: Extracción de varias provincias usando CCAA
 ### Municipios
 
 ``` r
+
 munic <- esp_get_munic(region = "Segovia") |>
   # Datos de ejemplo: Población INE
   left_join(
@@ -464,6 +480,7 @@ Gráfico 9: Extracción de municipios
 Disponibles como cuadrados y hexágonos, para provincias y CCAA.
 
 ``` r
+
 cuad <- esp_get_hex_ccaa()
 hex <- esp_get_grid_prov()
 
@@ -507,6 +524,7 @@ Los proveedores se han extraido del plugin para leaflet
 Tenemos varias opciones que podemos emplear para componer mapas base:
 
 ``` r
+
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
 base_pnoa <- esp_get_tiles(madrid_munis, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
@@ -558,6 +576,7 @@ Gráfico 12: Mapa base con máscara
 Estas capas se pueden usar también como fondo en mapas estáticos
 
 ``` r
+
 stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 
 library(leaflet)

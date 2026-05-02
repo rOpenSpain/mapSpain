@@ -22,6 +22,7 @@ Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
   for the Canary Islands may be inaccurate.**
 
 ``` r
+
 library(mapSpain)
 library(sf)
 library(ggplot2)
@@ -50,6 +51,7 @@ Some tiles can be loaded with or without an alpha (transparency) value,
 which controls layer transparency:
 
 ``` r
+
 galicia <- esp_get_ccaa("Galicia", epsg = 3857)
 
 # Example without transparency
@@ -82,6 +84,7 @@ Figure 2: Map of the Way of St. James in Galicia
 Now let’s check the same code using the `transparent = TRUE` option:
 
 ``` r
+
 # Example with transparency
 tile_alpha <- esp_get_tiles(
   galicia,
@@ -111,6 +114,7 @@ Another useful feature is the ability to mask tiles, allowing more
 advanced maps to be plotted:
 
 ``` r
+
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -133,6 +137,7 @@ You can use
 to get tiles of any other provider, for example OpenStreetMap:
 
 ``` r
+
 osm_spec <- list(
   id = "OSM",
   q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -153,6 +158,7 @@ Figure 5: Example of base map using OpenStreetMap
 Another example using a provider that needs an API Key (ThunderForest):
 
 ``` r
+
 # Skip if not API KEY
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
 if (apikey != "") {
@@ -183,6 +189,7 @@ some quick examples:
 ### Earthquakes in Tenerife (last year)
 
 ``` r
+
 library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
@@ -222,6 +229,7 @@ m |>
 A map showing the population density of Spain as of 2019:
 
 ``` r
+
 library(leaflet)
 library(dplyr)
 munic <- esp_get_munic_siane(

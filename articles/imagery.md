@@ -8,5 +8,6 @@ Note that you may need several additional packages. Install them by
 running:
 
 ``` r
+
 install.packages("mapSpain", dependencies = TRUE)
 ```
