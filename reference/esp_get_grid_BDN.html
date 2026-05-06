@@ -6,13 +6,13 @@ This dataset provides:
 esp_get_grid_BDN() extracts country-wide regular grids with resolutions
 of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
 esp_get_grid_BDN_ccaa() extracts 1x1 kilometer resolution grids for
-individual Autonomous Communities.
+individual autonomous communities.
 
 
 These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.
 esp_get_grid_BDN_ccaa() provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
+for specific autonomous communities, useful for regional analysis with
 finer spatial detail."><meta property="og:description" content="Loads a sf POLYGON object with the geographic grids of
 Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
 under the Ministry of Environment (MITECO).
@@ -20,13 +20,13 @@ This dataset provides:
 esp_get_grid_BDN() extracts country-wide regular grids with resolutions
 of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
 esp_get_grid_BDN_ccaa() extracts 1x1 kilometer resolution grids for
-individual Autonomous Communities.
+individual autonomous communities.
 
 
 These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.
 esp_get_grid_BDN_ccaa() provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
+for specific autonomous communities, useful for regional analysis with
 finer spatial detail."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -91,11 +91,11 @@ under the Ministry of Environment (MITECO).</p>
 <p>This dataset provides:</p><ul><li><p><code>esp_get_grid_BDN()</code> extracts country-wide regular grids with resolutions
 of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).</p></li>
 <li><p><code>esp_get_grid_BDN_ccaa()</code> extracts 1x1 kilometer resolution grids for
-individual Autonomous Communities.</p></li>
+individual autonomous communities.</p></li>
 </ul><p>These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.</p>
 <p><code>esp_get_grid_BDN_ccaa()</code> provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
+for specific autonomous communities, useful for regional analysis with
 finer spatial detail.</p>
     </div>
 
@@ -119,9 +119,9 @@ finer spatial detail.</p>
 
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
-    <p>Data sourced from the Banco de Datos de la Naturaleza (BDN) via a custom
-CDN. See the repository structure:
-<a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN" class="external-link">https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN</a></p>
+    <p>Data sourced from the Banco de Datos de la Naturaleza (BDN). See the
+repository structure:
+<a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata/MITECO/dist" class="external-link">https://github.com/rOpenSpain/mapSpain/tree/sianedata/MITECO/dist</a></p>
 <p>For more information about BDN grids and other resources, visit:
 <a href="https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html" class="external-link">https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html</a>.</p>
     </div>
@@ -130,7 +130,8 @@ CDN. See the repository structure:
 
 
 <dl><dt id="arg-resolution">resolution<a class="anchor" aria-label="anchor" href="#arg-resolution"></a></dt>
-<dd><p>numeric. Resolution of the grid in kms. Must be one of:</p><ul><li><p><code>5</code>: 5x5 kilometer cells</p></li>
+<dd><p>numeric. Resolution of the grid in kilometers. Must be one
+of:</p><ul><li><p><code>5</code>: 5x5 kilometer cells</p></li>
 <li><p><code>10</code>: 10x10 kilometer cells (default)</p></li>
 </ul></dd>
 
@@ -167,8 +168,8 @@ Communities. See <strong>Details</strong> on <code><a href="esp_get_ccaa.html">e
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The BDN provides standardized geographic grids for Spain that follow the
-Nature Data Bank's specifications. The data is maintained via a custom CDN
-and is regularly updated.</p>
+Nature Data Bank's specifications. The data is downloaded from the
+<code>sianedata/MITECO/dist</code> data branch and is regularly updated.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

@@ -1,6 +1,6 @@
-# Autonomous Communities of Spain - GISCO
+# Autonomous communities of Spain - GISCO
 
-Returns [Autonomous Communities of
+Returns [Autonomous communities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -116,10 +116,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
 2), ISO codes (corresponding to level 2) or `codauto` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
-Ceuta and Melilla are considered as Autonomous Communities in this
+Ceuta and Melilla are considered as autonomous communities in this
 function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
+When calling a NUTS1 level, all the autonomous communities of that level
 will be added.
 
 ## Note
@@ -193,7 +193,7 @@ library(giscoR)
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 
-res <- 20 # Set same resoluion
+res <- 20 # Set the same resolution
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)

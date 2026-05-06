@@ -6,7 +6,7 @@ CRAN release: 2026-03-26
 
 - Use
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
-  on API error testing.
+  for API error testing.
 - Migrate vignettes to Quarto.
 - Minimal **httr2** version is now **1.2.0** to ensure compatibility
   with **giscoR**.
@@ -28,10 +28,9 @@ topic-based subfolders for easier management.
 We have transitioned from
 [`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
 to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
-managing your persistent cache directory. If you are a heavy
-**mapSpain** user and already have a cache directory in place, you’ll
-receive a one-time friendly message informing you about this migration.
-Consider it a warm welcome to **mapSpain** 1.0.0 😉.
+managing the persistent cache directory. If you have an existing cache
+directory, you will receive a one-time notification about this
+migration.
 
 The package now requires **R ≥ 4.1**, and dependency updates improve
 both performance and maintainability. All functions return tidy objects
@@ -100,7 +99,7 @@ updated to their latest versions.
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
   gains a new `moveCAN` argument.
 - [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-  can be used with providers that needs an API key.
+  can be used with providers that need an API key.
 
 ## mapSpain 0.10.0
 
@@ -119,7 +118,7 @@ CRAN release: 2024-12-15
 
 CRAN release: 2024-08-26
 
-- **SIANE 2024 Update**: Adapt functions to new databases.
+- **SIANE 2024 Update**: Adapted functions to new databases.
 - Improve dictionaries:
   [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
   and
@@ -135,7 +134,7 @@ CRAN release: 2024-06-10
 
 CRAN release: 2024-01-23
 
-- Changes on how to handle modifications on Canary Islands objects
+- Changes to how modifications on Canary Islands objects are handled
   ([\#101](https://github.com/rOpenSpain/mapSpain/issues/101)):
   - Add a helper function for displace stand-alone `sf` objects in
     Canary Islands:
@@ -161,7 +160,7 @@ CRAN release: 2023-07-12
   - `IDErioja.Claro`
   - `IDErioja.Oscuro`
 - [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-  now supports non-OGC compliant WMTS providers, such as Stamen or
+  now supports non-OGC-compliant WMTS providers, such as Stamen or
   OpenStreetMaps (see examples).
 
 ## mapSpain 0.7.0
@@ -184,8 +183,8 @@ CRAN release: 2022-12-22
 
 CRAN release: 2022-08-13
 
-- Now `moveCAN` is a explicit argument in the relevant functions.
-- Deprecate `layer_spatraster().` Use
+- Now `moveCAN` is an explicit argument in the relevant functions.
+- Deprecate `layer_spatraster()`. Use
   [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   instead.
 - Fix geometries on
@@ -225,7 +224,7 @@ CRAN release: 2022-02-18
 
 CRAN release: 2022-01-25
 
-- Rebuild coding database to avoid errors due to encoding.
+- Rebuilt coding database to avoid errors due to encoding.
 - Fix translations on Galician.
 - New grid functions
   ([\#61](https://github.com/rOpenSpain/mapSpain/issues/61)):
@@ -238,8 +237,8 @@ CRAN release: 2022-01-25
 
 CRAN release: 2021-10-14
 
-- Switch from **raster** to **terra**.
-- Clean up dependencies. Imagery packages moved to ‘Suggests’.
+- Switched from **raster** to **terra**.
+- Cleaned up dependencies. Imagery packages moved to ‘Suggests’.
 - Add `layer_spatraster()`.
 - Move examples to **ggplot2**.
 
@@ -278,7 +277,7 @@ CRAN release: 2021-04-25
   [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
   ([\#36](https://github.com/rOpenSpain/mapSpain/issues/36)).
 - Not run examples on tiles, as the server sometimes doesn’t respond.
-- Re factor `sysdata.rda`.
+- Refactor `sysdata.rda`.
 - **CRAN** fixes:
   - Removed broken link on
     [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
@@ -289,7 +288,7 @@ CRAN release: 2021-04-25
 
 CRAN release: 2021-04-17
 
-- Migrate examples, vignettes and README to **tmap**.
+- Migrated examples, vignettes and README to **tmap**.
 - Add vignette to package.
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
   works with mixed casings (e.g:
@@ -331,7 +330,7 @@ CRAN release: 2021-01-05
 - New grids created with `geogrid::calculate_grid()`.
 - Add more years on
   [`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md).
-- Move to rOpenSpain organization.
+- Moved to rOpenSpain organization.
 
 ## mapSpain 0.1.1
 

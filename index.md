@@ -1,16 +1,16 @@
 # mapSpain
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial **sf** objects of Spain’s administrative boundaries,
-including Autonomous Communities, provinces, and municipalities.
+provides **sf** objects of Spain’s administrative boundaries, including
+Autonomous Communities, provinces and municipalities.
 
 **mapSpain** also provides a Leaflet plugin to be used with the
 [**leaflet** package](https://rstudio.github.io/leaflet/), which loads
 several base maps from Spain’s public institutions and enables
 downloading and processing of static tiles.
 
-Full site with examples and vignettes on
-<https://ropenspain.github.io/mapSpain/>
+The full package website, with examples and vignettes, is available at
+<https://ropenspain.github.io/mapSpain/>.
 
 ## Installation
 
@@ -24,7 +24,7 @@ install.packages("mapSpain", dependencies = TRUE)
 
 ## Usage
 
-This script highlights some key features of **mapSpain**.
+The following examples highlight some key features of **mapSpain**.
 
 ``` r
 
@@ -82,7 +82,7 @@ ggplot(ccaa_sf) +
 ![Porc. of women by CCAA in Spain
 (2025)](reference/figures/README-static-1.png)
 
-You can combine `sf` objects with static tiles
+You can combine `sf` objects with static tiles.
 
 ``` r
 
@@ -229,7 +229,7 @@ Geográfico Nacional:
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
-This package also uses data from **GISCO**. GISCO
+This package also uses data from GISCO. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
 data repository containing multiple datasets at various resolution
 levels.

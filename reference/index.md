@@ -12,7 +12,7 @@ Datasets from IGN / CartoBase ANE.
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md)
   : City where the municipal public authorities are based - SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain - SIANE
+  : Autonomous communities of Spain - SIANE
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md)
   : Countries of the World - SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md)
@@ -29,7 +29,7 @@ Datasets from IGN / CartoBase ANE.
 Datasets from GISCO / Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain - GISCO
+  : Autonomous communities of Spain - GISCO
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md)
   : Municipalities of Spain - GISCO
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
@@ -175,7 +175,7 @@ standardised location and size of grid cells.
 - [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
   : National geographic grids from the European Soil Data Centre (ESDAC)
 - [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
-  : National geographic grids from IGN MTN ((Mapa Topografico Nacional)
+  : National geographic grids from IGN MTN (Mapa Topografico Nacional)
 
 ## About the package
 

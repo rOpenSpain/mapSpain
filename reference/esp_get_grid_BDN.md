@@ -12,13 +12,13 @@ This dataset provides:
   Islands).
 
 - `esp_get_grid_BDN_ccaa()` extracts 1x1 kilometer resolution grids for
-  individual Autonomous Communities.
+  individual autonomous communities.
 
 These grids are useful for biodiversity analysis, environmental
 monitoring, and spatial statistical applications.
 
 `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
+for specific autonomous communities, useful for regional analysis with
 finer spatial detail.
 
 ## Usage
@@ -42,9 +42,9 @@ esp_get_grid_BDN_ccaa(
 
 ## Source
 
-Data sourced from the Banco de Datos de la Naturaleza (BDN) via a custom
-CDN. See the repository structure:
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>
+Data sourced from the Banco de Datos de la Naturaleza (BDN). See the
+repository structure:
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata/MITECO/dist>
 
 For more information about BDN grids and other resources, visit:
 <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html>.
@@ -53,7 +53,7 @@ For more information about BDN grids and other resources, visit:
 
 - resolution:
 
-  numeric. Resolution of the grid in kms. Must be one of:
+  numeric. Resolution of the grid in kilometers. Must be one of:
 
   - `5`: 5x5 kilometer cells
 
@@ -96,8 +96,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 The BDN provides standardized geographic grids for Spain that follow the
-Nature Data Bank's specifications. The data is maintained via a custom
-CDN and is regularly updated.
+Nature Data Bank's specifications. The data is downloaded from the
+`sianedata/MITECO/dist` data branch and is regularly updated.
 
 ## See also
 

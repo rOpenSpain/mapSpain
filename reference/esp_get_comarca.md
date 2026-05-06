@@ -2,9 +2,9 @@
 
 Returns [Comarcas of
 Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-traditional informal territorial division, comprising several
+traditional informal territorial divisions, comprising several
 municipalities sharing geographical, economic or cultural traits,
-typically with not well defined limits.
+typically with poorly defined limits.
 
 ## Usage
 
@@ -112,7 +112,7 @@ ancient kingdoms.
 In the case of Spain, comarcas only have an administrative character
 legally recognized in Catalonia, the Basque Country, Navarra (named
 merindades instead), in the region of El Bierzo (Castilla y Leon) and
-Aragon. Galicia, the Principality of Asturias, and Andalusia have
+Aragon. Galicia, the Principality of Asturias and Andalusia have
 functional comarcas.
 
 ## Types
@@ -123,8 +123,8 @@ provided under different classification criteria.
 - `"INE"`: Comarcas as defined by the National Statistics Institute
   (INE).
 
-- `"IGN"`: Official comarcas, only available on some Autonomous
-  Communities, provided by the National Geographic Institute.
+- `"IGN"`: Official comarcas, only available in some autonomous
+  communities, provided by the National Geographic Institute.
 
 - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
   Fisheries and Food (MAPA).

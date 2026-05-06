@@ -103,10 +103,15 @@
 
     <!-- mapSpain.qmd is generated from mapSpain.qmd.orig. Please edit that file --><section class="level2"><h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p><strong>Full site with more examples and vignettes on <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a></strong></p>
+<div>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>For more examples and vignettes, see the full site at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
+</blockquote>
+</div>
 <p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> is a package designed to provide geographical information about Spain at different levels.</p>
 <p><strong>mapSpain</strong> provides shapefiles of municipalities, provinces, autonomous communities, and NUTS levels of Spain. It also provides hexbin shapefiles and other complementary shapes, such as the demarcation lines around the Canary Islands.</p>
-<p><strong>mapSpain</strong> provides access to map tiles from Spain’s public institutions, which can be represented on static maps via <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an <strong>R</strong> <strong>Leaflet</strong> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
+<p><strong>mapSpain</strong> provides access to map tiles from Spain’s public institutions, which can be represented on static maps via <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an <strong>R</strong> <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
 <p>Additionally, <strong>mapSpain</strong> includes a powerful dictionary that translates province and region names to English, Spanish, Catalan, Basque, and Galician, and converts them to various coding standards such as NUTS, ISO2, and the INE (the official Spanish statistical agency) coding system.</p>
 </section><section class="level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
@@ -244,7 +249,7 @@ Percentage of women by Autonomous Communities (2025)
 </div>
 </section><section class="level2"><h2 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h2>
-<p>This example demonstrates how <strong>mapSpain</strong> can be used to create beautiful thematic maps. For plotting, we use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot2</strong></a> package, though any package that handles <code>sf</code> objects (e.g., <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>, etc.) could also be used.</p>
+<p>This example demonstrates how <strong>mapSpain</strong> can be used to create thematic maps. For plotting, we use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot2</strong></a> package, though any package that handles <code>sf</code> objects (e.g., <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>, etc.) could also be used.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Population density of Spain</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -342,10 +347,15 @@ mapSpain and giscoR example
 </div>
 </section><section class="level2"><h2 id="working-with-tiles">Working with tiles<a class="anchor" aria-label="anchor" href="#working-with-tiles"></a>
 </h2>
-<p><strong>mapSpain</strong> provides a powerful interface for working with imagery. It can download static files as <code>.png</code> or <code>.jpeg</code> files (depending on the Web Map Service) and use them alongside your shapefiles.</p>
-<p><strong>mapSpain</strong> also includes a plugin for the <strong>R</strong> <a href="https://rstudio.github.io/leaflet/" class="external-link">Leaflet</a> package, which allows you to include several basemaps on your interactive maps.</p>
-<p>The services are implemented via the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. You can view each provider option at that link.</p>
-<p><strong>Note:</strong> When working with imagery, it is important to set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">help("esp_move_can", package = "mapSpain")</a></code>.</p>
+<p><strong>mapSpain</strong> provides a powerful interface for working with imagery. It can download static images as <code>.png</code> or <code>.jpeg</code> (depending on the Web Map Service) and use them alongside your shapefiles.</p>
+<p><strong>mapSpain</strong> also includes a plugin for the <strong>R</strong> <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> package, which allows you to include several basemaps on your interactive maps.</p>
+<p>The services are implemented via the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. All available providers are listed there.</p>
+<div>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>When working with imagery, set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
+</blockquote>
+</div>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

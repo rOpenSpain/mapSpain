@@ -26,15 +26,15 @@ Spain for 2025.
 
 - pob25:
 
-  Total population (2025)
+  Total population (2025).
 
 - men:
 
-  Male population (2025)
+  Male population (2025).
 
 - women:
 
-  Female population (2025)
+  Female population (2025).
 
 ## Source
 

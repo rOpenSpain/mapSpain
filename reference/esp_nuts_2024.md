@@ -1,6 +1,6 @@
 # NUTS 2024 for Spain [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
 according to the Nomenclature of Territorial Units for Statistics (NUTS)
 classification for 2024.
 
@@ -21,7 +21,7 @@ variables:
 
 - `CNTR_CODE`:
 
-  Eurostat Country code.
+  Eurostat country code.
 
 - `NAME_LATN`:
 
@@ -33,15 +33,15 @@ variables:
 
 - `MOUNT_TYPE`:
 
-  Mount Type, see **Details**.
+  Mountain type, see **Details**.
 
 - `URBN_TYPE`:
 
-  Urban Type, see **Details**.
+  Urban type, see **Details**.
 
 - `COAST_TYPE`:
 
-  Coast Type, see **Details**.
+  Coastal type, see **Details**.
 
 - `geo`:
 
@@ -50,7 +50,7 @@ variables:
 
 - `geometry`:
 
-  geometry field.
+  Geometry field.
 
 ## Source
 

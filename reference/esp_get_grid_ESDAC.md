@@ -24,7 +24,7 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - resolution:
 
-  numeric. Resolution of the grid in kms Can be `1` or `10`.
+  numeric. Resolution of the grid in kilometers. Can be `1` or `10`.
 
 - update_cache:
 

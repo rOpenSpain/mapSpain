@@ -1,16 +1,16 @@
 # mapSpain
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
-provides spatial **sf** objects of Spain’s administrative boundaries,
-including Autonomous Communities, provinces, and municipalities.
+provides **sf** objects of Spain’s administrative boundaries, including
+Autonomous Communities, provinces and municipalities.
 
 **mapSpain** also provides a Leaflet plugin to be used with the
 [**leaflet** package](https://rstudio.github.io/leaflet/), which loads
 several base maps from Spain’s public institutions and enables
 downloading and processing of static tiles.
 
-Full site with examples and vignettes on
-<https://ropenspain.github.io/mapSpain/>
+The full package website, with examples and vignettes, is available at
+<https://ropenspain.github.io/mapSpain/>.
 
 ## Installation
 
@@ -24,7 +24,7 @@ install.packages("mapSpain", dependencies = TRUE)
 
 ## Usage
 
-This script highlights some key features of **mapSpain**.
+The following examples highlight some key features of **mapSpain**.
 
 ``` r
 
@@ -82,7 +82,7 @@ ggplot(ccaa_sf) +
 ![Porc. of women by CCAA in Spain
 (2025)](reference/figures/README-static-1.png)
 
-You can combine `sf` objects with static tiles
+You can combine `sf` objects with static tiles.
 
 ``` r
 
@@ -229,7 +229,7 @@ Geográfico Nacional:
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
-This package also uses data from **GISCO**. GISCO
+This package also uses data from GISCO. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
 data repository containing multiple datasets at various resolution
 levels.
@@ -270,7 +270,7 @@ Datasets from IGN / CartoBase ANE.
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md)
   : City where the municipal public authorities are based - SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain - SIANE
+  : Autonomous communities of Spain - SIANE
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md)
   : Countries of the World - SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md)
@@ -287,7 +287,7 @@ Datasets from IGN / CartoBase ANE.
 Datasets from GISCO / Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain - GISCO
+  : Autonomous communities of Spain - GISCO
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md)
   : Municipalities of Spain - GISCO
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
@@ -433,7 +433,7 @@ standardised location and size of grid cells.
 - [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
   : National geographic grids from the European Soil Data Centre (ESDAC)
 - [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
-  : National geographic grids from IGN MTN ((Mapa Topografico Nacional)
+  : National geographic grids from IGN MTN (Mapa Topografico Nacional)
 
 ## About the package
 

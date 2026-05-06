@@ -24,8 +24,8 @@ Las **fuentes de información** empleadas en **mapSpain** son:
   teselas WMTS/WMS
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Los objetos resultantes se proporcionan en formato `sf` (librería
-**sf**) o `SpatRaster` (librería **terra**).
+Los objetos resultantes se proporcionan en formato `sf` (paquete **sf**)
+o `SpatRaster` (paquete **terra**).
 
 Página web: <https://ropenspain.github.io/mapSpain/>
 
@@ -38,7 +38,7 @@ Página web: <https://ropenspain.github.io/mapSpain/>
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
-#### Dev version
+#### Versión en desarrollo
 
 Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
@@ -55,7 +55,7 @@ install.packages(
 )
 ```
 
-#### Con pak (desde GitHub)
+#### Instalación con pak (desde GitHub)
 
 ``` r
 
@@ -324,7 +324,7 @@ Gráfico 3: Mapa de España
 
 Por defecto, **mapSpain** “desplaza” Canarias para una mejor
 visualización en la mayoría de sus funciones. Este comportamiento se
-puede desactivar usando `moveCAN = FALSE`(ver anterior ejemplo).
+puede desactivar usando `moveCAN = FALSE` (ver anterior ejemplo).
 
 Proporcionamos funciones adicionales que permiten representar líneas
 alrededor de la inserción del mapa
@@ -509,14 +509,14 @@ Gráfico 10: Hexbin maps con mapSpain
 ## Imágenes
 
 **mapSpain** permite usar también imágenes de mapas (satélite, mapas
-base, carreteras, etc.) proporcionados por diferentes organísmos
+base, carreteras, etc.) proporcionados por diferentes organismos
 públicos (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
 Las imágenes se pueden emplear para la creación de mapas estáticos
 (imágenes obtenidas como capas ráster de 3 o 4 bandas) o como fondo de
 mapas dinámicos, a través del paquete `leaflet`.
 
-Los proveedores se han extraido del plugin para leaflet
+Los proveedores se han extraído del plugin para leaflet
 [leaflet-providerESP](https://dieghernan.github.io/leaflet-providersESP/).
 
 ### Creación de mapas estáticos
@@ -573,7 +573,8 @@ Gráfico 12: Mapa base con máscara
 
 ### Mapas dinámicos usando mapSpain
 
-Estas capas se pueden usar también como fondo en mapas estáticos
+Además de los mapas dinámicos, estas capas también pueden usarse como
+fondo en mapas estáticos.
 
 ``` r
 
@@ -616,6 +617,6 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
 **mapSpain** incluye otras [funciones
 adicionales](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
 que permiten extraer información sobre altitud, rios y cuencas
-hidrográficas de España, así líneas y puntos de
+hidrográficas de España, así como líneas y puntos de
 [infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
 de España, como carreteras y líneas ferroviarias.

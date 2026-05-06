@@ -25,7 +25,7 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
 - resolution:
 
-  Resolution of the grid in kms. Can be `1`, `10` or `100`.
+  Resolution of the grid in kilometers. Can be `1`, `10` or `100`.
 
 - type:
 

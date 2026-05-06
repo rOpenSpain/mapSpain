@@ -2,8 +2,10 @@
 
 ## Introduction
 
-**Full site with more examples and vignettes on
-<https://ropenspain.github.io/mapSpain/>**
+> **Tip**
+>
+> For more examples and vignettes, see the full site at
+> <https://ropenspain.github.io/mapSpain/>.
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package
 designed to provide geographical information about Spain at different
@@ -17,7 +19,8 @@ demarcation lines around the Canary Islands.
 **mapSpain** provides access to map tiles from Spain’s public
 institutions, which can be represented on static maps via
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-or on an **R** **Leaflet** map using
+or on an **R** [**leaflet**](https://rstudio.github.io/leaflet/) map
+using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
 Additionally, **mapSpain** includes a powerful dictionary that
@@ -183,7 +186,7 @@ Percentage of women by Autonomous Communities (2025)
 ## Thematic maps
 
 This example demonstrates how **mapSpain** can be used to create
-beautiful thematic maps. For plotting, we use the
+thematic maps. For plotting, we use the
 [**ggplot2**](https://ggplot2.tidyverse.org/) package, though any
 package that handles `sf` objects (e.g., **tmap**, **mapsf**,
 **leaflet**, etc.) could also be used.
@@ -293,18 +296,19 @@ mapSpain and giscoR example
 ## Working with tiles
 
 **mapSpain** provides a powerful interface for working with imagery. It
-can download static files as `.png` or `.jpeg` files (depending on the
-Web Map Service) and use them alongside your shapefiles.
+can download static images as `.png` or `.jpeg` (depending on the Web
+Map Service) and use them alongside your shapefiles.
 
 **mapSpain** also includes a plugin for the **R**
-[Leaflet](https://rstudio.github.io/leaflet/) package, which allows you
-to include several basemaps on your interactive maps.
+[**leaflet**](https://rstudio.github.io/leaflet/) package, which allows
+you to include several basemaps on your interactive maps.
 
 The services are implemented via the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-Leaflet plugin. You can view each provider option at that link.
+Leaflet plugin. All available providers are listed there.
 
-**Note:** When working with imagery, it is important to set
-`moveCAN = FALSE` in the `esp_get_*` functions. See **Displacing the
-Canary Islands** in
-[`help("esp_move_can", package = "mapSpain")`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md).
+> **Note**
+>
+> When working with imagery, set `moveCAN = FALSE` in the `esp_get_*`
+> functions. See **Displacing the Canary Islands** in
+> [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md).

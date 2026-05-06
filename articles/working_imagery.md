@@ -18,8 +18,10 @@ An example showing how to include multiple tiles to create a static map.
 We focus on layers provided by La Rioja’s [Infraestructura de Datos
 Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
-- **When working with imagery, set `moveCAN = FALSE`; otherwise images
-  for the Canary Islands may be inaccurate.**
+> **Warning**
+>
+> When working with imagery, set `moveCAN = FALSE`; otherwise images for
+> the Canary Islands may be inaccurate.
 
 ``` r
 
@@ -81,7 +83,7 @@ ggplot() +
 
 Figure 2: Map of the Way of St. James in Galicia
 
-Now let’s check the same code using the `transparent = TRUE` option:
+The following example repeats the same code with `transparent = TRUE`:
 
 ``` r
 
@@ -94,7 +96,7 @@ tile_alpha <- esp_get_tiles(
   bbox_expand = 0
 )
 
-# Same code than above for plotting
+# Same code as above for plotting
 ggplot() +
   geom_spatraster_rgb(data = basemap) +
   geom_spatraster_rgb(data = tile_alpha) +
@@ -155,7 +157,7 @@ ggplot() +
 
 Figure 5: Example of base map using OpenStreetMap
 
-Another example using a provider that needs an API Key (ThunderForest):
+Another example using a provider that needs an API key (ThunderForest):
 
 ``` r
 
@@ -177,13 +179,13 @@ if (apikey != "") {
 }
 ```
 
-![](working_imagery_files/figure-html/unnamed-chunk-1-1.png)
+![](working_imagery_files/figure-html/fig-thunder-1.png)
 
-Example of base map using ThunderForest
+Figure 6: Example of base map using ThunderForest
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin for the **Leaflet** package. Below are
+**mapSpain** provides a plugin for the **leaflet** package. Below are
 some quick examples:
 
 ### Earthquakes in Tenerife (last year)
@@ -226,7 +228,7 @@ m |>
 
 ### Population density in Spain
 
-A map showing the population density of Spain as of 2019:
+A map showing the population density of Spain as of 2025:
 
 ``` r
 
@@ -300,5 +302,5 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 ## Available providers
 
 The `esp_tiles_providers` list contains metadata for the tile providers
-available to the functions above. It includes all arguments required to
+used by the functions above. It includes all arguments required to
 reproduce the API request. Below is the static URL for each provider:

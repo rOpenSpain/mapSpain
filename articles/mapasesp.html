@@ -120,7 +120,7 @@
 <a href="https://www.ign.es/" class="external-link">Instituto Geográfico Nacional</a> (IGN)</li>
 <li>Distintos organismos públicos de España que proporcionan servicios de teselas WMTS/WMS (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</li>
 </ul>
-<p>Los objetos resultantes se proporcionan en formato <code>sf</code> (librería <strong>sf</strong>) o <code>SpatRaster</code> (librería <strong>terra</strong>).</p>
+<p>Los objetos resultantes se proporcionan en formato <code>sf</code> (paquete <strong>sf</strong>) o <code>SpatRaster</code> (paquete <strong>terra</strong>).</p>
 <p>Página web: <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a></p>
 </section><section class="level3"><h3 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
 </h3>
@@ -130,7 +130,7 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mapSpain"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
-</section><section class="level4"><h4 id="dev-version">Dev version<a class="anchor" aria-label="anchor" href="#dev-version"></a>
+</section><section class="level4"><h4 id="versión-en-desarrollo">Versión en desarrollo<a class="anchor" aria-label="anchor" href="#versi%C3%B3n-en-desarrollo"></a>
 </h4>
 <p>Usando el <a href="https://ropenspain.r-universe.dev/ui#builds" class="external-link">r-universe</a>:</p>
 <div class="cell">
@@ -145,7 +145,7 @@
 <span>  dependencies <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-</section><section class="level4"><h4 id="con-pak-desde-github">Con pak (desde GitHub)<a class="anchor" aria-label="anchor" href="#con-pak-desde-github"></a>
+</section><section class="level4"><h4 id="instalación-con-pak-desde-github">Instalación con pak (desde GitHub)<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-con-pak-desde-github"></a>
 </h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
@@ -411,7 +411,7 @@ Gráfico 3: Mapa de España
 </div>
 <section class="level3"><h3 id="el-caso-canarias">El caso Canarias<a class="anchor" aria-label="anchor" href="#el-caso-canarias"></a>
 </h3>
-<p>Por defecto, <strong>mapSpain</strong> “desplaza” Canarias para una mejor visualización en la mayoría de sus funciones. Este comportamiento se puede desactivar usando <code>moveCAN = FALSE</code>(ver anterior ejemplo).</p>
+<p>Por defecto, <strong>mapSpain</strong> “desplaza” Canarias para una mejor visualización en la mayoría de sus funciones. Este comportamiento se puede desactivar usando <code>moveCAN = FALSE</code> (ver anterior ejemplo).</p>
 <p>Proporcionamos funciones adicionales que permiten representar líneas alrededor de la inserción del mapa (<a href="https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples">ejemplos</a>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
@@ -632,9 +632,9 @@ Gráfico 10: Hexbin maps con mapSpain
 </div>
 </section></section><section class="level2"><h2 id="imágenes">Imágenes<a class="anchor" aria-label="anchor" href="#im%C3%A1genes"></a>
 </h2>
-<p><strong>mapSpain</strong> permite usar también imágenes de mapas (satélite, mapas base, carreteras, etc.) proporcionados por diferentes organísmos públicos (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</p>
+<p><strong>mapSpain</strong> permite usar también imágenes de mapas (satélite, mapas base, carreteras, etc.) proporcionados por diferentes organismos públicos (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</p>
 <p>Las imágenes se pueden emplear para la creación de mapas estáticos (imágenes obtenidas como capas ráster de 3 o 4 bandas) o como fondo de mapas dinámicos, a través del paquete <code>leaflet</code>.</p>
-<p>Los proveedores se han extraido del plugin para leaflet <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providerESP</a>.</p>
+<p>Los proveedores se han extraído del plugin para leaflet <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providerESP</a>.</p>
 <section class="level3"><h3 id="creación-de-mapas-estáticos">Creación de mapas estáticos<a class="anchor" aria-label="anchor" href="#creaci%C3%B3n-de-mapas-est%C3%A1ticos"></a>
 </h3>
 <p>Tenemos varias opciones que podemos emplear para componer mapas base:</p>
@@ -699,7 +699,7 @@ Gráfico 12: Mapa base con máscara
 </div>
 </section><section class="level3"><h3 id="mapas-dinámicos-usando-mapspain">Mapas dinámicos usando mapSpain<a class="anchor" aria-label="anchor" href="#mapas-din%C3%A1micos-usando-mapspain"></a>
 </h3>
-<p>Estas capas se pueden usar también como fondo en mapas estáticos</p>
+<p>Además de los mapas dinámicos, estas capas también pueden usarse como fondo en mapas estáticos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_railway.html">esp_get_railway</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"point"</span>, epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
@@ -741,7 +741,7 @@ Gráfico 12: Mapa base con máscara
 </div>
 </section></section><section class="level2"><h2 id="otros-recursos">Otros recursos<a class="anchor" aria-label="anchor" href="#otros-recursos"></a>
 </h2>
-<p><strong>mapSpain</strong> incluye otras <a href="https://ropenspain.github.io/mapSpain/reference/index.html#section-natural">funciones adicionales</a> que permiten extraer información sobre altitud, rios y cuencas hidrográficas de España, así líneas y puntos de <a href="https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures">infraestructuras</a> de España, como carreteras y líneas ferroviarias.</p>
+<p><strong>mapSpain</strong> incluye otras <a href="https://ropenspain.github.io/mapSpain/reference/index.html#section-natural">funciones adicionales</a> que permiten extraer información sobre altitud, rios y cuencas hidrográficas de España, así como líneas y puntos de <a href="https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures">infraestructuras</a> de España, como carreteras y líneas ferroviarias.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

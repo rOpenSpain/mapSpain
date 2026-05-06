@@ -37,7 +37,7 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
@@ -117,10 +117,10 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache dir is /tmp/RtmpUJzxFo/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpUJzxFo/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is /tmp/RtmpUJzxFo/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpUJzxFo/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache dir is /tmp/RtmpmXzjgD/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpmXzjgD/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache dir is /tmp/RtmpmXzjgD/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpmXzjgD/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # Message shows file is already cached :)
 

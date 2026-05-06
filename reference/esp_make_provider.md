@@ -19,7 +19,7 @@ esp_make_provider(id, q, service, layers, ...)
 
 - q:
 
-  The base url of the service.
+  The base URL of the service.
 
 - service:
 

@@ -4,8 +4,8 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 object used internally for translating codes and names of the different
 subdivisions of Spain. This tibble provides a hierarchical
 representation of Spain's subdivisions, including NUTS1 level,
-autonomous communities (equivalent to NUTS2), provinces, and NUTS3
-level. See the note section below for important coverage details.
+autonomous communities (equivalent to NUTS2), provinces and NUTS3 level.
+See the note below for coverage details.
 
 ## Format
 
@@ -38,7 +38,7 @@ with 59 rows and columns:
 
 - nuts2.code:
 
-  NUTS 2 Code
+  NUTS 2 code
 
 - ine.ccaa.name:
 
@@ -202,13 +202,13 @@ with 59 rows and columns:
 ## Note
 
 Although NUTS2 aligns with the first subdivision level of Spain (CCAA -
-Autonomous Communities), it is important to note that NUTS3 does not
-correspond to the second subdivision level of Spain (Provinces). NUTS3
-provides dedicated codes for major islands, whereas provinces do not.
+autonomous communities), NUTS3 does not correspond to the second
+subdivision level of Spain (provinces). NUTS3 provides dedicated codes
+for major islands, whereas provinces do not.
 
 Ceuta and Melilla have a special status as Autonomous Cities but are
 treated as autonomous communities with a single province (like Madrid,
-Asturias, or Murcia) in this database.
+Asturias or Murcia) in this database.
 
 ## See also
 

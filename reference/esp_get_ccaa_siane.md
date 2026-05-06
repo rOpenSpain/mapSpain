@@ -1,6 +1,6 @@
-# Autonomous Communities of Spain - SIANE
+# Autonomous communities of Spain - SIANE
 
-Returns [Autonomous Communities of
+Returns [Autonomous communities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -44,7 +44,7 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
@@ -127,10 +127,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
 2), ISO codes (corresponding to level 2) or `codauto` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
-Ceuta and Melilla are considered as Autonomous Communities in this
+Ceuta and Melilla are considered as autonomous communities in this
 function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
+When calling a NUTS1 level, all the autonomous communities of that level
 will be added.
 
 ## See also

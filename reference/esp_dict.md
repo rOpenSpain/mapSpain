@@ -22,7 +22,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 - origin, destination:
 
   character string. Coding scheme of origin and destination. One of
-  `"text"`, `"nuts"`, `"iso2"`, `"codauto"`, or `"cpro"`.
+  `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
 
 - lang:
 
@@ -52,7 +52,7 @@ corresponding element will be `NA` and a warning is emitted via
 [`cli::cli_alert_warning()`](https://cli.r-lib.org/reference/cli_alert.html).
 
 `esp_dict_translate()` translates a vector of names from one language to
-another :
+another:
 
 - If `all = FALSE`, a character vector with the translated name for each
   element of `sourcevar`.
@@ -84,7 +84,7 @@ esp_dict_region_code(vals, destination = "cpro")
 esp_dict_region_code(vals, destination = "iso2")
 #> [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"
 
-# From ISO2 to another codes
+# From ISO2 to other codes
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")

@@ -30,7 +30,7 @@ providers with the following structure:
 
 ## Details
 
-Providers available to be passed to `type` on
+Providers available to be passed to `type` in
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
 are:
 
