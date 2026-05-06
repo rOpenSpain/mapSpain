@@ -253,11 +253,12 @@ test_that("Transparency", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   # Poly
-  poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
+  poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Galicia",
+                       resolution = 60)
 
   res <- esp_get_tiles(
     poly,
-    "RedTransporte",
+    "CaminoDeSantiago",
     cache_dir = cdir,
     transparent = TRUE,
     bbox_expand = 0.1
@@ -271,7 +272,7 @@ test_that("Transparency", {
   # No transparency...
   res2 <- esp_get_tiles(
     poly,
-    "RedTransporte",
+    "CaminoDeSantiago",
     cache_dir = cdir,
     transparent = FALSE,
     bbox_expand = 0.1
