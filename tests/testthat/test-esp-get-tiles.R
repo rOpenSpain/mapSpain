@@ -253,8 +253,12 @@ test_that("Transparency", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   # Poly
-  poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Galicia",
-                       resolution = 60)
+  poly <- esp_get_nuts(
+    cache_dir = cdir,
+    epsg = 3857,
+    region = "Galicia",
+    resolution = 60
+  )
 
   res <- esp_get_tiles(
     poly,

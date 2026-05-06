@@ -44,14 +44,12 @@ versions.
 
 ## Deprecations and new function names
 
-- `esp_getTiles()` has been renamed to `esp_get_tiles()` (old name still
-  works).
+- `esp_getTiles()` has been renamed to `esp_get_tiles()` (old name still works).
 - `esp_get_country()` has been renamed to `esp_get_spain()` (old name still
   works).
 - In `esp_get_rivers()`:
   - Arguments `resolution` and `spatialtype` are deprecated.
-  - Wetlands support has been moved to the new `esp_get_wetlands()`
-    function.
+  - Wetlands support has been moved to the new `esp_get_wetlands()` function.
 
 ## New features
 
@@ -59,8 +57,8 @@ versions.
   `esp_get_railway(..., spatialtype = "point")`.
 - Added `esp_siane_bulk_download()` to download all SIANE datasets to a
   specified `cache_dir` in a single step.
-- Added `esp_get_countries_siane()` to retrieve all countries available in
-  SIANE at a given date.
+- Added `esp_get_countries_siane()` to retrieve all countries available in SIANE
+  at a given date.
 - Added `esp_get_spain_siane()`, analogous to `esp_get_spain()`, using SIANE
   data.
 - Added `esp_get_attributions()` to retrieve the attributions of a tile
@@ -93,8 +91,7 @@ versions.
   - `esp_move_can()` is used internally on all functions.
 - Add a new function to show the current cache directory:
   `esp_detect_cache_dir()`.
-- `mapSpain::layer_spatraster()` removed (was deprecated in **mapSpain**
-  0.6.2).
+- `mapSpain::layer_spatraster()` removed (was deprecated in **mapSpain** 0.6.2).
 
 # mapSpain 0.8.0
 
@@ -106,18 +103,16 @@ versions.
   - `IDErioja.Relieve`
   - `IDErioja.Claro`
   - `IDErioja.Oscuro`
-- `esp_getTiles()` now supports non-OGC-compliant WMTS providers, such as
-  Stamen or OpenStreetMaps (see examples).
+- `esp_getTiles()` now supports non-OGC-compliant WMTS providers, such as Stamen
+  or OpenStreetMaps (see examples).
 
 # mapSpain 0.7.0
 
 - Upgrade `?leaflet.providersESP.df` to
   <https://dieghernan.github.io/leaflet-providersESP/> v1.3.2.
 - Changes on how to package manages tiles providers:
-  - `?leaflet.providersESP.df` is superseded in favor of
-    `?esp_tiles_providers`.
-  - You can use a custom url with the `type` argument in `esp_getTiles()`
-    (#88).
+  - `?leaflet.providersESP.df` is superseded in favor of `?esp_tiles_providers`.
+  - You can use a custom url with the `type` argument in `esp_getTiles()` (#88).
   - Add new function `esp_make_provider()` that helps to create custom
     providers.
 
@@ -144,8 +139,7 @@ versions.
   - `Catastro.AdministrativeBoundary`
   - `Catastro.AdministrativeUnit`
 - Add new param `options` to `esp_getTiles()`.
-- Improve regex search on municipalities: Now the casing of the word is
-  ignored.
+- Improve regex search on municipalities: Now the casing of the word is ignored.
 
 # mapSpain 0.5.0
 

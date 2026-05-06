@@ -189,6 +189,7 @@ NULL
 #' @name esp_nuts_2024
 #'
 #' @seealso [esp_get_nuts()]
+#' @inherit giscoR::gisco_nuts_2024 details
 #'
 #' @description
 #' This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
@@ -212,32 +213,6 @@ NULL
 #'     \CRANpkg{eurostat}.}
 #'   \item{`geometry`}{Geometry field.}
 #' }
-#'
-#' @details
-#'
-#' `MOUNT_TYPE`: Mountain typology:
-#'  - `1`: More than 50% of the surface is covered by topographic mountain
-#'    areas.
-#'  - `2`: More than 50% of the regional population lives in topographic
-#'    mountain areas.
-#'  - `3`: More than 50% of the surface is covered by topographic mountain
-#'    areas and more than 50% of the regional population lives in these
-#'    mountain areas.
-#'  - `4`: Non-mountain region or other regions.
-#'  - `0`: No classification provided.
-#'
-#' `URBN_TYPE`: Urban-rural typology:
-#'  - `1`: Predominantly urban region.
-#'  - `2`: Intermediate region.
-#'  - `3`: Predominantly rural region.
-#'  - `0`: No classification provided.
-#'
-#' `COAST_TYPE`: Coastal typology:
-#'   - `1`: Coastal region (on the coast).
-#'   - `2`: Coastal region (less than 50% of the population living within 50 km
-#'        of the coastline).
-#'   - `3`: Non-coastal region.
-#'   - `0`: No classification provided.
 #'
 #' @source
 #'

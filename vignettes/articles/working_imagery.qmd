@@ -34,7 +34,7 @@ An example showing how to include multiple tiles to create a static map. We
 focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
-::: {.callout-warning}
+::: callout-warning
 When working with imagery, set `moveCAN = FALSE`; otherwise images for the
 Canary Islands may be inaccurate.
 :::
@@ -298,9 +298,9 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 
 ## Available providers
 
-The `esp_tiles_providers` list contains metadata for the tile providers
-used by the functions above. It includes all arguments required to
-reproduce the API request. Below is the static URL for each provider:
+The `esp_tiles_providers` list contains metadata for the tile providers used by
+the functions above. It includes all arguments required to reproduce the API
+request. Below is the static URL for each provider:
 
 ```{r}
 #| label: providers

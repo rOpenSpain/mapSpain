@@ -530,7 +530,8 @@ ggplot() +
 
 ### Mapas dinámicos usando mapSpain
 
-Además de los mapas dinámicos, estas capas también pueden usarse como fondo en mapas estáticos.
+Además de los mapas dinámicos, estas capas también pueden usarse como fondo en
+mapas estáticos.
 
 ```{r}
 #| label: leaflet

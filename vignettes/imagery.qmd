@@ -9,7 +9,7 @@ vignette: >
 Visit <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> to
 learn how to download imagery of Spain.
 
-::: {.callout-note}
+::: callout-note
 You may need several additional packages. Install them by running:
 
 ``` r
