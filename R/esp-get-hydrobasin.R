@@ -85,7 +85,7 @@ esp_get_hydrobasin <- function(
     )
   }
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)

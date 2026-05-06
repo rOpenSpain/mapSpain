@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa_siane}
 \alias{esp_get_ccaa_siane}
-\title{Autonomous Communities of Spain - SIANE}
+\title{Autonomous communities of Spain - SIANE}
 \source{
 CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -25,7 +25,7 @@ be expressed in one of the following ways:
 \item Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 }
 
-Data distributed via a custom CDN, see
+Data distributed through the \code{sianedata} data branch, see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{
@@ -92,15 +92,15 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Returns
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous communities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities in this function.
+Ceuta and Melilla are considered as autonomous communities in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
+When calling a NUTS1 level, all the autonomous communities of that level
 will be added.
 }
 \examples{

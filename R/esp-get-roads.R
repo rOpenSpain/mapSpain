@@ -50,7 +50,7 @@ esp_get_roads <- function(
     "se89_3_vias_ctra_l_y.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -119,7 +119,7 @@ esp_get_roads <- function(
   names(acc) <- c("acceso", "acceso_desc")
   data_sf <- merge(data_sf, acc, all.x = TRUE)
 
-  # Move can
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
   data_sf <- data_sf[, setdiff(names(data_sf), "codauto")]
 

@@ -111,7 +111,7 @@ get_tile_crs <- function(prov_list) {
     prov_list[tolower(names(prov_list)) %in% c("crs", "srs", "tilematrixset")]
   )
   crs <- ensure_null(crs)
-  # Caso some WMTS
+  # Handle WMTS providers without an explicit CRS.
   if (is.null(crs)) {
     crs <- "EPSG:3857"
   }
@@ -173,9 +173,9 @@ get_tile_ext <- function(prov_list) {
 
   fmt <- ensure_null(prov_list$format)
 
-  # Caso of non OGC WMTS
+  # Handle non-OGC WMTS providers.
   if (is.null(fmt)) {
-    # Maybe ?
+    # Infer the extension from the URL.
     if (grepl("?", prov_list$q, fixed = TRUE)) {
       no_api_key <- unlist(strsplit(prov_list$q, "?", fixed = TRUE))[1]
       ext <- tools::file_ext(no_api_key)

@@ -96,7 +96,7 @@ esp_get_hypsobath <- function(
 
   sptype <- match_arg_pretty(spatialtype)
 
-  # Create url
+  # Create URL
   api_entry <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/"
 
   url_penin <- paste0(
@@ -117,7 +117,7 @@ esp_get_hypsobath <- function(
     "_y.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)

@@ -27,7 +27,7 @@ be expressed in one of the following ways:
 \item Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 }
 
-Data distributed via a custom CDN, see
+Data distributed through the \code{sianedata} data branch, see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \usage{

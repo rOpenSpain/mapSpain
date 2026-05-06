@@ -8,13 +8,13 @@
 #'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
-  # Secure nulls
+  # Normalize NULL and empty values.
   file_local <- ensure_null(file_local)
   if (is.null(file_local)) {
     return(NULL)
   }
 
-  # Warn if file size is huge and no query
+  # Warn for large files when no SQL query is provided.
 
   if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
     fsize <- file.size(file_local)
@@ -49,7 +49,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
       )
     }
 
-    # Read with vszip
+    # Read with vsizip.
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }
@@ -67,7 +67,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
 
 #' Convert sf object to UTF-8
 #'
-#' Convert to UTF-8
+#' Ensures all character columns use UTF-8 encoding.
 #'
 #' @param data_sf Input object to convert to UTF-8.
 #'
@@ -89,9 +89,9 @@ sanitize_sf <- function(data_sf) {
     }
     structure(lapply(x, to_utf8), names = n)
   }
-  # end
+  # End set_utf8 helper.
 
-  # Remove empty geoms silently...
+  # Remove empty geometries.
   data_sf <- data_sf[!sf::st_is_empty(data_sf), ]
 
   # To UTF-8
@@ -107,17 +107,16 @@ sanitize_sf <- function(data_sf) {
 
   data_utf8 <- tibble::as_tibble(data_utf8)
 
-  # Regenerate with right encoding
+  # Reconstruct the sf object with corrected encoding.
   data_sf <- sf::st_as_sf(data_utf8, g)
 
-  # Rename geometry to geometry
+  # Rename the geometry column from "g" to "geometry".
   newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS are not properly defined (i.e may have additional properties)
-  # Normalize with the EPSG number
+  # Some CRS definitions carry extra properties; normalize using the EPSG code.
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   epsg_num <- ensure_null(epsg_num)
@@ -141,7 +140,7 @@ sanitize_sf <- function(data_sf) {
 #' @noRd
 get_geo_file_colnames <- function(file_local) {
   layer <- get_sf_layer_name(file_local)
-  # Get column names
+  # Use LIMIT 1 to avoid loading the full dataset.
   q_base <- paste0("SELECT * FROM \"", layer, "\"")
   get_cols <- read_geo_file_sf(file_local, q = paste(q_base, "LIMIT 1"))
 
@@ -154,7 +153,7 @@ get_geo_file_colnames <- function(file_local) {
 #' @param candidates Character vector of candidate column names.
 #'
 #' @return
-#' A character vector with the matching column names or NULL if none found.
+#' A character vector with the matching column names or `NULL` if none found.
 #'
 #' @noRd
 #'

@@ -15,9 +15,9 @@ population data by municipality in Spain for 2025.
 \item{provincia}{Name of the province.}
 \item{cmun}{INE code of the municipality.}
 \item{name}{Name of the municipality.}
-\item{pob25}{Total population (2025)}
-\item{men}{Male population (2025)}
-\item{women}{Female population (2025)}
+\item{pob25}{Total population (2025).}
+\item{men}{Male population (2025).}
+\item{women}{Female population (2025).}
 }
 }
 \source{

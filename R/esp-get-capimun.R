@@ -69,7 +69,7 @@ esp_get_capimun <- function(
     "se89_3_urban_capimuni_p_y.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -141,7 +141,7 @@ esp_get_capimun <- function(
 
   if (!is.null(region)) {
     tonuts <- convert_to_nuts_prov(region)
-    # toprov
+    # Filter to selected provinces.
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df$cpro)

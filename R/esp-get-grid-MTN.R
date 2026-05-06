@@ -1,9 +1,9 @@
-#' National geographic grids from IGN MTN ((Mapa Topografico Nacional)
+#' National geographic grids from IGN MTN (Mapa Topografico Nacional)
 #'
 #' @description
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain.
 #'
-#' @source IGN data via a custom CDN (see
+#' @source IGN data distributed through the `sianedata/MTN` data branch (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
 #'
 #' @encoding UTF-8
@@ -42,14 +42,14 @@
 #' **MTN25_ED50_Peninsula_Baleares**
 #'
 #' MTN25 grid corresponding to the Peninsula and Balearic Islands, in ED50 and
-#' geographical coordinates (longitude, latitude) This is the real MTN25 grid,
+#' geographical coordinates (longitude, latitude). This is the real MTN25 grid,
 #' that is, the one that divides the current printed series of the map, taking
 #' into account special sheets and irregularities.
 #'
 #' **MTN50_ED50_Peninsula_Baleares**
 #'
 #' MTN50 grid corresponding to the Peninsula and Balearic Islands, in ED50 and
-#' geographical coordinates (longitude, latitude) This is the real MTN50 grid,
+#' geographical coordinates (longitude, latitude). This is the real MTN50 grid,
 #' that is, the one that divides the current printed series of the map, taking
 #' into account special sheets and irregularities.
 #'

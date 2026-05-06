@@ -58,9 +58,9 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 Returns
 \href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{Comarcas of Spain}. Comarcas are
-traditional informal territorial division, comprising several municipalities
-sharing geographical, economic or cultural traits, typically with not well
-defined limits.
+traditional informal territorial divisions, comprising several municipalities
+sharing geographical, economic or cultural traits, typically with
+poorly defined limits.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes
@@ -86,7 +86,7 @@ kingdoms.
 In the case of Spain, comarcas only have an administrative character legally
 recognized in Catalonia, the Basque Country, Navarra (named merindades
 instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
-the Principality of Asturias, and Andalusia have functional comarcas.
+the Principality of Asturias and Andalusia have functional comarcas.
 }
 
 \section{Types}{
@@ -94,7 +94,7 @@ the Principality of Asturias, and Andalusia have functional comarcas.
 provided under different classification criteria.
 \itemize{
 \item \code{"INE"}: Comarcas as defined by the National Statistics Institute (INE).
-\item \code{"IGN"}: Official comarcas, only available on some Autonomous Communities,
+\item \code{"IGN"}: Official comarcas, only available in some autonomous communities,
 provided by the National Geographic Institute.
 \item \code{"AGR"}: Agrarian comarcas defined by the Ministry of Agriculture,
 Fisheries and Food (MAPA).

@@ -85,7 +85,7 @@ esp_get_railway <- function(
     "dist/se89_3_vias_ffcc_l_x.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url, "}.")
     make_msg("info", verbose, "Reading from", msg)

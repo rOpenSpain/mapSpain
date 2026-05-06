@@ -43,7 +43,7 @@ esp_get_countries_siane <- function(
     "ww84_60_admin_pais_a.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url, "}.")
     make_msg("info", verbose, "Reading from", msg)

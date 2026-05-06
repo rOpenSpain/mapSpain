@@ -1,4 +1,4 @@
-#' Autonomous Communities of Spain - SIANE
+#' Autonomous communities of Spain - SIANE
 #'
 #' @source
 #' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
@@ -16,7 +16,7 @@
 #'  2. When a new product is generated:
 #'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 #'
-#' Data distributed via a custom CDN, see
+#' Data distributed through the `sianedata` data branch, see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 #'
 #' @encoding UTF-8
@@ -85,7 +85,7 @@ esp_get_ccaa_siane <- function(
     "_admin_ccaa_a_y.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)

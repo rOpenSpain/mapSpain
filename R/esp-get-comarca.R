@@ -4,9 +4,9 @@
 #' Returns
 #' [Comarcas of
 #' Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-#' traditional informal territorial division, comprising several municipalities
-#' sharing geographical, economic or cultural traits, typically with not well
-#' defined limits.
+#' traditional informal territorial divisions, comprising several municipalities
+#' sharing geographical, economic or cultural traits, typically with
+#' poorly defined limits.
 #'
 #' @source
 #' INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
@@ -43,14 +43,14 @@
 #' In the case of Spain, comarcas only have an administrative character legally
 #' recognized in Catalonia, the Basque Country, Navarra (named merindades
 #' instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
-#' the Principality of Asturias, and Andalusia have functional comarcas.
+#' the Principality of Asturias and Andalusia have functional comarcas.
 #'
 #' # Types
 #'
 #' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
 #' - `"INE"`: Comarcas as defined by the National Statistics Institute (INE).
-#' - `"IGN"`: Official comarcas, only available on some Autonomous Communities,
+#' - `"IGN"`: Official comarcas, only available in some autonomous communities,
 #'   provided by the National Geographic Institute.
 #' - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
@@ -102,7 +102,7 @@ esp_get_comarca <- function(
   init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
   type <- match_arg_pretty(type)
 
-  # url
+  # URL
   api_entry <- switch(type,
     "INE" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/",
     "IGN" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/IGNComarcas/",
@@ -146,7 +146,7 @@ esp_get_comarca <- function(
   if (!is.null(region)) {
     tonuts <- convert_to_nuts_prov(region)
 
-    # toprov
+    # Filter to selected provinces.
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df$cpro)

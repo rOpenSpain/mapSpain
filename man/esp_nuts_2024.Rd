@@ -12,22 +12,22 @@ resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
 \item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
-\item{\code{CNTR_CODE}}{Eurostat Country code.}
+\item{\code{CNTR_CODE}}{Eurostat country code.}
 \item{\code{NAME_LATN}}{NUTS name on Latin characters.}
 \item{\code{NUTS_NAME}}{NUTS name on local alphabet.}
-\item{\code{MOUNT_TYPE}}{Mount Type, see \strong{Details}.}
-\item{\code{URBN_TYPE}}{Urban Type, see \strong{Details}.}
-\item{\code{COAST_TYPE}}{Coast Type, see \strong{Details}.}
+\item{\code{MOUNT_TYPE}}{Mountain type, see \strong{Details}.}
+\item{\code{URBN_TYPE}}{Urban type, see \strong{Details}.}
+\item{\code{COAST_TYPE}}{Coastal type, see \strong{Details}.}
 \item{\code{geo}}{Same as \code{NUTS_ID}, provided for compatibility with
 \CRANpkg{eurostat}.}
-\item{\code{geometry}}{geometry field.}
+\item{\code{geometry}}{Geometry field.}
 }
 }
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/}{NUTS_RG_01M_2024_4326.gpkg} file.
 }
 \description{
-This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
 according to the Nomenclature of Territorial Units for Statistics (NUTS)
 classification for 2024.
 }

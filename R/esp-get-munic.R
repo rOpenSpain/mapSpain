@@ -192,7 +192,7 @@ esp_get_munic <- function(
 
   if (!is.null(region)) {
     tonuts <- convert_to_nuts_prov(region)
-    # toprov
+    # Filter to selected provinces.
     df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
     df <- df[df$nuts3.code %in% tonuts, "cpro"]
     toprov <- unique(df$cpro)

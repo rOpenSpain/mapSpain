@@ -21,7 +21,7 @@
 #' @param sourcevar character string. Vector which contains the codes or names
 #'   to be converted.
 #' @param origin,destination character string. Coding scheme of origin and
-#'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"`, or `"cpro"`.
+#'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
 #'
 #' @details
 #' The function uses internal dictionaries together with \CRANpkg{countrycode}
@@ -38,7 +38,7 @@
 #' esp_dict_region_code(vals, destination = "cpro")
 #' esp_dict_region_code(vals, destination = "iso2")
 #'
-#' # From ISO2 to another codes
+#' # From ISO2 to other codes
 #'
 #' iso2vals <- c("ES-M", "ES-S", "ES-SG")
 #' esp_dict_region_code(iso2vals, origin = "iso2")
@@ -221,7 +221,7 @@ esp_dict_region_code <- function(
 #' @return
 #'
 #' `esp_dict_translate()` translates a vector of names from one language to
-#'  another :
+#' another:
 #'   - If `all = FALSE`, a character vector with the translated name for each
 #'     element of `sourcevar`.
 #'   - If `all = TRUE`, a named `list` is returned where each element contains
@@ -257,7 +257,7 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   # Create dict
   dict <- names_full
 
-  # Arrange prelation for results:
+  # Arrange priority for results:
   # - First: prov (a_prov)
   # - Second: ccaa (b_ccaa)
   # - Last: nuts (c_nuts)

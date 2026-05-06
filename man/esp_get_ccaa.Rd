@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
-\title{Autonomous Communities of Spain - GISCO}
+\title{Autonomous communities of Spain - GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -67,15 +67,15 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Returns
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous communities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities in this function.
+Ceuta and Melilla are considered as autonomous communities in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
+When calling a NUTS1 level, all the autonomous communities of that level
 will be added.
 }
 \section{Note}{
@@ -120,7 +120,7 @@ ggplot(mixed) +
 library(giscoR)
 library(sf)
 
-res <- 20 # Set same resoluion
+res <- 20 # Set the same resolution
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)

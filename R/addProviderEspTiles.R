@@ -63,7 +63,7 @@ addProviderEspTiles <- function(
   iswmts <- guess_provider_type(prov_pieces) == "WMTS"
   thisprov <- prov_list[[provider]]
 
-  # Get url
+  # Get URL
 
   # Prepare each provider
   if (iswmts) {
@@ -82,7 +82,7 @@ addProviderEspTiles <- function(
 
     optionend <- modifyList(def_opts, options)
 
-    # Build template url
+    # Build template URL
     temp_pieces <- thisprov$static
     q <- temp_pieces$q
     # Remove
@@ -130,7 +130,7 @@ addProviderEspTiles <- function(
     templurl <- gsub("\\?$", "", temp_pieces$q)
     layers <- temp_pieces$layers
 
-    # Remove arguments only affecting static urls
+    # Remove arguments only affecting static URLs
     todel <- names(temp_pieces) %in%
       c(
         "attribution",

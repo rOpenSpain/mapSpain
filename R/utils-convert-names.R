@@ -4,7 +4,7 @@
 #'
 #' @noRd
 convert_to_nuts <- function(region) {
-  # Clean up
+  # Remove duplicates and normalize empty values.
   clean_region <- unique(ensure_null(region))
   if (is.null(clean_region)) {
     cli::cli_alert_warning(
@@ -14,7 +14,7 @@ convert_to_nuts <- function(region) {
   }
   clean_region <- region[!is.na(clean_region)]
 
-  # Guess type of code for convert: recognize nuts, isos and free text
+  # Detect code type for conversion: NUTS, ISO2 or free text.
   code_type <- rep("text", length(clean_region))
 
   is_iso <- grepl("^ES-", clean_region)
@@ -23,10 +23,10 @@ convert_to_nuts <- function(region) {
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
 
-  # Made conversions
+  # Perform conversions.
   n_codes <- seq_along(clean_region)
 
-  # Store names in vector
+  # Initialize output vector.
   nuts_id <- rep(NA, length(clean_region))
 
   for (i in n_codes) {
@@ -65,14 +65,14 @@ convert_to_nuts <- function(region) {
 #'
 #' @noRd
 convert_to_nuts_ccaa <- function(region) {
-  # Clean up
+  # Remove duplicates and normalize empty values.
   clean_region <- unique(ensure_null(region))
   if (is.null(clean_region)) {
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]
 
-  # Guess type of code for convert: recognize nuts, isos and free text
+  # Detect code type for conversion: NUTS, ISO2 or free text.
 
   code_type <- rep("text", length(clean_region))
   is_codauto <- grepl("^[[:digit:]]", region)
@@ -81,10 +81,10 @@ convert_to_nuts_ccaa <- function(region) {
   code_type[is_codauto] <- "codauto"
   code_type[is_nuts] <- "nuts"
 
-  # Made conversions
+  # Perform conversions.
   n_codes <- seq_along(clean_region)
 
-  # Store names in vector
+  # Initialize output vector.
   ccaa_id <- rep(NA, length(clean_region))
 
   for (i in n_codes) {
@@ -153,28 +153,28 @@ convert_to_nuts_ccaa <- function(region) {
   end
 }
 
-#' Transform region to NUTS code for Provinces (NUTS 3 but not exactly)
+#' Transform region to province-level NUTS codes
 #' @param region A vector of region names or codes (NUTS, ISO2, INE cpro).
-#' @return A vector of NUTS codes for Provinces (level 3) or an error if no
+#' @return A vector of NUTS codes for provinces (level 3) or an error if no
 #'   valid code found.
 #'
 #' @noRd
 convert_to_nuts_prov <- function(region) {
-  # Clean up
+  # Remove duplicates and normalize empty values.
   clean_region <- unique(ensure_null(region))
   if (is.null(clean_region)) {
     return(NULL)
   }
   clean_region <- region[!is.na(clean_region)]
 
-  # Replace islands, that is where NUTS3 and provinces do not match
+  # Handle island cases where NUTS3 and province codes diverge.
   clean_region[clean_region == "ES-GC"] <- "35"
   clean_region[clean_region == "ES-TF"] <- "38"
   clean_region[clean_region == "ES-PM"] <- "ES53"
   clean_region[clean_region == "ES-IB"] <- "ES53"
   clean_region[clean_region == "07"] <- "ES53"
 
-  # Guess type of code for convert: recognize cpro, nuts, isos and free text
+  # Detect code type for conversion: cpro, NUTS, ISO2 or free text.
   code_type <- rep("text", length(clean_region))
   is_cpro <- grepl("^[[:digit:]]", clean_region)
   is_iso <- grepl("^ES-", clean_region)
@@ -184,13 +184,13 @@ convert_to_nuts_prov <- function(region) {
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
 
-  # Made conversions
+  # Perform conversions.
   n_codes <- seq_along(clean_region)
 
-  # Store names in vector
+  # Initialize output vector.
   nuts_cpros <- clean_region
 
-  # Convert text to cpro to check Canary Islands and Baleric Islands
+  # Convert text to cpro to check Canary Islands and Balearic Islands
   for (i in n_codes) {
     code <- nuts_cpros[i]
     type <- code_type[i]
@@ -232,7 +232,7 @@ convert_to_nuts_prov <- function(region) {
   code_type[is_iso] <- "iso2"
   code_type[is_nuts] <- "nuts"
 
-  # Prepare dict
+  # Build the province-to-NUTS lookup table.
   cpro_to_nuts <- get_prov_to_nuts_df()
 
   for (i in n_codes) {
@@ -267,7 +267,7 @@ convert_to_nuts_prov <- function(region) {
     )
   }
 
-  # Case of Islands, are not a province, shouldn't be here yet
+  # Remove island NUTS3 codes that do not correspond to provinces.
 
   esp_codes <- mapSpain::esp_codelist
   not_provs <- esp_codes[
@@ -296,7 +296,7 @@ convert_to_nuts_prov <- function(region) {
 
   nuts_cpros <- nuts_cpros[!is.na(nuts_cpros)]
 
-  # Fix GC and TF
+  # Expand GC and TF codes to their constituent NUTS3 codes.
   if ("ES-TF" %in% nuts_cpros) {
     nuts <- mapSpain::esp_codelist
     vec_codes <- nuts[nuts$iso2.prov.code == "ES-TF", ]$nuts3.code
@@ -334,7 +334,7 @@ convert_to_nuts_prov <- function(region) {
 }
 
 
-#' Helper function to get the equivalence between cpro and NUTS (any level)
+#' Build a lookup table of province codes (cpro) to NUTS codes
 #'
 #' @noRd
 get_prov_to_nuts_df <- function() {

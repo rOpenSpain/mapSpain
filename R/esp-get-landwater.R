@@ -120,7 +120,7 @@ esp_get_rivers <- function(
     "se89_3_hidro_rio_l_y.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -179,7 +179,7 @@ esp_get_rivers <- function(
   names(est) <- c("orig_hidro", "orig_hidro_desc")
   data_sf <- merge(data_sf, est, all.x = TRUE)
 
-  # Move can
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
   data_sf <- data_sf[, setdiff(names(data_sf), "codauto")]
 
@@ -239,7 +239,7 @@ esp_get_wetlands <- function(
     "se89_3_hidro_rio_a_x.gpkg"
   )
 
-  # Not cached are read from url
+  # Read from the URL when the file is not cached.
   if (!cache) {
     msg <- paste0("{.url ", url_penin, "}.")
     make_msg("info", verbose, "Reading from", msg)

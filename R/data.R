@@ -4,8 +4,8 @@
 #' A [tibble][tibble::tbl_df] object used internally for translating codes and
 #' names of the different subdivisions of Spain. This tibble provides a
 #' hierarchical representation of Spain's subdivisions, including NUTS1 level,
-#' autonomous communities (equivalent to NUTS2), provinces, and NUTS3 level.
-#' See the note section below for important coverage details.
+#' autonomous communities (equivalent to NUTS2), provinces and NUTS3 level.
+#' See the note below for coverage details.
 #'
 #' @docType data
 #' @encoding UTF-8
@@ -30,7 +30,7 @@
 #'  \item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish)}
 #'  \item{codauto}{INE code of the autonomous community}
 #'  \item{iso2.ccaa.code}{ISO2 code of the autonomous community}
-#'  \item{nuts2.code}{NUTS 2 Code}
+#'  \item{nuts2.code}{NUTS 2 code}
 #'  \item{ine.ccaa.name}{INE name of the autonomous community}
 #'  \item{iso2.ccaa.name.es}{ISO2 name of the autonomous community (Spanish)}
 #'  \item{iso2.ccaa.name.ca}{ISO2 name of the autonomous community (Catalan)}
@@ -77,13 +77,13 @@
 #'
 #' @note
 #' Although NUTS2 aligns with the first subdivision level of Spain
-#' (CCAA - Autonomous Communities), it is important to note that NUTS3 does not
-#' correspond to the second subdivision level of Spain (Provinces). NUTS3
+#' (CCAA - autonomous communities), NUTS3 does not correspond to the second
+#' subdivision level of Spain (provinces). NUTS3
 #' provides dedicated codes for major islands, whereas provinces do not.
 #'
 #' Ceuta and Melilla have a special status as Autonomous Cities but are
 #' treated as autonomous communities with a single province (like Madrid,
-#' Asturias, or Murcia) in this database.
+#' Asturias or Murcia) in this database.
 #'
 #' @examples
 #'
@@ -108,9 +108,9 @@ NULL
 #'   \item{provincia}{Name of the province.}
 #'   \item{cmun}{INE code of the municipality.}
 #'   \item{name}{Name of the municipality.}
-#'   \item{pob25}{Total population (2025)}
-#'   \item{men}{Male population (2025)}
-#'   \item{women}{Female population (2025)}
+#'   \item{pob25}{Total population (2025).}
+#'   \item{men}{Male population (2025).}
+#'   \item{women}{Female population (2025).}
 #' }
 #'
 #' @source
@@ -159,7 +159,7 @@ NULL
 #'   - `leaflet` with additional parameters to pass to [addProviderEspTiles()].
 #'
 #' @details
-#' Providers available to be passed to `type` on [esp_get_tiles()] are:
+#' Providers available to be passed to `type` in [esp_get_tiles()] are:
 #'
 #' ```{r, echo=FALSE, comment="", results="asis"}
 #'
@@ -191,7 +191,7 @@ NULL
 #' @seealso [esp_get_nuts()]
 #'
 #' @description
-#' This dataset represents Spanish regions at NUTS levels 0, 1, 2, and 3
+#' This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
 #' according to the Nomenclature of Territorial Units for Statistics (NUTS)
 #' classification for 2024.
 #'
@@ -202,15 +202,15 @@ NULL
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}
 #'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
-#'   \item{`CNTR_CODE`}{Eurostat Country code.}
+#'   \item{`CNTR_CODE`}{Eurostat country code.}
 #'   \item{`NAME_LATN`}{NUTS name on Latin characters.}
 #'   \item{`NUTS_NAME`}{NUTS name on local alphabet.}
-#'   \item{`MOUNT_TYPE`}{Mount Type, see **Details**.}
-#'   \item{`URBN_TYPE`}{Urban Type, see **Details**.}
-#'   \item{`COAST_TYPE`}{Coast Type, see **Details**.}
+#'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
+#'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
+#'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}
 #'   \item{`geo`}{Same as `NUTS_ID`, provided for compatibility with
 #'     \CRANpkg{eurostat}.}
-#'   \item{`geometry`}{geometry field.}
+#'   \item{`geometry`}{Geometry field.}
 #' }
 #'
 #' @details

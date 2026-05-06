@@ -1,6 +1,6 @@
 # mapSpain 1.1.0
 
-- Use `testthat::local_mocked_bindings()` on API error testing.
+- Use `testthat::local_mocked_bindings()` for API error testing.
 - Migrate vignettes to Quarto.
 - Minimal **httr2** version is now **1.2.0** to ensure compatibility with
   **giscoR**.
@@ -18,10 +18,8 @@ subfolders for easier management.
 > release and must be rebuilt.
 
 We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
-for managing your persistent cache directory. If you are a heavy **mapSpain**
-user and already have a cache directory in place, you'll receive a one-time
-friendly message informing you about this migration. Consider it a warm welcome
-to **mapSpain** 1.0.0 😉.
+for managing the persistent cache directory. If you have an existing cache
+directory, you will receive a one-time notification about this migration.
 
 The package now requires **R ≥ 4.1**, and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
@@ -69,7 +67,7 @@ versions.
   provider.
 - Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
 - `esp_get_rivers()` gains a new `moveCAN` argument.
-- `esp_get_tiles()` can be used with providers that needs an API key.
+- `esp_get_tiles()` can be used with providers that need an API key.
 
 # mapSpain 0.10.0
 
@@ -80,7 +78,7 @@ versions.
 
 # mapSpain 0.9.2
 
-- **SIANE 2024 Update**: Adapt functions to new databases.
+- **SIANE 2024 Update**: Adapted functions to new databases.
 - Improve dictionaries: `esp_dict_region_code()` and `esp_dict_translate()`.
 
 # mapSpain 0.9.1
@@ -89,7 +87,7 @@ versions.
 
 # mapSpain 0.9.0
 
-- Changes on how to handle modifications on Canary Islands objects (#101):
+- Changes to how modifications on Canary Islands objects are handled (#101):
   - Add a helper function for displace stand-alone `sf` objects in Canary
     Islands: `esp_move_can()`.
   - `esp_move_can()` is used internally on all functions.
@@ -108,7 +106,7 @@ versions.
   - `IDErioja.Relieve`
   - `IDErioja.Claro`
   - `IDErioja.Oscuro`
-- `esp_getTiles()` now supports non-OGC compliant WMTS providers, such as
+- `esp_getTiles()` now supports non-OGC-compliant WMTS providers, such as
   Stamen or OpenStreetMaps (see examples).
 
 # mapSpain 0.7.0
@@ -125,8 +123,8 @@ versions.
 
 # mapSpain 0.6.2
 
-- Now `moveCAN` is a explicit argument in the relevant functions.
-- Deprecate `layer_spatraster().` Use `tidyterra::geom_spatraster_rgb()`
+- Now `moveCAN` is an explicit argument in the relevant functions.
+- Deprecate `layer_spatraster()`. Use `tidyterra::geom_spatraster_rgb()`
   instead.
 - Fix geometries on `esp_get_hex_prov()` and `esp_get_hex_ccaa()`.
 - Add new function to get comarcas from INE: `esp_get_comarca()`.
@@ -151,7 +149,7 @@ versions.
 
 # mapSpain 0.5.0
 
-- Rebuild coding database to avoid errors due to encoding.
+- Rebuilt coding database to avoid errors due to encoding.
 - Fix translations on Galician.
 - New grid functions (#61):
   - `esp_get_grid_MTN()`
@@ -161,8 +159,8 @@ versions.
 
 # mapSpain 0.4.0
 
-- Switch from **raster** to **terra**.
-- Clean up dependencies. Imagery packages moved to 'Suggests'.
+- Switched from **raster** to **terra**.
+- Cleaned up dependencies. Imagery packages moved to 'Suggests'.
 - Add `layer_spatraster()`.
 - Move examples to **ggplot2**.
 
@@ -187,7 +185,7 @@ versions.
 - Move minimum version of **giscoR** to v0.2.4
 - Fix typos on `esp_dict_translate()` (#36).
 - Not run examples on tiles, as the server sometimes doesn't respond.
-- Re factor `sysdata.rda`.
+- Refactor `sysdata.rda`.
 - **CRAN** fixes:
   - Removed broken link on `addProviderEspTiles()`.
   - Vignette removed (**CRAN** warning).
@@ -195,7 +193,7 @@ versions.
 
 # mapSpain 0.2.2
 
-- Migrate examples, vignettes and README to **tmap**.
+- Migrated examples, vignettes and README to **tmap**.
 - Add vignette to package.
 - `esp_dict_region_code()` works with mixed casings (e.g:
   `esp_dict_region_code("aLbacEte", destination = "cpro")`).
@@ -228,7 +226,7 @@ versions.
 - Include new `poly` option on `mapSpain::esp_get_can_box()`.
 - New grids created with `geogrid::calculate_grid()`.
 - Add more years on `mapSpain::esp_get_munic()`.
-- Move to rOpenSpain organization.
+- Moved to rOpenSpain organization.
 
 # mapSpain 0.1.1
 

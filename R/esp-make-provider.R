@@ -17,7 +17,7 @@
 #'
 #' @param id An identifier for the user. It will be used for identifying
 #'   cached tiles.
-#' @param q The base url of the service.
+#' @param q The base URL of the service.
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #' @param layers The name of the layer to retrieve.
 #' @param ... Additional arguments to the query, like `version`, `format`,

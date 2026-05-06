@@ -15,7 +15,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 to be converted.}
 
 \item{origin, destination}{character string. Coding scheme of origin and
-destination. One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"}, or \code{"cpro"}.}
+destination. One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"} or \code{"cpro"}.}
 
 \item{lang}{character string. Target language code, available values:
 \itemize{
@@ -37,7 +37,7 @@ corresponding element will be \code{NA} and a warning is emitted via
 \code{\link[cli:cli_alert_warning]{cli::cli_alert_warning()}}.
 
 \code{esp_dict_translate()} translates a vector of names from one language to
-another :
+another:
 \itemize{
 \item If \code{all = FALSE}, a character vector with the translated name for each
 element of \code{sourcevar}.
@@ -65,7 +65,7 @@ esp_dict_region_code(vals, destination = "nuts")
 esp_dict_region_code(vals, destination = "cpro")
 esp_dict_region_code(vals, destination = "iso2")
 
-# From ISO2 to another codes
+# From ISO2 to other codes
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")

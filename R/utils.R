@@ -1,9 +1,9 @@
 #' Create messages based on type
 #'
-#' @param type character string. Type of message. Accepted values are
+#' @param type A character string. Type of message. Accepted values are
 #'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose logical. Whether to print the message or not.
+#' @param verbose A logical. Whether to print the message or not.
 #' @param ... Character strings to be combined into the message.
 #'
 #' @returns
@@ -68,7 +68,7 @@ match_arg_pretty <- function(arg, choices) {
   }
 
   lmatch <- match(arg, choices)
-  # Hint
+  # Check for an approximate match to suggest in the error message.
   aproxmatch <- pmatch(arg, choices)[1]
 
   if (length(arg) > 1 || is.na(lmatch)) {
@@ -107,12 +107,12 @@ match_arg_pretty <- function(arg, choices) {
   choices[lmatch]
 }
 
-#' Row bind data frames or lists with different columns, filling missing
-#' columns with `NA`.
+#' Row-bind data frames filling missing columns with `NA`
 #'
 #' @param a_list A list of data frames or lists to row bind.
 #' @return
-#' A data frame resulting from row binding the input data frames or sf objects.
+#' A data frame resulting from row binding the input data frames or `sf`
+#' objects.
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
@@ -122,7 +122,7 @@ rbind_fill <- function(a_list) {
   if (length(a_list) == 0) {
     return(NULL)
   }
-  # Get all names
+  # Collect all column names across data frames.
   nms <- unique(unlist(lapply(a_list, names)))
 
   a_list <- lapply(
@@ -174,7 +174,7 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
   }
 
   df <- data_sf
-  # By date
+  # Filter rows to those valid at the selected date.
   fecha_alta <- df$fecha_alta
   fecha_bajamod <- df$fecha_baja
   fecha_bajamod[is.na(fecha_bajamod)] <- maxdate

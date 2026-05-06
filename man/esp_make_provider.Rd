@@ -11,7 +11,7 @@ esp_make_provider(id, q, service, layers, ...)
 \item{id}{An identifier for the user. It will be used for identifying
 cached tiles.}
 
-\item{q}{The base url of the service.}
+\item{q}{The base URL of the service.}
 
 \item{service}{The type of tile service, either \code{"WMS"} or \code{"WMTS"}.}
 

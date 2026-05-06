@@ -16,7 +16,8 @@ esp_get_grid_ESDAC(
 )
 }
 \arguments{
-\item{resolution}{numeric. Resolution of the grid in kms Can be \code{1} or \code{10}.}
+\item{resolution}{numeric. Resolution of the grid in kilometers. Can be \code{1}
+or \code{10}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}

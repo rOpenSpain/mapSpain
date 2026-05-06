@@ -106,7 +106,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
       data_3857 <- sf::st_sf(x = 1, geometry = data_3857)
     }
 
-    # Move can
+    # Move the Canary Islands.
     geom_mov <- sf::st_geometry(data_3857) + offset
     df <- sf::st_drop_geometry(data_3857)
     can <- sf::st_sf(df, geometry = geom_mov, crs = 3857)

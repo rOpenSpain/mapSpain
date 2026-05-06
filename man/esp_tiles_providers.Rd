@@ -32,7 +32,7 @@ Implementation of the JavaScript plugin
 \strong{v1.3.3}.
 }
 \details{
-Providers available to be passed to \code{type} on \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
+Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
 \itemize{
 \item \code{"IDErioja"}
 \item \code{"IDErioja.Base"}

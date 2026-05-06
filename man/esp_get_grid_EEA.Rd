@@ -17,7 +17,8 @@ esp_get_grid_EEA(
 )
 }
 \arguments{
-\item{resolution}{Resolution of the grid in kms. Can be \code{1}, \code{10} or \code{100}.}
+\item{resolution}{Resolution of the grid in kilometers. Can be \code{1}, \code{10}
+or \code{100}.}
 
 \item{type}{character. The geographic scope of the grid:
 \itemize{

@@ -92,7 +92,7 @@ download_url <- function(
   # Testing
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Modify to redirect to a fake URL.
     req <- httr2::req_url(
       req,
       "https://github.com/rOpenSpain/mapSpain/raw/sianedata/fake"
