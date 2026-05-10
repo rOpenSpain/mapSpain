@@ -140,10 +140,13 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  data_sf <- data_sf[
-    ,
-    c(colnames(df), "nuts2.code", "nuts2.name", "nuts1.code", "nuts1.name")
-  ]
+  data_sf <- data_sf[, c(
+    colnames(df),
+    "nuts2.code",
+    "nuts2.name",
+    "nuts1.code",
+    "nuts1.name"
+  )]
 
   # Order
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]

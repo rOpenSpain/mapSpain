@@ -62,8 +62,10 @@ esp_hlp_utf8 <- function(data.sf) {
 esp_hlp_names2nuts <- function() {
   # Create base codes
   basecod <- names_full
-  basecod <-
-    data.frame(key = unique(basecod[, "key"]), stringsAsFactors = FALSE)
+  basecod <- data.frame(
+    key = unique(basecod[, "key"]),
+    stringsAsFactors = FALSE
+  )
 
   # Create code dict nuts
   dict_nuts1mod <- dict_nuts1
@@ -79,10 +81,14 @@ esp_hlp_names2nuts <- function() {
   names(dict_nuts3mod) <- c("key", "nuts")
 
   dict_nuts <- dict_nuts1mod
-  dict_nuts <-
-    rbind(dict_nuts, dict_nuts2mod[!(dict_nuts2mod$key %in% dict_nuts$key), ])
-  dict_nuts <-
-    rbind(dict_nuts, dict_nuts3mod[!(dict_nuts3mod$key %in% dict_nuts$key), ])
+  dict_nuts <- rbind(
+    dict_nuts,
+    dict_nuts2mod[!(dict_nuts2mod$key %in% dict_nuts$key), ]
+  )
+  dict_nuts <- rbind(
+    dict_nuts,
+    dict_nuts3mod[!(dict_nuts3mod$key %in% dict_nuts$key), ]
+  )
   dict_nuts <- unique(dict_nuts)
 
   rm(dict_nuts1mod, dict_nuts2mod, dict_nuts3mod)
@@ -141,13 +147,11 @@ esp_hlp_code2code <- function() {
 
   # Fake NUTS for Canary Islands
   dict_codes.df[
-    dict_codes.df$iso2 == "ES-GC" &
-      !is.na(dict_codes.df$iso2),
+    dict_codes.df$iso2 == "ES-GC" & !is.na(dict_codes.df$iso2),
   ]$nuts <- "XXXXX"
 
   dict_codes.df[
-    dict_codes.df$iso2 == "ES-TF" &
-      !is.na(dict_codes.df$iso2),
+    dict_codes.df$iso2 == "ES-TF" & !is.na(dict_codes.df$iso2),
   ]$nuts <- "YYYYY"
 
   # Remove dups on Ceuta y Melilla

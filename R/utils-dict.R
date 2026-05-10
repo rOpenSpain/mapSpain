@@ -41,13 +41,11 @@ get_master_codes <- function() {
 
   # Fake NUTS for Canary Islands
   dict_codes_df[
-    dict_codes_df$iso2 == "ES-GC" &
-      !is.na(dict_codes_df$iso2),
+    dict_codes_df$iso2 == "ES-GC" & !is.na(dict_codes_df$iso2),
   ]$nuts <- "XXXXX"
 
   dict_codes_df[
-    dict_codes_df$iso2 == "ES-TF" &
-      !is.na(dict_codes_df$iso2),
+    dict_codes_df$iso2 == "ES-TF" & !is.na(dict_codes_df$iso2),
   ]$nuts <- "YYYYY"
 
   # Remove dups on Ceuta y Melilla
@@ -72,9 +70,7 @@ get_master_codes <- function() {
 get_master_nuts_nm <- function() {
   # Create base codes
   names_full_tb <- names_full
-  basecod <- tibble::tibble(
-    key = unique(names_full_tb$key)
-  )
+  basecod <- tibble::tibble(key = unique(names_full_tb$key))
 
   df_all <- mapSpain::esp_codelist
   # Create code dict nuts

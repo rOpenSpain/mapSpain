@@ -1,12 +1,10 @@
 validate_provider <- function(type = "PNOA") {
   if (!any(is.list(type), is.character(type))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg type} should be a named list (see ",
-        "{.fn mapSpain::esp_make_provider} or the name of a provider (see ",
-        "{.fn mapSpain::esp_tiles_providers}, not {.obj_class_friendly {type}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg type} should be a named list (see ",
+      "{.fn mapSpain::esp_make_provider} or the name of a provider (see ",
+      "{.fn mapSpain::esp_tiles_providers}, not {.obj_class_friendly {type}}."
+    ))
   }
 
   # Validate list
@@ -15,13 +13,11 @@ validate_provider <- function(type = "PNOA") {
     valid <- c("id", "q")
     has_valid <- valid %in% names(type)
     if (!all(has_valid)) {
-      cli::cli_abort(
-        paste0(
-          "A custom provider must be a named list with elements {.str {valid}}",
-          ", missing {.str {valid[!has_valid]}} element{?/s}. See ",
-          "{.fn mapSpain::esp_make_provider}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "A custom provider must be a named list with elements {.str {valid}}",
+        ", missing {.str {valid[!has_valid]}} element{?/s}. See ",
+        "{.fn mapSpain::esp_make_provider}."
+      ))
     }
 
     formatted_type <- provider_to_list(type)
@@ -107,9 +103,9 @@ guess_provider_type <- function(prov_list) {
 
 get_tile_crs <- function(prov_list) {
   # Get CRS of Tile
-  crs <- unlist(
-    prov_list[tolower(names(prov_list)) %in% c("crs", "srs", "tilematrixset")]
-  )
+  crs <- unlist(prov_list[
+    tolower(names(prov_list)) %in% c("crs", "srs", "tilematrixset")
+  ])
   crs <- ensure_null(crs)
   # Handle WMTS providers without an explicit CRS.
   if (is.null(crs)) {

@@ -26,12 +26,10 @@ for (i in seq_len(ncol)) {
   if (is.character(f[[i]])) {
     f[[i]] <- enc2utf8(f[[i]])
     # Check results
-    cli::cli_alert_info(
-      paste0(
-        "In {.str {names(f)[i]}} UTF encodings are ",
-        "{unique(stringi::stri_enc_isutf8(f[[i]]))}"
-      )
-    )
+    cli::cli_alert_info(paste0(
+      "In {.str {names(f)[i]}} UTF encodings are ",
+      "{unique(stringi::stri_enc_isutf8(f[[i]]))}"
+    ))
   }
 }
 

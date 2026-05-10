@@ -34,15 +34,7 @@ test_that("prov offline", {
   expect_silent(esp_get_prov(prov = c("Galicia", "ES7", "Centro")))
 
   expect_silent(
-    mix <- esp_get_prov(
-      prov = c(
-        "Euskadi",
-        "Catalunya",
-        "ES-EX",
-        "ES52",
-        "01"
-      )
-    )
+    mix <- esp_get_prov(prov = c("Euskadi", "Catalunya", "ES-EX", "ES52", "01"))
   )
   expect_snapshot(mix$ine.prov.name)
   # Islands

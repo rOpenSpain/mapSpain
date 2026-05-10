@@ -9,11 +9,7 @@ library(readxl)
 df <- read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx")
 unique(df$field)
 
-df_pivoted <- df |>
-  pivot_wider(
-    values_from = value,
-    names_from = field
-  )
+df_pivoted <- df |> pivot_wider(values_from = value, names_from = field)
 
 url_static <- "https://rts.larioja.org/mapa-base/rioja/{z}/{x}/{y}.png"
 # Helper to split urls
@@ -70,10 +66,7 @@ esp_tiles_providers <- lapply(len_prov, function(x) {
   url <- esp_hlp_split_url(url_st)
 
   # Compose list
-  static <- c(
-    list(attribution = as.vector(prov$attribution_static)),
-    url
-  )
+  static <- c(list(attribution = as.vector(prov$attribution_static)), url)
   # Add additional options for leaflet
   leaflet <- list(
     attribution = as.vector(prov$attribution),
@@ -85,10 +78,7 @@ esp_tiles_providers <- lapply(len_prov, function(x) {
 
   # Final output
 
-  l <- list(
-    static = static,
-    leaflet = leaflet
-  )
+  l <- list(static = static, leaflet = leaflet)
 
   return(l)
 })
@@ -117,11 +107,7 @@ ggplot2::ggplot() +
 library(leaflet)
 
 leaflet() |>
-  setView(
-    lat = 40.4166,
-    lng = -3.7038400,
-    zoom = 10
-  ) |>
+  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) |>
   addProviderEspTiles(provider = "IDErioja.Claro") |>
   addProviderEspTiles(
     provider = "CaminoDeSantiago",

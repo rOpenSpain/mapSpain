@@ -5,10 +5,7 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- esp_get_grid_MTN(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_grid_MTN(update_cache = TRUE), "Offline")
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -23,10 +20,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_grid_MTN(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_grid_MTN(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -44,12 +38,7 @@ test_that("MTN grid online", {
   tdir <- file.path(tempdir(), "testthat_test")
   tdir <- create_cache_dir(tdir)
 
-  expect_message(
-    esp_get_grid_MTN(
-      cache_dir = tdir,
-      verbose = TRUE
-    )
-  )
+  expect_message(esp_get_grid_MTN(cache_dir = tdir, verbose = TRUE))
 
   unlink(tdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(tdir))

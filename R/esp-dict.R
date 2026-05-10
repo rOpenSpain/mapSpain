@@ -94,9 +94,10 @@ esp_dict_region_code <- function(
   # Create dict
   dict <- names_full
 
-  names_dict <- unique(
-    dict[grep("name", dict$variable, fixed = TRUE), c("key", "value")]
-  )
+  names_dict <- unique(dict[
+    grep("name", dict$variable, fixed = TRUE),
+    c("key", "value")
+  ])
 
   # If text convert to nuts
 
@@ -202,12 +203,10 @@ esp_dict_region_code <- function(
 
   # Sanitize
   if (length(out[out != "NOMATCH"]) != length(sourcevar)) {
-    cli::cli_alert_warning(
-      paste0(
-        "No match on {.arg destination = {.str {destination}}} found ",
-        "for {.str {initsourcevar[out == 'NOMATCH']}}."
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "No match on {.arg destination = {.str {destination}}} found ",
+      "for {.str {initsourcevar[out == 'NOMATCH']}}."
+    ))
   }
   out[out == "NOMATCH"] <- NA
 
@@ -269,9 +268,10 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   # Upgrade nuts
   dict$variable <- gsub("nuts", "c_nuts", dict$variable, fixed = TRUE)
 
-  names_dict <- unique(
-    dict[grep("name", dict$variable, fixed = TRUE), c("key", "value")]
-  )
+  names_dict <- unique(dict[
+    grep("name", dict$variable, fixed = TRUE),
+    c("key", "value")
+  ])
 
   sourcevar_lower <- tolower(sourcevar)
   tokeys <- countrycode::countrycode(
@@ -283,27 +283,24 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   )
 
   if (any(tokeys == "NOMATCH")) {
-    cli::cli_alert_warning(
-      paste0(
-        "No match found ",
-        "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "No match found ",
+      "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
+    ))
   }
 
   # Create lang dict
-  dict_tolang <- unique(
-    dict[grep(paste0("name.", lang), dict$variable), ]
-  )
+  dict_tolang <- unique(dict[grep(paste0("name.", lang), dict$variable), ])
 
   # Order using short
   shrt <- grep("short", dict_tolang$variable, fixed = TRUE)
 
   dict_tolang[shrt, ]$variable <- paste0("aa", dict_tolang[shrt, ]$variable)
 
-  dict_tolang <- unique(
-    dict_tolang[order(dict_tolang$variable), c("key", "value")]
-  )
+  dict_tolang <- unique(dict_tolang[
+    order(dict_tolang$variable),
+    c("key", "value")
+  ])
   namestrans <- lapply(seq_along(tokeys), function(x) {
     if (tokeys[x] == "NOMATCH") {
       return(NA)

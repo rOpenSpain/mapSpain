@@ -5,10 +5,7 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- esp_get_munic_siane(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_munic_siane(update_cache = TRUE), "Offline")
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -23,10 +20,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_munic_siane(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_munic_siane(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -43,10 +37,7 @@ test_that("Cache vs non-cached", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_munic_siane(
       cache = FALSE,
@@ -56,17 +47,11 @@ test_that("Cache vs non-cached", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # vs cache TRUE
   expect_silent(
-    db_cached <- esp_get_munic_siane(
-      cache = TRUE,
-      cache_dir = cdir
-    )
+    db_cached <- esp_get_munic_siane(cache = TRUE, cache_dir = cdir)
   )
 
   expect_identical(db_online, db_cached)
@@ -74,10 +59,7 @@ test_that("Cache vs non-cached", {
   expect_s3_class(db_online, "tbl_df")
   expect_identical(
     list.files(cdir, recursive = TRUE),
-    c(
-      "siane/se89_3_admin_muni_a_x.gpkg",
-      "siane/se89_3_admin_muni_a_y.gpkg"
-    )
+    c("siane/se89_3_admin_muni_a_x.gpkg", "siane/se89_3_admin_muni_a_y.gpkg")
   )
 
   # Cleanup

@@ -96,10 +96,7 @@ match_arg_pretty <- function(arg, choices) {
     }
 
     cli::cli_abort(
-      c(
-        paste0("{.arg {arg_name}} should be ", msg),
-        "i" = reg_msg
-      ),
+      c(paste0("{.arg {arg_name}} should be ", msg), "i" = reg_msg),
       call = NULL
     )
   }
@@ -125,15 +122,12 @@ rbind_fill <- function(a_list) {
   # Collect all column names across data frames.
   nms <- unique(unlist(lapply(a_list, names)))
 
-  a_list <- lapply(
-    a_list,
-    function(x) {
-      for (i in nms[!nms %in% names(x)]) {
-        x[[i]] <- NA
-      }
-      x
+  a_list <- lapply(a_list, function(x) {
+    for (i in nms[!nms %in% names(x)]) {
+      x[[i]] <- NA
     }
-  )
+    x
+  })
   names(a_list) <- NULL
   binded <- do.call(rbind, a_list)
   binded
@@ -151,13 +145,11 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
   }
 
   if (nchar(sel_date) != 10) {
-    cli::cli_abort(
-      paste0(
-        "Date {.val {sel_date}} doesn't seem to be valid. ",
-        "Use {.val YYYY} or {.val YYYY-MM-DD} format. ",
-        "See {.fn base::as.Date}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "Date {.val {sel_date}} doesn't seem to be valid. ",
+      "Use {.val YYYY} or {.val YYYY-MM-DD} format. ",
+      "See {.fn base::as.Date}."
+    ))
   }
 
   sel_date <- as.Date(sel_date, tryFormats = "%Y-%m-%d")
@@ -165,12 +157,10 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
   check_date_range <- mindate <= sel_date & sel_date <= maxdate
 
   if (!check_date_range) {
-    cli::cli_abort(
-      paste0(
-        "Year {.val {year}} not available. Select a year/date between ",
-        "{.val {mindate}} and {.val {maxdate}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "Year {.val {year}} not available. Select a year/date between ",
+      "{.val {mindate}} and {.val {maxdate}}."
+    ))
   }
 
   df <- data_sf

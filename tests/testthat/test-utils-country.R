@@ -3,10 +3,7 @@ test_that("Utils names", {
 
   expect_snapshot(convert_country_code(c("Espagne", "United Kingdom")))
   expect_snapshot(convert_country_code("U"), error = TRUE)
-  expect_snapshot(convert_country_code(
-    c("ESP", "POR", "RTA", "USA"),
-    "iso3c"
-  ))
+  expect_snapshot(convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c"))
   expect_snapshot(convert_country_code(c("ESP", "Alemania")))
 })
 
@@ -23,23 +20,18 @@ test_that("Problematic names", {
     "iso3c"
   ))
   expect_snapshot(convert_country_code(c("ESP", "XKX", "DEU")))
-  expect_snapshot(
-    convert_country_code(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
-  )
+  expect_snapshot(convert_country_code(c(
+    "Spain",
+    "Rea",
+    "Kosovo",
+    "Antartica",
+    "Murcua"
+  )))
 
-  expect_snapshot(
-    convert_country_code("Kosovo")
-  )
-  expect_snapshot(
-    convert_country_code("XKX")
-  )
-  expect_snapshot(
-    convert_country_code("XK", "iso3c")
-  )
-  expect_identical(
-    convert_country_code("ES"),
-    "ESP"
-  )
+  expect_snapshot(convert_country_code("Kosovo"))
+  expect_snapshot(convert_country_code("XKX"))
+  expect_snapshot(convert_country_code("XK", "iso3c"))
+  expect_identical(convert_country_code("ES"), "ESP")
 })
 
 test_that("Test mixed countries", {

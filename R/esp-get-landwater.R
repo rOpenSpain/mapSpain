@@ -204,9 +204,7 @@ esp_get_rivers <- function(
     data_sf <- data_sf[getrows, ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning(
-        "No results for {.arg name} {.str {name}}."
-      )
+      cli::cli_alert_warning("No results for {.arg name} {.str {name}}.")
 
       cli::cli_alert_info("Returning empty {.cls sf} object.")
       return(data_sf)
@@ -284,9 +282,7 @@ esp_get_wetlands <- function(
     data_sf <- data_sf[grepl(name, data_sf$rotulo), ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning(
-        "No results for {.arg name} {.str {name}}."
-      )
+      cli::cli_alert_warning("No results for {.arg name} {.str {name}}.")
 
       cli::cli_alert_info("Returning empty {.cls sf} object.")
       return(data_sf)
@@ -304,10 +300,7 @@ esp_get_wetlands <- function(
 
 #' Helper function to get river names
 #' @noRd
-get_river_names <- function(
-  update_cache = FALSE,
-  cache_dir = NULL
-) {
+get_river_names <- function(update_cache = FALSE, cache_dir = NULL) {
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "data-raw/rivernames.rda"

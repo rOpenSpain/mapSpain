@@ -139,12 +139,7 @@ test_that("Mock migration", {
 
   # OK, now re-configure the cache
   if (tester_has_config_installed) {
-    esp_set_cache_dir(
-      getvar,
-      install = TRUE,
-      overwrite = TRUE,
-      verbose = FALSE
-    )
+    esp_set_cache_dir(getvar, install = TRUE, overwrite = TRUE, verbose = FALSE)
   } else {
     esp_set_cache_dir(getvar, install = FALSE, verbose = FALSE)
   }

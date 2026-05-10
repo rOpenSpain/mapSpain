@@ -124,10 +124,7 @@ esp_get_prov_siane <- function(
   # Order
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  namesend <- unique(c(
-    initcols,
-    colnames(esp_get_prov())
-  ))
+  namesend <- unique(c(initcols, colnames(esp_get_prov())))
 
   # Review this error, can't fully reproduce
 

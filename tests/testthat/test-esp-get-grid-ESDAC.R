@@ -5,10 +5,7 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- esp_get_grid_ESDAC(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_grid_ESDAC(update_cache = TRUE), "Offline")
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -23,10 +20,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_grid_ESDAC(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_grid_ESDAC(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -47,9 +41,7 @@ test_that("ESDAC grid online", {
 
   # Grid 10 vs 1
 
-  expect_silent(
-    grid10 <- esp_get_grid_ESDAC(resolution = 10, cache_dir = tdir)
-  )
+  expect_silent(grid10 <- esp_get_grid_ESDAC(resolution = 10, cache_dir = tdir))
 
   unlink(tdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(tdir))

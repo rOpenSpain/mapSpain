@@ -70,12 +70,10 @@ esp_move_can <- function(x, moveCAN = TRUE) {
   x <- validate_non_empty_arg(x)
 
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg x} should be an {.cls sf} ",
-        "or {.cls sfc} object, not {.obj_type_friendly {x}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg x} should be an {.cls sf} ",
+      "or {.cls sfc} object, not {.obj_type_friendly {x}}."
+    ))
   }
 
   is_sfc <- inherits(x, "sfc")

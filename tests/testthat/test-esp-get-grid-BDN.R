@@ -5,10 +5,7 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- esp_get_grid_BDN(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_grid_BDN(update_cache = TRUE), "Offline")
   expect_null(n)
 
   expect_message(
@@ -28,10 +25,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_grid_BDN(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_grid_BDN(update_cache = TRUE), "Error")
   expect_null(n)
 
   expect_message(

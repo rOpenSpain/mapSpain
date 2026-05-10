@@ -185,11 +185,7 @@ esp_get_nuts <- function(
     data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning(
-        paste0(
-          "No matches for {.arg region = {region}}."
-        )
-      )
+      cli::cli_alert_warning(paste0("No matches for {.arg region = {region}}."))
       cli::cli_alert_info("Returning empty {.cls sf} object.")
       return(data_sf)
     }

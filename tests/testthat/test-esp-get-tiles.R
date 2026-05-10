@@ -59,11 +59,7 @@ test_that("Test 404", {
   expect_null(n)
 
   expect_message(
-    n <- esp_get_tiles(
-      x,
-      update_cache = TRUE,
-      verbose = TRUE
-    ),
+    n <- esp_get_tiles(x, update_cache = TRUE, verbose = TRUE),
     "Error"
   )
   expect_null(n)
@@ -86,11 +82,7 @@ test_that("tiles error", {
 
   expect_snapshot(
     error = TRUE,
-    esp_get_tiles(
-      ff,
-      type = "IGNBase",
-      options = list(format = "image/aabbcc")
-    )
+    esp_get_tiles(ff, type = "IGNBase", options = list(format = "image/aabbcc"))
   )
 })
 
@@ -104,23 +96,15 @@ test_that("Colorize", {
   cdir <- file.path(tempdir(), "wms_test")
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  expect_length(
-    list.files(file.path(cdir, "Catastro")),
-    0
-  )
+  expect_length(list.files(file.path(cdir, "Catastro")), 0)
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
   # Buffer
   point <- sf::st_buffer(point, dist = 50)
 
-  expect_silent(
-    res <- esp_get_tiles(point, "Catastro", cache_dir = cdir)
-  )
-  expect_length(
-    list.files(file.path(cdir, "Catastro")),
-    1
-  )
+  expect_silent(res <- esp_get_tiles(point, "Catastro", cache_dir = cdir))
+  expect_length(list.files(file.path(cdir, "Catastro")), 1)
   # This file if read is only one layer
   r_orig <- terra::rast(
     list.files(file.path(cdir, "Catastro"), full.names = TRUE),
@@ -297,10 +281,7 @@ test_that("WMS", {
   cdir <- file.path(tempdir(), "wms_test")
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  expect_length(
-    list.files(file.path(cdir, "CaminoDeSantiago")),
-    0
-  )
+  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 0)
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
@@ -313,10 +294,7 @@ test_that("WMS", {
     )
   )
 
-  expect_length(
-    list.files(file.path(cdir, "CaminoDeSantiago")),
-    1
-  )
+  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 1)
 
   v <- as.vector(terra::ext(res))
   p <- as.double(sf::st_bbox(point))
@@ -334,10 +312,7 @@ test_that("WMS", {
   )
 
   expect_identical(terra::crs(res2), terra::crs(point))
-  expect_length(
-    list.files(file.path(cdir, "CaminoDeSantiago")),
-    1
-  )
+  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 1)
 
   # Modify res
   res3 <- esp_get_tiles(
@@ -401,10 +376,7 @@ test_that("WMTS", {
   cdir <- file.path(tempdir(), "wmts_test")
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  expect_length(
-    list.files(file.path(cdir, "Catastro")),
-    0
-  )
+  expect_length(list.files(file.path(cdir, "Catastro")), 0)
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 

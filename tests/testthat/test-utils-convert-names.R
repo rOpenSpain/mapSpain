@@ -93,17 +93,12 @@ test_that("convert_to_nuts_ccaa", {
     destination = "text"
   ))
 
-  expect_snapshot(
-    convert_to_nuts_ccaa(c("Murcia", "Almeria"))
-  )
+  expect_snapshot(convert_to_nuts_ccaa(c("Murcia", "Almeria")))
   expect_snapshot(
     error = TRUE,
     convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
   )
-  expect_snapshot(
-    error = TRUE,
-    convert_to_nuts_ccaa(c("AA", "XX"))
-  )
+  expect_snapshot(error = TRUE, convert_to_nuts_ccaa(c("AA", "XX")))
 
   # Check everything
 
@@ -187,22 +182,12 @@ test_that("convert_to_nuts_prov", {
     destination = "text"
   ))
 
-  expect_snapshot(
-    convert_to_nuts_prov(c("Murcia", "Almeria"))
-  )
+  expect_snapshot(convert_to_nuts_prov(c("Murcia", "Almeria")))
   expect_snapshot(
     error = TRUE,
-    convert_to_nuts_prov(c(
-      "La Gomera",
-      "El Hierro",
-      "Formentera",
-      "Mallorca"
-    ))
+    convert_to_nuts_prov(c("La Gomera", "El Hierro", "Formentera", "Mallorca"))
   )
-  expect_snapshot(
-    error = TRUE,
-    convert_to_nuts_prov(c("AA", "XX"))
-  )
+  expect_snapshot(error = TRUE, convert_to_nuts_prov(c("AA", "XX")))
 
   # Check everything
 

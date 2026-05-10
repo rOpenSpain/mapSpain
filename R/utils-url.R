@@ -107,18 +107,14 @@ download_url <- function(
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {get_status_code}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/rOpenSpain/mapSpain/issues}"
-      )
-    )
+    cli::cli_alert_danger(c(
+      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      " {.url {url}}."
+    ))
+    cli::cli_alert_warning(c(
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/rOpenSpain/mapSpain/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }

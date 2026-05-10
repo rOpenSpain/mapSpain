@@ -133,15 +133,9 @@ names_full <- rbind(names_full, names_alt) |> distinct()
 # Version UPCASE and lowercase
 
 upcase <- names_full |>
-  mutate(
-    value = toupper(value),
-    variable = paste0("upcase.", variable)
-  )
+  mutate(value = toupper(value), variable = paste0("upcase.", variable))
 locase <- names_full |>
-  mutate(
-    value = tolower(value),
-    variable = paste0("locase.", variable)
-  )
+  mutate(value = tolower(value), variable = paste0("locase.", variable))
 
 names_full <- rbind(names_full, upcase) |>
   rbind(locase) |>
@@ -165,14 +159,10 @@ esp_hexbin_ccaa <- mapSpain:::read_geo_file_sf(
   mapSpain:::sanitize_sf()
 
 
-esp_grid_prov <- mapSpain:::read_geo_file_sf(
-  "./data-raw/esp_grid_prov.gpkg"
-) |>
+esp_grid_prov <- mapSpain:::read_geo_file_sf("./data-raw/esp_grid_prov.gpkg") |>
   mapSpain:::sanitize_sf()
 
-esp_grid_ccaa <- mapSpain:::read_geo_file_sf(
-  "./data-raw/esp_grid_ccaa.gpkg"
-) |>
+esp_grid_ccaa <- mapSpain:::read_geo_file_sf("./data-raw/esp_grid_ccaa.gpkg") |>
   mapSpain:::sanitize_sf()
 
 

@@ -82,10 +82,7 @@ test_that("Read gpkg", {
     fake_local,
     q = "SELECT * from \"se89_10_admin_ccaa_a_x\" LIMIT 1"
   )
-  expect_equal(
-    sf::st_drop_geometry(sq),
-    sf::st_drop_geometry(s[1, ])
-  )
+  expect_equal(sf::st_drop_geometry(sq), sf::st_drop_geometry(s[1, ]))
 
   unlink(cdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(cdir))

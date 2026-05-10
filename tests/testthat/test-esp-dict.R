@@ -12,26 +12,20 @@ test_that("Testing dict", {
   expect_snapshot(esp_dict_region_code(vals, destination = "iso2"))
 
   # test fix on new database
-  expect_snapshot(
-    esp_dict_region_code(
-      c(
-        "Región de Murcia",
-        "Principado de Asturias",
-        "Ciudad de Ceuta",
-        "Ciudad de Melilla",
-        "Sta. Cruz de Tenerife"
-      ),
-      destination = "cpro"
-    )
-  )
+  expect_snapshot(esp_dict_region_code(
+    c(
+      "Región de Murcia",
+      "Principado de Asturias",
+      "Ciudad de Ceuta",
+      "Ciudad de Melilla",
+      "Sta. Cruz de Tenerife"
+    ),
+    destination = "cpro"
+  ))
 
   # test different casing of strings
   expect_snapshot(esp_dict_region_code(
-    c(
-      "AlBaceTe",
-      "albacete",
-      "ALBACETE"
-    ),
+    c("AlBaceTe", "albacete", "ALBACETE"),
     destination = "cpro"
   ))
   # From ISO2 to another codes
@@ -73,27 +67,19 @@ test_that("Testing dict", {
 
   expect_false(all(vals == test))
   expect_true(all(vals == esp_dict_translate(test, "es")))
-  expect_snapshot(
-    esp_dict_translate(
-      c(
-        "Región de Murcia",
-        "Principado de Asturias",
-        "Ciudad de Ceuta",
-        "Ciudad de Melilla",
-        "Sta. Cruz de Tenerife"
-      ),
-      lang = "eu"
-    )
-  )
+  expect_snapshot(esp_dict_translate(
+    c(
+      "Región de Murcia",
+      "Principado de Asturias",
+      "Ciudad de Ceuta",
+      "Ciudad de Melilla",
+      "Sta. Cruz de Tenerife"
+    ),
+    lang = "eu"
+  ))
 
-  expect_snapshot(
-    esp_dict_translate(
-      c(
-        "Rioja",
-        "Coruña",
-        "Palmas"
-      ),
-      lang = "en"
-    )
-  )
+  expect_snapshot(esp_dict_translate(
+    c("Rioja", "Coruña", "Palmas"),
+    lang = "en"
+  ))
 })

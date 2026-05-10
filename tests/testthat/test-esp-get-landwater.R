@@ -5,20 +5,11 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- esp_get_rivers(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_rivers(update_cache = TRUE), "Offline")
   expect_null(n)
-  expect_message(
-    n <- esp_get_wetlands(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- esp_get_wetlands(update_cache = TRUE), "Offline")
   expect_null(n)
-  expect_message(
-    n <- get_river_names(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- get_river_names(update_cache = TRUE), "Offline")
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -33,20 +24,11 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_rivers(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_rivers(update_cache = TRUE), "Error")
   expect_null(n)
-  expect_message(
-    n <- esp_get_wetlands(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_wetlands(update_cache = TRUE), "Error")
   expect_null(n)
-  expect_message(
-    n <- get_river_names(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- get_river_names(update_cache = TRUE), "Error")
   expect_null(n)
   local_mocked_bindings(is_404 = function(...) {
     FALSE
@@ -62,10 +44,7 @@ test_that("Cache vs non-cached rivers", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_rivers(
       cache = FALSE,
@@ -75,18 +54,10 @@ test_that("Cache vs non-cached rivers", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    "siane/rivernames.rda"
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), "siane/rivernames.rda")
 
   # vs cache TRUE
-  expect_silent(
-    db_cached <- esp_get_rivers(
-      cache = TRUE,
-      cache_dir = cdir
-    )
-  )
+  expect_silent(db_cached <- esp_get_rivers(cache = TRUE, cache_dir = cdir))
 
   expect_identical(db_online, db_cached)
   expect_s3_class(db_online, "sf")
@@ -113,10 +84,7 @@ test_that("Cache vs non-cached wetlands", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_wetlands(
       cache = FALSE,
@@ -126,18 +94,10 @@ test_that("Cache vs non-cached wetlands", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # vs cache TRUE
-  expect_silent(
-    db_cached <- esp_get_wetlands(
-      cache = TRUE,
-      cache_dir = cdir
-    )
-  )
+  expect_silent(db_cached <- esp_get_wetlands(cache = TRUE, cache_dir = cdir))
 
   expect_identical(db_online, db_cached)
   expect_s3_class(db_online, "sf")
@@ -160,23 +120,13 @@ test_that("Filtering names", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_silent(
-    l <- esp_get_rivers(
-      cache_dir = cdir,
-      epsg = 3857
-    )
-  )
+  expect_silent(l <- esp_get_rivers(cache_dir = cdir, epsg = 3857))
   expect_s3_class(l, "sf")
   expect_s3_class(l, "tbl_df")
 
   expect_equal(sf::st_crs(l)$epsg, 3857)
 
-  expect_silent(
-    l <- esp_get_wetlands(
-      cache_dir = cdir,
-      epsg = 3857
-    )
-  )
+  expect_silent(l <- esp_get_wetlands(cache_dir = cdir, epsg = 3857))
   expect_s3_class(l, "sf")
   expect_s3_class(l, "tbl_df")
 
@@ -193,12 +143,7 @@ test_that("Filtering names", {
   expect_s3_class(ebro, "tbl_df")
   expect_lt(nrow(ebro), 20)
 
-  expect_silent(
-    serena <- esp_get_wetlands(
-      cache_dir = cdir,
-      name = "Serena"
-    )
-  )
+  expect_silent(serena <- esp_get_wetlands(cache_dir = cdir, name = "Serena"))
   expect_s3_class(serena, "sf")
   expect_s3_class(serena, "tbl_df")
   expect_lt(nrow(serena), 5)
@@ -215,12 +160,7 @@ test_that("Deprecations", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_snapshot(
-    l <- esp_get_rivers(
-      cache_dir = cdir,
-      resolution = 10
-    )
-  )
+  expect_snapshot(l <- esp_get_rivers(cache_dir = cdir, resolution = 10))
   expect_s3_class(l, "sf")
   expect_s3_class(l, "tbl_df")
   expect_equal(sf::st_crs(l)$epsg, 4258)
@@ -233,12 +173,7 @@ test_that("Deprecations", {
     )
   )
 
-  expect_silent(
-    l2 <- esp_get_wetlands(
-      cache_dir = cdir,
-      name = "Serena"
-    )
-  )
+  expect_silent(l2 <- esp_get_wetlands(cache_dir = cdir, name = "Serena"))
   expect_s3_class(l2, "sf")
   expect_s3_class(l2, "tbl_df")
 

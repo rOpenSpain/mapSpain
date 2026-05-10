@@ -30,26 +30,20 @@ test_that("Test munic online", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_no_error(
-    a1 <- esp_get_munic(year = 2024, cache_dir = cdir)
-  )
+  expect_no_error(a1 <- esp_get_munic(year = 2024, cache_dir = cdir))
   expect_s3_class(a1, "sf")
   expect_s3_class(a1, "tbl_df")
   expect_identical(unique(a1$CNTR_CODE), "ES")
 
   # Issue #121
-  expect_no_error(
-    a1 <- esp_get_munic(year = 2001, cache_dir = cdir)
-  )
+  expect_no_error(a1 <- esp_get_munic(year = 2001, cache_dir = cdir))
 
   expect_s3_class(a1, "sf")
   expect_s3_class(a1, "tbl_df")
   expect_identical(unique(a1$CNTR_CODE), "ES")
 
   # Issue #121
-  expect_no_error(
-    a1 <- esp_get_munic(year = 2004, cache_dir = cdir)
-  )
+  expect_no_error(a1 <- esp_get_munic(year = 2004, cache_dir = cdir))
 
   expect_s3_class(a1, "sf")
   expect_s3_class(a1, "tbl_df")

@@ -14,17 +14,8 @@ p <- esp_get_can_provinces()
 
 
 a <- ggplot(map) +
-  geom_sf(
-    fill = "#FABD00",
-    colour = "#AD1519",
-    size = 0.05
-  ) +
-  geom_sf(
-    data = map2,
-    color = "#FABD00",
-    fill = NA,
-    linewidth = 0.1
-  ) +
+  geom_sf(fill = "#FABD00", colour = "#AD1519", size = 0.05) +
+  geom_sf(data = map2, color = "#FABD00", fill = NA, linewidth = 0.1) +
   geom_sf(data = l, color = "#FABD00", linewidth = 0.1) +
   geom_sf(data = p, color = "#FABD00", linewidth = 0.1) +
   theme_void()

@@ -8,15 +8,9 @@ library(dplyr)
 
 # CCAA - Hex----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
-PENIN <- CCAA[
-  !CCAA$iso2.ccaa.code %in%
-    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-]
+PENIN <- CCAA[!CCAA$iso2.ccaa.code %in% c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
 
-REST <- CCAA[
-  CCAA$iso2.ccaa.code %in%
-    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-]
+REST <- CCAA[CCAA$iso2.ccaa.code %in% c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
 
 # Grid for penin
 cells <- calculate_grid(
@@ -43,13 +37,12 @@ bbox <- st_bbox(CCAA)
 maxdist <- max(bbox[3] - bbox[1], bbox[4] - bbox[1]) * 0.05
 
 
-grid <-
-  st_make_grid(
-    st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
-    crs = st_crs(3857),
-    cellsize = marea,
-    square = FALSE
-  )
+grid <- st_make_grid(
+  st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
+  crs = st_crs(3857),
+  cellsize = marea,
+  square = FALSE
+)
 
 grid <- st_sf(id = seq_along(grid), geometry = grid)
 
@@ -59,14 +52,12 @@ labelLayer(grid, txt = "id")
 
 # Align visually Galicia
 
-init <-
-  grid |>
+init <- grid |>
   filter(id == 39) |>
   st_centroid() |>
   st_coordinates()
 
-end <-
-  PENINNEW |>
+end <- PENINNEW |>
   filter(iso2.ccaa.code == "ES-GA") |>
   st_centroid() |>
   st_coordinates()
@@ -85,20 +76,16 @@ plot(st_geometry(PENINNEW), add = TRUE, col = "red")
 plot(st_geometry(REST), col = "blue", add = TRUE)
 labelLayer(newgrid, txt = "id")
 
-df <-
-  data.frame(
-    iso2.ccaa.code = c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-    id = c(22, 47, 57, 83)
-  )
+df <- data.frame(
+  iso2.ccaa.code = c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+  id = c(22, 47, 57, 83)
+)
 
 finalgrid <- newgrid |>
   inner_join(df) |>
   select(iso2.ccaa.code)
 
-CCAA_END <- rbind(
-  PENINNEW[, "iso2.ccaa.code"],
-  finalgrid
-)
+CCAA_END <- rbind(PENINNEW[, "iso2.ccaa.code"], finalgrid)
 
 
 plot(st_geometry(CCAA_END))
@@ -107,8 +94,12 @@ finaldf <- st_drop_geometry(CCAA)
 
 esp_hexbin_ccaa <- merge(CCAA_END, finaldf)
 
-esp_hexbin_ccaa$label <-
-  gsub("ES-", "", esp_hexbin_ccaa$iso2.ccaa.code, fixed = TRUE)
+esp_hexbin_ccaa$label <- gsub(
+  "ES-",
+  "",
+  esp_hexbin_ccaa$iso2.ccaa.code,
+  fixed = TRUE
+)
 
 newnames <- c("label", names(finaldf))
 esp_hexbin_ccaa <- esp_hexbin_ccaa[, newnames]
@@ -126,12 +117,7 @@ st_write(esp_hexbin_ccaa, "data-raw/esp_hexbin_ccaa.gpkg", delete_layer = TRUE)
 rm(
   list = ls()[
     !(ls() %in%
-      c(
-        "esp_grid_ccaa",
-        "esp_grid_prov",
-        "esp_hexbin_ccaa",
-        "esp_hexbin_prov"
-      ))
+      c("esp_grid_ccaa", "esp_grid_prov", "esp_hexbin_ccaa", "esp_hexbin_prov"))
   ]
 )
 
@@ -143,21 +129,14 @@ labelLayer(esp_hexbin_ccaa, txt = "label")
 
 PROV <- st_transform(esp_get_prov(), 3857)
 
-ncod <-
-  esp_dict_region_code(
-    c("Canarias", "Ceuta", "Melilla", "Baleares"),
-    destination = "codauto"
-  )
+ncod <- esp_dict_region_code(
+  c("Canarias", "Ceuta", "Melilla", "Baleares"),
+  destination = "codauto"
+)
 
-PENIN <- PROV[
-  !PROV$codauto %in%
-    ncod,
-]
+PENIN <- PROV[!PROV$codauto %in% ncod, ]
 
-REST <- PROV[
-  PROV$codauto %in%
-    ncod,
-]
+REST <- PROV[PROV$codauto %in% ncod, ]
 
 cells <- calculate_grid(
   PENIN,
@@ -166,8 +145,7 @@ cells <- calculate_grid(
   learning_rate = 0.2
 )
 
-PENINNEW <-
-  assign_polygons(PENIN, cells) |>
+PENINNEW <- assign_polygons(PENIN, cells) |>
   st_transform(3857) |>
   select(cpro)
 
@@ -189,13 +167,12 @@ bbox <- st_bbox(PENIN)
 maxdist <- max(bbox[3] - bbox[1], bbox[4] - bbox[1]) * 0.05
 
 
-grid <-
-  st_make_grid(
-    st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
-    crs = st_crs(3857),
-    cellsize = marea,
-    square = FALSE
-  )
+grid <- st_make_grid(
+  st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
+  crs = st_crs(3857),
+  cellsize = marea,
+  square = FALSE
+)
 
 grid <- st_sf(id = seq_along(grid), geometry = grid)
 
@@ -205,14 +182,12 @@ labelLayer(grid, txt = "id")
 
 # Align visually Galicia
 
-init <-
-  grid |>
+init <- grid |>
   filter(id == 46) |>
   st_centroid() |>
   st_coordinates()
 
-end <-
-  PENINNEW |>
+end <- PENINNEW |>
   filter(iso2.prov.code == "ES-C") |>
   st_centroid() |>
   st_coordinates()
@@ -279,12 +254,7 @@ st_write(esp_hexbin_prov, "data-raw/esp_hexbin_prov.gpkg", delete_layer = TRUE)
 rm(
   list = ls()[
     !(ls() %in%
-      c(
-        "esp_grid_ccaa",
-        "esp_grid_prov",
-        "esp_hexbin_ccaa",
-        "esp_hexbin_prov"
-      ))
+      c("esp_grid_ccaa", "esp_grid_prov", "esp_hexbin_ccaa", "esp_hexbin_prov"))
   ]
 )
 
@@ -295,15 +265,9 @@ labelLayer(esp_hexbin_prov, txt = "label")
 
 # CCAA Squares----
 CCAA <- st_transform(esp_get_ccaa(), 3857)
-PENIN <- CCAA[
-  !CCAA$iso2.ccaa.code %in%
-    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-]
+PENIN <- CCAA[!CCAA$iso2.ccaa.code %in% c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
 
-REST <- CCAA[
-  CCAA$iso2.ccaa.code %in%
-    c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-]
+REST <- CCAA[CCAA$iso2.ccaa.code %in% c("ES-CN", "ES-CE", "ES-ML", "ES-IB"), ]
 cells <- calculate_grid(
   PENIN,
   grid_type = "regular",
@@ -325,13 +289,12 @@ bbox <- st_bbox(CCAA)
 maxdist <- max(bbox[3] - bbox[1], bbox[4] - bbox[1]) * 0.05
 
 
-grid <-
-  st_make_grid(
-    st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
-    crs = st_crs(3857),
-    cellsize = sqrt(marea),
-    square = TRUE
-  )
+grid <- st_make_grid(
+  st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
+  crs = st_crs(3857),
+  cellsize = sqrt(marea),
+  square = TRUE
+)
 
 grid <- st_sf(id = seq_along(grid), geometry = grid)
 
@@ -343,14 +306,12 @@ labelLayer(grid, txt = "id")
 
 # Align visually Galicia
 
-init <-
-  grid |>
+init <- grid |>
   filter(id == 59) |>
   st_centroid() |>
   st_coordinates()
 
-end <-
-  PENINNEW |>
+end <- PENINNEW |>
   filter(iso2.ccaa.code == "ES-GA") |>
   st_centroid() |>
   st_coordinates()
@@ -372,21 +333,17 @@ plot(st_geometry(REST), col = "blue", add = TRUE)
 labelLayer(newgrid, txt = "id")
 
 
-df <-
-  data.frame(
-    iso2.ccaa.code = c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
-    id = c(14, 5, 6, 43)
-  )
+df <- data.frame(
+  iso2.ccaa.code = c("ES-CN", "ES-CE", "ES-ML", "ES-IB"),
+  id = c(14, 5, 6, 43)
+)
 
 
 finalgrid <- newgrid |>
   inner_join(df) |>
   select(iso2.ccaa.code)
 
-CCAA_END <- rbind(
-  PENINNEW[, "iso2.ccaa.code"],
-  finalgrid
-)
+CCAA_END <- rbind(PENINNEW[, "iso2.ccaa.code"], finalgrid)
 
 plot(st_geometry(CCAA_END))
 
@@ -405,12 +362,7 @@ st_write(esp_grid_ccaa, "data-raw/esp_grid_ccaa.gpkg", delete_layer = TRUE)
 rm(
   list = ls()[
     !(ls() %in%
-      c(
-        "esp_grid_ccaa",
-        "esp_grid_prov",
-        "esp_hexbin_ccaa",
-        "esp_hexbin_prov"
-      ))
+      c("esp_grid_ccaa", "esp_grid_prov", "esp_hexbin_ccaa", "esp_hexbin_prov"))
   ]
 )
 
@@ -421,21 +373,14 @@ labelLayer(esp_grid_ccaa, txt = "label")
 
 PROV <- st_transform(esp_get_prov(), 3857)
 
-ncod <-
-  esp_dict_region_code(
-    c("Canarias", "Ceuta", "Melilla", "Baleares"),
-    destination = "codauto"
-  )
+ncod <- esp_dict_region_code(
+  c("Canarias", "Ceuta", "Melilla", "Baleares"),
+  destination = "codauto"
+)
 
-PENIN <- PROV[
-  !PROV$codauto %in%
-    ncod,
-]
+PENIN <- PROV[!PROV$codauto %in% ncod, ]
 
-REST <- PROV[
-  PROV$codauto %in%
-    ncod,
-]
+REST <- PROV[PROV$codauto %in% ncod, ]
 
 
 cells <- calculate_grid(
@@ -446,8 +391,7 @@ cells <- calculate_grid(
 )
 
 
-PENINNEW <-
-  assign_polygons(PENIN, cells) |>
+PENINNEW <- assign_polygons(PENIN, cells) |>
   st_transform(3857) |>
   select(cpro)
 
@@ -464,13 +408,12 @@ bbox <- st_bbox(PENIN)
 maxdist <- max(bbox[3] - bbox[1], bbox[4] - bbox[1]) * 0.05
 
 
-grid <-
-  st_make_grid(
-    st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
-    crs = st_crs(3857),
-    cellsize = sqrt(marea),
-    square = TRUE
-  )
+grid <- st_make_grid(
+  st_as_sfc(bbox + c(-maxdist, -maxdist, maxdist, maxdist)),
+  crs = st_crs(3857),
+  cellsize = sqrt(marea),
+  square = TRUE
+)
 
 grid <- st_sf(id = seq_along(grid), geometry = grid)
 
@@ -479,14 +422,12 @@ plot(st_geometry(grid))
 plot(st_geometry(PENINNEW), add = TRUE, col = "red")
 labelLayer(grid, txt = "id")
 
-init <-
-  grid |>
+init <- grid |>
   filter(id == 164) |>
   st_centroid() |>
   st_coordinates()
 
-end <-
-  PENINNEW |>
+end <- PENINNEW |>
   filter(iso2.prov.code == "ES-C") |>
   st_centroid() |>
   st_coordinates()
@@ -527,10 +468,7 @@ finalgrid <- newgrid |>
   inner_join(df) |>
   select(cpro)
 
-PROV_END <- rbind(
-  PENINNEW[, "cpro"],
-  finalgrid
-)
+PROV_END <- rbind(PENINNEW[, "cpro"], finalgrid)
 
 
 plot(st_geometry(PROV_END))

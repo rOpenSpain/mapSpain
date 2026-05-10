@@ -57,10 +57,7 @@ test_that("Test local NUTS", {
   expect_equal(length(l1), nrow(ff))
 
   # Check all iso codes
-  b <- unique(c(
-    esp_codelist$iso2.ccaa.code,
-    esp_codelist$iso2.prov.code
-  ))
+  b <- unique(c(esp_codelist$iso2.ccaa.code, esp_codelist$iso2.prov.code))
   expect_snapshot(s1 <- esp_get_nuts(region = b))
 
   # Check names
@@ -94,20 +91,11 @@ test_that("Valid inputs", {
   l1 <- esp_get_nuts(nuts_level = "1", cache_dir = cdir)
   l2 <- esp_get_nuts(nuts_level = "2", cache_dir = cdir)
   l3 <- esp_get_nuts(nuts_level = "3", cache_dir = cdir)
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 1, ]),
-    nrow(l1)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 1, ]), nrow(l1))
 
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 2, ]),
-    nrow(l2)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 2, ]), nrow(l2))
 
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 3, ]),
-    nrow(l3)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 3, ]), nrow(l3))
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
@@ -121,30 +109,18 @@ test_that("Cached dataset vs updated", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- esp_get_nuts(verbose = TRUE, region = "Murcia"))
 
   # In some levels should also filter from cache
   db_cached_l1 <- esp_get_nuts(nuts_level = 1)
   db_cached_l2 <- esp_get_nuts(nuts_level = 2)
   db_cached_l3 <- esp_get_nuts(nuts_level = 3)
-  expect_true(
-    all(db_cached_l1$LEVL_CODE == 1)
-  )
-  expect_true(
-    all(db_cached_l2$LEVL_CODE == 2)
-  )
+  expect_true(all(db_cached_l1$LEVL_CODE == 1))
+  expect_true(all(db_cached_l2$LEVL_CODE == 2))
 
-  expect_true(
-    all(db_cached_l3$LEVL_CODE == 3)
-  )
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_true(all(db_cached_l3$LEVL_CODE == 3))
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   # Force download
 
   db_cached2 <- esp_get_nuts(
@@ -205,10 +181,7 @@ test_that("Extensions", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   db_geojson <- esp_get_nuts(
     resolution = "60",
@@ -219,10 +192,7 @@ test_that("Extensions", {
   expect_s3_class(db_geojson, "sf")
   expect_s3_class(db_geojson, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "geojson"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "geojson"), 1)
 
   db_zip <- esp_get_nuts(
     resolution = "60",
@@ -235,10 +205,7 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "sf")
   expect_s3_class(db_zip, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)

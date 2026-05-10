@@ -2,14 +2,13 @@
 
 library(giscoR)
 library(dplyr)
-esp_nuts_2024 <-
-  gisco_get_nuts(
-    resolution = 1,
-    verbose = TRUE,
-    year = 2024,
-    country = "ES",
-    update_cache = TRUE
-  ) |>
+esp_nuts_2024 <- gisco_get_nuts(
+  resolution = 1,
+  verbose = TRUE,
+  year = 2024,
+  country = "ES",
+  update_cache = TRUE
+) |>
   arrange(LEVL_CODE, NUTS_ID)
 
 # Convert to ETRS89

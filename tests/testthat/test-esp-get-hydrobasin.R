@@ -25,10 +25,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- esp_get_hydrobasin(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- esp_get_hydrobasin(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -44,10 +41,7 @@ test_that("Cache vs non-cached", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_hydrobasin(
       cache = FALSE,
@@ -57,28 +51,17 @@ test_that("Cache vs non-cached", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # vs cache TRUE
-  expect_silent(
-    db_cached <- esp_get_hydrobasin(
-      cache = TRUE,
-      cache_dir = cdir
-    )
-  )
+  expect_silent(db_cached <- esp_get_hydrobasin(cache = TRUE, cache_dir = cdir))
 
   expect_identical(db_online, db_cached)
   expect_s3_class(db_online, "sf")
   expect_s3_class(db_online, "tbl_df")
   expect_identical(
     list.files(cdir, recursive = TRUE),
-    c(
-      "siane/se89_3_hidro_demt_a_x.gpkg",
-      "siane/se89_3_hidro_demt_a_y.gpkg"
-    )
+    c("siane/se89_3_hidro_demt_a_x.gpkg", "siane/se89_3_hidro_demt_a_y.gpkg")
   )
 
   # Cleanup
@@ -97,11 +80,7 @@ test_that("hydrobasin online", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   expect_silent(
-    l <- esp_get_hydrobasin(
-      resolution = "10",
-      epsg = 3857,
-      cache_dir = cdir
-    )
+    l <- esp_get_hydrobasin(resolution = "10", epsg = 3857, cache_dir = cdir)
   )
 
   expect_true(sf::st_crs(l) == sf::st_crs(3857))

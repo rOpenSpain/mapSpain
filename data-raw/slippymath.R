@@ -30,10 +30,7 @@ bbox_to_tile_grid <- function(bbox, zoom = NULL, max_tiles = NULL) {
   tile_extent <- bbox_tile_extent(bbox, zoom)
   x_tiles <- tile_extent$x_min:tile_extent$x_max
   y_tiles <- tile_extent$y_min:tile_extent$y_max
-  tile_grid <- list(
-    tiles = expand.grid(x = x_tiles, y = y_tiles),
-    zoom = zoom
-  )
+  tile_grid <- list(tiles = expand.grid(x = x_tiles, y = y_tiles), zoom = zoom)
   tile_grid
 }
 
@@ -88,14 +85,12 @@ bbox_tile_query <- function(bbox, zoom_levels = 2:18) {
   for (i in seq_along(zoom_levels)) {
     l[[i]] <- bbox_tile_extent(bbox, zoom = zoom_levels[i])
   }
-  extents_at_zooms <- data.frame(
-    matrix(
-      data = unlist(lapply(l, unlist)),
-      ncol = 4,
-      byrow = TRUE,
-      dimnames = list(seq_along(l), c("x_min", "y_min", "x_max", "y_max"))
-    )
-  )
+  extents_at_zooms <- data.frame(matrix(
+    data = unlist(lapply(l, unlist)),
+    ncol = 4,
+    byrow = TRUE,
+    dimnames = list(seq_along(l), c("x_min", "y_min", "x_max", "y_max"))
+  ))
   extents_at_zooms$y_dim <- abs(
     extents_at_zooms$y_max - extents_at_zooms$y_min
   ) +

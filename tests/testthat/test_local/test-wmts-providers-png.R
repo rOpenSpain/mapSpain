@@ -30,10 +30,7 @@ test_that("Test WMTS png", {
   cala <- cala |> sf::st_buffer(dist = 1000)
   fails <- NULL
   for (n in all_n) {
-    tile <- try(
-      esp_get_tiles(cala, type = n, cache_dir = cdir),
-      silent = TRUE
-    )
+    tile <- try(esp_get_tiles(cala, type = n, cache_dir = cdir), silent = TRUE)
     if (!inherits(tile, "try-error")) {
       expect_true(!is.null(ensure_null(terra::crs(tile))))
 

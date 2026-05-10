@@ -122,12 +122,12 @@ esp_get_capimun <- function(
     NA
   )
 
-  cod <- unique(
-    mapSpain::esp_codelist[
-      ,
-      c("codauto", "ine.ccaa.name", "cpro", "ine.prov.name")
-    ]
-  )
+  cod <- unique(mapSpain::esp_codelist[, c(
+    "codauto",
+    "ine.ccaa.name",
+    "cpro",
+    "ine.prov.name"
+  )])
 
   data_sf <- merge(data_sf, cod, by = "cpro", all.x = TRUE, no.dups = TRUE)
 
@@ -149,12 +149,10 @@ esp_get_capimun <- function(
   }
 
   if (nrow(data_sf) == 0) {
-    cli::cli_alert_warning(
-      paste0(
-        "The combination of {.arg region} and/or {.arg munic} does not ",
-        "return any result"
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "The combination of {.arg region} and/or {.arg munic} does not ",
+      "return any result"
+    ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)
   }

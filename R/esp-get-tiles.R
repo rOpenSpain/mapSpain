@@ -160,12 +160,10 @@ esp_get_tiles <- function(
   # Only sf and sfc allowed
 
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg x} should be an {.cls sf} ",
-        "or {.cls sfc} object, not {.obj_type_friendly {x}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg x} should be an {.cls sf} ",
+      "or {.cls sfc} object, not {.obj_type_friendly {x}}."
+    ))
   }
 
   geom <- sf::st_geometry(x)
@@ -352,11 +350,7 @@ get_wmts_tile <- function(
   if (is.null(zoom)) {
     zoom <- min(tile_grid[tile_grid$total_tiles %in% seq(4, 12), ]$zoom) +
       zoommin
-    make_msg(
-      "info",
-      verbose,
-      paste0("Autozoom level: {.val ", zoom, "}.")
-    )
+    make_msg("info", verbose, paste0("Autozoom level: {.val ", zoom, "}."))
   }
 
   # Check provider
@@ -378,10 +372,7 @@ get_wmts_tile <- function(
 
   # Composing grid
   # get tile list
-  tile_numbers <- bbox_to_tile_grid(
-    bbox = bbox_4326,
-    zoom = as.numeric(zoom)
-  )
+  tile_numbers <- bbox_to_tile_grid(bbox = bbox_4326, zoom = as.numeric(zoom))
   tile_numbers_df <- tile_numbers$tiles
 
   # Prepare query

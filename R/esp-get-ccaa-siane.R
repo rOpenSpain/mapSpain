@@ -175,15 +175,12 @@ esp_get_ccaa_siane <- function(
 
   # Select columns
   if (rawcols) {
-    data_sf <- data_sf[
-      ,
-      unique(c(
-        initcols,
-        colnames(df),
-        "nuts1.code",
-        "nuts1.name"
-      ))
-    ]
+    data_sf <- data_sf[, unique(c(
+      initcols,
+      colnames(df),
+      "nuts1.code",
+      "nuts1.name"
+    ))]
   } else {
     data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
   }
