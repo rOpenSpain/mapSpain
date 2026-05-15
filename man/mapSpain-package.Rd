@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database \url{https://ec.europa.eu/eurostat/web/gisco} and 'CartoBase SIANE' from 'Instituto Geografico Nacional' \url{https://www.ign.es/}. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.
+Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database \url{https://ec.europa.eu/eurostat/web/gisco} and 'CartoBase ANE' from 'Instituto Geográfico Nacional' \url{https://www.ign.es/}. It also provides a 'leaflet' plugin and the ability of downloading and processing static tiles.
 }
 \seealso{
 Useful links:

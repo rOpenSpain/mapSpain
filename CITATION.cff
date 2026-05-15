@@ -15,7 +15,7 @@ identifiers:
   value: 10.32614/CRAN.package.mapSpain
 abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
   Provinces, Municipalities) based on the 'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
-  and 'CartoBase SIANE' from 'Instituto Geografico Nacional' <https://www.ign.es/>.
+  and 'CartoBase ANE' from 'Instituto Geográfico Nacional' <https://www.ign.es/>.
   It also provides a 'leaflet' plugin and the ability of downloading and processing
   static tiles.
 authors:
@@ -37,9 +37,9 @@ preferred-citation:
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative Boundaries of Spain at several levels (Autonomous Communities,
     Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco>
-    and CartoBase SIANE from Instituto Geografico Nacional <https://www.ign.es/>.
-    It also provides a leaflet plugin and the ability of downloading and processing
-    static tiles.
+    and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It
+    also provides a leaflet plugin and the ability of downloading and processing static
+    tiles.
 repository: https://CRAN.R-project.org/package=mapSpain
 repository-code: https://github.com/rOpenSpain/mapSpain
 url: https://ropenspain.github.io/mapSpain/

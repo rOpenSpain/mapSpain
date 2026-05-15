@@ -33,8 +33,8 @@
 #'
 #' @section Caching strategies:
 #'
-#' Some files can be read from its online source without caching using the
-#' option `cache = FALSE`. Otherwise the source file will be downloaded to
+#' Some files can be read from their online source without caching using the
+#' option `cache = FALSE`. Otherwise the source files will be downloaded to
 #' your computer. \CRANpkg{mapSpain} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no

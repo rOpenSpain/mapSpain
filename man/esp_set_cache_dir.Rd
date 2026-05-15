@@ -57,8 +57,8 @@ A message appears once during this migration.
 \section{Caching strategies}{
 
 
-Some files can be read from its online source without caching using the
-option \code{cache = FALSE}. Otherwise the source file will be downloaded to
+Some files can be read from their online source without caching using the
+option \code{cache = FALSE}. Otherwise the source files will be downloaded to
 your computer. \CRANpkg{mapSpain} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no

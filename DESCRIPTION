@@ -15,7 +15,7 @@ Authors@R: c(
 Description: Administrative Boundaries of Spain at several levels
     (Autonomous Communities, Provinces, Municipalities) based on the
     'GISCO' 'Eurostat' database <https://ec.europa.eu/eurostat/web/gisco>
-    and 'CartoBase SIANE' from 'Instituto Geografico Nacional'
+    and 'CartoBase ANE' from 'Instituto Geográfico Nacional'
     <https://www.ign.es/>.  It also provides a 'leaflet' plugin and the
     ability of downloading and processing static tiles.
 License: GPL-3
@@ -58,7 +58,7 @@ Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas
-    Nacional de España (ANE) CC BY 4.0 <http://www.ign.es>. INE
+    Nacional de España (ANE) CC-BY 4.0 <http://www.ign.es>. INE
     <https://www.ine.es/en/index.htm>
 Encoding: UTF-8
 LazyData: true
