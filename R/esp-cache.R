@@ -122,7 +122,7 @@ esp_set_cache_dir <- function(
     mapspain_file <- file.path(config_dir, "mapSpain_cache_dir")
 
     if (!file.exists(mapspain_file) || overwrite) {
-      # Create file if it doesn't exist
+      # Create file if it does not exist.
       writeLines(cache_dir, con = mapspain_file)
     } else {
       cli::cli_abort(c(
@@ -172,10 +172,10 @@ esp_detect_cache_dir <- function() {
 #' **Use this function with caution.** It clears your cached data and
 #' configuration, specifically:
 #'
-#' * Deletes the \CRANpkg{mapSpain} configuration directory
+#' - Deletes the \CRANpkg{mapSpain} configuration directory
 #'   (`tools::R_user_dir("mapSpain", "config")`).
-#' * Deletes the `cache_dir` directory and its contents.
-#' * Clears the value stored in `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
+#' - Deletes the `cache_dir` directory and its contents.
+#' - Clears the value stored in `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
 #'
 #' @param config logical. If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{mapSpain}.
@@ -221,7 +221,7 @@ esp_clear_cache <- function(
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg mapSpain} cache config deleted")
+      cli::cli_alert_warning("{.pkg mapSpain} cache configuration deleted.")
     }
   }
   # nocov end
@@ -234,7 +234,7 @@ esp_clear_cache <- function(
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_success(
-        "{.pkg mapSpain} data deleted: {.file {data_dir}} ({siz})"
+        "{.pkg mapSpain} data deleted: {.file {data_dir}} ({siz})."
       )
     }
   }
@@ -344,7 +344,7 @@ migrate_cache <- function(
       "See {.strong Note} in {.fn mapSpain::esp_set_cache_dir} for details."
     ))
     cli::cli_alert_info(
-      "This is a one-time message, it won't be displayed in the future."
+      "This is a one-time message, it will not be displayed in the future."
     )
   }
   unlink(old, force = TRUE, recursive = TRUE)

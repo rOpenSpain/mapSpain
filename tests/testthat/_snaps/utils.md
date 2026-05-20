@@ -113,7 +113,7 @@
       siane_filter_year(data_sf, "1900-12")
     Condition
       Error in `siane_filter_year()`:
-      ! Date "1900-12-12-31" doesn't seem to be valid. Use "YYYY" or "YYYY-MM-DD" format. See `base::as.Date()`.
+      ! Date "1900-12-12-31" does not seem to be valid. Use "YYYY" or "YYYY-MM-DD" format. See `base::as.Date()`.
 
 # Not empty
 

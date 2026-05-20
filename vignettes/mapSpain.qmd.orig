@@ -1,11 +1,11 @@
 ---
-title: "Get Started"
+title: "Get started"
 author:
   - name: Diego Hernangómez
     orcid: 0000-0001-8457-4658
 description: First steps with mapSpain
 vignette: >
-  %\VignetteIndexEntry{Get Started}
+  %\VignetteIndexEntry{Get started}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,7 +39,7 @@ For more examples and vignettes, see the full site at
 provide geographical information about Spain at different levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces, autonomous
-communities, and NUTS levels of Spain. It also provides hexbin shapefiles and
+communities and NUTS levels of Spain. It also provides hexbin shapefiles and
 other complementary shapes, such as the demarcation lines around the Canary
 Islands.
 
@@ -55,8 +55,8 @@ and converts them to various coding standards such as NUTS, ISO2, and the INE
 
 ## Caching
 
-**mapSpain** provides dataset and tile caching capabilities, which can be set
-as:
+**mapSpain** provides dataset and tile caching capabilities. Set a cache
+directory with:
 
 ```{r}
 #| eval: false
@@ -70,11 +70,11 @@ session.
 
 ## Basic example
 
-Some examples of what **mapSpain** can do:
+These examples show what **mapSpain** can do:
 
 ```{r}
 #| label: basic
-#| fig-cap: 'Example: Map of Spain'
+#| fig-cap: 'Example: map of Spain'
 #| fig-asp: 0.7
 library(mapSpain)
 library(ggplot2)
@@ -100,7 +100,7 @@ ggplot(country) +
 
 ```{r}
 #| label: basic2
-#| fig-cap: 'Example: Provinces of Andalucia'
+#| fig-cap: 'Example: provinces of Andalucia'
 #| fig-asp: 0.55
 # Plot provinces
 
@@ -113,7 +113,7 @@ ggplot(andalucia) +
 
 ```{r}
 #| label: basic3
-#| fig-cap: 'Example: Municipalities of the Basque Country'
+#| fig-cap: 'Example: municipalities of the Basque Country'
 #| fig-asp: 0.8
 # Plot municipalities
 
@@ -211,15 +211,15 @@ though any package that handles `sf` objects (e.g., **tmap**, **mapsf**,
 #| crop: true
 #| fig-cap: Population density in Spain (2025)
 #| fig-dpi: 150
-# Population density of Spain
+# Calculate population density in Spain
 library(sf)
 
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
 munic <- esp_get_munic_siane(rawcols = TRUE) |>
-  # Get area in km2 from siane munic
-  # Already on the shapefile
+  # Get area in km2 from SIANE municipalities.
+  # This variable is already in the shapefile.
   mutate(area_km2 = st_area_sh * 10000)
 
 munic_pop <- munic |>
@@ -315,7 +315,7 @@ and use them alongside your shapefiles.
 [**leaflet**](https://rstudio.github.io/leaflet/) package, which allows you to
 include several basemaps on your interactive maps.
 
-The services are implemented via the
+The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 Leaflet plugin. All available providers are listed there.
 

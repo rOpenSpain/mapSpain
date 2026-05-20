@@ -145,7 +145,8 @@ NULL
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
+#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+#' \CRANpkg{leaflet},
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @format
@@ -179,7 +180,6 @@ NULL
 #' single$leaflet
 #'
 NULL
-
 
 #' NUTS 2024 for Spain [`sf`][sf::st_sf] object
 #'

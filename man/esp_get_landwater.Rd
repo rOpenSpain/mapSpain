@@ -86,7 +86,7 @@ wetlands.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{name}{character string or  \code{\link[base:grep]{regex}} expression. Name of
+\item{name}{character string or \code{\link[base:grep]{regex}} expression. Name of
 the element(s) to be extracted.}
 }
 \value{

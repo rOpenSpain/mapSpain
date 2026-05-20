@@ -18,8 +18,8 @@
     Code
       convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c")
     Message
-      ! Some country/codes were not matched unambiguously: "POR" and "RTA"
-      i Review the names/codes or switch to ISO3 codes.
+      ! Some country names or codes were not matched unambiguously: "POR" and "RTA".
+      i Review the names or codes, or switch to ISO3 codes.
     Output
       [1] "ESP" "USA"
 
@@ -70,8 +70,8 @@
     Code
       convert_country_code(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
     Message
-      ! Some country/codes were not matched unambiguously: "Rea" and "Murcua"
-      i Review the names/codes or switch to ISO3 codes.
+      ! Some country names or codes were not matched unambiguously: "Rea" and "Murcua".
+      i Review the names or codes, or switch to ISO3 codes.
     Output
       [1] "ESP" "XKX" "ATA"
 

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_munic}
 \alias{esp_get_munic}
-\title{Municipalities of Spain - GISCO}
+\title{Municipalities of Spain from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -90,7 +90,7 @@ Please check the download and usage provisions on \code{\link[giscoR:gisco_attri
 # The Spanish Lapland:
 # https://en.wikipedia.org/wiki/Celtiberian_Range
 
-# Get munics
+# Get municipalities.
 spanish_laplad <- esp_get_munic(
   year = 2023,
   region = c(

@@ -189,7 +189,7 @@ convert_to_nuts_prov <- function(region) {
     code <- nuts_cpros[i]
     type <- code_type[i]
 
-    # Need this to convert Canarias to Provinces
+    # Convert Canarias to provinces.
     if (type == "text") {
       suppressMessages(name_es <- esp_dict_translate(code, "es"), "cliMessage")
 
@@ -314,7 +314,6 @@ convert_to_nuts_prov <- function(region) {
 
   nuts_id
 }
-
 
 #' Build a lookup table of province codes (cpro) to NUTS codes
 #'

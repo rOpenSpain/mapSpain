@@ -17,7 +17,7 @@
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
 #'   Use [mapSpain::esp_get_wetlands()] instead of `"spatialtype"` for
 #'   wetlands.
-#' @param name character string or  [`regex`][base::grep()] expression. Name of
+#' @param name character string or [`regex`][base::grep()] expression. Name of
 #'   the element(s) to be extracted.
 #' @details
 #' Metadata available on

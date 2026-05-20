@@ -40,11 +40,11 @@
 #'
 #' @param resolution numeric. Resolution of the grid in kilometers. Must be one
 #'   of:
-#'   * `5`: 5x5 kilometer cells
-#'   * `10`: 10x10 kilometer cells (default)
+#'   - `5`: 5x5 kilometer cells
+#'   - `10`: 10x10 kilometer cells (default)
 #' @param type character. The geographic scope of the grid:
-#'   * `"main"`: Mainland Spain (default)
-#'   * `"canary"`: Canary Islands
+#'   - `"main"`: Mainland Spain (default)
+#'   - `"canary"`: Canary Islands
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

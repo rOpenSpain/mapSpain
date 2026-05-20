@@ -11,8 +11,8 @@
 #'
 #'  1. When the original digital product is not modified or altered, it can
 #'     be expressed in one of the following ways:
-#'     -  CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
-#'     -  CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+#'     - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+#'     - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
 #'  2. When a new product is generated:
 #'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 #'
@@ -32,9 +32,9 @@
 #'   information starts as of 2005.
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:
-#'   * "10": 1:10 million.
-#'   * "6.5": 1:6.5 million.
-#'   * "3": 1:3 million.
+#'   - "10": 1:10 million.
+#'   - "6.5": 1:6.5 million.
+#'   - "3": 1:3 million.
 #'
 #' @param rawcols logical. Setting this to `TRUE` will add the raw columns of
 #'   the resulting object as provided by IGN.

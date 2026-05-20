@@ -157,7 +157,7 @@ esp_get_comarca <- function(
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
       "The combination of {.arg region} and/or {.arg comarca} does not ",
-      "return any result"
+      "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)

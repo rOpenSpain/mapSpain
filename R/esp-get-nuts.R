@@ -29,10 +29,10 @@
 #'   [giscoR::gisco_get_nuts()] for valid values.
 #' @param epsg character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
-#'   * `"4258"`: [ETRS89](https://epsg.io/4258)
-#'   * `"4326"`: [WGS84](https://epsg.io/4326).
-#'   * `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
-#'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
+#'   - `"4258"`: [ETRS89](https://epsg.io/4258)
+#'   - `"4326"`: [WGS84](https://epsg.io/4326).
+#'   - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+#'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
 #' @param update_cache logical. Should the cached file be refreshed? Default
@@ -44,8 +44,8 @@
 #'
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
-#'   * "RG": Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * "LB": Labels - `POINT` object.
+#'   - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+#'   - "LB": Labels - `POINT` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
 #'   Initial position can be adjusted using the vector of coordinates. See

@@ -1,4 +1,4 @@
-#' Provinces of Spain - SIANE
+#' Provinces of Spain from SIANE
 #'
 #' @encoding UTF-8
 #' @family political

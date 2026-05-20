@@ -71,7 +71,7 @@ esp_get_countries_siane <- function(
 
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
-      "The values on {.arg country} does not return any result"
+      "The values in {.arg country} do not return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
   }

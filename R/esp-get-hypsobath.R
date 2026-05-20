@@ -15,8 +15,8 @@
 #'
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:
-#'   * "6.5": 1:6.5 million.
-#'   * "3": 1:3 million.
+#'   - "6.5": 1:6.5 million.
+#'   - "3": 1:3 million.
 #'
 #' @param spatialtype character string. Spatial type of the output. Use
 #'   `"area"` for `POLYGON` or `"line"` for `LINESTRING`.

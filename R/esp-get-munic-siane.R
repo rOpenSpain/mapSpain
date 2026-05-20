@@ -1,4 +1,4 @@
-#' Municipalities of Spain - SIANE
+#' Municipalities of Spain from SIANE
 #'
 #' @encoding UTF-8
 #' @family political
@@ -24,12 +24,12 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # Municipalities that have changed in the past: three cuts
+#' # Municipalities that have changed in the past: three snapshots.
 #' munis2005 <- esp_get_munic_siane(year = 2005, rawcols = TRUE)
 #' munis2015 <- esp_get_munic_siane(year = 2015, rawcols = TRUE)
 #' munis2024 <- esp_get_munic_siane(year = 2024, rawcols = TRUE)
 #'
-#' # manipulate
+#' # Manipulate data.
 #' library(dplyr)
 #' allmunis_unique <- bind_rows(munis2005, munis2015, munis2024) |>
 #'   distinct()
@@ -172,7 +172,7 @@ esp_get_munic_siane <- function(
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
       "The combination of {.arg region} and/or {.arg munic} does not ",
-      "return any result"
+      "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)

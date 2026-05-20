@@ -40,7 +40,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     shp_end <- shp_zip[1]
     shp_end <- ensure_null(shp_end)
     if (is.null(shp_end)) {
-      cli::cli_alert_warning("Can't read file {.file {file_local}}")
+      cli::cli_alert_warning("Cannot read file {.file {file_local}}.")
       cli::cli_abort(paste0(
         "Please open an issue: ",
         "{.url https://github.com/rOpenSpain/mapSpain/issues}."
@@ -113,7 +113,7 @@ sanitize_sf <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS definitions carry extra properties; normalize using the EPSG code.
+  # Some CRS definitions carry extra properties, normalize using the EPSG code.
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   epsg_num <- ensure_null(epsg_num)

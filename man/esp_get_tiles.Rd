@@ -7,8 +7,8 @@
 \alias{esp_getTiles}
 \title{Get static tiles from public administrations of Spain}
 \source{
-\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.3.3}.
+\url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
+\CRANpkg{leaflet}, \strong{v1.3.3}.
 }
 \usage{
 esp_get_tiles(
@@ -82,7 +82,7 @@ the provider. See \code{\link[terra:rast]{terra::rast()}}.
 Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 
-This function is an implementation of the javascript plugin
+This function is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 

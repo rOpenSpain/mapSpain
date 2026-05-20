@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_prov}
 \alias{esp_get_prov}
-\title{Provinces of Spain - GISCO}
+\title{Provinces of Spain from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -95,7 +95,7 @@ ggplot(prov) +
   theme_minimal()
 
 \donttest{
-# Random Provinces
+# Random provinces.
 random <- esp_get_prov(prov = c(
   "Zamora", "Palencia", "ES-GR",
   "ES521", "01"
@@ -106,7 +106,7 @@ ggplot(random) +
   scale_fill_manual(values = hcl.colors(nrow(random), "Spectral")) +
   theme_minimal()
 
-# All Provinces of a Zone plus an addition
+# All provinces of a zone plus one addition.
 mix <- esp_get_prov(prov = c(
   "Noroeste",
   "Castilla y Leon", "La Rioja"

@@ -3,7 +3,7 @@ title: "Working with imagery"
 author:
   - name: Diego Hernangómez
     orcid: 0000-0001-8457-4658
-description: Learn how to include images on your maps.
+description: Learn how to include imagery in your maps.
 knitr:
   opts_chunk:
     collapse: true
@@ -21,7 +21,7 @@ download static files as `.png` or `.jpeg` (depending on the Web Map Service)
 and use them alongside your shapefiles.
 
 **mapSpain** also provides a plugin for the **R**
-[Leaflet](https://rstudio.github.io/leaflet/) package, which allows adding
+[**leaflet**](https://rstudio.github.io/leaflet/) package, which allows adding
 multiple basemaps to interactive maps.
 
 The services are implemented via the Leaflet plugin
@@ -30,8 +30,8 @@ can view each provider option at that link.
 
 ## Static tiles
 
-An example showing how to include multiple tiles to create a static map. We
-focus on layers provided by La Rioja's [Infraestructura de Datos Espaciales
+This example shows how to combine multiple tiles in a static map. We focus on
+layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
 ::: callout-warning
@@ -41,7 +41,7 @@ Canary Islands may be inaccurate.
 
 ```{r}
 #| label: fig-static1
-#| fig-cap: Map of the limits of city of Logroño using a tile as a basemap
+#| fig-cap: Municipal boundaries of Logroño using a tile as a basemap
 library(mapSpain)
 library(sf)
 library(ggplot2)
@@ -50,7 +50,7 @@ library(tidyterra)
 # Logroño
 lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 
-# Convert to Mercator (EPSG:3857) as a general advice when working with tiles
+# Convert to Mercator (EPSG:3857), a common choice when working with tiles.
 lgn_borders <- st_transform(lgn_borders, 3857)
 
 tile_lgn <- esp_get_tiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
@@ -97,7 +97,7 @@ The following example repeats the same code with `transparent = TRUE`:
 
 ```{r}
 #| label: fig-static_transp
-#| fig-cap: Example on how to use alpha value for combining different types of
+#| fig-cap: Example of using alpha values to combine different types of
 #|   basemaps.
 # Example with transparency
 tile_alpha <- esp_get_tiles(
@@ -108,7 +108,7 @@ tile_alpha <- esp_get_tiles(
   bbox_expand = 0
 )
 
-# Same code as above for plotting
+# Use the same plotting code as above.
 ggplot() +
   geom_spatraster_rgb(data = basemap) +
   geom_spatraster_rgb(data = tile_alpha) +
@@ -119,12 +119,11 @@ Now the two tiles overlap with the desired transparency.
 
 ### Masking tiles
 
-Another useful feature is the ability to mask tiles, allowing more advanced maps
-to be plotted:
+Another useful feature is tile masking, which supports more advanced maps:
 
 ```{r}
 #| label: fig-static3
-#| fig-cap: Example of combining types of tiles by masking to a shapefile.
+#| fig-cap: Example of combining tile types by masking to a shapefile.
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -138,7 +137,7 @@ ggplot() +
 
 ## Custom providers
 
-You can use `esp_get_tiles()` to get tiles of any other provider, for example
+You can use `esp_get_tiles()` to get tiles from other providers, for example
 OpenStreetMap:
 
 ```{r}
@@ -162,7 +161,7 @@ Another example using a provider that needs an API key (ThunderForest):
 ```{r}
 #| label: fig-thunder
 #| fig-cap: Example of base map using ThunderForest
-# Skip if not API KEY
+# Skip if no API key is available.
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
 if (apikey != "") {
   thunder_spec <- list(
@@ -182,7 +181,7 @@ if (apikey != "") {
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin for the **leaflet** package. Below are some quick
+**mapSpain** provides a plugin for the **leaflet** package. Here are some quick
 examples:
 
 ### Earthquakes in Tenerife (last year)
@@ -237,15 +236,15 @@ munic <- esp_get_munic_siane(
   moveCAN = FALSE,
   rawcols = TRUE
 ) |>
-  # Get area in km2 from siane munic
-  # Already on the shapefile
+  # Get area in km2 from SIANE municipalities.
+  # This variable is already in the shapefile.
   mutate(area_km2 = st_area_sh * 10000)
 
-# Get population
+# Get population data.
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
-# Paste
+# Join population data.
 munic_pop <- munic |>
   left_join(pop) |>
   mutate(
@@ -253,7 +252,7 @@ munic_pop <- munic |>
     dens_label = prettyNum(round(dens, 2), big.mark = ".", decimal.mark = ",")
   )
 
-# Create leaflet
+# Create leaflet map.
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 pal <- colorBin("inferno", domain = munic_pop$dens, bins = bins, reverse = TRUE)

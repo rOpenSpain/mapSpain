@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_munic_siane}
 \alias{esp_get_munic_siane}
-\title{Municipalities of Spain - SIANE}
+\title{Municipalities of Spain from SIANE}
 \source{
 CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -120,12 +120,12 @@ Zenodo. \doi{10.5281/zenodo.15345101},
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Municipalities that have changed in the past: three cuts
+# Municipalities that have changed in the past: three snapshots.
 munis2005 <- esp_get_munic_siane(year = 2005, rawcols = TRUE)
 munis2015 <- esp_get_munic_siane(year = 2015, rawcols = TRUE)
 munis2024 <- esp_get_munic_siane(year = 2024, rawcols = TRUE)
 
-# manipulate
+# Manipulate data.
 library(dplyr)
 allmunis_unique <- bind_rows(munis2005, munis2015, munis2024) |>
   distinct()

@@ -41,13 +41,13 @@ navbar:
       menu:
       - text: Working with imagery
         href: articles/articles/working_imagery.html
-      - text: "Annex: Codes and names of the Spanish regions"
+      - text: "Appendix: codes and names of Spanish regions"
         href: articles/articles/regioncodes.html
       - text: -----
       - text: Grupo de Usuarios R Madrid 25-nov-2021
-      - text: "mapSpain: Mapas de España en R (artículo)"
+      - text: "mapSpain: mapas de España en R (artículo)"
         href: articles/articles/mapasesp.html
-      - text: "mapSpain: Mapas de España en R (slides)"
+      - text: "mapSpain: mapas de España en R (slides)"
         href: https://dieghernan.github.io/rpubs/mapSpain_slides/
       - text: Grupo de Usuarios R Madrid 25-nov-2021 (video)
         href: http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/
@@ -58,19 +58,19 @@ navbar:
 
 home:
   title: |
-    mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
-    Municipalities
+    mapSpain | Administrative boundaries of Spain, including CCAA, provinces
+    and municipalities
   description: |
-    Administrative Boundaries of Spain based on the GISCO (Geographic
+    Administrative boundaries of Spain based on the GISCO (Geographic
     Information System of the Commission) Eurostat database. It also provides a
-    leaflet plugin and the ability to download and process static tiles.
+    plugin for leaflet and tools to download and process static tiles.
 
 reference:
-- title: Political borders of Spain
+- title: Political boundaries of Spain
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects representing
-    political borders.
+    political boundaries.
 - subtitle: CartoBase ANE
   description: |
     Datasets from IGN / CartoBase ANE.
@@ -87,7 +87,7 @@ reference:
   - esp_get_comarca
   - esp_get_hex_prov
   - esp_get_simpl
-- title: Maps with images
+- title: Maps with imagery
   desc: |
     Return static tiles or create an interactive <a
     href="https://CRAN.R-project.org/package=leaflet"
@@ -97,18 +97,18 @@ reference:
   - terra::plotRGB()
   - leaflet::addProviderTiles()
   - tidyterra::geom_spatraster_rgb()
-- title: Natural
+- title: Natural features
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects with natural
     features.
   contents:
   - has_concept("natural")
-- title: Infrastructures
+- title: Infrastructure
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects with
-    man-made features.
+    infrastructure features.
   contents:
   - has_concept("infrastructure")
 - title: Cache management
@@ -126,8 +126,8 @@ reference:
   - has_concept("datasets")
 - title: Geographical grids
   desc: |
-    Geographical grids are agreed, defined and harmonised grid nets with
-    standardised location and size of grid cells.
+    Geographical grids are agreed, defined and harmonized grid nets with
+    standardized locations and grid cell sizes.
   contents:
   - has_concept("grids")
 - title: About the package
@@ -140,6 +140,6 @@ articles:
   - articles/working_imagery
   - articles/mapasesp
   - articles/regioncodes
-- title: internal
+- title: Internal articles
   contents:
   - imagery

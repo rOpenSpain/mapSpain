@@ -6,8 +6,8 @@
 \title{Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 map}
 \source{
-\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
-\strong{v1.3.3}.
+\url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
+\CRANpkg{leaflet}, \strong{v1.3.3}.
 }
 \usage{
 addProviderEspTiles(

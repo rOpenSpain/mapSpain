@@ -4,7 +4,7 @@
 #' Get static map tiles based on a spatial object. Maps can be fetched from
 #' various open map servers.
 #'
-#' This function is an implementation of the javascript plugin
+#' This function is an implementation of the JavaScript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
 #'
@@ -21,8 +21,8 @@
 #' the provider. See [terra::rast()].
 #'
 #' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **`r leaf_providers_esp_v`**.
+#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
 #' @export
 #'
@@ -390,7 +390,7 @@ get_wmts_tile <- function(
   tile_iter <- seq_len(nrow(tile_numbers_df))
 
   tile_list <- lapply(tile_iter, function(i) {
-    #  x and y
+    # x and y.
     xtile <- tile_numbers_df[i, ]$x
     ytile <- tile_numbers_df[i, ]$y
     ztile <- zoom
@@ -465,7 +465,6 @@ get_wmts_tile <- function(
 
   r_all
 }
-
 
 #' @export
 #' @rdname esp_get_tiles

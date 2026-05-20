@@ -11,7 +11,7 @@ esp_move_can(x, moveCAN = TRUE)
 \item{x}{An \code{\link[sf:st_sf]{sf}} object. It can be an \code{sf} or \code{sfc} object.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
-\code{c(lat, lon)}.  It places the Canary Islands close to Spain's mainland.
+\code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
 Initial position can be adjusted using the vector of coordinates.}
 }
 \value{
@@ -32,7 +32,7 @@ rather than the package \CRANpkg{mapSpain}.
 While \code{moveCAN} is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (e.g. with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}})  this option should be set to \code{FALSE} in order to
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}) this option should be set to \code{FALSE} in order to
 get the actual coordinates, instead of the modified ones.
 }
 

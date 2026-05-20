@@ -133,7 +133,6 @@ rbind_fill <- function(a_list) {
   binded
 }
 
-
 siane_filter_year <- function(data_sf, year = Sys.Date()) {
   mindate <- min(data_sf$fecha_alta)
   maxdate <- Sys.Date() + 1
@@ -146,7 +145,7 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
 
   if (nchar(sel_date) != 10) {
     cli::cli_abort(paste0(
-      "Date {.val {sel_date}} doesn't seem to be valid. ",
+      "Date {.val {sel_date}} does not seem to be valid. ",
       "Use {.val YYYY} or {.val YYYY-MM-DD} format. ",
       "See {.fn base::as.Date}."
     ))

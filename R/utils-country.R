@@ -52,9 +52,9 @@ convert_country_code <- function(names, out = "iso3c") {
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
     cli::cli_alert_warning(
-      "Some country/codes were not matched unambiguously: {.str {ff}}"
+      "Some country names or codes were not matched unambiguously: {.str {ff}}."
     )
-    cli::cli_alert_info("Review the names/codes or switch to ISO3 codes.")
+    cli::cli_alert_info("Review the names or codes, or switch to ISO3 codes.")
   }
 
   outnames2

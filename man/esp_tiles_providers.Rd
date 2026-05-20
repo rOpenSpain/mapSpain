@@ -19,7 +19,8 @@ additional item named \code{attribution}.
 }
 }
 \source{
-\url{https://dieghernan.github.io/leaflet-providersESP/} leaflet plugin,
+\url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
+\CRANpkg{leaflet},
 \strong{v1.3.3}.
 }
 \description{

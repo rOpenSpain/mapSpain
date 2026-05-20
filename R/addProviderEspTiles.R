@@ -1,4 +1,4 @@
-# Leaflet plugin version
+# Plugin version for leaflet.
 leaf_providers_esp_v <- "v1.3.3"
 
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
@@ -15,8 +15,8 @@ leaf_providers_esp_v <- "v1.3.3"
 #' [esp_tiles_providers].
 #'
 #' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-#'  **`r leaf_providers_esp_v`**.
+#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
 #' @param provider the name of the provider, see [esp_tiles_providers] or
 #'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.

@@ -69,8 +69,8 @@ download_url <- function(
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert_danger("Offline.")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
@@ -112,10 +112,10 @@ download_url <- function(
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug please consider opening an issue on ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/rOpenSpain/mapSpain/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
   msg <- paste0("Download successful on {.file ", file_local, "}.")

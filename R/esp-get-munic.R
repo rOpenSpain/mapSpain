@@ -1,4 +1,4 @@
-#' Municipalities of Spain - GISCO
+#' Municipalities of Spain from GISCO
 #'
 #' @description
 #' This dataset shows boundaries of municipalities in Spain.
@@ -34,7 +34,7 @@
 #' # The Spanish Lapland:
 #' # https://en.wikipedia.org/wiki/Celtiberian_Range
 #'
-#' # Get munics
+#' # Get municipalities.
 #' spanish_laplad <- esp_get_munic(
 #'   year = 2023,
 #'   region = c(
@@ -202,7 +202,7 @@ esp_get_munic <- function(
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
       "The combination of {.arg region} and/or {.arg munic} does not ",
-      "return any result"
+      "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)
