@@ -1,4 +1,4 @@
-# Clear your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache dir
+# Clear your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache directory
 
 **Use this function with caution.** It clears your cached data and
 configuration, specifically:
@@ -20,12 +20,12 @@ esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - config:
 
-  logical. If `TRUE`, deletes the configuration folder of
+  Logical. If `TRUE`, deletes the configuration folder of
   [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - cached_data:
 
-  logical. If `TRUE`, deletes your `cache_dir` and all its contents.
+  Logical. If `TRUE`, deletes your `cache_dir` and all its contents.
 
 - verbose:
 
@@ -52,24 +52,24 @@ Other cache utilities:
 
 ``` r
 
-# Don't run this! It would modify your current state
+# Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/Rtmp9QHEFR/mapSpain
+#> ℹ /tmp/RtmpTs23WR/mapSpain
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
 esp_set_cache_dir(ex, verbose = FALSE)
 
-# Restore initial cache
+# Restore the initial cache.
 esp_clear_cache(verbose = TRUE)
-#> ✔ mapSpain data deleted: /tmp/Rtmp9QHEFR/example/cache (0 bytes)
+#> ✔ mapSpain data deleted: /tmp/RtmpTs23WR/example/cache (0 bytes).
 
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is /tmp/Rtmp9QHEFR/mapSpain.
+#> ℹ mapSpain cache directory is /tmp/RtmpTs23WR/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/Rtmp9QHEFR/mapSpain
+#> ℹ /tmp/RtmpTs23WR/mapSpain
 #> [1] TRUE
 # }
 ```

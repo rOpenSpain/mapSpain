@@ -4,10 +4,10 @@
 provides **sf** objects of Spain’s administrative boundaries, including
 Autonomous Communities, provinces and municipalities.
 
-**mapSpain** also provides a Leaflet plugin to be used with the
-[**leaflet** package](https://rstudio.github.io/leaflet/), which loads
-several base maps from Spain’s public institutions and enables
-downloading and processing of static tiles.
+**mapSpain** also provides a plugin for the [**leaflet**
+package](https://rstudio.github.io/leaflet/). It loads several basemaps
+from Spain’s public institutions and enables downloading and processing
+static tiles.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -34,14 +34,14 @@ library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from base dataset
+# Extract CCAA from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA
+  # Summarize by CCAA.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -49,13 +49,13 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-# Merge into spatial data
+# Merge into spatial data.
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
 
 can <- esp_get_can_box()
 
-# Plot with ggplot
+# Plot with ggplot.
 library(ggplot2)
 
 ggplot(ccaa_sf) +
@@ -79,19 +79,19 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Porc. of women by CCAA in Spain
+![Percentage of women by Autonomous Community in Spain
 (2025)](reference/figures/README-static-1.png)
 
 You can combine `sf` objects with static tiles.
 
 ``` r
 
-# Get census
+# Get census data.
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
   select(cpro, cmun, porc_women)
 
-# Get shapes
+# Get geometries.
 shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
 provs <- esp_get_prov_siane(epsg = 3857)
 
@@ -136,20 +136,20 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
   )
 ```
 
-![Perc. of women in Segovia by town
+![Percentage of women in Segovia by municipality
 (2025)](reference/figures/README-tile-1.png)
 
 ## mapSpain and giscoR
 
 If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is
-installed as a dependency with **mapSpain**. Here’s a basic example:
+installed as a dependency with **mapSpain**. Here is a basic example:
 
 ``` r
 
 library(giscoR)
 
-# Set the same resolution for a perfect fit
+# Set the same resolution for a perfect fit.
 
 res <- "20"
 
@@ -181,17 +181,17 @@ ggplot(all_countries) +
 
 ## A note on caching
 
-Some data sets and tiles may have a size larger than 50MB. You can use
-**mapSpain** to create your own local repository at a given local
-directory passing the following option:
+Some datasets and tiles may be larger than 50 MB. You can use
+**mapSpain** to create your own local repository in a given local
+directory by setting the following option:
 
 ``` r
 
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** will look for the cached file and
-load it, which speeds up the process.
+When this option is set, **mapSpain** looks for the cached file and
+loads it, which speeds up subsequent calls.
 
 ## Citation
 
@@ -209,19 +209,19 @@ A BibTeX entry for LaTeX users is:
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},
-  abstract = {Administrative Boundaries of Spain at several levels (Autonomous Communities, Provinces, Municipalities) based on the GISCO Eurostat database <https://ec.europa.eu/eurostat/web/gisco> and CartoBase SIANE from Instituto Geografico Nacional <https://www.ign.es/>. It also provides a leaflet plugin and the ability of downloading and processing static tiles.},
+  abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for leaflet and tools to download and process static map tiles.},
 }
 ```
 
 ## Contribute
 
-Check the GitHub page for [source
+Check the GitHub page for the [source
 code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
 This package uses data from CartoBase SIANE, provided by Instituto
-Geográfico Nacional:
+Geográfico Nacional.
 
 > Atlas Nacional de España (ANE) [CC BY
 > 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
@@ -231,8 +231,7 @@ See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>
 
 This package also uses data from GISCO. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository containing multiple datasets at various resolution
-levels.
+data repository with multiple datasets at various resolution levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*

@@ -1,4 +1,4 @@
-# Get Started
+# Get started
 
 ## Introduction
 
@@ -12,7 +12,7 @@ designed to provide geographical information about Spain at different
 levels.
 
 **mapSpain** provides shapefiles of municipalities, provinces,
-autonomous communities, and NUTS levels of Spain. It also provides
+Autonomous communities and NUTS levels for Spain. It also provides
 hexbin shapefiles and other complementary shapes, such as the
 demarcation lines around the Canary Islands.
 
@@ -23,16 +23,15 @@ or on an **R** [**leaflet**](https://rstudio.github.io/leaflet/) map
 using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
-Additionally, **mapSpain** includes a powerful dictionary that
-translates province and region names to English, Spanish, Catalan,
-Basque, and Galician, and converts them to various coding standards such
-as NUTS, ISO2, and the INE (the official Spanish statistical agency)
-coding system.
+**mapSpain** also includes a dictionary that translates province and
+region names to English, Spanish, Catalan, Basque and Galician, and
+converts them to various coding standards such as NUTS, ISO2 and the INE
+(the official Spanish statistical agency) coding system.
 
 ## Caching
 
-**mapSpain** provides dataset and tile caching capabilities, which can
-be set as:
+**mapSpain** provides dataset and tile caching capabilities. Set a cache
+directory with:
 
 ``` r
 
@@ -46,7 +45,7 @@ loading in your session.
 
 ## Basic example
 
-Some examples of what **mapSpain** can do:
+These examples show what **mapSpain** can do:
 
 ``` r
 
@@ -72,13 +71,13 @@ ggplot(country) +
   )
 ```
 
-![Example: Map of Spain](./basic-1.png)
+![Example: map of Spain](./basic-1.png)
 
-Example: Map of Spain
+Example: map of Spain
 
 ``` r
 
-# Plot provinces
+# Plot provinces.
 
 andalucia <- esp_get_prov("Andalucia")
 
@@ -87,18 +86,18 @@ ggplot(andalucia) +
   theme_bw()
 ```
 
-![Example: Provinces of Andalucia](./basic2-1.png)
+![Example: provinces of Andalucia](./basic2-1.png)
 
-Example: Provinces of Andalucia
+Example: provinces of Andalucia
 
 ``` r
 
-# Plot municipalities
+# Plot municipalities.
 
 euskadi_ccaa <- esp_get_ccaa("Euskadi")
 euskadi <- esp_get_munic_siane(region = "Euskadi")
 
-# Use dictionary
+# Use the dictionary.
 
 euskadi$name_eu <- esp_dict_translate(euskadi$ine.prov.name, lang = "eu")
 
@@ -118,14 +117,14 @@ ggplot(euskadi_ccaa) +
   )
 ```
 
-![Example: Municipalities of the Basque Country](./basic3-1.png)
+![Example: municipalities of the Basque Country](./basic3-1.png)
 
-Example: Municipalities of the Basque Country
+Example: municipalities of the Basque Country
 
 ## Choropleth and label maps
 
-Let’s analyze the distribution of women in each autonomous community
-with **ggplot2**:
+Analyze the distribution of women in each Autonomous Community with
+**ggplot2**:
 
 ``` r
 
@@ -134,14 +133,14 @@ library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from base dataset
+# Extract CCAA from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA
+  # Summarize by CCAA.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -149,13 +148,13 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-# Merge into spatial data
+# Merge into spatial data.
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
 
 can <- esp_get_can_box()
 
-# Plot with ggplot
+# Plot with ggplot.
 library(ggplot2)
 
 ggplot(ccaa_sf) +
@@ -179,29 +178,29 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Communities (2025)](./choro-1.png)
+![Percentage of women by Autonomous Community (2025)](./choro-1.png)
 
-Percentage of women by Autonomous Communities (2025)
+Percentage of women by Autonomous Community (2025)
 
 ## Thematic maps
 
 This example demonstrates how **mapSpain** can be used to create
 thematic maps. For plotting, we use the
 [**ggplot2**](https://ggplot2.tidyverse.org/) package, though any
-package that handles `sf` objects (e.g., **tmap**, **mapsf**,
-**leaflet**, etc.) could also be used.
+package that handles `sf` objects, such as **tmap**, **mapsf** or
+**leaflet**, could also be used.
 
 ``` r
 
-# Population density of Spain
+# Calculate population density in Spain.
 library(sf)
 
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
 munic <- esp_get_munic_siane(rawcols = TRUE) |>
-  # Get area in km2 from siane munic
-  # Already on the shapefile
+  # Get area in km2 from SIANE municipalities.
+  # This variable is already in the shapefile.
   mutate(area_km2 = st_area_sh * 10000)
 
 munic_pop <- munic |>
@@ -245,13 +244,13 @@ Population density in Spain (2025)
 
 If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is
-installed as a dependency with **mapSpain**. Here’s a basic example:
+installed as a dependency with **mapSpain**. Here is a basic example:
 
 ``` r
 
 library(giscoR)
 
-# Set the same resolution for a perfect fit
+# Set the same resolution for a perfect fit.
 res <- "20"
 
 all_countries <- gisco_get_countries(resolution = res) |>
@@ -269,7 +268,7 @@ ccaa <- esp_get_ccaa(
 ) |>
   st_transform(3035)
 
-# Plot
+# Plot.
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
@@ -303,7 +302,7 @@ Map Service) and use them alongside your shapefiles.
 [**leaflet**](https://rstudio.github.io/leaflet/) package, which allows
 you to include several basemaps on your interactive maps.
 
-The services are implemented via the
+The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 Leaflet plugin. All available providers are listed there.
 

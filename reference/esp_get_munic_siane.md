@@ -1,4 +1,4 @@
-# Municipalities of Spain - SIANE
+# Municipalities of Spain from SIANE
 
 This dataset shows boundaries of municipalities in Spain.
 
@@ -50,13 +50,13 @@ Data distributed through the `sianedata` data branch, see
 
 - year:
 
-  character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year, it must be in formats `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -69,18 +69,18 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
@@ -90,7 +90,7 @@ Data distributed through the `sianedata` data branch, see
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  Character string or number. Resolution of the geospatial data. One of:
 
   - "10": 1:10 million.
 
@@ -105,7 +105,7 @@ Data distributed through the `sianedata` data branch, see
 
 - munic:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required municipalities. `NULL` will return all municipalities.
 
@@ -119,7 +119,7 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  logical. Setting this to `TRUE` will add the raw columns of the
+  Logical. Setting this to `TRUE` will add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value
@@ -183,12 +183,12 @@ Datasets representing municipalities:
 
 ``` r
 # \donttest{
-# Municipalities that have changed in the past: three cuts
+# Municipalities that have changed in the past: three snapshots.
 munis2005 <- esp_get_munic_siane(year = 2005, rawcols = TRUE)
 munis2015 <- esp_get_munic_siane(year = 2015, rawcols = TRUE)
 munis2024 <- esp_get_munic_siane(year = 2024, rawcols = TRUE)
 
-# manipulate
+# Manipulate data.
 library(dplyr)
 #> 
 #> Attaching package: ‘dplyr’

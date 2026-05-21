@@ -1,8 +1,8 @@
-# Imagery and mapSpain
+# Imagery with mapSpain
 
 Visit
 <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> to
-learn how to download imagery of Spain.
+learn how to download imagery for Spain.
 
 > **Note**
 >

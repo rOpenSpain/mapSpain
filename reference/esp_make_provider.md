@@ -31,8 +31,8 @@ esp_make_provider(id, q, service, layers, ...)
 
 - ...:
 
-  Additional arguments to the query, like `version`, `format`,
-  `crs/srs`, `style`, etc. depending on the capabilities of the service.
+  Additional arguments to the query, like `version`, `format`, `crs/srs`
+  and `style`, depending on the capabilities of the service.
 
 ## Value
 

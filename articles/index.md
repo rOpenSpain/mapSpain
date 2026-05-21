@@ -5,14 +5,19 @@
 - [Working with
   imagery](https://ropenspain.github.io/mapSpain/articles/working_imagery.md):
 
-  Learn how to include images on your maps.
+  Learn how to include imagery in your maps.
 
-- [mapSpain: Mapas de España en R
-  \[Spanish\]](https://ropenspain.github.io/mapSpain/articles/mapasesp.md):
+- [mapSpain: maps of Spain in
+  R](https://ropenspain.github.io/mapSpain/articles/mapasesp.md):
 
-  Mapas de España en R de forma rápida y sencilla.
+  Create maps of Spain in R quickly and simply.
 
-- [Appendix: Codes and names of the Spanish
+- [Appendix: codes and names of Spanish
   regions](https://ropenspain.github.io/mapSpain/articles/regioncodes.md):
 
   Interactive explorer of the data included in the package.
+
+### Internal articles
+
+- [Imagery with
+  mapSpain](https://ropenspain.github.io/mapSpain/articles/imagery.md):

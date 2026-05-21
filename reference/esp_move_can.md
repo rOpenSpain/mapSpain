@@ -42,7 +42,7 @@ sources rather than the package
 
 While `moveCAN` is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (e.g. with
+spatial analysis or using tiles (for example, with
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
 or
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md))

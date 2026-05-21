@@ -2,8 +2,8 @@
 
 Loads a hexbin map
 ([`sf`](https://r-spatial.github.io/sf/reference/sf.html) object) or a
-map of squares with the boundaries of the provinces or autonomous
-communities of Spain.
+map of squares with the boundaries of the provinces or Autonomous
+Communities of Spain.
 
 ## Usage
 
@@ -21,8 +21,9 @@ esp_get_grid_ccaa(ccaa = NULL)
 
 - prov, ccaa:
 
-  character. A vector of names and/or codes for provinces and autonomous
-  communities or `NULL` to get all the data. See **Details**.
+  Character. A vector of names, codes or both for provinces and
+  Autonomous Communities, or `NULL` to get all the data. See
+  **Details**.
 
 ## Value
 
@@ -40,7 +41,7 @@ You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md))
 and NUTS codes of different levels.
 
-When using a code corresponding to a higher level (e.g.
+When using a code corresponding to a higher level (for example,
 `esp_get_prov("Andalucia")`) all the corresponding units of that level
 are provided (in this case, all the provinces of Andalusia).
 

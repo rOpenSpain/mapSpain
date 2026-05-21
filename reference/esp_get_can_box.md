@@ -31,7 +31,7 @@ Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
 
 - style:
 
-  character string. One of `"right"`, `"left"`, `"box"` or `"poly"`.
+  Character string. One of `"right"`, `"left"`, `"box"` or `"poly"`.
   Default is `"right"`, see **Details**.
 
 - moveCAN:
@@ -44,7 +44,7 @@ Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)

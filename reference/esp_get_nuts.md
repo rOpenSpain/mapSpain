@@ -47,13 +47,13 @@ Copyright:
 
 - year:
 
-  year character string or number. Release year of the file. See
+  Year character string or number. Release year of the file. See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
   for valid values.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -66,18 +66,18 @@ Copyright:
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
@@ -101,7 +101,7 @@ Copyright:
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
+  Character string. Type of geometry to be returned. Options available
   are:
 
   - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
@@ -128,7 +128,7 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). See
+  Character. Extension of the file (default `"gpkg"`). See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
 ## Value

@@ -1,7 +1,7 @@
 # Convert and translate Spanish subdivision names and codes
 
 Convert Spanish subdivision names or identifiers between different
-coding schemes (NUTS, ISO2, province codes, etc.) or obtain
+coding schemes, such as NUTS, ISO2 and province codes, or obtain
 human-readable names.
 
 ## Usage
@@ -16,17 +16,17 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 
 - sourcevar:
 
-  character string. Vector which contains the codes or names to be
+  Character string. Vector which contains the codes or names to be
   converted.
 
 - origin, destination:
 
-  character string. Coding scheme of origin and destination. One of
+  Character string. Coding scheme of origin and destination. One of
   `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
 
 - lang:
 
-  character string. Target language code, available values:
+  Character string. Target language code, available values:
 
   - `"es"`: Spanish.
 
@@ -40,7 +40,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 
 - all:
 
-  logical. If `TRUE` the function returns all possible translations for
+  Logical. If `TRUE` the function returns all possible translations for
   each input as a named list. When `FALSE` (default) a single preferred
   translation per input is returned as a character vector.
 
@@ -66,7 +66,7 @@ The function uses internal dictionaries together with
 [countrycode](https://CRAN.R-project.org/package=countrycode) to map
 between schemes. When `origin == destination == "text"` the input is
 returned unchanged. Mixing names from different administrative levels
-(for example autonomous community and province) may produce `NA` values
+(for example Autonomous Community and province) may produce `NA` values
 for some entries.
 
 ## Examples

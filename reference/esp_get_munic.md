@@ -1,4 +1,4 @@
-# Municipalities of Spain - GISCO
+# Municipalities of Spain from GISCO
 
 This dataset shows boundaries of municipalities in Spain.
 
@@ -30,7 +30,7 @@ Copyright:
 
 - year:
 
-  year character string or number. Release year of the file. See
+  Year character string or number. Release year of the file. See
   [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html)
   and
   [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html)
@@ -38,7 +38,7 @@ Copyright:
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -56,12 +56,12 @@ Copyright:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
@@ -76,7 +76,7 @@ Copyright:
 
 - munic:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required municipalities. `NULL` will return all municipalities.
 
@@ -90,7 +90,7 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). See
+  Character. Extension of the file (default `"gpkg"`). See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
 ## Value
@@ -149,7 +149,7 @@ Datasets provided by GISCO:
 # The Spanish Lapland:
 # https://en.wikipedia.org/wiki/Celtiberian_Range
 
-# Get munics
+# Get municipalities.
 spanish_laplad <- esp_get_munic(
   year = 2023,
   region = c(

@@ -1,6 +1,6 @@
-# Autonomous communities of Spain - SIANE
+# Autonomous Communities of Spain - SIANE
 
-Returns [Autonomous communities of
+Returns [Autonomous Communities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -51,19 +51,19 @@ Data distributed through the `sianedata` data branch, see
 
 - ccaa:
 
-  character string. A vector of names and/or codes for Autonomous
-  Communities or `NULL` to get all the autonomous communities. See
+  Character string. A vector of names, codes or both for Autonomous
+  Communities, or `NULL` to get all the Autonomous Communities. See
   **Details**.
 
 - year:
 
-  character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year, it must be in formats `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -76,18 +76,18 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
@@ -97,7 +97,7 @@ Data distributed through the `sianedata` data branch, see
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  Character string or number. Resolution of the geospatial data. One of:
 
   - "10": 1:10 million.
 
@@ -115,7 +115,7 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  logical. Setting this to `TRUE` will add the raw columns of the
+  Logical. Setting this to `TRUE` will add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value
@@ -127,10 +127,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
 2), ISO codes (corresponding to level 2) or `codauto` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
-Ceuta and Melilla are considered as autonomous communities in this
+Ceuta and Melilla are considered as Autonomous Communities in this
 function.
 
-When calling a NUTS1 level, all the autonomous communities of that level
+When calling a NUTS1 level, all the Autonomous Communities of that level
 will be added.
 
 ## See also

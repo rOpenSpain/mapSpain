@@ -54,13 +54,13 @@ Data distributed through the `sianedata` data branch, see
 
 - year:
 
-  character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year, it must be in formats `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -73,18 +73,18 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
@@ -99,7 +99,7 @@ Data distributed through the `sianedata` data branch, see
 
 - munic:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required municipalities. `NULL` will return all municipalities.
 
@@ -113,7 +113,7 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  logical. Setting this to `TRUE` will add the raw columns of the
+  Logical. Setting this to `TRUE` will add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value

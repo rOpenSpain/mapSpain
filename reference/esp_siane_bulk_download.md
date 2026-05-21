@@ -44,13 +44,13 @@ Data distributed through the `sianedata` data branch, see
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - verbose:
@@ -117,10 +117,10 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache dir is /tmp/Rtmp9QHEFR/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmp9QHEFR/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is /tmp/Rtmp9QHEFR/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmp9QHEFR/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpTs23WR/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpTs23WR/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpTs23WR/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpTs23WR/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # Message shows file is already cached :)
 

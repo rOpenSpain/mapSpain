@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
-Municipalities
+<title>mapSpain | Administrative boundaries of Spain, including Autonomous
+Communities, provinces and municipalities
  • mapSpain</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
@@ -15,20 +15,22 @@ Municipalities
 <link rel="manifest" href="site.webmanifest">
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="mapSpain | Administrative Boundaries of Spain Including CCAA, Provinces and
-Municipalities
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="mapSpain | Administrative boundaries of Spain, including Autonomous
+Communities, provinces and municipalities
 ">
-<meta name="description" content="Administrative Boundaries of Spain based on the GISCO (Geographic
-Information System of the Commission) Eurostat database. It also provides a
-leaflet plugin and the ability of downloading and processing static tiles.
+<meta name="description" content="Administrative boundaries of Spain based on GISCO (Geographic Information
+System of the Commission) from Eurostat and CartoBase ANE from Instituto
+Geográfico Nacional. It also provides a plugin for leaflet and tools to
+download and process static map tiles.
 ">
-<meta property="og:description" content="Administrative Boundaries of Spain based on the GISCO (Geographic
-Information System of the Commission) Eurostat database. It also provides a
-leaflet plugin and the ability of downloading and processing static tiles.
+<meta property="og:description" content="Administrative boundaries of Spain based on GISCO (Geographic Information
+System of the Commission) from Eurostat and CartoBase ANE from Instituto
+Geográfico Nacional. It also provides a plugin for leaflet and tools to
+download and process static map tiles.
 ">
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -65,11 +67,11 @@ leaflet plugin and the ability of downloading and processing static tiles.
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/articles/working_imagery.html">Working with imagery</a></li>
-    <li><a class="dropdown-item" href="articles/articles/regioncodes.html">Annex: Codes and names of the Spanish regions</a></li>
+    <li><a class="dropdown-item" href="articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="articles/articles/mapasesp.html">mapSpain: Mapas de España en R (artículo)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: Mapas de España en R (slides)</a></li>
+    <li><a class="dropdown-item" href="articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
     <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
   </ul>
 </li>
@@ -106,7 +108,7 @@ leaflet plugin and the ability of downloading and processing static tiles.
 
 <!-- badges: end -->
 <p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> is a package that provides <strong>sf</strong> objects of Spain’s administrative boundaries, including Autonomous Communities, provinces and municipalities.</p>
-<p><strong>mapSpain</strong> also provides a Leaflet plugin to be used with the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong> package</a>, which loads several base maps from Spain’s public institutions and enables downloading and processing of static tiles.</p>
+<p><strong>mapSpain</strong> also provides a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong> package</a>. It loads several basemaps from Spain’s public institutions and enables downloading and processing static tiles.</p>
 <p>The full package website, with examples and vignettes, is available at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -129,14 +131,14 @@ leaflet plugin and the ability of downloading and processing static tiles.
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Extract CCAA from base dataset</span></span>
+<span><span class="co"># Extract CCAA from the base dataset.</span></span>
 <span><span class="va">codelist</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/esp_codelist.html">esp_codelist</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">cpro</span>, <span class="va">codauto</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">census_ccaa</span> <span class="op">&lt;-</span> <span class="va">census</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">codelist</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Summarize by CCAA</span></span>
+<span>  <span class="co"># Summarize by CCAA.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">codauto</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>pob25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pob25</span><span class="op">)</span>, men <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">men</span><span class="op">)</span>, women <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
@@ -144,13 +146,13 @@ leaflet plugin and the ability of downloading and processing static tiles.
 <span>    porc_women_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="va">porc_women</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"%"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Merge into spatial data</span></span>
+<span><span class="co"># Merge into spatial data.</span></span>
 <span><span class="va">ccaa_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">census_ccaa</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">can</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/esp_get_can_box.html">esp_get_can_box</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Plot with ggplot</span></span>
+<span><span class="co"># Plot with ggplot.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ccaa_sf</span><span class="op">)</span> <span class="op">+</span></span>
@@ -172,15 +174,15 @@ leaflet plugin and the ability of downloading and processing static tiles.
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-static-1.png" style="width:100.0%" alt="Porc. of women by CCAA in Spain (2025)"></p>
+<p><img src="reference/figures/README-static-1.png" style="width:100.0%" alt="Percentage of women by Autonomous Community in Spain (2025)"></p>
 <p>You can combine <code>sf</code> objects with static tiles.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get census</span></span>
+<code class="sourceCode R"><span><span class="co"># Get census data.</span></span>
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>porc_women <span class="op">=</span> <span class="va">women</span> <span class="op">/</span> <span class="va">pob25</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">cpro</span>, <span class="va">cmun</span>, <span class="va">porc_women</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Get shapes</span></span>
+<span><span class="co"># Get geometries.</span></span>
 <span><span class="va">shape</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Segovia"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>
 <span><span class="va">provs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/esp_get_prov_siane.html">esp_get_prov_siane</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
@@ -223,16 +225,16 @@ leaflet plugin and the ability of downloading and processing static tiles.
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-tile-1.png" style="width:100.0%" alt="Perc. of women in Segovia by town (2025)"></p>
+<p><img src="reference/figures/README-tile-1.png" style="width:100.0%" alt="Percentage of women in Segovia by municipality (2025)"></p>
 </div>
 <div class="section level2">
 <h2 id="mapspain-and-giscor">mapSpain and giscoR<a class="anchor" aria-label="anchor" href="#mapspain-and-giscor"></a>
 </h2>
-<p>If you need to plot Spain alongside other countries, consider using the <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> package, which is installed as a dependency with <strong>mapSpain</strong>. Here’s a basic example:</p>
+<p>If you need to plot Spain alongside other countries, consider using the <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> package, which is installed as a dependency with <strong>mapSpain</strong>. Here is a basic example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Set the same resolution for a perfect fit</span></span>
+<span><span class="co"># Set the same resolution for a perfect fit.</span></span>
 <span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="st">"20"</span></span>
 <span></span>
@@ -263,10 +265,10 @@ leaflet plugin and the ability of downloading and processing static tiles.
 <div class="section level2">
 <h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
 </h2>
-<p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>mapSpain</strong> to create your own local repository at a given local directory passing the following option:</p>
+<p>Some datasets and tiles may be larger than 50 MB. You can use <strong>mapSpain</strong> to create your own local repository in a given local directory by setting the following option:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/esp_set_cache_dir.html">esp_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>When this option is set, <strong>mapSpain</strong> will look for the cached file and load it, which speeds up the process.</p>
+<p>When this option is set, <strong>mapSpain</strong> looks for the cached file and loads it, which speeds up subsequent calls.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -282,23 +284,23 @@ Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of Spain</em>. <a
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5366622</span>},</span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>mapSpain<span class="sc">/</span>},</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative Boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, Provinces, Municipalities) based on the GISCO Eurostat database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase SIANE from Instituto Geografico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a leaflet plugin and the ability of downloading and processing static tiles.},</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase ANE from Instituto Geográfico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a plugin <span class="cf">for</span> leaflet and tools to download and process static map tiles.},</span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
 </h2>
-<p>Check the GitHub page for <a href="https://github.com/ropenspain/mapSpain/" class="external-link">source code</a>.</p>
+<p>Check the GitHub page for the <a href="https://github.com/ropenspain/mapSpain/" class="external-link">source code</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="copyright-notice">Copyright notice<a class="anchor" aria-label="anchor" href="#copyright-notice"></a>
 </h2>
-<p>This package uses data from CartoBase SIANE, provided by Instituto Geográfico Nacional:</p>
+<p>This package uses data from CartoBase SIANE, provided by Instituto Geográfico Nacional.</p>
 <blockquote>
 <p>Atlas Nacional de España (ANE) <a href="https://creativecommons.org/licenses/by/4.0/deed.en" class="external-link">CC BY 4.0</a> <a href="https://www.ign.es/" class="external-link">ign.es</a></p>
 </blockquote>
 <p>See <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a></p>
-<p>This package also uses data from GISCO. GISCO <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">(FAQ)</a> is a geospatial open data repository containing multiple datasets at various resolution levels.</p>
+<p>This package also uses data from GISCO. GISCO <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">(FAQ)</a> is a geospatial open data repository with multiple datasets at various resolution levels.</p>
 <p><em>From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units / Statistical Units</em></p>
 <blockquote>
 <p>When data downloaded from this page is used in any printed or electronic publication, in addition to any other provisions applicable to the whole Eurostat website, data source will have to be acknowledged in the legend of the map and in the introductory page of the publication with the following copyright notice:</p>

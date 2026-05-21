@@ -17,16 +17,16 @@ providers with the following structure:
 
 - Each element contains two nested named lists:
 
-  - `static` with the parameters required to obtain static tiles, plus
-    an additional item named `attribution`.
+  - `static` with the parameters required to obtain static map tiles,
+    plus an additional item named `attribution`.
 
   - `leaflet` with additional parameters to pass to
     [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
 ## Source
 
-<https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-**v1.3.3**.
+<https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.3.3**.
 
 ## Details
 
