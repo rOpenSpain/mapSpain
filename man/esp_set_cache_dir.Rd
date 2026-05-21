@@ -4,7 +4,7 @@
 \name{esp_set_cache_dir}
 \alias{esp_set_cache_dir}
 \alias{esp_detect_cache_dir}
-\title{Set your \CRANpkg{mapSpain} cache dir}
+\title{Set your \CRANpkg{mapSpain} cache directory}
 \usage{
 esp_set_cache_dir(
   cache_dir = NULL,
@@ -19,26 +19,26 @@ esp_detect_cache_dir()
 \item{cache_dir}{A path to a cache directory. When \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{overwrite}{logical. If \code{TRUE}, overwrites an existing
+\item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
 \code{MAPSPAIN_CACHE_DIR} on your local machine.}
 
-\item{install}{logical. If \code{TRUE}, installs the key on your local machine for
+\item{install}{Logical. If \code{TRUE}, installs the key on your local machine for
 use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
 this argument is automatically set to \code{FALSE}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-\code{esp_set_cache_dir()} returns an (invisible) character string with the path
+\code{esp_set_cache_dir()} returns an invisible character string with the path
 to your \code{cache_dir}. It is primarily called for its side effect.
 
 \code{esp_detect_cache_dir()} returns the path to the \code{cache_dir} used in the
 current session.
 }
 \description{
-This function stores your \code{cache_dir} path on your local machine and
-loads it for future sessions. Type \code{Sys.getenv("MAPSPAIN_CACHE_DIR")} to
-find your cached path, or use \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}}.
+This function stores your \code{cache_dir} path on your local machine and loads
+it for future sessions. Use \code{Sys.getenv("MAPSPAIN_CACHE_DIR")} or
+\code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}} to find the cached path.
 }
 \details{
 By default, when no \code{cache_dir} is set, the package uses a folder inside
@@ -58,7 +58,7 @@ A message appears once during this migration.
 
 
 Some files can be read from their online source without caching using the
-option \code{cache = FALSE}. Otherwise the source files will be downloaded to
+option \code{cache = FALSE}. Otherwise the source files are downloaded to
 your computer. \CRANpkg{mapSpain} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
@@ -66,7 +66,7 @@ install).
 \item Modify the cache for a single session by setting
 \code{esp_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
-\code{esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that
+\code{esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)}, which
 persists across \strong{R} sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function.
@@ -82,17 +82,17 @@ API query and \code{\link[=esp_detect_cache_dir]{esp_detect_cache_dir()}} to ide
 
 \examples{
 
-# Don't run this! It would modify your current state
+# Do not run this. It would modify your current state.
 \dontrun{
 my_cache <- esp_detect_cache_dir()
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
 
 esp_detect_cache_dir()
 
-# Restore initial cache
+# Restore the initial cache.
 esp_set_cache_dir(my_cache)
 identical(my_cache, esp_detect_cache_dir())
 }

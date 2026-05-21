@@ -11,7 +11,7 @@
       convert_country_code("U")
     Condition
       Error:
-      ! Invalid country name "U". Try a vector of names or ISO3/ISO2 codes
+      ! Invalid country name "U". Try a vector of names, ISO3 codes or ISO2 codes.
 
 ---
 

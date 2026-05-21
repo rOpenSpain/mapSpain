@@ -25,24 +25,24 @@
 #'
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#' @param year year character string or number. Release year of the file. See
+#' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_nuts()] for valid values.
-#' @param epsg character string or number. Projection of the map: 4-digit
+#' @param epsg Character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
 #'   - `"4258"`: [ETRS89](https://epsg.io/4258)
 #'   - `"4326"`: [WGS84](https://epsg.io/4326).
 #'   - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 #'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
-#' @param cache logical. Whether to do caching. Default is `TRUE`. See
+#' @param cache Logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
-#' @param update_cache logical. Should the cached file be refreshed? Default
+#' @param update_cache Logical. Should the cached file be refreshed? Default
 #'   is `FALSE`. When set to `TRUE`, it will force a new download.
-#' @param cache_dir character string. A path to a cache directory. See
+#' @param cache_dir Character string. A path to a cache directory. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
 #' @param region Optional. A vector of region names, NUTS or ISO codes
 #'   (see [esp_dict_region_code()]).
 #'
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param spatialtype Character string. Type of geometry to be returned.
 #'   Options available are:
 #'   - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
 #'   - "LB": Labels - `POINT` object.
@@ -50,7 +50,7 @@
 #'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
 #'   Initial position can be adjusted using the vector of coordinates. See
 #'   **Displacing the Canary Islands** in [esp_move_can()].
-#' @param ext character. Extension of the file (default `"gpkg"`). See
+#' @param ext Character. Extension of the file (default `"gpkg"`). See
 #'   [giscoR::gisco_get_nuts()].
 #'
 #' @examples
@@ -174,7 +174,7 @@ esp_get_nuts <- function(
     data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
   }
 
-  # Get region id
+  # Get the region identifier.
   region <- ensure_null(region)
   if (all(!is.null(region), "NUTS_ID" %in% names(data_sf))) {
     nuts_id <- convert_to_nuts(region)
@@ -191,7 +191,7 @@ esp_get_nuts <- function(
     }
   }
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
   data_sf <- sanitize_sf(data_sf)

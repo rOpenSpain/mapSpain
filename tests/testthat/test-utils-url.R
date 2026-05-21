@@ -99,7 +99,7 @@ test_that("Caching tests", {
       update_cache = FALSE,
       verbose = TRUE
     ),
-    "Cache dir is"
+    "Cache directory is"
   )
 
   expect_length(list.files(cdir, recursive = TRUE), 1)

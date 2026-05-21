@@ -30,29 +30,30 @@ esp_get_grid_BDN_ccaa(
 )
 }
 \arguments{
-\item{resolution}{numeric. Resolution of the grid in kilometers. Must be one
+\item{resolution}{Numeric. Resolution of the grid in kilometers. Must be one
 of:
 \itemize{
 \item \code{5}: 5x5 kilometer cells
 \item \code{10}: 10x10 kilometer cells (default)
 }}
 
-\item{type}{character. The geographic scope of the grid:
+\item{type}{Character. The geographic scope of the grid:
 \itemize{
 \item \code{"main"}: Mainland Spain (default)
 \item \code{"canary"}: Canary Islands
 }}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{ccaa}{character string. A vector of names and/or codes for Autonomous
-Communities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} for accepted formats.}
+\item{ccaa}{Character string. A vector of names, codes or both for
+Autonomous Communities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} for accepted
+formats.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
@@ -67,14 +68,14 @@ This dataset provides:
 \item \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts country-wide regular grids with resolutions
 of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
 \item \code{\link[=esp_get_grid_BDN_ccaa]{esp_get_grid_BDN_ccaa()}} extracts 1x1 kilometer resolution grids for
-individual autonomous communities.
+individual Autonomous Communities.
 }
 
 These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.
 
 \code{esp_get_grid_BDN_ccaa()} provides higher-resolution 1x1 kilometer grids
-for specific autonomous communities, useful for regional analysis with
+for specific Autonomous Communities, useful for regional analysis with
 finer spatial detail.
 }
 \details{

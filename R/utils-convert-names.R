@@ -1,6 +1,6 @@
-#' Transform region to NUTS code
+#' Transform regions to NUTS codes
 #' @param region A vector of region names or codes (NUTS or ISO2).
-#' @return A vector of NUTS codes or `NULL` if no valid code found.
+#' @return A vector of NUTS codes or `NULL` if no valid code is found.
 #'
 #' @noRd
 convert_to_nuts <- function(region) {
@@ -58,10 +58,10 @@ convert_to_nuts <- function(region) {
   sort(nuts_id[!is.na(nuts_id)])
 }
 
-#' Transform region to NUTS code for CCAA (NUTS 2)
+#' Transform regions to NUTS codes for CCAA (NUTS 2)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE codauto).
 #' @return A vector of NUTS codes for CCAA (level 2) or an error if no valid
-#'   code found.
+#'   code is found.
 #'
 #' @noRd
 convert_to_nuts_ccaa <- function(region) {
@@ -73,7 +73,6 @@ convert_to_nuts_ccaa <- function(region) {
   clean_region <- region[!is.na(clean_region)]
 
   # Detect code type for conversion: NUTS, ISO2 or free text.
-
   code_type <- rep("text", length(clean_region))
   is_codauto <- grepl("^[[:digit:]]", region)
   is_nuts <- region %in% get_all_nuts_codes()
@@ -114,7 +113,7 @@ convert_to_nuts_ccaa <- function(region) {
     cli::cli_abort("No Spanish CCAA codes found for {.str {clean_region}}.")
   }
 
-  # Fix Ceuta and Melilla
+  # Map Ceuta and Melilla to their CCAA codes.
   ccaa_id[grep("ES640", ccaa_id, fixed = TRUE)] <- "ES64"
   ccaa_id[grep("ES630", ccaa_id, fixed = TRUE)] <- "ES63"
 
@@ -147,10 +146,10 @@ convert_to_nuts_ccaa <- function(region) {
   end
 }
 
-#' Transform region to province-level NUTS codes
+#' Transform regions to province-level NUTS codes
 #' @param region A vector of region names or codes (NUTS, ISO2, INE cpro).
 #' @return A vector of NUTS codes for provinces (level 3) or an error if no
-#'   valid code found.
+#'   valid code is found.
 #'
 #' @noRd
 convert_to_nuts_prov <- function(region) {
@@ -184,12 +183,12 @@ convert_to_nuts_prov <- function(region) {
   # Initialize output vector.
   nuts_cpros <- clean_region
 
-  # Convert text to cpro to check Canary Islands and Balearic Islands
+  # Convert text to cpro to check Canary Islands and Balearic Islands.
   for (i in n_codes) {
     code <- nuts_cpros[i]
     type <- code_type[i]
 
-    # Convert Canarias to provinces.
+    # Convert Canary Islands and Balearic Islands names to province codes.
     if (type == "text") {
       suppressMessages(name_es <- esp_dict_translate(code, "es"), "cliMessage")
 
@@ -212,7 +211,7 @@ convert_to_nuts_prov <- function(region) {
     }
   }
 
-  # Re-assess
+  # Reassess code types after island-specific normalization.
   code_type <- rep("text", length(nuts_cpros))
 
   is_cpro <- grepl("^[[:digit:]]", nuts_cpros)
@@ -240,7 +239,7 @@ convert_to_nuts_prov <- function(region) {
       )
       nuts_cpros[i] <- cpro_nuts
     } else {
-      # To NUTS
+      # Convert to NUTS.
       suppressMessages(res <- convert_to_nuts(code), "cliMessage")
       if (is.null(res)) {
         res <- NA
@@ -254,7 +253,6 @@ convert_to_nuts_prov <- function(region) {
   }
 
   # Remove island NUTS3 codes that do not correspond to provinces.
-
   esp_codes <- mapSpain::esp_codelist
   not_provs <- esp_codes[
     !is.na(esp_codes$nuts3.code) & is.na(esp_codes$nuts.prov.code),
@@ -315,7 +313,7 @@ convert_to_nuts_prov <- function(region) {
   nuts_id
 }
 
-#' Build a lookup table of province codes (cpro) to NUTS codes
+#' Build a lookup table from province codes (cpro) to NUTS codes
 #'
 #' @noRd
 get_prov_to_nuts_df <- function() {

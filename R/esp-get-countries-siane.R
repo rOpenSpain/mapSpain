@@ -17,7 +17,7 @@
 #'
 #' @seealso [giscoR::gisco_get_countries()].
 #'
-#' @param country character vector of country codes. It can be either a
+#' @param country Character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   ISO2 country codes. See also [countrycode::countrycode()].
 #'
@@ -58,7 +58,7 @@ esp_get_countries_siane <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- read_geo_file_sf(file_local)
 
     if (is.null(data_sf)) {
@@ -81,8 +81,8 @@ esp_get_countries_siane <- function(
 
 #' Filter data sf by country
 #'
-#' @param data_sf sf object
-#' @param country character vector of country codes or names
+#' @param data_sf An `sf` object.
+#' @param country Character vector of country codes or names.
 #'
 #' @return An `sf` object with rows filtered by the provided country vector.
 #'

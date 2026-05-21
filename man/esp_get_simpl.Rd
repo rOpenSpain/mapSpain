@@ -5,7 +5,7 @@
 \alias{esp_get_simpl}
 \alias{esp_get_simpl_prov}
 \alias{esp_get_simpl_ccaa}
-\title{Simplified map of provinces and autonomous communities of Spain}
+\title{Simplified map of provinces and Autonomous Communities of Spain}
 \source{
 INE: PC_Axis files
 }
@@ -25,13 +25,14 @@ esp_get_simpl_ccaa(
 )
 }
 \arguments{
-\item{prov, ccaa}{character. A vector of names and/or codes for provinces
-and autonomous communities or \code{NULL} to get all the data. See \strong{Details}.}
+\item{prov, ccaa}{Character. A vector of names, codes or both for provinces
+and Autonomous Communities, or \code{NULL} to get all the data. See
+\strong{Details}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -40,17 +41,17 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Simplified map with the boundaries of the
-provinces or autonomous communities of Spain, as provided by the \strong{INE}
-(Instituto Nacional de Estadistica).
+Simplified map with the boundaries of the provinces or Autonomous
+communities of Spain, as provided by the \strong{INE} (Instituto Nacional de
+Estadistica).
 }
 \details{
-Results are provided \strong{without CRS}, as provided by source.
+Results are provided \strong{without CRS}, as provided by the source.
 
-You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
+You can use and mix names, ISO codes, \code{"codauto"} or \code{"cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
-When using a code corresponding to a higher level (e.g.
+When using a code corresponding to a higher level (for example,
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).
 }
@@ -65,14 +66,14 @@ ggplot(prov_simp) +
   geom_sf(aes(fill = ine.ccaa.name)) +
   labs(fill = "CCAA")
 
-# Provs of Single CCAA
+# Provinces of a single CCAA.
 
 and_simple <- esp_get_simpl_prov("Andalucia")
 
 ggplot(and_simple) +
   geom_sf()
 
-# CCAAs
+# CCAAs.
 
 ccaa_simp <- esp_get_simpl_ccaa()
 

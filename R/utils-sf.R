@@ -1,4 +1,4 @@
-#' Read geospatial file into sf object with optional query
+#' Read a geospatial file into an sf object with an optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param q Optional SQL query string to filter the data during reading.
@@ -24,11 +24,11 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
       make_msg("warning", TRUE, "Reading large file", fsize_unit)
-      make_msg("generic", TRUE, "It can take a while. Hold on!")
+      make_msg("generic", TRUE, "This can take a while.")
     }
   }
 
-  # Create and read 'vsizip' construct for shp.zip
+  # Create and read the 'vsizip' construct for shp.zip files.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
@@ -92,7 +92,7 @@ sanitize_sf <- function(data_sf) {
   # Remove empty geometries.
   data_sf <- data_sf[!sf::st_is_empty(data_sf), ]
 
-  # To UTF-8
+  # Convert names and character columns to UTF-8.
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)
 
@@ -113,8 +113,7 @@ sanitize_sf <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS definitions carry extra properties, normalize using the EPSG code.
-
+  # Some CRS definitions carry extra properties. Normalize with the EPSG code.
   epsg_num <- sf::st_crs(data_sf)$epsg
   epsg_num <- ensure_null(epsg_num)
   if (is.null(epsg_num)) {

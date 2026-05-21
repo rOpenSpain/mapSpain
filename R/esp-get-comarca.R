@@ -17,12 +17,12 @@
 #' @inherit esp_get_nuts
 #' @export
 #'
-#' @param region character string. A vector of names and/or codes for provinces
-#'   or `NULL` to get all the comarcas. See **Details**.
-#' @param comarca character string. A name or [`regex`][base::grep()] expression
+#' @param region Character string. A vector of names, codes or both for
+#'   provinces, or `NULL` to get all the comarcas. See **Details**.
+#' @param comarca Character string. A name or [`regex`][base::grep()] expression
 #'   with the names of the required comarcas. `NULL` will return all the
 #'   possible comarcas.
-#' @param type character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
+#' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
 #'   Type of comarca to return, see **Details**.
 #'
 #' @details
@@ -30,14 +30,14 @@
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 #' "cpro" (see [esp_codelist]).
 #'
-#' When calling a higher level (Province, Autonomous Community or NUTS1),
+#' When calling a higher level (province, Autonomous Community or NUTS1),
 #' all the comarcas of that level will be added.
 #'
 #' # About comarcas
 #'
 #' 'Comarcas' (English equivalent: district, county, area or zone) does not
 #' always have a formal legal status. They correspond mainly to natural areas
-#' (valleys, river basins, etc.) or even to historical regions or ancient
+#' (valleys, river basins and similar areas), historical regions or ancient
 #' kingdoms.
 #'
 #' In the case of Spain, comarcas only have an administrative character legally
@@ -50,7 +50,7 @@
 #' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
 #' - `"INE"`: Comarcas as defined by the National Statistics Institute (INE).
-#' - `"IGN"`: Official comarcas, only available in some autonomous communities,
+#' - `"IGN"`: Official comarcas, only available in some Autonomous Communities,
 #'   provided by the National Geographic Institute.
 #' - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
@@ -131,7 +131,7 @@ esp_get_comarca <- function(
     return(NULL)
   }
 
-  # Download
+  # Read the downloaded file.
   data_sf <- read_geo_file_sf(file_local)
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
@@ -156,14 +156,14 @@ esp_get_comarca <- function(
 
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
-      "The combination of {.arg region} and/or {.arg comarca} does not ",
+      "The combination of {.arg region}, {.arg comarca} or both does not ",
       "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)
   }
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
   # Rematch

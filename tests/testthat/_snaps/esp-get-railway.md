@@ -7,5 +7,5 @@
       The `spatialtype` argument of `esp_get_railway()` is deprecated as of mapSpain 1.0.0.
       i Please use `esp_get_stations()` instead.
     Message
-      i Redirecting the arguments to `mapSpain::esp_get_stations()`
+      i Redirecting the arguments to `mapSpain::esp_get_stations()`.
 

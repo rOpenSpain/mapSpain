@@ -116,7 +116,7 @@ esp_get_grid_MTN <- function(
   )
   init_grid <- match_arg_pretty(grid, valid_grid)
 
-  # Url
+  # Build the download URL.
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "MTN/dist/MTN_grids.zip"

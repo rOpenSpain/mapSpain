@@ -16,7 +16,7 @@ knitr:
     out.width: "100%"
 ---
 
-**mapSpain** provides a powerful interface for working with imagery. It can
+**mapSpain** provides an interface for working with imagery. It can
 download static files as `.png` or `.jpeg` (depending on the Web Map Service)
 and use them alongside your shapefiles.
 
@@ -24,7 +24,7 @@ and use them alongside your shapefiles.
 [**leaflet**](https://rstudio.github.io/leaflet/) package, which allows adding
 multiple basemaps to interactive maps.
 
-The services are implemented via the Leaflet plugin
+The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/). You
 can view each provider option at that link.
 
@@ -35,8 +35,8 @@ layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
 ::: callout-warning
-When working with imagery, set `moveCAN = FALSE`; otherwise images for the
-Canary Islands may be inaccurate.
+When working with imagery, set `moveCAN = FALSE` because otherwise images for
+the Canary Islands may be inaccurate.
 :::
 
 ```{r}
@@ -70,7 +70,7 @@ controls layer transparency:
 #| fig-cap: Map of the Way of St. James in Galicia
 galicia <- esp_get_ccaa("Galicia", epsg = 3857)
 
-# Example without transparency
+# Example without transparency.
 basemap <- esp_get_tiles(
   galicia,
   "IDErioja.Claro",
@@ -99,7 +99,7 @@ The following example repeats the same code with `transparent = TRUE`:
 #| label: fig-static_transp
 #| fig-cap: Example of using alpha values to combine different types of
 #|   basemaps.
-# Example with transparency
+# Example with transparency.
 tile_alpha <- esp_get_tiles(
   galicia,
   "CaminoDeSantiago",
@@ -198,7 +198,7 @@ tenerife_leaf <- esp_get_nuts(
 
 bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
 
-# Start leaflet
+# Start leaflet.
 m <- leaflet(
   tenerife_leaf,
   elementId = "tenerife-earthquakes",
@@ -207,13 +207,13 @@ m <- leaflet(
   options = leafletOptions(minZoom = 9, maxZoom = 18)
 )
 
-# Add layers
+# Add layers.
 m <- m |>
   addProviderEspTiles("IDErioja.Relieve") |>
   addPolygons(color = NA, fillColor = "red", group = "Polygon") |>
   addProviderEspTiles("Geofisica.Terremotos365dias", group = "Earthquakes")
 
-# Add additional options
+# Add additional options.
 m |>
   addLayersControl(
     overlayGroups = c("Polygon", "Earthquakes"),
@@ -311,7 +311,7 @@ prov_names <- names(esp_tiles_providers)
 urls <- vapply(
   esp_tiles_providers,
   function(x) {
-    # Create url
+    # Create the URL.
     allpars <- x$static
     q <- allpars$q
     rest <- modifyList(

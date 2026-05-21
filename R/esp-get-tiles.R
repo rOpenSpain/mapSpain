@@ -1,4 +1,4 @@
-#' Get static tiles from public administrations of Spain
+#' Get static map tiles from public administrations of Spain
 #'
 #' @description
 #' Get static map tiles based on a spatial object. Maps can be fetched from
@@ -33,21 +33,21 @@
 #'     [esp_tiles_providers]).
 #'   - A list with two named elements `id` and `q` with your own arguments. See
 #'     [esp_make_provider()] and examples.
-#' @param zoom character string or number. Only valid for WMTS providers, zoom
+#' @param zoom Character string or number. Only valid for WMTS providers, zoom
 #'   level to be downloaded. If `NULL`, it is determined automatically. If set,
 #'   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`, the
 #'   function sets a zoom level of 18. See **Details**.
-#' @param zoommin character string or number. Delta on default `zoom`.
+#' @param zoommin Character string or number. Delta on default `zoom`.
 #'   The default value is designed to download fewer tiles than you probably
 #'   want. Use `1` or `2` to increase the resolution.
-#' @param crop logical. If `TRUE`, the results will be cropped to the specified
+#' @param crop Logical. If `TRUE`, the results will be cropped to the specified
 #'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
 #'   `crop` is set to `FALSE`. See [terra::crop()].
-#' @param res character string or number. Only valid for WMS providers.
+#' @param res Character string or number. Only valid for WMS providers.
 #'   Resolution (in pixels) of the final tile.
-#' @param bbox_expand number. Expansion percentage of the bounding box of `x`.
-#' @param transparent logical. Provides transparent background, if supported.
-#' @param mask logical. `TRUE` if the result should be masked to `x`. See
+#' @param bbox_expand Number. Expansion percentage of the bounding box of `x`.
+#' @param transparent Logical. Provides transparent background, if supported.
+#' @param mask Logical. `TRUE` if the result should be masked to `x`. See
 #'   [terra::mask()].
 #' @param options A named list containing additional options to pass to the
 #'   query.
@@ -232,7 +232,7 @@ esp_get_tiles <- function(
     return(NULL)
   }
 
-  # In some cases need to colorize (e.g. Catastro)
+  # Colorize when needed, for example with Catastro.
   if (all(terra::nlyr(tile_map) == 1)) {
     tile_map <- terra::colorize(tile_map, to = "rgb", alpha = TRUE)
   }
@@ -432,7 +432,7 @@ get_wmts_tile <- function(
 
     r <- terra::rast(file_local, noflip = TRUE)
 
-    # In some cases need to colorize before merge (e.g.MapBox)
+    # Colorize before merging when needed, for example with MapBox.
     if (all(terra::nlyr(r) == 1)) {
       r <- terra::colorize(r, to = "rgb", alpha = TRUE)
     }

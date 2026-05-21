@@ -76,7 +76,7 @@ esp_get_prov_siane <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)
@@ -100,11 +100,11 @@ esp_get_prov_siane <- function(
     data_sf <- data_sf[data_sf$cpro %in% toprov, ]
   }
 
-  # Get df
+  # Get province metadata.
   df <- get_prov_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Paste nuts2
+  # Add NUTS2 metadata.
   dfnuts <- mapSpain::esp_codelist
   dfnuts <- unique(dfnuts[, c(
     "cpro",
@@ -115,18 +115,18 @@ esp_get_prov_siane <- function(
   )])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Transform
+  # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  # Order
+  # Order by Autonomous Community and province.
   data_sf <- data_sf[order(data_sf$codauto), ]
 
   namesend <- unique(c(initcols, colnames(esp_get_prov())))
 
-  # Review this error, can't fully reproduce
+  # Review this error, which is not fully reproducible.
 
   namesend <- namesend[namesend %in% names(data_sf)]
 

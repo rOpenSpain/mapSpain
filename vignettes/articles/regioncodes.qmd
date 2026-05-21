@@ -1,5 +1,5 @@
 ---
-title: "Appendix: Codes and names of the Spanish regions"
+title: "Appendix: codes and names of Spanish regions"
 description: Interactive explorer of the data included in the package.
 knitr:
   opts_chunk:
@@ -17,7 +17,7 @@ This appendix shows an interactive version of the `mapSpain::esp_codelist`
 data frame. That dataset contains Spanish region codes under different schemes
 and naming versions in several languages.
 
-## Names and codes of the Spanish regions
+## Names and codes of Spanish regions
 
 ```{r}
 #| label: esp_codelist

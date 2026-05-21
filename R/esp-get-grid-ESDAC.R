@@ -22,7 +22,7 @@
 #' @inherit esp_get_grid_EEA return
 #' @export
 #'
-#' @param resolution numeric. Resolution of the grid in kilometers. Can be `1`
+#' @param resolution Numeric. Resolution of the grid in kilometers. Can be `1`
 #'   or `10`.
 #'
 #' @examplesIf esp_check_access()
@@ -48,7 +48,7 @@ esp_get_grid_ESDAC <- function(
   # Check grid
   res <- match_arg_pretty(resolution)
 
-  # Url
+  # Build the download URL.
   if (res == 10) {
     url <- paste0(
       "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",

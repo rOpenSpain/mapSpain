@@ -21,7 +21,7 @@
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #' @param layers The name of the layer to retrieve.
 #' @param ... Additional arguments to the query, like `version`, `format`,
-#'   `crs/srs`, `style`, etc. depending on the capabilities of the service.
+#'   `crs/srs` and `style`, depending on the capabilities of the service.
 #'
 #' @details
 #' This function is meant to work with services provided as of the

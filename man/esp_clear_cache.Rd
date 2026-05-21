@@ -3,15 +3,15 @@
 \encoding{UTF-8}
 \name{esp_clear_cache}
 \alias{esp_clear_cache}
-\title{Clear your \CRANpkg{mapSpain} cache dir}
+\title{Clear your \CRANpkg{mapSpain} cache directory}
 \usage{
 esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{logical. If \code{TRUE}, deletes the configuration folder of
+\item{config}{Logical. If \code{TRUE}, deletes the configuration folder of
 \CRANpkg{mapSpain}.}
 
-\item{cached_data}{logical. If \code{TRUE}, deletes your \code{cache_dir} and all
+\item{cached_data}{Logical. If \code{TRUE}, deletes your \code{cache_dir} and all
 its contents.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -35,15 +35,15 @@ had never installed or used \CRANpkg{mapSpain}.
 }
 \examples{
 
-# Don't run this! It would modify your current state
+# Do not run this. It would modify your current state.
 \dontrun{
 my_cache <- esp_detect_cache_dir()
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
 esp_set_cache_dir(ex, verbose = FALSE)
 
-# Restore initial cache
+# Restore the initial cache.
 esp_clear_cache(verbose = TRUE)
 
 esp_set_cache_dir(my_cache)

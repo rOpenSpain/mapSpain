@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa_siane}
 \alias{esp_get_ccaa_siane}
-\title{Autonomous communities of Spain - SIANE}
+\title{Autonomous Communities of Spain - SIANE}
 \source{
 CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -43,15 +43,15 @@ esp_get_ccaa_siane(
 )
 }
 \arguments{
-\item{ccaa}{character string. A vector of names and/or codes for Autonomous
-Communities or \code{NULL} to get all the autonomous communities. See
-\strong{Details}.}
+\item{ccaa}{Character string. A vector of names, codes or both for
+Autonomous Communities, or \code{NULL} to get all the Autonomous Communities.
+See \strong{Details}.}
 
-\item{year}{character string or number. Release year, it must be in
+\item{year}{Character string or number. Release year, it must be in
 formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -60,18 +60,18 @@ information starts as of 2005.}
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{character string or number. Resolution of the geospatial
+\item{resolution}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
 \item "10": 1:10 million.
@@ -84,7 +84,7 @@ data. One of:
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{rawcols}{logical. Setting this to \code{TRUE} will add the raw columns of
+\item{rawcols}{Logical. Setting this to \code{TRUE} will add the raw columns of
 the resulting object as provided by IGN.}
 }
 \value{
@@ -92,15 +92,15 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Returns
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as autonomous communities in this function.
+Ceuta and Melilla are considered as Autonomous Communities in this function.
 
-When calling a NUTS1 level, all the autonomous communities of that level
+When calling a NUTS1 level, all the Autonomous Communities of that level
 will be added.
 }
 \examples{

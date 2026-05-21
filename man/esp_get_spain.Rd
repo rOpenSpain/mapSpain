@@ -23,9 +23,9 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{...}{
   Arguments passed on to \code{\link{esp_get_nuts}}
   \describe{
-    \item{\code{year}}{year character string or number. Release year of the file. See
+    \item{\code{year}}{Year character string or number. Release year of the file. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
-    \item{\code{epsg}}{character string or number. Projection of the map: 4-digit
+    \item{\code{epsg}}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -33,13 +33,13 @@ Initial position can be adjusted using the vector of coordinates. See
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
+    \item{\code{cache}}{Logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
+    \item{\code{update_cache}}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
-    \item{\code{cache_dir}}{character string. A path to a cache directory. See
+    \item{\code{cache_dir}}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
+    \item{\code{ext}}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
     \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
     \item{\code{resolution}}{character string or number. Resolution of the geospatial

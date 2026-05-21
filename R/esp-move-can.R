@@ -22,7 +22,7 @@
 #'
 #' While `moveCAN` is useful for visualization, it will alter the actual
 #' geographic position of the Canary Islands. When using the output for
-#' spatial analysis or using tiles (e.g. with [esp_get_tiles()] or
+#' spatial analysis or using tiles (for example, with [esp_get_tiles()] or
 #' [addProviderEspTiles()]) this option should be set to `FALSE` in order to
 #' get the actual coordinates, instead of the modified ones.
 #'

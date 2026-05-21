@@ -55,7 +55,7 @@ esp_siane_bulk_download <- function(
     return(NULL)
   }
 
-  # Clean cache dir name for extracting
+  # Clean the cache directory name before extracting.
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
   infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)

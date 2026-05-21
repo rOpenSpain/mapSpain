@@ -45,7 +45,7 @@ navbar:
         href: articles/articles/regioncodes.html
       - text: -----
       - text: Grupo de Usuarios R Madrid 25-nov-2021
-      - text: "mapSpain: mapas de España en R (artículo)"
+      - text: "mapSpain: maps of Spain in R (article)"
         href: articles/articles/mapasesp.html
       - text: "mapSpain: mapas de España en R (slides)"
         href: https://dieghernan.github.io/rpubs/mapSpain_slides/
@@ -58,12 +58,13 @@ navbar:
 
 home:
   title: |
-    mapSpain | Administrative boundaries of Spain, including CCAA, provinces
-    and municipalities
+    mapSpain | Administrative boundaries of Spain, including Autonomous
+    Communities, provinces and municipalities
   description: |
-    Administrative boundaries of Spain based on the GISCO (Geographic
-    Information System of the Commission) Eurostat database. It also provides a
-    plugin for leaflet and tools to download and process static tiles.
+    Administrative boundaries of Spain based on GISCO (Geographic Information
+    System of the Commission) from Eurostat and CartoBase ANE from Instituto
+    Geográfico Nacional. It also provides a plugin for leaflet and tools to
+    download and process static map tiles.
 
 reference:
 - title: Political boundaries of Spain
@@ -73,12 +74,12 @@ reference:
     political boundaries.
 - subtitle: CartoBase ANE
   description: |
-    Datasets from IGN / CartoBase ANE.
+    Datasets from IGN and CartoBase ANE.
   contents:
   - has_concept("siane")
 - subtitle: GISCO
   description: |
-    Datasets from GISCO / Eurostat.
+    Datasets from GISCO and Eurostat.
   contents:
   - has_concept("gisco")
 - subtitle: Other helpers and political objects
@@ -89,7 +90,7 @@ reference:
   - esp_get_simpl
 - title: Maps with imagery
   desc: |
-    Return static tiles or create an interactive <a
+    Functions to return static map tiles or create an interactive <a
     href="https://CRAN.R-project.org/package=leaflet"
     class="external-link"><span class="pkg">leaflet</span></a> map.
   contents:
@@ -115,7 +116,7 @@ reference:
   contents: has_concept("cache utilities")
 - title: Dictionary
   desc: |
-    Translation across languages and coding systems.
+    Translate region names across languages and coding systems.
   contents:
   - has_concept("dictionary")
 - title: Datasets
@@ -124,9 +125,9 @@ reference:
     class="external-link"><span class="pkg">mapSpain</span></a>.
   contents:
   - has_concept("datasets")
-- title: Geographical grids
+- title: Geographic grids
   desc: |
-    Geographical grids are agreed, defined and harmonized grid nets with
+    Geographic grids are agreed, defined and harmonized grid networks with
     standardized locations and grid cell sizes.
   contents:
   - has_concept("grids")

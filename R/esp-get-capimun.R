@@ -99,7 +99,7 @@ esp_get_capimun <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)
@@ -110,7 +110,7 @@ esp_get_capimun <- function(
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
   data_sf <- siane_filter_year(data_sf = data_sf, year = year)
-  # Name management
+  # Normalize names.
   data_sf$LAU_CODE <- data_sf$id_ine
   data_sf$name <- data_sf$rotulo
   data_sf$cpro <- substr(data_sf$id_ine, 1, 2)
@@ -150,17 +150,17 @@ esp_get_capimun <- function(
 
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
-      "The combination of {.arg region} and/or {.arg munic} does not ",
+      "The combination of {.arg region}, {.arg munic} or both does not ",
       "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)
   }
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Back and finish
+  # Restore and finish geometries.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
   if (isFALSE(rawcols)) {
     data_sf <- data_sf[, c(

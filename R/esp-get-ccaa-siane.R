@@ -1,4 +1,4 @@
-#' Autonomous communities of Spain - SIANE
+#' Autonomous Communities of Spain - SIANE
 #'
 #' @source
 #' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
@@ -27,16 +27,16 @@
 #' @inherit esp_get_ccaa description return details
 #' @export
 #'
-#' @param year character string or number. Release year, it must be in
+#' @param year Character string or number. Release year, it must be in
 #'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
 #'   information starts as of 2005.
-#' @param resolution character string or number. Resolution of the geospatial
+#' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
 #'   - "10": 1:10 million.
 #'   - "6.5": 1:6.5 million.
 #'   - "3": 1:3 million.
 #'
-#' @param rawcols logical. Setting this to `TRUE` will add the raw columns of
+#' @param rawcols Logical. Setting this to `TRUE` will add the raw columns of
 #'   the resulting object as provided by IGN.
 #'
 #' @examplesIf esp_check_access()
@@ -115,7 +115,7 @@ esp_get_ccaa_siane <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)
@@ -141,7 +141,7 @@ esp_get_ccaa_siane <- function(
 
   if (!is.null(nuts_id)) {
     nuts_id <- convert_to_nuts_ccaa(nuts_id)
-    # Get df
+    # Get CCAA metadata.
     df <- mapSpain::esp_codelist
     dfl2 <- df[df$nuts2.code %in% nuts_id, ]$codauto
     dfl3 <- df[df$nuts3.code %in% nuts_id, ]$codauto
@@ -152,7 +152,7 @@ esp_get_ccaa_siane <- function(
     data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
   }
 
-  # Get df final with vars
+  # Build final metadata with selected variables.
   df <- get_ccaa_codes_df()
 
   # Merge
@@ -163,14 +163,14 @@ esp_get_ccaa_siane <- function(
   dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
   data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Back and finish
-  # Transform
+  # Restore and finish geometries.
+  # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  # Order
+  # Order by Autonomous Community.
   data_sf <- data_sf[order(data_sf$codauto), ]
 
   # Select columns

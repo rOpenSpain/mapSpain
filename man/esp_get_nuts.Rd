@@ -27,10 +27,10 @@ esp_get_nuts(
 )
 }
 \arguments{
-\item{year}{year character string or number. Release year of the file. See
+\item{year}{Year character string or number. Release year of the file. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -39,13 +39,13 @@ esp_get_nuts(
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -60,7 +60,7 @@ data. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{spatialtype}{character string. Type of geometry to be returned.
+\item{spatialtype}{Character string. Type of geometry to be returned.
 Options available are:
 \itemize{
 \item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
@@ -78,7 +78,7 @@ Options available are:
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{ext}{character. Extension of the file (default \code{"gpkg"}). See
+\item{ext}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
 }
 \value{

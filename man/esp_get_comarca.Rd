@@ -20,10 +20,10 @@ esp_get_comarca(
 )
 }
 \arguments{
-\item{region}{character string. A vector of names and/or codes for provinces
-or \code{NULL} to get all the comarcas. See \strong{Details}.}
+\item{region}{Character string. A vector of names, codes or both for
+provinces, or \code{NULL} to get all the comarcas. See \strong{Details}.}
 
-\item{comarca}{character string. A name or \code{\link[base:grep]{regex}} expression
+\item{comarca}{Character string. A name or \code{\link[base:grep]{regex}} expression
 with the names of the required comarcas. \code{NULL} will return all the
 possible comarcas.}
 
@@ -32,10 +32,10 @@ possible comarcas.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{type}{character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}.
+\item{type}{Character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}.
 Type of comarca to return, see \strong{Details}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -44,10 +44,10 @@ Type of comarca to return, see \strong{Details}.}
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -67,7 +67,7 @@ When using \code{region} you can use and mix names and NUTS codes
 (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 "cpro" (see \link{esp_codelist}).
 
-When calling a higher level (Province, Autonomous Community or NUTS1),
+When calling a higher level (province, Autonomous Community or NUTS1),
 all the comarcas of that level will be added.
 }
 \note{
@@ -80,7 +80,7 @@ from such use.
 \section{About comarcas}{
 'Comarcas' (English equivalent: district, county, area or zone) does not
 always have a formal legal status. They correspond mainly to natural areas
-(valleys, river basins, etc.) or even to historical regions or ancient
+(valleys, river basins and similar areas), historical regions or ancient
 kingdoms.
 
 In the case of Spain, comarcas only have an administrative character legally
@@ -94,7 +94,7 @@ the Principality of Asturias and Andalusia have functional comarcas.
 provided under different classification criteria.
 \itemize{
 \item \code{"INE"}: Comarcas as defined by the National Statistics Institute (INE).
-\item \code{"IGN"}: Official comarcas, only available in some autonomous communities,
+\item \code{"IGN"}: Official comarcas, only available in some Autonomous Communities,
 provided by the National Geographic Institute.
 \item \code{"AGR"}: Agrarian comarcas defined by the Ministry of Agriculture,
 Fisheries and Food (MAPA).

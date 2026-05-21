@@ -20,7 +20,7 @@
 #' @inheritParams esp_get_nuts
 #' @export
 #'
-#' @param style character string. One of `"right"`, `"left"`, `"box"` or
+#' @param style Character string. One of `"right"`, `"left"`, `"box"` or
 #'   `"poly"`. Default is `"right"`, see **Details**.
 #'
 #' @return
@@ -130,7 +130,7 @@ esp_get_can_box <- function(
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
-  # Transform
+  # Transform to the requested CRS.
 
   lall <- sf::st_transform(lall, as.numeric(epsg))
   lall <- sf::st_zm(lall)
@@ -173,7 +173,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
-  # Transform
+  # Transform to the requested CRS.
 
   lall <- sf::st_transform(lall, as.numeric(epsg))
   lall <- sf::st_zm(lall)

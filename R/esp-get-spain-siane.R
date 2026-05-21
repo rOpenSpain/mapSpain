@@ -47,7 +47,7 @@ esp_get_spain_siane <- function(moveCAN = TRUE, ...) {
   # Combine everything
   g <- sf::st_union(data_sf)
 
-  # Get df
+  # Get country metadata.
   df <- sf::st_drop_geometry(for_data_frame)
 
   # Generate sf object

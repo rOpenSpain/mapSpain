@@ -5,7 +5,7 @@
 \alias{esp_get_tiles}
 \alias{esp_get_attributions}
 \alias{esp_getTiles}
-\title{Get static tiles from public administrations of Spain}
+\title{Get static map tiles from public administrations of Spain}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
 \CRANpkg{leaflet}, \strong{v1.3.3}.
@@ -40,33 +40,33 @@ esp_get_attributions(type, options = NULL)
 \code{\link[=esp_make_provider]{esp_make_provider()}} and examples.
 }}
 
-\item{zoom}{character string or number. Only valid for WMTS providers, zoom
+\item{zoom}{Character string or number. Only valid for WMTS providers, zoom
 level to be downloaded. If \code{NULL}, it is determined automatically. If set,
 it overrides \code{zoommin}. If a single \code{sf} \code{POINT} and \code{zoom = NULL}, the
 function sets a zoom level of 18. See \strong{Details}.}
 
-\item{zoommin}{character string or number. Delta on default \code{zoom}.
+\item{zoommin}{Character string or number. Delta on default \code{zoom}.
 The default value is designed to download fewer tiles than you probably
 want. Use \code{1} or \code{2} to increase the resolution.}
 
-\item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
+\item{crop}{Logical. If \code{TRUE}, the results will be cropped to the specified
 \code{x} extent. If \code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT},
 \code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
-\item{res}{character string or number. Only valid for WMS providers.
+\item{res}{Character string or number. Only valid for WMS providers.
 Resolution (in pixels) of the final tile.}
 
-\item{bbox_expand}{number. Expansion percentage of the bounding box of \code{x}.}
+\item{bbox_expand}{Number. Expansion percentage of the bounding box of \code{x}.}
 
-\item{transparent}{logical. Provides transparent background, if supported.}
+\item{transparent}{Logical. Provides transparent background, if supported.}
 
-\item{mask}{logical. \code{TRUE} if the result should be masked to \code{x}. See
+\item{mask}{Logical. \code{TRUE} if the result should be masked to \code{x}. See
 \code{\link[terra:mask]{terra::mask()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}

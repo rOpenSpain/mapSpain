@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Convert Spanish subdivision names or identifiers between different coding
-#' schemes (NUTS, ISO2, province codes, etc.) or obtain human-readable
+#' schemes, such as NUTS, ISO2 and province codes, or obtain human-readable
 #' names.
 #'
 #' @encoding UTF-8
@@ -18,16 +18,16 @@
 #' corresponding element will be `NA` and a warning is emitted via
 #' [cli::cli_alert_warning()].
 #'
-#' @param sourcevar character string. Vector which contains the codes or names
+#' @param sourcevar Character string. Vector which contains the codes or names
 #'   to be converted.
-#' @param origin,destination character string. Coding scheme of origin and
+#' @param origin,destination Character string. Coding scheme of origin and
 #'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
 #'
 #' @details
 #' The function uses internal dictionaries together with \CRANpkg{countrycode}
 #' to map between schemes. When `origin == destination == "text"` the input is
 #' returned unchanged. Mixing names from different administrative levels
-#' (for example autonomous community and province) may produce
+#' (for example Autonomous Community and province) may produce
 #' `NA` values for some entries.
 #'
 #' @examples
@@ -127,7 +127,7 @@ esp_dict_region_code <- function(
     # Madrid - CCAA
     sourcevar[sourcevar == "ES3"] <- "ES30"
 
-    # Canarias - CCAA
+    # Canary Islands - CCAA.
     sourcevar[sourcevar == "ES7"] <- "ES70"
 
     if (destination == "iso2") {
@@ -228,14 +228,14 @@ esp_dict_region_code <- function(
 #'
 #' @export
 #'
-#' @param lang character string. Target language code, available values:
+#' @param lang Character string. Target language code, available values:
 #'   - `"es"`: Spanish.
 #'   - `"en"`: English.
 #'   - `"ca"`: Catalan.
 #'   - `"ga"`: Galician.
 #'   - `"eu"`: Basque.
 #'
-#' @param all logical. If `TRUE` the function returns all possible translations
+#' @param all Logical. If `TRUE` the function returns all possible translations
 #'   for each input as a named list. When `FALSE` (default) a single preferred
 #'   translation per input is returned as a character vector.
 #'
@@ -292,7 +292,7 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   # Create lang dict
   dict_tolang <- unique(dict[grep(paste0("name.", lang), dict$variable), ])
 
-  # Order using short
+  # Order using short names.
   shrt <- grep("short", dict_tolang$variable, fixed = TRUE)
 
   dict_tolang[shrt, ]$variable <- paste0("aa", dict_tolang[shrt, ]$variable)

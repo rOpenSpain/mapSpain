@@ -35,7 +35,7 @@ validate_provider <- function(type = "PNOA") {
   min_zoom <- ensure_null(prov_list[type][[1]]$leaflet$minZoom)
   db_prov$min_zoom <- min_zoom
 
-  # Order
+  # Order tile options.
   ord <- unique(c(c("attribution", "id", "q"), names(db_prov)))
   db_prov <- db_prov[ord]
   # Remove NULLs/NAs
@@ -91,7 +91,7 @@ guess_provider_type <- function(prov_list) {
   serv <- unlist(prov_list[tolower(names(prov_list)) == "service"])
 
   serv <- ensure_null(serv)
-  # Assuming WMTS, e.g.
+  # Assuming WMTS, for example:
   # https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png
   if (is.null(serv)) {
     return("WMTS")

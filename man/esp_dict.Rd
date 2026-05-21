@@ -11,13 +11,13 @@ esp_dict_region_code(sourcevar, origin = "text", destination = "text")
 esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 }
 \arguments{
-\item{sourcevar}{character string. Vector which contains the codes or names
+\item{sourcevar}{Character string. Vector which contains the codes or names
 to be converted.}
 
-\item{origin, destination}{character string. Coding scheme of origin and
+\item{origin, destination}{Character string. Coding scheme of origin and
 destination. One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"} or \code{"cpro"}.}
 
-\item{lang}{character string. Target language code, available values:
+\item{lang}{Character string. Target language code, available values:
 \itemize{
 \item \code{"es"}: Spanish.
 \item \code{"en"}: English.
@@ -26,7 +26,7 @@ destination. One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"
 \item \code{"eu"}: Basque.
 }}
 
-\item{all}{logical. If \code{TRUE} the function returns all possible translations
+\item{all}{Logical. If \code{TRUE} the function returns all possible translations
 for each input as a named list. When \code{FALSE} (default) a single preferred
 translation per input is returned as a character vector.}
 }
@@ -47,14 +47,14 @@ all available translations for the corresponding input value.
 }
 \description{
 Convert Spanish subdivision names or identifiers between different coding
-schemes (NUTS, ISO2, province codes, etc.) or obtain human-readable
+schemes, such as NUTS, ISO2 and province codes, or obtain human-readable
 names.
 }
 \details{
 The function uses internal dictionaries together with \CRANpkg{countrycode}
 to map between schemes. When \verb{origin == destination == "text"} the input is
 returned unchanged. Mixing names from different administrative levels
-(for example autonomous community and province) may produce
+(for example Autonomous Community and province) may produce
 \code{NA} values for some entries.
 }
 \examples{

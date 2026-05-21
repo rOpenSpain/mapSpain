@@ -1,8 +1,8 @@
-#' Convert country names or codes to desired code
+#' Convert country names or codes to the desired code
 #'
 #' @param names Character vector of country names or codes.
 #'
-#' @param out Output code
+#' @param out Output code.
 #'
 #' @return A character vector with converted country names or codes.
 #'
@@ -10,7 +10,7 @@
 convert_country_code <- function(names, out = "iso3c") {
   names[tolower(names) == "antartica"] <- "Antarctica"
 
-  # Vectorize
+  # Vectorize country code conversion.
   outnames <- lapply(names, function(x) {
     if (
       any(
@@ -37,7 +37,7 @@ convert_country_code <- function(names, out = "iso3c") {
       cli::cli_abort(
         paste0(
           "Invalid country name {.str {x}}. ",
-          "Try a vector of names or ISO3/ISO2 codes"
+          "Try a vector of names, ISO3 codes or ISO2 codes."
         ),
         call = NULL
       )

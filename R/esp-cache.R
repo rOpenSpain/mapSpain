@@ -1,4 +1,4 @@
-#' Set your \CRANpkg{mapSpain} cache dir
+#' Set your \CRANpkg{mapSpain} cache directory
 #'
 #' @encoding UTF-8
 #' @family cache utilities
@@ -7,17 +7,17 @@
 #' @rdname esp_set_cache_dir
 #'
 #' @description
-#' This function stores your `cache_dir` path on your local machine and
-#' loads it for future sessions. Type `Sys.getenv("MAPSPAIN_CACHE_DIR")` to
-#' find your cached path, or use [esp_detect_cache_dir()].
+#' This function stores your `cache_dir` path on your local machine and loads
+#' it for future sessions. Use `Sys.getenv("MAPSPAIN_CACHE_DIR")` or
+#' [esp_detect_cache_dir()] to find the cached path.
 #'
 #' @inheritParams esp_get_nuts
 #' @param cache_dir A path to a cache directory. When `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install logical. If `TRUE`, installs the key on your local machine for
+#' @param install Logical. If `TRUE`, installs the key on your local machine for
 #'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
 #'   this argument is automatically set to `FALSE`.
-#' @param overwrite logical. If `TRUE`, overwrites an existing
+#' @param overwrite Logical. If `TRUE`, overwrites an existing
 #'   `MAPSPAIN_CACHE_DIR` on your local machine.
 #'
 #' @details
@@ -28,13 +28,13 @@
 #' path to a configuration file under `tools::R_user_dir("mapSpain", "config")`.
 #'
 #' @return
-#' `esp_set_cache_dir()` returns an (invisible) character string with the path
+#' `esp_set_cache_dir()` returns an invisible character string with the path
 #' to your `cache_dir`. It is primarily called for its side effect.
 #'
 #' @section Caching strategies:
 #'
 #' Some files can be read from their online source without caching using the
-#' option `cache = FALSE`. Otherwise the source files will be downloaded to
+#' option `cache = FALSE`. Otherwise the source files are downloaded to
 #' your computer. \CRANpkg{mapSpain} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
@@ -42,7 +42,7 @@
 #' - Modify the cache for a single session by setting
 #'   `esp_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
+#'   `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
 #'   persists across **R** sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function.
@@ -63,17 +63,17 @@
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Do not run this. It would modify your current state.
 #' \dontrun{
 #' my_cache <- esp_detect_cache_dir()
 #'
-#' # Set an example cache
+#' # Set an example cache.
 #' ex <- file.path(tempdir(), "example", "cachenew")
 #' esp_set_cache_dir(ex)
 #'
 #' esp_detect_cache_dir()
 #'
-#' # Restore initial cache
+#' # Restore the initial cache.
 #' esp_set_cache_dir(my_cache)
 #' identical(my_cache, esp_detect_cache_dir())
 #' }
@@ -92,11 +92,11 @@ esp_set_cache_dir <- function(
     make_msg(
       "info",
       verbose,
-      "Using a temporary cache dir (see {.fn base::tempdir}). ",
+      "Using a temporary cache directory (see {.fn base::tempdir}). ",
       "Set {.arg cache_dir} to a value to store permanently."
     )
 
-    # Create a folder on tempdir
+    # Create a folder in the temporary directory.
     cache_dir <- file.path(tempdir(), "mapSpain")
     is_temp <- TRUE
     install <- FALSE
@@ -104,17 +104,17 @@ esp_set_cache_dir <- function(
     is_temp <- FALSE
   }
 
-  # Create and expand
+  # Create and expand the cache directory.
   cache_dir <- create_cache_dir(cache_dir)
-  msg <- paste0("{.pkg mapSpain} cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0("{.pkg mapSpain} cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Install path on environ var.
+  # Install the path in the environment variable.
   # nocov start
 
   if (install) {
     config_dir <- tools::R_user_dir("mapSpain", "config")
-    # Create cache dir if not presente
+    # Create the cache configuration directory if needed.
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
     }
@@ -160,7 +160,7 @@ esp_detect_cache_dir <- function() {
   cd
 }
 
-#' Clear your \CRANpkg{mapSpain} cache dir
+#' Clear your \CRANpkg{mapSpain} cache directory
 #'
 #' @rdname esp_clear_cache
 #' @family cache utilities
@@ -177,9 +177,9 @@ esp_detect_cache_dir <- function() {
 #' - Deletes the `cache_dir` directory and its contents.
 #' - Clears the value stored in `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
 #'
-#' @param config logical. If `TRUE`, deletes the configuration folder of
+#' @param config Logical. If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{mapSpain}.
-#' @param cached_data logical. If `TRUE`, deletes your `cache_dir` and all
+#' @param cached_data Logical. If `TRUE`, deletes your `cache_dir` and all
 #'   its contents.
 #' @inheritParams esp_set_cache_dir
 #'
@@ -191,15 +191,15 @@ esp_detect_cache_dir <- function() {
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Do not run this. It would modify your current state.
 #' \dontrun{
 #' my_cache <- esp_detect_cache_dir()
 #'
-#' # Set an example cache
+#' # Set an example cache.
 #' ex <- file.path(tempdir(), "example", "cache")
 #' esp_set_cache_dir(ex, verbose = FALSE)
 #'
-#' # Restore initial cache
+#' # Restore the initial cache.
 #' esp_clear_cache(verbose = TRUE)
 #'
 #' esp_set_cache_dir(my_cache)
@@ -241,25 +241,25 @@ esp_clear_cache <- function(
 
   Sys.setenv(MAPSPAIN_CACHE_DIR = "")
 
-  # Reset cache dir
+  # Reset the cache directory.
   invisible()
 }
 
-# Internal funs ----
+# Internal functions ----
 
 #' Detect cache directory silently
 #'
-#' @returns Path to cache directory
+#' @returns Path to cache directory.
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
 
-  # Try from getenv
+  # Try the environment variable.
   getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
   getvar <- ensure_null(getvar)
 
   if (is.null(getvar)) {
-    # Not set - tries to retrieve from cache
+    # If not set, try to retrieve the cached path.
     cache_config <- file.path(
       tools::R_user_dir("mapSpain", "config"),
       "mapSpain_cache_dir"
@@ -270,19 +270,18 @@ detect_cache_dir_muted <- function() {
       cached_path <- readLines(cache_config)
       cached_path <- ensure_null(cached_path)
 
-      # Case on empty cached path - would default
+      # Default when the cached path is empty.
       if (is.null(cached_path)) {
         cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
 
-      # 3. Return from cached path
+      # Return the cached path.
       Sys.setenv(MAPSPAIN_CACHE_DIR = cached_path)
       cached_path
       # nocov end
     } else {
-      # 4. Default cache location
-
+      # Use the default cache location.
       cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
       cache_dir
     }
@@ -291,35 +290,35 @@ detect_cache_dir_muted <- function() {
   }
 }
 
-#' Creates `cache_dir` if not exists
+#' Create `cache_dir` if needed
 #'
-#' @param cache_dir path to cache dir
-#' @returns path to cache dir
+#' @param cache_dir Path to the cache directory.
+#' @returns Path to the cache directory.
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
   cache_dir <- ensure_null(cache_dir)
 
-  # Check cache dir from options if not set
+  # Check the cache directory from options if it is not set.
   if (is.null(cache_dir)) {
     cache_dir <- detect_cache_dir_muted()
   }
 
   cache_dir <- path.expand(cache_dir)
 
-  # Create cache dir if needed
+  # Create the cache directory if needed.
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }
   cache_dir
 }
 
-#' Migrate cache config from rappdirs to tools
+#' Migrate cache configuration from rappdirs to tools
 #'
-#' One-time function for mapSpain >= 1.0.0
+#' One-time function for \CRANpkg{mapSpain} >= 1.0.0.
 #'
-#' @param old old cache config folder
-#' @param new new cache config folder
+#' @param old Old cache configuration folder.
+#' @param new New cache configuration folder.
 #'
 #' @noRd
 migrate_cache <- function(
@@ -344,7 +343,7 @@ migrate_cache <- function(
       "See {.strong Note} in {.fn mapSpain::esp_set_cache_dir} for details."
     ))
     cli::cli_alert_info(
-      "This is a one-time message, it will not be displayed in the future."
+      "This is a one-time message. It will not be displayed again."
     )
   }
   unlink(old, force = TRUE, recursive = TRUE)

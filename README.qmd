@@ -33,7 +33,7 @@ knitr:
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package that
 provides **sf** objects of Spain's administrative boundaries, including
-autonomous communities, provinces and municipalities.
+Autonomous Communities, provinces and municipalities.
 
 **mapSpain** also provides a plugin for the [**leaflet**
 package](https://rstudio.github.io/leaflet/). It loads several basemaps from
@@ -89,21 +89,21 @@ The following examples highlight some key features of **mapSpain**.
 
 ```{r}
 #| label: static
-#| fig-cap: Percentage of women by autonomous community in Spain (2025)
+#| fig-cap: Percentage of women by Autonomous Community in Spain (2025)
 library(mapSpain)
 library(sf)
 library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from base dataset
+# Extract CCAA from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA
+  # Summarize by CCAA.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -111,13 +111,13 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-# Merge into spatial data
+# Merge into spatial data.
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
 
 can <- esp_get_can_box()
 
-# Plot with ggplot
+# Plot with ggplot.
 library(ggplot2)
 
 ggplot(ccaa_sf) +
@@ -146,12 +146,12 @@ You can combine `sf` objects with static tiles.
 ```{r}
 #| label: tile
 #| fig-cap: Percentage of women in Segovia by municipality (2025)
-# Get census data
+# Get census data.
 census <- mapSpain::pobmun25 |>
   mutate(porc_women = women / pob25) |>
   select(cpro, cmun, porc_women)
 
-# Get geometries
+# Get geometries.
 shape <- esp_get_munic_siane(region = "Segovia", epsg = 3857)
 provs <- esp_get_prov_siane(epsg = 3857)
 
@@ -200,14 +200,14 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
 
 If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
-a dependency with **mapSpain**. Here's a basic example:
+a dependency with **mapSpain**. Here is a basic example:
 
 ```{r}
 #| label: giscoR
 #| fig-cap: Locator map of Spain
 library(giscoR)
 
-# Set the same resolution for a perfect fit
+# Set the same resolution for a perfect fit.
 
 res <- "20"
 
@@ -273,7 +273,7 @@ code](https://github.com/ropenspain/mapSpain/).
 ## Copyright notice
 
 This package uses data from CartoBase SIANE, provided by Instituto Geográfico
-Nacional:
+Nacional.
 
 > Atlas Nacional de España (ANE) [CC BY
 > 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)

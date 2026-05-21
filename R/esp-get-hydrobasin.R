@@ -11,7 +11,7 @@
 #' @inherit esp_get_ccaa_siane
 #' @export
 #'
-#' @param domain character string. Type of river basin district. Possible
+#' @param domain Character string. Type of river basin district. Possible
 #'   values are `"land"`, including only the groundwaters area or `"landsea"`,
 #'   groundwaters and coastal waters.
 #'
@@ -115,7 +115,7 @@ esp_get_hydrobasin <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)

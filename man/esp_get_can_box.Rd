@@ -19,7 +19,7 @@ esp_get_can_box(
 esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 }
 \arguments{
-\item{style}{character string. One of \code{"right"}, \code{"left"}, \code{"box"} or
+\item{style}{Character string. One of \code{"right"}, \code{"left"}, \code{"box"} or
 \code{"poly"}. Default is \code{"right"}, see \strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -27,7 +27,7 @@ esp_get_can_provinces(moveCAN = TRUE, epsg = "4258")
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}

@@ -38,8 +38,8 @@ For more examples and vignettes, see the full site at
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package designed to
 provide geographical information about Spain at different levels.
 
-**mapSpain** provides shapefiles of municipalities, provinces, autonomous
-communities and NUTS levels of Spain. It also provides hexbin shapefiles and
+**mapSpain** provides shapefiles of municipalities, provinces, Autonomous
+communities and NUTS levels for Spain. It also provides hexbin shapefiles and
 other complementary shapes, such as the demarcation lines around the Canary
 Islands.
 
@@ -48,10 +48,10 @@ which can be represented on static maps via `mapSpain::esp_get_tiles()` or on an
 **R** [**leaflet**](https://rstudio.github.io/leaflet/) map using
 `mapSpain::addProviderEspTiles()`.
 
-Additionally, **mapSpain** includes a powerful dictionary that translates
-province and region names to English, Spanish, Catalan, Basque, and Galician,
-and converts them to various coding standards such as NUTS, ISO2, and the INE
-(the official Spanish statistical agency) coding system.
+**mapSpain** also includes a dictionary that translates province and region
+names to English, Spanish, Catalan, Basque and Galician, and converts them to
+various coding standards such as NUTS, ISO2 and the INE (the official Spanish
+statistical agency) coding system.
 
 ## Caching
 
@@ -102,7 +102,7 @@ ggplot(country) +
 #| label: basic2
 #| fig-cap: 'Example: provinces of Andalucia'
 #| fig-asp: 0.55
-# Plot provinces
+# Plot provinces.
 
 andalucia <- esp_get_prov("Andalucia")
 
@@ -115,12 +115,12 @@ ggplot(andalucia) +
 #| label: basic3
 #| fig-cap: 'Example: municipalities of the Basque Country'
 #| fig-asp: 0.8
-# Plot municipalities
+# Plot municipalities.
 
 euskadi_ccaa <- esp_get_ccaa("Euskadi")
 euskadi <- esp_get_munic_siane(region = "Euskadi")
 
-# Use dictionary
+# Use the dictionary.
 
 euskadi$name_eu <- esp_dict_translate(euskadi$ine.prov.name, lang = "eu")
 
@@ -142,26 +142,26 @@ ggplot(euskadi_ccaa) +
 
 ## Choropleth and label maps
 
-Let's analyze the distribution of women in each autonomous community with
+Analyze the distribution of women in each Autonomous Community with
 **ggplot2**:
 
 ```{r}
 #| label: choro
-#| fig-cap: Percentage of women by Autonomous Communities (2025)
+#| fig-cap: Percentage of women by Autonomous Community (2025)
 #| fig-asp: 0.7
 library(dplyr)
 
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from base dataset
+# Extract CCAA from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA
+  # Summarize by CCAA.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -169,13 +169,13 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-# Merge into spatial data
+# Merge into spatial data.
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
 
 can <- esp_get_can_box()
 
-# Plot with ggplot
+# Plot with ggplot.
 library(ggplot2)
 
 ggplot(ccaa_sf) +
@@ -203,15 +203,15 @@ ggplot(ccaa_sf) +
 
 This example demonstrates how **mapSpain** can be used to create thematic maps.
 For plotting, we use the [**ggplot2**](https://ggplot2.tidyverse.org/) package,
-though any package that handles `sf` objects (e.g., **tmap**, **mapsf**,
-**leaflet**, etc.) could also be used.
+though any package that handles `sf` objects, such as **tmap**, **mapsf** or
+**leaflet**, could also be used.
 
 ```{r}
 #| label: thematic
 #| crop: true
 #| fig-cap: Population density in Spain (2025)
 #| fig-dpi: 150
-# Calculate population density in Spain
+# Calculate population density in Spain.
 library(sf)
 
 pop <- mapSpain::pobmun25 |>
@@ -259,7 +259,7 @@ ggplot(munic_pop) +
 
 If you need to plot Spain alongside other countries, consider using the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is installed as
-a dependency with **mapSpain**. Here's a basic example:
+a dependency with **mapSpain**. Here is a basic example:
 
 ```{r}
 #| label: giscoR
@@ -267,7 +267,7 @@ a dependency with **mapSpain**. Here's a basic example:
 #| fig-asp: 0.9
 library(giscoR)
 
-# Set the same resolution for a perfect fit
+# Set the same resolution for a perfect fit.
 res <- "20"
 
 all_countries <- gisco_get_countries(resolution = res) |>
@@ -285,7 +285,7 @@ ccaa <- esp_get_ccaa(
 ) |>
   st_transform(3035)
 
-# Plot
+# Plot.
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +

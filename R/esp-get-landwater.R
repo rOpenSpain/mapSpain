@@ -17,7 +17,7 @@
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
 #'   Use [mapSpain::esp_get_wetlands()] instead of `"spatialtype"` for
 #'   wetlands.
-#' @param name character string or [`regex`][base::grep()] expression. Name of
+#' @param name Character string or [`regex`][base::grep()] expression. Name of
 #'   the element(s) to be extracted.
 #' @details
 #' Metadata available on
@@ -152,7 +152,7 @@ esp_get_rivers <- function(
       verbose = verbose
     )
 
-    # Read
+    # Read the downloaded files.
 
     ok_down <- ensure_null(c(file_local_penin, file_local_can))
     if (is.null(ok_down)) {
@@ -193,7 +193,7 @@ esp_get_rivers <- function(
 
   data_sf <- merge(data_sf, river_names, all.x = TRUE)
   data_sf <- sanitize_sf(data_sf)
-  # Transform
+  # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
   name <- ensure_null(name)
@@ -253,7 +253,7 @@ esp_get_wetlands <- function(
       verbose = verbose
     )
 
-    # Read
+    # Read the downloaded files.
 
     ok_down <- ensure_null(file_local_penin)
     if (is.null(ok_down)) {
@@ -293,7 +293,7 @@ esp_get_wetlands <- function(
 
   data_sf <- sanitize_sf(data_sf)
 
-  # Transform
+  # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
   data_sf
 }

@@ -18,7 +18,7 @@ cached tiles.}
 \item{layers}{The name of the layer to retrieve.}
 
 \item{...}{Additional arguments to the query, like \code{version}, \code{format},
-\code{crs/srs}, \code{style}, etc. depending on the capabilities of the service.}
+\code{crs/srs} and \code{style}, depending on the capabilities of the service.}
 }
 \value{
 A named list with two elements \code{id} and \code{q}.

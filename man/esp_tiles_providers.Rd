@@ -12,7 +12,7 @@ structure:
 \item Each list item is named with the provider alias.
 \item Each element contains two nested named lists:
 \itemize{
-\item \code{static} with the parameters required to obtain static tiles, plus an
+\item \code{static} with the parameters required to obtain static map tiles, plus an
 additional item named \code{attribution}.
 \item \code{leaflet} with additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }

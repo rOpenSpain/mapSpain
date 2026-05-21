@@ -30,7 +30,7 @@ esp_get_stations <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(file_local, read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)

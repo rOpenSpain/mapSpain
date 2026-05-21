@@ -40,7 +40,7 @@ esp_get_hypsobath(
 )
 }
 \arguments{
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -49,25 +49,25 @@ esp_get_hypsobath(
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{character string or number. Resolution of the geospatial
+\item{resolution}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
 \item "6.5": 1:6.5 million.
 \item "3": 1:3 million.
 }}
 
-\item{spatialtype}{character string. Spatial type of the output. Use
+\item{spatialtype}{Character string. Spatial type of the output. Use
 \code{"area"} for \code{POLYGON} or \code{"line"} for \code{LINESTRING}.}
 }
 \value{

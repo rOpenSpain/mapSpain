@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with the
-#' boundaries of the provinces or autonomous communities of Spain.
+#' boundaries of the provinces or Autonomous Communities of Spain.
 #'
 #' @encoding UTF-8
 #' @rdname esp_get_gridmap
@@ -11,8 +11,9 @@
 #' @export
 #' @inherit esp_get_nuts return
 #'
-#' @param prov,ccaa character. A vector of names and/or codes for provinces
-#'   and autonomous communities or `NULL` to get all the data. See **Details**.
+#' @param prov,ccaa Character. A vector of names, codes or both for provinces
+#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   **Details**.
 #'
 #' @seealso [`esp_get_simpl`][esp_get_simpl].
 #'
@@ -26,7 +27,7 @@
 #' You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
-#' When using a code corresponding to a higher level (e.g.
+#' When using a code corresponding to a higher level (for example,
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
@@ -99,14 +100,14 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
   get_gridmap_ccaa(ccaa = ccaa, type = "grid")
 }
 
-#' Internal funs for easier maintenance
+#' Internal functions for easier maintenance
 #' @noRd
 get_gridmap_prov <- function(prov = NULL, type = "hex") {
   data_sf <- switch(type,
     "hex" = esp_hexbin_prov,
     esp_grid_prov
   )
-  # Order
+  # Order grid cells.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
   data_sf <- sanitize_sf(data_sf)
 
@@ -130,7 +131,7 @@ get_gridmap_ccaa <- function(ccaa = NULL, type = "hex") {
     "hex" = esp_hexbin_ccaa,
     esp_grid_ccaa
   )
-  # Order
+  # Order grid cells.
   data_sf <- data_sf[order(data_sf$codauto), ]
   data_sf <- sanitize_sf(data_sf)
 

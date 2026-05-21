@@ -9,7 +9,7 @@
 #'   - [esp_get_grid_BDN()] extracts country-wide regular grids with resolutions
 #'     of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
 #'   - [esp_get_grid_BDN_ccaa()] extracts 1x1 kilometer resolution grids for
-#'     individual autonomous communities.
+#'     individual Autonomous Communities.
 #'
 #' These grids are useful for biodiversity analysis, environmental monitoring,
 #' and spatial statistical applications.
@@ -38,11 +38,11 @@
 #'       "bdn-cart-aux-descargas-ccaa.html>."))
 #' ```
 #'
-#' @param resolution numeric. Resolution of the grid in kilometers. Must be one
+#' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
 #'   of:
 #'   - `5`: 5x5 kilometer cells
 #'   - `10`: 10x10 kilometer cells (default)
-#' @param type character. The geographic scope of the grid:
+#' @param type Character. The geographic scope of the grid:
 #'   - `"main"`: Mainland Spain (default)
 #'   - `"canary"`: Canary Islands
 #'
@@ -70,7 +70,7 @@ esp_get_grid_BDN <- function(
   res <- match_arg_pretty(resolution)
   type <- match_arg_pretty(type)
 
-  # Url
+  # Build the download URL.
   api_entry <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/",
     "sianedata/MITECO/dist/"
@@ -112,11 +112,12 @@ esp_get_grid_BDN <- function(
 #'
 #' @description
 #' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
-#' for specific autonomous communities, useful for regional analysis with
+#' for specific Autonomous Communities, useful for regional analysis with
 #' finer spatial detail.
 #'
-#' @param ccaa character string. A vector of names and/or codes for Autonomous
-#'   Communities. See **Details** on [esp_get_ccaa()] for accepted formats.
+#' @param ccaa Character string. A vector of names, codes or both for
+#'   Autonomous Communities. See **Details** on [esp_get_ccaa()] for accepted
+#'   formats.
 #'
 #' @seealso
 #' [esp_get_ccaa()]

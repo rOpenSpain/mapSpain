@@ -82,8 +82,7 @@ esp_get_roads <- function(
       verbose = verbose
     )
 
-    # Read
-
+    # Read the downloaded files.
     ok_down <- ensure_null(c(file_local_penin, file_local_can))
     if (is.null(ok_down)) {
       return(NULL)
@@ -98,23 +97,22 @@ esp_get_roads <- function(
     data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
   }
 
-  # Add descriptions
-  # Tipo de carretera
+  # Add road type descriptions.
   tip <- db_valores[db_valores$campo == "tipocarretera", 2:3]
   names(tip) <- c("t_ctra", "t_ctra_desc")
   data_sf <- merge(data_sf, tip, all.x = TRUE)
 
-  # Estado fisico
+  # Add physical status descriptions.
   est <- db_valores[db_valores$campo == "estadofisico", 2:3]
   names(est) <- c("estado_fis", "estado_fis_desc")
   data_sf <- merge(data_sf, est, all.x = TRUE)
 
-  # Orden
+  # Add road order descriptions.
   ord <- db_valores[db_valores$campo == "orden", 2:3]
   names(ord) <- c("orden", "orden_desc")
   data_sf <- merge(data_sf, ord, all.x = TRUE)
 
-  # Acceso
+  # Add access descriptions.
   acc <- db_valores[db_valores$campo == "acceso", 2:3]
   names(acc) <- c("acceso", "acceso_desc")
   data_sf <- merge(data_sf, acc, all.x = TRUE)
@@ -127,7 +125,7 @@ esp_get_roads <- function(
 
   data_sf <- sanitize_sf(data_sf)
 
-  # Transform
+  # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
   data_sf
 }

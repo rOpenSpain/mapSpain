@@ -18,7 +18,7 @@ leaf_providers_esp_v <- "v1.3.3"
 #' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
 #' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
-#' @param provider the name of the provider, see [esp_tiles_providers] or
+#' @param provider The name of the provider, see [esp_tiles_providers] or
 #'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 #'
 #' @examples

@@ -13,12 +13,12 @@
 #' @inherit esp_get_ccaa_siane
 #' @export
 #'
-#' @param resolution character string or number. Resolution of the geospatial
+#' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
 #'   - "6.5": 1:6.5 million.
 #'   - "3": 1:3 million.
 #'
-#' @param spatialtype character string. Spatial type of the output. Use
+#' @param spatialtype Character string. Spatial type of the output. Use
 #'   `"area"` for `POLYGON` or `"line"` for `LINESTRING`.
 #'
 #' @details
@@ -147,7 +147,7 @@ esp_get_hypsobath <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(c(file_local_penin, file_local_can), read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)

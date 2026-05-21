@@ -1,8 +1,8 @@
-#' Autonomous communities of Spain - GISCO
+#' Autonomous Communities of Spain - GISCO
 #'
 #' @description
 #' Returns
-#' [Autonomous communities of
+#' [Autonomous Communities of
 #' Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at a
 #' specified scale.
 #'
@@ -17,16 +17,16 @@
 #' @rdname esp_get_ccaa
 #' @name esp_get_ccaa
 #'
-#' @param ccaa character string. A vector of names and/or codes for Autonomous
-#'   Communities or `NULL` to get all the autonomous communities. See
-#'   **Details**.
+#' @param ccaa Character string. A vector of names, codes or both for
+#'   Autonomous Communities, or `NULL` to get all the Autonomous Communities.
+#'   See **Details**.
 #'
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
 #' ISO codes (corresponding to level 2) or `codauto` (see [esp_codelist]).
-#' Ceuta and Melilla are considered as autonomous communities in this function.
+#' Ceuta and Melilla are considered as Autonomous Communities in this function.
 #'
-#' When calling a NUTS1 level, all the autonomous communities of that level
+#' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' will be added.
 #'
 #' @examples
@@ -83,7 +83,7 @@
 esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   params <- list(...)
 
-  # Get region id
+  # Get the region identifier.
   nuts_id <- ensure_null(ccaa)
 
   if (!is.null(nuts_id)) {
@@ -102,7 +102,7 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf$nuts2.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts2.code"]
 
-  # Get df
+  # Get CCAA metadata.
   df <- get_ccaa_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
@@ -114,7 +114,7 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
 
   data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
 
-  # Order
+  # Order by Autonomous Community.
   data_sf <- data_sf[order(data_sf$codauto), ]
 
   data_sf <- sanitize_sf(data_sf)

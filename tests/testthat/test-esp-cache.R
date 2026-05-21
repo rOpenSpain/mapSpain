@@ -65,7 +65,7 @@ test_that("Mock restart", {
     # Now we should restore the cache
     expect_message(
       esp_set_cache_dir(stored_val, overwrite = TRUE, install = TRUE),
-      "cache dir is"
+      "cache directory is"
     )
 
     # But for the next test we delete the envar

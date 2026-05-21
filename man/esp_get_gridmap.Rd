@@ -18,15 +18,16 @@ esp_get_grid_prov(prov = NULL)
 esp_get_grid_ccaa(ccaa = NULL)
 }
 \arguments{
-\item{prov, ccaa}{character. A vector of names and/or codes for provinces
-and autonomous communities or \code{NULL} to get all the data. See \strong{Details}.}
+\item{prov, ccaa}{Character. A vector of names, codes or both for provinces
+and Autonomous Communities, or \code{NULL} to get all the data. See
+\strong{Details}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of squares with the
-boundaries of the provinces or autonomous communities of Spain.
+boundaries of the provinces or Autonomous Communities of Spain.
 }
 \details{
 Hexbin (or grid) maps have an advantage over traditional choropleth maps.
@@ -37,7 +38,7 @@ maps, each region is represented equally, reducing this bias.
 You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
-When using a code corresponding to a higher level (e.g.
+When using a code corresponding to a higher level (for example,
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).
 

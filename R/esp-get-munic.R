@@ -11,10 +11,10 @@
 #' @inherit giscoR::gisco_get_lau
 #' @export
 #'
-#' @param year year character string or number. Release year of the file. See
+#' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
-#' @param munic character string. A name or [`regex`][base::grep()] expression
+#' @param munic Character string. A name or [`regex`][base::grep()] expression
 #'   with the names of the required municipalities. `NULL` will return all
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
@@ -142,7 +142,7 @@ esp_get_munic <- function(
   id_col <- intersect(c("GISCO_ID", "LAU_ID", "NSI_CODE"), names(data_sf))[1]
   data_sf$LAU_CODE <- gsub("\\D+", "", data_sf[[id_col]])
 
-  # Name management
+  # Normalize names.
   id_name <- intersect(c("LAU_NAME", "COMM_NAME", "SABE_NAME"), names(data_sf))[
     1
   ]
@@ -201,17 +201,17 @@ esp_get_munic <- function(
 
   if (nrow(data_sf) == 0) {
     cli::cli_alert_warning(paste0(
-      "The combination of {.arg region} and/or {.arg munic} does not ",
+      "The combination of {.arg region}, {.arg munic} or both does not ",
       "return any results."
     ))
     cli::cli_alert_info("Returning empty {.cls sf} object.")
     return(data_sf)
   }
 
-  # Move CAN
+  # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Back and finish
+  # Restore and finish geometries.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro, data_sf$cmun), ]
   data_sf <- sanitize_sf(data_sf)
   data_sf

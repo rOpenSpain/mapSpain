@@ -21,7 +21,7 @@ addProviderEspTiles(
 \arguments{
 \item{map}{the map to add the tile layer to}
 
-\item{provider}{the name of the provider, see \link{esp_tiles_providers} or
+\item{provider}{The name of the provider, see \link{esp_tiles_providers} or
 \url{https://dieghernan.github.io/leaflet-providersESP/preview/}.}
 
 \item{layerId}{the layer id to assign}

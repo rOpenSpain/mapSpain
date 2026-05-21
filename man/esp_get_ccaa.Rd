@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
-\title{Autonomous communities of Spain - GISCO}
+\title{Autonomous Communities of Spain - GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -14,9 +14,9 @@ Copyright:
 esp_get_ccaa(ccaa = NULL, moveCAN = TRUE, ...)
 }
 \arguments{
-\item{ccaa}{character string. A vector of names and/or codes for Autonomous
-Communities or \code{NULL} to get all the autonomous communities. See
-\strong{Details}.}
+\item{ccaa}{Character string. A vector of names, codes or both for
+Autonomous Communities, or \code{NULL} to get all the Autonomous Communities.
+See \strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -26,9 +26,9 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{...}{
   Arguments passed on to \code{\link{esp_get_nuts}}
   \describe{
-    \item{\code{year}}{year character string or number. Release year of the file. See
+    \item{\code{year}}{Year character string or number. Release year of the file. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
-    \item{\code{epsg}}{character string or number. Projection of the map: 4-digit
+    \item{\code{epsg}}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -36,19 +36,19 @@ Initial position can be adjusted using the vector of coordinates. See
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{logical. Whether to do caching. Default is \code{TRUE}. See
+    \item{\code{cache}}{Logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{logical. Should the cached file be refreshed? Default
+    \item{\code{update_cache}}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
-    \item{\code{cache_dir}}{character string. A path to a cache directory. See
+    \item{\code{cache_dir}}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{spatialtype}}{character string. Type of geometry to be returned.
+    \item{\code{spatialtype}}{Character string. Type of geometry to be returned.
 Options available are:
 \itemize{
 \item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item "LB": Labels - \code{POINT} object.
 }}
-    \item{\code{ext}}{character. Extension of the file (default \code{"gpkg"}). See
+    \item{\code{ext}}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
     \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
     \item{\code{resolution}}{character string or number. Resolution of the geospatial
@@ -67,15 +67,15 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Returns
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as autonomous communities in this function.
+Ceuta and Melilla are considered as Autonomous Communities in this function.
 
-When calling a NUTS1 level, all the autonomous communities of that level
+When calling a NUTS1 level, all the Autonomous Communities of that level
 will be added.
 }
 \section{Note}{

@@ -66,7 +66,7 @@ esp_get_railway <- function(
     )
 
     cli::cli_alert_info(
-      "Redirecting the arguments to {.fn mapSpain::esp_get_stations}"
+      "Redirecting the arguments to {.fn mapSpain::esp_get_stations}."
     )
 
     data_sf <- esp_get_stations(
@@ -100,7 +100,7 @@ esp_get_railway <- function(
       verbose = verbose
     )
 
-    # Download
+    # Read the downloaded files.
     data_sf <- lapply(file_local, read_geo_file_sf)
 
     data_sf <- rbind_fill(data_sf)
@@ -109,23 +109,22 @@ esp_get_railway <- function(
     }
   }
 
-  # Add descriptions
-  # Acceso
+  # Add descriptions for railway type.
   acc <- db_valores[db_valores$campo == "tipoffcc", 2:3]
   names(acc) <- c("t_ffcc", "t_ffcc_desc")
   data_sf <- merge(data_sf, acc, all.x = TRUE)
 
-  # Estado fisico
+  # Add physical status descriptions.
   est <- db_valores[db_valores$campo == "estadofisico", 2:3]
   names(est) <- c("estado_fis", "estado_fis_desc")
   data_sf <- merge(data_sf, est, all.x = TRUE)
 
-  # Ancho Vias
+  # Add track gauge descriptions.
   acc <- db_valores[db_valores$campo == "anchovia", 2:3]
   names(acc) <- c("ancho_via", "ancho_via_desc")
   data_sf <- merge(data_sf, acc, all.x = TRUE)
 
-  # Numero de vias
+  # Add track count descriptions.
   tip <- db_valores[db_valores$campo == "numerovias", 2:3]
   names(tip) <- c("num_vias", "num_vias_desc")
   data_sf <- merge(data_sf, tip, all.x = TRUE)

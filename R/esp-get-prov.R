@@ -13,8 +13,8 @@
 #' @inherit esp_get_nuts
 #' @export
 #'
-#' @param prov A vector of names and/or codes for provinces or `NULL` to get all
-#'   the provinces. See **Details**.
+#' @param prov A vector of names, codes or both for provinces, or `NULL` to get
+#'   all the provinces. See **Details**.
 #'
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region
@@ -66,7 +66,7 @@
 #'   scale_fill_discrete(type = hcl.colors(5, "Temps")) +
 #'   theme_classic()
 #'
-#' # ISO codes available
+#' # Available ISO codes.
 #'
 #' allprovs <- esp_get_prov()
 #'
@@ -82,7 +82,7 @@
 esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   params <- list(...)
 
-  # Get region id
+  # Get the region identifier.
   nuts_id <- ensure_null(prov)
   if (!is.null(nuts_id)) {
     nuts_id <- convert_to_nuts_prov(nuts_id)
@@ -100,15 +100,14 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   data_sf$nuts3.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts3.code"]
 
-  # Get cpro
-
+  # Get province codes.
   df <- mapSpain::esp_codelist
   df <- unique(df[, c("nuts3.code", "cpro")])
   data_sf <- merge(data_sf, df, all.x = TRUE)
   data_sf <- data_sf[, "cpro"]
   data_sf <- data_sf[order(data_sf$cpro), ]
 
-  # Merge Islands
+  # Merge island geometries by province code.
   res_cpros <- unique(data_sf$cpro)
   binded_sf <- lapply(res_cpros, function(x) {
     the_geom <- data_sf[data_sf$cpro == x, ]
@@ -122,12 +121,12 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   data_sf <- rbind_fill(binded_sf)
 
-  # Get df
+  # Get province metadata.
   df <- get_prov_codes_df()
 
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Paste nuts2
+  # Add NUTS2 metadata.
   dfnuts <- mapSpain::esp_codelist
   dfnuts <- dfnuts[, c(
     "cpro",
@@ -148,7 +147,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
     "nuts1.name"
   )]
 
-  # Order
+  # Order by Autonomous Community and province.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
   data_sf <- sanitize_sf(data_sf)

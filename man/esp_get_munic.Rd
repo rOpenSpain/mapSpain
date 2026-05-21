@@ -25,11 +25,11 @@ esp_get_munic(
 )
 }
 \arguments{
-\item{year}{year character string or number. Release year of the file. See
+\item{year}{Year character string or number. Release year of the file. See
 \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}} and \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}} for valid
 values.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
+\item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
@@ -41,10 +41,10 @@ values.}
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This argument is
 deprecated, the dataset will always be downloaded to the \code{cache_dir}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -52,7 +52,7 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
-\item{munic}{character string. A name or \code{\link[base:grep]{regex}} expression
+\item{munic}{Character string. A name or \code{\link[base:grep]{regex}} expression
 with the names of the required municipalities. \code{NULL} will return all
 municipalities.}
 
@@ -61,7 +61,7 @@ municipalities.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{ext}{character. Extension of the file (default \code{"gpkg"}). See
+\item{ext}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
 }
 \value{

@@ -20,16 +20,16 @@ esp_get_grid_EEA(
 \item{resolution}{Resolution of the grid in kilometers. Can be \code{1}, \code{10}
 or \code{100}.}
 
-\item{type}{character. The geographic scope of the grid:
+\item{type}{Character. The geographic scope of the grid:
 \itemize{
 \item \code{"main"}: Mainland Spain (default)
 \item \code{"canary"}: Canary Islands
 }}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
+\item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
