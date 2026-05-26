@@ -3,7 +3,7 @@
 #' @encoding UTF-8
 #' @keywords internal
 #' @description
-#' Check whether **R** has access to resources at
+#' Check whether \R has access to resources at
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 #'
 #' @return Logical scalar, `TRUE` if accessible and `FALSE` otherwise.

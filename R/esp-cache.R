@@ -22,8 +22,8 @@
 #'
 #' @details
 #' By default, when no `cache_dir` is set, the package uses a folder inside
-#' [base::tempdir()] (files are temporary and removed when the **R** session
-#' ends). To persist a cache across **R** sessions, use
+#' [base::tempdir()] (files are temporary and removed when the \R session
+#' ends). To persist a cache across \R sessions, use
 #' `esp_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a configuration file under `tools::R_user_dir("mapSpain", "config")`.
 #'
@@ -43,7 +43,7 @@
 #'   `esp_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
 #'   `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
-#'   persists across **R** sessions.
+#'   persists across \R sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function.
 #'

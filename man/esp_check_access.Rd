@@ -11,7 +11,7 @@ esp_check_access()
 Logical scalar, \code{TRUE} if accessible and \code{FALSE} otherwise.
 }
 \description{
-Check whether \strong{R} has access to resources at
+Check whether \R has access to resources at
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata}.
 }
 \examples{
