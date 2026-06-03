@@ -1,6 +1,6 @@
 # Check access to SIANE data resources
 
-Check whether **R** has access to resources at
+Check whether R has access to resources at
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Usage

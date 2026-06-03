@@ -52,10 +52,9 @@ current session.
 
 By default, when no `cache_dir` is set, the package uses a folder inside
 [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (files are
-temporary and removed when the **R** session ends). To persist a cache
-across **R** sessions, use
-`esp_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
-path to a configuration file under
+temporary and removed when the R session ends). To persist a cache
+across R sessions, use `esp_set_cache_dir(cache_dir, install = TRUE)`,
+which writes the chosen path to a configuration file under
 `tools::R_user_dir("mapSpain", "config")`.
 
 ## Note
@@ -83,7 +82,7 @@ implements the following caching options:
 
 - For reproducible workflows, install a persistent cache with
   `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
-  persists across **R** sessions.
+  persists across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function.
@@ -110,29 +109,29 @@ Other cache utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpTs23WR/mapSpain
+#> ℹ /tmp/RtmpXmMVKG/mapSpain
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache directory is /tmp/RtmpTs23WR/example/cachenew.
+#> ℹ mapSpain cache directory is /tmp/RtmpXmMVKG/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpTs23WR/example/cachenew
-#> [1] "/tmp/RtmpTs23WR/example/cachenew"
+#> ℹ /tmp/RtmpXmMVKG/example/cachenew
+#> [1] "/tmp/RtmpXmMVKG/example/cachenew"
 
 # Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/RtmpTs23WR/mapSpain.
+#> ℹ mapSpain cache directory is /tmp/RtmpXmMVKG/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpTs23WR/mapSpain
+#> ℹ /tmp/RtmpXmMVKG/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpTs23WR/mapSpain
-#> [1] "/tmp/RtmpTs23WR/mapSpain"
+#> ℹ /tmp/RtmpXmMVKG/mapSpain
+#> [1] "/tmp/RtmpXmMVKG/mapSpain"
 ```
