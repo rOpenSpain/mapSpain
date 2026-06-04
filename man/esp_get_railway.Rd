@@ -117,7 +117,7 @@ ggplot(provs) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other man-made infrastructures:
+Transport infrastructure datasets:
 \code{\link[=esp_get_roads]{esp_get_roads()}}
 }
 \concept{infrastructure}

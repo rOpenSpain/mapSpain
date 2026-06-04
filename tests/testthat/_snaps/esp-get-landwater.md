@@ -32,5 +32,5 @@
       The `spatialtype` argument of `esp_get_rivers()` is deprecated as of mapSpain 1.0.0.
       i Please use `esp_get_wetlands()` instead.
     Message
-      i Redirecting the arguments to `mapSpain::esp_get_wetlands()`
+      i Redirecting the arguments to `mapSpain::esp_get_wetlands()`.
 

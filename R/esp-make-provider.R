@@ -3,26 +3,6 @@
 #' @description
 #' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
-#' @encoding UTF-8
-#' @family images
-#' @seealso [esp_get_tiles()].
-#'
-#' For a list of potential providers from Spain check
-#' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
-#'
-#' @return
-#' A named list with two elements `id` and `q`.
-#'
-#' @export
-#'
-#' @param id An identifier for the user. It will be used for identifying
-#'   cached tiles.
-#' @param q The base URL of the service.
-#' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
-#' @param layers The name of the layer to retrieve.
-#' @param ... Additional arguments to the query, like `version`, `format`,
-#'   `crs/srs` and `style`, depending on the capabilities of the service.
-#'
 #' @details
 #' This function is meant to work with services provided as of the
 #' [OGC Standard](https://www.ogc.org/standards/wms/).
@@ -32,6 +12,26 @@
 #'   provided.
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
+#'
+#' @param id An identifier for the user. It will be used for identifying
+#'   cached tiles.
+#' @param q The base URL of the service.
+#' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
+#' @param layers The name of the layer to retrieve.
+#' @param ... Additional arguments to the query, like `version`, `format`,
+#'   `crs/srs` and `style`, depending on the capabilities of the service.
+#'
+#' @return
+#' A named list with two elements `id` and `q`.
+#'
+#' @seealso [esp_get_tiles()].
+#'
+#' For a list of potential providers from Spain check
+#' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
+#'
+#' @family images
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \dontrun{
@@ -88,7 +88,7 @@ esp_make_provider <- function(id, q, service, layers, ...) {
   # Modify
   end <- modifyList(def_params, dots)
 
-  # Here adjust crs values
+  # Adjust CRS/SRS parameter names.
 
   if (end$service == "WMS") {
     if (all(!is.null(end$version), end$version < "1.3.0")) {

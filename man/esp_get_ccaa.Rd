@@ -78,12 +78,10 @@ Ceuta and Melilla are considered as Autonomous Communities in this function.
 When calling a NUTS1 level, all the Autonomous Communities of that level
 will be added.
 }
-\section{Note}{
-
-Please check the download and usage provisions on \code{\link[giscoR:gisco_attributions]{gisco_attributions()}}.
-
+\note{
+Please check the download and usage provisions on
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
 }
-
 \examples{
 ccaa <- esp_get_ccaa()
 
@@ -92,7 +90,7 @@ library(ggplot2)
 ggplot(ccaa) +
   geom_sf()
 
-# Random CCAA
+# Random Autonomous Communities
 random_ccaa <- esp_get_ccaa(ccaa = c(
   "Euskadi",
   "Catalunya",
@@ -107,7 +105,7 @@ ggplot(random_ccaa) +
   geom_sf_label(aes(label = codauto), alpha = 0.3) +
   coord_sf(crs = 3857)
 
-# All CCAA of a Zone plus an addition
+# All Autonomous Communities of a NUTS1 region plus an addition
 
 mixed <- esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 
@@ -137,7 +135,7 @@ ggplot(europe) +
 }
 }
 \seealso{
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_comarca]{esp_get_comarca()}},
@@ -153,7 +151,7 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},
 \code{\link[=esp_get_prov]{esp_get_prov()}},

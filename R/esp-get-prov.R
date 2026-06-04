@@ -5,20 +5,6 @@
 #' [provinces of Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain)
 #' at a specified scale.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family gisco
-#' @inheritParams esp_get_nuts
-#' @inheritDotParams esp_get_nuts -nuts_level -region
-#' @inherit esp_get_nuts
-#' @export
-#'
-#' @param prov A vector of names, codes or both for provinces, or `NULL` to get
-#'   all the provinces. See **Details**.
-#'
-#' @inheritParams esp_get_nuts
-#' @inheritDotParams esp_get_nuts -nuts_level -region
-#'
 #' @details
 #' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or
 #' 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
@@ -28,6 +14,19 @@
 #'
 #' When calling a higher level (Autonomous Community or NUTS1), all the
 #' provinces of that level will be added.
+#'
+#' @param prov A vector of names, codes or both for provinces, or `NULL` to get
+#'   all the provinces. See **Details**.
+#'
+#' @inheritParams esp_get_nuts
+#' @inheritDotParams esp_get_nuts -nuts_level -region
+#'
+#' @inherit esp_get_nuts
+#'
+#' @family political
+#' @family gisco
+#' @encoding UTF-8
+#' @export
 #'
 #' @examples
 #' prov <- esp_get_prov()

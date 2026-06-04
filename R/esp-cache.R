@@ -1,24 +1,9 @@
 #' Set your \CRANpkg{mapSpain} cache directory
 #'
-#' @encoding UTF-8
-#' @family cache utilities
-#' @seealso [tools::R_user_dir()]
-#'
-#' @rdname esp_set_cache_dir
-#'
 #' @description
 #' This function stores your `cache_dir` path on your local machine and loads
 #' it for future sessions. Use `Sys.getenv("MAPSPAIN_CACHE_DIR")` or
 #' [esp_detect_cache_dir()] to find the cached path.
-#'
-#' @inheritParams esp_get_nuts
-#' @param cache_dir A path to a cache directory. When `NULL`, the function
-#'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install Logical. If `TRUE`, installs the key on your local machine for
-#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
-#'   this argument is automatically set to `FALSE`.
-#' @param overwrite Logical. If `TRUE`, overwrites an existing
-#'   `MAPSPAIN_CACHE_DIR` on your local machine.
 #'
 #' @details
 #' By default, when no `cache_dir` is set, the package uses a folder inside
@@ -26,10 +11,6 @@
 #' ends). To persist a cache across \R sessions, use
 #' `esp_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a configuration file under `tools::R_user_dir("mapSpain", "config")`.
-#'
-#' @return
-#' `esp_set_cache_dir()` returns an invisible character string with the path
-#' to your `cache_dir`. It is primarily called for its side effect.
 #'
 #' @section Caching strategies:
 #'
@@ -54,6 +35,19 @@
 #' method and save it to your `cache_dir`. Use `verbose = TRUE` to debug the
 #' API query and [esp_detect_cache_dir()] to identify your cache path.
 #'
+#' @param cache_dir A path to a cache directory. When `NULL`, the function
+#'   stores cached files in a temporary directory (see [base::tempdir()]).
+#' @param install Logical. If `TRUE`, installs the key on your local machine for
+#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+#'   this argument is automatically set to `FALSE`.
+#' @param overwrite Logical. If `TRUE`, overwrites an existing
+#'   `MAPSPAIN_CACHE_DIR` on your local machine.
+#'
+#' @inheritParams esp_get_nuts
+#' @return
+#' `esp_set_cache_dir()` returns an invisible character string with the path
+#' to your `cache_dir`. It is primarily called for its side effect.
+#'
 #' @note
 #' In \CRANpkg{mapSpain} >= 1.0.0, the configuration file location has
 #' moved from `rappdirs::user_config_dir("mapSpain", "R")` to
@@ -61,6 +55,13 @@
 #' transfers previous configuration files from the old to the new location.
 #' A message appears once during this migration.
 #'
+#' @seealso [tools::R_user_dir()]
+#'
+#' @family cache utilities
+#' @encoding UTF-8
+#' @rdname esp_set_cache_dir
+#'
+#' @export
 #' @examples
 #'
 #' # Do not run this. It would modify your current state.
@@ -78,7 +79,6 @@
 #' identical(my_cache, esp_detect_cache_dir())
 #' }
 #'
-#' @export
 esp_set_cache_dir <- function(
   cache_dir = NULL,
   overwrite = FALSE,
@@ -128,12 +128,12 @@ esp_set_cache_dir <- function(
   invisible(cache_dir)
 }
 
-#' @export
-#' @rdname esp_set_cache_dir
 #' @return
 #' `esp_detect_cache_dir()` returns the path to the `cache_dir` used in the
 #' current session.
 #'
+#' @rdname esp_set_cache_dir
+#' @export
 #' @examples
 #'
 #' esp_detect_cache_dir()
@@ -146,12 +146,6 @@ esp_detect_cache_dir <- function() {
 
 #' Clear your \CRANpkg{mapSpain} cache directory
 #'
-#' @rdname esp_clear_cache
-#' @family cache utilities
-#' @encoding UTF-8
-#'
-#' @return Invisible. This function is called for its side effects.
-#'
 #' @description
 #' **Use this function with caution.** It clears your cached data and
 #' configuration, specifically:
@@ -161,18 +155,25 @@ esp_detect_cache_dir <- function() {
 #' - Deletes the `cache_dir` directory and its contents.
 #' - Clears the value stored in `Sys.getenv("MAPSPAIN_CACHE_DIR")`.
 #'
+#' @details
+#' This is an aggressive function intended to reset your installation as if you
+#' had never installed or used \CRANpkg{mapSpain}.
+#'
 #' @param config Logical. If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{mapSpain}.
 #' @param cached_data Logical. If `TRUE`, deletes your `cache_dir` and all
 #'   its contents.
 #' @inheritParams esp_set_cache_dir
 #'
+#' @return Invisible. This function is called for its side effects.
+#'
 #' @seealso [tools::R_user_dir()]
 #'
-#' @details
-#' This is an aggressive function intended to reset your installation as if you
-#' had never installed or used \CRANpkg{mapSpain}.
+#' @family cache utilities
+#' @encoding UTF-8
 #'
+#' @rdname esp_clear_cache
+#' @export
 #' @examples
 #'
 #' # Do not run this. It would modify your current state.
@@ -189,7 +190,6 @@ esp_detect_cache_dir <- function() {
 #' esp_set_cache_dir(my_cache)
 #' identical(my_cache, esp_detect_cache_dir())
 #' }
-#' @export
 esp_clear_cache <- function(
   config = FALSE,
   cached_data = TRUE,

@@ -102,7 +102,7 @@ guess_provider_type <- function(prov_list) {
 }
 
 get_tile_crs <- function(prov_list) {
-  # Get CRS of Tile
+  # Get the tile CRS.
   crs <- unlist(prov_list[
     tolower(names(prov_list)) %in% c("crs", "srs", "tilematrixset")
   ])

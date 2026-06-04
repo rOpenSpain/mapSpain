@@ -64,16 +64,16 @@ library(ggplot2)
 
 ggplot(prov_simp) +
   geom_sf(aes(fill = ine.ccaa.name)) +
-  labs(fill = "CCAA")
+  labs(fill = "Autonomous Communities")
 
-# Provinces of a single CCAA.
+# Provinces of a single Autonomous Community.
 
 and_simple <- esp_get_simpl_prov("Andalucia")
 
 ggplot(and_simple) +
   geom_sf()
 
-# CCAAs.
+# Autonomous Communities.
 
 ccaa_simp <- esp_get_simpl_ccaa()
 
@@ -86,7 +86,7 @@ ggplot(ccaa_simp) +
 \seealso{
 \code{\link{esp_get_gridmap}}.
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},

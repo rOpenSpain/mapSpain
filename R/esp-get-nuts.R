@@ -15,15 +15,19 @@
 #' Also, there is a NUTS 0 level, which usually corresponds to the national
 #' boundaries.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family nuts
-#' @family gisco
-#' @inheritParams giscoR::gisco_get_nuts
-#' @inherit giscoR::gisco_get_nuts
-#' @export
+#' @details
+#' The NUTS nomenclature is a hierarchical classification of statistical
+#' regions and subdivides the EU economic territory into regions of three
+#' different levels (NUTS 1, 2 and 3, moving respectively from larger to smaller
+#' territorial units). NUTS 1 is the most aggregated level. An additional
+#' country level (NUTS 0) is also available for countries where the nation at
+#' statistical level does not coincide with the administrative boundaries.
 #'
-#' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
+#' The NUTS classification has been officially established through Commission
+#' Delegated Regulation 2019/1755. A non-official NUTS-like classification has
+#' been defined for the EFTA countries, candidate countries and potential
+#' candidates based on a bilateral agreement between Eurostat and the respective
+#' statistical agencies.
 #'
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_nuts()] for valid values.
@@ -52,6 +56,21 @@
 #'   **Displacing the Canary Islands** in [esp_move_can()].
 #' @param ext Character. Extension of the file (default `"gpkg"`). See
 #'   [giscoR::gisco_get_nuts()].
+#'
+#' @inheritParams giscoR::gisco_get_nuts
+#' @inherit giscoR::gisco_get_nuts return source
+#'
+#' @note
+#' Please check the download and usage provisions on
+#' [giscoR::gisco_attributions()].
+#'
+#' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
+#'
+#' @family political
+#' @family nuts
+#' @family gisco
+#' @encoding UTF-8
+#' @export
 #'
 #' @examples
 #' nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
@@ -118,7 +137,7 @@ esp_get_nuts <- function(
   moveCAN = TRUE,
   ext = "gpkg"
 ) {
-  # Dispatch everything to gisco_get_nuts except EPSG, that is specific
+  # Dispatch to gisco_get_nuts and handle the package-specific EPSG value.
   epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
   gisco_epsg <- ifelse(epsg == "4258", "4326", epsg)
   cache_dir <- create_cache_dir(cache_dir)

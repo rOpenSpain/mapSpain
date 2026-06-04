@@ -16,17 +16,17 @@ knitr:
     out.width: "100%"
 ---
 
-**mapSpain** provides an interface for working with imagery. It can
-download static files as `.png` or `.jpeg` (depending on the Web Map Service)
-and use them alongside your shapefiles.
+**mapSpain** provides an interface for working with imagery. It can download
+static files as `.png` or `.jpeg`, depending on the Web Map Service, and use
+them alongside your `sf` objects.
 
-**mapSpain** also provides a plugin for the **R**
-[**leaflet**](https://rstudio.github.io/leaflet/) package, which allows adding
+**mapSpain** also provides a plugin for the
+[**leaflet**](https://rstudio.github.io/leaflet/) R package, which allows adding
 multiple basemaps to interactive maps.
 
 The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/). You
-can view each provider option at that link.
+can view the available provider options at that link.
 
 ## Static tiles
 
@@ -35,8 +35,8 @@ layers provided by La Rioja's [Infraestructura de Datos Espaciales
 (IDERioja)](https://www.iderioja.larioja.org/).
 
 ::: callout-warning
-When working with imagery, set `moveCAN = FALSE` because otherwise images for
-the Canary Islands may be inaccurate.
+When working with imagery, set `moveCAN = FALSE`, otherwise imagery for the
+Canary Islands may be inaccurate.
 :::
 
 ```{r}
@@ -123,7 +123,7 @@ Another useful feature is tile masking, which supports more advanced maps:
 
 ```{r}
 #| label: fig-static3
-#| fig-cap: Example of combining tile types by masking to a shapefile.
+#| fig-cap: Example of combining tile types by masking to an sf object.
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -138,7 +138,7 @@ ggplot() +
 ## Custom providers
 
 You can use `esp_get_tiles()` to get tiles from other providers, for example
-OpenStreetMap:
+OpenStreetMap.
 
 ```{r}
 #| label: fig-osm
@@ -156,7 +156,7 @@ ggplot() +
   geom_sf(data = madrid_city, fill = NA)
 ```
 
-Another example using a provider that needs an API key (ThunderForest):
+This example uses a provider that needs an API key, ThunderForest:
 
 ```{r}
 #| label: fig-thunder
@@ -237,7 +237,7 @@ munic <- esp_get_munic_siane(
   rawcols = TRUE
 ) |>
   # Get area in km2 from SIANE municipalities.
-  # This variable is already in the shapefile.
+  # This variable is already available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
 # Get population data.

@@ -63,15 +63,15 @@ home:
   description: |
     Administrative boundaries of Spain based on GISCO (Geographic Information
     System of the Commission) from Eurostat and CartoBase ANE from Instituto
-    Geográfico Nacional. It also provides a plugin for leaflet and tools to
-    download and process static map tiles.
+    Geográfico Nacional. It also provides a plugin for the leaflet package and
+    tools to download and process static map tiles.
 
 reference:
-- title: Political boundaries of Spain
+- title: Political and administrative boundaries
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects representing
-    political boundaries.
+    political and administrative boundaries.
 - subtitle: CartoBase ANE
   description: |
     Datasets from IGN and CartoBase ANE.
@@ -82,7 +82,7 @@ reference:
     Datasets from GISCO and Eurostat.
   contents:
   - has_concept("gisco")
-- subtitle: Other helpers and political objects
+- subtitle: Additional boundary helpers
   contents:
   - has_concept("can_helpers")
   - esp_get_comarca
@@ -105,11 +105,11 @@ reference:
     features.
   contents:
   - has_concept("natural")
-- title: Infrastructure
+- title: Transport infrastructure
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects with
-    infrastructure features.
+    transport infrastructure features.
   contents:
   - has_concept("infrastructure")
 - title: Cache management

@@ -5,14 +5,6 @@
 #' representing a location in the Canary Islands) to align it with the objects
 #' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
 #'
-#' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
-#' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
-#'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
-#'   Initial position can be adjusted using the vector of coordinates.
-#'
-#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`
-#' but displaced accordingly.
-#'
 #' @details
 #' This is a helper function that intends to ease the representation of objects
 #' located in the Canary Islands that have been obtained from other sources
@@ -26,8 +18,16 @@
 #' [addProviderEspTiles()]) this option should be set to `FALSE` in order to
 #' get the actual coordinates, instead of the modified ones.
 #'
-#' @encoding UTF-8
+#' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
+#' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
+#'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
+#'   Initial position can be adjusted using the vector of coordinates.
+#'
+#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`
+#' but displaced accordingly.
+#'
 #' @family can_helpers
+#' @encoding UTF-8
 #' @export
 #'
 #' @examples
@@ -106,13 +106,13 @@ esp_move_can <- function(x, moveCAN = TRUE) {
     df <- sf::st_drop_geometry(data_3857)
     can <- sf::st_sf(df, geometry = geom_mov, crs = 3857)
 
-    # Regenerate CRS
+    # Regenerate the CRS.
     x_out <- sf::st_transform(can, sf::st_crs(x))
 
     if (is_sfc) {
       x_out <- sf::st_geometry(x_out)
     } else {
-      # Rename sf col
+      # Rename the sf column.
       sf::st_geometry(x_out) <- attr(x, "sf_column")
     }
   } else {

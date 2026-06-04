@@ -3,13 +3,13 @@
 #' @description
 #' This dataset shows boundaries of municipalities in Spain.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family municipalities
-#' @family gisco
-#' @inheritParams esp_get_nuts
-#' @inherit giscoR::gisco_get_lau
-#' @export
+#' @details
+#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
+#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
+#' (see [esp_codelist]).
+#'
+#' When calling a higher level (province, Autonomous Community or NUTS1), all
+#' the municipalities of that level will be added.
 #'
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
@@ -19,15 +19,20 @@
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
 #'   deprecated, the dataset will always be downloaded to the `cache_dir`.
+#' @inheritParams esp_get_nuts
+#' @inherit giscoR::gisco_get_lau return source
+#'
+#' @note
+#' Please check the download and usage provisions on
+#' [giscoR::gisco_attributions()].
+#'
 #' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
 #'
-#' @details
-#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
-#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
-#' (see [esp_codelist]).
-#'
-#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
-#' of that level will be added.
+#' @family political
+#' @family municipalities
+#' @family gisco
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -98,7 +103,7 @@ esp_get_munic <- function(
   moveCAN = TRUE,
   ext = "gpkg"
 ) {
-  # Dispatch everything to giscoR except EPSG, that is specific
+  # Dispatch to giscoR and handle the package-specific EPSG value locally.
   init_epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
   gisco_epsg <- ifelse(epsg == "4258", "4326", init_epsg)
   cache_dir <- create_cache_dir(cache_dir)
@@ -131,7 +136,7 @@ esp_get_munic <- function(
   if (is.null(data_sf)) {
     return(NULL)
   }
-  # Some files does not have crs (??)
+  # Some files do not provide a CRS.
   file_epsg <- ensure_null(sf::st_crs(data_sf)$wkt)
 
   if (is.null(file_epsg)) {

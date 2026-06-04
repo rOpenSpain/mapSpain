@@ -3,14 +3,9 @@
 #' @description
 #' Object representing rivers, lagoons, reservoirs and wetlands of Spain.
 #'
-#' @encoding UTF-8
-#' @family natural
-#' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_ccaa_siane
-#' @export
-#'
-#' @rdname esp_get_landwater
-#' @name esp_get_landwater
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @param resolution `r lifecycle::badge("deprecated")` character string.
 #'   Ignored, resolution `3` (the most detailed) will always be provided.
@@ -19,9 +14,14 @@
 #'   wetlands.
 #' @param name Character string or [`regex`][base::grep()] expression. Name of
 #'   the element(s) to be extracted.
-#' @details
-#' Metadata available on
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#' @inheritParams esp_get_ccaa_siane
+#' @inherit esp_get_ccaa_siane return source
+#' @family natural
+#' @encoding UTF-8
+#' @rdname esp_get_landwater
+#' @name esp_get_landwater
+#'
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -95,7 +95,7 @@ esp_get_rivers <- function(
     )
 
     cli::cli_alert_info(
-      "Redirecting the arguments to {.fn mapSpain::esp_get_wetlands}"
+      "Redirecting the arguments to {.fn mapSpain::esp_get_wetlands}."
     )
 
     data_sf <- esp_get_wetlands(

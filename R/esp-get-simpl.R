@@ -6,25 +6,6 @@
 #' communities of Spain, as provided by the **INE** (Instituto Nacional de
 #' Estadistica).
 #'
-#' @rdname esp_get_simpl
-#' @name esp_get_simpl
-#'
-#' @encoding UTF-8
-#' @family political
-#' @inheritParams esp_get_prov
-#' @inheritParams esp_get_ccaa
-#' @inheritParams esp_get_nuts
-#' @inherit esp_get_nuts return
-#' @export
-#'
-#' @param prov,ccaa Character. A vector of names, codes or both for provinces
-#'   and Autonomous Communities, or `NULL` to get all the data. See
-#'   **Details**.
-#'
-#' @seealso [`esp_get_gridmap`][esp_get_gridmap].
-#'
-#' @source INE: PC_Axis files
-#'
 #' @details
 #'
 #' Results are provided **without CRS**, as provided by the source.
@@ -36,6 +17,25 @@
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
+#' @param prov,ccaa Character. A vector of names, codes or both for provinces
+#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   **Details**.
+#'
+#' @inheritParams esp_get_prov
+#' @inheritParams esp_get_ccaa
+#' @inheritParams esp_get_nuts
+#' @inherit esp_get_nuts return
+#' @source INE: PC_Axis files
+#'
+#' @seealso [`esp_get_gridmap`][esp_get_gridmap].
+#'
+#' @family political
+#' @encoding UTF-8
+#' @rdname esp_get_simpl
+#' @name esp_get_simpl
+#'
+#' @export
+#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' prov_simp <- esp_get_simpl_prov()
@@ -44,16 +44,16 @@
 #'
 #' ggplot(prov_simp) +
 #'   geom_sf(aes(fill = ine.ccaa.name)) +
-#'   labs(fill = "CCAA")
+#'   labs(fill = "Autonomous Communities")
 #'
-#' # Provinces of a single CCAA.
+#' # Provinces of a single Autonomous Community.
 #'
 #' and_simple <- esp_get_simpl_prov("Andalucia")
 #'
 #' ggplot(and_simple) +
 #'   geom_sf()
 #'
-#' # CCAAs.
+#' # Autonomous Communities.
 #'
 #' ccaa_simp <- esp_get_simpl_ccaa()
 #'

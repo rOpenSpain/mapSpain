@@ -32,12 +32,12 @@ translation per input is returned as a character vector.}
 }
 \value{
 \code{esp_dict_region_code()} returns a character vector with converted
-subdivision identifiers or names. If a value cannot be matched the
+subdivision identifiers or names. If a value cannot be matched, the
 corresponding element will be \code{NA} and a warning is emitted via
 \code{\link[cli:cli_alert_warning]{cli::cli_alert_warning()}}.
 
 \code{esp_dict_translate()} translates a vector of names from one language to
-another:
+another.
 \itemize{
 \item If \code{all = FALSE}, a character vector with the translated name for each
 element of \code{sourcevar}.
@@ -47,7 +47,7 @@ all available translations for the corresponding input value.
 }
 \description{
 Convert Spanish subdivision names or identifiers between different coding
-schemes, such as NUTS, ISO2 and province codes, or obtain human-readable
+schemes such as NUTS, ISO2 and province codes, or obtain human-readable
 names.
 }
 \details{

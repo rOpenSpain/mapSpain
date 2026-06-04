@@ -42,7 +42,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     if (is.null(shp_end)) {
       cli::cli_alert_warning("Cannot read file {.file {file_local}}.")
       cli::cli_abort(paste0(
-        "Please open an issue: ",
+        "Please open an issue at ",
         "{.url https://github.com/rOpenSpain/mapSpain/issues}."
       ))
     }

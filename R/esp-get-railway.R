@@ -4,16 +4,16 @@
 #' Loads a [`sf`][sf::st_sf] `LINESTRING` or `POINT` object representing the
 #' nodes and railway lines of Spain.
 #'
-#' @rdname esp_get_railway
-#' @encoding UTF-8
-#' @family infrastructure
-#' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_ccaa_siane return source
-#' @export
-#'
 #' @param year Ignored.
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
 #'   Use [mapSpain::esp_get_stations()] instead of `"point"` for stations.
+#'
+#' @inheritParams esp_get_ccaa_siane
+#' @inherit esp_get_ccaa_siane return source
+#' @family infrastructure
+#' @encoding UTF-8
+#' @rdname esp_get_railway
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

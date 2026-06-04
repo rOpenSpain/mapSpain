@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_comarca}
 \alias{esp_get_comarca}
-\title{'Comarcas' of Spain}
+\title{Comarcas of Spain}
 \source{
 INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food (MAPA).
 }
@@ -33,7 +33,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
 \item{type}{Character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}.
-Type of comarca to return, see \strong{Details}.}
+Type of comarca to return. See \strong{Details}.}
 
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
@@ -78,7 +78,7 @@ in the case of having to answer to third parties due to damages arising
 from such use.
 }
 \section{About comarcas}{
-'Comarcas' (English equivalent: district, county, area or zone) does not
+Comarcas (English equivalent: district, county, area or zone) do not
 always have a formal legal status. They correspond mainly to natural areas
 (valleys, river basins and similar areas), historical regions or ancient
 kingdoms.
@@ -93,7 +93,7 @@ the Principality of Asturias and Andalusia have functional comarcas.
 \code{esp_get_comarca()} can retrieve several types of comarcas, each one
 provided under different classification criteria.
 \itemize{
-\item \code{"INE"}: Comarcas as defined by the National Statistics Institute (INE).
+\item \code{"INE"}: Comarcas defined by the National Statistics Institute (INE).
 \item \code{"IGN"}: Official comarcas, only available in some Autonomous Communities,
 provided by the National Geographic Institute.
 \item \code{"AGR"}: Agrarian comarcas defined by the Ministry of Agriculture,
@@ -101,12 +101,6 @@ Fisheries and Food (MAPA).
 \item \code{"LIV"}: Livestock comarcas defined by the Ministry of Agriculture,
 Fisheries and Food (MAPA).
 }
-}
-
-\section{Note}{
-
-Please check the download and usage provisions on \code{\link[giscoR:gisco_attributions]{gisco_attributions()}}.
-
 }
 
 \examples{
@@ -126,7 +120,7 @@ rec <- esp_get_comarca(type = "IGN")
 ggplot(rec) +
   geom_sf(aes(fill = t_comarca))
 
-# Legal Comarcas of Catalunya
+# Legal comarcas of Catalunya
 
 comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
 
@@ -137,7 +131,7 @@ ggplot(comarcas_cat) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},

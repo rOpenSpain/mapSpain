@@ -4,17 +4,17 @@
 #' Download zipped data from SIANE to the [`cache_dir`][esp_set_cache_dir()]
 #' and extract the relevant ones.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family siane
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritParams esp_get_prov
 #' @inherit esp_get_ccaa_siane source return
-#' @export
-#'
 #' @return
 #' A (invisible) character vector with the full path of the files extracted.
 #' See **Examples**.
+#' @family political
+#' @family siane
+#' @encoding UTF-8
+#' @export
+#'
 #' @examplesIf esp_check_access()
 #' tmp <- file.path(tempdir(), "testexample")
 #' dest_files <- esp_siane_bulk_download(cache_dir = tmp)

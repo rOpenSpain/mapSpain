@@ -108,7 +108,7 @@ pal <- c(
   tidyterra::hypso.colors(br_terrain, "wiki-2.0_hypso")
 )
 
-# Plot Canary Islands
+# Plot the Canary Islands
 ggplot(hypsobath) +
   geom_sf(aes(fill = as.factor(val_inf)),
     color = NA
@@ -146,7 +146,7 @@ ggplot(hypsobath) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other natural features:
+Natural feature datasets:
 \code{\link[=esp_get_hydrobasin]{esp_get_hydrobasin()}},
 \code{\link{esp_get_landwater}}
 }

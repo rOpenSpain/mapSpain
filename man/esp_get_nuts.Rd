@@ -106,7 +106,7 @@ The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to smaller
 territorial units). NUTS 1 is the most aggregated level. An additional
-Country level (NUTS 0) is also available for countries where the nation at
+country level (NUTS 0) is also available for countries where the nation at
 statistical level does not coincide with the administrative boundaries.
 
 The NUTS classification has been officially established through Commission
@@ -114,16 +114,11 @@ Delegated Regulation 2019/1755. A non-official NUTS-like classification has
 been defined for the EFTA countries, candidate countries and potential
 candidates based on a bilateral agreement between Eurostat and the respective
 statistical agencies.
-
-An introduction to the NUTS classification is available here:
-\url{https://ec.europa.eu/eurostat/web/nuts/overview}.
 }
-\section{Note}{
-
-Please check the download and usage provisions on \code{\link[giscoR:gisco_attributions]{gisco_attributions()}}.
-
+\note{
+Please check the download and usage provisions on
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
 }
-
 \examples{
 nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 
@@ -179,7 +174,7 @@ ggplot(mixing_codes) +
 \seealso{
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
@@ -195,10 +190,10 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Other nuts:
+NUTS boundary datasets:
 \code{\link[=esp_get_spain]{esp_get_spain()}}
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_prov]{esp_get_prov()}},

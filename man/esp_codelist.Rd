@@ -10,55 +10,55 @@ A \link[tibble:tbl_df]{tibble} with 59 rows and
 columns:
 
 \describe{
-\item{nuts1.code}{NUTS 1 code}
-\item{nuts1.name}{NUTS 1 name}
-\item{nuts1.name.alt}{NUTS 1 alternative name}
-\item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish)}
-\item{codauto}{INE code of the Autonomous Community}
-\item{iso2.ccaa.code}{ISO2 code of the Autonomous Community}
-\item{nuts2.code}{NUTS 2 code}
-\item{ine.ccaa.name}{INE name of the Autonomous Community}
-\item{iso2.ccaa.name.es}{ISO2 name of the Autonomous Community (Spanish)}
-\item{iso2.ccaa.name.ca}{ISO2 name of the Autonomous Community (Catalan)}
-\item{iso2.ccaa.name.gl}{ISO2 name of the Autonomous Community (Galician)}
-\item{iso2.ccaa.name.eu}{ISO2 name of the Autonomous Community (Basque)}
-\item{nuts2.name}{NUTS 2 name}
-\item{cldr.ccaa.name.en}{CLDR name of the Autonomous Community (English)}
-\item{cldr.ccaa.name.es}{CLDR name of the Autonomous Community (Spanish)}
-\item{cldr.ccaa.name.ca}{CLDR name of the Autonomous Community (Catalan)}
-\item{cldr.ccaa.name.ga}{CLDR name of the Autonomous Community (Galician)}
-\item{cldr.ccaa.name.eu}{CLDR name of the Autonomous Community (Basque)}
+\item{nuts1.code}{NUTS 1 code.}
+\item{nuts1.name}{NUTS 1 name.}
+\item{nuts1.name.alt}{NUTS 1 alternative name.}
+\item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish).}
+\item{codauto}{INE code of the Autonomous Community.}
+\item{iso2.ccaa.code}{ISO2 code of the Autonomous Community.}
+\item{nuts2.code}{NUTS 2 code.}
+\item{ine.ccaa.name}{INE name of the Autonomous Community.}
+\item{iso2.ccaa.name.es}{ISO2 name of the Autonomous Community (Spanish).}
+\item{iso2.ccaa.name.ca}{ISO2 name of the Autonomous Community (Catalan).}
+\item{iso2.ccaa.name.gl}{ISO2 name of the Autonomous Community (Galician).}
+\item{iso2.ccaa.name.eu}{ISO2 name of the Autonomous Community (Basque).}
+\item{nuts2.name}{NUTS 2 name.}
+\item{cldr.ccaa.name.en}{CLDR name of the Autonomous Community (English).}
+\item{cldr.ccaa.name.es}{CLDR name of the Autonomous Community (Spanish).}
+\item{cldr.ccaa.name.ca}{CLDR name of the Autonomous Community (Catalan).}
+\item{cldr.ccaa.name.ga}{CLDR name of the Autonomous Community (Galician).}
+\item{cldr.ccaa.name.eu}{CLDR name of the Autonomous Community (Basque).}
 \item{ccaa.shortname.en}{Short (common) name of the Autonomous Community
-(English)}
+(English).}
 \item{ccaa.shortname.es}{Short (common) name of the Autonomous Community
-(Spanish)}
+(Spanish).}
 \item{ccaa.shortname.ca}{Short (common) name of the Autonomous Community
-(Catalan)}
+(Catalan).}
 \item{ccaa.shortname.ga}{Short (common) name of the Autonomous Community
-(Galician)}
+(Galician).}
 \item{ccaa.shortname.eu}{Short (common) name of the Autonomous Community
-(Basque)}
-\item{cpro}{INE code of the province}
-\item{iso2.prov.code}{ISO2 code of the province}
-\item{nuts.prov.code}{NUTS code of the province}
-\item{ine.prov.name}{INE name of the province}
-\item{iso2.prov.name.es}{ISO2 name of the province (Spanish)}
-\item{iso2.prov.name.ca}{ISO2 name of the province (Catalan)}
-\item{iso2.prov.name.ga}{ISO2 name of the province (Galician)}
-\item{iso2.prov.name.eu}{ISO2 name of the province (Basque)}
-\item{cldr.prov.name.en}{CLDR name of the province (English)}
-\item{cldr.prov.name.es}{CLDR name of the province (Spanish)}
-\item{cldr.prov.name.ca}{CLDR name of the province (Catalan)}
-\item{cldr.prov.name.ga}{CLDR name of the province (Galician)}
-\item{cldr.prov.name.eu}{CLDR name of the province (Basque)}
-\item{prov.shortname.en}{Short (common) name of the province (English)}
-\item{prov.shortname.es}{Short (common) name of the province (Spanish)}
-\item{prov.shortname.ca}{Short (common) name of the province (Catalan)}
-\item{prov.shortname.ga}{Short (common) name of the province (Galician)}
-\item{prov.shortname.eu}{Short (common) name of the province (Basque)}
-\item{nuts3.code}{NUTS 3 code}
-\item{nuts3.name}{NUTS 3 name}
-\item{nuts3.shortname.es}{NUTS 3 short (common) name}
+(Basque).}
+\item{cpro}{INE code of the province.}
+\item{iso2.prov.code}{ISO2 code of the province.}
+\item{nuts.prov.code}{NUTS code of the province.}
+\item{ine.prov.name}{INE name of the province.}
+\item{iso2.prov.name.es}{ISO2 name of the province (Spanish).}
+\item{iso2.prov.name.ca}{ISO2 name of the province (Catalan).}
+\item{iso2.prov.name.ga}{ISO2 name of the province (Galician).}
+\item{iso2.prov.name.eu}{ISO2 name of the province (Basque).}
+\item{cldr.prov.name.en}{CLDR name of the province (English).}
+\item{cldr.prov.name.es}{CLDR name of the province (Spanish).}
+\item{cldr.prov.name.ca}{CLDR name of the province (Catalan).}
+\item{cldr.prov.name.ga}{CLDR name of the province (Galician).}
+\item{cldr.prov.name.eu}{CLDR name of the province (Basque).}
+\item{prov.shortname.en}{Short (common) name of the province (English).}
+\item{prov.shortname.es}{Short (common) name of the province (Spanish).}
+\item{prov.shortname.ca}{Short (common) name of the province (Catalan).}
+\item{prov.shortname.ga}{Short (common) name of the province (Galician).}
+\item{prov.shortname.eu}{Short (common) name of the province (Basque).}
+\item{nuts3.code}{NUTS 3 code.}
+\item{nuts3.name}{NUTS 3 name.}
+\item{nuts3.shortname.es}{NUTS 3 short (common) name.}
 }
 }
 \source{
@@ -74,12 +74,12 @@ columns:
 A \link[tibble:tbl_df]{tibble} object used internally for translating codes and
 names of the different subdivisions of Spain. This tibble provides a
 hierarchical representation of Spain's subdivisions, including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), provinces and NUTS3 level.
+Autonomous Communities (equivalent to NUTS2), provinces and NUTS3 levels.
 See the note below for coverage details.
 }
 \note{
 Although NUTS2 aligns with the first subdivision level of Spain
-(Autonomous Communities, CCAA), NUTS3 does not correspond to the second
+(Autonomous Communities), NUTS3 does not correspond to the second
 subdivision level of Spain (provinces). NUTS3
 provides dedicated codes for major islands, whereas provinces do not.
 
@@ -93,7 +93,7 @@ data("esp_codelist")
 esp_codelist
 }
 \seealso{
-Other datasets:
+Included package datasets:
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun25}}

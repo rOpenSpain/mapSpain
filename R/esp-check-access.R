@@ -1,7 +1,5 @@
 #' Check access to SIANE data resources
 #'
-#' @encoding UTF-8
-#' @keywords internal
 #' @description
 #' Check whether \R has access to resources at
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -10,10 +8,12 @@
 #'
 #' @seealso [giscoR::gisco_check_access()].
 #'
+#' @keywords internal
+#' @encoding UTF-8
+#' @export
 #' @examples
 #'
 #' esp_check_access()
-#' @export
 esp_check_access <- function() {
   if (!httr2::is_online()) {
     return(FALSE) # nocov

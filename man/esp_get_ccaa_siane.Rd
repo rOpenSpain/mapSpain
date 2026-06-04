@@ -122,7 +122,7 @@ ggplot(ccaas_low) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_comarca]{esp_get_comarca()}},
@@ -138,7 +138,7 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},

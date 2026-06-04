@@ -4,25 +4,24 @@
 #' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON` at a
 #' specified scale.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family nuts
-#' @family gisco
-#' @inheritParams giscoR::gisco_get_nuts
-#' @inherit esp_get_nuts
-#' @export
-#'
-#' @rdname esp_get_spain
-#' @name esp_get_spain
-#'
-#' @return A [`sf`][sf::st_sf] `POLYGON` object.
-#'
 #' @details
 #' Dataset derived from NUTS data provided by GISCO. Check [esp_get_nuts()] for
 #' details.
 #'
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
+#'
+#' @inherit esp_get_nuts
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
+#'
+#' @family political
+#' @family nuts
+#' @family gisco
+#' @encoding UTF-8
+#' @rdname esp_get_spain
+#' @name esp_get_spain
+#'
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -76,7 +75,7 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
   data_sf
 }
 
-#' @export
 #' @rdname esp_get_spain
+#' @export
 #' @usage NULL
 esp_get_country <- esp_get_spain

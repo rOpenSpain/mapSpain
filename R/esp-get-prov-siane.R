@@ -1,12 +1,12 @@
 #' Provinces of Spain from SIANE
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family siane
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritParams esp_get_prov
 #' @inherit esp_get_prov description details
 #' @inherit esp_get_ccaa_siane source return
+#' @family political
+#' @family siane
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

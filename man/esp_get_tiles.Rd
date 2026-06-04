@@ -171,7 +171,7 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 
-Other functions for creating maps with images:
+Functions for image-based maps and tile providers:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
 \code{\link[=esp_make_provider]{esp_make_provider()}}
 }

@@ -1,15 +1,9 @@
 #' Municipalities of Spain from SIANE
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family siane
-#' @family municipalities
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritParams esp_get_munic
 #' @inherit esp_get_munic description details return
 #' @inherit esp_get_ccaa_siane source
-#' @export
-#'
 #' @note
 #'
 #' Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
@@ -21,6 +15,12 @@
 #'   contornos municipales de España –LAU2boundaries4Spain–* \[Data set\].
 #'   Zenodo. \doi{10.5281/zenodo.15345101},
 #'   <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
+#'
+#' @family political
+#' @family siane
+#' @family municipalities
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

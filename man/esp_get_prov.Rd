@@ -23,7 +23,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
 \item{...}{
-  Arguments passed on to \code{\link{esp_get_nuts}}, \code{\link{esp_get_nuts}}
+  Arguments passed on to \code{\link{esp_get_nuts}}
   \describe{
     \item{\code{year}}{Year character string or number. Release year of the file. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} for valid values.}
@@ -79,12 +79,10 @@ Ceuta and Melilla are considered as provinces in this dataset.
 When calling a higher level (Autonomous Community or NUTS1), all the
 provinces of that level will be added.
 }
-\section{Note}{
-
-Please check the download and usage provisions on \code{\link[giscoR:gisco_attributions]{gisco_attributions()}}.
-
+\note{
+Please check the download and usage provisions on
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
 }
-
 \examples{
 prov <- esp_get_prov()
 
@@ -137,7 +135,7 @@ ggplot(allprovs) +
 }
 }
 \seealso{
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
@@ -153,7 +151,7 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},

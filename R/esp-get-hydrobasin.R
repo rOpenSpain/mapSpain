@@ -5,19 +5,19 @@
 #' neighbouring river basins together with their associated groundwaters and
 #' coastal waters.
 #'
-#' @encoding UTF-8
-#' @family natural
-#' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_ccaa_siane
-#' @export
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @param domain Character string. Type of river basin district. Possible
 #'   values are `"land"`, including only the groundwaters area or `"landsea"`,
 #'   groundwaters and coastal waters.
 #'
-#' @details
-#' Metadata available on
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#' @inheritParams esp_get_ccaa_siane
+#' @inherit esp_get_ccaa_siane return source
+#' @family natural
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

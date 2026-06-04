@@ -3,11 +3,11 @@
 #' @description
 #' Object representing the main roads of Spain.
 #'
-#' @encoding UTF-8
-#' @family infrastructure
 #' @inheritParams esp_get_railway
 #' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_railway
+#' @inherit esp_get_railway return source
+#' @family infrastructure
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

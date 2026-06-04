@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_countries_siane}
 \alias{esp_get_countries_siane}
-\title{Countries of the World - SIANE}
+\title{Countries of the world - SIANE}
 \source{
 CartoBase ANE provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -90,7 +90,7 @@ ggplot(cntries) +
 \seealso{
 \code{\link[giscoR:gisco_get_countries]{giscoR::gisco_get_countries()}}.
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
@@ -106,7 +106,7 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},

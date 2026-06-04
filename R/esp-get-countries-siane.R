@@ -1,4 +1,4 @@
-#' Countries of the World - SIANE
+#' Countries of the world - SIANE
 #'
 #' @description
 #' This dataset contains the administrative boundaries at country level of the
@@ -7,19 +7,19 @@
 #' The data included in this cartographic database do not imply any opinion of
 #' the IGN regarding its legal status.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family siane
-#' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_prov
-#' @inherit esp_get_ccaa_siane source return
-#' @export
-#'
-#' @seealso [giscoR::gisco_get_countries()].
-#'
 #' @param country Character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   ISO2 country codes. See also [countrycode::countrycode()].
+#'
+#' @inheritParams esp_get_ccaa_siane
+#' @inheritParams esp_get_prov
+#' @inherit esp_get_ccaa_siane source return
+#' @seealso [giscoR::gisco_get_countries()].
+#'
+#' @family political
+#' @family siane
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' cntries <- esp_get_countries_siane()

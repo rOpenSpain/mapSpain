@@ -4,7 +4,7 @@
       esp_get_ccaa_siane(ccaa = "Menorca", cache_dir = cdir)
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish CCAA codes found for "Menorca".
+      ! No Spanish Autonomous Communities codes found for "Menorca".
 
 ---
 
@@ -12,5 +12,5 @@
       esp_get_ccaa_siane(ccaa = "ES6x", cache_dir = cdir)
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish CCAA codes found for "ES6x".
+      ! No Spanish Autonomous Communities codes found for "ES6x".
 

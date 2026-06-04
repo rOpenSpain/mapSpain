@@ -14,17 +14,21 @@
 #' These grids are useful for biodiversity analysis, environmental monitoring,
 #' and spatial statistical applications.
 #'
-#' @encoding UTF-8
-#' @family grids
-#' @inheritParams esp_get_nuts
-#' @inherit esp_get_nuts return
-#' @export
-#'
 #' @details
 #' The BDN provides standardized geographic grids for Spain that follow the
 #' Nature Data Bank's specifications. The data is downloaded from the
 #' `sianedata/MITECO/dist` data branch and is regularly updated.
 #'
+#' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
+#'   of:
+#'   - `5`: 5x5 kilometer cells
+#'   - `10`: 10x10 kilometer cells (default)
+#' @param type Character. The geographic scope of the grid:
+#'   - `"main"`: Mainland Spain (default)
+#'   - `"canary"`: Canary Islands
+#'
+#' @inheritParams esp_get_nuts
+#' @inherit esp_get_nuts return
 #' @source
 #' Data sourced from the Banco de Datos de la Naturaleza (BDN). See the
 #' repository structure:
@@ -38,13 +42,9 @@
 #'       "bdn-cart-aux-descargas-ccaa.html>."))
 #' ```
 #'
-#' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
-#'   of:
-#'   - `5`: 5x5 kilometer cells
-#'   - `10`: 10x10 kilometer cells (default)
-#' @param type Character. The geographic scope of the grid:
-#'   - `"main"`: Mainland Spain (default)
-#'   - `"canary"`: Canary Islands
+#' @family grids
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -107,9 +107,6 @@ esp_get_grid_BDN <- function(
   data_sf
 }
 
-#' @rdname esp_get_grid_BDN
-#' @export
-#'
 #' @description
 #' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
 #' for specific Autonomous Communities, useful for regional analysis with
@@ -121,6 +118,9 @@ esp_get_grid_BDN <- function(
 #'
 #' @seealso
 #' [esp_get_ccaa()]
+#'
+#' @rdname esp_get_grid_BDN
+#' @export
 #'
 esp_get_grid_BDN_ccaa <- function(
   ccaa,

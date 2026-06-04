@@ -5,11 +5,10 @@
 #'
 #' This function is defunct as the source file is not available any more.
 #'
-#' @family deprecated functions
-#' @keywords internal
-#' @encoding UTF-8
-#' @export
+#' @param resolution Resolution of the grid in kilometers. Can be `1`, `10`
+#'   or `100`.
 #'
+#' @inheritParams esp_get_grid_BDN
 #' @return A [`sf`][sf::st_sf] `POLYGON`.
 #'
 #' @source
@@ -22,10 +21,11 @@
 #'
 #' ```
 #'
-#' @param resolution Resolution of the grid in kilometers. Can be `1`, `10`
-#'   or `100`.
+#' @family deprecated functions
+#' @keywords internal
+#' @encoding UTF-8
+#' @export
 #'
-#' @inheritParams esp_get_grid_BDN
 esp_get_grid_EEA <- function(
   resolution = 100,
   type = "main",

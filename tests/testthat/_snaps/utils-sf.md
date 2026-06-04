@@ -6,5 +6,5 @@
       ! Cannot read file '<path>'.
     Condition
       Error in `read_geo_file_sf()`:
-      ! Please open an issue: <https://github.com/rOpenSpain/mapSpain/issues>.
+      ! Please open an issue at <https://github.com/rOpenSpain/mapSpain/issues>.
 

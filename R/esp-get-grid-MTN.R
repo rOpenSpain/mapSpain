@@ -3,17 +3,6 @@
 #' @description
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain.
 #'
-#' @source IGN data distributed through the `sianedata/MTN` data branch (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
-#'
-#' @encoding UTF-8
-#' @family grids
-#' @inheritParams esp_get_grid_EEA
-#' @inherit esp_get_grid_EEA return
-#' @export
-#'
-#' @param grid Name of the grid to be loaded. See **Details**.
-#'
 #' @details
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>.
@@ -86,6 +75,17 @@
 #' real grid of the MTN50, that is, the one that divides the current printed
 #' series of the map, taking into account the special distribution of the
 #' Canary Islands sheets.
+#'
+#' @param grid Name of the grid to be loaded. See **Details**.
+#'
+#' @inheritParams esp_get_grid_EEA
+#' @inherit esp_get_grid_EEA return
+#' @source IGN data distributed through the `sianedata/MTN` data branch (see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
+#'
+#' @family grids
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{

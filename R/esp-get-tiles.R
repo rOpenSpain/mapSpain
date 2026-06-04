@@ -8,52 +8,6 @@
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 #' **`r leaf_providers_esp_v`**.
 #'
-#' @encoding UTF-8
-#' @family images
-#' @seealso [terra::rast()], [esp_tiles_providers]
-#'
-#' @rdname esp_get_tiles
-#' @name esp_get_tiles
-#' @order 1
-#'
-#' @return
-#' A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on
-#' the provider. See [terra::rast()].
-#'
-#' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
-#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
-#'
-#' @export
-#'
-#' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
-#'
-#' @param type This argument can be either:
-#'   - The name of one of the pre-defined providers (see
-#'     [esp_tiles_providers]).
-#'   - A list with two named elements `id` and `q` with your own arguments. See
-#'     [esp_make_provider()] and examples.
-#' @param zoom Character string or number. Only valid for WMTS providers, zoom
-#'   level to be downloaded. If `NULL`, it is determined automatically. If set,
-#'   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`, the
-#'   function sets a zoom level of 18. See **Details**.
-#' @param zoommin Character string or number. Delta on default `zoom`.
-#'   The default value is designed to download fewer tiles than you probably
-#'   want. Use `1` or `2` to increase the resolution.
-#' @param crop Logical. If `TRUE`, the results will be cropped to the specified
-#'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
-#'   `crop` is set to `FALSE`. See [terra::crop()].
-#' @param res Character string or number. Only valid for WMS providers.
-#'   Resolution (in pixels) of the final tile.
-#' @param bbox_expand Number. Expansion percentage of the bounding box of `x`.
-#' @param transparent Logical. Provides transparent background, if supported.
-#' @param mask Logical. `TRUE` if the result should be masked to `x`. See
-#'   [terra::mask()].
-#' @param options A named list containing additional options to pass to the
-#'   query.
-#'
-#' @inheritParams esp_get_nuts
-#'
 #' @details
 #' Zoom levels are described on the
 #' [OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
@@ -89,6 +43,52 @@
 #' try projecting first `x`:
 #'
 #' `x <- sf::st_transform(x, 3857)`
+#'
+#' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
+#'
+#' @param type This argument can be either:
+#'   - The name of one of the pre-defined providers (see
+#'     [esp_tiles_providers]).
+#'   - A list with two named elements `id` and `q` with your own arguments. See
+#'     [esp_make_provider()] and examples.
+#' @param zoom Character string or number. Only valid for WMTS providers, zoom
+#'   level to be downloaded. If `NULL`, it is determined automatically. If set,
+#'   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`, the
+#'   function sets a zoom level of 18. See **Details**.
+#' @param zoommin Character string or number. Delta on default `zoom`.
+#'   The default value is designed to download fewer tiles than you probably
+#'   want. Use `1` or `2` to increase the resolution.
+#' @param crop Logical. If `TRUE`, the results will be cropped to the specified
+#'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
+#'   `crop` is set to `FALSE`. See [terra::crop()].
+#' @param res Character string or number. Only valid for WMS providers.
+#'   Resolution (in pixels) of the final tile.
+#' @param bbox_expand Number. Expansion percentage of the bounding box of `x`.
+#' @param transparent Logical. Provides transparent background, if supported.
+#' @param mask Logical. `TRUE` if the result should be masked to `x`. See
+#'   [terra::mask()].
+#' @param options A named list containing additional options to pass to the
+#'   query.
+#'
+#' @inheritParams esp_get_nuts
+#'
+#' @return
+#' A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on
+#' the provider. See [terra::rast()].
+#'
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
+#'
+#' @seealso [terra::rast()], [esp_tiles_providers]
+#'
+#' @family images
+#' @encoding UTF-8
+#' @rdname esp_get_tiles
+#' @name esp_get_tiles
+#' @order 1
+#'
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \dontrun{
@@ -389,7 +389,7 @@ get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
 
   r <- terra::rast(file_local, noflip = TRUE)
 
-  # Extension and crs
+  # Set extent and CRS.
   terra::ext(r) <- terra::ext(terra::vect(bbox))
   crs_tile <- get_tile_crs(prov_list)
   terra::crs(r) <- crs_tile
@@ -544,7 +544,7 @@ set_wmts_tile_extent_crs <- function(r, xtile, ytile, ztile, prov_list) {
   r
 }
 
-#' @export
 #' @rdname esp_get_tiles
+#' @export
 #' @usage NULL
 esp_getTiles <- esp_get_tiles

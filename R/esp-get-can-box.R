@@ -13,19 +13,19 @@
 #' - `"left"` / `"right"`: decorative `LINESTRING` variants that follow
 #'   the western or eastern side of the islands respectively.
 #'
-#' @encoding UTF-8
-#' @family can_helpers
-#' @rdname esp_get_can_box
-#' @name esp_get_can_box
-#' @inheritParams esp_get_nuts
-#' @export
-#'
 #' @param style Character string. One of `"right"`, `"left"`, `"box"` or
 #'   `"poly"`. Default is `"right"`, see **Details**.
 #'
+#' @inheritParams esp_get_nuts
 #' @return
 #' An [`sf`][sf::st_sf] object: a `POLYGON` (when `style = "poly"`) or a
 #' `LINESTRING` (other styles).
+#'
+#' @family can_helpers
+#' @encoding UTF-8
+#' @rdname esp_get_can_box
+#' @name esp_get_can_box
+#' @export
 #'
 #' @examples
 #' provs <- esp_get_prov()
@@ -137,8 +137,6 @@ esp_get_can_box <- function(
 
 #' Canary Islands province separator line
 #'
-#' @rdname esp_get_can_box
-#'
 #' @description
 #' `esp_get_can_provinces()` returns a small `LINESTRING` used to mark the
 #' separator between the two provinces of the Canary Islands. This helper is
@@ -147,6 +145,8 @@ esp_get_can_box <- function(
 #' @source
 #' Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
 #' (`se89_mult_admin_provcan_l.shp`).
+#'
+#' @rdname esp_get_can_box
 #'
 #' @export
 esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {

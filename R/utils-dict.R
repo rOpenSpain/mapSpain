@@ -6,7 +6,7 @@ get_master_codes <- function() {
   df <- mapSpain::esp_codelist
   nt1 <- unique(df$nuts1.code)
 
-  # Second level - NUTS2 - CCAA
+  # Second level: NUTS2 and Autonomous Communities.
   nt2 <- unique(df[, c("nuts2.code", "iso2.ccaa.code", "codauto")])
 
   # Third level - Prov and NUTS
@@ -39,7 +39,7 @@ get_master_codes <- function() {
 
   dict_codes_df$iso2 == "ES-GC"
 
-  # Fake NUTS for Canary Islands
+  # Add synthetic NUTS codes for the Canary Islands.
   dict_codes_df[
     dict_codes_df$iso2 == "ES-GC" & !is.na(dict_codes_df$iso2),
   ]$nuts <- "XXXXX"
@@ -96,7 +96,7 @@ get_master_nuts_nm <- function() {
 
   basecod <- merge(basecod, dict_nuts, all.x = TRUE)
 
-  # Fake NUTS for Canary Islands
+  # Add synthetic NUTS codes for the Canary Islands.
   basecod[basecod$key == "Las Palmas", ]$nuts <- "XXXXX"
   basecod[basecod$key == "Santa Cruz de Tenerife", ]$nuts <- "YYYYY"
   tibble::as_tibble(basecod)

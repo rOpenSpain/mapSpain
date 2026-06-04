@@ -7,12 +7,21 @@
 #' Note that this differs from the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic_siane()].
 #'
-#' @encoding UTF-8
+#' @details
+#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
+#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
+#' (see [esp_codelist]).
+#'
+#' When calling a higher level (province, Autonomous Community or NUTS1), all
+#' the municipalities of that level will be added.
+#'
+#' @inheritParams esp_get_munic_siane
+#' @inherit esp_get_munic_siane
+#'
 #' @family political
 #' @family siane
 #' @family municipalities
-#' @inheritParams esp_get_munic_siane
-#' @inherit esp_get_munic_siane
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

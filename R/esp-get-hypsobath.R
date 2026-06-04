@@ -7,11 +7,9 @@
 #' - **Bathymetry** is the measurement of the depth of water in oceans, rivers,
 #'   or lakes.
 #'
-#' @encoding UTF-8
-#' @family natural
-#' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_ccaa_siane
-#' @export
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
@@ -21,9 +19,11 @@
 #' @param spatialtype Character string. Spatial type of the output. Use
 #'   `"area"` for `POLYGON` or `"line"` for `LINESTRING`.
 #'
-#' @details
-#' Metadata available on
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#' @inheritParams esp_get_ccaa_siane
+#' @inherit esp_get_ccaa_siane return source
+#' @family natural
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -46,7 +46,7 @@
 #'   tidyterra::hypso.colors(br_terrain, "wiki-2.0_hypso")
 #' )
 #'
-#' # Plot Canary Islands
+#' # Plot the Canary Islands
 #' ggplot(hypsobath) +
 #'   geom_sf(aes(fill = as.factor(val_inf)),
 #'     color = NA

@@ -40,10 +40,10 @@ convert_to_nuts <- function(region) {
   sort(unique(nuts_id[!is.na(nuts_id)]))
 }
 
-#' Transform regions to NUTS codes for CCAA (NUTS 2)
+#' Transform regions to NUTS codes for Autonomous Communities (NUTS 2)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE codauto).
-#' @return A vector of NUTS codes for CCAA (level 2) or an error if no valid
-#'   code is found.
+#' @return A vector of NUTS codes for Autonomous Communities (level 2) or an
+#'   error if no valid code is found.
 #'
 #' @noRd
 convert_to_nuts_ccaa <- function(region) {
@@ -79,21 +79,21 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   if (all(is.na(ccaa_id))) {
-    abort_no_spanish_codes("CCAA", clean_region)
+    abort_no_spanish_codes("Autonomous Communities", clean_region)
   }
 
-  # Map Ceuta and Melilla to their CCAA codes.
+  # Map Ceuta and Melilla to their Autonomous Community codes.
   ccaa_id[grep("ES640", ccaa_id, fixed = TRUE)] <- "ES64"
   ccaa_id[grep("ES630", ccaa_id, fixed = TRUE)] <- "ES63"
 
   novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
 
   if (all(novalid)) {
-    abort_no_spanish_codes("CCAA", clean_region)
+    abort_no_spanish_codes("Autonomous Communities", clean_region)
   }
 
   if (any(novalid)) {
-    warn_no_spanish_codes("CCAA", clean_region[novalid])
+    warn_no_spanish_codes("Autonomous Communities", clean_region[novalid])
   }
 
   ccaa_id <- ccaa_id[!novalid]
@@ -138,7 +138,7 @@ convert_to_nuts_prov <- function(region) {
   )
   nuts_cpros <- clean_region
 
-  # Convert text to cpro to check Canary Islands and Balearic Islands.
+  # Convert text to CPRO to check the Canary Islands and Balearic Islands.
   for (i in seq_along(clean_region)) {
     code <- nuts_cpros[i]
     type <- code_type[i]

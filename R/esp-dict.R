@@ -2,26 +2,8 @@
 #'
 #' @description
 #' Convert Spanish subdivision names or identifiers between different coding
-#' schemes, such as NUTS, ISO2 and province codes, or obtain human-readable
+#' schemes such as NUTS, ISO2 and province codes, or obtain human-readable
 #' names.
-#'
-#' @encoding UTF-8
-#' @family dictionary
-#' @rdname esp_dict
-#' @name esp_dict_region_code
-#' @export
-#'
-#' @return
-#'
-#' `esp_dict_region_code()` returns a character vector with converted
-#' subdivision identifiers or names. If a value cannot be matched the
-#' corresponding element will be `NA` and a warning is emitted via
-#' [cli::cli_alert_warning()].
-#'
-#' @param sourcevar Character string. Vector which contains the codes or names
-#'   to be converted.
-#' @param origin,destination Character string. Coding scheme of origin and
-#'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
 #'
 #' @details
 #' The function uses internal dictionaries together with \CRANpkg{countrycode}
@@ -29,6 +11,24 @@
 #' returned unchanged. Mixing names from different administrative levels
 #' (for example Autonomous Community and province) may produce
 #' `NA` values for some entries.
+#'
+#' @param sourcevar Character string. Vector which contains the codes or names
+#'   to be converted.
+#' @param origin,destination Character string. Coding scheme of origin and
+#'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
+#'
+#' @return
+#'
+#' `esp_dict_region_code()` returns a character vector with converted
+#' subdivision identifiers or names. If a value cannot be matched, the
+#' corresponding element will be `NA` and a warning is emitted via
+#' [cli::cli_alert_warning()].
+#'
+#' @family dictionary
+#' @encoding UTF-8
+#' @rdname esp_dict
+#' @name esp_dict_region_code
+#' @export
 #'
 #' @examples
 #' vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
@@ -222,20 +222,6 @@ sanitize_region_code_output <- function(
 }
 
 #'
-#' @rdname esp_dict
-#' @name esp_dict_translate
-#'
-#' @return
-#'
-#' `esp_dict_translate()` translates a vector of names from one language to
-#' another:
-#'   - If `all = FALSE`, a character vector with the translated name for each
-#'     element of `sourcevar`.
-#'   - If `all = TRUE`, a named `list` is returned where each element contains
-#'     all available translations for the corresponding input value.
-#'
-#' @export
-#'
 #' @param lang Character string. Target language code, available values:
 #'   - `"es"`: Spanish.
 #'   - `"en"`: English.
@@ -246,6 +232,20 @@ sanitize_region_code_output <- function(
 #' @param all Logical. If `TRUE` the function returns all possible translations
 #'   for each input as a named list. When `FALSE` (default) a single preferred
 #'   translation per input is returned as a character vector.
+#'
+#' @return
+#'
+#' `esp_dict_translate()` translates a vector of names from one language to
+#' another.
+#'   - If `all = FALSE`, a character vector with the translated name for each
+#'     element of `sourcevar`.
+#'   - If `all = TRUE`, a named `list` is returned where each element contains
+#'     all available translations for the corresponding input value.
+#'
+#' @rdname esp_dict
+#' @name esp_dict_translate
+#'
+#' @export
 #'
 #' @examples
 #' vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
