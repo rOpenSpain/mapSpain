@@ -1,3 +1,5 @@
+# mapSpain (development version)
+
 # mapSpain 1.1.0
 
 - Migrated package vignettes to Quarto.
