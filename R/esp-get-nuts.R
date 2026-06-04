@@ -119,7 +119,7 @@ esp_get_nuts <- function(
   ext = "gpkg"
 ) {
   # Dispatch everything to gisco_get_nuts except EPSG, that is specific
-  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
   gisco_epsg <- ifelse(epsg == "4258", "4326", epsg)
   cache_dir <- create_cache_dir(cache_dir)
   spatialtype <- match_arg_pretty(spatialtype)
@@ -185,9 +185,10 @@ esp_get_nuts <- function(
     data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning(paste0("No matches for {.arg region = {region}}."))
-      cli::cli_alert_info("Returning empty {.cls sf} object.")
-      return(data_sf)
+      return(return_empty_sf(
+        data_sf,
+        "No matches for {.arg region = {region}}."
+      ))
     }
   }
 

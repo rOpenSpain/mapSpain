@@ -29,16 +29,12 @@ convert_to_nuts <- function(region) {
     )
   }
   if (all(is.na(nuts_id))) {
-    cli::cli_alert_warning(
-      "No Spanish NUTS codes found for {.str {clean_region}}."
-    )
+    warn_no_spanish_codes("NUTS", clean_region)
     return(NULL)
   }
 
   if (anyNA(nuts_id)) {
-    cli::cli_alert_warning(
-      "No Spanish NUTS codes found for {.str {clean_region[is.na(nuts_id)]}}."
-    )
+    warn_no_spanish_codes("NUTS", clean_region[is.na(nuts_id)])
   }
 
   sort(unique(nuts_id[!is.na(nuts_id)]))
@@ -83,7 +79,7 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   if (all(is.na(ccaa_id))) {
-    cli::cli_abort("No Spanish CCAA codes found for {.str {clean_region}}.")
+    abort_no_spanish_codes("CCAA", clean_region)
   }
 
   # Map Ceuta and Melilla to their CCAA codes.
@@ -93,14 +89,11 @@ convert_to_nuts_ccaa <- function(region) {
   novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
 
   if (all(novalid)) {
-    cli::cli_abort("No Spanish CCAA codes found for {.str {clean_region}}.")
+    abort_no_spanish_codes("CCAA", clean_region)
   }
 
   if (any(novalid)) {
-    cli::cli_alert_warning(paste0(
-      "No Spanish CCAA codes found for ",
-      "{.str {clean_region[novalid]}}."
-    ))
+    warn_no_spanish_codes("CCAA", clean_region[novalid])
   }
 
   ccaa_id <- ccaa_id[!novalid]
@@ -206,7 +199,7 @@ convert_to_nuts_prov <- function(region) {
   }
 
   if (all(is.na(nuts_cpros))) {
-    cli::cli_abort("No Spanish province codes found for {.str {clean_region}}.")
+    abort_no_spanish_codes("province", clean_region)
   }
 
   # Remove island NUTS3 codes that do not correspond to provinces.
@@ -220,13 +213,11 @@ convert_to_nuts_prov <- function(region) {
 
   nomatch <- nuts_cpros == "NOMATCH"
   if (all(nomatch)) {
-    cli::cli_abort("No Spanish province codes found for {.str {clean_region}}.")
+    abort_no_spanish_codes("province", clean_region)
   }
 
   if (any(nomatch)) {
-    cli::cli_alert_warning(paste0(
-      "No Spanish province codes found for {.str {clean_region[nomatch]}}."
-    ))
+    warn_no_spanish_codes("province", clean_region[nomatch])
   }
 
   nuts_cpros[nomatch] <- NA

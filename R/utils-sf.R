@@ -197,6 +197,11 @@ union_sf_by <- function(data_sf, by) {
   rbind_fill(binded_sf)
 }
 
+sanitize_transform_sf <- function(data_sf, epsg) {
+  data_sf <- sanitize_sf(data_sf)
+  sf::st_transform(data_sf, as.double(epsg))
+}
+
 #' Convert sf object to UTF-8
 #'
 #' Ensures all character columns use UTF-8 encoding.

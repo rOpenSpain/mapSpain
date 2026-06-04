@@ -113,23 +113,7 @@ esp_set_cache_dir <- function(
   # nocov start
 
   if (install) {
-    config_dir <- tools::R_user_dir("mapSpain", "config")
-    # Create the cache configuration directory if needed.
-    if (!dir.exists(config_dir)) {
-      dir.create(config_dir, recursive = TRUE)
-    }
-
-    mapspain_file <- file.path(config_dir, "mapSpain_cache_dir")
-
-    if (!file.exists(mapspain_file) || overwrite) {
-      # Create file if it does not exist.
-      writeLines(cache_dir, con = mapspain_file)
-    } else {
-      cli::cli_abort(c(
-        "A {.arg cache_dir} path already exists.",
-        "You can overwrite it with {.arg overwrite = TRUE}."
-      ))
-    }
+    write_installed_cache_dir(cache_dir, overwrite)
     # nocov end
   } else {
     make_msg(
@@ -213,7 +197,7 @@ esp_clear_cache <- function(
 ) {
   migrate_cache()
 
-  config_dir <- tools::R_user_dir("mapSpain", "config")
+  config_dir <- cache_config_dir()
   data_dir <- detect_cache_dir_muted()
 
   # nocov start
@@ -226,16 +210,15 @@ esp_clear_cache <- function(
   }
   # nocov end
   if (cached_data && dir.exists(data_dir)) {
-    siz <- file.size(list.files(data_dir, recursive = TRUE, full.names = TRUE))
-    siz <- sum(siz, na.rm = TRUE)
-    class(siz) <- class(object.size("a"))
-
-    siz <- format(siz, unit = "auto")
+    siz <- cache_dir_size(data_dir)
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
-      cli::cli_alert_success(
-        "{.pkg mapSpain} data deleted: {.file {data_dir}} ({siz})."
+      msg <- paste0(
+        "{.pkg mapSpain} data deleted: {.file {data_dir}} (",
+        siz,
+        ")."
       )
+      cli::cli_alert_success(msg)
     }
   }
 
@@ -259,35 +242,62 @@ detect_cache_dir_muted <- function() {
   getvar <- ensure_null(getvar)
 
   if (is.null(getvar)) {
-    # If not set, try to retrieve the cached path.
-    cache_config <- file.path(
-      tools::R_user_dir("mapSpain", "config"),
-      "mapSpain_cache_dir"
-    )
+    cached_path <- read_installed_cache_dir()
 
-    # nocov start
-    if (file.exists(cache_config)) {
-      cached_path <- readLines(cache_config)
-      cached_path <- ensure_null(cached_path)
-
-      # Default when the cached path is empty.
-      if (is.null(cached_path)) {
-        cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
-        return(cache_dir)
-      }
-
-      # Return the cached path.
-      Sys.setenv(MAPSPAIN_CACHE_DIR = cached_path)
-      cached_path
-      # nocov end
-    } else {
-      # Use the default cache location.
-      cache_dir <- esp_set_cache_dir(overwrite = TRUE, verbose = FALSE)
-      cache_dir
+    if (is.null(cached_path)) {
+      return(esp_set_cache_dir(overwrite = TRUE, verbose = FALSE))
     }
+
+    Sys.setenv(MAPSPAIN_CACHE_DIR = cached_path)
+    cached_path
   } else {
     getvar
   }
+}
+
+cache_config_dir <- function() {
+  tools::R_user_dir("mapSpain", "config")
+}
+
+cache_config_file <- function() {
+  file.path(cache_config_dir(), "mapSpain_cache_dir")
+}
+
+read_installed_cache_dir <- function() {
+  cache_config <- cache_config_file()
+  if (!file.exists(cache_config)) {
+    return(NULL)
+  }
+
+  ensure_null(readLines(cache_config))
+}
+
+write_installed_cache_dir <- function(cache_dir, overwrite = FALSE) {
+  config_dir <- cache_config_dir()
+  if (!dir.exists(config_dir)) {
+    dir.create(config_dir, recursive = TRUE)
+  }
+
+  mapspain_file <- cache_config_file()
+  if (!file.exists(mapspain_file) || overwrite) {
+    writeLines(cache_dir, con = mapspain_file)
+    return(invisible(cache_dir))
+  }
+
+  # nocov start
+  cli::cli_abort(c(
+    "A {.arg cache_dir} path already exists.",
+    "You can overwrite it with {.arg overwrite = TRUE}."
+  ))
+  # nocov end
+}
+
+cache_dir_size <- function(data_dir) {
+  siz <- file.size(list.files(data_dir, recursive = TRUE, full.names = TRUE))
+  siz <- sum(siz, na.rm = TRUE)
+  class(siz) <- class(object.size("a"))
+
+  format(siz, unit = "auto")
 }
 
 #' Create `cache_dir` if needed
@@ -325,10 +335,8 @@ migrate_cache <- function(
   old = rappdirs::user_config_dir("mapSpain", "R"),
   new = tools::R_user_dir("mapSpain", "config")
 ) {
-  fname <- "mapSpain_cache_dir"
-
-  old_fname <- file.path(old, fname)
-  new_fname <- file.path(new, fname)
+  old_fname <- file.path(old, basename(cache_config_file()))
+  new_fname <- file.path(new, basename(cache_config_file()))
 
   if (file.exists(new_fname)) {
     unlink(old, force = TRUE, recursive = TRUE)

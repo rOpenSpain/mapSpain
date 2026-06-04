@@ -224,6 +224,32 @@ return_empty_combination_sf <- function(data_sf, arg) {
   )
 }
 
+warn_no_spanish_codes <- function(code_type, values) {
+  cli::cli_alert_warning(
+    "No Spanish {code_type} codes found for {.str {values}}."
+  )
+}
+
+abort_no_spanish_codes <- function(code_type, values, call = parent.frame()) {
+  cli::cli_abort(
+    "No Spanish {code_type} codes found for {.str {values}}.",
+    call = call
+  )
+}
+
+warn_no_match <- function(values, destination = NULL) {
+  if (is.null(destination)) {
+    cli::cli_alert_warning("No match found for {.str {values}}.")
+    return(invisible())
+  }
+
+  cli::cli_alert_warning(paste0(
+    "No match on {.arg destination = {.str {destination}}} found ",
+    "for {.str {values}}."
+  ))
+  invisible()
+}
+
 alert_return_null <- function() {
   cli::cli_alert("Returning {.val NULL}.")
   NULL

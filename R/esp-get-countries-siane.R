@@ -53,7 +53,7 @@ esp_get_countries_siane <- function(
   if (is.null(data_sf)) {
     return(NULL)
   }
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
   data_sf <- siane_filter_year(data_sf = data_sf, year = year)
   data_sf <- filter_country(data_sf, country)
 

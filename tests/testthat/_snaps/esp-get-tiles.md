@@ -11,8 +11,8 @@
     Code
       esp_get_tiles(ff, type = "IGNBase", options = list(format = "image/aabbcc"))
     Condition
-      Error:
-      ! `prov_ext` should be one of "png", "jpeg", "jpg", "tiff" or "geotiff", not "aabbcc".
+      Error in `validate_tile_ext()`:
+      ! The requested file extension should be one of "png", "jpeg", "jpg", "tiff" or "geotiff", not "aabbcc".
 
 # WMTS
 

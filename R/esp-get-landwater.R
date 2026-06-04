@@ -162,9 +162,7 @@ esp_get_rivers <- function(
   river_names <- river_names[, c("id_rio", "NOM_RIO")]
 
   data_sf <- merge(data_sf, river_names, all.x = TRUE)
-  data_sf <- sanitize_sf(data_sf)
-  # Transform to the requested CRS.
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
 
   name <- ensure_null(name)
   if (!is.null(name)) {
@@ -243,10 +241,7 @@ esp_get_wetlands <- function(
 
   data_sf <- data_sf[order(data_sf$id_ipe), ]
 
-  data_sf <- sanitize_sf(data_sf)
-
-  # Transform to the requested CRS.
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
   data_sf
 }
 

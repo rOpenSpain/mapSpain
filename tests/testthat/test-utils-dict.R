@@ -72,3 +72,9 @@ test_that("Get codes", {
   expect_snapshot(var[!cpro == "XX"])
   expect_snapshot(var[cpro == "XX"])
 })
+
+test_that("Region filters return input for NULL selections", {
+  x <- data.frame(codauto = c("01", "02"), cpro = c("04", "03"))
+
+  expect_identical(filter_by_codauto_region(x, NULL), x)
+})

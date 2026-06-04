@@ -129,8 +129,7 @@ esp_get_railway <- function(
     )
   )
 
-  data_sf <- sanitize_sf(data_sf)
   data_sf <- data_sf[order(data_sf$t_ffcc, data_sf$ancho_via), ]
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
   data_sf
 }

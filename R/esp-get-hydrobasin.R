@@ -95,7 +95,7 @@ esp_get_hydrobasin <- function(
   if (is.null(data_sf)) {
     return(NULL)
   }
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
 
   data_sf
 }

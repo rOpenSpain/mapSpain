@@ -214,10 +214,7 @@ sanitize_region_code_output <- function(
   out[out %in% c("XXXXX", "YYYYY")] <- "NOMATCH"
 
   if (length(out[out != "NOMATCH"]) != length(sourcevar)) {
-    cli::cli_alert_warning(paste0(
-      "No match on {.arg destination = {.str {destination}}} found ",
-      "for {.str {initsourcevar[out == 'NOMATCH']}}."
-    ))
+    warn_no_match(initsourcevar[out == "NOMATCH"], destination)
   }
   out[out == "NOMATCH"] <- NA
 
@@ -264,55 +261,55 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
   avlang <- c("es", "en", "ca", "ga", "eu")
   lang <- match_arg_pretty(lang, avlang)
 
-  # Create dict
+  dict <- prepare_translation_dict()
+  tokeys <- translate_source_to_keys(sourcevar, dict)
+
+  if (any(tokeys == "NOMATCH")) {
+    warn_no_match(sourcevar[tokeys == "NOMATCH"])
+  }
+
+  dict_tolang <- translation_lang_dict(dict, lang)
+  namestrans <- translate_keys_to_lang(tokeys, dict_tolang, all)
+
+  format_translation_output(namestrans, sourcevar, all)
+}
+
+prepare_translation_dict <- function() {
   dict <- names_full
-
-  # Arrange priority for results:
-  # - First: prov (a_prov)
-  # - Second: ccaa (b_ccaa)
-  # - Last: nuts (c_nuts)
-
-  # Upgrade provs
   dict$variable <- gsub("prov", "a_prov", dict$variable, fixed = TRUE)
-  # Upgrade ccaa
   dict$variable <- gsub("ccaa", "b_ccaa", dict$variable, fixed = TRUE)
-  # Upgrade nuts
   dict$variable <- gsub("nuts", "c_nuts", dict$variable, fixed = TRUE)
+  dict
+}
 
+translate_source_to_keys <- function(sourcevar, dict) {
   names_dict <- unique(dict[
     grep("name", dict$variable, fixed = TRUE),
     c("key", "value")
   ])
 
-  sourcevar_lower <- tolower(sourcevar)
-  tokeys <- countrycode::countrycode(
-    sourcevar_lower,
+  countrycode::countrycode(
+    tolower(sourcevar),
     origin = "value",
     destination = "key",
     custom_dict = names_dict,
     nomatch = "NOMATCH"
   )
+}
 
-  if (any(tokeys == "NOMATCH")) {
-    cli::cli_alert_warning(paste0(
-      "No match found ",
-      "for {.str {sourcevar[tokeys == 'NOMATCH']}}."
-    ))
-  }
-
-  # Create lang dict
+translation_lang_dict <- function(dict, lang) {
   dict_tolang <- unique(dict[grep(paste0("name.", lang), dict$variable), ])
-
-  # Order using short names.
   shrt <- grep("short", dict_tolang$variable, fixed = TRUE)
-
   dict_tolang[shrt, ]$variable <- paste0("aa", dict_tolang[shrt, ]$variable)
 
-  dict_tolang <- unique(dict_tolang[
+  unique(dict_tolang[
     order(dict_tolang$variable),
     c("key", "value")
   ])
-  namestrans <- lapply(seq_along(tokeys), function(x) {
+}
+
+translate_keys_to_lang <- function(tokeys, dict_tolang, all) {
+  lapply(seq_along(tokeys), function(x) {
     if (tokeys[x] == "NOMATCH") {
       return(NA)
     }
@@ -324,12 +321,13 @@ esp_dict_translate <- function(sourcevar, lang = "en", all = FALSE) {
     }
     unname(all_trans)
   })
+}
 
+format_translation_output <- function(namestrans, sourcevar, all) {
   if (all) {
     names(namestrans) <- sourcevar
-  } else {
-    namestrans <- unlist(namestrans)
+    return(namestrans)
   }
 
-  namestrans
+  unlist(namestrans)
 }

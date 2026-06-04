@@ -84,7 +84,7 @@ esp_get_can_box <- function(
 
   epsg <- as.character(epsg)
 
-  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
 
   df <- mapSpain::esp_nuts_2024
   can <- df[df$NUTS_ID == "ES7", ]
@@ -152,7 +152,7 @@ esp_get_can_box <- function(
 esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   epsg <- as.character(epsg)
 
-  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
 
   # From CartoBase ANE: se89_mult_admin_provcan_l
   m <- c(
