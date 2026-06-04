@@ -96,9 +96,9 @@ guess_provider_type <- function(prov_list) {
   if (is.null(serv)) {
     return("WMTS")
   }
-  toupper(serv)
+
   serv <- unname(unlist(serv))
-  serv
+  toupper(serv)
 }
 
 get_tile_crs <- function(prov_list) {

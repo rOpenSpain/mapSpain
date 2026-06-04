@@ -115,13 +115,7 @@ get_gridmap_prov <- function(prov = NULL, type = "hex") {
   if (is.null(prov)) {
     return(data_sf)
   }
-  region <- convert_to_nuts_prov(prov)
-
-  dfcpro <- mapSpain::esp_codelist
-  dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-  cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
-
-  data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
+  data_sf <- filter_by_cpro_region(data_sf, prov)
 
   data_sf
 }
@@ -139,8 +133,7 @@ get_gridmap_ccaa <- function(ccaa = NULL, type = "hex") {
   if (is.null(ccaa)) {
     return(data_sf)
   }
-  nuts_id <- convert_to_nuts_ccaa(ccaa)
-  data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
+  data_sf <- filter_by_codauto_region(data_sf, ccaa)
 
   data_sf
 }

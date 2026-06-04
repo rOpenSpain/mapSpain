@@ -55,7 +55,7 @@ esp_get_railway <- function(
   verbose = FALSE,
   spatialtype = c("line", "point")
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
   sp <- match_arg_pretty(spatialtype)
 
   if (sp == "point") {
@@ -85,49 +85,49 @@ esp_get_railway <- function(
     "dist/se89_3_vias_ffcc_l_x.gpkg"
   )
 
-  # Read from the URL when the file is not cached.
-  if (!cache) {
-    msg <- paste0("{.url ", url, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(url)
-  } else {
-    file_local <- download_url(
-      url,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    # Read the downloaded files.
-    data_sf <- lapply(file_local, read_geo_file_sf)
-
-    data_sf <- rbind_fill(data_sf)
-    if (is.null(data_sf)) {
-      return(NULL)
-    }
+  data_sf <- read_siane_files(
+    url,
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose
+  )
+  if (is.null(data_sf)) {
+    return(NULL)
   }
 
-  # Add descriptions for railway type.
-  acc <- db_valores[db_valores$campo == "tipoffcc", 2:3]
-  names(acc) <- c("t_ffcc", "t_ffcc_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
-
-  # Add physical status descriptions.
-  est <- db_valores[db_valores$campo == "estadofisico", 2:3]
-  names(est) <- c("estado_fis", "estado_fis_desc")
-  data_sf <- merge(data_sf, est, all.x = TRUE)
-
-  # Add track gauge descriptions.
-  acc <- db_valores[db_valores$campo == "anchovia", 2:3]
-  names(acc) <- c("ancho_via", "ancho_via_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
-
-  # Add track count descriptions.
-  tip <- db_valores[db_valores$campo == "numerovias", 2:3]
-  names(tip) <- c("num_vias", "num_vias_desc")
-  data_sf <- merge(data_sf, tip, all.x = TRUE)
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "tipoffcc",
+    c(
+      "t_ffcc",
+      "t_ffcc_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "estadofisico",
+    c(
+      "estado_fis",
+      "estado_fis_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "anchovia",
+    c(
+      "ancho_via",
+      "ancho_via_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "numerovias",
+    c(
+      "num_vias",
+      "num_vias_desc"
+    )
+  )
 
   data_sf <- sanitize_sf(data_sf)
   data_sf <- data_sf[order(data_sf$t_ffcc, data_sf$ancho_via), ]

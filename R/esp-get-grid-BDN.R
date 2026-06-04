@@ -91,12 +91,12 @@ esp_get_grid_BDN <- function(
 
   url <- paste0(api_entry, filename)
 
-  data_sf <- download_url(
+  data_sf <- download_and_read_geo_file(
     url,
     name = filename,
-    cache_dir = cache_dir,
     subdir = "grid",
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
 
@@ -104,7 +104,7 @@ esp_get_grid_BDN <- function(
     return(NULL)
   }
 
-  read_geo_file_sf(data_sf)
+  data_sf
 }
 
 #' @rdname esp_get_grid_BDN
@@ -146,12 +146,12 @@ esp_get_grid_BDN_ccaa <- function(
 
   url <- paste0(api_entry, filename)
 
-  data_sf <- download_url(
+  data_sf <- download_and_read_geo_file(
     url,
     name = filename,
-    cache_dir = cache_dir,
     subdir = "grid",
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
 
@@ -159,5 +159,5 @@ esp_get_grid_BDN_ccaa <- function(
     return(NULL)
   }
 
-  read_geo_file_sf(data_sf)
+  data_sf
 }

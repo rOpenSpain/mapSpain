@@ -85,10 +85,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
     return(x)
   }
 
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
+  if (is_moving_can(moveCAN)) {
     offset <- c(550000, 920000)
 
     if (length(moveCAN) > 1) {
@@ -130,7 +127,6 @@ move_can <- function(data_sf, moveCAN = TRUE) {
     return(data_sf)
   }
   # Checks
-  moving <- FALSE
   prepare_can <- data_sf
   if ("codauto" %in% names(data_sf)) {
     prepare_can$is_can <- prepare_can$codauto == "05"
@@ -139,7 +135,7 @@ move_can <- function(data_sf, moveCAN = TRUE) {
     prepare_can$is_can <- grepl("^ES7", data_sf$NUTS_ID)
   }
 
-  moving <- (isTRUE(moveCAN) | length(moveCAN) >= 2) & any(prepare_can$is_can)
+  moving <- is_moving_can(moveCAN) & any(prepare_can$is_can)
 
   if (moving) {
     penin <- prepare_can[!prepare_can$is_can, ]

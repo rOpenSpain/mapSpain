@@ -99,7 +99,7 @@ esp_get_comarca <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
   type <- match_arg_pretty(type)
 
   # URL
@@ -119,48 +119,25 @@ esp_get_comarca <- function(
 
   url <- paste0(api_entry, filename)
 
-  file_local <- download_url(
+  data_sf <- download_and_read_geo_file(
     url,
-    cache_dir = cache_dir,
     subdir = "comarcas",
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
 
-  if (is.null(file_local)) {
+  if (is.null(data_sf)) {
     return(NULL)
   }
 
-  # Read the downloaded file.
-  data_sf <- read_geo_file_sf(file_local)
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  comarca <- ensure_null(comarca)
-
-  if (!is.null(comarca)) {
-    comarca <- paste(comarca, collapse = "|")
-    data_sf <- data_sf[grep(comarca, data_sf$name, ignore.case = TRUE), ]
-  }
-  region <- ensure_null(region)
-
-  if (!is.null(region)) {
-    tonuts <- convert_to_nuts_prov(region)
-
-    # Filter to selected provinces.
-    df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
-    df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df$cpro)
-
-    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
-  }
+  data_sf <- filter_by_name_pattern(data_sf, comarca, "name")
+  data_sf <- filter_by_cpro_region(data_sf, region)
 
   if (nrow(data_sf) == 0) {
-    cli::cli_alert_warning(paste0(
-      "The combination of {.arg region}, {.arg comarca} or both does not ",
-      "return any results."
-    ))
-    cli::cli_alert_info("Returning empty {.cls sf} object.")
-    return(data_sf)
+    return(return_empty_combination_sf(data_sf, "comarca"))
   }
 
   # Move the Canary Islands.

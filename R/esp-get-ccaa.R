@@ -107,10 +107,7 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts1
-  dfnuts <- mapSpain::esp_codelist
-  dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
-
-  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, get_nuts1_codes_df(), all.x = TRUE)
 
   data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
 
@@ -120,34 +117,4 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
-}
-
-get_ccaa_codes_df <- function() {
-  getnames <- c(
-    "codauto",
-    "iso2.ccaa.code",
-    "nuts1.code",
-    "nuts2.code",
-    "ine.ccaa.name",
-    "iso2.ccaa.name.es",
-    "iso2.ccaa.name.ca",
-    "iso2.ccaa.name.gl",
-    "iso2.ccaa.name.eu",
-    "nuts2.name",
-    "cldr.ccaa.name.en",
-    "cldr.ccaa.name.es",
-    "cldr.ccaa.name.ca",
-    "cldr.ccaa.name.ga",
-    "cldr.ccaa.name.eu",
-    "ccaa.shortname.en",
-    "ccaa.shortname.es",
-    "ccaa.shortname.ca",
-    "ccaa.shortname.ga",
-    "ccaa.shortname.eu"
-  )
-  df_ccaa <- mapSpain::esp_codelist
-  df_ccaa <- df_ccaa[, getnames]
-  df_end <- unique(df_ccaa)
-  df_end <- df_end[order(df_end$codauto), ]
-  df_end
 }

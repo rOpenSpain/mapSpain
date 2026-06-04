@@ -1,5 +1,15 @@
 # mapSpain (development version)
 
+- Refactored internal helpers for downloading and reading geospatial files,
+  SIANE file handling, EPSG validation, region-code filtering, municipal
+  metadata enrichment, empty-result messages and Canary Islands displacement.
+  This is intended to simplify maintenance without changing the public API.
+- Consolidated repeated CCAA, province and municipality metadata handling
+  across GISCO, SIANE, simplified and gridmap getters.
+- This internal refactor was developed with AI assistance and reviewed through
+  focused package checks, including `devtools::load_all()` followed by
+  `lintr::lint_package()`.
+
 # mapSpain 1.1.0
 
 - Migrated package vignettes to Quarto.

@@ -121,17 +121,13 @@ esp_get_grid_MTN <- function(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "MTN/dist/MTN_grids.zip"
   )
-  file_local <- download_url(
+
+  download_unzip_read_geo_file(
     url,
-    cache_dir = cache_dir,
     subdir = "grid",
+    member = paste0(init_grid, ".gpkg"),
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
-  if (is.null(file_local)) {
-    return(file_local)
-  }
-  path <- gsub(basename(file_local), "", file_local)
-  unzip(file_local, exdir = path, junkpaths = TRUE)
-  read_geo_file_sf(paste0(path, init_grid, ".gpkg"))
 }

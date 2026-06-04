@@ -36,44 +36,32 @@ esp_get_countries_siane <- function(
   verbose = FALSE,
   country = NULL
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
 
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "ww84_60_admin_pais_a.gpkg"
   )
 
-  # Read from the URL when the file is not cached.
-  if (!cache) {
-    msg <- paste0("{.url ", url, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(url)
-  } else {
-    file_local <- download_url(
-      url,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    # Read the downloaded files.
-    data_sf <- read_geo_file_sf(file_local)
-
-    if (is.null(data_sf)) {
-      return(NULL)
-    }
+  data_sf <- read_siane_files(
+    url,
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose
+  )
+  if (is.null(data_sf)) {
+    return(NULL)
   }
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
   data_sf <- siane_filter_year(data_sf = data_sf, year = year)
   data_sf <- filter_country(data_sf, country)
 
   if (nrow(data_sf) == 0) {
-    cli::cli_alert_warning(paste0(
+    data_sf <- return_empty_sf(
+      data_sf,
       "The values in {.arg country} do not return any results."
-    ))
-    cli::cli_alert_info("Returning empty {.cls sf} object.")
+    )
   }
 
   data_sf

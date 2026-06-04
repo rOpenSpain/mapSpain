@@ -18,21 +18,15 @@ make_msg <- function(type = "generic", verbose, ...) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  if (type == "generic") {
-    cli::cli_alert(msg)
-  }
-  if (type == "success") {
-    cli::cli_alert_success(msg)
-  }
-  if (type == "warning") {
-    cli::cli_alert_warning(msg)
-  }
-  if (type == "danger") {
-    cli::cli_alert_danger(msg)
-  }
-  if (type == "info") {
-    cli::cli_alert_info(msg)
-  }
+  alert <- switch(type,
+    generic = cli::cli_alert,
+    success = cli::cli_alert_success,
+    warning = cli::cli_alert_warning,
+    danger = cli::cli_alert_danger,
+    info = cli::cli_alert_info,
+    cli::cli_alert
+  )
+  alert(msg)
   invisible()
 }
 
@@ -193,4 +187,51 @@ validate_non_empty_arg <- function(arg, call = parent.frame(1)) {
   }
 
   arg
+}
+
+validate_epsg <- function(epsg, choices = c("4326", "4258", "3035", "3857")) {
+  match_arg_pretty(epsg, choices)
+}
+
+is_moving_can <- function(moveCAN) {
+  isTRUE(moveCAN) | length(moveCAN) > 1
+}
+
+merge_db_value_desc <- function(data_sf, field, names) {
+  values <- db_valores[db_valores$campo == field, 2:3]
+  names(values) <- names
+
+  merge(data_sf, values, all.x = TRUE)
+}
+
+return_empty_sf <- function(data_sf, warning, .envir = parent.frame()) {
+  cli::cli_alert_warning(warning, .envir = .envir)
+  cli::cli_alert_info("Returning empty {.cls sf} object.")
+  data_sf
+}
+
+return_empty_name_sf <- function(data_sf, name) {
+  return_empty_sf(data_sf, "No results for {.arg name} {.str {name}}.")
+}
+
+return_empty_combination_sf <- function(data_sf, arg) {
+  return_empty_sf(
+    data_sf,
+    paste0(
+      "The combination of {.arg region}, {.arg {arg}} or both does not ",
+      "return any results."
+    )
+  )
+}
+
+alert_return_null <- function() {
+  cli::cli_alert("Returning {.val NULL}.")
+  NULL
+}
+
+alert_open_issue <- function() {
+  cli::cli_alert_warning(c(
+    "If you think this is a bug, please consider opening an issue on ",
+    "{.url https://github.com/rOpenSpain/mapSpain/issues}"
+  ))
 }

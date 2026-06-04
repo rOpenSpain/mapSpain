@@ -67,17 +67,7 @@ esp_dict_region_code <- function(
   origin <- match_arg_pretty(origin, validvars)
   destination <- match_arg_pretty(destination, validvars)
 
-  # Manually replace
-  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
-  sourcevar <- gsub(
-    "Ciudad de melilla",
-    "Melilla",
-    sourcevar,
-    ignore.case = TRUE
-  )
-  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
-  sourcevar <- gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
-
+  sourcevar <- normalize_region_sourcevar(sourcevar)
   initsourcevar <- sourcevar
 
   if (origin == destination && origin == "text") {
@@ -91,117 +81,138 @@ esp_dict_region_code <- function(
     return(initsourcevar)
   }
 
-  # Create dict
-  dict <- names_full
+  if (origin == "text") {
+    sourcevar <- text_to_nuts_sourcevar(sourcevar, initsourcevar, destination)
+    origin <- "nuts"
+  }
 
-  names_dict <- unique(dict[
+  if (destination == "text") {
+    out <- region_code_to_text(sourcevar, origin)
+  } else {
+    out <- region_code_to_code(sourcevar, origin, destination)
+  }
+
+  sanitize_region_code_output(out, sourcevar, initsourcevar, destination)
+}
+
+normalize_region_sourcevar <- function(sourcevar) {
+  sourcevar <- gsub(
+    "Ciudad de ceuta",
+    "Ceuta",
+    sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub(
+    "Ciudad de melilla",
+    "Melilla",
+    sourcevar,
+    ignore.case = TRUE
+  )
+  sourcevar <- gsub("sta. cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
+  gsub("sta cruz", "Santa Cruz", sourcevar, ignore.case = TRUE)
+}
+
+get_region_names_dict <- function() {
+  dict <- names_full
+  unique(dict[
     grep("name", dict$variable, fixed = TRUE),
     c("key", "value")
   ])
+}
 
-  # If text convert to nuts
+text_to_nuts_sourcevar <- function(sourcevar, initsourcevar, destination) {
+  sourcevar <- countrycode::countrycode(
+    tolower(sourcevar),
+    origin = "value",
+    destination = "key",
+    custom_dict = get_region_names_dict(),
+    nomatch = "NOMATCH"
+  )
 
-  if (origin == "text") {
-    sourcevar <- countrycode::countrycode(
-      tolower(sourcevar),
-      origin = "value",
-      destination = "key",
-      custom_dict = names_dict,
-      nomatch = "NOMATCH"
-    )
+  sourcevar <- countrycode::countrycode(
+    sourcevar,
+    origin = "key",
+    destination = "nuts",
+    custom_dict = get_master_nuts_nm(),
+    nomatch = "NOMATCH"
+  )
 
-    # Translate to nuts
-    sourcevar <- countrycode::countrycode(
-      sourcevar,
-      origin = "key",
-      destination = "nuts",
-      custom_dict = get_master_nuts_nm(),
-      nomatch = "NOMATCH"
-    )
+  sourcevar[sourcevar == "NOMATCH"] <- initsourcevar[sourcevar == "NOMATCH"]
 
-    # Replace NOMATCH
-    sourcevar[sourcevar == "NOMATCH"] <- initsourcevar[sourcevar == "NOMATCH"]
-    origin <- "nuts"
+  sourcevar[sourcevar == "ES3"] <- "ES30"
+  sourcevar[sourcevar == "ES7"] <- "ES70"
 
-    # By name, perform some replacements
-    # Madrid - CCAA
-    sourcevar[sourcevar == "ES3"] <- "ES30"
-
-    # Canary Islands - CCAA.
-    sourcevar[sourcevar == "ES7"] <- "ES70"
-
-    if (destination == "iso2") {
-      # Melilla - Prov
-      sourcevar[sourcevar == "ES64"] <- "ES640"
-
-      # Ceuta - Prov
-      sourcevar[sourcevar == "ES63"] <- "ES630"
-    }
-
-    if (destination == "cpro") {
-      nchar <- nchar(sourcevar)
-      sourcevar[nchar == 4] <- paste0(sourcevar[nchar == 4], "0")
-    }
+  if (destination == "iso2") {
+    sourcevar[sourcevar == "ES64"] <- "ES640"
+    sourcevar[sourcevar == "ES63"] <- "ES630"
   }
 
-  # Destination
-  if (destination == "text") {
-    sourcevar <- countrycode::countrycode(
-      sourcevar,
-      origin,
-      "nuts",
-      custom_dict = get_master_codes(),
-      nomatch = "NOMATCH"
-    )
-
-    dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts_2024)
-
-    out <- countrycode::countrycode(
-      sourcevar,
-      "NUTS_ID",
-      "NUTS_NAME",
-      custom_dict = dict_nutsall,
-      nomatch = "NOMATCH"
-    )
-  } else {
-    # Solve problems
-    if (origin == "nuts") {
-      # Melilla - Prov
-      sourcevar[sourcevar == "ES64"] <- "ES640"
-
-      # Ceuta - Prov
-      sourcevar[sourcevar == "ES63"] <- "ES630"
-    }
-
-    if (destination == "codauto") {
-      # Melilla - Prov
-      sourcevar[sourcevar == "ES640"] <- "ES64"
-
-      # Ceuta - Prov
-      sourcevar[sourcevar == "ES630"] <- "ES63"
-    }
-
-    out <- countrycode::countrycode(
-      sourcevar,
-      origin,
-      destination,
-      custom_dict = get_master_codes(),
-      nomatch = "NOMATCH"
-    )
-
-    # Baleares
-    if (destination == "cpro") {
-      out[sourcevar == "ES530"] <- "07"
-    }
-    # Ceuta
-    if (origin == "iso2" && destination == "codauto") {
-      out[sourcevar == "ES-CE"] <- "18"
-      out[sourcevar == "ES-ML"] <- "19"
-    }
+  if (destination == "cpro") {
+    nchar <- nchar(sourcevar)
+    sourcevar[nchar == 4] <- paste0(sourcevar[nchar == 4], "0")
   }
+
+  sourcevar
+}
+
+region_code_to_text <- function(sourcevar, origin) {
+  sourcevar <- countrycode::countrycode(
+    sourcevar,
+    origin,
+    "nuts",
+    custom_dict = get_master_codes(),
+    nomatch = "NOMATCH"
+  )
+
+  dict_nutsall <- sf::st_drop_geometry(mapSpain::esp_nuts_2024)
+
+  countrycode::countrycode(
+    sourcevar,
+    "NUTS_ID",
+    "NUTS_NAME",
+    custom_dict = dict_nutsall,
+    nomatch = "NOMATCH"
+  )
+}
+
+region_code_to_code <- function(sourcevar, origin, destination) {
+  if (origin == "nuts") {
+    sourcevar[sourcevar == "ES64"] <- "ES640"
+    sourcevar[sourcevar == "ES63"] <- "ES630"
+  }
+
+  if (destination == "codauto") {
+    sourcevar[sourcevar == "ES640"] <- "ES64"
+    sourcevar[sourcevar == "ES630"] <- "ES63"
+  }
+
+  out <- countrycode::countrycode(
+    sourcevar,
+    origin,
+    destination,
+    custom_dict = get_master_codes(),
+    nomatch = "NOMATCH"
+  )
+
+  if (destination == "cpro") {
+    out[sourcevar == "ES530"] <- "07"
+  }
+  if (origin == "iso2" && destination == "codauto") {
+    out[sourcevar == "ES-CE"] <- "18"
+    out[sourcevar == "ES-ML"] <- "19"
+  }
+
+  out
+}
+
+sanitize_region_code_output <- function(
+  out,
+  sourcevar,
+  initsourcevar,
+  destination
+) {
   out[out %in% c("XXXXX", "YYYYY")] <- "NOMATCH"
 
-  # Sanitize
   if (length(out[out != "NOMATCH"]) != length(sourcevar)) {
     cli::cli_alert_warning(paste0(
       "No match on {.arg destination = {.str {destination}}} found ",

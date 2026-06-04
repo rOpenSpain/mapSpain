@@ -37,52 +37,6 @@ esp_check_access <- function() {
   }
 }
 
-#' Skip tests if SIANE data is not reachable
-#'
-#' @return Invisible. `TRUE` if offline logic passes or the test is skipped.
-#'
-#' @noRd
-skip_if_siane_offline <- function() {
-  # nocov start
-  test_offline <- is_404()
-  if (test_offline) {
-    return(invisible(TRUE))
-  }
-
-  if (esp_check_access()) {
-    return(invisible(TRUE))
-  }
-
-  if (requireNamespace("testthat", quietly = TRUE)) {
-    testthat::skip("SIANE API not reachable")
-  }
-  invisible()
-  # nocov end
-}
-
-#' Skip tests if GISCO API is not reachable
-#'
-#' @return Invisible. `TRUE` if offline logic passes or the test is skipped.
-#'
-#' @noRd
-skip_if_gisco_offline <- function() {
-  # nocov start
-  test_offline <- is_404()
-  if (test_offline) {
-    return(invisible(TRUE))
-  }
-
-  if (giscoR::gisco_check_access()) {
-    return(invisible(TRUE))
-  }
-
-  if (requireNamespace("testthat", quietly = TRUE)) {
-    testthat::skip("GISCO API not reachable")
-  }
-  invisible()
-  # nocov end
-}
-
 #' Internal function to check if we are on CRAN
 #' @return Logical scalar, `TRUE` if running on CRAN and `FALSE` otherwise.
 #' @noRd

@@ -107,19 +107,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   data_sf <- data_sf[, "cpro"]
   data_sf <- data_sf[order(data_sf$cpro), ]
 
-  # Merge island geometries by province code.
-  res_cpros <- unique(data_sf$cpro)
-  binded_sf <- lapply(res_cpros, function(x) {
-    the_geom <- data_sf[data_sf$cpro == x, ]
-    if (nrow(the_geom) == 1) {
-      return(the_geom)
-    }
-    get_g <- sf::st_geometry(data_sf[data_sf$cpro == x, ])
-    g <- sf::st_union(get_g)
-    sf::st_sf(cpro = x, geometry = g)
-  })
-
-  data_sf <- rbind_fill(binded_sf)
+  data_sf <- union_sf_by(data_sf, "cpro")
 
   # Get province metadata.
   df <- get_prov_codes_df()
@@ -127,17 +115,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Add NUTS2 metadata.
-  dfnuts <- mapSpain::esp_codelist
-  dfnuts <- dfnuts[, c(
-    "cpro",
-    "nuts2.code",
-    "nuts2.name",
-    "nuts1.code",
-    "nuts1.name"
-  )]
-  dfnuts <- unique(dfnuts)
-
-  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, get_prov_nuts_codes_df(), all.x = TRUE)
 
   data_sf <- data_sf[, c(
     colnames(df),

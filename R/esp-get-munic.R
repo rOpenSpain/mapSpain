@@ -99,7 +99,7 @@ esp_get_munic <- function(
   ext = "gpkg"
 ) {
   # Dispatch everything to giscoR except EPSG, that is specific
-  init_epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
   gisco_epsg <- ifelse(epsg == "4258", "4326", init_epsg)
   cache_dir <- create_cache_dir(cache_dir)
 
@@ -138,32 +138,17 @@ esp_get_munic <- function(
     data_sf <- sf::st_set_crs(data_sf, sf::st_crs(as.numeric(gisco_epsg)))
   }
 
-  # Id management
   id_col <- intersect(c("GISCO_ID", "LAU_ID", "NSI_CODE"), names(data_sf))[1]
-  data_sf$LAU_CODE <- gsub("\\D+", "", data_sf[[id_col]])
-
-  # Normalize names.
   id_name <- intersect(c("LAU_NAME", "COMM_NAME", "SABE_NAME"), names(data_sf))[
     1
   ]
-  data_sf$name <- data_sf[[id_name]]
 
-  data_sf$cpro <- substr(data_sf$LAU_CODE, 1, 2)
-  data_sf$cmun <- substr(data_sf$LAU_CODE, 3, 8)
-
-  add_codes <- unique(mapSpain::esp_codelist[, c(
-    "codauto",
-    "ine.ccaa.name",
-    "cpro",
-    "ine.prov.name"
-  )])
-
-  data_sf <- merge(
+  data_sf <- add_municipal_metadata(
     data_sf,
-    add_codes,
-    by = "cpro",
-    all.x = TRUE,
-    no.dups = TRUE
+    id_col,
+    id_name,
+    clean_id = TRUE,
+    validate_cpro = FALSE
   )
 
   init_nm <- names(data_sf)
@@ -182,30 +167,11 @@ esp_get_munic <- function(
   # Filter munics
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  munic <- ensure_null(munic)
-
-  if (!is.null(munic)) {
-    munic <- paste(munic, collapse = "|")
-    data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
-  }
-  region <- ensure_null(region)
-
-  if (!is.null(region)) {
-    tonuts <- convert_to_nuts_prov(region)
-    # Filter to selected provinces.
-    df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
-    df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df$cpro)
-    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
-  }
+  data_sf <- filter_by_name_pattern(data_sf, munic, "name")
+  data_sf <- filter_by_cpro_region(data_sf, region)
 
   if (nrow(data_sf) == 0) {
-    cli::cli_alert_warning(paste0(
-      "The combination of {.arg region}, {.arg munic} or both does not ",
-      "return any results."
-    ))
-    cli::cli_alert_info("Returning empty {.cls sf} object.")
-    return(data_sf)
+    return(return_empty_combination_sf(data_sf, "munic"))
   }
 
   # Move the Canary Islands.

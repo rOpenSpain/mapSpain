@@ -123,10 +123,7 @@ esp_get_can_box <- function(
     lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   }
 
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
+  if (is_moving_can(moveCAN)) {
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
@@ -166,10 +163,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   lall <- sf::st_linestring(sf::st_coordinates(m))
   lall <- sf::st_sfc(lall, crs = sf::st_crs(4326))
 
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
+  if (is_moving_can(moveCAN)) {
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
