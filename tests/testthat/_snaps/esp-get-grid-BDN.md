@@ -4,7 +4,7 @@
       esp_get_grid_BDN("50")
     Condition
       Error:
-      ! `resolution` should be one of "10" or "5", not "50".
+      ! `resolution` must be "10" or "5", not "50".
 
 ---
 
@@ -12,7 +12,7 @@
       esp_get_grid_BDN(type = "50")
     Condition
       Error:
-      ! `type` should be one of "main" or "canary", not "50".
+      ! `type` must be "main" or "canary", not "50".
 
 ---
 

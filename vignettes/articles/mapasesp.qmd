@@ -21,6 +21,13 @@ knitr:
     out.width: "100%"
 ---
 
+```{r}
+#| label: setup-cache
+#| include: false
+.mapspain_cache_dir <- mapSpain::esp_detect_cache_dir()
+mapSpain::esp_set_cache_dir("./articles_temp", verbose = FALSE)
+```
+
 ## Welcome to mapSpain
 
 ### Motivation
@@ -29,9 +36,9 @@ knitr:
 It also supports imagery from WMS and WMTS services, either as georeferenced
 static rasters or as dynamic layers in Leaflet maps.
 
-The package also includes helpers to normalize Autonomous Community and
-province names. These helpers make it easier to join, clean and transform data,
-whether or not the data is spatial.
+The package also includes helpers to normalize Autonomous Community and province
+names. These helpers make it easier to join, clean and transform data, whether
+or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
@@ -141,14 +148,18 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 
 # geodata (GADM)
 library(geodata)
-esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
+esp_geodata <- geodata::gadm("ES",
+  path = "./articles_temp", level = 0
+) |>
   # Convert from SpatVector to an sf object.
   sf::st_as_sf() |>
   st_transform(3857)
 
 # geobounds
 library(geobounds)
-esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
+esp_geobounds <- geobounds::gb_get_adm0("ESP",
+  cache_dir = "./articles_temp"
+) |>
   st_transform(3857)
 
 # Image of the Ferrol estuary.
@@ -275,16 +286,16 @@ esp_dict_translate(vals, lang = "ga")
 levels:
 
 - Whole country.
-- [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat).
-  Eurostat statistical classification, with levels 0 (country), 1, 2
-  (Autonomous Communities) and 3.
+- [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat). Eurostat
+  statistical classification, with levels 0 (country), 1, 2 (Autonomous
+  Communities) and 3.
 - Autonomous Communities.
 - Provinces.
 - Municipalities.
 
-For Autonomous Communities, provinces and municipalities, there are two
-families of functions: `esp_get_xxxx()` for GISCO data and
-`esp_get_xxxx_siane()` for IGN data.
+For Autonomous Communities, provinces and municipalities, there are two families
+of functions: `esp_get_xxxx()` for GISCO data and `esp_get_xxxx_siane()` for IGN
+data.
 
 The information is available in different projections and resolution levels.
 
@@ -344,7 +355,7 @@ ggplot(nuts1) +
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
 
-nuts3_sf <- esp_get_nuts(region = nuts3_baleares)
+nuts3_sf <- esp_get_nuts(region = nuts3_baleares, resolution = 20)
 
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = NAME_LATN)) +
@@ -364,7 +375,8 @@ ccaa <- esp_get_ccaa(
     "Comunidad Valenciana",
     "Aragón",
     "Baleares"
-  )
+  ),
+  resolution = 20
 )
 
 ccaa <- ccaa |>
@@ -405,7 +417,7 @@ ggplot(provs) +
 ```{r}
 #| label: fig-munic
 #| fig-cap: "Extracting municipalities"
-munic <- esp_get_munic(region = "Segovia") |>
+munic <- esp_get_munic_siane(region = "Segovia") |>
   # Example data: INE population.
   left_join(
     mapSpain::pobmun25 |>
@@ -567,6 +579,12 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
 **mapSpain** includes additional
 [functions](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
 for retrieving elevation, rivers and river basin data for Spain, as well as
-Spanish
-[transport infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
+Spanish [transport
+infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
 lines and points, such as roads and railway lines.
+
+```{r}
+#| label: restore-cache
+#| include: false
+mapSpain::esp_set_cache_dir(.mapspain_cache_dir, verbose = FALSE)
+```

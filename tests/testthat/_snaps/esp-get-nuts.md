@@ -19,7 +19,7 @@
       esp_get_nuts(nuts_level = "docx", cache_dir = cdir)
     Condition
       Error:
-      ! `nuts_level` should be one of "all", "0", "1", "2" or "3", not "docx".
+      ! `nuts_level` must be "all", "0", "1", "2", or "3", not "docx".
 
 # Cached dataset vs updated
 
@@ -34,7 +34,7 @@
       bn <- esp_get_nuts(spatialtype = "BN", resolution = "60", cache_dir = cdir)
     Condition
       Error:
-      ! `spatialtype` should be one of "RG" or "LB", not "BN".
+      ! `spatialtype` must be "RG" or "LB", not "BN".
 
 # Test NUTS online
 

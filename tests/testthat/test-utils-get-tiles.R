@@ -1,7 +1,7 @@
 test_that("Validate providers errors", {
   expect_snapshot(error = TRUE, validate_provider(1))
   expect_snapshot(error = TRUE, validate_provider(list(a = 1, q = "2")))
-  expect_error(validate_provider("FAKE"), "`type` should be one of")
+  expect_error(validate_provider("FAKE"), "`type` must be(.*)IDErioja(.*)PNOA")
 })
 
 test_that("Validate external", {
