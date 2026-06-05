@@ -345,7 +345,7 @@ spatial analysis.**
 
 ``` r
 
-nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
+nuts1 <- esp_get_nuts(resolution = 60, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
   geom_sf() +
@@ -363,7 +363,7 @@ nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
 #> [1] "Eivissa y Formentera, Mallorca, Menorca"
 
-nuts3_sf <- esp_get_nuts(region = nuts3_baleares, resolution = 20)
+nuts3_sf <- esp_get_nuts(region = nuts3_baleares, resolution = 1)
 
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = NAME_LATN)) +
@@ -387,7 +387,7 @@ ccaa <- esp_get_ccaa(
     "Aragón",
     "Baleares"
   ),
-  resolution = 20
+  resolution = 3
 )
 
 ccaa <- ccaa |>

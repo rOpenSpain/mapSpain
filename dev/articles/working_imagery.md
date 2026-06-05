@@ -196,7 +196,7 @@ library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
   region = "Tenerife",
-  resolution = 20,
+  resolution = 3,
   epsg = 4326,
   moveCAN = FALSE
 )
