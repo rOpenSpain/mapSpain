@@ -102,7 +102,7 @@ ggplot(grid) +
 \seealso{
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 
-Other geographical grids:
+Geographical grid datasets:
 \code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}},
 \code{\link[=esp_get_grid_MTN]{esp_get_grid_MTN()}}
 }

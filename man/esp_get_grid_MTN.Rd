@@ -116,7 +116,7 @@ ggplot(grid) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other geographical grids:
+Geographical grid datasets:
 \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}},
 \code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}}
 }

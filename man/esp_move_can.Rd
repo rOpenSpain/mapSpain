@@ -74,7 +74,7 @@ ggplot(esp) +
 
 }
 \seealso{
-Other helpers for the Canary Islands:
+Helpers for Canary Islands insets and displacement:
 \code{\link[=esp_get_can_box]{esp_get_can_box()}}
 }
 \concept{can_helpers}

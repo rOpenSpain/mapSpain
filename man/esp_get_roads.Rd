@@ -96,7 +96,7 @@ ggplot(country) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other man-made infrastructures:
+Transport infrastructure datasets:
 \code{\link[=esp_get_railway]{esp_get_railway()}}
 }
 \concept{infrastructure}

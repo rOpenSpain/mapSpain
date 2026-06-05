@@ -3,14 +3,9 @@
 #' @description
 #' Object representing rivers, lagoons, reservoirs and wetlands of Spain.
 #'
-#' @encoding UTF-8
-#' @family natural
-#' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_ccaa_siane
-#' @export
-#'
-#' @rdname esp_get_landwater
-#' @name esp_get_landwater
+#' @details
+#' Metadata available on
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @param resolution `r lifecycle::badge("deprecated")` character string.
 #'   Ignored, resolution `3` (the most detailed) will always be provided.
@@ -19,9 +14,14 @@
 #'   wetlands.
 #' @param name Character string or [`regex`][base::grep()] expression. Name of
 #'   the element(s) to be extracted.
-#' @details
-#' Metadata available on
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+#' @inheritParams esp_get_ccaa_siane
+#' @inherit esp_get_ccaa_siane return source
+#' @family natural
+#' @encoding UTF-8
+#' @rdname esp_get_landwater
+#' @name esp_get_landwater
+#'
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -76,7 +76,7 @@ esp_get_rivers <- function(
   moveCAN = TRUE,
   name = NULL
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
   spatialtype <- match_arg_pretty(spatialtype)
 
   if (lifecycle::is_present(resolution)) {
@@ -95,7 +95,7 @@ esp_get_rivers <- function(
     )
 
     cli::cli_alert_info(
-      "Redirecting the arguments to {.fn mapSpain::esp_get_wetlands}"
+      "Redirecting the arguments to {.fn mapSpain::esp_get_wetlands}."
     )
 
     data_sf <- esp_get_wetlands(
@@ -120,64 +120,34 @@ esp_get_rivers <- function(
     "se89_3_hidro_rio_l_y.gpkg"
   )
 
-  # Read from the URL when the file is not cached.
-  if (!cache) {
-    msg <- paste0("{.url ", url_penin, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf_penin <- read_geo_file_sf(url_penin)
-    data_sf_penin$codauto <- "XX"
-
-    msg <- paste0("{.url ", url_can, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf_can <- read_geo_file_sf(url_can)
-    data_sf_can$codauto <- "05"
-
-    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
-  } else {
-    file_local_penin <- download_url(
-      url_penin,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    file_local_can <- download_url(
-      url_can,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    # Read the downloaded files.
-
-    ok_down <- ensure_null(c(file_local_penin, file_local_can))
-    if (is.null(ok_down)) {
-      return(NULL)
-    }
-
-    data_sf_penin <- read_geo_file_sf(file_local_penin)
-    data_sf_penin$codauto <- "XX"
-
-    data_sf_can <- read_geo_file_sf(file_local_can)
-    data_sf_can$codauto <- "05"
-
-    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
+  data_sf <- read_siane_files(
+    c(url_penin, url_can),
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose,
+    codauto = c("XX", "05")
+  )
+  if (is.null(data_sf)) {
+    return(NULL)
   }
 
-  # Add descriptions
-  # Persist. Hidro
-  acc <- db_valores[db_valores$campo == "persistenciahidrologica", 2:3]
-  names(acc) <- c("pers_hidro", "pers_hidro_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
-
-  # Orig. Hidro
-  est <- db_valores[db_valores$campo == "origenhidrografico", 2:3]
-  names(est) <- c("orig_hidro", "orig_hidro_desc")
-  data_sf <- merge(data_sf, est, all.x = TRUE)
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "persistenciahidrologica",
+    c(
+      "pers_hidro",
+      "pers_hidro_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "origenhidrografico",
+    c(
+      "orig_hidro",
+      "orig_hidro_desc"
+    )
+  )
 
   # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
@@ -192,9 +162,7 @@ esp_get_rivers <- function(
   river_names <- river_names[, c("id_rio", "NOM_RIO")]
 
   data_sf <- merge(data_sf, river_names, all.x = TRUE)
-  data_sf <- sanitize_sf(data_sf)
-  # Transform to the requested CRS.
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
 
   name <- ensure_null(name)
   if (!is.null(name)) {
@@ -204,10 +172,7 @@ esp_get_rivers <- function(
     data_sf <- data_sf[getrows, ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning("No results for {.arg name} {.str {name}}.")
-
-      cli::cli_alert_info("Returning empty {.cls sf} object.")
-      return(data_sf)
+      return(return_empty_name_sf(data_sf, name))
     }
   }
 
@@ -230,71 +195,53 @@ esp_get_wetlands <- function(
   moveCAN = TRUE,
   name = NULL
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
 
   url_penin <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_3_hidro_rio_a_x.gpkg"
   )
 
-  # Read from the URL when the file is not cached.
-  if (!cache) {
-    msg <- paste0("{.url ", url_penin, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf_penin <- read_geo_file_sf(url_penin)
-    data_sf <- rbind_fill(list(data_sf_penin))
-  } else {
-    file_local_penin <- download_url(
-      url_penin,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    # Read the downloaded files.
-
-    ok_down <- ensure_null(file_local_penin)
-    if (is.null(ok_down)) {
-      return(NULL)
-    }
-
-    data_sf_penin <- read_geo_file_sf(file_local_penin)
-    data_sf_penin
-
-    data_sf <- rbind_fill(list(data_sf_penin))
+  data_sf <- read_siane_files(
+    url_penin,
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose
+  )
+  if (is.null(data_sf)) {
+    return(NULL)
   }
 
-  # Add descriptions
-  # Persist. Hidro
-  acc <- db_valores[db_valores$campo == "persistenciahidrologica", 2:3]
-  names(acc) <- c("pers_hidro", "pers_hidro_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
-
-  # Tipo
-  acc <- db_valores[db_valores$campo == "tiporioa", 2:3]
-  names(acc) <- c("t_rio", "t_rio_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "persistenciahidrologica",
+    c(
+      "pers_hidro",
+      "pers_hidro_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "tiporioa",
+    c(
+      "t_rio",
+      "t_rio_desc"
+    )
+  )
 
   name <- ensure_null(name)
   if (!is.null(name)) {
     data_sf <- data_sf[grepl(name, data_sf$rotulo), ]
 
     if (nrow(data_sf) == 0) {
-      cli::cli_alert_warning("No results for {.arg name} {.str {name}}.")
-
-      cli::cli_alert_info("Returning empty {.cls sf} object.")
-      return(data_sf)
+      return(return_empty_name_sf(data_sf, name))
     }
   }
 
   data_sf <- data_sf[order(data_sf$id_ipe), ]
 
-  data_sf <- sanitize_sf(data_sf)
-
-  # Transform to the requested CRS.
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
   data_sf
 }
 
@@ -306,18 +253,15 @@ get_river_names <- function(update_cache = FALSE, cache_dir = NULL) {
     "data-raw/rivernames.rda"
   )
 
-  file_local_db <- download_url(
+  db <- download_rds(
     url,
-    cache_dir = cache_dir,
     subdir = "siane",
     update_cache = update_cache,
-    verbose = FALSE
+    cache_dir = cache_dir
   )
-  if (is.null(file_local_db)) {
+  if (is.null(db)) {
     return(NULL)
   }
-
-  db <- readRDS(file_local_db)
 
   tibble::as_tibble(db)
 }

@@ -42,7 +42,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     if (is.null(shp_end)) {
       cli::cli_alert_warning("Cannot read file {.file {file_local}}.")
       cli::cli_abort(paste0(
-        "Please open an issue: ",
+        "Please open an issue at ",
         "{.url https://github.com/rOpenSpain/mapSpain/issues}."
       ))
     }
@@ -61,6 +61,145 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
+}
+
+read_siane_files <- function(
+  urls,
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  codauto = NULL
+) {
+  if (cache) {
+    files <- lapply(
+      urls,
+      download_url,
+      cache_dir = cache_dir,
+      subdir = "siane",
+      update_cache = update_cache,
+      verbose = verbose
+    )
+    missing_file <- vapply(
+      files,
+      function(x) {
+        is.null(ensure_null(x))
+      },
+      FUN.VALUE = logical(1)
+    )
+    if (any(missing_file)) {
+      return(NULL)
+    }
+    files <- unlist(files, use.names = FALSE)
+  } else {
+    files <- urls
+    for (url in urls) {
+      msg <- paste0("{.url ", url, "}.")
+      make_msg("info", verbose, "Reading from", msg)
+    }
+  }
+
+  data_sf <- lapply(seq_along(files), function(i) {
+    sf_file <- read_geo_file_sf(files[i])
+    if (!is.null(codauto)) {
+      sf_file$codauto <- codauto[i]
+    }
+    sf_file
+  })
+
+  rbind_fill(data_sf)
+}
+
+download_and_read_geo_file <- function(
+  url,
+  subdir,
+  name = basename(url),
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  ...
+) {
+  file_local <- download_url(
+    url,
+    name = name,
+    cache_dir = cache_dir,
+    subdir = subdir,
+    update_cache = update_cache,
+    verbose = verbose
+  )
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  read_geo_file_sf(file_local, ...)
+}
+
+download_unzip_read_geo_file <- function(
+  url,
+  subdir,
+  member,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
+  file_local <- download_url(
+    url,
+    cache_dir = cache_dir,
+    subdir = subdir,
+    update_cache = update_cache,
+    verbose = verbose
+  )
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  path <- gsub(basename(file_local), "", file_local)
+  unzip(file_local, exdir = path, junkpaths = TRUE)
+  read_geo_file_sf(file.path(path, member))
+}
+
+download_rds <- function(
+  url,
+  subdir,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
+  file_local <- download_url(
+    url,
+    cache_dir = cache_dir,
+    subdir = subdir,
+    update_cache = update_cache,
+    verbose = verbose
+  )
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  readRDS(file_local)
+}
+
+union_sf_by <- function(data_sf, by) {
+  values <- unique(data_sf[[by]])
+  binded_sf <- lapply(values, function(x) {
+    the_geom <- data_sf[data_sf[[by]] == x, ]
+    if (nrow(the_geom) == 1) {
+      return(the_geom)
+    }
+
+    g <- sf::st_union(sf::st_geometry(the_geom))
+    out <- sf::st_sf(geometry = g)
+    out[[by]] <- x
+    out <- out[, c(by, "geometry")]
+    out
+  })
+
+  rbind_fill(binded_sf)
+}
+
+sanitize_transform_sf <- function(data_sf, epsg) {
+  data_sf <- sanitize_sf(data_sf)
+  sf::st_transform(data_sf, as.double(epsg))
 }
 
 #' Convert sf object to UTF-8

@@ -29,9 +29,9 @@ knitr:
 It also supports imagery from WMS and WMTS services, either as georeferenced
 static rasters or as dynamic layers in Leaflet maps.
 
-The package also includes helpers to normalize Autonomous Community and province
-names. These helpers make it easier to join, clean and transform data, whether
-or not the data is spatial.
+The package also includes helpers to normalize Autonomous Community and
+province names. These helpers make it easier to join, clean and transform data,
+whether or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
@@ -41,8 +41,8 @@ The main data sources used by **mapSpain** are:
 - Spanish public institutions that publish WMTS and WMS tile services
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-The returned objects are `sf` objects from the **sf** package or `SpatRaster`
-objects from the **terra** package.
+Functions return `sf` objects from the **sf** package or `SpatRaster` objects
+from the **terra** package.
 
 Package website: <https://ropenspain.github.io/mapSpain/>.
 
@@ -121,7 +121,7 @@ reactable(
 ### Comparing mapSpain with other alternatives
 
 The next example compares **mapSpain** with other packages that provide `sf` or
-`SpatVector` objects for country boundaries:
+`SpatVector` objects for country boundaries.
 
 ```{r}
 #| label: fig-compara
@@ -195,8 +195,8 @@ ggplot(esp_all) +
 
 ### Caching
 
-**mapSpain** is an API package that uses web resources. By default, downloaded
-files are stored in `tempdir()` for reuse during the current session.
+**mapSpain** uses web resources. By default, downloaded files are stored in
+`tempdir()` for reuse during the current session.
 
 Use `esp_set_cache_dir()` to choose a user-specific download directory. Add
 `install = TRUE` to make that cache configuration persistent across sessions.
@@ -282,9 +282,9 @@ levels:
 - Provinces.
 - Municipalities.
 
-For Autonomous Communities, provinces and municipalities there are two families
-of functions: `esp_get_xxxx()` (GISCO source) and `esp_get_xxxx_siane()` (IGN
-source).
+For Autonomous Communities, provinces and municipalities, there are two
+families of functions: `esp_get_xxxx()` for GISCO data and
+`esp_get_xxxx_siane()` for IGN data.
 
 The information is available in different projections and resolution levels.
 
@@ -524,7 +524,7 @@ ggplot() +
 
 ### Dynamic maps with mapSpain
 
-Imagery layers can be used as backgrounds in interactive maps and static maps.
+Imagery layers can be used as backgrounds in static and interactive maps.
 
 ```{r}
 #| label: leaflet
@@ -568,5 +568,5 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
 [functions](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
 for retrieving elevation, rivers and river basin data for Spain, as well as
 Spanish
-[infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
+[transport infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
 lines and points, such as roads and railway lines.

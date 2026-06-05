@@ -57,7 +57,7 @@
     Code
       convert_to_nuts_ccaa(c("Asturies", "Zaporilla", "ES1", "ES-CL"))
     Message
-      ! No Spanish CCAA codes found for "Zaporilla".
+      ! No Spanish Autonomous Communities codes found for "Zaporilla".
     Output
       [1] "ES11" "ES12" "ES13" "ES41"
 
@@ -67,7 +67,7 @@
       convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9"))
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish CCAA codes found for "Aama", "ES888", "FR12", and "ES9".
+      ! No Spanish Autonomous Communities codes found for "Aama", "ES888", "FR12", and "ES9".
 
 ---
 
@@ -90,7 +90,7 @@
     Code
       convert_to_nuts_ccaa(c("Murcia", "Almeria"))
     Message
-      ! No Spanish CCAA codes found for "Almeria".
+      ! No Spanish Autonomous Communities codes found for "Almeria".
     Output
       [1] "ES62"
 
@@ -100,7 +100,7 @@
       convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish CCAA codes found for "La Gomera", "Almeria", and "Soria".
+      ! No Spanish Autonomous Communities codes found for "La Gomera", "Almeria", and "Soria".
 
 ---
 
@@ -108,7 +108,7 @@
       convert_to_nuts_ccaa(c("AA", "XX"))
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish CCAA codes found for "AA" and "XX".
+      ! No Spanish Autonomous Communities codes found for "AA" and "XX".
 
 # convert_to_nuts_prov
 

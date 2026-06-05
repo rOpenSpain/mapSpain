@@ -6,21 +6,6 @@
 #' Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at a
 #' specified scale.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family gisco
-#' @inheritParams esp_get_nuts
-#' @inheritDotParams esp_get_nuts -nuts_level -region
-#' @inherit esp_get_nuts
-#' @export
-#'
-#' @rdname esp_get_ccaa
-#' @name esp_get_ccaa
-#'
-#' @param ccaa Character string. A vector of names, codes or both for
-#'   Autonomous Communities, or `NULL` to get all the Autonomous Communities.
-#'   See **Details**.
-#'
 #' @details
 #' When using `ccaa` you can use and mix names and NUTS codes (levels 1 or 2),
 #' ISO codes (corresponding to level 2) or `codauto` (see [esp_codelist]).
@@ -28,6 +13,22 @@
 #'
 #' When calling a NUTS1 level, all the Autonomous Communities of that level
 #' will be added.
+#'
+#' @param ccaa Character string. A vector of names, codes or both for
+#'   Autonomous Communities, or `NULL` to get all the Autonomous Communities.
+#'   See **Details**.
+#'
+#' @inheritParams esp_get_nuts
+#' @inheritDotParams esp_get_nuts -nuts_level -region
+#' @inherit esp_get_nuts
+#'
+#' @family political
+#' @family gisco
+#' @encoding UTF-8
+#' @rdname esp_get_ccaa
+#' @name esp_get_ccaa
+#'
+#' @export
 #'
 #' @examples
 #' ccaa <- esp_get_ccaa()
@@ -37,7 +38,7 @@
 #' ggplot(ccaa) +
 #'   geom_sf()
 #'
-#' # Random CCAA
+#' # Random Autonomous Communities
 #' random_ccaa <- esp_get_ccaa(ccaa = c(
 #'   "Euskadi",
 #'   "Catalunya",
@@ -52,7 +53,7 @@
 #'   geom_sf_label(aes(label = codauto), alpha = 0.3) +
 #'   coord_sf(crs = 3857)
 #'
-#' # All CCAA of a Zone plus an addition
+#' # All Autonomous Communities of a NUTS1 region plus an addition
 #'
 #' mixed <- esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 #'
@@ -102,15 +103,12 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf$nuts2.code <- data_sf$NUTS_ID
   data_sf <- data_sf[, "nuts2.code"]
 
-  # Get CCAA metadata.
+  # Get Autonomous Community metadata.
   df <- get_ccaa_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Paste nuts1
-  dfnuts <- mapSpain::esp_codelist
-  dfnuts <- unique(dfnuts[, c("nuts2.code", "nuts1.code", "nuts1.name")])
-
-  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, get_nuts1_codes_df(), all.x = TRUE)
 
   data_sf <- data_sf[, unique(c(colnames(df), "nuts1.code", "nuts1.name"))]
 
@@ -120,34 +118,4 @@ esp_get_ccaa <- function(ccaa = NULL, moveCAN = TRUE, ...) {
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
-}
-
-get_ccaa_codes_df <- function() {
-  getnames <- c(
-    "codauto",
-    "iso2.ccaa.code",
-    "nuts1.code",
-    "nuts2.code",
-    "ine.ccaa.name",
-    "iso2.ccaa.name.es",
-    "iso2.ccaa.name.ca",
-    "iso2.ccaa.name.gl",
-    "iso2.ccaa.name.eu",
-    "nuts2.name",
-    "cldr.ccaa.name.en",
-    "cldr.ccaa.name.es",
-    "cldr.ccaa.name.ca",
-    "cldr.ccaa.name.ga",
-    "cldr.ccaa.name.eu",
-    "ccaa.shortname.en",
-    "ccaa.shortname.es",
-    "ccaa.shortname.ca",
-    "ccaa.shortname.ga",
-    "ccaa.shortname.eu"
-  )
-  df_ccaa <- mapSpain::esp_codelist
-  df_ccaa <- df_ccaa[, getnames]
-  df_end <- unique(df_ccaa)
-  df_end <- df_end[order(df_end$codauto), ]
-  df_end
 }

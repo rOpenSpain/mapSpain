@@ -3,17 +3,6 @@
 #' @description
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain.
 #'
-#' @source IGN data distributed through the `sianedata/MTN` data branch (see
-#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
-#'
-#' @encoding UTF-8
-#' @family grids
-#' @inheritParams esp_get_grid_EEA
-#' @inherit esp_get_grid_EEA return
-#' @export
-#'
-#' @param grid Name of the grid to be loaded. See **Details**.
-#'
 #' @details
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>.
@@ -87,6 +76,17 @@
 #' series of the map, taking into account the special distribution of the
 #' Canary Islands sheets.
 #'
+#' @param grid Name of the grid to be loaded. See **Details**.
+#'
+#' @inheritParams esp_get_grid_EEA
+#' @inherit esp_get_grid_EEA return
+#' @source IGN data distributed through the `sianedata/MTN` data branch (see
+#' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).
+#'
+#' @family grids
+#' @encoding UTF-8
+#' @export
+#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' grid <- esp_get_grid_MTN(grid = "MTN50_ETRS89_Peninsula_Baleares_Canarias")
@@ -121,17 +121,13 @@ esp_get_grid_MTN <- function(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/",
     "MTN/dist/MTN_grids.zip"
   )
-  file_local <- download_url(
+
+  download_unzip_read_geo_file(
     url,
-    cache_dir = cache_dir,
     subdir = "grid",
+    member = paste0(init_grid, ".gpkg"),
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
-  if (is.null(file_local)) {
-    return(file_local)
-  }
-  path <- gsub(basename(file_local), "", file_local)
-  unzip(file_local, exdir = path, junkpaths = TRUE)
-  read_geo_file_sf(paste0(path, init_grid, ".gpkg"))
 }

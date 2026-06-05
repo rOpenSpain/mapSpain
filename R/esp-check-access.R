@@ -1,7 +1,5 @@
 #' Check access to SIANE data resources
 #'
-#' @encoding UTF-8
-#' @keywords internal
 #' @description
 #' Check whether \R has access to resources at
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -10,10 +8,12 @@
 #'
 #' @seealso [giscoR::gisco_check_access()].
 #'
+#' @keywords internal
+#' @encoding UTF-8
+#' @export
 #' @examples
 #'
 #' esp_check_access()
-#' @export
 esp_check_access <- function() {
   if (!httr2::is_online()) {
     return(FALSE) # nocov
@@ -35,52 +35,6 @@ esp_check_access <- function() {
   } else {
     TRUE
   }
-}
-
-#' Skip tests if SIANE data is not reachable
-#'
-#' @return Invisible. `TRUE` if offline logic passes or the test is skipped.
-#'
-#' @noRd
-skip_if_siane_offline <- function() {
-  # nocov start
-  test_offline <- is_404()
-  if (test_offline) {
-    return(invisible(TRUE))
-  }
-
-  if (esp_check_access()) {
-    return(invisible(TRUE))
-  }
-
-  if (requireNamespace("testthat", quietly = TRUE)) {
-    testthat::skip("SIANE API not reachable")
-  }
-  invisible()
-  # nocov end
-}
-
-#' Skip tests if GISCO API is not reachable
-#'
-#' @return Invisible. `TRUE` if offline logic passes or the test is skipped.
-#'
-#' @noRd
-skip_if_gisco_offline <- function() {
-  # nocov start
-  test_offline <- is_404()
-  if (test_offline) {
-    return(invisible(TRUE))
-  }
-
-  if (giscoR::gisco_check_access()) {
-    return(invisible(TRUE))
-  }
-
-  if (requireNamespace("testthat", quietly = TRUE)) {
-    testthat::skip("GISCO API not reachable")
-  }
-  invisible()
-  # nocov end
 }
 
 #' Internal function to check if we are on CRAN

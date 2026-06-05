@@ -5,20 +5,6 @@
 #' [provinces of Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain)
 #' at a specified scale.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family gisco
-#' @inheritParams esp_get_nuts
-#' @inheritDotParams esp_get_nuts -nuts_level -region
-#' @inherit esp_get_nuts
-#' @export
-#'
-#' @param prov A vector of names, codes or both for provinces, or `NULL` to get
-#'   all the provinces. See **Details**.
-#'
-#' @inheritParams esp_get_nuts
-#' @inheritDotParams esp_get_nuts -nuts_level -region
-#'
 #' @details
 #' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or
 #' 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
@@ -28,6 +14,19 @@
 #'
 #' When calling a higher level (Autonomous Community or NUTS1), all the
 #' provinces of that level will be added.
+#'
+#' @param prov A vector of names, codes or both for provinces, or `NULL` to get
+#'   all the provinces. See **Details**.
+#'
+#' @inheritParams esp_get_nuts
+#' @inheritDotParams esp_get_nuts -nuts_level -region
+#'
+#' @inherit esp_get_nuts
+#'
+#' @family political
+#' @family gisco
+#' @encoding UTF-8
+#' @export
 #'
 #' @examples
 #' prov <- esp_get_prov()
@@ -107,19 +106,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   data_sf <- data_sf[, "cpro"]
   data_sf <- data_sf[order(data_sf$cpro), ]
 
-  # Merge island geometries by province code.
-  res_cpros <- unique(data_sf$cpro)
-  binded_sf <- lapply(res_cpros, function(x) {
-    the_geom <- data_sf[data_sf$cpro == x, ]
-    if (nrow(the_geom) == 1) {
-      return(the_geom)
-    }
-    get_g <- sf::st_geometry(data_sf[data_sf$cpro == x, ])
-    g <- sf::st_union(get_g)
-    sf::st_sf(cpro = x, geometry = g)
-  })
-
-  data_sf <- rbind_fill(binded_sf)
+  data_sf <- union_sf_by(data_sf, "cpro")
 
   # Get province metadata.
   df <- get_prov_codes_df()
@@ -127,17 +114,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
   # Add NUTS2 metadata.
-  dfnuts <- mapSpain::esp_codelist
-  dfnuts <- dfnuts[, c(
-    "cpro",
-    "nuts2.code",
-    "nuts2.name",
-    "nuts1.code",
-    "nuts1.name"
-  )]
-  dfnuts <- unique(dfnuts)
-
-  data_sf <- merge(data_sf, dfnuts, all.x = TRUE)
+  data_sf <- merge(data_sf, get_prov_nuts_codes_df(), all.x = TRUE)
 
   data_sf <- data_sf[, c(
     colnames(df),

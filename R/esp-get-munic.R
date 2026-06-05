@@ -3,13 +3,13 @@
 #' @description
 #' This dataset shows boundaries of municipalities in Spain.
 #'
-#' @encoding UTF-8
-#' @family political
-#' @family municipalities
-#' @family gisco
-#' @inheritParams esp_get_nuts
-#' @inherit giscoR::gisco_get_lau
-#' @export
+#' @details
+#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
+#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
+#' (see [esp_codelist]).
+#'
+#' When calling a higher level (province, Autonomous Community or NUTS1), all
+#' the municipalities of that level will be added.
 #'
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
@@ -19,15 +19,20 @@
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
 #'   deprecated, the dataset will always be downloaded to the `cache_dir`.
+#' @inheritParams esp_get_nuts
+#' @inherit giscoR::gisco_get_lau return source
+#'
+#' @note
+#' Please check the download and usage provisions on
+#' [giscoR::gisco_attributions()].
+#'
 #' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
 #'
-#' @details
-#' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
-#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
-#' (see [esp_codelist]).
-#'
-#' When calling a higher level (province, CCAA or NUTS1), all the municipalities
-#' of that level will be added.
+#' @family political
+#' @family municipalities
+#' @family gisco
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
@@ -98,8 +103,8 @@ esp_get_munic <- function(
   moveCAN = TRUE,
   ext = "gpkg"
 ) {
-  # Dispatch everything to giscoR except EPSG, that is specific
-  init_epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  # Dispatch to giscoR and handle the package-specific EPSG value locally.
+  init_epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
   gisco_epsg <- ifelse(epsg == "4258", "4326", init_epsg)
   cache_dir <- create_cache_dir(cache_dir)
 
@@ -131,39 +136,24 @@ esp_get_munic <- function(
   if (is.null(data_sf)) {
     return(NULL)
   }
-  # Some files does not have crs (??)
+  # Some files do not provide a CRS.
   file_epsg <- ensure_null(sf::st_crs(data_sf)$wkt)
 
   if (is.null(file_epsg)) {
     data_sf <- sf::st_set_crs(data_sf, sf::st_crs(as.numeric(gisco_epsg)))
   }
 
-  # Id management
   id_col <- intersect(c("GISCO_ID", "LAU_ID", "NSI_CODE"), names(data_sf))[1]
-  data_sf$LAU_CODE <- gsub("\\D+", "", data_sf[[id_col]])
-
-  # Normalize names.
   id_name <- intersect(c("LAU_NAME", "COMM_NAME", "SABE_NAME"), names(data_sf))[
     1
   ]
-  data_sf$name <- data_sf[[id_name]]
 
-  data_sf$cpro <- substr(data_sf$LAU_CODE, 1, 2)
-  data_sf$cmun <- substr(data_sf$LAU_CODE, 3, 8)
-
-  add_codes <- unique(mapSpain::esp_codelist[, c(
-    "codauto",
-    "ine.ccaa.name",
-    "cpro",
-    "ine.prov.name"
-  )])
-
-  data_sf <- merge(
+  data_sf <- add_municipal_metadata(
     data_sf,
-    add_codes,
-    by = "cpro",
-    all.x = TRUE,
-    no.dups = TRUE
+    id_col,
+    id_name,
+    clean_id = TRUE,
+    validate_cpro = FALSE
   )
 
   init_nm <- names(data_sf)
@@ -182,30 +172,11 @@ esp_get_munic <- function(
   # Filter munics
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  munic <- ensure_null(munic)
-
-  if (!is.null(munic)) {
-    munic <- paste(munic, collapse = "|")
-    data_sf <- data_sf[grep(munic, data_sf$name, ignore.case = TRUE), ]
-  }
-  region <- ensure_null(region)
-
-  if (!is.null(region)) {
-    tonuts <- convert_to_nuts_prov(region)
-    # Filter to selected provinces.
-    df <- unique(mapSpain::esp_codelist[, c("nuts3.code", "cpro")])
-    df <- df[df$nuts3.code %in% tonuts, "cpro"]
-    toprov <- unique(df$cpro)
-    data_sf <- data_sf[data_sf$cpro %in% toprov, ]
-  }
+  data_sf <- filter_by_name_pattern(data_sf, munic, "name")
+  data_sf <- filter_by_cpro_region(data_sf, region)
 
   if (nrow(data_sf) == 0) {
-    cli::cli_alert_warning(paste0(
-      "The combination of {.arg region}, {.arg munic} or both does not ",
-      "return any results."
-    ))
-    cli::cli_alert_info("Returning empty {.cls sf} object.")
-    return(data_sf)
+    return(return_empty_combination_sf(data_sf, "munic"))
   }
 
   # Move the Canary Islands.

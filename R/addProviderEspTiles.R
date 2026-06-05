@@ -4,22 +4,22 @@ leaf_providers_esp_v <- "v1.3.3"
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 #' map
 #'
-#' @encoding UTF-8
+#' @param provider The name of the provider, see [esp_tiles_providers] or
+#'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
+#'
 #' @inheritParams leaflet::addProviderTiles
 #' @inherit leaflet::addProviderTiles return
-#' @family images
-#' @export
+#' @source
+#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
 #' @seealso
 #' [leaflet::leaflet()], [leaflet::addTiles()], [leaflet::addWMSTiles()],
 #' [esp_tiles_providers].
 #'
-#' @source
-#' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
-#' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
-#'
-#' @param provider The name of the provider, see [esp_tiles_providers] or
-#'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
+#' @family images
+#' @encoding UTF-8
+#' @export
 #'
 #' @examples
 #' library(leaflet)

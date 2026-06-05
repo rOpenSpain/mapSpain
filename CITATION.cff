@@ -8,7 +8,7 @@ message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries of Spain'
-version: 1.1.0
+version: 1.1.0.9000
 doi: 10.5281/zenodo.5366622
 identifiers:
 - type: doi
@@ -16,8 +16,8 @@ identifiers:
 abstract: Administrative boundaries of Spain at several levels (Autonomous Communities,
   provinces and municipalities), based on 'GISCO' from 'Eurostat' <https://ec.europa.eu/eurostat/web/gisco>
   and 'CartoBase ANE' from 'Instituto Geográfico Nacional' <https://www.ign.es/>.
-  It also provides a plugin for 'leaflet' and tools to download and process static
-  map tiles.
+  It also provides a plugin for the 'leaflet' package and tools to download and process
+  static map tiles.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -32,14 +32,14 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2026'
-  version: 1.1.0
+  version: 1.1.0.9000
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative boundaries of Spain at several levels (Autonomous Communities,
     provinces and municipalities), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco>
     and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It
-    also provides a plugin for leaflet and tools to download and process static map
-    tiles.
+    also provides a plugin for the leaflet package and tools to download and process
+    static map tiles.
 repository: https://CRAN.R-project.org/package=mapSpain
 repository-code: https://github.com/rOpenSpain/mapSpain
 url: https://ropenspain.github.io/mapSpain/
@@ -244,19 +244,6 @@ references:
   doi: 10.32614/CRAN.package.terra
   version: '>= 1.1-4'
 - type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
-  notes: Imports
-  url: https://testthat.r-lib.org
-  repository: https://CRAN.R-project.org/package=testthat
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2026'
-  doi: 10.32614/CRAN.package.testthat
-  version: '>= 3.0.0'
-- type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
   notes: Imports
@@ -395,12 +382,25 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
 - type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.testthat
+  version: '>= 3.0.0'
+- type: software
   title: tidyterra
   abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
     Objects'
   notes: Suggests
   url: https://dieghernan.github.io/tidyterra/
-  repository: https://CRAN.R-project.org/package=tidyterra
+  repository: https://dieghernan.r-universe.dev
   authors:
   - family-names: Hernangómez
     given-names: Diego

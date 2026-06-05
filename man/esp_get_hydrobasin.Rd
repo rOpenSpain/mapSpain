@@ -110,7 +110,7 @@ ggplot(hydroland) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other natural features:
+Natural feature datasets:
 \code{\link[=esp_get_hypsobath]{esp_get_hypsobath()}},
 \code{\link{esp_get_landwater}}
 }

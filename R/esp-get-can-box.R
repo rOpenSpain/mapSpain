@@ -13,19 +13,19 @@
 #' - `"left"` / `"right"`: decorative `LINESTRING` variants that follow
 #'   the western or eastern side of the islands respectively.
 #'
-#' @encoding UTF-8
-#' @family can_helpers
-#' @rdname esp_get_can_box
-#' @name esp_get_can_box
-#' @inheritParams esp_get_nuts
-#' @export
-#'
 #' @param style Character string. One of `"right"`, `"left"`, `"box"` or
 #'   `"poly"`. Default is `"right"`, see **Details**.
 #'
+#' @inheritParams esp_get_nuts
 #' @return
 #' An [`sf`][sf::st_sf] object: a `POLYGON` (when `style = "poly"`) or a
 #' `LINESTRING` (other styles).
+#'
+#' @family can_helpers
+#' @encoding UTF-8
+#' @rdname esp_get_can_box
+#' @name esp_get_can_box
+#' @export
 #'
 #' @examples
 #' provs <- esp_get_prov()
@@ -84,7 +84,7 @@ esp_get_can_box <- function(
 
   epsg <- as.character(epsg)
 
-  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
 
   df <- mapSpain::esp_nuts_2024
   can <- df[df$NUTS_ID == "ES7", ]
@@ -123,10 +123,7 @@ esp_get_can_box <- function(
     lall <- sf::st_sfc(lall, crs = sf::st_crs(can))
   }
 
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
+  if (is_moving_can(moveCAN)) {
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 
@@ -140,8 +137,6 @@ esp_get_can_box <- function(
 
 #' Canary Islands province separator line
 #'
-#' @rdname esp_get_can_box
-#'
 #' @description
 #' `esp_get_can_provinces()` returns a small `LINESTRING` used to mark the
 #' separator between the two provinces of the Canary Islands. This helper is
@@ -151,11 +146,13 @@ esp_get_can_box <- function(
 #' Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
 #' (`se89_mult_admin_provcan_l.shp`).
 #'
+#' @rdname esp_get_can_box
+#'
 #' @export
 esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   epsg <- as.character(epsg)
 
-  epsg <- match_arg_pretty(epsg, c("4258", "4326", "3035", "3857"))
+  epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
 
   # From CartoBase ANE: se89_mult_admin_provcan_l
   m <- c(
@@ -166,10 +163,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
   lall <- sf::st_linestring(sf::st_coordinates(m))
   lall <- sf::st_sfc(lall, crs = sf::st_crs(4326))
 
-  moving <- FALSE
-  moving <- isTRUE(moveCAN) | length(moveCAN) > 1
-
-  if (moving) {
+  if (is_moving_can(moveCAN)) {
     lall <- esp_move_can(lall, moveCAN = moveCAN)
   }
 

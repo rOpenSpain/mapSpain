@@ -107,7 +107,7 @@ ggplot(countries) +
 }
 }
 \seealso{
-Other helpers for the Canary Islands:
+Helpers for Canary Islands insets and displacement:
 \code{\link[=esp_move_can]{esp_move_can()}}
 }
 \concept{can_helpers}

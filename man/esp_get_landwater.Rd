@@ -145,7 +145,7 @@ ggplot(and) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other natural features:
+Natural feature datasets:
 \code{\link[=esp_get_hydrobasin]{esp_get_hydrobasin()}},
 \code{\link[=esp_get_hypsobath]{esp_get_hypsobath()}}
 }

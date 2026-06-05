@@ -70,11 +70,8 @@ download_url <- function(
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("Offline.")
-    cli::cli_alert("Returning {.val NULL}.")
-    return(NULL)
+    return(alert_return_null())
   }
-
-  # Response
 
   # Use HEAD to check whether the download is large enough to warn about.
   get_header <- httr2::req_method(req, "HEAD")
@@ -85,7 +82,7 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The file to be downloaded has size", sz_dwn)
+    make_msg("warning", TRUE, "The download size is", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
@@ -111,14 +108,10 @@ download_url <- function(
       "{.strong Error {get_status_code}} ({get_status_desc}):",
       " {.url {url}}."
     ))
-    cli::cli_alert_warning(c(
-      "If you think this is a bug, please consider opening an issue on ",
-      "{.url https://github.com/rOpenSpain/mapSpain/issues}"
-    ))
-    cli::cli_alert("Returning {.val NULL}.")
-    return(NULL)
+    alert_open_issue()
+    return(alert_return_null())
   }
-  msg <- paste0("Download successful on {.file ", file_local, "}.")
+  msg <- paste0("Download saved to {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local

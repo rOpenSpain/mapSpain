@@ -1,6 +1,3 @@
-#' @rdname esp_get_tiles
-#'
-#' @order 2
 #' @description
 #'
 #' `esp_get_attributions` gets the attribution of a tile provider defined as
@@ -8,6 +5,9 @@
 #'
 #' @seealso [giscoR::gisco_attributions()]
 #'
+#' @rdname esp_get_tiles
+#'
+#' @order 2
 #' @export
 esp_get_attributions <- function(type, options = NULL) {
   # Validate

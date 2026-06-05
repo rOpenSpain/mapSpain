@@ -3,11 +3,11 @@
 #' @description
 #' Object representing the main roads of Spain.
 #'
-#' @encoding UTF-8
-#' @family infrastructure
 #' @inheritParams esp_get_railway
 #' @inheritParams esp_get_ccaa_siane
-#' @inherit esp_get_railway
+#' @inherit esp_get_railway return source
+#' @family infrastructure
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()
@@ -38,7 +38,7 @@ esp_get_roads <- function(
   verbose = FALSE,
   moveCAN = TRUE
 ) {
-  init_epsg <- match_arg_pretty(epsg, c("4326", "4258", "3035", "3857"))
+  init_epsg <- validate_epsg(epsg)
 
   url_penin <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
@@ -50,72 +50,43 @@ esp_get_roads <- function(
     "se89_3_vias_ctra_l_y.gpkg"
   )
 
-  # Read from the URL when the file is not cached.
-  if (!cache) {
-    msg <- paste0("{.url ", url_penin, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf_penin <- read_geo_file_sf(url_penin)
-    data_sf_penin$codauto <- "XX"
-
-    msg <- paste0("{.url ", url_can, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf_can <- read_geo_file_sf(url_can)
-    data_sf_can$codauto <- "05"
-
-    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
-  } else {
-    file_local_penin <- download_url(
-      url_penin,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    file_local_can <- download_url(
-      url_can,
-      cache_dir = cache_dir,
-      subdir = "siane",
-      update_cache = update_cache,
-      verbose = verbose
-    )
-
-    # Read the downloaded files.
-    ok_down <- ensure_null(c(file_local_penin, file_local_can))
-    if (is.null(ok_down)) {
-      return(NULL)
-    }
-
-    data_sf_penin <- read_geo_file_sf(file_local_penin)
-    data_sf_penin$codauto <- "XX"
-
-    data_sf_can <- read_geo_file_sf(file_local_can)
-    data_sf_can$codauto <- "05"
-
-    data_sf <- rbind_fill(list(data_sf_penin, data_sf_can))
+  data_sf <- read_siane_files(
+    c(url_penin, url_can),
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose,
+    codauto = c("XX", "05")
+  )
+  if (is.null(data_sf)) {
+    return(NULL)
   }
 
-  # Add road type descriptions.
-  tip <- db_valores[db_valores$campo == "tipocarretera", 2:3]
-  names(tip) <- c("t_ctra", "t_ctra_desc")
-  data_sf <- merge(data_sf, tip, all.x = TRUE)
-
-  # Add physical status descriptions.
-  est <- db_valores[db_valores$campo == "estadofisico", 2:3]
-  names(est) <- c("estado_fis", "estado_fis_desc")
-  data_sf <- merge(data_sf, est, all.x = TRUE)
-
-  # Add road order descriptions.
-  ord <- db_valores[db_valores$campo == "orden", 2:3]
-  names(ord) <- c("orden", "orden_desc")
-  data_sf <- merge(data_sf, ord, all.x = TRUE)
-
-  # Add access descriptions.
-  acc <- db_valores[db_valores$campo == "acceso", 2:3]
-  names(acc) <- c("acceso", "acceso_desc")
-  data_sf <- merge(data_sf, acc, all.x = TRUE)
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "tipocarretera",
+    c(
+      "t_ctra",
+      "t_ctra_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "estadofisico",
+    c(
+      "estado_fis",
+      "estado_fis_desc"
+    )
+  )
+  data_sf <- merge_db_value_desc(data_sf, "orden", c("orden", "orden_desc"))
+  data_sf <- merge_db_value_desc(
+    data_sf,
+    "acceso",
+    c(
+      "acceso",
+      "acceso_desc"
+    )
+  )
 
   # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
@@ -123,9 +94,6 @@ esp_get_roads <- function(
 
   data_sf <- data_sf[order(data_sf$t_ctra, data_sf$orden, data_sf$rotulo), ]
 
-  data_sf <- sanitize_sf(data_sf)
-
-  # Transform to the requested CRS.
-  data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
+  data_sf <- sanitize_transform_sf(data_sf, init_epsg)
   data_sf
 }

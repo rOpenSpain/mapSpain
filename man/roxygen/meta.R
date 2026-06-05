@@ -1,13 +1,18 @@
 list(
   rd_family_title = list(
-    images = "Other functions for creating maps with images: ",
-    can_helpers = "Other helpers for the Canary Islands: ",
-    political = "Other datasets representing political borders: ",
-    siane = "Political borders from CartoBase ANE: ",
-    gisco = "Datasets provided by GISCO: ",
-    municipalities = "Datasets representing municipalities: ",
-    grids = "Other geographical grids: ",
-    natural = "Other natural features: ",
-    infrastructure = "Other man-made infrastructures: "
+    images = "Functions for image-based maps and tile providers: ",
+    can_helpers = "Helpers for Canary Islands insets and displacement: ",
+    political = "Political and administrative boundary datasets: ",
+    siane = "Datasets sourced from CartoBase ANE: ",
+    gisco = "Datasets sourced from GISCO: ",
+    municipalities = "Municipality-level datasets: ",
+    grids = "Geographical grid datasets: ",
+    natural = "Natural feature datasets: ",
+    infrastructure = "Transport infrastructure datasets: ",
+    datasets = "Included package datasets: ",
+    dictionary = "Dictionary and translation helpers: ",
+    nuts = "NUTS boundary datasets: ",
+    "cache utilities" = "Cache management utilities: ",
+    "deprecated functions" = "Deprecated functions: "
   )
 )

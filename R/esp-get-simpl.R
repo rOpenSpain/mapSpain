@@ -6,25 +6,6 @@
 #' communities of Spain, as provided by the **INE** (Instituto Nacional de
 #' Estadistica).
 #'
-#' @rdname esp_get_simpl
-#' @name esp_get_simpl
-#'
-#' @encoding UTF-8
-#' @family political
-#' @inheritParams esp_get_prov
-#' @inheritParams esp_get_ccaa
-#' @inheritParams esp_get_nuts
-#' @inherit esp_get_nuts return
-#' @export
-#'
-#' @param prov,ccaa Character. A vector of names, codes or both for provinces
-#'   and Autonomous Communities, or `NULL` to get all the data. See
-#'   **Details**.
-#'
-#' @seealso [`esp_get_gridmap`][esp_get_gridmap].
-#'
-#' @source INE: PC_Axis files
-#'
 #' @details
 #'
 #' Results are provided **without CRS**, as provided by the source.
@@ -36,6 +17,25 @@
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
+#' @param prov,ccaa Character. A vector of names, codes or both for provinces
+#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   **Details**.
+#'
+#' @inheritParams esp_get_prov
+#' @inheritParams esp_get_ccaa
+#' @inheritParams esp_get_nuts
+#' @inherit esp_get_nuts return
+#' @source INE: PC_Axis files
+#'
+#' @seealso [`esp_get_gridmap`][esp_get_gridmap].
+#'
+#' @family political
+#' @encoding UTF-8
+#' @rdname esp_get_simpl
+#' @name esp_get_simpl
+#'
+#' @export
+#'
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' prov_simp <- esp_get_simpl_prov()
@@ -44,16 +44,16 @@
 #'
 #' ggplot(prov_simp) +
 #'   geom_sf(aes(fill = ine.ccaa.name)) +
-#'   labs(fill = "CCAA")
+#'   labs(fill = "Autonomous Communities")
 #'
-#' # Provinces of a single CCAA.
+#' # Provinces of a single Autonomous Community.
 #'
 #' and_simple <- esp_get_simpl_prov("Andalucia")
 #'
 #' ggplot(and_simple) +
 #'   geom_sf()
 #'
-#' # CCAAs.
+#' # Autonomous Communities.
 #'
 #' ccaa_simp <- esp_get_simpl_ccaa()
 #'
@@ -73,18 +73,16 @@ esp_get_simpl_prov <- function(
     "ine_prov_simplified.gpkg"
   )
 
-  file_local <- download_url(
+  data_sf <- download_and_read_geo_file(
     url,
-    cache_dir = cache_dir,
     subdir = "ine",
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
-  if (is.null(file_local)) {
+  if (is.null(data_sf)) {
     return(NULL)
   }
-
-  data_sf <- read_geo_file_sf(file_local)
 
   # Order features by Autonomous Community and province.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
@@ -95,13 +93,7 @@ esp_get_simpl_prov <- function(
   if (is.null(prov)) {
     return(data_sf)
   }
-  region <- convert_to_nuts_prov(prov)
-
-  dfcpro <- mapSpain::esp_codelist
-  dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-  cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
-
-  data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
+  data_sf <- filter_by_cpro_region(data_sf, prov)
 
   data_sf
 }
@@ -121,18 +113,16 @@ esp_get_simpl_ccaa <- function(
     "ine_ccaa_simplified.gpkg"
   )
 
-  file_local <- download_url(
+  data_sf <- download_and_read_geo_file(
     url,
-    cache_dir = cache_dir,
     subdir = "ine",
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose
   )
-  if (is.null(file_local)) {
+  if (is.null(data_sf)) {
     return(NULL)
   }
-
-  data_sf <- read_geo_file_sf(file_local)
 
   # Order features by Autonomous Community.
   data_sf <- data_sf[order(data_sf$codauto), ]
@@ -143,12 +133,7 @@ esp_get_simpl_ccaa <- function(
   if (is.null(ccaa)) {
     return(data_sf)
   }
-  nuts_id <- convert_to_nuts_ccaa(ccaa)
-  dfcodauto <- mapSpain::esp_codelist
-  dfcodauto <- unique(dfcodauto[, c("nuts2.code", "codauto")])
-  dfcodauto <- unique(dfcodauto[dfcodauto$nuts2.code %in% nuts_id, ]$codauto)
-
-  data_sf <- data_sf[data_sf$codauto %in% dfcodauto, ]
+  data_sf <- filter_by_codauto_region(data_sf, ccaa)
 
   data_sf
 }

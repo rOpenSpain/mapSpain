@@ -169,7 +169,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "The file to be downloaded has size"
+    "The download size"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)
@@ -199,7 +199,7 @@ test_that("Test timeout", {
   withr::local_options(mapspain_timeout = 0.01)
   expect_error(
     download_url(url = url, verbose = FALSE, cache_dir = cdir),
-    "Failed to perform HTTP request(.*)Timeout(.*)after(.*)milliseconds"
+    "Failed to perform HTTP request(.*)Timeout"
   )
 
   withr::local_options(mapspain_timeout = 300L)

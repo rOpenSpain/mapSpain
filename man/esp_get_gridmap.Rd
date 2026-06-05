@@ -58,7 +58,7 @@ ggplot(hexccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Hexbin: CCAA")
+  labs(title = "Hexbin: Autonomous Communities")
 
 hexprov <- esp_get_hex_prov()
 
@@ -76,7 +76,7 @@ ggplot(gridccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Grid: CCAA")
+  labs(title = "Grid: Autonomous Communities")
 
 gridprov <- esp_get_grid_prov()
 
@@ -92,7 +92,7 @@ ggplot(gridprov) +
 \seealso{
 \code{\link{esp_get_simpl}}.
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},

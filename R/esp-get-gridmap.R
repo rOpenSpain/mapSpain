@@ -4,19 +4,6 @@
 #' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with the
 #' boundaries of the provinces or Autonomous Communities of Spain.
 #'
-#' @encoding UTF-8
-#' @rdname esp_get_gridmap
-#' @name esp_get_gridmap
-#' @family political
-#' @export
-#' @inherit esp_get_nuts return
-#'
-#' @param prov,ccaa Character. A vector of names, codes or both for provinces
-#'   and Autonomous Communities, or `NULL` to get all the data. See
-#'   **Details**.
-#'
-#' @seealso [`esp_get_simpl`][esp_get_simpl].
-#'
 #' @details
 #'
 #' Hexbin (or grid) maps have an advantage over traditional choropleth maps.
@@ -34,6 +21,19 @@
 #' Results are provided in **EPSG:4258**, use [sf::st_transform()]
 #' to change the projection.
 #'
+#' @param prov,ccaa Character. A vector of names, codes or both for provinces
+#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   **Details**.
+#'
+#' @inherit esp_get_nuts return
+#'
+#' @seealso [`esp_get_simpl`][esp_get_simpl].
+#'
+#' @family political
+#' @encoding UTF-8
+#' @rdname esp_get_gridmap
+#' @name esp_get_gridmap
+#' @export
 #' @examplesIf esp_check_access()
 #' \donttest{
 #' esp <- esp_get_spain()
@@ -46,7 +46,7 @@
 #'   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
 #'   geom_sf_text(aes(label = label), check_overlap = TRUE) +
 #'   theme_void() +
-#'   labs(title = "Hexbin: CCAA")
+#'   labs(title = "Hexbin: Autonomous Communities")
 #'
 #' hexprov <- esp_get_hex_prov()
 #'
@@ -64,7 +64,7 @@
 #'   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
 #'   geom_sf_text(aes(label = label), check_overlap = TRUE) +
 #'   theme_void() +
-#'   labs(title = "Grid: CCAA")
+#'   labs(title = "Grid: Autonomous Communities")
 #'
 #' gridprov <- esp_get_grid_prov()
 #'
@@ -115,13 +115,7 @@ get_gridmap_prov <- function(prov = NULL, type = "hex") {
   if (is.null(prov)) {
     return(data_sf)
   }
-  region <- convert_to_nuts_prov(prov)
-
-  dfcpro <- mapSpain::esp_codelist
-  dfcpro <- unique(dfcpro[, c("nuts3.code", "cpro")])
-  cprocodes <- unique(dfcpro[dfcpro$nuts3.code %in% region, ]$cpro)
-
-  data_sf <- data_sf[data_sf$cpro %in% cprocodes, ]
+  data_sf <- filter_by_cpro_region(data_sf, prov)
 
   data_sf
 }
@@ -139,8 +133,7 @@ get_gridmap_ccaa <- function(ccaa = NULL, type = "hex") {
   if (is.null(ccaa)) {
     return(data_sf)
   }
-  nuts_id <- convert_to_nuts_ccaa(ccaa)
-  data_sf <- data_sf[data_sf$nuts2.code %in% nuts_id, ]
+  data_sf <- filter_by_codauto_region(data_sf, ccaa)
 
   data_sf
 }

@@ -63,7 +63,7 @@ tidyterra::autoplot(mytile) +
 For a list of potential providers from Spain check
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 
-Other functions for creating maps with images:
+Functions for image-based maps and tile providers:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
 \code{\link[=esp_get_tiles]{esp_get_tiles()}}
 }

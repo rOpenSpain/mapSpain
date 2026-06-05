@@ -64,12 +64,10 @@ specified scale.
 Dataset derived from NUTS data provided by GISCO. Check \code{\link[=esp_get_nuts]{esp_get_nuts()}} for
 details.
 }
-\section{Note}{
-
-Please check the download and usage provisions on \code{\link[giscoR:gisco_attributions]{gisco_attributions()}}.
-
+\note{
+Please check the download and usage provisions on
+\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
 }
-
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
@@ -92,7 +90,7 @@ ggplot(moved_can) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
@@ -108,10 +106,10 @@ Other datasets representing political borders:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Other nuts:
+NUTS boundary datasets:
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},
