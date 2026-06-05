@@ -24,16 +24,16 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - resolution:
 
-  numeric. Resolution of the grid in kms Can be `1` or `10`.
+  Numeric. Resolution of the grid in kilometers. Can be `1` or `10`.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -57,7 +57,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
 
 ## See also
 
-Other geographical grids:
+Geographical grid datasets:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 
@@ -66,6 +66,10 @@ Other geographical grids:
 ``` r
 # \dontrun{
 grid <- esp_get_grid_ESDAC()
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Timeout was reached [esdac.jrc.ec.europa.eu]:
+#> Failed to connect to esdac.jrc.ec.europa.eu port 443 after 134852 ms: Couldn't connect to server
 esp <- esp_get_spain(moveCAN = FALSE)
 
 library(ggplot2)
@@ -75,6 +79,7 @@ ggplot(grid) +
   geom_sf(data = esp, color = "grey50", fill = NA) +
   theme_light() +
   labs(title = "ESDAC Grid for Spain")
-
+#> Error in ggplot(grid): `data` cannot be a function.
+#> ℹ Have you misspelled the `data` argument in `ggplot()`?
 # }
 ```

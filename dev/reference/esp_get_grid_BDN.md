@@ -42,9 +42,9 @@ esp_get_grid_BDN_ccaa(
 
 ## Source
 
-Data sourced from the Banco de Datos de la Naturaleza (BDN) via a custom
-CDN. See the repository structure:
-<https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>
+Data sourced from the Banco de Datos de la Naturaleza (BDN). See the
+repository structure:
+<https://github.com/rOpenSpain/mapSpain/tree/sianedata/MITECO/dist>
 
 For more information about BDN grids and other resources, visit:
 <https://www.miteco.gob.es/es/biodiversidad/servicios/banco-datos-naturaleza/informacion-disponible/bdn-cart-aux-descargas-ccaa.html>.
@@ -53,7 +53,7 @@ For more information about BDN grids and other resources, visit:
 
 - resolution:
 
-  numeric. Resolution of the grid in kms. Must be one of:
+  Numeric. Resolution of the grid in kilometers. Must be one of:
 
   - `5`: 5x5 kilometer cells
 
@@ -61,7 +61,7 @@ For more information about BDN grids and other resources, visit:
 
 - type:
 
-  character. The geographic scope of the grid:
+  Character. The geographic scope of the grid:
 
   - `"main"`: Mainland Spain (default)
 
@@ -69,12 +69,12 @@ For more information about BDN grids and other resources, visit:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -84,7 +84,7 @@ For more information about BDN grids and other resources, visit:
 
 - ccaa:
 
-  character string. A vector of names and/or codes for Autonomous
+  Character string. A vector of names, codes or both for Autonomous
   Communities. See **Details** on
   [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
   for accepted formats.
@@ -96,14 +96,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 The BDN provides standardized geographic grids for Spain that follow the
-Nature Data Bank's specifications. The data is maintained via a custom
-CDN and is regularly updated.
+Nature Data Bank's specifications. The data is downloaded from the
+`sianedata/MITECO/dist` data branch and is regularly updated.
 
 ## See also
 
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
 
-Other geographical grids:
+Geographical grid datasets:
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 

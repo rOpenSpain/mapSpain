@@ -17,20 +17,20 @@ providers with the following structure:
 
 - Each element contains two nested named lists:
 
-  - `static` with the parameters required to obtain static tiles, plus
-    an additional item named `attribution`.
+  - `static` with the parameters required to obtain static map tiles,
+    plus an additional item named `attribution`.
 
   - `leaflet` with additional parameters to pass to
     [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
 ## Source
 
-<https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-**v1.3.3**.
+<https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.3.3**.
 
 ## Details
 
-Providers available to be passed to `type` on
+Providers available to be passed to `type` in
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 are:
 
@@ -240,7 +240,7 @@ are:
 
 ## See also
 
-Other datasets:
+Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)

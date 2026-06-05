@@ -1,27 +1,30 @@
 # Working with imagery
 
-**mapSpain** provides a powerful interface for working with imagery. It
-can download static files as `.png` or `.jpeg` (depending on the Web Map
-Service) and use them alongside your shapefiles.
+**mapSpain** provides an interface for working with imagery. It can
+download static files as `.png` or `.jpeg`, depending on the Web Map
+Service, and use them alongside your `sf` objects.
 
-**mapSpain** also provides a plugin for the **R**
-[Leaflet](https://rstudio.github.io/leaflet/) package, which allows
-adding multiple basemaps to interactive maps.
+**mapSpain** also provides a plugin for the
+[**leaflet**](https://rstudio.github.io/leaflet/) R package, which
+allows adding multiple basemaps to interactive maps.
 
-The services are implemented via the Leaflet plugin
+The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
-You can view each provider option at that link.
+You can view the available provider options at that link.
 
 ## Static tiles
 
-An example showing how to include multiple tiles to create a static map.
-We focus on layers provided by La Rioja’s [Infraestructura de Datos
+This example shows how to combine multiple tiles in a static map. We
+focus on layers provided by La Rioja’s [Infraestructura de Datos
 Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
-- **When working with imagery, set `moveCAN = FALSE`; otherwise images
-  for the Canary Islands may be inaccurate.**
+> **Warning**
+>
+> When working with imagery, set `moveCAN = FALSE`, otherwise imagery
+> for the Canary Islands may be inaccurate.
 
 ``` r
+
 library(mapSpain)
 library(sf)
 library(ggplot2)
@@ -30,7 +33,7 @@ library(tidyterra)
 # Logroño
 lgn_borders <- esp_get_munic_siane(munic = "Logroño")
 
-# Convert to Mercator (EPSG:3857) as a general advice when working with tiles
+# Convert to Mercator (EPSG:3857), a common choice when working with tiles.
 lgn_borders <- st_transform(lgn_borders, 3857)
 
 tile_lgn <- esp_get_tiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
@@ -42,7 +45,7 @@ ggplot(lgn_borders) +
 
 ![](working_imagery_files/figure-html/fig-static1-1.png)
 
-Figure 1: Map of the limits of city of Logroño using a tile as a basemap
+Figure 1: Municipal boundaries of Logroño using a tile as a basemap
 
 ### Alpha value on tiles
 
@@ -50,9 +53,10 @@ Some tiles can be loaded with or without an alpha (transparency) value,
 which controls layer transparency:
 
 ``` r
+
 galicia <- esp_get_ccaa("Galicia", epsg = 3857)
 
-# Example without transparency
+# Example without transparency.
 basemap <- esp_get_tiles(
   galicia,
   "IDErioja.Claro",
@@ -79,10 +83,11 @@ ggplot() +
 
 Figure 2: Map of the Way of St. James in Galicia
 
-Now let’s check the same code using the `transparent = TRUE` option:
+The following example repeats the same code with `transparent = TRUE`:
 
 ``` r
-# Example with transparency
+
+# Example with transparency.
 tile_alpha <- esp_get_tiles(
   galicia,
   "CaminoDeSantiago",
@@ -91,7 +96,7 @@ tile_alpha <- esp_get_tiles(
   bbox_expand = 0
 )
 
-# Same code than above for plotting
+# Use the same plotting code as above.
 ggplot() +
   geom_spatraster_rgb(data = basemap) +
   geom_spatraster_rgb(data = tile_alpha) +
@@ -100,17 +105,18 @@ ggplot() +
 
 ![](working_imagery_files/figure-html/fig-static_transp-1.png)
 
-Figure 3: Example on how to use alpha value for combining different
-types of basemaps.
+Figure 3: Example of using alpha values to combine different types of
+basemaps.
 
 Now the two tiles overlap with the desired transparency.
 
 ### Masking tiles
 
-Another useful feature is the ability to mask tiles, allowing more
-advanced maps to be plotted:
+Another useful feature is tile masking, which supports more advanced
+maps:
 
 ``` r
+
 rioja <- esp_get_prov("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
@@ -124,15 +130,16 @@ ggplot() +
 
 ![](working_imagery_files/figure-html/fig-static3-1.png)
 
-Figure 4: Example of combining types of tiles by masking to a shapefile.
+Figure 4: Example of combining tile types by masking to an sf object.
 
 ## Custom providers
 
 You can use
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-to get tiles of any other provider, for example OpenStreetMap:
+to get tiles from other providers, for example OpenStreetMap.
 
 ``` r
+
 osm_spec <- list(
   id = "OSM",
   q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -150,10 +157,11 @@ ggplot() +
 
 Figure 5: Example of base map using OpenStreetMap
 
-Another example using a provider that needs an API Key (ThunderForest):
+This example uses a provider that needs an API key, ThunderForest:
 
 ``` r
-# Skip if not API KEY
+
+# Skip if no API key is available.
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
 if (apikey != "") {
   thunder_spec <- list(
@@ -171,18 +179,19 @@ if (apikey != "") {
 }
 ```
 
-![](working_imagery_files/figure-html/unnamed-chunk-1-1.png)
+![](working_imagery_files/figure-html/fig-thunder-1.png)
 
-Example of base map using ThunderForest
+Figure 6: Example of base map using ThunderForest
 
 ## Dynamic maps with Leaflet
 
-**mapSpain** provides a plugin for the **Leaflet** package. Below are
+**mapSpain** provides a plugin for the **leaflet** package. Here are
 some quick examples:
 
 ### Earthquakes in Tenerife (last year)
 
 ``` r
+
 library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
@@ -193,7 +202,7 @@ tenerife_leaf <- esp_get_nuts(
 
 bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
 
-# Start leaflet
+# Start leaflet.
 m <- leaflet(
   tenerife_leaf,
   elementId = "tenerife-earthquakes",
@@ -202,13 +211,13 @@ m <- leaflet(
   options = leafletOptions(minZoom = 9, maxZoom = 18)
 )
 
-# Add layers
+# Add layers.
 m <- m |>
   addProviderEspTiles("IDErioja.Relieve") |>
   addPolygons(color = NA, fillColor = "red", group = "Polygon") |>
   addProviderEspTiles("Geofisica.Terremotos365dias", group = "Earthquakes")
 
-# Add additional options
+# Add additional options.
 m |>
   addLayersControl(
     overlayGroups = c("Polygon", "Earthquakes"),
@@ -219,9 +228,10 @@ m |>
 
 ### Population density in Spain
 
-A map showing the population density of Spain as of 2019:
+A map showing the population density of Spain as of 2025:
 
 ``` r
+
 library(leaflet)
 library(dplyr)
 munic <- esp_get_munic_siane(
@@ -230,15 +240,15 @@ munic <- esp_get_munic_siane(
   moveCAN = FALSE,
   rawcols = TRUE
 ) |>
-  # Get area in km2 from siane munic
-  # Already on the shapefile
+  # Get area in km2 from SIANE municipalities.
+  # This variable is already available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
-# Get population
+# Get population data.
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
-# Paste
+# Join population data.
 munic_pop <- munic |>
   left_join(pop) |>
   mutate(
@@ -246,7 +256,7 @@ munic_pop <- munic |>
     dens_label = prettyNum(round(dens, 2), big.mark = ".", decimal.mark = ",")
   )
 
-# Create leaflet
+# Create leaflet map.
 bins <- c(0, 10, 25, 100, 200, 500, 1000, 5000, 10000, Inf)
 
 pal <- colorBin("inferno", domain = munic_pop$dens, bins = bins, reverse = TRUE)
@@ -292,5 +302,5 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 ## Available providers
 
 The `esp_tiles_providers` list contains metadata for the tile providers
-available to the functions above. It includes all arguments required to
+used by the functions above. It includes all arguments required to
 reproduce the API request. Below is the static URL for each provider:

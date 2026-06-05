@@ -41,14 +41,14 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -61,18 +61,18 @@ Data distributed via a custom CDN, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -82,7 +82,7 @@ Data distributed via a custom CDN, see
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  Character string or number. Resolution of the geospatial data. One of:
 
   - "10": 1:10 million.
 
@@ -92,7 +92,7 @@ Data distributed via a custom CDN, see
 
 - domain:
 
-  character string. Type of river basin district. Possible values are
+  Character string. Type of river basin district. Possible values are
   `"land"`, including only the groundwaters area or `"landsea"`,
   groundwaters and coastal waters.
 
@@ -107,7 +107,7 @@ Metadata available on
 
 ## See also
 
-Other natural features:
+Natural feature datasets:
 [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md),
 [`esp_get_landwater`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
 

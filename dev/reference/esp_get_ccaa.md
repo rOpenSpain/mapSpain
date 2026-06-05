@@ -21,8 +21,8 @@ Copyright:
 
 - ccaa:
 
-  character string. A vector of names and/or codes for Autonomous
-  Communities or `NULL` to get all the autonomous communities. See
+  Character string. A vector of names, codes or both for Autonomous
+  Communities, or `NULL` to get all the Autonomous Communities. See
   **Details**.
 
 - moveCAN:
@@ -40,13 +40,13 @@ Copyright:
 
   `year`
 
-  :   year character string or number. Release year of the file. See
+  :   Year character string or number. Release year of the file. See
       [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
       for valid values.
 
   `epsg`
 
-  :   character string or number. Projection of the map: 4-digit [EPSG
+  :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
       - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -59,24 +59,24 @@ Copyright:
 
   `cache`
 
-  :   logical. Whether to do caching. Default is `TRUE`. See **Caching
+  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   logical. Should the cached file be refreshed? Default is `FALSE`.
+  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
       When set to `TRUE`, it will force a new download.
 
   `cache_dir`
 
-  :   character string. A path to a cache directory. See **Caching
+  :   Character string. A path to a cache directory. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `spatialtype`
 
-  :   character string. Type of geometry to be returned. Options
+  :   Character string. Type of geometry to be returned. Options
       available are:
 
       - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
@@ -85,7 +85,7 @@ Copyright:
 
   `ext`
 
-  :   character. Extension of the file (default `"gpkg"`). See
+  :   Character. Extension of the file (default `"gpkg"`). See
       [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
   `verbose`
@@ -125,11 +125,11 @@ will be added.
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
@@ -145,7 +145,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
@@ -162,7 +162,7 @@ ggplot(ccaa) +
   geom_sf()
 
 
-# Random CCAA
+# Random Autonomous Communities
 random_ccaa <- esp_get_ccaa(ccaa = c(
   "Euskadi",
   "Catalunya",
@@ -178,7 +178,7 @@ ggplot(random_ccaa) +
   coord_sf(crs = 3857)
 
 
-# All CCAA of a Zone plus an addition
+# All Autonomous Communities of a NUTS1 region plus an addition
 
 mixed <- esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 
@@ -193,7 +193,7 @@ library(giscoR)
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 
-res <- 20 # Set same resoluion
+res <- 20 # Set the same resolution
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)

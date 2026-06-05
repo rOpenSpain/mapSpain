@@ -1,9 +1,9 @@
-# Get static tiles from public administrations of Spain
+# Get static map tiles from public administrations of Spain
 
 Get static map tiles based on a spatial object. Maps can be fetched from
 various open map servers.
 
-This function is an implementation of the javascript plugin
+This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
@@ -34,8 +34,8 @@ esp_get_attributions(type, options = NULL)
 
 ## Source
 
-<https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-**v1.3.3**.
+<https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.3.3**.
 
 ## Arguments
 
@@ -58,20 +58,20 @@ esp_get_attributions(type, options = NULL)
 
 - zoom:
 
-  character string or number. Only valid for WMTS providers, zoom level
+  Character string or number. Only valid for WMTS providers, zoom level
   to be downloaded. If `NULL`, it is determined automatically. If set,
   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`,
   the function sets a zoom level of 18. See **Details**.
 
 - zoommin:
 
-  character string or number. Delta on default `zoom`. The default value
+  Character string or number. Delta on default `zoom`. The default value
   is designed to download fewer tiles than you probably want. Use `1` or
   `2` to increase the resolution.
 
 - crop:
 
-  logical. If `TRUE`, the results will be cropped to the specified `x`
+  Logical. If `TRUE`, the results will be cropped to the specified `x`
   extent. If `x` is an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
   one `POINT`, `crop` is set to `FALSE`. See
@@ -79,30 +79,30 @@ esp_get_attributions(type, options = NULL)
 
 - res:
 
-  character string or number. Only valid for WMS providers. Resolution
+  Character string or number. Only valid for WMS providers. Resolution
   (in pixels) of the final tile.
 
 - bbox_expand:
 
-  number. Expansion percentage of the bounding box of `x`.
+  Number. Expansion percentage of the bounding box of `x`.
 
 - transparent:
 
-  logical. Provides transparent background, if supported.
+  Logical. Provides transparent background, if supported.
 
 - mask:
 
-  logical. `TRUE` if the result should be masked to `x`. See
+  Logical. `TRUE` if the result should be masked to `x`. See
   [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -150,12 +150,11 @@ deformed, try projecting first `x`:
 ## See also
 
 [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md),
-`maptiles::get_tiles()`
+[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
 
 [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
 
-Other functions for creating maps with images:
+Functions for image-based maps and tile providers:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
@@ -189,23 +188,6 @@ tile2 <- esp_get_tiles(segovia, type = "MDT")
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
-
-
-# A custom WMS provided
-
-custom_wms <- esp_make_provider(
-  id = "an_id_for_caching",
-  q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
-  service = "WMS",
-  version = "1.3.0",
-  format = "image/png",
-  layers = "geolog_cyl_litologia"
-)
-
-custom_wms_tile <- esp_get_tiles(segovia, custom_wms)
-
-autoplot(custom_wms_tile, maxcell = Inf) +
-  geom_sf(data = segovia, fill = NA, color = "red", linewidth = 1)
 
 
 # A custom WMTS provider

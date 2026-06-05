@@ -1,8 +1,8 @@
-# Appendix: Codes and names of the Spanish regions
+# Appendix: codes and names of Spanish regions
 
 This appendix shows an interactive version of the
 [`mapSpain::esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-data frame. That dataset contains the Spanish region codes under
-different schemes and naming versions in several languages.
+data frame. The dataset contains Spanish region codes under different
+schemes and naming variants in several languages.
 
-## Names and codes of the Spanish regions
+## Names and codes of Spanish regions

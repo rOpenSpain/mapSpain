@@ -1,4 +1,4 @@
-# Municipalities of Spain - GISCO
+# Municipalities of Spain from GISCO
 
 This dataset shows boundaries of municipalities in Spain.
 
@@ -30,7 +30,7 @@ Copyright:
 
 - year:
 
-  year character string or number. Release year of the file. See
+  Year character string or number. Release year of the file. See
   [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html)
   and
   [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html)
@@ -38,7 +38,7 @@ Copyright:
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -56,12 +56,12 @@ Copyright:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -76,7 +76,7 @@ Copyright:
 
 - munic:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required municipalities. `NULL` will return all municipalities.
 
@@ -90,7 +90,7 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). See
+  Character. Extension of the file (default `"gpkg"`). See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
 ## Value
@@ -103,20 +103,20 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, CCAA or NUTS1), all the
-municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or NUTS1),
+all the municipalities of that level will be added.
 
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
 [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html),
 [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -132,11 +132,11 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Datasets representing municipalities:
+Municipality-level datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
@@ -149,7 +149,7 @@ Datasets provided by GISCO:
 # The Spanish Lapland:
 # https://en.wikipedia.org/wiki/Celtiberian_Range
 
-# Get munics
+# Get municipalities.
 spanish_laplad <- esp_get_munic(
   year = 2023,
   region = c(

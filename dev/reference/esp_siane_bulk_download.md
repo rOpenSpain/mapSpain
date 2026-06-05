@@ -37,20 +37,20 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - verbose:
@@ -64,7 +64,7 @@ extracted. See **Examples**.
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -80,7 +80,7 @@ Other datasets representing political borders:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
@@ -117,10 +117,10 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache dir is /tmp/Rtmpi7S7dz/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmpi7S7dz/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is /tmp/Rtmpi7S7dz/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmpi7S7dz/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpQyVhxg/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpQyVhxg/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpQyVhxg/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpQyVhxg/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # Message shows file is already cached :)
 

@@ -26,15 +26,15 @@ Spain for 2025.
 
 - pob25:
 
-  Total population (2025)
+  Total population (2025).
 
 - men:
 
-  Male population (2025)
+  Male population (2025).
 
 - women:
 
-  Female population (2025)
+  Female population (2025).
 
 ## Source
 
@@ -43,7 +43,7 @@ INE: Instituto Nacional de Estadistica
 
 ## See also
 
-Other datasets:
+Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)

@@ -1,4 +1,4 @@
-# Countries of the World - SIANE
+# Countries of the world - SIANE
 
 This dataset contains the administrative boundaries at country level of
 the world.
@@ -43,20 +43,20 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - year:
 
-  character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year, it must be in formats `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -69,18 +69,18 @@ Data distributed via a custom CDN, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -90,7 +90,7 @@ Data distributed via a custom CDN, see
 
 - country:
 
-  character vector of country codes. It can be either a vector of
+  Character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of ISO2
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
@@ -103,7 +103,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 [`giscoR::gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.html).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -119,7 +119,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),

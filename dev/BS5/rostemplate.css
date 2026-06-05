@@ -19,8 +19,7 @@
 	--brand-ros_light: #555555;
 	--brand-ros_gray: #ffffff;
 	--brand-ros_pre_bg: #444;
-}
-[data-bs-theme="dark"] {
+
 	.dropdown-menu {
 		--bs-dropdown-bg: #333;
 	}
@@ -40,6 +39,7 @@ caption {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1rem;
+	margin-bottom: 1rem;
 	font-size: 0.875rem;
 	width: 100%;
 }
@@ -456,7 +456,6 @@ code {
 	/* See https://github.com/r-lib/pkgdown/pull/2970 */
 
 	/* Need to override pkgdown */
-	li > div > .btn-copy-ex,
 	li > div > .btn-copy-ex {
 		right: 5px;
 	}
@@ -521,201 +520,88 @@ pre {
 	border-radius: 4px;
 }
 
-pre code
-
-/* Normal         */ {
+/* Normal */
+pre code {
 	color: #333;
 }
 
-pre code span.al
-
-/* Alert          */ {
+/* Alert, Error, Warning */
+pre code span.al,
+pre code span.er,
+pre code span.wa {
 	border: 1px solid #ff0000;
 }
 
-pre code span.an
-
-/* Annotation     */ {
+/* Annotation, Comment, CommentVar, Documentation, Information, RegionMarker */
+pre code span.an,
+pre code span.co,
+pre code span.cv,
+pre code span.do,
+pre code span.in,
+pre code span.re {
 	color: #008800;
 	font-style: italic;
 }
 
-pre code span.at
-
-/* Attribute      */ {
+/* Attribute, BuiltIn, ControlFlow, Char, DataType, Import, String, VerbatimString */
+pre code span.at,
+pre code span.bu,
+pre code span.cf,
+pre code span.ch,
+pre code span.dt,
+pre code span.im,
+pre code span.st,
+pre code span.vs {
 	color: #bb4444;
 }
 
-pre code span.bn
-
-/* BaseN          */ {
+/* BaseN, Constant */
+pre code span.bn,
+pre code span.cn {
 	color: #880000;
 }
 
-pre code span.bu
-
-/* BuiltIn        */ {
-	color: #bb4444;
-}
-
-pre code span.cf
-
-/* ControlFlow    */ {
-	color: #bb4444;
-}
-
-pre code span.ch
-
-/* Char           */ {
-	color: #bb4444;
-}
-
-pre code span.cn
-
-/* Constant       */ {
-	color: #880000;
-}
-
-pre code span.co
-
-/* Comment        */ {
-	color: #008800;
-	font-style: italic;
-}
-
-pre code span.cv
-
-/* CommentVar     */ {
-	color: #008800;
-	font-style: italic;
-}
-
-pre code span.do
-
-/* Documentation  */ {
-	color: #008800;
-	font-style: italic;
-}
-
-pre code span.dt
-
-/* DataType       */ {
-	color: #bb4444;
-}
-
-pre code span.dv
-
-/* DecVal         */ {
+/* DecVal, Float, Operator, SpecialChar */
+pre code span.dv,
+pre code span.fl,
+pre code span.op,
+pre code span.sc {
 	color: #666666;
 }
 
-pre code span.er
-
-/* Error          */ {
-	border: 1px solid #ff0000;
-}
-
-pre code span.ex
-
-/* Extension      */ {
+/* Extension */
+pre code span.ex {
 	color: #bb4444;
 	font-weight: bold;
 }
 
-pre code span.fl
-
-/* Float          */ {
-	color: #666666;
-}
-
-pre code span.fu
-
-/* Function       */ {
+/* Function */
+pre code span.fu {
 	color: #00a000;
 }
 
-pre code span.im
-
-/* Import         */ {
-	color: #bb4444;
-}
-
-pre code span.in
-
-/* Information    */ {
-	color: #008800;
-	font-style: italic;
-}
-
-pre code span.kw
-
-/* Keyword        */ {
+/* Keyword */
+pre code span.kw {
 	color: #aa22ff;
 	font-weight: bold;
 }
 
-pre code span.op
-
-/* Operator       */ {
-	color: #666666;
-}
-
-pre code span.ot
-
-/* Others         */ {
-	color: #008000;
-}
-
-pre code span.pp
-
-/* Preprocessor   */ {
+/* Preprocessor */
+pre code span.pp {
 	color: #008800;
 }
 
-pre code span.re
-
-/* RegionMarker   */ {
-	color: #008800;
-	font-style: italic;
-}
-
-pre code span.sc
-
-/* SpecialChar    */ {
-	color: #666666;
-}
-
-pre code span.ss
-
-/* SpecialString  */ {
+/* Others, SpecialString */
+pre code span.ot,
+pre code span.ss {
 	color: #008000;
 }
 
-pre code span.st
-
-/* String         */ {
-	color: #bb4444;
-}
-
-pre code span.va
-
-/* Variable       */ {
+/* Variable */
+pre code span.va {
 	color: #b8860b;
 }
 
-pre code span.vs
-
-/* VerbatimString */ {
-	color: #bb4444;
-}
-
-pre code span.wa
-
-/* Warning        */ {
-	border: 1px solid #ff0000;
-}
-
-/* Section: Syntax highlighter emacs dark */
 /* Section: Syntax highlighter emacs dark */
 [data-bs-theme="dark"] {
 	pre {
@@ -723,198 +609,86 @@ pre code span.wa
 		border: 1px solid #555;
 	}
 
-	pre code
-
-/* Normal         */ {
+	/* Normal */
+	pre code {
 		color: #b7b7b7;
 	}
 
-	pre code span.al
-
-/* Alert          */ {
+	/* Alert, Error, Warning */
+	pre code span.al,
+	pre code span.er,
+	pre code span.wa {
 		border: 1px solid #ff9696;
 	}
 
-	pre code span.an
-
-/* Annotation     */ {
+	/* Annotation, Comment, CommentVar, Documentation, Information, RegionMarker */
+	pre code span.an,
+	pre code span.co,
+	pre code span.cv,
+	pre code span.do,
+	pre code span.in,
+	pre code span.re {
 		color: #66c966;
 		font-style: italic;
 	}
 
-	pre code span.at
-
-/* Attribute      */ {
+	/* Attribute, BuiltIn, ControlFlow, Char, DataType, Import, String, VerbatimString */
+	pre code span.at,
+	pre code span.bu,
+	pre code span.cf,
+	pre code span.ch,
+	pre code span.dt,
+	pre code span.im,
+	pre code span.st,
+	pre code span.vs {
 		color: #ff9b9b;
 	}
 
-	pre code span.bn
-
-/* BaseN          */ {
+	/* BaseN, Constant */
+	pre code span.bn,
+	pre code span.cn {
 		color: #ff9c9c;
 	}
 
-	pre code span.bu
-
-/* BuiltIn        */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.cf
-
-/* ControlFlow    */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.ch
-
-/* Char           */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.cn
-
-/* Constant       */ {
-		color: #ff9c9c;
-	}
-
-	pre code span.co
-
-/* Comment        */ {
-		color: #66c966;
-		font-style: italic;
-	}
-
-	pre code span.cv
-
-/* CommentVar     */ {
-		color: #66c966;
-		font-style: italic;
-	}
-
-	pre code span.do
-
-/* Documentation  */ {
-		color: #66c966;
-		font-style: italic;
-	}
-
-	pre code span.dt
-
-/* DataType       */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.dv
-
-/* DecVal         */ {
+	/* DecVal, Float, Operator, SpecialChar */
+	pre code span.dv,
+	pre code span.fl,
+	pre code span.op,
+	pre code span.sc {
 		color: #b7b7b7;
 	}
 
-	pre code span.er
-
-/* Error          */ {
-		border: 1px solid #ff9696;
-	}
-
-	pre code span.ex
-
-/* Extension      */ {
+	/* Extension */
+	pre code span.ex {
 		color: #ff9b9b;
 		font-weight: bold;
 	}
 
-	pre code span.fl
-
-/* Float          */ {
-		color: #b7b7b7;
-	}
-
-	pre code span.fu
-
-/* Function       */ {
+	/* Function */
+	pre code span.fu {
 		color: #53cc53;
 	}
 
-	pre code span.im
-
-/* Import         */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.in
-
-/* Information    */ {
-		color: #66c966;
-		font-style: italic;
-	}
-
-	pre code span.kw
-
-/* Keyword        */ {
+	/* Keyword */
+	pre code span.kw {
 		color: #cea4ff;
 		font-weight: bold;
 	}
 
-	pre code span.op
-
-/* Operator       */ {
-		color: #b7b7b7;
-	}
-
-	pre code span.ot
-
-/* Others         */ {
-		color: #6bc86b;
-	}
-
-	pre code span.pp
-
-/* Preprocessor   */ {
+	/* Preprocessor */
+	pre code span.pp {
 		color: #66c966;
 	}
 
-	pre code span.re
-
-/* RegionMarker   */ {
-		color: #66c966;
-		font-style: italic;
-	}
-
-	pre code span.sc
-
-/* SpecialChar    */ {
-		color: #b7b7b7;
-	}
-
-	pre code span.ss
-
-/* SpecialString  */ {
+	/* Others, SpecialString */
+	pre code span.ot,
+	pre code span.ss {
 		color: #6bc86b;
 	}
 
-	pre code span.st
-
-/* String         */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.va
-
-/* Variable       */ {
+	/* Variable */
+	pre code span.va {
 		color: #e0ac52;
-	}
-
-	pre code span.vs
-
-/* VerbatimString */ {
-		color: #ff9b9b;
-	}
-
-	pre code span.wa
-
-/* Warning        */ {
-		border: 1px solid #ff9696;
 	}
 }
 
@@ -941,13 +715,16 @@ pre code span.wa
 		border-color: var(--brand-ros_black);
 	}
 
-	.rt-th {
-		border-bottom: 2px solid var(--brand-ros_black);
+	.rt-th,
+	.rt-td {
 		border-left-color: var(--brand-ros_black);
 	}
 
+	.rt-th {
+		border-bottom: 2px solid var(--brand-ros_black);
+	}
+
 	.rt-td {
-		border-left-color: var(--brand-ros_black);
 		border-top: 1px solid var(--brand-ros_black);
 	}
 
@@ -964,9 +741,11 @@ pre code span.wa
 	}
 
 	.rt-tr-highlight:hover,
-	.rt-tr-highlight-sticky:hover {
+	.rt-tr-highlight-sticky:hover,
+	.rt-page-button:hover {
 		background-color: var(--bs-gray-800);
 	}
+
 	.rt-td-filter {
 		border-bottom: 1px solid var(--brand-ros_black);
 	}
@@ -975,10 +754,6 @@ pre code span.wa
 		background-color: var(--brand-ros_black);
 		border: 1px solid var(--brand-ros_black);
 		color: inherit;
-	}
-
-	.rt-filter:focus {
-		border: 1px solid var(--brand-ros_black);
 	}
 
 	.rt-expander:after {
@@ -993,10 +768,6 @@ pre code span.wa
 	.rt-page-size-select {
 		background-color: var(--bs-body-bg);
 		border: 1px solid var(--brand-ros_black);
-	}
-
-	.rt-page-button:hover {
-		background-color: var(--bs-gray-800);
 	}
 
 	.rt-page-button:active {
@@ -1023,7 +794,8 @@ pre code span.wa
 	}
 
 	.rt-search:active,
-	.rt-search:focus {
+	.rt-search:focus,
+	.rt-filter:focus {
 		border: 1px solid var(--brand-ros_black);
 	}
 
@@ -1047,12 +819,9 @@ pre code span.wa
 
 .callout.callout-style-simple {
 	padding: 0.4em 0.7em;
-	border-left: 5px solid;
-	border-right: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
-	border-top: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
-	border-bottom: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
 }
 
+.callout.callout-style-simple,
 .callout.callout-style-default {
 	border-left: 5px solid;
 	border-right: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
@@ -1064,16 +833,15 @@ pre code span.wa
 	flex-grow: 1;
 }
 
-.callout.callout-style-simple .callout-body {
-	font-size: 0.9rem;
-	font-weight: 400;
-	margin-bottom: -0.4em;
-	margin-top: 0.5em;
-}
-
+.callout.callout-style-simple .callout-body,
 .callout.callout-style-default .callout-body {
 	font-size: 0.9rem;
 	font-weight: 400;
+}
+
+.callout.callout-style-simple .callout-body {
+	margin-bottom: -0.4em;
+	margin-top: 0.5em;
 }
 
 .callout:not(.no-icon).callout-titled.callout-style-simple .callout-body {
@@ -1087,25 +855,26 @@ pre code span.wa
 
 .callout.callout-empty-content > .callout-header {
 	margin-bottom: 0em;
-	border-bottom-right-radius: calc(0.25rem + -1px);
 }
 
+.callout.callout-empty-content > .callout-header,
 .callout > .callout-header.collapsed {
 	border-bottom-right-radius: calc(0.25rem + -1px);
 }
 
-.callout.callout-style-simple > div.callout-header {
+.callout.callout-style-simple > div.callout-header,
+.callout.callout-style-default > div.callout-header {
 	border-bottom: none;
 	font-size: 0.9rem;
 	font-weight: 600;
+}
+
+.callout.callout-style-simple > div.callout-header {
 	opacity: 75%;
 }
 
 .callout.callout-style-default > div.callout-header {
-	border-bottom: none;
-	font-weight: 600;
 	opacity: 85%;
-	font-size: 0.9rem;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	border-top-right-radius: calc(0.25rem + -1px);
@@ -1157,12 +926,18 @@ pre code span.wa
 }
 
 .callout.callout-style-simple .callout-icon::before,
-.callout.callout-style-simple .callout-toggle::before {
-	height: 1rem;
-	width: 1rem;
+.callout.callout-style-simple .callout-toggle::before,
+.callout.callout-style-default .callout-icon::before,
+.callout.callout-style-default .callout-toggle::before {
 	display: inline-block;
 	content: "";
 	background-repeat: no-repeat;
+}
+
+.callout.callout-style-simple .callout-icon::before,
+.callout.callout-style-simple .callout-toggle::before {
+	height: 1rem;
+	width: 1rem;
 	background-size: 1rem 1rem;
 }
 
@@ -1170,9 +945,6 @@ pre code span.wa
 .callout.callout-style-default .callout-toggle::before {
 	height: 0.9rem;
 	width: 0.9rem;
-	display: inline-block;
-	content: "";
-	background-repeat: no-repeat;
 	background-size: 0.9rem 0.9rem;
 }
 
@@ -1233,15 +1005,16 @@ div.callout-note.callout-style-default > .callout-header {
 	background-color: RGBA(var(--bs-info-rgb), 0.1);
 }
 
-div.callout-note:not(.callout-titled) .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(35.1, 115.2, 204.3)" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
-}
-
+div.callout-note:not(.callout-titled) .callout-icon::before,
 div.callout-note.callout-titled .callout-icon::before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(35.1, 115.2, 204.3)" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
 }
 
-div.callout-note .callout-toggle::before {
+div.callout-note .callout-toggle::before,
+div.callout-tip .callout-toggle::before,
+div.callout-warning .callout-toggle::before,
+div.callout-caution .callout-toggle::before,
+div.callout-important .callout-toggle::before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
 }
 
@@ -1253,56 +1026,29 @@ div.callout-tip.callout-style-default > .callout-header {
 	background-color: RGBA(var(--bs-success-rgb), 0.1);
 }
 
-div.callout-tip:not(.callout-titled) .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(56.7, 163.8, 21.6)" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
-}
-
+div.callout-tip:not(.callout-titled) .callout-icon::before,
 div.callout-tip.callout-titled .callout-icon::before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(56.7, 163.8, 21.6)" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
 }
 
-div.callout-tip .callout-toggle::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
-}
-
-div.callout-warning.callout {
-	border-left-color: var(--bs-warning);
-}
-
-div.callout-warning.callout-style-default > .callout-header {
-	background-color: RGBA(var(--bs-warning-rgb), 0.1);
-}
-
-div.callout-warning:not(.callout-titled) .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 105.3, 21.6)" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
-}
-
-div.callout-warning.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 105.3, 21.6)" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
-}
-
-div.callout-warning .callout-toggle::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
-}
-
+div.callout-warning.callout,
 div.callout-caution.callout {
 	border-left-color: var(--bs-warning);
 }
 
+div.callout-warning.callout-style-default > .callout-header,
 div.callout-caution.callout-style-default > .callout-header {
 	background-color: RGBA(var(--bs-warning-rgb), 0.1);
 }
 
-div.callout-caution:not(.callout-titled) .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(216, 155.7, 70.2)" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
+div.callout-warning:not(.callout-titled) .callout-icon::before,
+div.callout-warning.callout-titled .callout-icon::before {
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 105.3, 21.6)" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
 }
 
+div.callout-caution:not(.callout-titled) .callout-icon::before,
 div.callout-caution.callout-titled .callout-icon::before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(216, 155.7, 70.2)" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
-}
-
-div.callout-caution .callout-toggle::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
 }
 
 div.callout-important.callout {
@@ -1313,16 +1059,9 @@ div.callout-important.callout-style-default > .callout-header {
 	background-color: RGBA(var(--bs-danger-rgb), 0.1);
 }
 
-div.callout-important:not(.callout-titled) .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 0, 51.3)" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
-}
-
+div.callout-important:not(.callout-titled) .callout-icon::before,
 div.callout-important.callout-titled .callout-icon::before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 0, 51.3)" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
-}
-
-div.callout-important .callout-toggle::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
 }
 
 div.callout-body-container.callout-body pre {

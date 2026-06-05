@@ -1,8 +1,8 @@
-# Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache dir
+# Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache directory
 
 This function stores your `cache_dir` path on your local machine and
-loads it for future sessions. Type `Sys.getenv("MAPSPAIN_CACHE_DIR")` to
-find your cached path, or use `esp_detect_cache_dir()`.
+loads it for future sessions. Use `Sys.getenv("MAPSPAIN_CACHE_DIR")` or
+`esp_detect_cache_dir()` to find the cached path.
 
 ## Usage
 
@@ -27,12 +27,12 @@ esp_detect_cache_dir()
 
 - overwrite:
 
-  logical. If `TRUE`, overwrites an existing `MAPSPAIN_CACHE_DIR` on
+  Logical. If `TRUE`, overwrites an existing `MAPSPAIN_CACHE_DIR` on
   your local machine.
 
 - install:
 
-  logical. If `TRUE`, installs the key on your local machine for use in
+  Logical. If `TRUE`, installs the key on your local machine for use in
   future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`, this
   argument is automatically set to `FALSE`.
 
@@ -42,7 +42,7 @@ esp_detect_cache_dir()
 
 ## Value
 
-`esp_set_cache_dir()` returns an (invisible) character string with the
+`esp_set_cache_dir()` returns an invisible character string with the
 path to your `cache_dir`. It is primarily called for its side effect.
 
 `esp_detect_cache_dir()` returns the path to the `cache_dir` used in the
@@ -52,10 +52,9 @@ current session.
 
 By default, when no `cache_dir` is set, the package uses a folder inside
 [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (files are
-temporary and removed when the **R** session ends). To persist a cache
-across **R** sessions, use
-`esp_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
-path to a configuration file under
+temporary and removed when the R session ends). To persist a cache
+across R sessions, use `esp_set_cache_dir(cache_dir, install = TRUE)`,
+which writes the chosen path to a configuration file under
 `tools::R_user_dir("mapSpain", "config")`.
 
 ## Note
@@ -69,8 +68,8 @@ new location. A message appears once during this migration.
 
 ## Caching strategies
 
-Some files can be read from its online source without caching using the
-option `cache = FALSE`. Otherwise the source file will be downloaded to
+Some files can be read from their online source without caching using
+the option `cache = FALSE`. Otherwise the source files are downloaded to
 your computer. [mapSpain](https://CRAN.R-project.org/package=mapSpain)
 implements the following caching options:
 
@@ -82,8 +81,8 @@ implements the following caching options:
   `esp_set_cache_dir(cache_dir = "a/path/here")`.
 
 - For reproducible workflows, install a persistent cache with
-  `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
-  persists across **R** sessions.
+  `esp_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
+  persists across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function.
@@ -100,38 +99,39 @@ the API query and `esp_detect_cache_dir()` to identify your cache path.
 
 [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
 
-Other cache utilities:
+Cache management utilities:
 [`esp_clear_cache()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_clear_cache.md)
 
 ## Examples
 
 ``` r
-# Don't run this! It would modify your current state
+
+# Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/Rtmpi7S7dz/mapSpain
+#> ℹ /tmp/RtmpQyVhxg/mapSpain
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache dir is /tmp/Rtmpi7S7dz/example/cachenew.
+#> ℹ mapSpain cache directory is /tmp/RtmpQyVhxg/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 esp_detect_cache_dir()
-#> ℹ /tmp/Rtmpi7S7dz/example/cachenew
-#> [1] "/tmp/Rtmpi7S7dz/example/cachenew"
+#> ℹ /tmp/RtmpQyVhxg/example/cachenew
+#> [1] "/tmp/RtmpQyVhxg/example/cachenew"
 
-# Restore initial cache
+# Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache dir is /tmp/Rtmpi7S7dz/mapSpain.
+#> ℹ mapSpain cache directory is /tmp/RtmpQyVhxg/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/Rtmpi7S7dz/mapSpain
+#> ℹ /tmp/RtmpQyVhxg/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/Rtmpi7S7dz/mapSpain
-#> [1] "/tmp/Rtmpi7S7dz/mapSpain"
+#> ℹ /tmp/RtmpQyVhxg/mapSpain
+#> [1] "/tmp/RtmpQyVhxg/mapSpain"
 ```

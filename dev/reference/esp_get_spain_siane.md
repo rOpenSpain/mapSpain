@@ -32,7 +32,7 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
@@ -52,13 +52,13 @@ Data distributed via a custom CDN, see
 
   `year`
 
-  :   character string or number. Release year, it must be in formats
+  :   Character string or number. Release year, it must be in formats
       `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
       information starts as of 2005.
 
   `resolution`
 
-  :   character string or number. Resolution of the geospatial data. One
+  :   Character string or number. Resolution of the geospatial data. One
       of:
 
       - "10": 1:10 million.
@@ -69,7 +69,7 @@ Data distributed via a custom CDN, see
 
   `epsg`
 
-  :   character string or number. Projection of the map: 4-digit [EPSG
+  :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
       - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -82,18 +82,18 @@ Data distributed via a custom CDN, see
 
   `cache`
 
-  :   logical. Whether to do caching. Default is `TRUE`. See **Caching
+  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   logical. Should the cached file be refreshed? Default is `FALSE`.
+  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
       When set to `TRUE`, it will force a new download.
 
   `cache_dir`
 
-  :   character string. A path to a cache directory. See **Caching
+  :   Character string. A path to a cache directory. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -107,7 +107,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -123,7 +123,7 @@ Other datasets representing political borders:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),

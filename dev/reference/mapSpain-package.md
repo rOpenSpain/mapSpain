@@ -1,11 +1,11 @@
 # mapSpain: Administrative Boundaries of Spain
 
-Administrative Boundaries of Spain at several levels (Autonomous
-Communities, Provinces, Municipalities) based on the 'GISCO' 'Eurostat'
-database <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase SIANE'
-from 'Instituto Geografico Nacional' <https://www.ign.es/>. It also
-provides a 'leaflet' plugin and the ability of downloading and
-processing static tiles.
+Administrative boundaries of Spain at several levels (Autonomous
+Communities, provinces and municipalities), based on 'GISCO' from
+'Eurostat' <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase ANE'
+from 'Instituto Geográfico Nacional' <https://www.ign.es/>. It also
+provides a plugin for the 'leaflet' package and tools to download and
+process static map tiles.
 
 ## See also
 
@@ -21,6 +21,11 @@ Useful links:
 
 **Maintainer**: Diego Hernangómez <diego.hernangomezherrero@gmail.com>
 ([ORCID](https://orcid.org/0000-0001-8457-4658)) \[copyright holder\]
+
+Authors:
+
+- Diego Hernangómez <diego.hernangomezherrero@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-8457-4658)) \[copyright holder\]
 
 Other contributors:
 

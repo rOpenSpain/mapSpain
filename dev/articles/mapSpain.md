@@ -1,50 +1,52 @@
-# Get Started
+# Get started
 
 ## Introduction
 
-**Full site with more examples and vignettes on
-<https://ropenspain.github.io/mapSpain/>**
+> **Tip**
+>
+> For more examples and vignettes, see the full site at
+> <https://ropenspain.github.io/mapSpain/>.
 
-[**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package
-designed to provide geographical information about Spain at different
-levels.
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
+geographical information about Spain at different levels.
 
-**mapSpain** provides shapefiles of municipalities, provinces,
-autonomous communities, and NUTS levels of Spain. It also provides
-hexbin shapefiles and other complementary shapes, such as the
-demarcation lines around the Canary Islands.
+**mapSpain** provides `sf` objects for municipalities, provinces,
+Autonomous Communities and NUTS levels in Spain. It also provides hexbin
+maps and other complementary geometries, such as the demarcation lines
+around the Canary Islands.
 
 **mapSpain** provides access to map tiles from Spain’s public
-institutions, which can be represented on static maps via
+institutions. Tiles can be represented on static maps with
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-or on an **R** **Leaflet** map using
+or on an R [**leaflet**](https://rstudio.github.io/leaflet/) map using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
-Additionally, **mapSpain** includes a powerful dictionary that
-translates province and region names to English, Spanish, Catalan,
-Basque, and Galician, and converts them to various coding standards such
-as NUTS, ISO2, and the INE (the official Spanish statistical agency)
-coding system.
+**mapSpain** also includes a dictionary that translates province and
+region names to English, Spanish, Catalan, Basque and Galician, and
+converts them to various coding standards such as NUTS, ISO2 and the INE
+(the official Spanish statistical agency) coding system.
 
 ## Caching
 
-**mapSpain** provides dataset and tile caching capabilities, which can
-be set as:
+**mapSpain** provides dataset and tile caching. Set a cache directory
+with:
 
 ``` r
+
 esp_set_cache_dir("./path/to/location")
 ```
 
 **mapSpain** relies on [**giscoR**](https://ropengov.github.io/giscoR/)
-for downloading certain files, and both packages are well synchronized.
-Setting the same caching directory for both packages will speed up data
-loading in your session.
+for downloading some files, and both packages can share cache settings.
+Using the same cache directory for both packages speeds up data loading
+in your session.
 
 ## Basic example
 
-Some examples of what **mapSpain** can do:
+These examples show key **mapSpain** workflows:
 
 ``` r
+
 library(mapSpain)
 library(ggplot2)
 
@@ -67,12 +69,13 @@ ggplot(country) +
   )
 ```
 
-![Example: Map of Spain](./basic-1.png)
+![Example: map of Spain](./basic-1.png)
 
-Example: Map of Spain
+Example: map of Spain
 
 ``` r
-# Plot provinces
+
+# Plot provinces.
 
 andalucia <- esp_get_prov("Andalucia")
 
@@ -81,17 +84,18 @@ ggplot(andalucia) +
   theme_bw()
 ```
 
-![Example: Provinces of Andalucia](./basic2-1.png)
+![Example: provinces of Andalucia](./basic2-1.png)
 
-Example: Provinces of Andalucia
+Example: provinces of Andalucia
 
 ``` r
-# Plot municipalities
+
+# Plot municipalities.
 
 euskadi_ccaa <- esp_get_ccaa("Euskadi")
 euskadi <- esp_get_munic_siane(region = "Euskadi")
 
-# Use dictionary
+# Use the dictionary.
 
 euskadi$name_eu <- esp_dict_translate(euskadi$ine.prov.name, lang = "eu")
 
@@ -111,29 +115,30 @@ ggplot(euskadi_ccaa) +
   )
 ```
 
-![Example: Municipalities of the Basque Country](./basic3-1.png)
+![Example: municipalities of the Basque Country](./basic3-1.png)
 
-Example: Municipalities of the Basque Country
+Example: municipalities of the Basque Country
 
 ## Choropleth and label maps
 
-Let’s analyze the distribution of women in each autonomous community
-with **ggplot2**:
+Analyze the distribution of women in each Autonomous Community with
+**ggplot2**:
 
 ``` r
+
 library(dplyr)
 
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from base dataset
+# Extract Autonomous Community codes from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA
+  # Summarize by Autonomous Community.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -141,13 +146,13 @@ census_ccaa <- census |>
     porc_women_lab = paste0(round(100 * porc_women, 2), "%")
   )
 
-# Merge into spatial data
+# Merge into spatial data.
 ccaa_sf <- esp_get_ccaa() |>
   left_join(census_ccaa)
 
 can <- esp_get_can_box()
 
-# Plot with ggplot
+# Plot with ggplot.
 library(ggplot2)
 
 ggplot(ccaa_sf) +
@@ -171,28 +176,29 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Communities (2025)](./choro-1.png)
+![Percentage of women by Autonomous Community (2025)](./choro-1.png)
 
-Percentage of women by Autonomous Communities (2025)
+Percentage of women by Autonomous Community (2025)
 
 ## Thematic maps
 
 This example demonstrates how **mapSpain** can be used to create
-beautiful thematic maps. For plotting, we use the
+thematic maps. For plotting, we use the
 [**ggplot2**](https://ggplot2.tidyverse.org/) package, though any
-package that handles `sf` objects (e.g., **tmap**, **mapsf**,
-**leaflet**, etc.) could also be used.
+package that handles `sf` objects, such as **tmap**, **mapsf** or
+**leaflet**, could also be used.
 
 ``` r
-# Population density of Spain
+
+# Calculate population density in Spain.
 library(sf)
 
 pop <- mapSpain::pobmun25 |>
   select(-name)
 
 munic <- esp_get_munic_siane(rawcols = TRUE) |>
-  # Get area in km2 from siane munic
-  # Already on the shapefile
+  # Get area in km2 from SIANE municipalities.
+  # This variable is already available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
 munic_pop <- munic |>
@@ -234,14 +240,15 @@ Population density in Spain (2025)
 
 ## mapSpain and giscoR
 
-If you need to plot Spain alongside other countries, consider using the
+If you need to plot Spain alongside other countries, use the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is
-installed as a dependency with **mapSpain**. Here’s a basic example:
+installed as a dependency of **mapSpain**. Here is a basic example:
 
 ``` r
+
 library(giscoR)
 
-# Set the same resolution for a perfect fit
+# Set the same resolution for a perfect fit.
 res <- "20"
 
 all_countries <- gisco_get_countries(resolution = res) |>
@@ -259,7 +266,7 @@ ccaa <- esp_get_ccaa(
 ) |>
   st_transform(3035)
 
-# Plot
+# Plot.
 ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
@@ -285,19 +292,20 @@ mapSpain and giscoR example
 
 ## Working with tiles
 
-**mapSpain** provides a powerful interface for working with imagery. It
-can download static files as `.png` or `.jpeg` files (depending on the
-Web Map Service) and use them alongside your shapefiles.
+**mapSpain** provides an interface for working with imagery. It can
+download static images as `.png` or `.jpeg`, depending on the Web Map
+Service, and use them alongside your `sf` objects.
 
-**mapSpain** also includes a plugin for the **R**
-[Leaflet](https://rstudio.github.io/leaflet/) package, which allows you
-to include several basemaps on your interactive maps.
+**mapSpain** also includes a plugin for the
+[**leaflet**](https://rstudio.github.io/leaflet/) R package, which
+allows you to add several basemaps to interactive maps.
 
-The services are implemented via the
+The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-Leaflet plugin. You can view each provider option at that link.
+Leaflet plugin. All available providers are listed there.
 
-**Note:** When working with imagery, it is important to set
-`moveCAN = FALSE` in the `esp_get_*` functions. See **Displacing the
-Canary Islands** in
-[`help("esp_move_can", package = "mapSpain")`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).
+> **Note**
+>
+> When working with imagery, set `moveCAN = FALSE` in the `esp_get_*`
+> functions. See **Displacing the Canary Islands** in
+> [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).

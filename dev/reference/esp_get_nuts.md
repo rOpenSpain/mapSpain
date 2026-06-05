@@ -47,13 +47,13 @@ Copyright:
 
 - year:
 
-  year character string or number. Release year of the file. See
+  Year character string or number. Release year of the file. See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
   for valid values.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -66,18 +66,18 @@ Copyright:
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -101,7 +101,7 @@ Copyright:
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
+  Character string. Type of geometry to be returned. Options available
   are:
 
   - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
@@ -128,7 +128,7 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). See
+  Character. Extension of the file (default `"gpkg"`). See
   [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
 ## Value
@@ -141,7 +141,7 @@ The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
 smaller territorial units). NUTS 1 is the most aggregated level. An
-additional Country level (NUTS 0) is also available for countries where
+additional country level (NUTS 0) is also available for countries where
 the nation at statistical level does not coincide with the
 administrative boundaries.
 
@@ -151,20 +151,17 @@ classification has been defined for the EFTA countries, candidate
 countries and potential candidates based on a bilateral agreement
 between Eurostat and the respective statistical agencies.
 
-An introduction to the NUTS classification is available here:
-<https://ec.europa.eu/eurostat/web/nuts/overview>.
-
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
 [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html),
 [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -180,10 +177,10 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Other nuts:
+NUTS boundary datasets:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),

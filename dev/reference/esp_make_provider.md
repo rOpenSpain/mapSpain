@@ -19,7 +19,7 @@ esp_make_provider(id, q, service, layers, ...)
 
 - q:
 
-  The base url of the service.
+  The base URL of the service.
 
 - service:
 
@@ -31,8 +31,8 @@ esp_make_provider(id, q, service, layers, ...)
 
 - ...:
 
-  Additional arguments to the query, like `version`, `format`,
-  `crs/srs`, `style`, etc. depending on the capabilities of the service.
+  Additional arguments to the query, like `version`, `format`, `crs/srs`
+  and `style`, depending on the capabilities of the service.
 
 ## Value
 
@@ -58,7 +58,7 @@ Note that:
 For a list of potential providers from Spain check [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).
 
-Other functions for creating maps with images:
+Functions for image-based maps and tile providers:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 
@@ -66,17 +66,16 @@ Other functions for creating maps with images:
 
 ``` r
 # \dontrun{
-custom_wms <- esp_make_provider(
-  id = "an_id_for_caching",
-  q = "https://idecyl.jcyl.es/geoserver/ge/wms?",
-  service = "WMS",
-  version = "1.3.0",
-  layers = "geolog_cyl_litologia"
+custom_wmts <- esp_make_provider(
+  id = "example",
+  q = "https://www.ign.es/wmts/ign-base?",
+  service = "WMTS",
+  layer = "IGNBaseTodo"
 )
 
 x <- esp_get_ccaa("Castilla y León", epsg = 3857)
 
-mytile <- esp_get_tiles(x, type = custom_wms)
+mytile <- esp_get_tiles(x, type = custom_wmts)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)

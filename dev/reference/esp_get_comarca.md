@@ -1,10 +1,10 @@
-# 'Comarcas' of Spain
+# Comarcas of Spain
 
 Returns [Comarcas of
 Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-traditional informal territorial division, comprising several
+traditional informal territorial divisions, comprising several
 municipalities sharing geographical, economic or cultural traits,
-typically with not well defined limits.
+typically with poorly defined limits.
 
 ## Usage
 
@@ -30,12 +30,12 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - region:
 
-  character string. A vector of names and/or codes for provinces or
+  Character string. A vector of names, codes or both for provinces, or
   `NULL` to get all the comarcas. See **Details**.
 
 - comarca:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required comarcas. `NULL` will return all the possible
   comarcas.
@@ -50,12 +50,12 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - type:
 
-  character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
-  comarca to return, see **Details**.
+  Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
+  comarca to return. See **Details**.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -68,12 +68,12 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -91,7 +91,7 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (Province, Autonomous Community or NUTS1),
+When calling a higher level (province, Autonomous Community or NUTS1),
 all the comarcas of that level will be added.
 
 ## Note
@@ -104,15 +104,15 @@ arising from such use.
 
 ## About comarcas
 
-'Comarcas' (English equivalent: district, county, area or zone) does not
+Comarcas (English equivalent: district, county, area or zone) do not
 always have a formal legal status. They correspond mainly to natural
-areas (valleys, river basins, etc.) or even to historical regions or
+areas (valleys, river basins and similar areas), historical regions or
 ancient kingdoms.
 
 In the case of Spain, comarcas only have an administrative character
 legally recognized in Catalonia, the Basque Country, Navarra (named
 merindades instead), in the region of El Bierzo (Castilla y Leon) and
-Aragon. Galicia, the Principality of Asturias, and Andalusia have
+Aragon. Galicia, the Principality of Asturias and Andalusia have
 functional comarcas.
 
 ## Types
@@ -120,10 +120,9 @@ functional comarcas.
 `esp_get_comarca()` can retrieve several types of comarcas, each one
 provided under different classification criteria.
 
-- `"INE"`: Comarcas as defined by the National Statistics Institute
-  (INE).
+- `"INE"`: Comarcas defined by the National Statistics Institute (INE).
 
-- `"IGN"`: Official comarcas, only available on some Autonomous
+- `"IGN"`: Official comarcas, only available in some Autonomous
   Communities, provided by the National Geographic Institute.
 
 - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
@@ -132,14 +131,9 @@ provided under different classification criteria.
 - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
   Fisheries and Food (MAPA).
 
-## Note
-
-Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
-
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -175,7 +169,7 @@ ggplot(rec) +
   geom_sf(aes(fill = t_comarca))
 
 
-# Legal Comarcas of Catalunya
+# Legal comarcas of Catalunya
 
 comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
 

@@ -17,8 +17,8 @@ addProviderEspTiles(
 
 ## Source
 
-<https://dieghernan.github.io/leaflet-providersESP/> leaflet plugin,
-**v1.3.3**.
+<https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.3.3**.
 
 ## Arguments
 
@@ -28,7 +28,7 @@ addProviderEspTiles(
 
 - provider:
 
-  the name of the provider, see
+  The name of the provider, see
   [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
   or <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 
@@ -60,7 +60,7 @@ modified map object
 [`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
 [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
-Other functions for creating maps with images:
+Functions for image-based maps and tile providers:
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 

@@ -1,48 +1,46 @@
-# mapSpain: Mapas de España en R \[Spanish\]
+# mapSpain: maps of Spain in R
 
-## Bienvenidos a mapSpain
+## Welcome to mapSpain
 
-### Motivación
+### Motivation
 
-**mapSpain** facilita la creación de mapas de los diferentes niveles
-administrativos de España.
+**mapSpain** helps you create maps for the main administrative levels of
+Spain. It also supports imagery from WMS and WMTS services, either as
+georeferenced static rasters or as dynamic layers in Leaflet maps.
 
-Además, permite utilizar imágenes de servicios WMS/WMTS de forma
-estática (como imagen georreferenciada) o dinámica (en mapas Leaflet).
+The package also includes helpers to normalize Autonomous Community and
+province names. These helpers make it easier to join, clean and
+transform data, whether or not the data is spatial.
 
-Adicionalmente, **mapSpain** dispone de funciones que permiten
-normalizar nombres de las CCAA y provincias, lo que facilita el proceso
-de manipulación y transformación de datos (no necesariamente
-espaciales).
+The main data sources used by **mapSpain** are:
 
-Las **fuentes de información** empleadas en **mapSpain** son:
-
-- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), vía el
-  paquete [**giscoR**](https://ropengov.github.io/giscoR/).
-- [Instituto Geográfico Nacional](https://www.ign.es/) (IGN)
-- Distintos organismos públicos de España que proporcionan servicios de
-  teselas WMTS/WMS
+- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), through
+  the [**giscoR**](https://ropengov.github.io/giscoR/) package.
+- [Instituto Geográfico Nacional](https://www.ign.es/) (IGN).
+- Spanish public institutions that publish WMTS and WMS tile services
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Los objetos resultantes se proporcionan en formato `sf` (librería
-**sf**) o `SpatRaster` (librería **terra**).
+Functions return `sf` objects from the **sf** package or `SpatRaster`
+objects from the **terra** package.
 
-Página web: <https://ropenspain.github.io/mapSpain/>
+Package website: <https://ropenspain.github.io/mapSpain/>.
 
-### Instalación
+### Installation
 
 #### CRAN
 
 ``` r
+
 install.packages("mapSpain", dependencies = TRUE)
 ```
 
-#### Dev version
+#### Development version
 
-Usando el [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+Use [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
-# Enable this universe
+
+# Enable this universe.
 install.packages(
   "mapSpain",
   repos = c(
@@ -53,37 +51,40 @@ install.packages(
 )
 ```
 
-#### Con pak (desde GitHub)
+#### Installation with pak from GitHub
 
 ``` r
+
 install.packages("pak")
 pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 ```
 
-### Un ejemplo rápido
+### A quick example
 
 ``` r
+
 library(mapSpain)
 library(tidyverse)
 
 galicia <- esp_get_munic_siane(region = "Galicia") |>
-  # Homogeneizo etiquetas
+  # Standardize labels.
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
 ggplot(galicia) +
   geom_sf(aes(fill = Provincia), color = "grey70") +
-  labs(title = "Provincias de Galicia") +
+  labs(title = "Provinces of Galicia") +
   scale_fill_discrete(type = hcl.colors(4, "Blues")) +
   theme_bw()
 ```
 
 ![](mapasesp_files/figure-html/fig-intro-1.png)
 
-Gráfico 1: Mapa de los municipios de Galicia
+Figure 1: Municipalities of Galicia
 
-Si exploramos el dataset:
+You can also inspect the dataset interactively:
 
 ``` r
+
 library(reactable)
 
 reactable(
@@ -96,13 +97,14 @@ reactable(
 )
 ```
 
-### Comparando mapSpain con otras alternativas
+### Comparing mapSpain with other alternatives
 
-Comparamos ahora **mapSpain** con otro paquete que proporciona objetos
-`sf` o `SpatVector` de distintos paises:
+The next example compares **mapSpain** with other packages that provide
+`sf` or `SpatVector` objects for country boundaries.
 
 ``` r
-library(sf) # manipulación de datos espaciales
+
+library(sf) # Spatial data manipulation.
 
 # rnaturalearth
 library(rnaturalearth)
@@ -115,21 +117,25 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 
 # geodata (GADM)
 library(geodata)
-esp_geodata <- geodata::gadm("ES", path = ".", level = 0) |>
-  # Convertimos de SpatVector a objeto sf
+esp_geodata <- geodata::gadm("ES",
+  path = "./articles_temp", level = 0
+) |>
+  # Convert from SpatVector to an sf object.
   sf::st_as_sf() |>
   st_transform(3857)
 
 # geobounds
 library(geobounds)
-esp_geobounds <- geobounds::gb_get_adm0("ESP", cache_dir = ".") |>
+esp_geobounds <- geobounds::gb_get_adm0("ESP",
+  cache_dir = "./articles_temp"
+) |>
   st_transform(3857)
 
-# Imagen Ría Ferrol
+# Image of the Ferrol estuary.
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
-# Prepara el plot
+# Prepare the plot.
 library(tidyterra)
 
 esp_all <- bind_rows(esp_rnat, esp_mapspain, esp_geodata, esp_geobounds)
@@ -159,74 +165,66 @@ ggplot(esp_all) +
   scale_color_manual(values = c("red", "black", "blue", "orange")) +
   scale_linetype_manual(values = c("solid", "dotted", "dashed", "twodash")) +
   theme_void() +
-  labs(title = "Ría de Ferrol")
+  labs(title = "Ferrol estuary")
 ```
 
 ![](mapasesp_files/figure-html/fig-compara-1.png)
 
-Gráfico 2: Comparación de la resolución de diferentes fuentes de mapas;
-se muestran bordes de los datos comparados con ortofoto de la Ria de
-Ferrol
+Figure 2: Comparison of boundary resolution across map sources. The
+boundaries are shown over an orthophoto of the Ferrol estuary.
 
-- **rnaturalearth**: interpretación del contorno menos precisa.
-- **mapSpain**: resultados satisfactorios.
-- **GADM** (librería **geodata**): resultados muy precisos.
-- **geoBoundaries** (librería **geobounds**): resultados satisfactorios.
+- **rnaturalearth**: less precise boundary interpretation.
+- **mapSpain**: satisfactory results.
+- **GADM** (through **geodata**): very precise results.
+- **geoBoundaries** (through **geobounds**): satisfactory results.
 
-### Almacenamiento
+### Caching
 
-**mapSpain** es un paquete API que usa recursos web. El comportamiento
-por defecto consiste en descargar archivos al directorio temporal
-[`tempdir()`](https://rdrr.io/r/base/tempfile.html) para su uso
-posterior durante la sesión.
+**mapSpain** uses web resources. By default, downloaded files are stored
+in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) for reuse during
+the current session.
 
-La función
+Use
 [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
-permite modificar este comportamiento, estableciendo un directorio de
-descarga específico para el usuario. Para hacer esta configuración
-persistente se puede emplear el parámetro `install = TRUE`
+to choose a user-specific download directory. Add `install = TRUE` to
+make that cache configuration persistent across sessions.
 
 ``` r
+
 esp_set_cache_dir("~/R/mapslib/mapSpain", install = TRUE, verbose = TRUE)
 
-#> ℹ mapSpain cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain.
+#> ℹ mapSpain cache directory is C:/Users/XXXX/Documents/R/mapslib/mapSpain.
 
 munic <- esp_get_munic_siane(verbose = TRUE)
 
-#> ℹ Cache dir is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
+#> ℹ Cache directory is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
 #> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache dir is C:/Users/diego/Documents/R/mapslib/GISCO/siane.
+#> ℹ Cache directory is C:/Users/diego/Documents/R/mapslib/GISCO/siane.
 #> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_y.gpkg
 ```
 
-## Diccionario
+## Dictionary
 
-### Funciones para trabajar con strings
+### Functions for working with text
 
-**mapSpain** proporciona dos funciones relacionadas para trabajar con
-textos y códigos:
+**mapSpain** provides two related functions for working with names and
+codes:
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
-  convierte textos en códigos de CCAA y provincias. Esquemas de
-  codificación soportados:
-  - ISO2
-  - NUTS
-  - INE (codauto y cpro)
+  converts text labels into Autonomous Community and province codes.
+  Supported coding schemes are ISO2, NUTS and INE codes (`codauto` and
+  `cpro`).
 - [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
-  traduce textos a diferentes idiomas:
-  - Castellano
-  - Inglés
-  - Catalán
-  - Gallego
-  - Vasco
+  translates text into Spanish, English, Catalan, Galician or Basque.
 
-Estas funciones pueden ser de utilidad en ámbitos más amplios que
-necesiten homogeneizar códigos de CCAA y Provincias (Datos COVID ISCII,
-etc).
+These functions are also useful outside spatial workflows, for example
+when you need to standardize Autonomous Community and province codes in
+ISCIII COVID data.
 
 #### `esp_dict_region_code()`
 
 ``` r
+
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 esp_dict_region_code(vals, destination = "nuts")
@@ -236,7 +234,7 @@ esp_dict_region_code(vals, destination = "cpro")
 esp_dict_region_code(vals, destination = "iso2")
 #> [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"
 
-# Desde ISO a otros códigos
+# From ISO to other codes.
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")
@@ -247,7 +245,7 @@ iso2vals <- c("ES-GA", "ES-CT", "ES-PV")
 esp_dict_region_code(iso2vals, origin = "iso2", destination = "nuts")
 #> [1] "ES11" "ES51" "ES21"
 
-# Soporta diferentes niveles
+# Support mixed levels.
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
@@ -259,6 +257,7 @@ esp_dict_region_code(c("Murcia", "Las Palmas", "Aragón"), destination = "iso2")
 #### `esp_dict_translate()`
 
 ``` r
+
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")
 
 esp_dict_translate(vals, lang = "en")
@@ -279,26 +278,28 @@ esp_dict_translate(vals, lang = "ga")
 #> [5] "Ourense"        "Illas Baleares"
 ```
 
-## Límites políticos
+## Political boundaries
 
-**mapSpain** contiene un set de funciones que permiten obtener límites
-políticos a diferentes niveles:
+**mapSpain** includes functions to retrieve political boundaries at
+several levels:
 
-- Todo el país
-- [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat):
-  Clasificación estadística de Eurostat. Niveles 0 (país), 1, 2 (CCAA) y
-  3.
-- CCAA
-- Provincias
-- Municipios
+- Whole country.
+- [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat).
+  Eurostat statistical classification, with levels 0 (country), 1, 2
+  (Autonomous Communities) and 3.
+- Autonomous Communities.
+- Provinces.
+- Municipalities.
 
-Para CCAA, Provincias y Municipios hay dos versiones: `esp_get_xxxx()`
-(fuente: GISCO) y `esp_get_xxxx_siane()` (fuente: IGN).
+For Autonomous Communities, provinces and municipalities, there are two
+families of functions: `esp_get_xxxx()` for GISCO data and
+`esp_get_xxxx_siane()` for IGN data.
 
-La información se proporciona en diferentes proyecciones y niveles de
-resolución.
+The information is available in different projections and resolution
+levels.
 
 ``` r
+
 esp <- esp_get_spain_siane(moveCAN = FALSE)
 
 ggplot(esp) +
@@ -308,19 +309,21 @@ ggplot(esp) +
 
 ![](mapasesp_files/figure-html/fig-pais-1.png)
 
-Gráfico 3: Mapa de España
+Figure 3: Map of Spain
 
-### El caso Canarias
+### The Canary Islands case
 
-Por defecto, **mapSpain** “desplaza” Canarias para una mejor
-visualización en la mayoría de sus funciones. Este comportamiento se
-puede desactivar usando `moveCAN = FALSE`(ver anterior ejemplo).
+By default, most **mapSpain** functions move the Canary Islands closer
+to the mainland to improve visualization. Disable this behavior with
+`moveCAN = FALSE` when you need geometries in their original position.
 
-Proporcionamos funciones adicionales que permiten representar líneas
-alrededor de la inserción del mapa
-([ejemplos](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)).
+The package also provides helpers for drawing boxes around the inset
+map. See the
+[examples](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples)
+in the reference page.
 
 ``` r
+
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
 can_box <- esp_get_can_box()
@@ -333,27 +336,29 @@ ggplot(esp_can) +
 
 ![](mapasesp_files/figure-html/fig-can-1.png)
 
-Gráfico 4: Mapa de España con Canarias desplazadas
+Figure 4: Map of Spain with displaced Canary Islands
 
-**Cuando se trabaja con imágenes, mapas interactivos o se realizan
-análisis espaciales, debe usarse `moveCAN = FALSE`.**
+**Use `moveCAN = FALSE` when working with imagery, interactive maps or
+spatial analysis.**
 
 ### NUTS
 
 ``` r
+
 nuts1 <- esp_get_nuts(resolution = 20, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
   geom_sf() +
-  labs(title = "NUTS1: Baja Resolución")
+  labs(title = "NUTS1: low resolution")
 ```
 
 ![](mapasesp_files/figure-html/fig-nuts-1.png)
 
-Gráfico 5: NUTS 1 de España
+Figure 5: NUTS 1 regions of Spain
 
 ``` r
-# Baleares NUTS3
+
+# Balearic Islands NUTS3.
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
 #> [1] "Eivissa y Formentera, Mallorca, Menorca"
@@ -362,18 +367,19 @@ nuts3_sf <- esp_get_nuts(region = nuts3_baleares)
 
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = NAME_LATN)) +
-  labs(fill = "Baleares: NUTS3") +
+  labs(fill = "Balearic Islands: NUTS3") +
   scale_fill_viridis_d() +
   theme_minimal()
 ```
 
 ![](mapasesp_files/figure-html/fig-nuts3-1.png)
 
-Gráfico 6: NUTS3 de España
+Figure 6: NUTS 3 regions of Spain
 
-### CCAA
+### Autonomous Communities
 
 ``` r
+
 ccaa <- esp_get_ccaa(
   ccaa = c(
     "Catalunya",
@@ -388,21 +394,22 @@ ccaa <- ccaa |>
 
 ggplot(ccaa) +
   geom_sf(aes(fill = ccaa_cat)) +
-  labs(fill = "Comunitats autònomes") +
+  labs(fill = "Autonomous Communities") +
   theme_minimal() +
   scale_fill_discrete(type = hcl.colors(4, "Plasma"))
 ```
 
 ![](mapasesp_files/figure-html/fig-ccaa-1.png)
 
-Gráfico 7: Ejemplo: CCAA de España
+Figure 7: Autonomous Communities of Spain
 
-### Provincias (usando versión `*_siane`)
+### Provinces using the `*_siane` version
 
-Si pasamos una entidad de orden superior (e.g. Andalucia) obtenemos
-todas las provincias de esa entidad.
+Passing a higher-level entity, such as Andalusia, returns all provinces
+within that entity.
 
 ``` r
+
 provs <- esp_get_prov_siane(c(
   "Andalucía",
   "Ciudad Real",
@@ -415,18 +422,19 @@ ggplot(provs) +
   geom_sf(aes(fill = prov.shortname.es), alpha = 0.9) +
   scale_fill_discrete(type = hcl.colors(12, "Cividis")) +
   theme_minimal() +
-  labs(fill = "Provincias")
+  labs(fill = "Provinces")
 ```
 
 ![](mapasesp_files/figure-html/fig-prov-1.png)
 
-Gráfico 8: Extracción de varias provincias usando CCAA
+Figure 8: Extracting multiple provinces through Autonomous Communities
 
-### Municipios
+### Municipalities
 
 ``` r
+
 munic <- esp_get_munic(region = "Segovia") |>
-  # Datos de ejemplo: Población INE
+  # Example data: INE population.
   left_join(
     mapSpain::pobmun25 |>
       select(-name),
@@ -442,9 +450,9 @@ ggplot(munic) +
     guide = guide_legend()
   ) +
   labs(
-    fill = "Habitantes",
-    title = "Población en Segovia",
-    subtitle = "Datos INE (2025)"
+    fill = "Population",
+    title = "Population in Segovia",
+    subtitle = "INE data (2025)"
   ) +
   theme_void() +
   theme(
@@ -457,13 +465,15 @@ ggplot(munic) +
 
 ![](mapasesp_files/figure-html/fig-munic-1.png)
 
-Gráfico 9: Extracción de municipios
+Figure 9: Extracting municipalities
 
 ### Hexbin maps
 
-Disponibles como cuadrados y hexágonos, para provincias y CCAA.
+Hexbin maps are available as squares and hexagons for provinces and
+Autonomous Communities.
 
 ``` r
+
 cuad <- esp_get_hex_ccaa()
 hex <- esp_get_grid_prov()
 
@@ -481,32 +491,34 @@ ggplot(hex) +
 
 ![](mapasesp_files/figure-html/fig-hex-1.png)
 
-\(a\) Cuadrados
+\(a\) Squares
 
 ![](mapasesp_files/figure-html/fig-hex-2.png)
 
-\(b\) Hexágonos
+\(b\) Hexagons
 
-Gráfico 10: Hexbin maps con mapSpain
+Figure 10: Hexbin maps with mapSpain
 
-## Imágenes
+## Imagery
 
-**mapSpain** permite usar también imágenes de mapas (satélite, mapas
-base, carreteras, etc.) proporcionados por diferentes organísmos
-públicos (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
+**mapSpain** can also use map imagery, such as satellite imagery,
+basemaps and roads, provided by different public institutions
+(<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Las imágenes se pueden emplear para la creación de mapas estáticos
-(imágenes obtenidas como capas ráster de 3 o 4 bandas) o como fondo de
-mapas dinámicos, a través del paquete `leaflet`.
+These images can be used to create static maps, as 3- or 4-band raster
+layers, or as backgrounds for dynamic maps through the **leaflet**
+package.
 
-Los proveedores se han extraido del plugin para leaflet
-[leaflet-providerESP](https://dieghernan.github.io/leaflet-providersESP/).
+The providers are taken from the **leaflet**
+[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
+plugin.
 
-### Creación de mapas estáticos
+### Creating static maps
 
-Tenemos varias opciones que podemos emplear para componer mapas base:
+Several options are available for composing basemaps:
 
 ``` r
+
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
 base_pnoa <- esp_get_tiles(madrid_munis, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
@@ -522,10 +534,10 @@ ggplot() +
     linewidth = 0.5
   ) +
   theme_minimal() +
-  labs(title = "Municipios en Madrid")
+  labs(title = "Municipalities in Madrid")
 
 
-# Usando la opción mask
+# Use the `mask` option.
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
 madrid_mask <- esp_get_tiles(
@@ -540,28 +552,30 @@ ggplot() +
   geom_spatraster_rgb(data = madrid_mask) +
   theme_void() +
   labs(
-    title = "Mapa Base de Madrid",
+    title = "Basemap of Madrid",
     caption = "CC BY 4.0 www.iderioja.org"
   )
 ```
 
 ![](mapasesp_files/figure-html/fig-imagesestaticos-1.png)
 
-Gráfico 11: Ejemplo de extracción de mapas base
+Figure 11: Basemap extraction
 
 ![](mapasesp_files/figure-html/fig-imagesestaticos-2.png)
 
-Gráfico 12: Mapa base con máscara
+Figure 12: Basemap with a mask
 
-### Mapas dinámicos usando mapSpain
+### Dynamic maps with mapSpain
 
-Estas capas se pueden usar también como fondo en mapas estáticos
+Imagery layers can be used as backgrounds in static and interactive
+maps.
 
 ``` r
+
 stations <- esp_get_railway(spatialtype = "point", epsg = 4326)
 
 library(leaflet)
-# Creamos icono
+# Create an icon.
 
 iconurl <- "https://ropenspain.github.io/mapSpain/icons/train.png"
 
@@ -570,14 +584,14 @@ train_icon <- makeIcon(iconurl, iconurl, 18, 18)
 leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addProviderEspTiles("IDErioja.Claro", group = "Base") |>
   addProviderEspTiles("MTN", group = "MTN") |>
-  addProviderEspTiles("RedTransporte.Carreteras", group = "Carreteras") |>
+  addProviderEspTiles("RedTransporte.Carreteras", group = "Roads") |>
   addProviderEspTiles(
     "RedTransporte.Ferroviario",
-    group = "Lineas Ferroviarias"
+    group = "Railway lines"
   ) |>
   addMarkers(
     icon = train_icon,
-    group = "Estaciones",
+    group = "Stations",
     popup = sprintf(
       "<strong>%s</strong>",
       stations$rotulo
@@ -586,17 +600,17 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   ) |>
   addLayersControl(
     baseGroups = c("Base", "MTN"),
-    overlayGroups = c("Estaciones", "Lineas Ferroviarias", "Carreteras"),
+    overlayGroups = c("Stations", "Railway lines", "Roads"),
     options = layersControlOptions(collapsed = FALSE)
   ) |>
-  hideGroup(c("Lineas Ferroviarias", "Carreteras"))
+  hideGroup(c("Railway lines", "Roads"))
 ```
 
-## Otros recursos
+## Other resources
 
-**mapSpain** incluye otras [funciones
-adicionales](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
-que permiten extraer información sobre altitud, rios y cuencas
-hidrográficas de España, así líneas y puntos de
-[infraestructuras](https://ropenspain.github.io/mapSpain/reference/index.html#section-infrastructures)
-de España, como carreteras y líneas ferroviarias.
+**mapSpain** includes additional
+[functions](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
+for retrieving elevation, rivers and river basin data for Spain, as well
+as Spanish [transport
+infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
+lines and points, such as roads and railway lines.

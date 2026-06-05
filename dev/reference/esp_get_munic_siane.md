@@ -1,4 +1,4 @@
-# Municipalities of Spain - SIANE
+# Municipalities of Spain from SIANE
 
 This dataset shows boundaries of municipalities in Spain.
 
@@ -43,20 +43,20 @@ formulas:
 
 - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
 
-Data distributed via a custom CDN, see
+Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 ## Arguments
 
 - year:
 
-  character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year, it must be in formats `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
+  Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
   - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -69,18 +69,18 @@ Data distributed via a custom CDN, see
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  Logical. Whether to do caching. Default is `TRUE`. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  Logical. Should the cached file be refreshed? Default is `FALSE`. When
   set to `TRUE`, it will force a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  Character string. A path to a cache directory. See **Caching
   strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
@@ -90,7 +90,7 @@ Data distributed via a custom CDN, see
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  Character string or number. Resolution of the geospatial data. One of:
 
   - "10": 1:10 million.
 
@@ -105,7 +105,7 @@ Data distributed via a custom CDN, see
 
 - munic:
 
-  character string. A name or
+  Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
   of the required municipalities. `NULL` will return all municipalities.
 
@@ -119,7 +119,7 @@ Data distributed via a custom CDN, see
 
 - rawcols:
 
-  logical. Setting this to `TRUE` will add the raw columns of the
+  Logical. Setting this to `TRUE` will add the raw columns of the
   resulting object as provided by IGN.
 
 ## Value
@@ -132,8 +132,8 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, CCAA or NUTS1), all the
-municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or NUTS1),
+all the municipalities of that level will be added.
 
 ## Note
 
@@ -151,7 +151,7 @@ GIS‑oriented workflows:
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -167,7 +167,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
@@ -175,7 +175,7 @@ Political borders from CartoBase ANE:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Datasets representing municipalities:
+Municipality-level datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
 
@@ -183,12 +183,12 @@ Datasets representing municipalities:
 
 ``` r
 # \donttest{
-# Municipalities that have changed in the past: three cuts
+# Municipalities that have changed in the past: three snapshots.
 munis2005 <- esp_get_munic_siane(year = 2005, rawcols = TRUE)
 munis2015 <- esp_get_munic_siane(year = 2015, rawcols = TRUE)
 munis2024 <- esp_get_munic_siane(year = 2024, rawcols = TRUE)
 
-# manipulate
+# Manipulate data.
 library(dplyr)
 #> 
 #> Attaching package: ‘dplyr’

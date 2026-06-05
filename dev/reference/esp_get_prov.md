@@ -1,4 +1,4 @@
-# Provinces of Spain - GISCO
+# Provinces of Spain from GISCO
 
 Returns [provinces of
 Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
@@ -21,8 +21,8 @@ Copyright:
 
 - prov:
 
-  A vector of names and/or codes for provinces or `NULL` to get all the
-  provinces. See **Details**.
+  A vector of names, codes or both for provinces, or `NULL` to get all
+  the provinces. See **Details**.
 
 - moveCAN:
 
@@ -35,18 +35,17 @@ Copyright:
 - ...:
 
   Arguments passed on to
-  [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
   [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
 
   `year`
 
-  :   year character string or number. Release year of the file. See
+  :   Year character string or number. Release year of the file. See
       [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
       for valid values.
 
   `epsg`
 
-  :   character string or number. Projection of the map: 4-digit [EPSG
+  :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
       - `"4258"`: [ETRS89](https://epsg.io/4258)
@@ -59,24 +58,24 @@ Copyright:
 
   `cache`
 
-  :   logical. Whether to do caching. Default is `TRUE`. See **Caching
+  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   logical. Should the cached file be refreshed? Default is `FALSE`.
+  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
       When set to `TRUE`, it will force a new download.
 
   `cache_dir`
 
-  :   character string. A path to a cache directory. See **Caching
+  :   Character string. A path to a cache directory. See **Caching
       strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `spatialtype`
 
-  :   character string. Type of geometry to be returned. Options
+  :   Character string. Type of geometry to be returned. Options
       available are:
 
       - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
@@ -85,7 +84,7 @@ Copyright:
 
   `ext`
 
-  :   character. Extension of the file (default `"gpkg"`). See
+  :   Character. Extension of the file (default `"gpkg"`). See
       [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html).
 
   `verbose`
@@ -125,11 +124,11 @@ provinces of that level will be added.
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
@@ -145,7 +144,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
@@ -164,7 +163,7 @@ ggplot(prov) +
 
 
 # \donttest{
-# Random Provinces
+# Random provinces.
 random <- esp_get_prov(prov = c(
   "Zamora", "Palencia", "ES-GR",
   "ES521", "01"
@@ -176,7 +175,7 @@ ggplot(random) +
   theme_minimal()
 
 
-# All Provinces of a Zone plus an addition
+# All provinces of a zone plus one addition.
 mix <- esp_get_prov(prov = c(
   "Noroeste",
   "Castilla y Leon", "La Rioja"
@@ -193,7 +192,7 @@ ggplot(mix) +
   theme_classic()
 
 
-# ISO codes available
+# Available ISO codes.
 
 allprovs <- esp_get_prov()
 
