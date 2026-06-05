@@ -21,13 +21,6 @@ knitr:
     out.width: "100%"
 ---
 
-```{r}
-#| label: setup-cache
-#| include: false
-.mapspain_cache_dir <- mapSpain::esp_detect_cache_dir()
-mapSpain::esp_set_cache_dir("./articles_temp", verbose = FALSE)
-```
-
 ## Welcome to mapSpain
 
 ### Motivation
@@ -149,7 +142,7 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 # geodata (GADM)
 library(geodata)
 esp_geodata <- geodata::gadm("ES",
-  path = "./articles_temp", level = 0
+  path = ".", level = 0
 ) |>
   # Convert from SpatVector to an sf object.
   sf::st_as_sf() |>
@@ -158,7 +151,7 @@ esp_geodata <- geodata::gadm("ES",
 # geobounds
 library(geobounds)
 esp_geobounds <- geobounds::gb_get_adm0("ESP",
-  cache_dir = "./articles_temp"
+  cache_dir = "."
 ) |>
   st_transform(3857)
 
@@ -582,9 +575,3 @@ for retrieving elevation, rivers and river basin data for Spain, as well as
 Spanish [transport
 infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
 lines and points, such as roads and railway lines.
-
-```{r}
-#| label: restore-cache
-#| include: false
-mapSpain::esp_set_cache_dir(.mapspain_cache_dir, verbose = FALSE)
-```

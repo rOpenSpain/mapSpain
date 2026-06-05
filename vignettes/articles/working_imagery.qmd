@@ -16,13 +16,6 @@ knitr:
     out.width: "100%"
 ---
 
-```{r}
-#| label: setup-cache
-#| include: false
-.mapspain_cache_dir <- mapSpain::esp_detect_cache_dir()
-mapSpain::esp_set_cache_dir("./articles_temp", verbose = FALSE)
-```
-
 **mapSpain** provides an interface for working with imagery. It can download
 static files as `.png` or `.jpeg`, depending on the Web Map Service, and use
 them alongside your `sf` objects.
@@ -355,10 +348,4 @@ reactable(
   paginationType = "jump",
   elementId = "leaflet-prov-summ"
 )
-```
-
-```{r}
-#| label: restore-cache
-#| include: false
-mapSpain::esp_set_cache_dir(.mapspain_cache_dir, verbose = FALSE)
 ```
