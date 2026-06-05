@@ -118,7 +118,7 @@ esp_mapspain <- esp_get_spain(epsg = 4326) |>
 # geodata (GADM)
 library(geodata)
 esp_geodata <- geodata::gadm("ES",
-  path = "./articles_temp", level = 0
+  path = ".", level = 0
 ) |>
   # Convert from SpatVector to an sf object.
   sf::st_as_sf() |>
@@ -127,7 +127,7 @@ esp_geodata <- geodata::gadm("ES",
 # geobounds
 library(geobounds)
 esp_geobounds <- geobounds::gb_get_adm0("ESP",
-  cache_dir = "./articles_temp"
+  cache_dir = "."
 ) |>
   st_transform(3857)
 
