@@ -264,7 +264,7 @@ a dependency of **mapSpain**. Here is a basic example:
 library(giscoR)
 
 # Set the same resolution for a perfect fit.
-res <- "20"
+res <- 3
 
 all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
