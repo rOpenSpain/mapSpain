@@ -452,7 +452,7 @@ Figure 5: NUTS 1 regions of Spain
 <span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="../reference/esp_dict.html">esp_dict_region_code</a></span><span class="op">(</span><span class="va">nuts3_baleares</span>, <span class="st">"nuts"</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Eivissa y Formentera, Mallorca, Menorca"</span></span>
 <span></span>
-<span><span class="va">nuts3_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_nuts.html">esp_get_nuts</a></span><span class="op">(</span>region <span class="op">=</span> <span class="va">nuts3_baleares</span><span class="op">)</span></span>
+<span><span class="va">nuts3_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_nuts.html">esp_get_nuts</a></span><span class="op">(</span>region <span class="op">=</span> <span class="va">nuts3_baleares</span>, resolution <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">nuts3_sf</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">NAME_LATN</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -480,7 +480,8 @@ Figure 6: NUTS 3 regions of Spain
 <span>    <span class="st">"Comunidad Valenciana"</span>,</span>
 <span>    <span class="st">"Aragón"</span>,</span>
 <span>    <span class="st">"Baleares"</span></span>
-<span>  <span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  resolution <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ccaa</span> <span class="op">&lt;-</span> <span class="va">ccaa</span> <span class="op">|&gt;</span></span>
@@ -535,7 +536,7 @@ Figure 8: Extracting multiple provinces through Autonomous Communities
 </h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">munic</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic.html">esp_get_munic</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Segovia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="va">munic</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Segovia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Example data: INE population.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
 <span>    <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>

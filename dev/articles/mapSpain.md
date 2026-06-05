@@ -77,7 +77,7 @@ Example: map of Spain
 
 # Plot provinces.
 
-andalucia <- esp_get_prov("Andalucia")
+andalucia <- esp_get_prov_siane("Andalucia")
 
 ggplot(andalucia) +
   geom_sf(fill = "darkgreen", color = "white") +
@@ -92,7 +92,7 @@ Example: provinces of Andalucia
 
 # Plot municipalities.
 
-euskadi_ccaa <- esp_get_ccaa("Euskadi")
+euskadi_ccaa <- esp_get_ccaa_siane("Euskadi")
 euskadi <- esp_get_munic_siane(region = "Euskadi")
 
 # Use the dictionary.

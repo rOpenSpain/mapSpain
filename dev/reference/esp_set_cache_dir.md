@@ -109,29 +109,29 @@ Cache management utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpQyVhxg/mapSpain
+#> ℹ /tmp/Rtmp5L2kCC/mapSpain
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache directory is /tmp/RtmpQyVhxg/example/cachenew.
+#> ℹ mapSpain cache directory is /tmp/Rtmp5L2kCC/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpQyVhxg/example/cachenew
-#> [1] "/tmp/RtmpQyVhxg/example/cachenew"
+#> ℹ /tmp/Rtmp5L2kCC/example/cachenew
+#> [1] "/tmp/Rtmp5L2kCC/example/cachenew"
 
 # Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/RtmpQyVhxg/mapSpain.
+#> ℹ mapSpain cache directory is /tmp/Rtmp5L2kCC/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpQyVhxg/mapSpain
+#> ℹ /tmp/Rtmp5L2kCC/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpQyVhxg/mapSpain
-#> [1] "/tmp/RtmpQyVhxg/mapSpain"
+#> ℹ /tmp/Rtmp5L2kCC/mapSpain
+#> [1] "/tmp/Rtmp5L2kCC/mapSpain"
 ```

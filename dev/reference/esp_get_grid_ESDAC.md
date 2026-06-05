@@ -66,10 +66,6 @@ Geographical grid datasets:
 ``` r
 # \dontrun{
 grid <- esp_get_grid_ESDAC()
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Timeout was reached [esdac.jrc.ec.europa.eu]:
-#> Failed to connect to esdac.jrc.ec.europa.eu port 443 after 134852 ms: Couldn't connect to server
 esp <- esp_get_spain(moveCAN = FALSE)
 
 library(ggplot2)
@@ -79,7 +75,6 @@ ggplot(grid) +
   geom_sf(data = esp, color = "grey50", fill = NA) +
   theme_light() +
   labs(title = "ESDAC Grid for Spain")
-#> Error in ggplot(grid): `data` cannot be a function.
-#> ℹ Have you misspelled the `data` argument in `ggplot()`?
+
 # }
 ```

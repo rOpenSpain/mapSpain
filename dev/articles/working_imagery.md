@@ -54,7 +54,7 @@ which controls layer transparency:
 
 ``` r
 
-galicia <- esp_get_ccaa("Galicia", epsg = 3857)
+galicia <- esp_get_ccaa_siane("Galicia", epsg = 3857)
 
 # Example without transparency.
 basemap <- esp_get_tiles(
@@ -117,7 +117,7 @@ maps:
 
 ``` r
 
-rioja <- esp_get_prov("La Rioja", epsg = 3857)
+rioja <- esp_get_prov_siane("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
@@ -196,6 +196,7 @@ library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
   region = "Tenerife",
+  resolution = 20,
   epsg = 4326,
   moveCAN = FALSE
 )
