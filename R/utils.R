@@ -35,7 +35,7 @@ make_msg <- function(type = "generic", verbose, ...) {
 #' @param arg The argument to match.
 #' @param choices The possible choices for the argument.
 #'
-#' @returns
+#' @return
 #' The matched argument.
 #'
 #' @noRd
@@ -61,42 +61,26 @@ match_arg_pretty <- function(arg, choices) {
     return(arg[1])
   }
 
-  lmatch <- match(arg, choices)
-  # Check for an approximate match to suggest in the error message.
-  aproxmatch <- pmatch(arg, choices)[1]
-
-  if (length(arg) > 1 || is.na(lmatch)) {
-    # Create error message
-    if (length(choices) == 1) {
-      msg <- paste0("{.str ", choices, "}")
-    } else {
-      l_choices <- length(choices)
-      msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
-      msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add one of at the beginning
-      msg <- paste0("one of ", msg)
-    }
-
-    msg <- paste0(msg, ", not ")
-    bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
-    msg <- paste0(msg, bad_arg, ".")
-
-    # Maybe is a regex?
-    reg_msg <- NULL
-    if (!is.na(aproxmatch)) {
-      aprox <- choices[aproxmatch]
-      aprox_val <- paste0("{.str ", aprox, "}", collapse = " or ")
-      reg_msg <- paste0("Did you mean ", aprox_val, "?")
-    }
-
-    cli::cli_abort(
-      c(paste0("{.arg {arg_name}} should be ", msg), "i" = reg_msg),
-      call = NULL
-    )
+  if (length(arg) == 1 && arg %in% choices) {
+    return(arg)
   }
 
-  choices[lmatch]
+  msg <- paste0(
+    "{.arg {arg_name}} must be {.or {.str {choices}}}, not ",
+    "{.or {.str {arg}}}."
+  )
+
+  hint <- NULL
+  if (length(arg) == 1) {
+    partial_match <- pmatch(arg, choices)[1]
+    if (!is.na(partial_match)) {
+      hint <- paste0("Did you mean {.str ", choices[partial_match], "}?")
+    }
+  }
+
+  cli::cli_abort(c(msg, i = hint), call = NULL)
 }
+
 
 #' Row-bind data frames filling missing columns with `NA`
 #'

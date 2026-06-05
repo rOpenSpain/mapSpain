@@ -75,7 +75,7 @@ controls layer transparency:
 ```{r}
 #| label: fig-static2
 #| fig-cap: Map of the Way of St. James in Galicia
-galicia <- esp_get_ccaa("Galicia", epsg = 3857)
+galicia <- esp_get_ccaa_siane("Galicia", epsg = 3857)
 
 # Example without transparency.
 basemap <- esp_get_tiles(
@@ -131,7 +131,7 @@ Another useful feature is tile masking, which supports more advanced maps:
 ```{r}
 #| label: fig-static3
 #| fig-cap: Example of combining tile types by masking to an sf object.
-rioja <- esp_get_prov("La Rioja", epsg = 3857)
+rioja <- esp_get_prov_siane("La Rioja", epsg = 3857)
 
 basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
 
@@ -199,6 +199,7 @@ library(leaflet)
 
 tenerife_leaf <- esp_get_nuts(
   region = "Tenerife",
+  resolution = 20,
   epsg = 4326,
   moveCAN = FALSE
 )

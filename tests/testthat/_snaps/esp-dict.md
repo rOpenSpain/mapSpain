@@ -4,7 +4,7 @@
       esp_dict_region_code(vals, "aa")
     Condition
       Error:
-      ! `origin` should be one of "text", "nuts", "iso2", "codauto" or "cpro", not "aa".
+      ! `origin` must be "text", "nuts", "iso2", "codauto", or "cpro", not "aa".
 
 ---
 
@@ -12,7 +12,7 @@
       esp_dict_region_code(vals, destination = "aa")
     Condition
       Error:
-      ! `destination` should be one of "text", "nuts", "iso2", "codauto" or "cpro", not "aa".
+      ! `destination` must be "text", "nuts", "iso2", "codauto", or "cpro", not "aa".
 
 ---
 
@@ -98,7 +98,7 @@
       esp_dict_translate(vals, "xx")
     Condition
       Error:
-      ! `lang` should be one of "es", "en", "ca", "ga" or "eu", not "xx".
+      ! `lang` must be "es", "en", "ca", "ga", or "eu", not "xx".
 
 ---
 

@@ -355,7 +355,7 @@ ggplot(nuts1) +
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
 
-nuts3_sf <- esp_get_nuts(region = nuts3_baleares)
+nuts3_sf <- esp_get_nuts(region = nuts3_baleares, resolution = 20)
 
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = NAME_LATN)) +
@@ -375,7 +375,8 @@ ccaa <- esp_get_ccaa(
     "Comunidad Valenciana",
     "Aragón",
     "Baleares"
-  )
+  ),
+  resolution = 20
 )
 
 ccaa <- ccaa |>
@@ -416,7 +417,7 @@ ggplot(provs) +
 ```{r}
 #| label: fig-munic
 #| fig-cap: "Extracting municipalities"
-munic <- esp_get_munic(region = "Segovia") |>
+munic <- esp_get_munic_siane(region = "Segovia") |>
   # Example data: INE population.
   left_join(
     mapSpain::pobmun25 |>
