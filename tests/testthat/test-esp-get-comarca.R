@@ -72,7 +72,7 @@ test_that("comarcas online", {
   n <- a$nuts1.name
 
   s <- esp_get_comarca(region = n, cache_dir = cdir)
-  expect_equal(length(unique(s$cpro)), 52)
+  expect_length(unique(s$cpro), 52)
 
   # Types
   n <- esp_get_comarca(comarca = "Ebro", cache_dir = cdir)

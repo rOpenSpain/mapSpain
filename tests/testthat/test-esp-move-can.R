@@ -106,7 +106,7 @@ test_that("Empty", {
 
   # sfc
   teide_null_sfc <- sf::st_geometry(teide_null)
-  expect_equal(length(teide_null_sfc), 0)
+  expect_length(teide_null_sfc, 0)
   expect_identical(teide_null_sfc, esp_move_can(teide_null_sfc, moveCAN = TRUE))
 })
 

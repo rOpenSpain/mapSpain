@@ -112,12 +112,12 @@ test_that("Colorize", {
   )
 
   expect_equal(terra::nlyr(r_orig), 1)
-  expect_equal(terra::has.colors(r_orig), TRUE)
+  expect_true(terra::has.colors(r_orig))
   expect_false(terra::has.RGB(r_orig))
 
   # But ours
   expect_s4_class(res, "SpatRaster")
-  expect_identical(names(res), c("red", "green", "blue", "alpha"))
+  expect_named(res, c("red", "green", "blue", "alpha"))
   expect_true(terra::has.RGB(res))
   expect_false(any(terra::has.colors(res)))
 
@@ -254,7 +254,7 @@ test_that("Transparency", {
 
   expect_identical(dim(res), c(512, 512, 4))
 
-  expect_identical(names(res), c("red", "green", "blue", "alpha"))
+  expect_named(res, c("red", "green", "blue", "alpha"))
   expect_true(anyNA(terra::values(res)))
 
   # No transparency...
@@ -268,7 +268,7 @@ test_that("Transparency", {
 
   expect_identical(dim(res2), c(512, 512, 3))
 
-  expect_identical(names(res2), c("red", "green", "blue"))
+  expect_named(res2, c("red", "green", "blue"))
   expect_false(anyNA(terra::values(res2)))
 
   unlink(cdir, recursive = TRUE, force = TRUE)
@@ -350,7 +350,7 @@ test_that("WMS", {
   expect_identical(terra::crs(terra::vect(bbox)), terra::crs(cat_styles))
 
   expect_s4_class(cat_styles, "SpatRaster")
-  expect_identical(names(cat_styles), c("red", "green", "blue", "alpha"))
+  expect_named(cat_styles, c("red", "green", "blue", "alpha"))
 
   cat_styles_noalpha <- esp_get_tiles(
     bbox,
@@ -364,7 +364,7 @@ test_that("WMS", {
     cache_dir = cdir
   )
   expect_s4_class(cat_styles_noalpha, "SpatRaster")
-  expect_identical(names(cat_styles_noalpha), c("red", "green", "blue"))
+  expect_named(cat_styles_noalpha, c("red", "green", "blue"))
 
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

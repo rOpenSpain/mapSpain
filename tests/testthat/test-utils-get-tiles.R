@@ -15,7 +15,7 @@ test_that("Validate external", {
     layers = "geolog_cyl_litologia"
   )
   expect_silent(res <- validate_provider(custom_wms))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
@@ -27,7 +27,7 @@ test_that("Validate external", {
     q = "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
   )
   expect_silent(res <- validate_provider(cartodb_voyager))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
@@ -56,7 +56,7 @@ test_that("Validate internal", {
   skip_on_cran()
   # WMTS - Not Inspire style
   expect_silent(res <- validate_provider("IDErioja"))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q", "attribution") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
@@ -65,7 +65,7 @@ test_that("Validate internal", {
 
   # WMTS
   expect_silent(res <- validate_provider("PNOA"))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q", "attribution", "tilematrixset") %in% names(res)))
   expect_true("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
@@ -73,7 +73,7 @@ test_that("Validate internal", {
 
   # WMS v1.0.0
   expect_silent(res <- validate_provider("Catastro"))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q", "attribution", "srs") %in% names(res)))
   expect_true("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
@@ -82,7 +82,7 @@ test_that("Validate internal", {
 
   # WMS v1.3.0
   expect_silent(res <- validate_provider("ADIF"))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q", "attribution", "crs") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
@@ -262,7 +262,7 @@ test_that("External with apikeys", {
   custom_wmts <- list(id = "ThunderTransport", q = url_thunder)
 
   expect_silent(res <- validate_provider(custom_wmts))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")
@@ -279,7 +279,7 @@ test_that("External with apikeys", {
   )
 
   expect_silent(res <- validate_provider(custom_wmts))
-  expect_true(is.list(res))
+  expect_type(res, "list")
   expect_true(all(c("id", "q") %in% names(res)))
   expect_false("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMTS")

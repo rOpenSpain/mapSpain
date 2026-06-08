@@ -32,7 +32,7 @@ test_that("Test WMTS png", {
   for (n in all_n) {
     tile <- try(esp_get_tiles(cala, type = n, cache_dir = cdir), silent = TRUE)
     if (!inherits(tile, "try-error")) {
-      expect_true(!is.null(ensure_null(terra::crs(tile))))
+      expect_false(is.null(ensure_null(terra::crs(tile))))
 
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
     } else {
