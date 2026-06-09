@@ -159,7 +159,7 @@ test_that("Filter dates", {
       gsub(Sys.Date() + 1, "<current date>", x)
     }
   )
-  expect_snapshot(error = TRUE, siane_filter_year(data_sf, "1900-12"), )
+  expect_snapshot(error = TRUE, siane_filter_year(data_sf, "1900-12"))
 })
 test_that("Ensure NULL", {
   expect_null(ensure_null(NULL))

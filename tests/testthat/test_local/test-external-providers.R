@@ -1,7 +1,7 @@
 test_that("Test Mapbox", {
   # Skip if not API KEY
   apikey <- Sys.getenv("MAPBOX_API_KEY", "")
-  if (apikey == "") {
+  if (!nzchar(apikey)) {
     skip("Need a MapBox API KEY")
   }
 
@@ -42,7 +42,7 @@ test_that("Test Mapbox", {
 test_that("Test Thunderforest", {
   # Skip if not API KEY
   apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
-  if (apikey == "") {
+  if (!nzchar(apikey)) {
     skip("Need a ThunderForest API KEY")
   }
 

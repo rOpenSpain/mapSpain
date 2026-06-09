@@ -105,7 +105,7 @@ test_that("prov online", {
     cache_dir = cdir
   ))
   expect_error(esp_get_prov_siane(epsg = 39823, cache_dir = cdir))
-  expect_silent(esp_get_prov_siane(cache_dir = cdir, resolution = 10, ))
+  expect_silent(esp_get_prov_siane(cache_dir = cdir, resolution = 10))
   expect_silent(esp_get_prov_siane(
     moveCAN = c(1, 2),
     resolution = 6.5,

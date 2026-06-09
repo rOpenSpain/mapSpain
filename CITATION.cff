@@ -400,7 +400,7 @@ references:
     Objects'
   notes: Suggests
   url: https://dieghernan.github.io/tidyterra/
-  repository: https://CRAN.R-project.org/package=tidyterra
+  repository: https://dieghernan.r-universe.dev
   authors:
   - family-names: Hernangómez
     given-names: Diego

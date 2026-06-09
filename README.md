@@ -163,7 +163,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     labels = function(x) {
       sprintf("%1.0f%%", 100 * x)
     },
-    guide = guide_legend(title = "", )
+    guide = guide_legend(title = "")
   ) +
   coord_sf(
     xlim = lims[c(1, 2)],

@@ -163,7 +163,7 @@ This example uses a provider that needs an API key, ThunderForest:
 #| fig-cap: Example of base map using ThunderForest
 # Skip if no API key is available.
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
-if (apikey != "") {
+if (nzchar(apikey)) {
   thunder_spec <- list(
     id = "ThunderForest",
     q = paste0(
