@@ -45,9 +45,9 @@ geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (for example, with
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or
-[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md))
-this option should be set to `FALSE` in order to get the actual
-coordinates, instead of the modified ones.
+[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)),
+set this option to `FALSE` to get the actual coordinates, instead of the
+modified ones.
 
 ## See also
 

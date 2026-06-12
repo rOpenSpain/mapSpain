@@ -1,7 +1,7 @@
 # Simplified map of provinces and Autonomous Communities of Spain
 
 Simplified map with the boundaries of the provinces or Autonomous
-communities of Spain, as provided by the **INE** (Instituto Nacional de
+Communities of Spain, as provided by the **INE** (Instituto Nacional de
 Estadistica).
 
 ## Usage
@@ -67,7 +67,7 @@ are provided (in this case, all the provinces of Andalusia).
 
 ## See also
 
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md).
+[`esp_get_gridmap()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md).
 
 Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),

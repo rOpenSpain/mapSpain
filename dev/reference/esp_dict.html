@@ -29,7 +29,7 @@ names."><meta property="og:image" content="https://ropenspain.github.io/mapSpain
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -116,11 +116,11 @@ all available translations for the corresponding input value.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The function uses internal dictionaries together with <a href="https://CRAN.R-project.org/package=countrycode" class="external-link"><span class="pkg">countrycode</span></a>
+    <p>This function uses internal dictionaries together with <a href="https://CRAN.R-project.org/package=countrycode" class="external-link"><span class="pkg">countrycode</span></a>
 to map between schemes. When <code>origin == destination == "text"</code> the input is
-returned unchanged. Mixing names from different administrative levels
-(for example Autonomous Community and province) may produce
-<code>NA</code> values for some entries.</p>
+returned unchanged. Mixing names from different administrative levels (for
+example Autonomous Community and province) may produce <code>NA</code> values for some
+entries.</p>
     </div>
 
     <div class="section level2">
@@ -159,10 +159,10 @@ returned unchanged. Mixing names from different administrative levels
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES4"   "ES61"  "ES618" "ES533"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"codauto"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro", "Seville", and "Menorca" with `destination = "codauto"`.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA   "01" NA   NA  </span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match on `destination = "iso2"` found for "Centro" and "Menorca".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro" and "Menorca" with `destination = "iso2"`.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA      "ES-AN" "ES-SE" NA     </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"La Rioja"</span>, <span class="st">"Sevilla"</span>, <span class="st">"Madrid"</span>, <span class="st">"Jaen"</span>, <span class="st">"Orense"</span>, <span class="st">"Baleares"</span><span class="op">)</span></span></span>

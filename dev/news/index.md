@@ -7,8 +7,8 @@
   municipal metadata enrichment, empty-result messages and Canary
   Islands displacement. This is intended to simplify maintenance without
   changing the public API.
-- Consolidated repeated CCAA, province and municipality metadata
-  handling across GISCO, SIANE, simplified and gridmap getters.
+- Consolidated repeated Autonomous Community, province and municipality
+  metadata handling across GISCO, SIANE, simplified and gridmap getters.
 - Further simplified internal cache handling, `sf` output finalization,
   WMTS tile retrieval, dictionary translation and no-match messages.
   These changes are intended to improve maintainability without changing
@@ -56,8 +56,8 @@ performance and maintainability. All functions return tidy objects,
 either tibbles or `sf` objects with tibble data.
 
 Several new functions and arguments have been added, some functions
-renamed and some others deprecated. All bundled datasets have been
-updated to their latest versions.
+renamed and others deprecated. All bundled datasets have been updated to
+their latest versions.
 
 ### Breaking changes
 
@@ -231,8 +231,8 @@ CRAN release: 2022-01-25
 
 - Rebuilt coding database to avoid encoding errors.
 - Fixed Galician translations.
-- Added grid
-  functions[`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md),
+- Added grid functions
+  [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md),
   [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
   [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   and
@@ -304,7 +304,7 @@ CRAN release: 2021-04-17
 
 CRAN release: 2021-03-19
 
-- Fixed a documentation typo: `cache_dir` should be set as
+- Fixed a documentation typo: `cache_dir` must be set as
   `options(mapSpain_cache_dir = "path/to/dir")`.
 
 ## mapSpain 0.2.0
@@ -313,7 +313,7 @@ CRAN release: 2021-02-25
 
 - Fixed DOI <https://doi.org/10.5281/zenodo.4318024>.
 - Ported documentation to **roxygen2**.
-- Included CartoBase ANE data
+- Included CartoBase ANE data:
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>, with
   [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),

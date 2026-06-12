@@ -27,7 +27,7 @@ boundaries of the provinces or Autonomous Communities of Spain."><meta property=
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -94,17 +94,17 @@ and Autonomous Communities, or <code>NULL</code> to get all the data. See
 In choropleths, regions with larger polygons tend to appear more prominent
 simply because of their size, which introduces visual bias. With hexbin
 maps, each region is represented equally, reducing this bias.</p>
-<p>You can use and mix names, ISO codes, <code>"codauto"/ "cpro"</code> codes (see
+<p>You can use and mix names, ISO codes, <code>"codauto"</code> or <code>"cpro"</code> codes (see
 <a href="esp_codelist.html">esp_codelist</a>) and NUTS codes of different levels.</p>
 <p>When using a code corresponding to a higher level (for example,
 <code>esp_get_prov("Andalucia")</code>) all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).</p>
-<p>Results are provided in <strong>EPSG:4258</strong>, use <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">sf::st_transform()</a></code>
+<p>Results are provided in <strong>EPSG:4258</strong>. Use <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">sf::st_transform()</a></code>
 to change the projection.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="esp_get_simpl.html">esp_get_simpl</a></code>.</p>
+    <div class="dont-index"><p><code><a href="esp_get_simpl.html">esp_get_simpl()</a></code>.</p>
 <p>Political and administrative boundary datasets:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>,

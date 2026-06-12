@@ -2,12 +2,12 @@
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides **sf**
 objects for Spain’s administrative boundaries, including Autonomous
-Communities, provinces and municipalities.
+Communities, provinces, municipalities and NUTS.
 
 **mapSpain** also provides a plugin for the
 [**leaflet**](https://rstudio.github.io/leaflet/) package. It loads
 several basemaps from Spain’s public institutions and supports
-downloading and processing static tiles.
+downloading and processing static map tiles.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -136,7 +136,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     labels = function(x) {
       sprintf("%1.0f%%", 100 * x)
     },
-    guide = guide_legend(title = "", )
+    guide = guide_legend(title = "")
   ) +
   coord_sf(
     xlim = lims[c(1, 2)],
@@ -215,7 +215,8 @@ downloading them again, which speeds up subsequent calls.
 
 ## Citation
 
-Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
+Hernangómez D (2026). *mapSpain: Administrative Boundaries and Static
+Map Tiles of Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
@@ -223,13 +224,13 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-mapspain,
-  title = {{mapSpain}: Administrative Boundaries of Spain},
+  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles of Spain},
   year = {2026},
   version = {1.1.0.9000},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},
-  abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for the leaflet package and tools to download and process static map tiles.},
+  abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for the leaflet package and tools to download and process static map tiles.},
 }
 ```
 
@@ -240,7 +241,7 @@ code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
-This package uses data from CartoBase SIANE, provided by the Instituto
+This package uses data from CartoBase ANE, provided by the Instituto
 Geográfico Nacional.
 
 > Atlas Nacional de España (ANE) [CC BY

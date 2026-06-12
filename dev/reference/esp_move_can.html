@@ -29,7 +29,7 @@ provided by sf with the option moveCAN = TRUE."><meta property="og:image" conten
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -101,8 +101,8 @@ rather than the package <a href="https://CRAN.R-project.org/package=mapSpain" cl
     <p>While <code>moveCAN</code> is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (for example, with <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> or
-<code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>) this option should be set to <code>FALSE</code> in order to
-get the actual coordinates, instead of the modified ones.</p>
+<code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>), set this option to <code>FALSE</code> to get the actual
+coordinates, instead of the modified ones.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

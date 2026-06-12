@@ -37,7 +37,7 @@ prominent simply because of their size, which introduces visual bias.
 With hexbin maps, each region is represented equally, reducing this
 bias.
 
-You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
+You can use and mix names, ISO codes, `"codauto"` or `"cpro"` codes (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md))
 and NUTS codes of different levels.
 
@@ -45,13 +45,13 @@ When using a code corresponding to a higher level (for example,
 `esp_get_prov("Andalucia")`) all the corresponding units of that level
 are provided (in this case, all the provinces of Andalusia).
 
-Results are provided in **EPSG:4258**, use
+Results are provided in **EPSG:4258**. Use
 [`sf::st_transform()`](https://r-spatial.github.io/sf/reference/st_transform.html)
 to change the projection.
 
 ## See also
 
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md).
+[`esp_get_simpl()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md).
 
 Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),

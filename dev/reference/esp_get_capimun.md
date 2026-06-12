@@ -101,7 +101,8 @@ Data distributed through the `sianedata` data branch, see
 
   Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
-  of the required municipalities. `NULL` will return all municipalities.
+  of the required municipalities. Use `NULL` to return all
+  municipalities.
 
 - moveCAN:
 

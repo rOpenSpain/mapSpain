@@ -10,12 +10,12 @@
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
 geographical information about Spain at different levels.
 
-**mapSpain** provides `sf` objects for municipalities, provinces,
-Autonomous Communities and NUTS levels in Spain. It also provides hexbin
-maps and other complementary geometries, such as the demarcation lines
-around the Canary Islands.
+**mapSpain** provides `sf` objects for Autonomous Communities,
+provinces, municipalities and NUTS levels in Spain. It also provides
+hexbin maps and other complementary geometries, such as the demarcation
+lines around the Canary Islands.
 
-**mapSpain** provides access to map tiles from Spain’s public
+**mapSpain** provides access to static map tiles from Spain’s public
 institutions. Tiles can be represented on static maps with
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or on an R [**leaflet**](https://rstudio.github.io/leaflet/) map using
@@ -23,8 +23,8 @@ or on an R [**leaflet**](https://rstudio.github.io/leaflet/) map using
 
 **mapSpain** also includes a dictionary that translates province and
 region names to English, Spanish, Catalan, Basque and Galician, and
-converts them to various coding standards such as NUTS, ISO2 and the INE
-(the official Spanish statistical agency) coding system.
+converts them to coding standards such as NUTS, ISO2 and the INE coding
+system.
 
 ## Caching
 
@@ -84,9 +84,9 @@ ggplot(andalucia) +
   theme_bw()
 ```
 
-![Example: provinces of Andalucia](./basic2-1.png)
+![Example: provinces of Andalusia](./basic2-1.png)
 
-Example: provinces of Andalucia
+Example: provinces of Andalusia
 
 ``` r
 
@@ -197,8 +197,7 @@ pop <- mapSpain::pobmun25 |>
   select(-name)
 
 munic <- esp_get_munic_siane(rawcols = TRUE) |>
-  # Get area in km2 from SIANE municipalities.
-  # This variable is already available in the SIANE data.
+  # Use the area field available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
 munic_pop <- munic |>
@@ -290,10 +289,10 @@ ggplot(all_countries) +
 
 mapSpain and giscoR example
 
-## Working with tiles
+## Working with static map tiles
 
-**mapSpain** provides an interface for working with imagery. It can
-download static images as `.png` or `.jpeg`, depending on the Web Map
+**mapSpain** provides an interface for working with static map tiles. It
+can download tiles as `.png` or `.jpeg`, depending on the Web Map
 Service, and use them alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for the
@@ -306,6 +305,6 @@ Leaflet plugin. All available providers are listed there.
 
 > **Note**
 >
-> When working with imagery, set `moveCAN = FALSE` in the `esp_get_*`
-> functions. See **Displacing the Canary Islands** in
+> When working with static map tiles, set `moveCAN = FALSE` in the
+> `esp_get_*` functions. See **Displacing the Canary Islands** in
 > [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md).

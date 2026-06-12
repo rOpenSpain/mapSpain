@@ -14,8 +14,7 @@ esp_make_provider(id, q, service, layers, ...)
 
 - id:
 
-  An identifier for the user. It will be used for identifying cached
-  tiles.
+  An identifier for the user. Used for identifying cached tiles.
 
 - q:
 
@@ -58,7 +57,7 @@ Note that:
 For a list of potential providers from Spain check [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).
 
-Functions for image-based maps and tile providers:
+Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 

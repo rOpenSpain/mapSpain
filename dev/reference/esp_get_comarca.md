@@ -1,6 +1,6 @@
 # Comarcas of Spain
 
-Returns [Comarcas of
+Get [comarcas of
 Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
 traditional informal territorial divisions, comprising several
 municipalities sharing geographical, economic or cultural traits,
@@ -37,8 +37,7 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
   Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
-  of the required comarcas. `NULL` will return all the possible
-  comarcas.
+  of the required comarcas. Use `NULL` to return all possible comarcas.
 
 - moveCAN:
 

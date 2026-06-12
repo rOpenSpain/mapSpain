@@ -55,7 +55,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+<li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -111,9 +111,9 @@
 </blockquote>
 </div>
 <p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides geographical information about Spain at different levels.</p>
-<p><strong>mapSpain</strong> provides <code>sf</code> objects for municipalities, provinces, Autonomous Communities and NUTS levels in Spain. It also provides hexbin maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
-<p><strong>mapSpain</strong> provides access to map tiles from Spain’s public institutions. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
-<p><strong>mapSpain</strong> also includes a dictionary that translates province and region names to English, Spanish, Catalan, Basque and Galician, and converts them to various coding standards such as NUTS, ISO2 and the INE (the official Spanish statistical agency) coding system.</p>
+<p><strong>mapSpain</strong> provides <code>sf</code> objects for Autonomous Communities, provinces, municipalities and NUTS levels in Spain. It also provides hexbin maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
+<p><strong>mapSpain</strong> provides access to static map tiles from Spain’s public institutions. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
+<p><strong>mapSpain</strong> also includes a dictionary that translates province and region names to English, Spanish, Catalan, Basque and Galician, and converts them to coding standards such as NUTS, ISO2 and the INE coding system.</p>
 </section><section class="level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
 <p><strong>mapSpain</strong> provides dataset and tile caching. Set a cache directory with:</p>
@@ -158,8 +158,8 @@ Example: map of Spain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"darkgreen"</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./basic2-1.png" alt="Example: provinces of Andalucia" width="100%"><p class="caption">
-Example: provinces of Andalucia
+<img src="./basic2-1.png" alt="Example: provinces of Andalusia" width="100%"><p class="caption">
+Example: provinces of Andalusia
 </p>
 </div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -259,8 +259,7 @@ Percentage of women by Autonomous Community (2025)
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">munic</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>rawcols <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Get area in km2 from SIANE municipalities.</span></span>
-<span>  <span class="co"># This variable is already available in the SIANE data.</span></span>
+<span>  <span class="co"># Use the area field available in the SIANE data.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>area_km2 <span class="op">=</span> <span class="va">st_area_sh</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">munic_pop</span> <span class="op">&lt;-</span> <span class="va">munic</span> <span class="op">|&gt;</span></span>
@@ -346,15 +345,15 @@ Population density in Spain (2025)
 mapSpain and giscoR example
 </p>
 </div>
-</section><section class="level2"><h2 id="working-with-tiles">Working with tiles<a class="anchor" aria-label="anchor" href="#working-with-tiles"></a>
+</section><section class="level2"><h2 id="working-with-static-map-tiles">Working with static map tiles<a class="anchor" aria-label="anchor" href="#working-with-static-map-tiles"></a>
 </h2>
-<p><strong>mapSpain</strong> provides an interface for working with imagery. It can download static images as <code>.png</code> or <code>.jpeg</code>, depending on the Web Map Service, and use them alongside your <code>sf</code> objects.</p>
+<p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the Web Map Service, and use them alongside your <code>sf</code> objects.</p>
 <p><strong>mapSpain</strong> also includes a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> R package, which allows you to add several basemaps to interactive maps.</p>
 <p>The services are implemented with the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. All available providers are listed there.</p>
 <div>
 <blockquote>
 <p><strong>Note</strong></p>
-<p>When working with imagery, set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
+<p>When working with static map tiles, set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
 </blockquote>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

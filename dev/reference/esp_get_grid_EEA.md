@@ -2,7 +2,7 @@
 
 **\[defunct\]**
 
-This function is defunct as the source file is not available any more.
+This function is defunct because the source file is no longer available.
 
 ## Usage
 

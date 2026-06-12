@@ -5,12 +5,12 @@
 ### Motivation
 
 **mapSpain** helps you create maps for the main administrative levels of
-Spain. It also supports imagery from WMS and WMTS services, either as
-georeferenced static rasters or as dynamic layers in Leaflet maps.
+Spain. It also supports static map tiles from WMS and WMTS services,
+either as georeferenced rasters or as dynamic layers in leaflet maps.
 
-The package also includes helpers to normalize Autonomous Community and
-province names. These helpers make it easier to join, clean and
-transform data, whether or not the data is spatial.
+The package also includes helpers to translate and convert Autonomous
+Community and province names and codes. These helpers make it easier to
+join, clean and transform data, whether or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
@@ -20,8 +20,8 @@ The main data sources used by **mapSpain** are:
 - Spanish public institutions that publish WMTS and WMS tile services
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Functions return `sf` objects from the **sf** package or `SpatRaster`
-objects from the **terra** package.
+Most functions return `sf` objects from the **sf** package or
+`SpatRaster` objects from the **terra** package.
 
 Package website: <https://ropenspain.github.io/mapSpain/>.
 
@@ -111,7 +111,7 @@ library(rnaturalearth)
 esp_rnat <- ne_countries("large", country = "Spain", returnclass = "sf") |>
   st_transform(3857)
 
-# mapSpain
+# mapSpain.
 esp_mapspain <- esp_get_spain(epsg = 4326) |>
   st_transform(3857)
 
@@ -131,7 +131,7 @@ esp_geobounds <- geobounds::gb_get_adm0("ESP",
 ) |>
   st_transform(3857)
 
-# Image of the Ferrol estuary.
+# Orthophoto of the Ferrol estuary.
 tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857) |>
   esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1)
 
@@ -173,10 +173,11 @@ ggplot(esp_all) +
 Figure 2: Comparison of boundary resolution across map sources. The
 boundaries are shown over an orthophoto of the Ferrol estuary.
 
-- **rnaturalearth**: less precise boundary interpretation.
-- **mapSpain**: satisfactory results.
-- **GADM** (through **geodata**): very precise results.
-- **geoBoundaries** (through **geobounds**): satisfactory results.
+- **rnaturalearth**: lower boundary precision.
+- **mapSpain**: good boundary precision for this use case.
+- **GADM** (through **geodata**): very high boundary precision.
+- **geoBoundaries** (through **geobounds**): good boundary precision for
+  this use case.
 
 ### Caching
 
@@ -212,7 +213,7 @@ codes:
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   converts text labels into Autonomous Community and province codes.
-  Supported coding schemes are ISO2, NUTS and INE codes (`codauto` and
+  Supported coding standards are ISO2, NUTS and INE codes (`codauto` and
   `cpro`).
 - [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   translates text into Spanish, English, Catalan, Galician or Basque.
@@ -234,7 +235,7 @@ esp_dict_region_code(vals, destination = "cpro")
 esp_dict_region_code(vals, destination = "iso2")
 #> [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"
 
-# From ISO to other codes.
+# Convert from ISO2 to other codes.
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")
@@ -268,7 +269,6 @@ esp_dict_translate(vals, lang = "es")
 esp_dict_translate(vals, lang = "ca")
 #> [1] "La Rioja"      "Sevilla"       "Madrid"        "Jaén"         
 #> [5] "Ourense"       "Illes Balears"
-
 
 esp_dict_translate(vals, lang = "eu")
 #> [1] "Errioxa"         "Sevilla"         "Madril"          "Jaén"           
@@ -311,7 +311,7 @@ ggplot(esp) +
 
 Figure 3: Map of Spain
 
-### The Canary Islands case
+### Displacing the Canary Islands
 
 By default, most **mapSpain** functions move the Canary Islands closer
 to the mainland to improve visualization. Disable this behavior with
@@ -338,8 +338,8 @@ ggplot(esp_can) +
 
 Figure 4: Map of Spain with displaced Canary Islands
 
-**Use `moveCAN = FALSE` when working with imagery, interactive maps or
-spatial analysis.**
+**Use `moveCAN = FALSE` when working with static map tiles, interactive
+maps or spatial analysis.**
 
 ### NUTS
 
@@ -404,7 +404,7 @@ ggplot(ccaa) +
 
 Figure 7: Autonomous Communities of Spain
 
-### Provinces using the `*_siane` version
+### Provinces from SIANE
 
 Passing a higher-level entity, such as Andalusia, returns all provinces
 within that entity.
@@ -468,9 +468,9 @@ ggplot(munic) +
 
 Figure 9: Extracting municipalities
 
-### Hexbin maps
+### Grid maps
 
-Hexbin maps are available as squares and hexagons for provinces and
+Grid maps are available as squares and hexagons for provinces and
 Autonomous Communities.
 
 ``` r
@@ -482,7 +482,6 @@ ggplot(cuad) +
   geom_sf() +
   geom_sf_text(aes(label = iso2.ccaa.code)) +
   theme_void()
-
 
 ggplot(hex) +
   geom_sf() +
@@ -498,15 +497,15 @@ ggplot(hex) +
 
 \(b\) Hexagons
 
-Figure 10: Hexbin maps with mapSpain
+Figure 10: Grid maps with mapSpain
 
-## Imagery
+## Static map tiles and imagery
 
-**mapSpain** can also use map imagery, such as satellite imagery,
+**mapSpain** can also use static map tiles, such as satellite imagery,
 basemaps and roads, provided by different public institutions
 (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-These images can be used to create static maps, as 3- or 4-band raster
+These tiles can be used to create static maps, as 3- or 4-band raster
 layers, or as backgrounds for dynamic maps through the **leaflet**
 package.
 
@@ -514,9 +513,9 @@ The providers are taken from the **leaflet**
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 plugin.
 
-### Creating static maps
+### Creating maps with static map tiles
 
-Several options are available for composing basemaps:
+Several options are available for composing maps with static map tiles:
 
 ``` r
 
@@ -537,7 +536,6 @@ ggplot() +
   theme_minimal() +
   labs(title = "Municipalities in Madrid")
 
-
 # Use the `mask` option.
 madrid <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
 
@@ -553,22 +551,22 @@ ggplot() +
   geom_spatraster_rgb(data = madrid_mask) +
   theme_void() +
   labs(
-    title = "Basemap of Madrid",
+    title = "Static map tiles of Madrid",
     caption = "CC BY 4.0 www.iderioja.org"
   )
 ```
 
 ![](mapasesp_files/figure-html/fig-imagesestaticos-1.png)
 
-Figure 11: Basemap extraction
+Figure 11: Static map tile extraction
 
 ![](mapasesp_files/figure-html/fig-imagesestaticos-2.png)
 
-Figure 12: Basemap with a mask
+Figure 12: Static map tiles with a mask
 
-### Dynamic maps with mapSpain
+### Dynamic maps with leaflet
 
-Imagery layers can be used as backgrounds in static and interactive
+Static map tiles can be used as backgrounds in static and interactive
 maps.
 
 ``` r

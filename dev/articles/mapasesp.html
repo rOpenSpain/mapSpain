@@ -59,7 +59,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+<li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -110,8 +110,8 @@
 </h2>
 <section class="level3"><h3 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h3>
-<p><strong>mapSpain</strong> helps you create maps for the main administrative levels of Spain. It also supports imagery from WMS and WMTS services, either as georeferenced static rasters or as dynamic layers in Leaflet maps.</p>
-<p>The package also includes helpers to normalize Autonomous Community and province names. These helpers make it easier to join, clean and transform data, whether or not the data is spatial.</p>
+<p><strong>mapSpain</strong> helps you create maps for the main administrative levels of Spain. It also supports static map tiles from WMS and WMTS services, either as georeferenced rasters or as dynamic layers in leaflet maps.</p>
+<p>The package also includes helpers to translate and convert Autonomous Community and province names and codes. These helpers make it easier to join, clean and transform data, whether or not the data is spatial.</p>
 <p>The main data sources used by <strong>mapSpain</strong> are:</p>
 <ul>
 <li>
@@ -120,7 +120,7 @@
 <a href="https://www.ign.es/" class="external-link">Instituto Geográfico Nacional</a> (IGN).</li>
 <li>Spanish public institutions that publish WMTS and WMS tile services (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</li>
 </ul>
-<p>Functions return <code>sf</code> objects from the <strong>sf</strong> package or <code>SpatRaster</code> objects from the <strong>terra</strong> package.</p>
+<p>Most functions return <code>sf</code> objects from the <strong>sf</strong> package or <code>SpatRaster</code> objects from the <strong>terra</strong> package.</p>
 <p>Package website: <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 </section><section class="level3"><h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
@@ -209,7 +209,7 @@ Figure 1: Municipalities of Galicia
 <span><span class="va">esp_rnat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_countries.html" class="external-link">ne_countries</a></span><span class="op">(</span><span class="st">"large"</span>, country <span class="op">=</span> <span class="st">"Spain"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># mapSpain</span></span>
+<span><span class="co"># mapSpain.</span></span>
 <span><span class="va">esp_mapspain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_spain.html">esp_get_spain</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
@@ -229,7 +229,7 @@ Figure 1: Municipalities of Galicia
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Image of the Ferrol estuary.</span></span>
+<span><span class="co"># Orthophoto of the Ferrol estuary.</span></span>
 <span><span class="va">tile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"Ferrol"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/esp_get_tiles.html">esp_get_tiles</a></span><span class="op">(</span><span class="st">"PNOA"</span>, bbox_expand <span class="op">=</span> <span class="fl">0.5</span>, zoommin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -277,13 +277,13 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 </div>
 <ul>
 <li>
-<strong>rnaturalearth</strong>: less precise boundary interpretation.</li>
+<strong>rnaturalearth</strong>: lower boundary precision.</li>
 <li>
-<strong>mapSpain</strong>: satisfactory results.</li>
+<strong>mapSpain</strong>: good boundary precision for this use case.</li>
 <li>
-<strong>GADM</strong> (through <strong>geodata</strong>): very precise results.</li>
+<strong>GADM</strong> (through <strong>geodata</strong>): very high boundary precision.</li>
 <li>
-<strong>geoBoundaries</strong> (through <strong>geobounds</strong>): satisfactory results.</li>
+<strong>geoBoundaries</strong> (through <strong>geobounds</strong>): good boundary precision for this use case.</li>
 </ul></section><section class="level3"><h3 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h3>
 <p><strong>mapSpain</strong> uses web resources. By default, downloaded files are stored in <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> for reuse during the current session.</p>
@@ -306,7 +306,7 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 <p><strong>mapSpain</strong> provides two related functions for working with names and codes:</p>
 <ul>
 <li>
-<code><a href="../reference/esp_dict.html">esp_dict_region_code()</a></code> converts text labels into Autonomous Community and province codes. Supported coding schemes are ISO2, NUTS and INE codes (<code>codauto</code> and <code>cpro</code>).</li>
+<code><a href="../reference/esp_dict.html">esp_dict_region_code()</a></code> converts text labels into Autonomous Community and province codes. Supported coding standards are ISO2, NUTS and INE codes (<code>codauto</code> and <code>cpro</code>).</li>
 <li>
 <code><a href="../reference/esp_dict.html">esp_dict_translate()</a></code> translates text into Spanish, English, Catalan, Galician or Basque.</li>
 </ul>
@@ -325,7 +325,7 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 <span><span class="fu"><a href="../reference/esp_dict.html">esp_dict_region_code</a></span><span class="op">(</span><span class="va">vals</span>, destination <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"</span></span>
 <span></span>
-<span><span class="co"># From ISO to other codes.</span></span>
+<span><span class="co"># Convert from ISO2 to other codes.</span></span>
 <span></span>
 <span><span class="va">iso2vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ES-M"</span>, <span class="st">"ES-S"</span>, <span class="st">"ES-SG"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/esp_dict.html">esp_dict_region_code</a></span><span class="op">(</span><span class="va">iso2vals</span>, origin <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span>
@@ -359,7 +359,6 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 <span><span class="fu"><a href="../reference/esp_dict.html">esp_dict_translate</a></span><span class="op">(</span><span class="va">vals</span>, lang <span class="op">=</span> <span class="st">"ca"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "La Rioja"      "Sevilla"       "Madrid"        "Jaén"         </span></span>
 <span><span class="co">#&gt; [5] "Ourense"       "Illes Balears"</span></span>
-<span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/esp_dict.html">esp_dict_translate</a></span><span class="op">(</span><span class="va">vals</span>, lang <span class="op">=</span> <span class="st">"eu"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Errioxa"         "Sevilla"         "Madril"          "Jaén"           </span></span>
@@ -399,7 +398,7 @@ Figure 3: Map of Spain
 </div>
 </div>
 </div>
-<section class="level3"><h3 id="the-canary-islands-case">The Canary Islands case<a class="anchor" aria-label="anchor" href="#the-canary-islands-case"></a>
+<section class="level3"><h3 id="displacing-the-canary-islands">Displacing the Canary Islands<a class="anchor" aria-label="anchor" href="#displacing-the-canary-islands"></a>
 </h3>
 <p>By default, most <strong>mapSpain</strong> functions move the Canary Islands closer to the mainland to improve visualization. Disable this behavior with <code>moveCAN = FALSE</code> when you need geometries in their original position.</p>
 <p>The package also provides helpers for drawing boxes around the inset map. See the <a href="https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.html#examples">examples</a> in the reference page.</p>
@@ -424,7 +423,7 @@ Figure 4: Map of Spain with displaced Canary Islands
 </div>
 </div>
 </div>
-<p><strong>Use <code>moveCAN = FALSE</code> when working with imagery, interactive maps or spatial analysis.</strong></p>
+<p><strong>Use <code>moveCAN = FALSE</code> when working with static map tiles, interactive maps or spatial analysis.</strong></p>
 </section><section class="level3"><h3 id="nuts">NUTS<a class="anchor" aria-label="anchor" href="#nuts"></a>
 </h3>
 <div class="cell">
@@ -503,7 +502,7 @@ Figure 7: Autonomous Communities of Spain
 </div>
 </div>
 </div>
-</section><section class="level3"><h3 id="provinces-using-the-_siane-version">Provinces using the <code>*_siane</code> version<a class="anchor" aria-label="anchor" href="#provinces-using-the-_siane-version"></a>
+</section><section class="level3"><h3 id="provinces-from-siane">Provinces from SIANE<a class="anchor" aria-label="anchor" href="#provinces-from-siane"></a>
 </h3>
 <p>Passing a higher-level entity, such as Andalusia, returns all provinces within that entity.</p>
 <div class="cell">
@@ -575,9 +574,9 @@ Figure 9: Extracting municipalities
 </div>
 </div>
 </div>
-</section><section class="level3"><h3 id="hexbin-maps">Hexbin maps<a class="anchor" aria-label="anchor" href="#hexbin-maps"></a>
+</section><section class="level3"><h3 id="grid-maps">Grid maps<a class="anchor" aria-label="anchor" href="#grid-maps"></a>
 </h3>
-<p>Hexbin maps are available as squares and hexagons for provinces and Autonomous Communities.</p>
+<p>Grid maps are available as squares and hexagons for provinces and Autonomous Communities.</p>
 <div class="sourceCode cell-code" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cuad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_gridmap.html">esp_get_hex_ccaa</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">hex</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_gridmap.html">esp_get_grid_prov</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -586,7 +585,6 @@ Figure 9: Extracting municipalities
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">iso2.ccaa.code</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">hex</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -618,17 +616,17 @@ Figure 9: Extracting municipalities
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 10: Hexbin maps with mapSpain
+Figure 10: Grid maps with mapSpain
 </figcaption></figure>
 </div>
-</section></section><section class="level2"><h2 id="imagery">Imagery<a class="anchor" aria-label="anchor" href="#imagery"></a>
+</section></section><section class="level2"><h2 id="static-map-tiles-and-imagery">Static map tiles and imagery<a class="anchor" aria-label="anchor" href="#static-map-tiles-and-imagery"></a>
 </h2>
-<p><strong>mapSpain</strong> can also use map imagery, such as satellite imagery, basemaps and roads, provided by different public institutions (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</p>
-<p>These images can be used to create static maps, as 3- or 4-band raster layers, or as backgrounds for dynamic maps through the <strong>leaflet</strong> package.</p>
+<p><strong>mapSpain</strong> can also use static map tiles, such as satellite imagery, basemaps and roads, provided by different public institutions (<a href="https://www.idee.es/web/idee/segun-tipo-de-servicio" class="external-link uri">https://www.idee.es/web/idee/segun-tipo-de-servicio</a>).</p>
+<p>These tiles can be used to create static maps, as 3- or 4-band raster layers, or as backgrounds for dynamic maps through the <strong>leaflet</strong> package.</p>
 <p>The providers are taken from the <strong>leaflet</strong> <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> plugin.</p>
-<section class="level3"><h3 id="creating-static-maps">Creating static maps<a class="anchor" aria-label="anchor" href="#creating-static-maps"></a>
+<section class="level3"><h3 id="creating-maps-with-static-map-tiles">Creating maps with static map tiles<a class="anchor" aria-label="anchor" href="#creating-maps-with-static-map-tiles"></a>
 </h3>
-<p>Several options are available for composing basemaps:</p>
+<p>Several options are available for composing maps with static map tiles:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">madrid_munis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Madrid"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>
@@ -648,7 +646,6 @@ Figure 10: Hexbin maps with mapSpain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Municipalities in Madrid"</span><span class="op">)</span></span>
 <span></span>
-<span></span>
 <span><span class="co"># Use the `mask` option.</span></span>
 <span><span class="va">madrid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"^Madrid$"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>
 <span></span>
@@ -664,7 +661,7 @@ Figure 10: Hexbin maps with mapSpain
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">madrid_mask</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Basemap of Madrid"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Static map tiles of Madrid"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="st">"CC BY 4.0 www.iderioja.org"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
@@ -673,7 +670,7 @@ Figure 10: Hexbin maps with mapSpain
 <img src="mapasesp_files/figure-html/fig-imagesestaticos-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagesestaticos-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 11: Basemap extraction
+Figure 11: Static map tile extraction
 </figcaption></figure>
 </div>
 </div>
@@ -683,14 +680,14 @@ Figure 11: Basemap extraction
 <img src="mapasesp_files/figure-html/fig-imagesestaticos-2.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagesestaticos-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 12: Basemap with a mask
+Figure 12: Static map tiles with a mask
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section class="level3"><h3 id="dynamic-maps-with-mapspain">Dynamic maps with mapSpain<a class="anchor" aria-label="anchor" href="#dynamic-maps-with-mapspain"></a>
+</section><section class="level3"><h3 id="dynamic-maps-with-leaflet">Dynamic maps with leaflet<a class="anchor" aria-label="anchor" href="#dynamic-maps-with-leaflet"></a>
 </h3>
-<p>Imagery layers can be used as backgrounds in static and interactive maps.</p>
+<p>Static map tiles can be used as backgrounds in static and interactive maps.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_railway.html">esp_get_railway</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"point"</span>, epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>

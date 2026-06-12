@@ -1,12 +1,12 @@
-# Working with imagery
+# Working with static map tiles
 
-**mapSpain** provides an interface for working with imagery. It can
-download static files as `.png` or `.jpeg`, depending on the Web Map
+**mapSpain** provides an interface for working with static map tiles. It
+can download tiles as `.png` or `.jpeg`, depending on the Web Map
 Service, and use them alongside your `sf` objects.
 
 **mapSpain** also provides a plugin for the
-[**leaflet**](https://rstudio.github.io/leaflet/) R package, which
-allows adding multiple basemaps to interactive maps.
+[**leaflet**](https://rstudio.github.io/leaflet/) R package, which lets
+you add multiple basemaps to interactive maps.
 
 The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
@@ -20,8 +20,8 @@ Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
 > **Warning**
 >
-> When working with imagery, set `moveCAN = FALSE`, otherwise imagery
-> for the Canary Islands may be inaccurate.
+> When working with static map tiles, set `moveCAN = FALSE`, otherwise
+> imagery for the Canary Islands may be inaccurate.
 
 ``` r
 
@@ -47,7 +47,7 @@ ggplot(lgn_borders) +
 
 Figure 1: Municipal boundaries of Logroño using a tile as a basemap
 
-### Alpha value on tiles
+### Alpha values in tiles
 
 Some tiles can be loaded with or without an alpha (transparency) value,
 which controls layer transparency:
@@ -105,8 +105,8 @@ ggplot() +
 
 ![](working_imagery_files/figure-html/fig-static_transp-1.png)
 
-Figure 3: Example of using alpha values to combine different types of
-basemaps.
+Figure 3: Example of using alpha values to combine different map tile
+layers.
 
 Now the two tiles overlap with the desired transparency.
 
@@ -130,13 +130,13 @@ ggplot() +
 
 ![](working_imagery_files/figure-html/fig-static3-1.png)
 
-Figure 4: Example of combining tile types by masking to an sf object.
+Figure 4: Example of combining tile types by masking to an `sf` object.
 
 ## Custom providers
 
 You can use
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-to get tiles from other providers, for example OpenStreetMap.
+to get static map tiles from other providers, for example OpenStreetMap.
 
 ``` r
 
@@ -155,15 +155,15 @@ ggplot() +
 
 ![](working_imagery_files/figure-html/fig-osm-1.png)
 
-Figure 5: Example of base map using OpenStreetMap
+Figure 5: Example of a basemap using OpenStreetMap
 
-This example uses a provider that needs an API key, ThunderForest:
+This example uses ThunderForest, a provider that needs an API key:
 
 ``` r
 
 # Skip if no API key is available.
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
-if (apikey != "") {
+if (nzchar(apikey)) {
   thunder_spec <- list(
     id = "ThunderForest",
     q = paste0(
@@ -181,9 +181,9 @@ if (apikey != "") {
 
 ![](working_imagery_files/figure-html/fig-thunder-1.png)
 
-Figure 6: Example of base map using ThunderForest
+Figure 6: Example of a basemap using ThunderForest
 
-## Dynamic maps with Leaflet
+## Dynamic maps with leaflet
 
 **mapSpain** provides a plugin for the **leaflet** package. Here are
 some quick examples:
@@ -203,7 +203,7 @@ tenerife_leaf <- esp_get_nuts(
 
 bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
 
-# Start leaflet.
+# Start the leaflet map.
 m <- leaflet(
   tenerife_leaf,
   elementId = "tenerife-earthquakes",
@@ -218,7 +218,7 @@ m <- m |>
   addPolygons(color = NA, fillColor = "red", group = "Polygon") |>
   addProviderEspTiles("Geofisica.Terremotos365dias", group = "Earthquakes")
 
-# Add additional options.
+# Add layer controls and bounds.
 m |>
   addLayersControl(
     overlayGroups = c("Polygon", "Earthquakes"),
@@ -241,8 +241,7 @@ munic <- esp_get_munic_siane(
   moveCAN = FALSE,
   rawcols = TRUE
 ) |>
-  # Get area in km2 from SIANE municipalities.
-  # This variable is already available in the SIANE data.
+  # Use the area field available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
 # Get population data.
@@ -304,4 +303,4 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 
 The `esp_tiles_providers` list contains metadata for the tile providers
 used by the functions above. It includes all arguments required to
-reproduce the API request. Below is the static URL for each provider:
+reproduce each API request. Below is the static URL for each provider:

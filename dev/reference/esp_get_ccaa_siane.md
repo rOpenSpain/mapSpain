@@ -1,6 +1,6 @@
 # Autonomous Communities of Spain - SIANE
 
-Returns [Autonomous Communities of
+Get [Autonomous Communities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 

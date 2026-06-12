@@ -62,7 +62,7 @@ another.
 
 ## Details
 
-The function uses internal dictionaries together with
+This function uses internal dictionaries together with
 [countrycode](https://CRAN.R-project.org/package=countrycode) to map
 between schemes. When `origin == destination == "text"` the input is
 returned unchanged. Mixing names from different administrative levels
@@ -106,10 +106,10 @@ esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
 
 esp_dict_region_code(valsmix, destination = "codauto")
-#> ! No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".
+#> ! No match found for "Centro", "Seville", and "Menorca" with `destination = "codauto"`.
 #> [1] NA   "01" NA   NA  
 esp_dict_region_code(valsmix, destination = "iso2")
-#> ! No match on `destination = "iso2"` found for "Centro" and "Menorca".
+#> ! No match found for "Centro" and "Menorca" with `destination = "iso2"`.
 #> [1] NA      "ES-AN" "ES-SE" NA     
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

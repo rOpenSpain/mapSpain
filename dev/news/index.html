@@ -25,7 +25,7 @@
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -58,7 +58,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mapspain-development-version">mapSpain (development version)<a class="anchor" aria-label="anchor" href="#mapspain-development-version"></a></h2>
 <ul><li>Refactored internal helpers for downloading and reading geospatial files, SIANE file handling, EPSG validation, region-code filtering, municipal metadata enrichment, empty-result messages and Canary Islands displacement. This is intended to simplify maintenance without changing the public API.</li>
-<li>Consolidated repeated CCAA, province and municipality metadata handling across GISCO, SIANE, simplified and gridmap getters.</li>
+<li>Consolidated repeated Autonomous Community, province and municipality metadata handling across GISCO, SIANE, simplified and gridmap getters.</li>
 <li>Further simplified internal cache handling, <code>sf</code> output finalization, WMTS tile retrieval, dictionary translation and no-match messages. These changes are intended to improve maintainability without changing user-facing behavior.</li>
 <li>Reviewed roxygen2 documentation, generated Rd files and prose documentation for consistent terminology and clearer user-facing messages. This work was completed with AI assistance and human review.</li>
 <li>This internal refactor was developed with AI assistance and reviewed through focused package checks, including <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> followed by <code>lintr::lint_package()</code>.</li>
@@ -77,7 +77,7 @@
 </blockquote>
 <p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing the persistent cache directory. If you have an existing cache directory, you will receive a one-time notification about this migration.</p>
 <p>The package now requires <strong>R &gt;= 4.1</strong>, and dependency updates improve performance and maintainability. All functions return tidy objects, either tibbles or <code>sf</code> objects with tibble data.</p>
-<p>Several new functions and arguments have been added, some functions renamed and some others deprecated. All bundled datasets have been updated to their latest versions.</p>
+<p>Several new functions and arguments have been added, some functions renamed and others deprecated. All bundled datasets have been updated to their latest versions.</p>
 <div class="section level3">
 <h3 id="breaking-changes-1-0-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h3>
 <ul><li>Minimum required R version is now <strong>4.1.0</strong>.</li>
@@ -192,7 +192,7 @@
 <h2 class="pkg-version" data-toc-text="0.5.0" id="mapspain-050">mapSpain 0.5.0<a class="anchor" aria-label="anchor" href="#mapspain-050"></a></h2><p class="text-muted">CRAN release: 2022-01-25</p>
 <ul><li>Rebuilt coding database to avoid encoding errors.</li>
 <li>Fixed Galician translations.</li>
-<li>Added grid functions<code><a href="../reference/esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>, <code><a href="../reference/esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code>, <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> and <code><a href="../reference/esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code> (<a href="https://github.com/rOpenSpain/mapSpain/issues/61" class="external-link">#61</a>).</li>
+<li>Added grid functions <code><a href="../reference/esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>, <code><a href="../reference/esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code>, <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> and <code><a href="../reference/esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code> (<a href="https://github.com/rOpenSpain/mapSpain/issues/61" class="external-link">#61</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="mapspain-040">mapSpain 0.4.0<a class="anchor" aria-label="anchor" href="#mapspain-040"></a></h2><p class="text-muted">CRAN release: 2021-10-14</p>
@@ -237,13 +237,13 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="mapspain-021">mapSpain 0.2.1<a class="anchor" aria-label="anchor" href="#mapspain-021"></a></h2><p class="text-muted">CRAN release: 2021-03-19</p>
-<ul><li>Fixed a documentation typo: <code>cache_dir</code> should be set as <code>options(mapSpain_cache_dir = "path/to/dir")</code>.</li>
+<ul><li>Fixed a documentation typo: <code>cache_dir</code> must be set as <code>options(mapSpain_cache_dir = "path/to/dir")</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="mapspain-020">mapSpain 0.2.0<a class="anchor" aria-label="anchor" href="#mapspain-020"></a></h2><p class="text-muted">CRAN release: 2021-02-25</p>
 <ul><li>Fixed DOI <a href="https://doi.org/10.5281/zenodo.4318024" class="external-link uri">https://doi.org/10.5281/zenodo.4318024</a>.</li>
 <li>Ported documentation to <strong>roxygen2</strong>.</li>
-<li>Included CartoBase ANE data <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>, with <code><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane()</a></code>, <code><a href="../reference/esp_get_prov_siane.html">esp_get_prov_siane()</a></code>, <code><a href="../reference/esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>, <code><a href="../reference/esp_get_hypsobath.html">esp_get_hypsobath()</a></code>, <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>, <code><a href="../reference/esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>, <code><a href="../reference/esp_get_capimun.html">esp_get_capimun()</a></code>, <code><a href="../reference/esp_get_roads.html">esp_get_roads()</a></code> and <code><a href="../reference/esp_get_railway.html">esp_get_railway()</a></code>.</li>
+<li>Included CartoBase ANE data: <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>, with <code><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane()</a></code>, <code><a href="../reference/esp_get_prov_siane.html">esp_get_prov_siane()</a></code>, <code><a href="../reference/esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>, <code><a href="../reference/esp_get_hypsobath.html">esp_get_hypsobath()</a></code>, <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code>, <code><a href="../reference/esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>, <code><a href="../reference/esp_get_capimun.html">esp_get_capimun()</a></code>, <code><a href="../reference/esp_get_roads.html">esp_get_roads()</a></code> and <code><a href="../reference/esp_get_railway.html">esp_get_railway()</a></code>.</li>
 <li>Muted warnings from <strong>rgdal</strong>.</li>
 </ul></div>
     <div class="section level2">

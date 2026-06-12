@@ -1,6 +1,6 @@
 # Municipalities of Spain from GISCO
 
-This dataset shows boundaries of municipalities in Spain.
+Get boundaries of municipalities in Spain.
 
 ## Usage
 
@@ -78,7 +78,8 @@ Copyright:
 
   Character string. A name or
   [`regex`](https://rdrr.io/r/base/grep.html) expression with the names
-  of the required municipalities. `NULL` will return all municipalities.
+  of the required municipalities. Use `NULL` to return all
+  municipalities.
 
 - moveCAN:
 
@@ -113,8 +114,9 @@ Please check the download and usage provisions on
 
 ## See also
 
-[`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html),
-[`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
+- [`giscoR::gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.html).
+
+- [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
 
 Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),

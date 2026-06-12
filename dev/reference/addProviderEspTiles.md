@@ -55,12 +55,15 @@ modified map object
 
 ## See also
 
-[`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html),
-[`leaflet::addTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
-[`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
+- [`leaflet::leaflet()`](https://rstudio.github.io/leaflet/reference/leaflet.html).
 
-Functions for image-based maps and tile providers:
+- [`leaflet::addTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html).
+
+- [`leaflet::addWMSTiles()`](https://rstudio.github.io/leaflet/reference/map-layers.html).
+
+- [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
+
+Static map tiles and imagery:
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 

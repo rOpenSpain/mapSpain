@@ -1,7 +1,7 @@
 # Get static map tiles from public administrations of Spain
 
 Get static map tiles based on a spatial object. Maps can be fetched from
-various open map servers.
+WMS and WMTS providers.
 
 This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -71,10 +71,9 @@ esp_get_attributions(type, options = NULL)
 
 - crop:
 
-  Logical. If `TRUE`, the results will be cropped to the specified `x`
-  extent. If `x` is an
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  one `POINT`, `crop` is set to `FALSE`. See
+  Logical. If `TRUE`, crop results to the specified `x` extent. If `x`
+  is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  with one `POINT`, `crop` is set to `FALSE`. See
   [`terra::crop()`](https://rspatial.github.io/terra/reference/crop.html).
 
 - res:
@@ -92,7 +91,7 @@ esp_get_attributions(type, options = NULL)
 
 - mask:
 
-  Logical. `TRUE` if the result should be masked to `x`. See
+  Logical. `TRUE` to mask the result to `x`. See
   [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 - update_cache:
@@ -149,12 +148,13 @@ deformed, try projecting first `x`:
 
 ## See also
 
-[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
+- [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
+
+- [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
 [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
 
-Functions for image-based maps and tile providers:
+Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 

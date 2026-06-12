@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>mapSpain | Administrative boundaries of Spain, including Autonomous
-Communities, provinces and municipalities
+Communities, provinces, municipalities and NUTS
  • mapSpain</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
@@ -20,17 +20,19 @@ Communities, provinces and municipalities
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="mapSpain | Administrative boundaries of Spain, including Autonomous
-Communities, provinces and municipalities
+Communities, provinces, municipalities and NUTS
 ">
-<meta name="description" content="Administrative boundaries of Spain based on GISCO (Geographic Information
-System of the Commission) from Eurostat and CartoBase ANE from Instituto
-Geográfico Nacional. It also provides a plugin for the leaflet package and
-tools to download and process static map tiles.
+<meta name="description" content="Administrative boundaries of Spain at several levels (Autonomous
+Communities, provinces, municipalities and NUTS), based on GISCO from
+Eurostat and CartoBase ANE from Instituto Geográfico Nacional. It also
+provides a plugin for the leaflet package and tools to download and process
+static map tiles.
 ">
-<meta property="og:description" content="Administrative boundaries of Spain based on GISCO (Geographic Information
-System of the Commission) from Eurostat and CartoBase ANE from Instituto
-Geográfico Nacional. It also provides a plugin for the leaflet package and
-tools to download and process static map tiles.
+<meta property="og:description" content="Administrative boundaries of Spain at several levels (Autonomous
+Communities, provinces, municipalities and NUTS), based on GISCO from
+Eurostat and CartoBase ANE from Instituto Geográfico Nacional. It also
+provides a plugin for the leaflet package and tools to download and process
+static map tiles.
 ">
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -67,7 +69,7 @@ tools to download and process static map tiles.
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/articles/working_imagery.html">Working with imagery</a></li>
+<li><a class="dropdown-item" href="articles/articles/working_imagery.html">Working with static map tiles</a></li>
     <li><a class="dropdown-item" href="articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
@@ -108,8 +110,8 @@ tools to download and process static map tiles.
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides <strong>sf</strong> objects for Spain’s administrative boundaries, including Autonomous Communities, provinces and municipalities.</p>
-<p><strong>mapSpain</strong> also provides a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> package. It loads several basemaps from Spain’s public institutions and supports downloading and processing static tiles.</p>
+<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides <strong>sf</strong> objects for Spain’s administrative boundaries, including Autonomous Communities, provinces, municipalities and NUTS.</p>
+<p><strong>mapSpain</strong> also provides a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> package. It loads several basemaps from Spain’s public institutions and supports downloading and processing static map tiles.</p>
 <p>The full package website, with examples and vignettes, is available at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -221,7 +223,7 @@ tools to download and process static map tiles.
 <span>    labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%1.0f%%"</span>, <span class="fl">100</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span></span>
 <span>    <span class="op">}</span>,</span>
-<span>    guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">""</span>, <span class="op">)</span></span>
+<span>    guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
 <span>    xlim <span class="op">=</span> <span class="va">lims</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>,</span>
@@ -288,17 +290,17 @@ tools to download and process static map tiles.
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>
-Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of Spain</em>. <a href="https://doi.org/10.5281/zenodo.5366622" class="external-link">doi:10.5281/zenodo.5366622</a>. <a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
+Hernangómez D (2026). <em>mapSpain: Administrative Boundaries and Static Map Tiles of Spain</em>. <a href="https://doi.org/10.5281/zenodo.5366622" class="external-link">doi:10.5281/zenodo.5366622</a>. <a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
 </p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>mapspain,</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  title <span class="ot">=</span> {{mapSpain}<span class="sc">:</span> Administrative Boundaries of Spain},</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  title <span class="ot">=</span> {{mapSpain}<span class="sc">:</span> Administrative Boundaries and Static Map Tiles of Spain},</span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5366622</span>},</span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>mapSpain<span class="sc">/</span>},</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase ANE from Instituto Geográfico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a plugin <span class="cf">for</span> the leaflet package and tools to download and process static map tiles.},</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities, provinces, municipalities and NUTS), based on GISCO from Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase ANE from Instituto Geográfico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. It also provides a plugin <span class="cf">for</span> the leaflet package and tools to download and process static map tiles.},</span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
@@ -309,7 +311,7 @@ Hernangómez D (2026). <em>mapSpain: Administrative Boundaries of Spain</em>. <a
 <div class="section level2">
 <h2 id="copyright-notice">Copyright notice<a class="anchor" aria-label="anchor" href="#copyright-notice"></a>
 </h2>
-<p>This package uses data from CartoBase SIANE, provided by the Instituto Geográfico Nacional.</p>
+<p>This package uses data from CartoBase ANE, provided by the Instituto Geográfico Nacional.</p>
 <blockquote>
 <p>Atlas Nacional de España (ANE) <a href="https://creativecommons.org/licenses/by/4.0/deed.en" class="external-link">CC BY 4.0</a> <a href="https://www.ign.es/" class="external-link">ign.es</a></p>
 </blockquote>

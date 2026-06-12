@@ -7,7 +7,7 @@ objects representing political and administrative boundaries.
 
 ### CartoBase ANE
 
-Datasets from IGN and CartoBase ANE.
+Datasets sourced from CartoBase ANE.
 
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
   : City where the municipal public authorities are based - SIANE
@@ -26,7 +26,7 @@ Datasets from IGN and CartoBase ANE.
 
 ### GISCO
 
-Datasets from GISCO and Eurostat.
+Datasets sourced from GISCO and Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
   : Autonomous Communities of Spain - GISCO
@@ -67,7 +67,7 @@ Datasets from GISCO and Eurostat.
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
   : Simplified map of provinces and Autonomous Communities of Spain
 
-## Maps with imagery
+## Static map tiles and imagery
 
 Functions to return static map tiles or create an interactive
 [leaflet](https://CRAN.R-project.org/package=leaflet) map.
@@ -138,7 +138,7 @@ objects with transport infrastructure features.
 
 ## Dictionary
 
-Translate region names across languages and coding systems.
+Translate region names across languages and coding standards.
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
@@ -181,4 +181,4 @@ standardized locations and grid cell sizes.
 
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
-  : mapSpain: Administrative Boundaries of Spain
+  : mapSpain: Administrative Boundaries and Static Map Tiles of Spain
