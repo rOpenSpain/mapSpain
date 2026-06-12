@@ -67,6 +67,7 @@ keywords:
 - cran
 - ggplot2
 - gis
+- nuts
 - ccaa
 references:
 - type: software

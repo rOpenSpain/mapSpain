@@ -91,7 +91,7 @@ the resulting object as provided by IGN.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Returns
+Get
 \href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
 specified scale.
 }

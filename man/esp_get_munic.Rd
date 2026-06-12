@@ -68,7 +68,7 @@ Initial position can be adjusted using the vector of coordinates. See
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This dataset shows boundaries of municipalities in Spain.
+Get boundaries of municipalities in Spain.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 or
@@ -143,7 +143,10 @@ ggplot(spanish_laplad) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}, \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}}.
+\itemize{
+\item \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}.
+\item \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}}.
+}
 
 Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},

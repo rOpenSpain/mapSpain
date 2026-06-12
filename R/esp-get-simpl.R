@@ -3,7 +3,7 @@
 #' @description
 #'
 #' Simplified map with the boundaries of the provinces or Autonomous
-#' communities of Spain, as provided by the **INE** (Instituto Nacional de
+#' Communities of Spain, as provided by the **INE** (Instituto Nacional de
 #' Estadistica).
 #'
 #' @details
@@ -27,7 +27,7 @@
 #' @inherit esp_get_nuts return
 #' @source INE: PC_Axis files
 #'
-#' @seealso [`esp_get_gridmap`][esp_get_gridmap].
+#' @seealso [esp_get_gridmap()].
 #'
 #' @family political
 #' @encoding UTF-8

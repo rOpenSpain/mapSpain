@@ -35,14 +35,14 @@ In choropleths, regions with larger polygons tend to appear more prominent
 simply because of their size, which introduces visual bias. With hexbin
 maps, each region is represented equally, reducing this bias.
 
-You can use and mix names, ISO codes, \code{"codauto"/ "cpro"} codes (see
+You can use and mix names, ISO codes, \code{"codauto"} or \code{"cpro"} codes (see
 \link{esp_codelist}) and NUTS codes of different levels.
 
 When using a code corresponding to a higher level (for example,
 \code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).
 
-Results are provided in \strong{EPSG:4258}, use \code{\link[sf:st_transform]{sf::st_transform()}}
+Results are provided in \strong{EPSG:4258}. Use \code{\link[sf:st_transform]{sf::st_transform()}}
 to change the projection.
 }
 \examples{
@@ -90,7 +90,7 @@ ggplot(gridprov) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link{esp_get_simpl}}.
+\code{\link[=esp_get_simpl]{esp_get_simpl()}}.
 
 Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},

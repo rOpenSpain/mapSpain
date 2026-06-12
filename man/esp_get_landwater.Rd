@@ -78,8 +78,7 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 Ignored, resolution \code{3} (the most detailed) will always be provided.}
 
 \item{spatialtype}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character string.
-Use \code{\link[=esp_get_wetlands]{esp_get_wetlands()}} instead of \code{"spatialtype"} for
-wetlands.}
+Use \code{\link[=esp_get_wetlands]{esp_get_wetlands()}} instead of \code{"spatialtype"} for wetlands.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.

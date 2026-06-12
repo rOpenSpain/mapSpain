@@ -6,11 +6,11 @@
 #' names.
 #'
 #' @details
-#' The function uses internal dictionaries together with \CRANpkg{countrycode}
+#' This function uses internal dictionaries together with \CRANpkg{countrycode}
 #' to map between schemes. When `origin == destination == "text"` the input is
-#' returned unchanged. Mixing names from different administrative levels
-#' (for example Autonomous Community and province) may produce
-#' `NA` values for some entries.
+#' returned unchanged. Mixing names from different administrative levels (for
+#' example Autonomous Community and province) may produce `NA` values for some
+#' entries.
 #'
 #' @param sourcevar Character string. Vector which contains the codes or names
 #'   to be converted.

@@ -42,7 +42,7 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Simplified map with the boundaries of the provinces or Autonomous
-communities of Spain, as provided by the \strong{INE} (Instituto Nacional de
+Communities of Spain, as provided by the \strong{INE} (Instituto Nacional de
 Estadistica).
 }
 \details{
@@ -84,7 +84,7 @@ ggplot(ccaa_simp) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link{esp_get_gridmap}}.
+\code{\link[=esp_get_gridmap]{esp_get_gridmap()}}.
 
 Political and administrative boundary datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},

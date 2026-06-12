@@ -56,8 +56,8 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Returns
-\href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{Comarcas of Spain}. Comarcas are
+Get
+\href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{comarcas of Spain}. Comarcas are
 traditional informal territorial divisions, comprising several municipalities
 sharing geographical, economic or cultural traits, typically with
 poorly defined limits.

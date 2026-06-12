@@ -307,9 +307,9 @@ ggplot(all_countries) +
 
 ## Working with static map tiles
 
-**mapSpain** provides an interface for working with imagery. It can download
-static map tiles as `.png` or `.jpeg`, depending on the Web Map Service, and
-use them alongside your `sf` objects.
+**mapSpain** provides an interface for working with static map tiles. It can
+download tiles as `.png` or `.jpeg`, depending on the Web Map Service, and use
+them alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for the
 [**leaflet**](https://rstudio.github.io/leaflet/) R package, which allows you to

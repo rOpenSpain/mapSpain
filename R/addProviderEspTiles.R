@@ -14,8 +14,10 @@ leaf_providers_esp_v <- "v1.3.3"
 #' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
 #' @seealso
-#' [leaflet::leaflet()], [leaflet::addTiles()], [leaflet::addWMSTiles()],
-#' [esp_tiles_providers].
+#' - [leaflet::leaflet()].
+#' - [leaflet::addTiles()].
+#' - [leaflet::addWMSTiles()].
+#' - [esp_tiles_providers].
 #'
 #' @family images
 #' @encoding UTF-8

@@ -51,11 +51,11 @@ schemes such as NUTS, ISO2 and province codes, or obtain human-readable
 names.
 }
 \details{
-The function uses internal dictionaries together with \CRANpkg{countrycode}
+This function uses internal dictionaries together with \CRANpkg{countrycode}
 to map between schemes. When \verb{origin == destination == "text"} the input is
-returned unchanged. Mixing names from different administrative levels
-(for example Autonomous Community and province) may produce
-\code{NA} values for some entries.
+returned unchanged. Mixing names from different administrative levels (for
+example Autonomous Community and province) may produce \code{NA} values for some
+entries.
 }
 \examples{
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")

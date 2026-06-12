@@ -1,7 +1,7 @@
 #' Provinces of Spain from GISCO
 #'
 #' @description
-#' Returns
+#' Get
 #' [provinces of Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain)
 #' at a specified scale.
 #'

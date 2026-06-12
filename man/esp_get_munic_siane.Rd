@@ -95,7 +95,7 @@ the resulting object as provided by IGN.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This dataset shows boundaries of municipalities in Spain.
+Get boundaries of municipalities in Spain.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 or

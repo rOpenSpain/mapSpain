@@ -61,8 +61,12 @@ leafmap <- leaflet(width = "100\%", height = "60vh") |>
 leafmap
 }
 \seealso{
-\code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:addTiles]{leaflet::addTiles()}}, \code{\link[leaflet:addWMSTiles]{leaflet::addWMSTiles()}},
-\link{esp_tiles_providers}.
+\itemize{
+\item \code{\link[leaflet:leaflet]{leaflet::leaflet()}}.
+\item \code{\link[leaflet:addTiles]{leaflet::addTiles()}}.
+\item \code{\link[leaflet:addWMSTiles]{leaflet::addWMSTiles()}}.
+\item \link{esp_tiles_providers}.
+}
 
 Static map tiles and imagery:
 \code{\link[=esp_get_tiles]{esp_get_tiles()}},

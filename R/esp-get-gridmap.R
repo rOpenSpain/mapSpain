@@ -11,14 +11,14 @@
 #' simply because of their size, which introduces visual bias. With hexbin
 #' maps, each region is represented equally, reducing this bias.
 #'
-#' You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
+#' You can use and mix names, ISO codes, `"codauto"` or `"cpro"` codes (see
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
 #' When using a code corresponding to a higher level (for example,
 #' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
-#' Results are provided in **EPSG:4258**, use [sf::st_transform()]
+#' Results are provided in **EPSG:4258**. Use [sf::st_transform()]
 #' to change the projection.
 #'
 #' @param prov,ccaa Character. A vector of names, codes or both for provinces
@@ -27,7 +27,7 @@
 #'
 #' @inherit esp_get_nuts return
 #'
-#' @seealso [`esp_get_simpl`][esp_get_simpl].
+#' @seealso [esp_get_simpl()].
 #'
 #' @family political
 #' @encoding UTF-8

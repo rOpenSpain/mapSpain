@@ -1,7 +1,7 @@
 #' Municipalities of Spain from GISCO
 #'
 #' @description
-#' This dataset shows boundaries of municipalities in Spain.
+#' Get boundaries of municipalities in Spain.
 #'
 #' @details
 #' When using `region` you can use and mix names and NUTS codes (levels 1, 2 or
@@ -26,7 +26,9 @@
 #' Please check the download and usage provisions on
 #' [giscoR::gisco_attributions()].
 #'
-#' @seealso [giscoR::gisco_get_lau()], [giscoR::gisco_get_communes()].
+#' @seealso
+#' - [giscoR::gisco_get_lau()].
+#' - [giscoR::gisco_get_communes()].
 #'
 #' @family political
 #' @family municipalities

@@ -79,7 +79,9 @@
 #' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
 #' \CRANpkg{leaflet}, **`r leaf_providers_esp_v`**.
 #'
-#' @seealso [terra::rast()], [esp_tiles_providers]
+#' @seealso
+#' - [terra::rast()].
+#' - [esp_tiles_providers].
 #'
 #' @family images
 #' @encoding UTF-8

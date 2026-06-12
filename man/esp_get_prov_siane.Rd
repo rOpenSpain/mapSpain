@@ -90,7 +90,7 @@ the resulting object as provided by IGN.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Returns
+Get
 \href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
 at a specified scale.
 }

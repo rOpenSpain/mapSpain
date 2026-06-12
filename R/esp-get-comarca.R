@@ -1,8 +1,8 @@
 #' Comarcas of Spain
 #'
 #' @description
-#' Returns
-#' [Comarcas of
+#' Get
+#' [comarcas of
 #' Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
 #' traditional informal territorial divisions, comprising several municipalities
 #' sharing geographical, economic or cultural traits, typically with

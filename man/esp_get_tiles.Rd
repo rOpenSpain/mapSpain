@@ -166,7 +166,10 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[terra:rast]{terra::rast()}}, \link{esp_tiles_providers}
+\itemize{
+\item \code{\link[terra:rast]{terra::rast()}}.
+\item \link{esp_tiles_providers}.
+}
 
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 

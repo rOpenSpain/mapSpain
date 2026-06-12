@@ -67,4 +67,4 @@ X-schema.org-isPartOf: https://ropenspain.es/
 X-schema.org-keywords: ropenspain, tiles, r, maps, spatial, rstats,
     r-package, municipalities, spain, gisco, provinces, ign,
     autonomous-communities, administrative-boundaries, static-tiles, cran,
-    ggplot2, gis, ccaa
+    ggplot2, gis, nuts, ccaa
