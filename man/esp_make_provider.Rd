@@ -8,8 +8,7 @@
 esp_make_provider(id, q, service, layers, ...)
 }
 \arguments{
-\item{id}{An identifier for the user. It will be used for identifying
-cached tiles.}
+\item{id}{An identifier for the user. Used for identifying cached tiles.}
 
 \item{q}{The base URL of the service.}
 
@@ -63,7 +62,7 @@ tidyterra::autoplot(mytile) +
 For a list of potential providers from Spain check
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 
-Functions for image-based maps and tile providers:
+Static map tiles and imagery:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
 \code{\link[=esp_get_tiles]{esp_get_tiles()}}
 }

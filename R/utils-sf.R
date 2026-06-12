@@ -15,7 +15,6 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
   }
 
   # Warn for large files when no SQL query is provided.
-
   if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
     fsize <- file.size(file_local)
     fsize_unit <- fsize
@@ -23,7 +22,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     thr <- 20 * (1024^2)
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
-      make_msg("warning", TRUE, "Reading large file", fsize_unit)
+      make_msg("warning", TRUE, "Reading a large file", fsize_unit)
       make_msg("generic", TRUE, "This can take a while.")
     }
   }

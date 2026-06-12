@@ -32,8 +32,8 @@ rather than the package \CRANpkg{mapSpain}.
 While \code{moveCAN} is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
 spatial analysis or using tiles (for example, with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
-\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}) this option should be set to \code{FALSE} in order to
-get the actual coordinates, instead of the modified ones.
+\code{\link[=addProviderEspTiles]{addProviderEspTiles()}}), set this option to \code{FALSE} to get the actual
+coordinates, instead of the modified ones.
 }
 
 \examples{

@@ -1,15 +1,15 @@
 validate_provider <- function(type = "PNOA") {
   if (!any(is.list(type), is.character(type))) {
     cli::cli_abort(paste0(
-      "{.arg type} should be a named list (see ",
-      "{.fn mapSpain::esp_make_provider} or the name of a provider (see ",
-      "{.fn mapSpain::esp_tiles_providers}, not {.obj_class_friendly {type}}."
+      "{.arg type} must be a named list (see ",
+      "{.fn mapSpain::esp_make_provider}) or the name of a provider (see ",
+      "{.fn mapSpain::esp_tiles_providers}), not {.obj_class_friendly {type}}."
     ))
   }
 
-  # Validate list
+  # Validate custom provider lists.
   if (is.list(type)) {
-    # Need to have at least id and q
+    # Require at least `id` and `q`.
     valid <- c("id", "q")
     has_valid <- valid %in% names(type)
     if (!all(has_valid)) {
@@ -23,9 +23,9 @@ validate_provider <- function(type = "PNOA") {
     formatted_type <- provider_to_list(type)
     return(formatted_type)
   }
-  # Check providers
+  # Check built-in providers.
 
-  # These are already split, just add some additional info
+  # Add derived fields to the provider definition.
   prov_list <- mapSpain::esp_tiles_providers
   type <- match_arg_pretty(type, names(prov_list))
 
@@ -130,8 +130,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
   type_prov <- guess_provider_type(prov_list)
 
   if (type_prov == "WMS" && "version" %in% names(options)) {
-    # Exception: need to change names depending on the version of WMS
-
+    # WMS 1.3.0 and later use `crs`, earlier versions use `srs`.
     v_wms <- unlist(modifyList(
       list(v = prov_list$version),
       list(v = options$version)
@@ -153,7 +152,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
 
   prov_list <- modifyList(prov_list, options)
 
-  # Modify id
+  # Modify `id`.
   newdir <- paste0(names(options), "=", options, collapse = "&")
   new_id <- file.path(prov_list$id, cli::hash_raw_md5(charToRaw(newdir)))
 
@@ -162,7 +161,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
 }
 
 get_tile_ext <- function(prov_list) {
-  # Special case for MapBox
+  # Handle MapBox as a special case.
   if (grepl("mapbox", prov_list$q, fixed = TRUE)) {
     return("png")
   }
@@ -188,7 +187,7 @@ get_tile_ext <- function(prov_list) {
 get_tile_bbox <- function(geom, bbox_expand = 0.05, prov_type = "WMS") {
   bbox <- as.double(sf::st_bbox(geom))
 
-  # Expand in planar coordinates
+  # Expand in planar coordinates.
   dimx <- (bbox[3] - bbox[1])
   dimy <- (bbox[4] - bbox[2])
   center <- c(bbox[1] + dimx / 2, bbox[2] + dimy / 2)

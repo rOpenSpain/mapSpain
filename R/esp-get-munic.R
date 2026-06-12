@@ -15,7 +15,7 @@
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
 #' @param munic Character string. A name or [`regex`][base::grep()] expression
-#'   with the names of the required municipalities. `NULL` will return all
+#'   with the names of the required municipalities. Use `NULL` to return all
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
 #'   deprecated, the dataset will always be downloaded to the `cache_dir`.

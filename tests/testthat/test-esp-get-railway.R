@@ -6,7 +6,10 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_message(n <- esp_get_railway(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- esp_get_railway(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -68,7 +71,6 @@ test_that("Cache vs non-cached", {
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-
 
 test_that("Deprecations", {
   skip_on_cran()

@@ -6,7 +6,10 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_message(n <- esp_get_stations(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- esp_get_stations(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {

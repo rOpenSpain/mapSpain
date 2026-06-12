@@ -1,6 +1,6 @@
 list(
   rd_family_title = list(
-    images = "Functions for image-based maps and tile providers: ",
+    images = "Static map tiles and imagery: ",
     can_helpers = "Helpers for Canary Islands insets and displacement: ",
     political = "Political and administrative boundary datasets: ",
     siane = "Datasets sourced from CartoBase ANE: ",

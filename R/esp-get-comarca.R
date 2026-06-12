@@ -43,8 +43,8 @@
 #' @param region Character string. A vector of names, codes or both for
 #'   provinces, or `NULL` to get all the comarcas. See **Details**.
 #' @param comarca Character string. A name or [`regex`][base::grep()] expression
-#'   with the names of the required comarcas. `NULL` will return all the
-#'   possible comarcas.
+#'   with the names of the required comarcas. Use `NULL` to return all possible
+#'   comarcas.
 #' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
 #'   Type of comarca to return. See **Details**.
 #'

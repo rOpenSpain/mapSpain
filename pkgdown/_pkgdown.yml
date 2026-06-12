@@ -39,7 +39,7 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: Working with imagery
+      - text: Working with static map tiles
         href: articles/articles/working_imagery.html
       - text: "Appendix: codes and names of Spanish regions"
         href: articles/articles/regioncodes.html
@@ -59,12 +59,13 @@ navbar:
 home:
   title: |
     mapSpain | Administrative boundaries of Spain, including Autonomous
-    Communities, provinces and municipalities
+    Communities, provinces, municipalities and NUTS
   description: |
-    Administrative boundaries of Spain based on GISCO (Geographic Information
-    System of the Commission) from Eurostat and CartoBase ANE from Instituto
-    Geográfico Nacional. It also provides a plugin for the leaflet package and
-    tools to download and process static map tiles.
+    Administrative boundaries of Spain at several levels (Autonomous
+    Communities, provinces, municipalities and NUTS), based on GISCO from
+    Eurostat and CartoBase ANE from Instituto Geográfico Nacional. It also
+    provides a plugin for the leaflet package and tools to download and process
+    static map tiles.
 
 reference:
 - title: Political and administrative boundaries
@@ -74,12 +75,12 @@ reference:
     political and administrative boundaries.
 - subtitle: CartoBase ANE
   description: |
-    Datasets from IGN and CartoBase ANE.
+    Datasets sourced from CartoBase ANE.
   contents:
   - has_concept("siane")
 - subtitle: GISCO
   description: |
-    Datasets from GISCO and Eurostat.
+    Datasets sourced from GISCO and Eurostat.
   contents:
   - has_concept("gisco")
 - subtitle: Additional boundary helpers
@@ -88,7 +89,7 @@ reference:
   - esp_get_comarca
   - esp_get_hex_prov
   - esp_get_simpl
-- title: Maps with imagery
+- title: Static map tiles and imagery
   desc: |
     Functions to return static map tiles or create an interactive <a
     href="https://CRAN.R-project.org/package=leaflet"
@@ -116,7 +117,7 @@ reference:
   contents: has_concept("cache utilities")
 - title: Dictionary
   desc: |
-    Translate region names across languages and coding systems.
+    Translate region names across languages and coding standards.
   contents:
   - has_concept("dictionary")
 - title: Datasets

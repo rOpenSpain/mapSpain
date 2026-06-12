@@ -80,7 +80,7 @@ data. One of:
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
 \item{munic}{Character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required municipalities. \code{NULL} will return all
+with the names of the required municipalities. Use \code{NULL} to return all
 municipalities.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates

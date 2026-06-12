@@ -69,7 +69,7 @@ download_url <- function(
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline.")
+    cli::cli_alert_danger("No internet connection detected.")
     return(alert_return_null())
   }
 
@@ -82,14 +82,14 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The download size is", sz_dwn)
+    make_msg("warning", TRUE, "Download size is", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
-  # Testing
+  # Testing.
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to a fake URL.
+    # Redirect to a fake URL.
     req <- httr2::req_url(
       req,
       "https://github.com/rOpenSpain/mapSpain/raw/sianedata/fake"

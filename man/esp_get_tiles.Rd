@@ -49,9 +49,9 @@ function sets a zoom level of 18. See \strong{Details}.}
 The default value is designed to download fewer tiles than you probably
 want. Use \code{1} or \code{2} to increase the resolution.}
 
-\item{crop}{Logical. If \code{TRUE}, the results will be cropped to the specified
-\code{x} extent. If \code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT},
-\code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
+\item{crop}{Logical. If \code{TRUE}, crop results to the specified \code{x} extent. If
+\code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT}, \code{crop} is set to
+\code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
 \item{res}{Character string or number. Only valid for WMS providers.
 Resolution (in pixels) of the final tile.}
@@ -60,8 +60,7 @@ Resolution (in pixels) of the final tile.}
 
 \item{transparent}{Logical. Provides transparent background, if supported.}
 
-\item{mask}{Logical. \code{TRUE} if the result should be masked to \code{x}. See
-\code{\link[terra:mask]{terra::mask()}}.}
+\item{mask}{Logical. \code{TRUE} to mask the result to \code{x}. See \code{\link[terra:mask]{terra::mask()}}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
@@ -80,7 +79,7 @@ the provider. See \code{\link[terra:rast]{terra::rast()}}.
 }
 \description{
 Get static map tiles based on a spatial object. Maps can be fetched from
-various open map servers.
+WMS and WMTS providers.
 
 This function is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
@@ -171,7 +170,7 @@ autoplot(cartodb_dark_tile, maxcell = Inf) +
 
 \code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}
 
-Functions for image-based maps and tile providers:
+Static map tiles and imagery:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
 \code{\link[=esp_make_provider]{esp_make_provider()}}
 }

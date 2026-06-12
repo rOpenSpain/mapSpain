@@ -78,7 +78,6 @@ test_that("Test 404", {
   }
 })
 
-
 test_that("Caching tests", {
   skip_on_cran()
   skip_if_siane_offline()
@@ -169,7 +168,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "The download size"
+    "Download size is"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)

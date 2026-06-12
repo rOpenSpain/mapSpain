@@ -122,7 +122,6 @@ test_that("Bind and fill tibble removes NULL", {
   expect_null(rbind_fill(new_l))
 })
 
-
 test_that("Filter dates", {
   skip_on_cran()
   skip_if_siane_offline()

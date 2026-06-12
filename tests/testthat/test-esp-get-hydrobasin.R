@@ -8,7 +8,7 @@ test_that("Test offline", {
   })
   expect_message(
     n <- esp_get_hydrobasin(update_cache = TRUE, verbose = FALSE),
-    "Offline"
+    "No internet connection"
   )
   expect_null(n)
 

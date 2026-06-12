@@ -5,5 +5,5 @@
     Condition
       Error:
       ! `esp_get_grid_EEA()` was deprecated in mapSpain 1.0.0 and is now defunct.
-      i The source file is not available for download any more
+      i The source file is no longer available for download.
 

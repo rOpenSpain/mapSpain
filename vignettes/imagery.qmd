@@ -1,13 +1,13 @@
 ---
-title: "Imagery with mapSpain"
+title: "Static map tiles with mapSpain"
 vignette: >
-  %\VignetteIndexEntry{Imagery and mapSpain}
+  %\VignetteIndexEntry{Static map tiles with mapSpain}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
 Visit <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> to
-learn how to download and use imagery for Spain.
+learn how to download and use static map tiles for Spain.
 
 ::: callout-note
 You may need several additional packages. Install them by running:

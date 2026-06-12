@@ -37,7 +37,7 @@ convert_country_code <- function(names, out = "iso3c") {
       cli::cli_abort(
         paste0(
           "Invalid country name {.str {x}}. ",
-          "Try a vector of names, ISO3 codes or ISO2 codes."
+          "Try using a vector of names, ISO3 codes or ISO2 codes."
         ),
         call = NULL
       )
@@ -52,7 +52,10 @@ convert_country_code <- function(names, out = "iso3c") {
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
     cli::cli_alert_warning(
-      "Some country names or codes were not matched unambiguously: {.str {ff}}."
+      paste0(
+        "Some country names or codes could not be matched ",
+        "unambiguously: {.str {ff}}."
+      )
     )
     cli::cli_alert_info("Review the names or codes, or switch to ISO3 codes.")
   }

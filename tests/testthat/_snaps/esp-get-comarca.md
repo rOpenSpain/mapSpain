@@ -3,6 +3,6 @@
     Code
       nemty <- esp_get_comarca(comarca = "XX", cache_dir = cdir)
     Message
-      ! The combination of `region`, `comarca` or both does not return any results.
+      ! The selected `region`, `comarca` or combined filters do not return any results.
       i Returning empty <sf> object.
 

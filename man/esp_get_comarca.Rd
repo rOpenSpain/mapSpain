@@ -24,8 +24,8 @@ esp_get_comarca(
 provinces, or \code{NULL} to get all the comarcas. See \strong{Details}.}
 
 \item{comarca}{Character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required comarcas. \code{NULL} will return all the
-possible comarcas.}
+with the names of the required comarcas. Use \code{NULL} to return all possible
+comarcas.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.

@@ -5,11 +5,20 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(n <- esp_get_rivers(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- esp_get_rivers(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
-  expect_message(n <- esp_get_wetlands(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- esp_get_wetlands(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
-  expect_message(n <- get_river_names(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- get_river_names(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {

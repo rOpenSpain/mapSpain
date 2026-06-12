@@ -16,7 +16,7 @@ test_that("Test offline", {
       update_cache = TRUE,
       verbose = TRUE
     ),
-    "Offline"
+    "No internet connection"
   )
   expect_null(n)
 
@@ -28,7 +28,7 @@ test_that("Test offline", {
       update_cache = TRUE,
       verbose = TRUE
     ),
-    "Offline"
+    "No internet connection"
   )
   expect_null(n)
 
@@ -431,7 +431,6 @@ test_that("WMTS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-
 test_that("Old tests", {
   skip_on_cran()
   skip_if_not_installed("terra")
@@ -473,7 +472,6 @@ test_that("Old tests", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-
 test_that("Custom WMS", {
   skip_on_cran()
   skip_if_not_installed("terra")
@@ -496,7 +494,6 @@ test_that("Custom WMS", {
   expect_s4_class(tile, "SpatRaster")
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-
 
 test_that("Custom WMTS", {
   skip_on_cran()

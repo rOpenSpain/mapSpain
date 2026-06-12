@@ -15,8 +15,8 @@
 #' While `moveCAN` is useful for visualization, it will alter the actual
 #' geographic position of the Canary Islands. When using the output for
 #' spatial analysis or using tiles (for example, with [esp_get_tiles()] or
-#' [addProviderEspTiles()]) this option should be set to `FALSE` in order to
-#' get the actual coordinates, instead of the modified ones.
+#' [addProviderEspTiles()]), set this option to `FALSE` to get the actual
+#' coordinates, instead of the modified ones.
 #'
 #' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
@@ -71,7 +71,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
 
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
     cli::cli_abort(paste0(
-      "{.arg x} should be an {.cls sf} ",
+      "{.arg x} must be an {.cls sf} ",
       "or {.cls sfc} object, not {.obj_type_friendly {x}}."
     ))
   }

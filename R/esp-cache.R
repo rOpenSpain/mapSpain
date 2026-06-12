@@ -232,7 +232,7 @@ esp_clear_cache <- function(
 
 #' Detect cache directory silently
 #'
-#' @returns Path to cache directory.
+#' @return Path to cache directory.
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
@@ -303,7 +303,7 @@ cache_dir_size <- function(data_dir) {
 #' Create `cache_dir` if needed
 #'
 #' @param cache_dir Path to the cache directory.
-#' @returns Path to the cache directory.
+#' @return Path to the cache directory.
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {

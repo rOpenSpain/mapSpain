@@ -64,7 +64,7 @@ leafmap
 \code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[leaflet:addTiles]{leaflet::addTiles()}}, \code{\link[leaflet:addWMSTiles]{leaflet::addWMSTiles()}},
 \link{esp_tiles_providers}.
 
-Functions for image-based maps and tile providers:
+Static map tiles and imagery:
 \code{\link[=esp_get_tiles]{esp_get_tiles()}},
 \code{\link[=esp_make_provider]{esp_make_provider()}}
 }

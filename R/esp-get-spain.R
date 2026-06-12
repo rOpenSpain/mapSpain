@@ -76,6 +76,6 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
 }
 
 #' @rdname esp_get_spain
-#' @export
 #' @usage NULL
+#' @export
 esp_get_country <- esp_get_spain

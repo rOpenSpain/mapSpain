@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Get static map tiles based on a spatial object. Maps can be fetched from
-#' various open map servers.
+#' WMS and WMTS providers.
 #'
 #' This function is an implementation of the JavaScript plugin
 #' [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -58,15 +58,14 @@
 #' @param zoommin Character string or number. Delta on default `zoom`.
 #'   The default value is designed to download fewer tiles than you probably
 #'   want. Use `1` or `2` to increase the resolution.
-#' @param crop Logical. If `TRUE`, the results will be cropped to the specified
-#'   `x` extent. If `x` is an [`sf`][sf::st_sf] object with one `POINT`,
-#'   `crop` is set to `FALSE`. See [terra::crop()].
+#' @param crop Logical. If `TRUE`, crop results to the specified `x` extent. If
+#'   `x` is an [`sf`][sf::st_sf] object with one `POINT`, `crop` is set to
+#'   `FALSE`. See [terra::crop()].
 #' @param res Character string or number. Only valid for WMS providers.
 #'   Resolution (in pixels) of the final tile.
 #' @param bbox_expand Number. Expansion percentage of the bounding box of `x`.
 #' @param transparent Logical. Provides transparent background, if supported.
-#' @param mask Logical. `TRUE` if the result should be masked to `x`. See
-#'   [terra::mask()].
+#' @param mask Logical. `TRUE` to mask the result to `x`. See [terra::mask()].
 #' @param options A named list containing additional options to pass to the
 #'   query.
 #'
@@ -161,7 +160,7 @@ esp_get_tiles <- function(
 
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
     cli::cli_abort(paste0(
-      "{.arg x} should be an {.cls sf} ",
+      "{.arg x} must be an {.cls sf} ",
       "or {.cls sfc} object, not {.obj_type_friendly {x}}."
     ))
   }
@@ -231,7 +230,7 @@ validate_tile_ext <- function(ext) {
   }
 
   cli::cli_abort(paste0(
-    "The requested file extension should be one of ",
+    "The requested file extension must be one of ",
     "{.str png}, {.str jpeg}, {.str jpg}, {.str tiff} or {.str geotiff}, ",
     "not {.str {ext}}."
   ))
@@ -545,6 +544,6 @@ set_wmts_tile_extent_crs <- function(r, xtile, ytile, ztile, prov_list) {
 }
 
 #' @rdname esp_get_tiles
-#' @export
 #' @usage NULL
+#' @export
 esp_getTiles <- esp_get_tiles

@@ -13,8 +13,7 @@
 #' - Currently, on **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
 #'
-#' @param id An identifier for the user. It will be used for identifying
-#'   cached tiles.
+#' @param id An identifier for the user. Used for identifying cached tiles.
 #' @param q The base URL of the service.
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #' @param layers The name of the layer to retrieve.

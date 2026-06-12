@@ -4,7 +4,7 @@
       validate_provider(1)
     Condition
       Error in `validate_provider()`:
-      ! `type` should be a named list (see `mapSpain::esp_make_provider()` or the name of a provider (see `mapSpain::esp_tiles_providers()`, not 1.
+      ! `type` must be a named list (see `mapSpain::esp_make_provider()`) or the name of a provider (see `mapSpain::esp_tiles_providers()`), not 1.
 
 ---
 

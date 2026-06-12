@@ -7,14 +7,14 @@ cff-version: 1.2.0
 message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
-title: 'mapSpain: Administrative Boundaries of Spain'
+title: 'mapSpain: Administrative Boundaries and Static Map Tiles of Spain'
 version: 1.1.0.9000
 doi: 10.5281/zenodo.5366622
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.mapSpain
 abstract: Administrative boundaries of Spain at several levels (Autonomous Communities,
-  provinces and municipalities), based on 'GISCO' from 'Eurostat' <https://ec.europa.eu/eurostat/web/gisco>
+  provinces, municipalities and NUTS), based on 'GISCO' from 'Eurostat' <https://ec.europa.eu/eurostat/web/gisco>
   and 'CartoBase ANE' from 'Instituto Geográfico Nacional' <https://www.ign.es/>.
   It also provides a plugin for the 'leaflet' package and tools to download and process
   static map tiles.
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'mapSpain: Administrative Boundaries of Spain'
+  title: 'mapSpain: Administrative Boundaries and Static Map Tiles of Spain'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -36,7 +36,7 @@ preferred-citation:
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative boundaries of Spain at several levels (Autonomous Communities,
-    provinces and municipalities), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco>
+    provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco>
     and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It
     also provides a plugin for the leaflet package and tools to download and process
     static map tiles.
@@ -61,12 +61,13 @@ keywords:
 - gisco
 - provinces
 - ign
+- autonomous-communities
 - administrative-boundaries
-- ccaa
 - static-tiles
 - cran
 - ggplot2
 - gis
+- ccaa
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'

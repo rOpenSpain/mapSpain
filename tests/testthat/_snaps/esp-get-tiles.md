@@ -4,7 +4,7 @@
       esp_get_tiles(df)
     Condition
       Error in `esp_get_tiles()`:
-      ! `x` should be an <sf> or <sfc> object, not a data frame.
+      ! `x` must be an <sf> or <sfc> object, not a data frame.
 
 ---
 
@@ -12,7 +12,7 @@
       esp_get_tiles(ff, type = "IGNBase", options = list(format = "image/aabbcc"))
     Condition
       Error in `validate_tile_ext()`:
-      ! The requested file extension should be one of "png", "jpeg", "jpg", "tiff" or "geotiff", not "aabbcc".
+      ! The requested file extension must be one of "png", "jpeg", "jpg", "tiff" or "geotiff", not "aabbcc".
 
 # WMTS
 

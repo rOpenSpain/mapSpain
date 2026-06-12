@@ -3,7 +3,7 @@
 #' @description
 #' `r lifecycle::badge('defunct')`
 #'
-#' This function is defunct as the source file is not available any more.
+#' This function is defunct because the source file is no longer available.
 #'
 #' @param resolution Resolution of the grid in kilometers. Can be `1`, `10`
 #'   or `100`.
@@ -37,8 +37,7 @@ esp_get_grid_EEA <- function(
     "1.0.0",
     what = "mapSpain::esp_get_grid_EEA()",
     details = paste0(
-      "The source file is not available for download",
-      " any more"
+      "The source file is no longer available for download."
     )
   )
 }

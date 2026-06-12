@@ -91,7 +91,6 @@ test_that("sf", {
   expect_true(all(sf::st_is_valid(moved3)))
 })
 
-
 test_that("Empty", {
   teide <- data.frame(
     name = rep("test", 20),

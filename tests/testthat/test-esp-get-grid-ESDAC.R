@@ -5,7 +5,10 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(n <- esp_get_grid_ESDAC(update_cache = TRUE), "Offline")
+  expect_message(
+    n <- esp_get_grid_ESDAC(update_cache = TRUE),
+    "No internet connection"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {

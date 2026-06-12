@@ -40,7 +40,7 @@ A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}
 
-This function is defunct as the source file is not available any more.
+This function is defunct because the source file is no longer available.
 }
 \concept{deprecated functions}
 \keyword{internal}

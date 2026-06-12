@@ -4,8 +4,8 @@
   SIANE file handling, EPSG validation, region-code filtering, municipal
   metadata enrichment, empty-result messages and Canary Islands displacement.
   This is intended to simplify maintenance without changing the public API.
-- Consolidated repeated CCAA, province and municipality metadata handling
-  across GISCO, SIANE, simplified and gridmap getters.
+- Consolidated repeated Autonomous Community, province and municipality
+  metadata handling across GISCO, SIANE, simplified and gridmap getters.
 - Further simplified internal cache handling, `sf` output finalization,
   WMTS tile retrieval, dictionary translation and no-match messages. These
   changes are intended to improve maintainability without changing user-facing
@@ -44,7 +44,7 @@ performance and maintainability. All functions return tidy objects, either
 tibbles or `sf` objects with tibble data.
 
 Several new functions and arguments have been added, some functions renamed and
-some others deprecated. All bundled datasets have been updated to their latest
+others deprecated. All bundled datasets have been updated to their latest
 versions.
 
 ## Breaking changes
@@ -152,7 +152,7 @@ versions.
 
 - Rebuilt coding database to avoid encoding errors.
 - Fixed Galician translations.
-- Added grid functions`esp_get_grid_MTN()`, `esp_get_grid_BDN()`,
+- Added grid functions `esp_get_grid_MTN()`, `esp_get_grid_BDN()`,
   `esp_get_grid_EEA()` and `esp_get_grid_ESDAC()` (#61).
 
 # mapSpain 0.4.0
@@ -198,14 +198,14 @@ versions.
 
 # mapSpain 0.2.1
 
-- Fixed a documentation typo: `cache_dir` should be set as
+- Fixed a documentation typo: `cache_dir` must be set as
   `options(mapSpain_cache_dir = "path/to/dir")`.
 
 # mapSpain 0.2.0
 
 - Fixed DOI <https://doi.org/10.5281/zenodo.4318024>.
 - Ported documentation to **roxygen2**.
-- Included CartoBase ANE data
+- Included CartoBase ANE data:
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>, with
   `esp_get_munic_siane()`, `esp_get_prov_siane()`, `esp_get_ccaa_siane()`,
   `esp_get_hypsobath()`, `esp_get_rivers()`, `esp_get_hydrobasin()`,

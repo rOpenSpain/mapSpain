@@ -28,5 +28,5 @@
       esp_get_grid_BDN_ccaa()
     Condition
       Error in `esp_get_grid_BDN_ccaa()`:
-      ! `ccaa` can't be missing.
+      ! `ccaa` must be supplied.
 

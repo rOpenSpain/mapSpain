@@ -1,12 +1,12 @@
-#' Create messages based on type
+#' Create messages by type
 #'
-#' @param type A character string. Type of message. Accepted values are
+#' @param type A character string. Message type. Accepted values are
 #'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose A logical. Whether to print the message or not.
+#' @param verbose A logical. Whether to print the message.
 #' @param ... Character strings to be combined into the message.
 #'
-#' @returns
+#' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
 #' `TRUE`.
 #'
@@ -81,7 +81,6 @@ match_arg_pretty <- function(arg, choices) {
   cli::cli_abort(c(msg, i = hint), call = NULL)
 }
 
-
 #' Row-bind data frames filling missing columns with `NA`
 #'
 #' @param a_list A list of data frames or lists to row bind.
@@ -91,7 +90,7 @@ match_arg_pretty <- function(arg, choices) {
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
-  # Drop nulls
+  # Drop NULL entries.
   is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))
   a_list <- a_list[!is_null]
   if (length(a_list) == 0) {
@@ -123,8 +122,8 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
 
   if (nchar(sel_date) != 10) {
     cli::cli_abort(paste0(
-      "Date {.val {sel_date}} does not seem to be valid. ",
-      "Use {.val YYYY} or {.val YYYY-MM-DD} format. ",
+      "Date {.val {sel_date}} is not valid. ",
+      "Use the {.val YYYY} or {.val YYYY-MM-DD} format. ",
       "See {.fn base::as.Date}."
     ))
   }
@@ -135,7 +134,7 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
 
   if (!check_date_range) {
     cli::cli_abort(paste0(
-      "Year {.val {year}} not available. Select a year/date between ",
+      "Year or date {.val {year}} is not available. Select a value between ",
       "{.val {mindate}} and {.val {maxdate}}."
     ))
   }
@@ -167,7 +166,7 @@ validate_non_empty_arg <- function(arg, call = parent.frame(1)) {
   arg_name <- as.character(substitute(arg)) # nolint
 
   if (missing(arg)) {
-    cli::cli_abort("{.arg {arg_name}} can't be missing.", call = call)
+    cli::cli_abort("{.arg {arg_name}} must be supplied.", call = call)
   }
 
   arg
@@ -202,7 +201,7 @@ return_empty_combination_sf <- function(data_sf, arg) {
   return_empty_sf(
     data_sf,
     paste0(
-      "The combination of {.arg region}, {.arg {arg}} or both does not ",
+      "The selected {.arg region}, {.arg {arg}} or combined filters do not ",
       "return any results."
     )
   )
@@ -228,8 +227,8 @@ warn_no_match <- function(values, destination = NULL) {
   }
 
   cli::cli_alert_warning(paste0(
-    "No match on {.arg destination = {.str {destination}}} found ",
-    "for {.str {values}}."
+    "No match found for {.str {values}} with ",
+    "{.arg destination = {.str {destination}}}."
   ))
   invisible()
 }
