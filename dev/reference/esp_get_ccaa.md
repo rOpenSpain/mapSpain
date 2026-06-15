@@ -1,4 +1,4 @@
-# Autonomous Communities of Spain - GISCO
+# Autonomous Communities of Spain from GISCO
 
 Get [Autonomous Communities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at

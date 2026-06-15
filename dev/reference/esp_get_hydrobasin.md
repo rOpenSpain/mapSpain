@@ -1,4 +1,4 @@
-# River basin districts of Spain - SIANE
+# River basin districts of Spain from SIANE
 
 River basin districts are the areas of land and sea, made up of one or
 more neighbouring river basins together with their associated
@@ -20,9 +20,9 @@ esp_get_hydrobasin(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>

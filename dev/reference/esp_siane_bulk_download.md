@@ -16,9 +16,9 @@ esp_siane_bulk_download(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -80,7 +80,7 @@ Political and administrative boundary datasets:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
 
-Datasets sourced from CartoBase ANE:
+Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
@@ -117,10 +117,10 @@ read_sf(dest_files[1]) |> head()
 # Now we can connect the function with the downloaded data like:
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/Rtmprdvyvr/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmprdvyvr/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/Rtmprdvyvr/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmprdvyvr/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/Rtmpcy2JuL/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmpcy2JuL/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/Rtmpcy2JuL/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmpcy2JuL/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # Message shows file is already cached :)
 

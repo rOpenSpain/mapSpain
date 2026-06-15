@@ -1,4 +1,4 @@
-# Boundaries of Spain - SIANE
+# Boundaries of Spain from SIANE
 
 Returns the boundaries of Spain as a single
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
@@ -11,9 +11,9 @@ esp_get_spain_siane(moveCAN = TRUE, ...)
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -123,7 +123,7 @@ Political and administrative boundary datasets:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
 
-Datasets sourced from CartoBase ANE:
+Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),

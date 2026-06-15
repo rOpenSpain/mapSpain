@@ -1,9 +1,9 @@
 # mapSpain: Administrative Boundaries and Static Map Tiles of Spain
 
 Administrative boundaries of Spain at several levels (Autonomous
-Communities, provinces, municipalities and NUTS), based on 'GISCO' from
-'Eurostat' <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase ANE'
-from 'Instituto Geográfico Nacional' <https://www.ign.es/>. It also
+Communities, provinces, municipalities and 'NUTS'), based on 'GISCO'
+from 'Eurostat' <https://ec.europa.eu/eurostat/web/gisco> and 'CartoBase
+ANE' from 'Instituto Geográfico Nacional' <https://www.ign.es/>. It also
 provides a plugin for the 'leaflet' package and tools to download and
 process static map tiles.
 

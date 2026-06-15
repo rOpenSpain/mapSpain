@@ -1,4 +1,4 @@
-# Roads of Spain - SIANE
+# Roads of Spain from SIANE
 
 Object representing the main roads of Spain.
 
@@ -18,9 +18,9 @@ esp_get_roads(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>

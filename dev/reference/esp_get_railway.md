@@ -1,4 +1,4 @@
-# Railways of Spain - SIANE
+# Railways of Spain from SIANE
 
 Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 `LINESTRING` or `POINT` object representing the nodes and railway lines
@@ -29,9 +29,9 @@ esp_get_stations(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>

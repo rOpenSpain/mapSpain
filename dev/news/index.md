@@ -313,7 +313,7 @@ CRAN release: 2021-02-25
 
 - Fixed DOI <https://doi.org/10.5281/zenodo.4318024>.
 - Ported documentation to **roxygen2**.
-- Included CartoBase ANE data:
+- Included CartoBase ANE (Atlas Nacional de España) data:
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>, with
   [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
   [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),

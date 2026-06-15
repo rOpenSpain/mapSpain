@@ -283,22 +283,22 @@ EuroGeographics for information regarding their license agreements.
 These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects representing political and administrative boundaries.
 
-### CartoBase ANE
+### CartoBase ANE (Atlas Nacional de España)
 
 Datasets sourced from CartoBase ANE.
 
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
-  : City where the municipal public authorities are based - SIANE
+  : City where the municipal public authorities are based from SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain - SIANE
+  : Autonomous Communities of Spain from SIANE
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
-  : Countries of the world - SIANE
+  : Countries of the world from SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
   : Municipalities of Spain from SIANE
 - [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md)
   : Provinces of Spain from SIANE
 - [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
-  : Boundaries of Spain - SIANE
+  : Boundaries of Spain from SIANE
 - [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
   : SIANE bulk download
 
@@ -307,7 +307,7 @@ Datasets sourced from CartoBase ANE.
 Datasets sourced from GISCO and Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain - GISCO
+  : Autonomous Communities of Spain from GISCO
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
   : Municipalities of Spain from GISCO
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
@@ -315,7 +315,7 @@ Datasets sourced from GISCO and Eurostat.
 - [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md)
   : Provinces of Spain from GISCO
 - [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
-  : Boundaries of Spain - GISCO
+  : Boundaries of Spain from GISCO
 
 ### Additional boundary helpers
 
@@ -381,12 +381,12 @@ These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects with natural features.
 
 - [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hydrobasin.md)
-  : River basin districts of Spain - SIANE
+  : River basin districts of Spain from SIANE
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_hypsobath.md)
-  : Hypsometry and bathymetry of Spain - SIANE
+  : Hypsometry and bathymetry of Spain from SIANE
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
   [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
-  : Rivers and wetlands of Spain - SIANE
+  : Rivers and wetlands of Spain from SIANE
 
 ## Transport infrastructure
 
@@ -395,9 +395,9 @@ objects with transport infrastructure features.
 
 - [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
-  : Railways of Spain - SIANE
+  : Railways of Spain from SIANE
 - [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_roads.md)
-  : Roads of Spain - SIANE
+  : Roads of Spain from SIANE
 
 ## Cache management
 
