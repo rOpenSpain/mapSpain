@@ -1,8 +1,8 @@
 #' Get a [`sf`][sf::st_sf] hexbin or squared `POLYGON` of Spain
 #'
 #' @description
-#' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with the
-#' boundaries of the provinces or Autonomous Communities of Spain.
+#' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with
+#' boundaries of the provinces or Autonomous Communities and Cities of Spain.
 #'
 #' @details
 #'
@@ -15,14 +15,14 @@
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
 #' When using a code corresponding to a higher level (for example,
-#' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
+#' `esp_get_prov("Andalucia")`), all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
 #' Results are provided in **EPSG:4258**. Use [sf::st_transform()]
 #' to change the projection.
 #'
 #' @param prov,ccaa Character. A vector of names, codes or both for provinces
-#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   and Autonomous Communities and Cities, or `NULL` to get all the data. See
 #'   **Details**.
 #'
 #' @inherit esp_get_nuts return
@@ -46,7 +46,7 @@
 #'   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
 #'   geom_sf_text(aes(label = label), check_overlap = TRUE) +
 #'   theme_void() +
-#'   labs(title = "Hexbin: Autonomous Communities")
+#'   labs(title = "Hexbin: Autonomous Communities and Cities")
 #'
 #' hexprov <- esp_get_hex_prov()
 #'
@@ -64,7 +64,7 @@
 #'   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
 #'   geom_sf_text(aes(label = label), check_overlap = TRUE) +
 #'   theme_void() +
-#'   labs(title = "Grid: Autonomous Communities")
+#'   labs(title = "Grid: Autonomous Communities and Cities")
 #'
 #' gridprov <- esp_get_grid_prov()
 #'

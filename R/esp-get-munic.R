@@ -8,8 +8,8 @@
 #' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
 #' (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or NUTS1), all
-#' the municipalities of that level will be added.
+#' When calling a higher level (province, Autonomous Community or City, or
+#' NUTS 1), all municipalities of that level are added.
 #'
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
@@ -171,7 +171,7 @@ esp_get_munic <- function(
   keep_n <- unique(c(first_names, init_nm))
   data_sf <- data_sf[, keep_n]
 
-  # Filter munics
+  # Filter municipalities.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
   data_sf <- filter_by_name_pattern(data_sf, munic, "name")

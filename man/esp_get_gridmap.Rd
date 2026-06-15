@@ -19,15 +19,15 @@ esp_get_grid_ccaa(ccaa = NULL)
 }
 \arguments{
 \item{prov, ccaa}{Character. A vector of names, codes or both for provinces
-and Autonomous Communities, or \code{NULL} to get all the data. See
+and Autonomous Communities and Cities, or \code{NULL} to get all the data. See
 \strong{Details}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of squares with the
-boundaries of the provinces or Autonomous Communities of Spain.
+Loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of squares with
+boundaries of the provinces or Autonomous Communities and Cities of Spain.
 }
 \details{
 Hexbin (or grid) maps have an advantage over traditional choropleth maps.
@@ -39,7 +39,7 @@ You can use and mix names, ISO codes, \code{"codauto"} or \code{"cpro"} codes (s
 \link{esp_codelist}) and NUTS codes of different levels.
 
 When using a code corresponding to a higher level (for example,
-\code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
+\code{esp_get_prov("Andalucia")}), all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).
 
 Results are provided in \strong{EPSG:4258}. Use \code{\link[sf:st_transform]{sf::st_transform()}}
@@ -58,7 +58,7 @@ ggplot(hexccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Hexbin: Autonomous Communities")
+  labs(title = "Hexbin: Autonomous Communities and Cities")
 
 hexprov <- esp_get_hex_prov()
 
@@ -76,7 +76,7 @@ ggplot(gridccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Grid: Autonomous Communities")
+  labs(title = "Grid: Autonomous Communities and Cities")
 
 gridprov <- esp_get_grid_prov()
 

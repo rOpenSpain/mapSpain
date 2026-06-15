@@ -12,5 +12,5 @@
       esp_get_simpl_ccaa("Mallorca", cache_dir = cdir)
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities codes found for "Mallorca".
+      ! No Spanish Autonomous Communities and Cities codes found for "Mallorca".
 

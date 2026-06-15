@@ -68,7 +68,7 @@ esp_get_prov_siane <- function(
   df <- get_prov_codes_df()
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Add NUTS2 metadata.
+  # Add NUTS 2 metadata.
   data_sf <- merge(data_sf, get_prov_nuts_codes_df(), all.x = TRUE)
 
   # Move the Canary Islands.
@@ -77,7 +77,7 @@ esp_get_prov_siane <- function(
   # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  # Order by Autonomous Community and province.
+  # Order by Autonomous Community or City and province.
   data_sf <- data_sf[order(data_sf$codauto), ]
 
   namesend <- unique(c(initcols, colnames(esp_get_prov())))

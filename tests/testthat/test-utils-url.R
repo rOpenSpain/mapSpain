@@ -168,7 +168,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "Download size is"
+    "Download size"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)

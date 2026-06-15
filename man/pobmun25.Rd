@@ -21,7 +21,7 @@ population data by municipality in Spain for 2025.
 }
 }
 \source{
-INE: Instituto Nacional de Estadistica
+INE: Instituto Nacional de Estadistica.
 \url{https://www.ine.es/dyngs/INEbase/categoria.htm?c=Estadistica_P&cid=1254734710990}.
 }
 \description{

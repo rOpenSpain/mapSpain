@@ -37,7 +37,7 @@ convert_country_code <- function(names, out = "iso3c") {
       cli::cli_abort(
         paste0(
           "Invalid country name {.str {x}}. ",
-          "Try using a vector of names, ISO3 codes or ISO2 codes."
+          "Use a vector of names, ISO3 codes or ISO2 codes."
         ),
         call = NULL
       )

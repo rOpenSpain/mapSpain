@@ -19,7 +19,7 @@ A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x}
 but displaced accordingly.
 }
 \description{
-Helper function to displace an external \code{\link[sf:st_sf]{sf}} object (potentially
+Helper function to displace an external \code{\link[sf:st_sf]{sf}} object, potentially
 representing a location in the Canary Islands) to align it with the objects
 provided by \code{\link[sf:st_sf]{sf}} with the option \code{moveCAN = TRUE}.
 }
@@ -31,7 +31,7 @@ rather than the package \CRANpkg{mapSpain}.
 \section{Displacing the Canary Islands}{
 While \code{moveCAN} is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (for example, with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
+spatial analysis or tiles (for example, with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}), set this option to \code{FALSE} to get the actual
 coordinates, instead of the modified ones.
 }
@@ -46,7 +46,7 @@ teide <- data.frame(
 
 teide_sf <- st_as_sf(teide, coords = c("lon", "lat"), crs = 4326)
 
-# If we use any mapSpain produced object with moveCAN = TRUE...
+# A mapSpain object with moveCAN = TRUE is displaced.
 
 esp <- esp_get_spain(moveCAN = c(13, 0))
 
@@ -60,7 +60,7 @@ ggplot(esp) +
     subtitle = "But not the external Teide object"
   )
 
-# But we can
+# Displace the external object too.
 
 teide_sf_disp <- esp_move_can(teide_sf, moveCAN = c(13, 0))
 

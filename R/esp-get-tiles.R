@@ -46,7 +46,7 @@
 #'
 #' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #'
-#' @param type This argument can be either:
+#' @param type This argument can be one of:
 #'   - The name of one of the pre-defined providers (see
 #'     [esp_tiles_providers]).
 #'   - A list with two named elements `id` and `q` with your own arguments. See
@@ -64,7 +64,8 @@
 #' @param res Character string or number. Only valid for WMS providers.
 #'   Resolution (in pixels) of the final tile.
 #' @param bbox_expand Number. Expansion percentage of the bounding box of `x`.
-#' @param transparent Logical. Provides transparent background, if supported.
+#' @param transparent Logical. Whether to use a transparent background, if
+#'   supported.
 #' @param mask Logical. `TRUE` to mask the result to `x`. See [terra::mask()].
 #' @param options A named list containing additional options to pass to the
 #'   query.
@@ -158,7 +159,7 @@ esp_get_tiles <- function(
 ) {
   x <- validate_non_empty_arg(x)
 
-  # Only sf and sfc allowed
+  # Validate spatial input.
 
   if (!any(inherits(x, "sf"), inherits(x, "sfc"))) {
     cli::cli_abort(paste0(
@@ -360,7 +361,7 @@ name_tile_bands <- function(tile_map) {
 }
 
 get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
-  # Prepare call
+  # Prepare the provider call.
   bbox_num <- as.double(sf::st_bbox(bbox))
 
   id <- prov_list$id
@@ -372,7 +373,7 @@ get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
   q_end <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
   ext <- get_tile_ext(prov_list)
 
-  # File name
+  # Build the cached file name.
 
   file_name <- paste0(cli::hash_raw_md5(charToRaw(q_end)), ".", ext)
 

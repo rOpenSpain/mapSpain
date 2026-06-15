@@ -22,12 +22,12 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     thr <- 20 * (1024^2)
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
-      make_msg("warning", TRUE, "Reading a large file", fsize_unit)
+      make_msg("warning", TRUE, "Reading a large file:", fsize_unit)
       make_msg("generic", TRUE, "This can take a while.")
     }
   }
 
-  # Create and read the 'vsizip' construct for shp.zip files.
+  # Create and read the "vsizip" construct for zipped shapefiles.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name

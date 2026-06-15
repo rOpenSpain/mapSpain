@@ -24,11 +24,11 @@ additional item named \code{attribution}.
 \strong{v1.3.3}.
 }
 \description{
-A named \code{\link[base:list]{list}} of length 102
+A named \code{\link[base:list]{list}} of length 102,
 containing URL information for different public WMS and WMTS tile providers
-of Spain.
+in Spain.
 
-Implementation of the JavaScript plugin
+This dataset is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 }

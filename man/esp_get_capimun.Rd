@@ -11,7 +11,7 @@ CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacio
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
 
-It's necessary to always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following formulas:
 \enumerate{
 \item When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:
@@ -43,21 +43,21 @@ esp_get_capimun(
 )
 }
 \arguments{
-\item{year}{Character string or number. Release year, it must be in
-formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
+\item{year}{Character string or number. Release year. It must use format
+\code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
@@ -97,17 +97,17 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
 (see \link{esp_codelist}).
 
-When calling a higher level (province, Autonomous Community or NUTS1), all
-the municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or City, or
+NUTS 1), all municipalities of that level are added.
 }
 \note{
 Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
 a historical database of Spanish municipal boundaries is also available,
-offering higher‑resolution geometries that may be more appropriate for
-GIS‑oriented workflows:
+offering higher-resolution geometries that may be more appropriate for
+GIS-oriented workflows:
 \itemize{
-\item Goerlich, F. J., & Pérez Vázquez, P. (2025). \emph{Base de datos histórica de
-contornos municipales de España –LAU2boundaries4Spain–} [Data set].
+\item Goerlich, F. J. & Pérez Vázquez, P. (2025). \emph{Base de datos histórica de
+contornos municipales de España -LAU2boundaries4Spain-} [Data set].
 Zenodo. \doi{10.5281/zenodo.15345101},
 \url{https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html}.
 }
@@ -115,26 +115,26 @@ Zenodo. \doi{10.5281/zenodo.15345101},
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# This code compares centroids of municipalities against esp_get_capimun
+# Compare municipality centroids against esp_get_capimun().
 
-# Get shape
+# Get the municipality boundary.
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 
-# Area in km2
+# Area in km2.
 print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
 
-# Extract centroid
+# Extract the centroid.
 centroid <- sf::st_centroid(area)
 centroid$type <- "Centroid"
 
-# Compare with capimun
+# Compare with capimun.
 capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 capimun$type <- "Capimun"
 
-# Join both point geometries
+# Join both point geometries.
 points <- dplyr::bind_rows(centroid, capimun)
 
-# Check on plot
+# Check on a plot.
 library(ggplot2)
 
 ggplot(points) +

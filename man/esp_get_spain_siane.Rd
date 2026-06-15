@@ -11,7 +11,7 @@ CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacio
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
 
-It's necessary to always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following formulas:
 \enumerate{
 \item When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:
@@ -40,26 +40,26 @@ Initial position can be adjusted using the vector of coordinates. See
 \item{...}{
   Arguments passed on to \code{\link{esp_get_ccaa_siane}}
   \describe{
-    \item{\code{year}}{Character string or number. Release year, it must be in
-formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
+    \item{\code{year}}{Character string or number. Release year. It must use format
+\code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
     \item{\code{resolution}}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item "10": 1:10 million.
-\item "6.5": 1:6.5 million.
-\item "3": 1:3 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"6.5"}: 1:6.5 million.
+\item \code{"3"}: 1:3 million.
 }}
     \item{\code{epsg}}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+    \item{\code{cache}}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See

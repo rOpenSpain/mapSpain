@@ -11,7 +11,7 @@ CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacio
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
 
-It's necessary to always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following formulas:
 \enumerate{
 \item When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:
@@ -45,29 +45,29 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A (invisible) character vector with the full path of the files extracted.
+An invisible character vector with the full paths of the extracted files.
 See \strong{Examples}.
 }
 \description{
 Download zipped data from SIANE to the \code{\link[=esp_set_cache_dir]{cache_dir}}
-and extract the relevant ones.
+and extract the relevant files.
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 tmp <- file.path(tempdir(), "testexample")
 dest_files <- esp_siane_bulk_download(cache_dir = tmp)
 
-# Read one
+# Read one file.
 library(sf)
 read_sf(dest_files[1]) |> head()
 
-# Now we can connect the function with the downloaded data like:
+# Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
 
-# Message shows file is already cached :)
+# The message shows that the file is already cached.
 
-# Clean
+# Clean up.
 unlink(tmp, force = TRUE, recursive = TRUE)
 \dontshow{\}) # examplesIf}
 }

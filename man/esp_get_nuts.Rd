@@ -33,14 +33,14 @@ esp_get_nuts(
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
@@ -85,20 +85,20 @@ Initial position can be adjusted using the vector of coordinates. See
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions using
+The GISCO statistical unit dataset represents NUTS (Nomenclature of
+Territorial Units for Statistics) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
-help lines to better visualise multipart polygonal regions.
+help lines to better visualize multipart polygonal regions.
 
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 \itemize{
-\item NUTS 1: major socio-economic regions
-\item NUTS 2: basic regions for the application of regional policies
+\item NUTS 1: major socioeconomic regions.
+\item NUTS 2: basic regions for the application of regional policies.
 \item NUTS 3: small regions for specific diagnoses.
 }
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to the national
 boundaries.
 }
 \details{
@@ -110,7 +110,7 @@ country level (NUTS 0) is also available for countries where the nation at
 statistical level does not coincide with the administrative boundaries.
 
 The NUTS classification has been officially established through Commission
-Delegated Regulation 2019/1755. A non-official NUTS-like classification has
+Delegated Regulation 2019/1755. A nonofficial NUTS-like classification has
 been defined for the EFTA countries, candidate countries and potential
 candidates based on a bilateral agreement between Eurostat and the respective
 statistical agencies.
@@ -127,7 +127,7 @@ library(ggplot2)
 ggplot(nuts1) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     caption = giscoR::gisco_attributions()
   )
 
@@ -136,7 +136,7 @@ nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 ggplot(nuts1_alt) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     subtitle = "to the right",
     caption = giscoR::gisco_attributions()
   )
@@ -146,7 +146,7 @@ nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 ggplot(nuts1_orig) +
   geom_sf() +
   labs(
-    title = "NUTS1",
+    title = "NUTS 1",
     subtitle = "Canary Islands on the true location",
     caption = giscoR::gisco_attributions()
   )

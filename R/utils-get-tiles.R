@@ -38,7 +38,7 @@ validate_provider <- function(type = "PNOA") {
   # Order tile options.
   ord <- unique(c(c("attribution", "id", "q"), names(db_prov)))
   db_prov <- db_prov[ord]
-  # Remove NULLs/NAs
+  # Remove NULL and NA values.
   db_prov <- lapply(db_prov, ensure_null)
   db_prov <- db_prov[lengths(db_prov) > 0]
   db_prov
@@ -76,7 +76,7 @@ provider_to_list <- function(type) {
   urlsplit <- modifyList(urlsplit, parts)
 
   if (guess_provider_type(urlsplit) == "WMTS") {
-    # Ensure these parameters
+    # Ensure required WMTS parameters.
 
     urlsplit$tilematrixset <- "GoogleMapsCompatible"
     urlsplit$tilematrix <- "{z}"
@@ -145,7 +145,7 @@ modify_provider_list <- function(prov_list, options = NULL) {
     }
   }
 
-  # Ignore TileMatrix fields in WMTS
+  # Ignore TileMatrix fields in WMTS.
   if (type_prov == "WMTS") {
     options <- options[names(options) != "tilematrix"]
   }

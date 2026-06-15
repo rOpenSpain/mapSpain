@@ -40,10 +40,11 @@ convert_to_nuts <- function(region) {
   sort(unique(nuts_id[!is.na(nuts_id)]))
 }
 
-#' Transform regions to NUTS codes for Autonomous Communities (NUTS 2)
+#' Transform regions to NUTS codes for Autonomous Communities and Cities
+#' (NUTS 2)
 #' @param region A vector of region names or codes (NUTS, ISO2, INE codauto).
-#' @return A vector of NUTS codes for Autonomous Communities (level 2) or an
-#'   error if no valid code is found.
+#' @return A vector of NUTS codes for Autonomous Communities and Cities
+#'   (level 2) or an error if no valid code is found.
 #'
 #' @noRd
 convert_to_nuts_ccaa <- function(region) {
@@ -79,21 +80,24 @@ convert_to_nuts_ccaa <- function(region) {
   }
 
   if (all(is.na(ccaa_id))) {
-    abort_no_spanish_codes("Autonomous Communities", clean_region)
+    abort_no_spanish_codes("Autonomous Communities and Cities", clean_region)
   }
 
-  # Map Ceuta and Melilla to their Autonomous Community codes.
+  # Map Ceuta and Melilla to their Autonomous Community or City codes.
   ccaa_id[grep("ES640", ccaa_id, fixed = TRUE)] <- "ES64"
   ccaa_id[grep("ES630", ccaa_id, fixed = TRUE)] <- "ES63"
 
   novalid <- is.na(ccaa_id) | nchar(ccaa_id) > 4
 
   if (all(novalid)) {
-    abort_no_spanish_codes("Autonomous Communities", clean_region)
+    abort_no_spanish_codes("Autonomous Communities and Cities", clean_region)
   }
 
   if (any(novalid)) {
-    warn_no_spanish_codes("Autonomous Communities", clean_region[novalid])
+    warn_no_spanish_codes(
+      "Autonomous Communities and Cities",
+      clean_region[novalid]
+    )
   }
 
   ccaa_id <- ccaa_id[!novalid]
@@ -124,7 +128,7 @@ convert_to_nuts_prov <- function(region) {
     return(NULL)
   }
 
-  # Handle island cases where NUTS3 and province codes diverge.
+  # Handle island cases where NUTS 3 and province codes diverge.
   clean_region[clean_region == "ES-GC"] <- "35"
   clean_region[clean_region == "ES-TF"] <- "38"
   clean_region[clean_region == "ES-PM"] <- "ES53"
@@ -202,7 +206,7 @@ convert_to_nuts_prov <- function(region) {
     abort_no_spanish_codes("province", clean_region)
   }
 
-  # Remove island NUTS3 codes that do not correspond to provinces.
+  # Remove island NUTS 3 codes that do not correspond to provinces.
   esp_codes <- mapSpain::esp_codelist
   not_provs <- esp_codes[
     !is.na(esp_codes$nuts3.code) & is.na(esp_codes$nuts.prov.code),
@@ -224,7 +228,7 @@ convert_to_nuts_prov <- function(region) {
 
   nuts_cpros <- nuts_cpros[!is.na(nuts_cpros)]
 
-  # Expand GC and TF codes to their constituent NUTS3 codes.
+  # Expand GC and TF codes to their constituent NUTS 3 codes.
   if ("ES-TF" %in% nuts_cpros) {
     nuts <- mapSpain::esp_codelist
     vec_codes <- nuts[nuts$iso2.prov.code == "ES-TF", ]$nuts3.code

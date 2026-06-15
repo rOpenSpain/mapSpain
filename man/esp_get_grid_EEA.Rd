@@ -22,8 +22,8 @@ or \code{100}.}
 
 \item{type}{Character. The geographic scope of the grid:
 \itemize{
-\item \code{"main"}: Mainland Spain (default)
-\item \code{"canary"}: Canary Islands
+\item \code{"main"}: Mainland Spain (default).
+\item \code{"canary"}: Canary Islands.
 }}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default

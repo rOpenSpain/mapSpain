@@ -4,17 +4,17 @@
 #' Get
 #' [comarcas of
 #' Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-#' traditional informal territorial divisions, comprising several municipalities
-#' sharing geographical, economic or cultural traits, typically with
-#' poorly defined limits.
+#' traditional informal territorial divisions, comprising several
+#' municipalities sharing geographical, economic or cultural traits, typically
+#' with poorly defined limits.
 #'
 #' @details
 #' When using `region` you can use and mix names and NUTS codes
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-#' "cpro" (see [esp_codelist]).
+#' `"cpro"` (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or NUTS1),
-#' all the comarcas of that level will be added.
+#' When calling a higher level (province, Autonomous Community or City, or
+#' NUTS 1), all comarcas of that level are added.
 #'
 #' # About comarcas
 #'
@@ -25,7 +25,7 @@
 #'
 #' In the case of Spain, comarcas only have an administrative character legally
 #' recognized in Catalonia, the Basque Country, Navarra (named merindades
-#' instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
+#' instead), the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
 #' the Principality of Asturias and Andalusia have functional comarcas.
 #'
 #' # Types
@@ -33,8 +33,8 @@
 #' `esp_get_comarca()` can retrieve several types of comarcas, each one
 #' provided under different classification criteria.
 #' - `"INE"`: Comarcas defined by the National Statistics Institute (INE).
-#' - `"IGN"`: Official comarcas, only available in some Autonomous Communities,
-#'   provided by the National Geographic Institute.
+#' - `"IGN"`: Official comarcas, only available for some Autonomous
+#'   Communities and Cities, provided by the National Geographic Institute.
 #' - `"AGR"`: Agrarian comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
 #' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
@@ -42,9 +42,9 @@
 #'
 #' @param region Character string. A vector of names, codes or both for
 #'   provinces, or `NULL` to get all the comarcas. See **Details**.
-#' @param comarca Character string. A name or [`regex`][base::grep()] expression
-#'   with the names of the required comarcas. Use `NULL` to return all possible
-#'   comarcas.
+#' @param comarca Character string. A name or [`regex`][base::grep()]
+#'   expression with the names of the required comarcas. Use `NULL` to return
+#'   all possible comarcas.
 #' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
 #'   Type of comarca to return. See **Details**.
 #'
@@ -56,8 +56,8 @@
 #'
 #' @note
 #' The use of the information contained on the
-#' [INE website](https://www.ine.es/en/index.htm) may be carried out by users or
-#' re-use agents, at their own risk, and they will be the sole liable parties
+#' [INE website](https://www.ine.es/en/index.htm) may be carried out by users
+#' or re-use agents, at their own risk, and they will be the sole liable parties
 #' in the case of having to answer to third parties due to damages arising
 #' from such use.
 #'
@@ -74,14 +74,14 @@
 #' ggplot(comarcas) +
 #'   geom_sf()
 #'
-#' # IGN provides recognized comarcas
+#' # IGN provides recognized comarcas.
 #'
 #' rec <- esp_get_comarca(type = "IGN")
 #'
 #' ggplot(rec) +
 #'   geom_sf(aes(fill = t_comarca))
 #'
-#' # Legal comarcas of Catalunya
+#' # Legal comarcas of Catalunya.
 #'
 #' comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
 #'
@@ -103,7 +103,7 @@ esp_get_comarca <- function(
   init_epsg <- validate_epsg(epsg)
   type <- match_arg_pretty(type)
 
-  # URL
+  # Build the source URL.
   api_entry <- switch(type,
     "INE" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/",
     "IGN" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/IGNComarcas/",
@@ -144,7 +144,7 @@ esp_get_comarca <- function(
   # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)
 
-  # Rematch
+  # Restore and finish geometries.
   data_sf <- sanitize_sf(data_sf)
 
   data_sf

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
-\title{Autonomous Communities of Spain from GISCO}
+\title{Autonomous Communities and Cities of Spain from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -15,7 +15,8 @@ esp_get_ccaa(ccaa = NULL, moveCAN = TRUE, ...)
 }
 \arguments{
 \item{ccaa}{Character string. A vector of names, codes or both for
-Autonomous Communities, or \code{NULL} to get all the Autonomous Communities.
+Autonomous Communities and Cities, or \code{NULL} to get all Autonomous
+Communities and Cities.
 See \strong{Details}.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -31,13 +32,13 @@ Initial position can be adjusted using the vector of coordinates. See
     \item{\code{epsg}}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+    \item{\code{cache}}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{update_cache}}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See
@@ -67,16 +68,17 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities and Cities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities in this function.
+Ceuta and Melilla are included at the Autonomous Communities and Cities
+level in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
-will be added.
+When calling a NUTS 1 level, all Autonomous Communities and Cities of that
+level are added.
 }
 \note{
 Please check the download and usage provisions on
@@ -90,7 +92,7 @@ library(ggplot2)
 ggplot(ccaa) +
   geom_sf()
 
-# Random Autonomous Communities
+# Random Autonomous Communities and Cities.
 random_ccaa <- esp_get_ccaa(ccaa = c(
   "Euskadi",
   "Catalunya",
@@ -105,20 +107,20 @@ ggplot(random_ccaa) +
   geom_sf_label(aes(label = codauto), alpha = 0.3) +
   coord_sf(crs = 3857)
 
-# All Autonomous Communities of a NUTS1 region plus an addition
+# All Autonomous Communities and Cities of a NUTS 1 region plus one.
 
 mixed <- esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 
 ggplot(mixed) +
   geom_sf()
 
-# Combine with giscoR to get countries
+# Combine with giscoR to get countries.
 \donttest{
 
 library(giscoR)
 library(sf)
 
-res <- 20 # Set the same resolution
+res <- 20 # Use the same resolution.
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)

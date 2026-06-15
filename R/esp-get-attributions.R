@@ -1,6 +1,6 @@
 #' @description
 #'
-#' `esp_get_attributions` gets the attribution of a tile provider defined as
+#' `esp_get_attributions()` gets the attribution of a tile provider defined by
 #' the `type` argument.
 #'
 #' @seealso [giscoR::gisco_attributions()]
@@ -10,9 +10,9 @@
 #' @order 2
 #' @export
 esp_get_attributions <- function(type, options = NULL) {
-  # Validate
+  # Validate provider.
   prov_list <- validate_provider(type)
-  # Add options
+  # Add options.
   prov_list <- modify_provider_list(prov_list, options)
   att <- ensure_null(prov_list$attribution)
   if (is.null(att)) {

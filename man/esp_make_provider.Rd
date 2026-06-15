@@ -16,7 +16,7 @@ esp_make_provider(id, q, service, layers, ...)
 
 \item{layers}{The name of the layer to retrieve.}
 
-\item{...}{Additional arguments to the query, like \code{version}, \code{format},
+\item{...}{Additional arguments to the query, such as \code{version}, \code{format},
 \code{crs/srs} and \code{style}, depending on the capabilities of the service.}
 }
 \value{
@@ -26,14 +26,13 @@ A named list with two elements \code{id} and \code{q}.
 Helper function for \code{\link[=esp_get_tiles]{esp_get_tiles()}} that helps to create a custom provider.
 }
 \details{
-This function is meant to work with services provided as of the
+This function is meant to work with services provided under the
 \href{https://www.ogc.org/standards/wms/}{OGC Standard}.
 
 Note that:
 \itemize{
-\item \CRANpkg{mapSpain} will not provide advice on the argument \code{q} to be
-provided.
-\item Currently, on \strong{WMTS} requests only services with
+\item \CRANpkg{mapSpain} does not provide advice on the value of \code{q}.
+\item Currently, for \strong{WMTS} requests only services with
 \code{tilematrixset=GoogleMapsCompatible} are supported.
 }
 }
@@ -59,7 +58,7 @@ tidyterra::autoplot(mytile) +
 \seealso{
 \code{\link[=esp_get_tiles]{esp_get_tiles()}}.
 
-For a list of potential providers from Spain check
+For a list of potential providers from Spain, check the
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 
 Static map tiles and imagery:

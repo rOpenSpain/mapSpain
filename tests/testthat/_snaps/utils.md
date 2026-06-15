@@ -97,7 +97,7 @@
       siane_filter_year(data_sf, "1900")
     Condition
       Error in `siane_filter_year()`:
-      ! Year or date "1900" is not available. Select a value between 2005-12-31 and <current date>.
+      ! Year or date "1900" is not available. Use a value between 2005-12-31 and <current date>.
 
 ---
 
@@ -105,7 +105,7 @@
       siane_filter_year(data_sf, "2050")
     Condition
       Error in `siane_filter_year()`:
-      ! Year or date "2050" is not available. Select a value between 2005-12-31 and <current date>.
+      ! Year or date "2050" is not available. Use a value between 2005-12-31 and <current date>.
 
 ---
 

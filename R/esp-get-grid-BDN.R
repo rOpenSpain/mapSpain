@@ -6,10 +6,11 @@
 #' under the Ministry of Environment (MITECO).
 #'
 #' This dataset provides:
-#'   - [esp_get_grid_BDN()] extracts country-wide regular grids with resolutions
-#'     of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
-#'   - [esp_get_grid_BDN_ccaa()] extracts 1x1 kilometer resolution grids for
-#'     individual Autonomous Communities.
+#'   - [esp_get_grid_BDN()] extracts country-wide regular grids with
+#'     resolutions of 5 x 5 or 10 x 10 kilometers (mainland Spain or Canary
+#'     Islands).
+#'   - [esp_get_grid_BDN_ccaa()] extracts 1 x 1 kilometer resolution grids for
+#'     individual Autonomous Communities and Cities.
 #'
 #' These grids are useful for biodiversity analysis, environmental monitoring,
 #' and spatial statistical applications.
@@ -21,11 +22,11 @@
 #'
 #' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
 #'   of:
-#'   - `5`: 5x5 kilometer cells
-#'   - `10`: 10x10 kilometer cells (default)
+#'   - `5`: 5 x 5 kilometer cells.
+#'   - `10`: 10 x 10 kilometer cells (default).
 #' @param type Character. The geographic scope of the grid:
-#'   - `"main"`: Mainland Spain (default)
-#'   - `"canary"`: Canary Islands
+#'   - `"main"`: Mainland Spain (default).
+#'   - `"canary"`: Canary Islands.
 #'
 #' @inheritParams esp_get_nuts
 #' @inherit esp_get_nuts return
@@ -48,10 +49,10 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # Load a 10x10 km grid for mainland Spain
+#' # Load a 10 x 10 km grid for mainland Spain.
 #' grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 #'
-#' # Visualize the grid
+#' # Visualize the grid.
 #' library(ggplot2)
 #'
 #' ggplot(grid) +
@@ -66,7 +67,7 @@ esp_get_grid_BDN <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  # Check grid
+  # Validate grid options.
   res <- match_arg_pretty(resolution)
   type <- match_arg_pretty(type)
 
@@ -76,7 +77,7 @@ esp_get_grid_BDN <- function(
     "sianedata/MITECO/dist/"
   )
 
-  # Filename
+  # Select the source file.
   if (res == 10) {
     filename <- switch(type,
       "main" = "Malla10x10_Ter_p.gpkg",
@@ -109,12 +110,12 @@ esp_get_grid_BDN <- function(
 
 #' @description
 #' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
-#' for specific Autonomous Communities, useful for regional analysis with
-#' finer spatial detail.
+#' for specific Autonomous Communities and Cities, useful for regional analysis
+#' with finer spatial detail.
 #'
 #' @param ccaa Character string. A vector of names, codes or both for
-#'   Autonomous Communities. See **Details** on [esp_get_ccaa()] for accepted
-#'   formats.
+#'   Autonomous Communities and Cities. See **Details** on [esp_get_ccaa()]
+#'   for accepted formats.
 #'
 #' @seealso
 #' [esp_get_ccaa()]
@@ -135,7 +136,7 @@ esp_get_grid_BDN_ccaa <- function(
   region <- ccaa
   nuts_id <- convert_to_nuts_ccaa(region)
 
-  # Switch name. The ids are the same than the NUTS code removing the "ES" part
+  # Build IDs from the NUTS code without the "ES" prefix.
   id <- gsub("ES", "", nuts_id, fixed = TRUE)
 
   api_entry <- paste0(

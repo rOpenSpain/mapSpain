@@ -23,9 +23,9 @@ esp_get_comarca(
 \item{region}{Character string. A vector of names, codes or both for
 provinces, or \code{NULL} to get all the comarcas. See \strong{Details}.}
 
-\item{comarca}{Character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required comarcas. Use \code{NULL} to return all possible
-comarcas.}
+\item{comarca}{Character string. A name or \code{\link[base:grep]{regex}}
+expression with the names of the required comarcas. Use \code{NULL} to return
+all possible comarcas.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -38,7 +38,7 @@ Type of comarca to return. See \strong{Details}.}
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
@@ -58,22 +58,22 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 Get
 \href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{comarcas of Spain}. Comarcas are
-traditional informal territorial divisions, comprising several municipalities
-sharing geographical, economic or cultural traits, typically with
-poorly defined limits.
+traditional informal territorial divisions, comprising several
+municipalities sharing geographical, economic or cultural traits, typically
+with poorly defined limits.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes
 (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
-"cpro" (see \link{esp_codelist}).
+\code{"cpro"} (see \link{esp_codelist}).
 
-When calling a higher level (province, Autonomous Community or NUTS1),
-all the comarcas of that level will be added.
+When calling a higher level (province, Autonomous Community or City, or
+NUTS 1), all comarcas of that level are added.
 }
 \note{
 The use of the information contained on the
-\href{https://www.ine.es/en/index.htm}{INE website} may be carried out by users or
-re-use agents, at their own risk, and they will be the sole liable parties
+\href{https://www.ine.es/en/index.htm}{INE website} may be carried out by users
+or re-use agents, at their own risk, and they will be the sole liable parties
 in the case of having to answer to third parties due to damages arising
 from such use.
 }
@@ -85,7 +85,7 @@ kingdoms.
 
 In the case of Spain, comarcas only have an administrative character legally
 recognized in Catalonia, the Basque Country, Navarra (named merindades
-instead), in the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
+instead), the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
 the Principality of Asturias and Andalusia have functional comarcas.
 }
 
@@ -94,8 +94,8 @@ the Principality of Asturias and Andalusia have functional comarcas.
 provided under different classification criteria.
 \itemize{
 \item \code{"INE"}: Comarcas defined by the National Statistics Institute (INE).
-\item \code{"IGN"}: Official comarcas, only available in some Autonomous Communities,
-provided by the National Geographic Institute.
+\item \code{"IGN"}: Official comarcas, only available for some Autonomous
+Communities and Cities, provided by the National Geographic Institute.
 \item \code{"AGR"}: Agrarian comarcas defined by the Ministry of Agriculture,
 Fisheries and Food (MAPA).
 \item \code{"LIV"}: Livestock comarcas defined by the Ministry of Agriculture,
@@ -113,14 +113,14 @@ library(ggplot2)
 ggplot(comarcas) +
   geom_sf()
 
-# IGN provides recognized comarcas
+# IGN provides recognized comarcas.
 
 rec <- esp_get_comarca(type = "IGN")
 
 ggplot(rec) +
   geom_sf(aes(fill = t_comarca))
 
-# Legal comarcas of Catalunya
+# Legal comarcas of Catalunya.
 
 comarcas_cat <- esp_get_comarca("Catalunya", type = "IGN")
 

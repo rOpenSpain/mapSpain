@@ -4,20 +4,19 @@
 #' Helper function for [esp_get_tiles()] that helps to create a custom provider.
 #'
 #' @details
-#' This function is meant to work with services provided as of the
+#' This function is meant to work with services provided under the
 #' [OGC Standard](https://www.ogc.org/standards/wms/).
 #'
 #' Note that:
-#' - \CRANpkg{mapSpain} will not provide advice on the argument `q` to be
-#'   provided.
-#' - Currently, on **WMTS** requests only services with
+#' - \CRANpkg{mapSpain} does not provide advice on the value of `q`.
+#' - Currently, for **WMTS** requests only services with
 #'   `tilematrixset=GoogleMapsCompatible` are supported.
 #'
 #' @param id An identifier for the user. Used for identifying cached tiles.
 #' @param q The base URL of the service.
 #' @param service The type of tile service, either `"WMS"` or `"WMTS"`.
 #' @param layers The name of the layer to retrieve.
-#' @param ... Additional arguments to the query, like `version`, `format`,
+#' @param ... Additional arguments to the query, such as `version`, `format`,
 #'   `crs/srs` and `style`, depending on the capabilities of the service.
 #'
 #' @return
@@ -25,7 +24,7 @@
 #'
 #' @seealso [esp_get_tiles()].
 #'
-#' For a list of potential providers from Spain check
+#' For a list of potential providers from Spain, check the
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
 #'
 #' @family images
@@ -57,10 +56,10 @@ esp_make_provider <- function(id, q, service, layers, ...) {
   dots <- list(...)
   names(dots) <- tolower(names(dots))
 
-  # Ignore tilematrixset
+  # Ignore `tilematrixset`.
   dots <- dots[names(dots) != "tilematrixset"]
 
-  # Minimal for WMS
+  # Set minimal WMS parameters.
 
   if (toupper(service) == "WMS") {
     def_params <- list(
@@ -84,7 +83,7 @@ esp_make_provider <- function(id, q, service, layers, ...) {
     )
   }
 
-  # Modify
+  # Merge custom query parameters.
   end <- modifyList(def_params, dots)
 
   # Adjust CRS/SRS parameter names.
@@ -99,10 +98,10 @@ esp_make_provider <- function(id, q, service, layers, ...) {
     }
   }
 
-  # Create final list
+  # Create the final provider list.
   final <- list(id = id)
 
-  # Create query
+  # Create the query URL.
   q <- gsub("\\?\\?$", "?", paste0(end$q, "?"))
   rest <- end[names(end) != "q"]
   q_end <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))

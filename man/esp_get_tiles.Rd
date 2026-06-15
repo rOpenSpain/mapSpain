@@ -32,7 +32,7 @@ esp_get_attributions(type, options = NULL)
 \arguments{
 \item{x}{An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object.}
 
-\item{type}{This argument can be either:
+\item{type}{This argument can be one of:
 \itemize{
 \item The name of one of the pre-defined providers (see
 \link{esp_tiles_providers}).
@@ -58,7 +58,8 @@ Resolution (in pixels) of the final tile.}
 
 \item{bbox_expand}{Number. Expansion percentage of the bounding box of \code{x}.}
 
-\item{transparent}{Logical. Provides transparent background, if supported.}
+\item{transparent}{Logical. Whether to use a transparent background, if
+supported.}
 
 \item{mask}{Logical. \code{TRUE} to mask the result to \code{x}. See \code{\link[terra:mask]{terra::mask()}}.}
 
@@ -85,7 +86,7 @@ This function is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
 \strong{v1.3.3}.
 
-\code{esp_get_attributions} gets the attribution of a tile provider defined as
+\code{esp_get_attributions()} gets the attribution of a tile provider defined by
 the \code{type} argument.
 }
 \details{

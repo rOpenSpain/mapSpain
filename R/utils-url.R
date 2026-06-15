@@ -82,7 +82,7 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "Download size is", sz_dwn)
+    make_msg("warning", TRUE, "Download size:", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
@@ -120,7 +120,7 @@ download_url <- function(
 #' Allow jsonlite in Imports
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the
-#' source package code, so it can be included in the Imports field. Otherwise
+#' source package code, so it can be included in the Imports field. Otherwise,
 #' CRAN would complain that it is not directly used.
 #'
 #' We need to import \CRANpkg{jsonlite} because the package makes heavy use of

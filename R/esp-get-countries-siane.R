@@ -7,9 +7,9 @@
 #' The data included in this cartographic database do not imply any opinion of
 #' the IGN regarding its legal status.
 #'
-#' @param country Character vector of country codes. It can be either a
-#'   vector of country names, a vector of ISO3 country codes or a vector of
-#'   ISO2 country codes. See also [countrycode::countrycode()].
+#' @param country Character vector of country codes. It can be a vector of
+#'   country names, ISO3 country codes or ISO2 country codes. See also
+#'   [countrycode::countrycode()].
 #'
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritParams esp_get_prov

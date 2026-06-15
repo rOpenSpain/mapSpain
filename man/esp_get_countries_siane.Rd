@@ -11,7 +11,7 @@ CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacio
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
 
-It's necessary to always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following formulas:
 \enumerate{
 \item When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:
@@ -40,21 +40,21 @@ esp_get_countries_siane(
 )
 }
 \arguments{
-\item{year}{Character string or number. Release year, it must be in
-formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
+\item{year}{Character string or number. Release year. It must use format
+\code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
@@ -64,9 +64,9 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{country}{Character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-ISO2 country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{Character vector of country codes. It can be a vector of
+country names, ISO3 country codes or ISO2 country codes. See also
+\code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.

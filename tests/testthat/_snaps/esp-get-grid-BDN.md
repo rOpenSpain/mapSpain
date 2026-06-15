@@ -20,7 +20,7 @@
       esp_get_grid_BDN_ccaa("Sevilla")
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities codes found for "Sevilla".
+      ! No Spanish Autonomous Communities and Cities codes found for "Sevilla".
 
 ---
 

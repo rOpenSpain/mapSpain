@@ -1,4 +1,4 @@
-#' Simplified map of provinces and Autonomous Communities of Spain
+#' Simplified map of provinces and Autonomous Communities and Cities of Spain
 #'
 #' @description
 #'
@@ -14,18 +14,18 @@
 #' [esp_codelist]) and NUTS codes of different levels.
 #'
 #' When using a code corresponding to a higher level (for example,
-#' `esp_get_prov("Andalucia")`) all the corresponding units of that level are
+#' `esp_get_prov("Andalucia")`), all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
 #' @param prov,ccaa Character. A vector of names, codes or both for provinces
-#'   and Autonomous Communities, or `NULL` to get all the data. See
+#'   and Autonomous Communities and Cities, or `NULL` to get all the data. See
 #'   **Details**.
 #'
 #' @inheritParams esp_get_prov
 #' @inheritParams esp_get_ccaa
 #' @inheritParams esp_get_nuts
 #' @inherit esp_get_nuts return
-#' @source INE: PC_Axis files
+#' @source INE: PC-Axis files.
 #'
 #' @seealso [esp_get_gridmap()].
 #'
@@ -44,16 +44,16 @@
 #'
 #' ggplot(prov_simp) +
 #'   geom_sf(aes(fill = ine.ccaa.name)) +
-#'   labs(fill = "Autonomous Communities")
+#'   labs(fill = "Autonomous Communities and Cities")
 #'
-#' # Provinces of a single Autonomous Community.
+#' # Provinces of a single Autonomous Community or City.
 #'
 #' and_simple <- esp_get_simpl_prov("Andalucia")
 #'
 #' ggplot(and_simple) +
 #'   geom_sf()
 #'
-#' # Autonomous Communities.
+#' # Autonomous Communities and Cities.
 #'
 #' ccaa_simp <- esp_get_simpl_ccaa()
 #'
@@ -84,7 +84,7 @@ esp_get_simpl_prov <- function(
     return(NULL)
   }
 
-  # Order features by Autonomous Community and province.
+  # Order features by Autonomous Community or City and province.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
   data_sf <- sanitize_sf(data_sf)
   sf::st_crs(data_sf) <- NA
@@ -124,7 +124,7 @@ esp_get_simpl_ccaa <- function(
     return(NULL)
   }
 
-  # Order features by Autonomous Community.
+  # Order features by Autonomous Community or City.
   data_sf <- data_sf[order(data_sf$codauto), ]
   data_sf <- sanitize_sf(data_sf)
   sf::st_crs(data_sf) <- NA

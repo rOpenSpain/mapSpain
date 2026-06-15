@@ -12,8 +12,8 @@
 #' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
 #' (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or NUTS1), all
-#' the municipalities of that level will be added.
+#' When calling a higher level (province, Autonomous Community or City, or
+#' NUTS 1), all municipalities of that level are added.
 #'
 #' @inheritParams esp_get_munic_siane
 #' @inherit esp_get_munic_siane
@@ -26,26 +26,26 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # This code compares centroids of municipalities against esp_get_capimun
+#' # Compare municipality centroids against esp_get_capimun().
 #'
-#' # Get shape
+#' # Get the municipality boundary.
 #' area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 #'
-#' # Area in km2
+#' # Area in km2.
 #' print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
 #'
-#' # Extract centroid
+#' # Extract the centroid.
 #' centroid <- sf::st_centroid(area)
 #' centroid$type <- "Centroid"
 #'
-#' # Compare with capimun
+#' # Compare with capimun.
 #' capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 #' capimun$type <- "Capimun"
 #'
-#' # Join both point geometries
+#' # Join both point geometries.
 #' points <- dplyr::bind_rows(centroid, capimun)
 #'
-#' # Check on plot
+#' # Check on a plot.
 #' library(ggplot2)
 #'
 #' ggplot(points) +

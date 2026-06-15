@@ -16,14 +16,14 @@
 
 <!-- badges: end -->
 
-[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides **sf**
-objects for Spain’s administrative boundaries, including Autonomous
-Communities, provinces, municipalities and NUTS.
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
+administrative boundaries of Spain at several levels, including
+Autonomous Communities and Cities, provinces, municipalities and NUTS,
+as **sf** objects.
 
-**mapSpain** also provides a plugin for the
-[**leaflet**](https://rstudio.github.io/leaflet/) package. It loads
-several basemaps from Spain’s public institutions and supports
-downloading and processing static map tiles.
+**mapSpain** also includes tools to download and process static map
+tiles and a [**leaflet**](https://rstudio.github.io/leaflet/) plugin for
+Spanish public administration tile providers.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -82,14 +82,14 @@ library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract Autonomous Community codes from the base dataset.
+# Extract Autonomous Community or City codes from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by Autonomous Community.
+  # Summarize by Autonomous Community or City.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -128,9 +128,9 @@ ggplot(ccaa_sf) +
 ```
 
 <img src="man/figures/README-static-1.png" style="width:100.0%"
-alt="Percentage of women by Autonomous Community in Spain (2025)" />
+alt="Percentage of women by Autonomous Community or City in Spain (2025)" />
 
-You can combine `sf` objects with static map tiles.
+You can combine **sf** objects with static map tiles.
 
 ``` r
 # Get census data.
@@ -146,7 +146,7 @@ shape_pop <- shape |> left_join(census)
 
 tile <- esp_get_tiles(shape_pop, type = "IDErioja.Relieve", zoommin = 1)
 
-# Plot
+# Plot.
 
 library(ggplot2)
 library(tidyterra)
@@ -214,7 +214,7 @@ ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
   geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = 0.1) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe: EPSG 3035.
   coord_sf(xlim = c(2377294, 7453440), ylim = c(1313597, 5628510)) +
   theme(
     panel.background = element_blank(),
@@ -258,7 +258,7 @@ A BibTeX entry for LaTeX users is:
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for the leaflet package and tools to download and process static map tiles.},
+      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
     }
 
 ## Contribute

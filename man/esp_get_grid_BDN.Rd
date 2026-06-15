@@ -33,14 +33,14 @@ esp_get_grid_BDN_ccaa(
 \item{resolution}{Numeric. Resolution of the grid in kilometers. Must be one
 of:
 \itemize{
-\item \code{5}: 5x5 kilometer cells
-\item \code{10}: 10x10 kilometer cells (default)
+\item \code{5}: 5 x 5 kilometer cells.
+\item \code{10}: 10 x 10 kilometer cells (default).
 }}
 
 \item{type}{Character. The geographic scope of the grid:
 \itemize{
-\item \code{"main"}: Mainland Spain (default)
-\item \code{"canary"}: Canary Islands
+\item \code{"main"}: Mainland Spain (default).
+\item \code{"canary"}: Canary Islands.
 }}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
@@ -52,8 +52,8 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{ccaa}{Character string. A vector of names, codes or both for
-Autonomous Communities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}} for accepted
-formats.}
+Autonomous Communities and Cities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
+for accepted formats.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
@@ -65,18 +65,19 @@ under the Ministry of Environment (MITECO).
 
 This dataset provides:
 \itemize{
-\item \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts country-wide regular grids with resolutions
-of 5x5 or 10x10 kilometers (mainland Spain or Canary Islands).
-\item \code{\link[=esp_get_grid_BDN_ccaa]{esp_get_grid_BDN_ccaa()}} extracts 1x1 kilometer resolution grids for
-individual Autonomous Communities.
+\item \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts country-wide regular grids with
+resolutions of 5 x 5 or 10 x 10 kilometers (mainland Spain or Canary
+Islands).
+\item \code{\link[=esp_get_grid_BDN_ccaa]{esp_get_grid_BDN_ccaa()}} extracts 1 x 1 kilometer resolution grids for
+individual Autonomous Communities and Cities.
 }
 
 These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.
 
 \code{esp_get_grid_BDN_ccaa()} provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
-finer spatial detail.
+for specific Autonomous Communities and Cities, useful for regional analysis
+with finer spatial detail.
 }
 \details{
 The BDN provides standardized geographic grids for Spain that follow the
@@ -86,10 +87,10 @@ Nature Data Bank's specifications. The data is downloaded from the
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Load a 10x10 km grid for mainland Spain
+# Load a 10 x 10 km grid for mainland Spain.
 grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 
-# Visualize the grid
+# Visualize the grid.
 library(ggplot2)
 
 ggplot(grid) +

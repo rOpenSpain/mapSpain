@@ -1,7 +1,7 @@
 #' Displace a [`sf`][sf::st_sf] object located in the Canary Islands
 #'
 #' @description
-#' Helper function to displace an external [`sf`][sf::st_sf] object (potentially
+#' Helper function to displace an external [`sf`][sf::st_sf] object, potentially
 #' representing a location in the Canary Islands) to align it with the objects
 #' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
 #'
@@ -14,7 +14,7 @@
 #'
 #' While `moveCAN` is useful for visualization, it will alter the actual
 #' geographic position of the Canary Islands. When using the output for
-#' spatial analysis or using tiles (for example, with [esp_get_tiles()] or
+#' spatial analysis or tiles (for example, with [esp_get_tiles()] or
 #' [addProviderEspTiles()]), set this option to `FALSE` to get the actual
 #' coordinates, instead of the modified ones.
 #'
@@ -40,7 +40,7 @@
 #'
 #' teide_sf <- st_as_sf(teide, coords = c("lon", "lat"), crs = 4326)
 #'
-#' # If we use any mapSpain produced object with moveCAN = TRUE...
+#' # A mapSpain object with moveCAN = TRUE is displaced.
 #'
 #' esp <- esp_get_spain(moveCAN = c(13, 0))
 #'
@@ -54,7 +54,7 @@
 #'     subtitle = "But not the external Teide object"
 #'   )
 #'
-#' # But we can
+#' # Displace the external object too.
 #'
 #' teide_sf_disp <- esp_move_can(teide_sf, moveCAN = c(13, 0))
 #'
@@ -78,7 +78,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
 
   is_sfc <- inherits(x, "sfc")
 
-  # If no object then return the same
+  # Return empty geometries unchanged.
   g <- sf::st_geometry(x)
 
   if (length(g) == 0) {
@@ -126,7 +126,7 @@ move_can <- function(data_sf, moveCAN = TRUE) {
   if (isFALSE(moveCAN)) {
     return(data_sf)
   }
-  # Checks
+  # Identify Canary Islands features.
   prepare_can <- data_sf
   if ("codauto" %in% names(data_sf)) {
     prepare_can$is_can <- prepare_can$codauto == "05"
@@ -143,7 +143,7 @@ move_can <- function(data_sf, moveCAN = TRUE) {
 
     can <- esp_move_can(can, moveCAN = moveCAN)
 
-    # Regenerate
+    # Restore original columns.
     keep_n <- names(data_sf)
     data_sf <- rbind_fill(list(penin, can))
     data_sf <- data_sf[, keep_n]

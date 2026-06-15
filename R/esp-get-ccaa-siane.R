@@ -1,13 +1,13 @@
-#' Autonomous Communities of Spain from SIANE
+#' Autonomous Communities and Cities of Spain from SIANE
 #'
-#' @param year Character string or number. Release year, it must be in
-#'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
+#' @param year Character string or number. Release year. It must use format
+#'   `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
 #'   information starts as of 2005.
 #' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
-#'   - "10": 1:10 million.
-#'   - "6.5": 1:6.5 million.
-#'   - "3": 1:3 million.
+#'   - `"10"`: 1:10 million.
+#'   - `"6.5"`: 1:6.5 million.
+#'   - `"3"`: 1:3 million.
 #'
 #' @param rawcols Logical. Setting this to `TRUE` will add the raw columns of
 #'   the resulting object as provided by IGN.
@@ -27,7 +27,7 @@
 #' Copyright:
 #' <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 #'
-#' It's necessary to always acknowledge authorship using the following formulas:
+#' Always acknowledge authorship using the following formulas:
 #'
 #'  1. When the original digital product is not modified or altered, it can
 #'     be expressed in one of the following ways:
@@ -48,7 +48,7 @@
 #' ccaas1 <- esp_get_ccaa_siane()
 #' dplyr::glimpse(ccaas1)
 #'
-#' # Low res
+#' # Low resolution.
 #' ccaas_low <- esp_get_ccaa_siane(
 #'   rawcols = TRUE, moveCAN = FALSE,
 #'   resolution = 10, epsg = 3035
@@ -105,7 +105,7 @@ esp_get_ccaa_siane <- function(
 
   initcols <- colnames(sf::st_drop_geometry(data_sf))
 
-  # Add codauto
+  # Add `codauto`.
   data_sf$lab <- data_sf$rotulo
 
   data_sf$lab <- gsub("Ciudad de ", "", data_sf$lab, fixed = TRUE)
@@ -113,29 +113,29 @@ esp_get_ccaa_siane <- function(
   data_sf$lab <- gsub("/Euskadi", "", data_sf$lab, fixed = TRUE)
   data_sf$codauto <- esp_dict_region_code(data_sf$lab, destination = "codauto")
 
-  # Filter Autonomous Communities.
+  # Filter Autonomous Communities and Cities.
   nuts_id <- ensure_null(ccaa)
 
   if (!is.null(nuts_id)) {
     nuts_id <- convert_to_nuts_ccaa(nuts_id)
-    # Get Autonomous Community metadata.
+    # Get Autonomous Community or City metadata.
     df <- mapSpain::esp_codelist
     dfl2 <- df[df$nuts2.code %in% nuts_id, ]$codauto
     dfl3 <- df[df$nuts3.code %in% nuts_id, ]$codauto
 
     finalcodauto <- as.vector(c(dfl2, dfl3))
 
-    # Filter
+    # Apply the filter.
     data_sf <- data_sf[data_sf$codauto %in% finalcodauto, ]
   }
 
   # Build final metadata with selected variables.
   df <- get_ccaa_codes_df()
 
-  # Merge
+  # Merge metadata.
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Paste nuts1
+  # Add NUTS 1 metadata.
   data_sf <- merge(data_sf, get_nuts1_codes_df(), all.x = TRUE)
 
   # Move the Canary Islands.
@@ -145,10 +145,10 @@ esp_get_ccaa_siane <- function(
   # Transform to the requested CRS.
   data_sf <- sf::st_transform(data_sf, as.double(init_epsg))
 
-  # Order by Autonomous Community.
+  # Order by Autonomous Community or City.
   data_sf <- data_sf[order(data_sf$codauto), ]
 
-  # Select columns
+  # Select columns.
   if (rawcols) {
     data_sf <- data_sf[, unique(c(
       initcols,

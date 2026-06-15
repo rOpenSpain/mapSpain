@@ -53,9 +53,9 @@ names.
 \details{
 This function uses internal dictionaries together with \CRANpkg{countrycode}
 to map between schemes. When \verb{origin == destination == "text"} the input is
-returned unchanged. Mixing names from different administrative levels (for
-example Autonomous Community and province) may produce \code{NA} values for some
-entries.
+returned unchanged. Mixing names from different administrative levels, for
+example Autonomous Community or City and province, may produce \code{NA} values
+for some entries.
 }
 \examples{
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")

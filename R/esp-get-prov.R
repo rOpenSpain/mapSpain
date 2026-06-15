@@ -7,13 +7,13 @@
 #'
 #' @details
 #' When using `prov` you can use and mix names and NUTS codes (levels 1, 2 or
-#' 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+#' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 #' [esp_codelist]).
 #'
-#' Ceuta and Melilla are considered as provinces in this dataset.
+#' Ceuta and Melilla are considered provinces in this dataset.
 #'
-#' When calling a higher level (Autonomous Community or NUTS1), all the
-#' provinces of that level will be added.
+#' When calling a higher level (Autonomous Community or City, or NUTS 1), all
+#' provinces of that level are added.
 #'
 #' @param prov A vector of names, codes or both for provinces, or `NULL` to get
 #'   all the provinces. See **Details**.
@@ -113,7 +113,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
 
   data_sf <- merge(data_sf, df, all.x = TRUE)
 
-  # Add NUTS2 metadata.
+  # Add NUTS 2 metadata.
   data_sf <- merge(data_sf, get_prov_nuts_codes_df(), all.x = TRUE)
 
   data_sf <- data_sf[, c(
@@ -124,7 +124,7 @@ esp_get_prov <- function(prov = NULL, moveCAN = TRUE, ...) {
     "nuts1.name"
   )]
 
-  # Order by Autonomous Community and province.
+  # Order by Autonomous Community or City and province.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
 
   data_sf <- sanitize_sf(data_sf)

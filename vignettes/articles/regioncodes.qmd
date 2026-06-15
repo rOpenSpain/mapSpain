@@ -1,6 +1,6 @@
 ---
-title: "Appendix: codes and names of Spanish regions"
-description: Interactive explorer of the region-code data included in the package.
+title: "Appendix: Spanish subdivision names and codes"
+description: Interactive explorer of the subdivision-code data included in the package.
 knitr:
   opts_chunk:
     collapse: true
@@ -14,10 +14,10 @@ knitr:
 ---
 
 This appendix shows an interactive version of the `mapSpain::esp_codelist`
-dataset. It contains Spanish region codes under different coding standards and
-naming variants in several languages.
+dataset. It contains Spanish subdivision codes under different coding standards
+and naming variants in several languages.
 
-## Names and codes of Spanish regions
+## Spanish subdivision names and codes
 
 ```{r}
 #| label: esp_codelist

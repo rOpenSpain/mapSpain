@@ -2,22 +2,22 @@
 #'
 #' @noRd
 get_master_codes <- function() {
-  # First level - NUTS1
+  # First level: NUTS 1.
   df <- mapSpain::esp_codelist
   nt1 <- unique(df$nuts1.code)
 
-  # Second level: NUTS2 and Autonomous Communities.
+  # Second level: NUTS 2 and Autonomous Communities and Cities.
   nt2 <- unique(df[, c("nuts2.code", "iso2.ccaa.code", "codauto")])
 
-  # Third level - Prov and NUTS
+  # Third level: provinces and NUTS.
 
   l3 <- unique(df[, c("iso2.prov.code", "cpro", "nuts.prov.code")])
   l3[l3$iso2.prov.code == "ES-PM", ]$nuts.prov.code <- NA
 
-  # Additional level - NUTS3
+  # Additional level: NUTS 3.
   nt3 <- unique(df$nuts3.code)
 
-  # Compose a full data frame
+  # Compose a full data frame.
   base_df <- tibble::tibble(nuts = nt1)
 
   colnames(nt2) <- c("nuts", "iso2", "codauto")
@@ -27,7 +27,7 @@ get_master_codes <- function() {
   colnames(l3) <- c("iso2", "cpro", "nuts")
   base_df <- unique(merge(base_df, l3, all.x = TRUE, all.y = TRUE))
 
-  # Add missing NUTS3
+  # Add missing NUTS 3 codes.
   missnuts <- tibble::tibble(
     nuts = nt3[!nt3 %in% base_df$nuts],
     iso2 = NA,
@@ -48,7 +48,7 @@ get_master_codes <- function() {
     dict_codes_df$iso2 == "ES-TF" & !is.na(dict_codes_df$iso2),
   ]$nuts <- "YYYYY"
 
-  # Remove dups on Ceuta y Melilla
+  # Remove duplicates for Ceuta and Melilla.
   dict_codes_df[
     dict_codes_df$nuts == "ES64" & !is.na(dict_codes_df$nuts),
     "iso2"
@@ -68,12 +68,12 @@ get_master_codes <- function() {
 #' Generates a dictionary for NUTS with all names
 #' @noRd
 get_master_nuts_nm <- function() {
-  # Create base codes
+  # Create base codes.
   names_full_tb <- names_full
   basecod <- tibble::tibble(key = unique(names_full_tb$key))
 
   df_all <- mapSpain::esp_codelist
-  # Create code dict nuts
+  # Create the NUTS code dictionary.
   dict_nuts1mod <- unique(df_all[, c("nuts1.shortname.es", "nuts1.code")])
   names(dict_nuts1mod) <- c("key", "nuts")
 

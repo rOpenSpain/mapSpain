@@ -41,7 +41,7 @@ navbar:
       menu:
       - text: Working with static map tiles
         href: articles/articles/working_imagery.html
-      - text: "Appendix: codes and names of Spanish regions"
+      - text: "Appendix: Spanish subdivision names and codes"
         href: articles/articles/regioncodes.html
       - text: -----
       - text: Grupo de Usuarios R Madrid 25-nov-2021
@@ -59,13 +59,13 @@ navbar:
 home:
   title: |
     mapSpain | Administrative boundaries of Spain, including Autonomous
-    Communities, provinces, municipalities and NUTS
+    Communities and Cities, provinces, municipalities and NUTS
   description: |
     Administrative boundaries of Spain at several levels (Autonomous
-    Communities, provinces, municipalities and NUTS), based on GISCO from
-    Eurostat and CartoBase ANE from Instituto Geográfico Nacional. It also
-    provides a plugin for the leaflet package and tools to download and process
-    static map tiles.
+    Communities and Cities, provinces, municipalities and NUTS), based on GISCO
+    from Eurostat and CartoBase ANE from Instituto Geográfico Nacional.
+    Includes tools to download and process static map tiles and a leaflet
+    plugin for Spanish public administration tile providers.
 
 reference:
 - title: Political and administrative boundaries
@@ -91,9 +91,10 @@ reference:
   - esp_get_simpl
 - title: Static map tiles and imagery
   desc: |
-    Functions to return static map tiles or create an interactive <a
+    Functions that return static map tiles or add Spanish public administration
+    basemaps to interactive <a
     href="https://CRAN.R-project.org/package=leaflet"
-    class="external-link"><span class="pkg">leaflet</span></a> map.
+    class="external-link"><span class="pkg">leaflet</span></a> maps.
   contents:
   - has_concept("images")
   - terra::plotRGB()
@@ -117,7 +118,7 @@ reference:
   contents: has_concept("cache utilities")
 - title: Dictionary
   desc: |
-    Translate region names across languages and coding standards.
+    Translate Spanish subdivision names across languages and coding standards.
   contents:
   - has_concept("dictionary")
 - title: Datasets

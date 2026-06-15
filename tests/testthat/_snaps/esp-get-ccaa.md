@@ -4,14 +4,14 @@
       esp_get_ccaa("FFF")
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities codes found for "FFF".
+      ! No Spanish Autonomous Communities and Cities codes found for "FFF".
 
 ---
 
     Code
       n <- esp_get_ccaa(c("FFF", "Murcia"))
     Message
-      ! No Spanish Autonomous Communities codes found for "FFF".
+      ! No Spanish Autonomous Communities and Cities codes found for "FFF".
 
 ---
 
@@ -19,7 +19,7 @@
       esp_get_ccaa(ccaa = "Zamora")
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities codes found for "Zamora".
+      ! No Spanish Autonomous Communities and Cities codes found for "Zamora".
 
 ---
 
@@ -27,5 +27,5 @@
       esp_get_ccaa(ccaa = "ES6x")
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities codes found for "ES6x".
+      ! No Spanish Autonomous Communities and Cities codes found for "ES6x".
 

@@ -125,7 +125,7 @@ addProviderEspTiles <- function(
     # Remove
     def_opts <- modifyList(def_opts, list(attribution = NULL))
 
-    # Get important params
+    # Get important parameters.
     temp_pieces <- thisprov$static
     names(temp_pieces) <- tolower(names(temp_pieces))
 

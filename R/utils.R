@@ -1,7 +1,7 @@
 #' Create messages by type
 #'
 #' @param type A character string. Message type. Accepted values are
-#'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
 #' @param verbose A logical. Whether to print the message.
 #' @param ... Character strings to be combined into the message.
@@ -134,7 +134,7 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
 
   if (!check_date_range) {
     cli::cli_abort(paste0(
-      "Year or date {.val {year}} is not available. Select a value between ",
+      "Year or date {.val {year}} is not available. Use a value between ",
       "{.val {mindate}} and {.val {maxdate}}."
     ))
   }
@@ -201,8 +201,8 @@ return_empty_combination_sf <- function(data_sf, arg) {
   return_empty_sf(
     data_sf,
     paste0(
-      "The selected {.arg region}, {.arg {arg}} or combined filters do not ",
-      "return any results."
+      "The selected {.arg region}, {.arg {arg}} or filter combination does ",
+      "not return any results."
     )
   )
 }
@@ -240,7 +240,7 @@ alert_return_null <- function() {
 
 alert_open_issue <- function() {
   cli::cli_alert_warning(c(
-    "If you think this is a bug, please consider opening an issue on ",
+    "If you think this is a bug, please consider opening an issue at ",
     "{.url https://github.com/rOpenSpain/mapSpain/issues}"
   ))
 }

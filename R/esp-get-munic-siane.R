@@ -8,11 +8,11 @@
 #'
 #' Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
 #' a historical database of Spanish municipal boundaries is also available,
-#' offering higher‑resolution geometries that may be more appropriate for
-#' GIS‑oriented workflows:
+#' offering higher-resolution geometries that may be more appropriate for
+#' GIS-oriented workflows:
 #'
-#' - Goerlich, F. J., & Pérez Vázquez, P. (2025). *Base de datos histórica de
-#'   contornos municipales de España –LAU2boundaries4Spain–* \[Data set\].
+#' - Goerlich, F. J. & Pérez Vázquez, P. (2025). *Base de datos histórica de
+#'   contornos municipales de España -LAU2boundaries4Spain-* \[Data set\].
 #'   Zenodo. \doi{10.5281/zenodo.15345101},
 #'   <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
 #'
@@ -55,7 +55,7 @@
 #'   facet_wrap(~fecha_alta) +
 #'   labs(
 #'     title = id_all$name,
-#'     subtitle = "Changes on boundaries over time",
+#'     subtitle = "Boundary changes over time",
 #'     fill = ""
 #'   )
 #' }

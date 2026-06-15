@@ -27,7 +27,7 @@ resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
 \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/}{NUTS_RG_01M_2024_4326.gpkg} file.
 }
 \description{
-This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
+This dataset represents Spanish subdivisions at NUTS levels 0, 1, 2 and 3
 according to the Nomenclature of Territorial Units for Statistics (NUTS)
 classification for 2024.
 }

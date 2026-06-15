@@ -5,9 +5,9 @@
 \alias{esp_get_simpl}
 \alias{esp_get_simpl_prov}
 \alias{esp_get_simpl_ccaa}
-\title{Simplified map of provinces and Autonomous Communities of Spain}
+\title{Simplified map of provinces and Autonomous Communities and Cities of Spain}
 \source{
-INE: PC_Axis files
+INE: PC-Axis files.
 }
 \usage{
 esp_get_simpl_prov(
@@ -26,7 +26,7 @@ esp_get_simpl_ccaa(
 }
 \arguments{
 \item{prov, ccaa}{Character. A vector of names, codes or both for provinces
-and Autonomous Communities, or \code{NULL} to get all the data. See
+and Autonomous Communities and Cities, or \code{NULL} to get all the data. See
 \strong{Details}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
@@ -52,7 +52,7 @@ You can use and mix names, ISO codes, \code{"codauto"} or \code{"cpro"} codes (s
 \link{esp_codelist}) and NUTS codes of different levels.
 
 When using a code corresponding to a higher level (for example,
-\code{esp_get_prov("Andalucia")}) all the corresponding units of that level are
+\code{esp_get_prov("Andalucia")}), all the corresponding units of that level are
 provided (in this case, all the provinces of Andalusia).
 }
 \examples{
@@ -64,16 +64,16 @@ library(ggplot2)
 
 ggplot(prov_simp) +
   geom_sf(aes(fill = ine.ccaa.name)) +
-  labs(fill = "Autonomous Communities")
+  labs(fill = "Autonomous Communities and Cities")
 
-# Provinces of a single Autonomous Community.
+# Provinces of a single Autonomous Community or City.
 
 and_simple <- esp_get_simpl_prov("Andalucia")
 
 ggplot(and_simple) +
   geom_sf()
 
-# Autonomous Communities.
+# Autonomous Communities and Cities.
 
 ccaa_simp <- esp_get_simpl_ccaa()
 

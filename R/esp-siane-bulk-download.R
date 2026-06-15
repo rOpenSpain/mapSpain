@@ -2,13 +2,13 @@
 #'
 #' @description
 #' Download zipped data from SIANE to the [`cache_dir`][esp_set_cache_dir()]
-#' and extract the relevant ones.
+#' and extract the relevant files.
 #'
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritParams esp_get_prov
 #' @inherit esp_get_ccaa_siane source return
 #' @return
-#' A (invisible) character vector with the full path of the files extracted.
+#' An invisible character vector with the full paths of the extracted files.
 #' See **Examples**.
 #' @family political
 #' @family siane
@@ -19,17 +19,17 @@
 #' tmp <- file.path(tempdir(), "testexample")
 #' dest_files <- esp_siane_bulk_download(cache_dir = tmp)
 #'
-#' # Read one
+#' # Read one file.
 #' library(sf)
 #' read_sf(dest_files[1]) |> head()
 #'
-#' # Now we can connect the function with the downloaded data like:
+#' # Connect the function with the downloaded data.
 #'
 #' connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
 #'
-#' # Message shows file is already cached :)
+#' # The message shows that the file is already cached.
 #'
-#' # Clean
+#' # Clean up.
 #' unlink(tmp, force = TRUE, recursive = TRUE)
 esp_siane_bulk_download <- function(
   cache_dir = NULL,
@@ -59,7 +59,7 @@ esp_siane_bulk_download <- function(
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
   infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
-  # Extract files
+  # Extract geospatial files.
   outfiles <- infiles[grep("gpkg", infiles$Name), ]$Name
 
   if (verbose) {

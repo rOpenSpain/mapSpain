@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa_siane}
 \alias{esp_get_ccaa_siane}
-\title{Autonomous Communities of Spain from SIANE}
+\title{Autonomous Communities and Cities of Spain from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -11,7 +11,7 @@ CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacio
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
 
-It's necessary to always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following formulas:
 \enumerate{
 \item When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:
@@ -44,24 +44,25 @@ esp_get_ccaa_siane(
 }
 \arguments{
 \item{ccaa}{Character string. A vector of names, codes or both for
-Autonomous Communities, or \code{NULL} to get all the Autonomous Communities.
+Autonomous Communities and Cities, or \code{NULL} to get all Autonomous
+Communities and Cities.
 See \strong{Details}.}
 
-\item{year}{Character string or number. Release year, it must be in
-formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
+\item{year}{Character string or number. Release year. It must use format
+\code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
 information starts as of 2005.}
 
 \item{epsg}{Character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}
+\item \code{"4258"}: \href{https://epsg.io/4258}{ETRS89}.
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
+See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
 \item{update_cache}{Logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
@@ -74,9 +75,9 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 \item{resolution}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item "10": 1:10 million.
-\item "6.5": 1:6.5 million.
-\item "3": 1:3 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"6.5"}: 1:6.5 million.
+\item \code{"3"}: 1:3 million.
 }}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -92,23 +93,24 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get
-\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities of Spain} at a
+\href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities and Cities of Spain} at a
 specified scale.
 }
 \details{
 When using \code{ccaa} you can use and mix names and NUTS codes (levels 1 or 2),
 ISO codes (corresponding to level 2) or \code{codauto} (see \link{esp_codelist}).
-Ceuta and Melilla are considered as Autonomous Communities in this function.
+Ceuta and Melilla are included at the Autonomous Communities and Cities
+level in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
-will be added.
+When calling a NUTS 1 level, all Autonomous Communities and Cities of that
+level are added.
 }
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 ccaas1 <- esp_get_ccaa_siane()
 dplyr::glimpse(ccaas1)
 
-# Low res
+# Low resolution.
 ccaas_low <- esp_get_ccaa_siane(
   rawcols = TRUE, moveCAN = FALSE,
   resolution = 10, epsg = 3035

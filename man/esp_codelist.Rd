@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Database with codes and names of Spanish regions}
+\title{Database with codes and names of Spanish subdivisions}
 \format{
 A \link[tibble:tbl_df]{tibble} with 59 rows and
 columns:
@@ -14,30 +14,38 @@ columns:
 \item{nuts1.name}{NUTS 1 name.}
 \item{nuts1.name.alt}{NUTS 1 alternative name.}
 \item{nuts1.shortname.es}{NUTS 1 short (common) name (Spanish).}
-\item{codauto}{INE code of the Autonomous Community.}
-\item{iso2.ccaa.code}{ISO2 code of the Autonomous Community.}
+\item{codauto}{INE code of the Autonomous Community or City.}
+\item{iso2.ccaa.code}{ISO2 code of the Autonomous Community or City.}
 \item{nuts2.code}{NUTS 2 code.}
-\item{ine.ccaa.name}{INE name of the Autonomous Community.}
-\item{iso2.ccaa.name.es}{ISO2 name of the Autonomous Community (Spanish).}
-\item{iso2.ccaa.name.ca}{ISO2 name of the Autonomous Community (Catalan).}
-\item{iso2.ccaa.name.gl}{ISO2 name of the Autonomous Community (Galician).}
-\item{iso2.ccaa.name.eu}{ISO2 name of the Autonomous Community (Basque).}
-\item{nuts2.name}{NUTS 2 name.}
-\item{cldr.ccaa.name.en}{CLDR name of the Autonomous Community (English).}
-\item{cldr.ccaa.name.es}{CLDR name of the Autonomous Community (Spanish).}
-\item{cldr.ccaa.name.ca}{CLDR name of the Autonomous Community (Catalan).}
-\item{cldr.ccaa.name.ga}{CLDR name of the Autonomous Community (Galician).}
-\item{cldr.ccaa.name.eu}{CLDR name of the Autonomous Community (Basque).}
-\item{ccaa.shortname.en}{Short (common) name of the Autonomous Community
-(English).}
-\item{ccaa.shortname.es}{Short (common) name of the Autonomous Community
+\item{ine.ccaa.name}{INE name of the Autonomous Community or City.}
+\item{iso2.ccaa.name.es}{ISO2 name of the Autonomous Community or City
 (Spanish).}
-\item{ccaa.shortname.ca}{Short (common) name of the Autonomous Community
+\item{iso2.ccaa.name.ca}{ISO2 name of the Autonomous Community or City
 (Catalan).}
-\item{ccaa.shortname.ga}{Short (common) name of the Autonomous Community
+\item{iso2.ccaa.name.gl}{ISO2 name of the Autonomous Community or City
 (Galician).}
-\item{ccaa.shortname.eu}{Short (common) name of the Autonomous Community
+\item{iso2.ccaa.name.eu}{ISO2 name of the Autonomous Community or City
 (Basque).}
+\item{nuts2.name}{NUTS 2 name.}
+\item{cldr.ccaa.name.en}{CLDR name of the Autonomous Community or City
+(English).}
+\item{cldr.ccaa.name.es}{CLDR name of the Autonomous Community or City
+(Spanish).}
+\item{cldr.ccaa.name.ca}{CLDR name of the Autonomous Community or City
+(Catalan).}
+\item{cldr.ccaa.name.ga}{CLDR name of the Autonomous Community or City
+(Galician).}
+\item{cldr.ccaa.name.eu}{CLDR name of the Autonomous Community or City
+(Basque).}
+\item{ccaa.shortname.en}{Short (common) name of the subdivision
+(English).}
+\item{ccaa.shortname.es}{Short (common) name of the subdivision
+(Spanish).}
+\item{ccaa.shortname.ca}{Short (common) name of the subdivision
+(Catalan).}
+\item{ccaa.shortname.ga}{Short (common) name of the subdivision
+(Galician).}
+\item{ccaa.shortname.eu}{Short (common) name of the subdivision (Basque).}
 \item{cpro}{INE code of the province.}
 \item{iso2.prov.code}{ISO2 code of the province.}
 \item{nuts.prov.code}{NUTS code of the province.}
@@ -63,9 +71,9 @@ columns:
 }
 \source{
 \itemize{
-\item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}
-\item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/overview}
-\item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}
+\item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}.
+\item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/overview}.
+\item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}.
 \item \strong{CLDR}:
 \url{https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html}
 }
@@ -73,19 +81,20 @@ columns:
 \description{
 A \link[tibble:tbl_df]{tibble} object used internally for translating codes and
 names of the different subdivisions of Spain. This tibble provides a
-hierarchical representation of Spain's subdivisions, including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), provinces and NUTS3 levels.
+hierarchical representation of Spain's subdivisions, including NUTS 1,
+Autonomous Communities and Cities (equivalent to NUTS 2), provinces and
+NUTS 3 levels.
 See the note below for coverage details.
 }
 \note{
-Although NUTS2 aligns with the first subdivision level of Spain
-(Autonomous Communities), NUTS3 does not correspond to the second
-subdivision level of Spain (provinces). NUTS3
+Although NUTS 2 aligns with the first subdivision level of Spain
+(Autonomous Communities and Cities), NUTS 3 does not correspond to the second
+subdivision level of Spain (provinces). NUTS 3
 provides dedicated codes for major islands, whereas provinces do not.
 
-Ceuta and Melilla have a special status as Autonomous Cities but are
-treated as Autonomous Communities with a single province (like Madrid,
-Asturias or Murcia) in this database.
+Ceuta and Melilla have special status as Autonomous Cities but are
+represented at the Autonomous Communities and Cities level with a single
+province, like Madrid, Asturias or Murcia, in this database.
 }
 \examples{
 
