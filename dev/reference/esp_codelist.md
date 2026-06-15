@@ -1,10 +1,10 @@
-# Database with codes and names of Spanish regions
+# Database with codes and names of Spanish subdivisions
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 object used internally for translating codes and names of the different
 subdivisions of Spain. This tibble provides a hierarchical
-representation of Spain's subdivisions, including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), provinces and NUTS3
+representation of Spain's subdivisions, including NUTS 1, Autonomous
+Communities and Cities (equivalent to NUTS 2), provinces and NUTS 3
 levels. See the note below for coverage details.
 
 ## Format
@@ -30,11 +30,11 @@ with 59 rows and columns:
 
 - codauto:
 
-  INE code of the Autonomous Community.
+  INE code of the Autonomous Community or City.
 
 - iso2.ccaa.code:
 
-  ISO2 code of the Autonomous Community.
+  ISO2 code of the Autonomous Community or City.
 
 - nuts2.code:
 
@@ -42,23 +42,23 @@ with 59 rows and columns:
 
 - ine.ccaa.name:
 
-  INE name of the Autonomous Community.
+  INE name of the Autonomous Community or City.
 
 - iso2.ccaa.name.es:
 
-  ISO2 name of the Autonomous Community (Spanish).
+  ISO2 name of the Autonomous Community or City (Spanish).
 
 - iso2.ccaa.name.ca:
 
-  ISO2 name of the Autonomous Community (Catalan).
+  ISO2 name of the Autonomous Community or City (Catalan).
 
 - iso2.ccaa.name.gl:
 
-  ISO2 name of the Autonomous Community (Galician).
+  ISO2 name of the Autonomous Community or City (Galician).
 
 - iso2.ccaa.name.eu:
 
-  ISO2 name of the Autonomous Community (Basque).
+  ISO2 name of the Autonomous Community or City (Basque).
 
 - nuts2.name:
 
@@ -66,43 +66,43 @@ with 59 rows and columns:
 
 - cldr.ccaa.name.en:
 
-  CLDR name of the Autonomous Community (English).
+  CLDR name of the Autonomous Community or City (English).
 
 - cldr.ccaa.name.es:
 
-  CLDR name of the Autonomous Community (Spanish).
+  CLDR name of the Autonomous Community or City (Spanish).
 
 - cldr.ccaa.name.ca:
 
-  CLDR name of the Autonomous Community (Catalan).
+  CLDR name of the Autonomous Community or City (Catalan).
 
 - cldr.ccaa.name.ga:
 
-  CLDR name of the Autonomous Community (Galician).
+  CLDR name of the Autonomous Community or City (Galician).
 
 - cldr.ccaa.name.eu:
 
-  CLDR name of the Autonomous Community (Basque).
+  CLDR name of the Autonomous Community or City (Basque).
 
 - ccaa.shortname.en:
 
-  Short (common) name of the Autonomous Community (English).
+  Short (common) name of the subdivision (English).
 
 - ccaa.shortname.es:
 
-  Short (common) name of the Autonomous Community (Spanish).
+  Short (common) name of the subdivision (Spanish).
 
 - ccaa.shortname.ca:
 
-  Short (common) name of the Autonomous Community (Catalan).
+  Short (common) name of the subdivision (Catalan).
 
 - ccaa.shortname.ga:
 
-  Short (common) name of the Autonomous Community (Galician).
+  Short (common) name of the subdivision (Galician).
 
 - ccaa.shortname.eu:
 
-  Short (common) name of the Autonomous Community (Basque).
+  Short (common) name of the subdivision (Basque).
 
 - cpro:
 
@@ -190,25 +190,26 @@ with 59 rows and columns:
 
 ## Source
 
-- **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
+- **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>.
 
-- **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>
+- **Eurostat (NUTS)**:
+  <https://ec.europa.eu/eurostat/web/nuts/overview>.
 
-- **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
+- **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>.
 
 - **CLDR**:
   <https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html>
 
 ## Note
 
-Although NUTS2 aligns with the first subdivision level of Spain
-(Autonomous Communities), NUTS3 does not correspond to the second
-subdivision level of Spain (provinces). NUTS3 provides dedicated codes
-for major islands, whereas provinces do not.
+Although NUTS 2 aligns with the first subdivision level of Spain
+(Autonomous Communities and Cities), NUTS 3 does not correspond to the
+second subdivision level of Spain (provinces). NUTS 3 provides dedicated
+codes for major islands, whereas provinces do not.
 
-Ceuta and Melilla have a special status as Autonomous Cities but are
-treated as Autonomous Communities with a single province (like Madrid,
-Asturias or Murcia) in this database.
+Ceuta and Melilla have special status as Autonomous Cities but are
+represented at the Autonomous Communities and Cities level with a single
+province, like Madrid, Asturias or Murcia, in this database.
 
 ## See also
 

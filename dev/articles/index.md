@@ -13,10 +13,11 @@
   Create maps of Spain in R with administrative boundaries and map
   tiles.
 
-- [Appendix: codes and names of Spanish
-  regions](https://ropenspain.github.io/mapSpain/dev/articles/regioncodes.md):
+- [Appendix: Spanish subdivision names and
+  codes](https://ropenspain.github.io/mapSpain/dev/articles/regioncodes.md):
 
-  Interactive explorer of the region-code data included in the package.
+  Interactive explorer of the subdivision-code data included in the
+  package.
 
 ### Internal articles
 

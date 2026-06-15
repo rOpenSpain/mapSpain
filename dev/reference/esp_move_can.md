@@ -1,8 +1,8 @@
 # Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object located in the Canary Islands
 
 Helper function to displace an external
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-(potentially representing a location in the Canary Islands) to align it
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object,
+potentially representing a location in the Canary Islands) to align it
 with the objects provided by
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) with the option
 `moveCAN = TRUE`.
@@ -42,7 +42,7 @@ sources rather than the package
 
 While `moveCAN` is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
-spatial analysis or using tiles (for example, with
+spatial analysis or tiles (for example, with
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)),
@@ -66,7 +66,7 @@ teide <- data.frame(
 
 teide_sf <- st_as_sf(teide, coords = c("lon", "lat"), crs = 4326)
 
-# If we use any mapSpain produced object with moveCAN = TRUE...
+# A mapSpain object with moveCAN = TRUE is displaced.
 
 esp <- esp_get_spain(moveCAN = c(13, 0))
 
@@ -81,7 +81,7 @@ ggplot(esp) +
   )
 
 
-# But we can
+# Displace the external object too.
 
 teide_sf_disp <- esp_move_can(teide_sf, moveCAN = c(13, 0))
 

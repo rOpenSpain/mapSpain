@@ -48,7 +48,7 @@ Copyright:
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -58,8 +58,8 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`
@@ -113,13 +113,13 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 When using `prov` you can use and mix names and NUTS codes (levels 1, 2
-or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-Ceuta and Melilla are considered as provinces in this dataset.
+Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level will be added.
+When calling a higher level (Autonomous Community or City, or NUTS 1),
+all provinces of that level are added.
 
 ## Note
 

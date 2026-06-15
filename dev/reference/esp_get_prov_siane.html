@@ -30,7 +30,7 @@ at a specified scale."><meta property="og:image" content="https://ropenspain.git
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
     <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
@@ -88,7 +88,7 @@ at a specified scale.</p>
 <a href="http://www.ign.es/web/ign/portal" class="external-link">http://www.ign.es/web/ign/portal</a>. Years available are 2005 up to today.</p>
 <p>Copyright:
 <a href="https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane" class="external-link">https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane</a></p>
-<p>It's necessary to always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
+<p>Always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
 <li><p>CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional</p></li>
 </ul></li>
@@ -107,14 +107,14 @@ all the provinces. See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
-<dd><p>Character string or number. Release year, it must be in
-formats <code>YYYY</code> (assuming end of year) or <code>YYYY-MM-DD</code>. Historical
+<dd><p>Character string or number. Release year. It must use format
+<code>YYYY</code> (assuming end of year) or <code>YYYY-MM-DD</code>. Historical
 information starts as of 2005.</p></dd>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
 <dd><p>Character string or number. Projection of the map: 4-digit
-<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a></p></li>
+<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a>.</p></li>
 <li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
 <li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
 <li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
@@ -122,8 +122,8 @@ information starts as of 2005.</p></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>Logical. Whether to do caching. Default is <code>TRUE</code>. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<dd><p>Logical. Whether to cache downloaded files. Default is <code>TRUE</code>.
+See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -142,9 +142,9 @@ is <code>FALSE</code>. When set to <code>TRUE</code>, it will force a new downlo
 
 <dt id="arg-resolution">resolution<a class="anchor" aria-label="anchor" href="#arg-resolution"></a></dt>
 <dd><p>Character string or number. Resolution of the geospatial
-data. One of:</p><ul><li><p>"10": 1:10 million.</p></li>
-<li><p>"6.5": 1:6.5 million.</p></li>
-<li><p>"3": 1:3 million.</p></li>
+data. One of:</p><ul><li><p><code>"10"</code>: 1:10 million.</p></li>
+<li><p><code>"6.5"</code>: 1:6.5 million.</p></li>
+<li><p><code>"3"</code>: 1:3 million.</p></li>
 </ul></dd>
 
 
@@ -167,11 +167,11 @@ the resulting object as provided by IGN.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When using <code>prov</code> you can use and mix names and NUTS codes (levels 1, 2 or
-3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+3), ISO codes (corresponding to level 2 or 3) or <code>"cpro"</code> (see
 <a href="esp_codelist.html">esp_codelist</a>).</p>
-<p>Ceuta and Melilla are considered as provinces in this dataset.</p>
-<p>When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level will be added.</p>
+<p>Ceuta and Melilla are considered provinces in this dataset.</p>
+<p>When calling a higher level (Autonomous Community or City, or NUTS 1), all
+provinces of that level are added.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

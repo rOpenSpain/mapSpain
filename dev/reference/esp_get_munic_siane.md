@@ -29,8 +29,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -50,7 +49,7 @@ Data distributed through the `sianedata` data branch, see
 
 - year:
 
-  Character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year. It must use format `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
@@ -59,7 +58,7 @@ Data distributed through the `sianedata` data branch, see
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -69,8 +68,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
@@ -92,11 +91,11 @@ Data distributed through the `sianedata` data branch, see
 
   Character string or number. Resolution of the geospatial data. One of:
 
-  - "10": 1:10 million.
+  - `"10"`: 1:10 million.
 
-  - "6.5": 1:6.5 million.
+  - `"6.5"`: 1:6.5 million.
 
-  - "3": 1:3 million.
+  - `"3"`: 1:3 million.
 
 - region:
 
@@ -133,19 +132,19 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or NUTS1),
-all the municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or City, or
+NUTS 1), all municipalities of that level are added.
 
 ## Note
 
 Although [mapSpain](https://CRAN.R-project.org/package=mapSpain)
 supplies cartographically suitable datasets, a historical database of
 Spanish municipal boundaries is also available, offering
-higher‑resolution geometries that may be more appropriate for
-GIS‑oriented workflows:
+higher-resolution geometries that may be more appropriate for
+GIS-oriented workflows:
 
-- Goerlich, F. J., & Pérez Vázquez, P. (2025). *Base de datos histórica
-  de contornos municipales de España –LAU2boundaries4Spain–* \[Data
+- Goerlich, F. J. & Pérez Vázquez, P. (2025). *Base de datos histórica
+  de contornos municipales de España -LAU2boundaries4Spain-* \[Data
   set\]. Zenodo.
   [doi:10.5281/zenodo.15345101](https://doi.org/10.5281/zenodo.15345101)
   , <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
@@ -228,7 +227,7 @@ allmunis_unique |>
   facet_wrap(~fecha_alta) +
   labs(
     title = id_all$name,
-    subtitle = "Changes on boundaries over time",
+    subtitle = "Boundary changes over time",
     fill = ""
   )
 

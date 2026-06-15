@@ -8,18 +8,18 @@ of Environment (MITECO).
 This dataset provides:
 
 - `esp_get_grid_BDN()` extracts country-wide regular grids with
-  resolutions of 5x5 or 10x10 kilometers (mainland Spain or Canary
+  resolutions of 5 x 5 or 10 x 10 kilometers (mainland Spain or Canary
   Islands).
 
-- `esp_get_grid_BDN_ccaa()` extracts 1x1 kilometer resolution grids for
-  individual Autonomous Communities.
+- `esp_get_grid_BDN_ccaa()` extracts 1 x 1 kilometer resolution grids
+  for individual Autonomous Communities and Cities.
 
 These grids are useful for biodiversity analysis, environmental
 monitoring, and spatial statistical applications.
 
 `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
-for specific Autonomous Communities, useful for regional analysis with
-finer spatial detail.
+for specific Autonomous Communities and Cities, useful for regional
+analysis with finer spatial detail.
 
 ## Usage
 
@@ -55,17 +55,17 @@ For more information about BDN grids and other resources, visit:
 
   Numeric. Resolution of the grid in kilometers. Must be one of:
 
-  - `5`: 5x5 kilometer cells
+  - `5`: 5 x 5 kilometer cells.
 
-  - `10`: 10x10 kilometer cells (default)
+  - `10`: 10 x 10 kilometer cells (default).
 
 - type:
 
   Character. The geographic scope of the grid:
 
-  - `"main"`: Mainland Spain (default)
+  - `"main"`: Mainland Spain (default).
 
-  - `"canary"`: Canary Islands
+  - `"canary"`: Canary Islands.
 
 - update_cache:
 
@@ -85,7 +85,7 @@ For more information about BDN grids and other resources, visit:
 - ccaa:
 
   Character string. A vector of names, codes or both for Autonomous
-  Communities. See **Details** on
+  Communities and Cities. See **Details** on
   [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
   for accepted formats.
 
@@ -111,10 +111,10 @@ Geographical grid datasets:
 
 ``` r
 # \donttest{
-# Load a 10x10 km grid for mainland Spain
+# Load a 10 x 10 km grid for mainland Spain.
 grid <- esp_get_grid_BDN(resolution = 10, type = "main")
 
-# Visualize the grid
+# Visualize the grid.
 library(ggplot2)
 
 ggplot(grid) +

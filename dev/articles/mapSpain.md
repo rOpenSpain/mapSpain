@@ -8,12 +8,12 @@
 > <https://ropenspain.github.io/mapSpain/>.
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
-geographical information about Spain at different levels.
+geographical information about Spain at several levels.
 
-**mapSpain** provides `sf` objects for Autonomous Communities,
-provinces, municipalities and NUTS levels in Spain. It also provides
-hexbin maps and other complementary geometries, such as the demarcation
-lines around the Canary Islands.
+**mapSpain** provides **sf** objects for Autonomous Communities and
+Cities, provinces, municipalities and NUTS levels in Spain. It also
+provides hexbin maps and other complementary geometries, such as the
+demarcation lines around the Canary Islands.
 
 **mapSpain** provides access to static map tiles from Spain’s public
 institutions. Tiles can be represented on static maps with
@@ -121,8 +121,8 @@ Example: municipalities of the Basque Country
 
 ## Choropleth and label maps
 
-Analyze the distribution of women in each Autonomous Community with
-**ggplot2**:
+Analyze the distribution of women in each Autonomous Community or City
+with **ggplot2**:
 
 ``` r
 
@@ -131,14 +131,14 @@ library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract Autonomous Community codes from the base dataset.
+# Extract Autonomous Community or City codes from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by Autonomous Community.
+  # Summarize by Autonomous Community or City.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -176,9 +176,10 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community (2025)](./choro-1.png)
+![Percentage of women by Autonomous Community or City
+(2025)](./choro-1.png)
 
-Percentage of women by Autonomous Community (2025)
+Percentage of women by Autonomous Community or City (2025)
 
 ## Thematic maps
 
@@ -292,8 +293,8 @@ mapSpain and giscoR example
 ## Working with static map tiles
 
 **mapSpain** provides an interface for working with static map tiles. It
-can download tiles as `.png` or `.jpeg`, depending on the Web Map
-Service, and use them alongside your `sf` objects.
+can download tiles as `.png` or `.jpeg`, depending on the tile service,
+and use them alongside your **sf** objects.
 
 **mapSpain** also includes a plugin for the
 [**leaflet**](https://rstudio.github.io/leaflet/) R package, which

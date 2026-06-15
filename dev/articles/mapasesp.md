@@ -6,11 +6,12 @@
 
 **mapSpain** helps you create maps for the main administrative levels of
 Spain. It also supports static map tiles from WMS and WMTS services,
-either as georeferenced rasters or as dynamic layers in leaflet maps.
+either as georeferenced rasters for static maps or as layers in
+interactive **leaflet** maps.
 
-The package also includes helpers to translate and convert Autonomous
-Community and province names and codes. These helpers make it easier to
-join, clean and transform data, whether or not the data is spatial.
+The package also includes helpers to translate and convert Spanish
+subdivision names and codes. These helpers make it easier to join, clean
+and transform data, whether or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
@@ -20,8 +21,8 @@ The main data sources used by **mapSpain** are:
 - Spanish public institutions that publish WMTS and WMS tile services
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Most functions return `sf` objects from the **sf** package or
-`SpatRaster` objects from the **terra** package.
+Most functions return **sf** objects or `SpatRaster` objects from the
+**terra** package.
 
 Package website: <https://ropenspain.github.io/mapSpain/>.
 
@@ -212,15 +213,15 @@ munic <- esp_get_munic_siane(verbose = TRUE)
 codes:
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
-  converts text labels into Autonomous Community and province codes.
-  Supported coding standards are ISO2, NUTS and INE codes (`codauto` and
-  `cpro`).
+  converts text labels into Autonomous Community or City and province
+  codes. Supported coding standards are ISO2, NUTS and INE codes
+  (`codauto` and `cpro`).
 - [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   translates text into Spanish, English, Catalan, Galician or Basque.
 
 These functions are also useful outside spatial workflows, for example
-when you need to standardize Autonomous Community and province codes in
-ISCIII COVID data.
+when you need to standardize Autonomous Community or City and province
+codes in ISCIII COVID data.
 
 #### `esp_dict_region_code()`
 
@@ -287,12 +288,12 @@ several levels:
 - [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat).
   Eurostat statistical classification, with levels 0 (country), 1, 2
   (Autonomous Communities) and 3.
-- Autonomous Communities.
+- Autonomous Communities and Cities.
 - Provinces.
 - Municipalities.
 
-For Autonomous Communities, provinces and municipalities, there are two
-families of functions: `esp_get_xxxx()` for GISCO data and
+For Autonomous Communities and Cities, provinces and municipalities,
+there are two families of functions: `esp_get_xxxx()` for GISCO data and
 `esp_get_xxxx_siane()` for IGN data.
 
 The information is available in different projections and resolution
@@ -349,7 +350,7 @@ nuts1 <- esp_get_nuts(resolution = 60, epsg = 3035, nuts_level = 1)
 
 ggplot(nuts1) +
   geom_sf() +
-  labs(title = "NUTS1: low resolution")
+  labs(title = "NUTS 1: low resolution")
 ```
 
 ![](mapasesp_files/figure-html/fig-nuts-1.png)
@@ -358,7 +359,7 @@ Figure 5: NUTS 1 regions of Spain
 
 ``` r
 
-# Balearic Islands NUTS3.
+# Balearic Islands NUTS 3.
 nuts3_baleares <- c("ES531", "ES532", "ES533")
 paste(esp_dict_region_code(nuts3_baleares, "nuts"), collapse = ", ")
 #> [1] "Eivissa y Formentera, Mallorca, Menorca"
@@ -367,7 +368,7 @@ nuts3_sf <- esp_get_nuts(region = nuts3_baleares, resolution = 1)
 
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = NAME_LATN)) +
-  labs(fill = "Balearic Islands: NUTS3") +
+  labs(fill = "Balearic Islands: NUTS 3") +
   scale_fill_viridis_d() +
   theme_minimal()
 ```
@@ -376,7 +377,7 @@ ggplot(nuts3_sf) +
 
 Figure 6: NUTS 3 regions of Spain
 
-### Autonomous Communities
+### Autonomous Communities and Cities
 
 ``` r
 
@@ -395,14 +396,14 @@ ccaa <- ccaa |>
 
 ggplot(ccaa) +
   geom_sf(aes(fill = ccaa_cat)) +
-  labs(fill = "Autonomous Communities") +
+  labs(fill = "Autonomous Communities and Cities") +
   theme_minimal() +
   scale_fill_discrete(type = hcl.colors(4, "Plasma"))
 ```
 
 ![](mapasesp_files/figure-html/fig-ccaa-1.png)
 
-Figure 7: Autonomous Communities of Spain
+Figure 7: Autonomous Communities and Cities of Spain
 
 ### Provinces from SIANE
 
@@ -428,7 +429,7 @@ ggplot(provs) +
 
 ![](mapasesp_files/figure-html/fig-prov-1.png)
 
-Figure 8: Extracting multiple provinces through Autonomous Communities
+Figure 8: Extracting provinces through Autonomous Communities and Cities
 
 ### Municipalities
 
@@ -506,7 +507,7 @@ basemaps and roads, provided by different public institutions
 (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
 These tiles can be used to create static maps, as 3- or 4-band raster
-layers, or as backgrounds for dynamic maps through the **leaflet**
+layers, or as backgrounds for interactive maps through the **leaflet**
 package.
 
 The providers are taken from the **leaflet**

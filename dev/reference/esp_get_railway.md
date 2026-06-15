@@ -36,8 +36,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -64,7 +63,7 @@ Data distributed through the `sianedata` data branch, see
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -74,8 +73,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:

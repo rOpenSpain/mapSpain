@@ -26,7 +26,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
     <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
@@ -57,8 +57,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mapspain-development-version">mapSpain (development version)<a class="anchor" aria-label="anchor" href="#mapspain-development-version"></a></h2>
-<ul><li>Refactored internal helpers for downloading and reading geospatial files, SIANE file handling, EPSG validation, region-code filtering, municipal metadata enrichment, empty-result messages and Canary Islands displacement. This is intended to simplify maintenance without changing the public API.</li>
-<li>Consolidated repeated Autonomous Community, province and municipality metadata handling across GISCO, SIANE, simplified and gridmap getters.</li>
+<ul><li>Refactored internal helpers for downloading and reading geospatial files, SIANE file handling, EPSG validation, subdivision-code filtering, municipal metadata enrichment, empty-result messages and Canary Islands displacement. This is intended to simplify maintenance without changing the public API.</li>
+<li>Consolidated repeated Autonomous Community or City metadata and province and municipality metadata across GISCO, SIANE, simplified and gridmap getters.</li>
 <li>Further simplified internal cache handling, <code>sf</code> output finalization, WMTS tile retrieval, dictionary translation and no-match messages. These changes are intended to improve maintainability without changing user-facing behavior.</li>
 <li>Reviewed roxygen2 documentation, generated Rd files and prose documentation for consistent terminology and clearer user-facing messages. This work was completed with AI assistance and human review.</li>
 <li>This internal refactor was developed with AI assistance and reviewed through focused package checks, including <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> followed by <code>lintr::lint_package()</code>.</li>
@@ -141,7 +141,7 @@
 <li>
 <code><a href="../reference/esp_set_cache_dir.html">esp_detect_cache_dir()</a></code> shows the current cache directory.</li>
 <li>
-<code><a href="../reference/esp_move_can.html">esp_move_can()</a></code> was added as a helper to displace stand-alone <code>sf</code> objects in the Canary Islands.</li>
+<code><a href="../reference/esp_move_can.html">esp_move_can()</a></code> was added as a helper to displace standalone <code>sf</code> objects in the Canary Islands.</li>
 <li>
 <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code> is used internally by all functions.</li>
 <li>

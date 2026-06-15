@@ -47,7 +47,7 @@ Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 

@@ -3,12 +3,13 @@
 ## mapSpain (development version)
 
 - Refactored internal helpers for downloading and reading geospatial
-  files, SIANE file handling, EPSG validation, region-code filtering,
-  municipal metadata enrichment, empty-result messages and Canary
-  Islands displacement. This is intended to simplify maintenance without
-  changing the public API.
-- Consolidated repeated Autonomous Community, province and municipality
-  metadata handling across GISCO, SIANE, simplified and gridmap getters.
+  files, SIANE file handling, EPSG validation, subdivision-code
+  filtering, municipal metadata enrichment, empty-result messages and
+  Canary Islands displacement. This is intended to simplify maintenance
+  without changing the public API.
+- Consolidated repeated Autonomous Community or City metadata and
+  province and municipality metadata across GISCO, SIANE, simplified and
+  gridmap getters.
 - Further simplified internal cache handling, `sf` output finalization,
   WMTS tile retrieval, dictionary translation and no-match messages.
   These changes are intended to improve maintainability without changing
@@ -151,7 +152,7 @@ CRAN release: 2024-01-23
 - [`esp_detect_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
   shows the current cache directory.
 - [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
-  was added as a helper to displace stand-alone `sf` objects in the
+  was added as a helper to displace standalone `sf` objects in the
   Canary Islands.
 - [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
   is used internally by all functions.

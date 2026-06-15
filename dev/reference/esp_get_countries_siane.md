@@ -29,8 +29,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -50,7 +49,7 @@ Data distributed through the `sianedata` data branch, see
 
 - year:
 
-  Character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year. It must use format `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
@@ -59,7 +58,7 @@ Data distributed through the `sianedata` data branch, see
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -69,8 +68,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
@@ -90,9 +89,8 @@ Data distributed through the `sianedata` data branch, see
 
 - country:
 
-  Character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of ISO2
-  country codes. See also
+  Character vector of country codes. It can be a vector of country
+  names, ISO3 country codes or ISO2 country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 ## Value

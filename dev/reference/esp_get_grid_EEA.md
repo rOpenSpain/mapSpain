@@ -31,9 +31,9 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
   Character. The geographic scope of the grid:
 
-  - `"main"`: Mainland Spain (default)
+  - `"main"`: Mainland Spain (default).
 
-  - `"canary"`: Canary Islands
+  - `"canary"`: Canary Islands.
 
 - update_cache:
 

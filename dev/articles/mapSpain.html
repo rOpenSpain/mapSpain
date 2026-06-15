@@ -56,7 +56,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
     <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
@@ -110,8 +110,8 @@
 <p>For more examples and vignettes, see the full site at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 </blockquote>
 </div>
-<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides geographical information about Spain at different levels.</p>
-<p><strong>mapSpain</strong> provides <code>sf</code> objects for Autonomous Communities, provinces, municipalities and NUTS levels in Spain. It also provides hexbin maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
+<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides geographical information about Spain at several levels.</p>
+<p><strong>mapSpain</strong> provides <strong>sf</strong> objects for Autonomous Communities and Cities, provinces, municipalities and NUTS levels in Spain. It also provides hexbin maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
 <p><strong>mapSpain</strong> provides access to static map tiles from Spain’s public institutions. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
 <p><strong>mapSpain</strong> also includes a dictionary that translates province and region names to English, Spanish, Catalan, Basque and Galician, and converts them to coding standards such as NUTS, ISO2 and the INE coding system.</p>
 </section><section class="level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
@@ -193,21 +193,21 @@ Example: municipalities of the Basque Country
 </div>
 </section><section class="level2"><h2 id="choropleth-and-label-maps">Choropleth and label maps<a class="anchor" aria-label="anchor" href="#choropleth-and-label-maps"></a>
 </h2>
-<p>Analyze the distribution of women in each Autonomous Community with <strong>ggplot2</strong>:</p>
+<p>Analyze the distribution of women in each Autonomous Community or City with <strong>ggplot2</strong>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Extract Autonomous Community codes from the base dataset.</span></span>
+<span><span class="co"># Extract Autonomous Community or City codes from the base dataset.</span></span>
 <span><span class="va">codelist</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/esp_codelist.html">esp_codelist</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">cpro</span>, <span class="va">codauto</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">census_ccaa</span> <span class="op">&lt;-</span> <span class="va">census</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">codelist</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Summarize by Autonomous Community.</span></span>
+<span>  <span class="co"># Summarize by Autonomous Community or City.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">codauto</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>pob25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pob25</span><span class="op">)</span>, men <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">men</span><span class="op">)</span>, women <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
@@ -244,8 +244,8 @@ Example: municipalities of the Basque Country
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./choro-1.png" alt="Percentage of women by Autonomous Community (2025)" width="100%"><p class="caption">
-Percentage of women by Autonomous Community (2025)
+<img src="./choro-1.png" alt="Percentage of women by Autonomous Community or City (2025)" width="100%"><p class="caption">
+Percentage of women by Autonomous Community or City (2025)
 </p>
 </div>
 </section><section class="level2"><h2 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
@@ -347,7 +347,7 @@ mapSpain and giscoR example
 </div>
 </section><section class="level2"><h2 id="working-with-static-map-tiles">Working with static map tiles<a class="anchor" aria-label="anchor" href="#working-with-static-map-tiles"></a>
 </h2>
-<p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the Web Map Service, and use them alongside your <code>sf</code> objects.</p>
+<p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <strong>sf</strong> objects.</p>
 <p><strong>mapSpain</strong> also includes a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> R package, which allows you to add several basemaps to interactive maps.</p>
 <p>The services are implemented with the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. All available providers are listed there.</p>
 <div>

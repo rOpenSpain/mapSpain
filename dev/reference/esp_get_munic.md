@@ -41,7 +41,7 @@ Copyright:
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -104,8 +104,8 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or NUTS1),
-all the municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or City, or
+NUTS 1), all municipalities of that level are added.
 
 ## Note
 

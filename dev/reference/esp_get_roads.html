@@ -26,7 +26,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
     <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
@@ -79,7 +79,7 @@
 <a href="http://www.ign.es/web/ign/portal" class="external-link">http://www.ign.es/web/ign/portal</a>. Years available are 2005 up to today.</p>
 <p>Copyright:
 <a href="https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane" class="external-link">https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane</a></p>
-<p>It's necessary to always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
+<p>Always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
 be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
 <li><p>CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional</p></li>
 </ul></li>
@@ -98,7 +98,7 @@ be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
 <dd><p>Character string or number. Projection of the map: 4-digit
-<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a></p></li>
+<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4258"</code>: <a href="https://epsg.io/4258" class="external-link">ETRS89</a>.</p></li>
 <li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
 <li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
 <li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
@@ -106,8 +106,8 @@ be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>Logical. Whether to do caching. Default is <code>TRUE</code>. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<dd><p>Logical. Whether to cache downloaded files. Default is <code>TRUE</code>.
+See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>

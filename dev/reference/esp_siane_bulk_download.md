@@ -2,7 +2,7 @@
 
 Download zipped data from SIANE to the
 [`cache_dir`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
-and extract the relevant ones.
+and extract the relevant files.
 
 ## Usage
 
@@ -23,8 +23,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -59,8 +58,8 @@ Data distributed through the `sianedata` data branch, see
 
 ## Value
 
-A (invisible) character vector with the full path of the files
-extracted. See **Examples**.
+An invisible character vector with the full paths of the extracted
+files. See **Examples**.
 
 ## See also
 
@@ -94,7 +93,7 @@ Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 tmp <- file.path(tempdir(), "testexample")
 dest_files <- esp_siane_bulk_download(cache_dir = tmp)
 
-# Read one
+# Read one file.
 library(sf)
 read_sf(dest_files[1]) |> head()
 #> Simple feature collection with 6 features and 16 fields
@@ -114,16 +113,16 @@ read_sf(dest_files[1]) |> head()
 #> # ℹ 7 more variables: id_pais <chr>, id_palt <chr>, id_leng <chr>,
 #> #   rotulo2 <chr>, st_area_sh <dbl>, st_length_ <dbl>, geom <MULTIPOLYGON [°]>
 
-# Now we can connect the function with the downloaded data like:
+# Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/Rtmpcy2JuL/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmpcy2JuL/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/Rtmpcy2JuL/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmpcy2JuL/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp7ogINI/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp7ogINI/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp7ogINI/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp7ogINI/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
-# Message shows file is already cached :)
+# The message shows that the file is already cached.
 
-# Clean
+# Clean up.
 unlink(tmp, force = TRUE, recursive = TRUE)
 ```

@@ -30,8 +30,8 @@ esp_make_provider(id, q, service, layers, ...)
 
 - ...:
 
-  Additional arguments to the query, like `version`, `format`, `crs/srs`
-  and `style`, depending on the capabilities of the service.
+  Additional arguments to the query, such as `version`, `format`,
+  `crs/srs` and `style`, depending on the capabilities of the service.
 
 ## Value
 
@@ -39,22 +39,22 @@ A named list with two elements `id` and `q`.
 
 ## Details
 
-This function is meant to work with services provided as of the [OGC
+This function is meant to work with services provided under the [OGC
 Standard](https://www.ogc.org/standards/wms/).
 
 Note that:
 
-- [mapSpain](https://CRAN.R-project.org/package=mapSpain) will not
-  provide advice on the argument `q` to be provided.
+- [mapSpain](https://CRAN.R-project.org/package=mapSpain) does not
+  provide advice on the value of `q`.
 
-- Currently, on **WMTS** requests only services with
+- Currently, for **WMTS** requests only services with
   `tilematrixset=GoogleMapsCompatible` are supported.
 
 ## See also
 
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
 
-For a list of potential providers from Spain check [IDEE
+For a list of potential providers from Spain, check the [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).
 
 Static map tiles and imagery:

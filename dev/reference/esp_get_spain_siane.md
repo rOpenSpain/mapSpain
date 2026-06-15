@@ -18,8 +18,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -52,7 +51,7 @@ Data distributed through the `sianedata` data branch, see
 
   `year`
 
-  :   Character string or number. Release year, it must be in formats
+  :   Character string or number. Release year. It must use format
       `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
       information starts as of 2005.
 
@@ -61,18 +60,18 @@ Data distributed through the `sianedata` data branch, see
   :   Character string or number. Resolution of the geospatial data. One
       of:
 
-      - "10": 1:10 million.
+      - `"10"`: 1:10 million.
 
-      - "6.5": 1:6.5 million.
+      - `"6.5"`: 1:6.5 million.
 
-      - "3": 1:3 million.
+      - `"3"`: 1:3 million.
 
   `epsg`
 
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -82,8 +81,8 @@ Data distributed through the `sianedata` data branch, see
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`

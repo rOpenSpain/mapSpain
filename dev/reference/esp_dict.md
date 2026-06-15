@@ -65,9 +65,9 @@ another.
 This function uses internal dictionaries together with
 [countrycode](https://CRAN.R-project.org/package=countrycode) to map
 between schemes. When `origin == destination == "text"` the input is
-returned unchanged. Mixing names from different administrative levels
-(for example Autonomous Community and province) may produce `NA` values
-for some entries.
+returned unchanged. Mixing names from different administrative levels,
+for example Autonomous Community or City and province, may produce `NA`
+values for some entries.
 
 ## Examples
 

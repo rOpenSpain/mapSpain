@@ -33,5 +33,5 @@ Map Tiles of Spain*.
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for the leaflet package and tools to download and process static map tiles.},
+      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
     }

@@ -4,13 +4,13 @@ WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
 v1.3.3.
-esp_get_attributions gets the attribution of a tile provider defined as
+esp_get_attributions() gets the attribution of a tile provider defined by
 the type argument."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
 WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
 v1.3.3.
-esp_get_attributions gets the attribution of a tile provider defined as
+esp_get_attributions() gets the attribution of a tile provider defined by
 the type argument."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -38,7 +38,7 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
     <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
@@ -74,7 +74,7 @@ WMS and WMTS providers.</p>
 <p>This function is an implementation of the JavaScript plugin
 <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>
 <strong>v1.3.3</strong>.</p>
-<p><code>esp_get_attributions</code> gets the attribution of a tile provider defined as
+<p><code>esp_get_attributions()</code> gets the attribution of a tile provider defined by
 the <code>type</code> argument.</p>
     </div>
 
@@ -113,7 +113,7 @@ the <code>type</code> argument.</p>
 
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
-<dd><p>This argument can be either:</p><ul><li><p>The name of one of the pre-defined providers (see
+<dd><p>This argument can be one of:</p><ul><li><p>The name of one of the pre-defined providers (see
 <a href="esp_tiles_providers.html">esp_tiles_providers</a>).</p></li>
 <li><p>A list with two named elements <code>id</code> and <code>q</code> with your own arguments. See
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code> and examples.</p></li>
@@ -149,7 +149,8 @@ Resolution (in pixels) of the final tile.</p></dd>
 
 
 <dt id="arg-transparent">transparent<a class="anchor" aria-label="anchor" href="#arg-transparent"></a></dt>
-<dd><p>Logical. Provides transparent background, if supported.</p></dd>
+<dd><p>Logical. Whether to use a transparent background, if
+supported.</p></dd>
 
 
 <dt id="arg-mask">mask<a class="anchor" aria-label="anchor" href="#arg-mask"></a></dt>

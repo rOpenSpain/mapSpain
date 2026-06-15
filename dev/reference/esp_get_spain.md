@@ -43,7 +43,7 @@ Copyright:
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -53,8 +53,8 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
   `update_cache`

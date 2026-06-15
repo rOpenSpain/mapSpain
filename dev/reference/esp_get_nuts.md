@@ -1,20 +1,20 @@
 # Territorial Spanish units for statistics (NUTS) dataset
 
-The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions using
+The GISCO statistical unit dataset represents NUTS (Nomenclature of
+Territorial Units for Statistics) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
-help lines to better visualise multipart polygonal regions.
+help lines to better visualize multipart polygonal regions.
 
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 
-- NUTS 1: major socio-economic regions
+- NUTS 1: major socioeconomic regions.
 
-- NUTS 2: basic regions for the application of regional policies
+- NUTS 2: basic regions for the application of regional policies.
 
 - NUTS 3: small regions for specific diagnoses.
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to the national
 boundaries.
 
 ## Usage
@@ -56,7 +56,7 @@ Copyright:
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -66,8 +66,8 @@ Copyright:
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
@@ -146,7 +146,7 @@ the nation at statistical level does not coincide with the
 administrative boundaries.
 
 The NUTS classification has been officially established through
-Commission Delegated Regulation 2019/1755. A non-official NUTS-like
+Commission Delegated Regulation 2019/1755. A nonofficial NUTS-like
 classification has been defined for the EFTA countries, candidate
 countries and potential candidates based on a bilateral agreement
 between Eurostat and the respective statistical agencies.
@@ -196,7 +196,7 @@ library(ggplot2)
 ggplot(nuts1) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     caption = giscoR::gisco_attributions()
   )
 
@@ -206,7 +206,7 @@ nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 ggplot(nuts1_alt) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     subtitle = "to the right",
     caption = giscoR::gisco_attributions()
   )
@@ -217,7 +217,7 @@ nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 ggplot(nuts1_orig) +
   geom_sf() +
   labs(
-    title = "NUTS1",
+    title = "NUTS 1",
     subtitle = "Canary Islands on the true location",
     caption = giscoR::gisco_attributions()
   )

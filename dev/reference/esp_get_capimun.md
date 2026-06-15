@@ -33,8 +33,7 @@ available are 2005 up to today.
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following formulas:
 
 1.  When the original digital product is not modified or altered, it can
     be expressed in one of the following ways:
@@ -54,7 +53,7 @@ Data distributed through the `sianedata` data branch, see
 
 - year:
 
-  Character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year. It must use format `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
@@ -63,7 +62,7 @@ Data distributed through the `sianedata` data branch, see
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -73,8 +72,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
 
 - update_cache:
@@ -127,19 +126,19 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or NUTS1),
-all the municipalities of that level will be added.
+When calling a higher level (province, Autonomous Community or City, or
+NUTS 1), all municipalities of that level are added.
 
 ## Note
 
 Although [mapSpain](https://CRAN.R-project.org/package=mapSpain)
 supplies cartographically suitable datasets, a historical database of
 Spanish municipal boundaries is also available, offering
-higher‑resolution geometries that may be more appropriate for
-GIS‑oriented workflows:
+higher-resolution geometries that may be more appropriate for
+GIS-oriented workflows:
 
-- Goerlich, F. J., & Pérez Vázquez, P. (2025). *Base de datos histórica
-  de contornos municipales de España –LAU2boundaries4Spain–* \[Data
+- Goerlich, F. J. & Pérez Vázquez, P. (2025). *Base de datos histórica
+  de contornos municipales de España -LAU2boundaries4Spain-* \[Data
   set\]. Zenodo.
   [doi:10.5281/zenodo.15345101](https://doi.org/10.5281/zenodo.15345101)
   , <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
@@ -178,28 +177,28 @@ Municipality-level datasets:
 
 ``` r
 # \donttest{
-# This code compares centroids of municipalities against esp_get_capimun
+# Compare municipality centroids against esp_get_capimun().
 
-# Get shape
+# Get the municipality boundary.
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
 
-# Area in km2
+# Area in km2.
 print(paste0(round(as.double(sf::st_area(area)) / 1000000, 2), " km2"))
 #> [1] "353.42 km2"
 
-# Extract centroid
+# Extract the centroid.
 centroid <- sf::st_centroid(area)
 #> Warning: st_centroid assumes attributes are constant over geometries
 centroid$type <- "Centroid"
 
-# Compare with capimun
+# Compare with capimun.
 capimun <- esp_get_capimun(munic = "Valladolid", epsg = 3857)
 capimun$type <- "Capimun"
 
-# Join both point geometries
+# Join both point geometries.
 points <- dplyr::bind_rows(centroid, capimun)
 
-# Check on plot
+# Check on a plot.
 library(ggplot2)
 
 ggplot(points) +

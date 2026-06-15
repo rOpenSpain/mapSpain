@@ -7,8 +7,8 @@ This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
-`esp_get_attributions` gets the attribution of a tile provider defined
-as the `type` argument.
+`esp_get_attributions()` gets the attribution of a tile provider defined
+by the `type` argument.
 
 ## Usage
 
@@ -46,7 +46,7 @@ esp_get_attributions(type, options = NULL)
 
 - type:
 
-  This argument can be either:
+  This argument can be one of:
 
   - The name of one of the pre-defined providers (see
     [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)).
@@ -87,7 +87,7 @@ esp_get_attributions(type, options = NULL)
 
 - transparent:
 
-  Logical. Provides transparent background, if supported.
+  Logical. Whether to use a transparent background, if supported.
 
 - mask:
 

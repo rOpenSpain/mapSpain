@@ -1,10 +1,10 @@
 # Public WMS and WMTS providers for Spain
 
-A named [`list`](https://rdrr.io/r/base/list.html) of length 102
+A named [`list`](https://rdrr.io/r/base/list.html) of length 102,
 containing URL information for different public WMS and WMTS tile
-providers of Spain.
+providers in Spain.
 
-Implementation of the JavaScript plugin
+This dataset is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 

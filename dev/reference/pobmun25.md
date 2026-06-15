@@ -38,7 +38,7 @@ Spain for 2025.
 
 ## Source
 
-INE: Instituto Nacional de Estadistica
+INE: Instituto Nacional de Estadistica.
 <https://www.ine.es/dyngs/INEbase/categoria.htm?c=Estadistica_P&cid=1254734710990>.
 
 ## See also

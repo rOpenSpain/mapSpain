@@ -12,7 +12,7 @@ Datasets sourced from CartoBase ANE.
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md)
   : City where the municipal public authorities are based from SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain from SIANE
+  : Autonomous Communities and Cities of Spain from SIANE
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
   : Countries of the world from SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md)
@@ -29,7 +29,7 @@ Datasets sourced from CartoBase ANE.
 Datasets sourced from GISCO and Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain from GISCO
+  : Autonomous Communities and Cities of Spain from GISCO
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md)
   : Municipalities of Spain from GISCO
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md)
@@ -65,12 +65,14 @@ Datasets sourced from GISCO and Eurostat.
 
 - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md)
-  : Simplified map of provinces and Autonomous Communities of Spain
+  : Simplified map of provinces and Autonomous Communities and Cities of
+  Spain
 
 ## Static map tiles and imagery
 
-Functions to return static map tiles or create an interactive
-[leaflet](https://CRAN.R-project.org/package=leaflet) map.
+Functions that return static map tiles or add Spanish public
+administration basemaps to interactive
+[leaflet](https://CRAN.R-project.org/package=leaflet) maps.
 
 - [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)
   :
@@ -138,7 +140,8 @@ objects with transport infrastructure features.
 
 ## Dictionary
 
-Translate region names across languages and coding standards.
+Translate Spanish subdivision names across languages and coding
+standards.
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
@@ -150,7 +153,7 @@ Datasets included with
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of Spanish regions
+  : Database with codes and names of Spanish subdivisions
 
 - [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
   :
