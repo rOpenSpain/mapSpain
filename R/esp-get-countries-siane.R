@@ -1,4 +1,4 @@
-#' Countries of the world - SIANE
+#' Countries of the world from SIANE
 #'
 #' @description
 #' This dataset contains the administrative boundaries at country level of the

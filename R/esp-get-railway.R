@@ -1,4 +1,4 @@
-#' Railways of Spain - SIANE
+#' Railways of Spain from SIANE
 #'
 #' @description
 #' Loads a [`sf`][sf::st_sf] `LINESTRING` or `POINT` object representing the

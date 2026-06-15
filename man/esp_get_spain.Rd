@@ -4,7 +4,7 @@
 \name{esp_get_spain}
 \alias{esp_get_spain}
 \alias{esp_get_country}
-\title{Boundaries of Spain - GISCO}
+\title{Boundaries of Spain from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 

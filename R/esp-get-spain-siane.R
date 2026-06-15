@@ -1,4 +1,4 @@
-#' Boundaries of Spain - SIANE
+#' Boundaries of Spain from SIANE
 #'
 #' @description
 #' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON`.

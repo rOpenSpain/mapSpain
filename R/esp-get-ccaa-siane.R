@@ -1,4 +1,4 @@
-#' Autonomous Communities of Spain - SIANE
+#' Autonomous Communities of Spain from SIANE
 #'
 #' @param year Character string or number. Release year, it must be in
 #'   formats `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
@@ -16,8 +16,13 @@
 #' @inheritParams esp_get_ccaa
 #' @inherit esp_get_ccaa description return details
 #' @source
-#' CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-#' <http://www.ign.es/web/ign/portal>. Years available are 2005 up to today.
+#' ```{r, echo=FALSE, results='asis'}
+#' cat("CartoBase ANE (Atlas Nacional de Espa\u00f1a) provided by Instituto",
+#'   "Geografico Nacional (IGN),\n<http://www.ign.es/web/ign/portal>. Years",
+#'   "available are 2005 up to today.",
+#'   sep = " "
+#' )
+#' ```
 #'
 #' Copyright:
 #' <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>

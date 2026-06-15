@@ -1,4 +1,4 @@
-#' Hypsometry and bathymetry of Spain - SIANE
+#' Hypsometry and bathymetry of Spain from SIANE
 #'
 #' @description
 #' Dataset representing the hypsometry and bathymetry of Spain.

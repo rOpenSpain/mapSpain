@@ -1,4 +1,4 @@
-#' Roads of Spain - SIANE
+#' Roads of Spain from SIANE
 #'
 #' @description
 #' Object representing the main roads of Spain.

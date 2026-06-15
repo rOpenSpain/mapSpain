@@ -73,7 +73,7 @@ reference:
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects representing
     political and administrative boundaries.
-- subtitle: CartoBase ANE
+- subtitle: CartoBase ANE (Atlas Nacional de España)
   description: |
     Datasets sourced from CartoBase ANE.
   contents:

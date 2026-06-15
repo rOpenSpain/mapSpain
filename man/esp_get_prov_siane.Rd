@@ -5,7 +5,7 @@
 \alias{esp_get_prov_siane}
 \title{Provinces of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:
@@ -131,7 +131,7 @@ Political and administrative boundary datasets:
 \code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
 \code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
 
-Datasets sourced from CartoBase ANE:
+Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},

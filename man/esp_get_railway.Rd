@@ -4,9 +4,9 @@
 \name{esp_get_railway}
 \alias{esp_get_railway}
 \alias{esp_get_stations}
-\title{Railways of Spain - SIANE}
+\title{Railways of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:

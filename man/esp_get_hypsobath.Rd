@@ -3,9 +3,9 @@
 \encoding{UTF-8}
 \name{esp_get_hypsobath}
 \alias{esp_get_hypsobath}
-\title{Hypsometry and bathymetry of Spain - SIANE}
+\title{Hypsometry and bathymetry of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:

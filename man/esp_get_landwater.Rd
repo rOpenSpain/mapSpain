@@ -5,9 +5,9 @@
 \alias{esp_get_landwater}
 \alias{esp_get_rivers}
 \alias{esp_get_wetlands}
-\title{Rivers and wetlands of Spain - SIANE}
+\title{Rivers and wetlands of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:

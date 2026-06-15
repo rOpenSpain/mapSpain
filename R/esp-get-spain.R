@@ -1,4 +1,4 @@
-#' Boundaries of Spain - GISCO
+#' Boundaries of Spain from GISCO
 #'
 #' @description
 #' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON` at a

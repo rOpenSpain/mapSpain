@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_ccaa}
 \alias{esp_get_ccaa}
-\title{Autonomous Communities of Spain - GISCO}
+\title{Autonomous Communities of Spain from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 

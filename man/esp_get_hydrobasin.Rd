@@ -3,9 +3,9 @@
 \encoding{UTF-8}
 \name{esp_get_hydrobasin}
 \alias{esp_get_hydrobasin}
-\title{River basin districts of Spain - SIANE}
+\title{River basin districts of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:

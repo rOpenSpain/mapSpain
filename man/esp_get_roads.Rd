@@ -3,9 +3,9 @@
 \encoding{UTF-8}
 \name{esp_get_roads}
 \alias{esp_get_roads}
-\title{Roads of Spain - SIANE}
+\title{Roads of Spain from SIANE}
 \source{
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
+CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:

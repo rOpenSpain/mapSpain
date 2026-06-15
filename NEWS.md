@@ -205,7 +205,7 @@ versions.
 
 - Fixed DOI <https://doi.org/10.5281/zenodo.4318024>.
 - Ported documentation to **roxygen2**.
-- Included CartoBase ANE data:
+- Included CartoBase ANE (Atlas Nacional de España) data:
   <https://github.com/rOpenSpain/mapSpain/tree/sianedata>, with
   `esp_get_munic_siane()`, `esp_get_prov_siane()`, `esp_get_ccaa_siane()`,
   `esp_get_hypsobath()`, `esp_get_rivers()`, `esp_get_hydrobasin()`,

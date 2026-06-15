@@ -1,4 +1,4 @@
-#' City where the municipal public authorities are based - SIANE
+#' City where the municipal public authorities are based from SIANE
 #'
 #' @description
 #' Get a [`sf`][sf::st_sf] `POINT` with the location of the political powers for

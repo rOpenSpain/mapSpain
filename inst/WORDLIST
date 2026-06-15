@@ -5,7 +5,6 @@ Baleares
 Banco
 Bathymetry
 Bierzo
-CCAA
 CLDR
 CMD
 COVID
@@ -113,6 +112,7 @@ ggplot
 gisco
 giscoR
 gpkg
+gridmap
 groundwaters
 hexbin
 histórica

@@ -1,4 +1,4 @@
-#' River basin districts of Spain - SIANE
+#' River basin districts of Spain from SIANE
 #'
 #' @description
 #' River basin districts are the areas of land and sea, made up of one or more
