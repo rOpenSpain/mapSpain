@@ -4,7 +4,7 @@
 #'
 #' Simplified map with the boundaries of the provinces or Autonomous
 #' Communities of Spain, as provided by the **INE** (Instituto Nacional de
-#' Estadistica).
+#' Estadística).
 #'
 #' @details
 #'

@@ -37,9 +37,9 @@
 #'
 #' @param cache_dir A path to a cache directory. When `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install Logical. If `TRUE`, installs the key on your local machine for
-#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
-#'   this argument is automatically set to `FALSE`.
+#' @param install Logical. If `TRUE`, installs the path on your local machine
+#'   for use in future sessions. Defaults to `FALSE`. If `cache_dir` is
+#'   `FALSE`, this argument is automatically set to `FALSE`.
 #' @param overwrite Logical. If `TRUE`, overwrites an existing
 #'   `MAPSPAIN_CACHE_DIR` on your local machine.
 #'
@@ -87,12 +87,12 @@ esp_set_cache_dir <- function(
 ) {
   cache_dir <- ensure_null(cache_dir)
 
-  # Default if not provided
+  # Use a temporary cache directory when no path is provided.
   if (is.null(cache_dir)) {
     make_msg(
       "info",
       verbose,
-      "Using a temporary cache directory (see {.fn base::tempdir}). ",
+      "Using a temporary cache directory (see {.fn base::tempdir}).",
       "Set {.arg cache_dir} to a value to store permanently."
     )
 
@@ -119,8 +119,8 @@ esp_set_cache_dir <- function(
     make_msg(
       "info",
       verbose && !is_temp,
-      "To install your {.arg cache_dir} path for use in future sessions",
-      "run this function with {.arg install = TRUE}."
+      "To install your {.arg cache_dir} path for use in future sessions,",
+      "run this function with {.arg install} set to {.val {TRUE}}."
     )
   }
 
@@ -287,7 +287,7 @@ write_installed_cache_dir <- function(cache_dir, overwrite = FALSE) {
   # nocov start
   cli::cli_abort(c(
     "A {.arg cache_dir} path already exists.",
-    "You can overwrite it with {.arg overwrite = TRUE}."
+    "You can overwrite it with {.arg overwrite} set to {.val {TRUE}}."
   ))
   # nocov end
 }
@@ -347,7 +347,7 @@ migrate_cache <- function(
     cache_dir <- readLines(old_fname)
     esp_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
     cli::cli_alert_success(c(
-      "{.pkg mapSpain} >= 1.0.0: Cache configuration migrated. ",
+      "{.pkg mapSpain} >= {.val 1.0.0}: cache configuration migrated.",
       "See {.strong Note} in {.fn mapSpain::esp_set_cache_dir} for details."
     ))
     cli::cli_alert_info(

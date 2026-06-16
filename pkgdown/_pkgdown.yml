@@ -58,8 +58,7 @@ navbar:
 
 home:
   title: |
-    mapSpain | Administrative boundaries of Spain, including Autonomous
-    Communities and Cities, provinces, municipalities and NUTS
+    mapSpain | Administrative boundaries and static map tiles for Spain
   description: |
     Administrative boundaries of Spain at several levels (Autonomous
     Communities and Cities, provinces, municipalities and NUTS), based on GISCO
@@ -68,7 +67,7 @@ home:
     plugin for Spanish public administration tile providers.
 
 reference:
-- title: Political and administrative boundaries
+- title: Political and administrative boundary datasets
   desc: |
     These functions return <a href="https://CRAN.R-project.org/package=sf"
     class="external-link"><span class="pkg">sf</span></a> objects representing
@@ -116,7 +115,7 @@ reference:
   - has_concept("infrastructure")
 - title: Cache management
   contents: has_concept("cache utilities")
-- title: Dictionary
+- title: Dictionary and translation helpers
   desc: |
     Translate Spanish subdivision names across languages and coding standards.
   contents:
@@ -127,9 +126,9 @@ reference:
     class="external-link"><span class="pkg">mapSpain</span></a>.
   contents:
   - has_concept("datasets")
-- title: Geographic grids
+- title: Geographical grid datasets
   desc: |
-    Geographic grids are agreed, defined and harmonized grid networks with
+    Geographical grids are agreed, defined and harmonized grid networks with
     standardized locations and grid cell sizes.
   contents:
   - has_concept("grids")
@@ -141,8 +140,11 @@ articles:
 - title: All articles
   contents:
   - articles/working_imagery
-  - articles/mapasesp
+  - articles/maps_spain
   - articles/regioncodes
 - title: Internal articles
   contents:
   - imagery
+
+redirects:
+- ["articles/mapasesp.html", "articles/maps_spain.html"]

@@ -43,8 +43,8 @@ of:
 \item \code{"canary"}: Canary Islands.
 }}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -59,29 +59,26 @@ for accepted formats.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Loads a \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the geographic grids of
+Load an \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the geographic grids of
 Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
 under the Ministry of Environment (MITECO).
 
-This dataset provides:
-\itemize{
-\item \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts country-wide regular grids with
-resolutions of 5 x 5 or 10 x 10 kilometers (mainland Spain or Canary
-Islands).
-\item \code{\link[=esp_get_grid_BDN_ccaa]{esp_get_grid_BDN_ccaa()}} extracts 1 x 1 kilometer resolution grids for
-individual Autonomous Communities and Cities.
-}
+This dataset provides two accessors. \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts
+country-wide regular grids with resolutions of 5 x 5 or 10 x 10 kilometers
+for mainland Spain or the Canary Islands. \code{\link[=esp_get_grid_BDN_ccaa]{esp_get_grid_BDN_ccaa()}} extracts
+1 x 1 kilometer resolution grids for individual Autonomous Communities and
+Cities.
 
 These grids are useful for biodiversity analysis, environmental monitoring,
 and spatial statistical applications.
 
-\code{esp_get_grid_BDN_ccaa()} provides higher-resolution 1x1 kilometer grids
+\code{esp_get_grid_BDN_ccaa()} provides higher-resolution 1 x 1 kilometer grids
 for specific Autonomous Communities and Cities, useful for regional analysis
 with finer spatial detail.
 }
 \details{
 The BDN provides standardized geographic grids for Spain that follow the
-Nature Data Bank's specifications. The data is downloaded from the
+Nature Data Bank's specifications. The data are downloaded from the
 \code{sianedata/MITECO/dist} data branch and is regularly updated.
 }
 \examples{

@@ -24,7 +24,7 @@
 #' knitr::kable(df, col.names = "**grid_name**")
 #' ```
 #'
-#' ## MTN Grids
+#' ## MTN grids
 #'
 #' A description of the MTN (Mapa Topografico Nacional) grids available:
 #'
@@ -104,7 +104,7 @@ esp_get_grid_MTN <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  # Check grid
+  # Check grid.
   valid_grid <- c(
     "MTN25_ED50_Peninsula_Baleares",
     "MTN25_ETRS89_ceuta_melilla_alboran",

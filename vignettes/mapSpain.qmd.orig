@@ -35,27 +35,27 @@ For more examples and vignettes, see the full site at
 <https://ropenspain.github.io/mapSpain/>.
 :::
 
-[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides geographical
-information about Spain at several levels.
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides administrative
+boundaries and static map tiles for Spain.
 
 **mapSpain** provides **sf** objects for Autonomous Communities and Cities,
-provinces, municipalities and NUTS levels in Spain. It also provides hexbin
-maps and other complementary geometries, such as the demarcation lines around
-the Canary Islands.
+provinces, municipalities and NUTS levels in Spain. It also provides grid maps
+and other complementary geometries, such as the demarcation lines around the
+Canary Islands.
 
-**mapSpain** provides access to static map tiles from Spain's public
-institutions. Tiles can be represented on static maps with
+**mapSpain** provides access to static map tiles from Spanish public
+administrations. Tiles can be represented on static maps with
 `mapSpain::esp_get_tiles()` or on an R
 [**leaflet**](https://rstudio.github.io/leaflet/) map using
 `mapSpain::addProviderEspTiles()`.
 
-**mapSpain** also includes a dictionary that translates province and region
+**mapSpain** also includes a dictionary that translates Spanish subdivision
 names to English, Spanish, Catalan, Basque and Galician, and converts them to
-coding standards such as NUTS, ISO2 and the INE coding system.
+coding standards such as NUTS, ISO2 and INE codes.
 
 ## Caching
 
-**mapSpain** provides dataset and tile caching. Set a cache directory with:
+**mapSpain** provides data and tile caching. Set a cache directory with:
 
 ```{r}
 #| eval: false
@@ -199,9 +199,9 @@ ggplot(ccaa_sf) +
 
 ## Thematic maps
 
-This example demonstrates how **mapSpain** can be used to create thematic maps.
+This example shows how **mapSpain** can be used to create thematic maps.
 For plotting, we use the [**ggplot2**](https://ggplot2.tidyverse.org/) package,
-though any package that handles `sf` objects, such as **tmap**, **mapsf** or
+though any package that works with `sf` objects, such as **tmap**, **mapsf** or
 **leaflet**, could also be used.
 
 ```{r}
@@ -287,7 +287,7 @@ ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
   geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = 0.1) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe: EPSG 3035.
   coord_sf(
     xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
@@ -308,15 +308,15 @@ ggplot(all_countries) +
 download tiles as `.png` or `.jpeg`, depending on the tile service, and use
 them alongside your **sf** objects.
 
-**mapSpain** also includes a plugin for the
-[**leaflet**](https://rstudio.github.io/leaflet/) R package, which allows you to
-add several basemaps to interactive maps.
+**mapSpain** also includes a plugin for
+[**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you to add
+several basemaps to interactive maps.
 
 The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 Leaflet plugin. All available providers are listed there.
 
 ::: callout-note
-When working with static map tiles, set `moveCAN = FALSE` in the `esp_get_*`
+When working with static map tiles, set `moveCAN = FALSE` in `esp_get_*()`
 functions. See **Displacing the Canary Islands** in `esp_move_can()`.
 :::

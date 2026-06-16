@@ -42,8 +42,8 @@ esp_get_nuts(
 \item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
 See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -63,8 +63,8 @@ data. One of:
 \item{spatialtype}{Character string. Type of geometry to be returned.
 Options available are:
 \itemize{
-\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item "LB": Labels - \code{POINT} object.
+\item \code{"RG"}: regions, returned as a \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: labels, returned as a \code{POINT} object.
 }}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
@@ -91,7 +91,7 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-NUTS is a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into three levels:
 \itemize{
 \item NUTS 1: major socioeconomic regions.
 \item NUTS 2: basic regions for the application of regional policies.
@@ -110,7 +110,7 @@ country level (NUTS 0) is also available for countries where the nation at
 statistical level does not coincide with the administrative boundaries.
 
 The NUTS classification has been officially established through Commission
-Delegated Regulation 2019/1755. A nonofficial NUTS-like classification has
+Delegated Regulation 2019/1755. An unofficial NUTS-like classification has
 been defined for the EFTA countries, candidate countries and potential
 candidates based on a bilateral agreement between Eurostat and the respective
 statistical agencies.
@@ -147,7 +147,7 @@ ggplot(nuts1_orig) +
   geom_sf() +
   labs(
     title = "NUTS 1",
-    subtitle = "Canary Islands on the true location",
+    subtitle = "Canary Islands in their true location",
     caption = giscoR::gisco_attributions()
   )
 

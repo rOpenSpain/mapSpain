@@ -26,7 +26,7 @@
     Code
       db_cached <- esp_get_nuts(verbose = TRUE, region = "Murcia")
     Message
-      i Loaded from `?mapSpain::esp_nuts_2024()` dataset. Use `update_cache = TRUE` to reload from file.
+      i Loaded from `?mapSpain::esp_nuts_2024()` dataset. Use `update_cache` set to TRUE to reload from file.
 
 # Spatial types
 
@@ -42,6 +42,6 @@
       a3 <- esp_get_nuts(resolution = "60", year = 2016, cache_dir = cdir,
         nuts_level = 2, region = "Segovia")
     Message
-      ! No matches for `region = Segovia`.
+      ! No matches for `region` "Segovia".
       i Returning empty <sf> object.
 

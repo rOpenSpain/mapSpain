@@ -39,15 +39,15 @@ Initial position can be adjusted using the vector of coordinates. See
 }}
     \item{\code{cache}}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
 See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{update_cache}}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+    \item{\code{update_cache}}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
     \item{\code{spatialtype}}{Character string. Type of geometry to be returned.
 Options available are:
 \itemize{
-\item "RG": Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item "LB": Labels - \code{POINT} object.
+\item \code{"RG"}: regions, returned as a \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: labels, returned as a \code{POINT} object.
 }}
     \item{\code{ext}}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}

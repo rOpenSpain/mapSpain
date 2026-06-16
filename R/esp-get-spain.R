@@ -27,7 +27,7 @@
 #' \donttest{
 #' original_can <- esp_get_spain(moveCAN = FALSE)
 #'
-#' # One row only
+#' # One row only.
 #' original_can
 #'
 #' library(ggplot2)
@@ -35,7 +35,7 @@
 #' ggplot(original_can) +
 #'   geom_sf(fill = "grey70")
 #'
-#' # Less resolution
+#' # Less resolution.
 #' moved_can <- esp_get_spain(moveCAN = TRUE, resolution = 20)
 #'
 #' ggplot(moved_can) +
@@ -52,7 +52,7 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
     return(NULL)
   }
 
-  # Second call to get data frame only
+  # Second call to get the data frame only.
   params2 <- params
   params2$nuts_level <- 0
   params2$verbose <- FALSE
@@ -60,16 +60,16 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
 
   for_data_frame <- do.call(mapSpain::esp_get_nuts, params2)
 
-  # Combine everything
+  # Combine everything.
   g <- sf::st_union(data_sf)
 
   # Get country metadata.
   df <- sf::st_drop_geometry(for_data_frame)
 
-  # Generate sf object
+  # Generate the sf object.
   data_sf <- sf::st_as_sf(df, g)
 
-  # Arrange
+  # Arrange rows and normalize geometry.
   data_sf <- sanitize_sf(data_sf)
 
   data_sf

@@ -19,8 +19,8 @@ esp_get_grid_MTN(
 \arguments{
 \item{grid}{Name of the grid to be loaded. See \strong{Details}.}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -48,7 +48,7 @@ Possible values of \code{grid} are:\tabular{l}{
    MTN50_RegCan95_Canarias \cr
 }
 
-\subsection{MTN Grids}{
+\subsection{MTN grids}{
 
 A description of the MTN (Mapa Topografico Nacional) grids available:
 

@@ -29,8 +29,8 @@ esp_get_simpl_ccaa(
 and Autonomous Communities and Cities, or \code{NULL} to get all the data. See
 \strong{Details}.}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -43,7 +43,7 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 Simplified map with the boundaries of the provinces or Autonomous
 Communities of Spain, as provided by the \strong{INE} (Instituto Nacional de
-Estadistica).
+Estadística).
 }
 \details{
 Results are provided \strong{without CRS}, as provided by the source.

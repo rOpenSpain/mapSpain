@@ -63,8 +63,8 @@ supported.}
 
 \item{mask}{Logical. \code{TRUE} to mask the result to \code{x}. See \code{\link[terra:mask]{terra::mask()}}.}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -105,11 +105,11 @@ Zoom levels are described on the
 }
 
 
-For a complete list of providers see \link{esp_tiles_providers}.
+For a complete list of providers, see \link{esp_tiles_providers}.
 
 Most WMS/WMTS providers provide tiles on
-\href{https://epsg.io/3857}{\code{"EPSG:3857"}}. In case that the tile looks deformed,
-try projecting first \code{x}:
+\href{https://epsg.io/3857}{\code{"EPSG:3857"}}. If the tile looks deformed, try
+projecting \code{x} first:
 
 \code{x <- sf::st_transform(x, 3857)}
 }
@@ -117,7 +117,7 @@ try projecting first \code{x}:
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
 
-# This example downloads data to your local computer!
+# This example downloads data to your local computer.
 
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
@@ -129,7 +129,7 @@ ggplot(segovia) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1)
 
-# Another provider
+# Another provider.
 
 tile2 <- esp_get_tiles(segovia, type = "MDT")
 
@@ -137,7 +137,7 @@ ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
 
-# A custom WMTS provider
+# A custom WMTS provider.
 
 custom_wmts <- esp_make_provider(
   id = "cyl_wmts",
@@ -151,7 +151,7 @@ custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
 autoplot(custom_wmts_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 
-# Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+# Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
 cartodb_dark <- list(
   id = "CartoDB_DarkMatter",
   q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"

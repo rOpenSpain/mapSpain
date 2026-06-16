@@ -25,14 +25,13 @@ ETRS
 El
 Espaciales
 España
-Estadistica
+Estadística
 EuroGeographics
 GADM
 GISCO
 Galicia
 Galician
 Geodata
-Geografico
 Geográfico
 Hexbin
 Hypsometry
@@ -92,7 +91,6 @@ codecov
 comarca
 comarcas
 contornos
-cpro
 datos
 de
 der
@@ -139,12 +137,10 @@ rnaturalearth
 roxygen
 siane
 slippymath
-socio
 subfolders
 terra
 testthat
 tibble
 tibbles
 tmap
-visualise
 zenodo

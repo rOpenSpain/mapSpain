@@ -24,7 +24,7 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # Use of regex
+#' # Use of regex.
 #'
 #' regex1 <- esp_get_rivers(name = "Tajo|Segura")
 #' unique(regex1$rotulo)
@@ -32,9 +32,9 @@
 #' regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 #' unique(regex2$rotulo)
 #'
-#' # See the difference
+#' # See the difference.
 #'
-#' # Rivers in Spain
+#' # Rivers in Spain.
 #' iberian <- giscoR::gisco_get_countries(
 #'   country = c("ES", "PT", "FR"), resolution = 3
 #' )
@@ -52,7 +52,7 @@
 #'     ylim = c(35, 44)
 #'   )
 #'
-#' # Wetlands in South-West Andalucia
+#' # Wetlands in South-West Andalucia.
 #' and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))
 #' wetlands <- esp_get_wetlands()
 #' wetlands_south <- sf::st_filter(wetlands, and)
@@ -152,7 +152,7 @@ esp_get_rivers <- function(
   data_sf <- move_can(data_sf, moveCAN)
   data_sf <- data_sf[, setdiff(names(data_sf), "codauto")]
 
-  # Merge names
+  # Merge names.
   river_names <- get_river_names(
     update_cache = update_cache,
     cache_dir = cache_dir
@@ -175,7 +175,7 @@ esp_get_rivers <- function(
     }
   }
 
-  # Names and order
+  # Names and order.
   name_order <- c("id_rio", "rotulo", "NOM_RIO")
   data_sf <- data_sf[, unique(c(name_order, colnames(data_sf)))]
 

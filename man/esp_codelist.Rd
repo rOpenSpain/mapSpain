@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_codelist}
 \alias{esp_codelist}
-\title{Database with codes and names of Spanish subdivisions}
+\title{Spanish subdivision codes and names}
 \format{
 A \link[tibble:tbl_df]{tibble} with 59 rows and
 columns:
@@ -71,7 +71,7 @@ columns:
 }
 \source{
 \itemize{
-\item \strong{INE}: Instituto Nacional de Estadistica: \url{https://www.ine.es/}.
+\item \strong{INE}: Instituto Nacional de Estadística, \url{https://www.ine.es/}.
 \item \strong{Eurostat (NUTS)}: \url{https://ec.europa.eu/eurostat/web/nuts/overview}.
 \item \strong{ISO}: \url{https://www.iso.org/obp/ui/#iso:code:3166:ES}.
 \item \strong{CLDR}:
@@ -79,18 +79,17 @@ columns:
 }
 }
 \description{
-A \link[tibble:tbl_df]{tibble} object used internally for translating codes and
-names of the different subdivisions of Spain. This tibble provides a
+A \link[tibble:tbl_df]{tibble} object used internally to translate codes and
+names for different Spanish subdivisions. This tibble provides a
 hierarchical representation of Spain's subdivisions, including NUTS 1,
 Autonomous Communities and Cities (equivalent to NUTS 2), provinces and
-NUTS 3 levels.
-See the note below for coverage details.
+province-level NUTS 3 units. See the note below for coverage details.
 }
 \note{
 Although NUTS 2 aligns with the first subdivision level of Spain
 (Autonomous Communities and Cities), NUTS 3 does not correspond to the second
-subdivision level of Spain (provinces). NUTS 3
-provides dedicated codes for major islands, whereas provinces do not.
+subdivision level of Spain (provinces). NUTS 3 provides dedicated codes for
+major islands, whereas provinces do not.
 
 Ceuta and Melilla have special status as Autonomous Cities but are
 represented at the Autonomous Communities and Cities level with a single

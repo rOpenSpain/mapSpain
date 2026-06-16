@@ -15,25 +15,25 @@ esp_move_can(x, moveCAN = TRUE)
 Initial position can be adjusted using the vector of coordinates.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x}
-but displaced accordingly.
+A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x},
+displaced accordingly.
 }
 \description{
-Helper function to displace an external \code{\link[sf:st_sf]{sf}} object, potentially
-representing a location in the Canary Islands) to align it with the objects
-provided by \code{\link[sf:st_sf]{sf}} with the option \code{moveCAN = TRUE}.
+Helper function to displace an external \code{\link[sf:st_sf]{sf}} object,
+potentially representing a location in the Canary Islands, to align it with
+\CRANpkg{mapSpain} objects generated with \code{moveCAN = TRUE}.
 }
 \details{
-This is a helper function that intends to ease the representation of objects
-located in the Canary Islands that have been obtained from other sources
-rather than the package \CRANpkg{mapSpain}.
+This helper function makes it easier to represent objects located in the
+Canary Islands that have been obtained from sources other than
+\CRANpkg{mapSpain}.
 }
 \section{Displacing the Canary Islands}{
 While \code{moveCAN} is useful for visualization, it will alter the actual
 geographic position of the Canary Islands. When using the output for
 spatial analysis or tiles (for example, with \code{\link[=esp_get_tiles]{esp_get_tiles()}} or
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}), set this option to \code{FALSE} to get the actual
-coordinates, instead of the modified ones.
+coordinates instead of the modified ones.
 }
 
 \examples{

@@ -1,9 +1,9 @@
 #' Create messages by type
 #'
-#' @param type A character string. Message type. Accepted values are
+#' @param type Character string. Message type. Accepted values are
 #'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose A logical. Whether to print the message.
+#' @param verbose Logical. Whether to print the message.
 #' @param ... Character strings to be combined into the message.
 #'
 #' @return
@@ -228,7 +228,7 @@ warn_no_match <- function(values, destination = NULL) {
 
   cli::cli_alert_warning(paste0(
     "No match found for {.str {values}} with ",
-    "{.arg destination = {.str {destination}}}."
+    "{.arg destination} {.str {destination}}."
   ))
   invisible()
 }

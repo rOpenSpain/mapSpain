@@ -1,23 +1,22 @@
 #' National geographic grids from BDN (Nature Data Bank)
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] `POLYGON` object with the geographic grids of
+#' Load an [`sf`][sf::st_sf] `POLYGON` object with the geographic grids of
 #' Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
 #' under the Ministry of Environment (MITECO).
 #'
-#' This dataset provides:
-#'   - [esp_get_grid_BDN()] extracts country-wide regular grids with
-#'     resolutions of 5 x 5 or 10 x 10 kilometers (mainland Spain or Canary
-#'     Islands).
-#'   - [esp_get_grid_BDN_ccaa()] extracts 1 x 1 kilometer resolution grids for
-#'     individual Autonomous Communities and Cities.
+#' This dataset provides two accessors. [esp_get_grid_BDN()] extracts
+#' country-wide regular grids with resolutions of 5 x 5 or 10 x 10 kilometers
+#' for mainland Spain or the Canary Islands. [esp_get_grid_BDN_ccaa()] extracts
+#' 1 x 1 kilometer resolution grids for individual Autonomous Communities and
+#' Cities.
 #'
 #' These grids are useful for biodiversity analysis, environmental monitoring,
 #' and spatial statistical applications.
 #'
 #' @details
 #' The BDN provides standardized geographic grids for Spain that follow the
-#' Nature Data Bank's specifications. The data is downloaded from the
+#' Nature Data Bank's specifications. The data are downloaded from the
 #' `sianedata/MITECO/dist` data branch and is regularly updated.
 #'
 #' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
@@ -109,7 +108,7 @@ esp_get_grid_BDN <- function(
 }
 
 #' @description
-#' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1x1 kilometer grids
+#' `esp_get_grid_BDN_ccaa()` provides higher-resolution 1 x 1 kilometer grids
 #' for specific Autonomous Communities and Cities, useful for regional analysis
 #' with finer spatial detail.
 #'

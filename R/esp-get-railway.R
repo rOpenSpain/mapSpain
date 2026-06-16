@@ -20,13 +20,13 @@
 #' provs <- esp_get_prov()
 #' ccaa <- esp_get_ccaa()
 #'
-#' # Railways
+#' # Railways.
 #' rails <- esp_get_railway()
 #'
-#' # Stations
+#' # Stations.
 #' stations <- esp_get_stations()
 #'
-#' # Map
+#' # Map.
 #'
 #' library(ggplot2)
 #'

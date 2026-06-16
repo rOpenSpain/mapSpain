@@ -22,9 +22,9 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 \item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
 \code{MAPSPAIN_CACHE_DIR} on your local machine.}
 
-\item{install}{Logical. If \code{TRUE}, installs the key on your local machine for
-use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
-this argument is automatically set to \code{FALSE}.}
+\item{install}{Logical. If \code{TRUE}, installs the path on your local machine
+for use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is
+\code{FALSE}, this argument is automatically set to \code{FALSE}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }

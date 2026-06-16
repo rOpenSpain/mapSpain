@@ -15,7 +15,7 @@
 #' \donttest{
 #' original_can <- esp_get_spain_siane(moveCAN = FALSE)
 #'
-#' # One row only
+#' # One row only.
 #' original_can
 #'
 #' library(ggplot2)
@@ -23,7 +23,7 @@
 #' ggplot(original_can) +
 #'   geom_sf(fill = "grey70")
 #'
-#' # Less resolution
+#' # Less resolution.
 #' moved_can <- esp_get_spain_siane(moveCAN = TRUE, resolution = 10)
 #'
 #' ggplot(moved_can) +
@@ -41,19 +41,19 @@ esp_get_spain_siane <- function(moveCAN = TRUE, ...) {
     return(NULL)
   }
 
-  # Call to get data frame only
+  # Call to get the data frame only.
   for_data_frame <- mapSpain::esp_get_nuts(nuts_level = 0)
 
-  # Combine everything
+  # Combine everything.
   g <- sf::st_union(data_sf)
 
   # Get country metadata.
   df <- sf::st_drop_geometry(for_data_frame)
 
-  # Generate sf object
+  # Generate the sf object.
   data_sf <- sf::st_as_sf(df, g)
 
-  # Arrange
+  # Arrange rows and normalize geometry.
   data_sf <- sanitize_sf(data_sf)
 
   data_sf

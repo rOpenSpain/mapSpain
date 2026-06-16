@@ -1,12 +1,10 @@
 #' Comarcas of Spain
 #'
 #' @description
-#' Get
-#' [comarcas of
-#' Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-#' traditional informal territorial divisions, comprising several
-#' municipalities sharing geographical, economic or cultural traits, typically
-#' with poorly defined limits.
+#' Get [comarcas of Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain).
+#' Comarcas are traditional informal territorial divisions comprising several
+#' municipalities that share geographical, economic or cultural traits,
+#' typically with poorly defined limits.
 #'
 #' @details
 #' When using `region` you can use and mix names and NUTS codes
@@ -30,8 +28,8 @@
 #'
 #' # Types
 #'
-#' `esp_get_comarca()` can retrieve several types of comarcas, each one
-#' provided under different classification criteria.
+#' `esp_get_comarca()` can retrieve several types of comarcas, each provided
+#' under different classification criteria.
 #' - `"INE"`: Comarcas defined by the National Statistics Institute (INE).
 #' - `"IGN"`: Official comarcas, only available for some Autonomous
 #'   Communities and Cities, provided by the National Geographic Institute.

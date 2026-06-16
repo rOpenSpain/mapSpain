@@ -44,8 +44,8 @@ Type of comarca to return. See \strong{Details}.}
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
+\item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
+a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
@@ -56,11 +56,10 @@ is \code{FALSE}. When set to \code{TRUE}, it will force a new download.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get
-\href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{comarcas of Spain}. Comarcas are
-traditional informal territorial divisions, comprising several
-municipalities sharing geographical, economic or cultural traits, typically
-with poorly defined limits.
+Get \href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{comarcas of Spain}.
+Comarcas are traditional informal territorial divisions comprising several
+municipalities that share geographical, economic or cultural traits,
+typically with poorly defined limits.
 }
 \details{
 When using \code{region} you can use and mix names and NUTS codes
@@ -90,8 +89,8 @@ the Principality of Asturias and Andalusia have functional comarcas.
 }
 
 \section{Types}{
-\code{esp_get_comarca()} can retrieve several types of comarcas, each one
-provided under different classification criteria.
+\code{esp_get_comarca()} can retrieve several types of comarcas, each provided
+under different classification criteria.
 \itemize{
 \item \code{"INE"}: Comarcas defined by the National Statistics Institute (INE).
 \item \code{"IGN"}: Official comarcas, only available for some Autonomous

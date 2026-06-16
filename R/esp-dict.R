@@ -12,7 +12,7 @@
 #' example Autonomous Community or City and province, may produce `NA` values
 #' for some entries.
 #'
-#' @param sourcevar Character string. Vector which contains the codes or names
+#' @param sourcevar Character string. Vector that contains the codes or names
 #'   to be converted.
 #' @param origin,destination Character string. Coding scheme of origin and
 #'   destination. One of `"text"`, `"nuts"`, `"iso2"`, `"codauto"` or `"cpro"`.
@@ -38,7 +38,7 @@
 #' esp_dict_region_code(vals, destination = "cpro")
 #' esp_dict_region_code(vals, destination = "iso2")
 #'
-#' # From ISO2 to other codes
+#' # From ISO2 to other codes.
 #'
 #' iso2vals <- c("ES-M", "ES-S", "ES-SG")
 #' esp_dict_region_code(iso2vals, origin = "iso2")
@@ -51,7 +51,7 @@
 #'   destination = "cpro"
 #' )
 #'
-#' # Mixing levels
+#' # Mixing levels.
 #' valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 #' esp_dict_region_code(valsmix, destination = "nuts")
 #'
@@ -74,9 +74,8 @@ esp_dict_region_code <- function(
     make_msg(
       "info",
       TRUE,
-      "No conversion. {.arg origin}",
-      "equal to {.arg destination}",
-      paste0("({.str ", origin, "})")
+      "No conversion, {.arg origin} is equal to {.arg destination}",
+      paste0("({.str ", origin, "}).")
     )
     return(initsourcevar)
   }
@@ -222,12 +221,9 @@ sanitize_region_code_output <- function(
 }
 
 #'
-#' @param lang Character string. Target language code, available values:
-#'   - `"es"`: Spanish.
-#'   - `"en"`: English.
-#'   - `"ca"`: Catalan.
-#'   - `"ga"`: Galician.
-#'   - `"eu"`: Basque.
+#' @param lang Character string. Target language code. Available values are
+#'   `"es"` (Spanish), `"en"` (English), `"ca"` (Catalan), `"ga"` (Galician)
+#'   and `"eu"` (Basque).
 #'
 #' @param all Logical. If `TRUE` the function returns all possible translations
 #'   for each input as a named list. When `FALSE` (default) a single preferred
@@ -236,11 +232,10 @@ sanitize_region_code_output <- function(
 #' @return
 #'
 #' `esp_dict_translate()` translates a vector of names from one language to
-#' another.
-#'   - If `all = FALSE`, a character vector with the translated name for each
-#'     element of `sourcevar`.
-#'   - If `all = TRUE`, a named `list` is returned where each element contains
-#'     all available translations for the corresponding input value.
+#' another. If `all = FALSE`, it returns a character vector with the translated
+#' name for each element of `sourcevar`. If `all = TRUE`, it returns a named
+#' `list` where each element contains all available translations for the
+#' corresponding input value.
 #'
 #' @rdname esp_dict
 #' @name esp_dict_translate

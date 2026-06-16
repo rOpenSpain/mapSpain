@@ -8,6 +8,7 @@
 #'
 #' @details
 #' The `style` parameter controls the geometry returned:
+#'
 #' - `"box"`: a rectangular boundary returned as a `LINESTRING`.
 #' - `"poly"`: a slightly expanded rectangle returned as a filled `POLYGON`.
 #' - `"left"` / `"right"`: decorative `LINESTRING` variants that follow
@@ -40,7 +41,7 @@
 #'   theme_linedraw()
 #'
 #' \donttest{
-#' # Displacing the Canary Islands by a custom offset
+#' # Displacing the Canary Islands by a custom offset.
 #' displace <- c(15, 0)
 #' provs_disp <- esp_get_prov(moveCAN = displace)
 #' box_disp <- esp_get_can_box(style = "left", moveCAN = displace)
@@ -51,7 +52,7 @@
 #'   geom_sf(data = line_disp, linewidth = 0.15) +
 #'   theme_linedraw()
 #'
-#' # Example using the polygon style together with other layers
+#' # Example using the polygon style together with other layers.
 #' library(giscoR)
 #' res <- "20"
 #' countries <- gisco_get_countries(
@@ -78,7 +79,7 @@ esp_get_can_box <- function(
   moveCAN = TRUE,
   epsg = 4258
 ) {
-  # checks
+  # Validate inputs.
 
   style <- match_arg_pretty(style)
 
@@ -101,7 +102,7 @@ esp_get_can_box <- function(
   } else if (style == "right") {
     bbox <- bbox + c(0, 0, 0.5, 0.3)
 
-    # Create points
+    # Create points.
     p1 <- sf::st_point(c(bbox[3], bbox[2]))
     p2 <- sf::st_point(c(bbox[3], bbox[4] - 0.5))
     p3 <- sf::st_point(c(bbox[3] - 0.5, bbox[4]))
@@ -154,7 +155,7 @@ esp_get_can_provinces <- function(moveCAN = TRUE, epsg = "4258") {
 
   epsg <- validate_epsg(epsg, c("4258", "4326", "3035", "3857"))
 
-  # From CartoBase ANE: se89_mult_admin_provcan_l
+  # From CartoBase ANE: se89_mult_admin_provcan_l.
   m <- c(
     sf::st_point(c(-16.29902, 27.71454)),
     sf::st_point(c(-15.69362, 28.78078))

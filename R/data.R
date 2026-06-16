@@ -1,12 +1,11 @@
-#' Database with codes and names of Spanish subdivisions
+#' Spanish subdivision codes and names
 #'
 #' @description
-#' A [tibble][tibble::tbl_df] object used internally for translating codes and
-#' names of the different subdivisions of Spain. This tibble provides a
+#' A [tibble][tibble::tbl_df] object used internally to translate codes and
+#' names for different Spanish subdivisions. This tibble provides a
 #' hierarchical representation of Spain's subdivisions, including NUTS 1,
 #' Autonomous Communities and Cities (equivalent to NUTS 2), provinces and
-#' NUTS 3 levels.
-#' See the note below for coverage details.
+#' province-level NUTS 3 units. See the note below for coverage details.
 #'
 #' @format
 #' A [tibble][tibble::tbl_df] with `r nrow(mapSpain::esp_codelist)` rows and
@@ -73,7 +72,7 @@
 #' }
 #'
 #' @source
-#' - **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>.
+#' - **INE**: Instituto Nacional de Estadística, <https://www.ine.es/>.
 #' - **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>.
 #' - **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>.
 #' - **CLDR**:
@@ -82,8 +81,8 @@
 #' @note
 #' Although NUTS 2 aligns with the first subdivision level of Spain
 #' (Autonomous Communities and Cities), NUTS 3 does not correspond to the second
-#' subdivision level of Spain (provinces). NUTS 3
-#' provides dedicated codes for major islands, whereas provinces do not.
+#' subdivision level of Spain (provinces). NUTS 3 provides dedicated codes for
+#' major islands, whereas provinces do not.
 #'
 #' Ceuta and Melilla have special status as Autonomous Cities but are
 #' represented at the Autonomous Communities and Cities level with a single
@@ -118,7 +117,7 @@ NULL
 #' }
 #'
 #' @source
-#' INE: Instituto Nacional de Estadistica.
+#' INE, Instituto Nacional de Estadística.
 #'
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(
@@ -141,7 +140,7 @@ NULL
 #'
 #' @description
 #' A named [`list`][base::list] of length `r length(esp_tiles_providers)`,
-#' containing URL information for different public WMS and WMTS tile providers
+#' containing URL information from different public WMS and WMTS tile providers
 #' in Spain.
 #'
 #' This dataset is an implementation of the JavaScript plugin
@@ -163,11 +162,10 @@ NULL
 #' A named [`list`][base::list] of available providers with the following
 #' structure:
 #'
-#' - Each list item is named with the provider alias.
-#' - Each element contains two nested named lists:
-#'   - `static` with the parameters required to obtain static map tiles, plus an
-#'     additional item named `attribution`.
-#'   - `leaflet` with additional parameters to pass to [addProviderEspTiles()].
+#' Each list item is named with the provider alias. Each element contains two
+#' nested named lists: `static` with the parameters required to obtain static
+#' map tiles plus an additional item named `attribution`, and `leaflet` with
+#' additional parameters to pass to [addProviderEspTiles()].
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
@@ -181,7 +179,7 @@ NULL
 #'
 #' @examples
 #' data("esp_tiles_providers")
-#' # Get a single provider
+#' # Get a single provider.
 #'
 #' single <- esp_tiles_providers[["IGNBase.Todo"]]
 #' single$static

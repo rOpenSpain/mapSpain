@@ -1,14 +1,14 @@
 #' Displace a [`sf`][sf::st_sf] object located in the Canary Islands
 #'
 #' @description
-#' Helper function to displace an external [`sf`][sf::st_sf] object, potentially
-#' representing a location in the Canary Islands) to align it with the objects
-#' provided by [`sf`][sf::st_sf] with the option `moveCAN = TRUE`.
+#' Helper function to displace an external [`sf`][sf::st_sf] object,
+#' potentially representing a location in the Canary Islands, to align it with
+#' \CRANpkg{mapSpain} objects generated with `moveCAN = TRUE`.
 #'
 #' @details
-#' This is a helper function that intends to ease the representation of objects
-#' located in the Canary Islands that have been obtained from other sources
-#' rather than the package \CRANpkg{mapSpain}.
+#' This helper function makes it easier to represent objects located in the
+#' Canary Islands that have been obtained from sources other than
+#' \CRANpkg{mapSpain}.
 #'
 #' # Displacing the Canary Islands
 #'
@@ -16,15 +16,15 @@
 #' geographic position of the Canary Islands. When using the output for
 #' spatial analysis or tiles (for example, with [esp_get_tiles()] or
 #' [addProviderEspTiles()]), set this option to `FALSE` to get the actual
-#' coordinates, instead of the modified ones.
+#' coordinates instead of the modified ones.
 #'
 #' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
 #'   Initial position can be adjusted using the vector of coordinates.
 #'
-#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`
-#' but displaced accordingly.
+#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`,
+#'   displaced accordingly.
 #'
 #' @family can_helpers
 #' @encoding UTF-8
@@ -121,7 +121,7 @@ esp_move_can <- function(x, moveCAN = TRUE) {
   x_out
 }
 
-# Internal version, helper fun
+# Internal helper.
 move_can <- function(data_sf, moveCAN = TRUE) {
   if (isFALSE(moveCAN)) {
     return(data_sf)

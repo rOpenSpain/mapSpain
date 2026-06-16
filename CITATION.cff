@@ -7,7 +7,7 @@ cff-version: 1.2.0
 message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
-title: 'mapSpain: Administrative Boundaries and Static Map Tiles of Spain'
+title: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
 version: 1.1.0.9000
 doi: 10.5281/zenodo.5366622
 identifiers:
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'mapSpain: Administrative Boundaries and Static Map Tiles of Spain'
+  title: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -402,7 +402,7 @@ references:
     Objects'
   notes: Suggests
   url: https://dieghernan.github.io/tidyterra/
-  repository: https://dieghernan.r-universe.dev
+  repository: https://CRAN.R-project.org/package=tidyterra
   authors:
   - family-names: Hernangómez
     given-names: Diego

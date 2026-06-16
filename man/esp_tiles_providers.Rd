@@ -8,15 +8,11 @@
 \format{
 A named \code{\link[base:list]{list}} of available providers with the following
 structure:
-\itemize{
-\item Each list item is named with the provider alias.
-\item Each element contains two nested named lists:
-\itemize{
-\item \code{static} with the parameters required to obtain static map tiles, plus an
-additional item named \code{attribution}.
-\item \code{leaflet} with additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
-}
-}
+
+Each list item is named with the provider alias. Each element contains two
+nested named lists: \code{static} with the parameters required to obtain static
+map tiles plus an additional item named \code{attribution}, and \code{leaflet} with
+additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
@@ -25,7 +21,7 @@ additional item named \code{attribution}.
 }
 \description{
 A named \code{\link[base:list]{list}} of length 102,
-containing URL information for different public WMS and WMTS tile providers
+containing URL information from different public WMS and WMTS tile providers
 in Spain.
 
 This dataset is an implementation of the JavaScript plugin
@@ -141,7 +137,7 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 }
 \examples{
 data("esp_tiles_providers")
-# Get a single provider
+# Get a single provider.
 
 single <- esp_tiles_providers[["IGNBase.Todo"]]
 single$static

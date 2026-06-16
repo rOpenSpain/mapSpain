@@ -1,16 +1,16 @@
 #' Autonomous Communities and Cities of Spain from SIANE
 #'
 #' @param year Character string or number. Release year. It must use format
-#'   `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
-#'   information starts as of 2005.
+#'   `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical information
+#'   starts as of 2005.
 #' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
 #'   - `"10"`: 1:10 million.
 #'   - `"6.5"`: 1:6.5 million.
 #'   - `"3"`: 1:3 million.
 #'
-#' @param rawcols Logical. Setting this to `TRUE` will add the raw columns of
-#'   the resulting object as provided by IGN.
+#' @param rawcols Logical. If `TRUE`, adds the raw columns of the resulting
+#'   object as provided by IGN.
 #'
 #' @inheritParams esp_get_nuts
 #' @inheritParams esp_get_ccaa
@@ -18,7 +18,7 @@
 #' @source
 #' ```{r, echo=FALSE, results='asis'}
 #' cat("CartoBase ANE (Atlas Nacional de Espa\u00f1a) provided by Instituto",
-#'   "Geografico Nacional (IGN),\n<http://www.ign.es/web/ign/portal>. Years",
+#'   "Geográfico Nacional (IGN),\n<http://www.ign.es/web/ign/portal>. Years",
 #'   "available are 2005 up to today.",
 #'   sep = " "
 #' )
@@ -27,14 +27,14 @@
 #' Copyright:
 #' <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 #'
-#' Always acknowledge authorship using the following formulas:
+#' Always acknowledge authorship using the following statements:
 #'
-#'  1. When the original digital product is not modified or altered, it can
-#'     be expressed in one of the following ways:
-#'     - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
-#'     - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
-#'  2. When a new product is generated:
-#'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+#' 1. When the original digital product is not modified or altered, use one of
+#'    the following statements:
+#'    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+#'    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
+#' 2. When a new product is generated:
+#'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 #'
 #' Data distributed through the `sianedata` data branch, see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.

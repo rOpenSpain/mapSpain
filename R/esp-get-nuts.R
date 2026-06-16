@@ -7,10 +7,11 @@
 #' information is completed by attribute tables and a set of cartographic
 #' help lines to better visualize multipart polygonal regions.
 #'
-#' NUTS is a hierarchical system divided into 3 levels:
-#'  - NUTS 1: major socioeconomic regions.
-#'  - NUTS 2: basic regions for the application of regional policies.
-#'  - NUTS 3: small regions for specific diagnoses.
+#' NUTS is a hierarchical system divided into three levels:
+#'
+#' - NUTS 1: major socioeconomic regions.
+#' - NUTS 2: basic regions for the application of regional policies.
+#' - NUTS 3: small regions for specific diagnoses.
 #'
 #' There is also a NUTS 0 level, which usually corresponds to the national
 #' boundaries.
@@ -24,7 +25,7 @@
 #' statistical level does not coincide with the administrative boundaries.
 #'
 #' The NUTS classification has been officially established through Commission
-#' Delegated Regulation 2019/1755. A nonofficial NUTS-like classification has
+#' Delegated Regulation 2019/1755. An unofficial NUTS-like classification has
 #' been defined for the EFTA countries, candidate countries and potential
 #' candidates based on a bilateral agreement between Eurostat and the respective
 #' statistical agencies.
@@ -39,8 +40,8 @@
 #'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache Logical. Whether to cache downloaded files. Default is `TRUE`.
 #'   See **Caching strategies** section in [esp_set_cache_dir()].
-#' @param update_cache Logical. Should the cached file be refreshed? Default
-#'   is `FALSE`. When set to `TRUE`, it will force a new download.
+#' @param update_cache Logical. If `TRUE`, refreshes the cached file and forces
+#'   a new download. Defaults to `FALSE`.
 #' @param cache_dir Character string. A path to a cache directory. See
 #'   **Caching strategies** section in [esp_set_cache_dir()].
 #' @param region Optional. A vector of region names, NUTS or ISO codes
@@ -48,8 +49,8 @@
 #'
 #' @param spatialtype Character string. Type of geometry to be returned.
 #'   Options available are:
-#'   - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - "LB": Labels - `POINT` object.
+#'   - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
+#'   - `"LB"`: labels, returned as a `POINT` object.
 #' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
 #'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
 #'   Initial position can be adjusted using the vector of coordinates. See
@@ -100,7 +101,7 @@
 #'   geom_sf() +
 #'   labs(
 #'     title = "NUTS 1",
-#'     subtitle = "Canary Islands on the true location",
+#'     subtitle = "Canary Islands in their true location",
 #'     caption = giscoR::gisco_attributions()
 #'   )
 #'
@@ -163,7 +164,7 @@ esp_get_nuts <- function(
       "info",
       verbose,
       "Loaded from {.help mapSpain::esp_nuts_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to reload from file."
+      "Use {.arg update_cache} set to {.val {TRUE}} to reload from file."
     )
   } else {
     data_sf <- giscor_get_nuts(
@@ -206,7 +207,7 @@ esp_get_nuts <- function(
     if (nrow(data_sf) == 0) {
       return(return_empty_sf(
         data_sf,
-        "No matches for {.arg region = {region}}."
+        "No matches for {.arg region} {.str {region}}."
       ))
     }
   }

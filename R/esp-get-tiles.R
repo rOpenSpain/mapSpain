@@ -36,11 +36,11 @@
 #'
 #' ```
 #'
-#' For a complete list of providers see [esp_tiles_providers].
+#' For a complete list of providers, see [esp_tiles_providers].
 #'
 #' Most WMS/WMTS providers provide tiles on
-#' [`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks deformed,
-#' try projecting first `x`:
+#' [`"EPSG:3857"`](https://epsg.io/3857). If the tile looks deformed, try
+#' projecting `x` first:
 #'
 #' `x <- sf::st_transform(x, 3857)`
 #'
@@ -95,7 +95,7 @@
 #' @examplesIf esp_check_access()
 #' \dontrun{
 #'
-#' # This example downloads data to your local computer!
+#' # This example downloads data to your local computer.
 #'
 #' segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 #' tile <- esp_get_tiles(segovia, "IGNBase.Todo")
@@ -107,7 +107,7 @@
 #'   geom_spatraster_rgb(data = tile, maxcell = Inf) +
 #'   geom_sf(fill = NA, linewidth = 1)
 #'
-#' # Another provider
+#' # Another provider.
 #'
 #' tile2 <- esp_get_tiles(segovia, type = "MDT")
 #'
@@ -115,7 +115,7 @@
 #'   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
 #'   geom_sf(fill = NA, linewidth = 1, color = "red")
 #'
-#' # A custom WMTS provider
+#' # A custom WMTS provider.
 #'
 #' custom_wmts <- esp_make_provider(
 #'   id = "cyl_wmts",
@@ -129,7 +129,7 @@
 #' autoplot(custom_wmts_tile, maxcell = Inf) +
 #'   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 #'
-#' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+#' # Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
 #' cartodb_dark <- list(
 #'   id = "CartoDB_DarkMatter",
 #'   q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -252,7 +252,7 @@ prepare_tile_geometry <- function(geom, zoom, crop, prov_type) {
       make_msg(
         "info",
         prov_type == "WMTS",
-        "Autozoom in single {.str POINT} set to {.val 18}."
+        "Autozoom for a single {.cls POINT} set to {.val {18}}."
       )
     }
   }
@@ -333,7 +333,7 @@ show_tile_attribution <- function(prov_list, verbose) {
   make_msg(
     "info",
     all(verbose, !is.null(attrib)),
-    "{.emph Data and map tiles sources}:",
+    "{.emph Data and static map tile sources}:",
     paste0("{.strong ", attrib, "}.")
   )
 }
@@ -434,10 +434,10 @@ get_wmts_tile <- function(
   make_msg(
     "info",
     verbose,
-    paste0("{.strong ", length(tile_list), "} tile(s) downloaded.")
+    paste0("{.strong ", length(tile_list), "} tile{?s} downloaded.")
   )
 
-  # SpatRasterCollection
+  # Build a SpatRasterCollection.
   r_all <- terra::sprc(tile_list)
   r_all <- terra::merge(r_all)
 
@@ -458,7 +458,7 @@ resolve_wmts_zoom <- function(bbox_4326, prov_list, zoom, zoommin, verbose) {
     tile_grid <- bbox_tile_query(bbox_4326)
     zoom <- min(tile_grid[tile_grid$total_tiles %in% seq(4, 12), ]$zoom) +
       zoommin
-    make_msg("info", verbose, paste0("Autozoom level: {.val ", zoom, "}."))
+    make_msg("info", verbose, paste0("Autozoom level: {.val {", zoom, "}}."))
   }
 
   if (all(!is.null(min_zoom), min_zoom > zoom)) {
@@ -467,11 +467,11 @@ resolve_wmts_zoom <- function(bbox_4326, prov_list, zoom, zoommin, verbose) {
       TRUE,
       paste0(
         "Minimum {.arg zoom} supported by this provider is ",
-        "{.val ",
+        "{.val {",
         min_zoom,
-        "}. Increasing {.arg zoom} (it was {.val ",
+        "}}. Increasing {.arg zoom} (it was {.val {",
         zoom,
-        "})."
+        "}})."
       )
     )
     zoom <- max(zoom, min_zoom)

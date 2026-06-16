@@ -45,7 +45,7 @@ esp_get_grid_ESDAC <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  # Check grid
+  # Check grid.
   res <- match_arg_pretty(resolution)
 
   # Build the download URL.
@@ -57,7 +57,7 @@ esp_get_grid_ESDAC <- function(
     shp_hint <- "spain"
   } else {
     # nocov start
-    # Tests are slow due to this file size
+    # Tests are slow due to this file size.
     url <- paste0(
       "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
       "Grids/grid_spain_etrs_laea_1k.zip"

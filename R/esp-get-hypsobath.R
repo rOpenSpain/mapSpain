@@ -27,18 +27,18 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # This code will produce a nice plot - It will take a few seconds to run
+#' # This code produces a plot and takes a few seconds to run.
 #' library(ggplot2)
 #'
 #' hypsobath <- esp_get_hypsobath()
 #'
-#' # Tints from Wikipedia
+#' # Tints from Wikipedia.
 #' # https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/
 #' # Topographic_maps
 #'
 #' levels <- sort(unique(hypsobath$val_inf))
 #'
-#' # Create Manual pal
+#' # Create the manual palette.
 #' br_bath <- length(levels[levels < 0])
 #' br_terrain <- length(levels) - br_bath
 #' pal <- c(
@@ -46,7 +46,7 @@
 #'   tidyterra::hypso.colors(br_terrain, "wiki-2.0_hypso")
 #' )
 #'
-#' # Plot the Canary Islands
+#' # Plot the Canary Islands.
 #' ggplot(hypsobath) +
 #'   geom_sf(aes(fill = as.factor(val_inf)),
 #'     color = NA
@@ -65,7 +65,7 @@
 #'   )) +
 #'   theme(legend.position = "bottom")
 #'
-#' # Plot Mainland
+#' # Plot mainland Spain.
 #' ggplot(hypsobath) +
 #'   geom_sf(aes(fill = as.factor(val_inf)),
 #'     color = NA
@@ -96,7 +96,7 @@ esp_get_hypsobath <- function(
 
   sptype <- match_arg_pretty(spatialtype)
 
-  # Create URL
+  # Create URL.
   api_entry <- "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/"
 
   url_penin <- paste0(

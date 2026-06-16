@@ -5,7 +5,7 @@
 \name{mapSpain-package}
 \alias{mapSpain}
 \alias{mapSpain-package}
-\title{mapSpain: Administrative Boundaries and Static Map Tiles of Spain}
+\title{mapSpain: Administrative Boundaries and Static Map Tiles for Spain}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
