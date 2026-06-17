@@ -49,14 +49,14 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
 \item{ccaa}{Character string. A vector of names, codes or both for
 Autonomous Communities and Cities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 for accepted formats.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Load an \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the geographic grids of

@@ -8,7 +8,7 @@ message: 'To cite package "mapSpain" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
-version: 1.1.0.9000
+version: 1.2.0
 doi: 10.5281/zenodo.5366622
 identifiers:
 - type: doi
@@ -32,7 +32,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2026'
-  version: 1.1.0.9000
+  version: 1.2.0
   doi: 10.5281/zenodo.5366622
   url: https://ropenspain.github.io/mapSpain/
   abstract: Administrative boundaries of Spain at several levels (Autonomous Communities
@@ -113,7 +113,7 @@ references:
   version: '>= 1.2.0'
 - type: software
   title: giscoR
-  abstract: 'giscoR: Download Map Data from GISCO API - Eurostat'
+  abstract: 'giscoR: Download ''Eurostat'' ''GISCO'' Spatial Data'
   notes: Imports
   url: https://ropengov.github.io/giscoR/
   repository: https://CRAN.R-project.org/package=giscoR

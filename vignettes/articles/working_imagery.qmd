@@ -17,8 +17,8 @@ knitr:
 ---
 
 **mapSpain** provides an interface for working with static map tiles. It can
-download tiles as `.png` or `.jpeg`, depending on the tile service, and use
-them alongside your **sf** objects.
+download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
+alongside your **sf** objects.
 
 **mapSpain** also provides a plugin for
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you add

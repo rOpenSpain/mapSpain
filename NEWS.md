@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 1.2.0
 
 - Refactored internal helpers for downloading and reading geospatial files,
   SIANE file handling, EPSG validation, subdivision-code filtering, municipal
@@ -6,10 +6,9 @@
   This is intended to simplify maintenance without changing the public API.
 - Consolidated repeated Autonomous Community or City, province and municipality
   metadata across GISCO, SIANE, simplified and gridmap getters.
-- Further simplified internal cache handling, `sf` output finalization,
-  WMTS tile retrieval, dictionary translation and no-match messages. These
-  changes are intended to improve maintainability without changing user-facing
-  behavior.
+- Further simplified internal cache handling, `sf` output finalization, WMTS
+  tile retrieval, dictionary translation and no-match messages. These changes
+  are intended to improve maintainability without changing user-facing behavior.
 - Reviewed roxygen2 documentation, generated Rd files and prose documentation
   for consistent terminology and clearer user-facing messages. This work was
   completed with AI assistance and human review.

@@ -42,7 +42,7 @@ esp_siane_bulk_download(
 \item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 An invisible character vector with the full paths of the extracted files.

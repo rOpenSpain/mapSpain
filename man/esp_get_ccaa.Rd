@@ -51,9 +51,9 @@ Options available are:
 }}
     \item{\code{ext}}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
-    \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
-    \item{\code{resolution}}{character string or number. Resolution of the geospatial
-data. One of:
+    \item{\code{verbose}}{A logical value. If \code{TRUE} displays informational messages.}
+    \item{\code{resolution}}{A character string or numeric value with the geospatial
+data resolution. One of:
 \itemize{
 \item \code{"60"}: 1:60 million.
 \item \code{"20"}: 1:20 million.
@@ -64,7 +64,7 @@ data. One of:
   }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Get

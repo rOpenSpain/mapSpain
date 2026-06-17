@@ -270,8 +270,8 @@ code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
 
-This package uses data from CartoBase ANE, provided by the Instituto
-Geográfico Nacional.
+This package uses data from CartoBase ANE, provided by the Instituto Geográfico
+Nacional.
 
 > Atlas Nacional de España (ANE) [CC BY
 > 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)

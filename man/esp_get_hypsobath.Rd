@@ -58,7 +58,7 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
 \item{resolution}{Character string or number. Resolution of the geospatial
 data. One of:
@@ -71,7 +71,7 @@ data. One of:
 \code{"area"} for \code{POLYGON} or \code{"line"} for \code{LINESTRING}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Dataset representing the hypsometry and bathymetry of Spain.

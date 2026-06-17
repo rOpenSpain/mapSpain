@@ -64,11 +64,11 @@ See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_s
 a new download. Defaults to \code{FALSE}.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
-    \item{\code{verbose}}{logical. If \code{TRUE} displays informational messages.}
+    \item{\code{verbose}}{A logical value. If \code{TRUE} displays informational messages.}
   }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Returns the boundaries of Spain as a single \code{\link[sf:st_sf]{sf}} \code{POLYGON}.

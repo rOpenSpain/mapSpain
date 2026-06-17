@@ -48,10 +48,10 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{character string or number. Resolution of the geospatial
-data. One of:
+\item{resolution}{A character string or numeric value with the geospatial
+data resolution. One of:
 \itemize{
 \item \code{"60"}: 1:60 million.
 \item \code{"20"}: 1:20 million.
@@ -70,7 +70,7 @@ Options available are:
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}
 
-\item{nuts_level}{character string. NUTS level. One of \code{0},
+\item{nuts_level}{A character string with the NUTS level. One of \code{0},
 \code{1}, \code{2}, \code{3} or \code{all} for all levels.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
@@ -82,7 +82,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The GISCO statistical unit dataset represents NUTS (Nomenclature of

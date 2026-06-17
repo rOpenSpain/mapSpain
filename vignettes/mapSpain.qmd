@@ -197,8 +197,8 @@ ggplot(ccaa_sf) +
 
 ## Thematic maps
 
-This example shows how **mapSpain** can be used to create thematic maps.
-For plotting, we use the [**ggplot2**](https://ggplot2.tidyverse.org/) package,
+This example shows how **mapSpain** can be used to create thematic maps. For
+plotting, we use the [**ggplot2**](https://ggplot2.tidyverse.org/) package,
 though any package that works with `sf` objects, such as **tmap**, **mapsf** or
 **leaflet**, could also be used.
 
@@ -308,8 +308,8 @@ ggplot(all_countries) +
 ## Working with static map tiles
 
 **mapSpain** provides an interface for working with static map tiles. It can
-download tiles as `.png` or `.jpeg`, depending on the tile service, and use
-them alongside your **sf** objects.
+download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
+alongside your **sf** objects.
 
 **mapSpain** also includes a plugin for
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you to add

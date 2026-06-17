@@ -36,21 +36,6 @@ navbar:
     - github
     - lightswitch
   components:
-    articles:
-      text: Articles
-      menu:
-      - text: Working with static map tiles
-        href: articles/articles/working_imagery.html
-      - text: "Appendix: Spanish subdivision names and codes"
-        href: articles/articles/regioncodes.html
-      - text: -----
-      - text: Grupo de Usuarios R Madrid 25-nov-2021
-      - text: "mapSpain: maps of Spain in R (article)"
-        href: articles/articles/mapasesp.html
-      - text: "mapSpain: mapas de España en R (slides)"
-        href: https://dieghernan.github.io/rpubs/mapSpain_slides/
-      - text: Grupo de Usuarios R Madrid 25-nov-2021 (video)
-        href: http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/
     twitter:
       icon: fa-twitter
       href: http://twitter.com/dhernangomez
@@ -137,14 +122,41 @@ reference:
   - mapSpain-package
 
 articles:
-- title: All articles
+- title: Guides and appendices
+  desc: |
+    Practical guides and reference material that complement the package
+    vignette.
+  navbar: ~
   contents:
   - articles/working_imagery
-  - articles/maps_spain
   - articles/regioncodes
-- title: Internal articles
+- title: Talks and presentations
+  navbar: Talks
+  desc: |
+    Materials from the Grupo de Usuarios R Madrid session held on
+    25 November 2021.
+  contents:
+  - articles/maps_spain
+  - madrid-r-slides
+  - madrid-r-video
+
+- title: internal
   contents:
   - imagery
+
+external-articles:
+- name: madrid-r-slides
+  title: |
+    mapSpain: mapas de España en R (slides)
+  description: |
+    Slides from the Grupo de Usuarios R Madrid talk held on 25 November 2021.
+  href: https://dieghernan.github.io/rpubs/mapSpain_slides/
+- name: madrid-r-video
+  title: |
+    Grupo de Usuarios R Madrid (video)
+  description: |
+    Recording and event details for the 25 November 2021 session.
+  href: https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/
 
 redirects:
 - ["articles/mapasesp.html", "articles/maps_spain.html"]

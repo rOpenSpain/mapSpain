@@ -14,7 +14,7 @@ esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{cached_data}{Logical. If \code{TRUE}, deletes your \code{cache_dir} and all
 its contents.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 Invisible. This function is called for its side effects.
