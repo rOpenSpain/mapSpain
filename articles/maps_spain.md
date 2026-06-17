@@ -67,7 +67,10 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 library(mapSpain)
 library(tidyverse)
 
-galicia <- esp_get_munic_siane(region = "Galicia", cache_dir = "./maps_spain/") |>
+galicia <- esp_get_munic_siane(
+  region = "Galicia",
+  cache_dir = "./maps_spain/"
+) |>
   # Standardize labels.
   mutate(Provincia = esp_dict_translate(ine.prov.name, "es"))
 
@@ -133,8 +136,14 @@ esp_geobounds <- geobounds::gb_get_adm0("ESP",
   st_transform(3857)
 
 # Orthophoto of the Ferrol estuary.
-tile <- esp_get_munic_siane(munic = "Ferrol", epsg = 3857, cache_dir = "./maps_spain/") |>
-  esp_get_tiles("PNOA", bbox_expand = 0.5, zoommin = 1, cache_dir = "./maps_spain/")
+tile <- esp_get_munic_siane(
+  munic = "Ferrol", epsg = 3857,
+  cache_dir = "./maps_spain/"
+) |>
+  esp_get_tiles("PNOA",
+    bbox_expand = 0.5, zoommin = 1,
+    cache_dir = "./maps_spain/"
+  )
 
 # Prepare the plot.
 library(tidyterra)
@@ -521,7 +530,10 @@ Several options are available for composing maps with static map tiles:
 ``` r
 
 madrid_munis <- esp_get_munic_siane(region = "Madrid", epsg = 3857)
-base_pnoa <- esp_get_tiles(madrid_munis, "PNOA", bbox_expand = 0.1, zoommin = 1, cache_dir = "./maps_spain/")
+base_pnoa <- esp_get_tiles(madrid_munis, "PNOA",
+  bbox_expand = 0.1,
+  zoommin = 1, cache_dir = "./maps_spain/"
+)
 
 library(tidyterra)
 
