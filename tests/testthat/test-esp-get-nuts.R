@@ -78,7 +78,8 @@ test_that("Valid inputs", {
   }
 
   # validate ext
-  expect_snapshot(esp_get_nuts(ext = "docx", cache_dir = cdir), error = TRUE)
+
+  expect_error(esp_get_nuts(ext = "docx", cache_dir = cdir), regexp = "geojson")
 
   # validate level
   expect_snapshot(

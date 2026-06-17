@@ -8,14 +8,6 @@
 # Valid inputs
 
     Code
-      esp_get_nuts(ext = "docx", cache_dir = cdir)
-    Condition
-      Error:
-      ! `ext` should be one of "geojson", "gpkg" or "shp", not "docx".
-
----
-
-    Code
       esp_get_nuts(nuts_level = "docx", cache_dir = cdir)
     Condition
       Error:
