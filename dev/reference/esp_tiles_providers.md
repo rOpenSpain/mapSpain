@@ -1,7 +1,7 @@
 # Public WMS and WMTS providers for Spain
 
 A named [`list`](https://rdrr.io/r/base/list.html) of length 102,
-containing URL information for different public WMS and WMTS tile
+containing URL information from different public WMS and WMTS tile
 providers in Spain.
 
 This dataset is an implementation of the JavaScript plugin
@@ -13,15 +13,11 @@ This dataset is an implementation of the JavaScript plugin
 A named [`list`](https://rdrr.io/r/base/list.html) of available
 providers with the following structure:
 
-- Each list item is named with the provider alias.
-
-- Each element contains two nested named lists:
-
-  - `static` with the parameters required to obtain static map tiles,
-    plus an additional item named `attribution`.
-
-  - `leaflet` with additional parameters to pass to
-    [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
+Each list item is named with the provider alias. Each element contains
+two nested named lists: `static` with the parameters required to obtain
+static map tiles plus an additional item named `attribution`, and
+`leaflet` with additional parameters to pass to
+[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md).
 
 ## Source
 
@@ -249,7 +245,7 @@ Included package datasets:
 
 ``` r
 data("esp_tiles_providers")
-# Get a single provider
+# Get a single provider.
 
 single <- esp_tiles_providers[["IGNBase.Todo"]]
 single$static

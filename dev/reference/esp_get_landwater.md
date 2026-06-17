@@ -31,24 +31,24 @@ esp_get_wetlands(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
 available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-Always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following statements:
 
-1.  When the original digital product is not modified or altered, it can
-    be expressed in one of the following ways:
+1.  When the original digital product is not modified or altered, use
+    one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -76,8 +76,8 @@ Data distributed through the `sianedata` data branch, see
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -131,7 +131,7 @@ Natural feature datasets:
 
 ``` r
 # \donttest{
-# Use of regex
+# Use of regex.
 
 regex1 <- esp_get_rivers(name = "Tajo|Segura")
 unique(regex1$rotulo)
@@ -142,9 +142,9 @@ regex2 <- esp_get_rivers(name = "Tajo$| Segura")
 unique(regex2$rotulo)
 #> [1] "Río Tajo"   "Río Segura"
 
-# See the difference
+# See the difference.
 
-# Rivers in Spain
+# Rivers in Spain.
 iberian <- giscoR::gisco_get_countries(
   country = c("ES", "PT", "FR"), resolution = 3
 )
@@ -163,7 +163,7 @@ ggplot(iberian) +
   )
 
 
-# Wetlands in South-West Andalucia
+# Wetlands in South-West Andalucia.
 and <- esp_get_prov(c("Huelva", "Sevilla", "Cadiz"))
 wetlands <- esp_get_wetlands()
 wetlands_south <- sf::st_filter(wetlands, and)

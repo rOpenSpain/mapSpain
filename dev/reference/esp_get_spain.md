@@ -59,8 +59,8 @@ Copyright:
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -141,7 +141,7 @@ Datasets sourced from GISCO:
 # \donttest{
 original_can <- esp_get_spain(moveCAN = FALSE)
 
-# One row only
+# One row only.
 original_can
 #> Simple feature collection with 1 feature and 18 fields
 #> Geometry type: MULTIPOLYGON
@@ -162,7 +162,7 @@ ggplot(original_can) +
   geom_sf(fill = "grey70")
 
 
-# Less resolution
+# Less resolution.
 moved_can <- esp_get_spain(moveCAN = TRUE, resolution = 20)
 
 ggplot(moved_can) +

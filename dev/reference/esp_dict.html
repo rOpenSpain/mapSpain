@@ -78,7 +78,7 @@ names.</p>
 
 
 <dl><dt id="arg-sourcevar">sourcevar<a class="anchor" aria-label="anchor" href="#arg-sourcevar"></a></dt>
-<dd><p>Character string. Vector which contains the codes or names
+<dd><p>Character string. Vector that contains the codes or names
 to be converted.</p></dd>
 
 
@@ -88,12 +88,9 @@ destination. One of <code>"text"</code>, <code>"nuts"</code>, <code>"iso2"</code
 
 
 <dt id="arg-lang">lang<a class="anchor" aria-label="anchor" href="#arg-lang"></a></dt>
-<dd><p>Character string. Target language code, available values:</p><ul><li><p><code>"es"</code>: Spanish.</p></li>
-<li><p><code>"en"</code>: English.</p></li>
-<li><p><code>"ca"</code>: Catalan.</p></li>
-<li><p><code>"ga"</code>: Galician.</p></li>
-<li><p><code>"eu"</code>: Basque.</p></li>
-</ul></dd>
+<dd><p>Character string. Target language code. Available values are
+<code>"es"</code> (Spanish), <code>"en"</code> (English), <code>"ca"</code> (Catalan), <code>"ga"</code> (Galician)
+and <code>"eu"</code> (Basque).</p></dd>
 
 
 <dt id="arg-all">all<a class="anchor" aria-label="anchor" href="#arg-all"></a></dt>
@@ -109,11 +106,11 @@ subdivision identifiers or names. If a value cannot be matched, the
 corresponding element will be <code>NA</code> and a warning is emitted via
 <code><a href="https://cli.r-lib.org/reference/cli_alert.html" class="external-link">cli::cli_alert_warning()</a></code>.</p>
 <p><code>esp_dict_translate()</code> translates a vector of names from one language to
-another.</p><ul><li><p>If <code>all = FALSE</code>, a character vector with the translated name for each
-element of <code>sourcevar</code>.</p></li>
-<li><p>If <code>all = TRUE</code>, a named <code>list</code> is returned where each element contains
-all available translations for the corresponding input value.</p></li>
-</ul></div>
+another. If <code>all = FALSE</code>, it returns a character vector with the translated
+name for each element of <code>sourcevar</code>. If <code>all = TRUE</code>, it returns a named
+<code>list</code> where each element contains all available translations for the
+corresponding input value.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function uses internal dictionaries together with <a href="https://CRAN.R-project.org/package=countrycode" class="external-link"><span class="pkg">countrycode</span></a>
@@ -128,7 +125,7 @@ for some entries.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Errioxa"</span>, <span class="st">"Coruna"</span>, <span class="st">"Gerona"</span>, <span class="st">"Madrid"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">vals</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No conversion. `origin` equal to `destination` ("text")</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No conversion, `origin` is equal to `destination` ("text").</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" </span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">vals</span>, destination <span class="op">=</span> <span class="st">"nuts"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES23"  "ES111" "ES512" "ES30" </span>
@@ -137,7 +134,7 @@ for some entries.</p>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">vals</span>, destination <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># From ISO2 to other codes</span></span></span>
+<span class="r-in"><span><span class="co"># From ISO2 to other codes.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">iso2vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ES-M"</span>, <span class="st">"ES-S"</span>, <span class="st">"ES-SG"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">iso2vals</span>, origin <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span></span>
@@ -153,16 +150,16 @@ for some entries.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "28" "39" "40"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Mixing levels</span></span></span>
+<span class="r-in"><span><span class="co"># Mixing levels.</span></span></span>
 <span class="r-in"><span><span class="va">valsmix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Centro"</span>, <span class="st">"Andalucia"</span>, <span class="st">"Seville"</span>, <span class="st">"Menorca"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"nuts"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ES4"   "ES61"  "ES618" "ES533"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"codauto"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro", "Seville", and "Menorca" with `destination = "codauto"`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro", "Seville", and "Menorca" with `destination` "codauto".</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA   "01" NA   NA  </span>
 <span class="r-in"><span><span class="fu">esp_dict_region_code</span><span class="op">(</span><span class="va">valsmix</span>, destination <span class="op">=</span> <span class="st">"iso2"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro" and "Menorca" with `destination = "iso2"`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No match found for "Centro" and "Menorca" with `destination` "iso2".</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA      "ES-AN" "ES-SE" NA     </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"La Rioja"</span>, <span class="st">"Sevilla"</span>, <span class="st">"Madrid"</span>, <span class="st">"Jaen"</span>, <span class="st">"Orense"</span>, <span class="st">"Baleares"</span><span class="op">)</span></span></span>

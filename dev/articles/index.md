@@ -8,7 +8,7 @@
   Learn how to include static map tiles in your maps.
 
 - [mapSpain: maps of Spain in
-  R](https://ropenspain.github.io/mapSpain/dev/articles/mapasesp.md):
+  R](https://ropenspain.github.io/mapSpain/dev/articles/maps_spain.md):
 
   Create maps of Spain in R with administrative boundaries and map
   tiles.

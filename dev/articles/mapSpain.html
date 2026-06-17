@@ -110,13 +110,13 @@
 <p>For more examples and vignettes, see the full site at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 </blockquote>
 </div>
-<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides geographical information about Spain at several levels.</p>
-<p><strong>mapSpain</strong> provides <strong>sf</strong> objects for Autonomous Communities and Cities, provinces, municipalities and NUTS levels in Spain. It also provides hexbin maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
-<p><strong>mapSpain</strong> provides access to static map tiles from Spain’s public institutions. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
-<p><strong>mapSpain</strong> also includes a dictionary that translates province and region names to English, Spanish, Catalan, Basque and Galician, and converts them to coding standards such as NUTS, ISO2 and the INE coding system.</p>
+<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides administrative boundaries and static map tiles for Spain.</p>
+<p><strong>mapSpain</strong> provides <strong>sf</strong> objects for Autonomous Communities and Cities, provinces, municipalities and NUTS levels in Spain. It also provides grid maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
+<p><strong>mapSpain</strong> provides access to static map tiles from Spanish public administrations. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
+<p><strong>mapSpain</strong> also includes a dictionary that translates Spanish subdivision names to English, Spanish, Catalan, Basque and Galician, and converts them to coding standards such as NUTS, ISO2 and INE codes.</p>
 </section><section class="level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p><strong>mapSpain</strong> provides dataset and tile caching. Set a cache directory with:</p>
+<p><strong>mapSpain</strong> provides data and tile caching. Set a cache directory with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/esp_set_cache_dir.html">esp_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>mapSpain</strong> relies on <a href="https://ropengov.github.io/giscoR/" class="external-link"><strong>giscoR</strong></a> for downloading some files, and both packages can share cache settings. Using the same cache directory for both packages speeds up data loading in your session.</p>
@@ -250,7 +250,7 @@ Percentage of women by Autonomous Community or City (2025)
 </div>
 </section><section class="level2"><h2 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h2>
-<p>This example demonstrates how <strong>mapSpain</strong> can be used to create thematic maps. For plotting, we use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot2</strong></a> package, though any package that handles <code>sf</code> objects, such as <strong>tmap</strong>, <strong>mapsf</strong> or <strong>leaflet</strong>, could also be used.</p>
+<p>This example shows how <strong>mapSpain</strong> can be used to create thematic maps. For plotting, we use the <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong>ggplot2</strong></a> package, though any package that works with <code>sf</code> objects, such as <strong>tmap</strong>, <strong>mapsf</strong> or <strong>leaflet</strong>, could also be used.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate population density in Spain.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -327,7 +327,7 @@ Population density in Spain (2025)
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#DFDFDF"</span>, color <span class="op">=</span> <span class="st">"#656565"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">eu_countries</span>, fill <span class="op">=</span> <span class="st">"#FDFBEA"</span>, color <span class="op">=</span> <span class="st">"#656565"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">ccaa</span>, fill <span class="op">=</span> <span class="st">"#C12838"</span>, color <span class="op">=</span> <span class="st">"grey80"</span>, linewidth <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Center in Europe: EPSG 3035</span></span>
+<span>  <span class="co"># Center on Europe: EPSG 3035.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
 <span>    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2377294</span>, <span class="fl">7453440</span><span class="op">)</span>,</span>
 <span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1313597</span>, <span class="fl">5628510</span><span class="op">)</span></span>
@@ -348,12 +348,12 @@ mapSpain and giscoR example
 </section><section class="level2"><h2 id="working-with-static-map-tiles">Working with static map tiles<a class="anchor" aria-label="anchor" href="#working-with-static-map-tiles"></a>
 </h2>
 <p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <strong>sf</strong> objects.</p>
-<p><strong>mapSpain</strong> also includes a plugin for the <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> R package, which allows you to add several basemaps to interactive maps.</p>
+<p><strong>mapSpain</strong> also includes a plugin for <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> maps, which allows you to add several basemaps to interactive maps.</p>
 <p>The services are implemented with the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. All available providers are listed there.</p>
 <div>
 <blockquote>
 <p><strong>Note</strong></p>
-<p>When working with static map tiles, set <code>moveCAN = FALSE</code> in the <code>esp_get_*</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
+<p>When working with static map tiles, set <code>moveCAN = FALSE</code> in <code>esp_get_*()</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
 </blockquote>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

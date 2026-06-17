@@ -113,8 +113,8 @@ Initial position can be adjusted using the vector of coordinates. See
 See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
 
     <dt><code>update_cache</code></dt>
-<dd><p>Logical. Should the cached file be refreshed? Default
-is <code>FALSE</code>. When set to <code>TRUE</code>, it will force a new download.</p></dd>
+<dd><p>Logical. If <code>TRUE</code>, refreshes the cached file and forces
+a new download. Defaults to <code>FALSE</code>.</p></dd>
 
     <dt><code>cache_dir</code></dt>
 <dd><p>Character string. A path to a cache directory. See
@@ -122,8 +122,8 @@ is <code>FALSE</code>. When set to <code>TRUE</code>, it will force a new downlo
 
     <dt><code>spatialtype</code></dt>
 <dd><p>Character string. Type of geometry to be returned.
-Options available are:</p><ul><li><p>"RG": Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-<li><p>"LB": Labels - <code>POINT</code> object.</p></li>
+Options available are:</p><ul><li><p><code>"RG"</code>: regions, returned as a <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+<li><p><code>"LB"</code>: labels, returned as a <code>POINT</code> object.</p></li>
 </ul></dd>
 
     <dt><code>ext</code></dt>

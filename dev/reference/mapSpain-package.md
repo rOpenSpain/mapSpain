@@ -1,4 +1,4 @@
-# mapSpain: Administrative Boundaries and Static Map Tiles of Spain
+# mapSpain: Administrative Boundaries and Static Map Tiles for Spain
 
 Administrative boundaries of Spain at several levels (Autonomous
 Communities and Cities, provinces, municipalities and 'NUTS'), based on

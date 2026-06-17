@@ -93,7 +93,7 @@ ggplot(provs) +
 
 
 # \donttest{
-# Displacing the Canary Islands by a custom offset
+# Displacing the Canary Islands by a custom offset.
 displace <- c(15, 0)
 provs_disp <- esp_get_prov(moveCAN = displace)
 box_disp <- esp_get_can_box(style = "left", moveCAN = displace)
@@ -105,7 +105,7 @@ ggplot(provs_disp) +
   theme_linedraw()
 
 
-# Example using the polygon style together with other layers
+# Example using the polygon style together with other layers.
 library(giscoR)
 res <- "20"
 countries <- gisco_get_countries(

@@ -4,15 +4,15 @@
 can download tiles as `.png` or `.jpeg`, depending on the tile service,
 and use them alongside your **sf** objects.
 
-**mapSpain** also provides a plugin for the
-[**leaflet**](https://rstudio.github.io/leaflet/) R package, which lets
-you add multiple basemaps to interactive maps.
+**mapSpain** also provides a plugin for
+[**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you
+add multiple basemaps to interactive maps.
 
 The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
 You can view the available provider options at that link.
 
-## Static tiles
+## Static map tiles
 
 This example shows how to combine multiple tiles in a static map. We
 focus on layers provided by La Rioja’s [Infraestructura de Datos
@@ -20,7 +20,7 @@ Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
 > **Warning**
 >
-> When working with static map tiles, set `moveCAN = FALSE`, otherwise
+> When working with static map tiles, set `moveCAN = FALSE`. Otherwise,
 > imagery for the Canary Islands may be inaccurate.
 
 ``` r
@@ -157,7 +157,7 @@ ggplot() +
 
 Figure 5: Example of a basemap using OpenStreetMap
 
-This example uses ThunderForest, a provider that needs an API key:
+This example uses ThunderForest, a provider that requires an API key:
 
 ``` r
 
@@ -185,10 +185,10 @@ Figure 6: Example of a basemap using ThunderForest
 
 ## Dynamic maps with leaflet
 
-**mapSpain** provides a plugin for the **leaflet** package. Here are
-some quick examples:
+**mapSpain** provides a plugin for **leaflet** maps. Here are some quick
+examples:
 
-### Earthquakes in Tenerife (last year)
+### Earthquakes in Tenerife during the last year
 
 ``` r
 
@@ -229,7 +229,7 @@ m |>
 
 ### Population density in Spain
 
-A map showing the population density of Spain as of 2025:
+This example maps population density in Spain as of 2025:
 
 ``` r
 
@@ -303,4 +303,5 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
 
 The `esp_tiles_providers` list contains metadata for the tile providers
 used by the functions above. It includes all arguments required to
-reproduce each API request. Below is the static URL for each provider:
+reproduce each API request. The table below shows the static URL for
+each provider:

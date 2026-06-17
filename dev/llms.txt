@@ -6,8 +6,8 @@ Autonomous Communities and Cities, provinces, municipalities and NUTS,
 as **sf** objects.
 
 **mapSpain** also includes tools to download and process static map
-tiles and a [**leaflet**](https://rstudio.github.io/leaflet/) plugin for
-Spanish public administration tile providers.
+tiles, plus a [**leaflet**](https://rstudio.github.io/leaflet/) plugin
+for Spanish public administration tile providers.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -17,12 +17,12 @@ The full package website, with examples and vignettes, is available at
 Check the documentation for the development version at
 <https://ropenspain.github.io/mapSpain/dev/>.
 
-You can install the development version of **mapSpain** using the
+You can install the development version of **mapSpain** from
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
 ``` r
 
-# Install mapSpain in R:
+# Install mapSpain in R.
 install.packages(
   "mapSpain",
   repos = c(
@@ -202,21 +202,21 @@ ggplot(all_countries) +
 ## A note on caching
 
 Some datasets and tiles may be larger than 50 MB. You can use
-**mapSpain** to create a local cache directory by setting the following
-option:
+**mapSpain** to create a local cache directory with
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md):
 
 ``` r
 
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** looks for cached files before
-downloading them again, which speeds up subsequent calls.
+When a cache directory is set, **mapSpain** looks for cached files
+before downloading them again, which speeds up subsequent calls.
 
 ## Citation
 
 Hernangómez D (2026). *mapSpain: Administrative Boundaries and Static
-Map Tiles of Spain*.
+Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
@@ -224,7 +224,7 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-mapspain,
-  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles of Spain},
+  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
   year = {2026},
   version = {1.1.0.9000},
   author = {Diego Hernangómez},
@@ -252,7 +252,7 @@ See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 This package also uses data from GISCO. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository with multiple datasets at various resolution levels.
+data repository with multiple datasets at several resolution levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*
@@ -278,7 +278,7 @@ EuroGeographics for information regarding their license agreements.
 
 # Package index
 
-## Political and administrative boundaries
+## Political and administrative boundary datasets
 
 These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects representing political and administrative boundaries.
@@ -416,7 +416,7 @@ objects with transport infrastructure features.
   Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache
   directory
 
-## Dictionary
+## Dictionary and translation helpers
 
 Translate Spanish subdivision names across languages and coding
 standards.
@@ -431,7 +431,7 @@ Datasets included with
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of Spanish subdivisions
+  : Spanish subdivision codes and names
 
 - [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
   :
@@ -445,9 +445,9 @@ Datasets included with
 - [`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
   : Population of Spain by municipality (2025)
 
-## Geographic grids
+## Geographical grid datasets
 
-Geographic grids are agreed, defined and harmonized grid networks with
+Geographical grids are agreed, defined and harmonized grid networks with
 standardized locations and grid cell sizes.
 
 - [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md)
@@ -462,7 +462,7 @@ standardized locations and grid cell sizes.
 
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
-  : mapSpain: Administrative Boundaries and Static Map Tiles of Spain
+  : mapSpain: Administrative Boundaries and Static Map Tiles for Spain
 
 # Articles
 
@@ -474,7 +474,7 @@ standardized locations and grid cell sizes.
   Learn how to include static map tiles in your maps.
 
 - [mapSpain: maps of Spain in
-  R](https://ropenspain.github.io/mapSpain/dev/articles/mapasesp.md):
+  R](https://ropenspain.github.io/mapSpain/dev/articles/maps_spain.md):
 
   Create maps of Spain in R with administrative boundaries and map
   tiles.

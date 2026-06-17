@@ -17,24 +17,24 @@ esp_siane_bulk_download(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
 available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-Always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following statements:
 
-1.  When the original digital product is not modified or altered, it can
-    be expressed in one of the following ways:
+1.  When the original digital product is not modified or altered, use
+    one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -49,8 +49,8 @@ Data distributed through the `sianedata` data branch, see
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - verbose:
 
@@ -116,10 +116,10 @@ read_sf(dest_files[1]) |> head()
 # Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/Rtmp7ogINI/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmp7ogINI/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/Rtmp7ogINI/testexample/siane.
-#> ✔ File already cached: /tmp/Rtmp7ogINI/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpBZKVcp/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpBZKVcp/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpBZKVcp/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpBZKVcp/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

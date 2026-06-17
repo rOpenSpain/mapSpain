@@ -2,8 +2,8 @@
 
 Get [comarcas of
 Spain](https://en.wikipedia.org/wiki/Comarcas_of_Spain). Comarcas are
-traditional informal territorial divisions, comprising several
-municipalities sharing geographical, economic or cultural traits,
+traditional informal territorial divisions comprising several
+municipalities that share geographical, economic or cultural traits,
 typically with poorly defined limits.
 
 ## Usage
@@ -67,8 +67,8 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -116,7 +116,7 @@ functional comarcas.
 
 ## Types
 
-`esp_get_comarca()` can retrieve several types of comarcas, each one
+`esp_get_comarca()` can retrieve several types of comarcas, each
 provided under different classification criteria.
 
 - `"INE"`: Comarcas defined by the National Statistics Institute (INE).

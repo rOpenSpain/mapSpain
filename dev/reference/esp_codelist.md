@@ -1,11 +1,11 @@
-# Database with codes and names of Spanish subdivisions
+# Spanish subdivision codes and names
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-object used internally for translating codes and names of the different
-subdivisions of Spain. This tibble provides a hierarchical
-representation of Spain's subdivisions, including NUTS 1, Autonomous
-Communities and Cities (equivalent to NUTS 2), provinces and NUTS 3
-levels. See the note below for coverage details.
+object used internally to translate codes and names for different
+Spanish subdivisions. This tibble provides a hierarchical representation
+of Spain's subdivisions, including NUTS 1, Autonomous Communities and
+Cities (equivalent to NUTS 2), provinces and province-level NUTS 3
+units. See the note below for coverage details.
 
 ## Format
 
@@ -190,7 +190,7 @@ with 59 rows and columns:
 
 ## Source
 
-- **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>.
+- **INE**: Instituto Nacional de Estadística, <https://www.ine.es/>.
 
 - **Eurostat (NUTS)**:
   <https://ec.europa.eu/eurostat/web/nuts/overview>.

@@ -27,8 +27,8 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -63,7 +63,7 @@ Possible values of `grid` are:
 | MTN50_RegCan95_Canarias                  |
 |                                          |
 
-### MTN Grids
+### MTN grids
 
 A description of the MTN (Mapa Topografico Nacional) grids available:
 

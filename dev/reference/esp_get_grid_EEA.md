@@ -37,8 +37,8 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 

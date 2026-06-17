@@ -7,9 +7,9 @@
   filtering, municipal metadata enrichment, empty-result messages and
   Canary Islands displacement. This is intended to simplify maintenance
   without changing the public API.
-- Consolidated repeated Autonomous Community or City metadata and
-  province and municipality metadata across GISCO, SIANE, simplified and
-  gridmap getters.
+- Consolidated repeated Autonomous Community or City, province and
+  municipality metadata across GISCO, SIANE, simplified and gridmap
+  getters.
 - Further simplified internal cache handling, `sf` output finalization,
   WMTS tile retrieval, dictionary translation and no-match messages.
   These changes are intended to improve maintainability without changing

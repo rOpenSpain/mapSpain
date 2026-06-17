@@ -22,12 +22,12 @@ Source:
 [`inst/CITATION`](https://github.com/rOpenSpain/mapSpain/blob/main/inst/CITATION)
 
 Hernangómez D (2026). *mapSpain: Administrative Boundaries and Static
-Map Tiles of Spain*.
+Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
     @Manual{R-mapspain,
-      title = {{mapSpain}: Administrative Boundaries and Static Map Tiles of Spain},
+      title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
       year = {2026},
       version = {1.1.0.9000},
       author = {Diego Hernangómez},

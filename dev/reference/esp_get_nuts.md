@@ -6,7 +6,7 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-NUTS is a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into three levels:
 
 - NUTS 1: major socioeconomic regions.
 
@@ -72,8 +72,8 @@ Copyright:
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -104,9 +104,9 @@ Copyright:
   Character string. Type of geometry to be returned. Options available
   are:
 
-  - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+  - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
 
-  - "LB": Labels - `POINT` object.
+  - `"LB"`: labels, returned as a `POINT` object.
 
 - region:
 
@@ -146,7 +146,7 @@ the nation at statistical level does not coincide with the
 administrative boundaries.
 
 The NUTS classification has been officially established through
-Commission Delegated Regulation 2019/1755. A nonofficial NUTS-like
+Commission Delegated Regulation 2019/1755. An unofficial NUTS-like
 classification has been defined for the EFTA countries, candidate
 countries and potential candidates based on a bilateral agreement
 between Eurostat and the respective statistical agencies.
@@ -218,7 +218,7 @@ ggplot(nuts1_orig) +
   geom_sf() +
   labs(
     title = "NUTS 1",
-    subtitle = "Canary Islands on the true location",
+    subtitle = "Canary Islands in their true location",
     caption = giscoR::gisco_attributions()
   )
 

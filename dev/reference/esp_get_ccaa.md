@@ -65,8 +65,8 @@ Copyright:
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -79,9 +79,9 @@ Copyright:
   :   Character string. Type of geometry to be returned. Options
       available are:
 
-      - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+      - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
 
-      - "LB": Labels - `POINT` object.
+      - `"LB"`: labels, returned as a `POINT` object.
 
   `ext`
 

@@ -90,17 +90,17 @@ or lakes.</p></li>
 
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
-    <p>CartoBase ANE (Atlas Nacional de España) provided by Instituto Geografico Nacional (IGN),
+    <p>CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
 <a href="http://www.ign.es/web/ign/portal" class="external-link">http://www.ign.es/web/ign/portal</a>. Years available are 2005 up to today.</p>
 <p>Copyright:
 <a href="https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane" class="external-link">https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane</a></p>
-<p>Always acknowledge authorship using the following formulas:</p><ol><li><p>When the original digital product is not modified or altered, it can
-be expressed in one of the following ways:</p><ul><li><p>CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
-<li><p>CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional</p></li>
+<p>Always acknowledge authorship using the following statements:</p><ol><li><p>When the original digital product is not modified or altered, use one of
+the following statements:</p><ul><li><p>CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.</p></li>
+<li><p>CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.</p></li>
 </ul></li>
-<li><p>When a new product is generated:</p></li>
-</ol><ul><li><p>Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es</p></li>
-</ul><p>Data distributed through the <code>sianedata</code> data branch, see
+<li><p>When a new product is generated:</p><ul><li><p>Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.</p></li>
+</ul></li>
+</ol><p>Data distributed through the <code>sianedata</code> data branch, see
 <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
     </div>
     <div class="section level2">
@@ -122,8 +122,8 @@ See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>Logical. Should the cached file be refreshed? Default
-is <code>FALSE</code>. When set to <code>TRUE</code>, it will force a new download.</p></dd>
+<dd><p>Logical. If <code>TRUE</code>, refreshes the cached file and forces
+a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
@@ -166,18 +166,18 @@ data. One of:</p><ul><li><p>"6.5": 1:6.5 million.</p></li>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span><span class="co"># This code will produce a nice plot - It will take a few seconds to run</span></span></span>
+<span class="r-in"><span><span class="co"># This code produces a plot and takes a few seconds to run.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">hypsobath</span> <span class="op">&lt;-</span> <span class="fu">esp_get_hypsobath</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Tints from Wikipedia</span></span></span>
+<span class="r-in"><span><span class="co"># Tints from Wikipedia.</span></span></span>
 <span class="r-in"><span><span class="co"># https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Maps/Conventions/</span></span></span>
 <span class="r-in"><span><span class="co"># Topographic_maps</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">hypsobath</span><span class="op">$</span><span class="va">val_inf</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Create Manual pal</span></span></span>
+<span class="r-in"><span><span class="co"># Create the manual palette.</span></span></span>
 <span class="r-in"><span><span class="va">br_bath</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">levels</span><span class="op">[</span><span class="va">levels</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">br_terrain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">levels</span><span class="op">)</span> <span class="op">-</span> <span class="va">br_bath</span></span></span>
 <span class="r-in"><span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
@@ -185,7 +185,7 @@ data. One of:</p><ul><li><p>"6.5": 1:6.5 million.</p></li>
 <span class="r-in"><span>  <span class="fu">tidyterra</span><span class="fu">::</span><span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/scale_hypso.html" class="external-link">hypso.colors</a></span><span class="op">(</span><span class="va">br_terrain</span>, <span class="st">"wiki-2.0_hypso"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Plot the Canary Islands</span></span></span>
+<span class="r-in"><span><span class="co"># Plot the Canary Islands.</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">hypsobath</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">val_inf</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    color <span class="op">=</span> <span class="cn">NA</span></span></span>
@@ -205,7 +205,7 @@ data. One of:</p><ul><li><p>"6.5": 1:6.5 million.</p></li>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="esp_get_hypsobath-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Plot Mainland</span></span></span>
+<span class="r-in"><span><span class="co"># Plot mainland Spain.</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">hypsobath</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">val_inf</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    color <span class="op">=</span> <span class="cn">NA</span></span></span>

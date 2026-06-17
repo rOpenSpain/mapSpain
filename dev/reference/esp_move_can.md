@@ -2,10 +2,9 @@
 
 Helper function to displace an external
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object,
-potentially representing a location in the Canary Islands) to align it
-with the objects provided by
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) with the option
-`moveCAN = TRUE`.
+potentially representing a location in the Canary Islands, to align it
+with [mapSpain](https://CRAN.R-project.org/package=mapSpain) objects
+generated with `moveCAN = TRUE`.
 
 ## Usage
 
@@ -29,13 +28,12 @@ esp_move_can(x, moveCAN = TRUE)
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object of the
-same class and same CRS as `x` but displaced accordingly.
+same class and same CRS as `x`, displaced accordingly.
 
 ## Details
 
-This is a helper function that intends to ease the representation of
-objects located in the Canary Islands that have been obtained from other
-sources rather than the package
+This helper function makes it easier to represent objects located in the
+Canary Islands that have been obtained from sources other than
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 ## Displacing the Canary Islands
@@ -46,7 +44,7 @@ spatial analysis or tiles (for example, with
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 or
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md)),
-set this option to `FALSE` to get the actual coordinates, instead of the
+set this option to `FALSE` to get the actual coordinates instead of the
 modified ones.
 
 ## See also

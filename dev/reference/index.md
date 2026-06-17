@@ -1,6 +1,6 @@
 # Package index
 
-## Political and administrative boundaries
+## Political and administrative boundary datasets
 
 These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects representing political and administrative boundaries.
@@ -138,7 +138,7 @@ objects with transport infrastructure features.
   Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache
   directory
 
-## Dictionary
+## Dictionary and translation helpers
 
 Translate Spanish subdivision names across languages and coding
 standards.
@@ -153,7 +153,7 @@ Datasets included with
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
-  : Database with codes and names of Spanish subdivisions
+  : Spanish subdivision codes and names
 
 - [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md)
   :
@@ -167,9 +167,9 @@ Datasets included with
 - [`pobmun25`](https://ropenspain.github.io/mapSpain/dev/reference/pobmun25.md)
   : Population of Spain by municipality (2025)
 
-## Geographic grids
+## Geographical grid datasets
 
-Geographic grids are agreed, defined and harmonized grid networks with
+Geographical grids are agreed, defined and harmonized grid networks with
 standardized locations and grid cell sizes.
 
 - [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md)
@@ -184,4 +184,4 @@ standardized locations and grid cell sizes.
 
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/dev/reference/mapSpain-package.md)
-  : mapSpain: Administrative Boundaries and Static Map Tiles of Spain
+  : mapSpain: Administrative Boundaries and Static Map Tiles for Spain

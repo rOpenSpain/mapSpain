@@ -2,7 +2,7 @@
 
 Simplified map with the boundaries of the provinces or Autonomous
 Communities of Spain, as provided by the **INE** (Instituto Nacional de
-Estadistica).
+Estadística).
 
 ## Usage
 
@@ -36,8 +36,8 @@ INE: PC-Axis files.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 

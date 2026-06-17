@@ -96,8 +96,8 @@ esp_get_attributions(type, options = NULL)
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -137,12 +137,12 @@ wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
 | 16   | streets               |
 | 18   | some buildings, trees |
 
-For a complete list of providers see
+For a complete list of providers, see
 [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
 Most WMS/WMTS providers provide tiles on
-[`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks
-deformed, try projecting first `x`:
+[`"EPSG:3857"`](https://epsg.io/3857). If the tile looks deformed, try
+projecting `x` first:
 
 `x <- sf::st_transform(x, 3857)`
 
@@ -163,7 +163,7 @@ Static map tiles and imagery:
 ``` r
 # \dontrun{
 
-# This example downloads data to your local computer!
+# This example downloads data to your local computer.
 
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
@@ -181,7 +181,7 @@ ggplot(segovia) +
   geom_sf(fill = NA, linewidth = 1)
 
 
-# Another provider
+# Another provider.
 
 tile2 <- esp_get_tiles(segovia, type = "MDT")
 
@@ -190,7 +190,7 @@ ggplot(segovia) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
 
 
-# A custom WMTS provider
+# A custom WMTS provider.
 
 custom_wmts <- esp_make_provider(
   id = "cyl_wmts",
@@ -205,7 +205,7 @@ autoplot(custom_wmts_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 
 
-# Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+# Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
 cartodb_dark <- list(
   id = "CartoDB_DarkMatter",
   q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"

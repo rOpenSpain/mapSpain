@@ -32,7 +32,7 @@ esp_detect_cache_dir()
 
 - install:
 
-  Logical. If `TRUE`, installs the key on your local machine for use in
+  Logical. If `TRUE`, installs the path on your local machine for use in
   future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`, this
   argument is automatically set to `FALSE`.
 
@@ -109,29 +109,29 @@ Cache management utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/Rtmp7ogINI/mapSpain
+#> ℹ /tmp/RtmpBZKVcp/mapSpain
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache directory is /tmp/Rtmp7ogINI/example/cachenew.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ mapSpain cache directory is /tmp/RtmpBZKVcp/example/cachenew.
+#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
 
 esp_detect_cache_dir()
-#> ℹ /tmp/Rtmp7ogINI/example/cachenew
-#> [1] "/tmp/Rtmp7ogINI/example/cachenew"
+#> ℹ /tmp/RtmpBZKVcp/example/cachenew
+#> [1] "/tmp/RtmpBZKVcp/example/cachenew"
 
 # Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/Rtmp7ogINI/mapSpain.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ mapSpain cache directory is /tmp/RtmpBZKVcp/mapSpain.
+#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/Rtmp7ogINI/mapSpain
+#> ℹ /tmp/RtmpBZKVcp/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/Rtmp7ogINI/mapSpain
-#> [1] "/tmp/Rtmp7ogINI/mapSpain"
+#> ℹ /tmp/RtmpBZKVcp/mapSpain
+#> [1] "/tmp/RtmpBZKVcp/mapSpain"
 ```

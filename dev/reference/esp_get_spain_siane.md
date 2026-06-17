@@ -12,24 +12,24 @@ esp_get_spain_siane(moveCAN = TRUE, ...)
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geografico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
 available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-Always acknowledge authorship using the following formulas:
+Always acknowledge authorship using the following statements:
 
-1.  When the original digital product is not modified or altered, it can
-    be expressed in one of the following ways:
+1.  When the original digital product is not modified or altered, use
+    one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -87,8 +87,8 @@ Data distributed through the `sianedata` data branch, see
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -136,7 +136,7 @@ Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 # \donttest{
 original_can <- esp_get_spain_siane(moveCAN = FALSE)
 
-# One row only
+# One row only.
 original_can
 #> Simple feature collection with 1 feature and 9 fields
 #> Geometry type: MULTIPOLYGON
@@ -155,7 +155,7 @@ ggplot(original_can) +
   geom_sf(fill = "grey70")
 
 
-# Less resolution
+# Less resolution.
 moved_can <- esp_get_spain_siane(moveCAN = TRUE, resolution = 10)
 
 ggplot(moved_can) +

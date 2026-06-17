@@ -6,8 +6,8 @@ Autonomous Communities and Cities, provinces, municipalities and NUTS,
 as **sf** objects.
 
 **mapSpain** also includes tools to download and process static map
-tiles and a [**leaflet**](https://rstudio.github.io/leaflet/) plugin for
-Spanish public administration tile providers.
+tiles, plus a [**leaflet**](https://rstudio.github.io/leaflet/) plugin
+for Spanish public administration tile providers.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -17,12 +17,12 @@ The full package website, with examples and vignettes, is available at
 Check the documentation for the development version at
 <https://ropenspain.github.io/mapSpain/dev/>.
 
-You can install the development version of **mapSpain** using the
+You can install the development version of **mapSpain** from
 [r-universe](https://ropenspain.r-universe.dev/mapSpain):
 
 ``` r
 
-# Install mapSpain in R:
+# Install mapSpain in R.
 install.packages(
   "mapSpain",
   repos = c(
@@ -202,21 +202,21 @@ ggplot(all_countries) +
 ## A note on caching
 
 Some datasets and tiles may be larger than 50 MB. You can use
-**mapSpain** to create a local cache directory by setting the following
-option:
+**mapSpain** to create a local cache directory with
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md):
 
 ``` r
 
 esp_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **mapSpain** looks for cached files before
-downloading them again, which speeds up subsequent calls.
+When a cache directory is set, **mapSpain** looks for cached files
+before downloading them again, which speeds up subsequent calls.
 
 ## Citation
 
 Hernangómez D (2026). *mapSpain: Administrative Boundaries and Static
-Map Tiles of Spain*.
+Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
@@ -224,7 +224,7 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-mapspain,
-  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles of Spain},
+  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
   year = {2026},
   version = {1.1.0.9000},
   author = {Diego Hernangómez},
@@ -252,7 +252,7 @@ See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 This package also uses data from GISCO. GISCO
 [(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository with multiple datasets at various resolution levels.
+data repository with multiple datasets at several resolution levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*
