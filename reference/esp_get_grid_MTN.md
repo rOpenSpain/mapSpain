@@ -27,8 +27,8 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -38,7 +38,7 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -63,7 +63,7 @@ Possible values of `grid` are:
 | MTN50_RegCan95_Canarias                  |
 |                                          |
 
-### MTN Grids
+### MTN grids
 
 A description of the MTN (Mapa Topografico Nacional) grids available:
 
@@ -118,7 +118,7 @@ of the Canary Islands sheets.
 
 ## See also
 
-Other geographical grids:
+Geographical grid datasets:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
 

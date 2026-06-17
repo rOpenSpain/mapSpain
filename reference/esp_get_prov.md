@@ -1,6 +1,6 @@
 # Provinces of Spain from GISCO
 
-Returns [provinces of
+Get [provinces of
 Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
 scale.
 
@@ -35,7 +35,6 @@ Copyright:
 - ...:
 
   Arguments passed on to
-  [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
   [`esp_get_nuts`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
 
   `year`
@@ -49,7 +48,7 @@ Copyright:
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -59,14 +58,14 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -79,9 +78,9 @@ Copyright:
   :   Character string. Type of geometry to be returned. Options
       available are:
 
-      - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+      - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
 
-      - "LB": Labels - `POINT` object.
+      - `"LB"`: labels, returned as a `POINT` object.
 
   `ext`
 
@@ -90,12 +89,12 @@ Copyright:
 
   `verbose`
 
-  :   logical. If `TRUE` displays informational messages.
+  :   A logical value. If `TRUE` displays informational messages.
 
   `resolution`
 
-  :   character string or number. Resolution of the geospatial data. One
-      of:
+  :   A character string or numeric value with the geospatial data
+      resolution. One of:
 
       - `"60"`: 1:60 million.
 
@@ -114,22 +113,22 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 When using `prov` you can use and mix names and NUTS codes (levels 1, 2
-or 3), ISO codes (corresponding to level 2 or 3) or "cpro" (see
+or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
 
-Ceuta and Melilla are considered as provinces in this dataset.
+Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or NUTS1), all the
-provinces of that level will be added.
+When calling a higher level (Autonomous Community or City, or NUTS 1),
+all provinces of that level are added.
 
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -145,7 +144,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),

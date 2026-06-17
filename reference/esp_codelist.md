@@ -1,11 +1,11 @@
-# Database with codes and names of Spanish regions
+# Spanish subdivision codes and names
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-object used internally for translating codes and names of the different
-subdivisions of Spain. This tibble provides a hierarchical
-representation of Spain's subdivisions, including NUTS1 level,
-Autonomous Communities (equivalent to NUTS2), provinces and NUTS3 level.
-See the note below for coverage details.
+object used internally to translate codes and names for different
+Spanish subdivisions. This tibble provides a hierarchical representation
+of Spain's subdivisions, including NUTS 1, Autonomous Communities and
+Cities (equivalent to NUTS 2), provinces and province-level NUTS 3
+units. See the note below for coverage details.
 
 ## Format
 
@@ -14,205 +14,206 @@ with 59 rows and columns:
 
 - nuts1.code:
 
-  NUTS 1 code
+  NUTS 1 code.
 
 - nuts1.name:
 
-  NUTS 1 name
+  NUTS 1 name.
 
 - nuts1.name.alt:
 
-  NUTS 1 alternative name
+  NUTS 1 alternative name.
 
 - nuts1.shortname.es:
 
-  NUTS 1 short (common) name (Spanish)
+  NUTS 1 short (common) name (Spanish).
 
 - codauto:
 
-  INE code of the Autonomous Community
+  INE code of the Autonomous Community or City.
 
 - iso2.ccaa.code:
 
-  ISO2 code of the Autonomous Community
+  ISO2 code of the Autonomous Community or City.
 
 - nuts2.code:
 
-  NUTS 2 code
+  NUTS 2 code.
 
 - ine.ccaa.name:
 
-  INE name of the Autonomous Community
+  INE name of the Autonomous Community or City.
 
 - iso2.ccaa.name.es:
 
-  ISO2 name of the Autonomous Community (Spanish)
+  ISO2 name of the Autonomous Community or City (Spanish).
 
 - iso2.ccaa.name.ca:
 
-  ISO2 name of the Autonomous Community (Catalan)
+  ISO2 name of the Autonomous Community or City (Catalan).
 
 - iso2.ccaa.name.gl:
 
-  ISO2 name of the Autonomous Community (Galician)
+  ISO2 name of the Autonomous Community or City (Galician).
 
 - iso2.ccaa.name.eu:
 
-  ISO2 name of the Autonomous Community (Basque)
+  ISO2 name of the Autonomous Community or City (Basque).
 
 - nuts2.name:
 
-  NUTS 2 name
+  NUTS 2 name.
 
 - cldr.ccaa.name.en:
 
-  CLDR name of the Autonomous Community (English)
+  CLDR name of the Autonomous Community or City (English).
 
 - cldr.ccaa.name.es:
 
-  CLDR name of the Autonomous Community (Spanish)
+  CLDR name of the Autonomous Community or City (Spanish).
 
 - cldr.ccaa.name.ca:
 
-  CLDR name of the Autonomous Community (Catalan)
+  CLDR name of the Autonomous Community or City (Catalan).
 
 - cldr.ccaa.name.ga:
 
-  CLDR name of the Autonomous Community (Galician)
+  CLDR name of the Autonomous Community or City (Galician).
 
 - cldr.ccaa.name.eu:
 
-  CLDR name of the Autonomous Community (Basque)
+  CLDR name of the Autonomous Community or City (Basque).
 
 - ccaa.shortname.en:
 
-  Short (common) name of the Autonomous Community (English)
+  Short (common) name of the subdivision (English).
 
 - ccaa.shortname.es:
 
-  Short (common) name of the Autonomous Community (Spanish)
+  Short (common) name of the subdivision (Spanish).
 
 - ccaa.shortname.ca:
 
-  Short (common) name of the Autonomous Community (Catalan)
+  Short (common) name of the subdivision (Catalan).
 
 - ccaa.shortname.ga:
 
-  Short (common) name of the Autonomous Community (Galician)
+  Short (common) name of the subdivision (Galician).
 
 - ccaa.shortname.eu:
 
-  Short (common) name of the Autonomous Community (Basque)
+  Short (common) name of the subdivision (Basque).
 
 - cpro:
 
-  INE code of the province
+  INE code of the province.
 
 - iso2.prov.code:
 
-  ISO2 code of the province
+  ISO2 code of the province.
 
 - nuts.prov.code:
 
-  NUTS code of the province
+  NUTS code of the province.
 
 - ine.prov.name:
 
-  INE name of the province
+  INE name of the province.
 
 - iso2.prov.name.es:
 
-  ISO2 name of the province (Spanish)
+  ISO2 name of the province (Spanish).
 
 - iso2.prov.name.ca:
 
-  ISO2 name of the province (Catalan)
+  ISO2 name of the province (Catalan).
 
 - iso2.prov.name.ga:
 
-  ISO2 name of the province (Galician)
+  ISO2 name of the province (Galician).
 
 - iso2.prov.name.eu:
 
-  ISO2 name of the province (Basque)
+  ISO2 name of the province (Basque).
 
 - cldr.prov.name.en:
 
-  CLDR name of the province (English)
+  CLDR name of the province (English).
 
 - cldr.prov.name.es:
 
-  CLDR name of the province (Spanish)
+  CLDR name of the province (Spanish).
 
 - cldr.prov.name.ca:
 
-  CLDR name of the province (Catalan)
+  CLDR name of the province (Catalan).
 
 - cldr.prov.name.ga:
 
-  CLDR name of the province (Galician)
+  CLDR name of the province (Galician).
 
 - cldr.prov.name.eu:
 
-  CLDR name of the province (Basque)
+  CLDR name of the province (Basque).
 
 - prov.shortname.en:
 
-  Short (common) name of the province (English)
+  Short (common) name of the province (English).
 
 - prov.shortname.es:
 
-  Short (common) name of the province (Spanish)
+  Short (common) name of the province (Spanish).
 
 - prov.shortname.ca:
 
-  Short (common) name of the province (Catalan)
+  Short (common) name of the province (Catalan).
 
 - prov.shortname.ga:
 
-  Short (common) name of the province (Galician)
+  Short (common) name of the province (Galician).
 
 - prov.shortname.eu:
 
-  Short (common) name of the province (Basque)
+  Short (common) name of the province (Basque).
 
 - nuts3.code:
 
-  NUTS 3 code
+  NUTS 3 code.
 
 - nuts3.name:
 
-  NUTS 3 name
+  NUTS 3 name.
 
 - nuts3.shortname.es:
 
-  NUTS 3 short (common) name
+  NUTS 3 short (common) name.
 
 ## Source
 
-- **INE**: Instituto Nacional de Estadistica: <https://www.ine.es/>
+- **INE**: Instituto Nacional de Estadística, <https://www.ine.es/>.
 
-- **Eurostat (NUTS)**: <https://ec.europa.eu/eurostat/web/nuts/overview>
+- **Eurostat (NUTS)**:
+  <https://ec.europa.eu/eurostat/web/nuts/overview>.
 
-- **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>
+- **ISO**: <https://www.iso.org/obp/ui/#iso:code:3166:ES>.
 
 - **CLDR**:
   <https://www.unicode.org/cldr/charts/48/subdivisionNames/index.html>
 
 ## Note
 
-Although NUTS2 aligns with the first subdivision level of Spain
-(Autonomous Communities, CCAA), NUTS3 does not correspond to the second
-subdivision level of Spain (provinces). NUTS3 provides dedicated codes
-for major islands, whereas provinces do not.
+Although NUTS 2 aligns with the first subdivision level of Spain
+(Autonomous Communities and Cities), NUTS 3 does not correspond to the
+second subdivision level of Spain (provinces). NUTS 3 provides dedicated
+codes for major islands, whereas provinces do not.
 
-Ceuta and Melilla have a special status as Autonomous Cities but are
-treated as Autonomous Communities with a single province (like Madrid,
-Asturias or Murcia) in this database.
+Ceuta and Melilla have special status as Autonomous Cities but are
+represented at the Autonomous Communities and Cities level with a single
+province, like Madrid, Asturias or Murcia, in this database.
 
 ## See also
 
-Other datasets:
+Included package datasets:
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md),
 [`pobmun25`](https://ropenspain.github.io/mapSpain/reference/pobmun25.md)

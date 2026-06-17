@@ -2,8 +2,8 @@
 
 Loads a hexbin map
 ([`sf`](https://r-spatial.github.io/sf/reference/sf.html) object) or a
-map of squares with the boundaries of the provinces or Autonomous
-Communities of Spain.
+map of squares with boundaries of the provinces or Autonomous
+Communities and Cities of Spain.
 
 ## Usage
 
@@ -22,7 +22,7 @@ esp_get_grid_ccaa(ccaa = NULL)
 - prov, ccaa:
 
   Character. A vector of names, codes or both for provinces and
-  Autonomous Communities, or `NULL` to get all the data. See
+  Autonomous Communities and Cities, or `NULL` to get all the data. See
   **Details**.
 
 ## Value
@@ -37,23 +37,23 @@ prominent simply because of their size, which introduces visual bias.
 With hexbin maps, each region is represented equally, reducing this
 bias.
 
-You can use and mix names, ISO codes, `"codauto"/ "cpro"` codes (see
+You can use and mix names, ISO codes, `"codauto"` or `"cpro"` codes (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md))
 and NUTS codes of different levels.
 
 When using a code corresponding to a higher level (for example,
-`esp_get_prov("Andalucia")`) all the corresponding units of that level
+`esp_get_prov("Andalucia")`), all the corresponding units of that level
 are provided (in this case, all the provinces of Andalusia).
 
-Results are provided in **EPSG:4258**, use
+Results are provided in **EPSG:4258**. Use
 [`sf::st_transform()`](https://r-spatial.github.io/sf/reference/st_transform.html)
 to change the projection.
 
 ## See also
 
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md).
+[`esp_get_simpl()`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -83,7 +83,7 @@ ggplot(hexccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Hexbin: CCAA")
+  labs(title = "Hexbin: Autonomous Communities and Cities")
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
 
 
@@ -105,7 +105,7 @@ ggplot(gridccaa) +
   geom_sf(aes(fill = codauto), alpha = 0.3, show.legend = FALSE) +
   geom_sf_text(aes(label = label), check_overlap = TRUE) +
   theme_void() +
-  labs(title = "Grid: CCAA")
+  labs(title = "Grid: Autonomous Communities and Cities")
 #> Warning: st_point_on_surface may not give correct results for longitude/latitude data
 
 

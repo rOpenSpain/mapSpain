@@ -29,7 +29,7 @@ esp_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -45,7 +45,7 @@ you had never installed or used
 
 [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
 
-Other cache utilities:
+Cache management utilities:
 [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md)
 
 ## Examples
@@ -55,7 +55,7 @@ Other cache utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpXmMVKG/mapSpain
+#> ℹ /tmp/Rtmp4JtUrE/mapSpain
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +63,13 @@ esp_set_cache_dir(ex, verbose = FALSE)
 
 # Restore the initial cache.
 esp_clear_cache(verbose = TRUE)
-#> ✔ mapSpain data deleted: /tmp/RtmpXmMVKG/example/cache (0 bytes).
+#> ✔ mapSpain data deleted: /tmp/Rtmp4JtUrE/example/cache (0 bytes).
 
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/RtmpXmMVKG/mapSpain.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ mapSpain cache directory is /tmp/Rtmp4JtUrE/mapSpain.
+#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpXmMVKG/mapSpain
+#> ℹ /tmp/Rtmp4JtUrE/mapSpain
 #> [1] TRUE
 # }
 ```

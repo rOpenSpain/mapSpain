@@ -47,7 +47,7 @@ Coordinates of `esp_get_can_provinces()` derived from CartoBase ANE
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -74,7 +74,7 @@ The `style` parameter controls the geometry returned:
 
 ## See also
 
-Other helpers for the Canary Islands:
+Helpers for Canary Islands insets and displacement:
 [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
 
 ## Examples
@@ -93,7 +93,7 @@ ggplot(provs) +
 
 
 # \donttest{
-# Displacing the Canary Islands by a custom offset
+# Displacing the Canary Islands by a custom offset.
 displace <- c(15, 0)
 provs_disp <- esp_get_prov(moveCAN = displace)
 box_disp <- esp_get_can_box(style = "left", moveCAN = displace)
@@ -105,7 +105,7 @@ ggplot(provs_disp) +
   theme_linedraw()
 
 
-# Example using the polygon style together with other layers
+# Example using the polygon style together with other layers.
 library(giscoR)
 res <- "20"
 countries <- gisco_get_countries(

@@ -3,11 +3,11 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   imagery: imagery.html
-  articles/mapasesp: mapasesp.html
+  articles/maps_spain: maps_spain.html
   mapSpain: mapSpain.html
   articles/regioncodes: regioncodes.html
   articles/working_imagery: working_imagery.html
-last_built: 2026-06-03T08:15Z
+last_built: 2026-06-17T10:56Z
 urls:
   reference: https://ropenspain.github.io/mapSpain/reference
   article: https://ropenspain.github.io/mapSpain/articles

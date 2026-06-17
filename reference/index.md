@@ -1,35 +1,35 @@
 # Package index
 
-## Political boundaries of Spain
+## Political and administrative boundary datasets
 
 These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects representing political boundaries.
+objects representing political and administrative boundaries.
 
-### CartoBase ANE
+### CartoBase ANE (Atlas Nacional de España)
 
-Datasets from IGN and CartoBase ANE.
+Datasets sourced from CartoBase ANE.
 
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md)
-  : City where the municipal public authorities are based - SIANE
+  : City where the municipal public authorities are based from SIANE
 - [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md)
-  : Autonomous Communities of Spain - SIANE
+  : Autonomous Communities and Cities of Spain from SIANE
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md)
-  : Countries of the World - SIANE
+  : Countries of the world from SIANE
 - [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md)
   : Municipalities of Spain from SIANE
 - [`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov_siane.md)
   : Provinces of Spain from SIANE
 - [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md)
-  : Boundaries of Spain - SIANE
+  : Boundaries of Spain from SIANE
 - [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
   : SIANE bulk download
 
 ### GISCO
 
-Datasets from GISCO and Eurostat.
+Datasets sourced from GISCO and Eurostat.
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md)
-  : Autonomous Communities of Spain - GISCO
+  : Autonomous Communities and Cities of Spain from GISCO
 - [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md)
   : Municipalities of Spain from GISCO
 - [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
@@ -37,9 +37,9 @@ Datasets from GISCO and Eurostat.
 - [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md)
   : Provinces of Spain from GISCO
 - [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md)
-  : Boundaries of Spain - GISCO
+  : Boundaries of Spain from GISCO
 
-### Other helpers and political objects
+### Additional boundary helpers
 
 - [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
   [`esp_get_can_provinces()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
@@ -52,7 +52,7 @@ Datasets from GISCO and Eurostat.
   object located in the Canary Islands
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md)
-  : 'Comarcas' of Spain
+  : Comarcas of Spain
 
 - [`esp_get_hex_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
   [`esp_get_hex_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
@@ -65,12 +65,14 @@ Datasets from GISCO and Eurostat.
 
 - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md)
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md)
-  : Simplified map of provinces and Autonomous Communities of Spain
+  : Simplified map of provinces and Autonomous Communities and Cities of
+  Spain
 
-## Maps with imagery
+## Static map tiles and imagery
 
-Functions to return static map tiles or create an interactive
-[leaflet](https://CRAN.R-project.org/package=leaflet) map.
+Functions that return static map tiles or add Spanish public
+administration basemaps to interactive
+[leaflet](https://CRAN.R-project.org/package=leaflet) maps.
 
 - [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md)
   :
@@ -103,23 +105,23 @@ These functions return [sf](https://CRAN.R-project.org/package=sf)
 objects with natural features.
 
 - [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hydrobasin.md)
-  : River basin districts of Spain - SIANE
+  : River basin districts of Spain from SIANE
 - [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hypsobath.md)
-  : Hypsometry and bathymetry of Spain - SIANE
+  : Hypsometry and bathymetry of Spain from SIANE
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
   [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
-  : Rivers and wetlands of Spain - SIANE
+  : Rivers and wetlands of Spain from SIANE
 
-## Infrastructure
+## Transport infrastructure
 
 These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with infrastructure features.
+objects with transport infrastructure features.
 
 - [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
   [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
-  : Railways of Spain - SIANE
+  : Railways of Spain from SIANE
 - [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/reference/esp_get_roads.md)
-  : Roads of Spain - SIANE
+  : Roads of Spain from SIANE
 
 ## Cache management
 
@@ -136,9 +138,10 @@ objects with infrastructure features.
   Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache
   directory
 
-## Dictionary
+## Dictionary and translation helpers
 
-Translate region names across languages and coding systems.
+Translate Spanish subdivision names across languages and coding
+standards.
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
   [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
@@ -150,7 +153,7 @@ Datasets included with
 [mapSpain](https://CRAN.R-project.org/package=mapSpain).
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)
-  : Database with codes and names of Spanish regions
+  : Spanish subdivision codes and names
 
 - [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/reference/esp_nuts_2024.md)
   :
@@ -164,9 +167,9 @@ Datasets included with
 - [`pobmun25`](https://ropenspain.github.io/mapSpain/reference/pobmun25.md)
   : Population of Spain by municipality (2025)
 
-## Geographic grids
+## Geographical grid datasets
 
-Geographic grids are agreed, defined and harmonized grid networks with
+Geographical grids are agreed, defined and harmonized grid networks with
 standardized locations and grid cell sizes.
 
 - [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md)
@@ -181,4 +184,4 @@ standardized locations and grid cell sizes.
 
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/reference/mapSpain-package.md)
-  : mapSpain: Administrative Boundaries of Spain
+  : mapSpain: Administrative Boundaries and Static Map Tiles for Spain

@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +25,17 @@
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="articles/articles/working_imagery.html">Working with imagery</a></li>
-    <li><a class="dropdown-item" href="articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -80,18 +84,18 @@
       <p><small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/inst/CITATION" class="external-link"><code>inst/CITATION</code></a></small></p>
 
       <p>Hernangómez D (2026).
-<em>mapSpain: Administrative Boundaries of Spain</em>.
+<em>mapSpain: Administrative Boundaries and Static Map Tiles for Spain</em>.
 <a href="https://doi.org/10.5281/zenodo.5366622" class="external-link">doi:10.5281/zenodo.5366622</a>.
 <a href="https://ropenspain.github.io/mapSpain/">https://ropenspain.github.io/mapSpain/</a>.
 </p>
       <pre>@Manual{R-mapspain,
-  title = {{mapSpain}: Administrative Boundaries of Spain},
+  title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
   year = {2026},
-  version = {1.1.0},
+  version = {1.2.0},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},
-  abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat &lt;https://ec.europa.eu/eurostat/web/gisco&gt; and CartoBase ANE from Instituto Geográfico Nacional &lt;https://www.ign.es/&gt;. It also provides a plugin for leaflet and tools to download and process static map tiles.},
+  abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat &lt;https://ec.europa.eu/eurostat/web/gisco&gt; and CartoBase ANE from Instituto Geográfico Nacional &lt;https://www.ign.es/&gt;. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
 }</pre>
     </div>
 

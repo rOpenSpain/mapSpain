@@ -1,20 +1,20 @@
 # Territorial Spanish units for statistics (NUTS) dataset
 
-The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions using
+The GISCO statistical unit dataset represents NUTS (Nomenclature of
+Territorial Units for Statistics) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
-help lines to better visualise multipart polygonal regions.
+help lines to better visualize multipart polygonal regions.
 
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into three levels:
 
-- NUTS 1: major socio-economic regions
+- NUTS 1: major socioeconomic regions.
 
-- NUTS 2: basic regions for the application of regional policies
+- NUTS 2: basic regions for the application of regional policies.
 
 - NUTS 3: small regions for specific diagnoses.
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to the national
 boundaries.
 
 ## Usage
@@ -56,7 +56,7 @@ Copyright:
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -66,14 +66,14 @@ Copyright:
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -83,11 +83,12 @@ Copyright:
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -104,9 +105,9 @@ Copyright:
   Character string. Type of geometry to be returned. Options available
   are:
 
-  - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+  - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
 
-  - "LB": Labels - `POINT` object.
+  - `"LB"`: labels, returned as a `POINT` object.
 
 - region:
 
@@ -115,8 +116,8 @@ Copyright:
 
 - nuts_level:
 
-  character string. NUTS level. One of `0`, `1`, `2`, `3` or `all` for
-  all levels.
+  A character string with the NUTS level. One of `0`, `1`, `2`, `3` or
+  `all` for all levels.
 
 - moveCAN:
 
@@ -141,30 +142,27 @@ The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
 smaller territorial units). NUTS 1 is the most aggregated level. An
-additional Country level (NUTS 0) is also available for countries where
+additional country level (NUTS 0) is also available for countries where
 the nation at statistical level does not coincide with the
 administrative boundaries.
 
 The NUTS classification has been officially established through
-Commission Delegated Regulation 2019/1755. A non-official NUTS-like
+Commission Delegated Regulation 2019/1755. An unofficial NUTS-like
 classification has been defined for the EFTA countries, candidate
 countries and potential candidates based on a bilateral agreement
 between Eurostat and the respective statistical agencies.
 
-An introduction to the NUTS classification is available here:
-<https://ec.europa.eu/eurostat/web/nuts/overview>.
-
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
 [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html),
 [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -180,10 +178,10 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
-Other nuts:
+NUTS boundary datasets:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),
@@ -199,7 +197,7 @@ library(ggplot2)
 ggplot(nuts1) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     caption = giscoR::gisco_attributions()
   )
 
@@ -209,7 +207,7 @@ nuts1_alt <- esp_get_nuts(nuts_level = 1, moveCAN = c(15, 0))
 ggplot(nuts1_alt) +
   geom_sf() +
   labs(
-    title = "NUTS1: Displacing Canary Islands",
+    title = "NUTS 1: Displacing Canary Islands",
     subtitle = "to the right",
     caption = giscoR::gisco_attributions()
   )
@@ -220,8 +218,8 @@ nuts1_orig <- esp_get_nuts(nuts_level = 1, moveCAN = FALSE)
 ggplot(nuts1_orig) +
   geom_sf() +
   labs(
-    title = "NUTS1",
-    subtitle = "Canary Islands on the true location",
+    title = "NUTS 1",
+    subtitle = "Canary Islands in their true location",
     caption = giscoR::gisco_attributions()
   )
 

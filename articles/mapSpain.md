@@ -7,31 +7,27 @@
 > For more examples and vignettes, see the full site at
 > <https://ropenspain.github.io/mapSpain/>.
 
-[**mapSpain**](https://ropenspain.github.io/mapSpain/) is a package
-designed to provide geographical information about Spain at different
-levels.
+[**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
+administrative boundaries and static map tiles for Spain.
 
-**mapSpain** provides shapefiles of municipalities, provinces,
-Autonomous communities and NUTS levels for Spain. It also provides
-hexbin shapefiles and other complementary shapes, such as the
+**mapSpain** provides **sf** objects for Autonomous Communities and
+Cities, provinces, municipalities and NUTS levels in Spain. It also
+provides grid maps and other complementary geometries, such as the
 demarcation lines around the Canary Islands.
 
-**mapSpain** provides access to map tiles from Spain’s public
-institutions, which can be represented on static maps via
+**mapSpain** provides access to static map tiles from Spanish public
+administrations. Tiles can be represented on static maps with
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-or on an **R** [**leaflet**](https://rstudio.github.io/leaflet/) map
-using
+or on an R [**leaflet**](https://rstudio.github.io/leaflet/) map using
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
-**mapSpain** also includes a dictionary that translates province and
-region names to English, Spanish, Catalan, Basque and Galician, and
-converts them to various coding standards such as NUTS, ISO2 and the INE
-(the official Spanish statistical agency) coding system.
+**mapSpain** also includes a dictionary that translates Spanish
+subdivision names to English, Spanish, Catalan, Basque and Galician, and
+converts them to coding standards such as NUTS, ISO2 and INE codes.
 
 ## Caching
 
-**mapSpain** provides dataset and tile caching capabilities. Set a cache
-directory with:
+**mapSpain** provides data and tile caching. Set a cache directory with:
 
 ``` r
 
@@ -39,13 +35,13 @@ esp_set_cache_dir("./path/to/location")
 ```
 
 **mapSpain** relies on [**giscoR**](https://ropengov.github.io/giscoR/)
-for downloading certain files, and both packages are well synchronized.
-Setting the same caching directory for both packages will speed up data
-loading in your session.
+for downloading some files, and both packages can share cache settings.
+Using the same cache directory for both packages speeds up data loading
+in your session.
 
 ## Basic example
 
-These examples show what **mapSpain** can do:
+These examples show key **mapSpain** workflows:
 
 ``` r
 
@@ -79,22 +75,22 @@ Example: map of Spain
 
 # Plot provinces.
 
-andalucia <- esp_get_prov("Andalucia")
+andalucia <- esp_get_prov_siane("Andalucia")
 
 ggplot(andalucia) +
   geom_sf(fill = "darkgreen", color = "white") +
   theme_bw()
 ```
 
-![Example: provinces of Andalucia](./basic2-1.png)
+![Example: provinces of Andalusia](./basic2-1.png)
 
-Example: provinces of Andalucia
+Example: provinces of Andalusia
 
 ``` r
 
 # Plot municipalities.
 
-euskadi_ccaa <- esp_get_ccaa("Euskadi")
+euskadi_ccaa <- esp_get_ccaa_siane("Euskadi")
 euskadi <- esp_get_munic_siane(region = "Euskadi")
 
 # Use the dictionary.
@@ -123,8 +119,8 @@ Example: municipalities of the Basque Country
 
 ## Choropleth and label maps
 
-Analyze the distribution of women in each Autonomous Community with
-**ggplot2**:
+Analyze the distribution of women in each Autonomous Community or City
+with **ggplot2**:
 
 ``` r
 
@@ -133,14 +129,14 @@ library(dplyr)
 census <- mapSpain::pobmun25 |>
   select(-name)
 
-# Extract CCAA from the base dataset.
+# Extract Autonomous Community or City codes from the base dataset.
 codelist <- mapSpain::esp_codelist |>
   select(cpro, codauto) |>
   distinct()
 
 census_ccaa <- census |>
   left_join(codelist) |>
-  # Summarize by CCAA.
+  # Summarize by Autonomous Community or City.
   group_by(codauto) |>
   summarise(pob25 = sum(pob25), men = sum(men), women = sum(women)) |>
   mutate(
@@ -178,17 +174,17 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community (2025)](./choro-1.png)
+![Percentage of women by Autonomous Community or City
+(2025)](./choro-1.png)
 
-Percentage of women by Autonomous Community (2025)
+Percentage of women by Autonomous Community or City (2025)
 
 ## Thematic maps
 
-This example demonstrates how **mapSpain** can be used to create
-thematic maps. For plotting, we use the
-[**ggplot2**](https://ggplot2.tidyverse.org/) package, though any
-package that handles `sf` objects, such as **tmap**, **mapsf** or
-**leaflet**, could also be used.
+This example shows how **mapSpain** can be used to create thematic maps.
+For plotting, we use the [**ggplot2**](https://ggplot2.tidyverse.org/)
+package, though any package that works with `sf` objects, such as
+**tmap**, **mapsf** or **leaflet**, could also be used.
 
 ``` r
 
@@ -199,8 +195,7 @@ pop <- mapSpain::pobmun25 |>
   select(-name)
 
 munic <- esp_get_munic_siane(rawcols = TRUE) |>
-  # Get area in km2 from SIANE municipalities.
-  # This variable is already in the shapefile.
+  # Use the area field available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)
 
 munic_pop <- munic |>
@@ -242,16 +237,16 @@ Population density in Spain (2025)
 
 ## mapSpain and giscoR
 
-If you need to plot Spain alongside other countries, consider using the
+If you need to plot Spain alongside other countries, use the
 [**giscoR**](https://ropengov.github.io/giscoR/) package, which is
-installed as a dependency with **mapSpain**. Here is a basic example:
+installed as a dependency of **mapSpain**. Here is a basic example:
 
 ``` r
 
 library(giscoR)
 
 # Set the same resolution for a perfect fit.
-res <- "20"
+res <- 3
 
 all_countries <- gisco_get_countries(resolution = res) |>
   st_transform(3035)
@@ -273,7 +268,7 @@ ggplot(all_countries) +
   geom_sf(fill = "#DFDFDF", color = "#656565") +
   geom_sf(data = eu_countries, fill = "#FDFBEA", color = "#656565") +
   geom_sf(data = ccaa, fill = "#C12838", color = "grey80", linewidth = 0.1) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe: EPSG 3035.
   coord_sf(
     xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
@@ -292,15 +287,15 @@ ggplot(all_countries) +
 
 mapSpain and giscoR example
 
-## Working with tiles
+## Working with static map tiles
 
-**mapSpain** provides a powerful interface for working with imagery. It
-can download static images as `.png` or `.jpeg` (depending on the Web
-Map Service) and use them alongside your shapefiles.
+**mapSpain** provides an interface for working with static map tiles. It
+can download tiles as `.png` or `.jpeg`, depending on the tile service,
+and use them alongside your **sf** objects.
 
-**mapSpain** also includes a plugin for the **R**
-[**leaflet**](https://rstudio.github.io/leaflet/) package, which allows
-you to include several basemaps on your interactive maps.
+**mapSpain** also includes a plugin for
+[**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you
+to add several basemaps to interactive maps.
 
 The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
@@ -308,6 +303,6 @@ Leaflet plugin. All available providers are listed there.
 
 > **Note**
 >
-> When working with imagery, set `moveCAN = FALSE` in the `esp_get_*`
-> functions. See **Displacing the Canary Islands** in
+> When working with static map tiles, set `moveCAN = FALSE` in
+> `esp_get_*()` functions. See **Displacing the Canary Islands** in
 > [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md).

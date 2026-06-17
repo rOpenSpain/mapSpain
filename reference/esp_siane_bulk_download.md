@@ -2,7 +2,7 @@
 
 Download zipped data from SIANE to the
 [`cache_dir`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md)
-and extract the relevant ones.
+and extract the relevant files.
 
 ## Usage
 
@@ -16,26 +16,25 @@ esp_siane_bulk_download(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following statements:
 
-1.  When the original digital product is not modified or altered, it can
-    be expressed in one of the following ways:
+1.  When the original digital product is not modified or altered, use
+    one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -50,21 +49,21 @@ Data distributed through the `sianedata` data branch, see
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
-A (invisible) character vector with the full path of the files
-extracted. See **Examples**.
+An invisible character vector with the full paths of the extracted
+files. See **Examples**.
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -80,7 +79,7 @@ Other datasets representing political borders:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md),
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
@@ -94,7 +93,7 @@ Political borders from CartoBase ANE:
 tmp <- file.path(tempdir(), "testexample")
 dest_files <- esp_siane_bulk_download(cache_dir = tmp)
 
-# Read one
+# Read one file.
 library(sf)
 read_sf(dest_files[1]) |> head()
 #> Simple feature collection with 6 features and 16 fields
@@ -114,16 +113,16 @@ read_sf(dest_files[1]) |> head()
 #> # ℹ 7 more variables: id_pais <chr>, id_palt <chr>, id_leng <chr>,
 #> #   rotulo2 <chr>, st_area_sh <dbl>, st_length_ <dbl>, geom <MULTIPOLYGON [°]>
 
-# Now we can connect the function with the downloaded data like:
+# Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpXmMVKG/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpXmMVKG/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpXmMVKG/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpXmMVKG/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp4JtUrE/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp4JtUrE/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp4JtUrE/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp4JtUrE/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
-# Message shows file is already cached :)
+# The message shows that the file is already cached.
 
-# Clean
+# Clean up.
 unlink(tmp, force = TRUE, recursive = TRUE)
 ```

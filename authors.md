@@ -21,16 +21,17 @@
 Source:
 [`inst/CITATION`](https://github.com/rOpenSpain/mapSpain/blob/main/inst/CITATION)
 
-Hernangómez D (2026). *mapSpain: Administrative Boundaries of Spain*.
+Hernangómez D (2026). *mapSpain: Administrative Boundaries and Static
+Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
     @Manual{R-mapspain,
-      title = {{mapSpain}: Administrative Boundaries of Spain},
+      title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
       year = {2026},
-      version = {1.1.0},
+      version = {1.2.0},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities, provinces and municipalities), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. It also provides a plugin for leaflet and tools to download and process static map tiles.},
+      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
     }

@@ -28,8 +28,8 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -39,7 +39,7 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -57,7 +57,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
 
 ## See also
 
-Other geographical grids:
+Geographical grid datasets:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
 

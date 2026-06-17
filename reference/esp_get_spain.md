@@ -1,4 +1,4 @@
-# Boundaries of Spain - GISCO
+# Boundaries of Spain from GISCO
 
 Returns the boundaries of Spain as a single
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` at a
@@ -43,7 +43,7 @@ Copyright:
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -53,14 +53,14 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -75,12 +75,12 @@ Copyright:
 
   `verbose`
 
-  :   logical. If `TRUE` displays informational messages.
+  :   A logical value. If `TRUE` displays informational messages.
 
   `resolution`
 
-  :   character string or number. Resolution of the geospatial data. One
-      of:
+  :   A character string or numeric value with the geospatial data
+      resolution. One of:
 
       - `"60"`: 1:60 million.
 
@@ -106,11 +106,11 @@ for details.
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -126,10 +126,10 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
-Other nuts:
+NUTS boundary datasets:
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
@@ -141,7 +141,7 @@ Datasets provided by GISCO:
 # \donttest{
 original_can <- esp_get_spain(moveCAN = FALSE)
 
-# One row only
+# One row only.
 original_can
 #> Simple feature collection with 1 feature and 18 fields
 #> Geometry type: MULTIPOLYGON
@@ -162,7 +162,7 @@ ggplot(original_can) +
   geom_sf(fill = "grey70")
 
 
-# Less resolution
+# Less resolution.
 moved_can <- esp_get_spain(moveCAN = TRUE, resolution = 20)
 
 ggplot(moved_can) +

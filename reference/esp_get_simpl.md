@@ -1,8 +1,8 @@
-# Simplified map of provinces and Autonomous Communities of Spain
+# Simplified map of provinces and Autonomous Communities and Cities of Spain
 
 Simplified map with the boundaries of the provinces or Autonomous
-communities of Spain, as provided by the **INE** (Instituto Nacional de
-Estadistica).
+Communities of Spain, as provided by the **INE** (Instituto Nacional de
+Estadística).
 
 ## Usage
 
@@ -24,20 +24,20 @@ esp_get_simpl_ccaa(
 
 ## Source
 
-INE: PC_Axis files
+INE: PC-Axis files.
 
 ## Arguments
 
 - prov, ccaa:
 
   Character. A vector of names, codes or both for provinces and
-  Autonomous Communities, or `NULL` to get all the data. See
+  Autonomous Communities and Cities, or `NULL` to get all the data. See
   **Details**.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -47,7 +47,7 @@ INE: PC_Axis files
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -62,14 +62,14 @@ You can use and mix names, ISO codes, `"codauto"` or `"cpro"` codes (see
 and NUTS codes of different levels.
 
 When using a code corresponding to a higher level (for example,
-`esp_get_prov("Andalucia")`) all the corresponding units of that level
+`esp_get_prov("Andalucia")`), all the corresponding units of that level
 are provided (in this case, all the provinces of Andalusia).
 
 ## See also
 
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md).
+[`esp_get_gridmap()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md).
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
@@ -95,10 +95,10 @@ library(ggplot2)
 
 ggplot(prov_simp) +
   geom_sf(aes(fill = ine.ccaa.name)) +
-  labs(fill = "CCAA")
+  labs(fill = "Autonomous Communities and Cities")
 
 
-# Provinces of a single CCAA.
+# Provinces of a single Autonomous Community or City.
 
 and_simple <- esp_get_simpl_prov("Andalucia")
 
@@ -106,7 +106,7 @@ ggplot(and_simple) +
   geom_sf()
 
 
-# CCAAs.
+# Autonomous Communities and Cities.
 
 ccaa_simp <- esp_get_simpl_ccaa()
 

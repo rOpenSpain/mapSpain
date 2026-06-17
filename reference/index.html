@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +25,17 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with imagery</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: codes and names of Spanish regions</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -55,14 +59,14 @@
     </div>
 
     <div class="section level2">
-      <h2 id="political-boundaries-of-spain">Political boundaries of Spain<a class="anchor" aria-label="anchor" href="#political-boundaries-of-spain"></a></h2>
+      <h2 id="political-and-administrative-boundary-datasets">Political and administrative boundary datasets<a class="anchor" aria-label="anchor" href="#political-and-administrative-boundary-datasets"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects representing political boundaries.</p></div>
+      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects representing political and administrative boundaries.</p></div>
 
       <dl></dl></div><div class="section level2">
 
-      <h3 id="cartobase-ane">CartoBase ANE<a class="anchor" aria-label="anchor" href="#cartobase-ane"></a></h3>
-      <div class="section-desc"><p>Datasets from IGN and CartoBase ANE.</p></div>
+      <h3 id="cartobase-ane-atlas-nacional-de-espa-a-">CartoBase ANE (Atlas Nacional de España)<a class="anchor" aria-label="anchor" href="#cartobase-ane-atlas-nacional-de-espa-a-"></a></h3>
+      <div class="section-desc"><p>Datasets sourced from CartoBase ANE.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -74,21 +78,21 @@
           <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>
 
         </dt>
-        <dd>City where the municipal public authorities are based - SIANE</dd>
+        <dd>City where the municipal public authorities are based from SIANE</dd>
 
         <dt>
 
           <code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>
 
         </dt>
-        <dd>Autonomous Communities of Spain - SIANE</dd>
+        <dd>Autonomous Communities and Cities of Spain from SIANE</dd>
 
         <dt>
 
           <code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>
 
         </dt>
-        <dd>Countries of the World - SIANE</dd>
+        <dd>Countries of the world from SIANE</dd>
 
         <dt>
 
@@ -109,7 +113,7 @@
           <code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code>
 
         </dt>
-        <dd>Boundaries of Spain - SIANE</dd>
+        <dd>Boundaries of Spain from SIANE</dd>
 
         <dt>
 
@@ -120,7 +124,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="gisco">GISCO<a class="anchor" aria-label="anchor" href="#gisco"></a></h3>
-      <div class="section-desc"><p>Datasets from GISCO and Eurostat.</p></div>
+      <div class="section-desc"><p>Datasets sourced from GISCO and Eurostat.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -132,7 +136,7 @@
           <code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>
 
         </dt>
-        <dd>Autonomous Communities of Spain - GISCO</dd>
+        <dd>Autonomous Communities and Cities of Spain from GISCO</dd>
 
         <dt>
 
@@ -160,10 +164,10 @@
           <code><a href="esp_get_spain.html">esp_get_spain()</a></code>
 
         </dt>
-        <dd>Boundaries of Spain - GISCO</dd>
+        <dd>Boundaries of Spain from GISCO</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="other-helpers-and-political-objects">Other helpers and political objects<a class="anchor" aria-label="anchor" href="#other-helpers-and-political-objects"></a></h3>
+      <h3 id="additional-boundary-helpers">Additional boundary helpers<a class="anchor" aria-label="anchor" href="#additional-boundary-helpers"></a></h3>
 
 
       <dl></dl></div><div class="section level2">
@@ -190,7 +194,7 @@
           <code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>
 
         </dt>
-        <dd>'Comarcas' of Spain</dd>
+        <dd>Comarcas of Spain</dd>
 
         <dt>
 
@@ -204,11 +208,11 @@
           <code><a href="esp_get_simpl.html">esp_get_simpl_prov()</a></code> <code><a href="esp_get_simpl.html">esp_get_simpl_ccaa()</a></code>
 
         </dt>
-        <dd>Simplified map of provinces and Autonomous Communities of Spain</dd>
+        <dd>Simplified map of provinces and Autonomous Communities and Cities of Spain</dd>
       </dl></div><div class="section level2">
-      <h2 id="maps-with-imagery">Maps with imagery<a class="anchor" aria-label="anchor" href="#maps-with-imagery"></a></h2>
+      <h2 id="static-map-tiles-and-imagery">Static map tiles and imagery<a class="anchor" aria-label="anchor" href="#static-map-tiles-and-imagery"></a></h2>
 
-      <div class="section-desc"><p>Functions to return static map tiles or create an interactive <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> map.</p></div>
+      <div class="section-desc"><p>Functions that return static map tiles or add Spanish public administration basemaps to interactive <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> maps.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -271,25 +275,25 @@
           <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
 
         </dt>
-        <dd>River basin districts of Spain - SIANE</dd>
+        <dd>River basin districts of Spain from SIANE</dd>
 
         <dt>
 
           <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
 
         </dt>
-        <dd>Hypsometry and bathymetry of Spain - SIANE</dd>
+        <dd>Hypsometry and bathymetry of Spain from SIANE</dd>
 
         <dt>
 
           <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
 
         </dt>
-        <dd>Rivers and wetlands of Spain - SIANE</dd>
+        <dd>Rivers and wetlands of Spain from SIANE</dd>
       </dl></div><div class="section level2">
-      <h2 id="infrastructure">Infrastructure<a class="anchor" aria-label="anchor" href="#infrastructure"></a></h2>
+      <h2 id="transport-infrastructure">Transport infrastructure<a class="anchor" aria-label="anchor" href="#transport-infrastructure"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with infrastructure features.</p></div>
+      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with transport infrastructure features.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -301,14 +305,14 @@
           <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
 
         </dt>
-        <dd>Railways of Spain - SIANE</dd>
+        <dd>Railways of Spain from SIANE</dd>
 
         <dt>
 
           <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
 
         </dt>
-        <dd>Roads of Spain - SIANE</dd>
+        <dd>Roads of Spain from SIANE</dd>
       </dl></div><div class="section level2">
       <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
 
@@ -333,9 +337,9 @@
         </dt>
         <dd>Set your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache directory</dd>
       </dl></div><div class="section level2">
-      <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
+      <h2 id="dictionary-and-translation-helpers">Dictionary and translation helpers<a class="anchor" aria-label="anchor" href="#dictionary-and-translation-helpers"></a></h2>
 
-      <div class="section-desc"><p>Translate region names across languages and coding systems.</p></div>
+      <div class="section-desc"><p>Translate Spanish subdivision names across languages and coding standards.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -363,7 +367,7 @@
           <code><a href="esp_codelist.html">esp_codelist</a></code>
 
         </dt>
-        <dd>Database with codes and names of Spanish regions</dd>
+        <dd>Spanish subdivision codes and names</dd>
 
         <dt>
 
@@ -386,9 +390,9 @@
         </dt>
         <dd>Population of Spain by municipality (2025)</dd>
       </dl></div><div class="section level2">
-      <h2 id="geographic-grids">Geographic grids<a class="anchor" aria-label="anchor" href="#geographic-grids"></a></h2>
+      <h2 id="geographical-grid-datasets">Geographical grid datasets<a class="anchor" aria-label="anchor" href="#geographical-grid-datasets"></a></h2>
 
-      <div class="section-desc"><p>Geographic grids are agreed, defined and harmonized grid networks with standardized locations and grid cell sizes.</p></div>
+      <div class="section-desc"><p>Geographical grids are agreed, defined and harmonized grid networks with standardized locations and grid cell sizes.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -430,7 +434,7 @@
           <code><a href="mapSpain-package.html">mapSpain</a></code> <code><a href="mapSpain-package.html">mapSpain-package</a></code>
 
         </dt>
-        <dd>mapSpain: Administrative Boundaries of Spain</dd>
+        <dd>mapSpain: Administrative Boundaries and Static Map Tiles for Spain</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

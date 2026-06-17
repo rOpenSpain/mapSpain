@@ -1,6 +1,6 @@
-# Autonomous Communities of Spain - SIANE
+# Autonomous Communities and Cities of Spain from SIANE
 
-Returns [Autonomous Communities of
+Get [Autonomous Communities and Cities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -23,26 +23,25 @@ esp_get_ccaa_siane(
 
 ## Source
 
-CartoBase ANE provided by Instituto Geografico Nacional (IGN),
-<http://www.ign.es/web/ign/portal>. Years available are 2005 up to
-today.
+CartoBase ANE (Atlas Nacional de España) provided by Instituto
+Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+available are 2005 up to today.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
 
-It's necessary to always acknowledge authorship using the following
-formulas:
+Always acknowledge authorship using the following statements:
 
-1.  When the original digital product is not modified or altered, it can
-    be expressed in one of the following ways:
+1.  When the original digital product is not modified or altered, use
+    one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional
+    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-- Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es
+    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -52,12 +51,12 @@ Data distributed through the `sianedata` data branch, see
 - ccaa:
 
   Character string. A vector of names, codes or both for Autonomous
-  Communities, or `NULL` to get all the Autonomous Communities. See
-  **Details**.
+  Communities and Cities, or `NULL` to get all Autonomous Communities
+  and Cities. See **Details**.
 
 - year:
 
-  Character string or number. Release year, it must be in formats `YYYY`
+  Character string or number. Release year. It must use format `YYYY`
   (assuming end of year) or `YYYY-MM-DD`. Historical information starts
   as of 2005.
 
@@ -66,7 +65,7 @@ Data distributed through the `sianedata` data branch, see
   Character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4258"`: [ETRS89](https://epsg.io/4258)
+  - `"4258"`: [ETRS89](https://epsg.io/4258).
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -76,14 +75,14 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  Logical. Whether to cache downloaded files. Default is `TRUE`. See
+  **Caching strategies** section in
   [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -93,17 +92,17 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
   Character string or number. Resolution of the geospatial data. One of:
 
-  - "10": 1:10 million.
+  - `"10"`: 1:10 million.
 
-  - "6.5": 1:6.5 million.
+  - `"6.5"`: 1:6.5 million.
 
-  - "3": 1:3 million.
+  - `"3"`: 1:3 million.
 
 - moveCAN:
 
@@ -115,8 +114,8 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  Logical. Setting this to `TRUE` will add the raw columns of the
-  resulting object as provided by IGN.
+  Logical. If `TRUE`, adds the raw columns of the resulting object as
+  provided by IGN.
 
 ## Value
 
@@ -127,15 +126,15 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
 2), ISO codes (corresponding to level 2) or `codauto` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
-Ceuta and Melilla are considered as Autonomous Communities in this
-function.
+Ceuta and Melilla are included at the Autonomous Communities and Cities
+level in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
-will be added.
+When calling a NUTS 1 level, all Autonomous Communities and Cities of
+that level are added.
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md),
@@ -151,7 +150,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
-Political borders from CartoBase ANE:
+Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md),
@@ -189,7 +188,7 @@ dplyr::glimpse(ccaas1)
 #> $ nuts1.name        <chr> "Sur", "Noreste", "Noroeste", "Este", "Canarias", "N…
 #> $ geometry          <MULTIPOLYGON [°]> MULTIPOLYGON (((-5.024684 3..., MULTIPO…
 
-# Low res
+# Low resolution.
 ccaas_low <- esp_get_ccaa_siane(
   rawcols = TRUE, moveCAN = FALSE,
   resolution = 10, epsg = 3035

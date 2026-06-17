@@ -1,7 +1,7 @@
 # Convert and translate Spanish subdivision names and codes
 
 Convert Spanish subdivision names or identifiers between different
-coding schemes, such as NUTS, ISO2 and province codes, or obtain
+coding schemes such as NUTS, ISO2 and province codes, or obtain
 human-readable names.
 
 ## Usage
@@ -16,7 +16,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 
 - sourcevar:
 
-  Character string. Vector which contains the codes or names to be
+  Character string. Vector that contains the codes or names to be
   converted.
 
 - origin, destination:
@@ -26,17 +26,9 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 
 - lang:
 
-  Character string. Target language code, available values:
-
-  - `"es"`: Spanish.
-
-  - `"en"`: English.
-
-  - `"ca"`: Catalan.
-
-  - `"ga"`: Galician.
-
-  - `"eu"`: Basque.
+  Character string. Target language code. Available values are `"es"`
+  (Spanish), `"en"` (English), `"ca"` (Catalan), `"ga"` (Galician) and
+  `"eu"` (Basque).
 
 - all:
 
@@ -47,27 +39,24 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 ## Value
 
 `esp_dict_region_code()` returns a character vector with converted
-subdivision identifiers or names. If a value cannot be matched the
+subdivision identifiers or names. If a value cannot be matched, the
 corresponding element will be `NA` and a warning is emitted via
 [`cli::cli_alert_warning()`](https://cli.r-lib.org/reference/cli_alert.html).
 
 `esp_dict_translate()` translates a vector of names from one language to
-another:
-
-- If `all = FALSE`, a character vector with the translated name for each
-  element of `sourcevar`.
-
-- If `all = TRUE`, a named `list` is returned where each element
-  contains all available translations for the corresponding input value.
+another. If `all = FALSE`, it returns a character vector with the
+translated name for each element of `sourcevar`. If `all = TRUE`, it
+returns a named `list` where each element contains all available
+translations for the corresponding input value.
 
 ## Details
 
-The function uses internal dictionaries together with
+This function uses internal dictionaries together with
 [countrycode](https://CRAN.R-project.org/package=countrycode) to map
 between schemes. When `origin == destination == "text"` the input is
-returned unchanged. Mixing names from different administrative levels
-(for example Autonomous Community and province) may produce `NA` values
-for some entries.
+returned unchanged. Mixing names from different administrative levels,
+for example Autonomous Community or City and province, may produce `NA`
+values for some entries.
 
 ## Examples
 
@@ -75,7 +64,7 @@ for some entries.
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 esp_dict_region_code(vals)
-#> ℹ No conversion. `origin` equal to `destination` ("text")
+#> ℹ No conversion, `origin` is equal to `destination` ("text").
 #> [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" 
 esp_dict_region_code(vals, destination = "nuts")
 #> [1] "ES23"  "ES111" "ES512" "ES30" 
@@ -84,7 +73,7 @@ esp_dict_region_code(vals, destination = "cpro")
 esp_dict_region_code(vals, destination = "iso2")
 #> [1] "ES-RI" "ES-C"  "ES-GI" "ES-MD"
 
-# From ISO2 to other codes
+# From ISO2 to other codes.
 
 iso2vals <- c("ES-M", "ES-S", "ES-SG")
 esp_dict_region_code(iso2vals, origin = "iso2")
@@ -100,16 +89,16 @@ esp_dict_region_code(iso2vals,
 )
 #> [1] "28" "39" "40"
 
-# Mixing levels
+# Mixing levels.
 valsmix <- c("Centro", "Andalucia", "Seville", "Menorca")
 esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
 
 esp_dict_region_code(valsmix, destination = "codauto")
-#> ! No match on `destination = "codauto"` found for "Centro", "Seville", and "Menorca".
+#> ! No match found for "Centro", "Seville", and "Menorca" with `destination` "codauto".
 #> [1] NA   "01" NA   NA  
 esp_dict_region_code(valsmix, destination = "iso2")
-#> ! No match on `destination = "iso2"` found for "Centro" and "Menorca".
+#> ! No match found for "Centro" and "Menorca" with `destination` "iso2".
 #> [1] NA      "ES-AN" "ES-SE" NA     
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

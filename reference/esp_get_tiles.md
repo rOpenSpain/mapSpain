@@ -1,14 +1,14 @@
 # Get static map tiles from public administrations of Spain
 
 Get static map tiles based on a spatial object. Maps can be fetched from
-various open map servers.
+WMS and WMTS providers.
 
 This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
-`esp_get_attributions` gets the attribution of a tile provider defined
-as the `type` argument.
+`esp_get_attributions()` gets the attribution of a tile provider defined
+by the `type` argument.
 
 ## Usage
 
@@ -46,7 +46,7 @@ esp_get_attributions(type, options = NULL)
 
 - type:
 
-  This argument can be either:
+  This argument can be one of:
 
   - The name of one of the pre-defined providers (see
     [esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md)).
@@ -71,10 +71,9 @@ esp_get_attributions(type, options = NULL)
 
 - crop:
 
-  Logical. If `TRUE`, the results will be cropped to the specified `x`
-  extent. If `x` is an
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  one `POINT`, `crop` is set to `FALSE`. See
+  Logical. If `TRUE`, crop results to the specified `x` extent. If `x`
+  is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  with one `POINT`, `crop` is set to `FALSE`. See
   [`terra::crop()`](https://rspatial.github.io/terra/reference/crop.html).
 
 - res:
@@ -88,17 +87,17 @@ esp_get_attributions(type, options = NULL)
 
 - transparent:
 
-  Logical. Provides transparent background, if supported.
+  Logical. Whether to use a transparent background, if supported.
 
 - mask:
 
-  Logical. `TRUE` if the result should be masked to `x`. See
+  Logical. `TRUE` to mask the result to `x`. See
   [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -108,7 +107,7 @@ esp_get_attributions(type, options = NULL)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - options:
 
@@ -138,23 +137,24 @@ wiki](https://wiki.openstreetmap.org/wiki/Zoom_levels):
 | 16   | streets               |
 | 18   | some buildings, trees |
 
-For a complete list of providers see
+For a complete list of providers, see
 [esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md).
 
 Most WMS/WMTS providers provide tiles on
-[`"EPSG:3857"`](https://epsg.io/3857). In case that the tile looks
-deformed, try projecting first `x`:
+[`"EPSG:3857"`](https://epsg.io/3857). If the tile looks deformed, try
+projecting `x` first:
 
 `x <- sf::st_transform(x, 3857)`
 
 ## See also
 
-[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html),
-[esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md)
+- [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
+
+- [esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md).
 
 [`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
 
-Other functions for creating maps with images:
+Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/reference/esp_make_provider.md)
 
@@ -163,7 +163,7 @@ Other functions for creating maps with images:
 ``` r
 # \dontrun{
 
-# This example downloads data to your local computer!
+# This example downloads data to your local computer.
 
 segovia <- esp_get_prov_siane("segovia", epsg = 3857)
 tile <- esp_get_tiles(segovia, "IGNBase.Todo")
@@ -181,7 +181,7 @@ ggplot(segovia) +
   geom_sf(fill = NA, linewidth = 1)
 
 
-# Another provider
+# Another provider.
 
 tile2 <- esp_get_tiles(segovia, type = "MDT")
 
@@ -190,7 +190,7 @@ ggplot(segovia) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
 
 
-# A custom WMTS provider
+# A custom WMTS provider.
 
 custom_wmts <- esp_make_provider(
   id = "cyl_wmts",
@@ -205,7 +205,7 @@ autoplot(custom_wmts_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
 
 
-# Example from https://leaflet-extras.github.io/leaflet-providers/preview/
+# Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
 cartodb_dark <- list(
   id = "CartoDB_DarkMatter",
   q = "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"

@@ -1,8 +1,8 @@
 # NUTS 2024 for Spain [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-This dataset represents Spanish regions at NUTS levels 0, 1, 2 and 3
-according to the Nomenclature of Territorial Units for Statistics (NUTS)
-classification for 2024.
+This dataset represents Spanish subdivisions at NUTS levels 0, 1, 2 and
+3 according to the Nomenclature of Territorial Units for Statistics
+(NUTS) classification for 2024.
 
 ## Format
 
@@ -17,7 +17,7 @@ variables:
 
 - `LEVL_CODE`:
 
-  NUTS level code `(0,1,2,3)`.
+  NUTS level code `(0, 1, 2, 3)`.
 
 - `CNTR_CODE`:
 
@@ -25,11 +25,11 @@ variables:
 
 - `NAME_LATN`:
 
-  NUTS name on Latin characters.
+  NUTS name in Latin characters.
 
 - `NUTS_NAME`:
 
-  NUTS name on local alphabet.
+  NUTS name in the local alphabet.
 
 - `MOUNT_TYPE`:
 
@@ -89,7 +89,7 @@ file.
 
 - `1`: Coastal (on coast).
 
-- `2`: Coastal (less than 50% of population living within 50 km. of the
+- `2`: Coastal (less than 50 % of population living within 50 km of the
   coastline).
 
 - `3`: Non-coastal region.
@@ -100,7 +100,7 @@ file.
 
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
 
-Other datasets:
+Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md),
 [`pobmun25`](https://ropenspain.github.io/mapSpain/reference/pobmun25.md)

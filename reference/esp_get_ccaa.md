@@ -1,6 +1,6 @@
-# Autonomous Communities of Spain - GISCO
+# Autonomous Communities and Cities of Spain from GISCO
 
-Returns [Autonomous Communities of
+Get [Autonomous Communities and Cities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -22,8 +22,8 @@ Copyright:
 - ccaa:
 
   Character string. A vector of names, codes or both for Autonomous
-  Communities, or `NULL` to get all the Autonomous Communities. See
-  **Details**.
+  Communities and Cities, or `NULL` to get all Autonomous Communities
+  and Cities. See **Details**.
 
 - moveCAN:
 
@@ -49,7 +49,7 @@ Copyright:
   :   Character string or number. Projection of the map: 4-digit [EPSG
       code](https://epsg.io/). One of:
 
-      - `"4258"`: [ETRS89](https://epsg.io/4258)
+      - `"4258"`: [ETRS89](https://epsg.io/4258).
 
       - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -59,14 +59,14 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to do caching. Default is `TRUE`. See **Caching
-      strategies** section in
+  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
+      **Caching strategies** section in
       [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
 
   `update_cache`
 
-  :   Logical. Should the cached file be refreshed? Default is `FALSE`.
-      When set to `TRUE`, it will force a new download.
+  :   Logical. If `TRUE`, refreshes the cached file and forces a new
+      download. Defaults to `FALSE`.
 
   `cache_dir`
 
@@ -79,9 +79,9 @@ Copyright:
   :   Character string. Type of geometry to be returned. Options
       available are:
 
-      - "RG": Regions - `MULTIPOLYGON/POLYGON` object.
+      - `"RG"`: regions, returned as a `MULTIPOLYGON/POLYGON` object.
 
-      - "LB": Labels - `POINT` object.
+      - `"LB"`: labels, returned as a `POINT` object.
 
   `ext`
 
@@ -90,12 +90,12 @@ Copyright:
 
   `verbose`
 
-  :   logical. If `TRUE` displays informational messages.
+  :   A logical value. If `TRUE` displays informational messages.
 
   `resolution`
 
-  :   character string or number. Resolution of the geospatial data. One
-      of:
+  :   A character string or numeric value with the geospatial data
+      resolution. One of:
 
       - `"60"`: 1:60 million.
 
@@ -116,20 +116,20 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 When using `ccaa` you can use and mix names and NUTS codes (levels 1 or
 2), ISO codes (corresponding to level 2) or `codauto` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
-Ceuta and Melilla are considered as Autonomous Communities in this
-function.
+Ceuta and Melilla are included at the Autonomous Communities and Cities
+level in this function.
 
-When calling a NUTS1 level, all the Autonomous Communities of that level
-will be added.
+When calling a NUTS 1 level, all Autonomous Communities and Cities of
+that level are added.
 
 ## Note
 
 Please check the download and usage provisions on
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
 
 ## See also
 
-Other datasets representing political borders:
+Political and administrative boundary datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md),
@@ -145,7 +145,7 @@ Other datasets representing political borders:
 [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
 [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
-Datasets provided by GISCO:
+Datasets sourced from GISCO:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),
@@ -162,7 +162,7 @@ ggplot(ccaa) +
   geom_sf()
 
 
-# Random CCAA
+# Random Autonomous Communities and Cities.
 random_ccaa <- esp_get_ccaa(ccaa = c(
   "Euskadi",
   "Catalunya",
@@ -178,7 +178,7 @@ ggplot(random_ccaa) +
   coord_sf(crs = 3857)
 
 
-# All CCAA of a Zone plus an addition
+# All Autonomous Communities and Cities of a NUTS 1 region plus one.
 
 mixed <- esp_get_ccaa(ccaa = c("La Rioja", "Noroeste"))
 
@@ -186,14 +186,14 @@ ggplot(mixed) +
   geom_sf()
 
 
-# Combine with giscoR to get countries
+# Combine with giscoR to get countries.
 # \donttest{
 
 library(giscoR)
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 
-res <- 20 # Set the same resolution
+res <- 20 # Use the same resolution.
 
 europe <- gisco_get_countries(resolution = res)
 ccaa <- esp_get_ccaa(moveCAN = FALSE, resolution = res)

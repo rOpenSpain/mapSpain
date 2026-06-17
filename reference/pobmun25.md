@@ -38,12 +38,12 @@ Spain for 2025.
 
 ## Source
 
-INE: Instituto Nacional de Estadistica
+INE, Instituto Nacional de Estadística.
 <https://www.ine.es/dyngs/INEbase/categoria.htm?c=Estadistica_P&cid=1254734710990>.
 
 ## See also
 
-Other datasets:
+Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md)

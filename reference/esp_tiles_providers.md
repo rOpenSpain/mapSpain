@@ -1,10 +1,10 @@
 # Public WMS and WMTS providers for Spain
 
-A named [`list`](https://rdrr.io/r/base/list.html) of length 102
-containing URL information for different public WMS and WMTS tile
-providers of Spain.
+A named [`list`](https://rdrr.io/r/base/list.html) of length 102,
+containing URL information from different public WMS and WMTS tile
+providers in Spain.
 
-Implementation of the JavaScript plugin
+This dataset is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
@@ -13,15 +13,11 @@ Implementation of the JavaScript plugin
 A named [`list`](https://rdrr.io/r/base/list.html) of available
 providers with the following structure:
 
-- Each list item is named with the provider alias.
-
-- Each element contains two nested named lists:
-
-  - `static` with the parameters required to obtain static map tiles,
-    plus an additional item named `attribution`.
-
-  - `leaflet` with additional parameters to pass to
-    [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
+Each list item is named with the provider alias. Each element contains
+two nested named lists: `static` with the parameters required to obtain
+static map tiles plus an additional item named `attribution`, and
+`leaflet` with additional parameters to pass to
+[`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
 ## Source
 
@@ -240,7 +236,7 @@ are:
 
 ## See also
 
-Other datasets:
+Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md),
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/reference/esp_nuts_2024.md),
 [`pobmun25`](https://ropenspain.github.io/mapSpain/reference/pobmun25.md)
@@ -249,7 +245,7 @@ Other datasets:
 
 ``` r
 data("esp_tiles_providers")
-# Get a single provider
+# Get a single provider.
 
 single <- esp_tiles_providers[["IGNBase.Todo"]]
 single$static

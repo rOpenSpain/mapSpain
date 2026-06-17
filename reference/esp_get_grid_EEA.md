@@ -2,7 +2,7 @@
 
 **\[defunct\]**
 
-This function is defunct as the source file is not available any more.
+This function is defunct because the source file is no longer available.
 
 ## Usage
 
@@ -31,14 +31,14 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
   Character. The geographic scope of the grid:
 
-  - `"main"`: Mainland Spain (default)
+  - `"main"`: Mainland Spain (default).
 
-  - `"canary"`: Canary Islands
+  - `"canary"`: Canary Islands.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it will force a new download.
+  Logical. If `TRUE`, refreshes the cached file and forces a new
+  download. Defaults to `FALSE`.
 
 - cache_dir:
 
@@ -48,7 +48,7 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 

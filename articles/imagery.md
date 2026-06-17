@@ -1,8 +1,8 @@
-# Imagery with mapSpain
+# Static map tiles with mapSpain
 
 Visit
 <https://ropenspain.github.io/mapSpain/articles/working_imagery.html> to
-learn how to download imagery for Spain.
+learn how to download and use static map tiles for Spain.
 
 > **Note**
 >

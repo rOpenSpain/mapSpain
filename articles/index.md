@@ -1,23 +1,39 @@
 # Articles
 
-### All articles
+### Guides and appendices
 
-- [Working with
-  imagery](https://ropenspain.github.io/mapSpain/articles/working_imagery.md):
+Practical guides and reference material that complement the package
+vignette.
 
-  Learn how to include imagery in your maps.
+- [Working with static map
+  tiles](https://ropenspain.github.io/mapSpain/articles/working_imagery.md):
+
+  Learn how to include static map tiles in your maps.
+
+- [Appendix: Spanish subdivision names and
+  codes](https://ropenspain.github.io/mapSpain/articles/regioncodes.md):
+
+  Interactive explorer of the subdivision-code data included in the
+  package.
+
+### Talks and presentations
+
+Materials from the Grupo de Usuarios R Madrid session held on 25
+November 2021.
 
 - [mapSpain: maps of Spain in
-  R](https://ropenspain.github.io/mapSpain/articles/mapasesp.md):
+  R](https://ropenspain.github.io/mapSpain/articles/maps_spain.md):
 
-  Create maps of Spain in R quickly and simply.
+  Create maps of Spain in R with administrative boundaries and map
+  tiles.
 
-- [Appendix: codes and names of Spanish
-  regions](https://ropenspain.github.io/mapSpain/articles/regioncodes.md):
+- [mapSpain: mapas de España en R
+  (slides)](https://dieghernan.github.io/rpubs/mapSpain_slides/) :
 
-  Interactive explorer of the data included in the package.
+  Slides from the Grupo de Usuarios R Madrid talk held on 25 November
+  2021.
 
-### Internal articles
+- [Grupo de Usuarios R Madrid
+  (video)](https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/) :
 
-- [Imagery with
-  mapSpain](https://ropenspain.github.io/mapSpain/articles/imagery.md):
+  Recording and event details for the 25 November 2021 session.
