@@ -2,6 +2,8 @@
 
 ## mapSpain 1.2.0
 
+CRAN release: 2026-06-17
+
 - Refactored internal helpers for downloading and reading geospatial
   files, SIANE file handling, EPSG validation, subdivision-code
   filtering, municipal metadata enrichment, empty-result messages and

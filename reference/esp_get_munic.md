@@ -161,7 +161,7 @@ spanish_laplad <- esp_get_munic(
     "La Rioja"
   )
 )
-#> ! The file to be downloaded has size 61 Mb.
+#> ! The file to download is "61 Mb".
 
 breaks <- sort(c(0, 5, 10, 50, 100, 200, 500, 1000, Inf))
 spanish_laplad$dens_breaks <- cut(spanish_laplad$POP_DENS_2023, breaks,

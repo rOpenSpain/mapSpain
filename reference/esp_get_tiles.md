@@ -179,6 +179,7 @@ library(tidyterra)
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # Another provider.
@@ -188,6 +189,7 @@ tile2 <- esp_get_tiles(segovia, type = "MDT")
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # A custom WMTS provider.
@@ -203,6 +205,7 @@ custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
 
 autoplot(custom_wmts_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
@@ -217,6 +220,7 @@ cartodb_dark_tile <- esp_get_tiles(segovia, cartodb_dark,
 
 autoplot(cartodb_dark_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 # }
 ```

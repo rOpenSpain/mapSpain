@@ -355,7 +355,7 @@ administration basemaps to interactive
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Visualise `SpatRaster` objects as images (from tidyterra)
+  Plot `SpatRaster` objects as images (from tidyterra)
 
 ## Natural features
 
