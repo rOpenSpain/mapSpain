@@ -89,10 +89,10 @@
 #' province, like Madrid, Asturias or Murcia, in this database.
 #'
 #' @family datasets
-#' @encoding UTF-8
 #' @docType data
 #' @name esp_codelist
 #'
+#' @encoding UTF-8
 #' @examples
 #'
 #' data("esp_codelist")
@@ -128,10 +128,10 @@ NULL
 #' ```
 #'
 #' @family datasets
-#' @encoding UTF-8
 #' @docType data
 #' @name pobmun25
 #'
+#' @encoding UTF-8
 #' @examples
 #' data("pobmun25")
 NULL
@@ -173,10 +173,10 @@ NULL
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @family datasets
-#' @encoding UTF-8
 #' @docType data
 #' @name esp_tiles_providers
 #'
+#' @encoding UTF-8
 #' @examples
 #' data("esp_tiles_providers")
 #' # Get a single provider.
@@ -227,10 +227,10 @@ NULL
 #'
 #' @seealso [esp_get_nuts()]
 #' @family datasets
-#' @encoding UTF-8
 #' @docType data
 #' @name esp_nuts_2024
 #'
+#' @encoding UTF-8
 #' @examples
 #' data("esp_nuts_2024")
 #' head(esp_nuts_2024)

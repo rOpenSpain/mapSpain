@@ -11,6 +11,7 @@
 #' When calling a higher level (province, Autonomous Community or City, or
 #' NUTS 1), all municipalities of that level are added.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_lau()] and [giscoR::gisco_get_communes()] for valid
 #'   values.
@@ -30,9 +31,9 @@
 #' - [giscoR::gisco_get_lau()].
 #' - [giscoR::gisco_get_communes()].
 #'
-#' @family political
 #' @family municipalities
 #' @family gisco
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

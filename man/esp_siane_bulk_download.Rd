@@ -37,7 +37,7 @@ esp_siane_bulk_download(
 }
 \arguments{
 \item{cache_dir}{Character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\strong{Caching}.}
 
 \item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}
@@ -52,6 +52,16 @@ See \strong{Examples}.
 Download zipped data from SIANE to the \code{\link[=esp_set_cache_dir]{cache_dir}}
 and extract the relevant files.
 }
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
+}
+
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 tmp <- file.path(tempdir(), "testexample")
@@ -72,22 +82,6 @@ unlink(tmp, force = TRUE, recursive = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Political and administrative boundary datasets:
-\code{\link[=esp_get_capimun]{esp_get_capimun()}},
-\code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
-\code{\link[=esp_get_comarca]{esp_get_comarca()}},
-\code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
-\code{\link{esp_get_gridmap}},
-\code{\link[=esp_get_munic]{esp_get_munic()}},
-\code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},
-\code{\link[=esp_get_nuts]{esp_get_nuts()}},
-\code{\link[=esp_get_prov]{esp_get_prov()}},
-\code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}},
-\code{\link{esp_get_simpl}},
-\code{\link[=esp_get_spain]{esp_get_spain()}},
-\code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}}
-
 Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},

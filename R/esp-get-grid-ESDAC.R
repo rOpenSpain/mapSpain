@@ -4,10 +4,11 @@
 #' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
 #' provided by the European Soil Data Centre (ESDAC).
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param resolution Numeric. Resolution of the grid in kilometers. Can be `1`
 #'   or `10`.
 #'
-#' @inheritParams esp_get_grid_EEA
+#' @inheritParams esp_get_nuts
 #' @inherit esp_get_grid_EEA return
 #' @source
 #' [EEA reference

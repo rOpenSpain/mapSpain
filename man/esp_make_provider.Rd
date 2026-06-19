@@ -21,6 +21,9 @@ esp_make_provider(id, q, service, layers, ...)
 }
 \value{
 A named list with two elements \code{id} and \code{q}.
+
+For a list of potential providers from Spain, check the
+\href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
 }
 \description{
 Helper function for \code{\link[=esp_get_tiles]{esp_get_tiles()}} that helps to create a custom provider.
@@ -56,11 +59,6 @@ tidyterra::autoplot(mytile) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=esp_get_tiles]{esp_get_tiles()}}.
-
-For a list of potential providers from Spain, check the
-\href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.
-
 Static map tiles and imagery:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
 \code{\link[=esp_get_tiles]{esp_get_tiles()}}

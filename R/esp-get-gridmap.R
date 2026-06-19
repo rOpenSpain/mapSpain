@@ -27,12 +27,11 @@
 #'
 #' @inherit esp_get_nuts return
 #'
-#' @seealso [esp_get_simpl()].
-#'
-#' @family political
-#' @encoding UTF-8
+#' @family boundary_helpers
+#' @concept political
 #' @rdname esp_get_gridmap
 #' @name esp_get_gridmap
+#' @encoding UTF-8
 #' @export
 #' @examplesIf esp_check_access()
 #' \donttest{

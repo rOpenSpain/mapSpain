@@ -53,77 +53,80 @@ home:
 
 reference:
 - title: Political and administrative boundary datasets
-  desc: |
-    These functions return <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects representing
-    political and administrative boundaries.
+  desc: >
+    Functions that return [`sf`](https://CRAN.R-project.org/package=sf)
+    objects representing political and administrative boundaries.
 - subtitle: CartoBase ANE (Atlas Nacional de España)
-  description: |
-    Datasets sourced from CartoBase ANE.
-  contents:
+- contents:
   - has_concept("siane")
-- subtitle: GISCO
-  description: |
-    Datasets sourced from GISCO and Eurostat.
-  contents:
+- subtitle: GISCO and Eurostat
+- contents:
   - has_concept("gisco")
-- subtitle: Additional boundary helpers
-  contents:
-  - has_concept("can_helpers")
-  - esp_get_comarca
-  - esp_get_hex_prov
-  - esp_get_simpl
+- subtitle: Other boundary datasets and representations
+- contents:
+  - has_concept("boundary_helpers")
+
+- title: Natural features
+  desc: >
+    Functions that return `sf` objects representing terrain, inland waters
+    and other natural features.
+- contents:
+  - has_concept("natural")
+
+- title: Transport infrastructure
+  desc: >
+    Functions that return `sf` objects representing roads, railways and
+    stations.
+- contents:
+  - has_concept("infrastructure")
+
+- title: Geographical grids
+  desc: >
+    Functions that provide standardized geographical grids from Spanish and
+    European public institutions.
+- contents:
+  - has_concept("grids")
+
 - title: Static map tiles and imagery
-  desc: |
-    Functions that return static map tiles or add Spanish public administration
-    basemaps to interactive <a
-    href="https://CRAN.R-project.org/package=leaflet"
-    class="external-link"><span class="pkg">leaflet</span></a> maps.
-  contents:
+  desc: >
+    Functions for downloading static map tiles and adding Spanish public
+    administration basemaps to interactive
+    [`leaflet`](https://CRAN.R-project.org/package=leaflet) maps.
+- contents:
   - has_concept("images")
   - terra::plotRGB()
   - leaflet::addProviderTiles()
   - tidyterra::geom_spatraster_rgb()
-- title: Natural features
-  desc: |
-    These functions return <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects with natural
-    features.
-  contents:
-  - has_concept("natural")
-- title: Transport infrastructure
-  desc: |
-    These functions return <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects with
-    transport infrastructure features.
-  contents:
-  - has_concept("infrastructure")
-- title: Cache management
-  contents: has_concept("cache utilities")
-- title: Dictionary and translation helpers
-  desc: |
-    Translate Spanish subdivision names across languages and coding standards.
-  contents:
+
+- title: Spatial helpers
+  desc: >
+    Helpers for repositioning the Canary Islands and creating inset boxes.
+- contents:
+  - has_concept("can_helpers")
+
+- title: Codes and translations
+  desc: >
+    Functions for converting Spanish subdivision identifiers and translating
+    subdivision names.
+- contents:
   - has_concept("dictionary")
-- title: Datasets
-  desc: |
-    Datasets included with <a href="https://CRAN.R-project.org/package=mapSpain"
-    class="external-link"><span class="pkg">mapSpain</span></a>.
-  contents:
+
+- title: Cache management
+- contents:
+  - has_concept("cache utilities")
+
+- title: Included datasets
+  desc: Datasets distributed with mapSpain.
+- contents:
   - has_concept("datasets")
-- title: Geographical grid datasets
-  desc: |
-    Geographical grids are agreed, defined and harmonized grid networks with
-    standardized locations and grid cell sizes.
-  contents:
-  - has_concept("grids")
-- title: About the package
-  contents:
+
+- title: About mapSpain
+- contents:
   - mapSpain-package
 
 articles:
 - title: Guides and appendices
-  desc: |
+  desc: >
     Practical guides and reference material that complement the package
     vignette.
   navbar: ~
@@ -132,7 +135,7 @@ articles:
   - articles/regioncodes
 - title: Talks and presentations
   navbar: Talks
-  desc: |
+  desc: >
     Materials from the Grupo de Usuarios R Madrid session held on
     25 November 2021.
   contents:

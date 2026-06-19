@@ -44,6 +44,7 @@
 #'
 #' `x <- sf::st_transform(x, 3857)`
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #'
 #' @param type This argument can be one of:
@@ -85,11 +86,11 @@
 #' - [esp_tiles_providers].
 #'
 #' @family images
-#' @encoding UTF-8
 #' @rdname esp_get_tiles
 #' @name esp_get_tiles
 #' @order 1
 #'
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

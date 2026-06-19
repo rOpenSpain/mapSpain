@@ -8,19 +8,20 @@
 #' Dataset derived from NUTS data provided by GISCO. Check [esp_get_nuts()] for
 #' details.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
-#' @inherit esp_get_nuts
+#' @inherit esp_get_nuts return source
 #' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
-#' @family political
 #' @family nuts
 #' @family gisco
-#' @encoding UTF-8
+#' @concept political
 #' @rdname esp_get_spain
 #' @name esp_get_spain
 #'
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

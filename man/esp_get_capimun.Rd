@@ -56,14 +56,14 @@ starts as of 2005.}
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
-See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Defaults to \code{TRUE}.
+See \strong{Caching}.}
 
 \item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\strong{Caching}.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
@@ -100,18 +100,16 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 When calling a higher level (province, Autonomous Community or City, or
 NUTS 1), all municipalities of that level are added.
 }
-\note{
-Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
-a historical database of Spanish municipal boundaries is also available,
-offering higher-resolution geometries that may be more appropriate for
-GIS-oriented workflows:
-\itemize{
-\item Goerlich, F. J. & Pérez Vázquez, P. (2025). \emph{Base de datos histórica de
-contornos municipales de España -LAU2boundaries4Spain-} [Data set].
-Zenodo. \doi{10.5281/zenodo.15345101},
-\url{https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html}.
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
 }
-}
+
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
@@ -146,22 +144,6 @@ ggplot(points) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Political and administrative boundary datasets:
-\code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
-\code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
-\code{\link[=esp_get_comarca]{esp_get_comarca()}},
-\code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
-\code{\link{esp_get_gridmap}},
-\code{\link[=esp_get_munic]{esp_get_munic()}},
-\code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},
-\code{\link[=esp_get_nuts]{esp_get_nuts()}},
-\code{\link[=esp_get_prov]{esp_get_prov()}},
-\code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}},
-\code{\link{esp_get_simpl}},
-\code{\link[=esp_get_spain]{esp_get_spain()}},
-\code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
-\code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
-
 Datasets sourced from CartoBase ANE (Atlas Nacional de España):
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},

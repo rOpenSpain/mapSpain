@@ -23,9 +23,9 @@
 #' `LINESTRING` (other styles).
 #'
 #' @family can_helpers
-#' @encoding UTF-8
 #' @rdname esp_get_can_box
 #' @name esp_get_can_box
+#' @encoding UTF-8
 #' @export
 #'
 #' @examples

@@ -87,4 +87,7 @@ esp_dict_translate(vals, lang = "ga")
 
 esp_dict_translate(vals, lang = "ga", all = TRUE)
 }
+\seealso{
+\code{\link[countrycode:countrycode]{countrycode::countrycode()}} and \link{esp_codelist}.
+}
 \concept{dictionary}

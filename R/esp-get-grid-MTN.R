@@ -44,7 +44,7 @@
 #'
 #' **MTN25_ETRS89_ceuta_melilla_alboran**
 #'
-#'  MTN25 grid corresponding to Ceuta, Melilla, Alboran and Spanish territories
+#' MTN25 grid corresponding to Ceuta, Melilla, Alboran and Spanish territories
 #' in North Africa, adjusted to the new official geodetic reference system
 #' ETRS89, in geographical coordinates (longitude, latitude).
 #'
@@ -76,9 +76,10 @@
 #' series of the map, taking into account the special distribution of the
 #' Canary Islands sheets.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param grid Name of the grid to be loaded. See **Details**.
 #'
-#' @inheritParams esp_get_grid_EEA
+#' @inheritParams esp_get_nuts
 #' @inherit esp_get_grid_EEA return
 #' @source IGN data distributed through the `sianedata/MTN` data branch (see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN>).

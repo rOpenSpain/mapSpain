@@ -24,10 +24,12 @@
 #' corresponding element will be `NA` and a warning is emitted via
 #' [cli::cli_alert_warning()].
 #'
+#' @seealso [countrycode::countrycode()] and [esp_codelist].
+#'
 #' @family dictionary
-#' @encoding UTF-8
 #' @rdname esp_dict
 #' @name esp_dict_region_code
+#' @encoding UTF-8
 #' @export
 #'
 #' @examples

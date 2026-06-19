@@ -15,16 +15,17 @@
 #' When calling a higher level (Autonomous Community or City, or NUTS 1), all
 #' provinces of that level are added.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param prov A vector of names, codes or both for provinces, or `NULL` to get
 #'   all the provinces. See **Details**.
 #'
 #' @inheritParams esp_get_nuts
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
-#' @inherit esp_get_nuts
+#' @inherit esp_get_nuts return source
 #'
-#' @family political
 #' @family gisco
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

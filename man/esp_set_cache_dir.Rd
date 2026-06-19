@@ -54,6 +54,16 @@ moved from \code{rappdirs::user_config_dir("mapSpain", "R")} to
 transfers previous configuration files from the old to the new location.
 A message appears once during this migration.
 }
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
+}
+
 \section{Caching strategies}{
 
 
@@ -61,7 +71,7 @@ Some files can be read from their online source without caching using the
 option \code{cache = FALSE}. Otherwise the source files are downloaded to
 your computer. \CRANpkg{mapSpain} implements the following caching options:
 \itemize{
-\item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
+\item For occasional use, rely on the default \code{\link[base:tempdir]{base::tempdir()}}-based cache (no
 install).
 \item Modify the cache for a single session by setting
 \code{esp_set_cache_dir(cache_dir = "a/path/here")}.

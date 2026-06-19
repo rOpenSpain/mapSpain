@@ -37,12 +37,12 @@ Initial position can be adjusted using the vector of coordinates. See
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
-    \item{\code{cache}}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
-See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+    \item{\code{cache}}{Logical. Whether to cache downloaded files. Defaults to \code{TRUE}.
+See \strong{Caching}.}
     \item{\code{update_cache}}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\strong{Caching}.}
     \item{\code{spatialtype}}{Character string. Type of geometry to be returned.
 Options available are:
 \itemize{
@@ -80,10 +80,16 @@ level in this function.
 When calling a NUTS 1 level, all Autonomous Communities and Cities of that
 level are added.
 }
-\note{
-Please check the download and usage provisions on
-\code{\link[giscoR:gisco_attributions]{giscoR::gisco_attributions()}}.
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
 }
+
 \examples{
 ccaa <- esp_get_ccaa()
 
@@ -137,22 +143,6 @@ ggplot(europe) +
 }
 }
 \seealso{
-Political and administrative boundary datasets:
-\code{\link[=esp_get_capimun]{esp_get_capimun()}},
-\code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
-\code{\link[=esp_get_comarca]{esp_get_comarca()}},
-\code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
-\code{\link{esp_get_gridmap}},
-\code{\link[=esp_get_munic]{esp_get_munic()}},
-\code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},
-\code{\link[=esp_get_nuts]{esp_get_nuts()}},
-\code{\link[=esp_get_prov]{esp_get_prov()}},
-\code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}},
-\code{\link{esp_get_simpl}},
-\code{\link[=esp_get_spain]{esp_get_spain()}},
-\code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}},
-\code{\link[=esp_siane_bulk_download]{esp_siane_bulk_download()}}
-
 Datasets sourced from GISCO:
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},

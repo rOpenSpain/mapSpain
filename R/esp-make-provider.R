@@ -22,8 +22,6 @@
 #' @return
 #' A named list with two elements `id` and `q`.
 #'
-#' @seealso [esp_get_tiles()].
-#'
 #' For a list of potential providers from Spain, check the
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).
 #'

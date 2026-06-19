@@ -19,6 +19,7 @@
 #' Nature Data Bank's specifications. The data are downloaded from the
 #' `sianedata/MITECO/dist` data branch and is regularly updated.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param resolution Numeric. Resolution of the grid in kilometers. Must be one
 #'   of:
 #'   - `5`: 5 x 5 kilometer cells.

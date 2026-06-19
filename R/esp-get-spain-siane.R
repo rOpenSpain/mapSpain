@@ -3,11 +3,12 @@
 #' @description
 #' Returns the boundaries of Spain as a single [`sf`][sf::st_sf] `POLYGON`.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritDotParams esp_get_ccaa_siane -ccaa -rawcols
 #' @inherit esp_get_ccaa_siane source return
-#' @family political
 #' @family siane
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

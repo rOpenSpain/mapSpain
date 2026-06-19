@@ -15,12 +15,13 @@
 #' When calling a higher level (province, Autonomous Community or City, or
 #' NUTS 1), all municipalities of that level are added.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_munic_siane
-#' @inherit esp_get_munic_siane
+#' @inherit esp_get_munic_siane return source
 #'
-#' @family political
 #' @family siane
 #' @family municipalities
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

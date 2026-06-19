@@ -7,6 +7,7 @@
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param resolution `r lifecycle::badge("deprecated")` character string.
 #'   Ignored, resolution `3` (the most detailed) will always be provided.
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
@@ -16,10 +17,10 @@
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_ccaa_siane return source
 #' @family natural
-#' @encoding UTF-8
 #' @rdname esp_get_landwater
 #' @name esp_get_landwater
 #'
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

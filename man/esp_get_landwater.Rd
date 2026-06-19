@@ -63,14 +63,14 @@ esp_get_wetlands(
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{Logical. Whether to cache downloaded files. Default is \code{TRUE}.
-See \strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\item{cache}{Logical. Whether to cache downloaded files. Defaults to \code{TRUE}.
+See \strong{Caching}.}
 
 \item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\strong{Caching}.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
@@ -98,6 +98,16 @@ Object representing rivers, lagoons, reservoirs and wetlands of Spain.
 Metadata available on
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/}.
 }
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
+}
+
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

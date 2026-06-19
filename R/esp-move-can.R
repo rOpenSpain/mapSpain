@@ -19,9 +19,7 @@
 #' coordinates instead of the modified ones.
 #'
 #' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
-#' @param moveCAN A logical `TRUE/FALSE` or a vector of coordinates
-#'   `c(lat, lon)`. It places the Canary Islands close to Spain's mainland.
-#'   Initial position can be adjusted using the vector of coordinates.
+#' @inheritParams esp_get_nuts
 #'
 #' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`,
 #'   displaced accordingly.

@@ -12,7 +12,8 @@ esp_move_can(x, moveCAN = TRUE)
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
-Initial position can be adjusted using the vector of coordinates.}
+Initial position can be adjusted using the vector of coordinates. See
+\strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x},

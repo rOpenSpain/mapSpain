@@ -4,14 +4,14 @@
 #' Download zipped data from SIANE to the [`cache_dir`][esp_set_cache_dir()]
 #' and extract the relevant files.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_prov
 #' @inherit esp_get_ccaa_siane source return
 #' @return
 #' An invisible character vector with the full paths of the extracted files.
 #' See **Examples**.
-#' @family political
 #' @family siane
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

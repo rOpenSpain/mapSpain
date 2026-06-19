@@ -2,7 +2,7 @@ list(
   rd_family_title = list(
     images = "Static map tiles and imagery:",
     can_helpers = "Helpers for Canary Islands insets and displacement:",
-    political = "Political and administrative boundary datasets:",
+    boundary_helpers = "Additional boundary datasets and representations:",
     siane = "Datasets sourced from CartoBase ANE (Atlas Nacional de España):",
     gisco = "Datasets sourced from GISCO:",
     municipalities = "Municipality-level datasets:",

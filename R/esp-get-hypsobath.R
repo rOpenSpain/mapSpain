@@ -11,6 +11,7 @@
 #' Metadata available on
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param resolution Character string or number. Resolution of the geospatial
 #'   data. One of:
 #'   - "6.5": 1:6.5 million.

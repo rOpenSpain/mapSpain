@@ -38,6 +38,7 @@
 #' - `"LIV"`: Livestock comarcas defined by the Ministry of Agriculture,
 #'   Fisheries and Food (MAPA).
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param region Character string. A vector of names, codes or both for
 #'   provinces, or `NULL` to get all the comarcas. See **Details**.
 #' @param comarca Character string. A name or [`regex`][base::grep()]
@@ -46,7 +47,6 @@
 #' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
 #'   Type of comarca to return. See **Details**.
 #'
-#' @inheritParams esp_get_prov
 #' @inheritParams esp_get_nuts
 #' @inherit esp_get_nuts return
 #' @source
@@ -59,7 +59,8 @@
 #' in the case of having to answer to third parties due to damages arising
 #' from such use.
 #'
-#' @family political
+#' @family boundary_helpers
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

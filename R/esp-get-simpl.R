@@ -17,23 +17,21 @@
 #' `esp_get_prov("Andalucia")`), all the corresponding units of that level are
 #' provided (in this case, all the provinces of Andalusia).
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param prov,ccaa Character. A vector of names, codes or both for provinces
 #'   and Autonomous Communities and Cities, or `NULL` to get all the data. See
 #'   **Details**.
 #'
-#' @inheritParams esp_get_prov
-#' @inheritParams esp_get_ccaa
 #' @inheritParams esp_get_nuts
 #' @inherit esp_get_nuts return
 #' @source INE: PC-Axis files.
 #'
-#' @seealso [esp_get_gridmap()].
-#'
-#' @family political
-#' @encoding UTF-8
+#' @family boundary_helpers
+#' @concept political
 #' @rdname esp_get_simpl
 #' @name esp_get_simpl
 #'
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf esp_check_access()

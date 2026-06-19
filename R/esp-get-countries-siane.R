@@ -7,17 +7,17 @@
 #' The data included in this cartographic database do not imply any opinion of
 #' the IGN regarding its legal status.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param country Character vector of country codes. It can be a vector of
 #'   country names, ISO3 country codes or ISO2 country codes. See also
 #'   [countrycode::countrycode()].
 #'
 #' @inheritParams esp_get_ccaa_siane
-#' @inheritParams esp_get_prov
 #' @inherit esp_get_ccaa_siane source return
 #' @seealso [giscoR::gisco_get_countries()].
 #'
-#' @family political
 #' @family siane
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

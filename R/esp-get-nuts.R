@@ -30,6 +30,7 @@
 #' candidates based on a bilateral agreement between Eurostat and the respective
 #' statistical agencies.
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param year Year character string or number. Release year of the file. See
 #'   [giscoR::gisco_get_nuts()] for valid values.
 #' @param epsg Character string or number. Projection of the map: 4-digit
@@ -38,12 +39,12 @@
 #'   - `"4326"`: [WGS84](https://epsg.io/4326).
 #'   - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 #'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
-#' @param cache Logical. Whether to cache downloaded files. Default is `TRUE`.
-#'   See **Caching strategies** section in [esp_set_cache_dir()].
+#' @param cache Logical. Whether to cache downloaded files. Defaults to `TRUE`.
+#'   See **Caching**.
 #' @param update_cache Logical. If `TRUE`, refreshes the cached file and forces
 #'   a new download. Defaults to `FALSE`.
 #' @param cache_dir Character string. A path to a cache directory. See
-#'   **Caching strategies** section in [esp_set_cache_dir()].
+#'   **Caching**.
 #' @param region Optional. A vector of region names, NUTS or ISO codes
 #'   (see [esp_dict_region_code()]).
 #'
@@ -67,9 +68,9 @@
 #'
 #' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
 #'
-#' @family political
 #' @family nuts
 #' @family gisco
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'

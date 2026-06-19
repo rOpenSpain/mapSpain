@@ -23,7 +23,7 @@ esp_get_grid_MTN(
 a new download. Defaults to \code{FALSE}.}
 
 \item{cache_dir}{Character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}}.}
+\strong{Caching}.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
@@ -101,6 +101,16 @@ series of the map, taking into account the special distribution of the
 Canary Islands sheets.
 }
 }
+\section{Caching}{
+
+
+Functions that download data store files in \code{cache_dir}. When \code{cache_dir}
+is \code{NULL}, they use the active package cache, which defaults to a temporary
+directory. Set \code{update_cache = TRUE} to replace an existing cached file.
+See \strong{Caching strategies} in \code{\link[=esp_set_cache_dir]{esp_set_cache_dir()}} to configure a
+persistent cache.
+}
+
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

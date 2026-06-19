@@ -12,13 +12,21 @@
 #' `esp_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a configuration file under `tools::R_user_dir("mapSpain", "config")`.
 #'
+#' @section Caching:
+#'
+#' Functions that download data store files in `cache_dir`. When `cache_dir`
+#' is `NULL`, they use the active package cache, which defaults to a temporary
+#' directory. Set `update_cache = TRUE` to replace an existing cached file.
+#' See **Caching strategies** in [esp_set_cache_dir()] to configure a
+#' persistent cache.
+#'
 #' @section Caching strategies:
 #'
 #' Some files can be read from their online source without caching using the
 #' option `cache = FALSE`. Otherwise the source files are downloaded to
 #' your computer. \CRANpkg{mapSpain} implements the following caching options:
 #'
-#' - For occasional use, rely on the default [tempdir()]-based cache (no
+#' - For occasional use, rely on the default [base::tempdir()]-based cache (no
 #'   install).
 #' - Modify the cache for a single session by setting
 #'   `esp_set_cache_dir(cache_dir = "a/path/here")`.
@@ -58,9 +66,9 @@
 #' @seealso [tools::R_user_dir()]
 #'
 #' @family cache utilities
-#' @encoding UTF-8
 #' @rdname esp_set_cache_dir
 #'
+#' @encoding UTF-8
 #' @export
 #' @examples
 #'
@@ -170,9 +178,9 @@ esp_detect_cache_dir <- function() {
 #' @seealso [tools::R_user_dir()]
 #'
 #' @family cache utilities
-#' @encoding UTF-8
-#'
 #' @rdname esp_clear_cache
+#'
+#' @encoding UTF-8
 #' @export
 #' @examples
 #'

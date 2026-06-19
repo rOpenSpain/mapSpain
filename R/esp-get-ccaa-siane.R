@@ -1,5 +1,6 @@
 #' Autonomous Communities and Cities of Spain from SIANE
 #'
+#' @inheritSection esp_set_cache_dir Caching
 #' @param year Character string or number. Release year. It must use format
 #'   `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical information
 #'   starts as of 2005.
@@ -39,8 +40,8 @@
 #' Data distributed through the `sianedata` data branch, see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 #'
-#' @family political
 #' @family siane
+#' @concept political
 #' @encoding UTF-8
 #' @export
 #'
