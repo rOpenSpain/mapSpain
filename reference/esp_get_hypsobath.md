@@ -64,9 +64,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to cache downloaded files. Default is `TRUE`. See
-  **Caching strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
+  Logical. Whether to cache downloaded files. Defaults to `TRUE`. See
+  **Caching**.
 
 - update_cache:
 
@@ -75,9 +74,7 @@ Data distributed through the `sianedata` data branch, see
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - verbose:
 
@@ -104,6 +101,15 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 Metadata available on
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
+
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
 
 ## See also
 

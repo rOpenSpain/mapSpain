@@ -59,9 +59,8 @@ Copyright:
 
   `cache`
 
-  :   Logical. Whether to cache downloaded files. Default is `TRUE`. See
-      **Caching strategies** section in
-      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
+  :   Logical. Whether to cache downloaded files. Defaults to `TRUE`.
+      See **Caching**.
 
   `update_cache`
 
@@ -70,9 +69,7 @@ Copyright:
 
   `cache_dir`
 
-  :   Character string. A path to a cache directory. See **Caching
-      strategies** section in
-      [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md).
+  :   Character string. A path to a cache directory. See **Caching**.
 
   `spatialtype`
 
@@ -122,28 +119,16 @@ level in this function.
 When calling a NUTS 1 level, all Autonomous Communities and Cities of
 that level are added.
 
-## Note
+## Caching
 
-Please check the download and usage provisions on
-[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html).
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
 
 ## See also
-
-Political and administrative boundary datasets:
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
-[`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md),
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md),
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
-[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov_siane.md),
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md),
-[`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
 
 Datasets sourced from GISCO:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),

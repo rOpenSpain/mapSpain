@@ -61,12 +61,12 @@
     <div class="section level2">
       <h2 id="political-and-administrative-boundary-datasets">Political and administrative boundary datasets<a class="anchor" aria-label="anchor" href="#political-and-administrative-boundary-datasets"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects representing political and administrative boundaries.</p></div>
+      <div class="section-desc"><p>Functions that return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><code>sf</code></a> objects representing political and administrative boundaries.</p></div>
 
       <dl></dl></div><div class="section level2">
 
       <h3 id="cartobase-ane-atlas-nacional-de-espa-a-">CartoBase ANE (Atlas Nacional de España)<a class="anchor" aria-label="anchor" href="#cartobase-ane-atlas-nacional-de-espa-a-"></a></h3>
-      <div class="section-desc"><p>Datasets sourced from CartoBase ANE.</p></div>
+
 
       <dl></dl></div><div class="section level2">
 
@@ -123,8 +123,8 @@
         <dd>SIANE bulk download</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="gisco">GISCO<a class="anchor" aria-label="anchor" href="#gisco"></a></h3>
-      <div class="section-desc"><p>Datasets sourced from GISCO and Eurostat.</p></div>
+      <h3 id="gisco-and-eurostat">GISCO and Eurostat<a class="anchor" aria-label="anchor" href="#gisco-and-eurostat"></a></h3>
+
 
       <dl></dl></div><div class="section level2">
 
@@ -167,7 +167,7 @@
         <dd>Boundaries of Spain from GISCO</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="additional-boundary-helpers">Additional boundary helpers<a class="anchor" aria-label="anchor" href="#additional-boundary-helpers"></a></h3>
+      <h3 id="other-boundary-datasets-and-representations">Other boundary datasets and representations<a class="anchor" aria-label="anchor" href="#other-boundary-datasets-and-representations"></a></h3>
 
 
       <dl></dl></div><div class="section level2">
@@ -176,20 +176,6 @@
 
 
       <dl><dt>
-
-          <code><a href="esp_get_can_box.html">esp_get_can_box()</a></code> <code><a href="esp_get_can_box.html">esp_get_can_provinces()</a></code>
-
-        </dt>
-        <dd>Canary Islands inset box and outline</dd>
-
-        <dt>
-
-          <code><a href="esp_move_can.html">esp_move_can()</a></code>
-
-        </dt>
-        <dd>Displace a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object located in the Canary Islands</dd>
-
-        <dt>
 
           <code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>
 
@@ -210,9 +196,92 @@
         </dt>
         <dd>Simplified map of provinces and Autonomous Communities and Cities of Spain</dd>
       </dl></div><div class="section level2">
+      <h2 id="natural-features">Natural features<a class="anchor" aria-label="anchor" href="#natural-features"></a></h2>
+
+      <div class="section-desc"><p>Functions that return <code>sf</code> objects representing terrain, inland waters and other natural features.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
+
+        </dt>
+        <dd>River basin districts of Spain from SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
+
+        </dt>
+        <dd>Hypsometry and bathymetry of Spain from SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
+
+        </dt>
+        <dd>Rivers and wetlands of Spain from SIANE</dd>
+      </dl></div><div class="section level2">
+      <h2 id="transport-infrastructure">Transport infrastructure<a class="anchor" aria-label="anchor" href="#transport-infrastructure"></a></h2>
+
+      <div class="section-desc"><p>Functions that return <code>sf</code> objects representing roads, railways and stations.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
+
+        </dt>
+        <dd>Railways of Spain from SIANE</dd>
+
+        <dt>
+
+          <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
+
+        </dt>
+        <dd>Roads of Spain from SIANE</dd>
+      </dl></div><div class="section level2">
+      <h2 id="geographical-grids">Geographical grids<a class="anchor" aria-label="anchor" href="#geographical-grids"></a></h2>
+
+      <div class="section-desc"><p>Functions that provide standardized geographical grids from Spanish and European public institutions.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code> <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN_ccaa()</a></code>
+
+        </dt>
+        <dd>National geographic grids from BDN (Nature Data Bank)</dd>
+
+        <dt>
+
+          <code><a href="esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code>
+
+        </dt>
+        <dd>National geographic grids from the European Soil Data Centre (ESDAC)</dd>
+
+        <dt>
+
+          <code><a href="esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>
+
+        </dt>
+        <dd>National geographic grids from IGN MTN (Mapa Topografico Nacional)</dd>
+      </dl></div><div class="section level2">
       <h2 id="static-map-tiles-and-imagery">Static map tiles and imagery<a class="anchor" aria-label="anchor" href="#static-map-tiles-and-imagery"></a></h2>
 
-      <div class="section-desc"><p>Functions that return static map tiles or add Spanish public administration basemaps to interactive <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><span class="pkg">leaflet</span></a> maps.</p></div>
+      <div class="section-desc"><p>Functions for downloading static map tiles and adding Spanish public administration basemaps to interactive <a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><code>leaflet</code></a> maps.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -261,9 +330,9 @@
         </dt>
         <dd>Plot <code>SpatRaster</code> objects as images (from tidyterra)</dd>
       </dl></div><div class="section level2">
-      <h2 id="natural-features">Natural features<a class="anchor" aria-label="anchor" href="#natural-features"></a></h2>
+      <h2 id="spatial-helpers">Spatial helpers<a class="anchor" aria-label="anchor" href="#spatial-helpers"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with natural features.</p></div>
+      <div class="section-desc"><p>Helpers for repositioning the Canary Islands and creating inset boxes.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -272,28 +341,21 @@
 
       <dl><dt>
 
-          <code><a href="esp_get_hydrobasin.html">esp_get_hydrobasin()</a></code>
+          <code><a href="esp_get_can_box.html">esp_get_can_box()</a></code> <code><a href="esp_get_can_box.html">esp_get_can_provinces()</a></code>
 
         </dt>
-        <dd>River basin districts of Spain from SIANE</dd>
+        <dd>Canary Islands inset box and outline</dd>
 
         <dt>
 
-          <code><a href="esp_get_hypsobath.html">esp_get_hypsobath()</a></code>
+          <code><a href="esp_move_can.html">esp_move_can()</a></code>
 
         </dt>
-        <dd>Hypsometry and bathymetry of Spain from SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_landwater.html">esp_get_rivers()</a></code> <code><a href="esp_get_landwater.html">esp_get_wetlands()</a></code>
-
-        </dt>
-        <dd>Rivers and wetlands of Spain from SIANE</dd>
+        <dd>Displace a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object located in the Canary Islands</dd>
       </dl></div><div class="section level2">
-      <h2 id="transport-infrastructure">Transport infrastructure<a class="anchor" aria-label="anchor" href="#transport-infrastructure"></a></h2>
+      <h2 id="codes-and-translations">Codes and translations<a class="anchor" aria-label="anchor" href="#codes-and-translations"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> objects with transport infrastructure features.</p></div>
+      <div class="section-desc"><p>Functions for converting Spanish subdivision identifiers and translating subdivision names.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -302,17 +364,10 @@
 
       <dl><dt>
 
-          <code><a href="esp_get_railway.html">esp_get_railway()</a></code> <code><a href="esp_get_railway.html">esp_get_stations()</a></code>
+          <code><a href="esp_dict.html">esp_dict_region_code()</a></code> <code><a href="esp_dict.html">esp_dict_translate()</a></code>
 
         </dt>
-        <dd>Railways of Spain from SIANE</dd>
-
-        <dt>
-
-          <code><a href="esp_get_roads.html">esp_get_roads()</a></code>
-
-        </dt>
-        <dd>Roads of Spain from SIANE</dd>
+        <dd>Convert and translate Spanish subdivision names and codes</dd>
       </dl></div><div class="section level2">
       <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
 
@@ -337,25 +392,9 @@
         </dt>
         <dd>Set your <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> cache directory</dd>
       </dl></div><div class="section level2">
-      <h2 id="dictionary-and-translation-helpers">Dictionary and translation helpers<a class="anchor" aria-label="anchor" href="#dictionary-and-translation-helpers"></a></h2>
+      <h2 id="included-datasets">Included datasets<a class="anchor" aria-label="anchor" href="#included-datasets"></a></h2>
 
-      <div class="section-desc"><p>Translate Spanish subdivision names across languages and coding standards.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_dict.html">esp_dict_region_code()</a></code> <code><a href="esp_dict.html">esp_dict_translate()</a></code>
-
-        </dt>
-        <dd>Convert and translate Spanish subdivision names and codes</dd>
-      </dl></div><div class="section level2">
-      <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
-
-      <div class="section-desc"><p>Datasets included with <a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a>.</p></div>
+      <div class="section-desc"><p>Datasets distributed with mapSpain.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -390,37 +429,7 @@
         </dt>
         <dd>Population of Spain by municipality (2025)</dd>
       </dl></div><div class="section level2">
-      <h2 id="geographical-grid-datasets">Geographical grid datasets<a class="anchor" aria-label="anchor" href="#geographical-grid-datasets"></a></h2>
-
-      <div class="section-desc"><p>Geographical grids are agreed, defined and harmonized grid networks with standardized locations and grid cell sizes.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN()</a></code> <code><a href="esp_get_grid_BDN.html">esp_get_grid_BDN_ccaa()</a></code>
-
-        </dt>
-        <dd>National geographic grids from BDN (Nature Data Bank)</dd>
-
-        <dt>
-
-          <code><a href="esp_get_grid_ESDAC.html">esp_get_grid_ESDAC()</a></code>
-
-        </dt>
-        <dd>National geographic grids from the European Soil Data Centre (ESDAC)</dd>
-
-        <dt>
-
-          <code><a href="esp_get_grid_MTN.html">esp_get_grid_MTN()</a></code>
-
-        </dt>
-        <dd>National geographic grids from IGN MTN (Mapa Topografico Nacional)</dd>
-      </dl></div><div class="section level2">
-      <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
+      <h2 id="about-mapspain">About mapSpain<a class="anchor" aria-label="anchor" href="#about-mapspain"></a></h2>
 
 
 

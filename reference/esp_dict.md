@@ -58,6 +58,12 @@ returned unchanged. Mixing names from different administrative levels,
 for example Autonomous Community or City and province, may produce `NA`
 values for some entries.
 
+## See also
+
+[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html)
+and
+[esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md).
+
 ## Examples
 
 ``` r

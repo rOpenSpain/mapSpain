@@ -260,12 +260,10 @@ EuroGeographics for information regarding their license agreements.
 
 ## Political and administrative boundary datasets
 
-These functions return [sf](https://CRAN.R-project.org/package=sf)
+Functions that return [`sf`](https://CRAN.R-project.org/package=sf)
 objects representing political and administrative boundaries.
 
 ### CartoBase ANE (Atlas Nacional de España)
-
-Datasets sourced from CartoBase ANE.
 
 - [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md)
   : City where the municipal public authorities are based from SIANE
@@ -282,9 +280,7 @@ Datasets sourced from CartoBase ANE.
 - [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/reference/esp_siane_bulk_download.md)
   : SIANE bulk download
 
-### GISCO
-
-Datasets sourced from GISCO and Eurostat.
+### GISCO and Eurostat
 
 - [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md)
   : Autonomous Communities and Cities of Spain from GISCO
@@ -297,17 +293,7 @@ Datasets sourced from GISCO and Eurostat.
 - [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md)
   : Boundaries of Spain from GISCO
 
-### Additional boundary helpers
-
-- [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
-  [`esp_get_can_provinces()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
-  : Canary Islands inset box and outline
-
-- [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
-  :
-
-  Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  object located in the Canary Islands
+### Other boundary datasets and representations
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md)
   : Comarcas of Spain
@@ -326,11 +312,48 @@ Datasets sourced from GISCO and Eurostat.
   : Simplified map of provinces and Autonomous Communities and Cities of
   Spain
 
+## Natural features
+
+Functions that return `sf` objects representing terrain, inland waters
+and other natural features.
+
+- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hydrobasin.md)
+  : River basin districts of Spain from SIANE
+- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hypsobath.md)
+  : Hypsometry and bathymetry of Spain from SIANE
+- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
+  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
+  : Rivers and wetlands of Spain from SIANE
+
+## Transport infrastructure
+
+Functions that return `sf` objects representing roads, railways and
+stations.
+
+- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
+  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
+  : Railways of Spain from SIANE
+- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/reference/esp_get_roads.md)
+  : Roads of Spain from SIANE
+
+## Geographical grids
+
+Functions that provide standardized geographical grids from Spanish and
+European public institutions.
+
+- [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md)
+  [`esp_get_grid_BDN_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md)
+  : National geographic grids from BDN (Nature Data Bank)
+- [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
+  : National geographic grids from the European Soil Data Centre (ESDAC)
+- [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
+  : National geographic grids from IGN MTN (Mapa Topografico Nacional)
+
 ## Static map tiles and imagery
 
-Functions that return static map tiles or add Spanish public
+Functions for downloading static map tiles and adding Spanish public
 administration basemaps to interactive
-[leaflet](https://CRAN.R-project.org/package=leaflet) maps.
+[`leaflet`](https://CRAN.R-project.org/package=leaflet) maps.
 
 - [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md)
   :
@@ -357,29 +380,28 @@ administration basemaps to interactive
 
   Plot `SpatRaster` objects as images (from tidyterra)
 
-## Natural features
+## Spatial helpers
 
-These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with natural features.
+Helpers for repositioning the Canary Islands and creating inset boxes.
 
-- [`esp_get_hydrobasin()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hydrobasin.md)
-  : River basin districts of Spain from SIANE
-- [`esp_get_hypsobath()`](https://ropenspain.github.io/mapSpain/reference/esp_get_hypsobath.md)
-  : Hypsometry and bathymetry of Spain from SIANE
-- [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
-  [`esp_get_wetlands()`](https://ropenspain.github.io/mapSpain/reference/esp_get_landwater.md)
-  : Rivers and wetlands of Spain from SIANE
+- [`esp_get_can_box()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
+  [`esp_get_can_provinces()`](https://ropenspain.github.io/mapSpain/reference/esp_get_can_box.md)
+  : Canary Islands inset box and outline
 
-## Transport infrastructure
+- [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
+  :
 
-These functions return [sf](https://CRAN.R-project.org/package=sf)
-objects with transport infrastructure features.
+  Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+  object located in the Canary Islands
 
-- [`esp_get_railway()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
-  [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/reference/esp_get_railway.md)
-  : Railways of Spain from SIANE
-- [`esp_get_roads()`](https://ropenspain.github.io/mapSpain/reference/esp_get_roads.md)
-  : Roads of Spain from SIANE
+## Codes and translations
+
+Functions for converting Spanish subdivision identifiers and translating
+subdivision names.
+
+- [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
+  [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
+  : Convert and translate Spanish subdivision names and codes
 
 ## Cache management
 
@@ -396,19 +418,9 @@ objects with transport infrastructure features.
   Set your [mapSpain](https://CRAN.R-project.org/package=mapSpain) cache
   directory
 
-## Dictionary and translation helpers
+## Included datasets
 
-Translate Spanish subdivision names across languages and coding
-standards.
-
-- [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
-  [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
-  : Convert and translate Spanish subdivision names and codes
-
-## Datasets
-
-Datasets included with
-[mapSpain](https://CRAN.R-project.org/package=mapSpain).
+Datasets distributed with mapSpain.
 
 - [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)
   : Spanish subdivision codes and names
@@ -425,20 +437,7 @@ Datasets included with
 - [`pobmun25`](https://ropenspain.github.io/mapSpain/reference/pobmun25.md)
   : Population of Spain by municipality (2025)
 
-## Geographical grid datasets
-
-Geographical grids are agreed, defined and harmonized grid networks with
-standardized locations and grid cell sizes.
-
-- [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md)
-  [`esp_get_grid_BDN_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md)
-  : National geographic grids from BDN (Nature Data Bank)
-- [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
-  : National geographic grids from the European Soil Data Centre (ESDAC)
-- [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
-  : National geographic grids from IGN MTN (Mapa Topografico Nacional)
-
-## About the package
+## About mapSpain
 
 - [`mapSpain`](https://ropenspain.github.io/mapSpain/reference/mapSpain-package.md)
   [`mapSpain-package`](https://ropenspain.github.io/mapSpain/reference/mapSpain-package.md)

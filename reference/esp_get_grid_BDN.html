@@ -150,7 +150,7 @@ a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>Character string. A path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -172,6 +172,17 @@ for accepted formats.</p></dd>
     <p>The BDN provides standardized geographic grids for Spain that follow the
 Nature Data Bank's specifications. The data are downloaded from the
 <code>sianedata/MITECO/dist</code> data branch and is regularly updated.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a></h2>
+
+
+
+<p>Functions that download data store files in <code>cache_dir</code>. When <code>cache_dir</code>
+is <code>NULL</code>, they use the active package cache, which defaults to a temporary
+directory. Set <code>update_cache = TRUE</code> to replace an existing cached file.
+See <strong>Caching strategies</strong> in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> to configure a
+persistent cache.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

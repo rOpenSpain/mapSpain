@@ -140,8 +140,8 @@ boundaries.</p>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>Logical. Whether to cache downloaded files. Default is <code>TRUE</code>.
-See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<dd><p>Logical. Whether to cache downloaded files. Defaults to <code>TRUE</code>.
+See <strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -151,7 +151,7 @@ a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>Character string. A path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -221,23 +221,19 @@ statistical agencies.</p>
 <code><a href="https://ropengov.github.io/giscoR/reference/gisco_attributions.html" class="external-link">giscoR::gisco_attributions()</a></code>.</p>
     </div>
     <div class="section level2">
+    <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a></h2>
+
+
+
+<p>Functions that download data store files in <code>cache_dir</code>. When <code>cache_dir</code>
+is <code>NULL</code>, they use the active package cache, which defaults to a temporary
+directory. Set <code>update_cache = TRUE</code> to replace an existing cached file.
+See <strong>Caching strategies</strong> in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> to configure a
+persistent cache.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html" class="external-link">giscoR::gisco_get_nuts()</a></code>, <code><a href="esp_dict.html">esp_dict_region_code()</a></code>.</p>
-<p>Political and administrative boundary datasets:
-<code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
-<code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>,
-<code><a href="esp_get_ccaa_siane.html">esp_get_ccaa_siane()</a></code>,
-<code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>,
-<code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>,
-<code><a href="esp_get_gridmap.html">esp_get_gridmap</a></code>,
-<code><a href="esp_get_munic.html">esp_get_munic()</a></code>,
-<code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,
-<code><a href="esp_get_prov.html">esp_get_prov()</a></code>,
-<code><a href="esp_get_prov_siane.html">esp_get_prov_siane()</a></code>,
-<code><a href="esp_get_simpl.html">esp_get_simpl</a></code>,
-<code><a href="esp_get_spain.html">esp_get_spain()</a></code>,
-<code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code>,
-<code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code></p>
 <p>NUTS boundary datasets:
 <code><a href="esp_get_spain.html">esp_get_spain()</a></code></p>
 <p>Datasets sourced from GISCO:

@@ -23,7 +23,8 @@ esp_move_can(x, moveCAN = TRUE)
 
   A logical `TRUE/FALSE` or a vector of coordinates `c(lat, lon)`. It
   places the Canary Islands close to Spain's mainland. Initial position
-  can be adjusted using the vector of coordinates.
+  can be adjusted using the vector of coordinates. See **Displacing the
+  Canary Islands** in `esp_move_can()`.
 
 ## Value
 

@@ -66,6 +66,14 @@ the configuration file location has moved from
 automatically transfers previous configuration files from the old to the
 new location. A message appears once during this migration.
 
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+`esp_set_cache_dir()` to configure a persistent cache.
+
 ## Caching strategies
 
 Some files can be read from their online source without caching using
@@ -74,8 +82,8 @@ your computer. [mapSpain](https://CRAN.R-project.org/package=mapSpain)
 implements the following caching options:
 
 - For occasional use, rely on the default
-  [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
-  install).
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache
+  (no install).
 
 - Modify the cache for a single session by setting
   `esp_set_cache_dir(cache_dir = "a/path/here")`.
@@ -109,29 +117,29 @@ Cache management utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpPpiKet/mapSpain
+#> ℹ /tmp/RtmpEFSwOM/mapSpain
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache directory is /tmp/RtmpPpiKet/example/cachenew.
+#> ℹ mapSpain cache directory is /tmp/RtmpEFSwOM/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpPpiKet/example/cachenew
-#> [1] "/tmp/RtmpPpiKet/example/cachenew"
+#> ℹ /tmp/RtmpEFSwOM/example/cachenew
+#> [1] "/tmp/RtmpEFSwOM/example/cachenew"
 
 # Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/RtmpPpiKet/mapSpain.
+#> ℹ mapSpain cache directory is /tmp/RtmpEFSwOM/mapSpain.
 #> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpPpiKet/mapSpain
+#> ℹ /tmp/RtmpEFSwOM/mapSpain
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpPpiKet/mapSpain
-#> [1] "/tmp/RtmpPpiKet/mapSpain"
+#> ℹ /tmp/RtmpEFSwOM/mapSpain
+#> [1] "/tmp/RtmpEFSwOM/mapSpain"
 ```
