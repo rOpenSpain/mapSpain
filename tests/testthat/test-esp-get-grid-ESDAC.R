@@ -49,3 +49,21 @@ test_that("ESDAC grid online", {
   unlink(tdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(tdir))
 })
+
+test_that("ESDAC grid less than 10", {
+  skip_on_cran()
+  skip_if_siane_offline()
+
+  local_mocked_bindings(
+    download_and_read_geo_file = function(url, ...) {
+      expect_snapshot(url)
+      NULL
+    }
+  )
+
+  tdir <- file.path(tempdir(), "testthat_test_esdac2")
+  tdir <- create_cache_dir(tdir)
+  expect_null(esp_get_grid_ESDAC(resolution = 1, cache_dir = tdir))
+  unlink(tdir, recursive = TRUE, force = TRUE)
+  expect_false(dir.exists(tdir))
+})

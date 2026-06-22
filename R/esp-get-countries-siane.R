@@ -77,7 +77,7 @@ esp_get_countries_siane <- function(
 #' @noRd
 filter_country <- function(data_sf, country = NULL) {
   if (!"id_iso3" %in% names(data_sf)) {
-    return(data_sf) # nocov
+    return(data_sf)
   }
   fil_codes <- convert_country_code(country)
   if (is.null(fil_codes)) {

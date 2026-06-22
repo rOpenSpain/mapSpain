@@ -118,11 +118,9 @@ esp_set_cache_dir <- function(
   make_msg("info", verbose, msg)
 
   # Install the path in the environment variable.
-  # nocov start
 
   if (install) {
     write_installed_cache_dir(cache_dir, overwrite)
-    # nocov end
   } else {
     make_msg(
       "info",
@@ -292,12 +290,10 @@ write_installed_cache_dir <- function(cache_dir, overwrite = FALSE) {
     return(invisible(cache_dir))
   }
 
-  # nocov start
   cli::cli_abort(c(
     "A {.arg cache_dir} path already exists.",
     "You can overwrite it with {.arg overwrite} set to {.val {TRUE}}."
   ))
-  # nocov end
 }
 
 cache_dir_size <- function(data_dir) {

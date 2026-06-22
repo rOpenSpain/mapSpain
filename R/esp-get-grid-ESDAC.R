@@ -57,7 +57,6 @@ esp_get_grid_ESDAC <- function(
     )
     shp_hint <- "spain"
   } else {
-    # nocov start
     # Tests are slow due to this file size.
     url <- paste0(
       "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
@@ -65,7 +64,6 @@ esp_get_grid_ESDAC <- function(
     )
     shp_hint <- NULL
   }
-  # nocov end
 
   data_sf <- download_and_read_geo_file(
     url,

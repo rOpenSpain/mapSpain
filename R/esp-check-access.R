@@ -15,14 +15,15 @@
 #'
 #' esp_check_access()
 esp_check_access <- function() {
-  if (!httr2::is_online()) {
-    return(FALSE) # nocov
+  if (!is_httr2_online()) {
+    return(FALSE)
   }
   if (on_cran()) {
     return(FALSE)
   }
 
-  req <- httr2::request("https://github.com/rOpenSpain/mapSpain/raw/sianedata/")
+  url <- api_entry_for_checks()
+  req <- httr2::request(url)
   req <- httr2::req_timeout(req, getOption("mapspain_timeout", 300L))
   req <- httr2::req_url_path_append(req, "dist/se89_3_admin_ccaa_a_y.gpkg")
   req <- httr2::req_error(req, is_error = function(x) {
@@ -31,7 +32,7 @@ esp_check_access <- function() {
   req <- httr2::req_method(req, "HEAD")
   resp <- httr2::req_perform(req)
   if (httr2::resp_is_error(resp)) {
-    FALSE # nocov
+    FALSE
   } else {
     TRUE
   }
@@ -43,8 +44,16 @@ esp_check_access <- function() {
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")
   if (identical(env, "")) {
-    !interactive() # nocov
+    !interactive()
   } else {
     !isTRUE(as.logical(env))
   }
+}
+
+is_httr2_online <- function() {
+  httr2::is_online()
+}
+
+api_entry_for_checks <- function() {
+  "https://github.com/rOpenSpain/mapSpain/raw/sianedata/"
 }

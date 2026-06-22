@@ -36,22 +36,33 @@ test_that("Test cache", {
 
 test_that("Mock restart", {
   skip_on_cran()
-  # Store current value
-  getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
-
-  # New empty value
-  Sys.unsetenv("MAPSPAIN_CACHE_DIR")
-  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
 
   # Careful!
   cache_config <- file.path(
     tools::R_user_dir("mapSpain", "config"),
     "mapSpain_cache_dir"
   )
+
   tester_has_config_installed <- file.exists(cache_config)
 
   if (tester_has_config_installed) {
-    stored_val <- readLines(cache_config)
+    stored_val <- readLines(cache_config, warn = FALSE)
+
+    withr::defer({
+      esp_set_cache_dir(
+        stored_val,
+        install = TRUE,
+        overwrite = TRUE,
+        verbose = FALSE
+      )
+    })
+  }
+
+  withr::local_envvar(c(MAPSPAIN_CACHE_DIR = NA))
+
+  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
+
+  if (tester_has_config_installed) {
     esp_clear_cache(cached_data = FALSE, config = TRUE)
     expect_false(file.exists(cache_config))
     expect_false(nzchar(Sys.getenv("MAPSPAIN_CACHE_DIR")))
@@ -80,40 +91,42 @@ test_that("Mock restart", {
   expect_identical(muted, created)
   expect_identical(muted, muted2)
   expect_true(nzchar(Sys.getenv("MAPSPAIN_CACHE_DIR")))
-
-  # Restore cache
-  if (tester_has_config_installed) {
-    esp_set_cache_dir(
-      stored_val,
-      install = TRUE,
-      overwrite = TRUE,
-      verbose = FALSE
-    )
-  }
-
-  # Session value (may differ from current)
-  esp_set_cache_dir(getvar, install = FALSE)
-
-  Sys.setenv("MAPSPAIN_CACHE_DIR" = getvar)
 })
 
 test_that("Mock migration", {
   skip_on_cran()
 
-  # Store current value
-  getvar <- Sys.getenv("MAPSPAIN_CACHE_DIR")
-  # New empty value
-  Sys.unsetenv("MAPSPAIN_CACHE_DIR")
-  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
+  withr::local_envvar(c(MAPSPAIN_CACHE_DIR = NA))
 
-  # Delete now cache files
   old <- rappdirs::user_config_dir("mapSpain", "R")
   new <- tools::R_user_dir("mapSpain", "config")
   fname <- "mapSpain_cache_dir"
 
   old_fname <- file.path(old, fname)
   new_fname <- file.path(new, fname)
-  tester_has_config_installed <- file.exists(new_fname)
+
+  old_exists <- file.exists(old_fname)
+  new_exists <- file.exists(new_fname)
+
+  old_val <- if (old_exists) readLines(old_fname, warn = FALSE) else NULL
+  new_val <- if (new_exists) readLines(new_fname, warn = FALSE) else NULL
+
+  withr::defer({
+    unlink(old_fname)
+    unlink(new_fname)
+
+    if (old_exists) {
+      dir.create(dirname(old_fname), recursive = TRUE, showWarnings = FALSE)
+      writeLines(old_val, old_fname)
+    }
+
+    if (new_exists) {
+      dir.create(dirname(new_fname), recursive = TRUE, showWarnings = FALSE)
+      writeLines(new_val, new_fname)
+    }
+  })
+
+  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
 
   unlink(old_fname)
   unlink(new_fname)
@@ -121,35 +134,21 @@ test_that("Mock migration", {
   expect_false(file.exists(old_fname))
   expect_false(file.exists(new_fname))
 
-  # Create an old cache config
-  nnn <- create_cache_dir(old)
+  create_cache_dir(old)
   writeLines(tempdir(), old_fname)
   expect_true(file.exists(old_fname))
 
-  # On detect we should see a message
   expect_snapshot(detected <- detect_cache_dir_muted())
-  # And never again
+
   expect_silent(detected2 <- detect_cache_dir_muted())
+
   expect_identical(detected, detected2)
   expect_identical(detected, tempdir())
   expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), detected)
 
   expect_false(file.exists(old_fname))
   expect_true(file.exists(new_fname))
-
-  # OK, now re-configure the cache
-  if (tester_has_config_installed) {
-    esp_set_cache_dir(getvar, install = TRUE, overwrite = TRUE, verbose = FALSE)
-  } else {
-    esp_set_cache_dir(getvar, install = FALSE, verbose = FALSE)
-  }
-
-  after_test <- detect_cache_dir_muted()
-
-  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), getvar)
-  expect_identical(after_test, getvar)
 })
-
 test_that("Test cache online", {
   # Get current cache dir
   current <- esp_detect_cache_dir()
@@ -189,4 +188,40 @@ test_that("Test cache online", {
   expect_silent(esp_set_cache_dir(current, verbose = FALSE))
   expect_equal(current, Sys.getenv("MAPSPAIN_CACHE_DIR"))
   expect_true(dir.exists(current))
+})
+
+test_that("write_installed_cache_dir", {
+  mock_mapesp_file <- tempfile()
+  expect_false(file.exists(mock_mapesp_file))
+  local_mocked_bindings(
+    cache_config_file = function(...) {
+      mock_mapesp_file
+    }
+  )
+  write_installed_cache_dir("aabbcc")
+  expect_equal(readLines(mock_mapesp_file), "aabbcc")
+
+  expect_snapshot(error = TRUE, write_installed_cache_dir("another"))
+  expect_silent(write_installed_cache_dir("another", overwrite = TRUE))
+  expect_equal(readLines(mock_mapesp_file), "another")
+})
+test_that("Mock installing", {
+  initial_cdir <- esp_detect_cache_dir()
+  tdir <- file.path(tempdir(), "created_for_tests")
+
+  local_mocked_bindings(
+    create_cache_dir = function(...) {
+      # Bypass create_cache_dir
+      esp_detect_cache_dir()
+    },
+    write_installed_cache_dir = function(cache_dir, overwrite) {
+      expect_false(overwrite)
+      expect_identical(cache_dir, initial_cdir)
+      NULL
+    }
+  )
+
+  esp_set_cache_dir(tdir, install = TRUE, verbose = FALSE)
+  # Ensure nothing changed
+  expect_identical(initial_cdir, esp_detect_cache_dir())
 })
