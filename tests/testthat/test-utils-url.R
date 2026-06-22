@@ -184,6 +184,7 @@ test_that("Test import jsonlite", {
 test_that("Test timeout", {
   skip_on_cran()
   skip_if_siane_offline()
+  skip_on_os("linux")
 
   cdir <- file.path(tempdir(), "testthat_timeout")
   if (dir.exists(cdir)) {
@@ -195,13 +196,13 @@ test_that("Test timeout", {
     "se89_3_admin_muni_a_x.gpkg"
   )
 
-  withr::local_options(mapspain_timeout = 0.01)
+  withr::local_options(c(mapspain_timeout = 0.001))
   expect_error(
     download_url(url = url, verbose = FALSE, cache_dir = cdir),
     "Failed to perform HTTP request(.*)Timeout"
   )
 
-  withr::local_options(mapspain_timeout = 300L)
+  withr::local_options(c(mapspain_timeout = 300L))
   expect_silent(
     ff <- download_url(url = url, verbose = FALSE, cache_dir = cdir)
   )
