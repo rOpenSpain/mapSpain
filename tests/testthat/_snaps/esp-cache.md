@@ -6,7 +6,7 @@
       v mapSpain >= "1.0.0": cache configuration migrated.See Note in `mapSpain::esp_set_cache_dir()` for details.
       i This is a one-time message. It will not be displayed again.
 
-# write_installed_cache_dir
+# Mock write_installed_cache_dir
 
     Code
       write_installed_cache_dir("another")

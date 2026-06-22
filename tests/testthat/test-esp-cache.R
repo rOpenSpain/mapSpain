@@ -190,10 +190,14 @@ test_that("Test cache online", {
   expect_true(dir.exists(current))
 })
 
-test_that("write_installed_cache_dir", {
+test_that("Mock write_installed_cache_dir", {
   mock_mapesp_file <- tempfile()
+  mock_config_dir <- file.path(tempdir(), "a_test")
   expect_false(file.exists(mock_mapesp_file))
   local_mocked_bindings(
+    cache_config_dir = function(...) {
+      mock_config_dir
+    },
     cache_config_file = function(...) {
       mock_mapesp_file
     }
@@ -204,6 +208,8 @@ test_that("write_installed_cache_dir", {
   expect_snapshot(error = TRUE, write_installed_cache_dir("another"))
   expect_silent(write_installed_cache_dir("another", overwrite = TRUE))
   expect_equal(readLines(mock_mapesp_file), "another")
+  unlink(mock_config_dir, recursive = TRUE, force = TRUE)
+  unlink(mock_mapesp_file, force = TRUE)
 })
 test_that("Mock installing", {
   initial_cdir <- esp_detect_cache_dir()
@@ -224,4 +230,47 @@ test_that("Mock installing", {
   esp_set_cache_dir(tdir, install = TRUE, verbose = FALSE)
   # Ensure nothing changed
   expect_identical(initial_cdir, esp_detect_cache_dir())
+})
+
+test_that("Mock reading file", {
+  skip_on_cran()
+  local_mocked_bindings(
+    cache_config_file = function() {
+      "aaaaaaaaa"
+    }
+  )
+
+  expect_null(read_installed_cache_dir())
+
+  tmpfile <- tempfile()
+  writeLines("", tmpfile)
+  local_mocked_bindings(
+    cache_config_file = function() {
+      tmpfile
+    }
+  )
+  expect_null(read_installed_cache_dir())
+
+  writeLines("a_test_here", tmpfile)
+  local_mocked_bindings(
+    cache_config_file = function() {
+      tmpfile
+    }
+  )
+  expect_identical(read_installed_cache_dir(), "a_test_here")
+})
+test_that("Mock detect muted", {
+  mock_path <- file.path(tempdir(), "testing")
+  withr::local_envvar(
+    c(MAPSPAIN_CACHE_DIR = NA)
+  )
+  Sys.getenv("MAPSPAIN_CACHE_DIR")
+  local_mocked_bindings(
+    read_installed_cache_dir = function(...) {
+      mock_path
+    }
+  )
+
+  expect_identical(detect_cache_dir_muted(), mock_path)
+  unlink(mock_path)
 })
