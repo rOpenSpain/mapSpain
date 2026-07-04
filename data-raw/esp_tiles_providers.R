@@ -2,12 +2,22 @@
 rm(list = ls())
 source("./data-raw/helperfuns.R")
 
+devtools::load_all()
 library(dplyr)
 library(tidyverse)
 library(readxl)
 
 df <- read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx")
-unique(df$field)
+
+glimpse(df)
+# Convert WMS to version 1.3.0
+df <- df |>
+  mutate(
+    wmts = str_detect(value, "SERVICE=WMS"),
+    value = if_else(wmts, str_replace_all(value, "1.1.1", "1.3.0"), value),
+    value = if_else(wmts, str_replace_all(value, "&SRS=", "&CRS="), value)
+  ) |>
+  select(-wmts)
 
 df_pivoted <- df |> pivot_wider(values_from = value, names_from = field)
 
@@ -84,6 +94,22 @@ esp_tiles_providers <- lapply(len_prov, function(x) {
 })
 
 names(esp_tiles_providers) <- df_pivoted$provider
+
+all_int <- esp_tiles_providers
+
+all_n <- names(all_int)
+
+validated <- lapply(all_n, function(nm) {
+  static <- all_int[[nm]]$static
+  static$id <- nm
+  validate_provider(static)
+})
+
+prov_type <- vapply(validated, guess_provider_type, FUN.VALUE = character(1))
+all_wms <- all_int[prov_type == "WMS"]
+all_n <- names(all_wms)
+
+
 usethis::use_data(esp_tiles_providers, overwrite = TRUE)
 
 # Check
@@ -91,9 +117,9 @@ usethis::use_data(esp_tiles_providers, overwrite = TRUE)
 rm(list = ls())
 # Try
 
-esp_set_cache_dir("~/R/maplibs/GISCO", install = TRUE, overwrite = TRUE)
+esp_set_cache_dir("~/R/mapslib/GISCO", install = TRUE, overwrite = TRUE)
 
-esp_hlp_detect_cache_dir()
+esp_detect_cache_dir()
 devtools::load_all()
 
 # Try MDT

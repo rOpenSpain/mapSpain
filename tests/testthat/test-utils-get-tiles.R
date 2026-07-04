@@ -71,13 +71,13 @@ test_that("Validate internal", {
   expect_true(guess_provider_type(res) == "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
 
-  # WMS v1.0.0
+  # WMS v1.3.0 no zoom
   expect_silent(res <- validate_provider("Catastro"))
   expect_type(res, "list")
-  expect_true(all(c("id", "q", "attribution", "srs") %in% names(res)))
+  expect_true(all(c("id", "q", "attribution", "crs") %in% names(res)))
   expect_true("min_zoom" %in% names(res))
   expect_true(guess_provider_type(res) == "WMS")
-  expect_true(res$version < "1.3.0")
+  expect_true(res$version >= "1.3.0")
   expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # WMS v1.3.0

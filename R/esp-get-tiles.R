@@ -435,7 +435,11 @@ get_wmts_tile <- function(
   make_msg(
     "info",
     verbose,
-    paste0("{.val ", length(tile_list), "} tile{?s} downloaded.")
+    paste0(
+      "{.val {",
+      length(tile_list),
+      "}} tile{?s} downloaded."
+    )
   )
 
   # Build a SpatRasterCollection.

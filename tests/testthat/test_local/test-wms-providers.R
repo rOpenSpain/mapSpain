@@ -12,6 +12,21 @@ test_that("Test WMS png", {
   }
 
   all_int <- mapSpain::esp_tiles_providers
+  has_min_zoom <- vapply(
+    all_int,
+    function(x) {
+      if (is.null(x$leaflet$minZoom)) {
+        return(FALSE)
+      }
+
+      z <- as.integer(x$leaflet$minZoom)
+
+      z > 9
+    },
+    FUN.VALUE = logical(1)
+  )
+
+  has_min_zoom <- names(has_min_zoom[has_min_zoom])
 
   all_n <- names(all_int)
 
@@ -25,6 +40,8 @@ test_that("Test WMS png", {
   prov_type <- vapply(validated, guess_provider_type, FUN.VALUE = character(1))
   all_wms <- all_int[prov_type == "WMS"]
   all_n <- names(all_wms)
+
+  all_n <- all_n[!all_n %in% has_min_zoom]
 
   galicia <- esp_get_ccaa_siane(ccaa = "Galicia", epsg = 3857, cache_dir = cdir)
   fails <- c(NULL)

@@ -1,5 +1,5 @@
 test_that("Test WMS png", {
-  # test with png
+  # test with png, only with minzoom
 
   cdir <- file.path(tempdir(), "test_png1")
   save_png <- function(code, width = 256, height = 256) {
@@ -15,6 +15,22 @@ test_that("Test WMS png", {
 
   all_n <- names(all_int)
 
+  has_min_zoom <- vapply(
+    all_int,
+    function(x) {
+      if (is.null(x$leaflet$minZoom)) {
+        return(FALSE)
+      }
+
+      z <- as.integer(x$leaflet$minZoom)
+
+      z > 9
+    },
+    FUN.VALUE = logical(1)
+  )
+
+  has_min_zoom <- names(has_min_zoom[has_min_zoom])
+
   expect_silent(
     validated <- lapply(all_n, function(nm) {
       static <- all_int[[nm]]$static
@@ -23,8 +39,11 @@ test_that("Test WMS png", {
     })
   )
   prov_type <- vapply(validated, guess_provider_type, FUN.VALUE = character(1))
+
   all_wms <- all_int[prov_type == "WMS"]
   all_n <- names(all_wms)
+
+  all_n <- all_n[all_n %in% has_min_zoom]
 
   santiago <- esp_get_capimun(munic = "Santiago de Compostela", epsg = 3857)
   santiago <- santiago |> sf::st_buffer(dist = 1000)
