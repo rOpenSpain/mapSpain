@@ -150,7 +150,7 @@ external-articles:
     mapSpain: mapas de España en R (slides)
   description: |
     Slides from the Grupo de Usuarios R Madrid talk held on 25 November 2021.
-  href: https://dieghernan.github.io/rpubs/mapSpain_slides/
+  href: https://dieghernan-mapspain-r.share.connect.posit.cloud/
 - name: madrid-r-video
   title: |
     Grupo de Usuarios R Madrid (video)
