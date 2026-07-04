@@ -479,18 +479,18 @@ test_that("Custom WMS", {
   cdir <- file.path(tempdir(), "custom_wms")
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
+  lugo <- esp_get_prov("lugo", epsg = 3857, cache_dir = cdir)
 
   custom_wms <- list(
     id = "new_cached_test",
     q = paste0(
-      "https://servicios.idee.es/wms-inspire/transportes?",
-      "service=WMS&version=1.1.1&request=GetMap&format=image/png&",
-      "transparent=true&layers=TN.RoadTransportNetwork.RoadLink&srs=EPSG:3857"
+      "https://www.ign.es/wms-inspire/camino-santiago?",
+      "service=WMS&version=1.3.0&request=GetMap&format=image/png&",
+      "transparent=true&layers=camino_frances&crs=EPSG:3857"
     )
   )
 
-  tile <- esp_get_tiles(segovia, type = custom_wms, cache_dir = cdir)
+  tile <- esp_get_tiles(lugo, type = custom_wms, cache_dir = cdir)
   expect_s4_class(tile, "SpatRaster")
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
