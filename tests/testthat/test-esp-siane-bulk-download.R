@@ -23,7 +23,10 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- esp_siane_bulk_download(update_cache = TRUE), "Error")
+  expect_message(
+    n <- esp_siane_bulk_download(update_cache = TRUE),
+    "HTTP error"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {

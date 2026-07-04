@@ -10,9 +10,9 @@
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata/>.
 #'
 #' @inheritSection esp_set_cache_dir Caching
-#' @param domain Character string. Type of river basin district. Possible
-#'   values are `"land"`, including only the groundwaters area or `"landsea"`,
-#'   groundwaters and coastal waters.
+#' @param domain Character string. Type of river basin district:
+#'   - `"land"` includes only groundwater areas.
+#'   - `"landsea"` includes groundwater areas and coastal waters.
 #'
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_ccaa_siane return source

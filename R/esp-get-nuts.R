@@ -66,7 +66,9 @@
 #' Please check the download and usage provisions on
 #' [giscoR::gisco_attributions()].
 #'
-#' @seealso [giscoR::gisco_get_nuts()], [esp_dict_region_code()].
+#' @seealso
+#' - [giscoR::gisco_get_nuts()] retrieves NUTS data from GISCO.
+#' - [esp_dict_region_code()] converts Spanish subdivision identifiers.
 #'
 #' @family nuts
 #' @family gisco
@@ -165,7 +167,7 @@ esp_get_nuts <- function(
       "info",
       verbose,
       "Loaded from {.help mapSpain::esp_nuts_2024} dataset.",
-      "Use {.arg update_cache} set to {.val {TRUE}} to reload from file."
+      "Use {.arg update_cache} set to {.val TRUE} to reload from file."
     )
   } else {
     data_sf <- giscor_get_nuts(

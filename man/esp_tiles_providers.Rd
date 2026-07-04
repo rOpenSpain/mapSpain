@@ -11,7 +11,7 @@ structure:
 
 Each list item is named with the provider alias. Each element contains two
 nested named lists: \code{static} with the parameters required to obtain static
-map tiles plus an additional item named \code{attribution}, and \code{leaflet} with
+map tiles plus an additional item named \code{attribution} and \code{leaflet} with
 additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 \source{
@@ -146,9 +146,15 @@ single$leaflet
 
 }
 \seealso{
+\itemize{
+\item \code{\link[=esp_get_tiles]{esp_get_tiles()}} downloads static map tiles from these providers.
+\item \code{\link[=addProviderEspTiles]{addProviderEspTiles()}} adds these providers to interactive maps.
+}
+
 Included package datasets:
 \code{\link{esp_codelist}},
 \code{\link{esp_nuts_2024}},
 \code{\link{pobmun25}}
 }
 \concept{datasets}
+\keyword{datasets}

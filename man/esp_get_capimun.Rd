@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_capimun}
 \alias{esp_get_capimun}
-\title{City where the municipal public authorities are based from SIANE}
+\title{Municipal seats of government from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
 \url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
@@ -83,11 +83,11 @@ Initial position can be adjusted using the vector of coordinates. See
 object as provided by IGN.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} \code{POINT} object.
 }
 \description{
-Get a \code{\link[sf:st_sf]{sf}} \code{POINT} with the location of the political powers for
-each municipality.
+This function returns an \code{\link[sf:st_sf]{sf}} \code{POINT} locating the seat of
+government for each municipality.
 
 Note that this differs from the centroid of the boundaries of the
 municipality, returned by \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}.
@@ -97,8 +97,9 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
 (see \link{esp_codelist}).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 }
 \section{Caching}{
 
@@ -144,7 +145,7 @@ ggplot(points) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},

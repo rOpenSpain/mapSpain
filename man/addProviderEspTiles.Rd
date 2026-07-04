@@ -69,6 +69,7 @@ leafmap
 }
 
 Static map tiles and imagery:
+\code{\link[=esp_get_attributions]{esp_get_attributions()}},
 \code{\link[=esp_get_tiles]{esp_get_tiles()}},
 \code{\link[=esp_make_provider]{esp_make_provider()}}
 }

@@ -102,8 +102,9 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
 (see \link{esp_codelist}).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 }
 \note{
 Although \CRANpkg{mapSpain} supplies cartographically suitable datasets,
@@ -168,7 +169,9 @@ allmunis_unique |>
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+\code{\link[=esp_get_munic]{esp_get_munic()}}.
+
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},

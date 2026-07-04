@@ -134,7 +134,9 @@ ggplot(ccaas_low) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+\code{\link[=esp_get_ccaa]{esp_get_ccaa()}}.
+
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},

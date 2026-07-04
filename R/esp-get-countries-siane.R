@@ -1,8 +1,7 @@
 #' Countries of the world from SIANE
 #'
 #' @description
-#' This dataset contains the administrative boundaries at country level of the
-#' world.
+#' This dataset contains worldwide country-level administrative boundaries.
 #'
 #' The data included in this cartographic database do not imply any opinion of
 #' the IGN regarding its legal status.
@@ -67,12 +66,13 @@ esp_get_countries_siane <- function(
   data_sf
 }
 
-#' Filter data sf by country
+#' Filter an `sf` object by country
 #'
-#' @param data_sf An `sf` object.
+#' @param data_sf An [`sf`][sf::st_sf] object.
 #' @param country Character vector of country codes or names.
 #'
-#' @return An `sf` object with rows filtered by the provided country vector.
+#' @return An [`sf`][sf::st_sf] object with rows filtered by the provided
+#'   country vector.
 #'
 #' @noRd
 filter_country <- function(data_sf, country = NULL) {

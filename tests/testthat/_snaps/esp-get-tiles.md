@@ -19,5 +19,5 @@
     Code
       res <- esp_get_tiles(point, "IGNBase", cache_dir = cdir, bbox_expand = 0, crop = TRUE)
     Message
-      i Autozoom for a single <POINT> set to 18.
+      i Set `zoom` to "18" for a single `POINT` geometry.
 

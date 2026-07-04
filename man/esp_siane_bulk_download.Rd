@@ -49,8 +49,8 @@ An invisible character vector with the full paths of the extracted files.
 See \strong{Examples}.
 }
 \description{
-Download zipped data from SIANE to the \code{\link[=esp_set_cache_dir]{cache_dir}}
-and extract the relevant files.
+This function downloads zipped data from SIANE to
+\code{\link[=esp_set_cache_dir]{cache_dir}} and extracts the relevant files.
 }
 \section{Caching}{
 
@@ -82,7 +82,7 @@ unlink(tmp, force = TRUE, recursive = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},

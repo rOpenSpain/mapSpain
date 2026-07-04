@@ -1,7 +1,7 @@
 #' Rivers and wetlands of Spain from SIANE
 #'
 #' @description
-#' Object representing rivers, lagoons, reservoirs and wetlands of Spain.
+#' This dataset represents rivers, lagoons, reservoirs and wetlands in Spain.
 #'
 #' @details
 #' Metadata available on
@@ -135,18 +135,12 @@ esp_get_rivers <- function(
   data_sf <- merge_db_value_desc(
     data_sf,
     "persistenciahidrologica",
-    c(
-      "pers_hidro",
-      "pers_hidro_desc"
-    )
+    c("pers_hidro", "pers_hidro_desc")
   )
   data_sf <- merge_db_value_desc(
     data_sf,
     "origenhidrografico",
-    c(
-      "orig_hidro",
-      "orig_hidro_desc"
-    )
+    c("orig_hidro", "orig_hidro_desc")
   )
 
   # Move the Canary Islands.
@@ -216,19 +210,9 @@ esp_get_wetlands <- function(
   data_sf <- merge_db_value_desc(
     data_sf,
     "persistenciahidrologica",
-    c(
-      "pers_hidro",
-      "pers_hidro_desc"
-    )
+    c("pers_hidro", "pers_hidro_desc")
   )
-  data_sf <- merge_db_value_desc(
-    data_sf,
-    "tiporioa",
-    c(
-      "t_rio",
-      "t_rio_desc"
-    )
-  )
+  data_sf <- merge_db_value_desc(data_sf, "tiporioa", c("t_rio", "t_rio_desc"))
 
   name <- ensure_null(name)
   if (!is.null(name)) {

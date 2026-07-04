@@ -1,7 +1,7 @@
 #' Roads of Spain from SIANE
 #'
 #' @description
-#' Object representing the main roads of Spain.
+#' This dataset represents the main roads of Spain.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_railway
@@ -66,28 +66,15 @@ esp_get_roads <- function(
   data_sf <- merge_db_value_desc(
     data_sf,
     "tipocarretera",
-    c(
-      "t_ctra",
-      "t_ctra_desc"
-    )
+    c("t_ctra", "t_ctra_desc")
   )
   data_sf <- merge_db_value_desc(
     data_sf,
     "estadofisico",
-    c(
-      "estado_fis",
-      "estado_fis_desc"
-    )
+    c("estado_fis", "estado_fis_desc")
   )
   data_sf <- merge_db_value_desc(data_sf, "orden", c("orden", "orden_desc"))
-  data_sf <- merge_db_value_desc(
-    data_sf,
-    "acceso",
-    c(
-      "acceso",
-      "acceso_desc"
-    )
-  )
+  data_sf <- merge_db_value_desc(data_sf, "acceso", c("acceso", "acceso_desc"))
 
   # Move the Canary Islands.
   data_sf <- move_can(data_sf, moveCAN)

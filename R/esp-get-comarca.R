@@ -11,8 +11,8 @@
 #' (levels 1, 2 or 3), ISO codes (corresponding to level 2 or 3) or
 #' `"cpro"` (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or City, or
-#' NUTS 1), all comarcas of that level are added.
+#' When calling a higher level, such as a province, Autonomous Community,
+#' Autonomous City or NUTS 1 region, all comarcas of that level are added.
 #'
 #' # About comarcas
 #'
@@ -54,10 +54,9 @@
 #'
 #' @note
 #' The use of the information contained on the
-#' [INE website](https://www.ine.es/en/index.htm) may be carried out by users
-#' or re-use agents, at their own risk, and they will be the sole liable parties
-#' in the case of having to answer to third parties due to damages arising
-#' from such use.
+#' [INE website](https://www.ine.es/en/index.htm) is at the sole risk of users
+#' and re-use agents. They are liable for damages to third parties arising from
+#' such use.
 #'
 #' @family boundary_helpers
 #' @concept political

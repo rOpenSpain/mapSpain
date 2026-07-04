@@ -1,10 +1,11 @@
 #' Hypsometry and bathymetry of Spain from SIANE
 #'
 #' @description
-#' Dataset representing the hypsometry and bathymetry of Spain.
+#' This dataset represents the hypsometry and bathymetry of Spain.
+#'
 #' - **Hypsometry** represents the elevation and depth of features of the
 #'   Earth's surface relative to mean sea level.
-#' - **Bathymetry** is the measurement of the depth of water in oceans, rivers,
+#' - **Bathymetry** is the measurement of the depth of water in oceans, rivers
 #'   or lakes.
 #'
 #' @details

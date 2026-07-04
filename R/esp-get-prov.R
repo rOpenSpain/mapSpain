@@ -12,8 +12,8 @@
 #'
 #' Ceuta and Melilla are considered provinces in this dataset.
 #'
-#' When calling a higher level (Autonomous Community or City, or NUTS 1), all
-#' provinces of that level are added.
+#' When calling a higher level, such as an Autonomous Community, Autonomous
+#' City or NUTS 1 region, all provinces of that level are added.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @param prov A vector of names, codes or both for provinces, or `NULL` to get
@@ -23,6 +23,8 @@
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #'
 #' @inherit esp_get_nuts return source
+#'
+#' @seealso [esp_get_prov_siane()].
 #'
 #' @family gisco
 #' @concept political

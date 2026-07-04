@@ -81,7 +81,7 @@ download_url <- function(
   class(size_dwn) <- class(object.size("a"))
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
-    sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
+    sz_dwn <- paste0("{.val ", format(size_dwn, units = "auto"), "}.")
     make_msg("warning", TRUE, "Download size:", sz_dwn)
     req <- httr2::req_progress(req)
   }
@@ -104,9 +104,9 @@ download_url <- function(
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(c(
-      "{.strong Error {get_status_code}} ({get_status_desc}):",
-      " {.url {url}}."
+    cli::cli_alert_danger(paste0(
+      "HTTP error {.val {get_status_code}} ({.emph {get_status_desc}}) ",
+      "while requesting {.url {url}}."
     ))
     alert_open_issue()
     return(alert_return_null())
@@ -117,11 +117,11 @@ download_url <- function(
   file_local
 }
 
-#' Allow jsonlite in Imports
+#' Include \CRANpkg{jsonlite} in Imports
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the
 #' source package code, so it can be included in the Imports field. Otherwise,
-#' CRAN would complain that it is not directly used.
+#' CRAN would report that it is not directly used.
 #'
 #' We need to import \CRANpkg{jsonlite} because the package makes heavy use of
 #' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists
@@ -144,13 +144,19 @@ for_import_jsonlite <- function() {
   invisible(local)
 }
 
-#' Wrap `httr2::is_online()` for testing
+#' Wrap [httr2::is_online()] for testing
+#'
+#' @param ... Ignored.
+#'
 #' @noRd
 is_online_fun <- function(...) {
   httr2::is_online()
 }
 
-#' Wrap 404 checks for testing
+#' Wrap HTTP 404 checks for testing
+#'
+#' @param ... Ignored.
+#'
 #' @noRd
 is_404 <- function(...) {
   FALSE

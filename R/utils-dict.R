@@ -1,4 +1,4 @@
-#' Generates a master table with all the combinations of codes
+#' Generate a master table with all combinations of codes
 #'
 #' @noRd
 get_master_codes <- function() {
@@ -65,7 +65,7 @@ get_master_codes <- function() {
   dict_codes_df
 }
 
-#' Generates a dictionary for NUTS with all names
+#' Generate a NUTS dictionary with all names
 #' @noRd
 get_master_nuts_nm <- function() {
   # Create base codes.
@@ -175,11 +175,7 @@ get_prov_codes_df <- function() {
 }
 
 get_nuts1_codes_df <- function() {
-  unique(mapSpain::esp_codelist[, c(
-    "nuts2.code",
-    "nuts1.code",
-    "nuts1.name"
-  )])
+  unique(mapSpain::esp_codelist[, c("nuts2.code", "nuts1.code", "nuts1.name")])
 }
 
 get_prov_nuts_codes_df <- function() {

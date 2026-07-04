@@ -74,11 +74,11 @@ data. One of:
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Dataset representing the hypsometry and bathymetry of Spain.
+This dataset represents the hypsometry and bathymetry of Spain.
 \itemize{
 \item \strong{Hypsometry} represents the elevation and depth of features of the
 Earth's surface relative to mean sea level.
-\item \strong{Bathymetry} is the measurement of the depth of water in oceans, rivers,
+\item \strong{Bathymetry} is the measurement of the depth of water in oceans, rivers
 or lakes.
 }
 }

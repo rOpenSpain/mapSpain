@@ -3,21 +3,21 @@
     Code
       n <- convert_to_nuts(NULL)
     Message
-      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! Empty `region`. No NUTS codes found. Returning "NULL".
 
 ---
 
     Code
       n <- convert_to_nuts(NA)
     Message
-      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! Empty `region`. No NUTS codes found. Returning "NULL".
 
 ---
 
     Code
       n <- convert_to_nuts(c(NA, NULL))
     Message
-      ! Empty `region`. No NUTS codes found, returning NULL.
+      ! Empty `region`. No NUTS codes found. Returning "NULL".
 
 ---
 

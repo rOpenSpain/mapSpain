@@ -19,11 +19,11 @@
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
 administrative boundaries of Spain at several levels, including
 Autonomous Communities and Cities, provinces, municipalities and NUTS,
-as **sf** objects.
+as `sf` objects.
 
 **mapSpain** also includes tools to download and process static map
-tiles, plus a [**leaflet**](https://rstudio.github.io/leaflet/) plugin
-for Spanish public administration tile providers.
+tiles and a [**leaflet**](https://rstudio.github.io/leaflet/) plugin for
+Spanish public administration tile providers.
 
 The full package website, with examples and vignettes, is available at
 <https://ropenspain.github.io/mapSpain/>.
@@ -130,7 +130,7 @@ ggplot(ccaa_sf) +
 <img src="man/figures/README-static-1.png" style="width:100.0%"
 alt="Percentage of women by Autonomous Community or City in Spain (2025)" />
 
-You can combine **sf** objects with static map tiles.
+You can combine `sf` objects with static map tiles.
 
 ``` r
 # Get census data.
@@ -226,7 +226,7 @@ ggplot(all_countries) +
 <img src="man/figures/README-giscoR-1.png" style="width:100.0%"
 alt="Locator map of Spain" />
 
-## A note on caching
+## Caching
 
 Some datasets and tiles may be larger than 50 MB. You can use
 **mapSpain** to create a local cache directory with
@@ -258,7 +258,7 @@ A BibTeX entry for LaTeX users is:
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
-      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE from Instituto Geográfico Nacional <https://www.ign.es/>. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
+      abstract = {Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <https://ec.europa.eu/eurostat/web/gisco> and CartoBase ANE (Atlas Nacional de España) from Instituto Geográfico Nacional <https://www.ign.es/>. Includes tools to download and process static map tiles and a leaflet plugin for Spanish public administration tile providers.},
     }
 
 ## Contribute
@@ -277,9 +277,10 @@ Geográfico Nacional.
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
-This package also uses data from GISCO. GISCO
-[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository with multiple datasets at several resolution levels.
+This package also uses data from
+[GISCO](https://ec.europa.eu/eurostat/web/gisco), Eurostat’s geospatial
+open data repository, which provides datasets at several resolution
+levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*

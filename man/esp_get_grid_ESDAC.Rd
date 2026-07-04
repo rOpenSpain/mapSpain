@@ -28,11 +28,11 @@ a new download. Defaults to \code{FALSE}.}
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
+An \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Loads a \code{\link[sf:st_sf]{sf}} \code{POLYGON} with the geographic grids of Spain as
-provided by the European Soil Data Centre (ESDAC).
+This function loads an \code{\link[sf:st_sf]{sf}} \code{POLYGON} with the geographic
+grids of Spain provided by the European Soil Data Centre (ESDAC).
 }
 \section{Caching}{
 
@@ -65,13 +65,13 @@ ggplot(grid) +
 \item Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
 Data Centre: Response to European policy support and public data
 requirements", (2012) \emph{Land Use Policy}, 29 (2), pp. 329-338.
-\doi{10.1016/j.landusepol.2011.07.003}
+\doi{10.1016/j.landusepol.2011.07.003}.
 \item European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
 Commission, Joint Research Centre.
 }
 }
 \seealso{
-Geographical grid datasets:
+Geographic grid data:
 \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}},
 \code{\link[=esp_get_grid_MTN]{esp_get_grid_MTN()}}
 }

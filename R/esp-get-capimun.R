@@ -1,8 +1,8 @@
-#' City where the municipal public authorities are based from SIANE
+#' Municipal seats of government from SIANE
 #'
 #' @description
-#' Get a [`sf`][sf::st_sf] `POINT` with the location of the political powers for
-#' each municipality.
+#' This function returns an [`sf`][sf::st_sf] `POINT` locating the seat of
+#' government for each municipality.
 #'
 #' Note that this differs from the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic_siane()].
@@ -12,12 +12,14 @@
 #' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
 #' (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or City, or
-#' NUTS 1), all municipalities of that level are added.
+#' When calling a higher level, such as a province, Autonomous Community,
+#' Autonomous City or NUTS 1 region, all municipalities of that level are
+#' added.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_munic_siane
-#' @inherit esp_get_munic_siane return source
+#' @inherit esp_get_munic_siane source
+#' @return An [`sf`][sf::st_sf] `POINT` object.
 #'
 #' @family siane
 #' @family municipalities

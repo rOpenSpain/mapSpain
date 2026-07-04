@@ -35,7 +35,7 @@ a new download. Defaults to \code{FALSE}.}
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
+An \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#defunct}{\figure{lifecycle-defunct.svg}{options: alt='[Defunct]'}}}{\strong{[Defunct]}}

@@ -38,7 +38,7 @@ test_that("Pretty match", {
   expect_snapshot(my_fun("error here"), error = TRUE)
 
   # Several values no match
-  expect_snapshot(my_fun(c("an", "error")), error = TRUE)
+  expect_snapshot(my_fun(c("an", "HTTP error")), error = TRUE)
 
   # One value regex
   expect_snapshot(my_fun("5"), error = TRUE)

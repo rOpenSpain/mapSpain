@@ -101,8 +101,8 @@ When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
 
 Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or City, or NUTS 1), all
-provinces of that level are added.
+When calling a higher level, such as an Autonomous Community, Autonomous
+City or NUTS 1 region, all provinces of that level are added.
 }
 \section{Caching}{
 
@@ -125,7 +125,9 @@ esp_get_ccaa_siane() |>
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+\code{\link[=esp_get_prov]{esp_get_prov()}}.
+
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_countries_siane]{esp_get_countries_siane()}},

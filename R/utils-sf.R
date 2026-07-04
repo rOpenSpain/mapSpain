@@ -1,10 +1,10 @@
-#' Read a geospatial file into an sf object with an optional query
+#' Read a geospatial file with an optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param q Optional SQL query string to filter the data during reading.
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
-#' @return An `sf` object containing the geospatial data.
+#' @return An [`sf`][sf::st_sf] object containing the geospatial data.
 #'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
@@ -21,7 +21,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     class(fsize_unit) <- class(object.size("a"))
     thr <- 20 * (1024^2)
     if (fsize > thr) {
-      fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
+      fsize_unit <- paste0("({.val ", format(fsize_unit, units = "auto"), "}).")
       make_msg("warning", TRUE, "Reading a large file:", fsize_unit)
       make_msg("generic", TRUE, "This can take a while.")
     }
@@ -201,15 +201,15 @@ sanitize_transform_sf <- function(data_sf, epsg) {
   sf::st_transform(data_sf, as.double(epsg))
 }
 
-#' Convert sf object to UTF-8
+#' Convert an [`sf`][sf::st_sf] object to UTF-8
 #'
 #' Ensures all character columns use UTF-8 encoding.
 #'
 #' @param data_sf Input object to convert to UTF-8.
 #'
-#' @return An `sf` object with UTF-8 encoding set for all columns.
+#' @return An [`sf`][sf::st_sf] object with UTF-8 encoding set for all columns.
 #'
-#' @source Extracted from [`sf`][sf::st_sf] package.
+#' @source Extracted from the \CRANpkg{sf} package.
 #'
 #' @noRd
 sanitize_sf <- function(data_sf) {

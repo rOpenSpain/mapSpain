@@ -28,61 +28,56 @@ authors:
   Francisco J. Goerlich:
     href: https://www.uv.es/goerlich/
 
-navbar:
-  structure:
-    right:
-    - search
-    - twitter
-    - github
-    - lightswitch
-  components:
-    twitter:
-      icon: fa-twitter
-      href: http://twitter.com/dhernangomez
-      aria-label: Twitter
-
 home:
   title: |
     mapSpain | Administrative boundaries and static map tiles for Spain
   description: |
     Administrative boundaries of Spain at several levels (Autonomous
     Communities and Cities, provinces, municipalities and NUTS), based on GISCO
-    from Eurostat and CartoBase ANE from Instituto Geográfico Nacional.
-    Includes tools to download and process static map tiles and a leaflet
-    plugin for Spanish public administration tile providers.
+    from Eurostat and CartoBase ANE (Atlas Nacional de España) from Instituto
+    Geográfico Nacional. Includes tools to download and process static map tiles
+    and a [`leaflet`](https://CRAN.R-project.org/package=leaflet) plugin for
+    Spanish public administration tile providers.
 
 reference:
-- title: Political and administrative boundary datasets
+- title: Political and administrative boundaries
   desc: >
     Functions that return [`sf`](https://CRAN.R-project.org/package=sf)
     objects representing political and administrative boundaries.
 - subtitle: CartoBase ANE (Atlas Nacional de España)
+  desc: >
+    Boundaries and related utilities based on data from Instituto Geográfico
+    Nacional.
 - contents:
   - has_concept("siane")
 - subtitle: GISCO and Eurostat
+  desc: >
+    Administrative boundaries based on Eurostat GISCO data.
 - contents:
   - has_concept("gisco")
 - subtitle: Other boundary datasets and representations
+  desc: >
+    Additional boundaries and alternative spatial representations.
 - contents:
   - has_concept("boundary_helpers")
 
 - title: Natural features
   desc: >
-    Functions that return `sf` objects representing terrain, inland waters
-    and other natural features.
+    Functions that return [`sf`](https://CRAN.R-project.org/package=sf)
+    objects representing terrain, inland waters and other natural features.
 - contents:
   - has_concept("natural")
 
 - title: Transport infrastructure
   desc: >
-    Functions that return `sf` objects representing roads, railways and
-    stations.
+    Functions that return [`sf`](https://CRAN.R-project.org/package=sf)
+    objects representing roads, railways and stations.
 - contents:
   - has_concept("infrastructure")
 
-- title: Geographical grids
+- title: Geographic grids
   desc: >
-    Functions that provide standardized geographical grids from Spanish and
+    Functions that provide standardized geographic grids from Spanish and
     European public institutions.
 - contents:
   - has_concept("grids")
@@ -112,24 +107,26 @@ reference:
   - has_concept("dictionary")
 
 - title: Cache management
+  desc: >
+    Functions for configuring, locating and clearing the package cache.
 - contents:
   - has_concept("cache utilities")
 
 - title: Included datasets
-  desc: Datasets distributed with mapSpain.
+  desc: Datasets distributed with **mapSpain**.
 - contents:
-  - has_concept("datasets")
+  - has_keyword("datasets")
 
 - title: About mapSpain
+  desc: Package-level documentation and metadata.
 - contents:
   - mapSpain-package
 
 articles:
-- title: Guides and appendices
+- title: Guides
   desc: >
-    Practical guides and reference material that complement the package
-    vignette.
-  navbar: ~
+    Practical guides for working with map imagery and Spanish region codes.
+  navbar: Guides
   contents:
   - articles/working_imagery
   - articles/regioncodes

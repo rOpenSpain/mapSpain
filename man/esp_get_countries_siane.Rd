@@ -72,8 +72,7 @@ country names, ISO3 country codes or ISO2 country codes. See also
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset contains the administrative boundaries at country level of the
-world.
+This dataset contains worldwide country-level administrative boundaries.
 
 The data included in this cartographic database do not imply any opinion of
 the IGN regarding its legal status.
@@ -100,7 +99,7 @@ ggplot(cntries) +
 \seealso{
 \code{\link[giscoR:gisco_get_countries]{giscoR::gisco_get_countries()}}.
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}},

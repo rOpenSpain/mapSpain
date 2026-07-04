@@ -23,7 +23,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- esp_get_grid_ESDAC(update_cache = TRUE), "Error")
+  expect_message(n <- esp_get_grid_ESDAC(update_cache = TRUE), "HTTP error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -54,12 +54,10 @@ test_that("ESDAC grid less than 10", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  local_mocked_bindings(
-    download_and_read_geo_file = function(url, ...) {
-      expect_snapshot(url)
-      NULL
-    }
-  )
+  local_mocked_bindings(download_and_read_geo_file = function(url, ...) {
+    expect_snapshot(url)
+    NULL
+  })
 
   tdir <- file.path(tempdir(), "testthat_test_esdac2")
   tdir <- create_cache_dir(tdir)

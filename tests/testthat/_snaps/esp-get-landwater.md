@@ -3,7 +3,7 @@
     Code
       ss <- esp_get_rivers(cache_dir = cdir, name = "NIDNIFOMDF")
     Message
-      ! No results for `name` "NIDNIFOMDF".
+      ! No results for `name` = "NIDNIFOMDF".
       i Returning empty <sf> object.
 
 ---
@@ -11,7 +11,7 @@
     Code
       ss <- esp_get_wetlands(cache_dir = cdir, name = "NIDNIFOMDF")
     Message
-      ! No results for `name` "NIDNIFOMDF".
+      ! No results for `name` = "NIDNIFOMDF".
       i Returning empty <sf> object.
 
 # Deprecations

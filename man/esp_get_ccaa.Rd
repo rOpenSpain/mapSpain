@@ -143,7 +143,9 @@ ggplot(europe) +
 }
 }
 \seealso{
-Datasets sourced from GISCO:
+\code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}.
+
+GISCO boundary data:
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},
 \code{\link[=esp_get_prov]{esp_get_prov()}},

@@ -7,6 +7,7 @@
 #' @inheritParams esp_get_ccaa_siane
 #' @inheritDotParams esp_get_ccaa_siane -ccaa -rawcols
 #' @inherit esp_get_ccaa_siane source return
+#' @seealso [esp_get_spain()].
 #' @family siane
 #' @concept political
 #' @encoding UTF-8

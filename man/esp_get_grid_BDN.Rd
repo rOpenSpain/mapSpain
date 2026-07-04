@@ -56,12 +56,12 @@ Autonomous Communities and Cities. See \strong{Details} on \code{\link[=esp_get_
 for accepted formats.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Load an \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the geographic grids of
-Spain as provided by the Banco de Datos de la Naturaleza (Nature Data Bank),
-under the Ministry of Environment (MITECO).
+This function loads an \code{\link[sf:st_sf]{sf}} \code{POLYGON} object with the
+geographic grids of Spain provided by the Banco de Datos de la Naturaleza
+(Nature Data Bank), under the Ministry of Environment (MITECO).
 
 This dataset provides two accessors. \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}} extracts
 country-wide regular grids with resolutions of 5 x 5 or 10 x 10 kilometers
@@ -79,7 +79,7 @@ with finer spatial detail.
 \details{
 The BDN provides standardized geographic grids for Spain that follow the
 Nature Data Bank's specifications. The data are downloaded from the
-\code{sianedata/MITECO/dist} data branch and is regularly updated.
+\code{sianedata/MITECO/dist} data branch and are regularly updated.
 }
 \section{Caching}{
 
@@ -110,7 +110,7 @@ ggplot(grid) +
 \seealso{
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}
 
-Geographical grid datasets:
+Geographic grid data:
 \code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}},
 \code{\link[=esp_get_grid_MTN]{esp_get_grid_MTN()}}
 }

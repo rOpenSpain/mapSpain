@@ -25,6 +25,8 @@
 #' @inheritDotParams esp_get_nuts -nuts_level -region
 #' @inherit esp_get_nuts return source
 #'
+#' @seealso [esp_get_ccaa_siane()].
+#'
 #' @family gisco
 #' @concept political
 #' @rdname esp_get_ccaa

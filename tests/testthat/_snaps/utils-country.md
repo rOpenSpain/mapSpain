@@ -11,7 +11,7 @@
       convert_country_code("U")
     Condition
       Error:
-      ! Invalid country name "U". Use a vector of names, ISO3 or ISO2 codes.
+      ! Invalid country name or code "U". Use a vector of names, `ISO3` or `ISO2` codes.
 
 ---
 
@@ -19,7 +19,7 @@
       convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c")
     Message
       ! Some country names or codes could not be matched unambiguously: "POR" and "RTA".
-      i Review the names or codes, or switch to ISO3 codes.
+      i Review the names or codes, or switch to `ISO3` codes.
     Output
       [1] "ESP" "USA"
 
@@ -71,7 +71,7 @@
       convert_country_code(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
     Message
       ! Some country names or codes could not be matched unambiguously: "Rea" and "Murcua".
-      i Review the names or codes, or switch to ISO3 codes.
+      i Review the names or codes, or switch to `ISO3` codes.
     Output
       [1] "ESP" "XKX" "ATA"
 

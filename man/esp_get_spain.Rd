@@ -96,10 +96,12 @@ ggplot(moved_can) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+\code{\link[=esp_get_spain_siane]{esp_get_spain_siane()}}.
+
 NUTS boundary datasets:
 \code{\link[=esp_get_nuts]{esp_get_nuts()}}
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},

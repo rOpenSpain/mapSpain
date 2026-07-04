@@ -19,7 +19,7 @@
     Code
       esp_dict_region_code(vals)
     Message
-      i No conversion, `origin` is equal to `destination` ("text").
+      i No conversion performed because `origin` and `destination` are both "text".
     Output
       [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" 
 
@@ -79,7 +79,7 @@
     Code
       esp_dict_region_code(valsmix, destination = "codauto")
     Message
-      ! No match found for "Centro", "Seville", and "Menorca" with `destination` "codauto".
+      ! No match found for "Centro", "Seville", and "Menorca" when `destination` is "codauto".
     Output
       [1] NA   "01" NA   NA  
 
@@ -88,7 +88,7 @@
     Code
       esp_dict_region_code(valsmix, destination = "iso2")
     Message
-      ! No match found for "Centro" and "Menorca" with `destination` "iso2".
+      ! No match found for "Centro" and "Menorca" when `destination` is "iso2".
     Output
       [1] NA      "ES-AN" "ES-SE" NA     
 

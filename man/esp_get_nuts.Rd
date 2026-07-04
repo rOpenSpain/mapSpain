@@ -182,12 +182,15 @@ ggplot(mixing_codes) +
   labs(title = "Mixing Codes")
 }
 \seealso{
-\code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}, \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
+\itemize{
+\item \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}} retrieves NUTS data from GISCO.
+\item \code{\link[=esp_dict_region_code]{esp_dict_region_code()}} converts Spanish subdivision identifiers.
+}
 
 NUTS boundary datasets:
 \code{\link[=esp_get_spain]{esp_get_spain()}}
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_prov]{esp_get_prov()}},

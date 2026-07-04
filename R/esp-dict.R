@@ -1,9 +1,9 @@
 #' Convert and translate Spanish subdivision names and codes
 #'
 #' @description
-#' Convert Spanish subdivision names or identifiers between different coding
-#' schemes such as NUTS, ISO2 and province codes, or obtain human-readable
-#' names.
+#' Convert Spanish subdivision names or identifiers among coding schemes such
+#' as NUTS, ISO2 and province codes. The function can also return
+#' human-readable names.
 #'
 #' @details
 #' This function uses internal dictionaries together with \CRANpkg{countrycode}
@@ -24,7 +24,9 @@
 #' corresponding element will be `NA` and a warning is emitted via
 #' [cli::cli_alert_warning()].
 #'
-#' @seealso [countrycode::countrycode()] and [esp_codelist].
+#' @seealso
+#' - [countrycode::countrycode()] converts country codes and names.
+#' - [esp_codelist] documents the supported Spanish subdivision codes.
 #'
 #' @family dictionary
 #' @rdname esp_dict
@@ -76,8 +78,12 @@ esp_dict_region_code <- function(
     make_msg(
       "info",
       TRUE,
-      "No conversion, {.arg origin} is equal to {.arg destination}",
-      paste0("({.str ", origin, "}).")
+      paste0(
+        "No conversion performed because {.arg origin} and ",
+        "{.arg destination} are both {.str ",
+        origin,
+        "}."
+      )
     )
     return(initsourcevar)
   }
@@ -97,12 +103,7 @@ esp_dict_region_code <- function(
 }
 
 normalize_region_sourcevar <- function(sourcevar) {
-  sourcevar <- gsub(
-    "Ciudad de ceuta",
-    "Ceuta",
-    sourcevar,
-    ignore.case = TRUE
-  )
+  sourcevar <- gsub("Ciudad de ceuta", "Ceuta", sourcevar, ignore.case = TRUE)
   sourcevar <- gsub(
     "Ciudad de melilla",
     "Melilla",
@@ -115,10 +116,7 @@ normalize_region_sourcevar <- function(sourcevar) {
 
 get_region_names_dict <- function() {
   dict <- names_full
-  unique(dict[
-    grep("name", dict$variable, fixed = TRUE),
-    c("key", "value")
-  ])
+  unique(dict[grep("name", dict$variable, fixed = TRUE), c("key", "value")])
 }
 
 text_to_nuts_sourcevar <- function(sourcevar, initsourcevar, destination) {
@@ -299,10 +297,7 @@ translation_lang_dict <- function(dict, lang) {
   shrt <- grep("short", dict_tolang$variable, fixed = TRUE)
   dict_tolang[shrt, ]$variable <- paste0("aa", dict_tolang[shrt, ]$variable)
 
-  unique(dict_tolang[
-    order(dict_tolang$variable),
-    c("key", "value")
-  ])
+  unique(dict_tolang[order(dict_tolang$variable), c("key", "value")])
 }
 
 translate_keys_to_lang <- function(tokeys, dict_tolang, all) {

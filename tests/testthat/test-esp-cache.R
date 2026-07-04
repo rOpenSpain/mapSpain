@@ -234,42 +234,32 @@ test_that("Mock installing", {
 
 test_that("Mock reading file", {
   skip_on_cran()
-  local_mocked_bindings(
-    cache_config_file = function() {
-      "aaaaaaaaa"
-    }
-  )
+  local_mocked_bindings(cache_config_file = function() {
+    "aaaaaaaaa"
+  })
 
   expect_null(read_installed_cache_dir())
 
   tmpfile <- tempfile()
   writeLines("", tmpfile)
-  local_mocked_bindings(
-    cache_config_file = function() {
-      tmpfile
-    }
-  )
+  local_mocked_bindings(cache_config_file = function() {
+    tmpfile
+  })
   expect_null(read_installed_cache_dir())
 
   writeLines("a_test_here", tmpfile)
-  local_mocked_bindings(
-    cache_config_file = function() {
-      tmpfile
-    }
-  )
+  local_mocked_bindings(cache_config_file = function() {
+    tmpfile
+  })
   expect_identical(read_installed_cache_dir(), "a_test_here")
 })
 test_that("Mock detect muted", {
   mock_path <- file.path(tempdir(), "testing")
-  withr::local_envvar(
-    c(MAPSPAIN_CACHE_DIR = NA)
-  )
+  withr::local_envvar(c(MAPSPAIN_CACHE_DIR = NA))
   Sys.getenv("MAPSPAIN_CACHE_DIR")
-  local_mocked_bindings(
-    read_installed_cache_dir = function(...) {
-      mock_path
-    }
-  )
+  local_mocked_bindings(read_installed_cache_dir = function(...) {
+    mock_path
+  })
 
   expect_identical(detect_cache_dir_muted(), mock_path)
   unlink(mock_path)

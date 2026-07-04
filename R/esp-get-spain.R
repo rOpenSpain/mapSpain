@@ -15,6 +15,8 @@
 #' @inherit esp_get_nuts return source
 #' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
+#' @seealso [esp_get_spain_siane()].
+#'
 #' @family nuts
 #' @family gisco
 #' @concept political

@@ -9,7 +9,7 @@
 #'   or `100`.
 #'
 #' @inheritParams esp_get_grid_BDN
-#' @return A [`sf`][sf::st_sf] `POLYGON`.
+#' @return An [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @source
 #'
@@ -36,8 +36,6 @@ esp_get_grid_EEA <- function(
   lifecycle::deprecate_stop(
     "1.0.0",
     what = "mapSpain::esp_get_grid_EEA()",
-    details = paste0(
-      "The source file is no longer available for download."
-    )
+    details = paste0("The source file is no longer available for download.")
   )
 }

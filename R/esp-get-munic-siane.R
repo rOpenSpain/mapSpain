@@ -17,6 +17,8 @@
 #'   Zenodo. \doi{10.5281/zenodo.15345101},
 #'   <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
 #'
+#' @seealso [esp_get_munic()].
+#'
 #' @family siane
 #' @family municipalities
 #' @concept political

@@ -54,13 +54,13 @@ test_that("Test 404", {
         q = "https://a.basemaps.cartocdn.com/error/voyager/{z}/{x}/{y}.png"
       )
     ),
-    "Error"
+    "HTTP error"
   )
   expect_null(n)
 
   expect_message(
     n <- esp_get_tiles(x, update_cache = TRUE, verbose = TRUE),
-    "Error"
+    "HTTP error"
   )
   expect_null(n)
 

@@ -23,7 +23,10 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- esp_get_countries_siane(update_cache = TRUE), "Error")
+  expect_message(
+    n <- esp_get_countries_siane(update_cache = TRUE),
+    "HTTP error"
+  )
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -113,10 +116,7 @@ test_that("Filter countries", {
 
   # Test no `id_iso3` field.
   db_err <- db_cached_full[, seq_len(4)] |> sf::st_drop_geometry()
-  expect_identical(
-    filter_country(db_err, country = "JP"),
-    db_err
-  )
+  expect_identical(filter_country(db_err, country = "JP"), db_err)
   expect_true("JP" %in% db_err$id_iso2)
 
   # Cleanup

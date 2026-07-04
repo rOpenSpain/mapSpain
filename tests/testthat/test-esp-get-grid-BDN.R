@@ -28,12 +28,12 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- esp_get_grid_BDN(update_cache = TRUE), "Error")
+  expect_message(n <- esp_get_grid_BDN(update_cache = TRUE), "HTTP error")
   expect_null(n)
 
   expect_message(
     n <- esp_get_grid_BDN_ccaa(ccaa = "Murcia", update_cache = TRUE),
-    "Error"
+    "HTTP error"
   )
   expect_null(n)
   local_mocked_bindings(is_404 = function(...) {

@@ -101,9 +101,12 @@ data("esp_codelist")
 esp_codelist
 }
 \seealso{
+\code{\link[=esp_dict_region_code]{esp_dict_region_code()}}.
+
 Included package datasets:
 \code{\link{esp_nuts_2024}},
 \code{\link{esp_tiles_providers}},
 \code{\link{pobmun25}}
 }
 \concept{datasets}
+\keyword{datasets}

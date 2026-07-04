@@ -9,7 +9,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and 'NUTS'), based on 'GISCO' from 'Eurostat' \url{https://ec.europa.eu/eurostat/web/gisco} and 'CartoBase ANE' from 'Instituto Geográfico Nacional' \url{https://www.ign.es/}. Includes tools to download and process static map tiles and a 'leaflet' plugin for Spanish public administration tile providers.
+Administrative boundaries of Spain at several levels (Autonomous Communities and Cities, provinces, municipalities and 'NUTS'), based on 'GISCO' from 'Eurostat' \url{https://ec.europa.eu/eurostat/web/gisco} and 'CartoBase ANE' ('Atlas Nacional de España') from 'Instituto Geográfico Nacional' \url{https://www.ign.es/}. Includes tools to download and process static map tiles and a 'leaflet' plugin for Spanish public administration tile providers.
 }
 \seealso{
 Useful links:

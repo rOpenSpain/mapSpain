@@ -32,9 +32,9 @@ knitr:
 
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides administrative
 boundaries of Spain at several levels, including Autonomous Communities and
-Cities, provinces, municipalities and NUTS, as **sf** objects.
+Cities, provinces, municipalities and NUTS, as `sf` objects.
 
-**mapSpain** also includes tools to download and process static map tiles, plus
+**mapSpain** also includes tools to download and process static map tiles and
 a [**leaflet**](https://rstudio.github.io/leaflet/) plugin for Spanish public
 administration tile providers.
 
@@ -140,7 +140,7 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-You can combine **sf** objects with static map tiles.
+You can combine `sf` objects with static map tiles.
 
 ```{r}
 #| label: tile
@@ -234,7 +234,7 @@ ggplot(all_countries) +
   labs(caption = giscoR::gisco_attributions("es"))
 ```
 
-## A note on caching
+## Caching
 
 Some datasets and tiles may be larger than 50 MB. You can use **mapSpain** to
 create a local cache directory with `esp_set_cache_dir()`:
@@ -279,9 +279,9 @@ Nacional.
 
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
-This package also uses data from GISCO. GISCO
-[(FAQ)](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open data
-repository with multiple datasets at several resolution levels.
+This package also uses data from
+[GISCO](https://ec.europa.eu/eurostat/web/gisco), Eurostat's geospatial open
+data repository, which provides datasets at several resolution levels.
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
 Units*

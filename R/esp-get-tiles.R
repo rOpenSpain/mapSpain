@@ -253,7 +253,7 @@ prepare_tile_geometry <- function(geom, zoom, crop, prov_type) {
       make_msg(
         "info",
         prov_type == "WMTS",
-        "Autozoom for a single {.cls POINT} set to {.val {18}}."
+        "Set {.arg zoom} to {.val 18} for a single {.code POINT} geometry."
       )
     }
   }
@@ -435,7 +435,7 @@ get_wmts_tile <- function(
   make_msg(
     "info",
     verbose,
-    paste0("{.strong ", length(tile_list), "} tile{?s} downloaded.")
+    paste0("{.val ", length(tile_list), "} tile{?s} downloaded.")
   )
 
   # Build a SpatRasterCollection.
@@ -489,11 +489,7 @@ prepare_wmts_tile_query <- function(prov_list) {
     q <- paste0(q, paste0(names(rest), "=", rest, collapse = "&"))
   }
 
-  list(
-    q = q,
-    ext = get_tile_ext(prov_list),
-    folder = prov_list$id
-  )
+  list(q = q, ext = get_tile_ext(prov_list), folder = prov_list$id)
 }
 
 download_wmts_tile <- function(

@@ -92,7 +92,7 @@ the element(s) to be extracted.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Object representing rivers, lagoons, reservoirs and wetlands of Spain.
+This dataset represents rivers, lagoons, reservoirs and wetlands in Spain.
 }
 \details{
 Metadata available on

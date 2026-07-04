@@ -1,8 +1,8 @@
 #' SIANE bulk download
 #'
 #' @description
-#' Download zipped data from SIANE to the [`cache_dir`][esp_set_cache_dir()]
-#' and extract the relevant files.
+#' This function downloads zipped data from SIANE to
+#' [`cache_dir`][esp_set_cache_dir()] and extracts the relevant files.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @inheritParams esp_get_ccaa_siane
@@ -10,6 +10,7 @@
 #' @return
 #' An invisible character vector with the full paths of the extracted files.
 #' See **Examples**.
+#'
 #' @family siane
 #' @concept political
 #' @encoding UTF-8
@@ -63,7 +64,7 @@ esp_siane_bulk_download <- function(
   outfiles <- infiles[grep("gpkg", infiles$Name), ]$Name
 
   if (verbose) {
-    for_bullets <- outfiles
+    for_bullets <- paste0("{.file ", outfiles, "}")
     names(for_bullets) <- rep(">", length(for_bullets))
     cli::cli_alert_info(c("Extracting files:"))
     cli::cli_bullets(for_bullets)

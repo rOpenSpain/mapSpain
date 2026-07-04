@@ -68,9 +68,11 @@ data. One of:
 \item \code{"3"}: 1:3 million.
 }}
 
-\item{domain}{Character string. Type of river basin district. Possible
-values are \code{"land"}, including only the groundwaters area or \code{"landsea"},
-groundwaters and coastal waters.}
+\item{domain}{Character string. Type of river basin district:
+\itemize{
+\item \code{"land"} includes only groundwater areas.
+\item \code{"landsea"} includes groundwater areas and coastal waters.
+}}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.

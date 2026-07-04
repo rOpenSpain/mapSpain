@@ -79,8 +79,8 @@ Use \code{\link[=esp_get_stations]{esp_get_stations()}} instead of \code{"point"
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Loads a \code{\link[sf:st_sf]{sf}} \code{LINESTRING} or \code{POINT} object representing the
-nodes and railway lines of Spain.
+This function loads an \code{\link[sf:st_sf]{sf}} \code{LINESTRING} or \code{POINT} object
+representing the nodes and railway lines of Spain.
 }
 \section{Caching}{
 

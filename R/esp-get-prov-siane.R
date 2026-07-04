@@ -5,6 +5,7 @@
 #' @inheritParams esp_get_prov
 #' @inherit esp_get_prov description details
 #' @inherit esp_get_ccaa_siane source return
+#' @seealso [esp_get_prov()].
 #' @family siane
 #' @concept political
 #' @encoding UTF-8

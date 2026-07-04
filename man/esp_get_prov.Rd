@@ -76,8 +76,8 @@ When using \code{prov} you can use and mix names and NUTS codes (levels 1, 2 or
 
 Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or City, or NUTS 1), all
-provinces of that level are added.
+When calling a higher level, such as an Autonomous Community, Autonomous
+City or NUTS 1 region, all provinces of that level are added.
 }
 \section{Caching}{
 
@@ -141,7 +141,9 @@ ggplot(allprovs) +
 }
 }
 \seealso{
-Datasets sourced from GISCO:
+\code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}.
+
+GISCO boundary data:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_munic]{esp_get_munic()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},

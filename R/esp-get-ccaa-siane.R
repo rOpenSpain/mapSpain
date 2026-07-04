@@ -40,6 +40,8 @@
 #' Data distributed through the `sianedata` data branch, see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 #'
+#' @seealso [esp_get_ccaa()].
+#'
 #' @family siane
 #' @concept political
 #' @encoding UTF-8

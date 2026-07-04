@@ -71,7 +71,7 @@ Initial position can be adjusted using the vector of coordinates. See
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Object representing the main roads of Spain.
+This dataset represents the main roads of Spain.
 }
 \section{Caching}{
 

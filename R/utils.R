@@ -30,7 +30,7 @@ make_msg <- function(type = "generic", verbose, ...) {
   invisible()
 }
 
-#' Match argument with pretty error message
+#' Match an argument with an informative error
 #'
 #' @param arg The argument to match.
 #' @param choices The possible choices for the argument.
@@ -85,8 +85,8 @@ match_arg_pretty <- function(arg, choices) {
 #'
 #' @param a_list A list of data frames or lists to row bind.
 #' @return
-#' A data frame resulting from row binding the input data frames or `sf`
-#' objects.
+#' A data frame resulting from row binding the input data frames or
+#' [`sf`][sf::st_sf] objects.
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
@@ -123,7 +123,7 @@ siane_filter_year <- function(data_sf, year = Sys.Date()) {
   if (nchar(sel_date) != 10) {
     cli::cli_abort(paste0(
       "Date {.val {sel_date}} is not valid. ",
-      "Use the {.val YYYY} or {.val YYYY-MM-DD} format. ",
+      "Use the {.code YYYY} or {.code YYYY-MM-DD} format. ",
       "See {.fn base::as.Date}."
     ))
   }
@@ -194,7 +194,7 @@ return_empty_sf <- function(data_sf, warning, .envir = parent.frame()) {
 }
 
 return_empty_name_sf <- function(data_sf, name) {
-  return_empty_sf(data_sf, "No results for {.arg name} {.str {name}}.")
+  return_empty_sf(data_sf, "No results for {.arg name} = {.str {name}}.")
 }
 
 return_empty_combination_sf <- function(data_sf, arg) {
@@ -209,13 +209,13 @@ return_empty_combination_sf <- function(data_sf, arg) {
 
 warn_no_spanish_codes <- function(code_type, values) {
   cli::cli_alert_warning(
-    "No Spanish {code_type} codes found for {.str {values}}."
+    "No Spanish {.emph {code_type}} codes found for {.str {values}}."
   )
 }
 
 abort_no_spanish_codes <- function(code_type, values, call = parent.frame()) {
   cli::cli_abort(
-    "No Spanish {code_type} codes found for {.str {values}}.",
+    "No Spanish {.emph {code_type}} codes found for {.str {values}}.",
     call = call
   )
 }
@@ -227,8 +227,8 @@ warn_no_match <- function(values, destination = NULL) {
   }
 
   cli::cli_alert_warning(paste0(
-    "No match found for {.str {values}} with ",
-    "{.arg destination} {.str {destination}}."
+    "No match found for {.str {values}} when {.arg destination} is ",
+    "{.str {destination}}."
   ))
   invisible()
 }
@@ -241,6 +241,6 @@ alert_return_null <- function() {
 alert_open_issue <- function() {
   cli::cli_alert_warning(c(
     "If you think this is a bug, please consider opening an issue at ",
-    "{.url https://github.com/rOpenSpain/mapSpain/issues}"
+    "{.url https://github.com/rOpenSpain/mapSpain/issues}."
   ))
 }

@@ -44,10 +44,10 @@
 ---
 
     Code
-      my_fun(c("an", "error"))
+      my_fun(c("an", "HTTP error"))
     Condition
       Error:
-      ! `arg_one` must be "10", "1000", "3000", or "5000", not "an" or "error".
+      ! `arg_one` must be "10", "1000", "3000", or "5000", not "an" or "HTTP error".
 
 ---
 
@@ -113,7 +113,7 @@
       siane_filter_year(data_sf, "1900-12")
     Condition
       Error in `siane_filter_year()`:
-      ! Date "1900-12-12-31" is not valid. Use the "YYYY" or "YYYY-MM-DD" format. See `base::as.Date()`.
+      ! Date "1900-12-12-31" is not valid. Use the `YYYY` or `YYYY-MM-DD` format. See `base::as.Date()`.
 
 # Not empty
 

@@ -75,8 +75,9 @@ When using \code{region} you can use and mix names and NUTS codes (levels 1, 2 o
 3), ISO codes (corresponding to level 2 or 3) or \code{"cpro"}
 (see \link{esp_codelist}).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 }
 \note{
 Please check the download and usage provisions on
@@ -156,13 +157,14 @@ ggplot(spanish_laplad) +
 \itemize{
 \item \code{\link[giscoR:gisco_get_lau]{giscoR::gisco_get_lau()}}.
 \item \code{\link[giscoR:gisco_get_communes]{giscoR::gisco_get_communes()}}.
+\item \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}.
 }
 
 Municipality-level datasets:
 \code{\link[=esp_get_capimun]{esp_get_capimun()}},
 \code{\link[=esp_get_munic_siane]{esp_get_munic_siane()}}
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 \code{\link[=esp_get_ccaa]{esp_get_ccaa()}},
 \code{\link[=esp_get_nuts]{esp_get_nuts()}},
 \code{\link[=esp_get_prov]{esp_get_prov()}},

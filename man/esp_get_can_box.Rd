@@ -41,10 +41,10 @@ An \code{\link[sf:st_sf]{sf}} object: a \code{POLYGON} (when \code{style = "poly
 \code{LINESTRING} (other styles).
 }
 \description{
-Create an \code{sf} \code{POLYGON} or \code{LINESTRING} that can be used to mark or
+Create an \code{\link[sf:st_sf]{sf}} \code{POLYGON} or \code{LINESTRING} that can mark or
 frame the Canary Islands when they are displayed as an inset on maps of
 Spain. This object is useful together with \code{\link[=esp_move_can]{esp_move_can()}} and the
-\code{moveCAN} arguments available in other \code{mapSpain} getters.
+\code{moveCAN} arguments available in other \CRANpkg{mapSpain} getters.
 
 \code{esp_get_can_provinces()} returns a small \code{LINESTRING} used to mark the
 separator between the two provinces of the Canary Islands. This helper is

@@ -3,7 +3,8 @@ validate_provider <- function(type = "PNOA") {
     cli::cli_abort(paste0(
       "{.arg type} must be a named list (see ",
       "{.fn mapSpain::esp_make_provider}) or the name of a provider (see ",
-      "{.fn mapSpain::esp_tiles_providers}), not {.obj_class_friendly {type}}."
+      "{.help mapSpain::esp_tiles_providers}), not ",
+      "{.obj_type_friendly {type}}."
     ))
   }
 
@@ -14,8 +15,8 @@ validate_provider <- function(type = "PNOA") {
     has_valid <- valid %in% names(type)
     if (!all(has_valid)) {
       cli::cli_abort(paste0(
-        "A custom provider must be a named list with elements {.str {valid}}",
-        ", missing {.str {valid[!has_valid]}} element{?/s}. See ",
+        "A custom provider must be a named list with fields {.field {valid}}",
+        ", missing {.field {valid[!has_valid]}} field{?/s}. See ",
         "{.fn mapSpain::esp_make_provider}."
       ))
     }

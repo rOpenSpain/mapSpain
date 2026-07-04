@@ -1,8 +1,9 @@
-#' Get a [`sf`][sf::st_sf] hexbin or squared `POLYGON` of Spain
+#' Get an [`sf`][sf::st_sf] hexbin or square `POLYGON` of Spain
 #'
 #' @description
-#' Loads a hexbin map ([`sf`][sf::st_sf] object) or a map of squares with
-#' boundaries of the provinces or Autonomous Communities and Cities of Spain.
+#' This function loads a hexbin map ([`sf`][sf::st_sf] object) or a map of
+#' squares with boundaries of the provinces or Autonomous Communities and
+#' Cities of Spain.
 #'
 #' @details
 #'
@@ -99,7 +100,7 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
   get_gridmap_ccaa(ccaa = ccaa, type = "grid")
 }
 
-#' Internal functions for easier maintenance
+#' Get a province grid map
 #' @noRd
 get_gridmap_prov <- function(prov = NULL, type = "hex") {
   data_sf <- switch(type,

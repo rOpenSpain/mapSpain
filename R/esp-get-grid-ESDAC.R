@@ -1,15 +1,15 @@
 #' National geographic grids from the European Soil Data Centre (ESDAC)
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] `POLYGON` with the geographic grids of Spain as
-#' provided by the European Soil Data Centre (ESDAC).
+#' This function loads an [`sf`][sf::st_sf] `POLYGON` with the geographic
+#' grids of Spain provided by the European Soil Data Centre (ESDAC).
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @param resolution Numeric. Resolution of the grid in kilometers. Can be `1`
 #'   or `10`.
 #'
 #' @inheritParams esp_get_nuts
-#' @inherit esp_get_grid_EEA return
+#' @inherit esp_get_grid_BDN return
 #' @source
 #' [EEA reference
 #' grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
@@ -18,7 +18,7 @@
 #' - Panagos P., Van Liedekerke M., Jones A., Montanarella L., "European Soil
 #'   Data Centre: Response to European policy support and public data
 #'   requirements", (2012) _Land Use Policy_, 29 (2), pp. 329-338.
-#'   \doi{10.1016/j.landusepol.2011.07.003}
+#'   \doi{10.1016/j.landusepol.2011.07.003}.
 #' - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
 #'   Commission, Joint Research Centre.
 #'

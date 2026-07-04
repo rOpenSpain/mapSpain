@@ -1,8 +1,8 @@
 #' Railways of Spain from SIANE
 #'
 #' @description
-#' Loads a [`sf`][sf::st_sf] `LINESTRING` or `POINT` object representing the
-#' nodes and railway lines of Spain.
+#' This function loads an [`sf`][sf::st_sf] `LINESTRING` or `POINT` object
+#' representing the nodes and railway lines of Spain.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @param year Ignored.
@@ -100,34 +100,22 @@ esp_get_railway <- function(
   data_sf <- merge_db_value_desc(
     data_sf,
     "tipoffcc",
-    c(
-      "t_ffcc",
-      "t_ffcc_desc"
-    )
+    c("t_ffcc", "t_ffcc_desc")
   )
   data_sf <- merge_db_value_desc(
     data_sf,
     "estadofisico",
-    c(
-      "estado_fis",
-      "estado_fis_desc"
-    )
+    c("estado_fis", "estado_fis_desc")
   )
   data_sf <- merge_db_value_desc(
     data_sf,
     "anchovia",
-    c(
-      "ancho_via",
-      "ancho_via_desc"
-    )
+    c("ancho_via", "ancho_via_desc")
   )
   data_sf <- merge_db_value_desc(
     data_sf,
     "numerovias",
-    c(
-      "num_vias",
-      "num_vias_desc"
-    )
+    c("num_vias", "num_vias_desc")
   )
 
   data_sf <- data_sf[order(data_sf$t_ffcc, data_sf$ancho_via), ]

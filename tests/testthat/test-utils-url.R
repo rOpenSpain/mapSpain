@@ -54,7 +54,7 @@ test_that("Test 404", {
       cache_dir = cdir,
       update_cache = TRUE
     ),
-    "Error "
+    "HTTP error"
   )
   expect_null(s)
 
@@ -148,7 +148,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "Error"
+    "HTTP error"
   )
 
   expect_null(fend)

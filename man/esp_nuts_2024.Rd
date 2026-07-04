@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{esp_nuts_2024}
 \alias{esp_nuts_2024}
-\title{NUTS 2024 for Spain \code{\link[sf:st_sf]{sf}} object}
+\title{NUTS 2024 boundaries for Spain}
 \format{
 An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries at 1:1 million
 resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
@@ -76,3 +76,4 @@ Included package datasets:
 \code{\link{pobmun25}}
 }
 \concept{datasets}
+\keyword{datasets}

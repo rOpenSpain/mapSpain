@@ -7,7 +7,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get a \code{\link[sf:st_sf]{sf}} hexbin or squared \code{POLYGON} of Spain}
+\title{Get an \code{\link[sf:st_sf]{sf}} hexbin or square \code{POLYGON} of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 
@@ -26,8 +26,9 @@ and Autonomous Communities and Cities, or \code{NULL} to get all the data. See
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of squares with
-boundaries of the provinces or Autonomous Communities and Cities of Spain.
+This function loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of
+squares with boundaries of the provinces or Autonomous Communities and
+Cities of Spain.
 }
 \details{
 Hexbin (or grid) maps have an advantage over traditional choropleth maps.

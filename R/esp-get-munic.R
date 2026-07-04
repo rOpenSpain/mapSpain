@@ -8,8 +8,9 @@
 #' 3), ISO codes (corresponding to level 2 or 3) or `"cpro"`
 #' (see [esp_codelist]).
 #'
-#' When calling a higher level (province, Autonomous Community or City, or
-#' NUTS 1), all municipalities of that level are added.
+#' When calling a higher level, such as a province, Autonomous Community,
+#' Autonomous City or NUTS 1 region, all municipalities of that level are
+#' added.
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @param year Year character string or number. Release year of the file. See
@@ -30,6 +31,7 @@
 #' @seealso
 #' - [giscoR::gisco_get_lau()].
 #' - [giscoR::gisco_get_communes()].
+#' - [esp_get_munic_siane()].
 #'
 #' @family municipalities
 #' @family gisco

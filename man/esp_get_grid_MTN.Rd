@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{esp_get_grid_MTN}
 \alias{esp_get_grid_MTN}
-\title{National geographic grids from IGN MTN (Mapa Topografico Nacional)}
+\title{National geographic grids from IGN MTN (Mapa Topográfico Nacional)}
 \source{
 IGN data distributed through the \code{sianedata/MTN} data branch (see
 \url{https://github.com/rOpenSpain/mapSpain/tree/sianedata/MTN}).
@@ -28,10 +28,11 @@ a new download. Defaults to \code{FALSE}.}
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} \code{POLYGON}.
+An \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.
 }
 \description{
-Loads a \code{\link[sf:st_sf]{sf}} \code{POLYGON} with the geographic grids of Spain.
+This function loads an \code{\link[sf:st_sf]{sf}} \code{POLYGON} with the geographic
+grids of Spain.
 }
 \details{
 Metadata available on
@@ -50,7 +51,7 @@ Possible values of \code{grid} are:\tabular{l}{
 
 \subsection{MTN grids}{
 
-A description of the MTN (Mapa Topografico Nacional) grids available:
+A description of the available MTN (Mapa Topográfico Nacional) grids:
 
 \strong{MTN25_ED50_Peninsula_Baleares}
 
@@ -126,7 +127,7 @@ ggplot(grid) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Geographical grid datasets:
+Geographic grid data:
 \code{\link[=esp_get_grid_BDN]{esp_get_grid_BDN()}},
 \code{\link[=esp_get_grid_ESDAC]{esp_get_grid_ESDAC()}}
 }

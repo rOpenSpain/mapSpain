@@ -88,9 +88,12 @@
 #' represented at the Autonomous Communities and Cities level with a single
 #' province, like Madrid, Asturias or Murcia, in this database.
 #'
+#' @seealso [esp_dict_region_code()].
+#'
 #' @family datasets
 #' @docType data
 #' @name esp_codelist
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #' @examples
@@ -130,6 +133,7 @@ NULL
 #' @family datasets
 #' @docType data
 #' @name pobmun25
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #' @examples
@@ -164,7 +168,7 @@ NULL
 #'
 #' Each list item is named with the provider alias. Each element contains two
 #' nested named lists: `static` with the parameters required to obtain static
-#' map tiles plus an additional item named `attribution`, and `leaflet` with
+#' map tiles plus an additional item named `attribution` and `leaflet` with
 #' additional parameters to pass to [addProviderEspTiles()].
 #'
 #' @source
@@ -172,9 +176,14 @@ NULL
 #' \CRANpkg{leaflet},
 #' **`r leaf_providers_esp_v`**.
 #'
+#' @seealso
+#' - [esp_get_tiles()] downloads static map tiles from these providers.
+#' - [addProviderEspTiles()] adds these providers to interactive maps.
+#'
 #' @family datasets
 #' @docType data
 #' @name esp_tiles_providers
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #' @examples
@@ -188,7 +197,7 @@ NULL
 #'
 NULL
 
-#' NUTS 2024 for Spain [`sf`][sf::st_sf] object
+#' NUTS 2024 boundaries for Spain
 #'
 #' @description
 #' This dataset represents Spanish subdivisions at NUTS levels 0, 1, 2 and 3
@@ -229,6 +238,7 @@ NULL
 #' @family datasets
 #' @docType data
 #' @name esp_nuts_2024
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #' @examples

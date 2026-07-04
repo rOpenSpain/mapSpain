@@ -7,7 +7,7 @@ convert_to_nuts <- function(region) {
   clean_region <- clean_region_arg(region)
   if (is.null(clean_region)) {
     cli::cli_alert_warning(
-      "Empty {.arg region}. No NUTS codes found, returning NULL."
+      "Empty {.arg region}. No NUTS codes found. Returning {.val NULL}."
     )
     return(NULL)
   }

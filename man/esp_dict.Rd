@@ -38,9 +38,9 @@ name for each element of \code{sourcevar}. If \code{all = TRUE}, it returns a na
 corresponding input value.
 }
 \description{
-Convert Spanish subdivision names or identifiers between different coding
-schemes such as NUTS, ISO2 and province codes, or obtain human-readable
-names.
+Convert Spanish subdivision names or identifiers among coding schemes such
+as NUTS, ISO2 and province codes. The function can also return
+human-readable names.
 }
 \details{
 This function uses internal dictionaries together with \CRANpkg{countrycode}
@@ -88,6 +88,9 @@ esp_dict_translate(vals, lang = "ga")
 esp_dict_translate(vals, lang = "ga", all = TRUE)
 }
 \seealso{
-\code{\link[countrycode:countrycode]{countrycode::countrycode()}} and \link{esp_codelist}.
+\itemize{
+\item \code{\link[countrycode:countrycode]{countrycode::countrycode()}} converts country codes and names.
+\item \link{esp_codelist} documents the supported Spanish subdivision codes.
+}
 }
 \concept{dictionary}

@@ -19,15 +19,13 @@ test_that("On CRAN", {
   expect_identical(!interactive(), on_cran())
 })
 
-test_that("On HTTP error", {
+test_that("On error", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  local_mocked_bindings(
-    api_entry_for_checks = function(...) {
-      "https://ropenspain.github.io/mapSpain/"
-    }
-  )
+  local_mocked_bindings(api_entry_for_checks = function(...) {
+    "https://ropenspain.github.io/mapSpain/"
+  })
 
   expect_false(esp_check_access())
 })
@@ -36,11 +34,9 @@ test_that("On HTTP offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  local_mocked_bindings(
-    is_httr2_online = function(...) {
-      FALSE
-    }
-  )
+  local_mocked_bindings(is_httr2_online = function(...) {
+    FALSE
+  })
 
   expect_false(esp_check_access())
 })

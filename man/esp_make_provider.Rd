@@ -61,6 +61,7 @@ tidyterra::autoplot(mytile) +
 \seealso{
 Static map tiles and imagery:
 \code{\link[=addProviderEspTiles]{addProviderEspTiles()}},
+\code{\link[=esp_get_attributions]{esp_get_attributions()}},
 \code{\link[=esp_get_tiles]{esp_get_tiles()}}
 }
 \concept{images}

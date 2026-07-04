@@ -18,7 +18,7 @@
     Code
       db_cached <- esp_get_nuts(verbose = TRUE, region = "Murcia")
     Message
-      i Loaded from `?mapSpain::esp_nuts_2024()` dataset. Use `update_cache` set to TRUE to reload from file.
+      i Loaded from `?mapSpain::esp_nuts_2024()` dataset. Use `update_cache` set to "TRUE" to reload from file.
 
 # Spatial types
 
