@@ -1,6 +1,6 @@
 # Roads of Spain from SIANE
 
-Object representing the main roads of Spain.
+This dataset represents the main roads of Spain.
 
 ## Usage
 

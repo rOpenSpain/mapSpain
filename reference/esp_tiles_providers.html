@@ -35,8 +35,10 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
@@ -50,7 +52,6 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -86,7 +87,7 @@ in Spain.</p>
 structure:</p>
 <p>Each list item is named with the provider alias. Each element contains two
 nested named lists: <code>static</code> with the parameters required to obtain static
-map tiles plus an additional item named <code>attribution</code>, and <code>leaflet</code> with
+map tiles plus an additional item named <code>attribution</code> and <code>leaflet</code> with
 additional parameters to pass to <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>.</p>
     </div>
     <div class="section level2">
@@ -202,7 +203,10 @@ additional parameters to pass to <code><a href="addProviderEspTiles.html">addPro
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Included package datasets:
+    <div class="dont-index">
+<ul><li><p><code><a href="esp_get_tiles.html">esp_get_tiles()</a></code> downloads static map tiles from these providers.</p></li>
+<li><p><code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code> adds these providers to interactive maps.</p></li>
+</ul><p>Included package datasets:
 <code><a href="esp_codelist.html">esp_codelist</a></code>,
 <code><a href="esp_nuts_2024.html">esp_nuts_2024</a></code>,
 <code><a href="pobmun25.html">pobmun25</a></code></p></div>

@@ -105,7 +105,7 @@ the API query and `esp_detect_cache_dir()` to identify your cache path.
 
 ## See also
 
-[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
+[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html).
 
 Cache management utilities:
 [`esp_clear_cache()`](https://ropenspain.github.io/mapSpain/reference/esp_clear_cache.md)
@@ -117,29 +117,29 @@ Cache management utilities:
 # Do not run this. It would modify your current state.
 # \dontrun{
 my_cache <- esp_detect_cache_dir()
-#> ℹ /tmp/RtmpN5Fkur/mapSpain
+#> ℹ Cache directory: /tmp/RtmpKL8nlp/mapSpain.
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 esp_set_cache_dir(ex)
-#> ℹ mapSpain cache directory is /tmp/RtmpN5Fkur/example/cachenew.
-#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
+#> ℹ mapSpain cache directory is /tmp/RtmpKL8nlp/example/cachenew.
+#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to "TRUE".
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpN5Fkur/example/cachenew
-#> [1] "/tmp/RtmpN5Fkur/example/cachenew"
+#> ℹ Cache directory: /tmp/RtmpKL8nlp/example/cachenew.
+#> [1] "/tmp/RtmpKL8nlp/example/cachenew"
 
 # Restore the initial cache.
 esp_set_cache_dir(my_cache)
-#> ℹ mapSpain cache directory is /tmp/RtmpN5Fkur/mapSpain.
-#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to TRUE.
+#> ℹ mapSpain cache directory is /tmp/RtmpKL8nlp/mapSpain.
+#> ℹ To install your `cache_dir` path for use in future sessions, run this function with `install` set to "TRUE".
 identical(my_cache, esp_detect_cache_dir())
-#> ℹ /tmp/RtmpN5Fkur/mapSpain
+#> ℹ Cache directory: /tmp/RtmpKL8nlp/mapSpain.
 #> [1] TRUE
 # }
 
 
 esp_detect_cache_dir()
-#> ℹ /tmp/RtmpN5Fkur/mapSpain
-#> [1] "/tmp/RtmpN5Fkur/mapSpain"
+#> ℹ Cache directory: /tmp/RtmpKL8nlp/mapSpain.
+#> [1] "/tmp/RtmpKL8nlp/mapSpain"
 ```

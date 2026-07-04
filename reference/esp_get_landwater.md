@@ -1,6 +1,7 @@
 # Rivers and wetlands of Spain from SIANE
 
-Object representing rivers, lagoons, reservoirs and wetlands of Spain.
+This dataset represents rivers, lagoons, reservoirs and wetlands in
+Spain.
 
 ## Usage
 

@@ -3,15 +3,11 @@
 WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
-v1.3.3.
-esp_get_attributions() gets the attribution of a tile provider defined by
-the type argument."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
+v1.3.3."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
 WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
-v1.3.3.
-esp_get_attributions() gets the attribution of a tile provider defined by
-the type argument."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
+v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -37,8 +33,10 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
@@ -52,7 +50,6 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -68,7 +65,7 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get static map tiles from public administrations of Spain</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a>, <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-attributions.R" class="external-link"><code>R/esp-get-attributions.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a></small>
       <div class="d-none name"><code>esp_get_tiles.Rd</code></div>
     </div>
 
@@ -78,8 +75,6 @@ WMS and WMTS providers.</p>
 <p>This function is an implementation of the JavaScript plugin
 <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>
 <strong>v1.3.3</strong>.</p>
-<p><code>esp_get_attributions()</code> gets the attribution of a tile provider defined by
-the <code>type</code> argument.</p>
     </div>
 
     <div class="section level2">
@@ -98,9 +93,7 @@ the <code>type</code> argument.</p>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  options <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">esp_get_attributions</span><span class="op">(</span><span class="va">type</span>, options <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -210,9 +203,9 @@ persistent cache.</p>
     <div class="dont-index">
 <ul><li><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p></li>
 <li><p><a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p></li>
-</ul><p><code><a href="https://ropengov.github.io/giscoR/reference/gisco_attributions.html" class="external-link">giscoR::gisco_attributions()</a></code></p>
-<p>Static map tiles and imagery:
+</ul><p>Static map tiles and imagery:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
+<code><a href="esp_get_attributions.html">esp_get_attributions()</a></code>,
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code></p></div>
     </div>
 

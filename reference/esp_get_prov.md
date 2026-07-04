@@ -115,8 +115,8 @@ or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 
 Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or City, or NUTS 1),
-all provinces of that level are added.
+When calling a higher level, such as an Autonomous Community, Autonomous
+City or NUTS 1 region, all provinces of that level are added.
 
 ## Caching
 
@@ -129,7 +129,9 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from GISCO:
+[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov_siane.md).
+
+GISCO boundary data:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),

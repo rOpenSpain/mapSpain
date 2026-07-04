@@ -50,4 +50,5 @@ grid](https://www.eea.europa.eu/en/datahub/datahubitem-view/3c362237-daa4-45e2-8
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.

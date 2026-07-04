@@ -1,20 +1,18 @@
 # Articles
 
-### Guides and appendices
+### Guides
 
-Practical guides and reference material that complement the package
-vignette.
+Practical guides for working with map imagery and Spanish region codes.
 
 - [Working with static map
   tiles](https://ropenspain.github.io/mapSpain/articles/working_imagery.md):
 
   Learn how to include static map tiles in your maps.
 
-- [Appendix: Spanish subdivision names and
-  codes](https://ropenspain.github.io/mapSpain/articles/regioncodes.md):
+- [Appendix: Spanish subdivision codes and
+  names](https://ropenspain.github.io/mapSpain/articles/regioncodes.md):
 
-  Interactive explorer of the subdivision-code data included in the
-  package.
+  Explore the package’s Spanish subdivision codes and names.
 
 ### Talks and presentations
 

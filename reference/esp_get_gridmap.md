@@ -1,6 +1,6 @@
-# Get a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) hexbin or squared `POLYGON` of Spain
+# Get an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) hexbin or square `POLYGON` of Spain
 
-Loads a hexbin map
+This function loads a hexbin map
 ([`sf`](https://r-spatial.github.io/sf/reference/sf.html) object) or a
 map of squares with boundaries of the provinces or Autonomous
 Communities and Cities of Spain.

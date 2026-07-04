@@ -1,8 +1,8 @@
 # SIANE bulk download
 
-Download zipped data from SIANE to the
+This function downloads zipped data from SIANE to
 [`cache_dir`](https://ropenspain.github.io/mapSpain/reference/esp_set_cache_dir.md)
-and extract the relevant files.
+and extracts the relevant files.
 
 ## Usage
 
@@ -70,7 +70,7 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
@@ -107,10 +107,10 @@ read_sf(dest_files[1]) |> head()
 # Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpN5Fkur/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpN5Fkur/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpN5Fkur/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpN5Fkur/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpKL8nlp/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpKL8nlp/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpKL8nlp/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpKL8nlp/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

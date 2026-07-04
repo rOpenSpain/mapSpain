@@ -4,10 +4,10 @@
 
 ### Motivation
 
-**mapSpain** helps you create maps for the main administrative levels of
-Spain. It also supports static map tiles from WMS and WMTS services,
-either as georeferenced rasters for static maps or as layers in
-interactive **leaflet** maps.
+**mapSpain** provides political and administrative boundaries of Spain
+at several levels. It also supports static map tiles from WMS and WMTS
+services, either as georeferenced rasters for static maps or as layers
+in interactive **leaflet** maps.
 
 The package also includes helpers to translate and convert Spanish
 subdivision names and codes. These helpers make it easier to join, clean
@@ -17,11 +17,12 @@ The main data sources used by **mapSpain** are:
 
 - [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), through
   the [**giscoR**](https://ropengov.github.io/giscoR/) package.
-- [Instituto Geográfico Nacional](https://www.ign.es/) (IGN).
+- CartoBase ANE (Atlas Nacional de España), provided by the [Instituto
+  Geográfico Nacional](https://www.ign.es/) (IGN).
 - Spanish public institutions that publish WMTS and WMS tile services
   (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-Most functions return **sf** objects or `SpatRaster` objects from the
+Most functions return `sf` objects or `SpatRaster` objects from the
 **terra** package.
 
 Package website: <https://ropenspain.github.io/mapSpain/>.
@@ -101,10 +102,10 @@ reactable(
 )
 ```
 
-### Comparing mapSpain with other alternatives
+### Comparing mapSpain with other packages
 
-The next example compares **mapSpain** with other packages that provide
-`sf` or `SpatVector` objects for country boundaries.
+The following example compares **mapSpain** with packages that provide
+`sf` or `SpatVector` country boundaries.
 
 ``` r
 
@@ -210,7 +211,7 @@ munic <- esp_get_munic_siane(verbose = TRUE)
 
 #> ℹ Cache directory is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
 #> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is C:/Users/diego/Documents/R/mapslib/GISCO/siane.
+#> ℹ Cache directory is C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane.
 #> ✔ File already cached: C:/Users/XXXX/Documents/R/mapslib/mapSpain/siane/se89_3_admin_muni_a_y.gpkg
 ```
 
@@ -222,15 +223,14 @@ munic <- esp_get_munic_siane(verbose = TRUE)
 codes:
 
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
-  converts text labels into Autonomous Community or City and province
-  codes. Supported coding standards are ISO2, NUTS and INE codes
-  (`codauto` and `cpro`).
+  converts Spanish subdivision names and identifiers among NUTS, ISO2
+  and INE coding schemes (`codauto` and `cpro`).
 - [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
-  translates text into Spanish, English, Catalan, Galician or Basque.
+  translates subdivision names into English, Spanish, Catalan, Basque or
+  Galician.
 
 These functions are also useful outside spatial workflows, for example
-when you need to standardize Autonomous Community or City codes and
-province codes in ISCIII COVID data.
+when standardizing subdivision identifiers in tabular data.
 
 #### `esp_dict_region_code()`
 
@@ -296,14 +296,14 @@ several levels:
 - Whole country.
 - [NUTS](https://ec.europa.eu/eurostat/web/nuts/background) (Eurostat).
   Eurostat statistical classification, with levels 0 (country), 1, 2
-  (Autonomous Communities) and 3.
+  (Autonomous Communities and Cities) and 3.
 - Autonomous Communities and Cities.
 - Provinces.
 - Municipalities.
 
 For Autonomous Communities and Cities, provinces and municipalities,
 there are two families of functions: `esp_get_xxxx()` for GISCO data and
-`esp_get_xxxx_siane()` for IGN data.
+`esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
 
 The information is available in different projections and resolution
 levels.
@@ -481,7 +481,7 @@ Figure 9: Extracting municipalities
 ### Grid maps
 
 Grid maps are available as squares and hexagons for provinces and
-Autonomous Communities.
+Autonomous Communities and Cities.
 
 ``` r
 
@@ -515,8 +515,8 @@ Figure 10: Grid maps with mapSpain
 basemaps and roads, provided by different public institutions
 (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
 
-These tiles can be used to create static maps, as three- or four-band
-raster layers, or as backgrounds for interactive maps through the
+These tiles can be used to create static maps as three- or four-band
+raster layers or as backgrounds for interactive maps through the
 **leaflet** package.
 
 The providers are taken from the **leaflet**
@@ -623,7 +623,7 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
 
 **mapSpain** includes additional
 [functions](https://ropenspain.github.io/mapSpain/reference/index.html#section-natural)
-for retrieving elevation, rivers and river basin data for Spain, as well
+for retrieving terrain, inland waters and river basin districts, as well
 as Spanish [transport
 infrastructure](https://ropenspain.github.io/mapSpain/reference/index.html#section-transport-infrastructure)
-lines and points, such as roads and railway lines.
+such as roads, railway lines and stations.

@@ -22,15 +22,17 @@
 ">
 <meta name="description" content="Administrative boundaries of Spain at several levels (Autonomous
 Communities and Cities, provinces, municipalities and NUTS), based on GISCO
-from Eurostat and CartoBase ANE from Instituto Geográfico Nacional.
-Includes tools to download and process static map tiles and a leaflet
-plugin for Spanish public administration tile providers.
+from Eurostat and CartoBase ANE (Atlas Nacional de España) from Instituto
+Geográfico Nacional. Includes tools to download and process static map tiles
+and a [`leaflet`](https://CRAN.R-project.org/package=leaflet) plugin for
+Spanish public administration tile providers.
 ">
 <meta property="og:description" content="Administrative boundaries of Spain at several levels (Autonomous
 Communities and Cities, provinces, municipalities and NUTS), based on GISCO
-from Eurostat and CartoBase ANE from Instituto Geográfico Nacional.
-Includes tools to download and process static map tiles and a leaflet
-plugin for Spanish public administration tile providers.
+from Eurostat and CartoBase ANE (Atlas Nacional de España) from Instituto
+Geográfico Nacional. Includes tools to download and process static map tiles
+and a [`leaflet`](https://CRAN.R-project.org/package=leaflet) plugin for
+Spanish public administration tile providers.
 ">
 <meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -66,8 +68,10 @@ plugin for Spanish public administration tile providers.
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
@@ -85,7 +89,6 @@ plugin for Spanish public administration tile providers.
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -111,8 +114,8 @@ plugin for Spanish public administration tile providers.
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides administrative boundaries of Spain at several levels, including Autonomous Communities and Cities, provinces, municipalities and NUTS, as <strong>sf</strong> objects.</p>
-<p><strong>mapSpain</strong> also includes tools to download and process static map tiles, plus a <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> plugin for Spanish public administration tile providers.</p>
+<p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides administrative boundaries of Spain at several levels, including Autonomous Communities and Cities, provinces, municipalities and NUTS, as <code>sf</code> objects.</p>
+<p><strong>mapSpain</strong> also includes tools to download and process static map tiles and a <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> plugin for Spanish public administration tile providers.</p>
 <p>The full package website, with examples and vignettes, is available at <a href="https://ropenspain.github.io/mapSpain/" class="uri">https://ropenspain.github.io/mapSpain/</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -179,7 +182,7 @@ plugin for Spanish public administration tile providers.
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position.inside <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-static-1.png" style="width:100.0%" alt="Percentage of women by Autonomous Community or City in Spain (2025)"></p>
-<p>You can combine <strong>sf</strong> objects with static map tiles.</p>
+<p>You can combine <code>sf</code> objects with static map tiles.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get census data.</span></span>
 <span><span class="va">census</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
@@ -267,7 +270,7 @@ plugin for Spanish public administration tile providers.
 <p><img src="reference/figures/README-giscoR-1.png" style="width:100.0%" alt="Locator map of Spain"></p>
 </div>
 <div class="section level2">
-<h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
+<h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
 <p>Some datasets and tiles may be larger than 50 MB. You can use <strong>mapSpain</strong> to create a local cache directory with <code><a href="reference/esp_set_cache_dir.html">esp_set_cache_dir()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -288,7 +291,7 @@ Hernangómez D (2026). <em>mapSpain: Administrative Boundaries and Static Map Ti
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5366622</span>},</span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>mapSpain<span class="sc">/</span>},</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase ANE from Instituto Geográfico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. Includes tools to download and process static map tiles and a leaflet plugin <span class="cf">for</span> Spanish public administration tile providers.},</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Administrative boundaries of Spain at several <span class="fu">levels</span> (Autonomous Communities and Cities, provinces, municipalities and NUTS), based on GISCO from Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span> and CartoBase <span class="fu">ANE</span> (Atlas Nacional de España) from Instituto Geográfico Nacional <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>www.ign.es<span class="sc">/</span><span class="er">&gt;</span>. Includes tools to download and process static map tiles and a leaflet plugin <span class="cf">for</span> Spanish public administration tile providers.},</span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
@@ -304,7 +307,7 @@ Hernangómez D (2026). <em>mapSpain: Administrative Boundaries and Static Map Ti
 <p>Atlas Nacional de España (ANE) <a href="https://creativecommons.org/licenses/by/4.0/deed.en" class="external-link">CC BY 4.0</a> <a href="https://www.ign.es/" class="external-link">ign.es</a></p>
 </blockquote>
 <p>See <a href="https://github.com/rOpenSpain/mapSpain/tree/sianedata" class="external-link uri">https://github.com/rOpenSpain/mapSpain/tree/sianedata</a>.</p>
-<p>This package also uses data from GISCO. GISCO <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">(FAQ)</a> is a geospatial open data repository with multiple datasets at several resolution levels.</p>
+<p>This package also uses data from <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a>, Eurostat’s geospatial open data repository, which provides datasets at several resolution levels.</p>
 <p><em>From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units / Statistical Units</em></p>
 <blockquote>
 <p>When data downloaded from this page is used in any printed or electronic publication, in addition to any other provisions applicable to the whole Eurostat website, data source will have to be acknowledged in the legend of the map and in the introductory page of the publication with the following copyright notice:</p>

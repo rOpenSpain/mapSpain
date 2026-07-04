@@ -57,6 +57,7 @@ Note that:
 
 Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md),
+[`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_attributions.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
 
 ## Examples

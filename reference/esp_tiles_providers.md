@@ -15,7 +15,7 @@ providers with the following structure:
 
 Each list item is named with the provider alias. Each element contains
 two nested named lists: `static` with the parameters required to obtain
-static map tiles plus an additional item named `attribution`, and
+static map tiles plus an additional item named `attribution` and
 `leaflet` with additional parameters to pass to
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
@@ -235,6 +235,12 @@ are:
 - `"ParquesNaturales.ZonasPerifericas"`
 
 ## See also
+
+- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
+  downloads static map tiles from these providers.
+
+- [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md)
+  adds these providers to interactive maps.
 
 Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md),

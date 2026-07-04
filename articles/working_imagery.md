@@ -2,20 +2,20 @@
 
 **mapSpain** provides an interface for working with static map tiles. It
 can download tiles as `.png` or `.jpeg`, depending on the tile service,
-and use them alongside your **sf** objects.
+and use them alongside your `sf` objects.
 
 **mapSpain** also provides a plugin for
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you
-add multiple basemaps to interactive maps.
+add Spanish public administration basemaps to interactive maps.
 
 The services are implemented with the Leaflet plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
-You can view the available provider options at that link.
+You can browse the available providers in its catalog.
 
 ## Static map tiles
 
-This example shows how to combine multiple tiles in a static map. We
-focus on layers provided by La Rioja’s [Infraestructura de Datos
+This example shows how to combine multiple tile layers in a static map.
+It uses layers provided by La Rioja’s [Infraestructura de Datos
 Espaciales (IDERioja)](https://www.iderioja.larioja.org/).
 
 > **Warning**
@@ -49,8 +49,8 @@ Figure 1: Municipal boundaries of Logroño using a tile as a basemap
 
 ### Alpha values in tiles
 
-Some tiles can be loaded with or without an alpha (transparency) value,
-which controls layer transparency:
+Some tiles can be loaded with or without an alpha channel, which
+controls layer transparency:
 
 ``` r
 
@@ -112,8 +112,7 @@ Now the two tiles overlap with the desired transparency.
 
 ### Masking tiles
 
-Another useful feature is tile masking, which supports more advanced
-maps:
+Tile masking restricts imagery to the geometry of an input `sf` object:
 
 ``` r
 

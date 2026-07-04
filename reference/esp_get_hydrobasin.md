@@ -88,9 +88,11 @@ Data distributed through the `sianedata` data branch, see
 
 - domain:
 
-  Character string. Type of river basin district. Possible values are
-  `"land"`, including only the groundwaters area or `"landsea"`,
-  groundwaters and coastal waters.
+  Character string. Type of river basin district:
+
+  - `"land"` includes only groundwater areas.
+
+  - `"landsea"` includes groundwater areas and coastal waters.
 
 ## Value
 

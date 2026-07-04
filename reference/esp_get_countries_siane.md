@@ -1,7 +1,6 @@
 # Countries of the world from SIANE
 
-This dataset contains the administrative boundaries at country level of
-the world.
+This dataset contains worldwide country-level administrative boundaries.
 
 The data included in this cartographic database do not imply any opinion
 of the IGN regarding its legal status.
@@ -107,7 +106,7 @@ to configure a persistent cache.
 
 [`giscoR::gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.html).
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md),

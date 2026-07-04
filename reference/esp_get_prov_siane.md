@@ -125,8 +125,8 @@ or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 
 Ceuta and Melilla are considered provinces in this dataset.
 
-When calling a higher level (Autonomous Community or City, or NUTS 1),
-all provinces of that level are added.
+When calling a higher level, such as an Autonomous Community, Autonomous
+City or NUTS 1 region, all provinces of that level are added.
 
 ## Caching
 
@@ -139,7 +139,9 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md).
+
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),

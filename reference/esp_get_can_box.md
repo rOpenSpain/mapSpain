@@ -1,10 +1,12 @@
 # Canary Islands inset box and outline
 
-Create an `sf` `POLYGON` or `LINESTRING` that can be used to mark or
-frame the Canary Islands when they are displayed as an inset on maps of
-Spain. This object is useful together with
+Create an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+`POLYGON` or `LINESTRING` that can mark or frame the Canary Islands when
+they are displayed as an inset on maps of Spain. This object is useful
+together with
 [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
-and the `moveCAN` arguments available in other `mapSpain` getters.
+and the `moveCAN` arguments available in other
+[mapSpain](https://CRAN.R-project.org/package=mapSpain) getters.
 
 `esp_get_can_provinces()` returns a small `LINESTRING` used to mark the
 separator between the two provinces of the Canary Islands. This helper

@@ -64,6 +64,7 @@ modified map object
 - [esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md).
 
 Static map tiles and imagery:
+[`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_attributions.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/reference/esp_make_provider.md)
 

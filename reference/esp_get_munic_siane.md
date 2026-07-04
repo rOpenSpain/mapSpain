@@ -129,8 +129,9 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 
 ## Note
 
@@ -157,7 +158,9 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md).
+
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),

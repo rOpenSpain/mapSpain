@@ -10,20 +10,22 @@
 [**mapSpain**](https://ropenspain.github.io/mapSpain/) provides
 administrative boundaries and static map tiles for Spain.
 
-**mapSpain** provides **sf** objects for Autonomous Communities and
+**mapSpain** provides `sf` objects for Autonomous Communities and
 Cities, provinces, municipalities and NUTS levels in Spain. It also
-provides grid maps and other complementary geometries, such as the
-demarcation lines around the Canary Islands.
+provides grid maps and complementary geometries, such as inset boxes and
+outlines for the Canary Islands.
 
 **mapSpain** provides access to static map tiles from Spanish public
 administrations. Tiles can be represented on static maps with
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-or on an R [**leaflet**](https://rstudio.github.io/leaflet/) map using
+or on an interactive [**leaflet**](https://rstudio.github.io/leaflet/)
+map with
 [`mapSpain::addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
 **mapSpain** also includes a dictionary that translates Spanish
-subdivision names to English, Spanish, Catalan, Basque and Galician, and
-converts them to coding standards such as NUTS, ISO2 and INE codes.
+subdivision names to English, Spanish, Catalan, Basque and Galician. It
+also converts names among coding standards such as NUTS, ISO2 and INE
+codes.
 
 ## Caching
 
@@ -245,7 +247,7 @@ installed as a dependency of **mapSpain**. Here is a basic example:
 
 library(giscoR)
 
-# Set the same resolution for a perfect fit.
+# Use the same resolution for aligned boundaries.
 res <- 3
 
 all_countries <- gisco_get_countries(resolution = res) |>
@@ -291,7 +293,7 @@ mapSpain and giscoR example
 
 **mapSpain** provides an interface for working with static map tiles. It
 can download tiles as `.png` or `.jpeg`, depending on the tile service,
-and use them alongside your **sf** objects.
+and use them alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you
@@ -299,10 +301,11 @@ to add several basemaps to interactive maps.
 
 The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-Leaflet plugin. All available providers are listed there.
+Leaflet plugin. Its provider catalog lists all available services.
 
 > **Note**
 >
 > When working with static map tiles, set `moveCAN = FALSE` in
-> `esp_get_*()` functions. See **Displacing the Canary Islands** in
-> [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md).
+> `esp_get_*()` functions. See
+> [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
+> for details.

@@ -165,13 +165,16 @@ to configure a persistent cache.
 
 ## See also
 
-[`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html),
-[`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md).
+- [`giscoR::gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.html)
+  retrieves NUTS data from GISCO.
+
+- [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.md)
+  converts Spanish subdivision identifiers.
 
 NUTS boundary datasets:
 [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md)
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),

@@ -1,8 +1,9 @@
 # National geographic grids from the European Soil Data Centre (ESDAC)
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` with the geographic grids of Spain as provided by the European
-Soil Data Centre (ESDAC).
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` with
+the geographic grids of Spain provided by the European Soil Data Centre
+(ESDAC).
 
 ## Usage
 
@@ -41,7 +42,8 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Caching
 
@@ -58,13 +60,14 @@ to configure a persistent cache.
   Soil Data Centre: Response to European policy support and public data
   requirements", (2012) *Land Use Policy*, 29 (2), pp. 329-338.
   [doi:10.1016/j.landusepol.2011.07.003](https://doi.org/10.1016/j.landusepol.2011.07.003)
+  .
 
 - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
   Commission, Joint Research Centre.
 
 ## See also
 
-Geographical grid datasets:
+Geographic grid data:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
 

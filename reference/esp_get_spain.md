@@ -111,10 +111,12 @@ to configure a persistent cache.
 
 ## See also
 
+[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain_siane.md).
+
 NUTS boundary datasets:
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),

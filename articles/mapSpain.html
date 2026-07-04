@@ -54,8 +54,10 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
@@ -73,7 +75,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -114,9 +115,9 @@
 </blockquote>
 </div>
 <p><a href="https://ropenspain.github.io/mapSpain/"><strong>mapSpain</strong></a> provides administrative boundaries and static map tiles for Spain.</p>
-<p><strong>mapSpain</strong> provides <strong>sf</strong> objects for Autonomous Communities and Cities, provinces, municipalities and NUTS levels in Spain. It also provides grid maps and other complementary geometries, such as the demarcation lines around the Canary Islands.</p>
-<p><strong>mapSpain</strong> provides access to static map tiles from Spanish public administrations. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an R <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map using <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
-<p><strong>mapSpain</strong> also includes a dictionary that translates Spanish subdivision names to English, Spanish, Catalan, Basque and Galician, and converts them to coding standards such as NUTS, ISO2 and INE codes.</p>
+<p><strong>mapSpain</strong> provides <code>sf</code> objects for Autonomous Communities and Cities, provinces, municipalities and NUTS levels in Spain. It also provides grid maps and complementary geometries, such as inset boxes and outlines for the Canary Islands.</p>
+<p><strong>mapSpain</strong> provides access to static map tiles from Spanish public administrations. Tiles can be represented on static maps with <code><a href="../reference/esp_get_tiles.html">mapSpain::esp_get_tiles()</a></code> or on an interactive <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> map with <code><a href="../reference/addProviderEspTiles.html">mapSpain::addProviderEspTiles()</a></code>.</p>
+<p><strong>mapSpain</strong> also includes a dictionary that translates Spanish subdivision names to English, Spanish, Catalan, Basque and Galician. It also converts names among coding standards such as NUTS, ISO2 and INE codes.</p>
 </section><section class="level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
 <p><strong>mapSpain</strong> provides data and tile caching. Set a cache directory with:</p>
@@ -307,7 +308,7 @@ Population density in Spain (2025)
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/" class="external-link">giscoR</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Set the same resolution for a perfect fit.</span></span>
+<span><span class="co"># Use the same resolution for aligned boundaries.</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span></span>
 <span><span class="va">all_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/giscoR/reference/gisco_get_countries.html" class="external-link">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">res</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -350,13 +351,13 @@ mapSpain and giscoR example
 </div>
 </section><section class="level2"><h2 id="working-with-static-map-tiles">Working with static map tiles<a class="anchor" aria-label="anchor" href="#working-with-static-map-tiles"></a>
 </h2>
-<p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <strong>sf</strong> objects.</p>
+<p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <code>sf</code> objects.</p>
 <p><strong>mapSpain</strong> also includes a plugin for <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> maps, which allows you to add several basemaps to interactive maps.</p>
-<p>The services are implemented with the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. All available providers are listed there.</p>
+<p>The services are implemented with the <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a> Leaflet plugin. Its provider catalog lists all available services.</p>
 <div>
 <blockquote>
 <p><strong>Note</strong></p>
-<p>When working with static map tiles, set <code>moveCAN = FALSE</code> in <code>esp_get_*()</code> functions. See <strong>Displacing the Canary Islands</strong> in <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code>.</p>
+<p>When working with static map tiles, set <code>moveCAN = FALSE</code> in <code>esp_get_*()</code> functions. See <code><a href="../reference/esp_move_can.html">esp_move_can()</a></code> for details.</p>
 </blockquote>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

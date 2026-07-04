@@ -1,9 +1,10 @@
 # National geographic grids from BDN (Nature Data Bank)
 
-Load an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` object with the geographic grids of Spain as provided by the
-Banco de Datos de la Naturaleza (Nature Data Bank), under the Ministry
-of Environment (MITECO).
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object with the geographic grids of Spain provided by the Banco de Datos
+de la Naturaleza (Nature Data Bank), under the Ministry of Environment
+(MITECO).
 
 This dataset provides two accessors. `esp_get_grid_BDN()` extracts
 country-wide regular grids with resolutions of 5 x 5 or 10 x 10
@@ -86,13 +87,14 @@ For more information about BDN grids and other resources, visit:
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Details
 
 The BDN provides standardized geographic grids for Spain that follow the
 Nature Data Bank's specifications. The data are downloaded from the
-`sianedata/MITECO/dist` data branch and is regularly updated.
+`sianedata/MITECO/dist` data branch and are regularly updated.
 
 ## Caching
 
@@ -107,7 +109,7 @@ to configure a persistent cache.
 
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md)
 
-Geographical grid datasets:
+Geographic grid data:
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_MTN.md)
 

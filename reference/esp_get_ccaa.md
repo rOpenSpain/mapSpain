@@ -130,7 +130,9 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from GISCO:
+[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md).
+
+GISCO boundary data:
 [`esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),

@@ -1,8 +1,8 @@
 # Railways of Spain from SIANE
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`LINESTRING` or `POINT` object representing the nodes and railway lines
-of Spain.
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `LINESTRING` or
+`POINT` object representing the nodes and railway lines of Spain.
 
 ## Usage
 

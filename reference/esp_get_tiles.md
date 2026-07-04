@@ -7,9 +7,6 @@ This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
-`esp_get_attributions()` gets the attribution of a tile provider defined
-by the `type` argument.
-
 ## Usage
 
 ``` r
@@ -28,8 +25,6 @@ esp_get_tiles(
   verbose = FALSE,
   options = NULL
 )
-
-esp_get_attributions(type, options = NULL)
 ```
 
 ## Source
@@ -159,10 +154,9 @@ to configure a persistent cache.
 
 - [esp_tiles_providers](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md).
 
-[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
-
 Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md),
+[`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_attributions.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/reference/esp_make_provider.md)
 
 ## Examples

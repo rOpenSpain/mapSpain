@@ -1,7 +1,8 @@
-# National geographic grids from IGN MTN (Mapa Topografico Nacional)
+# National geographic grids from IGN MTN (Mapa Topográfico Nacional)
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` with the geographic grids of Spain.
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` with
+the geographic grids of Spain.
 
 ## Usage
 
@@ -40,7 +41,8 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Details
 
@@ -63,7 +65,7 @@ Possible values of `grid` are:
 
 ### MTN grids
 
-A description of the MTN (Mapa Topografico Nacional) grids available:
+A description of the available MTN (Mapa Topográfico Nacional) grids:
 
 **MTN25_ED50_Peninsula_Baleares**
 
@@ -125,7 +127,7 @@ to configure a persistent cache.
 
 ## See also
 
-Geographical grid datasets:
+Geographic grid data:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/reference/esp_get_grid_ESDAC.md)
 

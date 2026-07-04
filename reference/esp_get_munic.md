@@ -102,8 +102,9 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 
 ## Note
 
@@ -125,11 +126,13 @@ to configure a persistent cache.
 
 - [`giscoR::gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.html).
 
+- [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md).
+
 Municipality-level datasets:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md)
 
-Datasets sourced from GISCO:
+GISCO boundary data:
 [`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.md),
 [`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md),
 [`esp_get_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_prov.md),

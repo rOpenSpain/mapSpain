@@ -59,8 +59,10 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
@@ -78,7 +80,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -110,12 +111,12 @@
 
 
 
-    <p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <strong>sf</strong> objects.</p>
-<p><strong>mapSpain</strong> also provides a plugin for <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> maps, which lets you add multiple basemaps to interactive maps.</p>
-<p>The services are implemented with the Leaflet plugin <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>. You can view the available provider options at that link.</p>
+    <p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <code>sf</code> objects.</p>
+<p><strong>mapSpain</strong> also provides a plugin for <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> maps, which lets you add Spanish public administration basemaps to interactive maps.</p>
+<p>The services are implemented with the Leaflet plugin <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>. You can browse the available providers in its catalog.</p>
 <section class="level2"><h2 id="static-map-tiles">Static map tiles<a class="anchor" aria-label="anchor" href="#static-map-tiles"></a>
 </h2>
-<p>This example shows how to combine multiple tiles in a static map. We focus on layers provided by La Rioja’s <a href="https://www.iderioja.larioja.org/" class="external-link">Infraestructura de Datos Espaciales (IDERioja)</a>.</p>
+<p>This example shows how to combine multiple tile layers in a static map. It uses layers provided by La Rioja’s <a href="https://www.iderioja.larioja.org/" class="external-link">Infraestructura de Datos Espaciales (IDERioja)</a>.</p>
 <div>
 <blockquote>
 <p><strong>Warning</strong></p>
@@ -153,7 +154,7 @@ Figure 1: Municipal boundaries of Logroño using a tile as a basemap
 </div>
 <section class="level3"><h3 id="alpha-values-in-tiles">Alpha values in tiles<a class="anchor" aria-label="anchor" href="#alpha-values-in-tiles"></a>
 </h3>
-<p>Some tiles can be loaded with or without an alpha (transparency) value, which controls layer transparency:</p>
+<p>Some tiles can be loaded with or without an alpha channel, which controls layer transparency:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">galicia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_ccaa_siane.html">esp_get_ccaa_siane</a></span><span class="op">(</span><span class="st">"Galicia"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>
@@ -221,7 +222,7 @@ Figure 3: Example of using alpha values to combine different map tile layers.
 <p>Now the two tiles overlap with the desired transparency.</p>
 </section><section class="level3"><h3 id="masking-tiles">Masking tiles<a class="anchor" aria-label="anchor" href="#masking-tiles"></a>
 </h3>
-<p>Another useful feature is tile masking, which supports more advanced maps:</p>
+<p>Tile masking restricts imagery to the geometry of an input <code>sf</code> object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rioja</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_prov_siane.html">esp_get_prov_siane</a></span><span class="op">(</span><span class="st">"La Rioja"</span>, epsg <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span></span>

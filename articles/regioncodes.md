@@ -1,8 +1,8 @@
-# Appendix: Spanish subdivision names and codes
+# Appendix: Spanish subdivision codes and names
 
-This appendix shows an interactive version of the
+This appendix presents an interactive version of the
 [`mapSpain::esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)
-dataset. It contains codes for Spanish subdivisions under different
-coding standards and naming variants in several languages.
+dataset. It contains Spanish subdivision codes from several coding
+standards and name variants in multiple languages.
 
-## Spanish subdivision names and codes
+## Spanish subdivision codes and names

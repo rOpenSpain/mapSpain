@@ -1,7 +1,8 @@
-# City where the municipal public authorities are based from SIANE
+# Municipal seats of government from SIANE
 
-Get a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
-with the location of the political powers for each municipality.
+This function returns an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
+locating the seat of government for each municipality.
 
 Note that this differs from the centroid of the boundaries of the
 municipality, returned by
@@ -115,7 +116,8 @@ Data distributed through the `sianedata` data branch, see
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
+object.
 
 ## Details
 
@@ -123,8 +125,9 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 
 ## Caching
 
@@ -137,7 +140,7 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.md),

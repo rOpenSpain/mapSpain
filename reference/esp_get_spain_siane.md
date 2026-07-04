@@ -112,7 +112,9 @@ to configure a persistent cache.
 
 ## See also
 
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/reference/esp_get_spain.md).
+
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_countries_siane.md),
