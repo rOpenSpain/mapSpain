@@ -1,7 +1,7 @@
 # Convert and translate Spanish subdivision names and codes
 
-Convert Spanish subdivision names or identifiers between different
-coding schemes such as NUTS, ISO2 and province codes, or obtain
+Convert Spanish subdivision names or identifiers among coding schemes
+such as NUTS, ISO2 and province codes. The function can also return
 human-readable names.
 
 ## Usage
@@ -58,13 +58,21 @@ returned unchanged. Mixing names from different administrative levels,
 for example Autonomous Community or City and province, may produce `NA`
 values for some entries.
 
+## See also
+
+- [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html)
+  converts country codes and names.
+
+- [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
+  documents the supported Spanish subdivision codes.
+
 ## Examples
 
 ``` r
 vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")
 
 esp_dict_region_code(vals)
-#> ℹ No conversion, `origin` is equal to `destination` ("text").
+#> ℹ No conversion performed because `origin` and `destination` are both "text".
 #> [1] "Errioxa" "Coruna"  "Gerona"  "Madrid" 
 esp_dict_region_code(vals, destination = "nuts")
 #> [1] "ES23"  "ES111" "ES512" "ES30" 
@@ -95,10 +103,10 @@ esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
 
 esp_dict_region_code(valsmix, destination = "codauto")
-#> ! No match found for "Centro", "Seville", and "Menorca" with `destination` "codauto".
+#> ! No match found for "Centro", "Seville", and "Menorca" when `destination` is "codauto".
 #> [1] NA   "01" NA   NA  
 esp_dict_region_code(valsmix, destination = "iso2")
-#> ! No match found for "Centro" and "Menorca" with `destination` "iso2".
+#> ! No match found for "Centro" and "Menorca" when `destination` is "iso2".
 #> [1] NA      "ES-AN" "ES-SE" NA     
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

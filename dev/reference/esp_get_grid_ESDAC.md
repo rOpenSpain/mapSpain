@@ -1,8 +1,9 @@
 # National geographic grids from the European Soil Data Centre (ESDAC)
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` with the geographic grids of Spain as provided by the European
-Soil Data Centre (ESDAC).
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` with
+the geographic grids of Spain provided by the European Soil Data Centre
+(ESDAC).
 
 ## Usage
 
@@ -33,17 +34,25 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
+
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
 
 ## References
 
@@ -51,13 +60,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
   Soil Data Centre: Response to European policy support and public data
   requirements", (2012) *Land Use Policy*, 29 (2), pp. 329-338.
   [doi:10.1016/j.landusepol.2011.07.003](https://doi.org/10.1016/j.landusepol.2011.07.003)
+  .
 
 - European Soil Data Centre (ESDAC), esdac.jrc.ec.europa.eu, European
   Commission, Joint Research Centre.
 
 ## See also
 
-Geographical grid datasets:
+Geographic grid data:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_MTN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_MTN.md)
 

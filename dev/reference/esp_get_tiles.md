@@ -7,9 +7,6 @@ This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
 **v1.3.3**.
 
-`esp_get_attributions()` gets the attribution of a tile provider defined
-by the `type` argument.
-
 ## Usage
 
 ``` r
@@ -28,8 +25,6 @@ esp_get_tiles(
   verbose = FALSE,
   options = NULL
 )
-
-esp_get_attributions(type, options = NULL)
 ```
 
 ## Source
@@ -101,13 +96,11 @@ esp_get_attributions(type, options = NULL)
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - options:
 
@@ -146,16 +139,24 @@ projecting `x` first:
 
 `x <- sf::st_transform(x, 3857)`
 
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
+
 ## See also
 
 - [`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
 
 - [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md).
 
-[`giscoR::gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.html)
-
 Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
+[`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_attributions.md),
 [`esp_make_provider()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_make_provider.md)
 
 ## Examples
@@ -179,6 +180,7 @@ library(tidyterra)
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # Another provider.
@@ -188,6 +190,7 @@ tile2 <- esp_get_tiles(segovia, type = "MDT")
 ggplot(segovia) +
   geom_spatraster_rgb(data = tile2, maxcell = Inf) +
   geom_sf(fill = NA, linewidth = 1, color = "red")
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # A custom WMTS provider.
@@ -203,6 +206,7 @@ custom_wmts_tile <- esp_get_tiles(segovia, custom_wmts)
 
 autoplot(custom_wmts_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 
 # Example from https://leaflet-extras.github.io/leaflet-providers/preview/.
@@ -217,6 +221,7 @@ cartodb_dark_tile <- esp_get_tiles(segovia, cartodb_dark,
 
 autoplot(cartodb_dark_tile, maxcell = Inf) +
   geom_sf(data = segovia, fill = NA, color = "white", linewidth = 1)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 # }
 ```

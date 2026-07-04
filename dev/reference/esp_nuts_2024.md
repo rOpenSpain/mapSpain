@@ -1,4 +1,4 @@
-# NUTS 2024 for Spain [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# NUTS 2024 boundaries for Spain
 
 This dataset represents Spanish subdivisions at NUTS levels 0, 1, 2 and
 3 according to the Nomenclature of Territorial Units for Statistics
@@ -89,7 +89,7 @@ file.
 
 - `1`: Coastal (on coast).
 
-- `2`: Coastal (less than 50% of population living within 50 km. of the
+- `2`: Coastal (less than 50 % of population living within 50 km of the
   coastline).
 
 - `3`: Non-coastal region.

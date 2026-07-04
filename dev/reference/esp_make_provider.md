@@ -37,6 +37,9 @@ esp_make_provider(id, q, service, layers, ...)
 
 A named list with two elements `id` and `q`.
 
+For a list of potential providers from Spain, check the [IDEE
+Directory](https://www.idee.es/segun-tipo-de-servicio).
+
 ## Details
 
 This function is meant to work with services provided under the [OGC
@@ -52,13 +55,9 @@ Note that:
 
 ## See also
 
-[`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
-
-For a list of potential providers from Spain, check the [IDEE
-Directory](https://www.idee.es/segun-tipo-de-servicio).
-
 Static map tiles and imagery:
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/addProviderEspTiles.md),
+[`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_attributions.md),
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
 
 ## Examples
@@ -78,6 +77,7 @@ mytile <- esp_get_tiles(x, type = custom_wmts)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 # }
 ```

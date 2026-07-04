@@ -1,7 +1,8 @@
-# City where the municipal public authorities are based from SIANE
+# Municipal seats of government from SIANE
 
-Get a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
-with the location of the political powers for each municipality.
+This function returns an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
+locating the seat of government for each municipality.
 
 Note that this differs from the centroid of the boundaries of the
 municipality, returned by
@@ -72,9 +73,8 @@ Data distributed through the `sianedata` data branch, see
 
 - cache:
 
-  Logical. Whether to cache downloaded files. Default is `TRUE`. See
-  **Caching strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Logical. Whether to cache downloaded files. Defaults to `TRUE`. See
+  **Caching**.
 
 - update_cache:
 
@@ -83,13 +83,11 @@ Data distributed through the `sianedata` data branch, see
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - region:
 
@@ -118,7 +116,8 @@ Data distributed through the `sianedata` data branch, see
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT`
+object.
 
 ## Details
 
@@ -126,42 +125,22 @@ When using `region` you can use and mix names and NUTS codes (levels 1,
 2 or 3), ISO codes (corresponding to level 2 or 3) or `"cpro"` (see
 [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)).
 
-When calling a higher level (province, Autonomous Community or City, or
-NUTS 1), all municipalities of that level are added.
+When calling a higher level, such as a province, Autonomous Community,
+Autonomous City or NUTS 1 region, all municipalities of that level are
+added.
 
-## Note
+## Caching
 
-Although [mapSpain](https://CRAN.R-project.org/package=mapSpain)
-supplies cartographically suitable datasets, a historical database of
-Spanish municipal boundaries is also available, offering
-higher-resolution geometries that may be more appropriate for
-GIS-oriented workflows:
-
-- Goerlich, F. J. & Pérez Vázquez, P. (2025). *Base de datos histórica
-  de contornos municipales de España -LAU2boundaries4Spain-* \[Data
-  set\]. Zenodo.
-  [doi:10.5281/zenodo.15345101](https://doi.org/10.5281/zenodo.15345101)
-  , <https://www.uv.es/goerlich/Ivie/LAU2boundaries4Spain.html>.
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
 
 ## See also
 
-Political and administrative boundary datasets:
-[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
-[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md),
-[`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
 [`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),

@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,18 +25,23 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -93,6 +98,8 @@
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A named list with two elements <code>id</code> and <code>q</code>.</p>
+<p>For a list of potential providers from Spain, check the
+<a href="https://www.idee.es/segun-tipo-de-servicio" class="external-link">IDEE Directory</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -104,11 +111,9 @@
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="esp_get_tiles.html">esp_get_tiles()</a></code>.</p>
-<p>For a list of potential providers from Spain, check the
-<a href="https://www.idee.es/segun-tipo-de-servicio" class="external-link">IDEE Directory</a>.</p>
-<p>Static map tiles and imagery:
+    <div class="dont-index"><p>Static map tiles and imagery:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
+<code><a href="esp_get_attributions.html">esp_get_attributions()</a></code>,
 <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code></p></div>
     </div>
 
@@ -128,6 +133,7 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">tidyterra</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mytile</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `data` has 4 layers. Selecting layers <span style="color: #0000BB;">1</span>, <span style="color: #0000BB;">2</span>, and <span style="color: #0000BB;">3</span>.</span>
 <span class="r-plt img"><img src="esp_make_provider-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

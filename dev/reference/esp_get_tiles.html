@@ -3,15 +3,11 @@
 WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
-v1.3.3.
-esp_get_attributions() gets the attribution of a tile provider defined by
-the type argument."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
+v1.3.3."><meta property="og:description" content="Get static map tiles based on a spatial object. Maps can be fetched from
 WMS and WMTS providers.
 This function is an implementation of the JavaScript plugin
 leaflet-providersESP
-v1.3.3.
-esp_get_attributions() gets the attribution of a tile provider defined by
-the type argument."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
+v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpain/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenSpain"><meta name="robots" content="noindex"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-5N21Z0YYJJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -25,7 +21,7 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +33,23 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -64,7 +65,7 @@ the type argument."><meta property="og:image" content="https://ropenspain.github
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get static map tiles from public administrations of Spain</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a>, <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-attributions.R" class="external-link"><code>R/esp-get-attributions.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/mapSpain/blob/main/R/esp-get-tiles.R" class="external-link"><code>R/esp-get-tiles.R</code></a></small>
       <div class="d-none name"><code>esp_get_tiles.Rd</code></div>
     </div>
 
@@ -74,8 +75,6 @@ WMS and WMTS providers.</p>
 <p>This function is an implementation of the JavaScript plugin
 <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>
 <strong>v1.3.3</strong>.</p>
-<p><code>esp_get_attributions()</code> gets the attribution of a tile provider defined by
-the <code>type</code> argument.</p>
     </div>
 
     <div class="section level2">
@@ -94,9 +93,7 @@ the <code>type</code> argument.</p>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  options <span class="op">=</span> <span class="cn">NULL</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">esp_get_attributions</span><span class="op">(</span><span class="va">type</span>, options <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -164,11 +161,11 @@ a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>Character string. A path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>logical. If <code>TRUE</code> displays informational messages.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code> displays informational messages.</p></dd>
 
 
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
@@ -191,13 +188,24 @@ projecting <code>x</code> first:</p>
 <p><code>x &lt;- sf::st_transform(x, 3857)</code></p>
     </div>
     <div class="section level2">
+    <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a></h2>
+
+
+
+<p>Functions that download data store files in <code>cache_dir</code>. When <code>cache_dir</code>
+is <code>NULL</code>, they use the active package cache, which defaults to a temporary
+directory. Set <code>update_cache = TRUE</code> to replace an existing cached file.
+See <strong>Caching strategies</strong> in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> to configure a
+persistent cache.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p></li>
 <li><p><a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p></li>
-</ul><p><code><a href="https://ropengov.github.io/giscoR/reference/gisco_attributions.html" class="external-link">giscoR::gisco_attributions()</a></code></p>
-<p>Static map tiles and imagery:
+</ul><p>Static map tiles and imagery:
 <code><a href="addProviderEspTiles.html">addProviderEspTiles()</a></code>,
+<code><a href="esp_get_attributions.html">esp_get_attributions()</a></code>,
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code></p></div>
     </div>
 
@@ -221,6 +229,7 @@ projecting <code>x</code> first:</p>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `data` has 4 layers. Selecting layers <span style="color: #0000BB;">1</span>, <span style="color: #0000BB;">2</span>, and <span style="color: #0000BB;">3</span>.</span>
 <span class="r-plt img"><img src="esp_get_tiles-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Another provider.</span></span></span>
@@ -230,6 +239,7 @@ projecting <code>x</code> first:</p>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">segovia</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">tile2</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `data` has 4 layers. Selecting layers <span style="color: #0000BB;">1</span>, <span style="color: #0000BB;">2</span>, and <span style="color: #0000BB;">3</span>.</span>
 <span class="r-plt img"><img src="esp_get_tiles-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># A custom WMTS provider.</span></span></span>
@@ -245,6 +255,7 @@ projecting <code>x</code> first:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">custom_wmts_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `data` has 4 layers. Selecting layers <span style="color: #0000BB;">1</span>, <span style="color: #0000BB;">2</span>, and <span style="color: #0000BB;">3</span>.</span>
 <span class="r-plt img"><img src="esp_get_tiles-3.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example from https://leaflet-extras.github.io/leaflet-providers/preview/.</span></span></span>
@@ -259,6 +270,7 @@ projecting <code>x</code> first:</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">cartodb_dark_tile</span>, maxcell <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">segovia</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> `data` has 4 layers. Selecting layers <span style="color: #0000BB;">1</span>, <span style="color: #0000BB;">2</span>, and <span style="color: #0000BB;">3</span>.</span>
 <span class="r-plt img"><img src="esp_get_tiles-4.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

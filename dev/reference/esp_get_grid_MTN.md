@@ -1,7 +1,8 @@
-# National geographic grids from IGN MTN (Mapa Topografico Nacional)
+# National geographic grids from IGN MTN (Mapa Topográfico Nacional)
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-`POLYGON` with the geographic grids of Spain.
+This function loads an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` with
+the geographic grids of Spain.
 
 ## Usage
 
@@ -32,17 +33,16 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Details
 
@@ -65,7 +65,7 @@ Possible values of `grid` are:
 
 ### MTN grids
 
-A description of the MTN (Mapa Topografico Nacional) grids available:
+A description of the available MTN (Mapa Topográfico Nacional) grids:
 
 **MTN25_ED50_Peninsula_Baleares**
 
@@ -116,9 +116,18 @@ the real grid of the MTN50, that is, the one that divides the current
 printed series of the map, taking into account the special distribution
 of the Canary Islands sheets.
 
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
+
 ## See also
 
-Geographical grid datasets:
+Geographic grid data:
 [`esp_get_grid_BDN()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_BDN.md),
 [`esp_get_grid_ESDAC()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_ESDAC.md)
 

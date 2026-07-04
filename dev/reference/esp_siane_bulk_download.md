@@ -1,8 +1,8 @@
 # SIANE bulk download
 
-Download zipped data from SIANE to the
+This function downloads zipped data from SIANE to
 [`cache_dir`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
-and extract the relevant files.
+and extracts the relevant files.
 
 ## Usage
 
@@ -43,9 +43,7 @@ Data distributed through the `sianedata` data branch, see
 
 - cache_dir:
 
-  Character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md).
+  Character string. A path to a cache directory. See **Caching**.
 
 - update_cache:
 
@@ -54,32 +52,25 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
 An invisible character vector with the full paths of the extracted
 files. See **Examples**.
 
+## Caching
+
+Functions that download data store files in `cache_dir`. When
+`cache_dir` is `NULL`, they use the active package cache, which defaults
+to a temporary directory. Set `update_cache = TRUE` to replace an
+existing cached file. See **Caching strategies** in
+[`esp_set_cache_dir()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_set_cache_dir.md)
+to configure a persistent cache.
+
 ## See also
 
-Political and administrative boundary datasets:
-[`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
-[`esp_get_ccaa()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa.md),
-[`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
-[`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_comarca.md),
-[`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
-[`esp_get_gridmap`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_gridmap.md),
-[`esp_get_munic()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic.md),
-[`esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_munic_siane.md),
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_nuts.md),
-[`esp_get_prov()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov.md),
-[`esp_get_prov_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_prov_siane.md),
-[`esp_get_simpl`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_simpl.md),
-[`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
-[`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
-
-Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+CartoBase ANE boundaries and utilities:
 [`esp_get_capimun()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_capimun.md),
 [`esp_get_ccaa_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_ccaa_siane.md),
 [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md),
@@ -116,10 +107,10 @@ read_sf(dest_files[1]) |> head()
 # Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpBZKVcp/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpBZKVcp/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpBZKVcp/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpBZKVcp/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp4hVvvF/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp4hVvvF/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/Rtmp4hVvvF/testexample/siane.
+#> ✔ File already cached: /tmp/Rtmp4hVvvF/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

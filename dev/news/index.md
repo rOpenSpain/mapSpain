@@ -2,25 +2,33 @@
 
 ## mapSpain (development version)
 
+- [`?esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md):
+  Updated all WMS providers to use `service=WMS&version=1.3.0`.
+
+## mapSpain 1.2.0
+
+CRAN release: 2026-06-17
+
 - Refactored internal helpers for downloading and reading geospatial
   files, SIANE file handling, EPSG validation, subdivision-code
   filtering, municipal metadata enrichment, empty-result messages and
   Canary Islands displacement. This is intended to simplify maintenance
   without changing the public API.
-- Consolidated repeated Autonomous Community or City, province and
-  municipality metadata across GISCO, SIANE, simplified and gridmap
-  getters.
+- Consolidated repeated metadata for Autonomous Communities and Cities,
+  provinces and municipalities across GISCO, SIANE, simplified and
+  grid-map getters.
 - Further simplified internal cache handling, `sf` output finalization,
   WMTS tile retrieval, dictionary translation and no-match messages.
   These changes are intended to improve maintainability without changing
   user-facing behavior.
-- Reviewed roxygen2 documentation, generated Rd files and prose
+- Reviewed **roxygen2** documentation, generated Rd files and prose
   documentation for consistent terminology and clearer user-facing
   messages. This work was completed with AI assistance and human review.
 - This internal refactor was developed with AI assistance and reviewed
   through focused package checks, including
   [`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
-  followed by `lintr::lint_package()`.
+  followed by
+  [`lintr::lint_package()`](https://lintr.r-lib.org/reference/lint.html).
 
 ## mapSpain 1.1.0
 
@@ -52,9 +60,9 @@ managing the persistent cache directory. If you have an existing cache
 directory, you will receive a one-time notification about this
 migration.
 
-The package now requires **R \>= 4.1**, and dependency updates improve
+The package now requires `R >= 4.1` and dependency updates improve
 performance and maintainability. All functions return tidy objects,
-either tibbles or `sf` objects with tibble data.
+either `tibble` objects or `sf` objects with `tibble` data.
 
 Several new functions and arguments have been added, some functions
 renamed and others deprecated. All bundled datasets have been updated to
@@ -68,7 +76,7 @@ their latest versions.
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
   is deprecated and defunct because the source file is no longer
   available.
-- `providerEspTileOptions()` has been removed, use
+- `providerEspTileOptions()` has been removed. Use
   [`leaflet::providerTileOptions()`](https://rstudio.github.io/leaflet/reference/addProviderTiles.html)
   instead.
 - Removed dataset `?esp_munic.sf`.
@@ -81,8 +89,8 @@ their latest versions.
 
 - [`esp_get_country()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
   has been renamed to
-  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md),
-  the old name still works.
+  [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md).
+  The old name still works.
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
   deprecates the `resolution` and `spatialtype` arguments. Wetlands
   support has been moved to the new
@@ -90,15 +98,15 @@ their latest versions.
   function.
 - [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   has been renamed to
-  [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md),
-  the old name still works.
+  [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md).
+  The old name still works.
 
 ### New features
 
 - Added dataset
   [`?esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
   replacing `?esp_nuts.sf`.
-- [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
+- [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_attributions.md)
   retrieves tile provider attributions.
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
   retrieves all countries available in SIANE at a given date.
@@ -156,8 +164,8 @@ CRAN release: 2024-01-23
   Canary Islands.
 - [`esp_move_can()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_move_can.md)
   is used internally by all functions.
-- `layer_spatraster()` was removed, it was deprecated in **mapSpain**
-  0.6.2.
+- `layer_spatraster()` was removed after being deprecated in
+  **mapSpain** 0.6.2.
 
 ## mapSpain 0.8.0
 

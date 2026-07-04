@@ -213,6 +213,8 @@ province, like Madrid, Asturias or Murcia, in this database.
 
 ## See also
 
+[`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md).
+
 Included package datasets:
 [`esp_nuts_2024`](https://ropenspain.github.io/mapSpain/dev/reference/esp_nuts_2024.md),
 [`esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md),

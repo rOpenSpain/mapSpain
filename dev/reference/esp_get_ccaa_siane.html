@@ -17,7 +17,7 @@ specified scale."><meta property="og:image" content="https://ropenspain.github.i
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,18 +29,23 @@ specified scale."><meta property="og:image" content="https://ropenspain.github.i
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -124,8 +129,8 @@ starts as of 2005.</p></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>Logical. Whether to cache downloaded files. Default is <code>TRUE</code>.
-See <strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<dd><p>Logical. Whether to cache downloaded files. Defaults to <code>TRUE</code>.
+See <strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -135,11 +140,11 @@ a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>Character string. A path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code>.</p></dd>
+<strong>Caching</strong>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>logical. If <code>TRUE</code> displays informational messages.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code> displays informational messages.</p></dd>
 
 
 <dt id="arg-resolution">resolution<a class="anchor" aria-label="anchor" href="#arg-resolution"></a></dt>
@@ -176,23 +181,20 @@ level in this function.</p>
 level are added.</p>
     </div>
     <div class="section level2">
+    <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a></h2>
+
+
+
+<p>Functions that download data store files in <code>cache_dir</code>. When <code>cache_dir</code>
+is <code>NULL</code>, they use the active package cache, which defaults to a temporary
+directory. Set <code>update_cache = TRUE</code> to replace an existing cached file.
+See <strong>Caching strategies</strong> in <code><a href="esp_set_cache_dir.html">esp_set_cache_dir()</a></code> to configure a
+persistent cache.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Political and administrative boundary datasets:
-<code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
-<code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>,
-<code><a href="esp_get_comarca.html">esp_get_comarca()</a></code>,
-<code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>,
-<code><a href="esp_get_gridmap.html">esp_get_gridmap</a></code>,
-<code><a href="esp_get_munic.html">esp_get_munic()</a></code>,
-<code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,
-<code><a href="esp_get_nuts.html">esp_get_nuts()</a></code>,
-<code><a href="esp_get_prov.html">esp_get_prov()</a></code>,
-<code><a href="esp_get_prov_siane.html">esp_get_prov_siane()</a></code>,
-<code><a href="esp_get_simpl.html">esp_get_simpl</a></code>,
-<code><a href="esp_get_spain.html">esp_get_spain()</a></code>,
-<code><a href="esp_get_spain_siane.html">esp_get_spain_siane()</a></code>,
-<code><a href="esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code></p>
-<p>Datasets sourced from CartoBase ANE (Atlas Nacional de España):
+    <div class="dont-index"><p><code><a href="esp_get_ccaa.html">esp_get_ccaa()</a></code>.</p>
+<p>CartoBase ANE boundaries and utilities:
 <code><a href="esp_get_capimun.html">esp_get_capimun()</a></code>,
 <code><a href="esp_get_countries_siane.html">esp_get_countries_siane()</a></code>,
 <code><a href="esp_get_munic_siane.html">esp_get_munic_siane()</a></code>,

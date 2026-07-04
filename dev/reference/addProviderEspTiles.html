@@ -15,7 +15,7 @@ map"><meta property="og:image" content="https://ropenspain.github.io/mapSpain/lo
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,18 +27,23 @@ map"><meta property="og:image" content="https://ropenspain.github.io/mapSpain/lo
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/articles/working_imagery.html">Working with static map tiles</a></li>
-    <li><a class="dropdown-item" href="../articles/articles/regioncodes.html">Appendix: Spanish subdivision names and codes</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/working_imagery.html">Working with static map tiles</a></li>
+    <li><a class="dropdown-item" href="../articles/regioncodes.html">Appendix: Spanish subdivision codes and names</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Grupo de Usuarios R Madrid 25-nov-2021</h6></li>
-    <li><a class="dropdown-item" href="../articles/articles/mapasesp.html">mapSpain: maps of Spain in R (article)</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)</a></li>
-    <li><a class="external-link dropdown-item" href="http://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid 25-nov-2021 (video)</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
+    <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    </a></li>
+    <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
+    </a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/dhernangomez" aria-label="Twitter"><span class="fa fa-twitter"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/mapSpain/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
@@ -118,6 +123,7 @@ group names are permitted–they need not be short, identifier-style names.</p><
 <li><p><code><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">leaflet::addWMSTiles()</a></code>.</p></li>
 <li><p><a href="esp_tiles_providers.html">esp_tiles_providers</a>.</p></li>
 </ul><p>Static map tiles and imagery:
+<code><a href="esp_get_attributions.html">esp_get_attributions()</a></code>,
 <code><a href="esp_get_tiles.html">esp_get_tiles()</a></code>,
 <code><a href="esp_make_provider.html">esp_make_provider()</a></code></p></div>
     </div>
@@ -144,7 +150,7 @@ group names are permitted–they need not be short, identifier-style names.</p><
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">leafmap</span></span></span>
 <div id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:60vh;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4166,-3.70384],10,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"Default (OSM)",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addTiles","args":["https://rts.larioja.org/mapa-base/rioja_claro/{z}/{x}/{y}.png",null,"IDErioja Claro",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"minzoom":0,"maxzoom":18,"tilesize":256,"errortileurl":"","nowrap":false,"zoomoffset":0,"zoomreverse":false,"zindex":1,"detectretina":false,"attribution":"CC BY 4.0 <a href='https://www.iderioja.org'>www.iderioja.org<\/a>"}]},{"method":"addWMSTiles","args":["https://servicios.idee.es/wms-inspire/transportes",null,"Carreteras",{"styles":"","format":"image/png","transparent":"true","version":"1.1.1","errortileurl":"","nowrap":false,"detectretina":false,"attribution":"Sistema Geogr&aacute;fico Nacional <a href='http://www.scne.es'>SCNE<\/a>","layers":"TN.RoadTransportNetwork.RoadLink"}]},{"method":"addLayersControl","args":[["IDErioja Claro","Default (OSM)"],"Carreteras",{"collapsed":false,"autoZIndex":true,"position":"topright"}]}]},"evals":[],"jsHooks":[]}</script></code></pre></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4166,-3.70384],10,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"Default (OSM)",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addTiles","args":["https://rts.larioja.org/mapa-base/rioja_claro/{z}/{x}/{y}.png",null,"IDErioja Claro",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"minzoom":0,"maxzoom":18,"tilesize":256,"errortileurl":"","nowrap":false,"zoomoffset":0,"zoomreverse":false,"zindex":1,"detectretina":false,"attribution":"CC BY 4.0 <a href='https://www.iderioja.org'>www.iderioja.org<\/a>"}]},{"method":"addWMSTiles","args":["https://servicios.idee.es/wms-inspire/transportes",null,"Carreteras",{"styles":"","format":"image/png","transparent":"true","version":"1.3.0","crs":"EPSG:3857","errortileurl":"","nowrap":false,"detectretina":false,"attribution":"Sistema Geogr&aacute;fico Nacional <a href='http://www.scne.es'>SCNE<\/a>","layers":"TN.RoadTransportNetwork.RoadLink"}]},{"method":"addLayersControl","args":[["IDErioja Claro","Default (OSM)"],"Carreteras",{"collapsed":false,"autoZIndex":true,"position":"topright"}]}]},"evals":[],"jsHooks":[]}</script></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
