@@ -499,7 +499,7 @@ November 2021.
   tiles.
 
 - [mapSpain: mapas de España en R
-  (slides)](https://dieghernan.github.io/rpubs/mapSpain_slides/) :
+  (slides)](https://dieghernan-mapspain-r.share.connect.posit.cloud/) :
 
   Slides from the Grupo de Usuarios R Madrid talk held on 25 November
   2021.
