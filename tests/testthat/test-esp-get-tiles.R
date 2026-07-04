@@ -484,9 +484,9 @@ test_that("Custom WMS", {
   custom_wms <- list(
     id = "new_cached_test",
     q = paste0(
-      "https://servicios.idee.es/wms-inspire/hidrografia?",
+      "https://servicios.idee.es/wms-inspire/transportes?",
       "service=WMS&version=1.1.1&request=GetMap&format=image/png&",
-      "transparent=true&layers=HY.PhysicalWaters.Catchments&srs=EPSG:3857"
+      "transparent=true&layers=TN.RoadTransportNetwork.RoadLink&srs=EPSG:3857"
     )
   )
 
