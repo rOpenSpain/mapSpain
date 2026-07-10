@@ -74,13 +74,18 @@
 <code>proofread-docs</code>: load <code>.github/skills/proofread-docs/SKILL.md</code>.</li>
 </ul><p>Treat <code>.github/agents/</code> and <code>.github/skills/</code> as the canonical, portable definitions for this package. They are intended to be shared across packages with the same AI documentation-review setup, so avoid hard-coded local paths such as user profile directories.</p>
 <p>If a requested repo-local agent or skill is missing, say so briefly and fall back to the best available global or built-in workflow.</p>
+<p>For code linting in this package, first load the package with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">load_all</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Then run this command in the console:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">jarl</span> check .</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-development">Package development<a class="anchor" aria-label="anchor" href="#package-development"></a></h2>
 <div class="section level3">
 <h3 id="key-commands">Key commands<a class="anchor" aria-label="anchor" href="#key-commands"></a></h3>
 <p>(All these functions have been optimized for agentic use, so they can be called directly without other arguments.)</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Executing code</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">load_all</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">code</span></span>
