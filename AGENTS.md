@@ -19,6 +19,18 @@ such as user profile directories.
 If a requested repo-local agent or skill is missing, say so briefly and fall
 back to the best available global or built-in workflow.
 
+For code linting in this package, first load the package with:
+
+```R
+devtools::load_all()
+```
+
+Then run this command in the console:
+
+```sh
+jarl check .
+```
+
 ## Package development
 
 ### Key commands

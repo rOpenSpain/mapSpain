@@ -68,8 +68,8 @@ test_that("Read gpkg", {
   nms1 <- get_col_name(fake_local, c("ccaa", "id_ccaa"))
   expect_identical(nms1, "id_ccaa")
   nm <- get_geo_file_colnames(fake_local)
-  expect_true("geometry" %in% nm)
-  expect_true("id_ccaa" %in% nm)
+  expect_contains(nm, "geometry")
+  expect_contains(nm, "id_ccaa")
   s <- read_geo_file_sf(fake_local)
 
   expect_s3_class(s, "sf")

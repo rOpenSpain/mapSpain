@@ -426,7 +426,7 @@ test_that("WMTS", {
   auto <- esp_get_tiles(poly, "PNOA", zoom = 1)
   min <- esp_get_tiles(poly, "PNOA", zoom = my_prov$min_zoom)
   expect_identical(terra::ncell(auto), terra::ncell(min))
-  expect_false(1 == my_prov$min_zoom)
+  expect_false(my_prov$min_zoom == 1)
 
   unlink(cdir, recursive = TRUE, force = TRUE)
 })

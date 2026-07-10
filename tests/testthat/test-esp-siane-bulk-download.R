@@ -45,7 +45,7 @@ test_that("Online", {
 
   s <- esp_siane_bulk_download(cache_dir = cdir)
 
-  expect_true(all(file.exists(s)))
+  expect_equal(file.exists(s), rep(TRUE, length(s)))
   expect_message(s <- esp_siane_bulk_download(cache_dir = cdir, verbose = TRUE))
 
   if (dir.exists(cdir)) {

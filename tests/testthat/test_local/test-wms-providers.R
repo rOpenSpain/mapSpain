@@ -52,7 +52,7 @@ test_that("Test WMS png", {
       silent = TRUE
     )
     if (!inherits(tile, "try-error")) {
-      expect_false(is.null(ensure_null(terra::crs(tile))))
+      expect_type(ensure_null(terra::crs(tile)), "character")
 
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
     } else {

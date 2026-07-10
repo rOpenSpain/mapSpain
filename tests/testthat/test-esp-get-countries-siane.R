@@ -110,14 +110,14 @@ test_that("Filter countries", {
     db_null <- esp_get_countries_siane(country = "greenland", cache_dir = cdir)
   )
 
-  expect_true(nrow(db_null) == 0)
+  expect_equal(nrow(db_null), 0)
   expect_s3_class(db_null, "sf")
   expect_s3_class(db_null, "tbl_df")
 
   # Test no `id_iso3` field.
   db_err <- db_cached_full[, seq_len(4)] |> sf::st_drop_geometry()
   expect_identical(filter_country(db_err, country = "JP"), db_err)
-  expect_true("JP" %in% db_err$id_iso2)
+  expect_contains(db_err$id_iso2, "JP")
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)

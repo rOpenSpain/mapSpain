@@ -83,7 +83,7 @@ test_that("hydrobasin online", {
     l <- esp_get_hydrobasin(resolution = "10", epsg = 3857, cache_dir = cdir)
   )
 
-  expect_true(sf::st_crs(l) == sf::st_crs(3857))
+  expect_equal(sf::st_crs(l), sf::st_crs(3857))
   expect_silent(l2 <- esp_get_hydrobasin(resolution = "6.5", cache_dir = cdir))
 
   expect_s3_class(l2, "sf")
@@ -99,7 +99,7 @@ test_that("hydrobasin online", {
     )
   )
 
-  expect_true(sf::st_crs(l) == sf::st_crs(3857))
+  expect_equal(sf::st_crs(l), sf::st_crs(3857))
   expect_silent(
     l2 <- esp_get_hydrobasin(
       resolution = "6.5",

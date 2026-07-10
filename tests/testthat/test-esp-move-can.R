@@ -73,7 +73,7 @@ test_that("sf", {
   moved_n <- esp_move_can(teide_sf2, moveCAN = FALSE)
   expect_identical(moved_n, teide_sf2)
 
-  expect_true(all(sf::st_is_valid(moved_n)))
+  expect_all_true(sf::st_is_valid(moved_n))
 
   # Moved
   moved2 <- esp_move_can(teide_sf, moveCAN = TRUE)
@@ -88,7 +88,7 @@ test_that("sf", {
   expect_identical(sf::st_crs(moved3), sf::st_crs(teide_sf_3857))
   expect_identical(names(moved3), names(teide_sf_3857))
 
-  expect_true(all(sf::st_is_valid(moved3)))
+  expect_all_true(sf::st_is_valid(moved3))
 })
 
 test_that("Empty", {

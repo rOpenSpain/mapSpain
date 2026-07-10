@@ -81,7 +81,7 @@ test_that("roads online", {
   l <- esp_get_roads(epsg = 3857, cache_dir = cdir)
 
   expect_identical(sf::st_crs(l), sf::st_crs(3857))
-  expect_false(hasName(l, "codauto"))
+  expect_named(l, setdiff(names(l), "codauto"))
   expect_s3_class(l, "sf")
   expect_s3_class(l, "tbl_df")
   expect_gt(nrow(l), 100)
