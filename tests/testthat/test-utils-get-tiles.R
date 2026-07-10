@@ -1,7 +1,7 @@
 test_that("Validate providers errors", {
   expect_snapshot(error = TRUE, validate_provider(1))
   expect_snapshot(error = TRUE, validate_provider(list(a = 1, q = "2")))
-  expect_error(validate_provider("FAKE"), "`type` must be(.*)IDErioja(.*)PNOA")
+  expect_snapshot(error = TRUE, validate_provider("FAKE"))
 })
 
 test_that("Validate external", {
@@ -16,9 +16,9 @@ test_that("Validate external", {
   )
   expect_silent(res <- validate_provider(custom_wms))
   expect_type(res, "list")
-  expect_true(all(c("id", "q") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMS")
+  expect_contains(names(res), c("id", "q"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
@@ -28,9 +28,9 @@ test_that("Validate external", {
   )
   expect_silent(res <- validate_provider(cartodb_voyager))
   expect_type(res, "list")
-  expect_true(all(c("id", "q") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMTS")
+  expect_contains(names(res), c("id", "q"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
@@ -57,36 +57,36 @@ test_that("Validate internal", {
   # WMTS - Not Inspire style
   expect_silent(res <- validate_provider("IDErioja"))
   expect_type(res, "list")
-  expect_true(all(c("id", "q", "attribution") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMTS")
+  expect_contains(names(res), c("id", "q", "attribution"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
   # WMTS
   expect_silent(res <- validate_provider("PNOA"))
   expect_type(res, "list")
-  expect_true(all(c("id", "q", "attribution", "tilematrixset") %in% names(res)))
-  expect_true("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMTS")
+  expect_contains(names(res), c("id", "q", "attribution", "tilematrixset"))
+  expect_contains(names(res), "min_zoom")
+  expect_identical(guess_provider_type(res), "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # WMS v1.3.0 no zoom
   expect_silent(res <- validate_provider("Catastro"))
   expect_type(res, "list")
-  expect_true(all(c("id", "q", "attribution", "crs") %in% names(res)))
-  expect_true("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMS")
-  expect_true(res$version >= "1.3.0")
+  expect_contains(names(res), c("id", "q", "attribution", "crs"))
+  expect_contains(names(res), "min_zoom")
+  expect_identical(guess_provider_type(res), "WMS")
+  expect_gte(utils::compareVersion(res$version, "1.3.0"), 0)
   expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # WMS v1.3.0
   expect_silent(res <- validate_provider("ADIF"))
   expect_type(res, "list")
-  expect_true(all(c("id", "q", "attribution", "crs") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMS")
-  expect_true(res$version >= "1.3.0")
+  expect_contains(names(res), c("id", "q", "attribution", "crs"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMS")
+  expect_gte(utils::compareVersion(res$version, "1.3.0"), 0)
   expect_identical(get_tile_crs(res), "EPSG:3857")
 
   # JPG
@@ -153,17 +153,17 @@ test_that("Validate options", {
   prov_list <- validate_provider(wms_1_3_0)
   # Make 1.0.0
   to_1_0_0 <- modify_provider_list(prov_list, list(version = "1.0.0"))
-  expect_false("crs" %in% names(to_1_0_0))
-  expect_true("crs" %in% names(prov_list))
+  expect_false(hasName(to_1_0_0, "crs"))
+  expect_contains(names(prov_list), "crs")
 
   # Snapshot for Catastro package
   prov_list <- validate_provider("Catastro.Building")
   options <- list(version = "1.3.0", styles = "ELFCadastre", srs = "EPSG:25830")
   catastro_mod <- modify_provider_list(prov_list, options)
 
-  expect_false(prov_list$id == catastro_mod$id)
+  expect_false(identical(prov_list$id, catastro_mod$id))
 
-  expect_true(get_tile_crs(catastro_mod) == "EPSG:25830")
+  expect_identical(get_tile_crs(catastro_mod), "EPSG:25830")
 
   # Make url
   q <- catastro_mod$q
@@ -233,13 +233,13 @@ test_that("bbox WMS", {
   # Should be a square
   zero_bbox <- sf::st_bbox(zero_expand)
   new_rel <- diff(zero_bbox[c(1, 3)]) / diff(zero_bbox[c(2, 4)])
-  expect_true(new_rel == 1)
+  expect_equal(new_rel, 1)
   # With a factor
 
   b2 <- get_tile_bbox(sf_obj, bbox_expand = 0.75, prov_type = "WMS")
   b2_bbox <- as.double(sf::st_bbox(b2))
   new_rel <- diff(b2_bbox[c(1, 3)]) / diff(b2_bbox[c(2, 4)])
-  expect_true(new_rel == 1)
+  expect_equal(new_rel, 1)
 
   # Both midpoints should be the same
   coords_init <- sf::st_bbox(sf_obj) |>
@@ -263,9 +263,9 @@ test_that("External with apikeys", {
 
   expect_silent(res <- validate_provider(custom_wmts))
   expect_type(res, "list")
-  expect_true(all(c("id", "q") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMTS")
+  expect_contains(names(res), c("id", "q"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 
@@ -280,9 +280,9 @@ test_that("External with apikeys", {
 
   expect_silent(res <- validate_provider(custom_wmts))
   expect_type(res, "list")
-  expect_true(all(c("id", "q") %in% names(res)))
-  expect_false("min_zoom" %in% names(res))
-  expect_true(guess_provider_type(res) == "WMTS")
+  expect_contains(names(res), c("id", "q"))
+  expect_false(hasName(res, "min_zoom"))
+  expect_identical(guess_provider_type(res), "WMTS")
   expect_identical(get_tile_crs(res), "EPSG:3857")
   expect_identical(get_tile_ext(res), "png")
 })

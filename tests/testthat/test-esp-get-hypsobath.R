@@ -68,11 +68,13 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("hypsobath online", {
-  expect_error(esp_get_hypsobath(epsg = 3367))
-  expect_error(esp_get_hypsobath(spatialtype = "f"))
-  expect_error(esp_get_hypsobath(resolution = "10"))
+test_that("hypsobath errors", {
+  expect_snapshot(error = TRUE, esp_get_hypsobath(epsg = 3367))
+  expect_snapshot(error = TRUE, esp_get_hypsobath(spatialtype = "f"))
+  expect_snapshot(error = TRUE, esp_get_hypsobath(resolution = "10"))
+})
 
+test_that("hypsobath online", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -94,7 +96,7 @@ test_that("hypsobath online", {
     cache_dir = cdir
   )
 
-  expect_true(sf::st_crs(l) == sf::st_crs(3857))
+  expect_identical(sf::st_crs(l), sf::st_crs(3857))
   expect_silent(esp_get_hypsobath(
     spatialtype = "area",
     resolution = "6.5",

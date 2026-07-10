@@ -54,8 +54,14 @@ test_that("comarcas online", {
   )
   expect_lt(nrow(ncan), nrow(n))
 
-  expect_error(esp_get_comarca(region = "XX", cache_dir = cdir))
-  expect_error(esp_get_comarca(epsg = "5689", cache_dir = cdir))
+  expect_snapshot(
+    error = TRUE,
+    esp_get_comarca(region = "XX", cache_dir = cdir)
+  )
+  expect_snapshot(
+    error = TRUE,
+    esp_get_comarca(epsg = "5689", cache_dir = cdir)
+  )
   expect_snapshot(nemty <- esp_get_comarca(comarca = "XX", cache_dir = cdir))
 
   expect_equal(nrow(nemty), 0)

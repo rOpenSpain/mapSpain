@@ -32,7 +32,7 @@ test_that("Test 404", {
 })
 
 test_that("Errors", {
-  expect_error(esp_get_grid_ESDAC("50"))
+  expect_snapshot(error = TRUE, esp_get_grid_ESDAC("50"))
 })
 
 test_that("ESDAC grid online", {

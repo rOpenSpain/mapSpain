@@ -32,7 +32,7 @@ test_that("Test 404", {
 })
 
 test_that("Errors", {
-  expect_error(esp_get_grid_MTN("abcde"))
+  expect_snapshot(error = TRUE, esp_get_grid_MTN("abcde"))
 })
 
 test_that("MTN grid online", {

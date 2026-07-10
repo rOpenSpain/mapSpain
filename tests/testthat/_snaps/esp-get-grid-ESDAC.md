@@ -1,3 +1,11 @@
+# Errors
+
+    Code
+      esp_get_grid_ESDAC("50")
+    Condition
+      Error:
+      ! `resolution` must be "10" or "1", not "50".
+
 # ESDAC grid less than 10
 
     Code

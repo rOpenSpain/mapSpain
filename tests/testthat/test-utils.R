@@ -67,7 +67,7 @@ test_that("Bind and fill sf", {
   gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "data.frame")
@@ -82,7 +82,7 @@ test_that("Bind and fill tibbles", {
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   cos <- sf::st_drop_geometry(cos)
   a_list <- list(gb, cos, gb, cos)
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "data.frame")
   expect_equal(nrow(binded), 4)
@@ -94,7 +94,7 @@ test_that("Bind and fill sf removes NULL", {
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "data.frame")
@@ -111,7 +111,7 @@ test_that("Bind and fill tibble removes NULL", {
 
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "data.frame")
   expect_equal(nrow(binded), 3)
@@ -134,14 +134,14 @@ test_that("Filter dates", {
   data_sf <- read_geo_file_sf(url_prov)
 
   year_1 <- siane_filter_year(data_sf, year = 2010)
-  expect_true(all(year_1$fecha_alta < "2010-12-31"))
+  expect_all_true(year_1$fecha_alta < "2010-12-31")
   expect_false(all(is.na(year_1$fecha_baja)))
 
   year_today <- siane_filter_year(data_sf)
-  expect_true(all(is.na(year_today$fecha_baja)))
+  expect_all_true(is.na(year_today$fecha_baja))
   expect_false(all(year_today$fecha_alta < "2010-12-31"))
 
-  expect_false(nrow(year_1) == nrow(year_today))
+  expect_false(identical(nrow(year_1), nrow(year_today)))
 
   # Errors
   expect_snapshot(

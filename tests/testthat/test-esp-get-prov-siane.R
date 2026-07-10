@@ -87,7 +87,10 @@ test_that("prov online", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_error(esp_get_prov_siane(epsg = "FFF", cache_dir = cdir))
+  expect_snapshot(
+    error = TRUE,
+    esp_get_prov_siane(epsg = "FFF", cache_dir = cdir)
+  )
 
   expect_silent(esp_get_prov_siane(cache_dir = cdir))
 
@@ -104,7 +107,10 @@ test_that("prov online", {
     prov = c("Galicia", "ES7", "Centro"),
     cache_dir = cdir
   ))
-  expect_error(esp_get_prov_siane(epsg = 39823, cache_dir = cdir))
+  expect_snapshot(
+    error = TRUE,
+    esp_get_prov_siane(epsg = 39823, cache_dir = cdir)
+  )
   expect_silent(esp_get_prov_siane(cache_dir = cdir, resolution = 10))
   expect_silent(esp_get_prov_siane(
     moveCAN = c(1, 2),

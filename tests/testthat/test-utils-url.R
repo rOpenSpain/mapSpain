@@ -199,7 +199,8 @@ test_that("Test timeout", {
   withr::local_options(c(mapspain_timeout = 0.001))
   expect_error(
     download_url(url = url, verbose = FALSE, cache_dir = cdir),
-    "Failed to perform HTTP request(.*)Timeout"
+    "Failed to perform HTTP request(.*)Timeout",
+    class = "httr2_failure"
   )
 
   withr::local_options(c(mapspain_timeout = 300L))
