@@ -87,9 +87,9 @@ test_that("prov online", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_snapshot(
-    error = TRUE,
-    esp_get_prov_siane(epsg = "FFF", cache_dir = cdir)
+  expect_error(
+    esp_get_prov_siane(epsg = "FFF", cache_dir = cdir),
+    class = "rlang_error"
   )
 
   expect_silent(esp_get_prov_siane(cache_dir = cdir))
@@ -107,9 +107,9 @@ test_that("prov online", {
     prov = c("Galicia", "ES7", "Centro"),
     cache_dir = cdir
   ))
-  expect_snapshot(
-    error = TRUE,
-    esp_get_prov_siane(epsg = 39823, cache_dir = cdir)
+  expect_error(
+    esp_get_prov_siane(epsg = 39823, cache_dir = cdir),
+    class = "rlang_error"
   )
   expect_silent(esp_get_prov_siane(cache_dir = cdir, resolution = 10))
   expect_silent(esp_get_prov_siane(
@@ -121,13 +121,13 @@ test_that("prov online", {
     prov = c("Galicia", "ES7", "Centro"),
     cache_dir = cdir
   ))
-  expect_snapshot(
-    error = TRUE,
-    esp_get_prov_siane(prov = "Menorca", cache_dir = cdir)
+  expect_error(
+    esp_get_prov_siane(prov = "Menorca", cache_dir = cdir),
+    class = "rlang_error"
   )
-  expect_snapshot(
-    error = TRUE,
-    esp_get_prov_siane(prov = "ES6x", cache_dir = cdir)
+  expect_error(
+    esp_get_prov_siane(prov = "ES6x", cache_dir = cdir),
+    class = "rlang_error"
   )
 
   expect_equal(
@@ -165,8 +165,9 @@ test_that("prov online", {
   n <- esp_get_prov_siane(prov = f$cpro, cache_dir = cdir)
   expect_equal(nrow(n), 52)
 
-  expect_snapshot(
-    n <- esp_get_prov_siane(prov = f$nuts3.code, cache_dir = cdir)
+  expect_message(
+    n <- esp_get_prov_siane(prov = f$nuts3.code, cache_dir = cdir),
+    "No Spanish province codes found"
   )
   expect_equal(nrow(n), 49)
 

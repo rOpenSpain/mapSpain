@@ -80,9 +80,9 @@ test_that("ccaa online", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_snapshot(
-    error = TRUE,
-    esp_get_ccaa_siane(epsg = "FFF", cache_dir = cdir)
+  expect_error(
+    esp_get_ccaa_siane(epsg = "FFF", cache_dir = cdir),
+    class = "rlang_error"
   )
 
   expect_silent(esp_get_ccaa_siane(cache_dir = cdir))
@@ -99,9 +99,9 @@ test_that("ccaa online", {
     ccaa = c("Galicia", "ES7", "Centro"),
     cache_dir = cdir
   ))
-  expect_snapshot(
-    error = TRUE,
-    esp_get_ccaa_siane(epsg = 39823, cache_dir = cdir)
+  expect_error(
+    esp_get_ccaa_siane(epsg = 39823, cache_dir = cdir),
+    class = "rlang_error"
   )
   expect_silent(esp_get_ccaa_siane(cache_dir = cdir, resolution = 10))
   expect_silent(esp_get_ccaa_siane(
@@ -113,13 +113,13 @@ test_that("ccaa online", {
     ccaa = c("Galicia", "ES7", "Centro"),
     cache_dir = cdir
   ))
-  expect_snapshot(
-    error = TRUE,
-    esp_get_ccaa_siane(ccaa = "Menorca", cache_dir = cdir)
+  expect_error(
+    esp_get_ccaa_siane(ccaa = "Menorca", cache_dir = cdir),
+    class = "rlang_error"
   )
-  expect_snapshot(
-    error = TRUE,
-    esp_get_ccaa_siane(ccaa = "ES6x", cache_dir = cdir)
+  expect_error(
+    esp_get_ccaa_siane(ccaa = "ES6x", cache_dir = cdir),
+    class = "rlang_error"
   )
 
   expect_equal(

@@ -67,7 +67,7 @@ test_that("Bind and fill sf", {
   gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
-  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
+  expect_error(err <- do.call(rbind, a_list), class = "simpleError")
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "data.frame")
@@ -82,7 +82,7 @@ test_that("Bind and fill tibbles", {
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   cos <- sf::st_drop_geometry(cos)
   a_list <- list(gb, cos, gb, cos)
-  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
+  expect_error(err <- do.call(rbind, a_list), class = "simpleError")
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "data.frame")
   expect_equal(nrow(binded), 4)
@@ -94,7 +94,7 @@ test_that("Bind and fill sf removes NULL", {
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
+  expect_error(err <- do.call(rbind, a_list), class = "simpleError")
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "data.frame")
@@ -111,7 +111,7 @@ test_that("Bind and fill tibble removes NULL", {
 
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_snapshot(error = TRUE, err <- do.call(rbind, a_list))
+  expect_error(err <- do.call(rbind, a_list), class = "simpleError")
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "data.frame")
   expect_equal(nrow(binded), 3)

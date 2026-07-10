@@ -233,13 +233,13 @@ test_that("bbox WMS", {
   # Should be a square
   zero_bbox <- sf::st_bbox(zero_expand)
   new_rel <- diff(zero_bbox[c(1, 3)]) / diff(zero_bbox[c(2, 4)])
-  expect_equal(new_rel, 1)
+  expect_equal(unname(new_rel), 1)
   # With a factor
 
   b2 <- get_tile_bbox(sf_obj, bbox_expand = 0.75, prov_type = "WMS")
   b2_bbox <- as.double(sf::st_bbox(b2))
   new_rel <- diff(b2_bbox[c(1, 3)]) / diff(b2_bbox[c(2, 4)])
-  expect_equal(new_rel, 1)
+  expect_equal(unname(new_rel), 1)
 
   # Both midpoints should be the same
   coords_init <- sf::st_bbox(sf_obj) |>
