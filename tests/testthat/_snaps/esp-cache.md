@@ -1,3 +1,10 @@
+# Mock clearing installed cache config
+
+    Code
+      esp_clear_cache(config = TRUE, cached_data = FALSE, verbose = TRUE)
+    Message
+      ! mapSpain cache configuration deleted.
+
 # Mock migration
 
     Code

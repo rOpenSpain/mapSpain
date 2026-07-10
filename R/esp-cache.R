@@ -206,7 +206,6 @@ esp_clear_cache <- function(
   config_dir <- cache_config_dir()
   data_dir <- detect_cache_dir_muted()
 
-  # nocov start
   if (config && dir.exists(config_dir)) {
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
@@ -214,7 +213,6 @@ esp_clear_cache <- function(
       cli::cli_alert_warning("{.pkg mapSpain} cache configuration deleted.")
     }
   }
-  # nocov end
   if (cached_data && dir.exists(data_dir)) {
     siz <- cache_dir_size(data_dir)
     unlink(data_dir, recursive = TRUE, force = TRUE)

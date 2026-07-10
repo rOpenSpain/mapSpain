@@ -34,6 +34,38 @@ test_that("Test cache", {
   expect_true(dir.exists(current))
 })
 
+test_that("Mock clearing installed cache config", {
+  mock_config_dir <- file.path(tempdir(), "mapSpain_config_test")
+  mock_config_file <- file.path(mock_config_dir, "mapSpain_cache_dir")
+  mock_data_dir <- file.path(tempdir(), "mapSpain_data_test")
+
+  dir.create(mock_config_dir, recursive = TRUE, showWarnings = FALSE)
+  writeLines("cache-dir", mock_config_file)
+
+  local_mocked_bindings(
+    cache_config_dir = function(...) {
+      mock_config_dir
+    },
+    cache_config_file = function(...) {
+      mock_config_file
+    },
+    detect_cache_dir_muted = function(...) {
+      mock_data_dir
+    }
+  )
+
+  withr::defer(unlink(mock_config_dir, recursive = TRUE, force = TRUE))
+  withr::defer(unlink(mock_data_dir, recursive = TRUE, force = TRUE))
+
+  expect_snapshot(esp_clear_cache(
+    config = TRUE,
+    cached_data = FALSE,
+    verbose = TRUE
+  ))
+  expect_false(dir.exists(mock_config_dir))
+  expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
+})
+
 test_that("Mock restart", {
   skip_on_cran()
 
