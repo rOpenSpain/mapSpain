@@ -65,7 +65,7 @@ test_that("Testing dict", {
   vals <- unique(esp_codelist$prov.shortname.es)
   test <- unique(esp_codelist$cldr.prov.name.en)
 
-  expect_equal(vals == test, rep(FALSE, length(vals)))
+  expect_false(all(vals == test))
   expect_equal(vals, esp_dict_translate(test, "es"))
   expect_snapshot(esp_dict_translate(
     c(
