@@ -25,7 +25,11 @@ For code linting in this package, first load the package with:
 devtools::load_all()
 ```
 
-Then run this command in the console:
+Then run these commands in the console:
+
+```R
+devtools::lint()
+```
 
 ```sh
 jarl check .
