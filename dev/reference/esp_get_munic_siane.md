@@ -23,7 +23,7 @@ esp_get_munic_siane(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
 available are 2005 up to today.
 
 Copyright:

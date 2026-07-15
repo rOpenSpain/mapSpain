@@ -28,7 +28,7 @@ esp_get_capimun(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
 available are 2005 up to today.
 
 Copyright:
@@ -156,7 +156,7 @@ Municipality-level datasets:
 
 ``` r
 # \donttest{
-# Compare municipality centroids against esp_get_capimun().
+# Compare municipality centroids against municipal seats of government.
 
 # Get the municipality boundary.
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
