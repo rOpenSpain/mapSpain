@@ -60,7 +60,7 @@ Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © EuroGeographics for the administrative boundaries. Atlas
-    Nacional de España (ANE) CC-BY 4.0 <http://www.ign.es>. INE
+    Nacional de España (ANE) CC-BY 4.0 <https://www.ign.es>. INE
     <https://www.ine.es/en/index.htm>
 Encoding: UTF-8
 LazyData: true

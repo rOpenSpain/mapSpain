@@ -19,7 +19,7 @@
 #' @source
 #' ```{r, echo=FALSE, results='asis'}
 #' cat("CartoBase ANE (Atlas Nacional de Espa\u00f1a) provided by Instituto",
-#'   "Geográfico Nacional (IGN),\n<http://www.ign.es/web/ign/portal>. Years",
+#'   "Geográfico Nacional (IGN),\n<https://www.ign.es/web/ign/portal>. Years",
 #'   "available are 2005 up to today.",
 #'   sep = " "
 #' )

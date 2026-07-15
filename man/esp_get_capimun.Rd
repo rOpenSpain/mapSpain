@@ -6,7 +6,7 @@
 \title{Municipal seats of government from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
-\url{http://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+\url{https://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
 
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
@@ -114,7 +114,7 @@ persistent cache.
 \examples{
 \dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Compare municipality centroids against esp_get_capimun().
+# Compare municipality centroids against municipal seats of government.
 
 # Get the municipality boundary.
 area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)

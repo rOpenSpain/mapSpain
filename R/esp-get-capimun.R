@@ -29,7 +29,7 @@
 #'
 #' @examplesIf esp_check_access()
 #' \donttest{
-#' # Compare municipality centroids against esp_get_capimun().
+#' # Compare municipality centroids against municipal seats of government.
 #'
 #' # Get the municipality boundary.
 #' area <- esp_get_munic_siane(munic = "Valladolid", epsg = 3857)
