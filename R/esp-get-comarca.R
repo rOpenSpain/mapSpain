@@ -102,16 +102,14 @@ esp_get_comarca <- function(
   type <- match_arg_pretty(type)
 
   # Build the source URL.
-  api_entry <- switch(
-    type,
+  api_entry <- switch(type,
     "INE" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/INE/",
     "IGN" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/IGNComarcas/",
     "AGR" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MITECO/dist/",
     "LIV" = "https://github.com/rOpenSpain/mapSpain/raw/sianedata/MITECO/dist/",
   )
 
-  filename <- switch(
-    type,
+  filename <- switch(type,
     "INE" = "esp_com_99.gpkg",
     "IGN" = "comarcas_ign.gpkg",
     "AGR" = "comarcas_agrarias.gpkg",
