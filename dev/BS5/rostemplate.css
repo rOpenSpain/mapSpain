@@ -125,6 +125,11 @@ caption {
 	color: var(--bs-gray) !important;
 }
 
+/* Dev version badge in navbar: fixed vivid red outside brand tokens. */
+.navbar .text-danger {
+	color: var(--bs-danger-text-emphasis) !important;
+}
+
 #navbar .nav-link {
 	text-transform: uppercase;
 	font-weight: bold;
