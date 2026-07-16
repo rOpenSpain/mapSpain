@@ -1,27 +1,74 @@
 /*!  Compressed with sass R library https: //rstudio.github.io/sass/ */
 
-/* --- Dark Mode --- */
-/* Redefine variables */
-[data-bs-theme="dark"] {
-	--bs-body-bg: rgb(56, 56, 56);
-	--bs-body-bg-rgb: 56, 56, 56;
-	--bs-body-color: rgb(170, 170, 170);
-	--bs-body-color-rgb: 170, 170, 170;
+/* --- Theme tokens --- */
+:root {
+	--ros-white: #ffffff;
+	--ros-gray-100: #eeeeee;
+	--ros-gray-200: #dddddd;
+	--ros-gray-300: var(--brand-ros_light, #cccccc);
+	--ros-gray-600: #999999;
+	--ros-gray-700: var(--brand-ros_gray, #555555);
+	--ros-gray-800: #444444;
+	--ros-gray-850: #2f2f2f;
+	--ros-gray-900: var(--brand-ros_black, #333333);
+	--ros-violet: var(--brand-ros_violet, #986dbd);
+	--ros-violet-rgb: 152, 109, 189;
+	--ros-violet-dark: var(--brand-ros_violet_dark, #653d87);
+	--ros-violet-light: #cab3dd;
+	--ros-violet-lighter: #e0d3eb;
+	--ros-code-light-bg: var(--brand-ros_pre_bg, #f5f5f5);
+	--ros-nav-hover-bg: var(--ros-violet-light);
+	--ros-nav-hover-fg: var(--ros-gray-900);
+	--ros-nav-dropdown-hover-bg: rgba(var(--ros-violet-rgb), 0.1);
+	--ros-nav-active-bg: var(--ros-violet-dark);
+	--ros-nav-active-fg: var(--ros-white);
+	--ros-navbar-border: var(--ros-gray-300);
+	--ros-navbar-shadow: var(--ros-gray-300);
+	--ros-footer-bg: var(--ros-gray-700);
+	--ros-footer-fg: #d8d8d8;
+	--ros-footer-heading: var(--ros-gray-100);
+	--ros-footer-link: #e3d4f0;
+	--ros-footer-link-hover: var(--ros-white);
+	--ros-copyright-bg: var(--ros-gray-900);
+	--ros-copyright-fg: var(--ros-gray-300);
+	--ros-code-dark-bg: #3f3f3f;
+	--ros-code-dark-fg: #c4c4c4;
+	--ros-syntax-fg: var(--ros-gray-900);
+	--ros-syntax-comment: #008800;
+	--ros-syntax-string: #bb4444;
+	--ros-syntax-number: #880000;
+	--ros-syntax-muted: #666666;
+	--ros-syntax-function: #00a000;
+	--ros-syntax-keyword: #aa22ff;
+	--ros-syntax-variable: #b8860b;
+	--ros-syntax-dark-fg: #b7b7b7;
+	--ros-syntax-dark-comment: #66c966;
+	--ros-syntax-dark-string: #ff9b9b;
+	--ros-syntax-dark-number: #ff9c9c;
+	--ros-syntax-dark-keyword: #cea4ff;
+	--ros-syntax-dark-variable: #e0ac52;
+}
 
-	--bs-link-color: rgb(202, 179, 221);
+/* --- Dark theme tokens --- */
+[data-bs-theme="dark"] {
+	--bs-body-bg: var(--ros-gray-850);
+	--bs-body-bg-rgb: 47, 47, 47;
+	--bs-body-color: rgb(180, 180, 180);
+	--bs-body-color-rgb: 180, 180, 180;
+
+	--bs-link-color: var(--ros-violet-light);
 	--bs-link-color-rgb: 202, 179, 221;
-	--bs-heading-color: rgb(204, 204, 204);
+	--bs-heading-color: var(--ros-gray-300);
 	--bs-heading-color-rgb: 204, 204, 204;
 	--bs-white: rgb(230, 230, 230);
 	--bs-white-rgb: 230, 230, 230;
 
-	/* Branding */
-	--brand-ros_light: #555555;
-	--brand-ros_gray: #ffffff;
-	--brand-ros_pre_bg: #444;
+	--ros-code-light-bg: var(--ros-code-dark-bg);
+	--ros-navbar-border: var(--ros-gray-700);
+	--ros-navbar-shadow: var(--ros-gray-700);
 
 	.dropdown-menu {
-		--bs-dropdown-bg: #333;
+		--bs-dropdown-bg: var(--ros-gray-900);
 	}
 }
 /* ---Images and captions figure spacing--- */
@@ -121,13 +168,13 @@ caption {
 	}
 
 	#navbar ul:first-of-type {
-		border-top: solid 1px var(--brand-ros_light);
+		border-top: solid 1px var(--ros-navbar-border);
 	}
 }
 /* Effects */
 .navbar {
-	-webkit-box-shadow: 0 0 5px var(--brand-ros_light);
-	box-shadow: 0 0 5px var(--brand-ros_light);
+	-webkit-box-shadow: 0 0 5px var(--ros-navbar-shadow);
+	box-shadow: 0 0 5px var(--ros-navbar-shadow);
 }
 .navbar-toggler:focus {
 	box-shadow: 0 0 0 0.25rem rgba(152, 109, 189, 0.3);
@@ -136,7 +183,8 @@ caption {
 /* Show colors */
 
 #navbar .nav-link.dropdown-toggle.show {
-	background-color: #cab3dd;
+	background-color: var(--ros-nav-hover-bg);
+	color: var(--ros-nav-hover-fg);
 }
 
 /* Hovers */
@@ -144,17 +192,17 @@ caption {
 #navbar .nav-link:hover,
 #navbar .nav-link:focus,
 #navbar .nav-item .nav-link:hover {
-	color: var(--brand-ros_gray);
+	color: var(--ros-nav-hover-fg);
 }
 
 #navbar .nav-item > .nav-link:hover,
 #navbar .nav-item > .nav-link:focus {
-	background-color: #cab3dd;
+	background-color: var(--ros-nav-hover-bg);
 }
 
 /* Fill also the nav-item in all cases except inline form-inline */
 #navbar .nav-item:not(:has(> :first-child.form-inline)):hover {
-	background-color: #cab3dd;
+	background-color: var(--ros-nav-hover-bg);
 }
 
 @media ((max-width: 992px)) {
@@ -162,7 +210,7 @@ caption {
 		background-color: inherit;
 	}
 	#navbar .nav-item.dropdown .nav-item.show {
-		background-color: #cab3dd;
+		background-color: var(--ros-nav-hover-bg);
 	}
 }
 
@@ -181,7 +229,7 @@ caption {
 #navbar .dropdown-menu .dropdown-item.active:hover,
 #navbar .dropdown-menu .dropdown-item.active:focus {
 	color: var(--brand-ros_violet);
-	background-color: rgba(152, 109, 189, 0.1);
+	background-color: var(--ros-nav-dropdown-hover-bg);
 }
 
 /* Active */
@@ -189,15 +237,15 @@ caption {
 #navbar .nav-item.active .nav-link,
 #navbar .nav-item.active .nav-link:hover,
 #navbar .nav-item.active .nav-link:focus {
-	background-color: var(--brand-ros_violet);
-	color: var(--bs-white);
+	background-color: var(--ros-nav-active-bg);
+	color: var(--ros-nav-active-fg);
 	text-decoration: none !important;
 }
 
 #navbar .nav-item.active,
 #navbar .nav-item.active:hover,
 #navbar .nav-item.active:not(:has(> :first-child.form-inline)):hover {
-	background-color: var(--brand-ros_violet);
+	background-color: var(--ros-nav-active-bg);
 }
 
 @media ((max-width: 992px)) {
@@ -205,13 +253,13 @@ caption {
 		background-color: inherit;
 	}
 	#navbar .nav-item.dropdown.active .nav-item.show {
-		background-color: var(--brand-ros_violet);
+		background-color: var(--ros-nav-active-bg);
 	}
 }
 
 @media ((min-width: 992px)) {
 	.navbar .navbar-nav .active > .nav-link {
-		border-top: solid 5px #653d87;
+		border-top: solid 5px var(--ros-violet-dark);
 	}
 }
 
@@ -222,7 +270,8 @@ caption {
 
 /* --- Nav Pills ---*/
 .nav-pills .nav-link.active {
-	color: var(--bs-body-bg);
+	background-color: var(--ros-nav-active-bg);
+	color: var(--ros-nav-active-fg);
 }
 
 .nav-pills .nav-link.active:hover {
@@ -258,23 +307,23 @@ mark,
  https://css-tricks.com/full-width-containers-limited-width-parents/ */
 
 #footer {
-	background: #555555;
+	background: var(--ros-footer-bg);
 	padding: 50px 0;
-	color: #999999;
+	color: var(--ros-footer-fg);
 	margin-top: 1rem;
 	margin-bottom: 0;
 }
 
 #footer a,
 #copyright a {
-	color: rgb(178, 146, 206);
+	color: var(--ros-footer-link);
 }
 
 #footer a:hover,
 #footer a:focus,
 #copyright a:hover,
 #copyright a:focus {
-	color: hsla(272, 38%, 80%, 1);
+	color: var(--ros-footer-link-hover);
 }
 
 #footer h1,
@@ -283,7 +332,7 @@ mark,
 #footer h4,
 #footer h5,
 #footer h6 {
-	color: #eeeeee;
+	color: var(--ros-footer-heading);
 }
 
 #footer h4 {
@@ -295,8 +344,8 @@ mark,
 
 #copyright {
 	margin: 0;
-	background: #333;
-	color: #ccc;
+	background: var(--ros-copyright-bg);
+	color: var(--ros-copyright-fg);
 	padding: 50px 0;
 	font-size: 12px;
 	line-height: 28px;
@@ -356,8 +405,8 @@ h6 {
 
 /* TOC */
 #toc > .nav a.nav-link.active {
-	color: var(--bs-white);
-	background-color: var(--brand-ros_violet);
+	color: var(--ros-nav-active-fg);
+	background-color: var(--ros-nav-active-bg);
 }
 img.logo {
 	display: none;
@@ -367,7 +416,7 @@ img.logo {
 .ROSh1 {
 	background: url("texture-bw.png") center center repeat;
 	padding: 20px 0;
-	color: #333333;
+	color: var(--ros-gray-900);
 	text-transform: uppercase;
 	font-size: 30px;
 	font-weight: 700;
@@ -432,7 +481,8 @@ blockquote,
 /* ---Code--- */
 [data-bs-theme="dark"] {
 	code {
-		background-color: #444;
+		background-color: var(--ros-code-dark-bg);
+		color: var(--ros-code-dark-fg);
 	}
 }
 
@@ -512,17 +562,17 @@ pre {
 	margin: 0 0 10px;
 	font-size: 13px;
 	line-height: 1.42857143;
-	color: #333;
+	color: var(--ros-syntax-fg);
 	word-break: break-all;
 	word-wrap: break-word;
-	background-color: var(--brand-ros_pre_bg);
+	background-color: var(--ros-code-light-bg);
 	border: 1px solid #ccc;
 	border-radius: 4px;
 }
 
 /* Normal */
 pre code {
-	color: #333;
+	color: var(--ros-syntax-fg);
 }
 
 /* Alert, Error, Warning */
@@ -539,7 +589,7 @@ pre code span.cv,
 pre code span.do,
 pre code span.in,
 pre code span.re {
-	color: #008800;
+	color: var(--ros-syntax-comment);
 	font-style: italic;
 }
 
@@ -552,13 +602,13 @@ pre code span.dt,
 pre code span.im,
 pre code span.st,
 pre code span.vs {
-	color: #bb4444;
+	color: var(--ros-syntax-string);
 }
 
 /* BaseN, Constant */
 pre code span.bn,
 pre code span.cn {
-	color: #880000;
+	color: var(--ros-syntax-number);
 }
 
 /* DecVal, Float, Operator, SpecialChar */
@@ -566,40 +616,40 @@ pre code span.dv,
 pre code span.fl,
 pre code span.op,
 pre code span.sc {
-	color: #666666;
+	color: var(--ros-syntax-muted);
 }
 
 /* Extension */
 pre code span.ex {
-	color: #bb4444;
+	color: var(--ros-syntax-string);
 	font-weight: bold;
 }
 
 /* Function */
 pre code span.fu {
-	color: #00a000;
+	color: var(--ros-syntax-function);
 }
 
 /* Keyword */
 pre code span.kw {
-	color: #aa22ff;
+	color: var(--ros-syntax-keyword);
 	font-weight: bold;
 }
 
 /* Preprocessor */
 pre code span.pp {
-	color: #008800;
+	color: var(--ros-syntax-comment);
 }
 
 /* Others, SpecialString */
 pre code span.ot,
 pre code span.ss {
-	color: #008000;
+	color: var(--ros-syntax-comment);
 }
 
 /* Variable */
 pre code span.va {
-	color: #b8860b;
+	color: var(--ros-syntax-variable);
 }
 
 /* Section: Syntax highlighter emacs dark */
@@ -611,7 +661,7 @@ pre code span.va {
 
 	/* Normal */
 	pre code {
-		color: #b7b7b7;
+		color: var(--ros-syntax-dark-fg);
 	}
 
 	/* Alert, Error, Warning */
@@ -628,7 +678,7 @@ pre code span.va {
 	pre code span.do,
 	pre code span.in,
 	pre code span.re {
-		color: #66c966;
+		color: var(--ros-syntax-dark-comment);
 		font-style: italic;
 	}
 
@@ -641,13 +691,13 @@ pre code span.va {
 	pre code span.im,
 	pre code span.st,
 	pre code span.vs {
-		color: #ff9b9b;
+		color: var(--ros-syntax-dark-string);
 	}
 
 	/* BaseN, Constant */
 	pre code span.bn,
 	pre code span.cn {
-		color: #ff9c9c;
+		color: var(--ros-syntax-dark-number);
 	}
 
 	/* DecVal, Float, Operator, SpecialChar */
@@ -655,40 +705,40 @@ pre code span.va {
 	pre code span.fl,
 	pre code span.op,
 	pre code span.sc {
-		color: #b7b7b7;
+		color: var(--ros-syntax-dark-fg);
 	}
 
 	/* Extension */
 	pre code span.ex {
-		color: #ff9b9b;
+		color: var(--ros-syntax-dark-string);
 		font-weight: bold;
 	}
 
 	/* Function */
 	pre code span.fu {
-		color: #53cc53;
+		color: var(--ros-syntax-dark-comment);
 	}
 
 	/* Keyword */
 	pre code span.kw {
-		color: #cea4ff;
+		color: var(--ros-syntax-dark-keyword);
 		font-weight: bold;
 	}
 
 	/* Preprocessor */
 	pre code span.pp {
-		color: #66c966;
+		color: var(--ros-syntax-dark-comment);
 	}
 
 	/* Others, SpecialString */
 	pre code span.ot,
 	pre code span.ss {
-		color: #6bc86b;
+		color: var(--ros-syntax-dark-comment);
 	}
 
 	/* Variable */
 	pre code span.va {
-		color: #e0ac52;
+		color: var(--ros-syntax-dark-variable);
 	}
 }
 
