@@ -125,9 +125,9 @@ caption {
 	color: var(--bs-gray) !important;
 }
 
-/* Dev version badge in navbar: fixed vivid red outside brand tokens. */
-.navbar .text-danger {
-	color: var(--bs-danger-text-emphasis) !important;
+/* Override dev version inside dark mode navbar to use a custom vivid red. */
+[data-bs-theme="dark"] .navbar .text-danger {
+	color: #ea868f !important;
 }
 
 #navbar .nav-link {
