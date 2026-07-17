@@ -73,10 +73,6 @@
 	--ros-navbar-border: rgba(var(--ros-violet-rgb), 0.35);
 	--ros-navbar-shadow: rgba(var(--ros-violet-rgb), 0.25);
 
-	.dropdown-menu {
-		--bs-dropdown-bg: var(--ros-gray-900);
-	}
-
 	.btn-primary {
 		--bs-btn-color: var(--ros-gray-900);
 		--bs-btn-bg: var(--ros-violet-light);
@@ -94,6 +90,18 @@
 		--bs-btn-bg: var(--bs-danger-text-emphasis);
 		--bs-btn-border-color: var(--bs-danger-text-emphasis);
 	}
+}
+
+[data-bs-theme="dark"] #navbar .dropdown-menu,
+#navbar[data-bs-theme="dark"] .dropdown-menu {
+	--bs-dropdown-bg: var(--ros-gray-900);
+	--bs-dropdown-border-color: rgba(var(--ros-violet-rgb), 0.35);
+	--bs-dropdown-link-color: var(--ros-violet-lighter);
+	--bs-dropdown-link-hover-color: var(--ros-violet-lighter);
+	--bs-dropdown-link-hover-bg: var(--ros-nav-hover-bg);
+	--bs-dropdown-link-active-color: var(--ros-nav-active-fg);
+	--bs-dropdown-link-active-bg: var(--ros-nav-active-bg);
+	--bs-dropdown-header-color: var(--ros-violet-light);
 }
 /* ---Images and captions figure spacing--- */
 main img {
@@ -147,7 +155,8 @@ caption {
 #navbar .dropdown-header {
 	font-size: var(--bs-body-font-size);
 	border-bottom: var(--bs-border-width) var(--bs-border-style)
-		var(--bs-border-color) !important;
+		var(--bs-dropdown-border-color) !important;
+	color: var(--bs-dropdown-header-color);
 	margin-left: var(--bs-dropdown-item-padding-x);
 	margin-right: var(--bs-dropdown-item-padding-x);
 	padding-left: 0;
@@ -167,8 +176,21 @@ caption {
 }
 
 #navbar .dropdown-menu .dropdown-item {
+	color: var(--bs-dropdown-link-color);
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
+}
+
+#navbar .dropdown-menu .dropdown-item:hover,
+#navbar .dropdown-menu .dropdown-item:focus {
+	color: var(--bs-dropdown-link-hover-color);
+	background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+#navbar .dropdown-menu .dropdown-item.active,
+#navbar .dropdown-menu .dropdown-item:active {
+	color: var(--bs-dropdown-link-active-color);
+	background-color: var(--bs-dropdown-link-active-bg);
 }
 
 #navbar .nav-item .nav-link {

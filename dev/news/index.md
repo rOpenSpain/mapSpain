@@ -27,7 +27,8 @@ CRAN release: 2026-06-17
 - This internal refactor was developed with AI assistance and reviewed
   through focused package checks, including
   [`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
-  followed by `lintr::lint_package()`.
+  followed by
+  [`lintr::lint_package()`](https://lintr.r-lib.org/reference/lint.html).
 
 ## mapSpain 1.1.0
 
