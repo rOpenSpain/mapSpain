@@ -88,7 +88,7 @@ persistent cache.
 }
 
 \examples{
-\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
+\dontshow{if (esp_check_access() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 cntries <- esp_get_countries_siane()
 
 library(ggplot2)

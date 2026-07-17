@@ -91,6 +91,7 @@ persistent cache.
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 ccaa <- esp_get_ccaa()
 
 library(ggplot2)
@@ -141,6 +142,7 @@ ggplot(europe) +
   ) +
   theme(panel.background = element_rect(fill = "#C7E7FB"))
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=esp_get_ccaa_siane]{esp_get_ccaa_siane()}}.

@@ -90,6 +90,7 @@ persistent cache.
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 prov <- esp_get_prov()
 
 library(ggplot2)
@@ -139,6 +140,7 @@ ggplot(allprovs) +
   coord_sf(crs = 3857) +
   theme_void()
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=esp_get_prov_siane]{esp_get_prov_siane()}}.

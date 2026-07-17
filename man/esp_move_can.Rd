@@ -38,6 +38,7 @@ coordinates instead of the modified ones.
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 library(sf)
 teide <- data.frame(
   name = "Teide Peak",
@@ -72,7 +73,7 @@ ggplot(esp) +
     title = "Canary Islands displaced",
     subtitle = "And also the external Teide object"
   )
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Helpers for Canary Islands insets and displacement:

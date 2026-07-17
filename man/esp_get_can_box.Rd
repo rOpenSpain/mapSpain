@@ -60,6 +60,7 @@ the western or eastern side of the islands respectively.
 }
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 provs <- esp_get_prov()
 box <- esp_get_can_box()
 line <- esp_get_can_provinces()
@@ -105,6 +106,7 @@ ggplot(countries) +
     panel.grid = element_blank()
   )
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Helpers for Canary Islands insets and displacement:

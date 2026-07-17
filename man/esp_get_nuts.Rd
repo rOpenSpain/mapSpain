@@ -130,6 +130,7 @@ persistent cache.
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 
 library(ggplot2)
@@ -180,6 +181,7 @@ mixing_codes <- esp_get_nuts(region = c("ES4", "ES-PV", "Valencia"))
 ggplot(mixing_codes) +
   geom_sf() +
   labs(title = "Mixing Codes")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \itemize{

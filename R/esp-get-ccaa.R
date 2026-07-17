@@ -35,7 +35,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' ccaa <- esp_get_ccaa()
 #'
 #' library(ggplot2)

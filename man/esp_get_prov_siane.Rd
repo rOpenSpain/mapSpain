@@ -115,11 +115,10 @@ persistent cache.
 }
 
 \examples{
-\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
+\dontshow{if (esp_check_access() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 library(ggplot2)
 
 esp_get_ccaa_siane() |>
-  dplyr::glimpse() |>
   ggplot() +
   geom_sf()
 \dontshow{\}) # examplesIf}

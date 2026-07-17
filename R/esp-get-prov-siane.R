@@ -11,11 +11,10 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examplesIf esp_check_access()
+#' @examplesIf esp_check_access() && requireNamespace("ggplot2", quietly = TRUE)
 #' library(ggplot2)
 #'
 #' esp_get_ccaa_siane() |>
-#'   dplyr::glimpse() |>
 #'   ggplot() +
 #'   geom_sf()
 esp_get_prov_siane <- function(

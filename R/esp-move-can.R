@@ -28,7 +28,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' library(sf)
 #' teide <- data.frame(
 #'   name = "Teide Peak",

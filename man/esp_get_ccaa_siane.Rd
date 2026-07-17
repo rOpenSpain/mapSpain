@@ -116,9 +116,9 @@ persistent cache.
 }
 
 \examples{
-\dontshow{if (esp_check_access()) withAutoprint(\{ # examplesIf}
+\dontshow{if (esp_check_access() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 ccaas1 <- esp_get_ccaa_siane()
-dplyr::glimpse(ccaas1)
+utils::head(ccaas1)
 
 # Low resolution.
 ccaas_low <- esp_get_ccaa_siane(

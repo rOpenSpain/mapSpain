@@ -20,7 +20,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examplesIf esp_check_access()
+#' @examplesIf esp_check_access() && requireNamespace("ggplot2", quietly = TRUE)
 #' cntries <- esp_get_countries_siane()
 #'
 #' library(ggplot2)

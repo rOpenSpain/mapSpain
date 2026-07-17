@@ -28,7 +28,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' provs <- esp_get_prov()
 #' box <- esp_get_can_box()
 #' line <- esp_get_can_provinces()

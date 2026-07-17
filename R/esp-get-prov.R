@@ -31,7 +31,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' prov <- esp_get_prov()
 #'
 #' library(ggplot2)

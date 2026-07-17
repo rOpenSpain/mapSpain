@@ -76,7 +76,7 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' nuts1 <- esp_get_nuts(nuts_level = 1, moveCAN = TRUE)
 #'
 #' library(ggplot2)
