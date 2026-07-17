@@ -14,12 +14,10 @@
 	--ros-violet: var(--brand-ros_violet, #986dbd);
 	--ros-violet-rgb: 152, 109, 189;
 	--ros-violet-dark: var(--brand-ros_violet_dark, #653d87);
-	--ros-violet-light: #cab3dd;
-	--ros-violet-lighter: #e0d3eb;
-	--ros-code-light-bg: var(--brand-ros_pre_bg, #f5f5f5);
+	--ros-violet-light: var(--brand-ros_violet_light, #cab3dd);
+	--ros-violet-lighter: var(--brand-ros_violet_lighter, #e0d3eb);
 	--ros-nav-hover-bg: var(--ros-violet-light);
 	--ros-nav-hover-fg: var(--ros-gray-900);
-	--ros-nav-dropdown-hover-bg: rgba(var(--ros-violet-rgb), 0.1);
 	--ros-nav-active-bg: var(--ros-violet-dark);
 	--ros-nav-active-fg: var(--ros-white);
 	--ros-navbar-border: var(--ros-gray-300);
@@ -31,8 +29,9 @@
 	--ros-footer-link-hover: var(--ros-white);
 	--ros-copyright-bg: var(--ros-gray-900);
 	--ros-copyright-fg: var(--ros-gray-300);
-	--ros-code-dark-bg: #3f3f3f;
-	--ros-code-dark-fg: #c4c4c4;
+	--ros-code-dark-bg: #3f2d34;
+	--ros-code-dark-fg: var(--bs-code-color, #ff94a7);
+	--ros-pre-dark-bg: #3f3f3f;
 	--ros-dark-surface: #333333;
 	--ros-dark-surface-raised: #3a3a3a;
 	--ros-dark-border: #767676;
@@ -69,9 +68,10 @@
 	--bs-white: rgb(230, 230, 230);
 	--bs-white-rgb: 230, 230, 230;
 
-	--ros-code-light-bg: var(--ros-code-dark-bg);
-	--ros-navbar-border: var(--ros-gray-700);
-	--ros-navbar-shadow: var(--ros-gray-700);
+	--ros-nav-hover-bg: #494051;
+	--ros-nav-hover-fg: var(--ros-violet-lighter);
+	--ros-navbar-border: rgba(var(--ros-violet-rgb), 0.35);
+	--ros-navbar-shadow: rgba(var(--ros-violet-rgb), 0.25);
 
 	.dropdown-menu {
 		--bs-dropdown-bg: var(--ros-gray-900);
@@ -248,26 +248,6 @@ caption {
 	.navbar-nav .nav-item > .nav-link:focus {
 		border-top: solid 5px var(--brand-ros_violet);
 	}
-}
-
-/* Dropdowns */
-
-#navbar .dropdown-menu .dropdown-item:hover,
-#navbar .dropdown-menu .dropdown-item:focus,
-#navbar .dropdown-menu .dropdown-item.active,
-#navbar .dropdown-menu .dropdown-item.active:hover,
-#navbar .dropdown-menu .dropdown-item.active:focus {
-	color: var(--brand-ros_violet);
-	background-color: var(--ros-nav-dropdown-hover-bg);
-}
-
-[data-bs-theme="dark"] #navbar .dropdown-menu .dropdown-item:hover,
-[data-bs-theme="dark"] #navbar .dropdown-menu .dropdown-item:focus,
-[data-bs-theme="dark"] #navbar .dropdown-menu .dropdown-item.active,
-[data-bs-theme="dark"] #navbar .dropdown-menu .dropdown-item.active:hover,
-[data-bs-theme="dark"] #navbar .dropdown-menu .dropdown-item.active:focus {
-	color: var(--ros-violet-light);
-	background-color: rgba(var(--ros-violet-rgb), 0.18);
 }
 
 /* Active */
@@ -505,7 +485,7 @@ a > code {
 
 code {
 	padding: 2px 4px;
-	border-radius: 4px;
+	border-radius: var(--bs-border-radius-sm);
 	word-wrap: break-word;
 }
 
@@ -570,9 +550,9 @@ pre {
 	color: var(--ros-syntax-fg);
 	word-break: break-all;
 	word-wrap: break-word;
-	background-color: var(--ros-code-light-bg);
-	border: 1px solid #ccc;
-	border-radius: 4px;
+	background-color: var(--brand-ros_pre_bg, #f5f5f5);
+	border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+	border-radius: var(--bs-border-radius-sm);
 }
 
 /* Normal */
@@ -661,7 +641,8 @@ pre code span.va {
 [data-bs-theme="dark"] {
 	pre {
 		color: var(--bs-body-color);
-		border: 1px solid #555;
+		background-color: var(--ros-pre-dark-bg);
+		border-color: var(--ros-dark-border);
 	}
 
 	/* Normal */
