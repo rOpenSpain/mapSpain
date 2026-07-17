@@ -91,5 +91,4 @@ ggplot(esp) +
     title = "Canary Islands displaced",
     subtitle = "And also the external Teide object"
   )
-
 ```
