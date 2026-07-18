@@ -456,8 +456,8 @@ Communities and Cities.
 #| layout-ncol: 2
 #| fig-cap: Grid maps with mapSpain
 #| fig-subcap:
-#|   - Squares
 #|   - Hexagons
+#|   - Squares
 cuad <- esp_get_hex_ccaa()
 hex <- esp_get_grid_prov()
 

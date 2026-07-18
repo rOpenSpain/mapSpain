@@ -183,7 +183,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     expand = FALSE
   ) +
   labs(
-    title = "% women in Segovia by town (2025)",
+    title = "% women in Segovia by municipality (2025)",
     caption = paste0(
       "Source: INE, CC BY 4.0 www.iderioja.org, ",
       "CartoBase ANE 2006-2024 CC-BY 4.0 ign.es"

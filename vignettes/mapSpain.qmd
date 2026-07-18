@@ -228,7 +228,7 @@ ggplot(munic_pop) +
     values = c("grey5", hcl.colors(length(br) - 2, "Spectral")),
     labels = prettyNum(c(0, br[-1]), big.mark = ","),
     guide = guide_legend(
-      title = "Pop. per km2",
+      title = "People per km2",
       direction = "horizontal",
       nrow = 1
     )
