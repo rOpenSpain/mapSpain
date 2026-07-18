@@ -438,7 +438,7 @@ ggplot(provs) +
 
 ![](maps_spain_files/figure-html/fig-prov-1.png)
 
-Figure 8: Extracting provinces through Autonomous Communities and Cities
+Figure 8: Extracting provinces by Autonomous Communities and Cities
 
 ### Municipalities
 

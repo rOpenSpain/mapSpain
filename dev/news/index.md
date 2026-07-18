@@ -11,26 +11,12 @@
 
 CRAN release: 2026-06-17
 
-- Refactored internal helpers for downloading and reading geospatial
-  files, SIANE file handling, EPSG validation, subdivision-code
-  filtering, municipal metadata enrichment, empty-result messages and
-  Canary Islands displacement. This is intended to simplify maintenance
-  without changing the public API.
 - Consolidated repeated metadata for Autonomous Communities and Cities,
   provinces and municipalities across GISCO, SIANE, simplified and
   grid-map getters.
-- Further simplified internal cache handling, `sf` output finalization,
-  WMTS tile retrieval, dictionary translation and no-match messages.
-  These changes are intended to improve maintainability without changing
-  user-facing behavior.
 - Reviewed **roxygen2** documentation, generated Rd files and prose
   documentation for consistent terminology and clearer user-facing
   messages. This work was completed with AI assistance and human review.
-- This internal refactor was developed with AI assistance and reviewed
-  through focused package checks, including
-  [`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
-  followed by
-  [`lintr::lint_package()`](https://lintr.r-lib.org/reference/lint.html).
 
 ## mapSpain 1.1.0
 

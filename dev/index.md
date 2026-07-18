@@ -99,7 +99,7 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community or City in Spain
+![Percentage of women by Autonomous Communities and Cities in Spain
 (2025)](reference/figures/README-static-1.png)
 
 You can combine `sf` objects with static map tiles.

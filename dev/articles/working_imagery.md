@@ -187,7 +187,7 @@ Figure 6: Example of a basemap using ThunderForest
 **mapSpain** provides a plugin for **leaflet** maps. Here are some quick
 examples:
 
-### Earthquakes in Tenerife during the last year
+### Earthquakes in Tenerife during the previous 365 days
 
 ``` r
 
