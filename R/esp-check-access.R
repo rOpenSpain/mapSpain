@@ -24,13 +24,13 @@ esp_check_access <- function() {
 
   url <- api_entry_for_checks()
   req <- httr2::request(url)
-  req <- httr2::req_timeout(req, getOption("mapspain_timeout", 300L))
+  req <- httr2::req_timeout(req, esp_timeout())
   req <- httr2::req_url_path_append(req, "dist/se89_3_admin_ccaa_a_y.gpkg")
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
   req <- httr2::req_method(req, "HEAD")
-  resp <- httr2::req_perform(req)
+  resp <- esp_req_perform(req)
   if (httr2::resp_is_error(resp)) {
     FALSE
   } else {
