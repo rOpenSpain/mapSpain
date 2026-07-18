@@ -1,3 +1,55 @@
+test_that("HTTP timeout can be controlled with an environment variable", {
+  withr::local_options(list(mapspain_timeout = NULL))
+  withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
+
+  expect_equal(esp_timeout(), 600)
+
+  withr::local_envvar(c(MAPSPAIN_TIMEOUT = NA))
+  expect_equal(esp_timeout(), 300L)
+
+  withr::local_envvar(c(MAPSPAIN_TIMEOUT = "invalid"))
+  expect_equal(esp_timeout(), 300L)
+})
+
+test_that("HTTP timeout option takes precedence over environment variable", {
+  withr::local_options(list(mapspain_timeout = 30))
+  withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
+
+  expect_equal(esp_timeout(), 30)
+})
+
+test_that("HTTP timeout environment variable is used in requests", {
+  withr::local_options(list(mapspain_timeout = NULL))
+  withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
+
+  seen <- list()
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    esp_req_perform = function(req, path = NULL, ...) {
+      seen[[length(seen) + 1]] <<- req$options
+      if (is.null(path)) {
+        return(httr2::response(
+          status_code = 200,
+          headers = list("content-length" = "2")
+        ))
+      }
+
+      writeLines("ok", path)
+      httr2::response(status_code = 200)
+    }
+  )
+
+  cdir <- withr::local_tempdir(pattern = "testthat_envvar")
+  out <- download_url(
+    "https://example.com/envvar.txt",
+    cache_dir = cdir,
+    verbose = FALSE
+  )
+
+  expect_type(out, "character")
+  expect_equal(seen[[1]]$timeout_ms, 600000)
+})
+
 test_that("Test offline", {
   skip_on_cran()
   skip_if_siane_offline()

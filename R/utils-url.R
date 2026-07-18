@@ -47,7 +47,7 @@ download_url <- function(
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
-  req <- httr2::req_timeout(req, getOption("mapspain_timeout", 300L))
+  req <- httr2::req_timeout(req, esp_timeout())
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
@@ -75,7 +75,7 @@ download_url <- function(
 
   # Use HEAD to check whether the download is large enough to warn about.
   get_header <- httr2::req_method(req, "HEAD")
-  getsize <- httr2::req_perform(get_header)
+  getsize <- esp_req_perform(get_header)
 
   size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
   class(size_dwn) <- class(object.size("a"))
@@ -97,7 +97,7 @@ download_url <- function(
     file_local <- tempfile(fileext = ".txt")
   }
 
-  resp <- httr2::req_perform(req, path = file_local)
+  resp <- esp_req_perform(req, path = file_local)
 
   if (httr2::resp_is_error(resp)) {
     unlink(file_local, force = TRUE)
@@ -134,7 +134,7 @@ for_import_jsonlite <- function() {
   # Read JSON from the package website.
   url <- "https://ropenspain.github.io/mapSpain/search.json"
   res <- httr2::request(url)
-  resp <- httr2::req_perform(res)
+  resp <- esp_req_perform(res)
   txt <- httr2::resp_body_string(resp)
   local <- jsonlite::parse_json(txt)
 
@@ -153,6 +153,17 @@ is_online_fun <- function(...) {
   httr2::is_online()
 }
 
+#' Wrap [httr2::req_perform()] for testing
+#'
+#' @param ... Passed to [httr2::req_perform()].
+#'
+#' @noRd
+# nocov start
+esp_req_perform <- function(...) {
+  httr2::req_perform(...)
+}
+# nocov end
+
 #' Wrap HTTP 404 checks for testing
 #'
 #' @param ... Ignored.
@@ -160,4 +171,37 @@ is_online_fun <- function(...) {
 #' @noRd
 is_404 <- function(...) {
   FALSE
+}
+
+#' Get an HTTP configuration value from options or environment variables
+#'
+#' @param option Character. Name of the R option.
+#' @param envvar Character. Name of the environment variable.
+#' @param default Numeric. Default value to use when neither setting is valid.
+#'
+#' @noRd
+esp_http_config <- function(option, envvar, default) {
+  opt <- getOption(option, NULL)
+  if (!is.null(opt)) {
+    return(opt)
+  }
+
+  env <- Sys.getenv(envvar, unset = NA_character_)
+  if (is.na(env) || identical(env, "")) {
+    return(default)
+  }
+
+  env_num <- suppressWarnings(as.numeric(env))
+  if (is.na(env_num)) {
+    return(default)
+  }
+
+  env_num
+}
+
+#' Get the timeout setting for mapSpain HTTP requests
+#'
+#' @noRd
+esp_timeout <- function() {
+  esp_http_config("mapspain_timeout", "MAPSPAIN_TIMEOUT", 300L)
 }

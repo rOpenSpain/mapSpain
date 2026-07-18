@@ -1,5 +1,7 @@
 # mapSpain (development version)
 
+- Query timeout can now also be controlled with the `MAPSPAIN_TIMEOUT`
+  environment variable.
 - `?esp_tiles_providers`: Updated all WMS providers to use
   `service=WMS&version=1.3.0`.
 
