@@ -501,11 +501,11 @@ ggplot(hex) +
 
 ![](maps_spain_files/figure-html/fig-hex-1.png)
 
-\(a\) Squares
+\(a\) Hexagons
 
 ![](maps_spain_files/figure-html/fig-hex-2.png)
 
-\(b\) Hexagons
+\(b\) Squares
 
 Figure 10: Grid maps with mapSpain
 
