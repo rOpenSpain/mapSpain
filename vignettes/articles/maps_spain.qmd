@@ -395,7 +395,7 @@ that entity.
 
 ```{r}
 #| label: fig-prov
-#| fig-cap: "Extracting provinces through Autonomous Communities and Cities"
+#| fig-cap: "Extracting provinces by Autonomous Communities and Cities"
 provs <- esp_get_prov_siane(c(
   "Andalucía",
   "Ciudad Real",

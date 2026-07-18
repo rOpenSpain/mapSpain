@@ -36,7 +36,7 @@ home:
     Communities and Cities, provinces, municipalities and NUTS), based on GISCO
     from Eurostat and CartoBase ANE (Atlas Nacional de España) from Instituto
     Geográfico Nacional. Includes tools to download and process static map tiles
-    and a [`leaflet`](https://CRAN.R-project.org/package=leaflet) plugin for
+    and a [**leaflet**](https://CRAN.R-project.org/package=leaflet) plugin for
     Spanish public administration tile providers.
 
 reference:

@@ -191,8 +191,8 @@ ggplot(ccaa_sf) +
 ```
 
 <div class="figure">
-<img src="./choro-1.png" alt="Percentage of women by Autonomous Community or City (2025)" width="100%" />
-<p class="caption">Percentage of women by Autonomous Community or City (2025)</p>
+<img src="./choro-1.png" alt="Percentage of women by Autonomous Communities and Cities (2025)" width="100%" />
+<p class="caption">Percentage of women by Autonomous Communities and Cities (2025)</p>
 </div>
 
 ## Thematic maps
@@ -312,8 +312,8 @@ download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
 alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for
-[**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you to add
-several basemaps to interactive maps.
+[**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you add
+Spanish public administration basemaps to interactive maps.
 
 The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)

@@ -88,7 +88,7 @@ The following examples highlight some key features of **mapSpain**.
 
 ```{r}
 #| label: static
-#| fig-cap: Percentage of women by Autonomous Community or City in Spain (2025)
+#| fig-cap: Percentage of women by Autonomous Communities and Cities in Spain (2025)
 library(mapSpain)
 library(sf)
 library(dplyr)

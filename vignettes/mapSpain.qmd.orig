@@ -145,7 +145,7 @@ Analyze the distribution of women in each Autonomous Community or City with
 
 ```{r}
 #| label: choro
-#| fig-cap: Percentage of women by Autonomous Community or City (2025)
+#| fig-cap: Percentage of women by Autonomous Communities and Cities (2025)
 #| fig-asp: 0.7
 library(dplyr)
 
@@ -309,8 +309,8 @@ download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
 alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for
-[**leaflet**](https://rstudio.github.io/leaflet/) maps, which allows you to add
-several basemaps to interactive maps.
+[**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you add
+Spanish public administration basemaps to interactive maps.
 
 The services are implemented with the
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)

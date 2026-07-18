@@ -128,7 +128,7 @@ ggplot(ccaa_sf) +
 ```
 
 <img src="man/figures/README-static-1.png" style="width:100.0%"
-alt="Percentage of women by Autonomous Community or City in Spain (2025)" />
+alt="Percentage of women by Autonomous Communities and Cities in Spain (2025)" />
 
 You can combine `sf` objects with static map tiles.
 
