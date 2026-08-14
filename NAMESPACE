@@ -48,6 +48,8 @@ export(esp_set_cache_dir)
 export(esp_siane_bulk_download)
 importFrom(lifecycle,deprecated)
 importFrom(sf,st_transform)
-importFrom(utils,modifyList)
-importFrom(utils,object.size)
-importFrom(utils,unzip)
+importFrom(utils,
+  modifyList,
+  object.size,
+  unzip
+)
