@@ -87,7 +87,7 @@ Data distributed through the `sianedata` data branch, see
 
   Character vector of country codes. It can be a vector of country
   names, ISO3 country codes or ISO2 country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 ## Value
 

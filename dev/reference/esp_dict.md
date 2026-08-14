@@ -60,7 +60,7 @@ values for some entries.
 
 ## See also
 
-- [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html)
+- [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html)
   converts country codes and names.
 
 - [esp_codelist](https://ropenspain.github.io/mapSpain/dev/reference/esp_codelist.md)
