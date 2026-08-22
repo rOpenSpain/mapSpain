@@ -1,7 +1,7 @@
 # Get the attribution for a tile provider
 
-`esp_get_attributions()` gets the attribution of a tile provider defined
-by the `type` argument.
+`esp_get_attributions()` returns the attribution for a tile provider
+defined by the `type` argument.
 
 ## Usage
 

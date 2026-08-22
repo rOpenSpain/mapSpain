@@ -28,7 +28,7 @@ addProviderEspTiles(
 
 - provider:
 
-  The name of the provider, see
+  The name of the provider. See
   [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
   or <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 

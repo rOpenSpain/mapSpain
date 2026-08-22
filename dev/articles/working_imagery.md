@@ -8,8 +8,8 @@ and use them alongside your `sf` objects.
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you
 add Spanish public administration basemaps to interactive maps.
 
-The services are implemented with the Leaflet plugin
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
+The services are implemented with the **Leaflet** plugin
+[**leaflet-providersESP**](https://dieghernan.github.io/leaflet-providersESP/).
 You can browse the available providers in its catalog.
 
 ## Static map tiles
@@ -135,7 +135,8 @@ Figure 4: Example of combining tile types by masking to an `sf` object.
 
 You can use
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-to get static map tiles from other providers, for example OpenStreetMap.
+to get static map tiles from other providers, for example
+**OpenStreetMap**.
 
 ``` r
 
@@ -156,7 +157,8 @@ ggplot() +
 
 Figure 5: Example of a basemap using OpenStreetMap
 
-This example uses ThunderForest, a provider that requires an API key:
+This example uses **ThunderForest**, a provider that requires an API
+key:
 
 ``` r
 

@@ -19,8 +19,8 @@ esp_get_roads(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>

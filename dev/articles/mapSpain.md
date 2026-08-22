@@ -300,8 +300,8 @@ and use them alongside your `sf` objects.
 add Spanish public administration basemaps to interactive maps.
 
 The services are implemented with the
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-Leaflet plugin. Its provider catalog lists all available services.
+[**leaflet-providersESP**](https://dieghernan.github.io/leaflet-providersESP/)
+**Leaflet** plugin. Its provider catalog lists all available services.
 
 > **Note**
 >

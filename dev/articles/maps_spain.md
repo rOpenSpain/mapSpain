@@ -15,8 +15,8 @@ and transform data, whether or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
-- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), through
-  the [**giscoR**](https://ropengov.github.io/giscoR/) package.
+- [**GISCO**](https://ec.europa.eu/eurostat/web/gisco) (Eurostat),
+  through the [**giscoR**](https://ropengov.github.io/giscoR/) package.
 - CartoBase ANE (Atlas Nacional de España), provided by the [Instituto
   Geográfico Nacional](https://www.ign.es/) (IGN).
 - Spanish public institutions that publish WMTS and WMS tile services
@@ -38,7 +38,7 @@ install.packages("mapSpain", dependencies = TRUE)
 
 #### Development version
 
-Use [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+Use [**r-universe**](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
 
@@ -302,8 +302,8 @@ several levels:
 - Municipalities.
 
 For Autonomous Communities and Cities, provinces and municipalities,
-there are two families of functions: `esp_get_xxxx()` for GISCO data and
-`esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
+there are two families of functions: `esp_get_xxxx()` for **GISCO** data
+and `esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
 
 The information is available in different projections and resolution
 levels.
@@ -519,9 +519,9 @@ These tiles can be used to create static maps as three- or four-band
 raster layers or as backgrounds for interactive maps through the
 **leaflet** package.
 
-The providers are taken from the **leaflet**
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-plugin.
+The providers come from the
+[**leaflet-providersESP**](https://dieghernan.github.io/leaflet-providersESP/)
+plugin for **leaflet**.
 
 ### Creating maps with static map tiles
 

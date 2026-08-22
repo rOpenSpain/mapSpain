@@ -25,8 +25,8 @@ esp_get_hypsobath(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -84,9 +84,9 @@ Data distributed through the `sianedata` data branch, see
 
   Character string or number. Resolution of the geospatial data. One of:
 
-  - "6.5": 1:6.5 million.
+  - `"6.5"`: 1:6.5 million.
 
-  - "3": 1:3 million.
+  - `"3"`: 1:3 million.
 
 - spatialtype:
 

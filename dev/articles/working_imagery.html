@@ -114,7 +114,7 @@
 
     <p><strong>mapSpain</strong> provides an interface for working with static map tiles. It can download tiles as <code>.png</code> or <code>.jpeg</code>, depending on the tile service, and use them alongside your <code>sf</code> objects.</p>
 <p><strong>mapSpain</strong> also provides a plugin for <a href="https://rstudio.github.io/leaflet/" class="external-link"><strong>leaflet</strong></a> maps, which lets you add Spanish public administration basemaps to interactive maps.</p>
-<p>The services are implemented with the Leaflet plugin <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link">leaflet-providersESP</a>. You can browse the available providers in its catalog.</p>
+<p>The services are implemented with the <strong>Leaflet</strong> plugin <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link"><strong>leaflet-providersESP</strong></a>. You can browse the available providers in its catalog.</p>
 <section class="level2"><h2 id="static-map-tiles">Static map tiles<a class="anchor" aria-label="anchor" href="#static-map-tiles"></a>
 </h2>
 <p>This example shows how to combine multiple tile layers in a static map. It uses layers provided by La Rioja’s <a href="https://www.iderioja.larioja.org/" class="external-link">Infraestructura de Datos Espaciales (IDERioja)</a>.</p>
@@ -248,7 +248,7 @@ Figure 4: Example of combining tile types by masking to an <code>sf</code> obje
 </div>
 </section></section><section class="level2"><h2 id="custom-providers">Custom providers<a class="anchor" aria-label="anchor" href="#custom-providers"></a>
 </h2>
-<p>You can use <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code> to get static map tiles from other providers, for example OpenStreetMap.</p>
+<p>You can use <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code> to get static map tiles from other providers, for example <strong>OpenStreetMap</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">osm_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -273,7 +273,7 @@ Figure 5: Example of a basemap using OpenStreetMap
 </div>
 </div>
 </div>
-<p>This example uses ThunderForest, a provider that requires an API key:</p>
+<p>This example uses <strong>ThunderForest</strong>, a provider that requires an API key:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Skip if no API key is available.</span></span>

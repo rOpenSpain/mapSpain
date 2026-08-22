@@ -1,6 +1,6 @@
 # Autonomous Communities and Cities of Spain from GISCO
 
-Get [Autonomous Communities and Cities of
+Return [Autonomous Communities and Cities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 

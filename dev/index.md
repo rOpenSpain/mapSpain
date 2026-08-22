@@ -18,7 +18,7 @@ Check the documentation for the development version at
 <https://ropenspain.github.io/mapSpain/dev/>.
 
 You can install the development version of **mapSpain** from
-[r-universe](https://ropenspain.r-universe.dev/mapSpain):
+[**r-universe**](https://ropenspain.r-universe.dev/mapSpain):
 
 ``` r
 
@@ -220,7 +220,7 @@ Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-mapspain,
@@ -236,7 +236,7 @@ A BibTeX entry for LaTeX users is:
 
 ## Contribute
 
-Check the GitHub page for the [source
+Check the **GitHub** page for the [source
 code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
@@ -251,11 +251,11 @@ Geográfico Nacional.
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 This package also uses data from
-[GISCO](https://ec.europa.eu/eurostat/web/gisco), Eurostat’s geospatial
-open data repository, which provides datasets at several resolution
-levels.
+[**GISCO**](https://ec.europa.eu/eurostat/web/gisco), Eurostat’s
+geospatial open data repository, which provides datasets at several
+resolution levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From **GISCO** \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or

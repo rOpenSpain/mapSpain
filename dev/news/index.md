@@ -2,6 +2,8 @@
 
 ## mapSpain (development version)
 
+- Console messages now use clearer semantic formatting and distinguish
+  warnings from status alerts.
 - Query timeout can now also be controlled with the `MAPSPAIN_TIMEOUT`
   environment variable.
 - [`?esp_tiles_providers`](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md):
@@ -12,8 +14,8 @@
 CRAN release: 2026-06-17
 
 - Consolidated repeated metadata for Autonomous Communities and Cities,
-  provinces and municipalities across GISCO, SIANE, simplified and
-  grid-map getters.
+  provinces and municipalities across **GISCO**, **SIANE**, simplified
+  and grid-map getters.
 - Reviewed **roxygen2** documentation, generated Rd files and prose
   documentation for consistent terminology and clearer user-facing
   messages. This work was completed with AI assistance and human review.
@@ -22,9 +24,9 @@ CRAN release: 2026-06-17
 
 CRAN release: 2026-03-26
 
-- Migrated package vignettes to Quarto.
-- Minimum **httr2** version is now **1.2.0** to ensure compatibility
-  with **giscoR**.
+- Migrated package vignettes to **Quarto**.
+- Minimum **httr2** version is now 1.2.0 to ensure compatibility with
+  **giscoR**.
 - Query timeout can be controlled with `options(mapspain_timeout)` using
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
   The default value is `httr2::req_timeout(..., seconds = 300)` (5
@@ -48,7 +50,7 @@ managing the persistent cache directory. If you have an existing cache
 directory, you will receive a one-time notification about this
 migration.
 
-The package now requires `R >= 4.1` and dependency updates improve
+The package now requires **R** \>= 4.1 and dependency updates improve
 performance and maintainability. All functions return tidy objects,
 either `tibble` objects or `sf` objects with `tibble` data.
 
@@ -58,7 +60,7 @@ their latest versions.
 
 ### Breaking changes
 
-- Minimum required R version is now **4.1.0**.
+- Minimum required **R** version is now 4.1.0.
 - Removed dependency on **slippymath**
   ([\#126](https://github.com/rOpenSpain/mapSpain/issues/126)).
 - [`esp_get_grid_EEA()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_grid_EEA.md)
@@ -97,20 +99,20 @@ their latest versions.
 - [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_attributions.md)
   retrieves tile provider attributions.
 - [`esp_get_countries_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_countries_siane.md)
-  retrieves all countries available in SIANE at a given date.
+  retrieves all countries available in **SIANE** at a given date.
 - [`esp_get_rivers()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_landwater.md)
   gains a new `moveCAN` argument.
 - [`esp_get_spain_siane()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain_siane.md)
   is analogous to
   [`esp_get_spain()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_spain.md)
-  but uses SIANE data.
+  but uses **SIANE** data.
 - [`esp_get_stations()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_railway.md)
   replaces `esp_get_railway(..., spatialtype = "point")`.
 - [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
   can be used with providers that need an API key.
 - [`esp_siane_bulk_download()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_siane_bulk_download.md)
-  downloads all SIANE datasets to a specified `cache_dir` in a single
-  step.
+  downloads all **SIANE** datasets to a specified `cache_dir` in a
+  single step.
 
 ## mapSpain 0.10.0
 
@@ -127,7 +129,7 @@ CRAN release: 2024-12-15
 
 CRAN release: 2024-08-26
 
-- Adapted functions to the SIANE 2024 databases.
+- Adapted functions to the **SIANE** 2024 databases.
 - [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
   and
   [`esp_dict_translate()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_dict.md)
@@ -166,8 +168,8 @@ CRAN release: 2023-07-12
   providers include `IDErioja.Base`, `IDErioja.Relieve`,
   `IDErioja.Claro` and `IDErioja.Oscuro`.
 - [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
-  now supports non-OGC-compliant WMTS providers, such as Stamen or
-  OpenStreetMap. See examples.
+  now supports non-OGC-compliant WMTS providers, such as **Stamen** or
+  **OpenStreetMap**. See examples.
 
 ## mapSpain 0.7.0
 

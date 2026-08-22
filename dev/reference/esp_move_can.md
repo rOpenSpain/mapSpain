@@ -1,7 +1,6 @@
-# Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object located in the Canary Islands
+# Displace an `sf` or `sfc` object located in the Canary Islands
 
-Helper function to displace an external
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object,
+Helper function to displace an external `sf` or `sfc` object,
 potentially representing a location in the Canary Islands, to align it
 with [mapSpain](https://CRAN.R-project.org/package=mapSpain) objects
 generated with `moveCAN = TRUE`.
@@ -16,8 +15,8 @@ esp_move_can(x, moveCAN = TRUE)
 
 - x:
 
-  An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object. It
-  can be an `sf` or `sfc` object.
+  An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+  [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object.
 
 - moveCAN:
 
@@ -28,8 +27,8 @@ esp_move_can(x, moveCAN = TRUE)
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object of the
-same class and same CRS as `x`, displaced accordingly.
+An object of the same class and with the same CRS as `x`, displaced
+accordingly.
 
 ## Details
 

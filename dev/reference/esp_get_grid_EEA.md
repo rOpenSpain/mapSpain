@@ -1,4 +1,4 @@
-# Get [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON` of the national geographic grids from EEA
+# National geographic grids from EEA
 
 **\[defunct\]**
 

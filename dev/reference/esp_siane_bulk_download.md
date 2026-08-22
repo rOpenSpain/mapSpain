@@ -17,8 +17,8 @@ esp_siane_bulk_download(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -107,10 +107,10 @@ read_sf(dest_files[1]) |> head()
 # Connect the function with the downloaded data.
 
 connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpjdpYdF/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpjdpYdF/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpjdpYdF/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpjdpYdF/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpdvRTXh/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpdvRTXh/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpdvRTXh/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpdvRTXh/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

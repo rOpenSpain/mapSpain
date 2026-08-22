@@ -51,7 +51,7 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. This argument is deprecated, the dataset will
+  **\[deprecated\]**. This argument is deprecated. The dataset will
   always be downloaded to the `cache_dir`.
 
 - update_cache:

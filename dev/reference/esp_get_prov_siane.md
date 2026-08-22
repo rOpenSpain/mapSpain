@@ -1,6 +1,6 @@
 # Provinces of Spain from SIANE
 
-Get [provinces of
+Return [provinces of
 Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
 scale.
 
@@ -24,8 +24,8 @@ esp_get_prov_siane(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -110,7 +110,7 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  Logical. If `TRUE`, adds the raw columns of the resulting object as
+  Logical. If `TRUE`, retains the raw columns of the resulting object as
   provided by IGN.
 
 ## Value

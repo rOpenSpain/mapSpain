@@ -22,8 +22,8 @@ esp_get_countries_siane(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -85,8 +85,8 @@ Data distributed through the `sianedata` data branch, see
 
 - country:
 
-  Character vector of country codes. It can be a vector of country
-  names, ISO3 country codes or ISO2 country codes. See also
+  Character vector of country codes. Accepts country names, ISO3 country
+  codes or ISO2 country codes. See also
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 ## Value

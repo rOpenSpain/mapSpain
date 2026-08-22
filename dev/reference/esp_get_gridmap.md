@@ -1,4 +1,4 @@
-# Get an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) hexbin or square `POLYGON` of Spain
+# Hexbin or square grid maps of Spain
 
 This function loads a hexbin map
 ([`sf`](https://r-spatial.github.io/sf/reference/sf.html) object) or a
