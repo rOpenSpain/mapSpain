@@ -1,4 +1,4 @@
-test_that("Test WMS png", {
+test_that("WMS providers without high minimum zoom render expected tiles", {
   # test with png
   cdir <- file.path(tempdir(), "test_png2")
 

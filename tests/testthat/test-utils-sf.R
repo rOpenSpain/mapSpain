@@ -1,4 +1,4 @@
-test_that("Read shp", {
+test_that("read_geo_file_sf() selects shapefiles using hints", {
   skip_on_cran()
   skip_if_offline()
 
@@ -42,7 +42,7 @@ test_that("Read shp", {
   expect_false(dir.exists(cdir))
 })
 
-test_that("Read gpkg", {
+test_that("GeoPackage helpers inspect columns, layers and queries", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -88,7 +88,7 @@ test_that("Read gpkg", {
   expect_false(dir.exists(cdir))
 })
 
-test_that("NULLs and no CRS", {
+test_that("Spatial helpers accept NULL input and missing CRS", {
   skip_on_cran()
   skip_if_siane_offline()
 

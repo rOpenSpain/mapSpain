@@ -1,5 +1,7 @@
 # mapSpain (development version)
 
+- Console messages now use clearer semantic formatting and distinguish warnings
+  from status alerts.
 - Query timeout can now also be controlled with the `MAPSPAIN_TIMEOUT`
   environment variable.
 - `?esp_tiles_providers`: Updated all WMS providers to use
@@ -8,16 +10,16 @@
 # mapSpain 1.2.0
 
 - Consolidated repeated metadata for Autonomous Communities and Cities,
-  provinces and municipalities across GISCO, SIANE, simplified and grid-map
-  getters.
+  provinces and municipalities across **GISCO**, **SIANE**, simplified and
+  grid-map getters.
 - Reviewed **roxygen2** documentation, generated Rd files and prose
   documentation for consistent terminology and clearer user-facing messages.
   This work was completed with AI assistance and human review.
 
 # mapSpain 1.1.0
 
-- Migrated package vignettes to Quarto.
-- Minimum **httr2** version is now **1.2.0** to ensure compatibility with
+- Migrated package vignettes to **Quarto**.
+- Minimum **httr2** version is now 1.2.0 to ensure compatibility with
   **giscoR**.
 - Query timeout can be controlled with `options(mapspain_timeout)` using
   `httr2::req_timeout()`. The default value is
@@ -36,7 +38,7 @@ We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
 for managing the persistent cache directory. If you have an existing cache
 directory, you will receive a one-time notification about this migration.
 
-The package now requires `R >= 4.1` and dependency updates improve performance
+The package now requires **R** >= 4.1 and dependency updates improve performance
 and maintainability. All functions return tidy objects, either `tibble` objects
 or `sf` objects with `tibble` data.
 
@@ -46,7 +48,7 @@ versions.
 
 ## Breaking changes
 
-- Minimum required R version is now **4.1.0**.
+- Minimum required **R** version is now 4.1.0.
 - Removed dependency on **slippymath** (#126).
 - `esp_get_grid_EEA()` is deprecated and defunct because the source file is no
   longer available.
@@ -69,13 +71,13 @@ versions.
 
 - Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
 - `esp_get_attributions()` retrieves tile provider attributions.
-- `esp_get_countries_siane()` retrieves all countries available in SIANE at a
+- `esp_get_countries_siane()` retrieves all countries available in **SIANE** at a
   given date.
 - `esp_get_rivers()` gains a new `moveCAN` argument.
-- `esp_get_spain_siane()` is analogous to `esp_get_spain()` but uses SIANE data.
+- `esp_get_spain_siane()` is analogous to `esp_get_spain()` but uses **SIANE** data.
 - `esp_get_stations()` replaces `esp_get_railway(..., spatialtype = "point")`.
 - `esp_get_tiles()` can be used with providers that need an API key.
-- `esp_siane_bulk_download()` downloads all SIANE datasets to a specified
+- `esp_siane_bulk_download()` downloads all **SIANE** datasets to a specified
   `cache_dir` in a single step.
 
 # mapSpain 0.10.0
@@ -86,7 +88,7 @@ versions.
 
 # mapSpain 0.9.2
 
-- Adapted functions to the SIANE 2024 databases.
+- Adapted functions to the **SIANE** 2024 databases.
 - `esp_dict_region_code()` and `esp_dict_translate()` improve dictionary
   support.
 
@@ -110,8 +112,8 @@ versions.
   <https://dieghernan.github.io/leaflet-providersESP/> v1.3.3. New providers
   include `IDErioja.Base`, `IDErioja.Relieve`, `IDErioja.Claro` and
   `IDErioja.Oscuro`.
-- `esp_getTiles()` now supports non-OGC-compliant WMTS providers, such as Stamen
-  or OpenStreetMap. See examples.
+- `esp_getTiles()` now supports non-OGC-compliant WMTS providers, such as
+  **Stamen** or **OpenStreetMap**. See examples.
 
 # mapSpain 0.7.0
 

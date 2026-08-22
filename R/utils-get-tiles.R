@@ -1,11 +1,14 @@
-validate_provider <- function(type = "PNOA") {
+validate_provider <- function(type = "PNOA", call = parent.frame()) {
   if (!any(is.list(type), is.character(type))) {
-    cli::cli_abort(paste0(
-      "{.arg type} must be a named list (see ",
-      "{.fn mapSpain::esp_make_provider}) or the name of a provider (see ",
-      "{.help mapSpain::esp_tiles_providers}), not ",
-      "{.obj_type_friendly {type}}."
-    ))
+    cli::cli_abort(
+      paste0(
+        "{.arg type} must be a named list (see ",
+        "{.fn mapSpain::esp_make_provider}) or the name of a provider (see ",
+        "{.help mapSpain::esp_tiles_providers}), not ",
+        "{.obj_type_friendly {type}}."
+      ),
+      call = call
+    )
   }
 
   # Validate custom provider lists.
@@ -14,11 +17,16 @@ validate_provider <- function(type = "PNOA") {
     valid <- c("id", "q")
     has_valid <- valid %in% names(type)
     if (!all(has_valid)) {
-      cli::cli_abort(paste0(
-        "A custom provider must be a named list with fields {.field {valid}}",
-        ", missing {.field {valid[!has_valid]}} field{?/s}. See ",
-        "{.fn mapSpain::esp_make_provider}."
-      ))
+      valid_msg <- cli_vec_no_oxford(valid) # nolint
+      missing_msg <- cli_vec_no_oxford(valid[!has_valid]) # nolint
+      cli::cli_abort(
+        paste0(
+          "A custom provider must be a named list with fields ",
+          "{.field {valid_msg}}. Missing {.field {missing_msg}} field{?/s}. ",
+          "See {.fn mapSpain::esp_make_provider}."
+        ),
+        call = call
+      )
     }
 
     formatted_type <- provider_to_list(type)
@@ -28,7 +36,7 @@ validate_provider <- function(type = "PNOA") {
 
   # Add derived fields to the provider definition.
   prov_list <- mapSpain::esp_tiles_providers
-  type <- match_arg_pretty(type, names(prov_list))
+  type <- match_arg_pretty(type, names(prov_list), call = call)
 
   db_prov <- prov_list[type][[1]]$static
   db_prov$id <- type

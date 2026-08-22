@@ -1,4 +1,4 @@
-#' Get an [`sf`][sf::st_sf] hexbin or square `POLYGON` of Spain
+#' Hexbin or square grid maps of Spain
 #'
 #' @description
 #' This function loads a hexbin map ([`sf`][sf::st_sf] object) or a map of

@@ -1,4 +1,4 @@
-# simplified online
+# Simplified boundary helpers validate and filter regional data
 
     Code
       esp_get_simpl_prov("Mallorca", cache_dir = cdir)

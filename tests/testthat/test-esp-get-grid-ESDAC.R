@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_grid_ESDAC() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_grid_ESDAC() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -31,11 +31,11 @@ test_that("Test 404", {
   })
 })
 
-test_that("Errors", {
+test_that("esp_get_grid_ESDAC() rejects invalid resolutions", {
   expect_snapshot(error = TRUE, esp_get_grid_ESDAC("50"))
 })
 
-test_that("ESDAC grid online", {
+test_that("esp_get_grid_ESDAC() downloads the 10 km grid", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -45,12 +45,15 @@ test_that("ESDAC grid online", {
   # Grid 10 vs 1
 
   expect_silent(grid10 <- esp_get_grid_ESDAC(resolution = 10, cache_dir = tdir))
+  expect_s3_class(grid10, "sf")
+  expect_s3_class(grid10, "tbl_df")
+  expect_gt(nrow(grid10), 0)
 
   unlink(tdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(tdir))
 })
 
-test_that("ESDAC grid less than 10", {
+test_that("esp_get_grid_ESDAC() builds the 1 km download request", {
   skip_on_cran()
   skip_if_siane_offline()
 

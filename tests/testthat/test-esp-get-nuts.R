@@ -1,4 +1,4 @@
-test_that("Test null", {
+test_that("esp_get_nuts() propagates missing source data", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -21,7 +21,7 @@ test_that("Test null", {
   local_mocked_bindings(giscor_get_nuts = the_fun)
 })
 
-test_that("Test local NUTS", {
+test_that("esp_get_nuts() filters bundled data by regional identifiers", {
   expect_silent(esp_get_nuts())
   expect_silent(esp_get_nuts(resolution = 1))
   expect_silent(esp_get_nuts(nuts_level = 2, moveCAN = FALSE))
@@ -68,7 +68,7 @@ test_that("Test local NUTS", {
   expect_silent(esp_get_nuts(resolution = "20"))
 })
 
-test_that("Valid inputs", {
+test_that("esp_get_nuts() validates levels and file extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -104,7 +104,7 @@ test_that("Valid inputs", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Cached dataset vs updated", {
+test_that("esp_get_nuts() agrees across bundled and downloaded data", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -147,7 +147,7 @@ test_that("Cached dataset vs updated", {
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-test_that("Spatial types", {
+test_that("esp_get_nuts() validates and filters spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -176,7 +176,7 @@ test_that("Spatial types", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Extensions", {
+test_that("esp_get_nuts() downloads supported file extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -215,7 +215,7 @@ test_that("Extensions", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Test NUTS online", {
+test_that("esp_get_nuts() downloads historical datasets", {
   skip_on_cran()
   skip_if_gisco_offline()
   cdir <- file.path(tempdir(), "testnuts")

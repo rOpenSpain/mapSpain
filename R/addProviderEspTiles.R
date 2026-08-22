@@ -1,10 +1,10 @@
-# Plugin version for leaflet.
+# Plugin version for Leaflet.
 leaf_providers_esp_v <- "v1.3.3"
 
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 #' map
 #'
-#' @param provider The name of the provider, see [esp_tiles_providers] or
+#' @param provider The name of the provider. See [esp_tiles_providers] or
 #'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
 #'
 #' @inheritParams leaflet::addProviderTiles
@@ -99,7 +99,7 @@ addProviderEspTiles <- function(
       templurl <- q
     }
 
-    # Modify default leaflet::tileOptions() with our options.
+    # Modify the default `leaflet::tileOptions()` with our options.
     # Normalize names.
     tileops <- leaflet::tileOptions()
     names(tileops) <- tolower(names(tileops))
@@ -154,7 +154,7 @@ addProviderEspTiles <- function(
     names(options) <- tolower(names(options))
     optionend <- modifyList(def_opts, options)
 
-    # Modify default leaflet::WMSTileOptions() with our options.
+    # Modify the default `leaflet::WMSTileOptions()` with our options.
     wmsopts <- leaflet::WMSTileOptions()
     names(wmsopts) <- tolower(names(wmsopts))
 

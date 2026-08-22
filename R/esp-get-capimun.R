@@ -1,8 +1,8 @@
 #' Municipal seats of government from SIANE
 #'
 #' @description
-#' This function returns an [`sf`][sf::st_sf] `POINT` locating the seat of
-#' government for each municipality.
+#' This function returns an [`sf`][sf::st_sf] `POINT` object that locates the
+#' seat of government for each municipality.
 #'
 #' Note that this differs from the centroid of the boundaries of the
 #' municipality, returned by [esp_get_munic_siane()].

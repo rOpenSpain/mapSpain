@@ -1,30 +1,34 @@
-# convert_to_nuts
+# convert_to_nuts() normalizes mixed regional identifiers
 
     Code
       n <- convert_to_nuts(NULL)
-    Message
-      ! Empty `region`. No NUTS codes found. Returning "NULL".
+    Condition
+      Warning:
+      Empty `region`. No NUTS codes found. Returning `NULL`.
 
 ---
 
     Code
       n <- convert_to_nuts(NA)
-    Message
-      ! Empty `region`. No NUTS codes found. Returning "NULL".
+    Condition
+      Warning:
+      Empty `region`. No NUTS codes found. Returning `NULL`.
 
 ---
 
     Code
       n <- convert_to_nuts(c(NA, NULL))
-    Message
-      ! Empty `region`. No NUTS codes found. Returning "NULL".
+    Condition
+      Warning:
+      Empty `region`. No NUTS codes found. Returning `NULL`.
 
 ---
 
     Code
       convert_to_nuts(c("Lugo", "Zaporilla", "ES1", "ES-CL"))
-    Message
-      ! No Spanish NUTS codes found for "Zaporilla".
+    Condition
+      Warning:
+      No Spanish NUTS codes found for "Zaporilla".
     Output
       [1] "ES1"   "ES112" "ES41" 
 
@@ -32,8 +36,9 @@
 
     Code
       convert_to_nuts(c("Aama", "ES888", "FR12", "ES9"))
-    Message
-      ! No Spanish NUTS codes found for "Aama", "ES888", "FR12", and "ES9".
+    Condition
+      Warning:
+      No Spanish NUTS codes found for "Aama", "ES888", "FR12" and "ES9".
     Output
       NULL
 
@@ -52,12 +57,13 @@
       [1] "Ourense"    "Asturias"   "País Vasco" "Aragón"     "Sur"       
       [6] "Granada"    "La Gomera" 
 
-# convert_to_nuts_ccaa
+# convert_to_nuts_ccaa() validates and expands regional identifiers
 
     Code
       convert_to_nuts_ccaa(c("Asturies", "Zaporilla", "ES1", "ES-CL"))
-    Message
-      ! No Spanish Autonomous Communities and Cities codes found for "Zaporilla".
+    Condition
+      Warning:
+      No Spanish Autonomous Communities and Cities codes found for "Zaporilla".
     Output
       [1] "ES11" "ES12" "ES13" "ES41"
 
@@ -67,7 +73,7 @@
       convert_to_nuts_ccaa(c("Aama", "ES888", "FR12", "ES9"))
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities and Cities codes found for "Aama", "ES888", "FR12", and "ES9".
+      ! No Spanish Autonomous Communities and Cities codes found for "Aama", "ES888", "FR12" and "ES9".
 
 ---
 
@@ -89,8 +95,9 @@
 
     Code
       convert_to_nuts_ccaa(c("Murcia", "Almeria"))
-    Message
-      ! No Spanish Autonomous Communities and Cities codes found for "Almeria".
+    Condition
+      Warning:
+      No Spanish Autonomous Communities and Cities codes found for "Almeria".
     Output
       [1] "ES62"
 
@@ -100,7 +107,7 @@
       convert_to_nuts_ccaa(c("La Gomera", "Almeria", "Soria"))
     Condition
       Error in `convert_to_nuts_ccaa()`:
-      ! No Spanish Autonomous Communities and Cities codes found for "La Gomera", "Almeria", and "Soria".
+      ! No Spanish Autonomous Communities and Cities codes found for "La Gomera", "Almeria" and "Soria".
 
 ---
 
@@ -110,7 +117,7 @@
       Error in `convert_to_nuts_ccaa()`:
       ! No Spanish Autonomous Communities and Cities codes found for "AA" and "XX".
 
-# convert_to_nuts_prov
+# convert_to_nuts_prov() expands valid provincial identifiers
 
     Code
       n <- convert_to_nuts_prov(NULL)
@@ -129,8 +136,9 @@
 
     Code
       convert_to_nuts_prov(c("Asturies", "Zaporilla", "Euskadi", "Madrid"))
-    Message
-      ! No Spanish province codes found for "Zaporilla".
+    Condition
+      Warning:
+      No Spanish province codes found for "Zaporilla".
     Output
       [1] "ES120" "ES211" "ES212" "ES213" "ES300"
 
@@ -140,7 +148,7 @@
       convert_to_nuts_prov(c("Aama", "ES888", "FR12", "ES9"))
     Condition
       Error in `convert_to_nuts_prov()`:
-      ! No Spanish province codes found for "Aama", "ES888", "FR12", and "ES9".
+      ! No Spanish province codes found for "Aama", "ES888", "FR12" and "ES9".
 
 ---
 
@@ -177,7 +185,7 @@
       convert_to_nuts_prov(c("La Gomera", "El Hierro", "Formentera", "Mallorca"))
     Condition
       Error in `convert_to_nuts_prov()`:
-      ! No Spanish province codes found for "La Gomera", "El Hierro", "Formentera", and "Mallorca".
+      ! No Spanish province codes found for "La Gomera", "El Hierro", "Formentera" and "Mallorca".
 
 ---
 
@@ -191,6 +199,7 @@
 
     Code
       n <- convert_to_nuts_prov(nm)
-    Message
-      ! No Spanish province codes found for "Eivissa y Formentera", "Mallorca", "Menorca", "Fuerteventura", "Gran Canaria", "Lanzarote", "El Hierro", "La Gomera", "La Palma", and "Tenerife".
+    Condition
+      Warning:
+      No Spanish province codes found for "Eivissa y Formentera", "Mallorca", "Menorca", "Fuerteventura", "Gran Canaria", "Lanzarote", "El Hierro", "La Gomera", "La Palma" and "Tenerife".
 

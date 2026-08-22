@@ -8,7 +8,7 @@
 \title{Rivers and wetlands of Spain from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
-\url{https://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+\url{https://www.ign.es/web/ign/portal}. Data are available from 2005 to the present.
 
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
@@ -75,7 +75,7 @@ a new download. Defaults to \code{FALSE}.}
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
 \item{resolution}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character string.
-Ignored, resolution \code{3} (the most detailed) will always be provided.}
+Ignored. Resolution \code{3} (the most detailed) will always be provided.}
 
 \item{spatialtype}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} character string.
 Use \code{\link[=esp_get_wetlands]{esp_get_wetlands()}} instead of \code{"spatialtype"} for wetlands.}
@@ -86,7 +86,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
 \item{name}{Character string or \code{\link[base:grep]{regex}} expression. Name of
-the element(s) to be extracted.}
+the elements to extract.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.

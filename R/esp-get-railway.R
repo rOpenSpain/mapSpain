@@ -67,7 +67,7 @@ esp_get_railway <- function(
     )
 
     cli::cli_alert_info(
-      "Redirecting the arguments to {.fn mapSpain::esp_get_stations}."
+      "Redirecting arguments to {.fn mapSpain::esp_get_stations}."
     )
 
     data_sf <- esp_get_stations(

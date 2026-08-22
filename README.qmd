@@ -58,7 +58,7 @@ Check the documentation for the development version at
 <https://ropenspain.github.io/mapSpain/dev/>.
 
 You can install the development version of **mapSpain** from
-[r-universe](https://ropenspain.r-universe.dev/mapSpain):
+[**r-universe**](https://ropenspain.r-universe.dev/mapSpain):
 
 ```{r}
 #| eval: false
@@ -255,7 +255,7 @@ downloading them again, which speeds up subsequent calls.
 print(citation("mapSpain"), style = "html")
 ```
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ```{r}
 #| echo: false
@@ -265,7 +265,7 @@ toBibtex(citation("mapSpain"))
 
 ## Contribute
 
-Check the GitHub page for the [source
+Check the **GitHub** page for the [source
 code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
@@ -280,10 +280,10 @@ Nacional.
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 This package also uses data from
-[GISCO](https://ec.europa.eu/eurostat/web/gisco), Eurostat's geospatial open
+[**GISCO**](https://ec.europa.eu/eurostat/web/gisco), Eurostat's geospatial open
 data repository, which provides datasets at several resolution levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
+*From **GISCO** \> Geodata \> Reference data \> Administrative Units / Statistical
 Units*
 
 > When data downloaded from this page is used in any printed or electronic

@@ -1,4 +1,4 @@
-test_that("Test cache", {
+test_that("Cache helpers set, detect and clear cache directories", {
   # Get current cache dir
   expect_message(current <- esp_detect_cache_dir())
 
@@ -34,7 +34,7 @@ test_that("Test cache", {
   expect_true(dir.exists(current))
 })
 
-test_that("Mock clearing installed cache config", {
+test_that("esp_clear_cache() removes installed cache configuration", {
   mock_config_dir <- file.path(tempdir(), "mapSpain_config_test")
   mock_config_file <- file.path(mock_config_dir, "mapSpain_cache_dir")
   mock_data_dir <- file.path(tempdir(), "mapSpain_data_test")
@@ -66,7 +66,7 @@ test_that("Mock clearing installed cache config", {
   expect_identical(Sys.getenv("MAPSPAIN_CACHE_DIR"), "")
 })
 
-test_that("Mock restart", {
+test_that("Cache detection restores configuration after a restart", {
   skip_on_cran()
 
   # Careful!
@@ -125,7 +125,7 @@ test_that("Mock restart", {
   expect_true(nzchar(Sys.getenv("MAPSPAIN_CACHE_DIR")))
 })
 
-test_that("Mock migration", {
+test_that("Cache detection migrates legacy configuration", {
   skip_on_cran()
 
   withr::local_envvar(c(MAPSPAIN_CACHE_DIR = NA))
@@ -181,7 +181,7 @@ test_that("Mock migration", {
   expect_false(file.exists(old_fname))
   expect_true(file.exists(new_fname))
 })
-test_that("Test cache online", {
+test_that("Cache helpers manage directories used by online downloads", {
   # Get current cache dir
   current <- esp_detect_cache_dir()
 
@@ -222,7 +222,7 @@ test_that("Test cache online", {
   expect_true(dir.exists(current))
 })
 
-test_that("Mock write_installed_cache_dir", {
+test_that("write_installed_cache_dir() respects overwrite", {
   mock_mapesp_file <- tempfile()
   mock_config_dir <- file.path(tempdir(), "a_test")
   expect_false(file.exists(mock_mapesp_file))
@@ -243,7 +243,7 @@ test_that("Mock write_installed_cache_dir", {
   unlink(mock_config_dir, recursive = TRUE, force = TRUE)
   unlink(mock_mapesp_file, force = TRUE)
 })
-test_that("Mock installing", {
+test_that("esp_set_cache_dir() installs cache configuration", {
   initial_cdir <- esp_detect_cache_dir()
   tdir <- file.path(tempdir(), "created_for_tests")
 
@@ -264,7 +264,7 @@ test_that("Mock installing", {
   expect_identical(initial_cdir, esp_detect_cache_dir())
 })
 
-test_that("Mock reading file", {
+test_that("read_installed_cache_dir() handles missing and empty files", {
   skip_on_cran()
   local_mocked_bindings(cache_config_file = function() {
     "aaaaaaaaa"
@@ -285,7 +285,7 @@ test_that("Mock reading file", {
   })
   expect_identical(read_installed_cache_dir(), "a_test_here")
 })
-test_that("Mock detect muted", {
+test_that("detect_cache_dir_muted() uses installed cache configuration", {
   mock_path <- file.path(tempdir(), "testing")
   withr::local_envvar(c(MAPSPAIN_CACHE_DIR = NA))
   Sys.getenv("MAPSPAIN_CACHE_DIR")

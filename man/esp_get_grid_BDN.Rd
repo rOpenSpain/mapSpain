@@ -69,7 +69,7 @@ for mainland Spain or the Canary Islands. \code{\link[=esp_get_grid_BDN_ccaa]{es
 1 x 1 kilometer resolution grids for individual Autonomous Communities and
 Cities.
 
-These grids are useful for biodiversity analysis, environmental monitoring,
+These grids are useful for biodiversity analysis, environmental monitoring
 and spatial statistical applications.
 
 \code{esp_get_grid_BDN_ccaa()} provides higher-resolution 1 x 1 kilometer grids

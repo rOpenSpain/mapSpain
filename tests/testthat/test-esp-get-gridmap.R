@@ -1,4 +1,4 @@
-test_that("Test gridmaps", {
+test_that("Grid map helpers return complete and filtered regional layouts", {
   expect_silent(n <- esp_get_hex_ccaa())
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")

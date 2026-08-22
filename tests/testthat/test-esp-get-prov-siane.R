@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_prov_siane() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -17,7 +17,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_prov_siane() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -33,7 +33,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_prov_siane() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -77,7 +77,7 @@ test_that("Cache vs non-cached", {
 })
 
 # Test siane
-test_that("prov online", {
+test_that("esp_get_prov_siane() validates and filters provincial data", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -165,9 +165,10 @@ test_that("prov online", {
   n <- esp_get_prov_siane(prov = f$cpro, cache_dir = cdir)
   expect_equal(nrow(n), 52)
 
-  expect_message(
+  expect_warning(
     n <- esp_get_prov_siane(prov = f$nuts3.code, cache_dir = cdir),
-    "No Spanish province codes found"
+    "No Spanish province codes found",
+    class = "rlang_warning"
   )
   expect_equal(nrow(n), 49)
 

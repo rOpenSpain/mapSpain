@@ -1,4 +1,4 @@
-# Test gridmaps
+# Grid map helpers return complete and filtered regional layouts
 
     Code
       esp_get_grid_prov("Mallorca")

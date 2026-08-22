@@ -24,8 +24,8 @@ A character string with the provider attribution, or \code{NULL} if no
 attribution is available.
 }
 \description{
-\code{esp_get_attributions()} gets the attribution of a tile provider defined by
-the \code{type} argument.
+\code{esp_get_attributions()} returns the attribution for a tile provider defined
+by the \code{type} argument.
 }
 \examples{
 esp_get_attributions("IGNBase.Todo")

@@ -22,7 +22,7 @@
 #' `esp_dict_region_code()` returns a character vector with converted
 #' subdivision identifiers or names. If a value cannot be matched, the
 #' corresponding element will be `NA` and a warning is emitted via
-#' [cli::cli_alert_warning()].
+#' [cli::cli_warn()].
 #'
 #' @seealso
 #' - [countrycode::countrycode()] converts country codes and names.
@@ -226,7 +226,7 @@ sanitize_region_code_output <- function(
 #'   and `"eu"` (Basque).
 #'
 #' @param all Logical. If `TRUE` the function returns all possible translations
-#'   for each input as a named list. When `FALSE` (default) a single preferred
+#'   for each input as a named list. When `FALSE` (default), a single preferred
 #'   translation per input is returned as a character vector.
 #'
 #' @return

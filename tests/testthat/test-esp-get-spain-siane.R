@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_spain_siane() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -17,7 +17,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_spain_siane() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -33,7 +33,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Check country", {
+test_that("esp_get_spain_siane() returns Spain at requested detail and CRS", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()

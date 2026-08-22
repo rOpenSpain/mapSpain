@@ -1,7 +1,7 @@
 #' Get the attribution for a tile provider
 #'
-#' `esp_get_attributions()` gets the attribution of a tile provider defined by
-#' the `type` argument.
+#' `esp_get_attributions()` returns the attribution for a tile provider defined
+#' by the `type` argument.
 #'
 #' @inheritParams esp_get_tiles
 #' @return A character string with the provider attribution, or `NULL` if no
@@ -24,7 +24,7 @@ esp_get_attributions <- function(type, options = NULL) {
   prov_list <- modify_provider_list(prov_list, options)
   att <- ensure_null(prov_list$attribution)
   if (is.null(att)) {
-    cli::cli_alert_warning(
+    cli::cli_warn(
       "No attribution found for provider {.str {prov_list$id}}."
     )
   }

@@ -1,4 +1,4 @@
-test_that("convert_to_nuts", {
+test_that("convert_to_nuts() normalizes mixed regional identifiers", {
   skip_on_cran()
 
   expect_snapshot(n <- convert_to_nuts(NULL))
@@ -51,7 +51,7 @@ test_that("convert_to_nuts", {
   expect_identical(id_prov, convert_to_nuts(id_prov))
 })
 
-test_that("convert_to_nuts_ccaa", {
+test_that("convert_to_nuts_ccaa() validates and expands regional identifiers", {
   skip_on_cran()
 
   expect_silent(n <- convert_to_nuts_ccaa(NULL))
@@ -135,7 +135,7 @@ test_that("convert_to_nuts_ccaa", {
   expect_length(n, 19)
 })
 
-test_that("convert_to_nuts_prov", {
+test_that("convert_to_nuts_prov() expands valid provincial identifiers", {
   skip_on_cran()
 
   expect_snapshot(n <- convert_to_nuts_prov(NULL))

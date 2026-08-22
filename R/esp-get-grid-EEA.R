@@ -1,4 +1,4 @@
-#' Get [`sf`][sf::st_sf] `POLYGON` of the national geographic grids from EEA
+#' National geographic grids from EEA
 #'
 #' @description
 #' `r lifecycle::badge('defunct')`

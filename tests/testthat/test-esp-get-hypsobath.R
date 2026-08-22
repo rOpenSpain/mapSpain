@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_hypsobath() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -16,7 +16,7 @@ test_that("Test offline", {
     httr2::is_online()
   })
 })
-test_that("Test 404", {
+test_that("esp_get_hypsobath() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -32,7 +32,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_hypsobath() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -68,13 +68,13 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("hypsobath errors", {
+test_that("esp_get_hypsobath() rejects invalid options", {
   expect_snapshot(error = TRUE, esp_get_hypsobath(epsg = 3367))
   expect_snapshot(error = TRUE, esp_get_hypsobath(spatialtype = "f"))
   expect_snapshot(error = TRUE, esp_get_hypsobath(resolution = "10"))
 })
 
-test_that("hypsobath online", {
+test_that("esp_get_hypsobath() returns requested geometry and resolution", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()

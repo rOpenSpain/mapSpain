@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("BDN grid helpers return NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -21,7 +21,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("BDN grid helpers return NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -41,14 +41,14 @@ test_that("Test 404", {
   })
 })
 
-test_that("Errors", {
+test_that("BDN grid helpers reject invalid selections", {
   expect_snapshot(error = TRUE, esp_get_grid_BDN("50"))
   expect_snapshot(error = TRUE, esp_get_grid_BDN(type = "50"))
   expect_snapshot(error = TRUE, esp_get_grid_BDN_ccaa("Sevilla"))
   expect_snapshot(error = TRUE, esp_get_grid_BDN_ccaa())
 })
 
-test_that("BDN grid online", {
+test_that("esp_get_grid_BDN() returns grids at requested resolutions", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -84,7 +84,7 @@ test_that("BDN grid online", {
   expect_false(dir.exists(tdir))
 })
 
-test_that("BDN grid online CCAA", {
+test_that("esp_get_grid_BDN_ccaa() returns grids for autonomous communities", {
   skip_on_cran()
   skip_if_siane_offline()
 

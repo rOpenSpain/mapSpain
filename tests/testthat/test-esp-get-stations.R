@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_stations() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -17,7 +17,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_stations() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -32,7 +32,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_stations() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 

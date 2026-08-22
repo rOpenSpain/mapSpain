@@ -20,7 +20,7 @@
 #'   with the names of the required municipalities. Use `NULL` to return all
 #'   municipalities.
 #' @param cache `r lifecycle::badge("deprecated")`. This argument is
-#'   deprecated, the dataset will always be downloaded to the `cache_dir`.
+#'   deprecated. The dataset will always be downloaded to the `cache_dir`.
 #' @inheritParams esp_get_nuts
 #' @inherit giscoR::gisco_get_lau return source
 #'

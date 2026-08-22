@@ -1,4 +1,4 @@
-# tiles error
+# esp_get_tiles() rejects unsupported inputs and tile formats
 
     Code
       esp_get_tiles(df)
@@ -11,13 +11,20 @@
     Code
       esp_get_tiles(ff, type = "IGNBase", options = list(format = "image/aabbcc"))
     Condition
-      Error in `validate_tile_ext()`:
+      Error in `esp_get_tiles()`:
       ! The requested file extension must be one of "png", "jpeg", "jpg", "tiff" or "geotiff", not "aabbcc".
 
-# WMTS
+# Single WMTS points report automatic zoom only when verbose
 
     Code
-      res <- esp_get_tiles(point, "IGNBase", cache_dir = cdir, bbox_expand = 0, crop = TRUE)
+      result <- prepare_tile_geometry(point, NULL, TRUE, "WMTS", TRUE)
     Message
-      i Set `zoom` to "18" for a single `POINT` geometry.
+      i Using `zoom` = 18 for a single `POINT` geometry.
+
+# WMTS minimum zoom messages respect verbose
+
+    Code
+      verbose_zoom <- resolve_wmts_zoom(NULL, provider, 1, 0, TRUE)
+    Message
+      i Minimum `zoom` supported by this provider is 4. Increasing `zoom` from 1 to 4.
 

@@ -56,7 +56,7 @@ The \code{style} parameter controls the geometry returned:
 \item \code{"box"}: a rectangular boundary returned as a \code{LINESTRING}.
 \item \code{"poly"}: a slightly expanded rectangle returned as a filled \code{POLYGON}.
 \item \code{"left"} / \code{"right"}: decorative \code{LINESTRING} variants that follow
-the western or eastern side of the islands respectively.
+the western or eastern side of the islands, respectively.
 }
 }
 \examples{

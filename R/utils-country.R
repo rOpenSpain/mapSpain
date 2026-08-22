@@ -3,11 +3,12 @@
 #' @param names Character vector of country names or codes.
 #'
 #' @param out Output code.
+#' @param call The execution environment to use in error messages.
 #'
 #' @return A character vector with converted country names or codes.
 #'
 #' @noRd
-convert_country_code <- function(names, out = "iso3c") {
+convert_country_code <- function(names, out = "iso3c", call = parent.frame()) {
   names[tolower(names) == "antartica"] <- "Antarctica"
 
   # Vectorize country code conversion.
@@ -37,9 +38,9 @@ convert_country_code <- function(names, out = "iso3c") {
       cli::cli_abort(
         paste0(
           "Invalid country name or code {.str {x}}. ",
-          "Use a vector of names, {.code ISO3} or {.code ISO2} codes."
+          "Use country names, {.code ISO3} codes or {.code ISO2} codes."
         ),
-        call = NULL
+        call = call
       )
     }
     outnames
@@ -51,13 +52,14 @@ convert_country_code <- function(names, out = "iso3c") {
   lend <- length(outnames2)
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
-    cli::cli_alert_warning(paste0(
-      "Some country names or codes could not be matched ",
-      "unambiguously: {.str {ff}}."
+    ff <- cli_vec_no_oxford(ff)
+    cli::cli_warn(c(
+      paste0(
+        "Some country names or codes could not be matched ",
+        "unambiguously: {.str {ff}}."
+      ),
+      i = "Review the names or codes, or switch to {.code ISO3} codes."
     ))
-    cli::cli_alert_info(
-      "Review the names or codes, or switch to {.code ISO3} codes."
-    )
   }
 
   outnames2

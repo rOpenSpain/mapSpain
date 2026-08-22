@@ -1,4 +1,4 @@
-# Utils names
+# convert_country_code() converts names and validates short codes
 
     Code
       convert_country_code(c("Espagne", "United Kingdom"))
@@ -11,14 +11,15 @@
       convert_country_code("U")
     Condition
       Error:
-      ! Invalid country name or code "U". Use a vector of names, `ISO3` or `ISO2` codes.
+      ! Invalid country name or code "U". Use country names, `ISO3` codes or `ISO2` codes.
 
 ---
 
     Code
       convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c")
-    Message
-      ! Some country names or codes could not be matched unambiguously: "POR" and "RTA".
+    Condition
+      Warning:
+      Some country names or codes could not be matched unambiguously: "POR" and "RTA".
       i Review the names or codes, or switch to `ISO3` codes.
     Output
       [1] "ESP" "USA"
@@ -30,7 +31,7 @@
     Output
       [1] "ESP" "DEU"
 
-# Problematic names
+# convert_country_code() handles aliases, Kosovo and unknown values
 
     Code
       convert_country_code(c("Espagne", "Antartica"))
@@ -69,8 +70,9 @@
 
     Code
       convert_country_code(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
-    Message
-      ! Some country names or codes could not be matched unambiguously: "Rea" and "Murcua".
+    Condition
+      Warning:
+      Some country names or codes could not be matched unambiguously: "Rea" and "Murcua".
       i Review the names or codes, or switch to `ISO3` codes.
     Output
       [1] "ESP" "XKX" "ATA"
@@ -96,7 +98,7 @@
     Output
       [1] "XKX"
 
-# Test mixed countries
+# convert_country_code() accepts mixed country identifiers
 
     Code
       convert_country_code(c("Germany", "USA", "Greece", "united Kingdom"))

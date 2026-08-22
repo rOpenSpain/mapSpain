@@ -1,4 +1,4 @@
-test_that("Test null giscoR", {
+test_that("esp_get_ccaa() propagates missing source data", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -21,7 +21,7 @@ test_that("Test null giscoR", {
   local_mocked_bindings(esp_get_nuts = local_fun)
 })
 
-test_that("CCAA", {
+test_that("esp_get_ccaa() validates and filters autonomous communities", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()

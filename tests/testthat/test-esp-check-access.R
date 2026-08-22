@@ -1,11 +1,11 @@
-test_that("Access", {
+test_that("esp_check_access() reports available data", {
   skip_on_cran()
   skip_if_siane_offline()
 
   expect_true(esp_check_access())
 })
 
-test_that("On CRAN", {
+test_that("esp_check_access() is disabled on CRAN", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -19,7 +19,7 @@ test_that("On CRAN", {
   expect_identical(!interactive(), on_cran())
 })
 
-test_that("On error", {
+test_that("esp_check_access() returns false when the endpoint fails", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -30,7 +30,7 @@ test_that("On error", {
   expect_false(esp_check_access())
 })
 
-test_that("On HTTP offline", {
+test_that("esp_check_access() returns false while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 

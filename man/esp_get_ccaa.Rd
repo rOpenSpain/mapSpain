@@ -67,7 +67,7 @@ data resolution. One of:
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Get
+Return
 \href{https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain}{Autonomous Communities and Cities of Spain} at a
 specified scale.
 }

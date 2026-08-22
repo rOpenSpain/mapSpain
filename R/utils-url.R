@@ -52,7 +52,7 @@ download_url <- function(
     FALSE
   })
 
-  # Create a folder for caching httr2 requests.
+  # Create a folder for caching `httr2` requests.
   cache_httr2 <- file.path(tempdir(), "mapSpain", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
@@ -138,7 +138,7 @@ for_import_jsonlite <- function() {
   txt <- httr2::resp_body_string(resp)
   local <- jsonlite::parse_json(txt)
 
-  # Also import tibble.
+  # Also import `tibble`.
   local <- tibble::tibble(row = unlist(local[[1]]))
   local <- NULL
   invisible(local)

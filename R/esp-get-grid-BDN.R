@@ -11,7 +11,7 @@
 #' 1 x 1 kilometer resolution grids for individual Autonomous Communities and
 #' Cities.
 #'
-#' These grids are useful for biodiversity analysis, environmental monitoring,
+#' These grids are useful for biodiversity analysis, environmental monitoring
 #' and spatial statistical applications.
 #'
 #' @details

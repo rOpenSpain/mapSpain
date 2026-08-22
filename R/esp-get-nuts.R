@@ -166,8 +166,8 @@ esp_get_nuts <- function(
     make_msg(
       "info",
       verbose,
-      "Loaded from {.help mapSpain::esp_nuts_2024} dataset.",
-      "Use {.arg update_cache} set to {.val TRUE} to reload from file."
+      "Loaded from the bundled {.code mapSpain::esp_nuts_2024} dataset.",
+      "Set {.arg update_cache} to {.code TRUE} to reload from the source file."
     )
   } else {
     data_sf <- giscor_get_nuts(

@@ -1,12 +1,12 @@
-# Errors
+# esp_get_grid_ESDAC() rejects invalid resolutions
 
     Code
       esp_get_grid_ESDAC("50")
     Condition
-      Error:
+      Error in `esp_get_grid_ESDAC()`:
       ! `resolution` must be "10" or "1", not "50".
 
-# ESDAC grid less than 10
+# esp_get_grid_ESDAC() builds the 1 km download request
 
     Code
       url

@@ -1,4 +1,4 @@
-# prov offline
+# esp_get_prov() validates and filters provincial identifiers
 
     Code
       esp_get_prov(prov = "FFF")
@@ -43,6 +43,7 @@
 
     Code
       n2 <- esp_get_prov(prov = c(f$cpro, "La Gomera"))
-    Message
-      ! No Spanish province codes found for "La Gomera".
+    Condition
+      Warning:
+      No Spanish province codes found for "La Gomera".
 

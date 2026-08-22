@@ -1,4 +1,4 @@
-# Get codes
+# Code dictionaries map regional names across administrative levels
 
     Code
       var

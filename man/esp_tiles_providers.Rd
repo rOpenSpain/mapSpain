@@ -10,9 +10,9 @@ A named \code{\link[base:list]{list}} of available providers with the following
 structure:
 
 Each list item is named with the provider alias. Each element contains two
-nested named lists: \code{static} with the parameters required to obtain static
-map tiles plus an additional item named \code{attribution} and \code{leaflet} with
-additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
+nested named lists. \code{static} contains the parameters required to obtain
+static map tiles and an additional item named \code{attribution}. \code{leaflet}
+contains additional parameters to pass to \code{\link[=addProviderEspTiles]{addProviderEspTiles()}}.
 }
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for

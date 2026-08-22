@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Land and water helpers return NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -26,7 +26,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("Land and water helpers return NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -44,7 +44,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached rivers", {
+test_that("esp_get_rivers() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -84,7 +84,7 @@ test_that("Cache vs non-cached rivers", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Cache vs non-cached wetlands", {
+test_that("esp_get_wetlands() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -120,7 +120,7 @@ test_that("Cache vs non-cached wetlands", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Filtering names", {
+test_that("Land and water helpers filter names and transform CRS", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -160,7 +160,7 @@ test_that("Filtering names", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Deprecations", {
+test_that("Deprecated river options redirect to supported behavior", {
   skip_on_cran()
   skip_if_siane_offline()
 

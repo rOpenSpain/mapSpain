@@ -1,4 +1,4 @@
-test_that("Messages", {
+test_that("make_msg() respects verbose and formats alert types", {
   skip_on_cran()
   expect_silent(make_msg(verbose = FALSE))
   expect_snapshot(make_msg(
@@ -22,7 +22,7 @@ test_that("Messages", {
   expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
 })
 
-test_that("Pretty match", {
+test_that("match_arg_pretty() matches values and explains invalid choices", {
   skip_on_cran()
   my_fun <- function(arg_one = c(10, 1000, 3000, 5000)) {
     match_arg_pretty(arg_one)
@@ -62,7 +62,7 @@ test_that("Pretty match", {
   expect_snapshot(my_fun2(c(1, 2)), error = TRUE)
 })
 
-test_that("Bind and fill sf", {
+test_that("rbind_fill() combines sf objects with different columns", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
@@ -75,7 +75,7 @@ test_that("Bind and fill sf", {
   expect_equal(nrow(binded), 4)
 })
 
-test_that("Bind and fill tibbles", {
+test_that("rbind_fill() combines data frames with different columns", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
@@ -88,7 +88,7 @@ test_that("Bind and fill tibbles", {
   expect_equal(nrow(binded), 4)
 })
 
-test_that("Bind and fill sf removes NULL", {
+test_that("rbind_fill() ignores NULL entries when combining sf objects", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   cos <- mapSpain::esp_nuts_2024[1, 1:7]
@@ -102,7 +102,7 @@ test_that("Bind and fill sf removes NULL", {
   expect_equal(nrow(binded), 3)
 })
 
-test_that("Bind and fill tibble removes NULL", {
+test_that("rbind_fill() ignores NULL entries when combining data frames", {
   skip_on_cran()
   gb <- mapSpain::esp_nuts_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
@@ -122,7 +122,7 @@ test_that("Bind and fill tibble removes NULL", {
   expect_null(rbind_fill(new_l))
 })
 
-test_that("Filter dates", {
+test_that("siane_filter_year() filters valid dates and rejects invalid years", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -160,15 +160,15 @@ test_that("Filter dates", {
   )
   expect_snapshot(error = TRUE, siane_filter_year(data_sf, "1900-12"))
 })
-test_that("Ensure NULL", {
+test_that("ensure_null() normalizes empty values and preserves other input", {
   expect_null(ensure_null(NULL))
   expect_null(ensure_null(c(NULL, NA)))
   expect_null(ensure_null(c(NULL, NA, "")))
   expect_null(ensure_null(c("", character(0))))
   expect_identical(ensure_null(c(1, 2)), c(1, 2))
-  expect_identical(letters, letters)
+  expect_identical(ensure_null(letters), letters)
 })
-test_that("Not empty", {
+test_that("validate_non_empty_arg() identifies missing required arguments", {
   a_fun <- function(a, b) {
     a <- validate_non_empty_arg(a)
     b <- validate_non_empty_arg(b)

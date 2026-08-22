@@ -1,4 +1,4 @@
-test_that("HTTP timeout can be controlled with an environment variable", {
+test_that("esp_timeout() reads valid environment values and uses defaults", {
   withr::local_options(list(mapspain_timeout = NULL))
   withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
 
@@ -11,14 +11,14 @@ test_that("HTTP timeout can be controlled with an environment variable", {
   expect_equal(esp_timeout(), 300L)
 })
 
-test_that("HTTP timeout option takes precedence over environment variable", {
+test_that("esp_timeout() gives package options precedence over environment", {
   withr::local_options(list(mapspain_timeout = 30))
   withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
 
   expect_equal(esp_timeout(), 30)
 })
 
-test_that("HTTP timeout environment variable is used in requests", {
+test_that("download_url() applies the configured HTTP timeout", {
   withr::local_options(list(mapspain_timeout = NULL))
   withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
 
@@ -50,7 +50,7 @@ test_that("HTTP timeout environment variable is used in requests", {
   expect_equal(seen[[1]]$timeout_ms, 600000)
 })
 
-test_that("Test offline", {
+test_that("download_url() returns NULL without creating files while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -83,7 +83,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("download_url() returns NULL for HTTP 404 and downloads valid URLs", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -130,7 +130,7 @@ test_that("Test 404", {
   }
 })
 
-test_that("Caching tests", {
+test_that("download_url() reuses and refreshes cached files", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -180,7 +180,7 @@ test_that("Caching tests", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Caching errors", {
+test_that("download_url() reports failures and large downloads", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -226,14 +226,14 @@ test_that("Caching errors", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Test import jsonlite", {
+test_that("for_import_jsonlite() loads jsonlite without returning a value", {
   skip_on_cran()
   skip_if_siane_offline()
   expect_silent(p <- for_import_jsonlite())
   expect_null(for_import_jsonlite())
 })
 
-test_that("Test timeout", {
+test_that("download_url() surfaces timeouts and recovers with valid settings", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_on_os("linux")

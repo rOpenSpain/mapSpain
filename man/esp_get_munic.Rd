@@ -39,7 +39,7 @@ values.}
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This argument is
-deprecated, the dataset will always be downloaded to the \code{cache_dir}.}
+deprecated. The dataset will always be downloaded to the \code{cache_dir}.}
 
 \item{update_cache}{Logical. If \code{TRUE}, refreshes the cached file and forces
 a new download. Defaults to \code{FALSE}.}

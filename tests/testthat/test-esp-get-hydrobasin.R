@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_hydrobasin() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -17,7 +17,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_hydrobasin() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -32,7 +32,7 @@ test_that("Test 404", {
     FALSE
   })
 })
-test_that("Cache vs non-cached", {
+test_that("esp_get_hydrobasin() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -68,7 +68,7 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("hydrobasin online", {
+test_that("esp_get_hydrobasin() validates options and returns both domains", {
   expect_snapshot(error = TRUE, esp_get_hydrobasin(epsg = 3367))
   expect_snapshot(error = TRUE, esp_get_hydrobasin(domain = "f"))
 

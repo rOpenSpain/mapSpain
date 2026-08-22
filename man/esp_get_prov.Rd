@@ -65,7 +65,7 @@ data resolution. One of:
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Get
+Return
 \href{https://en.wikipedia.org/wiki/Provinces_of_Spain}{provinces of Spain}
 at a specified scale.
 }

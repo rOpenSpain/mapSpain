@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_prov() propagates missing source data", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -21,7 +21,7 @@ test_that("Test offline", {
   local_mocked_bindings(esp_get_nuts = local_fun)
 })
 
-test_that("prov offline", {
+test_that("esp_get_prov() validates and filters provincial identifiers", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()

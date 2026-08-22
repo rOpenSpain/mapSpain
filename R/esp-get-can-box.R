@@ -12,7 +12,7 @@
 #' - `"box"`: a rectangular boundary returned as a `LINESTRING`.
 #' - `"poly"`: a slightly expanded rectangle returned as a filled `POLYGON`.
 #' - `"left"` / `"right"`: decorative `LINESTRING` variants that follow
-#'   the western or eastern side of the islands respectively.
+#'   the western or eastern side of the islands, respectively.
 #'
 #' @param style Character string. One of `"right"`, `"left"`, `"box"` or
 #'   `"poly"`. Default is `"right"`, see **Details**.

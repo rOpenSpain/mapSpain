@@ -1,4 +1,4 @@
-# Defunct
+# esp_get_grid_EEA() is defunct
 
     Code
       esp_get_grid_EEA()

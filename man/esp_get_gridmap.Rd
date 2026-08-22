@@ -7,7 +7,7 @@
 \alias{esp_get_hex_ccaa}
 \alias{esp_get_grid_prov}
 \alias{esp_get_grid_ccaa}
-\title{Get an \code{\link[sf:st_sf]{sf}} hexbin or square \code{POLYGON} of Spain}
+\title{Hexbin or square grid maps of Spain}
 \usage{
 esp_get_hex_prov(prov = NULL)
 

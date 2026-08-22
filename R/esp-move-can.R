@@ -1,7 +1,7 @@
-#' Displace a [`sf`][sf::st_sf] object located in the Canary Islands
+#' Displace an `sf` or `sfc` object located in the Canary Islands
 #'
 #' @description
-#' Helper function to displace an external [`sf`][sf::st_sf] object,
+#' Helper function to displace an external `sf` or `sfc` object,
 #' potentially representing a location in the Canary Islands, to align it with
 #' \CRANpkg{mapSpain} objects generated with `moveCAN = TRUE`.
 #'
@@ -18,11 +18,11 @@
 #' [addProviderEspTiles()]), set this option to `FALSE` to get the actual
 #' coordinates instead of the modified ones.
 #'
-#' @param x An [`sf`][sf::st_sf] object. It can be an `sf` or `sfc` object.
+#' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #' @inheritParams esp_get_nuts
 #'
-#' @return A [`sf`][sf::st_sf] object of the same class and same CRS as `x`,
-#'   displaced accordingly.
+#' @return An object of the same class and with the same CRS as `x`, displaced
+#'   accordingly.
 #'
 #' @family can_helpers
 #' @encoding UTF-8

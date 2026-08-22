@@ -125,8 +125,8 @@ esp_set_cache_dir <- function(
     make_msg(
       "info",
       verbose && !is_temp,
-      "To install your {.arg cache_dir} path for use in future sessions,",
-      "run this function with {.arg install} set to {.val TRUE}."
+      "To save {.arg cache_dir} for future sessions,",
+      "run this function with {.arg install} set to {.code TRUE}."
     )
   }
 
@@ -210,7 +210,7 @@ esp_clear_cache <- function(
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg mapSpain} cache configuration deleted.")
+      cli::cli_alert_success("{.pkg mapSpain} cache configuration deleted.")
     }
   }
   if (cached_data && dir.exists(data_dir)) {
@@ -292,7 +292,7 @@ write_installed_cache_dir <- function(cache_dir, overwrite = FALSE) {
 
   cli::cli_abort(c(
     "A path is already configured for {.arg cache_dir}.",
-    i = "Set {.arg overwrite} to {.val TRUE} to replace it."
+    i = "Set {.arg overwrite} to {.code TRUE} to replace it."
   ))
 }
 
@@ -350,11 +350,8 @@ migrate_cache <- function(
   if (file.exists(old_fname)) {
     cache_dir <- readLines(old_fname)
     esp_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
-    cli::cli_alert_success(c(
-      paste0(
-        "Migrated the cache configuration for {.pkg mapSpain} ",
-        "{.val 1.0.0} and later."
-      ),
+    cli::cli_alert_success(paste0(
+      "Migrated the cache configuration for {.pkg mapSpain} 1.0.0 and later. ",
       "See {.strong Note} in {.fn mapSpain::esp_set_cache_dir} for details."
     ))
     cli::cli_alert_info(

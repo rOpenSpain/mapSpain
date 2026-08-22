@@ -1,4 +1,4 @@
-# Messages
+# make_msg() respects verbose and formats alert types
 
     Code
       make_msg("generic", TRUE, "Hi", "I am a generic.", "See {.var avar}.")
@@ -33,29 +33,29 @@
     Message
       v Hooray! 5/5 ;)
 
-# Pretty match
+# match_arg_pretty() matches values and explains invalid choices
 
     Code
       my_fun("error here")
     Condition
-      Error:
-      ! `arg_one` must be "10", "1000", "3000", or "5000", not "error here".
+      Error in `my_fun()`:
+      ! `arg_one` must be "10", "1000", "3000" or "5000", not "error here".
 
 ---
 
     Code
       my_fun(c("an", "HTTP error"))
     Condition
-      Error:
-      ! `arg_one` must be "10", "1000", "3000", or "5000", not "an" or "HTTP error".
+      Error in `my_fun()`:
+      ! `arg_one` must be "10", "1000", "3000" or "5000", not "an" or "HTTP error".
 
 ---
 
     Code
       my_fun("5")
     Condition
-      Error:
-      ! `arg_one` must be "10", "1000", "3000", or "5000", not "5".
+      Error in `my_fun()`:
+      ! `arg_one` must be "10", "1000", "3000" or "5000", not "5".
       i Did you mean "5000"?
 
 ---
@@ -63,15 +63,15 @@
     Code
       my_fun("00")
     Condition
-      Error:
-      ! `arg_one` must be "10", "1000", "3000", or "5000", not "00".
+      Error in `my_fun()`:
+      ! `arg_one` must be "10", "1000", "3000" or "5000", not "00".
 
 ---
 
     Code
       my_fun2(c(1, 2))
     Condition
-      Error:
+      Error in `my_fun2()`:
       ! `year` must be "20", not "1" or "2".
 
 ---
@@ -79,7 +79,7 @@
     Code
       my_fun3("3")
     Condition
-      Error:
+      Error in `my_fun3()`:
       ! `an_arg` must be "30" or "20", not "3".
       i Did you mean "30"?
 
@@ -88,10 +88,10 @@
     Code
       my_fun2(c(1, 2))
     Condition
-      Error:
+      Error in `my_fun2()`:
       ! `year` must be "20", not "1" or "2".
 
-# Filter dates
+# siane_filter_year() filters valid dates and rejects invalid years
 
     Code
       siane_filter_year(data_sf, "1900")
@@ -115,7 +115,7 @@
       Error in `siane_filter_year()`:
       ! Date "1900-12-12-31" is not valid. Use the `YYYY` or `YYYY-MM-DD` format. See `base::as.Date()`.
 
-# Not empty
+# validate_non_empty_arg() identifies missing required arguments
 
     Code
       a_fun()

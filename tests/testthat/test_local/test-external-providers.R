@@ -1,4 +1,4 @@
-test_that("Test Mapbox", {
+test_that("Mapbox tiles match the expected rendered output", {
   # Skip if not API KEY
   apikey <- Sys.getenv("MAPBOX_API_KEY", "")
   if (!nzchar(apikey)) {
@@ -39,7 +39,7 @@ test_that("Test Mapbox", {
   unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("Test Thunderforest", {
+test_that("Thunderforest tiles match the expected rendered output", {
   # Skip if not API KEY
   apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
   if (!nzchar(apikey)) {
@@ -79,7 +79,7 @@ test_that("Test Thunderforest", {
   unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("Test OSM", {
+test_that("OpenStreetMap tiles match the expected rendered output", {
   # test with png
   cdir <- file.path(tempdir(), "test_ext")
 

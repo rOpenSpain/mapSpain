@@ -1,10 +1,11 @@
-test_that("Validate providers errors", {
+test_that("validate_provider() rejects malformed and unknown providers", {
   expect_snapshot(error = TRUE, validate_provider(1))
+  expect_snapshot(error = TRUE, validate_provider(list(a = 1)))
   expect_snapshot(error = TRUE, validate_provider(list(a = 1, q = "2")))
   expect_snapshot(error = TRUE, validate_provider("FAKE"))
 })
 
-test_that("Validate external", {
+test_that("validate_provider() normalizes custom WMS and WMTS providers", {
   skip_on_cran()
   custom_wms <- esp_make_provider(
     id = "an_id_for_caching",
@@ -52,7 +53,7 @@ test_that("Validate external", {
   expect_identical(get_tile_crs(res), "EPSG:3857")
 })
 
-test_that("Validate internal", {
+test_that("validate_provider() normalizes built-in providers", {
   skip_on_cran()
   # WMTS - Not Inspire style
   expect_silent(res <- validate_provider("IDErioja"))
@@ -94,7 +95,7 @@ test_that("Validate internal", {
   expect_identical(get_tile_ext(res), "jpeg")
 })
 
-test_that("Validate all internals", {
+test_that("All built-in tile providers have supported types and CRS", {
   skip_on_cran()
 
   all_int <- mapSpain::esp_tiles_providers
@@ -122,7 +123,7 @@ test_that("Validate all internals", {
   expect_snapshot(unique(in_epsg))
 })
 
-test_that("Validate options", {
+test_that("modify_provider_list() applies service-specific options", {
   skip_on_cran()
 
   wms_1_0_0 <- esp_make_provider(
@@ -193,7 +194,7 @@ test_that("Validate options", {
   expect_identical(end[-2], res[-2])
 })
 
-test_that("bbox WMTS", {
+test_that("get_tile_bbox() expands WMTS bounds proportionally", {
   skip_on_cran()
 
   df <- data.frame(x = c(0, 1), y = c(0, 0.5))
@@ -217,7 +218,7 @@ test_that("bbox WMTS", {
   expect_identical(x_rel - 1, 0.75)
 })
 
-test_that("bbox WMS", {
+test_that("get_tile_bbox() creates centered square WMS bounds", {
   skip_on_cran()
 
   df <- data.frame(x = c(0, 1), y = c(0, 0.5))
@@ -252,7 +253,7 @@ test_that("bbox WMS", {
   expect_identical(coords_init, coords_expand)
 })
 
-test_that("External with apikeys", {
+test_that("validate_provider() preserves API keys in WMTS templates", {
   skip_on_cran()
 
   url_thunder <- paste0(

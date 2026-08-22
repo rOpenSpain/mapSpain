@@ -6,7 +6,7 @@
 \title{Countries of the world from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
-\url{https://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+\url{https://www.ign.es/web/ign/portal}. Data are available from 2005 to the present.
 
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
@@ -64,8 +64,8 @@ a new download. Defaults to \code{FALSE}.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{country}{Character vector of country codes. It can be a vector of
-country names, ISO3 country codes or ISO2 country codes. See also
+\item{country}{Character vector of country codes. Accepts country names,
+ISO3 country codes or ISO2 country codes. See also
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{

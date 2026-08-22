@@ -1,4 +1,4 @@
-# CCAA
+# esp_get_ccaa() validates and filters autonomous communities
 
     Code
       esp_get_ccaa("FFF")
@@ -10,8 +10,9 @@
 
     Code
       n <- esp_get_ccaa(c("FFF", "Murcia"))
-    Message
-      ! No Spanish Autonomous Communities and Cities codes found for "FFF".
+    Condition
+      Warning:
+      No Spanish Autonomous Communities and Cities codes found for "FFF".
 
 ---
 

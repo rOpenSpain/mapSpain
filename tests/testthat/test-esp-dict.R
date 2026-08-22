@@ -1,4 +1,4 @@
-test_that("Testing dict", {
+test_that("Dictionary helpers validate and translate regional codes", {
   skip_on_cran()
 
   vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")

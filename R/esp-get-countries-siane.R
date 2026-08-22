@@ -7,8 +7,8 @@
 #' the IGN regarding its legal status.
 #'
 #' @inheritSection esp_set_cache_dir Caching
-#' @param country Character vector of country codes. It can be a vector of
-#'   country names, ISO3 country codes or ISO2 country codes. See also
+#' @param country Character vector of country codes. Accepts country names,
+#'   ISO3 country codes or ISO2 country codes. See also
 #'   [countrycode::countrycode()].
 #'
 #' @inheritParams esp_get_ccaa_siane
@@ -70,16 +70,17 @@ esp_get_countries_siane <- function(
 #'
 #' @param data_sf An [`sf`][sf::st_sf] object.
 #' @param country Character vector of country codes or names.
+#' @param call The execution environment to use in error messages.
 #'
 #' @return An [`sf`][sf::st_sf] object with rows filtered by the provided
 #'   country vector.
 #'
 #' @noRd
-filter_country <- function(data_sf, country = NULL) {
+filter_country <- function(data_sf, country = NULL, call = parent.frame()) {
   if (!"id_iso3" %in% names(data_sf)) {
     return(data_sf)
   }
-  fil_codes <- convert_country_code(country)
+  fil_codes <- convert_country_code(country, call = call)
   if (is.null(fil_codes)) {
     return(data_sf)
   }

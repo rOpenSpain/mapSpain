@@ -1,4 +1,4 @@
-test_that("Get codes", {
+test_that("Code dictionaries map regional names across administrative levels", {
   skip_on_cran()
 
   names2nuts <- get_master_nuts_nm()
@@ -73,7 +73,7 @@ test_that("Get codes", {
   expect_snapshot(var[cpro == "XX"])
 })
 
-test_that("Region filters return input for NULL selections", {
+test_that("filter_by_codauto_region() preserves input for NULL regions", {
   x <- data.frame(codauto = c("01", "02"), cpro = c("04", "03"))
 
   expect_identical(filter_by_codauto_region(x, NULL), x)

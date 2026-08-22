@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_grid_MTN() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_grid_MTN() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -31,11 +31,11 @@ test_that("Test 404", {
   })
 })
 
-test_that("Errors", {
+test_that("esp_get_grid_MTN() rejects unknown grids", {
   expect_snapshot(error = TRUE, esp_get_grid_MTN("abcde"))
 })
 
-test_that("MTN grid online", {
+test_that("esp_get_grid_MTN() downloads a selected grid", {
   skip_on_cran()
   skip_if_siane_offline()
   tdir <- file.path(tempdir(), "testthat_test")

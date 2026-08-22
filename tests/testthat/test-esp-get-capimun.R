@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_capimun() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_capimun() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -31,7 +31,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_capimun() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -70,7 +70,7 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Filter munis and regions", {
+test_that("esp_get_capimun() filters municipalities and regions", {
   skip_on_cran()
   skip_if_siane_offline()
 

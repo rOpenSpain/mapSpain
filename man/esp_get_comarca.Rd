@@ -32,7 +32,7 @@ all possible comarcas.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{type}{Character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"}, \code{"LIV"}.
+\item{type}{Character string. One of \code{"INE"}, \code{"IGN"}, \code{"AGR"} or \code{"LIV"}.
 Type of comarca to return. See \strong{Details}.}
 
 \item{epsg}{Character string or number. Projection of the map: 4-digit
@@ -81,7 +81,7 @@ always have a formal legal status. They correspond mainly to natural areas
 (valleys, river basins and similar areas), historical regions or ancient
 kingdoms.
 
-In the case of Spain, comarcas only have an administrative character legally
+In Spain, comarcas only have an administrative character legally
 recognized in Catalonia, the Basque Country, Navarra (named merindades
 instead), the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
 the Principality of Asturias and Andalusia have functional comarcas.

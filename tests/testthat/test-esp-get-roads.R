@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_roads() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_roads() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -31,7 +31,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_roads() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -63,11 +63,11 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("roads errors", {
+test_that("esp_get_roads() rejects unsupported CRS values", {
   expect_snapshot(error = TRUE, esp_get_roads(epsg = 3367))
 })
 
-test_that("roads online", {
+test_that("esp_get_roads() transforms CRS and moves Canary geometries", {
   skip_on_cran()
   skip_if_siane_offline()
 

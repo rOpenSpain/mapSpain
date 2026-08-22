@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_tiles() returns NULL for WMS and WMTS while offline", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -37,7 +37,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_tiles() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
@@ -69,7 +69,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("tiles error", {
+test_that("esp_get_tiles() rejects unsupported inputs and tile formats", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -86,7 +86,7 @@ test_that("tiles error", {
   )
 })
 
-test_that("Colorize", {
+test_that("esp_get_tiles() converts color tables to RGBA rasters", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -124,7 +124,7 @@ test_that("Colorize", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Crop and mask", {
+test_that("esp_get_tiles() applies crop and mask independently", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -192,7 +192,7 @@ test_that("Crop and mask", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Re-project", {
+test_that("esp_get_tiles() returns rasters in the input CRS", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -229,7 +229,7 @@ test_that("Re-project", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Transparency", {
+test_that("esp_get_tiles() controls alpha channels with transparent", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -274,7 +274,7 @@ test_that("Transparency", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("WMS", {
+test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -369,7 +369,7 @@ test_that("WMS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("WMTS", {
+test_that("esp_get_tiles() applies WMTS autozoom and provider limits", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -380,7 +380,7 @@ test_that("WMTS", {
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
-  expect_snapshot(
+  expect_silent(
     res <- esp_get_tiles(
       point,
       "IGNBase",
@@ -431,7 +431,43 @@ test_that("WMTS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Old tests", {
+test_that("Single WMTS points report automatic zoom only when verbose", {
+  point <- sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
+
+  quiet_result <- expect_silent(
+    prepare_tile_geometry(point, NULL, TRUE, "WMTS", FALSE)
+  )
+  expect_identical(quiet_result$zoom, 18)
+  expect_false(quiet_result$crop)
+
+  expect_snapshot(
+    result <- prepare_tile_geometry(point, NULL, TRUE, "WMTS", TRUE)
+  )
+  expect_identical(result$zoom, 18)
+  expect_false(result$crop)
+})
+
+test_that("WMTS minimum zoom messages respect verbose", {
+  provider <- validate_provider("PNOA")
+  min_zoom <- as.numeric(provider$min_zoom)
+  expect_gt(min_zoom, 1)
+
+  quiet_zoom <- expect_silent(
+    resolve_wmts_zoom(NULL, provider, 1, 0, FALSE)
+  )
+  expect_identical(quiet_zoom, min_zoom)
+
+  expect_snapshot(
+    verbose_zoom <- resolve_wmts_zoom(NULL, provider, 1, 0, TRUE)
+  )
+  expect_identical(verbose_zoom, min_zoom)
+})
+
+test_that("esp_getTiles() remains an alias for esp_get_tiles()", {
+  expect_identical(esp_getTiles, esp_get_tiles)
+})
+
+test_that("esp_get_tiles() supports legacy WMS provider options", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -472,7 +508,7 @@ test_that("Old tests", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Custom WMS", {
+test_that("esp_get_tiles() accepts custom WMS providers", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -495,7 +531,7 @@ test_that("Custom WMS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Custom WMTS", {
+test_that("esp_get_tiles() accepts custom WMTS templates and extensions", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -552,7 +588,7 @@ test_that("Custom WMTS", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("External API (Thunder)", {
+test_that("esp_get_tiles() supports authenticated Thunderforest providers", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")
@@ -580,7 +616,7 @@ test_that("External API (Thunder)", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("External API (Mapbox)", {
+test_that("esp_get_tiles() supports authenticated Mapbox providers", {
   skip_on_cran()
   skip_if_not_installed("terra")
   skip_on_os("mac")

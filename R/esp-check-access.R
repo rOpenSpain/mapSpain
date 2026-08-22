@@ -38,7 +38,7 @@ esp_check_access <- function() {
   }
 }
 
-#' Internal function to check if we are on CRAN
+#' Check whether the package is running on CRAN
 #' @return Logical scalar, `TRUE` if running on CRAN and `FALSE` otherwise.
 #' @noRd
 on_cran <- function() {

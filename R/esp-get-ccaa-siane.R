@@ -10,7 +10,7 @@
 #'   - `"6.5"`: 1:6.5 million.
 #'   - `"3"`: 1:3 million.
 #'
-#' @param rawcols Logical. If `TRUE`, adds the raw columns of the resulting
+#' @param rawcols Logical. If `TRUE`, retains the raw columns of the resulting
 #'   object as provided by IGN.
 #'
 #' @inheritParams esp_get_nuts
@@ -19,8 +19,8 @@
 #' @source
 #' ```{r, echo=FALSE, results='asis'}
 #' cat("CartoBase ANE (Atlas Nacional de Espa\u00f1a) provided by Instituto",
-#'   "Geográfico Nacional (IGN),\n<https://www.ign.es/web/ign/portal>. Years",
-#'   "available are 2005 up to today.",
+#'   "Geográfico Nacional (IGN),\n<https://www.ign.es/web/ign/portal>. Data",
+#'   "are available from 2005 to the present.",
 #'   sep = " "
 #' )
 #' ```

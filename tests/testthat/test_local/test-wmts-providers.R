@@ -1,4 +1,4 @@
-test_that("Test WMTS png", {
+test_that("WMTS providers render expected regional tiles", {
   # test with png
   cdir <- file.path(tempdir(), "test_png4")
 

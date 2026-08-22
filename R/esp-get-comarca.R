@@ -21,7 +21,7 @@
 #' (valleys, river basins and similar areas), historical regions or ancient
 #' kingdoms.
 #'
-#' In the case of Spain, comarcas only have an administrative character legally
+#' In Spain, comarcas only have an administrative character legally
 #' recognized in Catalonia, the Basque Country, Navarra (named merindades
 #' instead), the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
 #' the Principality of Asturias and Andalusia have functional comarcas.
@@ -30,6 +30,7 @@
 #'
 #' `esp_get_comarca()` can retrieve several types of comarcas, each provided
 #' under different classification criteria.
+#'
 #' - `"INE"`: Comarcas defined by the National Statistics Institute (INE).
 #' - `"IGN"`: Official comarcas, only available for some Autonomous
 #'   Communities and Cities, provided by the National Geographic Institute.
@@ -44,7 +45,7 @@
 #' @param comarca Character string. A name or [`regex`][base::grep()]
 #'   expression with the names of the required comarcas. Use `NULL` to return
 #'   all possible comarcas.
-#' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`.
+#' @param type Character string. One of `"INE"`, `"IGN"`, `"AGR"` or `"LIV"`.
 #'   Type of comarca to return. See **Details**.
 #'
 #' @inheritParams esp_get_nuts

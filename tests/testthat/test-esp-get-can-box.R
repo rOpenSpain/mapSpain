@@ -1,4 +1,4 @@
-test_that("Testing can bbox", {
+test_that("Canary inset helpers validate options and move geometries", {
   skip_on_cran()
   skip_if_gisco_offline()
 

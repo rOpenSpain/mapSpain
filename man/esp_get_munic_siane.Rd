@@ -6,7 +6,7 @@
 \title{Municipalities of Spain from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
-\url{https://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+\url{https://www.ign.es/web/ign/portal}. Data are available from 2005 to the present.
 
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
@@ -88,7 +88,7 @@ municipalities.}
 Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 
-\item{rawcols}{Logical. If \code{TRUE}, adds the raw columns of the resulting
+\item{rawcols}{Logical. If \code{TRUE}, retains the raw columns of the resulting
 object as provided by IGN.}
 }
 \value{

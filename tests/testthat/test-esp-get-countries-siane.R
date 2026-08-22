@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_countries_siane() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_countries_siane() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -34,7 +34,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_countries_siane() agrees across cached and uncached data", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -71,7 +71,7 @@ test_that("Cache vs non-cached", {
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-test_that("Filter countries", {
+test_that("esp_get_countries_siane() filters country names and codes", {
   skip_on_cran()
   skip_if_siane_offline()
 

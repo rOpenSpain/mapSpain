@@ -9,11 +9,11 @@
 #'
 #' @inheritSection esp_set_cache_dir Caching
 #' @param resolution `r lifecycle::badge("deprecated")` character string.
-#'   Ignored, resolution `3` (the most detailed) will always be provided.
+#'   Ignored. Resolution `3` (the most detailed) will always be provided.
 #' @param spatialtype `r lifecycle::badge("deprecated")` character string.
 #'   Use [esp_get_wetlands()] instead of `"spatialtype"` for wetlands.
 #' @param name Character string or [`regex`][base::grep()] expression. Name of
-#'   the element(s) to be extracted.
+#'   the elements to extract.
 #' @inheritParams esp_get_ccaa_siane
 #' @inherit esp_get_ccaa_siane return source
 #' @family natural
@@ -95,7 +95,7 @@ esp_get_rivers <- function(
     )
 
     cli::cli_alert_info(
-      "Redirecting the arguments to {.fn mapSpain::esp_get_wetlands}."
+      "Redirecting arguments to {.fn mapSpain::esp_get_wetlands}."
     )
 
     data_sf <- esp_get_wetlands(

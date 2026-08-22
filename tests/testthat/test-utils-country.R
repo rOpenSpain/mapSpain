@@ -1,4 +1,4 @@
-test_that("Utils names", {
+test_that("convert_country_code() converts names and validates short codes", {
   skip_on_cran()
 
   expect_snapshot(convert_country_code(c("Espagne", "United Kingdom")))
@@ -7,7 +7,7 @@ test_that("Utils names", {
   expect_snapshot(convert_country_code(c("ESP", "Alemania")))
 })
 
-test_that("Problematic names", {
+test_that("convert_country_code() handles aliases, Kosovo and unknown values", {
   skip_on_cran()
 
   expect_snapshot(convert_country_code(c("Espagne", "Antartica")))
@@ -34,7 +34,7 @@ test_that("Problematic names", {
   expect_identical(convert_country_code("ES"), "ESP")
 })
 
-test_that("Test mixed countries", {
+test_that("convert_country_code() accepts mixed country identifiers", {
   skip_on_cran()
 
   expect_snapshot(convert_country_code(c(

@@ -22,14 +22,14 @@ destination. One of \code{"text"}, \code{"nuts"}, \code{"iso2"}, \code{"codauto"
 and \code{"eu"} (Basque).}
 
 \item{all}{Logical. If \code{TRUE} the function returns all possible translations
-for each input as a named list. When \code{FALSE} (default) a single preferred
+for each input as a named list. When \code{FALSE} (default), a single preferred
 translation per input is returned as a character vector.}
 }
 \value{
 \code{esp_dict_region_code()} returns a character vector with converted
 subdivision identifiers or names. If a value cannot be matched, the
 corresponding element will be \code{NA} and a warning is emitted via
-\code{\link[cli:cli_alert_warning]{cli::cli_alert_warning()}}.
+\code{\link[cli:cli_warn]{cli::cli_warn()}}.
 
 \code{esp_dict_translate()} translates a vector of names from one language to
 another. If \code{all = FALSE}, it returns a character vector with the translated

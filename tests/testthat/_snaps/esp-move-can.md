@@ -1,4 +1,4 @@
-# Errors
+# esp_move_can() requires an sf or sfc object
 
     Code
       esp_move_can(teide)
@@ -14,7 +14,7 @@
       Error in `esp_move_can()`:
       ! `x` must be supplied.
 
-# Internal
+# move_can() identifies Canary geometries from regional codes
 
     Code
       sf::st_coordinates(res)
@@ -30,7 +30,7 @@
                 X      Y
       [1,] 550000 920000
 
-# Several
+# move_can() moves only Canary rows in mixed datasets
 
     Code
       sf::st_coordinates(res)

@@ -11,7 +11,7 @@ resolution in \href{https://epsg.io/4258}{EPSG:4258} projection, containing
 86 rows and 10 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
-\item{\code{LEVL_CODE}}{NUTS level code \verb{(0, 1, 2, 3)}.}
+\item{\code{LEVL_CODE}}{NUTS level code (\code{0}, \code{1}, \code{2} or \code{3}).}
 \item{\code{CNTR_CODE}}{Eurostat country code.}
 \item{\code{NAME_LATN}}{NUTS name in Latin characters.}
 \item{\code{NUTS_NAME}}{NUTS name in the local alphabet.}
@@ -68,7 +68,7 @@ head(esp_nuts_2024)
 
 }
 \seealso{
-\code{\link[=esp_get_nuts]{esp_get_nuts()}}
+\code{\link[=esp_get_nuts]{esp_get_nuts()}}.
 
 Included package datasets:
 \code{\link{esp_codelist}},

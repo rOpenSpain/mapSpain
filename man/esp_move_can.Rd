@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{esp_move_can}
 \alias{esp_move_can}
-\title{Displace a \code{\link[sf:st_sf]{sf}} object located in the Canary Islands}
+\title{Displace an \code{sf} or \code{sfc} object located in the Canary Islands}
 \usage{
 esp_move_can(x, moveCAN = TRUE)
 }
 \arguments{
-\item{x}{An \code{\link[sf:st_sf]{sf}} object. It can be an \code{sf} or \code{sfc} object.}
+\item{x}{An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.
@@ -16,11 +16,11 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object of the same class and same CRS as \code{x},
-displaced accordingly.
+An object of the same class and with the same CRS as \code{x}, displaced
+accordingly.
 }
 \description{
-Helper function to displace an external \code{\link[sf:st_sf]{sf}} object,
+Helper function to displace an external \code{sf} or \code{sfc} object,
 potentially representing a location in the Canary Islands, to align it with
 \CRANpkg{mapSpain} objects generated with \code{moveCAN = TRUE}.
 }

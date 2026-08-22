@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_munic_siane() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_munic_siane() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -31,7 +31,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_munic_siane() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -69,7 +69,7 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Filter munis and regions", {
+test_that("esp_get_munic_siane() filters municipalities and regions", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -129,7 +129,7 @@ test_that("Filter munis and regions", {
     cache_dir = cdir
   )
   expect_identical(ten_move[1, ], ten_move_par[1, ])
-  expect_false(identical(ten_move[1, ], ten_nomove[, 1]))
+  expect_false(identical(ten_move[1, ], ten_nomove[1, ]))
 
   db_3035 <- esp_get_munic_siane(
     munic = "Nieva",

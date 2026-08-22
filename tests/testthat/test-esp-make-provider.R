@@ -1,4 +1,4 @@
-test_that("Custom WMTS provider", {
+test_that("esp_make_provider() normalizes equivalent WMTS definitions", {
   # Skip test as tiles sometimes are not available
   skip_on_cran()
   skip_if_offline()
@@ -22,7 +22,7 @@ test_that("Custom WMTS provider", {
   expect_identical(custom_wmts, custom_wmts2)
 })
 
-test_that("Custom WMS provider", {
+test_that("esp_make_provider() maps CRS fields by WMS version", {
   skip_on_cran()
   skip_if_offline()
 

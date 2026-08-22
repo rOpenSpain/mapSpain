@@ -69,7 +69,7 @@ esp_get_spain <- function(moveCAN = TRUE, ...) {
   # Get country metadata.
   df <- sf::st_drop_geometry(for_data_frame)
 
-  # Generate the sf object.
+  # Build the `sf` object.
   data_sf <- sf::st_as_sf(df, g)
 
   # Arrange rows and normalize geometry.

@@ -6,7 +6,7 @@
 \title{Hypsometry and bathymetry of Spain from SIANE}
 \source{
 CartoBase ANE (Atlas Nacional de España) provided by Instituto Geográfico Nacional (IGN),
-\url{https://www.ign.es/web/ign/portal}. Years available are 2005 up to today.
+\url{https://www.ign.es/web/ign/portal}. Data are available from 2005 to the present.
 
 Copyright:
 \url{https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane}
@@ -63,8 +63,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{resolution}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item "6.5": 1:6.5 million.
-\item "3": 1:3 million.
+\item \code{"6.5"}: 1:6.5 million.
+\item \code{"3"}: 1:3 million.
 }}
 
 \item{spatialtype}{Character string. Spatial type of the output. Use

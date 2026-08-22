@@ -39,10 +39,12 @@ read_geo_file_sf <- function(file_local, q = NULL, ..., shp_hint = NULL) {
     shp_end <- shp_zip[1]
     shp_end <- ensure_null(shp_end)
     if (is.null(shp_end)) {
-      cli::cli_alert_warning("Cannot read file {.file {file_local}}.")
-      cli::cli_abort(paste0(
-        "Please open an issue at ",
-        "{.url https://github.com/rOpenSpain/mapSpain/issues}."
+      cli::cli_abort(c(
+        "No matching shapefile found in {.file {file_local}}.",
+        i = paste0(
+          "Please open an issue at ",
+          "{.url https://github.com/rOpenSpain/mapSpain/issues}."
+        )
       ))
     }
 
@@ -242,7 +244,7 @@ sanitize_sf <- function(data_sf) {
 
   data_utf8 <- tibble::as_tibble(data_utf8)
 
-  # Reconstruct the sf object with corrected encoding.
+  # Reconstruct the `sf` object with corrected encoding.
   data_sf <- sf::st_as_sf(data_utf8, g)
 
   # Rename the geometry column from "g" to "geometry".

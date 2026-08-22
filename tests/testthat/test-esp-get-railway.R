@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("esp_get_railway() returns NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -17,7 +17,7 @@ test_that("Test offline", {
   })
 })
 
-test_that("Test 404", {
+test_that("esp_get_railway() returns NULL for HTTP 404 responses", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -32,7 +32,7 @@ test_that("Test 404", {
   })
 })
 
-test_that("Cache vs non-cached", {
+test_that("esp_get_railway() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -72,7 +72,7 @@ test_that("Cache vs non-cached", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Deprecations", {
+test_that("Deprecated railway point data redirects to station data", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -93,6 +93,7 @@ test_that("Deprecations", {
 
   # Cache not modified, then must be the same file
   expect_identical(nowcache, list.files(cdir, recursive = TRUE))
+  expect_identical(db_redirected, db2)
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)

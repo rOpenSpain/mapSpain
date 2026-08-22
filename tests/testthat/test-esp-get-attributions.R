@@ -1,4 +1,4 @@
-test_that("Attributions", {
+test_that("esp_get_attributions() handles custom and built-in providers", {
   custom_wmts <- list(
     id = "MadridMapBox",
     q = paste0(
