@@ -139,9 +139,8 @@ for_import_jsonlite <- function() {
   local <- jsonlite::parse_json(txt)
 
   # Also import `tibble`.
-  local <- tibble::tibble(row = unlist(local[[1]]))
-  local <- NULL
-  invisible(local)
+  invisible(tibble::tibble(row = unlist(local[[1]])))
+  invisible(NULL)
 }
 
 #' Wrap [httr2::is_online()] for testing

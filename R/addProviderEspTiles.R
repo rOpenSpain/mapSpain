@@ -1,4 +1,5 @@
-# Plugin version for Leaflet.
+# Plugin version for Leaflet documentation.
+# jarl-ignore unused_object: Used by cross-file roxygen inline code
 leaf_providers_esp_v <- "v1.3.3"
 
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}

@@ -31,12 +31,12 @@ test_that("WMTS providers render expected local tiles", {
   fails <- NULL
   for (n in all_n) {
     tile <- try(esp_get_tiles(cala, type = n, cache_dir = cdir), silent = TRUE)
-    if (!inherits(tile, "try-error")) {
+    if (inherits(tile, "try-error")) {
+      fails <- c(fails, n)
+    } else {
       expect_type(ensure_null(terra::crs(tile)), "character")
 
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
-    } else {
-      fails <- c(fails, n)
     }
   }
   expect_snapshot(fails)

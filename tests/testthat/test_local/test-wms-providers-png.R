@@ -48,18 +48,17 @@ test_that("WMS providers with high minimum zoom render expected tiles", {
   santiago <- esp_get_capimun(munic = "Santiago de Compostela", epsg = 3857)
   santiago <- santiago |> sf::st_buffer(dist = 1000)
 
-  n <- all_n[1]
   fails <- c(NULL)
   for (n in all_n) {
     tile <- try(
       esp_get_tiles(santiago, type = n, cache_dir = cdir),
       silent = TRUE
     )
-    if (!inherits(tile, "try-error")) {
+    if (inherits(tile, "try-error")) {
+      fails <- c(fails, n)
+    } else {
       expect_type(ensure_null(terra::crs(tile)), "character")
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
-    } else {
-      fails <- c(fails, n)
     }
   }
   expect_snapshot(fails)

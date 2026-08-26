@@ -397,7 +397,7 @@ get_wms_tile <- function(bbox, prov_list, update_cache, cache_dir, verbose) {
     return(NULL)
   }
 
-  r <- terra::rast(file_local, noflip = TRUE)
+  r <- suppressWarnings(terra::rast(file_local, noflip = TRUE))
 
   # Set extent and CRS.
   terra::ext(r) <- terra::ext(terra::vect(bbox))
@@ -442,11 +442,7 @@ get_wmts_tile <- function(
   make_msg(
     "info",
     verbose,
-    paste0(
-      "{.val {",
-      length(tile_list),
-      "}} tile{?s} downloaded."
-    )
+    paste0("{.val {", length(tile_list), "}} tile{?s} downloaded.")
   )
 
   # Build a SpatRasterCollection.
@@ -535,7 +531,7 @@ download_wmts_tile <- function(
     return(NULL)
   }
 
-  r <- terra::rast(file_local, noflip = TRUE)
+  r <- suppressWarnings(terra::rast(file_local, noflip = TRUE))
   r <- colorize_single_layer_tile(r)
   set_wmts_tile_extent_crs(r, xtile, ytile, ztile, prov_list)
 }

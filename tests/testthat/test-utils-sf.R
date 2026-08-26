@@ -76,7 +76,6 @@ test_that("GeoPackage helpers inspect columns, layers and queries", {
   expect_s3_class(s, "tbl_df")
   expect_true(file.exists(fake_local))
 
-  ly <- get_sf_layer_name(fake_local)
   # With query
   sq <- read_geo_file_sf(
     fake_local,

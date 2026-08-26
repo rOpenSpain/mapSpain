@@ -37,13 +37,6 @@ test_that("esp_get_nuts() filters bundled data by regional identifiers", {
   expect_error(esp_get_nuts(spatialtype = "XX"), class = "rlang_error")
   expect_error(esp_get_nuts(nuts_level = "XX"), class = "rlang_error")
 
-  # Check all nuts codes
-  a <- unique(c(
-    esp_codelist$nuts1.code,
-    esp_codelist$nuts2.code,
-    esp_codelist$nuts3.code
-  ))
-
   l1 <- unique(esp_codelist$nuts1.code)
   ff <- esp_get_nuts(region = l1)
   expect_length(l1, nrow(ff))

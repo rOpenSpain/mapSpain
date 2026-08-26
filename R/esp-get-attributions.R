@@ -24,9 +24,7 @@ esp_get_attributions <- function(type, options = NULL) {
   prov_list <- modify_provider_list(prov_list, options)
   att <- ensure_null(prov_list$attribution)
   if (is.null(att)) {
-    cli::cli_warn(
-      "No attribution found for provider {.str {prov_list$id}}."
-    )
+    cli::cli_warn("No attribution found for provider {.str {prov_list$id}}.")
   }
   att
 }

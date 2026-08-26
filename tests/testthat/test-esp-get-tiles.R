@@ -106,9 +106,11 @@ test_that("esp_get_tiles() converts color tables to RGBA rasters", {
   expect_silent(res <- esp_get_tiles(point, "Catastro", cache_dir = cdir))
   expect_length(list.files(file.path(cdir, "Catastro")), 1)
   # This file if read is only one layer
-  r_orig <- terra::rast(
-    list.files(file.path(cdir, "Catastro"), full.names = TRUE),
-    noflip = TRUE
+  r_orig <- suppressWarnings(
+    terra::rast(
+      list.files(file.path(cdir, "Catastro"), full.names = TRUE),
+      noflip = TRUE
+    )
   )
 
   expect_equal(terra::nlyr(r_orig), 1)
@@ -297,7 +299,6 @@ test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
   expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 1)
 
   v <- as.vector(terra::ext(res))
-  p <- as.double(sf::st_bbox(point))
   rel_x <- unname(diff(v[1:2])) / 2
   rel_y <- unname(diff(v[3:4])) / 2
   expect_identical(rel_x, rel_y)
@@ -434,9 +435,13 @@ test_that("esp_get_tiles() applies WMTS autozoom and provider limits", {
 test_that("Single WMTS points report automatic zoom only when verbose", {
   point <- sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
 
-  quiet_result <- expect_silent(
-    prepare_tile_geometry(point, NULL, TRUE, "WMTS", FALSE)
-  )
+  quiet_result <- expect_silent(prepare_tile_geometry(
+    point,
+    NULL,
+    TRUE,
+    "WMTS",
+    FALSE
+  ))
   expect_identical(quiet_result$zoom, 18)
   expect_false(quiet_result$crop)
 
@@ -452,14 +457,10 @@ test_that("WMTS minimum zoom messages respect verbose", {
   min_zoom <- as.numeric(provider$min_zoom)
   expect_gt(min_zoom, 1)
 
-  quiet_zoom <- expect_silent(
-    resolve_wmts_zoom(NULL, provider, 1, 0, FALSE)
-  )
+  quiet_zoom <- expect_silent(resolve_wmts_zoom(NULL, provider, 1, 0, FALSE))
   expect_identical(quiet_zoom, min_zoom)
 
-  expect_snapshot(
-    verbose_zoom <- resolve_wmts_zoom(NULL, provider, 1, 0, TRUE)
-  )
+  expect_snapshot(verbose_zoom <- resolve_wmts_zoom(NULL, provider, 1, 0, TRUE))
   expect_identical(verbose_zoom, min_zoom)
 })
 

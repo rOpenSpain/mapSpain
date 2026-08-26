@@ -32,10 +32,7 @@ make_msg <- function(type = "generic", verbose, ...) {
 
 cli_vec_no_oxford <- function(x, last = "and") {
   last_sep <- paste0(" ", last, " ")
-  cli::cli_vec(
-    x,
-    style = list("vec-sep2" = last_sep, "vec-last" = last_sep)
-  )
+  cli::cli_vec(x, style = list("vec-sep2" = last_sep, "vec-last" = last_sep))
 }
 
 #' Match an argument with an informative error
@@ -52,7 +49,8 @@ match_arg_pretty <- function(arg, choices, call = parent.frame()) {
   arg_name <- as.character(substitute(arg)) # nolint
 
   if (missing(choices)) {
-    formal_args <- formals(sys.function(sys_par <- sys.parent()))
+    sys_par <- sys.parent()
+    formal_args <- formals(sys.function(sys_par))
     choices <- eval(
       formal_args[[as.character(substitute(arg))]],
       envir = sys.frame(sys_par)
@@ -76,10 +74,6 @@ match_arg_pretty <- function(arg, choices, call = parent.frame()) {
 
   choices_msg <- cli_vec_no_oxford(choices, "or") # nolint
   arg_msg <- cli_vec_no_oxford(arg, "or") # nolint
-  msg <- paste0(
-    "{.arg {arg_name}} must be {.str {choices_msg}}, not ",
-    "{.str {arg_msg}}."
-  )
 
   hint <- NULL
   if (length(arg) == 1) {
@@ -89,7 +83,16 @@ match_arg_pretty <- function(arg, choices, call = parent.frame()) {
     }
   }
 
-  cli::cli_abort(c(msg, i = hint), call = call)
+  cli::cli_abort(
+    c(
+      paste0(
+        "{.arg {arg_name}} must be {.str {choices_msg}}, not ",
+        "{.str {arg_msg}}."
+      ),
+      i = hint
+    ),
+    call = call
+  )
 }
 
 #' Row-bind data frames filling missing columns with `NA`

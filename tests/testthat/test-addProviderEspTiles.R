@@ -6,12 +6,14 @@ test_that("addProviderEspTiles() validates providers and adds leaflet tiles", {
 
   expect_snapshot(
     error = TRUE,
+    # jarl-ignore nested_pipe: Pipe is intentionally captured by testthat
     puertadelsol <- leaflet() |>
       setView(lat = 40.4166, lng = -3.7038400, zoom = 18) |>
       addProviderEspTiles(provider = "TESTING")
   )
 
   expect_silent(
+    # jarl-ignore nested_pipe: Pipe is intentionally captured by testthat
     puertadelsol <- leaflet() |>
       setView(lat = 40.4166, lng = -3.7038400, zoom = 18) |>
       addProviderEspTiles(provider = "IDErioja.Claro") |>

@@ -51,12 +51,12 @@ test_that("WMS providers without high minimum zoom render expected tiles", {
       esp_get_tiles(galicia, type = n, cache_dir = cdir),
       silent = TRUE
     )
-    if (!inherits(tile, "try-error")) {
+    if (inherits(tile, "try-error")) {
+      fails <- c(fails, n)
+    } else {
       expect_type(ensure_null(terra::crs(tile)), "character")
 
       expect_snapshot_file(save_png(tile), paste0(n, ".png"))
-    } else {
-      fails <- c(fails, n)
     }
   }
   expect_snapshot(fails)

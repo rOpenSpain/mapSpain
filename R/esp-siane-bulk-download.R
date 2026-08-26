@@ -26,7 +26,7 @@
 #'
 #' # Connect the function with the downloaded data.
 #'
-#' connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
+#' invisible(esp_get_munic_siane(cache_dir = tmp, verbose = TRUE))
 #'
 #' # The message shows that the file is already cached.
 #'
@@ -61,7 +61,7 @@ esp_siane_bulk_download <- function(
 
   infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
   # Extract geospatial files.
-  outfiles <- infiles[grep("gpkg", infiles$Name), ]$Name
+  outfiles <- infiles[grep("gpkg", infiles$Name, fixed = TRUE), ]$Name
 
   if (verbose) {
     for_bullets <- paste0("{.file ", outfiles, "}")

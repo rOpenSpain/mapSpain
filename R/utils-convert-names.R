@@ -23,9 +23,7 @@ convert_to_nuts <- function(region) {
       next
     }
 
-    suppressWarnings(
-      nuts_id[i] <- esp_dict_region_code(code, type, "nuts")
-    )
+    suppressWarnings(nuts_id[i] <- esp_dict_region_code(code, type, "nuts"))
   }
   if (all(is.na(nuts_id))) {
     warn_no_spanish_codes("NUTS", clean_region)
@@ -65,9 +63,7 @@ convert_to_nuts_ccaa <- function(region) {
     }
 
     if (type == "codauto") {
-      suppressWarnings(
-        code <- esp_dict_region_code(code, "codauto", "nuts")
-      )
+      suppressWarnings(code <- esp_dict_region_code(code, "codauto", "nuts"))
     }
 
     suppressWarnings(res <- convert_to_nuts(code))

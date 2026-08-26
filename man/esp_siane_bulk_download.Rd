@@ -73,7 +73,7 @@ read_sf(dest_files[1]) |> head()
 
 # Connect the function with the downloaded data.
 
-connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
+invisible(esp_get_munic_siane(cache_dir = tmp, verbose = TRUE))
 
 # The message shows that the file is already cached.
 

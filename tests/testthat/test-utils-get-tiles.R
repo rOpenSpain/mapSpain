@@ -204,9 +204,10 @@ test_that("get_tile_bbox() expands WMTS bounds proportionally", {
     crs = sf::st_crs("EPSG:3857")
   )
   init_bbox <- as.double(sf::st_bbox(sf_obj))
+  expected_bbox <- sf::st_bbox(sf_obj) |> sf::st_as_sfc()
   expect_identical(
     get_tile_bbox(sf_obj, bbox_expand = 0, prov_type = "WMTS"),
-    sf::st_bbox(sf_obj) |> sf::st_as_sfc()
+    expected_bbox
   )
   # With a factor
   b2 <- get_tile_bbox(sf_obj, bbox_expand = 0.75, prov_type = "WMTS")
@@ -227,9 +228,9 @@ test_that("get_tile_bbox() creates centered square WMS bounds", {
     coords = c("x", "y"),
     crs = sf::st_crs("EPSG:3857")
   )
-  init_bbox <- as.double(sf::st_bbox(sf_obj))
   zero_expand <- get_tile_bbox(sf_obj, bbox_expand = 0, prov_type = "WMS")
-  expect_false(identical(zero_expand, sf::st_bbox(sf_obj) |> sf::st_as_sfc()))
+  initial_geometry <- sf::st_bbox(sf_obj) |> sf::st_as_sfc()
+  expect_false(identical(zero_expand, initial_geometry))
 
   # Should be a square
   zero_bbox <- sf::st_bbox(zero_expand)
