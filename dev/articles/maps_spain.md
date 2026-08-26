@@ -444,11 +444,13 @@ Figure 8: Extracting provinces by Autonomous Communities and Cities
 
 ``` r
 
+population <- mapSpain::pobmun25 |>
+  select(-name)
+
 munic <- esp_get_munic_siane(region = "Segovia", cache_dir = "./maps_spain/") |>
   # Example data: INE population.
   left_join(
-    mapSpain::pobmun25 |>
-      select(-name),
+    population,
     by = c("cpro", "cmun")
   )
 
@@ -593,6 +595,11 @@ library(leaflet)
 iconurl <- "https://ropenspain.github.io/mapSpain/icons/train.png"
 
 train_icon <- makeIcon(iconurl, iconurl, 18, 18)
+station_popups <- sprintf(
+  "<strong>%s</strong>",
+  stations$rotulo
+) |>
+  lapply(htmltools::HTML)
 
 leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addProviderEspTiles("IDErioja.Claro", group = "Base") |>
@@ -605,11 +612,7 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addMarkers(
     icon = train_icon,
     group = "Stations",
-    popup = sprintf(
-      "<strong>%s</strong>",
-      stations$rotulo
-    ) |>
-      lapply(htmltools::HTML)
+    popup = station_popups
   ) |>
   addLayersControl(
     baseGroups = c("Base", "MTN"),

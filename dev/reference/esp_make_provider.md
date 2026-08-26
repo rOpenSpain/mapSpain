@@ -77,7 +77,6 @@ mytile <- esp_get_tiles(x, type = custom_wmts)
 
 tidyterra::autoplot(mytile) +
   ggplot2::geom_sf(data = x, fill = NA)
-#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 # }
 ```

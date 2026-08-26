@@ -548,11 +548,13 @@ Figure 8: Extracting provinces by Autonomous Communities and Cities
 </h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">munic</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Segovia"</span>, cache_dir <span class="op">=</span> <span class="st">"./maps_spain/"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="va">population</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">munic</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_munic_siane.html">esp_get_munic_siane</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Segovia"</span>, cache_dir <span class="op">=</span> <span class="st">"./maps_spain/"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Example data: INE population.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
-<span>    <span class="fu">mapSpain</span><span class="fu">::</span><span class="va"><a href="../reference/pobmun25.html">pobmun25</a></span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span>,</span>
+<span>    <span class="va">population</span>,</span>
 <span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cpro"</span>, <span class="st">"cmun"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
@@ -715,6 +717,11 @@ Figure 12: Static map tiles with a mask
 <span><span class="va">iconurl</span> <span class="op">&lt;-</span> <span class="st">"https://ropenspain.github.io/mapSpain/icons/train.png"</span></span>
 <span></span>
 <span><span class="va">train_icon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/makeIcon.html" class="external-link">makeIcon</a></span><span class="op">(</span><span class="va">iconurl</span>, <span class="va">iconurl</span>, <span class="fl">18</span>, <span class="fl">18</span><span class="op">)</span></span>
+<span><span class="va">station_popups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
+<span>  <span class="st">"&lt;strong&gt;%s&lt;/strong&gt;"</span>,</span>
+<span>  <span class="va">stations</span><span class="op">$</span><span class="va">rotulo</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/HTML.html" class="external-link">HTML</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="va">stations</span>, elementId <span class="op">=</span> <span class="st">"railway"</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"60vh"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/addProviderEspTiles.html">addProviderEspTiles</a></span><span class="op">(</span><span class="st">"IDErioja.Claro"</span>, group <span class="op">=</span> <span class="st">"Base"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -727,11 +734,7 @@ Figure 12: Static map tiles with a mask
 <span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">addMarkers</a></span><span class="op">(</span></span>
 <span>    icon <span class="op">=</span> <span class="va">train_icon</span>,</span>
 <span>    group <span class="op">=</span> <span class="st">"Stations"</span>,</span>
-<span>    popup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
-<span>      <span class="st">"&lt;strong&gt;%s&lt;/strong&gt;"</span>,</span>
-<span>      <span class="va">stations</span><span class="op">$</span><span class="va">rotulo</span></span>
-<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/HTML.html" class="external-link">HTML</a></span><span class="op">)</span></span>
+<span>    popup <span class="op">=</span> <span class="va">station_popups</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/addLayersControl.html" class="external-link">addLayersControl</a></span><span class="op">(</span></span>
 <span>    baseGroups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Base"</span>, <span class="st">"MTN"</span><span class="op">)</span>,</span>

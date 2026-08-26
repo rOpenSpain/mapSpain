@@ -106,11 +106,11 @@ read_sf(dest_files[1]) |> head()
 
 # Connect the function with the downloaded data.
 
-connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpdvRTXh/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpdvRTXh/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpdvRTXh/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpdvRTXh/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+invisible(esp_get_munic_siane(cache_dir = tmp, verbose = TRUE))
+#> ℹ Cache directory is /tmp/RtmpveUvg6/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpveUvg6/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpveUvg6/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpveUvg6/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 
