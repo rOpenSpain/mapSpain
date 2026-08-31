@@ -5,7 +5,7 @@
     Message
       v mapSpain cache configuration deleted.
 
-# Cache detection migrates legacy configuration
+# detect_cache_dir_muted() migrates legacy configuration
 
     Code
       detected <- detect_cache_dir_muted()

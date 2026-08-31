@@ -37,11 +37,7 @@ test_that("esp_get_prov_siane() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testprov")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testprov-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_prov_siane(
@@ -82,10 +78,7 @@ test_that("esp_get_prov_siane() validates and filters provincial data", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcapimun")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testprov-")
 
   expect_error(
     esp_get_prov_siane(epsg = "FFF", cache_dir = cdir),
@@ -171,7 +164,4 @@ test_that("esp_get_prov_siane() validates and filters provincial data", {
     class = "rlang_warning"
   )
   expect_equal(nrow(n), 49)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -36,11 +36,7 @@ test_that("esp_get_hydrobasin() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testhydrobascache")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testhydrobascache-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_hydrobasin(
@@ -76,8 +72,7 @@ test_that("esp_get_hydrobasin() validates options and returns both domains", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_cuencas")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  cdir <- withr::local_tempdir(pattern = "test-cuencas-")
 
   expect_silent(
     l <- esp_get_hydrobasin(resolution = "10", epsg = 3857, cache_dir = cdir)

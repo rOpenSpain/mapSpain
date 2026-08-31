@@ -65,11 +65,7 @@ test_that("esp_get_nuts() validates levels and file extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testnuts-")
   # validate ext
 
   expect_error(
@@ -101,11 +97,7 @@ test_that("esp_get_nuts() agrees across bundled and downloaded data", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testnuts-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- esp_get_nuts(verbose = TRUE, region = "Murcia"))
 
@@ -144,11 +136,7 @@ test_that("esp_get_nuts() validates and filters spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testnuts-")
   # LB
   lb <- esp_get_nuts(spatialtype = "LB", cache_dir = cdir)
   expect_identical(as.character(unique(sf::st_geometry_type(lb))), "POINT")
@@ -173,11 +161,7 @@ test_that("esp_get_nuts() downloads supported file extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testnuts-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   db_geojson <- esp_get_nuts(
@@ -211,10 +195,7 @@ test_that("esp_get_nuts() downloads supported file extensions", {
 test_that("esp_get_nuts() downloads historical datasets", {
   skip_on_cran()
   skip_if_gisco_offline()
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testnuts-")
   expect_silent(
     a1 <- esp_get_nuts(resolution = "60", year = 2021, cache_dir = cdir)
   )

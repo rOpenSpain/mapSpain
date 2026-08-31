@@ -1,4 +1,4 @@
-# Dictionary helpers validate and translate regional codes
+# esp_dict_*() functions convert regional codes
 
     Code
       esp_dict_region_code(vals, "aa")

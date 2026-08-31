@@ -36,11 +36,7 @@ test_that("esp_get_stations() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "test_stations")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "test-stations-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_stations(

@@ -1,22 +1,15 @@
-# Test WMS png
+# WMS providers without high minimum zoom render expected tiles
 
     Code
       fails
     Output
-       [1] "Geofisica.HazardArea"                "CaminoDeSantiago.CaminosCatalanes"  
-       [3] "Catastro.Catastro"                   "RedTransporte"                      
-       [5] "RedTransporte.Carreteras"            "RedTransporte.Ferroviario"          
-       [7] "RedTransporte.Aerodromo"             "RedTransporte.AreaServicio"         
-       [9] "RedTransporte.EstacionesFerroviario" "RedTransporte.Puertos"              
-      [11] "NombresGeograficos"                  "Hidrografia"                        
-      [13] "Hidrografia.MasaAgua"                "Hidrografia.Cuencas"                
-      [15] "Hidrografia.Subcuencas"              "Hidrografia.POI"                    
-      [17] "Hidrografia.LineaCosta"              "Hidrografia.Rios"                   
-      [19] "Hidrografia.Humedales"               "Militar"                            
-      [21] "Militar.CEGET1M"                     "Militar.CEGETM7814"                 
-      [23] "Militar.CEGETM7815"                  "Militar.CEGETM682"                  
-      [25] "Militar.CECAF1M"                     "ADIF"                               
-      [27] "ADIF.Vias"                           "ADIF.Nodos"                         
-      [29] "ADIF.Estaciones"                     "LimitesMaritimos"                   
-      [31] "LimitesMaritimos.LimitesMaritimos"   "LimitesMaritimos.LineasBase"        
+       [1] "Geofisica.HazardArea"              "CaminoDeSantiago.CaminosCatalanes"
+       [3] "Catastro.Catastro"                 "Hidrografia.Subcuencas"           
+       [5] "Militar"                           "Militar.CEGET1M"                  
+       [7] "Militar.CEGETM7814"                "Militar.CEGETM7815"               
+       [9] "Militar.CEGETM682"                 "Militar.CECAF1M"                  
+      [11] "ADIF"                              "ADIF.Vias"                        
+      [13] "ADIF.Nodos"                        "ADIF.Estaciones"                  
+      [15] "LimitesMaritimos"                  "LimitesMaritimos.LimitesMaritimos"
+      [17] "LimitesMaritimos.LineasBase"      
 

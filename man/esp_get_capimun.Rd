@@ -65,7 +65,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{region}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[=esp_dict_region_code]{esp_dict_region_code()}}).}

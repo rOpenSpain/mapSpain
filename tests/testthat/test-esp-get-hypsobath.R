@@ -36,11 +36,7 @@ test_that("esp_get_hypsobath() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testhypsocache")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testhypsocache-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_hypsobath(
@@ -78,10 +74,7 @@ test_that("esp_get_hypsobath() returns requested geometry and resolution", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
-  cdir <- file.path(tempdir(), "testhypsobath")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testhypsobath-")
   expect_silent(esp_get_hypsobath(
     spatialtype = "line",
     resolution = 6.5,

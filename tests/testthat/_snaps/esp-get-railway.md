@@ -1,4 +1,4 @@
-# Deprecated railway point data redirects to station data
+# esp_get_railway() redirects deprecated point data to stations
 
     Code
       db_redirected <- esp_get_railway(cache_dir = cdir, spatialtype = "point")

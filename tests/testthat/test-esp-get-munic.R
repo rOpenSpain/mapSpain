@@ -26,10 +26,7 @@ test_that("esp_get_munic() propagates missing source data", {
 test_that("esp_get_munic() supports years, filters and Canary movement", {
   skip_on_cran()
   skip_if_gisco_offline()
-  cdir <- file.path(tempdir(), "test_gisco_munis")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "test-gisco-munis-")
   expect_no_error(a1 <- esp_get_munic(year = 2024, cache_dir = cdir))
   expect_s3_class(a1, "sf")
   expect_s3_class(a1, "tbl_df")

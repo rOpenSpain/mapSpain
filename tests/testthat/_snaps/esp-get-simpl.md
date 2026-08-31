@@ -1,4 +1,4 @@
-# Simplified boundary helpers validate and filter regional data
+# Simplified boundary functions validate and filter data
 
     Code
       esp_get_simpl_prov("Mallorca", cache_dir = cdir)

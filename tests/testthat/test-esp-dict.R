@@ -1,4 +1,4 @@
-test_that("Dictionary helpers validate and translate regional codes", {
+test_that("esp_dict_*() functions convert regional codes", {
   skip_on_cran()
 
   vals <- c("Errioxa", "Coruna", "Gerona", "Madrid")

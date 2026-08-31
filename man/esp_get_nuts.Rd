@@ -5,10 +5,8 @@
 \alias{esp_get_nuts}
 \title{Territorial Spanish units for statistics (NUTS) dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO NUTS distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}.
 }
 \usage{
 esp_get_nuts(
@@ -48,7 +46,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:

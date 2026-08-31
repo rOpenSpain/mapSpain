@@ -60,7 +60,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{moveCAN}{A logical \code{TRUE/FALSE} or a vector of coordinates
 \code{c(lat, lon)}. It places the Canary Islands close to Spain's mainland.

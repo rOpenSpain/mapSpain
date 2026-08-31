@@ -1,4 +1,4 @@
-# Test WMTS png
+# WMTS providers render expected local tiles
 
     Code
       fails

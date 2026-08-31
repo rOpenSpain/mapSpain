@@ -38,10 +38,7 @@ test_that("esp_get_spain_siane() returns Spain at requested detail and CRS", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcntry_siane")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testcntry-siane-")
   expect_silent(s <- esp_get_spain_siane(cache_dir = cdir))
 
   expect_s3_class(s, "sf")

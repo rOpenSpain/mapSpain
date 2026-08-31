@@ -38,7 +38,7 @@ test_that("esp_get_grid_MTN() rejects unknown grids", {
 test_that("esp_get_grid_MTN() downloads a selected grid", {
   skip_on_cran()
   skip_if_siane_offline()
-  tdir <- file.path(tempdir(), "testthat_test")
+  tdir <- withr::local_tempfile(pattern = "testthat-grid-mtn-")
   tdir <- create_cache_dir(tdir)
 
   expect_message(esp_get_grid_MTN(cache_dir = tdir, verbose = TRUE))

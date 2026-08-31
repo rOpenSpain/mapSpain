@@ -32,7 +32,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 }
 \value{
 An \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.

@@ -1,4 +1,4 @@
-# Grid map helpers return complete and filtered regional layouts
+# Grid and hex functions return filtered regional layouts
 
     Code
       esp_get_grid_prov("Mallorca")

@@ -1,4 +1,4 @@
-# Land and water helpers filter names and transform CRS
+# River and wetland functions filter names and transform CRS
 
     Code
       ss <- esp_get_rivers(cache_dir = cdir, name = "NIDNIFOMDF")
@@ -16,7 +16,7 @@
       No results for `name` = "NIDNIFOMDF".
       i Returning empty <sf> object.
 
-# Deprecated river options redirect to supported behavior
+# esp_get_rivers() redirects deprecated options
 
     Code
       l <- esp_get_rivers(cache_dir = cdir, resolution = 10)

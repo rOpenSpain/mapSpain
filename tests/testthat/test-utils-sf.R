@@ -2,10 +2,7 @@ test_that("read_geo_file_sf() selects shapefiles using hints", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   url <- paste0(
     "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
     "Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
@@ -42,14 +39,11 @@ test_that("read_geo_file_sf() selects shapefiles using hints", {
   expect_false(dir.exists(cdir))
 })
 
-test_that("GeoPackage helpers inspect columns, layers and queries", {
+test_that("GeoPackage readers inspect columns, layers and queries", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/refs/heads/",
     "sianedata/dist/se89_10_admin_ccaa_a_x.gpkg"
@@ -87,7 +81,7 @@ test_that("GeoPackage helpers inspect columns, layers and queries", {
   expect_false(dir.exists(cdir))
 })
 
-test_that("Spatial helpers accept NULL input and missing CRS", {
+test_that("read_geo_file_sf() and sanitize_sf() handle NULL and missing CRS", {
   skip_on_cran()
   skip_if_siane_offline()
 

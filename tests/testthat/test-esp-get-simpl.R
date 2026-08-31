@@ -1,4 +1,4 @@
-test_that("Simplified boundary helpers return NULL while offline", {
+test_that("Simplified boundary functions return NULL while offline", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -22,7 +22,7 @@ test_that("Simplified boundary helpers return NULL while offline", {
   })
 })
 
-test_that("Simplified boundary helpers return NULL for HTTP 404 responses", {
+test_that("Simplified boundary functions return NULL for HTTP 404", {
   skip_on_cran()
   skip_if_siane_offline()
 
@@ -40,16 +40,12 @@ test_that("Simplified boundary helpers return NULL for HTTP 404 responses", {
   })
 })
 
-test_that("Simplified boundary helpers validate and filter regional data", {
+test_that("Simplified boundary functions validate and filter data", {
   skip_on_cran()
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_simp")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "test-simp-")
   expect_silent(n <- esp_get_simpl_ccaa(cache_dir = cdir))
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")

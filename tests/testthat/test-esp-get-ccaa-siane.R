@@ -37,11 +37,7 @@ test_that("esp_get_ccaa_siane() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testccaa")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testccaa-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_ccaa_siane(
@@ -75,10 +71,7 @@ test_that("esp_get_ccaa_siane() validates and filters regional data", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcapimun")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testccaa-")
 
   expect_error(
     esp_get_ccaa_siane(epsg = "FFF", cache_dir = cdir),
@@ -156,7 +149,4 @@ test_that("esp_get_ccaa_siane() validates and filters regional data", {
 
   n <- esp_get_ccaa_siane(ccaa = f$codauto, cache_dir = cdir)
   expect_equal(nrow(n), 19)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -61,10 +61,7 @@ test_that("download_url() returns NULL without creating files while offline", {
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_3_urban_capimuni_p_y.gpkg"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   expect_snapshot(
     fend <- download_url(
       url,
@@ -87,11 +84,7 @@ test_that("download_url() returns NULL for HTTP 404 and downloads valid URLs", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
@@ -125,9 +118,6 @@ test_that("download_url() returns NULL for HTTP 404 and downloads valid URLs", {
   )
   expect_length(s, 1)
   expect_type(s, "character")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("download_url() reuses and refreshes cached files", {
@@ -138,10 +128,7 @@ test_that("download_url() reuses and refreshes cached files", {
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_3_urban_capimuni_p_y.gpkg"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   expect_message(
     fend <- download_url(
       url,
@@ -188,10 +175,7 @@ test_that("download_url() reports failures and large downloads", {
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "fake-file.txt"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat-ex-")
   expect_message(
     fend <- download_url(
       url,
@@ -238,11 +222,7 @@ test_that("download_url() surfaces timeouts and recovers with valid settings", {
   skip_if_siane_offline()
   skip_on_os("linux")
 
-  cdir <- file.path(tempdir(), "testthat_timeout")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testthat-timeout-")
   url <- paste0(
     "https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/",
     "se89_3_admin_muni_a_x.gpkg"

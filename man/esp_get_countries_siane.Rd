@@ -62,7 +62,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{country}{Character vector of country codes. Accepts country names,
 ISO3 country codes or ISO2 country codes. See also

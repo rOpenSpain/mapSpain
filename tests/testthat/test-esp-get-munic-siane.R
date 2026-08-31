@@ -35,11 +35,7 @@ test_that("esp_get_munic_siane() returns identical cached and uncached data", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testmunicsiane")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testmunicsiane-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- esp_get_munic_siane(
@@ -73,11 +69,7 @@ test_that("esp_get_munic_siane() filters municipalities and regions", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  cdir <- file.path(tempdir(), "testmunicsiane")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
+  cdir <- withr::local_tempdir(pattern = "testmunicsiane-")
   db_cached <- esp_get_munic_siane(munic = "Melque", cache_dir = cdir)
   expect_shape(db_cached, nrow = 1)
   expect_identical(db_cached$ine.prov.name, "Segovia")

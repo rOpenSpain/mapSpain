@@ -5,10 +5,8 @@
 \alias{esp_get_prov}
 \title{Provinces of Spain from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO NUTS distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}.
 }
 \usage{
 esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
@@ -49,7 +47,8 @@ Options available are:
 }}
     \item{\code{ext}}{Character. Extension of the file (default \code{"gpkg"}). See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
-    \item{\code{verbose}}{A logical value. If \code{TRUE} displays informational messages.}
+    \item{\code{verbose}}{A logical value indicating whether to display informational
+messages.}
     \item{\code{resolution}}{A character string or numeric value with the geospatial
 data resolution. One of:
 \itemize{

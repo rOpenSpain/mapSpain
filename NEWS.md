@@ -1,4 +1,4 @@
-# mapSpain (development version)
+# mapSpain 1.2.1
 
 - Console messages now use clearer semantic formatting and distinguish warnings
   from status alerts.
@@ -38,9 +38,9 @@ We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
 for managing the persistent cache directory. If you have an existing cache
 directory, you will receive a one-time notification about this migration.
 
-The package now requires **R** >= 4.1 and dependency updates improve performance
-and maintainability. All functions return tidy objects, either `tibble` objects
-or `sf` objects with `tibble` data.
+The package now requires **R** \>= 4.1 and dependency updates improve
+performance and maintainability. All functions return tidy objects, either
+`tibble` objects or `sf` objects with `tibble` data.
 
 Several new functions and arguments have been added, some functions renamed and
 others deprecated. All bundled datasets have been updated to their latest
@@ -71,10 +71,11 @@ versions.
 
 - Added dataset `?esp_nuts_2024`, replacing `?esp_nuts.sf`.
 - `esp_get_attributions()` retrieves tile provider attributions.
-- `esp_get_countries_siane()` retrieves all countries available in **SIANE** at a
-  given date.
+- `esp_get_countries_siane()` retrieves all countries available in **SIANE** at
+  a given date.
 - `esp_get_rivers()` gains a new `moveCAN` argument.
-- `esp_get_spain_siane()` is analogous to `esp_get_spain()` but uses **SIANE** data.
+- `esp_get_spain_siane()` is analogous to `esp_get_spain()` but uses **SIANE**
+  data.
 - `esp_get_stations()` replaces `esp_get_railway(..., spatialtype = "point")`.
 - `esp_get_tiles()` can be used with providers that need an API key.
 - `esp_siane_bulk_download()` downloads all **SIANE** datasets to a specified

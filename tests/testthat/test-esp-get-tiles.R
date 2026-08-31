@@ -71,7 +71,6 @@ test_that("esp_get_tiles() returns NULL for HTTP 404 responses", {
 
 test_that("esp_get_tiles() rejects unsupported inputs and tile formats", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
 
   df <- data.frame(a = 1, b = 2)
@@ -88,13 +87,12 @@ test_that("esp_get_tiles() rejects unsupported inputs and tile formats", {
 
 test_that("esp_get_tiles() converts color tables to RGBA rasters", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
+  skip_if_offline()
   # Known problem on SSH certificate of catastro on ci
   skip_on_ci()
 
-  cdir <- file.path(tempdir(), "wms_test")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  cdir <- withr::local_tempdir(pattern = "wms-test-")
 
   expect_length(list.files(file.path(cdir, "Catastro")), 0)
   # Single point
@@ -128,10 +126,10 @@ test_that("esp_get_tiles() converts color tables to RGBA rasters", {
 
 test_that("esp_get_tiles() applies crop and mask independently", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "wms_test_crop")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "wms-test-crop-")
 
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
@@ -196,10 +194,10 @@ test_that("esp_get_tiles() applies crop and mask independently", {
 
 test_that("esp_get_tiles() returns rasters in the input CRS", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "test_rep")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "test-reprojection-")
 
   # Poly
   poly <- esp_get_nuts(cache_dir = cdir, epsg = 3857, region = "Segovia")
@@ -233,10 +231,10 @@ test_that("esp_get_tiles() returns rasters in the input CRS", {
 
 test_that("esp_get_tiles() controls alpha channels with transparent", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "wms_test_transp")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "wms-test-transparent-")
 
   # Poly
   poly <- esp_get_nuts(
@@ -278,10 +276,10 @@ test_that("esp_get_tiles() controls alpha channels with transparent", {
 
 test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "wms_test")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "wms-test-")
 
   expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 0)
   # Single point
@@ -372,10 +370,10 @@ test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
 
 test_that("esp_get_tiles() applies WMTS autozoom and provider limits", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "wmts_test")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "wmts-test-")
 
   expect_length(list.files(file.path(cdir, "Catastro")), 0)
   # Single point
@@ -432,7 +430,7 @@ test_that("esp_get_tiles() applies WMTS autozoom and provider limits", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Single WMTS points report automatic zoom only when verbose", {
+test_that("prepare_tile_geometry() reports automatic WMTS zoom when verbose", {
   point <- sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
 
   quiet_result <- expect_silent(prepare_tile_geometry(
@@ -452,7 +450,7 @@ test_that("Single WMTS points report automatic zoom only when verbose", {
   expect_false(result$crop)
 })
 
-test_that("WMTS minimum zoom messages respect verbose", {
+test_that("resolve_wmts_zoom() reports minimum zoom when verbose", {
   provider <- validate_provider("PNOA")
   min_zoom <- as.numeric(provider$min_zoom)
   expect_gt(min_zoom, 1)
@@ -470,10 +468,10 @@ test_that("esp_getTiles() remains an alias for esp_get_tiles()", {
 
 test_that("esp_get_tiles() supports legacy WMS provider options", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "old_test")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "old-test-")
 
   poly <- esp_get_capimun(
     munic = "^Santiago de compos",
@@ -511,10 +509,10 @@ test_that("esp_get_tiles() supports legacy WMS provider options", {
 
 test_that("esp_get_tiles() accepts custom WMS providers", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "custom_wms")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "custom-wms-")
 
   lugo <- esp_get_prov("lugo", epsg = 3857, cache_dir = cdir)
 
@@ -534,10 +532,10 @@ test_that("esp_get_tiles() accepts custom WMS providers", {
 
 test_that("esp_get_tiles() accepts custom WMTS templates and extensions", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
-  cdir <- file.path(tempdir(), "custom_wmts")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  skip_if_offline()
+
+  cdir <- withr::local_tempdir(pattern = "custom-wmts-")
 
   segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
   custom_wmts <- list(
@@ -591,8 +589,8 @@ test_that("esp_get_tiles() accepts custom WMTS templates and extensions", {
 
 test_that("esp_get_tiles() supports authenticated Thunderforest providers", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
+  skip_if_offline()
 
   # Skip if not API KEY
   apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")
@@ -600,8 +598,7 @@ test_that("esp_get_tiles() supports authenticated Thunderforest providers", {
     skip("Need a ThunderForest API KEY")
   }
 
-  cdir <- file.path(tempdir(), "custom_thunder")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  cdir <- withr::local_tempdir(pattern = "custom-thunder-")
 
   segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
   thunder <- list(
@@ -619,8 +616,8 @@ test_that("esp_get_tiles() supports authenticated Thunderforest providers", {
 
 test_that("esp_get_tiles() supports authenticated Mapbox providers", {
   skip_on_cran()
-  skip_if_not_installed("terra")
   skip_on_os("mac")
+  skip_if_offline()
 
   # Skip if not API KEY
   apikey <- Sys.getenv("MAPBOX_API_KEY", "")
@@ -628,8 +625,7 @@ test_that("esp_get_tiles() supports authenticated Mapbox providers", {
     skip("Need a MapBox API KEY")
   }
 
-  cdir <- file.path(tempdir(), "custom_mapbox")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  cdir <- withr::local_tempdir(pattern = "custom-mapbox-")
 
   segovia <- esp_get_prov("segovia", epsg = 3857, cache_dir = cdir)
   mapbox <- list(

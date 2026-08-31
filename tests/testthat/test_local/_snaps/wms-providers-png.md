@@ -1,4 +1,4 @@
-# Test WMS png
+# WMS providers with high minimum zoom render expected tiles
 
     Code
       fails

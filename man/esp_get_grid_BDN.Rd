@@ -49,7 +49,8 @@ a new download. Defaults to \code{FALSE}.}
 \item{cache_dir}{Character string. A path to a cache directory. See
 \strong{Caching}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{ccaa}{Character string. A vector of names, codes or both for
 Autonomous Communities and Cities. See \strong{Details} on \code{\link[=esp_get_ccaa]{esp_get_ccaa()}}

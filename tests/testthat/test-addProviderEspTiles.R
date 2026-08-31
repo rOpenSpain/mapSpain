@@ -1,8 +1,7 @@
 test_that("addProviderEspTiles() validates providers and adds leaflet tiles", {
-  skip_if_not_installed("leaflet")
   skip_on_cran()
 
-  library(leaflet)
+  withr::local_package("leaflet")
 
   expect_snapshot(
     error = TRUE,

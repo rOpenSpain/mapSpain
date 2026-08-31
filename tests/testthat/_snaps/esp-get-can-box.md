@@ -1,4 +1,4 @@
-# Canary inset helpers validate options and move geometries
+# Canary inset functions validate and move geometries
 
     Code
       esp_get_can_box(style = "ee")

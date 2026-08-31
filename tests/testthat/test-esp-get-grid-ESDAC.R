@@ -39,7 +39,7 @@ test_that("esp_get_grid_ESDAC() downloads the 10 km grid", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  tdir <- file.path(tempdir(), "testthat_test_esdac")
+  tdir <- withr::local_tempfile(pattern = "testthat-grid-esdac-")
   tdir <- create_cache_dir(tdir)
 
   # Grid 10 vs 1
@@ -62,7 +62,7 @@ test_that("esp_get_grid_ESDAC() builds the 1 km download request", {
     NULL
   })
 
-  tdir <- file.path(tempdir(), "testthat_test_esdac2")
+  tdir <- withr::local_tempfile(pattern = "testthat-grid-esdac-")
   tdir <- create_cache_dir(tdir)
   expect_null(esp_get_grid_ESDAC(resolution = 1, cache_dir = tdir))
   unlink(tdir, recursive = TRUE, force = TRUE)

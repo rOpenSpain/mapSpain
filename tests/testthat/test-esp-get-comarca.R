@@ -38,8 +38,7 @@ test_that("esp_get_comarca() validates and filters comarca datasets", {
   skip_if_siane_offline()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_comarcas")
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  cdir <- withr::local_tempdir(pattern = "test-comarcas-")
   expect_silent(n <- esp_get_comarca(cache_dir = cdir))
 
   expect_s3_class(n, "sf")

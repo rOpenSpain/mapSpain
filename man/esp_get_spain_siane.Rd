@@ -64,7 +64,8 @@ See \strong{Caching}.}
 a new download. Defaults to \code{FALSE}.}
     \item{\code{cache_dir}}{Character string. A path to a cache directory. See
 \strong{Caching}.}
-    \item{\code{verbose}}{A logical value. If \code{TRUE} displays informational messages.}
+    \item{\code{verbose}}{A logical value indicating whether to display informational
+messages.}
   }}
 }
 \value{

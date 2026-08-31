@@ -52,7 +52,7 @@ test_that("esp_get_grid_BDN() returns grids at requested resolutions", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  tdir <- file.path(tempdir(), "testthat_test")
+  tdir <- withr::local_tempfile(pattern = "testthat-grid-bdn-")
   tdir <- create_cache_dir(tdir)
 
   # Grid 10 vs 5
@@ -88,7 +88,7 @@ test_that("esp_get_grid_BDN_ccaa() returns grids for autonomous communities", {
   skip_on_cran()
   skip_if_siane_offline()
 
-  tdir <- file.path(tempdir(), "testthat_test")
+  tdir <- withr::local_tempfile(pattern = "testthat-grid-bdn-")
   tdir <- create_cache_dir(tdir)
   expect_message(
     s <- esp_get_grid_BDN_ccaa("Ceuta", cache_dir = tdir, verbose = TRUE)
