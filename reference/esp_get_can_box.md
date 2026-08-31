@@ -72,7 +72,7 @@ The `style` parameter controls the geometry returned:
   `POLYGON`.
 
 - `"left"` / `"right"`: decorative `LINESTRING` variants that follow the
-  western or eastern side of the islands respectively.
+  western or eastern side of the islands, respectively.
 
 ## See also
 

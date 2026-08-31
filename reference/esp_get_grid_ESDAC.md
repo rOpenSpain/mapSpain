@@ -38,7 +38,7 @@ grid](https://esdac.jrc.ec.europa.eu/content/european-reference-grids).
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 

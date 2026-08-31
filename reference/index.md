@@ -46,16 +46,11 @@ Additional boundaries and alternative spatial representations.
 
 - [`esp_get_comarca()`](https://ropenspain.github.io/mapSpain/reference/esp_get_comarca.md)
   : Comarcas of Spain
-
 - [`esp_get_hex_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
   [`esp_get_hex_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
   [`esp_get_grid_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
   [`esp_get_grid_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_gridmap.md)
-  :
-
-  Get an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) hexbin
-  or square `POLYGON` of Spain
-
+  : Hexbin or square grid maps of Spain
 - [`esp_get_simpl_prov()`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md)
   [`esp_get_simpl_ccaa()`](https://ropenspain.github.io/mapSpain/reference/esp_get_simpl.md)
   : Simplified map of provinces and Autonomous Communities and Cities of
@@ -142,8 +137,7 @@ Helpers for repositioning the Canary Islands and creating inset boxes.
 - [`esp_move_can()`](https://ropenspain.github.io/mapSpain/reference/esp_move_can.md)
   :
 
-  Displace a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  object located in the Canary Islands
+  Displace an `sf` or `sfc` object located in the Canary Islands
 
 ## Codes and translations
 

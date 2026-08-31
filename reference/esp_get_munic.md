@@ -21,10 +21,8 @@ esp_get_munic(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO Local Administrative Units distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/lau/>.
 
 ## Arguments
 
@@ -51,7 +49,7 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. This argument is deprecated, the dataset will
+  **\[deprecated\]**. This argument is deprecated. The dataset will
   always be downloaded to the `cache_dir`.
 
 - update_cache:
@@ -65,7 +63,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - region:
 

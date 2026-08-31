@@ -13,7 +13,7 @@ kilometers for mainland Spain or the Canary Islands.
 individual Autonomous Communities and Cities.
 
 These grids are useful for biodiversity analysis, environmental
-monitoring, and spatial statistical applications.
+monitoring and spatial statistical applications.
 
 `esp_get_grid_BDN_ccaa()` provides higher-resolution 1 x 1 kilometer
 grids for specific Autonomous Communities and Cities, useful for
@@ -76,7 +76,7 @@ For more information about BDN grids and other resources, visit:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - ccaa:
 

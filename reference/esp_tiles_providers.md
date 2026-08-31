@@ -14,9 +14,9 @@ A named [`list`](https://rdrr.io/r/base/list.html) of available
 providers with the following structure:
 
 Each list item is named with the provider alias. Each element contains
-two nested named lists: `static` with the parameters required to obtain
-static map tiles plus an additional item named `attribution` and
-`leaflet` with additional parameters to pass to
+two nested named lists. `static` contains the parameters required to
+obtain static map tiles and an additional item named `attribution`.
+`leaflet` contains additional parameters to pass to
 [`addProviderEspTiles()`](https://ropenspain.github.io/mapSpain/reference/addProviderEspTiles.md).
 
 ## Source

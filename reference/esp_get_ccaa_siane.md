@@ -1,6 +1,6 @@
 # Autonomous Communities and Cities of Spain from SIANE
 
-Get [Autonomous Communities and Cities of
+Return [Autonomous Communities and Cities of
 Spain](https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain) at
 a specified scale.
 
@@ -24,8 +24,8 @@ esp_get_ccaa_siane(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -89,7 +89,7 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -111,7 +111,7 @@ Data distributed through the `sianedata` data branch, see
 
 - rawcols:
 
-  Logical. If `TRUE`, adds the raw columns of the resulting object as
+  Logical. If `TRUE`, retains the raw columns of the resulting object as
   provided by IGN.
 
 ## Value
@@ -154,31 +154,27 @@ CartoBase ANE boundaries and utilities:
 
 ``` r
 ccaas1 <- esp_get_ccaa_siane()
-dplyr::glimpse(ccaas1)
-#> Rows: 19
-#> Columns: 22
-#> $ codauto           <chr> "01", "02", "03", "04", "05", "06", "07", "08", "09"…
-#> $ iso2.ccaa.code    <chr> "ES-AN", "ES-AR", "ES-AS", "ES-IB", "ES-CN", "ES-CB"…
-#> $ nuts1.code        <chr> "ES6", "ES2", "ES1", "ES5", "ES7", "ES1", "ES4", "ES…
-#> $ nuts2.code        <chr> "ES61", "ES24", "ES12", "ES53", "ES70", "ES13", "ES4…
-#> $ ine.ccaa.name     <chr> "Andalucía", "Aragón", "Asturias, Principado de", "B…
-#> $ iso2.ccaa.name.es <chr> "Andalucía", "Aragón", "Asturias, Principado de", "I…
-#> $ iso2.ccaa.name.ca <chr> NA, NA, NA, "Illes Balears", NA, NA, NA, NA, "Catalu…
-#> $ iso2.ccaa.name.gl <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Galicia…
-#> $ iso2.ccaa.name.eu <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-#> $ nuts2.name        <chr> "Andalucía", "Aragón", "Principado de Asturias", "Il…
-#> $ cldr.ccaa.name.en <chr> "Andalusia", "Aragon", "Asturias", "Balearic Islands…
-#> $ cldr.ccaa.name.es <chr> "Andalucía", "Aragón", "Principado de Asturias", "Is…
-#> $ cldr.ccaa.name.ca <chr> "Andalusia", "Aragó", "Astúries", "Illes Balears", "…
-#> $ cldr.ccaa.name.ga <chr> "Andalucía", "Aragón", "Principado de Asturias", "Il…
-#> $ cldr.ccaa.name.eu <chr> "Andaluzia", "Aragoi", "Asturiesko Printzerria", "Ba…
-#> $ ccaa.shortname.en <chr> "Andalusia", "Aragon", "Asturias", "Balearic Islands…
-#> $ ccaa.shortname.es <chr> "Andalucía", "Aragón", "Asturias", "Baleares", "Cana…
-#> $ ccaa.shortname.ca <chr> "Andalusia", "Aragó", "Astúries", "Illes Balears", "…
-#> $ ccaa.shortname.ga <chr> "Andalucía", "Aragón", "Asturias", "Illas Baleares",…
-#> $ ccaa.shortname.eu <chr> "Andaluzia", "Aragoi", "Asturias", "Balear Uharteak"…
-#> $ nuts1.name        <chr> "Sur", "Noreste", "Noroeste", "Este", "Canarias", "N…
-#> $ geometry          <MULTIPOLYGON [°]> MULTIPOLYGON (((-5.024684 3..., MULTIPO…
+utils::head(ccaas1)
+#> Simple feature collection with 6 features and 21 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -13.21993 ymin: 34.70165 xmax: 4.327771 ymax: 43.66147
+#> Geodetic CRS:  ETRS89
+#> # A tibble: 6 × 22
+#>   codauto iso2.ccaa.code nuts1.code nuts2.code ine.ccaa.name   iso2.ccaa.name.es
+#>   <chr>   <chr>          <chr>      <chr>      <chr>           <chr>            
+#> 1 01      ES-AN          ES6        ES61       Andalucía       Andalucía        
+#> 2 02      ES-AR          ES2        ES24       Aragón          Aragón           
+#> 3 03      ES-AS          ES1        ES12       Asturias, Prin… Asturias, Princi…
+#> 4 04      ES-IB          ES5        ES53       Balears, Illes  Islas Baleares   
+#> 5 05      ES-CN          ES7        ES70       Canarias        Canarias         
+#> 6 06      ES-CB          ES1        ES13       Cantabria       Cantabria        
+#> # ℹ 16 more variables: iso2.ccaa.name.ca <chr>, iso2.ccaa.name.gl <chr>,
+#> #   iso2.ccaa.name.eu <chr>, nuts2.name <chr>, cldr.ccaa.name.en <chr>,
+#> #   cldr.ccaa.name.es <chr>, cldr.ccaa.name.ca <chr>, cldr.ccaa.name.ga <chr>,
+#> #   cldr.ccaa.name.eu <chr>, ccaa.shortname.en <chr>, ccaa.shortname.es <chr>,
+#> #   ccaa.shortname.ca <chr>, ccaa.shortname.ga <chr>, ccaa.shortname.eu <chr>,
+#> #   nuts1.name <chr>, geometry <MULTIPOLYGON [°]>
 
 # Low resolution.
 ccaas_low <- esp_get_ccaa_siane(

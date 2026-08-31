@@ -33,7 +33,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 - all:
 
   Logical. If `TRUE` the function returns all possible translations for
-  each input as a named list. When `FALSE` (default) a single preferred
+  each input as a named list. When `FALSE` (default), a single preferred
   translation per input is returned as a character vector.
 
 ## Value
@@ -41,7 +41,7 @@ esp_dict_translate(sourcevar, lang = "en", all = FALSE)
 `esp_dict_region_code()` returns a character vector with converted
 subdivision identifiers or names. If a value cannot be matched, the
 corresponding element will be `NA` and a warning is emitted via
-[`cli::cli_alert_warning()`](https://cli.r-lib.org/reference/cli_alert.html).
+[`cli::cli_warn()`](https://cli.r-lib.org/reference/cli_abort.html).
 
 `esp_dict_translate()` translates a vector of names from one language to
 another. If `all = FALSE`, it returns a character vector with the
@@ -60,7 +60,7 @@ values for some entries.
 
 ## See also
 
-- [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html)
+- [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html)
   converts country codes and names.
 
 - [esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md)
@@ -103,10 +103,11 @@ esp_dict_region_code(valsmix, destination = "nuts")
 #> [1] "ES4"   "ES61"  "ES618" "ES533"
 
 esp_dict_region_code(valsmix, destination = "codauto")
-#> ! No match found for "Centro", "Seville", and "Menorca" when `destination` is "codauto".
+#> Warning: No match found for "Centro", "Seville" and "Menorca" when `destination` is
+#> "codauto".
 #> [1] NA   "01" NA   NA  
 esp_dict_region_code(valsmix, destination = "iso2")
-#> ! No match found for "Centro" and "Menorca" when `destination` is "iso2".
+#> Warning: No match found for "Centro" and "Menorca" when `destination` is "iso2".
 #> [1] NA      "ES-AN" "ES-SE" NA     
 
 vals <- c("La Rioja", "Sevilla", "Madrid", "Jaen", "Orense", "Baleares")

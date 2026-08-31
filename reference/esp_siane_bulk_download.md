@@ -17,8 +17,8 @@ esp_siane_bulk_download(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -52,7 +52,7 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -106,11 +106,11 @@ read_sf(dest_files[1]) |> head()
 
 # Connect the function with the downloaded data.
 
-connect <- esp_get_munic_siane(cache_dir = tmp, verbose = TRUE)
-#> ℹ Cache directory is /tmp/RtmpoCW1JG/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpoCW1JG/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpoCW1JG/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpoCW1JG/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+invisible(esp_get_munic_siane(cache_dir = tmp, verbose = TRUE))
+#> ℹ Cache directory is /tmp/RtmpP31ks0/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpP31ks0/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpP31ks0/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpP31ks0/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

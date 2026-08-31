@@ -15,8 +15,8 @@ and transform data, whether or not the data is spatial.
 
 The main data sources used by **mapSpain** are:
 
-- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat), through
-  the [**giscoR**](https://ropengov.github.io/giscoR/) package.
+- [**GISCO**](https://ec.europa.eu/eurostat/web/gisco) (Eurostat),
+  through the [**giscoR**](https://ropengov.github.io/giscoR/) package.
 - CartoBase ANE (Atlas Nacional de España), provided by the [Instituto
   Geográfico Nacional](https://www.ign.es/) (IGN).
 - Spanish public institutions that publish WMTS and WMS tile services
@@ -38,7 +38,7 @@ install.packages("mapSpain", dependencies = TRUE)
 
 #### Development version
 
-Use [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+Use [**r-universe**](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
 
@@ -302,8 +302,8 @@ several levels:
 - Municipalities.
 
 For Autonomous Communities and Cities, provinces and municipalities,
-there are two families of functions: `esp_get_xxxx()` for GISCO data and
-`esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
+there are two families of functions: `esp_get_xxxx()` for **GISCO** data
+and `esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
 
 The information is available in different projections and resolution
 levels.
@@ -438,17 +438,19 @@ ggplot(provs) +
 
 ![](maps_spain_files/figure-html/fig-prov-1.png)
 
-Figure 8: Extracting provinces through Autonomous Communities and Cities
+Figure 8: Extracting provinces by Autonomous Communities and Cities
 
 ### Municipalities
 
 ``` r
 
+population <- mapSpain::pobmun25 |>
+  select(-name)
+
 munic <- esp_get_munic_siane(region = "Segovia", cache_dir = "./maps_spain/") |>
   # Example data: INE population.
   left_join(
-    mapSpain::pobmun25 |>
-      select(-name),
+    population,
     by = c("cpro", "cmun")
   )
 
@@ -501,11 +503,11 @@ ggplot(hex) +
 
 ![](maps_spain_files/figure-html/fig-hex-1.png)
 
-\(a\) Squares
+\(a\) Hexagons
 
 ![](maps_spain_files/figure-html/fig-hex-2.png)
 
-\(b\) Hexagons
+\(b\) Squares
 
 Figure 10: Grid maps with mapSpain
 
@@ -519,9 +521,9 @@ These tiles can be used to create static maps as three- or four-band
 raster layers or as backgrounds for interactive maps through the
 **leaflet** package.
 
-The providers are taken from the **leaflet**
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-plugin.
+The providers come from the
+[**leaflet-providersESP**](https://dieghernan.github.io/leaflet-providersESP/)
+plugin for **leaflet**.
 
 ### Creating maps with static map tiles
 
@@ -593,6 +595,11 @@ library(leaflet)
 iconurl <- "https://ropenspain.github.io/mapSpain/icons/train.png"
 
 train_icon <- makeIcon(iconurl, iconurl, 18, 18)
+station_popups <- sprintf(
+  "<strong>%s</strong>",
+  stations$rotulo
+) |>
+  lapply(htmltools::HTML)
 
 leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addProviderEspTiles("IDErioja.Claro", group = "Base") |>
@@ -605,11 +612,7 @@ leaflet(stations, elementId = "railway", width = "100%", height = "60vh") |>
   addMarkers(
     icon = train_icon,
     group = "Stations",
-    popup = sprintf(
-      "<strong>%s</strong>",
-      stations$rotulo
-    ) |>
-      lapply(htmltools::HTML)
+    popup = station_popups
   ) |>
   addLayersControl(
     baseGroups = c("Base", "MTN"),

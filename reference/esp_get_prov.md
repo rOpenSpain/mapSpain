@@ -1,6 +1,6 @@
 # Provinces of Spain from GISCO
 
-Get [provinces of
+Return [provinces of
 Spain](https://en.wikipedia.org/wiki/Provinces_of_Spain) at a specified
 scale.
 
@@ -12,10 +12,8 @@ esp_get_prov(prov = NULL, moveCAN = TRUE, ...)
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO NUTS distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
 
 ## Arguments
 
@@ -86,7 +84,8 @@ Copyright:
 
   `verbose`
 
-  :   A logical value. If `TRUE` displays informational messages.
+  :   A logical value indicating whether to display informational
+      messages.
 
   `resolution`
 

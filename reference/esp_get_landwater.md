@@ -32,8 +32,8 @@ esp_get_wetlands(
 ## Source
 
 CartoBase ANE (Atlas Nacional de España) provided by Instituto
-Geográfico Nacional (IGN), <http://www.ign.es/web/ign/portal>. Years
-available are 2005 up to today.
+Geográfico Nacional (IGN), <https://www.ign.es/web/ign/portal>. Data are
+available from 2005 to the present.
 
 Copyright:
 <https://centrodedescargas.cnig.es/CentroDescargas/cartobase-ane>
@@ -85,11 +85,11 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
-  **\[deprecated\]** character string. Ignored, resolution `3` (the most
+  **\[deprecated\]** character string. Ignored. Resolution `3` (the most
   detailed) will always be provided.
 
 - spatialtype:
@@ -108,7 +108,7 @@ Data distributed through the `sianedata` data branch, see
 - name:
 
   Character string or [`regex`](https://rdrr.io/r/base/grep.html)
-  expression. Name of the element(s) to be extracted.
+  expression. Name of the elements to extract.
 
 ## Value
 

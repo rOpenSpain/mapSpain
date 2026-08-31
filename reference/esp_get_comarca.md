@@ -49,7 +49,7 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - type:
 
-  Character string. One of `"INE"`, `"IGN"`, `"AGR"`, `"LIV"`. Type of
+  Character string. One of `"INE"`, `"IGN"`, `"AGR"` or `"LIV"`. Type of
   comarca to return. See **Details**.
 
 - epsg:
@@ -76,7 +76,7 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -105,11 +105,10 @@ always have a formal legal status. They correspond mainly to natural
 areas (valleys, river basins and similar areas), historical regions or
 ancient kingdoms.
 
-In the case of Spain, comarcas only have an administrative character
-legally recognized in Catalonia, the Basque Country, Navarra (named
-merindades instead), the region of El Bierzo (Castilla y Leon) and
-Aragon. Galicia, the Principality of Asturias and Andalusia have
-functional comarcas.
+In Spain, comarcas only have an administrative character legally
+recognized in Catalonia, the Basque Country, Navarra (named merindades
+instead), the region of El Bierzo (Castilla y Leon) and Aragon. Galicia,
+the Principality of Asturias and Andalusia have functional comarcas.
 
 ## Types
 

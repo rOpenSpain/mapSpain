@@ -8,8 +8,8 @@ and use them alongside your `sf` objects.
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you
 add Spanish public administration basemaps to interactive maps.
 
-The services are implemented with the Leaflet plugin
-[leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/).
+The services are implemented with the **Leaflet** plugin
+[**leaflet-providersESP**](https://dieghernan.github.io/leaflet-providersESP/).
 You can browse the available providers in its catalog.
 
 ## Static map tiles
@@ -135,7 +135,8 @@ Figure 4: Example of combining tile types by masking to an `sf` object.
 
 You can use
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-to get static map tiles from other providers, for example OpenStreetMap.
+to get static map tiles from other providers, for example
+**OpenStreetMap**.
 
 ``` r
 
@@ -156,7 +157,8 @@ ggplot() +
 
 Figure 5: Example of a basemap using OpenStreetMap
 
-This example uses ThunderForest, a provider that requires an API key:
+This example uses **ThunderForest**, a provider that requires an API
+key:
 
 ``` r
 
@@ -187,7 +189,7 @@ Figure 6: Example of a basemap using ThunderForest
 **mapSpain** provides a plugin for **leaflet** maps. Here are some quick
 examples:
 
-### Earthquakes in Tenerife during the last year
+### Earthquakes in Tenerife during the previous 365 days
 
 ``` r
 
@@ -291,7 +293,7 @@ leaflet(elementId = "SpainDemo", width = "100%", height = "60vh") |>
     values = bins,
     opacity = 0.7,
     title = paste0(
-      "<small>Pop. Density km<sup>2</sup></small><br><small>",
+      "<small>People / km<sup>2</sup></small><br><small>",
       "(2025)</small>"
     ),
     position = "bottomright"

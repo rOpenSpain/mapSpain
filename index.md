@@ -79,7 +79,7 @@ ggplot(ccaa_sf) +
   labs(caption = "Source: CartoBase ANE 2006-2024 CC-BY 4.0 ign.es, INE")
 ```
 
-![Percentage of women by Autonomous Community or City in Spain
+![Percentage of women by Autonomous Communities and Cities in Spain
 (2025)](reference/figures/README-static-1.png)
 
 You can combine `sf` objects with static map tiles.
@@ -124,7 +124,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
     expand = FALSE
   ) +
   labs(
-    title = "% women in Segovia by town (2025)",
+    title = "% women in Segovia by municipality (2025)",
     caption = paste0(
       "Source: INE, CC BY 4.0 www.iderioja.org, ",
       "CartoBase ANE 2006-2024 CC-BY 4.0 ign.es"
@@ -200,13 +200,13 @@ Map Tiles for Spain*.
 [doi:10.5281/zenodo.5366622](https://doi.org/10.5281/zenodo.5366622).
 <https://ropenspain.github.io/mapSpain/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-mapspain,
   title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
   year = {2026},
-  version = {1.2.0},
+  version = {1.2.1},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},
@@ -216,7 +216,7 @@ A BibTeX entry for LaTeX users is:
 
 ## Contribute
 
-Check the GitHub page for the [source
+Check the **GitHub** page for the [source
 code](https://github.com/ropenspain/mapSpain/).
 
 ## Copyright notice
@@ -231,11 +231,11 @@ Geográfico Nacional.
 See <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
 
 This package also uses data from
-[GISCO](https://ec.europa.eu/eurostat/web/gisco), Eurostat’s geospatial
-open data repository, which provides datasets at several resolution
-levels.
+[**GISCO**](https://ec.europa.eu/eurostat/web/gisco), Eurostat’s
+geospatial open data repository, which provides datasets at several
+resolution levels.
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From **GISCO** \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or

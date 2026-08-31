@@ -17,7 +17,7 @@ variables:
 
 - `LEVL_CODE`:
 
-  NUTS level code `(0, 1, 2, 3)`.
+  NUTS level code (`0`, `1`, `2` or `3`).
 
 - `CNTR_CODE`:
 
@@ -98,7 +98,7 @@ file.
 
 ## See also
 
-[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md)
+[`esp_get_nuts()`](https://ropenspain.github.io/mapSpain/reference/esp_get_nuts.md).
 
 Included package datasets:
 [`esp_codelist`](https://ropenspain.github.io/mapSpain/reference/esp_codelist.md),

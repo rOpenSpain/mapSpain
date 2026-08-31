@@ -5,7 +5,7 @@
   gtag('js', new Date());
 
   gtag('config', 'G-5N21Z0YYJJ');
-</script><!-- rogtemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet"></head><body>
+</script><!-- rostemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet"></head><body>
   <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Talks</h6></li>
     <li><a class="dropdown-item" href="../articles/maps_spain.html">mapSpain: maps of Spain in R</a></li>
-    <li><a class="external-link dropdown-item" href="https://dieghernan.github.io/rpubs/mapSpain_slides/">mapSpain: mapas de España en R (slides)
+    <li><a class="external-link dropdown-item" href="https://dieghernan-mapspain-r.share.connect.posit.cloud/">mapSpain: mapas de España en R (slides)
     </a></li>
     <li><a class="external-link dropdown-item" href="https://madrid.r-es.org/69-jueves-25-de-noviembre-de-2021/">Grupo de Usuarios R Madrid (video)
     </a></li>
@@ -61,17 +61,21 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.1" id="mapspain-121">mapSpain 1.2.1<a class="anchor" aria-label="anchor" href="#mapspain-121"></a></h2>
+<ul><li>Console messages now use clearer semantic formatting and distinguish warnings from status alerts.</li>
+<li>Query timeout can now also be controlled with the <code>MAPSPAIN_TIMEOUT</code> environment variable.</li>
+<li>
+<code><a href="../reference/esp_tiles_providers.html">?esp_tiles_providers</a></code>: Updated all WMS providers to use <code>service=WMS&amp;version=1.3.0</code>.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="mapspain-120">mapSpain 1.2.0<a class="anchor" aria-label="anchor" href="#mapspain-120"></a></h2><p class="text-muted">CRAN release: 2026-06-17</p>
-<ul><li>Refactored internal helpers for downloading and reading geospatial files, SIANE file handling, EPSG validation, subdivision-code filtering, municipal metadata enrichment, empty-result messages and Canary Islands displacement. This is intended to simplify maintenance without changing the public API.</li>
-<li>Consolidated repeated metadata for Autonomous Communities and Cities, provinces and municipalities across GISCO, SIANE, simplified and grid-map getters.</li>
-<li>Further simplified internal cache handling, <code>sf</code> output finalization, WMTS tile retrieval, dictionary translation and no-match messages. These changes are intended to improve maintainability without changing user-facing behavior.</li>
+<ul><li>Consolidated repeated metadata for Autonomous Communities and Cities, provinces and municipalities across <strong>GISCO</strong>, <strong>SIANE</strong>, simplified and grid-map getters.</li>
 <li>Reviewed <strong>roxygen2</strong> documentation, generated Rd files and prose documentation for consistent terminology and clearer user-facing messages. This work was completed with AI assistance and human review.</li>
-<li>This internal refactor was developed with AI assistance and reviewed through focused package checks, including <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> followed by <code><a href="https://lintr.r-lib.org/reference/lint.html" class="external-link">lintr::lint_package()</a></code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="mapspain-110">mapSpain 1.1.0<a class="anchor" aria-label="anchor" href="#mapspain-110"></a></h2><p class="text-muted">CRAN release: 2026-03-26</p>
-<ul><li>Migrated package vignettes to Quarto.</li>
-<li>Minimum <strong>httr2</strong> version is now <strong>1.2.0</strong> to ensure compatibility with <strong>giscoR</strong>.</li>
+<ul><li>Migrated package vignettes to <strong>Quarto</strong>.</li>
+<li>Minimum <strong>httr2</strong> version is now 1.2.0 to ensure compatibility with <strong>giscoR</strong>.</li>
 <li>Query timeout can be controlled with <code>options(mapspain_timeout)</code> using <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>. The default value is <code>httr2::req_timeout(..., seconds = 300)</code> (5 minutes).</li>
 </ul></div>
     <div class="section level2">
@@ -81,11 +85,11 @@
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
 <p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing the persistent cache directory. If you have an existing cache directory, you will receive a one-time notification about this migration.</p>
-<p>The package now requires <code>R &gt;= 4.1</code> and dependency updates improve performance and maintainability. All functions return tidy objects, either <code>tibble</code> objects or <code>sf</code> objects with <code>tibble</code> data.</p>
+<p>The package now requires <strong>R</strong> &gt;= 4.1 and dependency updates improve performance and maintainability. All functions return tidy objects, either <code>tibble</code> objects or <code>sf</code> objects with <code>tibble</code> data.</p>
 <p>Several new functions and arguments have been added, some functions renamed and others deprecated. All bundled datasets have been updated to their latest versions.</p>
 <div class="section level3">
 <h3 id="breaking-changes-1-0-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h3>
-<ul><li>Minimum required R version is now <strong>4.1.0</strong>.</li>
+<ul><li>Minimum required <strong>R</strong> version is now 4.1.0.</li>
 <li>Removed dependency on <strong>slippymath</strong> (<a href="https://github.com/rOpenSpain/mapSpain/issues/126" class="external-link">#126</a>).</li>
 <li>
 <code><a href="../reference/esp_get_grid_EEA.html">esp_get_grid_EEA()</a></code> is deprecated and defunct because the source file is no longer available.</li>
@@ -110,17 +114,17 @@
 <li>
 <code><a href="../reference/esp_get_attributions.html">esp_get_attributions()</a></code> retrieves tile provider attributions.</li>
 <li>
-<code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> retrieves all countries available in SIANE at a given date.</li>
+<code><a href="../reference/esp_get_countries_siane.html">esp_get_countries_siane()</a></code> retrieves all countries available in <strong>SIANE</strong> at a given date.</li>
 <li>
 <code><a href="../reference/esp_get_landwater.html">esp_get_rivers()</a></code> gains a new <code>moveCAN</code> argument.</li>
 <li>
-<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code> is analogous to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code> but uses SIANE data.</li>
+<code><a href="../reference/esp_get_spain_siane.html">esp_get_spain_siane()</a></code> is analogous to <code><a href="../reference/esp_get_spain.html">esp_get_spain()</a></code> but uses <strong>SIANE</strong> data.</li>
 <li>
 <code><a href="../reference/esp_get_railway.html">esp_get_stations()</a></code> replaces <code>esp_get_railway(..., spatialtype = "point")</code>.</li>
 <li>
 <code><a href="../reference/esp_get_tiles.html">esp_get_tiles()</a></code> can be used with providers that need an API key.</li>
 <li>
-<code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> downloads all SIANE datasets to a specified <code>cache_dir</code> in a single step.</li>
+<code><a href="../reference/esp_siane_bulk_download.html">esp_siane_bulk_download()</a></code> downloads all <strong>SIANE</strong> datasets to a specified <code>cache_dir</code> in a single step.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -132,7 +136,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.2" id="mapspain-092">mapSpain 0.9.2<a class="anchor" aria-label="anchor" href="#mapspain-092"></a></h2><p class="text-muted">CRAN release: 2024-08-26</p>
-<ul><li>Adapted functions to the SIANE 2024 databases.</li>
+<ul><li>Adapted functions to the <strong>SIANE</strong> 2024 databases.</li>
 <li>
 <code><a href="../reference/esp_dict.html">esp_dict_region_code()</a></code> and <code><a href="../reference/esp_dict.html">esp_dict_translate()</a></code> improve dictionary support.</li>
 </ul></div>
@@ -157,7 +161,7 @@
 <ul><li>Improved download of NUTS data from <strong>giscoR</strong>.</li>
 <li>Upgraded <code><a href="../reference/esp_tiles_providers.html">?esp_tiles_providers</a></code> to <a href="https://dieghernan.github.io/leaflet-providersESP/" class="external-link uri">https://dieghernan.github.io/leaflet-providersESP/</a> v1.3.3. New providers include <code>IDErioja.Base</code>, <code>IDErioja.Relieve</code>, <code>IDErioja.Claro</code> and <code>IDErioja.Oscuro</code>.</li>
 <li>
-<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> now supports non-OGC-compliant WMTS providers, such as Stamen or OpenStreetMap. See examples.</li>
+<code><a href="../reference/esp_get_tiles.html">esp_getTiles()</a></code> now supports non-OGC-compliant WMTS providers, such as <strong>Stamen</strong> or <strong>OpenStreetMap</strong>. See examples.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.0" id="mapspain-070">mapSpain 0.7.0<a class="anchor" aria-label="anchor" href="#mapspain-070"></a></h2><p class="text-muted">CRAN release: 2022-12-22</p>
@@ -284,14 +288,12 @@
 </p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">
-        <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="ROpenSpain Logo" height="24" class="round-logo"><span class="ROS-light">
+        <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
             rOpenSpain</span></h4>
         <p><a href="https://ropenspain.es/" class="external-link"><span class="ROS-light">rOpenSpain</span></a> is a community of
-          enthusiasts
-          of <strong>R</strong>, open data, and reproducibility that comes
-          together and organizes itself to create <strong>R</strong> packages of
-          the highest quality for the analysis
-          and use of Spanish data of general interest.
+          enthusiasts of <strong>R</strong>, open data and reproducibility that
+          works together to create high-quality <strong>R</strong> packages for
+          the analysis and use of Spanish data of general interest.
         </p>
         <p class="fst-italic text-md-end">"rOpenSci is our form, Spanish public
           data our matter"</p>
@@ -302,7 +304,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-md-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-md-start lh-base">
         <p>Template <a href="https://ropenspain.github.io/rostemplate/" class="external-link">rostemplate</a> by

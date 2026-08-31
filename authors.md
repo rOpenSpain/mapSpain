@@ -29,7 +29,7 @@ Map Tiles for Spain*.
     @Manual{R-mapspain,
       title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
       year = {2026},
-      version = {1.2.0},
+      version = {1.2.1},
       author = {Diego Hernangómez},
       doi = {10.5281/zenodo.5366622},
       url = {https://ropenspain.github.io/mapSpain/},
