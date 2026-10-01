@@ -2,12 +2,14 @@
 
 ## mapSpain 1.2.1
 
+CRAN release: 2026-08-31
+
 - Console messages now use clearer semantic formatting and distinguish
   warnings from status alerts.
-- Query timeout can now also be controlled with the `MAPSPAIN_TIMEOUT`
+- Query timeout can also be controlled with the `MAPSPAIN_TIMEOUT`
   environment variable.
-- [`?esp_tiles_providers`](https://ropenspain.github.io/mapSpain/reference/esp_tiles_providers.md):
-  Updated all WMS providers to use `service=WMS&version=1.3.0`.
+- `esp_tiles_providers` now uses `service=WMS&version=1.3.0` for all WMS
+  providers.
 
 ## mapSpain 1.2.0
 
@@ -15,7 +17,7 @@ CRAN release: 2026-06-17
 
 - Consolidated repeated metadata for Autonomous Communities and Cities,
   provinces and municipalities across **GISCO**, **SIANE**, simplified
-  and grid-map getters.
+  and grid map getters.
 - Reviewed **roxygen2** documentation, generated Rd files and prose
   documentation for consistent terminology and clearer user-facing
   messages. This work was completed with AI assistance and human review.
@@ -50,7 +52,7 @@ managing the persistent cache directory. If you have an existing cache
 directory, you will receive a one-time notification about this
 migration.
 
-The package now requires **R** \>= 4.1 and dependency updates improve
+The package now requires **R** \>= 4.1. Dependency updates improve
 performance and maintainability. All functions return tidy objects,
 either `tibble` objects or `sf` objects with `tibble` data.
 

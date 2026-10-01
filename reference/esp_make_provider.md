@@ -35,7 +35,8 @@ esp_make_provider(id, q, service, layers, ...)
 
 ## Value
 
-A named list with two elements `id` and `q`.
+A named [`list`](https://rdrr.io/r/base/list.html) with two elements,
+`id` and `q`.
 
 For a list of potential providers from Spain, check the [IDEE
 Directory](https://www.idee.es/segun-tipo-de-servicio).

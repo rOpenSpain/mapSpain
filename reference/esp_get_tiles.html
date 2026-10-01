@@ -120,8 +120,8 @@ WMS and WMTS providers.</p>
 <dt id="arg-zoom">zoom<a class="anchor" aria-label="anchor" href="#arg-zoom"></a></dt>
 <dd><p>Character string or number. Only valid for WMTS providers, zoom
 level to be downloaded. If <code>NULL</code>, it is determined automatically. If set,
-it overrides <code>zoommin</code>. If a single <code>sf</code> <code>POINT</code> and <code>zoom = NULL</code>, the
-function sets a zoom level of 18. See <strong>Details</strong>.</p></dd>
+it overrides <code>zoommin</code>. For a single <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POINT</code> with
+<code>zoom = NULL</code>, the function sets a zoom level of 18. See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-zoommin">zoommin<a class="anchor" aria-label="anchor" href="#arg-zoommin"></a></dt>
@@ -176,8 +176,8 @@ query.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>SpatRaster</code> with 3 (RGB) or 4 (RGBA) layers, depending on
-the provider. See <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p>
+    <p>A <a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">SpatRaster</a> with 3 (RGB) or 4 (RGBA) layers,
+depending on the provider.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>

@@ -2,7 +2,7 @@
 
 **mapSpain** provides an interface for working with static map tiles. It
 can download tiles as `.png` or `.jpeg`, depending on the tile service,
-and use them alongside your `sf` objects.
+for use alongside your `sf` objects.
 
 **mapSpain** also provides a plugin for
 [**leaflet**](https://rstudio.github.io/leaflet/) maps, which lets you
@@ -43,7 +43,8 @@ ggplot(lgn_borders) +
   geom_sf(fill = NA, linewidth = 2, color = "blue")
 ```
 
-![](working_imagery_files/figure-html/fig-static1-1.png)
+![Street basemap of Logroño with the municipal boundary drawn as a thick
+blue outline. ](working_imagery_files/figure-html/fig-static1-1.png)
 
 Figure 1: Municipal boundaries of Logroño using a tile as a basemap
 
@@ -79,7 +80,9 @@ ggplot() +
   theme_void()
 ```
 
-![](working_imagery_files/figure-html/fig-static2-1.png)
+![Map of Galicia using an opaque Way of St. James tile layer. The
+underlying light basemap is hidden by the opaque overlay.
+](working_imagery_files/figure-html/fig-static2-1.png)
 
 Figure 2: Map of the Way of St. James in Galicia
 
@@ -103,12 +106,14 @@ ggplot() +
   theme_void()
 ```
 
-![](working_imagery_files/figure-html/fig-static_transp-1.png)
+![Map of Galicia using a transparent Way of St. James tile layer. The
+route overlay and the underlying light basemap are both visible.
+](working_imagery_files/figure-html/fig-static_transp-1.png)
 
 Figure 3: Example of using alpha values to combine different map tile
 layers.
 
-Now the two tiles overlap with the desired transparency.
+With transparency enabled, both tile layers are visible.
 
 ### Masking tiles
 
@@ -127,7 +132,9 @@ ggplot() +
   geom_spatraster_rgb(data = masked, maxcell = 10e6)
 ```
 
-![](working_imagery_files/figure-html/fig-static3-1.png)
+![Aerial photograph of La Rioja with a second map layer visible only
+inside the provincial boundary, demonstrating a geographic mask.
+](working_imagery_files/figure-html/fig-static3-1.png)
 
 Figure 4: Example of combining tile types by masking to an `sf` object.
 
@@ -135,8 +142,7 @@ Figure 4: Example of combining tile types by masking to an `sf` object.
 
 You can use
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.md)
-to get static map tiles from other providers, for example
-**OpenStreetMap**.
+to get static map tiles from other providers, such as **OpenStreetMap**.
 
 ``` r
 
@@ -153,7 +159,9 @@ ggplot() +
   geom_sf(data = madrid_city, fill = NA)
 ```
 
-![](working_imagery_files/figure-html/fig-osm-1.png)
+![OpenStreetMap street basemap centered on Madrid, with the Madrid
+municipal boundary outlined.
+](working_imagery_files/figure-html/fig-osm-1.png)
 
 Figure 5: Example of a basemap using OpenStreetMap
 
@@ -180,7 +188,9 @@ if (nzchar(apikey)) {
 }
 ```
 
-![](working_imagery_files/figure-html/fig-thunder-1.png)
+![ThunderForest transport basemap centered on Madrid, with the Madrid
+municipal boundary outlined.
+](working_imagery_files/figure-html/fig-thunder-1.png)
 
 Figure 6: Example of a basemap using ThunderForest
 

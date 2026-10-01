@@ -175,9 +175,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html" class="external-link">scale_fill_discrete</a></span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">"Blues"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-intro" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-intro" class="quarto-float quarto-figure quarto-figure-center" alt="Map of Galicia divided into municipalities. Municipality fill colors distinguish the four provinces: A Coruña, Lugo, Ourense and Pontevedra. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-intro-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-intro-1.png" style="width:100.0%" alt="Map of Galicia divided into municipalities. Municipality fill colors distinguish the four provinces: A Coruña, Lugo, Ourense and Pontevedra. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 1: Municipalities of Galicia
@@ -205,7 +205,7 @@ Figure 1: Municipalities of Galicia
 </div>
 </section><section class="level3"><h3 id="comparing-mapspain-with-other-packages">Comparing mapSpain with other packages<a class="anchor" aria-label="anchor" href="#comparing-mapspain-with-other-packages"></a>
 </h3>
-<p>The following example compares <strong>mapSpain</strong> with packages that provide <code>sf</code> or <code>SpatVector</code> country boundaries.</p>
+<p>The following example compares <strong>mapSpain</strong> with packages that provide country boundaries as <code>sf</code> or <code>SpatVector</code> objects.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span> <span class="co"># Spatial data manipulation.</span></span>
@@ -277,9 +277,9 @@ Figure 1: Municipalities of Galicia
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Ferrol estuary"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-compara" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-compara" class="quarto-float quarto-figure quarto-figure-center" alt="Map of the Ferrol estuary over an orthophoto. Four overlaid coastline outlines use different colors and line patterns to compare boundary detail. The rnaturalearth outline is less precise than the other sources. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-compara-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-compara-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-compara-1.png" style="width:100.0%" alt="Map of the Ferrol estuary over an orthophoto. Four overlaid coastline outlines use different colors and line patterns to compare boundary detail. The rnaturalearth outline is less precise than the other sources. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compara-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 2: Comparison of boundary resolution across map sources. The boundaries are shown over an orthophoto of the Ferrol estuary.
@@ -390,7 +390,7 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 <li>Provinces.</li>
 <li>Municipalities.</li>
 </ul>
-<p>For Autonomous Communities and Cities, provinces and municipalities, there are two families of functions: <code>esp_get_xxxx()</code> for <strong>GISCO</strong> data and <code>esp_get_xxxx_siane()</code> for CartoBase ANE data from IGN.</p>
+<p>For Autonomous Communities and Cities, provinces and municipalities, one family of getter functions uses <strong>GISCO</strong> data, while the <code>_siane</code> variants use CartoBase ANE data from IGN.</p>
 <p>The information is available in different projections and resolution levels.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
@@ -400,9 +400,9 @@ Figure 2: Comparison of boundary resolution across map sources. The boundaries 
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#f9cd94"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-pais" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-pais" class="quarto-float quarto-figure quarto-figure-center" alt="Administrative outline map of Spain showing the mainland, Balearic Islands and Canary Islands in their geographic positions. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-pais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-pais-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-pais-1.png" style="width:100.0%" alt="Administrative outline map of Spain showing the mainland, Balearic Islands and Canary Islands in their geographic positions. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 3: Map of Spain
@@ -425,9 +425,9 @@ Figure 3: Map of Spain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">can_prov</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">can_box</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-can" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-can" class="quarto-float quarto-figure quarto-figure-center" alt="Administrative outline map of Spain with the Canary Islands moved closer to the mainland and enclosed in an inset box. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-can-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-can-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-can-1.png" style="width:100.0%" alt="Administrative outline map of Spain with the Canary Islands moved closer to the mainland and enclosed in an inset box. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-can-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 4: Map of Spain with displaced Canary Islands
@@ -446,9 +446,9 @@ Figure 4: Map of Spain with displaced Canary Islands
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"NUTS 1: low resolution"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-nuts" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-nuts" class="quarto-float quarto-figure quarto-figure-center" alt="Map of Spain partitioned into large NUTS 1 statistical regions, including island regions. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-nuts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-nuts-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-nuts-1.png" style="width:100.0%" alt="Map of Spain partitioned into large NUTS 1 statistical regions, including island regions. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nuts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 5: NUTS 1 regions of Spain
@@ -471,9 +471,9 @@ Figure 5: NUTS 1 regions of Spain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-nuts3" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-nuts3" class="quarto-float quarto-figure quarto-figure-center" alt="Map of the Balearic Islands divided into three NUTS 3 areas, one each for Mallorca, Menorca and Ibiza with Formentera. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-nuts3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-nuts3-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-nuts3-1.png" style="width:100.0%" alt="Map of the Balearic Islands divided into three NUTS 3 areas, one each for Mallorca, Menorca and Ibiza with Formentera. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nuts3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 6: NUTS 3 regions of Spain
@@ -504,9 +504,9 @@ Figure 6: NUTS 3 regions of Spain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html" class="external-link">scale_fill_discrete</a></span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">4</span>, <span class="st">"Plasma"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-ccaa" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-ccaa" class="quarto-float quarto-figure quarto-figure-center" alt="Map of four eastern Spanish autonomous communities: Aragon, Catalonia, Valencian Community and Balearic Islands. Distinct fills identify each community. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-ccaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-ccaa-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-ccaa-1.png" style="width:100.0%" alt="Map of four eastern Spanish autonomous communities: Aragon, Catalonia, Valencian Community and Balearic Islands. Distinct fills identify each community. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 7: Autonomous Communities and Cities of Spain
@@ -533,9 +533,9 @@ Figure 7: Autonomous Communities and Cities of Spain
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Provinces"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-prov" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-prov" class="quarto-float quarto-figure quarto-figure-center" alt="Map of provinces from Andalusia, Castilla-La Mancha and Murcia, together with Ceuta and Melilla. Distinct fills identify the selected provinces. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-prov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-prov-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-prov-1.png" style="width:100.0%" alt="Map of provinces from Andalusia, Castilla-La Mancha and Murcia, together with Ceuta and Melilla. Distinct fills identify the selected provinces. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 8: Extracting provinces by Autonomous Communities and Cities
@@ -578,9 +578,9 @@ Figure 8: Extracting provinces by Autonomous Communities and Cities
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-munic" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-munic" class="quarto-float quarto-figure quarto-figure-center" alt="Choropleth map of Segovia municipalities. Fill color represents 2025 population, with darker areas indicating fewer residents and brighter areas indicating more. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-munic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-munic-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-munic-1.png" style="width:100.0%" alt="Choropleth map of Segovia municipalities. Fill color represents 2025 population, with darker areas indicating fewer residents and brighter areas indicating more. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-munic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 9: Extracting municipalities
@@ -608,9 +608,9 @@ Figure 9: Extracting municipalities
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-hex" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-hex-1" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-hex-1" class="quarto-float quarto-figure quarto-figure-center" alt="Grid map of Spain using labeled hexagons for autonomous communities and cities. The hexagon layout simplifies the geographic shapes.">
 <figure class="quarto-float quarto-subfloat-fig"><div aria-describedby="fig-hex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-hex-1.png" style="width:100.0%" data-ref-parent="fig-hex">
+<img src="maps_spain_files/figure-html/fig-hex-1.png" style="width:100.0%" data-ref-parent="fig-hex" alt="Grid map of Spain using labeled hexagons for autonomous communities and cities. The hexagon layout simplifies the geographic shapes.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Hexagons
@@ -618,9 +618,9 @@ Figure 9: Extracting municipalities
 </div>
 </div>
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-hex" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-hex-2" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-hex-2" class="quarto-float quarto-figure quarto-figure-center" alt="Grid map of Spain using labeled squares for provinces. The square layout simplifies the geographic shapes.">
 <figure class="quarto-float quarto-subfloat-fig"><div aria-describedby="fig-hex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-hex-2.png" style="width:100.0%" data-ref-parent="fig-hex">
+<img src="maps_spain_files/figure-html/fig-hex-2.png" style="width:100.0%" data-ref-parent="fig-hex" alt="Grid map of Spain using labeled squares for provinces. The square layout simplifies the geographic shapes.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Squares
@@ -683,9 +683,9 @@ Figure 10: Grid maps with mapSpain
 <span>    caption <span class="op">=</span> <span class="st">"CC BY 4.0 www.iderioja.org"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-imagesestaticos-1" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-imagesestaticos-1" class="quarto-float quarto-figure quarto-figure-center" alt="Aerial photograph of Madrid and nearby municipalities, with municipal boundaries and translucent blue areas overlaid.">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-imagesestaticos-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-imagesestaticos-1.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-imagesestaticos-1.png" style="width:100.0%" alt="Aerial photograph of Madrid and nearby municipalities, with municipal boundaries and translucent blue areas overlaid.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagesestaticos-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 11: Static map tile extraction
@@ -693,9 +693,9 @@ Figure 11: Static map tile extraction
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-imagesestaticos-2" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-imagesestaticos-2" class="quarto-float quarto-figure quarto-figure-center" alt="Street basemap clipped to the municipality of Madrid, leaving the area outside its boundary blank.">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-imagesestaticos-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="maps_spain_files/figure-html/fig-imagesestaticos-2.png" style="width:100.0%">
+<img src="maps_spain_files/figure-html/fig-imagesestaticos-2.png" style="width:100.0%" alt="Street basemap clipped to the municipality of Madrid, leaving the area outside its boundary blank.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-imagesestaticos-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 12: Static map tiles with a mask
@@ -705,7 +705,7 @@ Figure 12: Static map tiles with a mask
 </div>
 </section><section class="level3"><h3 id="dynamic-maps-with-leaflet">Dynamic maps with leaflet<a class="anchor" aria-label="anchor" href="#dynamic-maps-with-leaflet"></a>
 </h3>
-<p>Static map tiles can be used as backgrounds in static and interactive maps.</p>
+<p>Tile layers can be used as backgrounds in static and interactive maps.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esp_get_railway.html">esp_get_railway</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"point"</span>, epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>

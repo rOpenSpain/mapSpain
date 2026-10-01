@@ -216,8 +216,8 @@ A **BibTeX** entry for **LaTeX** users is:
 
 ## Contribute
 
-Check the **GitHub** page for the [source
-code](https://github.com/ropenspain/mapSpain/).
+Find the [source code](https://github.com/rOpenSpain/mapSpain/) on
+**GitHub**.
 
 ## Copyright notice
 

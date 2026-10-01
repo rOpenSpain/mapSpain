@@ -82,7 +82,9 @@ ggplot(galicia) +
   theme_bw()
 ```
 
-![](maps_spain_files/figure-html/fig-intro-1.png)
+![Map of Galicia divided into municipalities. Municipality fill colors
+distinguish the four provinces: A Coruña, Lugo, Ourense and Pontevedra.
+](maps_spain_files/figure-html/fig-intro-1.png)
 
 Figure 1: Municipalities of Galicia
 
@@ -105,7 +107,7 @@ reactable(
 ### Comparing mapSpain with other packages
 
 The following example compares **mapSpain** with packages that provide
-`sf` or `SpatVector` country boundaries.
+country boundaries as `sf` or `SpatVector` objects.
 
 ``` r
 
@@ -179,7 +181,10 @@ ggplot(esp_all) +
   labs(title = "Ferrol estuary")
 ```
 
-![](maps_spain_files/figure-html/fig-compara-1.png)
+![Map of the Ferrol estuary over an orthophoto. Four overlaid coastline
+outlines use different colors and line patterns to compare boundary
+detail. The rnaturalearth outline is less precise than the other
+sources. ](maps_spain_files/figure-html/fig-compara-1.png)
 
 Figure 2: Comparison of boundary resolution across map sources. The
 boundaries are shown over an orthophoto of the Ferrol estuary.
@@ -301,9 +306,9 @@ several levels:
 - Provinces.
 - Municipalities.
 
-For Autonomous Communities and Cities, provinces and municipalities,
-there are two families of functions: `esp_get_xxxx()` for **GISCO** data
-and `esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
+For Autonomous Communities and Cities, provinces and municipalities, one
+family of getter functions uses **GISCO** data, while the `_siane`
+variants use CartoBase ANE data from IGN.
 
 The information is available in different projections and resolution
 levels.
@@ -317,7 +322,9 @@ ggplot(esp) +
   theme_light()
 ```
 
-![](maps_spain_files/figure-html/fig-pais-1.png)
+![Administrative outline map of Spain showing the mainland, Balearic
+Islands and Canary Islands in their geographic positions.
+](maps_spain_files/figure-html/fig-pais-1.png)
 
 Figure 3: Map of Spain
 
@@ -344,7 +351,9 @@ ggplot(esp_can) +
   geom_sf(data = can_box)
 ```
 
-![](maps_spain_files/figure-html/fig-can-1.png)
+![Administrative outline map of Spain with the Canary Islands moved
+closer to the mainland and enclosed in an inset box.
+](maps_spain_files/figure-html/fig-can-1.png)
 
 Figure 4: Map of Spain with displaced Canary Islands
 
@@ -362,7 +371,8 @@ ggplot(nuts1) +
   labs(title = "NUTS 1: low resolution")
 ```
 
-![](maps_spain_files/figure-html/fig-nuts-1.png)
+![Map of Spain partitioned into large NUTS 1 statistical regions,
+including island regions. ](maps_spain_files/figure-html/fig-nuts-1.png)
 
 Figure 5: NUTS 1 regions of Spain
 
@@ -382,7 +392,9 @@ ggplot(nuts3_sf) +
   theme_minimal()
 ```
 
-![](maps_spain_files/figure-html/fig-nuts3-1.png)
+![Map of the Balearic Islands divided into three NUTS 3 areas, one each
+for Mallorca, Menorca and Ibiza with Formentera.
+](maps_spain_files/figure-html/fig-nuts3-1.png)
 
 Figure 6: NUTS 3 regions of Spain
 
@@ -410,7 +422,9 @@ ggplot(ccaa) +
   scale_fill_discrete(type = hcl.colors(4, "Plasma"))
 ```
 
-![](maps_spain_files/figure-html/fig-ccaa-1.png)
+![Map of four eastern Spanish autonomous communities: Aragon, Catalonia,
+Valencian Community and Balearic Islands. Distinct fills identify each
+community. ](maps_spain_files/figure-html/fig-ccaa-1.png)
 
 Figure 7: Autonomous Communities and Cities of Spain
 
@@ -436,7 +450,9 @@ ggplot(provs) +
   labs(fill = "Provinces")
 ```
 
-![](maps_spain_files/figure-html/fig-prov-1.png)
+![Map of provinces from Andalusia, Castilla-La Mancha and Murcia,
+together with Ceuta and Melilla. Distinct fills identify the selected
+provinces. ](maps_spain_files/figure-html/fig-prov-1.png)
 
 Figure 8: Extracting provinces by Autonomous Communities and Cities
 
@@ -476,7 +492,9 @@ ggplot(munic) +
   )
 ```
 
-![](maps_spain_files/figure-html/fig-munic-1.png)
+![Choropleth map of Segovia municipalities. Fill color represents 2025
+population, with darker areas indicating fewer residents and brighter
+areas indicating more. ](maps_spain_files/figure-html/fig-munic-1.png)
 
 Figure 9: Extracting municipalities
 
@@ -501,11 +519,15 @@ ggplot(hex) +
   theme_void()
 ```
 
-![](maps_spain_files/figure-html/fig-hex-1.png)
+![Grid map of Spain using labeled hexagons for autonomous communities
+and cities. The hexagon layout simplifies the geographic
+shapes.](maps_spain_files/figure-html/fig-hex-1.png)
 
 \(a\) Hexagons
 
-![](maps_spain_files/figure-html/fig-hex-2.png)
+![Grid map of Spain using labeled squares for provinces. The square
+layout simplifies the geographic
+shapes.](maps_spain_files/figure-html/fig-hex-2.png)
 
 \(b\) Squares
 
@@ -572,18 +594,21 @@ ggplot() +
   )
 ```
 
-![](maps_spain_files/figure-html/fig-imagesestaticos-1.png)
+![Aerial photograph of Madrid and nearby municipalities, with municipal
+boundaries and translucent blue areas
+overlaid.](maps_spain_files/figure-html/fig-imagesestaticos-1.png)
 
 Figure 11: Static map tile extraction
 
-![](maps_spain_files/figure-html/fig-imagesestaticos-2.png)
+![Street basemap clipped to the municipality of Madrid, leaving the area
+outside its boundary
+blank.](maps_spain_files/figure-html/fig-imagesestaticos-2.png)
 
 Figure 12: Static map tiles with a mask
 
 ### Dynamic maps with leaflet
 
-Static map tiles can be used as backgrounds in static and interactive
-maps.
+Tile layers can be used as backgrounds in static and interactive maps.
 
 ``` r
 

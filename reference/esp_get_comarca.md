@@ -80,7 +80,7 @@ INE: PC_Axis files, IGN, Ministry of Agriculture, Fisheries and Food
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 

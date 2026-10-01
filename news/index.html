@@ -61,15 +61,15 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.1" id="mapspain-121">mapSpain 1.2.1<a class="anchor" aria-label="anchor" href="#mapspain-121"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="mapspain-121">mapSpain 1.2.1<a class="anchor" aria-label="anchor" href="#mapspain-121"></a></h2><p class="text-muted">CRAN release: 2026-08-31</p>
 <ul><li>Console messages now use clearer semantic formatting and distinguish warnings from status alerts.</li>
-<li>Query timeout can now also be controlled with the <code>MAPSPAIN_TIMEOUT</code> environment variable.</li>
+<li>Query timeout can also be controlled with the <code>MAPSPAIN_TIMEOUT</code> environment variable.</li>
 <li>
-<code><a href="../reference/esp_tiles_providers.html">?esp_tiles_providers</a></code>: Updated all WMS providers to use <code>service=WMS&amp;version=1.3.0</code>.</li>
+<code>esp_tiles_providers</code> now uses <code>service=WMS&amp;version=1.3.0</code> for all WMS providers.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="mapspain-120">mapSpain 1.2.0<a class="anchor" aria-label="anchor" href="#mapspain-120"></a></h2><p class="text-muted">CRAN release: 2026-06-17</p>
-<ul><li>Consolidated repeated metadata for Autonomous Communities and Cities, provinces and municipalities across <strong>GISCO</strong>, <strong>SIANE</strong>, simplified and grid-map getters.</li>
+<ul><li>Consolidated repeated metadata for Autonomous Communities and Cities, provinces and municipalities across <strong>GISCO</strong>, <strong>SIANE</strong>, simplified and grid map getters.</li>
 <li>Reviewed <strong>roxygen2</strong> documentation, generated Rd files and prose documentation for consistent terminology and clearer user-facing messages. This work was completed with AI assistance and human review.</li>
 </ul></div>
     <div class="section level2">
@@ -85,7 +85,7 @@
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
 <p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing the persistent cache directory. If you have an existing cache directory, you will receive a one-time notification about this migration.</p>
-<p>The package now requires <strong>R</strong> &gt;= 4.1 and dependency updates improve performance and maintainability. All functions return tidy objects, either <code>tibble</code> objects or <code>sf</code> objects with <code>tibble</code> data.</p>
+<p>The package now requires <strong>R</strong> &gt;= 4.1. Dependency updates improve performance and maintainability. All functions return tidy objects, either <code>tibble</code> objects or <code>sf</code> objects with <code>tibble</code> data.</p>
 <p>Several new functions and arguments have been added, some functions renamed and others deprecated. All bundled datasets have been updated to their latest versions.</p>
 <div class="section level3">
 <h3 id="breaking-changes-1-0-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h3>

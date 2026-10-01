@@ -46,8 +46,9 @@ corresponding element will be `NA` and a warning is emitted via
 `esp_dict_translate()` translates a vector of names from one language to
 another. If `all = FALSE`, it returns a character vector with the
 translated name for each element of `sourcevar`. If `all = TRUE`, it
-returns a named `list` where each element contains all available
-translations for the corresponding input value.
+returns a named [`list`](https://rdrr.io/r/base/list.html) where each
+element contains all available translations for the corresponding input
+value.
 
 ## Details
 

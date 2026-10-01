@@ -55,8 +55,9 @@ esp_get_tiles(
 
   Character string or number. Only valid for WMTS providers, zoom level
   to be downloaded. If `NULL`, it is determined automatically. If set,
-  it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`,
-  the function sets a zoom level of 18. See **Details**.
+  it overrides `zoommin`. For a single
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POINT` with
+  `zoom = NULL`, the function sets a zoom level of 18. See **Details**.
 
 - zoommin:
 
@@ -108,9 +109,9 @@ esp_get_tiles(
 
 ## Value
 
-A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on the
-provider. See
-[`terra::rast()`](https://rspatial.github.io/terra/reference/rast.html).
+A
+[SpatRaster](https://rspatial.github.io/terra/reference/SpatRaster-class.html)
+with 3 (RGB) or 4 (RGBA) layers, depending on the provider.
 
 ## Details
 
