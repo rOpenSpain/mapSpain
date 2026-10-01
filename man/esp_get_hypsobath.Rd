@@ -72,7 +72,7 @@ data. One of:
 \code{"area"} for \code{POLYGON} or \code{"line"} for \code{LINESTRING}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset represents the hypsometry and bathymetry of Spain.

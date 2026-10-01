@@ -54,7 +54,7 @@ a new download. Defaults to \code{FALSE}.}
 messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Get \href{https://en.wikipedia.org/wiki/Comarcas_of_Spain}{comarcas of Spain}.

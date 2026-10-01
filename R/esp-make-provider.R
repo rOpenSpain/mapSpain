@@ -20,7 +20,7 @@
 #'   `crs/srs` and `style`, depending on the capabilities of the service.
 #'
 #' @return
-#' A named list with two elements `id` and `q`.
+#' A named [`list`][base::list] with two elements, `id` and `q`.
 #'
 #' For a list of potential providers from Spain, check the
 #' [IDEE Directory](https://www.idee.es/segun-tipo-de-servicio).

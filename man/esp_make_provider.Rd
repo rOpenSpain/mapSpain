@@ -20,7 +20,7 @@ esp_make_provider(id, q, service, layers, ...)
 \code{crs/srs} and \code{style}, depending on the capabilities of the service.}
 }
 \value{
-A named list with two elements \code{id} and \code{q}.
+A named \code{\link[base:list]{list}} with two elements, \code{id} and \code{q}.
 
 For a list of potential providers from Spain, check the
 \href{https://www.idee.es/segun-tipo-de-servicio}{IDEE Directory}.

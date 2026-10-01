@@ -76,7 +76,7 @@ data. One of:
 }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 River basin districts are the areas of land and sea, made up of one or more

@@ -34,12 +34,12 @@ classification for 2024.
 \details{
 \code{MOUNT_TYPE}: Mountain typology:
 \itemize{
-\item \code{1}: More than 50 \% of the surface is covered by topographic mountain
+\item \code{1}: More than 50\% of the surface is covered by topographic mountain
 areas.
-\item \code{2}: More than 50 \% of the regional population lives in topographic
+\item \code{2}: More than 50\% of the regional population lives in topographic
 mountain areas.
-\item \code{3}: More than 50 \% of the surface is covered by topographic mountain
-areas and where more than 50 \% of the regional population lives in these
+\item \code{3}: More than 50\% of the surface is covered by topographic mountain
+areas and more than 50\% of the regional population lives in these
 mountain areas.
 \item \code{4}: Non-mountain region / other regions.
 \item \code{0}: No classification provided.
@@ -56,7 +56,7 @@ mountain areas.
 \code{COAST_TYPE}: Coastal typology:
 \itemize{
 \item \code{1}: Coastal (on coast).
-\item \code{2}: Coastal (less than 50 \% of population living within 50 km of the
+\item \code{2}: Coastal (less than 50\% of the population lives within 50 km of the
 coastline).
 \item \code{3}: Non-coastal region.
 \item \code{0}: No classification provided.

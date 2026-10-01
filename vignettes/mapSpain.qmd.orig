@@ -39,7 +39,7 @@ For more examples and vignettes, see the full site at
 boundaries and static map tiles for Spain.
 
 **mapSpain** provides `sf` objects for Autonomous Communities and Cities,
-provinces, municipalities and NUTS levels in Spain. It also provides grid maps
+provinces, municipalities and NUTS regions in Spain. It also provides grid maps
 and complementary geometries, such as inset boxes and outlines for the Canary
 Islands.
 
@@ -50,8 +50,8 @@ administrations. Tiles can be represented on static maps with
 `mapSpain::addProviderEspTiles()`.
 
 **mapSpain** also includes a dictionary that translates Spanish subdivision
-names to English, Spanish, Catalan, Basque and Galician. It also converts names
-among coding standards such as NUTS, ISO2 and INE codes.
+names into English, Spanish, Catalan, Basque and Galician. It converts names
+and codes among the NUTS, ISO2 and INE coding standards.
 
 ## Caching
 
@@ -72,6 +72,9 @@ These examples show key **mapSpain** workflows:
 
 ```{r}
 #| label: basic
+#| fig-alt: >
+#|   Administrative map outlining mainland Spain, the Balearic Islands and the
+#|   Canary Islands, with the islands positioned near the mainland for display.
 #| fig-cap: 'Example: map of Spain'
 #| fig-asp: 0.7
 library(mapSpain)
@@ -98,6 +101,9 @@ ggplot(country) +
 
 ```{r}
 #| label: basic2
+#| fig-alt: >
+#|   Map of Andalusia divided into its eight provinces, with white lines
+#|   marking the provincial boundaries.
 #| fig-cap: 'Example: provinces of Andalusia'
 #| fig-asp: 0.55
 # Plot provinces.
@@ -111,6 +117,9 @@ ggplot(andalucia) +
 
 ```{r}
 #| label: basic3
+#| fig-alt: >
+#|   Map of Basque Country municipalities. Municipal areas are grouped by
+#|   province and filled by their Basque province names.
 #| fig-cap: 'Example: municipalities of the Basque Country'
 #| fig-asp: 0.8
 # Plot municipalities.
@@ -145,6 +154,10 @@ Analyze the distribution of women in each Autonomous Community or City with
 
 ```{r}
 #| label: choro
+#| fig-alt: >
+#|   Choropleth map of Spanish autonomous communities and cities. Shading and
+#|   labels show the percentage of women in each region in 2025, with the
+#|   Canary Islands shown in an inset.
 #| fig-cap: Percentage of women by Autonomous Communities and Cities (2025)
 #| fig-asp: 0.7
 library(dplyr)
@@ -206,6 +219,10 @@ though any package that works with `sf` objects, such as **tmap**, **mapsf** or
 
 ```{r}
 #| label: thematic
+#| fig-alt: >
+#|   Choropleth map of Spanish municipalities. Color groups population density
+#|   in 2025 into ranges from fewer than 10 to more than 10,000 people per
+#|   square kilometer.
 #| crop: true
 #| fig-cap: Population density in Spain (2025)
 #| fig-dpi: 150
@@ -260,6 +277,10 @@ a dependency of **mapSpain**. Here is a basic example:
 
 ```{r}
 #| label: giscoR
+#| fig-alt: >
+#|   Locator map of Europe with Spain highlighted and its autonomous community
+#|   boundaries visible. Other European Union countries and neighboring
+#|   countries provide context.
 #| fig-cap: mapSpain and giscoR example
 #| fig-asp: 0.9
 library(giscoR)
@@ -305,7 +326,7 @@ ggplot(all_countries) +
 ## Working with static map tiles
 
 **mapSpain** provides an interface for working with static map tiles. It can
-download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
+download tiles as `.png` or `.jpeg`, depending on the tile service, for use
 alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for

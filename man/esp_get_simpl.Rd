@@ -39,7 +39,7 @@ a new download. Defaults to \code{FALSE}.}
 messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Simplified map with the boundaries of the provinces or Autonomous

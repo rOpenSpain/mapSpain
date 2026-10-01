@@ -86,6 +86,9 @@ pak::pak("rOpenSpain/mapSpain", dependencies = TRUE)
 
 ```{r}
 #| label: fig-intro
+#| fig-alt: >
+#|   Map of Galicia divided into municipalities. Municipality fill colors
+#|   distinguish the four provinces: A Coruña, Lugo, Ourense and Pontevedra.
 #| fig-cap: Municipalities of Galicia
 library(mapSpain)
 library(tidyverse)
@@ -122,11 +125,15 @@ reactable(
 
 ### Comparing mapSpain with other packages
 
-The following example compares **mapSpain** with packages that provide `sf` or
-`SpatVector` country boundaries.
+The following example compares **mapSpain** with packages that provide country
+boundaries as `sf` or `SpatVector` objects.
 
 ```{r}
 #| label: fig-compara
+#| fig-alt: >
+#|   Map of the Ferrol estuary over an orthophoto. Four overlaid coastline
+#|   outlines use different colors and line patterns to compare boundary
+#|   detail. The rnaturalearth outline is less precise than the other sources.
 #| fig-cap: |
 #|   Comparison of boundary resolution across map sources. The boundaries are
 #|   shown over an orthophoto of the Ferrol estuary.
@@ -292,14 +299,17 @@ levels:
 - Provinces.
 - Municipalities.
 
-For Autonomous Communities and Cities, provinces and municipalities, there are
-two families of functions: `esp_get_xxxx()` for **GISCO** data and
-`esp_get_xxxx_siane()` for CartoBase ANE data from IGN.
+For Autonomous Communities and Cities, provinces and municipalities, one family
+of getter functions uses **GISCO** data, while the `_siane` variants use
+CartoBase ANE data from IGN.
 
 The information is available in different projections and resolution levels.
 
 ```{r}
 #| label: fig-pais
+#| fig-alt: >
+#|   Administrative outline map of Spain showing the mainland, Balearic Islands
+#|   and Canary Islands in their geographic positions.
 #| fig-cap: Map of Spain
 esp <- esp_get_spain_siane(moveCAN = FALSE)
 
@@ -321,6 +331,9 @@ in the reference page.
 
 ```{r}
 #| label: fig-can
+#| fig-alt: >
+#|   Administrative outline map of Spain with the Canary Islands moved closer
+#|   to the mainland and enclosed in an inset box.
 #| fig-cap: Map of Spain with displaced Canary Islands
 esp_can <- esp_get_spain()
 can_prov <- esp_get_can_provinces()
@@ -339,6 +352,9 @@ spatial analysis.**
 
 ```{r}
 #| label: fig-nuts
+#| fig-alt: >
+#|   Map of Spain partitioned into large NUTS 1 statistical regions, including
+#|   island regions.
 #| fig-cap: NUTS 1 regions of Spain
 nuts1 <- esp_get_nuts(resolution = 60, epsg = 3035, nuts_level = 1)
 
@@ -349,6 +365,9 @@ ggplot(nuts1) +
 
 ```{r}
 #| label: fig-nuts3
+#| fig-alt: >
+#|   Map of the Balearic Islands divided into three NUTS 3 areas, one each for
+#|   Mallorca, Menorca and Ibiza with Formentera.
 #| fig-cap: NUTS 3 regions of Spain
 # Balearic Islands NUTS 3.
 nuts3_baleares <- c("ES531", "ES532", "ES533")
@@ -367,6 +386,10 @@ ggplot(nuts3_sf) +
 
 ```{r}
 #| label: fig-ccaa
+#| fig-alt: >
+#|   Map of four eastern Spanish autonomous communities: Aragon, Catalonia,
+#|   Valencian Community and Balearic Islands. Distinct fills identify each
+#|   community.
 #| fig-cap: "Autonomous Communities and Cities of Spain"
 ccaa <- esp_get_ccaa(
   ccaa = c(
@@ -395,6 +418,9 @@ that entity.
 
 ```{r}
 #| label: fig-prov
+#| fig-alt: >
+#|   Map of provinces from Andalusia, Castilla-La Mancha and Murcia, together
+#|   with Ceuta and Melilla. Distinct fills identify the selected provinces.
 #| fig-cap: "Extracting provinces by Autonomous Communities and Cities"
 provs <- esp_get_prov_siane(c(
   "Andalucía",
@@ -415,6 +441,10 @@ ggplot(provs) +
 
 ```{r}
 #| label: fig-munic
+#| fig-alt: >
+#|   Choropleth map of Segovia municipalities. Fill color represents 2025
+#|   population, with darker areas indicating fewer residents and brighter
+#|   areas indicating more.
 #| fig-cap: "Extracting municipalities"
 population <- mapSpain::pobmun25 |>
   select(-name)
@@ -455,6 +485,11 @@ Communities and Cities.
 
 ```{r}
 #| label: fig-hex
+#| fig-alt:
+#|   - "Grid map of Spain using labeled hexagons for autonomous communities
+#|     and cities. The hexagon layout simplifies the geographic shapes."
+#|   - "Grid map of Spain using labeled squares for provinces. The square layout
+#|     simplifies the geographic shapes."
 #| layout-ncol: 2
 #| fig-cap: Grid maps with mapSpain
 #| fig-subcap:
@@ -493,6 +528,11 @@ Several options are available for composing maps with static map tiles:
 
 ```{r}
 #| label: fig-imagesestaticos
+#| fig-alt:
+#|   - "Aerial photograph of Madrid and nearby municipalities, with municipal
+#|     boundaries and translucent blue areas overlaid."
+#|   - "Street basemap clipped to the municipality of Madrid, leaving the area
+#|     outside its boundary blank."
 #| fig-cap:
 #|   - Static map tile extraction
 #|   - Static map tiles with a mask
@@ -539,7 +579,7 @@ ggplot() +
 
 ### Dynamic maps with leaflet
 
-Static map tiles can be used as backgrounds in static and interactive maps.
+Tile layers can be used as backgrounds in static and interactive maps.
 
 ```{r}
 #| label: leaflet

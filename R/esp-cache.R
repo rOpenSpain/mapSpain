@@ -171,7 +171,7 @@ esp_detect_cache_dir <- function() {
 #'   its contents.
 #' @inheritParams esp_set_cache_dir
 #'
-#' @return Invisible. This function is called for its side effects.
+#' @return Invisible `NULL`. This function is called for its side effects.
 #'
 #' @seealso [tools::R_user_dir()].
 #'
@@ -327,7 +327,8 @@ create_cache_dir <- function(cache_dir = NULL) {
   cache_dir
 }
 
-#' Migrate cache configuration from \CRANpkg{rappdirs} to the tools package
+#' Migrate cache configuration from \CRANpkg{rappdirs} to
+#' the \pkg{tools} package
 #'
 #' One-time function for \CRANpkg{mapSpain} >= 1.0.0.
 #'

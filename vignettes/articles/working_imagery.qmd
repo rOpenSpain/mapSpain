@@ -17,7 +17,7 @@ knitr:
 ---
 
 **mapSpain** provides an interface for working with static map tiles. It can
-download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
+download tiles as `.png` or `.jpeg`, depending on the tile service, for use
 alongside your `sf` objects.
 
 **mapSpain** also provides a plugin for
@@ -41,6 +41,9 @@ for the Canary Islands may be inaccurate.
 
 ```{r}
 #| label: fig-static1
+#| fig-alt: >
+#|   Street basemap of Logroño with the municipal boundary drawn as a thick
+#|   blue outline.
 #| fig-cap: Municipal boundaries of Logroño using a tile as a basemap
 library(mapSpain)
 library(sf)
@@ -67,6 +70,9 @@ transparency:
 
 ```{r}
 #| label: fig-static2
+#| fig-alt: >
+#|   Map of Galicia using an opaque Way of St. James tile layer. The underlying
+#|   light basemap is hidden by the opaque overlay.
 #| fig-cap: Map of the Way of St. James in Galicia
 galicia <- esp_get_ccaa_siane("Galicia", epsg = 3857)
 
@@ -97,6 +103,9 @@ The following example repeats the same code with `transparent = TRUE`:
 
 ```{r}
 #| label: fig-static_transp
+#| fig-alt: >
+#|   Map of Galicia using a transparent Way of St. James tile layer. The route
+#|   overlay and the underlying light basemap are both visible.
 #| fig-cap: Example of using alpha values to combine different map tile layers.
 # Example with transparency.
 tile_alpha <- esp_get_tiles(
@@ -114,7 +123,7 @@ ggplot() +
   theme_void()
 ```
 
-Now the two tiles overlap with the desired transparency.
+With transparency enabled, both tile layers are visible.
 
 ### Masking tiles
 
@@ -122,6 +131,9 @@ Tile masking restricts imagery to the geometry of an input `sf` object:
 
 ```{r}
 #| label: fig-static3
+#| fig-alt: >
+#|   Aerial photograph of La Rioja with a second map layer visible only inside
+#|   the provincial boundary, demonstrating a geographic mask.
 #| fig-cap: Example of combining tile types by masking to an `sf` object.
 rioja <- esp_get_prov_siane("La Rioja", epsg = 3857)
 
@@ -136,11 +148,14 @@ ggplot() +
 
 ## Custom providers
 
-You can use `esp_get_tiles()` to get static map tiles from other providers, for
-example **OpenStreetMap**.
+You can use `esp_get_tiles()` to get static map tiles from other providers,
+such as **OpenStreetMap**.
 
 ```{r}
 #| label: fig-osm
+#| fig-alt: >
+#|   OpenStreetMap street basemap centered on Madrid, with the Madrid municipal
+#|   boundary outlined.
 #| fig-cap: Example of a basemap using OpenStreetMap
 osm_spec <- list(
   id = "OSM",
@@ -159,6 +174,9 @@ This example uses **ThunderForest**, a provider that requires an API key:
 
 ```{r}
 #| label: fig-thunder
+#| fig-alt: >
+#|   ThunderForest transport basemap centered on Madrid, with the Madrid
+#|   municipal boundary outlined.
 #| fig-cap: Example of a basemap using ThunderForest
 # Skip if no API key is available.
 apikey <- Sys.getenv("THUNDERFOREST_API_KEY", "")

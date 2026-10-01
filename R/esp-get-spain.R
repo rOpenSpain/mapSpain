@@ -13,7 +13,6 @@
 #' @inheritDotParams esp_get_nuts -nuts_level -region -spatialtype
 #'
 #' @inherit esp_get_nuts return source
-#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @seealso [esp_get_spain_siane()].
 #'

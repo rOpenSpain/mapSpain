@@ -23,7 +23,7 @@ and Autonomous Communities and Cities, or \code{NULL} to get all the data. See
 \strong{Details}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This function loads a hexbin map (\code{\link[sf:st_sf]{sf}} object) or a map of

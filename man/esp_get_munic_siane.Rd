@@ -93,7 +93,7 @@ Initial position can be adjusted using the vector of coordinates. See
 object as provided by IGN.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Get boundaries of municipalities in Spain.

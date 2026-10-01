@@ -1,6 +1,6 @@
 
 
-# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain website" align="right" height="139"/></a>
+# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain logo: a gold map of Spain on a red hexagon" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -128,6 +128,7 @@ ggplot(ccaa_sf) +
 ```
 
 <img src="man/figures/README-static-1.png" style="width:100.0%"
+data-fig-alt="Choropleth map of Spanish autonomous communities and cities. Each region is shaded by its share of women in the 2025 population, with percentage labels on the map and a separate inset for the Canary Islands. "
 alt="Percentage of women by Autonomous Communities and Cities in Spain (2025)" />
 
 You can combine `sf` objects with static map tiles.
@@ -184,6 +185,7 @@ ggplot(remove_missing(shape_pop, na.rm = TRUE)) +
 ```
 
 <img src="man/figures/README-tile-1.png" style="width:100.0%"
+data-fig-alt="Choropleth map of Segovia municipalities over a relief basemap. Color represents the percentage of women in each municipality in 2025, and province boundaries outline the mapped area. "
 alt="Percentage of women in Segovia by municipality (2025)" />
 
 ## mapSpain and giscoR
@@ -224,6 +226,7 @@ ggplot(all_countries) +
 ```
 
 <img src="man/figures/README-giscoR-1.png" style="width:100.0%"
+data-fig-alt="Locator map centered on Europe. Spain is highlighted within the European Union, with its autonomous community boundaries visible. Surrounding countries provide geographic context. "
 alt="Locator map of Spain" />
 
 ## Caching
@@ -263,8 +266,8 @@ A **BibTeX** entry for **LaTeX** users is:
 
 ## Contribute
 
-Check the **GitHub** page for the [source
-code](https://github.com/ropenspain/mapSpain/).
+Find the [source code](https://github.com/rOpenSpain/mapSpain/) on
+**GitHub**.
 
 ## Copyright notice
 

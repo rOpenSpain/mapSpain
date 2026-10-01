@@ -53,7 +53,7 @@ data resolution. One of:
   }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} \code{POLYGON} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Returns the boundaries of Spain as a single \code{\link[sf:st_sf]{sf}} \code{POLYGON} at a

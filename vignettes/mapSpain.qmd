@@ -25,7 +25,7 @@ For more examples and vignettes, see the full site at
 boundaries and static map tiles for Spain.
 
 **mapSpain** provides `sf` objects for Autonomous Communities and Cities,
-provinces, municipalities and NUTS levels in Spain. It also provides grid maps
+provinces, municipalities and NUTS regions in Spain. It also provides grid maps
 and complementary geometries, such as inset boxes and outlines for the Canary
 Islands.
 
@@ -36,8 +36,8 @@ administrations. Tiles can be represented on static maps with
 `mapSpain::addProviderEspTiles()`.
 
 **mapSpain** also includes a dictionary that translates Spanish subdivision
-names to English, Spanish, Catalan, Basque and Galician. It also converts names
-among coding standards such as NUTS, ISO2 and INE codes.
+names into English, Spanish, Catalan, Basque and Galician. It converts names
+and codes among the NUTS, ISO2 and INE coding standards.
 
 ## Caching
 
@@ -81,7 +81,7 @@ ggplot(country) +
 ```
 
 <div class="figure">
-<img src="./basic-1.png" alt="Example: map of Spain" width="100%" />
+<img src="./basic-1.png" alt="Administrative map outlining mainland Spain, the Balearic Islands and the Canary Islands, with the islands positioned near the mainland for display.&#10;" width="100%" />
 <p class="caption">Example: map of Spain</p>
 </div>
 
@@ -97,7 +97,7 @@ ggplot(andalucia) +
 ```
 
 <div class="figure">
-<img src="./basic2-1.png" alt="Example: provinces of Andalusia" width="100%" />
+<img src="./basic2-1.png" alt="Map of Andalusia divided into its eight provinces, with white lines marking the provincial boundaries.&#10;" width="100%" />
 <p class="caption">Example: provinces of Andalusia</p>
 </div>
 
@@ -129,7 +129,7 @@ ggplot(euskadi_ccaa) +
 ```
 
 <div class="figure">
-<img src="./basic3-1.png" alt="Example: municipalities of the Basque Country" width="100%" />
+<img src="./basic3-1.png" alt="Map of Basque Country municipalities. Municipal areas are grouped by province and filled by their Basque province names.&#10;" width="100%" />
 <p class="caption">Example: municipalities of the Basque Country</p>
 </div>
 
@@ -191,7 +191,7 @@ ggplot(ccaa_sf) +
 ```
 
 <div class="figure">
-<img src="./choro-1.png" alt="Percentage of women by Autonomous Communities and Cities (2025)" width="100%" />
+<img src="./choro-1.png" alt="Choropleth map of Spanish autonomous communities and cities. Shading and labels show the percentage of women in each region in 2025, with the Canary Islands shown in an inset.&#10;" width="100%" />
 <p class="caption">Percentage of women by Autonomous Communities and Cities (2025)</p>
 </div>
 
@@ -248,7 +248,7 @@ ggplot(munic_pop) +
 ```
 
 <div class="figure">
-<img src="./thematic-1.png" alt="Population density in Spain (2025)" width="100%" />
+<img src="./thematic-1.png" alt="Choropleth map of Spanish municipalities. Color groups population density in 2025 into ranges from fewer than 10 to more than 10,000 people per square kilometer.&#10;" width="100%" />
 <p class="caption">Population density in Spain (2025)</p>
 </div>
 
@@ -301,14 +301,14 @@ ggplot(all_countries) +
 ```
 
 <div class="figure">
-<img src="./giscoR-1.png" alt="mapSpain and giscoR example" width="100%" />
+<img src="./giscoR-1.png" alt="Locator map of Europe with Spain highlighted and its autonomous community boundaries visible. Other European Union countries and neighboring countries provide context.&#10;" width="100%" />
 <p class="caption">mapSpain and giscoR example</p>
 </div>
 
 ## Working with static map tiles
 
 **mapSpain** provides an interface for working with static map tiles. It can
-download tiles as `.png` or `.jpeg`, depending on the tile service, and use them
+download tiles as `.png` or `.jpeg`, depending on the tile service, for use
 alongside your `sf` objects.
 
 **mapSpain** also includes a plugin for

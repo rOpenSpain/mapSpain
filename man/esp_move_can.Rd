@@ -16,8 +16,8 @@ Initial position can be adjusted using the vector of coordinates. See
 \strong{Displacing the Canary Islands} in \code{\link[=esp_move_can]{esp_move_can()}}.}
 }
 \value{
-An object of the same class and with the same CRS as \code{x}, displaced
-accordingly.
+An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object of the same class
+and with the same CRS as \code{x}, displaced accordingly.
 }
 \description{
 Helper function to displace an external \code{sf} or \code{sfc} object,

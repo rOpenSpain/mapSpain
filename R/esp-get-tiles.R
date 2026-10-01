@@ -54,8 +54,8 @@
 #'     [esp_make_provider()] and examples.
 #' @param zoom Character string or number. Only valid for WMTS providers, zoom
 #'   level to be downloaded. If `NULL`, it is determined automatically. If set,
-#'   it overrides `zoommin`. If a single `sf` `POINT` and `zoom = NULL`, the
-#'   function sets a zoom level of 18. See **Details**.
+#'   it overrides `zoommin`. For a single [`sf`][sf::st_sf] `POINT` with
+#'   `zoom = NULL`, the function sets a zoom level of 18. See **Details**.
 #' @param zoommin Character string or number. Delta on default `zoom`.
 #'   The default value is designed to download fewer tiles than you probably
 #'   want. Use `1` or `2` to increase the resolution.
@@ -74,8 +74,8 @@
 #' @inheritParams esp_get_nuts
 #'
 #' @return
-#' A `SpatRaster` with 3 (RGB) or 4 (RGBA) layers, depending on
-#' the provider. See [terra::rast()].
+#' A [SpatRaster][terra::SpatRaster-class] with 3 (RGB) or 4 (RGBA) layers,
+#' depending on the provider.
 #'
 #' @source
 #' <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for

@@ -234,8 +234,8 @@ sanitize_region_code_output <- function(
 #' `esp_dict_translate()` translates a vector of names from one language to
 #' another. If `all = FALSE`, it returns a character vector with the translated
 #' name for each element of `sourcevar`. If `all = TRUE`, it returns a named
-#' `list` where each element contains all available translations for the
-#' corresponding input value.
+#' [`list`][base::list] where each element contains all available translations
+#' for the corresponding input value.
 #'
 #' @rdname esp_dict
 #' @name esp_dict_translate

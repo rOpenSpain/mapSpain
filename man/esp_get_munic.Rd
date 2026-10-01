@@ -64,7 +64,7 @@ Initial position can be adjusted using the vector of coordinates. See
 \code{\link[giscoR:gisco_get_nuts]{giscoR::gisco_get_nuts()}}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Get boundaries of municipalities in Spain.

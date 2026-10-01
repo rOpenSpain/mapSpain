@@ -70,7 +70,7 @@ ISO3 country codes or ISO2 country codes. See also
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains worldwide country-level administrative boundaries.

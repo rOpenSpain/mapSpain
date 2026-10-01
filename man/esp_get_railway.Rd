@@ -77,7 +77,7 @@ messages.}
 Use \code{\link[=esp_get_stations]{esp_get_stations()}} instead of \code{"point"} for stations.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This function loads an \code{\link[sf:st_sf]{sf}} \code{LINESTRING} or \code{POINT} object

@@ -63,7 +63,7 @@ data resolution. One of:
   }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Return

@@ -14,7 +14,7 @@ knitr:
     out.width: "100%"
 ---
 
-# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain website" align="right" height="139"/></a>
+# mapSpain <a href="https://ropenspain.github.io/mapSpain/"><img src="man/figures/logo.png" alt="mapSpain logo: a gold map of Spain on a red hexagon" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -88,6 +88,10 @@ The following examples highlight some key features of **mapSpain**.
 
 ```{r}
 #| label: static
+#| fig-alt: >
+#|   Choropleth map of Spanish autonomous communities and cities. Each region
+#|   is shaded by its share of women in the 2025 population, with percentage
+#|   labels on the map and a separate inset for the Canary Islands.
 #| fig-cap: Percentage of women by Autonomous Communities and Cities in Spain (2025)
 library(mapSpain)
 library(sf)
@@ -144,6 +148,10 @@ You can combine `sf` objects with static map tiles.
 
 ```{r}
 #| label: tile
+#| fig-alt: >
+#|   Choropleth map of Segovia municipalities over a relief basemap. Color
+#|   represents the percentage of women in each municipality in 2025, and
+#|   province boundaries outline the mapped area.
 #| fig-cap: Percentage of women in Segovia by municipality (2025)
 # Get census data.
 census <- mapSpain::pobmun25 |>
@@ -203,6 +211,10 @@ a dependency of **mapSpain**. Here is a basic example:
 
 ```{r}
 #| label: giscoR
+#| fig-alt: >
+#|   Locator map centered on Europe. Spain is highlighted within the European
+#|   Union, with its autonomous community boundaries visible. Surrounding
+#|   countries provide geographic context.
 #| fig-cap: Locator map of Spain
 library(giscoR)
 
@@ -265,8 +277,7 @@ toBibtex(citation("mapSpain"))
 
 ## Contribute
 
-Check the **GitHub** page for the [source
-code](https://github.com/ropenspain/mapSpain/).
+Find the [source code](https://github.com/rOpenSpain/mapSpain/) on **GitHub**.
 
 ## Copyright notice
 

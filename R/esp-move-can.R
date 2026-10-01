@@ -21,8 +21,8 @@
 #' @param x An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object.
 #' @inheritParams esp_get_nuts
 #'
-#' @return An object of the same class and with the same CRS as `x`, displaced
-#'   accordingly.
+#' @return An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object of the same class
+#'   and with the same CRS as `x`, displaced accordingly.
 #'
 #' @family can_helpers
 #' @encoding UTF-8

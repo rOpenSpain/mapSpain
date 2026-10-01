@@ -18,7 +18,7 @@ its contents.}
 messages.}
 }
 \value{
-Invisible. This function is called for its side effects.
+Invisible \code{NULL}. This function is called for its side effects.
 }
 \description{
 \strong{Use this function with caution.} It clears your cached data and

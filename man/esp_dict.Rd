@@ -34,8 +34,8 @@ corresponding element will be \code{NA} and a warning is emitted via
 \code{esp_dict_translate()} translates a vector of names from one language to
 another. If \code{all = FALSE}, it returns a character vector with the translated
 name for each element of \code{sourcevar}. If \code{all = TRUE}, it returns a named
-\code{list} where each element contains all available translations for the
-corresponding input value.
+\code{\link[base:list]{list}} where each element contains all available translations
+for the corresponding input value.
 }
 \description{
 Convert Spanish subdivision names or identifiers among coding schemes such

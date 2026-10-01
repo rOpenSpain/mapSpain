@@ -99,8 +99,8 @@ match_arg_pretty <- function(arg, choices, call = parent.frame()) {
 #'
 #' @param a_list A list of data frames or lists to row bind.
 #' @return
-#' A data frame resulting from row binding the input data frames or
-#' [`sf`][sf::st_sf] objects.
+#' A [data.frame][base::data.frame] or [`sf`][sf::st_sf] object resulting from
+#' row binding the inputs.
 #'
 #' @noRd
 rbind_fill <- function(a_list) {

@@ -90,7 +90,7 @@ Initial position can be adjusted using the vector of coordinates. See
 the elements to extract.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset represents rivers, lagoons, reservoirs and wetlands in Spain.

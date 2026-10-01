@@ -39,8 +39,8 @@ esp_get_tiles(
 
 \item{zoom}{Character string or number. Only valid for WMTS providers, zoom
 level to be downloaded. If \code{NULL}, it is determined automatically. If set,
-it overrides \code{zoommin}. If a single \code{sf} \code{POINT} and \code{zoom = NULL}, the
-function sets a zoom level of 18. See \strong{Details}.}
+it overrides \code{zoommin}. For a single \code{\link[sf:st_sf]{sf}} \code{POINT} with
+\code{zoom = NULL}, the function sets a zoom level of 18. See \strong{Details}.}
 
 \item{zoommin}{Character string or number. Delta on default \code{zoom}.
 The default value is designed to download fewer tiles than you probably
@@ -73,8 +73,8 @@ messages.}
 query.}
 }
 \value{
-A \code{SpatRaster} with 3 (RGB) or 4 (RGBA) layers, depending on
-the provider. See \code{\link[terra:rast]{terra::rast()}}.
+A \link[terra:SpatRaster-class]{SpatRaster} with 3 (RGB) or 4 (RGBA) layers,
+depending on the provider.
 }
 \description{
 Get static map tiles based on a spatial object. Maps can be fetched from
