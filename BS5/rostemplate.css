@@ -19,6 +19,7 @@
 	--ros-nav-hover-bg: var(--ros-violet-light);
 	--ros-nav-hover-fg: var(--ros-gray-900);
 	--ros-nav-active-bg: var(--ros-violet-dark);
+	--ros-navbar-active-bg: var(--ros-violet);
 	--ros-nav-active-fg: var(--ros-white);
 	--ros-navbar-border: var(--ros-gray-300);
 	--ros-navbar-shadow: var(--ros-gray-300);
@@ -277,7 +278,7 @@ caption {
 #navbar .nav-item.active .nav-link,
 #navbar .nav-item.active .nav-link:hover,
 #navbar .nav-item.active .nav-link:focus {
-	background-color: var(--ros-nav-active-bg);
+	background-color: var(--ros-navbar-active-bg);
 	color: var(--ros-nav-active-fg);
 	text-decoration: none !important;
 }
@@ -285,7 +286,7 @@ caption {
 #navbar .nav-item.active,
 #navbar .nav-item.active:hover,
 #navbar .nav-item.active:not(:has(> :first-child.form-inline)):hover {
-	background-color: var(--ros-nav-active-bg);
+	background-color: var(--ros-navbar-active-bg);
 }
 
 @media ((max-width: 992px)) {
@@ -293,12 +294,14 @@ caption {
 		background-color: inherit;
 	}
 	#navbar .nav-item.dropdown.active .nav-item.show {
-		background-color: var(--ros-nav-active-bg);
+		background-color: var(--ros-navbar-active-bg);
 	}
 }
 
 @media ((min-width: 992px)) {
-	.navbar .navbar-nav .active > .nav-link {
+	#navbar .nav-item.active > .nav-link,
+	#navbar .nav-item.active > .nav-link:hover,
+	#navbar .nav-item.active > .nav-link:focus {
 		border-top: solid 5px var(--ros-violet-dark);
 	}
 }
