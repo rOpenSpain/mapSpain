@@ -10,7 +10,7 @@ test_that("convert_to_nuts() normalizes mixed regional identifiers", {
   expect_null(n)
 
   expect_silent(n <- convert_to_nuts(c("Madrid", NA, NULL)))
-  expect_identical("ES30", n)
+  expect_identical(n, "ES30")
 
   expect_snapshot(convert_to_nuts(c("Lugo", "Zaporilla", "ES1", "ES-CL")))
   expect_snapshot(convert_to_nuts(c("Aama", "ES888", "FR12", "ES9")))
@@ -63,7 +63,7 @@ test_that("convert_to_nuts_ccaa() validates and expands regional identifiers", {
   expect_null(n)
 
   expect_silent(n <- convert_to_nuts_ccaa(c("Madrid", NA, NULL)))
-  expect_identical("ES30", n)
+  expect_identical(n, "ES30")
 
   expect_snapshot(convert_to_nuts_ccaa(c(
     "Asturies",
@@ -147,7 +147,7 @@ test_that("convert_to_nuts_prov() expands valid provincial identifiers", {
   expect_null(n)
 
   expect_silent(n <- convert_to_nuts_prov(c("Madrid", NA, NULL)))
-  expect_identical("ES300", n)
+  expect_identical(n, "ES300")
 
   expect_snapshot(convert_to_nuts_prov(c(
     "Asturies",
