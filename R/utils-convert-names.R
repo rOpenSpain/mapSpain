@@ -134,35 +134,7 @@ convert_to_nuts_prov <- function(region) {
     digit_type = "cpro",
     iso = TRUE
   )
-  nuts_cpros <- clean_region
-
-  # Convert text to CPRO to check the Canary Islands and Balearic Islands.
-  for (i in seq_along(clean_region)) {
-    code <- nuts_cpros[i]
-    type <- code_type[i]
-
-    # Convert Canary Islands and Balearic Islands names to province codes.
-    if (type == "text") {
-      suppressWarnings(name_es <- esp_dict_translate(code, "es"))
-
-      if (is.na(name_es)) {
-        nuts_cpros[i] <- NA
-        next
-      }
-      if (name_es == "Las Palmas") {
-        nuts_cpros[i] <- "35"
-        next
-      }
-      if (name_es == "Santa Cruz de Tenerife") {
-        nuts_cpros[i] <- "38"
-        next
-      }
-      if (name_es == "Baleares") {
-        nuts_cpros[i] <- "ES53"
-        next
-      }
-    }
-  }
+  nuts_cpros <- resolve_island_provinces(clean_region, code_type)
 
   code_type <- detect_region_code_type(
     nuts_cpros,
@@ -304,4 +276,37 @@ get_all_nuts_codes <- function() {
   allcodes <- unique(sort(nuts[!is.na(nuts)]))
 
   allcodes
+}
+
+resolve_island_provinces <- function(clean_region, code_type) {
+  nuts_cpros <- clean_region
+
+  # Convert text to CPRO to check the Canary Islands and Balearic Islands.
+  for (i in seq_along(clean_region)) {
+    code <- nuts_cpros[i]
+    type <- code_type[i]
+
+    # Convert Canary Islands and Balearic Islands names to province codes.
+    if (type == "text") {
+      suppressWarnings(name_es <- esp_dict_translate(code, "es"))
+
+      if (is.na(name_es)) {
+        nuts_cpros[i] <- NA
+        next
+      }
+      if (name_es == "Las Palmas") {
+        nuts_cpros[i] <- "35"
+        next
+      }
+      if (name_es == "Santa Cruz de Tenerife") {
+        nuts_cpros[i] <- "38"
+        next
+      }
+      if (name_es == "Baleares") {
+        nuts_cpros[i] <- "ES53"
+        next
+      }
+    }
+  }
+  nuts_cpros
 }

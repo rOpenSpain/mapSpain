@@ -19,14 +19,15 @@ test_that("esp_timeout() gives package options precedence over environment", {
 })
 
 test_that("download_url() applies the configured HTTP timeout", {
+  state <- new.env(parent = emptyenv())
   withr::local_options(list(mapspain_timeout = NULL))
   withr::local_envvar(c(MAPSPAIN_TIMEOUT = "600"))
 
-  seen <- list()
+  state$seen <- list()
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     esp_req_perform = function(req, path = NULL, ...) {
-      seen[[length(seen) + 1]] <<- req$options
+      state$seen[[length(state$seen) + 1]] <- req$options
       if (is.null(path)) {
         return(httr2::response(
           status_code = 200,
@@ -47,7 +48,7 @@ test_that("download_url() applies the configured HTTP timeout", {
   )
 
   expect_type(out, "character")
-  expect_equal(seen[[1]]$timeout_ms, 600000)
+  expect_equal(state$seen[[1]]$timeout_ms, 600000)
 })
 
 test_that("download_url() returns NULL without creating files while offline", {
