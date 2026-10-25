@@ -1,3 +1,7 @@
+# mapSpain (development version)
+
+- SIANE functions now use the CartoBase ANE 2026 distribution, including revisions to historical names and geometries. Use `update_cache = TRUE` to refresh previously cached data.
+
 # mapSpain 1.2.1
 
 - Console messages now use clearer semantic formatting and distinguish warnings

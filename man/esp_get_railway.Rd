@@ -17,12 +17,12 @@ Always acknowledge authorship using the following statements:
 \item When the original digital product is not modified or altered, use one of
 the following statements:
 \itemize{
-\item CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
-\item CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
+\item CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
+\item CartoBase ANE 2006-2026 CC-BY 4.0 Instituto Geográfico Nacional.
 }
 \item When a new product is generated:
 \itemize{
-\item Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+\item Obra derivada de CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 }
 }
 

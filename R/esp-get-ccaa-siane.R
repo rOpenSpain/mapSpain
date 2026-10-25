@@ -32,10 +32,10 @@
 #'
 #' 1. When the original digital product is not modified or altered, use one of
 #'    the following statements:
-#'    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
-#'    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
+#'    - CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
+#'    - CartoBase ANE 2006-2026 CC-BY 4.0 Instituto Geográfico Nacional.
 #' 2. When a new product is generated:
-#'    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+#'    - Obra derivada de CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 #'
 #' Data distributed through the `sianedata` data branch, see
 #' <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.

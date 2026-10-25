@@ -71,22 +71,22 @@ transparency:
 ```{r}
 #| label: fig-static2
 #| fig-alt: >
-#|   Map of Galicia using an opaque Way of St. James tile layer. The underlying
-#|   light basemap is hidden by the opaque overlay.
-#| fig-cap: Map of the Way of St. James in Galicia
-galicia <- esp_get_ccaa_siane("Galicia", epsg = 3857)
+#|   Map of La Rioja using an opaque administrative boundary tile layer.
+#|   The underlying light basemap is hidden by the opaque overlay.
+#| fig-cap: Administrative boundaries in La Rioja without transparency
+rioja <- esp_get_prov_siane("La Rioja", epsg = 3857)
 
 # Example without transparency.
 basemap <- esp_get_tiles(
-  galicia,
+  rioja,
   "IDErioja.Claro",
   zoommin = 1,
   crop = TRUE,
   bbox_expand = 0
 )
 tile_opaque <- esp_get_tiles(
-  galicia,
-  "CaminoDeSantiago",
+  rioja,
+  "UnidadesAdm.Limites",
   verbose = TRUE,
   transparent = FALSE,
   crop = TRUE,
@@ -104,13 +104,13 @@ The following example repeats the same code with `transparent = TRUE`:
 ```{r}
 #| label: fig-static_transp
 #| fig-alt: >
-#|   Map of Galicia using a transparent Way of St. James tile layer. The route
-#|   overlay and the underlying light basemap are both visible.
+#|   Map of La Rioja using a transparent administrative boundary tile layer.
+#|   The boundary lines and the underlying light basemap are both visible.
 #| fig-cap: Example of using alpha values to combine different map tile layers.
 # Example with transparency.
 tile_alpha <- esp_get_tiles(
-  galicia,
-  "CaminoDeSantiago",
+  rioja,
+  "UnidadesAdm.Limites",
   transparent = TRUE,
   crop = TRUE,
   bbox_expand = 0

@@ -61,7 +61,16 @@ jobs:
       shell: bash
 
     - name: Deploy package
+      shell: bash
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        Rscript -e 'pkgdown::deploy_to_branch(clean = TRUE, run_dont_run = TRUE)'
+        Rscript -e 'pkgdown::deploy_to_branch(clean = TRUE, run_dont_run = TRUE, quiet = FALSE)' 2>&1 | tee pkgdown-build.log
+
+    - name: Save failed website build log
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pkgdown-build-log
+        path: pkgdown-build.log
+        if-no-files-found: ignore
