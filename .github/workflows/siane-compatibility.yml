@@ -1,0 +1,47 @@
+name: SIANE compatibility
+
+on:
+  push:
+    branches: [sianedata2026]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        data: [baseline, candidate]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} / ${{ matrix.data }}
+    env:
+      NOT_CRAN: 'true'
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DATA_REF: ${{ matrix.data == 'candidate' && github.sha || '4cd2698c3f6783eb1498edfe0224646953abe71c' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 93503903bad6e1e6661ccf63ef8d201d99b44862
+          path: package
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          working-directory: package
+          extra-packages: |
+            any::devtools
+            any::zip
+            any::digest
+          needs: check
+      - name: Validate candidate distribution
+        if: matrix.data == 'candidate'
+        run: Rscript tests/check-build.R
+      - name: Test pinned main against selected CDN commit
+        run: Rscript R/test_main.R package

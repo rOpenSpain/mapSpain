@@ -1,23 +1,26 @@
-# mapSpain CDN for CartoBase ANE
+mapSpain CDN for CartoBase ANE
+================
 
--   [Source data](#source-data)
--   [Structure](#structure)
--   [Distribution](#distribution)
--   [Files included](#files-included)
-    -   [Table of files](#table-of-files)
--   [Preview](#preview)
+- [Source data](#source-data)
+- [Structure](#structure)
+- [Distribution](#distribution)
+- [Files included](#files-included)
+  - [Table of files](#table-of-files)
+- [Preview](#preview)
 
-![Data](https://img.shields.io/badge/last%20data%20available-2024-green) ![Last
-Update](https://img.shields.io/badge/updated-2024--08--02-blue)
+![Data](https://img.shields.io/badge/last%20data%20available-%60r%20params$last_year%60-green)
+![Last
+Update](https://img.shields.io/badge/updated-%60r%20gsub(%22-%22,%22--%22,Sys.Date())%60-blue)
 
-This branch is used as CDN to distribute CartoBase ANE data to **mapSpain**.
+This branch is used as CDN to distribute CartoBase ANE data to
+**mapSpain**.
 
-Due to poor API, data is not easily reachable, so this branch would be used as
-API endpoint.
+Due to poor API, data is not easily reachable, so this branch would be
+used as API endpoint.
 
-Last update : **2024-08-02**, containing **data up to 2024**.
+Last update : **2026-10-25**, containing **data up to 2026**.
 
-## Source data {#source-data}
+## Source data
 
 Atlas Nacional de España (ANE) [CC BY
 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
@@ -25,28 +28,49 @@ Atlas Nacional de España (ANE) [CC BY
 
 <http://centrodedescargas.cnig.es/CentroDescargas/buscar.do?filtro.codFamilia=CAANE>
 
-## Structure {#structure}
+## Structure
 
-Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected
-files) are provided.
+Download the five vector ZIP files (Spain at 1:3, 1:6.5 and 1:10
+million, Europe at 1:14 million and the world at 1:60 million) through
+the CNIG website. Keep their original filenames in one directory, then
+run:
 
-## Distribution {#distribution}
+``` sh
+Rscript R/create_dist.R /path/to/downloads 2026
+Rscript R/check_dist.R
+Rscript -e 'rmarkdown::render("README.Rmd")'
+```
+
+The generator reads the historical `todo` folders, checks duplicate
+layers and builds the GeoPackage files and bulk ZIP before copying them
+into `dist`. Source ZIP checksums, release years and row counts are
+recorded in [dist/manifest.csv](dist/manifest.csv).
+
+A backup of the previous bulk distribution is available at
+[data-raw/2024/CartoBase.zip](data-raw/2024/CartoBase.zip). The 2026
+source files omit five previously distributed layers: the three
+`se89_10_vias_ffcc_*_x` layers and the two `se89_3_urban_capimuni_a_*`
+layers. Their 2024 files are retained for compatibility and identified
+in the manifest. The bulk ZIP includes these retained layers.
+
+## Distribution
 
 The `dist` folder contains a distribution of [**CartoBase
 ANE**](https://www.ign.es/web/ane-area-ane) on
 [**GPKG**](https://en.wikipedia.org/wiki/GeoPackage) format.
 
-A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip), 26.4 Mb ) is also
-provided, including all the data on `dist`.
+A `zip` file ([dist/CartoBase.zip](dist/CartoBase.zip), 26.8 Mb ) is
+also provided, including all the data on `dist`.
 
-## Files included {#files-included}
+## Files included
 
-The files provided on `dist` come from the folder `todo` from each distribution.
-These file contains the whole history on each dataset, with two relevant fields,
-allowing to track historical changes between data sets:
+The files provided on `dist` come from the folder `todo` from each
+distribution. These file contains the whole history on each dataset,
+with two relevant fields, allowing to track historical changes between
+data sets:
 
--   `fecha_alta`: Start validity date
--   `fecha_baja`: End validity date
+- `fecha_alta`: Start validity date
+- `fecha_baja`: End validity date
 
 It is necessary to apply some filtering depending on the date requested:
 
@@ -55,7 +79,7 @@ library(sf)
 library(dplyr)
 library(ggplot2)
 
-munic <- read_sf("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>%
+munic <- read_sf("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) |>
   filter(rotulo == "Arenas del Rey")
 
 
@@ -64,14 +88,14 @@ ggplot(munic) +
   facet_wrap(~fecha_alta, nrow = 1)
 ```
 
-![](img/README-unnamed-chunk-23-1.png)<!-- -->
+![](img/README-unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
 
 
-munic %>%
-  st_drop_geometry() %>%
-  select(fecha_alta, fecha_baja, rotulo) %>%
+munic |>
+  st_drop_geometry() |>
+  select(fecha_alta, fecha_baja, rotulo) |>
   knitr::kable()
 ```
 
@@ -88,9 +112,9 @@ An example of filtering:
 year <- 2010
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
-shp2010 <- munic %>%
+shp2010 <- munic |>
   # If fecha_baja is NA means it is the current valid shape
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) |>
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 ggplot(shp2010) +
@@ -101,8 +125,8 @@ ggplot(shp2010) +
 year <- 2017
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
-shp2017 <- munic %>%
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
+shp2017 <- munic |>
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) |>
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 ggplot(shp2017) +
@@ -111,7 +135,7 @@ ggplot(shp2017) +
 
 # Current value
 
-shpcurrent <- munic %>% filter(is.na(fecha_baja))
+shpcurrent <- munic |> filter(is.na(fecha_baja))
 
 
 ggplot(shpcurrent) +
@@ -119,14 +143,14 @@ ggplot(shpcurrent) +
   labs(title = "Current")
 ```
 
-<img src="img/README-unnamed-chunk-24-1.png" width="33%"/><img src="img/README-unnamed-chunk-24-2.png" width="33%"/><img src="img/README-unnamed-chunk-24-3.png" width="33%"/>
+<img src="img/README-unnamed-chunk-3-1.png" alt="" width="33%" /><img src="img/README-unnamed-chunk-3-2.png" alt="" width="33%" /><img src="img/README-unnamed-chunk-3-3.png" alt="" width="33%" />
 
-### Table of files {#table-of-files}
+### Table of files
 
-Full reference of each dataset in the
-[data-raw](%60r%20paste0(%22data-raw/%22,params$last_year)%60) folder.
+Source editions and row counts for each dataset are listed in the
+[distribution manifest](dist/manifest.csv).
 
-There are 77 files available:
+There are 79 files available:
 
 | file                            | res | scope  | size   |
 |:--------------------------------|:----|:-------|:-------|
@@ -178,8 +202,8 @@ There are 77 files available:
 | se89_10_admin_ccaa_a_y.gpkg     | 10  | Spain  | 100 Kb |
 | se89_10_admin_cela_a_x.gpkg     | 10  | Spain  | 560 Kb |
 | se89_10_admin_cela_a_y.gpkg     | 10  | Spain  | 112 Kb |
-| se89_10_admin_cels_a_x.gpkg     | 10  | Spain  | 544 Kb |
-| se89_10_admin_cels_a_y.gpkg     | 10  | Spain  | 112 Kb |
+| se89_10_admin_cels_a_x.gpkg     | 10  | Spain  | 548 Kb |
+| se89_10_admin_cels_a_y.gpkg     | 10  | Spain  | 116 Kb |
 | se89_10_admin_muni_a_x.gpkg     | 10  | Spain  | 5.3 Mb |
 | se89_10_admin_muni_a_y.gpkg     | 10  | Spain  | 160 Kb |
 | se89_10_admin_prov_a_x.gpkg     | 10  | Spain  | 300 Kb |
@@ -200,14 +224,16 @@ There are 77 files available:
 | se89_10_vias_ffcc_e_x.gpkg      | 10  | Spain  | 108 Kb |
 | se89_10_vias_ffcc_l_x.gpkg      | 10  | Spain  | 200 Kb |
 | se89_10_vias_ffcc_p_x.gpkg      | 10  | Spain  | 112 Kb |
-| ee89_14_admin_pais_a.gpkg       | 14  | Europe | 1.8 Mb |
+| ee89_14_admin_pais_a.gpkg       | 14  | Europe | 2 Mb   |
+| ee89_14_hidro_rioa_a.gpkg       | 14  | Europe | 360 Kb |
+| ee89_14_hidro_riol_l.gpkg       | 14  | Europe | 404 Kb |
 | ee89_14_urban_capital_p.gpkg    | 14  | Europe | 120 Kb |
 | ww84_60_admin_pais_a.gpkg       | 60  | World  | 2.2 Mb |
 | ww84_60_admin_paismar_a.gpkg    | 60  | World  | 112 Kb |
 | ww84_60_hidro_pesc_a.gpkg       | 60  | World  | 420 Kb |
-| ww84_60_urban_capital_p.gpkg    | 60  | World  | 156 Kb |
+| ww84_60_urban_capital_p.gpkg    | 60  | World  | 152 Kb |
 | se89_mult_admin_provcan_l.gpkg  | NA  | NA     | 96 Kb  |
 
-## Preview {#preview}
+## Preview
 
-<img src="img/README-preview-1.png" width="33%"/><img src="img/README-preview-2.png" width="33%"/><img src="img/README-preview-3.png" width="33%"/><img src="img/README-preview-4.png" width="33%"/><img src="img/README-preview-5.png" width="33%"/><img src="img/README-preview-6.png" width="33%"/><img src="img/README-preview-7.png" width="33%"/><img src="img/README-preview-8.png" width="33%"/><img src="img/README-preview-9.png" width="33%"/><img src="img/README-preview-10.png" width="33%"/><img src="img/README-preview-11.png" width="33%"/><img src="img/README-preview-12.png" width="33%"/><img src="img/README-preview-13.png" width="33%"/><img src="img/README-preview-14.png" width="33%"/><img src="img/README-preview-15.png" width="33%"/><img src="img/README-preview-16.png" width="33%"/><img src="img/README-preview-17.png" width="33%"/><img src="img/README-preview-18.png" width="33%"/><img src="img/README-preview-19.png" width="33%"/><img src="img/README-preview-20.png" width="33%"/><img src="img/README-preview-21.png" width="33%"/><img src="img/README-preview-22.png" width="33%"/><img src="img/README-preview-23.png" width="33%"/><img src="img/README-preview-24.png" width="33%"/><img src="img/README-preview-25.png" width="33%"/><img src="img/README-preview-26.png" width="33%"/><img src="img/README-preview-27.png" width="33%"/><img src="img/README-preview-28.png" width="33%"/><img src="img/README-preview-29.png" width="33%"/><img src="img/README-preview-30.png" width="33%"/><img src="img/README-preview-31.png" width="33%"/><img src="img/README-preview-32.png" width="33%"/><img src="img/README-preview-33.png" width="33%"/><img src="img/README-preview-34.png" width="33%"/><img src="img/README-preview-35.png" width="33%"/><img src="img/README-preview-36.png" width="33%"/><img src="img/README-preview-37.png" width="33%"/><img src="img/README-preview-38.png" width="33%"/><img src="img/README-preview-39.png" width="33%"/><img src="img/README-preview-40.png" width="33%"/><img src="img/README-preview-41.png" width="33%"/><img src="img/README-preview-42.png" width="33%"/><img src="img/README-preview-43.png" width="33%"/><img src="img/README-preview-44.png" width="33%"/><img src="img/README-preview-45.png" width="33%"/><img src="img/README-preview-46.png" width="33%"/><img src="img/README-preview-47.png" width="33%"/><img src="img/README-preview-48.png" width="33%"/><img src="img/README-preview-49.png" width="33%"/><img src="img/README-preview-50.png" width="33%"/><img src="img/README-preview-51.png" width="33%"/><img src="img/README-preview-52.png" width="33%"/><img src="img/README-preview-53.png" width="33%"/><img src="img/README-preview-54.png" width="33%"/><img src="img/README-preview-55.png" width="33%"/><img src="img/README-preview-56.png" width="33%"/><img src="img/README-preview-57.png" width="33%"/><img src="img/README-preview-58.png" width="33%"/><img src="img/README-preview-59.png" width="33%"/><img src="img/README-preview-60.png" width="33%"/><img src="img/README-preview-61.png" width="33%"/><img src="img/README-preview-62.png" width="33%"/><img src="img/README-preview-63.png" width="33%"/><img src="img/README-preview-64.png" width="33%"/><img src="img/README-preview-65.png" width="33%"/><img src="img/README-preview-66.png" width="33%"/><img src="img/README-preview-67.png" width="33%"/><img src="img/README-preview-68.png" width="33%"/><img src="img/README-preview-69.png" width="33%"/><img src="img/README-preview-70.png" width="33%"/><img src="img/README-preview-71.png" width="33%"/><img src="img/README-preview-72.png" width="33%"/><img src="img/README-preview-73.png" width="33%"/><img src="img/README-preview-74.png" width="33%"/><img src="img/README-preview-75.png" width="33%"/><img src="img/README-preview-76.png" width="33%"/><img src="img/README-preview-77.png" width="33%"/>
+<img src="img/README-preview-1.png" alt="" width="33%" /><img src="img/README-preview-2.png" alt="" width="33%" /><img src="img/README-preview-3.png" alt="" width="33%" /><img src="img/README-preview-4.png" alt="" width="33%" /><img src="img/README-preview-5.png" alt="" width="33%" /><img src="img/README-preview-6.png" alt="" width="33%" /><img src="img/README-preview-7.png" alt="" width="33%" /><img src="img/README-preview-8.png" alt="" width="33%" /><img src="img/README-preview-9.png" alt="" width="33%" /><img src="img/README-preview-10.png" alt="" width="33%" /><img src="img/README-preview-11.png" alt="" width="33%" /><img src="img/README-preview-12.png" alt="" width="33%" /><img src="img/README-preview-13.png" alt="" width="33%" /><img src="img/README-preview-14.png" alt="" width="33%" /><img src="img/README-preview-15.png" alt="" width="33%" /><img src="img/README-preview-16.png" alt="" width="33%" /><img src="img/README-preview-17.png" alt="" width="33%" /><img src="img/README-preview-18.png" alt="" width="33%" /><img src="img/README-preview-19.png" alt="" width="33%" /><img src="img/README-preview-20.png" alt="" width="33%" /><img src="img/README-preview-21.png" alt="" width="33%" /><img src="img/README-preview-22.png" alt="" width="33%" /><img src="img/README-preview-23.png" alt="" width="33%" /><img src="img/README-preview-24.png" alt="" width="33%" /><img src="img/README-preview-25.png" alt="" width="33%" /><img src="img/README-preview-26.png" alt="" width="33%" /><img src="img/README-preview-27.png" alt="" width="33%" /><img src="img/README-preview-28.png" alt="" width="33%" /><img src="img/README-preview-29.png" alt="" width="33%" /><img src="img/README-preview-30.png" alt="" width="33%" /><img src="img/README-preview-31.png" alt="" width="33%" /><img src="img/README-preview-32.png" alt="" width="33%" /><img src="img/README-preview-33.png" alt="" width="33%" /><img src="img/README-preview-34.png" alt="" width="33%" /><img src="img/README-preview-35.png" alt="" width="33%" /><img src="img/README-preview-36.png" alt="" width="33%" /><img src="img/README-preview-37.png" alt="" width="33%" /><img src="img/README-preview-38.png" alt="" width="33%" /><img src="img/README-preview-39.png" alt="" width="33%" /><img src="img/README-preview-40.png" alt="" width="33%" /><img src="img/README-preview-41.png" alt="" width="33%" /><img src="img/README-preview-42.png" alt="" width="33%" /><img src="img/README-preview-43.png" alt="" width="33%" /><img src="img/README-preview-44.png" alt="" width="33%" /><img src="img/README-preview-45.png" alt="" width="33%" /><img src="img/README-preview-46.png" alt="" width="33%" /><img src="img/README-preview-47.png" alt="" width="33%" /><img src="img/README-preview-48.png" alt="" width="33%" /><img src="img/README-preview-49.png" alt="" width="33%" /><img src="img/README-preview-50.png" alt="" width="33%" /><img src="img/README-preview-51.png" alt="" width="33%" /><img src="img/README-preview-52.png" alt="" width="33%" /><img src="img/README-preview-53.png" alt="" width="33%" /><img src="img/README-preview-54.png" alt="" width="33%" /><img src="img/README-preview-55.png" alt="" width="33%" /><img src="img/README-preview-56.png" alt="" width="33%" /><img src="img/README-preview-57.png" alt="" width="33%" /><img src="img/README-preview-58.png" alt="" width="33%" /><img src="img/README-preview-59.png" alt="" width="33%" /><img src="img/README-preview-60.png" alt="" width="33%" /><img src="img/README-preview-61.png" alt="" width="33%" /><img src="img/README-preview-62.png" alt="" width="33%" /><img src="img/README-preview-63.png" alt="" width="33%" /><img src="img/README-preview-64.png" alt="" width="33%" /><img src="img/README-preview-65.png" alt="" width="33%" /><img src="img/README-preview-66.png" alt="" width="33%" /><img src="img/README-preview-67.png" alt="" width="33%" /><img src="img/README-preview-68.png" alt="" width="33%" /><img src="img/README-preview-69.png" alt="" width="33%" /><img src="img/README-preview-70.png" alt="" width="33%" /><img src="img/README-preview-71.png" alt="" width="33%" /><img src="img/README-preview-72.png" alt="" width="33%" /><img src="img/README-preview-73.png" alt="" width="33%" /><img src="img/README-preview-74.png" alt="" width="33%" /><img src="img/README-preview-75.png" alt="" width="33%" /><img src="img/README-preview-76.png" alt="" width="33%" /><img src="img/README-preview-77.png" alt="" width="33%" /><img src="img/README-preview-78.png" alt="" width="33%" /><img src="img/README-preview-79.png" alt="" width="33%" /><img src="img/README-preview-80.png" alt="" width="33%" />

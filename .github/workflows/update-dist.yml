@@ -16,14 +16,16 @@ jobs:
       - name: Install packages
         run: |
           install.packages("remotes")
-          pkgs <- c("rmarkdown", "sf", "dplyr","styler", "lwgeom", "zip")
+          pkgs <- c("rmarkdown", "sf", "dplyr","styler", "lwgeom", "zip", "digest")
 
           install.packages(pkgs)
 
         shell: Rscript {0}
 
-      - name: Update script
-        run: Rscript -e "source('./R/create_dist.R')"
+      - name: Validate distribution and render README
+        run: |
+          Rscript R/check_dist.R
+          Rscript -e "rmarkdown::render('README.Rmd')"
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"

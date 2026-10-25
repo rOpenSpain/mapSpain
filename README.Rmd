@@ -6,7 +6,7 @@ output:
     toc: true
     toc_depth: 3
 params:
-  last_year: 2024
+  last_year: 2026
 ---
 
 ```{r config, message=FALSE, warning=FALSE, include=FALSE}
@@ -42,8 +42,27 @@ Atlas Nacional de España (ANE) [CC BY
 
 ## Structure
 
-Raw data is available under data-raw/YYYY. Zipped version and unzipped (selected
-files) are provided.
+Download the five vector ZIP files (Spain at 1:3, 1:6.5 and 1:10 million,
+Europe at 1:14 million and the world at 1:60 million) through the CNIG website.
+Keep their original filenames in one directory, then run:
+
+```sh
+Rscript R/create_dist.R /path/to/downloads 2026
+Rscript R/check_dist.R
+Rscript -e 'rmarkdown::render("README.Rmd")'
+```
+
+The generator reads the historical `todo` folders, checks duplicate layers and
+builds the GeoPackage files and bulk ZIP before copying them into `dist`.
+Source ZIP checksums, release years and row counts are recorded in
+[dist/manifest.csv](dist/manifest.csv).
+
+A backup of the previous bulk distribution is available at
+[data-raw/2024/CartoBase.zip](data-raw/2024/CartoBase.zip).
+The 2026 source files omit five previously distributed layers: the three
+`se89_10_vias_ffcc_*_x` layers and the two `se89_3_urban_capimuni_a_*`
+layers. Their 2024 files are retained for compatibility and identified in the
+manifest. The bulk ZIP includes these retained layers.
 
 ## Distribution
 
@@ -76,7 +95,7 @@ library(sf)
 library(dplyr)
 library(ggplot2)
 
-munic <- read_sf("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) %>%
+munic <- read_sf("dist/se89_3_admin_muni_a_x.gpkg", quiet = TRUE) |>
   filter(rotulo == "Arenas del Rey")
 
 
@@ -85,9 +104,9 @@ ggplot(munic) +
   facet_wrap(~fecha_alta, nrow = 1)
 
 
-munic %>%
-  st_drop_geometry() %>%
-  select(fecha_alta, fecha_baja, rotulo) %>%
+munic |>
+  st_drop_geometry() |>
+  select(fecha_alta, fecha_baja, rotulo) |>
   knitr::kable()
 ```
 
@@ -98,9 +117,9 @@ An example of filtering:
 year <- 2010
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
-shp2010 <- munic %>%
+shp2010 <- munic |>
   # If fecha_baja is NA means it is the current valid shape
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) |>
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 ggplot(shp2010) +
@@ -111,8 +130,8 @@ ggplot(shp2010) +
 year <- 2017
 year.fmt <- as.Date(paste(year, "01", "01", sep = "-"))
 
-shp2017 <- munic %>%
-  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) %>%
+shp2017 <- munic |>
+  mutate(fecha_baja = ifelse(is.na(fecha_baja), Sys.Date(), fecha_baja)) |>
   filter(fecha_alta < year.fmt & year.fmt <= fecha_baja)
 
 ggplot(shp2017) +
@@ -121,7 +140,7 @@ ggplot(shp2017) +
 
 # Current value
 
-shpcurrent <- munic %>% filter(is.na(fecha_baja))
+shpcurrent <- munic |> filter(is.na(fecha_baja))
 
 
 ggplot(shpcurrent) +
@@ -131,8 +150,8 @@ ggplot(shpcurrent) +
 
 ### Table of files
 
-Full reference of each dataset in the
-[data-raw](%60r%20paste0(%22data-raw/%22,params$last_year)%60) folder.
+Source editions and row counts for each dataset are listed in the
+[distribution manifest](dist/manifest.csv).
 
 There are `r length(list.files("dist/", ".gpkg"))` files available:
 
@@ -165,7 +184,7 @@ if (length(grep("60", df$file)) > 0) {
   df[grep("60", df$file), ]$res <- "60"
 }
 
-df <- df %>% arrange(as.double(res), file)
+df <- df |> arrange(as.double(res), file)
 
 df$scope <- ifelse(df$res <= 10, "Spain", "Europe")
 df$scope <- ifelse(df$re == 60, "World", df$scope)
