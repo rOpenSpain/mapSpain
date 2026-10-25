@@ -28,13 +28,13 @@ Always acknowledge authorship using the following statements:
 1.  When the original digital product is not modified or altered, use
     one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+    - CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
+    - CartoBase ANE 2006-2026 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+    - Obra derivada de CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -52,7 +52,7 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -99,18 +99,18 @@ read_sf(dest_files[1]) |> head()
 #> 2 2005-12-31 2019-12-31 Andorra    AD         97  1.58  42.5  1.52  42.5 AND    
 #> 3 2005-12-31 2019-12-31 Bélgica    BE         97  4.68  50.6  4.37  50.8 BEL    
 #> 4 2005-12-31 2019-12-31 Bosnia y … BA         97 17.8   44.2 18.4   43.9 BIH    
-#> 5 2005-12-31 2019-12-31 Liechtens… LI         97  9.56  47.2  9.52  47.1 LIE    
-#> 6 2005-12-31 2019-12-31 Bulgaria   BG         97 25.2   42.8 23.3   42.7 BGR    
+#> 5 2005-12-31 2019-12-31 Bulgaria   BG         97 25.2   42.8 23.3   42.7 BGR    
+#> 6 2005-12-31 2019-12-31 Croacia    HR         97 16.6   45.7 16.0   45.8 HRV    
 #> # ℹ 7 more variables: id_pais <chr>, id_palt <chr>, id_leng <chr>,
 #> #   rotulo2 <chr>, st_area_sh <dbl>, st_length_ <dbl>, geom <MULTIPOLYGON [°]>
 
 # Connect the function with the downloaded data.
 
 invisible(esp_get_munic_siane(cache_dir = tmp, verbose = TRUE))
-#> ℹ Cache directory is /tmp/RtmpfPSDbT/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpfPSDbT/testexample/siane/se89_3_admin_muni_a_x.gpkg.
-#> ℹ Cache directory is /tmp/RtmpfPSDbT/testexample/siane.
-#> ✔ File already cached: /tmp/RtmpfPSDbT/testexample/siane/se89_3_admin_muni_a_y.gpkg.
+#> ℹ Cache directory is /tmp/RtmpUfBHde/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpUfBHde/testexample/siane/se89_3_admin_muni_a_x.gpkg.
+#> ℹ Cache directory is /tmp/RtmpUfBHde/testexample/siane.
+#> ✔ File already cached: /tmp/RtmpUfBHde/testexample/siane/se89_3_admin_muni_a_y.gpkg.
 
 # The message shows that the file is already cached.
 

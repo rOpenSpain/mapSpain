@@ -76,7 +76,7 @@ For more information about BDN grids and other resources, visit:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - ccaa:
 

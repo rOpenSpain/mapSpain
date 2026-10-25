@@ -21,7 +21,7 @@ v1.3.3."><meta property="og:image" content="https://ropenspain.github.io/mapSpai
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="mapSpain logo" height="34" width="34" class="d-inline-block me-1">mapSpain</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,8 +120,8 @@ WMS and WMTS providers.</p>
 <dt id="arg-zoom">zoom<a class="anchor" aria-label="anchor" href="#arg-zoom"></a></dt>
 <dd><p>Character string or number. Only valid for WMTS providers, zoom
 level to be downloaded. If <code>NULL</code>, it is determined automatically. If set,
-it overrides <code>zoommin</code>. If a single <code>sf</code> <code>POINT</code> and <code>zoom = NULL</code>, the
-function sets a zoom level of 18. See <strong>Details</strong>.</p></dd>
+it overrides <code>zoommin</code>. For a single <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> <code>POINT</code> with
+<code>zoom = NULL</code>, the function sets a zoom level of 18. See <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-zoommin">zoommin<a class="anchor" aria-label="anchor" href="#arg-zoommin"></a></dt>
@@ -165,7 +165,8 @@ a new download. Defaults to <code>FALSE</code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>A logical value. If <code>TRUE</code> displays informational messages.</p></dd>
+<dd><p>A logical value indicating whether to display informational
+messages.</p></dd>
 
 
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
@@ -175,8 +176,8 @@ query.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>SpatRaster</code> with 3 (RGB) or 4 (RGBA) layers, depending on
-the provider. See <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p>
+    <p>A <a href="https://rspatial.github.io/terra/reference/SpatRaster-class.html" class="external-link">SpatRaster</a> with 3 (RGB) or 4 (RGBA) layers,
+depending on the provider.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -280,7 +281,7 @@ persistent cache.</p>
 <footer id="footer"><div class="container">
     <div class="row">
       <div class="col-md">
-        <h4 data-toc-skip>About <img src="../logo.png" alt="mapSpain Logo" height="24" class="round-logo">
+        <h4 data-toc-skip>About <img src="../logo.png" alt="mapSpain logo" height="24" class="round-logo">
           mapSpain</h4>
         <p>Developed by <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>. <br>Part of the <span class="ROS-light">rOpenSpain</span> project.
 </p>
@@ -289,7 +290,7 @@ persistent cache.</p>
         <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
             rOpenSpain</span></h4>
         <p><a href="https://ropenspain.es/" class="external-link"><span class="ROS-light">rOpenSpain</span></a> is a community of
-          enthusiasts of <strong>R</strong>, open data and reproducibility that
+          <strong>R</strong>, open data and reproducibility enthusiasts that
           works together to create high-quality <strong>R</strong> packages for
           the analysis and use of Spanish data of general interest.
         </p>

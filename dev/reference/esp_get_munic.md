@@ -21,10 +21,8 @@ esp_get_munic(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO Local Administrative Units distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/lau/>.
 
 ## Arguments
 
@@ -65,7 +63,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - region:
 
@@ -94,7 +92,7 @@ Copyright:
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 

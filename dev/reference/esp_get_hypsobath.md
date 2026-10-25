@@ -36,13 +36,13 @@ Always acknowledge authorship using the following statements:
 1.  When the original digital product is not modified or altered, use
     one of the following statements:
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+    - CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 
-    - CartoBase ANE 2006-2024 CC-BY 4.0 Instituto Geográfico Nacional.
+    - CartoBase ANE 2006-2026 CC-BY 4.0 Instituto Geográfico Nacional.
 
 2.  When a new product is generated:
 
-    - Obra derivada de CartoBase ANE 2006-2024 CC-BY 4.0 ign.es.
+    - Obra derivada de CartoBase ANE 2006-2026 CC-BY 4.0 ign.es.
 
 Data distributed through the `sianedata` data branch, see
 <https://github.com/rOpenSpain/mapSpain/tree/sianedata>.
@@ -78,7 +78,7 @@ Data distributed through the `sianedata` data branch, see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -95,7 +95,7 @@ Data distributed through the `sianedata` data branch, see
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 

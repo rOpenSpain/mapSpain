@@ -37,7 +37,7 @@ IGN data distributed through the `sianedata/MTN` data branch (see
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 

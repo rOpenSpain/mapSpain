@@ -27,8 +27,9 @@ esp_move_can(x, moveCAN = TRUE)
 
 ## Value
 
-An object of the same class and with the same CRS as `x`, displaced
-accordingly.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+[`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object of the
+same class and with the same CRS as `x`, displaced accordingly.
 
 ## Details
 

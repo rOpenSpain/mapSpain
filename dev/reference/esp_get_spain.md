@@ -12,10 +12,8 @@ esp_get_spain(moveCAN = TRUE, ...)
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO NUTS distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
 
 ## Arguments
 
@@ -72,7 +70,8 @@ Copyright:
 
   `verbose`
 
-  :   A logical value. If `TRUE` displays informational messages.
+  :   A logical value indicating whether to display informational
+      messages.
 
   `resolution`
 
@@ -91,8 +90,7 @@ Copyright:
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -138,7 +136,7 @@ original_can
 #> # A tibble: 1 × 19
 #>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
 #> * <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
-#> 1 ES              0 ES        España    España            NA        NA
+#> 1 ES              0 ES        España    España             0         0
 #> # ℹ 12 more variables: COAST_TYPE <int>, NAME_ENGL <chr>, NAME_FREN <chr>,
 #> #   ISO3_CODE <chr>, SVRG_UN <chr>, CAPT <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
 #> #   CC_STAT <chr>, NAME_GERM <chr>, geo <chr>, geometry <MULTIPOLYGON [°]>

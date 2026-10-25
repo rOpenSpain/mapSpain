@@ -61,15 +61,15 @@ file.
 
 `MOUNT_TYPE`: Mountain typology:
 
-- `1`: More than 50 % of the surface is covered by topographic mountain
+- `1`: More than 50% of the surface is covered by topographic mountain
   areas.
 
-- `2`: More than 50 % of the regional population lives in topographic
+- `2`: More than 50% of the regional population lives in topographic
   mountain areas.
 
-- `3`: More than 50 % of the surface is covered by topographic mountain
-  areas and where more than 50 % of the regional population lives in
-  these mountain areas.
+- `3`: More than 50% of the surface is covered by topographic mountain
+  areas and more than 50% of the regional population lives in these
+  mountain areas.
 
 - `4`: Non-mountain region / other regions.
 
@@ -89,8 +89,8 @@ file.
 
 - `1`: Coastal (on coast).
 
-- `2`: Coastal (less than 50 % of population living within 50 km of the
-  coastline).
+- `2`: Coastal (less than 50% of the population lives within 50 km of
+  the coastline).
 
 - `3`: Non-coastal region.
 
