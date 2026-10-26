@@ -246,7 +246,7 @@ test_that("esp_get_tiles() controls alpha channels with transparent", {
 
   res <- esp_get_tiles(
     poly,
-    "CaminoDeSantiago",
+    "UnidadesAdm.Limites",
     cache_dir = cdir,
     transparent = TRUE,
     bbox_expand = 0.1
@@ -260,7 +260,7 @@ test_that("esp_get_tiles() controls alpha channels with transparent", {
   # No transparency...
   res2 <- esp_get_tiles(
     poly,
-    "CaminoDeSantiago",
+    "UnidadesAdm.Limites",
     cache_dir = cdir,
     transparent = FALSE,
     bbox_expand = 0.1
@@ -281,20 +281,20 @@ test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
 
   cdir <- withr::local_tempdir(pattern = "wms-test-")
 
-  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 0)
+  expect_length(list.files(file.path(cdir, "UnidadesAdm.Limites")), 0)
   # Single point
   point <- esp_get_capimun(munic = "^Segovia", cache_dir = cdir, epsg = 3857)
 
   expect_silent(
     res <- esp_get_tiles(
       point,
-      "CaminoDeSantiago",
+      "UnidadesAdm.Limites",
       cache_dir = cdir,
       bbox_expand = 0
     )
   )
 
-  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 1)
+  expect_length(list.files(file.path(cdir, "UnidadesAdm.Limites")), 1)
 
   v <- as.vector(terra::ext(res))
   rel_x <- unname(diff(v[1:2])) / 2
@@ -305,18 +305,18 @@ test_that("esp_get_tiles() caches WMS tiles and respects WMS options", {
   # See if cache is modified
   res2 <- esp_get_tiles(
     point,
-    "CaminoDeSantiago",
+    "UnidadesAdm.Limites",
     cache_dir = cdir,
     bbox_expand = 0
   )
 
   expect_identical(terra::crs(res2), terra::crs(point))
-  expect_length(list.files(file.path(cdir, "CaminoDeSantiago")), 1)
+  expect_length(list.files(file.path(cdir, "UnidadesAdm.Limites")), 1)
 
   # Modify res
   res3 <- esp_get_tiles(
     point,
-    "CaminoDeSantiago",
+    "UnidadesAdm.Limites",
     cache_dir = cdir,
     bbox_expand = 0,
     res = 256
@@ -483,7 +483,7 @@ test_that("esp_get_tiles() supports legacy WMS provider options", {
 
   tile2 <- esp_get_tiles(
     poly,
-    type = "CaminoDeSantiago",
+    type = "UnidadesAdm.Limites",
     options = list(
       version = "1.3.0",
       crs = "EPSG:25830",
@@ -519,9 +519,9 @@ test_that("esp_get_tiles() accepts custom WMS providers", {
   custom_wms <- list(
     id = "new_cached_test",
     q = paste0(
-      "https://www.ign.es/wms-inspire/camino-santiago?",
+      "https://www.ign.es/wms-inspire/unidades-administrativas?",
       "service=WMS&version=1.3.0&request=GetMap&format=image/png&",
-      "transparent=true&layers=camino_frances&crs=EPSG:3857"
+      "transparent=true&layers=AU.AdministrativeBoundary&crs=EPSG:3857"
     )
   )
 

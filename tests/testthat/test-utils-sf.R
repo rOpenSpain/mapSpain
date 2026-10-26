@@ -1,26 +1,13 @@
 test_that("read_geo_file_sf() selects shapefiles using hints", {
-  skip_on_cran()
-  skip_if_offline()
-
   cdir <- withr::local_tempdir(pattern = "testthat-ex-")
-  url <- paste0(
-    "https://esdac.jrc.ec.europa.eu/Library/Reference_Grids/",
-    "Grids/grids_for_single_eu25_countries_etrs_laea_10k.zip"
-  )
-
-  fake_local <- download_url(
-    url,
-    basename(url),
-    cdir,
-    "fake",
-    update_cache = FALSE,
-    verbose = FALSE
-  )
+  fake_local <- file.path(cdir, "shapes.zip")
+  stopifnot(file.copy(test_path("fixtures", "shapes.zip"), fake_local))
   s_test <- read_geo_file_sf(fake_local)
 
   # Different from
   s <- read_geo_file_sf(fake_local, shp_hint = "spain")
-  expect_false(nrow(s) == nrow(s_test))
+  expect_equal(nrow(s_test), 1L)
+  expect_equal(s$id, 1:2)
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
