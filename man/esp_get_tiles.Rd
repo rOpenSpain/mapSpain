@@ -7,7 +7,7 @@
 \title{Get static map tiles from public administrations of Spain}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
-\CRANpkg{leaflet}, \strong{v1.4.0}.
+\CRANpkg{leaflet}, \strong{v1.5.0}.
 }
 \usage{
 esp_get_tiles(
@@ -82,7 +82,7 @@ WMS and WMTS providers.
 
 This function is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.4.0}.
+\strong{v1.5.0}.
 }
 \details{
 Zoom levels are described on the

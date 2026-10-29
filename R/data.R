@@ -152,6 +152,12 @@ NULL
 #' **`r leaf_providers_esp_v`**.
 #'
 #' @details
+#' Compare layers in the
+#' [preview](https://dieghernan.github.io/leaflet-providersESP/preview/)
+#' and consult the
+#' [layer guide](https://dieghernan.github.io/leaflet-providersESP/capas/)
+#' for coverage, scale and availability information.
+#'
 #' Providers available to be passed to `type` in [esp_get_tiles()] are:
 #'
 #' ```{r, echo=FALSE, comment="", results="asis"}

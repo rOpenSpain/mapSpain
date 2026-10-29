@@ -1,12 +1,14 @@
 # Plugin version for Leaflet documentation.
 # jarl-ignore unused_object: Used by cross-file roxygen inline code
-leaf_providers_esp_v <- "v1.4.0"
+leaf_providers_esp_v <- "v1.5.0"
 
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 #' map
 #'
 #' @param provider The name of the provider. See [esp_tiles_providers] or
-#'   <https://dieghernan.github.io/leaflet-providersESP/preview/>.
+#'   the [preview](https://dieghernan.github.io/leaflet-providersESP/preview/)
+#'   and the
+#'   [layer guide](https://dieghernan.github.io/leaflet-providersESP/capas/).
 #'
 #' @inheritParams leaflet::addProviderTiles
 #' @inherit leaflet::addProviderTiles return

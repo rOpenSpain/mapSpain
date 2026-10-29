@@ -1,4 +1,4 @@
-// leaflet-providersESP.js plugin v1.4.0
+// leaflet-providersESP.js plugin v1.5.0
 // (c) D. Hernangomez - MIT License
 // https://dieghernan.github.io/leaflet-providersESP/
 // Issues: https://github.com/dieghernan/leaflet-providersESP/issues
@@ -6,7 +6,7 @@
 // Feel free to contribute
 /* exported providersESPversion */
 'use strict';
-var providersESPversion = 'v1.4.0';
+var providersESPversion = 'v1.5.0';
 // Databases
 // WMTS Servers - Tile Maps - Mapas de Teselas
 var completeWMTS = '&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}';
@@ -500,6 +500,225 @@ var providersESP = {
 					attribution: '{attribution.IGNBase}'
 				}
 			}
+		}
+	},
+	PNOAHistorico: {
+		url: 'https://www.ign.es/wms/pnoa-historico?',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			layers: 'AMS_1956-1957',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: false
+		},
+		variants: {
+			Americano: 'AMS_1956-1957',
+			Interministerial: 'Interministerial_1973-1986',
+			Nacional: 'Nacional_1981-1986',
+			OLISTAT: 'OLISTAT',
+			SIGPAC: 'SIGPAC',
+			PNOA2004: 'PNOA2004',
+			PNOA2009: 'PNOA2009',
+			PNOA2014: 'PNOA2014',
+			PNOA2019: 'PNOA2019',
+			PNOA2024: 'PNOA2024'
+		}
+	},
+	MTNHistorico: {
+		url: 'https://www.ign.es/wmts/primera-edicion-mtn?service=WMTS&request=GetTile&version=1.0.0&Format=image/jpeg&layer={variant}&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			variant: 'mtn50-edicion1',
+			maxNativeZoom: 19
+		},
+		variants: {
+			MTN50: 'mtn50-edicion1',
+			MTN25: 'mtn25-edicion1',
+			Minutas: 'catastrones'
+		}
+	},
+	Inundaciones: {
+		url: 'https://servicios.idee.es/wms-inspire/riesgos-naturales/inundaciones?',
+		options: {
+			attribution: 'MITECO',
+			layers: 'NZ.Flood.FluvialT10',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			FluvialT10: 'NZ.Flood.FluvialT10',
+			FluvialT100: 'NZ.Flood.FluvialT100',
+			FluvialT500: 'NZ.Flood.FluvialT500',
+			MarinaT100: 'NZ.Flood.MarinaT100',
+			MarinaT500: 'NZ.Flood.MarinaT500'
+		}
+	},
+	RedNatura: {
+		url: 'https://iepnb.gob.es/geoserver/RN2000/rn2000/wms?',
+		options: {
+			attribution: 'MITECO',
+			layers: 'rn2000',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			General: 'rn2000'
+		}
+	},
+	EspaciosProtegidos: {
+		url: 'https://iepnb.gob.es/geoserver/ENP/enp/wms?',
+		options: {
+			attribution: 'MITECO',
+			layers: 'enp',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			General: 'enp'
+		}
+	},
+	SeccionesINE: {
+		url: 'https://servicios.ine.es/arcgis/services/WMS_INE_SECCIONES_G01/MapServer/WMSServer?',
+		options: {
+			attribution: 'Instituto Nacional de Estad&iacute;stica (INE)',
+			layers: 'Secciones2026',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Secciones2026: 'Secciones2026',
+			Distritos2026: 'Distritos2026',
+			Secciones2021: 'Secciones2021',
+			Distritos2021: 'Distritos2021'
+		}
+	},
+	Pendientes: {
+		url: 'https://wms-pendientes.idee.es/pendientes?',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			layers: 'MDP05',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			MDP05: 'MDP05'
+		}
+	},
+	GEODE: {
+		url: 'https://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geode_50/MapServer/WMSServer?',
+		options: {
+			attribution: 'IGME-CSIC',
+			layers: '1,2,3,4,5,6,9',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Geologia: '1,2,3,4,5,6,9',
+			Unidades: '1',
+			Contactos: '2',
+			Cuaternario: '3'
+		}
+	},
+	SIGPAC: {
+		url: 'https://sigpac-hubcloud.es/wms?',
+		options: {
+			attribution: 'FEGA / MAPA',
+			layers: 'AU.Sigpac:recinto',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Recintos: 'AU.Sigpac:recinto',
+			CultivoDeclarado2025: 'AU.Sigpac:cultivo_declarado',
+			PaisajeAreas: 'AU.Sigpac:e_paisaje',
+			PaisajeLineas: 'AU.Sigpac:e_paisaje_linea',
+			PaisajePuntos: 'AU.Sigpac:e_paisaje_punto'
+		}
+	},
+	MapaForestal: {
+		url: 'https://iepnb.gob.es/geoserver/foto_fija_mfe/ff_uso/wms?',
+		options: {
+			attribution: 'MITECO',
+			layers: 'ff_uso',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Usos: 'ff_uso'
+		}
+	},
+	Planimetrias: {
+		url: 'https://www.ign.es/wmts/minutas-cartograficas?service=WMTS&request=GetTile&version=1.0.0&Format=image/png&layer={variant}&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			variant: 'Minutas',
+			maxNativeZoom: 20
+		},
+		variants: {
+			Minutas: 'Minutas'
+		}
+	},
+	CaminosNaturales: {
+		url: 'https://wms.mapama.gob.es/sig/desarrollorural/ccnn_etapas?',
+		options: {
+			attribution: 'MAPA',
+			layers: 'ccnn_etapas',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Etapas: 'ccnn_etapas'
+		}
+	},
+	SpainByBike: {
+		url: 'https://wms-spainbybike.idee.es/spainbybike?',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			layers: 'etapas',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Etapas: 'etapas',
+			TiposVia: 'tipo_via',
+			CentrosBTT: 'centros_btt',
+			Puertos: 'puertos_linea',
+			PuertosPuntos: 'puertos_pto'
+		}
+	},
+	ViasPecuarias: {
+		url: 'https://iepnb.gob.es/geoserver/vias_pecuarias/rgvp_2024/wms?',
+		options: {
+			attribution: 'MITECO',
+			layers: 'rgvp_2024',
+			version: '1.3.0',
+			format: 'image/png',
+			transparent: true
+		},
+		variants: {
+			Red2024: 'rgvp_2024'
+		}
+	},
+	PotencialSolar: {
+		url: 'https://wmts-potencial-solar.idee.es/potencial-solar?service=WMTS&request=GetTile&version=1.0.0&Format=image/png&layer={variant}&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}',
+		options: {
+			attribution: '{attribution.IGNBase}',
+			variant: 'potencial-solar-global',
+			maxNativeZoom: 20
+		},
+		variants: {
+			Global: 'potencial-solar-global',
+			Edificios: 'potencial-solar'
 		}
 	},
 	ParquesNaturales: {
