@@ -1,5 +1,5 @@
 # Rebuild from the vendored leaflet-providersESP release (requires V8 and xml2).
-# Source: https://github.com/dieghernan/leaflet-providersESP/tree/v1.4.0/dist
+# Source: https://github.com/dieghernan/leaflet-providersESP/tree/v1.5.0/dist
 ctx <- V8::v8()
 ctx$eval(
   "var L = {CRS: {EPSG4326: 'EPSG:4326'}, Util: {extend: Object.assign}, tileLayer: {}};"

@@ -7,7 +7,7 @@
 map}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
-\CRANpkg{leaflet}, \strong{v1.4.0}.
+\CRANpkg{leaflet}, \strong{v1.5.0}.
 }
 \usage{
 addProviderEspTiles(
@@ -22,7 +22,9 @@ addProviderEspTiles(
 \item{map}{the map to add the tile layer to}
 
 \item{provider}{The name of the provider. See \link{esp_tiles_providers} or
-\url{https://dieghernan.github.io/leaflet-providersESP/preview/}.}
+the \href{https://dieghernan.github.io/leaflet-providersESP/preview/}{preview}
+and the
+\href{https://dieghernan.github.io/leaflet-providersESP/capas/}{layer guide}.}
 
 \item{layerId}{the layer id to assign}
 

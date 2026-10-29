@@ -18,7 +18,8 @@ make_msg <- function(type = "generic", verbose, ...) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  alert <- switch(type,
+  alert <- switch(
+    type,
     generic = cli::cli_alert,
     success = cli::cli_alert_success,
     warning = cli::cli_alert_warning,

@@ -17,18 +17,24 @@ contains additional parameters to pass to \code{\link[=addProviderEspTiles]{addP
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
 \CRANpkg{leaflet},
-\strong{v1.4.0}.
+\strong{v1.5.0}.
 }
 \description{
-A named \code{\link[base:list]{list}} of length 114,
+A named \code{\link[base:list]{list}} of length 174,
 containing URL information from different public WMS and WMTS tile providers
 in Spain.
 
 This dataset is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.4.0}.
+\strong{v1.5.0}.
 }
 \details{
+Compare layers in the
+\href{https://dieghernan.github.io/leaflet-providersESP/preview/}{preview}
+and consult the
+\href{https://dieghernan.github.io/leaflet-providersESP/capas/}{layer guide}
+for coverage, scale and availability information.
+
 Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
 \itemize{
 \item \code{"IDErioja"}
@@ -142,6 +148,66 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"Copernicus.Natura2k"}
 \item \code{"Copernicus.UrbanAtlas"}
 \item \code{"Copernicus.RiparianGreen"}
+\item \code{"PNOAHistorico"}
+\item \code{"PNOAHistorico.Americano"}
+\item \code{"PNOAHistorico.Interministerial"}
+\item \code{"PNOAHistorico.Nacional"}
+\item \code{"PNOAHistorico.OLISTAT"}
+\item \code{"PNOAHistorico.SIGPAC"}
+\item \code{"PNOAHistorico.PNOA2004"}
+\item \code{"PNOAHistorico.PNOA2009"}
+\item \code{"PNOAHistorico.PNOA2014"}
+\item \code{"PNOAHistorico.PNOA2019"}
+\item \code{"PNOAHistorico.PNOA2024"}
+\item \code{"MTNHistorico"}
+\item \code{"MTNHistorico.MTN50"}
+\item \code{"MTNHistorico.MTN25"}
+\item \code{"MTNHistorico.Minutas"}
+\item \code{"Inundaciones"}
+\item \code{"Inundaciones.FluvialT10"}
+\item \code{"Inundaciones.FluvialT100"}
+\item \code{"Inundaciones.FluvialT500"}
+\item \code{"Inundaciones.MarinaT100"}
+\item \code{"Inundaciones.MarinaT500"}
+\item \code{"RedNatura"}
+\item \code{"RedNatura.General"}
+\item \code{"EspaciosProtegidos"}
+\item \code{"EspaciosProtegidos.General"}
+\item \code{"SeccionesINE"}
+\item \code{"SeccionesINE.Secciones2026"}
+\item \code{"SeccionesINE.Distritos2026"}
+\item \code{"SeccionesINE.Secciones2021"}
+\item \code{"SeccionesINE.Distritos2021"}
+\item \code{"Pendientes"}
+\item \code{"Pendientes.MDP05"}
+\item \code{"GEODE"}
+\item \code{"GEODE.Geologia"}
+\item \code{"GEODE.Unidades"}
+\item \code{"GEODE.Contactos"}
+\item \code{"GEODE.Cuaternario"}
+\item \code{"SIGPAC"}
+\item \code{"SIGPAC.Recintos"}
+\item \code{"SIGPAC.CultivoDeclarado2025"}
+\item \code{"SIGPAC.PaisajeAreas"}
+\item \code{"SIGPAC.PaisajeLineas"}
+\item \code{"SIGPAC.PaisajePuntos"}
+\item \code{"MapaForestal"}
+\item \code{"MapaForestal.Usos"}
+\item \code{"Planimetrias"}
+\item \code{"Planimetrias.Minutas"}
+\item \code{"CaminosNaturales"}
+\item \code{"CaminosNaturales.Etapas"}
+\item \code{"SpainByBike"}
+\item \code{"SpainByBike.Etapas"}
+\item \code{"SpainByBike.TiposVia"}
+\item \code{"SpainByBike.CentrosBTT"}
+\item \code{"SpainByBike.Puertos"}
+\item \code{"SpainByBike.PuertosPuntos"}
+\item \code{"ViasPecuarias"}
+\item \code{"ViasPecuarias.Red2024"}
+\item \code{"PotencialSolar"}
+\item \code{"PotencialSolar.Global"}
+\item \code{"PotencialSolar.Edificios"}
 \item \code{"ParquesNaturales"}
 \item \code{"ParquesNaturales.Limites"}
 \item \code{"ParquesNaturales.ZonasPerifericas"}

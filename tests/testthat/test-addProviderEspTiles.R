@@ -21,6 +21,19 @@ test_that("addProviderEspTiles() validates providers and adds leaflet tiles", {
   expect_s3_class(puertadelsol, "leaflet")
 })
 
+test_that("new historical imagery and maps use their WMS and WMTS layers", {
+  map <- addProviderEspTiles(leaflet::leaflet(), "PNOAHistorico.PNOA2024")
+  call <- map$x$calls[[1]]
+  expect_identical(call$method, "addWMSTiles")
+  expect_identical(call$args[[4]]$layers, "PNOA2024")
+
+  map <- addProviderEspTiles(leaflet::leaflet(), "MTNHistorico.MTN25")
+  call <- map$x$calls[[1]]
+  expect_identical(call$method, "addTiles")
+  expect_match(call$args[[1]], "layer=mtn25-edicion1", fixed = TRUE)
+  expect_equal(call$args[[4]]$maxNativeZoom, 19)
+})
+
 test_that("updated providers preserve native zoom limits and geographic CRS", {
   map <- addProviderEspTiles(leaflet::leaflet(), "IGNBase.Simplificado")
   call <- map$x$calls[[1]]
