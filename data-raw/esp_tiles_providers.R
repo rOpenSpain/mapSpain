@@ -1,148 +1,72 @@
-## code to prepare `esp_tiles_providers` dataset goes here
-rm(list = ls())
-source("./data-raw/helperfuns.R")
+# Rebuild from the vendored leaflet-providersESP release (requires V8 and xml2).
+# Source: https://github.com/dieghernan/leaflet-providersESP/tree/v1.4.0/dist
+ctx <- V8::v8()
+ctx$eval(
+  "var L = {CRS: {EPSG4326: 'EPSG:4326'}, Util: {extend: Object.assign}, tileLayer: {}};"
+)
+ctx$source("data-raw/input/leaflet-providers.js")
+ctx$eval(
+  "var catalog = {}; Object.keys(providersESP).forEach(function(name) {
+  var names = [name].concat(Object.keys(providersESP[name].variants || {})
+    .map(function(variant) { return name + '.' + variant; }));
+  names.forEach(function(id) { catalog[id] = providerOpts(id); });
+});"
+)
+catalog <- ctx$get("catalog")
 
-devtools::load_all()
-library(dplyr)
-library(tidyverse)
-library(readxl)
-
-df <- read_xlsx("./data-raw/input/leafletproviders-ESP.xlsx")
-
-glimpse(df)
-# Convert WMS to version 1.3.0
-df <- df |>
-  mutate(
-    wmts = str_detect(value, "SERVICE=WMS"),
-    value = if_else(wmts, str_replace_all(value, "1.1.1", "1.3.0"), value),
-    value = if_else(wmts, str_replace_all(value, "&SRS=", "&CRS="), value)
-  ) |>
-  select(-wmts)
-
-df_pivoted <- df |> pivot_wider(values_from = value, names_from = field)
-
-url_static <- "https://rts.larioja.org/mapa-base/rioja/{z}/{x}/{y}.png"
-# Helper to split urls
-esp_hlp_split_url <- function(url_static) {
-  split <- unlist(strsplit(url_static, "?", fixed = TRUE))
-
-  urlsplit <- list()
-  if (length(split) > 1) {
-    urlsplit$q <- paste0(split[1], "?")
-  } else {
-    urlsplit$q <- split[1]
+esp_tiles_providers <- lapply(catalog, function(provider) {
+  opts <- provider$options
+  url <- provider$url
+  for (key in names(opts)) {
+    placeholder <- paste0("{", key, "}")
+    if (grepl(placeholder, url, fixed = TRUE)) {
+      url <- gsub(placeholder, as.character(opts[[key]]), url, fixed = TRUE)
+    }
   }
-  opts <- unlist(strsplit(split[2], "&"))
-
-  names_opts <- vapply(
-    opts,
-    function(x) {
-      n <- strsplit(x, "=", fixed = TRUE)
-      return(unlist(n)[1])
-    },
-    FUN.VALUE = character(1)
-  )
-
-  values_opts <- vapply(
-    opts,
-    function(x) {
-      n <- strsplit(x, "=", fixed = TRUE)
-
-      unl <- unlist(n)
-      if (length(unl) == 2) {
-        return(unl[2])
+  attribution <- xml2::xml_text(xml2::read_html(paste0(
+    "<p>",
+    opts$attribution,
+    "</p>"
+  )))
+  if (grepl("{x}", url, fixed = TRUE)) {
+    parts <- strsplit(url, "?", fixed = TRUE)[[1]]
+    static <- list(attribution = attribution, q = parts[1])
+    if (length(parts) > 1L) {
+      static$q <- paste0(static$q, "?")
+      params <- strsplit(parts[2], "&", fixed = TRUE)[[1]]
+      for (param in params) {
+        key <- tolower(sub("=.*", "", param))
+        static[[key]] <- sub("^[^=]*=", "", param)
       }
-      return("")
-    },
-    FUN.VALUE = character(1)
-  )
-
-  names(values_opts) <- tolower(names_opts)
-
-  urlsplit <- modifyList(urlsplit, as.list(values_opts))
-
-  return(urlsplit)
-}
-
-len_prov <- seq_len(nrow(df_pivoted))
-
-x <- 1
-
-esp_tiles_providers <- lapply(len_prov, function(x) {
-  prov <- df_pivoted[x, ]
-
-  url_st <- as.vector(prov$url_static)
-
-  url <- esp_hlp_split_url(url_st)
-
-  # Compose list
-  static <- c(list(attribution = as.vector(prov$attribution_static)), url)
-  # Add additional options for leaflet
-  leaflet <- list(
-    attribution = as.vector(prov$attribution),
-    minZoom = as.vector(prov$minZoom)
-  )
-
-  # Cleanup
-  leaflet <- leaflet[!is.na(leaflet)]
-
-  # Final output
-
-  l <- list(static = static, leaflet = leaflet)
-
-  return(l)
+    }
+    opts <- opts[intersect(
+      names(opts),
+      c("attribution", "minZoom", "maxNativeZoom")
+    )]
+  } else {
+    version <- opts$version
+    if (is.null(version)) {
+      version <- "1.3.0"
+    }
+    crs <- opts$crs
+    if (is.null(crs)) {
+      crs <- "EPSG:3857"
+    }
+    static <- list(
+      attribution = attribution,
+      q = paste0(sub("\\?+$", "", url), "?"),
+      service = "WMS",
+      version = version,
+      request = "GetMap",
+      format = opts$format,
+      transparent = tolower(as.character(opts$transparent)),
+      layers = opts$layers
+    )
+    static[[if (version >= "1.3.0") "crs" else "srs"]] <- crs
+    static <- c(static, list(width = "512", height = "512", bbox = "{bbox}"))
+    static$styles <- if (is.null(opts$styles)) "" else opts$styles
+    opts <- opts[intersect(names(opts), c("attribution", "minZoom", "crs"))]
+  }
+  list(static = static, leaflet = opts)
 })
-
-names(esp_tiles_providers) <- df_pivoted$provider
-
-all_int <- esp_tiles_providers
-
-all_n <- names(all_int)
-
-validated <- lapply(all_n, function(nm) {
-  static <- all_int[[nm]]$static
-  static$id <- nm
-  validate_provider(static)
-})
-
-prov_type <- vapply(validated, guess_provider_type, FUN.VALUE = character(1))
-all_wms <- all_int[prov_type == "WMS"]
-all_n <- names(all_wms)
-
-
 usethis::use_data(esp_tiles_providers, overwrite = TRUE)
-
-# Check
-
-rm(list = ls())
-# Try
-
-esp_set_cache_dir("~/R/mapslib/GISCO", install = TRUE, overwrite = TRUE)
-
-esp_detect_cache_dir()
-devtools::load_all()
-
-# Try MDT
-library(tidyterra)
-ccaa <- esp_get_ccaa(c("LA Rioja"), epsg = 3857)
-tile <- esp_get_tiles(ccaa, "PNOA", crop = FALSE, verbose = TRUE)
-
-ggplot2::ggplot() +
-  geom_spatraster_rgb(data = tile)
-
-library(leaflet)
-
-leaflet() |>
-  setView(lat = 40.4166, lng = -3.7038400, zoom = 10) |>
-  addProviderEspTiles(provider = "IDErioja.Claro") |>
-  addProviderEspTiles(
-    provider = "CaminoDeSantiago",
-    options = list(transparent = TRUE)
-  )
-
-names(mapSpain::esp_tiles_providers)
-
-esp_tiles_providers$IDErioja$static$q
-provider <- "IGNBase.Todo"
-
-tt <- esp_tiles_providers

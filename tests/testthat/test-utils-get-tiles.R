@@ -120,7 +120,22 @@ test_that("All built-in tile providers have supported types and CRS", {
       FUN.VALUE = character(1)
     )
   )
-  expect_snapshot(unique(in_epsg))
+  expect_setequal(unique(in_epsg), c("EPSG:3857", "EPSG:4326"))
+})
+
+test_that("updated providers retain aliases and service parameters", {
+  expect_identical(
+    esp_tiles_providers$CaminoDeSantiago.CaminosCatalanes,
+    esp_tiles_providers$CaminoDeSantiago.CaminosNordeste
+  )
+  expect_identical(
+    esp_tiles_providers$Geofisica.HazardArea,
+    esp_tiles_providers$Geofisica.HazardArea2002
+  )
+  expect_identical(validate_provider("Catastro.Catastro")$version, "1.1.1")
+  expect_identical(validate_provider("Catastro.Catastro")$srs, "EPSG:3857")
+  expect_identical(validate_provider("MDT")$style, "Elevaciones")
+  expect_identical(validate_provider("Copernicus.ForestLeaf")$crs, "EPSG:4326")
 })
 
 test_that("modify_provider_list() applies service-specific options", {

@@ -17,16 +17,16 @@ contains additional parameters to pass to \code{\link[=addProviderEspTiles]{addP
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
 \CRANpkg{leaflet},
-\strong{v1.3.3}.
+\strong{v1.4.0}.
 }
 \description{
-A named \code{\link[base:list]{list}} of length 102,
+A named \code{\link[base:list]{list}} of length 114,
 containing URL information from different public WMS and WMTS tile providers
 in Spain.
 
 This dataset is an implementation of the JavaScript plugin
 \href{https://dieghernan.github.io/leaflet-providersESP/}{leaflet-providersESP}
-\strong{v1.3.3}.
+\strong{v1.4.0}.
 }
 \details{
 Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{esp_get_tiles()}} are:
@@ -38,6 +38,7 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"IDErioja.Oscuro"}
 \item \code{"IGNBase"}
 \item \code{"IGNBase.Todo"}
+\item \code{"IGNBase.Simplificado"}
 \item \code{"IGNBase.Gris"}
 \item \code{"IGNBase.TodoNoFondo"}
 \item \code{"IGNBase.Orto"}
@@ -59,6 +60,11 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"Geofisica.Terremotos30dias"}
 \item \code{"Geofisica.Terremotos365dias"}
 \item \code{"Geofisica.ObservedEvents"}
+\item \code{"Geofisica.EstacionesSismicas"}
+\item \code{"Geofisica.HazardArea2015PGA"}
+\item \code{"Geofisica.HazardArea2015Isolineas"}
+\item \code{"Geofisica.HazardArea2015Intensidad"}
+\item \code{"Geofisica.HazardArea2002"}
 \item \code{"Geofisica.HazardArea"}
 \item \code{"VigilanciaVolcanica"}
 \item \code{"VigilanciaVolcanica.ErupcionesHistoricas"}
@@ -70,6 +76,7 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"CaminoDeSantiago.CaminosAndaluces"}
 \item \code{"CaminoDeSantiago.CaminosCentro"}
 \item \code{"CaminoDeSantiago.CaminosEste"}
+\item \code{"CaminoDeSantiago.CaminosNordeste"}
 \item \code{"CaminoDeSantiago.CaminosCatalanes"}
 \item \code{"CaminoDeSantiago.CaminosSureste"}
 \item \code{"CaminoDeSantiago.CaminosInsulares"}
@@ -88,6 +95,10 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"RedTransporte.Carreteras"}
 \item \code{"RedTransporte.Ferroviario"}
 \item \code{"RedTransporte.Aerodromo"}
+\item \code{"RedTransporte.Pistas"}
+\item \code{"RedTransporte.CallesRodaje"}
+\item \code{"RedTransporte.Plataformas"}
+\item \code{"RedTransporte.TransporteCable"}
 \item \code{"RedTransporte.AreaServicio"}
 \item \code{"RedTransporte.EstacionesFerroviario"}
 \item \code{"RedTransporte.Puertos"}
@@ -97,6 +108,7 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"NombresGeograficos"}
 \item \code{"UnidadesAdm"}
 \item \code{"UnidadesAdm.Limites"}
+\item \code{"UnidadesAdm.LimitesHistoricos"}
 \item \code{"UnidadesAdm.Unidades"}
 \item \code{"Hidrografia"}
 \item \code{"Hidrografia.MasaAgua"}
@@ -126,10 +138,10 @@ Providers available to be passed to \code{type} in \code{\link[=esp_get_tiles]{e
 \item \code{"Copernicus.WaterWet"}
 \item \code{"Copernicus.SoilSeal"}
 \item \code{"Copernicus.GrassLand"}
-\item \code{"Copernicus.RiparianGreen"}
 \item \code{"Copernicus.RiparianLandCover"}
 \item \code{"Copernicus.Natura2k"}
 \item \code{"Copernicus.UrbanAtlas"}
+\item \code{"Copernicus.RiparianGreen"}
 \item \code{"ParquesNaturales"}
 \item \code{"ParquesNaturales.Limites"}
 \item \code{"ParquesNaturales.ZonasPerifericas"}
