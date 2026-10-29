@@ -1,6 +1,6 @@
 # Plugin version for Leaflet documentation.
 # jarl-ignore unused_object: Used by cross-file roxygen inline code
-leaf_providers_esp_v <- "v1.3.3"
+leaf_providers_esp_v <- "v1.4.0"
 
 #' Add a tile layer from Spanish public administrations to a \CRANpkg{leaflet}
 #' map
@@ -106,6 +106,9 @@ addProviderEspTiles <- function(
     names(tileops) <- tolower(names(tileops))
 
     optionend <- modifyList(tileops, optionend)
+    option_names <- names(formals(leaflet::tileOptions))
+    matched <- match(names(optionend), tolower(option_names))
+    names(optionend)[!is.na(matched)] <- option_names[matched[!is.na(matched)]]
     optionend <- do.call(leaflet::tileOptions, optionend)
 
     leaflet::addTiles(
@@ -160,6 +163,10 @@ addProviderEspTiles <- function(
     names(wmsopts) <- tolower(names(wmsopts))
 
     optionend <- modifyList(wmsopts, optionend)
+
+    if (identical(optionend$crs, "EPSG:4326")) {
+      optionend$crs <- leaflet::leafletCRS(crsClass = "L.CRS.EPSG4326")
+    }
 
     leaflet::addWMSTiles(
       map,

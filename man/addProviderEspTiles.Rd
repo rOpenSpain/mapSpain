@@ -7,7 +7,7 @@
 map}
 \source{
 \url{https://dieghernan.github.io/leaflet-providersESP/}, a plugin for
-\CRANpkg{leaflet}, \strong{v1.3.3}.
+\CRANpkg{leaflet}, \strong{v1.4.0}.
 }
 \usage{
 addProviderEspTiles(

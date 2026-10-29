@@ -20,3 +20,16 @@ test_that("addProviderEspTiles() validates providers and adds leaflet tiles", {
   )
   expect_s3_class(puertadelsol, "leaflet")
 })
+
+test_that("updated providers preserve native zoom limits and geographic CRS", {
+  map <- addProviderEspTiles(leaflet::leaflet(), "IGNBase.Simplificado")
+  call <- map$x$calls[[1]]
+  expect_match(call$args[[1]], "layer=IGNBaseSimplificado", fixed = TRUE)
+  expect_equal(call$args[[4]]$maxNativeZoom, 20)
+
+  map <- addProviderEspTiles(leaflet::leaflet(), "Copernicus.ForestLeaf")
+  call <- map$x$calls[[1]]
+  expect_match(call$args[[1]], "discomap.eea.europa.eu", fixed = TRUE)
+  expect_identical(call$args[[4]]$crs$crsClass, "L.CRS.EPSG4326")
+  expect_identical(call$args[[4]]$version, "1.3.0")
+})
