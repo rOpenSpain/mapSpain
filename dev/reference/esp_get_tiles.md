@@ -5,7 +5,7 @@ WMS and WMTS providers.
 
 This function is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-**v1.3.3**.
+**v1.4.0**.
 
 ## Usage
 
@@ -30,7 +30,7 @@ esp_get_tiles(
 ## Source
 
 <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
-[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.3.3**.
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.4.0**.
 
 ## Arguments
 
