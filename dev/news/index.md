@@ -5,11 +5,14 @@
 - SIANE functions now use the CartoBase ANE 2026 distribution, including
   revisions to historical names and geometries. Use
   `update_cache = TRUE` to refresh previously cached data.
-- `esp_tiles_providers` now uses leaflet-providersESP v1.4.0, adding new
-  layers and updating service URLs, WMS versions, styles and zoom
-  limits. `Copernicus.RiparianGreen` remains available for compatibility
-  but its upstream service is unavailable
-  ([\#146](https://github.com/rOpenSpain/mapSpain/issues/146)).
+- `esp_tiles_providers` now uses leaflet-providersESP v1.5.0, adding
+  historical imagery and maps, flood hazards, protected areas,
+  statistical boundaries, slopes, geology, agriculture, forests, routes
+  and solar potential alongside updated service URLs, WMS versions,
+  styles and zoom limits. `Copernicus.RiparianGreen` remains available
+  for compatibility but its upstream service is unavailable
+  ([\#146](https://github.com/rOpenSpain/mapSpain/issues/146),
+  [\#147](https://github.com/rOpenSpain/mapSpain/issues/147)).
 
 ## mapSpain 1.2.1
 

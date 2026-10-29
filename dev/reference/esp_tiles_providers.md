@@ -1,12 +1,12 @@
 # Public WMS and WMTS providers for Spain
 
-A named [`list`](https://rdrr.io/r/base/list.html) of length 114,
+A named [`list`](https://rdrr.io/r/base/list.html) of length 174,
 containing URL information from different public WMS and WMTS tile
 providers in Spain.
 
 This dataset is an implementation of the JavaScript plugin
 [leaflet-providersESP](https://dieghernan.github.io/leaflet-providersESP/)
-**v1.4.0**.
+**v1.5.0**.
 
 ## Format
 
@@ -22,9 +22,15 @@ obtain static map tiles and an additional item named `attribution`.
 ## Source
 
 <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
-[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.4.0**.
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.5.0**.
 
 ## Details
+
+Compare layers in the
+[preview](https://dieghernan.github.io/leaflet-providersESP/preview/)
+and consult the [layer
+guide](https://dieghernan.github.io/leaflet-providersESP/capas/) for
+coverage, scale and availability information.
 
 Providers available to be passed to `type` in
 [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/dev/reference/esp_get_tiles.md)
@@ -251,6 +257,126 @@ are:
 - `"Copernicus.UrbanAtlas"`
 
 - `"Copernicus.RiparianGreen"`
+
+- `"PNOAHistorico"`
+
+- `"PNOAHistorico.Americano"`
+
+- `"PNOAHistorico.Interministerial"`
+
+- `"PNOAHistorico.Nacional"`
+
+- `"PNOAHistorico.OLISTAT"`
+
+- `"PNOAHistorico.SIGPAC"`
+
+- `"PNOAHistorico.PNOA2004"`
+
+- `"PNOAHistorico.PNOA2009"`
+
+- `"PNOAHistorico.PNOA2014"`
+
+- `"PNOAHistorico.PNOA2019"`
+
+- `"PNOAHistorico.PNOA2024"`
+
+- `"MTNHistorico"`
+
+- `"MTNHistorico.MTN50"`
+
+- `"MTNHistorico.MTN25"`
+
+- `"MTNHistorico.Minutas"`
+
+- `"Inundaciones"`
+
+- `"Inundaciones.FluvialT10"`
+
+- `"Inundaciones.FluvialT100"`
+
+- `"Inundaciones.FluvialT500"`
+
+- `"Inundaciones.MarinaT100"`
+
+- `"Inundaciones.MarinaT500"`
+
+- `"RedNatura"`
+
+- `"RedNatura.General"`
+
+- `"EspaciosProtegidos"`
+
+- `"EspaciosProtegidos.General"`
+
+- `"SeccionesINE"`
+
+- `"SeccionesINE.Secciones2026"`
+
+- `"SeccionesINE.Distritos2026"`
+
+- `"SeccionesINE.Secciones2021"`
+
+- `"SeccionesINE.Distritos2021"`
+
+- `"Pendientes"`
+
+- `"Pendientes.MDP05"`
+
+- `"GEODE"`
+
+- `"GEODE.Geologia"`
+
+- `"GEODE.Unidades"`
+
+- `"GEODE.Contactos"`
+
+- `"GEODE.Cuaternario"`
+
+- `"SIGPAC"`
+
+- `"SIGPAC.Recintos"`
+
+- `"SIGPAC.CultivoDeclarado2025"`
+
+- `"SIGPAC.PaisajeAreas"`
+
+- `"SIGPAC.PaisajeLineas"`
+
+- `"SIGPAC.PaisajePuntos"`
+
+- `"MapaForestal"`
+
+- `"MapaForestal.Usos"`
+
+- `"Planimetrias"`
+
+- `"Planimetrias.Minutas"`
+
+- `"CaminosNaturales"`
+
+- `"CaminosNaturales.Etapas"`
+
+- `"SpainByBike"`
+
+- `"SpainByBike.Etapas"`
+
+- `"SpainByBike.TiposVia"`
+
+- `"SpainByBike.CentrosBTT"`
+
+- `"SpainByBike.Puertos"`
+
+- `"SpainByBike.PuertosPuntos"`
+
+- `"ViasPecuarias"`
+
+- `"ViasPecuarias.Red2024"`
+
+- `"PotencialSolar"`
+
+- `"PotencialSolar.Global"`
+
+- `"PotencialSolar.Edificios"`
 
 - `"ParquesNaturales"`
 

@@ -18,7 +18,7 @@ addProviderEspTiles(
 ## Source
 
 <https://dieghernan.github.io/leaflet-providersESP/>, a plugin for
-[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.4.0**.
+[leaflet](https://CRAN.R-project.org/package=leaflet), **v1.5.0**.
 
 ## Arguments
 
@@ -30,7 +30,10 @@ addProviderEspTiles(
 
   The name of the provider. See
   [esp_tiles_providers](https://ropenspain.github.io/mapSpain/dev/reference/esp_tiles_providers.md)
-  or <https://dieghernan.github.io/leaflet-providersESP/preview/>.
+  or the
+  [preview](https://dieghernan.github.io/leaflet-providersESP/preview/)
+  and the [layer
+  guide](https://dieghernan.github.io/leaflet-providersESP/capas/).
 
 - layerId:
 
