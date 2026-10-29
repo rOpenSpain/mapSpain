@@ -123,7 +123,7 @@ test_that("All built-in tile providers have supported types and CRS", {
   expect_setequal(unique(in_epsg), c("EPSG:3857", "EPSG:4326"))
 })
 
-test_that("updated tile providers retain aliases and service-specific parameters", {
+test_that("updated providers retain aliases and service parameters", {
   expect_identical(
     esp_tiles_providers$CaminoDeSantiago.CaminosCatalanes,
     esp_tiles_providers$CaminoDeSantiago.CaminosNordeste
