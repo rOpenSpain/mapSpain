@@ -124,7 +124,9 @@ administration basemaps to interactive
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Plot `SpatRaster` objects as images (from tidyterra)
+  Plot
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+  objects as images (from tidyterra)
 
 ## Spatial helpers
 

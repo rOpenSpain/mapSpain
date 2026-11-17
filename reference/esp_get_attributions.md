@@ -49,5 +49,5 @@ Static map tiles and imagery:
 
 ``` r
 esp_get_attributions("IGNBase.Todo")
-#> [1] "CC BY 4.0 scne.es. Sistema Geográfico Nacional IGN"
+#> [1] "CC BY 4.0 scne.es. Sistema Geográfico Nacional IGN "
 ```

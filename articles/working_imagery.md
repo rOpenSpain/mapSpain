@@ -31,12 +31,20 @@ library(ggplot2)
 library(tidyterra)
 
 # Logroño
-lgn_borders <- esp_get_munic_siane(munic = "Logroño")
+lgn_borders <- esp_get_munic_siane(
+  munic = "Logroño",
+  cache_dir = "./maps_spain/"
+)
 
 # Convert to Mercator (EPSG:3857), a common choice when working with tiles.
 lgn_borders <- st_transform(lgn_borders, 3857)
 
-tile_lgn <- esp_get_tiles(lgn_borders, "IDErioja", bbox_expand = 0.5)
+tile_lgn <- esp_get_tiles(
+  lgn_borders,
+  "IDErioja",
+  bbox_expand = 0.5,
+  cache_dir = "./maps_spain/"
+)
 
 ggplot(lgn_borders) +
   geom_spatraster_rgb(data = tile_lgn) +
@@ -55,23 +63,29 @@ controls layer transparency:
 
 ``` r
 
-galicia <- esp_get_ccaa_siane("Galicia", epsg = 3857)
+rioja <- esp_get_prov_siane(
+  "La Rioja",
+  epsg = 3857,
+  cache_dir = "./maps_spain/"
+)
 
 # Example without transparency.
 basemap <- esp_get_tiles(
-  galicia,
+  rioja,
   "IDErioja.Claro",
   zoommin = 1,
   crop = TRUE,
-  bbox_expand = 0
+  bbox_expand = 0,
+  cache_dir = "./maps_spain/"
 )
 tile_opaque <- esp_get_tiles(
-  galicia,
-  "CaminoDeSantiago",
+  rioja,
+  "UnidadesAdm.Limites",
   verbose = TRUE,
   transparent = FALSE,
   crop = TRUE,
-  bbox_expand = 0
+  bbox_expand = 0,
+  cache_dir = "./maps_spain/"
 )
 
 ggplot() +
@@ -80,11 +94,11 @@ ggplot() +
   theme_void()
 ```
 
-![Map of Galicia using an opaque Way of St. James tile layer. The
-underlying light basemap is hidden by the opaque overlay.
+![Map of La Rioja using an opaque administrative boundary tile layer.
+The underlying light basemap is hidden by the opaque overlay.
 ](working_imagery_files/figure-html/fig-static2-1.png)
 
-Figure 2: Map of the Way of St. James in Galicia
+Figure 2: Administrative boundaries in La Rioja without transparency
 
 The following example repeats the same code with `transparent = TRUE`:
 
@@ -92,11 +106,12 @@ The following example repeats the same code with `transparent = TRUE`:
 
 # Example with transparency.
 tile_alpha <- esp_get_tiles(
-  galicia,
-  "CaminoDeSantiago",
+  rioja,
+  "UnidadesAdm.Limites",
   transparent = TRUE,
   crop = TRUE,
-  bbox_expand = 0
+  bbox_expand = 0,
+  cache_dir = "./maps_spain/"
 )
 
 # Use the same plotting code as above.
@@ -106,9 +121,9 @@ ggplot() +
   theme_void()
 ```
 
-![Map of Galicia using a transparent Way of St. James tile layer. The
-route overlay and the underlying light basemap are both visible.
-](working_imagery_files/figure-html/fig-static_transp-1.png)
+![Map of La Rioja using a transparent administrative boundary tile
+layer. The boundary lines and the underlying light basemap are both
+visible. ](working_imagery_files/figure-html/fig-static_transp-1.png)
 
 Figure 3: Example of using alpha values to combine different map tile
 layers.
@@ -121,11 +136,27 @@ Tile masking restricts imagery to the geometry of an input `sf` object:
 
 ``` r
 
-rioja <- esp_get_prov_siane("La Rioja", epsg = 3857)
+rioja <- esp_get_prov_siane(
+  "La Rioja",
+  epsg = 3857,
+  cache_dir = "./maps_spain/"
+)
 
-basemap <- esp_get_tiles(rioja, "PNOA", bbox_expand = 0.1, zoommin = 1)
+basemap <- esp_get_tiles(
+  rioja,
+  "PNOA",
+  bbox_expand = 0.1,
+  zoommin = 1,
+  cache_dir = "./maps_spain/"
+)
 
-masked <- esp_get_tiles(rioja, "IDErioja", mask = TRUE, zoommin = 1)
+masked <- esp_get_tiles(
+  rioja,
+  "IDErioja",
+  mask = TRUE,
+  zoommin = 1,
+  cache_dir = "./maps_spain/"
+)
 
 ggplot() +
   geom_spatraster_rgb(data = basemap, maxcell = 10e6) +
@@ -151,8 +182,17 @@ osm_spec <- list(
   q = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
 )
 
-madrid_city <- esp_get_munic_siane(munic = "^Madrid$", epsg = 3857)
-madrid_osm <- esp_get_tiles(madrid_city, type = osm_spec, zoommin = 1)
+madrid_city <- esp_get_munic_siane(
+  munic = "^Madrid$",
+  epsg = 3857,
+  cache_dir = "./maps_spain/"
+)
+madrid_osm <- esp_get_tiles(
+  madrid_city,
+  type = osm_spec,
+  zoommin = 1,
+  cache_dir = "./maps_spain/"
+)
 
 ggplot() +
   geom_spatraster_rgb(data = madrid_osm) +
@@ -180,7 +220,12 @@ if (nzchar(apikey)) {
       apikey
     )
   )
-  madrid_thunder <- esp_get_tiles(madrid_city, type = thunder_spec, zoommin = 1)
+  madrid_thunder <- esp_get_tiles(
+    madrid_city,
+    type = thunder_spec,
+    zoommin = 1,
+    cache_dir = "./maps_spain/"
+  )
 
   ggplot() +
     geom_spatraster_rgb(data = madrid_thunder) +
@@ -209,7 +254,8 @@ tenerife_leaf <- esp_get_nuts(
   region = "Tenerife",
   resolution = 3,
   epsg = 4326,
-  moveCAN = FALSE
+  moveCAN = FALSE,
+  cache_dir = "./maps_spain/"
 )
 
 bbox <- as.double(round(st_bbox(tenerife_leaf) + c(-1, -1, 1, 1), 2))
@@ -250,7 +296,8 @@ munic <- esp_get_munic_siane(
   year = "2025-01-01",
   epsg = 4326,
   moveCAN = FALSE,
-  rawcols = TRUE
+  rawcols = TRUE,
+  cache_dir = "./maps_spain/"
 ) |>
   # Use the area field available in the SIANE data.
   mutate(area_km2 = st_area_sh * 10000)

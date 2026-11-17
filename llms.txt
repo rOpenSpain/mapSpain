@@ -206,7 +206,7 @@ A **BibTeX** entry for **LaTeX** users is:
 @Manual{R-mapspain,
   title = {{mapSpain}: Administrative Boundaries and Static Map Tiles for Spain},
   year = {2026},
-  version = {1.2.1},
+  version = {1.3.0},
   author = {Diego Hernangómez},
   doi = {10.5281/zenodo.5366622},
   url = {https://ropenspain.github.io/mapSpain/},
@@ -383,7 +383,9 @@ administration basemaps to interactive
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Plot `SpatRaster` objects as images (from tidyterra)
+  Plot
+  [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+  objects as images (from tidyterra)
 
 ## Spatial helpers
 
