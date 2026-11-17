@@ -103,7 +103,10 @@ esp_get_grid_ccaa <- function(ccaa = NULL) {
 #' Get a province grid map
 #' @noRd
 get_gridmap_prov <- function(prov = NULL, type = "hex") {
-  data_sf <- switch(type, "hex" = esp_hexbin_prov, esp_grid_prov)
+  data_sf <- switch(type,
+    "hex" = esp_hexbin_prov,
+    esp_grid_prov
+  )
   # Order grid cells.
   data_sf <- data_sf[order(data_sf$codauto, data_sf$cpro), ]
   data_sf <- sanitize_sf(data_sf)
@@ -118,7 +121,10 @@ get_gridmap_prov <- function(prov = NULL, type = "hex") {
 }
 
 get_gridmap_ccaa <- function(ccaa = NULL, type = "hex") {
-  data_sf <- switch(type, "hex" = esp_hexbin_ccaa, esp_grid_ccaa)
+  data_sf <- switch(type,
+    "hex" = esp_hexbin_ccaa,
+    esp_grid_ccaa
+  )
   # Order grid cells.
   data_sf <- data_sf[order(data_sf$codauto), ]
   data_sf <- sanitize_sf(data_sf)
