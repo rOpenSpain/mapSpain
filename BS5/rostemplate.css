@@ -1193,6 +1193,10 @@ div.callout-body-container.callout-body .btn-copy-ex {
 	line-height: 1.75;
 }
 
+.author-wrapper > p:first-child {
+  margin-bottom: 0rem;
+}
+
 /* --- 9. rOpenSpain components --- */
 
 .ROSh1 {
