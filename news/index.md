@@ -2,6 +2,8 @@
 
 ## mapSpain 1.3.0
 
+CRAN release: 2026-11-18
+
 - Minimum required **R** version is now 4.2.0.
 - SIANE functions now use the CartoBase ANE 2026 distribution, including
   revisions to historical names and geometries. Use
