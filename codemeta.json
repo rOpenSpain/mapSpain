@@ -314,7 +314,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["ropenspain", "tiles", "r", "maps", "spatial", "rstats", "r-package", "municipalities", "spain", "gisco", "provinces", "ign", "autonomous-communities", "administrative-boundaries", "static-tiles", "cran", "ggplot2", "gis", "nuts", "ccaa"],
-  "fileSize": "1894.991KB",
+  "fileSize": "1893.924KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
